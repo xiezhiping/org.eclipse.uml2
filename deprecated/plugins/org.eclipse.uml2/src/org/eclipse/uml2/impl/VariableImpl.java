@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
+ * $Id: VariableImpl.java,v 1.14 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -43,6 +43,8 @@ import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.Variable;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
 
 /**
@@ -53,6 +55,7 @@ import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getLower <em>Lower</em>}</li>
@@ -221,6 +224,29 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.VARIABLE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(), UML2Package.eINSTANCE.getMultiplicityElement_LowerValue()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
+			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -560,6 +586,15 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		return super.basicGetOwner();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getVariable_Scope());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -857,15 +892,9 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 			case UML2Package.VARIABLE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.VARIABLE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
+				return isSetOwnedElements();
 			case UML2Package.VARIABLE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getVariable_Scope());
+				return isSetOwner();
 			case UML2Package.VARIABLE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.VARIABLE__TEMPLATE_BINDING:
@@ -975,25 +1004,6 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		result.append((eFlags & IS_UNIQUE_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		ValueSpecification upperValue = getUpperValue();
-		if (upperValue != null) {
-			ownedElement.add(upperValue);
-		}
-		ValueSpecification lowerValue = getLowerValue();
-		if (lowerValue != null) {
-			ownedElement.add(lowerValue);
-		}
-		return ownedElement;
 	}
 
 

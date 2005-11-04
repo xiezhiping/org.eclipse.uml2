@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.14 2005/09/26 15:54:22 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.15 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Abstraction;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.OpaqueExpression;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
@@ -36,6 +37,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Abstraction</b></em>'.
@@ -43,6 +46,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.AbstractionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AbstractionImpl#getMapping <em>Mapping</em>}</li>
  * </ul>
  * </p>
@@ -84,6 +88,28 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getAbstraction();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ABSTRACTION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getAbstraction_Mapping()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getAbstraction_Mapping());
 	}
 
 	/**
@@ -165,43 +191,6 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.ABSTRACTION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ABSTRACTION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.ABSTRACTION__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ABSTRACTION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.ABSTRACTION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.ABSTRACTION__TEMPLATE_PARAMETER:
-					if (templateParameter != null)
-						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
-				case UML2Package.ABSTRACTION__OWNING_PARAMETER:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.ABSTRACTION__OWNING_PARAMETER, msgs);
-				case UML2Package.ABSTRACTION__CLIENT:
-					return ((InternalEList)getClients()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
@@ -230,23 +219,6 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.ABSTRACTION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -424,13 +396,9 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 			case UML2Package.ABSTRACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ABSTRACTION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getAbstraction_Mapping());
+				return isSetOwnedElements();
 			case UML2Package.ABSTRACTION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+				return isSetOwner();
 			case UML2Package.ABSTRACTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ABSTRACTION__TEMPLATE_BINDING:
@@ -452,13 +420,13 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 			case UML2Package.ABSTRACTION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ABSTRACTION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.ABSTRACTION__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return isSetRelatedElements();
 			case UML2Package.ABSTRACTION__SOURCE:
-				return !getSources().isEmpty();
+				return isSetSources();
 			case UML2Package.ABSTRACTION__TARGET:
-				return !getTargets().isEmpty();
+				return isSetTargets();
 			case UML2Package.ABSTRACTION__CLIENT:
 				return client != null && !client.isEmpty();
 			case UML2Package.ABSTRACTION__SUPPLIER:
@@ -474,25 +442,8 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ABSTRACTION__VISIBILITY:
 				return false;
-			case UML2Package.ABSTRACTION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		OpaqueExpression mapping = getMapping();
-		if (mapping != null) {
-			ownedElement.add(mapping);
-		}
-		return ownedElement;
-	}
-
 
 } //AbstractionImpl

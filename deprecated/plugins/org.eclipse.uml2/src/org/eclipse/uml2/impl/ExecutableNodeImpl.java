@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.12 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.13 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Activity;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.ExceptionHandler;
 import org.eclipse.uml2.ExecutableNode;
 import org.eclipse.uml2.StringExpression;
@@ -36,6 +37,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Executable Node</b></em>'.
@@ -43,6 +46,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ExecutableNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExecutableNodeImpl#getHandlers <em>Handler</em>}</li>
  * </ul>
  * </p>
@@ -83,6 +87,28 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getExecutableNode();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXECUTABLE_NODE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getExecutableNode_Handler()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler());
 	}
 
 	/**
@@ -211,25 +237,6 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.EXECUTABLE_NODE__ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__NODE, Activity.class, msgs);
-				case UML2Package.EXECUTABLE_NODE__IN_STRUCTURED_NODE:
-					return eContainer.eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE, StructuredActivityNode.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -432,13 +439,9 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 			case UML2Package.EXECUTABLE_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler());
+				return isSetOwnedElements();
 			case UML2Package.EXECUTABLE_NODE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
+				return isSetOwner();
 			case UML2Package.EXECUTABLE_NODE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__TEMPLATE_BINDING:
@@ -456,7 +459,7 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 			case UML2Package.EXECUTABLE_NODE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.EXECUTABLE_NODE__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.EXECUTABLE_NODE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.EXECUTABLE_NODE__OUTGOING:
@@ -464,13 +467,11 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 			case UML2Package.EXECUTABLE_NODE__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__IN_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+				return isSetInGroups();
 			case UML2Package.EXECUTABLE_NODE__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.EXECUTABLE_NODE__REDEFINED_ELEMENT:
-				return redefinedElement != null && !redefinedElement.isEmpty();
+				return isSetRedefinedElements();
 			case UML2Package.EXECUTABLE_NODE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.EXECUTABLE_NODE__IN_PARTITION:
@@ -481,20 +482,6 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 				return handler != null && !handler.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())) {
-			ownedElement.addAll(getHandlers());
-		}
-		return ownedElement;
 	}
 
 

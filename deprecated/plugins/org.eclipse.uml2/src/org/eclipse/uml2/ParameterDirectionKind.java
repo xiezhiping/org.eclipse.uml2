@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterDirectionKind.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ParameterDirectionKind.java,v 1.7 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -94,7 +94,7 @@ public final class ParameterDirectionKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ParameterDirectionKind IN_LITERAL = new ParameterDirectionKind(IN, "in"); //$NON-NLS-1$
+	public static final ParameterDirectionKind IN_LITERAL = new ParameterDirectionKind(IN, "in", "in"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Inout</b></em>' literal object.
@@ -108,7 +108,7 @@ public final class ParameterDirectionKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ParameterDirectionKind INOUT_LITERAL = new ParameterDirectionKind(INOUT, "inout"); //$NON-NLS-1$
+	public static final ParameterDirectionKind INOUT_LITERAL = new ParameterDirectionKind(INOUT, "inout", "inout"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Out</b></em>' literal object.
@@ -122,7 +122,7 @@ public final class ParameterDirectionKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ParameterDirectionKind OUT_LITERAL = new ParameterDirectionKind(OUT, "out"); //$NON-NLS-1$
+	public static final ParameterDirectionKind OUT_LITERAL = new ParameterDirectionKind(OUT, "out", "out"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Return</b></em>' literal object.
@@ -136,7 +136,7 @@ public final class ParameterDirectionKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ParameterDirectionKind RETURN_LITERAL = new ParameterDirectionKind(RETURN, "return"); //$NON-NLS-1$
+	public static final ParameterDirectionKind RETURN_LITERAL = new ParameterDirectionKind(RETURN, "return", "return"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Parameter Direction Kind</b></em>' enumerators.
@@ -161,15 +161,15 @@ public final class ParameterDirectionKind extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Parameter Direction Kind</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Parameter Direction Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static ParameterDirectionKind get(String name) {
+	public static ParameterDirectionKind get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			ParameterDirectionKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -177,7 +177,23 @@ public final class ParameterDirectionKind extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Parameter Direction Kind</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Parameter Direction Kind</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ParameterDirectionKind getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			ParameterDirectionKind result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Parameter Direction Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -198,8 +214,8 @@ public final class ParameterDirectionKind extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ParameterDirectionKind(int value, String name) {
-		super(value, name);
+	private ParameterDirectionKind(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //ParameterDirectionKind

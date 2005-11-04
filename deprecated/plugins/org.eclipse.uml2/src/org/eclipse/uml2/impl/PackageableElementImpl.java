@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.12 2005/09/23 21:22:54 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.13 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -221,6 +221,15 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetPackageableElement_visibility() {
+		return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Element basicGetOwner() {
@@ -231,6 +240,15 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 		return super.basicGetOwner();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -477,12 +495,9 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 			case UML2Package.PACKAGEABLE_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PACKAGEABLE_ELEMENT__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+				return isSetOwnedElements();
 			case UML2Package.PACKAGEABLE_ELEMENT__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+				return isSetOwner();
 			case UML2Package.PACKAGEABLE_ELEMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PACKAGEABLE_ELEMENT__TEMPLATE_BINDING:
@@ -504,7 +519,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 			case UML2Package.PACKAGEABLE_ELEMENT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -513,8 +528,6 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PACKAGEABLE_ELEMENT__VISIBILITY:
 				return false;
-			case UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}

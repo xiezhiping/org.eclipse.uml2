@@ -8,19 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.7 2005/09/23 21:22:54 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.8 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.QualifierValue;
@@ -171,44 +169,6 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.QUALIFIER_VALUE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.QUALIFIER_VALUE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.QUALIFIER_VALUE__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.QUALIFIER_VALUE__EANNOTATIONS:
@@ -288,9 +248,9 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 			case UML2Package.QUALIFIER_VALUE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.QUALIFIER_VALUE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
+				return isSetOwnedElements();
 			case UML2Package.QUALIFIER_VALUE__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.QUALIFIER_VALUE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.QUALIFIER_VALUE__QUALIFIER:

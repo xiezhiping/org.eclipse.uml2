@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.11 2005/09/23 21:22:54 khussey Exp $
+ * $Id: MessageImpl.java,v 1.12 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Connector;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Interaction;
 import org.eclipse.uml2.Message;
 import org.eclipse.uml2.MessageEnd;
@@ -44,6 +45,8 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Message</b></em>'.
@@ -51,6 +54,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.MessageImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.MessageImpl#getMessageKind <em>Message Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.MessageImpl#getMessageSort <em>Message Sort</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.MessageImpl#getReceiveEvent <em>Receive Event</em>}</li>
@@ -168,6 +172,28 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getMessage();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.MESSAGE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getMessage_Argument()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getMessage_Argument());
 	}
 
 	/**
@@ -499,20 +525,15 @@ public class MessageImpl extends NamedElementImpl implements Message {
 		return super.basicGetNamespace();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getMessage_Argument())) {
-			ownedElement.addAll(getArguments());
-		}
-		return ownedElement;
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.eINSTANCE.getMessage_Interaction());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -786,13 +807,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
 			case UML2Package.MESSAGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.MESSAGE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getMessage_Argument());
+				return isSetOwnedElements();
 			case UML2Package.MESSAGE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getMessage_Interaction());
+				return isSetOwner();
 			case UML2Package.MESSAGE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.MESSAGE__TEMPLATE_BINDING:

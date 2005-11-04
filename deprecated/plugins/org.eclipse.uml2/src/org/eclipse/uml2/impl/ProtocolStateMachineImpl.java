@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.25 2005/10/04 21:55:13 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.26 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -302,27 +302,6 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			default :
 				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.PROTOCOL_STATE_MACHINE__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				case UML2Package.PROTOCOL_STATE_MACHINE__CONTEXT:
-					return eContainer.eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, BehavioredClassifier.class, msgs);
-				case UML2Package.PROTOCOL_STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
-					return eContainer.eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE, BehavioredClassifier.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -830,37 +809,9 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
-					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Parameter())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Precondition())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Postcondition())
-					|| eIsSet(UML2Package.eINSTANCE.getStateMachine_Region())
-					|| eIsSet(UML2Package.eINSTANCE.getStateMachine_ConnectionPoint())
-					|| eIsSet(UML2Package.eINSTANCE.getProtocolStateMachine_Conformance());
+				return isSetOwnedElements();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
+				return isSetOwner();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING:
@@ -878,24 +829,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
-					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Parameter())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Precondition())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Postcondition())
-					|| eIsSet(UML2Package.eINSTANCE.getStateMachine_Region())
-					|| eIsSet(UML2Package.eINSTANCE.getStateMachine_ConnectionPoint());
+				return isSetMembers();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IMPORTED_MEMBER:
@@ -909,19 +843,15 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGE:
 				return getPackage() != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__FEATURE:
-				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
-					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception());
+				return isSetFeatures();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ABSTRACT:
 				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__INHERITED_MEMBER:
@@ -931,7 +861,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__ATTRIBUTE:
-				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
+				return isSetAttributes();
 			case UML2Package.PROTOCOL_STATE_MACHINE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__SUBSTITUTION:
@@ -955,13 +885,13 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER:
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
-				return !getOwnedStateMachines().isEmpty();
+				return isSetOwnedStateMachines();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
 				return !getOwnedAttributes().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__ROLE:
-				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
+				return isSetRoles();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR:
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PORT:
@@ -969,7 +899,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__SUPER_CLASS:
-				return !getSuperClasses().isEmpty();
+				return isSetSuperClasses();
 			case UML2Package.PROTOCOL_STATE_MACHINE__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER:
@@ -1003,9 +933,9 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__CONNECTION_POINT:
 				return connectionPoint != null && !connectionPoint.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE:
-				return extendedStateMachine != null;
+				return isSetExtendedStateMachine();
 			case UML2Package.PROTOCOL_STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
-				return getStateMachine_redefinitionContext() != null;
+				return isSetStateMachine_redefinitionContext();
 			case UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE:
 				return conformance != null && !conformance.isEmpty();
 		}
@@ -1017,12 +947,8 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PROTOCOL_STATE_MACHINE__VISIBILITY:
 				return false;
-			case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
@@ -1042,5 +968,14 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getProtocolStateMachine_Conformance());
+	}
 
 } //ProtocolStateMachineImpl

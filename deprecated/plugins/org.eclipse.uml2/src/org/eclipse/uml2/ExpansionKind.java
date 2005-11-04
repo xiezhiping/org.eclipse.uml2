@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionKind.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: ExpansionKind.java,v 1.7 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -83,7 +83,7 @@ public final class ExpansionKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ExpansionKind PARALLEL_LITERAL = new ExpansionKind(PARALLEL, "parallel"); //$NON-NLS-1$
+	public static final ExpansionKind PARALLEL_LITERAL = new ExpansionKind(PARALLEL, "parallel", "parallel"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Iterative</b></em>' literal object.
@@ -97,7 +97,7 @@ public final class ExpansionKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ExpansionKind ITERATIVE_LITERAL = new ExpansionKind(ITERATIVE, "iterative"); //$NON-NLS-1$
+	public static final ExpansionKind ITERATIVE_LITERAL = new ExpansionKind(ITERATIVE, "iterative", "iterative"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Stream</b></em>' literal object.
@@ -111,7 +111,7 @@ public final class ExpansionKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ExpansionKind STREAM_LITERAL = new ExpansionKind(STREAM, "stream"); //$NON-NLS-1$
+	public static final ExpansionKind STREAM_LITERAL = new ExpansionKind(STREAM, "stream", "stream"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Expansion Kind</b></em>' enumerators.
@@ -135,15 +135,15 @@ public final class ExpansionKind extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Expansion Kind</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Expansion Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static ExpansionKind get(String name) {
+	public static ExpansionKind get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			ExpansionKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -151,7 +151,23 @@ public final class ExpansionKind extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Expansion Kind</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Expansion Kind</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ExpansionKind getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			ExpansionKind result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Expansion Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -171,8 +187,8 @@ public final class ExpansionKind extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ExpansionKind(int value, String name) {
-		super(value, name);
+	private ExpansionKind(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //ExpansionKind

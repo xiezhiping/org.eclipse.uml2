@@ -8,20 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.14 2005/09/26 15:54:22 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.15 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -36,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.ActivityEdge;
+import org.eclipse.uml2.ActivityGroup;
 import org.eclipse.uml2.ActivityNode;
 import org.eclipse.uml2.ActivityPartition;
 import org.eclipse.uml2.Element;
@@ -48,8 +46,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.UnionEObjectEList;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -58,6 +55,8 @@ import org.eclipse.uml2.common.util.UnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getInGroups <em>In Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getTarget <em>Target</em>}</li>
@@ -79,6 +78,16 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getInGroups() <em>In Group</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList inGroup = null;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
@@ -333,38 +342,44 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getInGroups() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList inGroup = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getActivityEdge_InGroup());
-			if (inGroup == null) {
-				List union = getInGroupsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getActivityEdge_InGroup(), inGroup = new UnionEObjectEList(this, UML2Package.eINSTANCE.getActivityEdge_InGroup(), union.size(), union.toArray()));
-			}
-			return inGroup;
+		if (inGroup == null) {
+			inGroup = new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_EDGE__IN_GROUP, new EStructuralFeature[] {UML2Package.eINSTANCE.getActivityEdge_InStructuredNode(), UML2Package.eINSTANCE.getActivityEdge_InPartition()});
 		}
-		List union = getInGroupsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getActivityEdge_InGroup(), union.size(), union.toArray());
+		return inGroup;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		ValueSpecification guard = getGuard();
-		if (guard != null) {
-			ownedElement.add(guard);
-		}
-		ValueSpecification weight = getWeight();
-		if (weight != null) {
-			ownedElement.add(weight);
+	public boolean isSetInGroups() {
+		return eIsSet(UML2Package.eINSTANCE.getActivityEdge_InStructuredNode())
+			|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_InPartition());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getActivityEdge_Guard(), UML2Package.eINSTANCE.getActivityEdge_Weight()});
 		}
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Guard())
+			|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Weight());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -438,6 +453,14 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return redefinedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedElements() {
+		return redefinedElement != null && !redefinedElement.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -651,23 +674,14 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getInGroupsHelper(EList inGroup) {
-		StructuredActivityNode inStructuredNode = getInStructuredNode();
-		if (inStructuredNode != null) {
-			inGroup.add(inStructuredNode);
-		}
-		if (eIsSet(UML2Package.eINSTANCE.getActivityEdge_InPartition())) {
-			for (Iterator i = ((InternalEList) getInPartitions()).basicIterator(); i.hasNext(); ) {
-				inGroup.add(i.next());
-			}
-		}
-		return inGroup;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Activity());
 	}
 
 	/**
@@ -988,14 +1002,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Guard())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Weight());
+				return isSetOwnedElements();
 			case UML2Package.ACTIVITY_EDGE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityEdge_Activity());
+				return isSetOwner();
 			case UML2Package.ACTIVITY_EDGE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_EDGE__TEMPLATE_BINDING:
@@ -1013,7 +1022,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.ACTIVITY_EDGE__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.ACTIVITY_EDGE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ACTIVITY_EDGE__ACTIVITY:
@@ -1023,12 +1032,11 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__TARGET:
 				return target != null;
 			case UML2Package.ACTIVITY_EDGE__IN_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityEdge_InStructuredNode())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_InPartition());
+				return isSetInGroups();
 			case UML2Package.ACTIVITY_EDGE__GUARD:
 				return guard != null;
 			case UML2Package.ACTIVITY_EDGE__REDEFINED_ELEMENT:
-				return redefinedElement != null && !redefinedElement.isEmpty();
+				return isSetRedefinedElements();
 			case UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.ACTIVITY_EDGE__IN_PARTITION:

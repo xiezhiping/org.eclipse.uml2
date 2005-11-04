@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.12 2005/09/23 21:22:54 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.13 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -35,11 +35,14 @@ import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.Connector;
 import org.eclipse.uml2.ConnectorEnd;
 import org.eclipse.uml2.ConnectorKind;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,6 +51,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ConnectorImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConnectorImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConnectorImpl#getRedefinedConnectors <em>Redefined Connector</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConnectorImpl#getEnds <em>End</em>}</li>
@@ -142,6 +146,28 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getConnector();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.CONNECTOR__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getConnector_End()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getConnector_End());
 	}
 
 	/**
@@ -303,33 +329,6 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CONNECTOR__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONNECTOR__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONNECTOR__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.CONNECTOR__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.CONNECTOR__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -543,13 +542,9 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 			case UML2Package.CONNECTOR__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONNECTOR__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getConnector_End());
+				return isSetOwnedElements();
 			case UML2Package.CONNECTOR__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.CONNECTOR__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONNECTOR__TEMPLATE_BINDING:
@@ -567,11 +562,11 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 			case UML2Package.CONNECTOR__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.CONNECTOR__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.CONNECTOR__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CONNECTOR__FEATURING_CLASSIFIER:
-				return !getFeaturingClassifiers().isEmpty();
+				return isSetFeaturingClassifiers();
 			case UML2Package.CONNECTOR__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.CONNECTOR__TYPE:
@@ -619,19 +614,14 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 		return redefinedElement;
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getConnector_End())) {
-			ownedElement.addAll(getEnds());
-		}
-		return ownedElement;
+	public boolean isSetRedefinedElements() {
+		return super.isSetRedefinedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getConnector_RedefinedConnector());
 	}
-
 
 } //ConnectorImpl

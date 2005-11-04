@@ -8,19 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.9 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.10 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.ClassifierTemplateParameter;
 import org.eclipse.uml2.ParameterableElement;
 import org.eclipse.uml2.TemplateSignature;
@@ -108,81 +105,6 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE, msgs);
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT:
-					if (parameteredElement != null)
-						msgs = ((InternalEObject)parameteredElement).eInverseRemove(this, UML2Package.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER, ParameterableElement.class, msgs);
-					return basicSetParameteredElement((ParameterableElement)otherEnd, msgs);
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT:
-					if (ownedParameteredElement != null)
-						msgs = ((InternalEObject)ownedParameteredElement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, null, msgs);
-					return basicSetOwnedParameteredElement((ParameterableElement)otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE:
-					return eBasicSetContainer(null, UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE, msgs);
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT:
-					return basicSetParameteredElement(null, msgs);
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT:
-					return basicSetOwnedParameteredElement(null, msgs);
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT:
-					return basicSetOwnedDefault(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, TemplateSignature.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -300,11 +222,9 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault());
+				return isSetOwnedElements();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getTemplateParameter_Signature());
+				return isSetOwner();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE:

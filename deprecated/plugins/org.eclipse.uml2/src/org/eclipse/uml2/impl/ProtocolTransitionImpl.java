@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.16 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.Constraint;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Operation;
 import org.eclipse.uml2.ProtocolTransition;
 import org.eclipse.uml2.Region;
@@ -43,6 +44,8 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.Vertex;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
 
 import org.eclipse.uml2.internal.operation.ProtocolTransitionOperations;
@@ -54,6 +57,7 @@ import org.eclipse.uml2.internal.operation.ProtocolTransitionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getPostCondition <em>Post Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getReferreds <em>Referred</em>}</li>
@@ -107,6 +111,28 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getProtocolTransition();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_TRANSITION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getTransition_Guard(), UML2Package.eINSTANCE.getTransition_Effect(), UML2Package.eINSTANCE.getProtocolTransition_PostCondition()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getProtocolTransition_PostCondition());
 	}
 
 	/**
@@ -309,45 +335,6 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.PROTOCOL_TRANSITION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.PROTOCOL_TRANSITION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__CONTAINER:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.PROTOCOL_TRANSITION__CONTAINER, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__SOURCE:
-					if (source != null)
-						msgs = ((InternalEObject)source).eInverseRemove(this, UML2Package.VERTEX__OUTGOING, Vertex.class, msgs);
-					return basicSetSource((Vertex)otherEnd, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__TARGET:
-					if (target != null)
-						msgs = ((InternalEObject)target).eInverseRemove(this, UML2Package.VERTEX__INCOMING, Vertex.class, msgs);
-					return basicSetTarget((Vertex)otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
@@ -380,23 +367,6 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.PROTOCOL_TRANSITION__CONTAINER:
-					return eContainer.eInverseRemove(this, UML2Package.REGION__TRANSITION, Region.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -613,16 +583,9 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			case UML2Package.PROTOCOL_TRANSITION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getTransition_Guard())
-					|| eIsSet(UML2Package.eINSTANCE.getTransition_Effect())
-					|| eIsSet(UML2Package.eINSTANCE.getProtocolTransition_PostCondition())
-					|| eIsSet(UML2Package.eINSTANCE.getProtocolTransition_PreCondition());
+				return isSetOwnedElements();
 			case UML2Package.PROTOCOL_TRANSITION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getTransition_Container());
+				return isSetOwner();
 			case UML2Package.PROTOCOL_TRANSITION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__TEMPLATE_BINDING:
@@ -640,7 +603,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			case UML2Package.PROTOCOL_TRANSITION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.PROTOCOL_TRANSITION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__KIND:
@@ -652,7 +615,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			case UML2Package.PROTOCOL_TRANSITION__TARGET:
 				return target != null;
 			case UML2Package.PROTOCOL_TRANSITION__REDEFINED_TRANSITION:
-				return redefinedTransition != null;
+				return isSetRedefinedTransition();
 			case UML2Package.PROTOCOL_TRANSITION__TRIGGER:
 				return trigger != null && !trigger.isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__GUARD:
@@ -667,21 +630,6 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 				return preCondition != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		Constraint postCondition = getPostCondition();
-		if (postCondition != null) {
-			ownedElement.add(postCondition);
-		}
-		return ownedElement;
 	}
 
 

@@ -8,19 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.15 2005/10/04 21:55:13 khussey Exp $
+ * $Id: ActionImpl.java,v 1.16 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -33,6 +30,7 @@ import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Constraint;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.OutputPin;
 import org.eclipse.uml2.StringExpression;
@@ -42,9 +40,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
-
-import org.eclipse.uml2.common.util.UnionEObjectEList;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,6 +49,9 @@ import org.eclipse.uml2.common.util.UnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getOutputs <em>Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getEffect <em>Effect</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getLocalPreconditions <em>Local Precondition</em>}</li>
@@ -70,6 +69,26 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getOutputs() <em>Output</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList output = null;
+
+	/**
+	 * The cached value of the '{@link #getInputs() <em>Input</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList input = null;
 
 	/**
 	 * The default value of the '{@link #getEffect() <em>Effect</em>}' attribute.
@@ -159,19 +178,20 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getOutputs() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList output = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getAction_Output());
-			if (output == null) {
-				List union = getOutputsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getAction_Output(), output = new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray()));
-			}
-			return output;
+		if (output == null) {
+			output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACTION__OUTPUT, new EStructuralFeature[] {});
 		}
-		List union = getOutputsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
+		return output;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOutputs() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -193,8 +213,24 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getInputsHelper(EList input) {
-		return input;
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getExecutableNode_Handler(), UML2Package.eINSTANCE.getAction_Output(), UML2Package.eINSTANCE.getAction_Input(), UML2Package.eINSTANCE.getAction_LocalPrecondition(), UML2Package.eINSTANCE.getAction_LocalPostcondition()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| isSetOutputs()
+			|| isSetInputs()
+			|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
+			|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition());
 	}
 
 	/**
@@ -203,19 +239,20 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getInputs() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList input = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getAction_Input());
-			if (input == null) {
-				List union = getInputsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getAction_Input(), input = new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray()));
-			}
-			return input;
+		if (input == null) {
+			input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.ACTION__INPUT, new EStructuralFeature[] {});
 		}
-		List union = getInputsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
+		return input;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetInputs() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -231,35 +268,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		}
 		return null;
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		EList output = getOutputs();
-		if (!output.isEmpty()) {
-			for (Iterator i = ((InternalEList) output).basicIterator(); i.hasNext(); ) {
-				ownedElement.add(i.next());
-			}
-		}
-		EList input = getInputs();
-		if (!input.isEmpty()) {
-			for (Iterator i = ((InternalEList) input).basicIterator(); i.hasNext(); ) {
-				ownedElement.add(i.next());
-			}
-		}
-		if (eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())) {
-			ownedElement.addAll(getLocalPreconditions());
-		}
-		if (eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition())) {
-			ownedElement.addAll(getLocalPostconditions());
-		}
-		return ownedElement;
-	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -387,51 +395,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.ACTION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTION__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ACTION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.ACTION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTION__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTION__INCOMING:
-					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTION__ACTIVITY:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.ACTION__ACTIVITY, msgs);
-				case UML2Package.ACTION__IN_STRUCTURED_NODE:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.ACTION__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.ACTION__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTION__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTION__HANDLER:
-					return ((InternalEList)getHandlers()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
@@ -470,25 +433,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.ACTION__ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__NODE, Activity.class, msgs);
-				case UML2Package.ACTION__IN_STRUCTURED_NODE:
-					return eContainer.eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE, StructuredActivityNode.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -723,15 +667,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case UML2Package.ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())
-					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
-					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition());
+				return isSetOwnedElements();
 			case UML2Package.ACTION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
+				return isSetOwner();
 			case UML2Package.ACTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTION__TEMPLATE_BINDING:
@@ -749,7 +687,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case UML2Package.ACTION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.ACTION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ACTION__OUTGOING:
@@ -757,13 +695,11 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case UML2Package.ACTION__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.ACTION__IN_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+				return isSetInGroups();
 			case UML2Package.ACTION__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.ACTION__REDEFINED_ELEMENT:
-				return redefinedElement != null && !redefinedElement.isEmpty();
+				return isSetRedefinedElements();
 			case UML2Package.ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.ACTION__IN_PARTITION:
@@ -775,9 +711,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case UML2Package.ACTION__EFFECT:
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.ACTION__OUTPUT:
-				return !getOutputs().isEmpty();
+				return isSetOutputs();
 			case UML2Package.ACTION__INPUT:
-				return !getInputs().isEmpty();
+				return isSetInputs();
 			case UML2Package.ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.ACTION__LOCAL_PRECONDITION:
@@ -803,14 +739,5 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		return result.toString();
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOutputsHelper(EList output) {
-		return output;
-	}
 
 } //ActionImpl

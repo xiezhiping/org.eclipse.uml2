@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.16 2005/09/26 15:54:22 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.17 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -47,6 +47,8 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.Vertex;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
 
 import org.eclipse.uml2.internal.operation.StateMachineOperations;
@@ -58,6 +60,7 @@ import org.eclipse.uml2.internal.operation.StateMachineOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getSource <em>Source</em>}</li>
@@ -176,6 +179,29 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getTransition();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TRANSITION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getTransition_Guard(), UML2Package.eINSTANCE.getTransition_Effect()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getTransition_Guard())
+			|| eIsSet(UML2Package.eINSTANCE.getTransition_Effect());
 	}
 
 	/**
@@ -399,6 +425,14 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedTransition() {
+		return redefinedTransition != null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -616,6 +650,15 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetRedefinitionContexts() {
+		return !getRedefinitionContexts().isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
     public Classifier getRedefinitionContext(String name) {
 		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
 			Classifier redefinitionContext = (Classifier) i.next();
@@ -639,25 +682,15 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		Constraint guard = getGuard();
-		if (guard != null) {
-			ownedElement.add(guard);
-		}
-		Activity effect = getEffect();
-		if (effect != null) {
-			ownedElement.add(effect);
-		}
-		return ownedElement;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getTransition_Container());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -958,14 +991,9 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			case UML2Package.TRANSITION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TRANSITION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getTransition_Guard())
-					|| eIsSet(UML2Package.eINSTANCE.getTransition_Effect());
+				return isSetOwnedElements();
 			case UML2Package.TRANSITION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getTransition_Container());
+				return isSetOwner();
 			case UML2Package.TRANSITION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.TRANSITION__TEMPLATE_BINDING:
@@ -983,7 +1011,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			case UML2Package.TRANSITION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.TRANSITION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.TRANSITION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.TRANSITION__KIND:
@@ -995,7 +1023,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			case UML2Package.TRANSITION__TARGET:
 				return target != null;
 			case UML2Package.TRANSITION__REDEFINED_TRANSITION:
-				return redefinedTransition != null;
+				return isSetRedefinedTransition();
 			case UML2Package.TRANSITION__TRIGGER:
 				return trigger != null && !trigger.isEmpty();
 			case UML2Package.TRANSITION__GUARD:

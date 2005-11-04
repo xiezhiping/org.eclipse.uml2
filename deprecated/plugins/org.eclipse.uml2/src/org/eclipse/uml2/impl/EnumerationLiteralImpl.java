@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.10 2005/09/23 21:22:53 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.11 2005/11/04 22:22:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -121,6 +121,15 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 		return super.basicGetNamespace();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.eINSTANCE.getEnumerationLiteral_Enumeration());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -411,16 +420,9 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())
-					|| eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Slot())
-					|| eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Specification());
+				return isSetOwnedElements();
 			case UML2Package.ENUMERATION_LITERAL__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getEnumerationLiteral_Enumeration());
+				return isSetOwner();
 			case UML2Package.ENUMERATION_LITERAL__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__TEMPLATE_BINDING:
@@ -442,7 +444,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ENUMERATION_LITERAL__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.ENUMERATION_LITERAL__DEPLOYMENT:
 				return deployment != null && !deployment.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__DEPLOYED_ELEMENT:
@@ -464,8 +466,6 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ENUMERATION_LITERAL__VISIBILITY:
 				return false;
-			case UML2Package.ENUMERATION_LITERAL__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}

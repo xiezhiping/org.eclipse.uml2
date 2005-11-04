@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.16 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Component;
+//import org.eclipse.uml2.Element;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.OpaqueExpression;
 import org.eclipse.uml2.StringExpression;
@@ -39,6 +40,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
@@ -49,6 +51,8 @@ import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getContract <em>Contract</em>}</li>
@@ -92,6 +96,46 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getSubstitution();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getTargets() {
+		return super.getTargets();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return super.isSetTargets()
+			|| eIsSet(UML2Package.eINSTANCE.getSubstitution_Contract());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getSources() {
+		return super.getSources();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSources() {
+		return super.isSetSources()
+			|| eIsSet(UML2Package.eINSTANCE.getSubstitution_SubstitutingClassifier());
 	}
 
 	/**
@@ -513,14 +557,9 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			case UML2Package.SUBSTITUTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SUBSTITUTION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getAbstraction_Mapping());
+				return isSetOwnedElements();
 			case UML2Package.SUBSTITUTION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction());
+				return isSetOwner();
 			case UML2Package.SUBSTITUTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.SUBSTITUTION__TEMPLATE_BINDING:
@@ -542,18 +581,13 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			case UML2Package.SUBSTITUTION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.SUBSTITUTION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.SUBSTITUTION__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction())
-					|| eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier())
-					|| eIsSet(UML2Package.eINSTANCE.getSubstitution_Contract())
-					|| eIsSet(UML2Package.eINSTANCE.getSubstitution_SubstitutingClassifier());
+				return isSetRelatedElements();
 			case UML2Package.SUBSTITUTION__SOURCE:
-				return eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction())
-					|| eIsSet(UML2Package.eINSTANCE.getSubstitution_SubstitutingClassifier());
+				return isSetSources();
 			case UML2Package.SUBSTITUTION__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier())
-					|| eIsSet(UML2Package.eINSTANCE.getSubstitution_Contract());
+				return isSetTargets();
 			case UML2Package.SUBSTITUTION__CLIENT:
 				return client != null && !client.isEmpty();
 			case UML2Package.SUBSTITUTION__SUPPLIER:
@@ -577,40 +611,8 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.SUBSTITUTION__VISIBILITY:
 				return false;
-			case UML2Package.SUBSTITUTION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getTargetsHelper(EList target) {
-		super.getTargetsHelper(target);
-		Classifier contract = basicGetContract();
-		if (contract != null) {
-			target.add(contract);
-		}
-		return target;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getSourcesHelper(EList source) {
-		super.getSourcesHelper(source);
-		Classifier substitutingClassifier = getSubstitutingClassifier();
-		if (substitutingClassifier != null) {
-			source.add(substitutingClassifier);
-		}
-		return source;
-	}
-
 
 } //SubstitutionImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.14 2005/09/23 21:22:54 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.15 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.Deployment;
 import org.eclipse.uml2.DeploymentTarget;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
@@ -38,6 +39,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
@@ -51,6 +53,7 @@ import org.eclipse.uml2.internal.operation.DeploymentTargetOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.DeploymentTargetImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentTargetImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentTargetImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentTargetImpl#getDeployedElements <em>Deployed Element</em>}</li>
@@ -93,6 +96,28 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getDeploymentTarget();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPLOYMENT_TARGET__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment());
 	}
 
 	/**
@@ -400,13 +425,9 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 			case UML2Package.DEPLOYMENT_TARGET__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DEPLOYMENT_TARGET__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment());
+				return isSetOwnedElements();
 			case UML2Package.DEPLOYMENT_TARGET__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.DEPLOYMENT_TARGET__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.DEPLOYMENT_TARGET__TEMPLATE_BINDING:
@@ -429,20 +450,6 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 				return !getDeployedElements().isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())) {
-			ownedElement.addAll(getDeployments());
-		}
-		return ownedElement;
 	}
 
 

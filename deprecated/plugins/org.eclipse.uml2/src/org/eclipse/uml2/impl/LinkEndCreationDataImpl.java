@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.11 2005/09/23 21:22:53 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.12 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -27,7 +26,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 //import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.LinkEndCreationData;
@@ -175,11 +173,9 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	 * @generated NOT
 	 */
 	public EList getQualifiers() {
-
 		if (null == qualifier) {
 			qualifier = new EObjectContainmentEList(QualifierValue.class, this, UML2Package.LINK_END_CREATION_DATA__QUALIFIER);
 		}
-
 		return qualifier;
 	}
 
@@ -188,39 +184,8 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.LINK_END_CREATION_DATA__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.LINK_END_CREATION_DATA__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.LINK_END_CREATION_DATA__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.LINK_END_CREATION_DATA__QUALIFIER:
-					return ((InternalEList)getQualifiers()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
+	public boolean isSetQualifiers() {
+		return qualifier != null && !qualifier.isEmpty();
 	}
 
 	/**
@@ -333,9 +298,9 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 			case UML2Package.LINK_END_CREATION_DATA__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.LINK_END_CREATION_DATA__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
+				return isSetOwnedElements();
 			case UML2Package.LINK_END_CREATION_DATA__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.LINK_END_CREATION_DATA__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.LINK_END_CREATION_DATA__VALUE:

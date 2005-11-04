@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.33 2005/10/26 20:59:34 khussey Exp $
+ * $Id: PackageImpl.java,v 1.34 2005/11/04 22:22:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -298,6 +298,15 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY, oldVisibility, visibility));
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetPackageableElement_visibility() {
+		return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+	}
+
 	protected EList nestedPackage = null;
 
 	/**
@@ -377,6 +386,14 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return ownedMember;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedMembers() {
+		return ownedMember != null && !ownedMember.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -526,6 +543,15 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return super.basicGetOwner();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -594,6 +620,15 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return super.basicGetNamespace();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.eINSTANCE.getPackage_NestingPackage());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -615,6 +650,18 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			}
 		}
 		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageMerge())
+			|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageExtension())
+			|| super.isSetOwnedMembers();
 	}
 
 	/**
@@ -949,19 +996,9 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PACKAGE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageMerge())
-					|| eIsSet(UML2Package.eINSTANCE.getPackage_AppliedProfile())
-					|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageExtension());
+				return isSetOwnedElements();
 			case UML2Package.PACKAGE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getPackage_NestingPackage());
+				return isSetOwner();
 			case UML2Package.PACKAGE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PACKAGE__TEMPLATE_BINDING:
@@ -979,8 +1016,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.PACKAGE__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember());
+				return isSetMembers();
 			case UML2Package.PACKAGE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.PACKAGE__IMPORTED_MEMBER:
@@ -994,7 +1030,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PACKAGE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.PACKAGE__NESTED_PACKAGE:
 				return !getNestedPackages().isEmpty();
 			case UML2Package.PACKAGE__NESTING_PACKAGE:
@@ -1002,7 +1038,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__OWNED_TYPE:
 				return !getOwnedTypes().isEmpty();
 			case UML2Package.PACKAGE__OWNED_MEMBER:
-				return ownedMember != null && !ownedMember.isEmpty();
+				return isSetOwnedMembers();
 			case UML2Package.PACKAGE__PACKAGE_MERGE:
 				return packageMerge != null && !packageMerge.isEmpty();
 			case UML2Package.PACKAGE__APPLIED_PROFILE:
@@ -1015,16 +1051,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.PACKAGE__OWNED_ELEMENT:
-				return eIsSetGen(eFeature)
-					|| eIsSetGen(UML2Package.eINSTANCE.getPackage_OwnedMember());
 			case UML2Package.PACKAGE__VISIBILITY:
 				return false;
-			case UML2Package.PACKAGE__MEMBER:
-				return eIsSetGen(eFeature)
-					|| eIsSetGen(UML2Package.eINSTANCE.getPackage_OwnedMember());
-			case UML2Package.PACKAGE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
@@ -1075,6 +1103,15 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 
 
 	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.impl.NamespaceImpl#isSetMembers()
+	 */
+	public boolean isSetMembers() {
+		return super.isSetMembers() || super.isSetOwnedMembers();
+	}
 
 	/*
 	 * (non-Javadoc)

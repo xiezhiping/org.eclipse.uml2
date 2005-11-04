@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeTriggerImpl.java,v 1.12 2005/09/26 15:54:22 khussey Exp $
+ * $Id: ChangeTriggerImpl.java,v 1.13 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -28,11 +28,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.ChangeTrigger;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,6 +44,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ChangeTriggerImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ChangeTriggerImpl#getChangeExpression <em>Change Expression</em>}</li>
  * </ul>
  * </p>
@@ -81,6 +85,28 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getChangeTrigger();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.CHANGE_TRIGGER__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression());
 	}
 
 	/**
@@ -141,33 +167,6 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 		}
 		setChangeExpression(newChangeExpression);
 		return newChangeExpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CHANGE_TRIGGER__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CHANGE_TRIGGER__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.CHANGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.CHANGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.CHANGE_TRIGGER__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -334,13 +333,9 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 			case UML2Package.CHANGE_TRIGGER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CHANGE_TRIGGER__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression());
+				return isSetOwnedElements();
 			case UML2Package.CHANGE_TRIGGER__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.CHANGE_TRIGGER__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CHANGE_TRIGGER__TEMPLATE_BINDING:
@@ -363,21 +358,6 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 				return changeExpression != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		ValueSpecification changeExpression = getChangeExpression();
-		if (changeExpression != null) {
-			ownedElement.add(changeExpression);
-		}
-		return ownedElement;
 	}
 
 

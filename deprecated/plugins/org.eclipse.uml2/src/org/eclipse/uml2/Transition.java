@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Transition.java,v 1.9 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -200,6 +200,7 @@ public interface Transition extends RedefinableElement{
 	void setRedefinedTransition(Transition value);
 
 
+
 	/**
 	 * Returns the value of the '<em><b>Trigger</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Trigger}.
@@ -348,6 +349,7 @@ public interface Transition extends RedefinableElement{
 	 * @generated
 	 */
 	EList getRedefinedElements();
+
 
 
 	/**

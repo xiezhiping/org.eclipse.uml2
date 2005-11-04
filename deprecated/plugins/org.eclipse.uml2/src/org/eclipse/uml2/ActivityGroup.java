@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.8 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -59,6 +59,7 @@ public interface ActivityGroup extends Element{
 	ActivityGroup getSuperGroup();
 
 
+
 	/**
 	 * Returns the value of the '<em><b>Activity Group activity</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Activity#getGroups <em>Group</em>}'.
@@ -91,6 +92,7 @@ public interface ActivityGroup extends Element{
 	void setActivityGroup_activity(Activity value);
 
 
+
 	/**
 	 * Returns the value of the '<em><b>Subgroup</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityGroup}.
@@ -104,6 +106,7 @@ public interface ActivityGroup extends Element{
 	 * @generated
 	 */
 	EList getSubgroups();
+
 
 
 	/**

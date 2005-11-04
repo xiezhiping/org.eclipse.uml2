@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.11 2005/09/26 15:54:22 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.12 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -36,6 +36,8 @@ import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.GeneralizationSet;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Generalization</b></em>'.
@@ -43,6 +45,8 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#getSpecific <em>Specific</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#getGeneral <em>General</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#isSubstitutable <em>Is Substitutable</em>}</li>
@@ -116,6 +120,50 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getGeneralization();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getSources() {
+		if (source == null) {
+			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.GENERALIZATION__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getGeneralization_Specific()});
+		}
+		return source;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSources() {
+		return super.isSetSources()
+			|| eIsSet(UML2Package.eINSTANCE.getGeneralization_Specific());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getTargets() {
+		if (target == null) {
+			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.GENERALIZATION__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getGeneralization_General()});
+		}
+		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return super.isSetTargets()
+			|| eIsSet(UML2Package.eINSTANCE.getGeneralization_General());
 	}
 
 	/**
@@ -255,21 +303,15 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getTargetsHelper(EList target) {
-		super.getTargetsHelper(target);
-		Classifier general = basicGetGeneral();
-		if (general != null) {
-			target.add(general);
-		}
-		return target;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getGeneralization_Specific());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -442,18 +484,17 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 			case UML2Package.GENERALIZATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.GENERALIZATION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
+				return isSetOwnedElements();
 			case UML2Package.GENERALIZATION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getGeneralization_Specific());
+				return isSetOwner();
 			case UML2Package.GENERALIZATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.GENERALIZATION__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getGeneralization_Specific())
-					|| eIsSet(UML2Package.eINSTANCE.getGeneralization_General());
+				return isSetRelatedElements();
 			case UML2Package.GENERALIZATION__SOURCE:
-				return eIsSet(UML2Package.eINSTANCE.getGeneralization_Specific());
+				return isSetSources();
 			case UML2Package.GENERALIZATION__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getGeneralization_General());
+				return isSetTargets();
 			case UML2Package.GENERALIZATION__SPECIFIC:
 				return getSpecific() != null;
 			case UML2Package.GENERALIZATION__GENERAL:
@@ -479,21 +520,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		result.append((eFlags & IS_SUBSTITUTABLE_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getSourcesHelper(EList source) {
-		super.getSourcesHelper(source);
-		Classifier specific = getSpecific();
-		if (specific != null) {
-			source.add(specific);
-		}
-		return source;
 	}
 
 

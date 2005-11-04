@@ -8,20 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.12 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.13 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -36,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.ActivityEdge;
+import org.eclipse.uml2.ActivityGroup;
 import org.eclipse.uml2.ActivityNode;
 import org.eclipse.uml2.ActivityPartition;
 import org.eclipse.uml2.Element;
@@ -47,8 +45,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.UnionEObjectEList;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,6 +54,7 @@ import org.eclipse.uml2.common.util.UnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getActivity <em>Activity</em>}</li>
@@ -76,6 +74,16 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getInGroups() <em>In Group</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList inGroup = null;
 
 	/**
 	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
@@ -207,19 +215,22 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getInGroups() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList inGroup = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getActivityNode_InGroup());
-			if (inGroup == null) {
-				List union = getInGroupsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getActivityNode_InGroup(), inGroup = new UnionEObjectEList(this, UML2Package.eINSTANCE.getActivityNode_InGroup(), union.size(), union.toArray()));
-			}
-			return inGroup;
+		if (inGroup == null) {
+			inGroup = new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_NODE__IN_GROUP, new EStructuralFeature[] {UML2Package.eINSTANCE.getActivityNode_InStructuredNode(), UML2Package.eINSTANCE.getActivityNode_InPartition(), UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion()});
 		}
-		List union = getInGroupsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getActivityNode_InGroup(), union.size(), union.toArray());
+		return inGroup;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetInGroups() {
+		return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+			|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+			|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -266,6 +277,14 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return redefinedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedElements() {
+		return redefinedElement != null && !redefinedElement.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -369,6 +388,15 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return super.basicGetOwner();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -662,12 +690,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_NODE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+				return isSetOwnedElements();
 			case UML2Package.ACTIVITY_NODE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
+				return isSetOwner();
 			case UML2Package.ACTIVITY_NODE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_NODE__TEMPLATE_BINDING:
@@ -685,7 +710,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_NODE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.ACTIVITY_NODE__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.ACTIVITY_NODE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ACTIVITY_NODE__OUTGOING:
@@ -693,13 +718,11 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_NODE__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.ACTIVITY_NODE__IN_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+				return isSetInGroups();
 			case UML2Package.ACTIVITY_NODE__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.ACTIVITY_NODE__REDEFINED_ELEMENT:
-				return redefinedElement != null && !redefinedElement.isEmpty();
+				return isSetRedefinedElements();
 			case UML2Package.ACTIVITY_NODE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.ACTIVITY_NODE__IN_PARTITION:
@@ -710,28 +733,5 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getInGroupsHelper(EList inGroup) {
-		StructuredActivityNode inStructuredNode = getInStructuredNode();
-		if (inStructuredNode != null) {
-			inGroup.add(inStructuredNode);
-		}
-		if (eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())) {
-			for (Iterator i = ((InternalEList) getInPartitions()).basicIterator(); i.hasNext(); ) {
-				inGroup.add(i.next());
-			}
-		}
-		if (eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion())) {
-			for (Iterator i = ((InternalEList) getInInterruptibleRegions()).basicIterator(); i.hasNext(); ) {
-				inGroup.add(i.next());
-			}
-		}
-		return inGroup;
-	}
 
 } //ActivityNodeImpl

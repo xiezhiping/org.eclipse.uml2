@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalTriggerImpl.java,v 1.8 2005/09/23 21:22:54 khussey Exp $
+ * $Id: SignalTriggerImpl.java,v 1.9 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,13 +16,10 @@ import java.util.Collection;
 
 import java.util.Iterator;
 
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Signal;
 import org.eclipse.uml2.SignalTrigger;
 import org.eclipse.uml2.StringExpression;
@@ -106,60 +103,6 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.SIGNAL_TRIGGER__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL_TRIGGER__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL_TRIGGER__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.SIGNAL_TRIGGER__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.SIGNAL_TRIGGER__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.SIGNAL_TRIGGER__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.SIGNAL_TRIGGER__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.SIGNAL_TRIGGER__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.SIGNAL_TRIGGER__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.SIGNAL_TRIGGER__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.SIGNAL_TRIGGER__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**
@@ -298,12 +241,9 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 			case UML2Package.SIGNAL_TRIGGER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SIGNAL_TRIGGER__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+				return isSetOwnedElements();
 			case UML2Package.SIGNAL_TRIGGER__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.SIGNAL_TRIGGER__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.SIGNAL_TRIGGER__TEMPLATE_BINDING:

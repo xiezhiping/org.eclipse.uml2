@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateKind.java,v 1.5 2005/05/18 16:38:30 khussey Exp $
+ * $Id: PseudostateKind.java,v 1.6 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -157,7 +157,7 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final PseudostateKind INITIAL_LITERAL = new PseudostateKind(INITIAL, "initial"); //$NON-NLS-1$
+	public static final PseudostateKind INITIAL_LITERAL = new PseudostateKind(INITIAL, "initial", "initial"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Deep History</b></em>' literal object.
@@ -171,7 +171,7 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final PseudostateKind DEEP_HISTORY_LITERAL = new PseudostateKind(DEEP_HISTORY, "deepHistory"); //$NON-NLS-1$
+	public static final PseudostateKind DEEP_HISTORY_LITERAL = new PseudostateKind(DEEP_HISTORY, "deepHistory", "deepHistory"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Shallow History</b></em>' literal object.
@@ -185,7 +185,7 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final PseudostateKind SHALLOW_HISTORY_LITERAL = new PseudostateKind(SHALLOW_HISTORY, "shallowHistory"); //$NON-NLS-1$
+	public static final PseudostateKind SHALLOW_HISTORY_LITERAL = new PseudostateKind(SHALLOW_HISTORY, "shallowHistory", "shallowHistory"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Join</b></em>' literal object.
@@ -199,7 +199,7 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final PseudostateKind JOIN_LITERAL = new PseudostateKind(JOIN, "join"); //$NON-NLS-1$
+	public static final PseudostateKind JOIN_LITERAL = new PseudostateKind(JOIN, "join", "join"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Fork</b></em>' literal object.
@@ -213,7 +213,7 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final PseudostateKind FORK_LITERAL = new PseudostateKind(FORK, "fork"); //$NON-NLS-1$
+	public static final PseudostateKind FORK_LITERAL = new PseudostateKind(FORK, "fork", "fork"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Junction</b></em>' literal object.
@@ -227,7 +227,7 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final PseudostateKind JUNCTION_LITERAL = new PseudostateKind(JUNCTION, "junction"); //$NON-NLS-1$
+	public static final PseudostateKind JUNCTION_LITERAL = new PseudostateKind(JUNCTION, "junction", "junction"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Choice</b></em>' literal object.
@@ -241,7 +241,7 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final PseudostateKind CHOICE_LITERAL = new PseudostateKind(CHOICE, "choice"); //$NON-NLS-1$
+	public static final PseudostateKind CHOICE_LITERAL = new PseudostateKind(CHOICE, "choice", "choice"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Entry Point</b></em>' literal object.
@@ -255,7 +255,7 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final PseudostateKind ENTRY_POINT_LITERAL = new PseudostateKind(ENTRY_POINT, "entryPoint"); //$NON-NLS-1$
+	public static final PseudostateKind ENTRY_POINT_LITERAL = new PseudostateKind(ENTRY_POINT, "entryPoint", "entryPoint"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Exit Point</b></em>' literal object.
@@ -269,7 +269,7 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final PseudostateKind EXIT_POINT_LITERAL = new PseudostateKind(EXIT_POINT, "exitPoint"); //$NON-NLS-1$
+	public static final PseudostateKind EXIT_POINT_LITERAL = new PseudostateKind(EXIT_POINT, "exitPoint", "exitPoint"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Terminate</b></em>' literal object.
@@ -283,7 +283,7 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final PseudostateKind TERMINATE_LITERAL = new PseudostateKind(TERMINATE, "terminate"); //$NON-NLS-1$
+	public static final PseudostateKind TERMINATE_LITERAL = new PseudostateKind(TERMINATE, "terminate", "terminate"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Pseudostate Kind</b></em>' enumerators.
@@ -314,15 +314,15 @@ public final class PseudostateKind extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Pseudostate Kind</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Pseudostate Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static PseudostateKind get(String name) {
+	public static PseudostateKind get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			PseudostateKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -330,7 +330,23 @@ public final class PseudostateKind extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Pseudostate Kind</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Pseudostate Kind</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static PseudostateKind getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			PseudostateKind result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Pseudostate Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -357,8 +373,8 @@ public final class PseudostateKind extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private PseudostateKind(int value, String name) {
-		super(value, name);
+	private PseudostateKind(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //PseudostateKind

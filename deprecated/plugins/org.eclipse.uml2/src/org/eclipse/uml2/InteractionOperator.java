@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperator.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: InteractionOperator.java,v 1.7 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -182,7 +182,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator SEQ_LITERAL = new InteractionOperator(SEQ, "seq"); //$NON-NLS-1$
+	public static final InteractionOperator SEQ_LITERAL = new InteractionOperator(SEQ, "seq", "seq"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Alt</b></em>' literal object.
@@ -196,7 +196,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator ALT_LITERAL = new InteractionOperator(ALT, "alt"); //$NON-NLS-1$
+	public static final InteractionOperator ALT_LITERAL = new InteractionOperator(ALT, "alt", "alt"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Opt</b></em>' literal object.
@@ -210,7 +210,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator OPT_LITERAL = new InteractionOperator(OPT, "opt"); //$NON-NLS-1$
+	public static final InteractionOperator OPT_LITERAL = new InteractionOperator(OPT, "opt", "opt"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Break</b></em>' literal object.
@@ -224,7 +224,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator BREAK_LITERAL = new InteractionOperator(BREAK, "break"); //$NON-NLS-1$
+	public static final InteractionOperator BREAK_LITERAL = new InteractionOperator(BREAK, "break", "break"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Par</b></em>' literal object.
@@ -238,7 +238,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator PAR_LITERAL = new InteractionOperator(PAR, "par"); //$NON-NLS-1$
+	public static final InteractionOperator PAR_LITERAL = new InteractionOperator(PAR, "par", "par"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Strict</b></em>' literal object.
@@ -252,7 +252,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator STRICT_LITERAL = new InteractionOperator(STRICT, "strict"); //$NON-NLS-1$
+	public static final InteractionOperator STRICT_LITERAL = new InteractionOperator(STRICT, "strict", "strict"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Loop</b></em>' literal object.
@@ -266,7 +266,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator LOOP_LITERAL = new InteractionOperator(LOOP, "loop"); //$NON-NLS-1$
+	public static final InteractionOperator LOOP_LITERAL = new InteractionOperator(LOOP, "loop", "loop"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Critical</b></em>' literal object.
@@ -280,7 +280,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator CRITICAL_LITERAL = new InteractionOperator(CRITICAL, "critical"); //$NON-NLS-1$
+	public static final InteractionOperator CRITICAL_LITERAL = new InteractionOperator(CRITICAL, "critical", "critical"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Neg</b></em>' literal object.
@@ -294,7 +294,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator NEG_LITERAL = new InteractionOperator(NEG, "neg"); //$NON-NLS-1$
+	public static final InteractionOperator NEG_LITERAL = new InteractionOperator(NEG, "neg", "neg"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Assert</b></em>' literal object.
@@ -308,7 +308,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator ASSERT_LITERAL = new InteractionOperator(ASSERT, "assert"); //$NON-NLS-1$
+	public static final InteractionOperator ASSERT_LITERAL = new InteractionOperator(ASSERT, "assert", "assert"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Ignore</b></em>' literal object.
@@ -322,7 +322,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator IGNORE_LITERAL = new InteractionOperator(IGNORE, "ignore"); //$NON-NLS-1$
+	public static final InteractionOperator IGNORE_LITERAL = new InteractionOperator(IGNORE, "ignore", "ignore"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Consider</b></em>' literal object.
@@ -336,7 +336,7 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InteractionOperator CONSIDER_LITERAL = new InteractionOperator(CONSIDER, "consider"); //$NON-NLS-1$
+	public static final InteractionOperator CONSIDER_LITERAL = new InteractionOperator(CONSIDER, "consider", "consider"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Interaction Operator</b></em>' enumerators.
@@ -369,15 +369,15 @@ public final class InteractionOperator extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Interaction Operator</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Interaction Operator</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static InteractionOperator get(String name) {
+	public static InteractionOperator get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			InteractionOperator result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -385,7 +385,23 @@ public final class InteractionOperator extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Interaction Operator</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Interaction Operator</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static InteractionOperator getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			InteractionOperator result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Interaction Operator</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -414,8 +430,8 @@ public final class InteractionOperator extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private InteractionOperator(int value, String name) {
-		super(value, name);
+	private InteractionOperator(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //InteractionOperator

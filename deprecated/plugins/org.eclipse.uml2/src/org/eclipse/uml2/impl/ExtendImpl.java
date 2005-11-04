@@ -8,20 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.16 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -35,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.DirectedRelationship;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Extend;
 import org.eclipse.uml2.ExtensionPoint;
 import org.eclipse.uml2.Relationship;
@@ -46,8 +44,7 @@ import org.eclipse.uml2.UseCase;
 
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.UnionEObjectEList;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,6 +53,10 @@ import org.eclipse.uml2.common.util.UnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getExtendedCase <em>Extended Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getExtension <em>Extension</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getCondition <em>Condition</em>}</li>
@@ -72,6 +73,36 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList relatedElement = null;
+
+	/**
+	 * The cached value of the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList source = null;
+
+	/**
+	 * The cached value of the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList target = null;
 
 	/**
 	 * The cached value of the '{@link #getExtendedCase() <em>Extended Case</em>}' reference.
@@ -127,31 +158,20 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
-			if (relatedElement == null) {
-				List union = getRelatedElementsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray()));
-			}
-			return relatedElement;
+		if (relatedElement == null) {
+			relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()});
 		}
-		List union = getRelatedElementsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+		return relatedElement;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getSourcesHelper(EList source) {
-		UseCase extension = getExtension();
-		if (extension != null) {
-			source.add(extension);
-		}
-		return source;
+	public boolean isSetRelatedElements() {
+		return isSetSources()
+			|| isSetTargets();
 	}
 
 	/**
@@ -335,34 +355,42 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * @generated
 	 */
 	public EList getTargets() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList target = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-			if (target == null) {
-				List union = getTargetsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray()));
-			}
-			return target;
+		if (target == null) {
+			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getExtend_ExtendedCase()});
 		}
-		List union = getTargetsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
+		return target;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		Constraint condition = getCondition();
-		if (condition != null) {
-			ownedElement.add(condition);
+	public boolean isSetTargets() {
+		return eIsSet(UML2Package.eINSTANCE.getExtend_ExtendedCase());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getExtend_Condition()});
 		}
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getExtend_Condition());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -370,31 +398,19 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * @generated
 	 */
 	public EList getSources() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList source = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-			if (source == null) {
-				List union = getSourcesHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray()));
-			}
-			return source;
+		if (source == null) {
+			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getExtend_Extension()});
 		}
-		List union = getSourcesHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
+		return source;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getTargetsHelper(EList target) {
-		UseCase extendedCase = basicGetExtendedCase();
-		if (extendedCase != null) {
-			target.add(extendedCase);
-		}
-		return target;
+	public boolean isSetSources() {
+		return eIsSet(UML2Package.eINSTANCE.getExtend_Extension());
 	}
 
 	/**
@@ -634,13 +650,9 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 			case UML2Package.EXTEND__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXTEND__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getExtend_Condition());
+				return isSetOwnedElements();
 			case UML2Package.EXTEND__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.EXTEND__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.EXTEND__TEMPLATE_BINDING:
@@ -658,12 +670,11 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 			case UML2Package.EXTEND__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.EXTEND__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getExtend_ExtendedCase())
-					|| eIsSet(UML2Package.eINSTANCE.getExtend_Extension());
+				return isSetRelatedElements();
 			case UML2Package.EXTEND__SOURCE:
-				return eIsSet(UML2Package.eINSTANCE.getExtend_Extension());
+				return isSetSources();
 			case UML2Package.EXTEND__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getExtend_ExtendedCase());
+				return isSetTargets();
 			case UML2Package.EXTEND__EXTENDED_CASE:
 				return extendedCase != null;
 			case UML2Package.EXTEND__EXTENSION:
@@ -720,26 +731,5 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getRelatedElementsHelper(EList relatedElement) {
-		EList source = getSources();
-		if (!source.isEmpty()) {
-			for (Iterator i = ((InternalEList) source).basicIterator(); i.hasNext(); ) {
-				relatedElement.add(i.next());
-			}
-		}
-		EList target = getTargets();
-		if (!target.isEmpty()) {
-			for (Iterator i = ((InternalEList) target).basicIterator(); i.hasNext(); ) {
-				relatedElement.add(i.next());
-			}
-		}
-		return relatedElement;
-	}
 
 } //ExtendImpl

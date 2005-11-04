@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.10 2005/09/23 21:22:54 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.11 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -225,6 +225,15 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 		return super.basicGetOwner();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -457,12 +466,9 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 			case UML2Package.CONNECTABLE_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONNECTABLE_ELEMENT__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+				return isSetOwnedElements();
 			case UML2Package.CONNECTABLE_ELEMENT__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+				return isSetOwner();
 			case UML2Package.CONNECTABLE_ELEMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_BINDING:

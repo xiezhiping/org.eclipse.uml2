@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.14 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.ConnectableElement;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Interaction;
 import org.eclipse.uml2.InteractionFragment;
 import org.eclipse.uml2.Lifeline;
@@ -43,6 +44,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Lifeline</b></em>'.
@@ -50,6 +53,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getCoveredBys <em>Covered By</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getInteraction <em>Interaction</em>}</li>
@@ -124,6 +128,28 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getLifeline();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.LIFELINE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getLifeline_Selector()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getLifeline_Selector());
 	}
 
 	/**
@@ -354,21 +380,15 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 		return super.basicGetNamespace();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		OpaqueExpression selector = getSelector();
-		if (selector != null) {
-			ownedElement.add(selector);
-		}
-		return ownedElement;
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.eINSTANCE.getLifeline_Interaction());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -614,13 +634,9 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 			case UML2Package.LIFELINE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.LIFELINE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getLifeline_Selector());
+				return isSetOwnedElements();
 			case UML2Package.LIFELINE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getLifeline_Interaction());
+				return isSetOwner();
 			case UML2Package.LIFELINE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.LIFELINE__TEMPLATE_BINDING:

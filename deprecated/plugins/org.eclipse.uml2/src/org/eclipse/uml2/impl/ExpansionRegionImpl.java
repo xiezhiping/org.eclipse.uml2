@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.11 2005/10/04 21:55:13 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.12 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -324,27 +324,6 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			default :
 				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.EXPANSION_REGION__ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__NODE, Activity.class, msgs);
-				case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
-					return eContainer.eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE, StructuredActivityNode.class, msgs);
-				case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -682,20 +661,9 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXPANSION_REGION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())
-					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
-					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable());
+				return isSetOwnedElements();
 			case UML2Package.EXPANSION_REGION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity());
+				return isSetOwner();
 			case UML2Package.EXPANSION_REGION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.EXPANSION_REGION__TEMPLATE_BINDING:
@@ -713,7 +681,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.EXPANSION_REGION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.EXPANSION_REGION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__OUTGOING:
@@ -721,13 +689,11 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.EXPANSION_REGION__IN_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+				return isSetInGroups();
 			case UML2Package.EXPANSION_REGION__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.EXPANSION_REGION__REDEFINED_ELEMENT:
-				return redefinedElement != null && !redefinedElement.isEmpty();
+				return isSetRedefinedElements();
 			case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.EXPANSION_REGION__IN_PARTITION:
@@ -739,9 +705,9 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__EFFECT:
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.EXPANSION_REGION__OUTPUT:
-				return !getOutputs().isEmpty();
+				return isSetOutputs();
 			case UML2Package.EXPANSION_REGION__INPUT:
-				return !getInputs().isEmpty();
+				return isSetInputs();
 			case UML2Package.EXPANSION_REGION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.EXPANSION_REGION__LOCAL_PRECONDITION:
@@ -749,9 +715,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.EXPANSION_REGION__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable());
+				return isSetMembers();
 			case UML2Package.EXPANSION_REGION__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.EXPANSION_REGION__IMPORTED_MEMBER:
@@ -761,15 +725,15 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__PACKAGE_IMPORT:
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.EXPANSION_REGION__SUPER_GROUP:
-				return basicGetSuperGroup() != null;
+				return isSetSuperGroup();
 			case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
-				return getActivityGroup_activity() != null;
+				return isSetActivityGroup_activity();
 			case UML2Package.EXPANSION_REGION__VARIABLE:
 				return variable != null && !variable.isEmpty();
 			case UML2Package.EXPANSION_REGION__CONTAINED_NODE:
-				return containedNode != null && !containedNode.isEmpty();
+				return isSetContainedNodes();
 			case UML2Package.EXPANSION_REGION__CONTAINED_EDGE:
-				return containedEdge != null && !containedEdge.isEmpty();
+				return isSetContainedEdges();
 			case UML2Package.EXPANSION_REGION__MUST_ISOLATE:
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__MODE:

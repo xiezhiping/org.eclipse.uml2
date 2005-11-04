@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.9 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -147,10 +147,11 @@ public interface ActivityEdge extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InGroup()
-	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getInGroups();
+
 
 
 	/**
@@ -206,6 +207,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @generated
 	 */
 	EList getRedefinedElements();
+
 
 
 	/**

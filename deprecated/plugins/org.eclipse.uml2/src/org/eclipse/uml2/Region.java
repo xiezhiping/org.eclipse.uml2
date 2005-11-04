@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.7 2005/06/15 20:06:02 khussey Exp $
+ * $Id: Region.java,v 1.8 2005/11/04 22:23:05 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -221,6 +221,7 @@ public interface Region extends Namespace, RedefinableElement{
 	void setExtendedRegion(Region value);
 
 
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
@@ -235,6 +236,7 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @generated
 	 */
 	EList getRedefinedElements();
+
 
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.10 2005/09/26 15:54:22 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.11 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -33,6 +33,8 @@ import org.eclipse.uml2.ProtocolConformance;
 import org.eclipse.uml2.ProtocolStateMachine;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Protocol Conformance</b></em>'.
@@ -40,6 +42,8 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ProtocolConformanceImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ProtocolConformanceImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolConformanceImpl#getSpecificMachine <em>Specific Machine</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolConformanceImpl#getGeneralMachine <em>General Machine</em>}</li>
  * </ul>
@@ -81,6 +85,50 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getProtocolConformance();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getSources() {
+		if (source == null) {
+			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_CONFORMANCE__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine()});
+		}
+		return source;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSources() {
+		return super.isSetSources()
+			|| eIsSet(UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getTargets() {
+		if (target == null) {
+			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_CONFORMANCE__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine()});
+		}
+		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return super.isSetTargets()
+			|| eIsSet(UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine());
 	}
 
 	/**
@@ -169,21 +217,15 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getTargetsHelper(EList target) {
-		super.getTargetsHelper(target);
-		ProtocolStateMachine generalMachine = basicGetGeneralMachine();
-		if (generalMachine != null) {
-			target.add(generalMachine);
-		}
-		return target;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -335,39 +377,23 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 			case UML2Package.PROTOCOL_CONFORMANCE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROTOCOL_CONFORMANCE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
+				return isSetOwnedElements();
 			case UML2Package.PROTOCOL_CONFORMANCE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine());
+				return isSetOwner();
 			case UML2Package.PROTOCOL_CONFORMANCE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROTOCOL_CONFORMANCE__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine())
-					|| eIsSet(UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine());
+				return isSetRelatedElements();
 			case UML2Package.PROTOCOL_CONFORMANCE__SOURCE:
-				return eIsSet(UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine());
+				return isSetSources();
 			case UML2Package.PROTOCOL_CONFORMANCE__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine());
+				return isSetTargets();
 			case UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE:
 				return getSpecificMachine() != null;
 			case UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE:
 				return generalMachine != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getSourcesHelper(EList source) {
-		super.getSourcesHelper(source);
-		ProtocolStateMachine specificMachine = getSpecificMachine();
-		if (specificMachine != null) {
-			source.add(specificMachine);
-		}
-		return source;
 	}
 
 

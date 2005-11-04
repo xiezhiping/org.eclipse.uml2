@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.12 2005/09/26 15:54:22 khussey Exp $
+ * $Id: PinImpl.java,v 1.13 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.Behavior;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.MultiplicityElement;
 import org.eclipse.uml2.ObjectNodeOrderingKind;
 import org.eclipse.uml2.Pin;
@@ -42,6 +43,8 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
 
 /**
@@ -51,6 +54,7 @@ import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.PinImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PinImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PinImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PinImpl#getLower <em>Lower</em>}</li>
@@ -167,6 +171,29 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getPin();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PIN__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getObjectNode_UpperBound(), UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(), UML2Package.eINSTANCE.getMultiplicityElement_LowerValue()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
+			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
 	}
 
 	/**
@@ -466,49 +493,6 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.PIN__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.PIN__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.PIN__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.PIN__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.PIN__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.PIN__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
-				case UML2Package.PIN__INCOMING:
-					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
-				case UML2Package.PIN__ACTIVITY:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.PIN__ACTIVITY, msgs);
-				case UML2Package.PIN__IN_STRUCTURED_NODE:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.PIN__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.PIN__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
-				case UML2Package.PIN__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
@@ -547,25 +531,6 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.PIN__ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__NODE, Activity.class, msgs);
-				case UML2Package.PIN__IN_STRUCTURED_NODE:
-					return eContainer.eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE, StructuredActivityNode.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -838,15 +803,9 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			case UML2Package.PIN__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PIN__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getObjectNode_UpperBound())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
+				return isSetOwnedElements();
 			case UML2Package.PIN__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
+				return isSetOwner();
 			case UML2Package.PIN__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PIN__TEMPLATE_BINDING:
@@ -864,7 +823,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			case UML2Package.PIN__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.PIN__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.PIN__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.PIN__OUTGOING:
@@ -872,13 +831,11 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			case UML2Package.PIN__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.PIN__IN_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+				return isSetInGroups();
 			case UML2Package.PIN__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.PIN__REDEFINED_ELEMENT:
-				return redefinedElement != null && !redefinedElement.isEmpty();
+				return isSetRedefinedElements();
 			case UML2Package.PIN__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.PIN__IN_PARTITION:
@@ -966,25 +923,6 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		result.append((eFlags & IS_UNIQUE_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		ValueSpecification upperValue = getUpperValue();
-		if (upperValue != null) {
-			ownedElement.add(upperValue);
-		}
-		ValueSpecification lowerValue = getLowerValue();
-		if (lowerValue != null) {
-			ownedElement.add(lowerValue);
-		}
-		return ownedElement;
 	}
 
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.25 2005/10/04 21:55:13 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.26 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -534,6 +534,15 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 		return super.basicGetNamespace();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -554,6 +563,17 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 		return ownedMember;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedMembers() {
+		return super.isSetOwnedMembers()
+			|| eIsSet(UML2Package.eINSTANCE.getInteraction_Lifeline())
+			|| eIsSet(UML2Package.eINSTANCE.getInteraction_Message())
+			|| eIsSet(UML2Package.eINSTANCE.getInteraction_FormalGate());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1290,39 +1310,9 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
-					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Parameter())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Precondition())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Postcondition())
-					|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering())
-					|| eIsSet(UML2Package.eINSTANCE.getInteraction_Lifeline())
-					|| eIsSet(UML2Package.eINSTANCE.getInteraction_Message())
-					|| eIsSet(UML2Package.eINSTANCE.getInteraction_FormalGate());
+				return isSetOwnedElements();
 			case UML2Package.INTERACTION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getType_Package())
-					|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+				return isSetOwner();
 			case UML2Package.INTERACTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INTERACTION__TEMPLATE_BINDING:
@@ -1340,25 +1330,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.INTERACTION__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
-					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Parameter())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Precondition())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Postcondition())
-					|| eIsSet(UML2Package.eINSTANCE.getInteraction_Lifeline())
-					|| eIsSet(UML2Package.eINSTANCE.getInteraction_Message())
-					|| eIsSet(UML2Package.eINSTANCE.getInteraction_FormalGate());
+				return isSetMembers();
 			case UML2Package.INTERACTION__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.INTERACTION__IMPORTED_MEMBER:
@@ -1372,19 +1344,15 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INTERACTION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.INTERACTION__PACKAGE:
 				return getPackage() != null;
 			case UML2Package.INTERACTION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.INTERACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.INTERACTION__FEATURE:
-				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
-					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception());
+				return isSetFeatures();
 			case UML2Package.INTERACTION__IS_ABSTRACT:
 				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.INTERACTION__INHERITED_MEMBER:
@@ -1394,7 +1362,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.INTERACTION__ATTRIBUTE:
-				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
+				return isSetAttributes();
 			case UML2Package.INTERACTION__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.INTERACTION__SUBSTITUTION:
@@ -1418,13 +1386,13 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__OWNED_TRIGGER:
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
-				return !getOwnedStateMachines().isEmpty();
+				return isSetOwnedStateMachines();
 			case UML2Package.INTERACTION__OWNED_ATTRIBUTE:
 				return !getOwnedAttributes().isEmpty();
 			case UML2Package.INTERACTION__PART:
 				return !getParts().isEmpty();
 			case UML2Package.INTERACTION__ROLE:
-				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
+				return isSetRoles();
 			case UML2Package.INTERACTION__OWNED_CONNECTOR:
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.INTERACTION__OWNED_PORT:
@@ -1432,7 +1400,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.INTERACTION__SUPER_CLASS:
-				return !getSuperClasses().isEmpty();
+				return isSetSuperClasses();
 			case UML2Package.INTERACTION__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.INTERACTION__NESTED_CLASSIFIER:
@@ -1485,12 +1453,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INTERACTION__VISIBILITY:
 				return false;
-			case UML2Package.INTERACTION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.INTERACTION__OWNED_BEHAVIOR:
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.INTERACTION__OWNED_ATTRIBUTE:
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
@@ -1547,5 +1511,14 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
+	}
 
 } //InteractionImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.9 2005/10/13 20:28:04 khussey Exp $
+ * $Id: VertexImpl.java,v 1.10 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -128,6 +128,14 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetContainer() {
+		return getContainer() != null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -437,12 +445,9 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 			case UML2Package.VERTEX__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.VERTEX__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+				return isSetOwnedElements();
 			case UML2Package.VERTEX__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.VERTEX__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.VERTEX__TEMPLATE_BINDING:
@@ -460,7 +465,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 			case UML2Package.VERTEX__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.VERTEX__CONTAINER:
-				return getContainer() != null;
+				return isSetContainer();
 			case UML2Package.VERTEX__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.VERTEX__INCOMING:

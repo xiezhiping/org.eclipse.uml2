@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: State.java,v 1.9 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -218,6 +218,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @generated
 	 */
 	void setRedefinedState(State value);
+
 
 
 	/**
@@ -509,6 +510,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @generated
 	 */
 	EList getRedefinedElements();
+
 
 
 	/**

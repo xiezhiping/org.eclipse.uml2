@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.18 2005/06/15 03:18:58 khussey Exp $
+ * $Id: UML2Validator.java,v 1.19 2005/11/04 22:23:05 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -283,7 +283,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final String DIAGNOSTIC_SOURCE = "org.eclipse.uml2"; //$NON-NLS-1$
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Not Own Self' of 'Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Own Self' of 'Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -291,7 +291,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int ELEMENT__NOT_OWN_SELF = 1;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Has Owner' of 'Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Has Owner' of 'Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -299,7 +299,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int ELEMENT__HAS_OWNER = 2;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Upper Gt0' of 'Multiplicity Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Upper Gt0' of 'Multiplicity Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -307,7 +307,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int MULTIPLICITY_ELEMENT__UPPER_GT0 = 3;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Lower Ge0' of 'Multiplicity Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Lower Ge0' of 'Multiplicity Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -315,7 +315,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int MULTIPLICITY_ELEMENT__LOWER_GE0 = 4;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Upper Ge Lower' of 'Multiplicity Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Upper Ge Lower' of 'Multiplicity Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -323,7 +323,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int MULTIPLICITY_ELEMENT__UPPER_GE_LOWER = 5;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Lower Eq Lowerbound' of 'Multiplicity Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Lower Eq Lowerbound' of 'Multiplicity Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -331,7 +331,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int MULTIPLICITY_ELEMENT__LOWER_EQ_LOWERBOUND = 6;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Upper Eq Upperbound' of 'Multiplicity Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Upper Eq Upperbound' of 'Multiplicity Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -339,7 +339,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int MULTIPLICITY_ELEMENT__UPPER_EQ_UPPERBOUND = 7;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate No Name' of 'Named Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Name' of 'Named Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -347,7 +347,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int NAMED_ELEMENT__NO_NAME = 8;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Qualified Name' of 'Named Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Qualified Name' of 'Named Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -355,7 +355,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int NAMED_ELEMENT__QUALIFIED_NAME = 9;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Visibility Needs Ownership' of 'Named Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility Needs Ownership' of 'Named Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -363,7 +363,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP = 10;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Members Are Distinguishable' of 'Namespace'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Members Are Distinguishable' of 'Namespace'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -371,7 +371,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE = 11;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Imported Member Derived' of 'Namespace'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Imported Member Derived' of 'Namespace'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -379,7 +379,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int NAMESPACE__IMPORTED_MEMBER_DERIVED = 12;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Opposite Is Other End' of 'Property'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Opposite Is Other End' of 'Property'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -387,7 +387,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int PROPERTY__OPPOSITE_IS_OTHER_END = 13;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Multiplicity Of Composite' of 'Property'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Composite' of 'Property'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -395,7 +395,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int PROPERTY__MULTIPLICITY_OF_COMPOSITE = 14;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Subsetting Context' of 'Property'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subsetting Context' of 'Property'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -403,7 +403,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int PROPERTY__SUBSETTING_CONTEXT = 15;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Navigable Property Redefinition' of 'Property'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Navigable Property Redefinition' of 'Property'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -411,7 +411,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION = 16;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Subsetting Rules' of 'Property'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subsetting Rules' of 'Property'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -419,7 +419,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int PROPERTY__SUBSETTING_RULES = 17;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Navigable Readonly' of 'Property'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Navigable Readonly' of 'Property'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -427,7 +427,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int PROPERTY__NAVIGABLE_READONLY = 18;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Derived Union Is Derived' of 'Property'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Derived Union Is Derived' of 'Property'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -435,7 +435,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int PROPERTY__DERIVED_UNION_IS_DERIVED = 19;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Type Of Result' of 'Operation'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Result' of 'Operation'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -443,7 +443,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int OPERATION__TYPE_OF_RESULT = 20;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Only Body For Query' of 'Operation'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Only Body For Query' of 'Operation'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -451,7 +451,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 21;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Elements Public Or Private' of 'Package'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Elements Public Or Private' of 'Package'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -459,7 +459,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE = 22;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate No Cycles In Generalization' of 'Classifier'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Cycles In Generalization' of 'Classifier'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -467,7 +467,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int CLASSIFIER__NO_CYCLES_IN_GENERALIZATION = 23;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Specialize Type' of 'Classifier'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Specialize Type' of 'Classifier'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -475,7 +475,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int CLASSIFIER__SPECIALIZE_TYPE = 24;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Inherited Member' of 'Classifier'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Inherited Member' of 'Classifier'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -483,7 +483,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int CLASSIFIER__INHERITED_MEMBER = 25;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate General Equals Parents' of 'Classifier'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate General Equals Parents' of 'Classifier'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -491,7 +491,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int CLASSIFIER__GENERAL_EQUALS_PARENTS = 26;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Not Apply To Self' of 'Constraint'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Apply To Self' of 'Constraint'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -499,7 +499,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int CONSTRAINT__NOT_APPLY_TO_SELF = 27;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Slots Are Defined' of 'Instance Specification'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Slots Are Defined' of 'Instance Specification'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -507,7 +507,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int INSTANCE_SPECIFICATION__SLOTS_ARE_DEFINED = 28;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate No Duplicate Slots' of 'Instance Specification'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Duplicate Slots' of 'Instance Specification'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -515,7 +515,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int INSTANCE_SPECIFICATION__NO_DUPLICATE_SLOTS = 29;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Redefinition Context Valid' of 'Redefinable Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Redefinition Context Valid' of 'Redefinable Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -523,7 +523,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID = 30;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Redefinition Consistent' of 'Redefinable Element'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Redefinition Consistent' of 'Redefinable Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -531,7 +531,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT = 31;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Visibility Public Or Private' of 'Element Import'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility Public Or Private' of 'Element Import'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -539,7 +539,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int ELEMENT_IMPORT__VISIBILITY_PUBLIC_OR_PRIVATE = 32;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Imported Element Is Public' of 'Element Import'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Imported Element Is Public' of 'Element Import'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -547,7 +547,7 @@ public class UML2Validator extends EObjectValidator {
 	public static final int ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC = 33;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Public Or Private' of 'Package Import'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Public Or Private' of 'Package Import'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

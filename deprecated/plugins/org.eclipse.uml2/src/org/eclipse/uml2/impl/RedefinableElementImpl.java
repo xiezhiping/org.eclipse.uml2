@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.15 2005/09/23 21:22:55 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.16 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
@@ -28,11 +27,8 @@ import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.RedefinableElement;
@@ -42,6 +38,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
@@ -53,6 +50,7 @@ import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#isLeaf <em>Is Leaf</em>}</li>
  * </ul>
  * </p>
@@ -66,6 +64,16 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinitionContexts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList redefinitionContext = null;
 
 	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
@@ -152,19 +160,20 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList redefinitionContext = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
-			if (redefinitionContext == null) {
-				List union = getRedefinitionContextsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray()));
-			}
-			return redefinitionContext;
+		if (redefinitionContext == null) {
+			redefinitionContext = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, new EStructuralFeature[] {});
 		}
-		List union = getRedefinitionContextsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
+		return redefinitionContext;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinitionContexts() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -232,6 +241,14 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedElements() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -246,60 +263,6 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**
@@ -430,12 +393,9 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+				return isSetOwnedElements();
 			case UML2Package.REDEFINABLE_ELEMENT__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
@@ -453,7 +413,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 		}

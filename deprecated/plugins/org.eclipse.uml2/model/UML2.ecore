@@ -2170,8 +2170,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//ActivityNode" eOpposite="#//ActivityNode/incoming"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inGroup" ordered="false"
-        upperBound="-1" eType="#//ActivityGroup" changeable="false" volatile="true"
-        transient="true" derived="true">
+        upperBound="-1" eType="#//ActivityGroup" changeable="false" transient="true"
+        derived="true">
       <eAnnotations source="union"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" lowerBound="1" eType="#//ValueSpecification"
@@ -2236,8 +2236,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" ordered="false"
         upperBound="-1" eType="#//ActivityEdge" eOpposite="#//ActivityEdge/target"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inGroup" ordered="false"
-        upperBound="-1" eType="#//ActivityGroup" changeable="false" volatile="true"
-        transient="true" derived="true">
+        upperBound="-1" eType="#//ActivityGroup" changeable="false" transient="true"
+        derived="true">
       <eAnnotations source="union"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"

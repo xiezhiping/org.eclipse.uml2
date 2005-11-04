@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.12 2005/09/26 15:54:22 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.13 2005/11/04 22:22:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.TemplateBinding;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.TemplateableElement;
@@ -36,6 +37,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
+
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.TemplateableElementOperations;
 
@@ -46,6 +49,7 @@ import org.eclipse.uml2.internal.operation.TemplateableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateableElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateableElementImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateableElementImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  * </ul>
@@ -97,6 +101,29 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getTemplateableElement();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+			|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature());
 	}
 
 	/**
@@ -363,11 +390,9 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 			case UML2Package.TEMPLATEABLE_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature());
+				return isSetOwnedElements();
 			case UML2Package.TEMPLATEABLE_ELEMENT__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.TEMPLATEABLE_ELEMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING:
@@ -376,24 +401,6 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 				return ownedTemplateSignature != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())) {
-			ownedElement.addAll(getTemplateBindings());
-		}
-		TemplateSignature ownedTemplateSignature = getOwnedTemplateSignature();
-		if (ownedTemplateSignature != null) {
-			ownedElement.add(ownedTemplateSignature);
-		}
-		return ownedElement;
 	}
 
 

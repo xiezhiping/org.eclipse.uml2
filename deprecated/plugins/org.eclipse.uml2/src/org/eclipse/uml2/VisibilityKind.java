@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VisibilityKind.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: VisibilityKind.java,v 1.7 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -94,7 +94,7 @@ public final class VisibilityKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final VisibilityKind PUBLIC_LITERAL = new VisibilityKind(PUBLIC, "public"); //$NON-NLS-1$
+	public static final VisibilityKind PUBLIC_LITERAL = new VisibilityKind(PUBLIC, "public", "public"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Private</b></em>' literal object.
@@ -108,7 +108,7 @@ public final class VisibilityKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final VisibilityKind PRIVATE_LITERAL = new VisibilityKind(PRIVATE, "private"); //$NON-NLS-1$
+	public static final VisibilityKind PRIVATE_LITERAL = new VisibilityKind(PRIVATE, "private", "private"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Protected</b></em>' literal object.
@@ -122,7 +122,7 @@ public final class VisibilityKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final VisibilityKind PROTECTED_LITERAL = new VisibilityKind(PROTECTED, "protected"); //$NON-NLS-1$
+	public static final VisibilityKind PROTECTED_LITERAL = new VisibilityKind(PROTECTED, "protected", "protected"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Package</b></em>' literal object.
@@ -136,7 +136,7 @@ public final class VisibilityKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final VisibilityKind PACKAGE_LITERAL = new VisibilityKind(PACKAGE, "package"); //$NON-NLS-1$
+	public static final VisibilityKind PACKAGE_LITERAL = new VisibilityKind(PACKAGE, "package", "package"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Visibility Kind</b></em>' enumerators.
@@ -161,15 +161,15 @@ public final class VisibilityKind extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Visibility Kind</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Visibility Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static VisibilityKind get(String name) {
+	public static VisibilityKind get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			VisibilityKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -177,7 +177,23 @@ public final class VisibilityKind extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Visibility Kind</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Visibility Kind</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static VisibilityKind getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			VisibilityKind result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Visibility Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -198,8 +214,8 @@ public final class VisibilityKind extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private VisibilityKind(int value, String name) {
-		super(value, name);
+	private VisibilityKind(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //VisibilityKind

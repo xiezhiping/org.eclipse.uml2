@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.16 2005/09/23 21:22:54 khussey Exp $
+ * $Id: RegionImpl.java,v 1.17 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -389,6 +389,14 @@ public class RegionImpl extends NamespaceImpl implements Region {
 
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetExtendedRegion() {
+		return extendedRegion != null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -465,6 +473,15 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetRedefinitionContexts() {
+		return !getRedefinitionContexts().isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getRedefinedElements() {
 		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
@@ -502,6 +519,16 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		return super.basicGetNamespace();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.eINSTANCE.getRegion_StateMachine())
+			|| eIsSet(UML2Package.eINSTANCE.getRegion_State());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -810,18 +837,9 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			case UML2Package.REGION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.REGION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getRegion_Subvertex())
-					|| eIsSet(UML2Package.eINSTANCE.getRegion_Transition());
+				return isSetOwnedElements();
 			case UML2Package.REGION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getRegion_StateMachine())
-					|| eIsSet(UML2Package.eINSTANCE.getRegion_State());
+				return isSetOwner();
 			case UML2Package.REGION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.REGION__TEMPLATE_BINDING:
@@ -839,8 +857,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			case UML2Package.REGION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.REGION__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember());
+				return isSetMembers();
 			case UML2Package.REGION__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.REGION__IMPORTED_MEMBER:
@@ -850,7 +867,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			case UML2Package.REGION__PACKAGE_IMPORT:
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.REGION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.REGION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.REGION__SUBVERTEX:
@@ -862,7 +879,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			case UML2Package.REGION__STATE:
 				return getState() != null;
 			case UML2Package.REGION__EXTENDED_REGION:
-				return extendedRegion != null;
+				return isSetExtendedRegion();
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -931,5 +948,15 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getRegion_Subvertex())
+			|| eIsSet(UML2Package.eINSTANCE.getRegion_Transition());
+	}
 
 } //RegionImpl

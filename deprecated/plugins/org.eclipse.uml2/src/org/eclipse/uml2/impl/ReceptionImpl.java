@@ -8,19 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.9 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.10 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.CallConcurrencyKind;
 import org.eclipse.uml2.Reception;
 import org.eclipse.uml2.Signal;
@@ -117,80 +115,6 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.RECEPTION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.RECEPTION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.RECEPTION__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.RECEPTION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.RECEPTION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.RECEPTION__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
-				case UML2Package.RECEPTION__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.RECEPTION__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.RECEPTION__METHOD:
-					return ((InternalEList)getMethods()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.RECEPTION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.RECEPTION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.RECEPTION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.RECEPTION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.RECEPTION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.RECEPTION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.RECEPTION__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
-				case UML2Package.RECEPTION__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.RECEPTION__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.RECEPTION__FORMAL_PARAMETER:
-					return ((InternalEList)getFormalParameters()).basicRemove(otherEnd, msgs);
-				case UML2Package.RECEPTION__RETURN_RESULT:
-					return ((InternalEList)getReturnResults()).basicRemove(otherEnd, msgs);
-				case UML2Package.RECEPTION__METHOD:
-					return ((InternalEList)getMethods()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -424,17 +348,9 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 			case UML2Package.RECEPTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.RECEPTION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
+				return isSetOwnedElements();
 			case UML2Package.RECEPTION__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.RECEPTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.RECEPTION__TEMPLATE_BINDING:
@@ -452,10 +368,7 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 			case UML2Package.RECEPTION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.RECEPTION__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
+				return isSetMembers();
 			case UML2Package.RECEPTION__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.RECEPTION__IMPORTED_MEMBER:
@@ -465,16 +378,15 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 			case UML2Package.RECEPTION__PACKAGE_IMPORT:
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.RECEPTION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.RECEPTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.RECEPTION__FEATURING_CLASSIFIER:
-				return !getFeaturingClassifiers().isEmpty();
+				return isSetFeaturingClassifiers();
 			case UML2Package.RECEPTION__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.RECEPTION__PARAMETER:
-				return eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
+				return isSetParameters();
 			case UML2Package.RECEPTION__FORMAL_PARAMETER:
 				return formalParameter != null && !formalParameter.isEmpty();
 			case UML2Package.RECEPTION__RETURN_RESULT:

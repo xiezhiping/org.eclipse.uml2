@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.28 2005/10/04 21:55:12 khussey Exp $
+ * $Id: OperationImpl.java,v 1.29 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,6 +56,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
@@ -78,6 +79,8 @@ import org.eclipse.uml2.internal.operation.OperationOperations;
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getLowerValue <em>Lower Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getOwningParameter <em>Owning Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#isQuery <em>Is Query</em>}</li>
@@ -477,6 +480,52 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getRedefinitionContexts() {
+		if (redefinitionContext == null) {
+			redefinitionContext = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getOperation_Class_(), UML2Package.eINSTANCE.getOperation_Datatype()});
+		}
+		return redefinitionContext;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinitionContexts() {
+		return super.isSetRedefinitionContexts()
+			|| eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
+			|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getFeaturingClassifiers() {
+		if (featuringClassifier == null) {
+			featuringClassifier = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__FEATURING_CLASSIFIER, new EStructuralFeature[] {UML2Package.eINSTANCE.getOperation_Class_(), UML2Package.eINSTANCE.getOperation_Datatype()});
+		}
+		return featuringClassifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetFeaturingClassifiers() {
+		return super.isSetFeaturingClassifiers()
+			|| eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
+			|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isQuery() {
 		return (eFlags & IS_QUERY_EFLAG) != 0;
 	}
@@ -837,25 +886,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getRedefinitionContextsHelper(EList redefinitionContext) {
-		super.getRedefinitionContextsHelper(redefinitionContext);
-		org.eclipse.uml2.Class class_ = getClass_();
-		if (class_ != null) {
-			redefinitionContext.add(class_);
-		}
-		DataType datatype = getDatatype();
-		if (datatype != null) {
-			redefinitionContext.add(datatype);
-		}
-		return redefinitionContext;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -864,6 +903,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public boolean isOrdered() {
 		return OperationOperations.isOrdered(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsOrdered() {
+		return isOrdered() != IS_ORDERED_EDEFAULT;
 	}
 
 	public void setIsOrdered(boolean newIsOrdered) {
@@ -881,6 +929,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public boolean isUnique() {
 		return OperationOperations.isUnique(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsUnique() {
+		return isUnique() != IS_UNIQUE_EDEFAULT;
 	}
 
 	public void setIsUnique(boolean newIsUnique) {
@@ -957,10 +1014,28 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetLower() {
+		return getLower() != LOWER_EDEFAULT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public int getUpper() {
 		return upper();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetUpper() {
+		return getUpper() != UPPER_EDEFAULT;
 	}
 
 	/**
@@ -975,6 +1050,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		}
 
 		return raisedException;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRaisedExceptions() {
+		return raisedException != null && !raisedException.isEmpty();
 	}
 
 	/**
@@ -999,6 +1083,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public EList getFormalParameters() {
 		return getOwnedParameters();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetFormalParameters() {
+		return formalParameter != null && !formalParameter.isEmpty();
 	}
 
 	/**
@@ -1037,6 +1130,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetType() {
+		return basicGetType() != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public Type getType() {
@@ -1068,25 +1170,16 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return super.basicGetNamespace();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getFeaturingClassifiersHelper(EList featuringClassifier) {
-		super.getFeaturingClassifiersHelper(featuringClassifier);
-		org.eclipse.uml2.Class class_ = getClass_();
-		if (class_ != null) {
-			featuringClassifier.add(class_);
-		}
-		DataType datatype = getDatatype();
-		if (datatype != null) {
-			featuringClassifier.add(datatype);
-		}
-		return featuringClassifier;
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
+			|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1116,6 +1209,18 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetOwnedMembers() {
+		return super.isSetOwnedMembers()
+			|| eIsSet(UML2Package.eINSTANCE.getOperation_Precondition())
+			|| eIsSet(UML2Package.eINSTANCE.getOperation_Postcondition())
+			|| eIsSet(UML2Package.eINSTANCE.getOperation_BodyCondition());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	protected EList getRedefinedElementsHelper(EList redefinedElement) {
 		super.getRedefinedElementsHelper(redefinedElement);
 		if (eIsSet(UML2Package.eINSTANCE.getOperation_RedefinedOperation())) {
@@ -1126,6 +1231,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return redefinedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedElements() {
+		return super.isSetRedefinedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getOperation_RedefinedOperation());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1620,24 +1734,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.OPERATION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue())
-					|| eIsSet(UML2Package.eINSTANCE.getOperation_Precondition())
-					|| eIsSet(UML2Package.eINSTANCE.getOperation_Postcondition())
-					|| eIsSet(UML2Package.eINSTANCE.getOperation_BodyCondition());
+				return isSetOwnedElements();
 			case UML2Package.OPERATION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
-					|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
+				return isSetOwner();
 			case UML2Package.OPERATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.OPERATION__TEMPLATE_BINDING:
@@ -1655,13 +1754,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.OPERATION__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult())
-					|| eIsSet(UML2Package.eINSTANCE.getOperation_Precondition())
-					|| eIsSet(UML2Package.eINSTANCE.getOperation_Postcondition())
-					|| eIsSet(UML2Package.eINSTANCE.getOperation_BodyCondition());
+				return isSetMembers();
 			case UML2Package.OPERATION__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.OPERATION__IMPORTED_MEMBER:
@@ -1671,18 +1764,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__PACKAGE_IMPORT:
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.OPERATION__REDEFINITION_CONTEXT:
-				return eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
-					|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
+				return isSetRedefinitionContexts();
 			case UML2Package.OPERATION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.OPERATION__FEATURING_CLASSIFIER:
-				return eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
-					|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
+				return isSetFeaturingClassifiers();
 			case UML2Package.OPERATION__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.OPERATION__PARAMETER:
-				return eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
+				return isSetParameters();
 			case UML2Package.OPERATION__FORMAL_PARAMETER:
 				return !getFormalParameters().isEmpty();
 			case UML2Package.OPERATION__RETURN_RESULT:
@@ -1848,6 +1938,16 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
+			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
+	}
 
 	// <!-- begin-custom-operations -->
 
@@ -1877,15 +1977,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#getParametersHelper(org.eclipse.emf.common.util.EList)
-	 */
-	protected EList getParametersHelper(EList parameter) {
-		super.getParametersHelper(parameter);
-		if (eIsSet(UML2Package.eINSTANCE.getOperation_OwnedParameter())) {
-			parameter.addAll(getOwnedParameters());
+	public EList getParameters() {
+		if (parameter == null) {
+			parameter = new DerivedUnionEObjectEList(Parameter.class, this, UML2Package.OPERATION__PARAMETER, new EStructuralFeature[] {UML2Package.eINSTANCE.getOperation_OwnedParameter(), UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult()});
 		}
 		return parameter;
 	}

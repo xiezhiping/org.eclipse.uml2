@@ -8,19 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.9 2005/09/23 21:22:53 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.10 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Continuation;
 import org.eclipse.uml2.Interaction;
 import org.eclipse.uml2.InteractionOperand;
@@ -111,97 +108,6 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CONTINUATION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONTINUATION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONTINUATION__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.CONTINUATION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.CONTINUATION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONTINUATION__COVERED:
-					return ((InternalEList)getCovereds()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONTINUATION__ENCLOSING_INTERACTION:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.CONTINUATION__ENCLOSING_INTERACTION, msgs);
-				case UML2Package.CONTINUATION__ENCLOSING_OPERAND:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.CONTINUATION__ENCLOSING_OPERAND, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CONTINUATION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.CONTINUATION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.CONTINUATION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.CONTINUATION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.CONTINUATION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.CONTINUATION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.CONTINUATION__COVERED:
-					return ((InternalEList)getCovereds()).basicRemove(otherEnd, msgs);
-				case UML2Package.CONTINUATION__GENERAL_ORDERING:
-					return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
-				case UML2Package.CONTINUATION__ENCLOSING_INTERACTION:
-					return eBasicSetContainer(null, UML2Package.CONTINUATION__ENCLOSING_INTERACTION, msgs);
-				case UML2Package.CONTINUATION__ENCLOSING_OPERAND:
-					return eBasicSetContainer(null, UML2Package.CONTINUATION__ENCLOSING_OPERAND, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.CONTINUATION__ENCLOSING_INTERACTION:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION__FRAGMENT, Interaction.class, msgs);
-				case UML2Package.CONTINUATION__ENCLOSING_OPERAND:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION_OPERAND__FRAGMENT, InteractionOperand.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -363,13 +269,9 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 			case UML2Package.CONTINUATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONTINUATION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
+				return isSetOwnedElements();
 			case UML2Package.CONTINUATION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+				return isSetOwner();
 			case UML2Package.CONTINUATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONTINUATION__TEMPLATE_BINDING:

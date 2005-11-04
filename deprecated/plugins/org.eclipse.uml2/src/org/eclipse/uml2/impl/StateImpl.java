@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.18 2005/10/13 20:28:04 khussey Exp $
+ * $Id: StateImpl.java,v 1.19 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -356,6 +356,14 @@ public class StateImpl extends NamespaceImpl implements State {
 
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetContainer() {
+		return getContainer() != null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -585,6 +593,14 @@ public class StateImpl extends NamespaceImpl implements State {
 
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedState() {
+		return redefinedState != null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1068,6 +1084,15 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetRedefinitionContexts() {
+		return !getRedefinitionContexts().isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getRedefinedElements() {
 		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
@@ -1478,21 +1503,9 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STATE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getState_Connection())
-					|| eIsSet(UML2Package.eINSTANCE.getState_Region())
-					|| eIsSet(UML2Package.eINSTANCE.getState_Entry())
-					|| eIsSet(UML2Package.eINSTANCE.getState_Exit())
-					|| eIsSet(UML2Package.eINSTANCE.getState_DoActivity())
-					|| eIsSet(UML2Package.eINSTANCE.getState_StateInvariant());
+				return isSetOwnedElements();
 			case UML2Package.STATE__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.STATE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.STATE__TEMPLATE_BINDING:
@@ -1510,9 +1523,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.STATE__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getState_Region());
+				return isSetMembers();
 			case UML2Package.STATE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.STATE__IMPORTED_MEMBER:
@@ -1522,11 +1533,11 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__PACKAGE_IMPORT:
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.STATE__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.STATE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.STATE__CONTAINER:
-				return getContainer() != null;
+				return isSetContainer();
 			case UML2Package.STATE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.STATE__INCOMING:
@@ -1544,7 +1555,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__CONNECTION:
 				return connection != null && !connection.isEmpty();
 			case UML2Package.STATE__REDEFINED_STATE:
-				return redefinedState != null;
+				return isSetRedefinedState();
 			case UML2Package.STATE__DEFERRABLE_TRIGGER:
 				return deferrableTrigger != null && !deferrableTrigger.isEmpty();
 			case UML2Package.STATE__REGION:
@@ -1654,6 +1665,19 @@ public class StateImpl extends NamespaceImpl implements State {
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getState_Connection())
+			|| eIsSet(UML2Package.eINSTANCE.getState_Entry())
+			|| eIsSet(UML2Package.eINSTANCE.getState_Exit())
+			|| eIsSet(UML2Package.eINSTANCE.getState_DoActivity())
+			|| eIsSet(UML2Package.eINSTANCE.getState_StateInvariant());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1668,5 +1692,14 @@ public class StateImpl extends NamespaceImpl implements State {
 		return ownedMember;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedMembers() {
+		return super.isSetOwnedMembers()
+			|| eIsSet(UML2Package.eINSTANCE.getState_Region());
+	}
 
 } //StateImpl

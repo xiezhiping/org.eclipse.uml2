@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Node.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Node.java,v 1.9 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -59,6 +59,7 @@ public interface Node extends org.eclipse.uml2.Class, DeploymentTarget{
 	 * @generated
 	 */
 	EList getNestedNodes();
+
 
 
 	/**

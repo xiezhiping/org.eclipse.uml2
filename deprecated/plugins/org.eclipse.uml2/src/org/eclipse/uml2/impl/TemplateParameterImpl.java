@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.16 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -34,6 +34,8 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Template Parameter</b></em>'.
@@ -41,6 +43,7 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getParameteredElement <em>Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getSignature <em>Signature</em>}</li>
@@ -115,6 +118,29 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getTemplateParameter();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_PARAMETER__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(), UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement())
+			|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault());
 	}
 
 	/**
@@ -398,25 +424,15 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		ParameterableElement ownedParameteredElement = getOwnedParameteredElement();
-		if (ownedParameteredElement != null) {
-			ownedElement.add(ownedParameteredElement);
-		}
-		ParameterableElement ownedDefault = getOwnedDefault();
-		if (ownedDefault != null) {
-			ownedElement.add(ownedDefault);
-		}
-		return ownedElement;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_Signature());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -601,11 +617,9 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 			case UML2Package.TEMPLATE_PARAMETER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATE_PARAMETER__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault());
+				return isSetOwnedElements();
 			case UML2Package.TEMPLATE_PARAMETER__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getTemplateParameter_Signature());
+				return isSetOwner();
 			case UML2Package.TEMPLATE_PARAMETER__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.TEMPLATE_PARAMETER__SIGNATURE:

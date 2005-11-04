@@ -8,19 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.10 2005/09/23 21:22:54 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.11 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.Profile;
 import org.eclipse.uml2.ProfileApplication;
@@ -168,67 +166,6 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.PROFILE_APPLICATION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.PROFILE_APPLICATION__IMPORTING_NAMESPACE:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.PROFILE_APPLICATION__IMPORTING_NAMESPACE, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.PROFILE_APPLICATION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.PROFILE_APPLICATION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.PROFILE_APPLICATION__IMPORTING_NAMESPACE:
-					return eBasicSetContainer(null, UML2Package.PROFILE_APPLICATION__IMPORTING_NAMESPACE, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.PROFILE_APPLICATION__IMPORTING_NAMESPACE:
-					return eContainer.eInverseRemove(this, UML2Package.NAMESPACE__PACKAGE_IMPORT, Namespace.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PROFILE_APPLICATION__EANNOTATIONS:
@@ -330,20 +267,17 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 			case UML2Package.PROFILE_APPLICATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROFILE_APPLICATION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
+				return isSetOwnedElements();
 			case UML2Package.PROFILE_APPLICATION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportingNamespace());
+				return isSetOwner();
 			case UML2Package.PROFILE_APPLICATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROFILE_APPLICATION__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportedPackage())
-					|| eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportingNamespace())
-					|| eIsSet(UML2Package.eINSTANCE.getProfileApplication_ImportedProfile());
+				return isSetRelatedElements();
 			case UML2Package.PROFILE_APPLICATION__SOURCE:
-				return eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportingNamespace());
+				return isSetSources();
 			case UML2Package.PROFILE_APPLICATION__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportedPackage())
-					|| eIsSet(UML2Package.eINSTANCE.getProfileApplication_ImportedProfile());
+				return isSetTargets();
 			case UML2Package.PROFILE_APPLICATION__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE:

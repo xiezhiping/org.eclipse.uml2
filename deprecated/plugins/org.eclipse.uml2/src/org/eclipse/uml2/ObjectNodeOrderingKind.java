@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeOrderingKind.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: ObjectNodeOrderingKind.java,v 1.7 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -94,7 +94,7 @@ public final class ObjectNodeOrderingKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ObjectNodeOrderingKind UNORDERED_LITERAL = new ObjectNodeOrderingKind(UNORDERED, "unordered"); //$NON-NLS-1$
+	public static final ObjectNodeOrderingKind UNORDERED_LITERAL = new ObjectNodeOrderingKind(UNORDERED, "unordered", "unordered"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Ordered</b></em>' literal object.
@@ -108,7 +108,7 @@ public final class ObjectNodeOrderingKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ObjectNodeOrderingKind ORDERED_LITERAL = new ObjectNodeOrderingKind(ORDERED, "ordered"); //$NON-NLS-1$
+	public static final ObjectNodeOrderingKind ORDERED_LITERAL = new ObjectNodeOrderingKind(ORDERED, "ordered", "ordered"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>LIFO</b></em>' literal object.
@@ -122,7 +122,7 @@ public final class ObjectNodeOrderingKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ObjectNodeOrderingKind LIFO_LITERAL = new ObjectNodeOrderingKind(LIFO, "LIFO"); //$NON-NLS-1$
+	public static final ObjectNodeOrderingKind LIFO_LITERAL = new ObjectNodeOrderingKind(LIFO, "LIFO", "LIFO"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>FIFO</b></em>' literal object.
@@ -136,7 +136,7 @@ public final class ObjectNodeOrderingKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ObjectNodeOrderingKind FIFO_LITERAL = new ObjectNodeOrderingKind(FIFO, "FIFO"); //$NON-NLS-1$
+	public static final ObjectNodeOrderingKind FIFO_LITERAL = new ObjectNodeOrderingKind(FIFO, "FIFO", "FIFO"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Object Node Ordering Kind</b></em>' enumerators.
@@ -161,15 +161,15 @@ public final class ObjectNodeOrderingKind extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Object Node Ordering Kind</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Object Node Ordering Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static ObjectNodeOrderingKind get(String name) {
+	public static ObjectNodeOrderingKind get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			ObjectNodeOrderingKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -177,7 +177,23 @@ public final class ObjectNodeOrderingKind extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Object Node Ordering Kind</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Object Node Ordering Kind</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ObjectNodeOrderingKind getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			ObjectNodeOrderingKind result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Object Node Ordering Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -198,8 +214,8 @@ public final class ObjectNodeOrderingKind extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ObjectNodeOrderingKind(int value, String name) {
-		super(value, name);
+	private ObjectNodeOrderingKind(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //ObjectNodeOrderingKind

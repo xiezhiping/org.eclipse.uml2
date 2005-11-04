@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageSort.java,v 1.5 2005/05/18 16:38:29 khussey Exp $
+ * $Id: MessageSort.java,v 1.6 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -91,7 +91,7 @@ public final class MessageSort extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final MessageSort SYNCH_CALL_LITERAL = new MessageSort(SYNCH_CALL, "synchCall"); //$NON-NLS-1$
+	public static final MessageSort SYNCH_CALL_LITERAL = new MessageSort(SYNCH_CALL, "synchCall", "synchCall"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Synch Signal</b></em>' literal object.
@@ -105,7 +105,7 @@ public final class MessageSort extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final MessageSort SYNCH_SIGNAL_LITERAL = new MessageSort(SYNCH_SIGNAL, "synchSignal"); //$NON-NLS-1$
+	public static final MessageSort SYNCH_SIGNAL_LITERAL = new MessageSort(SYNCH_SIGNAL, "synchSignal", "synchSignal"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Asynch Call</b></em>' literal object.
@@ -119,7 +119,7 @@ public final class MessageSort extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final MessageSort ASYNCH_CALL_LITERAL = new MessageSort(ASYNCH_CALL, "asynchCall"); //$NON-NLS-1$
+	public static final MessageSort ASYNCH_CALL_LITERAL = new MessageSort(ASYNCH_CALL, "asynchCall", "asynchCall"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Asynch Signal</b></em>' literal object.
@@ -133,7 +133,7 @@ public final class MessageSort extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final MessageSort ASYNCH_SIGNAL_LITERAL = new MessageSort(ASYNCH_SIGNAL, "asynchSignal"); //$NON-NLS-1$
+	public static final MessageSort ASYNCH_SIGNAL_LITERAL = new MessageSort(ASYNCH_SIGNAL, "asynchSignal", "asynchSignal"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Message Sort</b></em>' enumerators.
@@ -158,15 +158,15 @@ public final class MessageSort extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Message Sort</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Message Sort</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static MessageSort get(String name) {
+	public static MessageSort get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			MessageSort result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -174,7 +174,23 @@ public final class MessageSort extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Message Sort</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Message Sort</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static MessageSort getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			MessageSort result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Message Sort</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -195,8 +211,8 @@ public final class MessageSort extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private MessageSort(int value, String name) {
-		super(value, name);
+	private MessageSort(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //MessageSort

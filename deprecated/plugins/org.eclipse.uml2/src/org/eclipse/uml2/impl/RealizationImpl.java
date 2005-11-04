@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.16 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -40,6 +40,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
@@ -50,6 +51,8 @@ import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getAbstraction <em>Abstraction</em>}</li>
@@ -93,6 +96,46 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getRealization();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getSources() {
+		return super.getSources();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSources() {
+		return super.isSetSources()
+			|| eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getTargets() {
+		return super.getTargets();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return super.isSetTargets()
+			|| eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier());
 	}
 
 	/**
@@ -187,21 +230,15 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getTargetsHelper(EList target) {
-		super.getTargetsHelper(target);
-		Classifier realizingClassifier = basicGetRealizingClassifier();
-		if (realizingClassifier != null) {
-			target.add(realizingClassifier);
-		}
-		return target;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -518,14 +555,9 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 			case UML2Package.REALIZATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.REALIZATION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getAbstraction_Mapping());
+				return isSetOwnedElements();
 			case UML2Package.REALIZATION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction());
+				return isSetOwner();
 			case UML2Package.REALIZATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.REALIZATION__TEMPLATE_BINDING:
@@ -547,14 +579,13 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 			case UML2Package.REALIZATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.REALIZATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.REALIZATION__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction())
-					|| eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier());
+				return isSetRelatedElements();
 			case UML2Package.REALIZATION__SOURCE:
-				return eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction());
+				return isSetSources();
 			case UML2Package.REALIZATION__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier());
+				return isSetTargets();
 			case UML2Package.REALIZATION__CLIENT:
 				return client != null && !client.isEmpty();
 			case UML2Package.REALIZATION__SUPPLIER:
@@ -574,25 +605,8 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.REALIZATION__VISIBILITY:
 				return false;
-			case UML2Package.REALIZATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getSourcesHelper(EList source) {
-		super.getSourcesHelper(source);
-		Component abstraction = getAbstraction();
-		if (abstraction != null) {
-			source.add(abstraction);
-		}
-		return source;
-	}
-
 
 } //RealizationImpl

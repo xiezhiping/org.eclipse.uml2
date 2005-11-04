@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.14 2005/10/04 21:55:12 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.15 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -40,6 +40,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Conditional Node</b></em>'.
@@ -47,6 +49,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ConditionalNodeImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConditionalNodeImpl#isDeterminate <em>Is Determinate</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConditionalNodeImpl#isAssured <em>Is Assured</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConditionalNodeImpl#getClauses <em>Clause</em>}</li>
@@ -140,6 +143,28 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getConditionalNode();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOutputs() {
+		if (output == null) {
+			output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.CONDITIONAL_NODE__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getConditionalNode_Result()});
+		}
+		return output;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOutputs() {
+		return super.isSetOutputs()
+			|| eIsSet(UML2Package.eINSTANCE.getConditionalNode_Result());
 	}
 
 	/**
@@ -292,63 +317,6 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CONDITIONAL_NODE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.CONDITIONAL_NODE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__INCOMING:
-					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__ACTIVITY:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.CONDITIONAL_NODE__ACTIVITY, msgs);
-				case UML2Package.CONDITIONAL_NODE__IN_STRUCTURED_NODE:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.CONDITIONAL_NODE__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.CONDITIONAL_NODE__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__HANDLER:
-					return ((InternalEList)getHandlers()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__VARIABLE:
-					return ((InternalEList)getVariables()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__CONTAINED_NODE:
-					return ((InternalEList)getContainedNodes()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONDITIONAL_NODE__CONTAINED_EDGE:
-					return ((InternalEList)getContainedEdges()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
@@ -412,27 +380,6 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			default :
 				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.CONDITIONAL_NODE__ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__NODE, Activity.class, msgs);
-				case UML2Package.CONDITIONAL_NODE__IN_STRUCTURED_NODE:
-					return eContainer.eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE, StructuredActivityNode.class, msgs);
-				case UML2Package.CONDITIONAL_NODE__ACTIVITY_GROUP_ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -778,22 +725,9 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())
-					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
-					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable())
-					|| eIsSet(UML2Package.eINSTANCE.getConditionalNode_Clause())
-					|| eIsSet(UML2Package.eINSTANCE.getConditionalNode_Result());
+				return isSetOwnedElements();
 			case UML2Package.CONDITIONAL_NODE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity());
+				return isSetOwner();
 			case UML2Package.CONDITIONAL_NODE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__TEMPLATE_BINDING:
@@ -811,7 +745,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.CONDITIONAL_NODE__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.CONDITIONAL_NODE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CONDITIONAL_NODE__OUTGOING:
@@ -819,13 +753,11 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__IN_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+				return isSetInGroups();
 			case UML2Package.CONDITIONAL_NODE__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.CONDITIONAL_NODE__REDEFINED_ELEMENT:
-				return redefinedElement != null && !redefinedElement.isEmpty();
+				return isSetRedefinedElements();
 			case UML2Package.CONDITIONAL_NODE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.CONDITIONAL_NODE__IN_PARTITION:
@@ -837,9 +769,9 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__EFFECT:
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.CONDITIONAL_NODE__OUTPUT:
-				return eIsSet(UML2Package.eINSTANCE.getConditionalNode_Result());
+				return isSetOutputs();
 			case UML2Package.CONDITIONAL_NODE__INPUT:
-				return !getInputs().isEmpty();
+				return isSetInputs();
 			case UML2Package.CONDITIONAL_NODE__CONTEXT:
 				return getContext() != null;
 			case UML2Package.CONDITIONAL_NODE__LOCAL_PRECONDITION:
@@ -847,9 +779,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable());
+				return isSetMembers();
 			case UML2Package.CONDITIONAL_NODE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__IMPORTED_MEMBER:
@@ -859,15 +789,15 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__PACKAGE_IMPORT:
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__SUPER_GROUP:
-				return basicGetSuperGroup() != null;
+				return isSetSuperGroup();
 			case UML2Package.CONDITIONAL_NODE__ACTIVITY_GROUP_ACTIVITY:
-				return getActivityGroup_activity() != null;
+				return isSetActivityGroup_activity();
 			case UML2Package.CONDITIONAL_NODE__VARIABLE:
 				return variable != null && !variable.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__CONTAINED_NODE:
-				return containedNode != null && !containedNode.isEmpty();
+				return isSetContainedNodes();
 			case UML2Package.CONDITIONAL_NODE__CONTAINED_EDGE:
-				return containedEdge != null && !containedEdge.isEmpty();
+				return isSetContainedEdges();
 			case UML2Package.CONDITIONAL_NODE__MUST_ISOLATE:
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UML2Package.CONDITIONAL_NODE__IS_DETERMINATE:
@@ -923,19 +853,14 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 		return ownedElement;
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOutputsHelper(EList output) {
-		super.getOutputsHelper(output);
-		if (eIsSet(UML2Package.eINSTANCE.getConditionalNode_Result())) {
-			output.addAll(getResults());
-		}
-		return output;
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getConditionalNode_Clause());
 	}
-
 
 } //ConditionalNodeImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.10 2005/09/26 15:54:22 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.11 2005/11/04 22:22:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -32,6 +32,8 @@ import org.eclipse.uml2.Element;
 import org.eclipse.uml2.PackageMerge;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Package Merge</b></em>'.
@@ -39,6 +41,8 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.PackageMergeImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PackageMergeImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageMergeImpl#getMergingPackage <em>Merging Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageMergeImpl#getMergedPackage <em>Merged Package</em>}</li>
  * </ul>
@@ -80,6 +84,50 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getPackageMerge();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getSources() {
+		if (source == null) {
+			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_MERGE__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackageMerge_MergingPackage()});
+		}
+		return source;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSources() {
+		return super.isSetSources()
+			|| eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getTargets() {
+		if (target == null) {
+			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_MERGE__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackageMerge_MergedPackage()});
+		}
+		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return super.isSetTargets()
+			|| eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergedPackage());
 	}
 
 	/**
@@ -168,21 +216,15 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getTargetsHelper(EList target) {
-		super.getTargetsHelper(target);
-		org.eclipse.uml2.Package mergedPackage = basicGetMergedPackage();
-		if (mergedPackage != null) {
-			target.add(mergedPackage);
-		}
-		return target;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -334,39 +376,23 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 			case UML2Package.PACKAGE_MERGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PACKAGE_MERGE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
+				return isSetOwnedElements();
 			case UML2Package.PACKAGE_MERGE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage());
+				return isSetOwner();
 			case UML2Package.PACKAGE_MERGE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PACKAGE_MERGE__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage())
-					|| eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergedPackage());
+				return isSetRelatedElements();
 			case UML2Package.PACKAGE_MERGE__SOURCE:
-				return eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage());
+				return isSetSources();
 			case UML2Package.PACKAGE_MERGE__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergedPackage());
+				return isSetTargets();
 			case UML2Package.PACKAGE_MERGE__MERGING_PACKAGE:
 				return getMergingPackage() != null;
 			case UML2Package.PACKAGE_MERGE__MERGED_PACKAGE:
 				return mergedPackage != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getSourcesHelper(EList source) {
-		super.getSourcesHelper(source);
-		org.eclipse.uml2.Package mergingPackage = getMergingPackage();
-		if (mergingPackage != null) {
-			source.add(mergingPackage);
-		}
-		return source;
 	}
 
 

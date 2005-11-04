@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.10 2005/09/23 21:22:53 khussey Exp $
+ * $Id: SlotImpl.java,v 1.11 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -37,6 +37,8 @@ import org.eclipse.uml2.StructuralFeature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Slot</b></em>'.
@@ -44,6 +46,7 @@ import org.eclipse.uml2.ValueSpecification;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.SlotImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SlotImpl#getOwningInstance <em>Owning Instance</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SlotImpl#getValues <em>Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SlotImpl#getDefiningFeature <em>Defining Feature</em>}</li>
@@ -96,6 +99,28 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getSlot();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.SLOT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getSlot_Value()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getSlot_Value());
 	}
 
 	/**
@@ -226,20 +251,15 @@ public class SlotImpl extends ElementImpl implements Slot {
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getSlot_Value())) {
-			ownedElement.addAll(getValues());
-		}
-		return ownedElement;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getSlot_OwningInstance());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -396,10 +416,9 @@ public class SlotImpl extends ElementImpl implements Slot {
 			case UML2Package.SLOT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SLOT__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getSlot_Value());
+				return isSetOwnedElements();
 			case UML2Package.SLOT__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getSlot_OwningInstance());
+				return isSetOwner();
 			case UML2Package.SLOT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.SLOT__OWNING_INSTANCE:

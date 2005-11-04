@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.21 2005/10/04 21:55:12 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.22 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -254,23 +254,6 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.ENUMERATION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -573,24 +556,9 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ENUMERATION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
-					|| eIsSet(UML2Package.eINSTANCE.getDataType_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getDataType_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getEnumeration_OwnedLiteral());
+				return isSetOwnedElements();
 			case UML2Package.ENUMERATION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
+				return isSetOwner();
 			case UML2Package.ENUMERATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ENUMERATION__TEMPLATE_BINDING:
@@ -608,13 +576,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.ENUMERATION__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getDataType_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getDataType_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getEnumeration_OwnedLiteral());
+				return isSetMembers();
 			case UML2Package.ENUMERATION__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.ENUMERATION__IMPORTED_MEMBER:
@@ -628,16 +590,15 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ENUMERATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.ENUMERATION__PACKAGE:
 				return getPackage() != null;
 			case UML2Package.ENUMERATION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.ENUMERATION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ENUMERATION__FEATURE:
-				return eIsSet(UML2Package.eINSTANCE.getDataType_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getDataType_OwnedOperation());
+				return isSetFeatures();
 			case UML2Package.ENUMERATION__IS_ABSTRACT:
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.ENUMERATION__INHERITED_MEMBER:
@@ -647,7 +608,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.ENUMERATION__ATTRIBUTE:
-				return eIsSet(UML2Package.eINSTANCE.getDataType_OwnedAttribute());
+				return isSetAttributes();
 			case UML2Package.ENUMERATION__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.ENUMERATION__SUBSTITUTION:
@@ -677,8 +638,6 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ENUMERATION__VISIBILITY:
 				return false;
-			case UML2Package.ENUMERATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
@@ -696,6 +655,15 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 		return ownedMember;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedMembers() {
+		return super.isSetOwnedMembers()
+			|| eIsSet(UML2Package.eINSTANCE.getEnumeration_OwnedLiteral());
+	}
 
 	// <!-- begin-custom-operations -->
 

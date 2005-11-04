@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.16 2005/11/04 22:22:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,9 +29,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.MultiplicityElement;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
+
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
 
@@ -42,6 +45,7 @@ import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.MultiplicityElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.MultiplicityElementImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.MultiplicityElementImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.MultiplicityElementImpl#getLower <em>Lower</em>}</li>
@@ -158,6 +162,29 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getMultiplicityElement();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.MULTIPLICITY_ELEMENT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(), UML2Package.eINSTANCE.getMultiplicityElement_LowerValue()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
+			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
 	}
 
 	/**
@@ -457,25 +484,6 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.MULTIPLICITY_ELEMENT__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
@@ -596,11 +604,9 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 			case UML2Package.MULTIPLICITY_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.MULTIPLICITY_ELEMENT__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
+				return isSetOwnedElements();
 			case UML2Package.MULTIPLICITY_ELEMENT__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.MULTIPLICITY_ELEMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.MULTIPLICITY_ELEMENT__IS_ORDERED:
@@ -634,25 +640,6 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 		result.append((eFlags & IS_UNIQUE_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		ValueSpecification upperValue = getUpperValue();
-		if (upperValue != null) {
-			ownedElement.add(upperValue);
-		}
-		ValueSpecification lowerValue = getLowerValue();
-		if (lowerValue != null) {
-			ownedElement.add(lowerValue);
-		}
-		return ownedElement;
 	}
 
 

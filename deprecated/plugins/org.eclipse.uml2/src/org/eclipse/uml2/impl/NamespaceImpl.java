@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.22 2005/09/23 21:22:54 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.23 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -144,6 +144,15 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetMembers() {
+		return eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+			|| isSetOwnedMembers();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -451,6 +460,14 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedMembers() {
+		return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -473,7 +490,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
+		ownedElement.addAll(super.getOwnedElements());
 		if (eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())) {
 			ownedElement.addAll(getElementImports());
 		}
@@ -489,6 +506,36 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement());
+			if (ownedElement == null) {
+				List union = getOwnedElementsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray()));
+			}
+			return ownedElement;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+			|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+			|| isSetOwnedMembers();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -705,15 +752,9 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 			case UML2Package.NAMESPACE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.NAMESPACE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport());
+				return isSetOwnedElements();
 			case UML2Package.NAMESPACE__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.NAMESPACE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.NAMESPACE__TEMPLATE_BINDING:
@@ -731,8 +772,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 			case UML2Package.NAMESPACE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.NAMESPACE__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember());
+				return isSetMembers();
 			case UML2Package.NAMESPACE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.NAMESPACE__IMPORTED_MEMBER:

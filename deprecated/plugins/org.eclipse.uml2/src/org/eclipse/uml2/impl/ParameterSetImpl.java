@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.11 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.12 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Constraint;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.ParameterSet;
 import org.eclipse.uml2.StringExpression;
@@ -38,6 +39,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Parameter Set</b></em>'.
@@ -45,6 +48,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterSetImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterSetImpl#getParameters <em>Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterSetImpl#getConditions <em>Condition</em>}</li>
  * </ul>
@@ -96,6 +100,28 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getParameterSet();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PARAMETER_SET__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getParameterSet_Condition()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getParameterSet_Condition());
 	}
 
 	/**
@@ -378,13 +404,9 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 			case UML2Package.PARAMETER_SET__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PARAMETER_SET__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getParameterSet_Condition());
+				return isSetOwnedElements();
 			case UML2Package.PARAMETER_SET__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.PARAMETER_SET__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PARAMETER_SET__TEMPLATE_BINDING:
@@ -407,20 +429,6 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 				return condition != null && !condition.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getParameterSet_Condition())) {
-			ownedElement.addAll(getConditions());
-		}
-		return ownedElement;
 	}
 
 

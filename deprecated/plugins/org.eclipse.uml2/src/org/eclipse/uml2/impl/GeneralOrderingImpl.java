@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.8 2005/09/23 21:22:53 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.9 2005/11/04 22:22:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -416,12 +416,9 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 			case UML2Package.GENERAL_ORDERING__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.GENERAL_ORDERING__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+				return isSetOwnedElements();
 			case UML2Package.GENERAL_ORDERING__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.GENERAL_ORDERING__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.GENERAL_ORDERING__TEMPLATE_BINDING:

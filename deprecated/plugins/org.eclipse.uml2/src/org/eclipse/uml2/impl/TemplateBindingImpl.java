@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.12 2005/09/26 15:54:22 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.13 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -37,6 +37,8 @@ import org.eclipse.uml2.TemplateableElement;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Template Binding</b></em>'.
@@ -44,6 +46,9 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getBoundElement <em>Bound Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getSignature <em>Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getParameterSubstitutions <em>Parameter Substitution</em>}</li>
@@ -96,6 +101,72 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getTemplateBinding();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getSources() {
+		if (source == null) {
+			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getTemplateBinding_BoundElement()});
+		}
+		return source;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSources() {
+		return super.isSetSources()
+			|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_BoundElement());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getTargets() {
+		if (target == null) {
+			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getTemplateBinding_Signature()});
+		}
+		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return super.isSetTargets()
+			|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_Signature());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution());
 	}
 
 	/**
@@ -226,50 +297,15 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getSourcesHelper(EList source) {
-		super.getSourcesHelper(source);
-		TemplateableElement boundElement = getBoundElement();
-		if (boundElement != null) {
-			source.add(boundElement);
-		}
-		return source;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_BoundElement());
 	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getTargetsHelper(EList target) {
-		super.getTargetsHelper(target);
-		TemplateSignature signature = basicGetSignature();
-		if (signature != null) {
-			target.add(signature);
-		}
-		return target;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution())) {
-			ownedElement.addAll(getParameterSubstitutions());
-		}
-		return ownedElement;
-	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -434,19 +470,17 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 			case UML2Package.TEMPLATE_BINDING__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution());
+				return isSetOwnedElements();
 			case UML2Package.TEMPLATE_BINDING__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getTemplateBinding_BoundElement());
+				return isSetOwner();
 			case UML2Package.TEMPLATE_BINDING__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.TEMPLATE_BINDING__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getTemplateBinding_BoundElement())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_Signature());
+				return isSetRelatedElements();
 			case UML2Package.TEMPLATE_BINDING__SOURCE:
-				return eIsSet(UML2Package.eINSTANCE.getTemplateBinding_BoundElement());
+				return isSetSources();
 			case UML2Package.TEMPLATE_BINDING__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getTemplateBinding_Signature());
+				return isSetTargets();
 			case UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT:
 				return getBoundElement() != null;
 			case UML2Package.TEMPLATE_BINDING__SIGNATURE:

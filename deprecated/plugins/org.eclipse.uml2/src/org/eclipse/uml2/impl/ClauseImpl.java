@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.7 2005/09/23 21:22:53 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.8 2005/11/04 22:22:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -451,9 +451,9 @@ public class ClauseImpl extends ElementImpl implements Clause {
 			case UML2Package.CLAUSE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CLAUSE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
+				return isSetOwnedElements();
 			case UML2Package.CLAUSE__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.CLAUSE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CLAUSE__TEST:

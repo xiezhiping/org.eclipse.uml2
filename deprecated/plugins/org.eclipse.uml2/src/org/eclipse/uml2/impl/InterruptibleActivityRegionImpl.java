@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.8 2005/09/23 21:22:55 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.9 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -129,6 +129,14 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 		return containedNode;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetContainedNodes() {
+		return containedNode != null && !containedNode.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -209,23 +217,6 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 			default :
 				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -323,19 +314,19 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
+				return isSetOwnedElements();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity());
+				return isSetOwner();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP:
-				return basicGetSuperGroup() != null;
+				return isSetSuperGroup();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY:
-				return getActivityGroup_activity() != null;
+				return isSetActivityGroup_activity();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE:
 				return interruptingEdge != null && !interruptingEdge.isEmpty();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE:
-				return containedNode != null && !containedNode.isEmpty();
+				return isSetContainedNodes();
 		}
 		return eDynamicIsSet(eFeature);
 	}

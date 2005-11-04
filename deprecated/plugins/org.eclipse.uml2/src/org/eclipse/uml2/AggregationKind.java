@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AggregationKind.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: AggregationKind.java,v 1.7 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -83,7 +83,7 @@ public final class AggregationKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final AggregationKind NONE_LITERAL = new AggregationKind(NONE, "none"); //$NON-NLS-1$
+	public static final AggregationKind NONE_LITERAL = new AggregationKind(NONE, "none", "none"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Shared</b></em>' literal object.
@@ -97,7 +97,7 @@ public final class AggregationKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final AggregationKind SHARED_LITERAL = new AggregationKind(SHARED, "shared"); //$NON-NLS-1$
+	public static final AggregationKind SHARED_LITERAL = new AggregationKind(SHARED, "shared", "shared"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Composite</b></em>' literal object.
@@ -111,7 +111,7 @@ public final class AggregationKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final AggregationKind COMPOSITE_LITERAL = new AggregationKind(COMPOSITE, "composite"); //$NON-NLS-1$
+	public static final AggregationKind COMPOSITE_LITERAL = new AggregationKind(COMPOSITE, "composite", "composite"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Aggregation Kind</b></em>' enumerators.
@@ -135,15 +135,15 @@ public final class AggregationKind extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Aggregation Kind</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Aggregation Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static AggregationKind get(String name) {
+	public static AggregationKind get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			AggregationKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -151,7 +151,23 @@ public final class AggregationKind extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Aggregation Kind</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Aggregation Kind</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static AggregationKind getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			AggregationKind result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Aggregation Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -171,8 +187,8 @@ public final class AggregationKind extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private AggregationKind(int value, String name) {
-		super(value, name);
+	private AggregationKind(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //AggregationKind

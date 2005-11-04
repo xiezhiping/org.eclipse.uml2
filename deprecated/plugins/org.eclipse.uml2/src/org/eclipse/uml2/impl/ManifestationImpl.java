@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.16 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -25,8 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.InternalEList;
-
+//import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Manifestation;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.OpaqueExpression;
@@ -37,6 +35,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 
 /**
@@ -46,6 +45,7 @@ import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ManifestationImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ManifestationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ManifestationImpl#getUtilizedElement <em>Utilized Element</em>}</li>
  * </ul>
@@ -87,6 +87,26 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getManifestation();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getTargets() {
+		return super.getTargets();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return super.isSetTargets()
+			|| eIsSet(UML2Package.eINSTANCE.getManifestation_UtilizedElement());
 	}
 
 	/**
@@ -144,95 +164,6 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 		return supplier;
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.MANIFESTATION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.MANIFESTATION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.MANIFESTATION__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.MANIFESTATION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.MANIFESTATION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.MANIFESTATION__TEMPLATE_PARAMETER:
-					if (templateParameter != null)
-						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
-				case UML2Package.MANIFESTATION__OWNING_PARAMETER:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.MANIFESTATION__OWNING_PARAMETER, msgs);
-				case UML2Package.MANIFESTATION__CLIENT:
-					return ((InternalEList)getClients()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.MANIFESTATION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.MANIFESTATION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.MANIFESTATION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.MANIFESTATION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.MANIFESTATION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.MANIFESTATION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.MANIFESTATION__TEMPLATE_PARAMETER:
-					return basicSetTemplateParameter(null, msgs);
-				case UML2Package.MANIFESTATION__OWNING_PARAMETER:
-					return eBasicSetContainer(null, UML2Package.MANIFESTATION__OWNING_PARAMETER, msgs);
-				case UML2Package.MANIFESTATION__CLIENT:
-					return ((InternalEList)getClients()).basicRemove(otherEnd, msgs);
-				case UML2Package.MANIFESTATION__MAPPING:
-					return basicSetMapping(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.MANIFESTATION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -418,13 +349,9 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 			case UML2Package.MANIFESTATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.MANIFESTATION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getAbstraction_Mapping());
+				return isSetOwnedElements();
 			case UML2Package.MANIFESTATION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+				return isSetOwner();
 			case UML2Package.MANIFESTATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.MANIFESTATION__TEMPLATE_BINDING:
@@ -446,13 +373,13 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 			case UML2Package.MANIFESTATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.MANIFESTATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.MANIFESTATION__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getManifestation_UtilizedElement());
+				return isSetRelatedElements();
 			case UML2Package.MANIFESTATION__SOURCE:
-				return !getSources().isEmpty();
+				return isSetSources();
 			case UML2Package.MANIFESTATION__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getManifestation_UtilizedElement());
+				return isSetTargets();
 			case UML2Package.MANIFESTATION__CLIENT:
 				return client != null && !client.isEmpty();
 			case UML2Package.MANIFESTATION__SUPPLIER:
@@ -470,25 +397,8 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.MANIFESTATION__VISIBILITY:
 				return false;
-			case UML2Package.MANIFESTATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getTargetsHelper(EList target) {
-		super.getTargetsHelper(target);
-		PackageableElement utilizedElement = basicGetUtilizedElement();
-		if (utilizedElement != null) {
-			target.add(utilizedElement);
-		}
-		return target;
-	}
-
 
 } //ManifestationImpl

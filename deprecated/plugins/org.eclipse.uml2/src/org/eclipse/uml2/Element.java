@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.16 2005/09/27 14:37:43 khussey Exp $
+ * $Id: Element.java,v 1.17 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -73,6 +73,7 @@ public interface Element extends EModelElement{
 	EList getOwnedElements();
 
 
+
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
@@ -92,6 +93,7 @@ public interface Element extends EModelElement{
 	 * @generated
 	 */
 	Element getOwner();
+
 
 
 	/**

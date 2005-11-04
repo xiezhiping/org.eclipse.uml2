@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.10 2005/09/23 21:22:54 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.11 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -194,6 +194,15 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 		return super.basicGetOwner();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -345,9 +354,9 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 			case UML2Package.PARAMETERABLE_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PARAMETERABLE_ELEMENT__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
+				return isSetOwnedElements();
 			case UML2Package.PARAMETERABLE_ELEMENT__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+				return isSetOwner();
 			case UML2Package.PARAMETERABLE_ELEMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER:

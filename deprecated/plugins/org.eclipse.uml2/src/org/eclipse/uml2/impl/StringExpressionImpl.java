@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.10 2005/09/23 21:22:55 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.11 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -35,6 +35,8 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>String Expression</b></em>'.
@@ -42,6 +44,7 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.StringExpressionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StringExpressionImpl#getSubExpressions <em>Sub Expression</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StringExpressionImpl#getOwningExpression <em>Owning Expression</em>}</li>
  * </ul>
@@ -83,6 +86,28 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getStringExpression();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.STRING_EXPRESSION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getStringExpression_SubExpression()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getStringExpression_SubExpression());
 	}
 
 	/**
@@ -173,6 +198,15 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 		return super.basicGetOwner();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UML2Package.eINSTANCE.getStringExpression_OwningExpression());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -349,12 +383,9 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 			case UML2Package.STRING_EXPRESSION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STRING_EXPRESSION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getStringExpression_SubExpression());
+				return isSetOwnedElements();
 			case UML2Package.STRING_EXPRESSION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getStringExpression_OwningExpression());
+				return isSetOwner();
 			case UML2Package.STRING_EXPRESSION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.STRING_EXPRESSION__TEMPLATE_BINDING:
@@ -367,20 +398,6 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 				return getOwningExpression() != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getStringExpression_SubExpression())) {
-			ownedElement.addAll(getSubExpressions());
-		}
-		return ownedElement;
 	}
 
 

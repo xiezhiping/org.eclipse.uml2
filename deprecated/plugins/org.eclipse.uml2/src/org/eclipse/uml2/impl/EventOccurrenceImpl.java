@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.11 2005/09/23 21:22:55 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.12 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -405,6 +405,15 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetCovereds() {
+		return covered != null && !covered.isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
     public Lifeline getCovered(String name) {
 		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
 			Lifeline covered = (Lifeline) i.next();
@@ -513,25 +522,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION__FRAGMENT, Interaction.class, msgs);
-				case UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION_OPERAND__FRAGMENT, InteractionOperand.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -740,13 +730,9 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			case UML2Package.EVENT_OCCURRENCE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
+				return isSetOwnedElements();
 			case UML2Package.EVENT_OCCURRENCE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+				return isSetOwner();
 			case UML2Package.EVENT_OCCURRENCE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__TEMPLATE_BINDING:

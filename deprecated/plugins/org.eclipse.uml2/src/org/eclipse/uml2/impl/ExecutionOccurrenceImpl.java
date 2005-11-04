@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceImpl.java,v 1.8 2005/09/23 21:22:54 khussey Exp $
+ * $Id: ExecutionOccurrenceImpl.java,v 1.9 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -349,25 +349,6 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.EXECUTION_OCCURRENCE__ENCLOSING_INTERACTION:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION__FRAGMENT, Interaction.class, msgs);
-				case UML2Package.EXECUTION_OCCURRENCE__ENCLOSING_OPERAND:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION_OPERAND__FRAGMENT, InteractionOperand.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.EXECUTION_OCCURRENCE__EANNOTATIONS:
@@ -542,13 +523,9 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 			case UML2Package.EXECUTION_OCCURRENCE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXECUTION_OCCURRENCE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
+				return isSetOwnedElements();
 			case UML2Package.EXECUTION_OCCURRENCE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+				return isSetOwner();
 			case UML2Package.EXECUTION_OCCURRENCE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.EXECUTION_OCCURRENCE__TEMPLATE_BINDING:

@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.25 2005/10/04 21:55:13 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.26 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 import java.util.Set;
 
@@ -22,8 +21,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -36,6 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Association;
 import org.eclipse.uml2.CollaborationOccurrence;
+import org.eclipse.uml2.Element;
+import org.eclipse.uml2.Feature;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.Relationship;
 import org.eclipse.uml2.StringExpression;
@@ -46,10 +45,10 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
-import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.AssociationOperations;
 
@@ -60,6 +59,8 @@ import org.eclipse.uml2.internal.operation.AssociationOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.AssociationImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.AssociationImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AssociationImpl#getMemberEnds <em>Member End</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AssociationImpl#isDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AssociationImpl#getOwnedEnds <em>Owned End</em>}</li>
@@ -76,6 +77,16 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList relatedElement = null;
 
 	/**
 	 * The cached value of the '{@link #getMemberEnds() <em>Member End</em>}' reference list.
@@ -291,33 +302,42 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
-			if (relatedElement == null) {
-				List union = getRelatedElementsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray()));
-			}
-			return relatedElement;
+		if (relatedElement == null) {
+			relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ASSOCIATION__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getAssociation_EndType()});
 		}
-		List union = getRelatedElementsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+		return relatedElement;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getFeaturesHelper(EList feature) {
-		super.getFeaturesHelper(feature);
-		if (eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd())) {
-			feature.addAll(getOwnedEnds());
+	public boolean isSetRelatedElements() {
+		return eIsSet(UML2Package.eINSTANCE.getAssociation_EndType());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getFeatures() {
+		if (feature == null) {
+			feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.ASSOCIATION__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute(), UML2Package.eINSTANCE.getAssociation_OwnedEnd()});
 		}
 		return feature;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetFeatures() {
+		return super.isSetFeatures()
+			|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -332,6 +352,15 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 		return ownedMember;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedMembers() {
+		return super.isSetOwnedMembers()
+			|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -348,6 +377,15 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 		return member;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetMembers() {
+		return super.isSetMembers()
+			|| eIsSet(UML2Package.eINSTANCE.getAssociation_MemberEnd());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -453,23 +491,6 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.ASSOCIATION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -775,22 +796,9 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			case UML2Package.ASSOCIATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ASSOCIATION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
-					|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
+				return isSetOwnedElements();
 			case UML2Package.ASSOCIATION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
+				return isSetOwner();
 			case UML2Package.ASSOCIATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ASSOCIATION__TEMPLATE_BINDING:
@@ -808,12 +816,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			case UML2Package.ASSOCIATION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.ASSOCIATION__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd())
-					|| eIsSet(UML2Package.eINSTANCE.getAssociation_MemberEnd());
+				return isSetMembers();
 			case UML2Package.ASSOCIATION__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.ASSOCIATION__IMPORTED_MEMBER:
@@ -827,15 +830,15 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			case UML2Package.ASSOCIATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ASSOCIATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.ASSOCIATION__PACKAGE:
 				return getPackage() != null;
 			case UML2Package.ASSOCIATION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.ASSOCIATION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ASSOCIATION__FEATURE:
-				return eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
+				return isSetFeatures();
 			case UML2Package.ASSOCIATION__IS_ABSTRACT:
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.ASSOCIATION__INHERITED_MEMBER:
@@ -845,7 +848,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			case UML2Package.ASSOCIATION__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.ASSOCIATION__ATTRIBUTE:
-				return !getAttributes().isEmpty();
+				return isSetAttributes();
 			case UML2Package.ASSOCIATION__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.ASSOCIATION__SUBSTITUTION:
@@ -861,7 +864,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			case UML2Package.ASSOCIATION__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.ASSOCIATION__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getAssociation_EndType());
+				return isSetRelatedElements();
 			case UML2Package.ASSOCIATION__IS_DERIVED:
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UML2Package.ASSOCIATION__OWNED_END:
@@ -878,8 +881,6 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ASSOCIATION__VISIBILITY:
 				return false;
-			case UML2Package.ASSOCIATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
@@ -929,21 +930,6 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 		return result.toString();
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getRelatedElementsHelper(EList relatedElement) {
-		EList endType = getEndTypes();
-		if (!endType.isEmpty()) {
-			for (Iterator i = ((InternalEList) endType).basicIterator(); i.hasNext(); ) {
-				relatedElement.add(i.next());
-			}
-		}
-		return relatedElement;
-	}
 
 	// <!-- begin-custom-operations -->
 

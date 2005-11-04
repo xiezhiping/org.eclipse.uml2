@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.14 2005/09/23 21:22:54 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.15 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -34,6 +34,7 @@ import org.eclipse.uml2.DeployedArtifact;
 import org.eclipse.uml2.Deployment;
 import org.eclipse.uml2.DeploymentSpecification;
 import org.eclipse.uml2.DeploymentTarget;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
@@ -42,6 +43,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
@@ -53,6 +55,9 @@ import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getDeployedArtifacts <em>Deployed Artifact</em>}</li>
@@ -107,6 +112,68 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getDeployment();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getTargets() {
+		return super.getTargets();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return super.isSetTargets()
+			|| eIsSet(UML2Package.eINSTANCE.getDeployment_DeployedArtifact());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getSources() {
+		return super.getSources();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSources() {
+		return super.isSetSources()
+			|| eIsSet(UML2Package.eINSTANCE.getDeployment_Location());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPLOYMENT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getDeployment_Configuration()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getDeployment_Configuration());
 	}
 
 	/**
@@ -546,13 +613,9 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			case UML2Package.DEPLOYMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DEPLOYMENT__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getDeployment_Configuration());
+				return isSetOwnedElements();
 			case UML2Package.DEPLOYMENT__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+				return isSetOwner();
 			case UML2Package.DEPLOYMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.DEPLOYMENT__TEMPLATE_BINDING:
@@ -574,14 +637,13 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			case UML2Package.DEPLOYMENT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DEPLOYMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.DEPLOYMENT__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getDeployment_DeployedArtifact())
-					|| eIsSet(UML2Package.eINSTANCE.getDeployment_Location());
+				return isSetRelatedElements();
 			case UML2Package.DEPLOYMENT__SOURCE:
-				return eIsSet(UML2Package.eINSTANCE.getDeployment_Location());
+				return isSetSources();
 			case UML2Package.DEPLOYMENT__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getDeployment_DeployedArtifact());
+				return isSetTargets();
 			case UML2Package.DEPLOYMENT__CLIENT:
 				return client != null && !client.isEmpty();
 			case UML2Package.DEPLOYMENT__SUPPLIER:
@@ -601,55 +663,8 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.DEPLOYMENT__VISIBILITY:
 				return false;
-			case UML2Package.DEPLOYMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getTargetsHelper(EList target) {
-		super.getTargetsHelper(target);
-		if (eIsSet(UML2Package.eINSTANCE.getDeployment_DeployedArtifact())) {
-			for (Iterator i = ((InternalEList) getDeployedArtifacts()).basicIterator(); i.hasNext(); ) {
-				target.add(i.next());
-			}
-		}
-		return target;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getSourcesHelper(EList source) {
-		super.getSourcesHelper(source);
-		DeploymentTarget location = getLocation();
-		if (location != null) {
-			source.add(location);
-		}
-		return source;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getDeployment_Configuration())) {
-			ownedElement.addAll(getConfigurations());
-		}
-		return ownedElement;
-	}
-
 
 } //DeploymentImpl

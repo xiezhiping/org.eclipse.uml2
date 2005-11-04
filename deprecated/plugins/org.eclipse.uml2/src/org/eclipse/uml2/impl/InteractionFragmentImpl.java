@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.11 2005/09/23 21:22:53 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.12 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.GeneralOrdering;
 import org.eclipse.uml2.Interaction;
 import org.eclipse.uml2.InteractionFragment;
@@ -43,6 +44,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Interaction Fragment</b></em>'.
@@ -50,6 +53,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.InteractionFragmentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionFragmentImpl#getCovereds <em>Covered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionFragmentImpl#getGeneralOrderings <em>General Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionFragmentImpl#getEnclosingInteraction <em>Enclosing Interaction</em>}</li>
@@ -103,6 +107,28 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getInteractionFragment();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INTERACTION_FRAGMENT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
 	}
 
 	/**
@@ -269,6 +295,15 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 		return super.basicGetNamespace();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -513,13 +548,9 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 			case UML2Package.INTERACTION_FRAGMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION_FRAGMENT__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
+				return isSetOwnedElements();
 			case UML2Package.INTERACTION_FRAGMENT__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+				return isSetOwner();
 			case UML2Package.INTERACTION_FRAGMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INTERACTION_FRAGMENT__TEMPLATE_BINDING:
@@ -546,20 +577,6 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 				return getEnclosingOperand() != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering())) {
-			ownedElement.addAll(getGeneralOrderings());
-		}
-		return ownedElement;
 	}
 
 

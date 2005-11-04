@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Constraint.java,v 1.11 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -69,6 +69,7 @@ public interface Constraint extends PackageableElement{
 	Namespace getContext();
 
 
+
 	/**
 	 * Returns the value of the '<em><b>Namespace</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedRules <em>Owned Rule</em>}'.
@@ -96,6 +97,7 @@ public interface Constraint extends PackageableElement{
 	 * @generated
 	 */
 	void setNamespace(Namespace value);
+
 
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.11 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -128,6 +128,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @generated
 	 */
 	EList getParameters();
+
 
 
 	/**

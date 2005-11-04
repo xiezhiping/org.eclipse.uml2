@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageKind.java,v 1.5 2005/05/18 16:38:29 khussey Exp $
+ * $Id: MessageKind.java,v 1.6 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -91,7 +91,7 @@ public final class MessageKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final MessageKind COMPLETE_LITERAL = new MessageKind(COMPLETE, "complete"); //$NON-NLS-1$
+	public static final MessageKind COMPLETE_LITERAL = new MessageKind(COMPLETE, "complete", "complete"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Lost</b></em>' literal object.
@@ -105,7 +105,7 @@ public final class MessageKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final MessageKind LOST_LITERAL = new MessageKind(LOST, "lost"); //$NON-NLS-1$
+	public static final MessageKind LOST_LITERAL = new MessageKind(LOST, "lost", "lost"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Found</b></em>' literal object.
@@ -119,7 +119,7 @@ public final class MessageKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final MessageKind FOUND_LITERAL = new MessageKind(FOUND, "found"); //$NON-NLS-1$
+	public static final MessageKind FOUND_LITERAL = new MessageKind(FOUND, "found", "found"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Unknown</b></em>' literal object.
@@ -133,7 +133,7 @@ public final class MessageKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final MessageKind UNKNOWN_LITERAL = new MessageKind(UNKNOWN, "unknown"); //$NON-NLS-1$
+	public static final MessageKind UNKNOWN_LITERAL = new MessageKind(UNKNOWN, "unknown", "unknown"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Message Kind</b></em>' enumerators.
@@ -158,15 +158,15 @@ public final class MessageKind extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Message Kind</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Message Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static MessageKind get(String name) {
+	public static MessageKind get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			MessageKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -174,7 +174,23 @@ public final class MessageKind extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Message Kind</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Message Kind</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static MessageKind getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			MessageKind result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Message Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -195,8 +211,8 @@ public final class MessageKind extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private MessageKind(int value, String name) {
-		super(value, name);
+	private MessageKind(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //MessageKind

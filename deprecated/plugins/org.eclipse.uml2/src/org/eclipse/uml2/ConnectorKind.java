@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorKind.java,v 1.5 2005/05/18 16:38:30 khussey Exp $
+ * $Id: ConnectorKind.java,v 1.6 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -69,7 +69,7 @@ public final class ConnectorKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ConnectorKind ASSEMBLY_LITERAL = new ConnectorKind(ASSEMBLY, "assembly"); //$NON-NLS-1$
+	public static final ConnectorKind ASSEMBLY_LITERAL = new ConnectorKind(ASSEMBLY, "assembly", "assembly"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Delegation</b></em>' literal object.
@@ -83,7 +83,7 @@ public final class ConnectorKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final ConnectorKind DELEGATION_LITERAL = new ConnectorKind(DELEGATION, "delegation"); //$NON-NLS-1$
+	public static final ConnectorKind DELEGATION_LITERAL = new ConnectorKind(DELEGATION, "delegation", "delegation"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Connector Kind</b></em>' enumerators.
@@ -106,15 +106,15 @@ public final class ConnectorKind extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Connector Kind</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Connector Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static ConnectorKind get(String name) {
+	public static ConnectorKind get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			ConnectorKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -122,7 +122,23 @@ public final class ConnectorKind extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Connector Kind</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Connector Kind</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ConnectorKind getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			ConnectorKind result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Connector Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -141,8 +157,8 @@ public final class ConnectorKind extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ConnectorKind(int value, String name) {
-		super(value, name);
+	private ConnectorKind(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //ConnectorKind

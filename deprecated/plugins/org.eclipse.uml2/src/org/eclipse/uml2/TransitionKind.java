@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionKind.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: TransitionKind.java,v 1.7 2005/11/04 22:23:05 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -83,7 +83,7 @@ public final class TransitionKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final TransitionKind INTERNAL_LITERAL = new TransitionKind(INTERNAL, "internal"); //$NON-NLS-1$
+	public static final TransitionKind INTERNAL_LITERAL = new TransitionKind(INTERNAL, "internal", "internal"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Local</b></em>' literal object.
@@ -97,7 +97,7 @@ public final class TransitionKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final TransitionKind LOCAL_LITERAL = new TransitionKind(LOCAL, "local"); //$NON-NLS-1$
+	public static final TransitionKind LOCAL_LITERAL = new TransitionKind(LOCAL, "local", "local"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>External</b></em>' literal object.
@@ -111,7 +111,7 @@ public final class TransitionKind extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final TransitionKind EXTERNAL_LITERAL = new TransitionKind(EXTERNAL, "external"); //$NON-NLS-1$
+	public static final TransitionKind EXTERNAL_LITERAL = new TransitionKind(EXTERNAL, "external", "external"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Transition Kind</b></em>' enumerators.
@@ -135,15 +135,15 @@ public final class TransitionKind extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Transition Kind</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Transition Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static TransitionKind get(String name) {
+	public static TransitionKind get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			TransitionKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -151,7 +151,23 @@ public final class TransitionKind extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Transition Kind</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Transition Kind</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static TransitionKind getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			TransitionKind result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Transition Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -171,8 +187,8 @@ public final class TransitionKind extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private TransitionKind(int value, String name) {
-		super(value, name);
+	private TransitionKind(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //TransitionKind

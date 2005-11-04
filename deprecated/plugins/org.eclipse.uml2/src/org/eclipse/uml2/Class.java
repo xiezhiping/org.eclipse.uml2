@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.20 2005/09/27 20:03:02 khussey Exp $
+ * $Id: Class.java,v 1.21 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -154,6 +154,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @generated
 	 */
 	EList getSuperClasses();
+
 
 
 	/**

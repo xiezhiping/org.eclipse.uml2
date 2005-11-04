@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.13 2005/10/04 21:55:13 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.14 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -27,7 +26,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.AcceptCallAction;
 import org.eclipse.uml2.Activity;
@@ -40,6 +38,8 @@ import org.eclipse.uml2.Trigger;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Accept Call Action</b></em>'.
@@ -47,6 +47,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.AcceptCallActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AcceptCallActionImpl#getReturnInformation <em>Return Information</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AcceptCallActionImpl#getTriggers <em>Trigger</em>}</li>
  * </ul>
@@ -89,6 +90,28 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getAcceptCallAction();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOutputs() {
+		if (output == null) {
+			output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACCEPT_CALL_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getAcceptEventAction_Result(), UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation()});
+		}
+		return output;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOutputs() {
+		return super.isSetOutputs()
+			|| eIsSet(UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation());
 	}
 
 	/**
@@ -143,6 +166,14 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 		return trigger;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTriggers() {
+		return trigger != null && !trigger.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -157,115 +188,6 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.ACCEPT_CALL_ACTION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ACCEPT_CALL_ACTION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__INCOMING:
-					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__ACTIVITY:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.ACCEPT_CALL_ACTION__ACTIVITY, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__HANDLER:
-					return ((InternalEList)getHandlers()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.ACCEPT_CALL_ACTION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__INCOMING:
-					return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.ACCEPT_CALL_ACTION__ACTIVITY, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE:
-					return eBasicSetContainer(null, UML2Package.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__HANDLER:
-					return ((InternalEList)getHandlers()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__LOCAL_PRECONDITION:
-					return ((InternalEList)getLocalPreconditions()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__LOCAL_POSTCONDITION:
-					return ((InternalEList)getLocalPostconditions()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.ACCEPT_CALL_ACTION__ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__NODE, Activity.class, msgs);
-				case UML2Package.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE:
-					return eContainer.eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE, StructuredActivityNode.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -527,17 +449,9 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			case UML2Package.ACCEPT_CALL_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())
-					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
-					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition())
-					|| eIsSet(UML2Package.eINSTANCE.getAcceptEventAction_Result())
-					|| eIsSet(UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation());
+				return isSetOwnedElements();
 			case UML2Package.ACCEPT_CALL_ACTION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
+				return isSetOwner();
 			case UML2Package.ACCEPT_CALL_ACTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__TEMPLATE_BINDING:
@@ -555,7 +469,7 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			case UML2Package.ACCEPT_CALL_ACTION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.ACCEPT_CALL_ACTION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.ACCEPT_CALL_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ACCEPT_CALL_ACTION__OUTGOING:
@@ -563,13 +477,11 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			case UML2Package.ACCEPT_CALL_ACTION__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__IN_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+				return isSetInGroups();
 			case UML2Package.ACCEPT_CALL_ACTION__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.ACCEPT_CALL_ACTION__REDEFINED_ELEMENT:
-				return redefinedElement != null && !redefinedElement.isEmpty();
+				return isSetRedefinedElements();
 			case UML2Package.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.ACCEPT_CALL_ACTION__IN_PARTITION:
@@ -581,10 +493,9 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			case UML2Package.ACCEPT_CALL_ACTION__EFFECT:
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.ACCEPT_CALL_ACTION__OUTPUT:
-				return eIsSet(UML2Package.eINSTANCE.getAcceptEventAction_Result())
-					|| eIsSet(UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation());
+				return isSetOutputs();
 			case UML2Package.ACCEPT_CALL_ACTION__INPUT:
-				return !getInputs().isEmpty();
+				return isSetInputs();
 			case UML2Package.ACCEPT_CALL_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.ACCEPT_CALL_ACTION__LOCAL_PRECONDITION:
@@ -599,21 +510,6 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 				return returnInformation != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOutputsHelper(EList output) {
-		super.getOutputsHelper(output);
-		OutputPin returnInformation = basicGetReturnInformation();
-		if (returnInformation != null) {
-			output.add(returnInformation);
-		}
-		return output;
 	}
 
 

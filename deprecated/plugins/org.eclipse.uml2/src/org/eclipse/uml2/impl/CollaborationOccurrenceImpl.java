@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrenceImpl.java,v 1.11 2005/09/23 21:22:54 khussey Exp $
+ * $Id: CollaborationOccurrenceImpl.java,v 1.12 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -32,11 +32,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Collaboration;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Dependency;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,6 +48,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.CollaborationOccurrenceImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CollaborationOccurrenceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CollaborationOccurrenceImpl#getRoleBindings <em>Role Binding</em>}</li>
  * </ul>
@@ -96,6 +100,28 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getCollaborationOccurrence();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.COLLABORATION_OCCURRENCE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding());
 	}
 
 	/**
@@ -192,33 +218,6 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 		}
 		getRoleBindings().add(newRoleBinding);
 		return newRoleBinding;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.COLLABORATION_OCCURRENCE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.COLLABORATION_OCCURRENCE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.COLLABORATION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.COLLABORATION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.COLLABORATION_OCCURRENCE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -386,13 +385,9 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 			case UML2Package.COLLABORATION_OCCURRENCE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.COLLABORATION_OCCURRENCE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding());
+				return isSetOwnedElements();
 			case UML2Package.COLLABORATION_OCCURRENCE__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.COLLABORATION_OCCURRENCE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.COLLABORATION_OCCURRENCE__TEMPLATE_BINDING:
@@ -415,20 +410,6 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 				return roleBinding != null && !roleBinding.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding())) {
-			ownedElement.addAll(getRoleBindings());
-		}
-		return ownedElement;
 	}
 
 

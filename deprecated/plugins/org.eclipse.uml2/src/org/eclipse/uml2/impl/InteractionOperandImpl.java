@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.14 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -410,6 +410,15 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		return super.basicGetNamespace();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -720,17 +729,9 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 			case UML2Package.INTERACTION_OPERAND__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering())
-					|| eIsSet(UML2Package.eINSTANCE.getInteractionOperand_Guard());
+				return isSetOwnedElements();
 			case UML2Package.INTERACTION_OPERAND__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+				return isSetOwner();
 			case UML2Package.INTERACTION_OPERAND__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__TEMPLATE_BINDING:
@@ -748,8 +749,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 			case UML2Package.INTERACTION_OPERAND__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.INTERACTION_OPERAND__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember());
+				return isSetMembers();
 			case UML2Package.INTERACTION_OPERAND__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__IMPORTED_MEMBER:
@@ -828,5 +828,15 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering())
+			|| eIsSet(UML2Package.eINSTANCE.getInteractionOperand_Guard());
+	}
 
 } //InteractionOperandImpl

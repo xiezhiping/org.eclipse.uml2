@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.10 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.11 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -147,49 +147,6 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.VALUE_PIN__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.VALUE_PIN__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.VALUE_PIN__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.VALUE_PIN__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.VALUE_PIN__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.VALUE_PIN__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
-				case UML2Package.VALUE_PIN__INCOMING:
-					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
-				case UML2Package.VALUE_PIN__ACTIVITY:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.VALUE_PIN__ACTIVITY, msgs);
-				case UML2Package.VALUE_PIN__IN_STRUCTURED_NODE:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.VALUE_PIN__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.VALUE_PIN__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
-				case UML2Package.VALUE_PIN__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
@@ -230,25 +187,6 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.VALUE_PIN__ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__NODE, Activity.class, msgs);
-				case UML2Package.VALUE_PIN__IN_STRUCTURED_NODE:
-					return eContainer.eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE, StructuredActivityNode.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -529,15 +467,9 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.VALUE_PIN__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getObjectNode_UpperBound())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
+				return isSetOwnedElements();
 			case UML2Package.VALUE_PIN__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
+				return isSetOwner();
 			case UML2Package.VALUE_PIN__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.VALUE_PIN__TEMPLATE_BINDING:
@@ -555,7 +487,7 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.VALUE_PIN__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.VALUE_PIN__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.VALUE_PIN__OUTGOING:
@@ -563,13 +495,11 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.VALUE_PIN__IN_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+				return isSetInGroups();
 			case UML2Package.VALUE_PIN__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.VALUE_PIN__REDEFINED_ELEMENT:
-				return redefinedElement != null && !redefinedElement.isEmpty();
+				return isSetRedefinedElements();
 			case UML2Package.VALUE_PIN__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.VALUE_PIN__IN_PARTITION:

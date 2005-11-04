@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.13 2005/09/23 21:22:56 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.14 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -96,6 +96,14 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return superGroup == null ? null : (ActivityGroup)eResolveProxy((InternalEObject)superGroup);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSuperGroup() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,6 +151,15 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetActivityGroup_activity() {
+		return getActivityGroup_activity() != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getSubgroups() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -162,6 +179,14 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSubgroups() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,7 +194,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
+		ownedElement.addAll(super.getOwnedElements());
 		EList subgroup = getSubgroups();
 		if (!subgroup.isEmpty()) {
 			for (Iterator i = ((InternalEList) subgroup).basicIterator(); i.hasNext(); ) {
@@ -179,6 +204,34 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement());
+			if (ownedElement == null) {
+				List union = getOwnedElementsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray()));
+			}
+			return ownedElement;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| isSetSubgroups();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -264,6 +317,16 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return super.basicGetOwner();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| isSetSuperGroup()
+			|| isSetActivityGroup_activity();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -272,25 +335,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 */
 	protected EList getSubgroupsHelper(EList subgroup) {
 		return subgroup;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.ACTIVITY_GROUP__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
 
 	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
@@ -302,25 +346,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			default :
 				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.ACTIVITY_GROUP__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY_GROUP__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
@@ -426,15 +451,15 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			case UML2Package.ACTIVITY_GROUP__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_GROUP__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
+				return isSetOwnedElements();
 			case UML2Package.ACTIVITY_GROUP__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity());
+				return isSetOwner();
 			case UML2Package.ACTIVITY_GROUP__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_GROUP__SUPER_GROUP:
-				return basicGetSuperGroup() != null;
+				return isSetSuperGroup();
 			case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
-				return getActivityGroup_activity() != null;
+				return isSetActivityGroup_activity();
 		}
 		return eDynamicIsSet(eFeature);
 	}

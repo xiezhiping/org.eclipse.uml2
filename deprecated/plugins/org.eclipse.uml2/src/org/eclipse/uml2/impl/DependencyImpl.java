@@ -8,19 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.15 2005/09/23 21:22:54 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.16 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import java.util.List;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -32,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.DirectedRelationship;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Relationship;
 import org.eclipse.uml2.StringExpression;
@@ -40,8 +38,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.UnionEObjectEList;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,6 +47,9 @@ import org.eclipse.uml2.common.util.UnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.DependencyImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DependencyImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DependencyImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DependencyImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DependencyImpl#getSuppliers <em>Supplier</em>}</li>
  * </ul>
@@ -64,6 +64,36 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList relatedElement = null;
+
+	/**
+	 * The cached value of the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList source = null;
+
+	/**
+	 * The cached value of the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList target = null;
 
 	/**
 	 * The cached value of the '{@link #getClients() <em>Client</em>}' reference list.
@@ -109,30 +139,30 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
-			if (relatedElement == null) {
-				List union = getRelatedElementsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray()));
-			}
-			return relatedElement;
+		if (relatedElement == null) {
+			relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()});
 		}
-		List union = getRelatedElementsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+		return relatedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRelatedElements() {
+		return isSetSources()
+			|| isSetTargets();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	protected EList getSourcesHelper(EList source) {
-		if (eIsSet(UML2Package.eINSTANCE.getDependency_Client())) {
-			for (Iterator i = ((InternalEList) getClients()).basicIterator(); i.hasNext(); ) {
-				source.add(i.next());
-			}
+	public EList getSources() {
+		if (source == null) {
+			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Client()});
 		}
 		return source;
 	}
@@ -140,33 +170,20 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getSources() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList source = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-			if (source == null) {
-				List union = getSourcesHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray()));
-			}
-			return source;
-		}
-		List union = getSourcesHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
+	public boolean isSetSources() {
+		return eIsSet(UML2Package.eINSTANCE.getDependency_Client());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	protected EList getTargetsHelper(EList target) {
-		if (eIsSet(UML2Package.eINSTANCE.getDependency_Supplier())) {
-			for (Iterator i = ((InternalEList) getSuppliers()).basicIterator(); i.hasNext(); ) {
-				target.add(i.next());
-			}
+	public EList getTargets() {
+		if (target == null) {
+			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Supplier()});
 		}
 		return target;
 	}
@@ -174,22 +191,11 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getTargets() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList target = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-			if (target == null) {
-				List union = getTargetsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray()));
-			}
-			return target;
-		}
-		List union = getTargetsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
+	public boolean isSetTargets() {
+		return eIsSet(UML2Package.eINSTANCE.getDependency_Supplier());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -315,23 +321,6 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.DEPENDENCY__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -501,12 +490,9 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 			case UML2Package.DEPENDENCY__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DEPENDENCY__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+				return isSetOwnedElements();
 			case UML2Package.DEPENDENCY__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+				return isSetOwner();
 			case UML2Package.DEPENDENCY__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.DEPENDENCY__TEMPLATE_BINDING:
@@ -528,13 +514,13 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 			case UML2Package.DEPENDENCY__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DEPENDENCY__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.DEPENDENCY__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return isSetRelatedElements();
 			case UML2Package.DEPENDENCY__SOURCE:
-				return !getSources().isEmpty();
+				return isSetSources();
 			case UML2Package.DEPENDENCY__TARGET:
-				return !getTargets().isEmpty();
+				return isSetTargets();
 			case UML2Package.DEPENDENCY__CLIENT:
 				return client != null && !client.isEmpty();
 			case UML2Package.DEPENDENCY__SUPPLIER:
@@ -547,8 +533,6 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.DEPENDENCY__VISIBILITY:
 				return false;
-			case UML2Package.DEPENDENCY__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
@@ -597,26 +581,5 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getRelatedElementsHelper(EList relatedElement) {
-		EList source = getSources();
-		if (!source.isEmpty()) {
-			for (Iterator i = ((InternalEList) source).basicIterator(); i.hasNext(); ) {
-				relatedElement.add(i.next());
-			}
-		}
-		EList target = getTargets();
-		if (!target.isEmpty()) {
-			for (Iterator i = ((InternalEList) target).basicIterator(); i.hasNext(); ) {
-				relatedElement.add(i.next());
-			}
-		}
-		return relatedElement;
-	}
 
 } //DependencyImpl

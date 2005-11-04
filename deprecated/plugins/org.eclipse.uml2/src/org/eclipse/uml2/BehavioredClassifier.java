@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.13 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -235,6 +235,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @generated
 	 */
 	EList getOwnedStateMachines();
+
 
 
 	/**

@@ -8,20 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.14 2005/09/26 15:54:22 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.15 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
-
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -33,6 +29,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.DirectedRelationship;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Include;
 import org.eclipse.uml2.Relationship;
 import org.eclipse.uml2.StringExpression;
@@ -41,8 +38,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UseCase;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.UnionEObjectEList;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,6 +47,9 @@ import org.eclipse.uml2.common.util.UnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getIncludingCase <em>Including Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getAddition <em>Addition</em>}</li>
  * </ul>
@@ -65,6 +64,36 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList relatedElement = null;
+
+	/**
+	 * The cached value of the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList source = null;
+
+	/**
+	 * The cached value of the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList target = null;
 
 	/**
 	 * The cached value of the '{@link #getAddition() <em>Addition</em>}' reference.
@@ -100,31 +129,20 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
-			if (relatedElement == null) {
-				List union = getRelatedElementsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray()));
-			}
-			return relatedElement;
+		if (relatedElement == null) {
+			relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()});
 		}
-		List union = getRelatedElementsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+		return relatedElement;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getSourcesHelper(EList source) {
-		UseCase includingCase = getIncludingCase();
-		if (includingCase != null) {
-			source.add(includingCase);
-		}
-		return source;
+	public boolean isSetRelatedElements() {
+		return isSetSources()
+			|| isSetTargets();
 	}
 
 	/**
@@ -206,29 +224,29 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getSources() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList source = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-			if (source == null) {
-				List union = getSourcesHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray()));
-			}
-			return source;
+		if (source == null) {
+			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getInclude_IncludingCase()});
 		}
-		List union = getSourcesHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
+		return source;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getTargetsHelper(EList target) {
-		UseCase addition = basicGetAddition();
-		if (addition != null) {
-			target.add(addition);
+	public boolean isSetSources() {
+		return eIsSet(UML2Package.eINSTANCE.getInclude_IncludingCase());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getTargets() {
+		if (target == null) {
+			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getInclude_Addition()});
 		}
 		return target;
 	}
@@ -238,20 +256,9 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList target = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-			if (target == null) {
-				List union = getTargetsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray()));
-			}
-			return target;
-		}
-		List union = getTargetsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
+	public boolean isSetTargets() {
+		return eIsSet(UML2Package.eINSTANCE.getInclude_Addition());
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -471,12 +478,9 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 			case UML2Package.INCLUDE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INCLUDE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+				return isSetOwnedElements();
 			case UML2Package.INCLUDE__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.INCLUDE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INCLUDE__TEMPLATE_BINDING:
@@ -494,12 +498,11 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 			case UML2Package.INCLUDE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.INCLUDE__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getInclude_IncludingCase())
-					|| eIsSet(UML2Package.eINSTANCE.getInclude_Addition());
+				return isSetRelatedElements();
 			case UML2Package.INCLUDE__SOURCE:
-				return eIsSet(UML2Package.eINSTANCE.getInclude_IncludingCase());
+				return isSetSources();
 			case UML2Package.INCLUDE__TARGET:
-				return eIsSet(UML2Package.eINSTANCE.getInclude_Addition());
+				return isSetTargets();
 			case UML2Package.INCLUDE__INCLUDING_CASE:
 				return getIncludingCase() != null;
 			case UML2Package.INCLUDE__ADDITION:
@@ -552,26 +555,5 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getRelatedElementsHelper(EList relatedElement) {
-		EList source = getSources();
-		if (!source.isEmpty()) {
-			for (Iterator i = ((InternalEList) source).basicIterator(); i.hasNext(); ) {
-				relatedElement.add(i.next());
-			}
-		}
-		EList target = getTargets();
-		if (!target.isEmpty()) {
-			for (Iterator i = ((InternalEList) target).basicIterator(); i.hasNext(); ) {
-				relatedElement.add(i.next());
-			}
-		}
-		return relatedElement;
-	}
 
 } //IncludeImpl

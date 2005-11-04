@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.17 2005/09/26 15:54:22 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.18 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.MultiplicityElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.Operation;
@@ -48,6 +49,8 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
 import org.eclipse.uml2.internal.operation.ParameterOperations;
 
@@ -59,6 +62,7 @@ import org.eclipse.uml2.internal.operation.ParameterOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getLower <em>Lower</em>}</li>
@@ -344,6 +348,30 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PARAMETER__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(), UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(), UML2Package.eINSTANCE.getParameter_DefaultValue()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
+			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue())
+			|| eIsSet(UML2Package.eINSTANCE.getParameter_DefaultValue());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -872,6 +900,15 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		return super.basicGetNamespace();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.eINSTANCE.getParameter_Operation());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1226,16 +1263,9 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PARAMETER__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
-					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue())
-					|| eIsSet(UML2Package.eINSTANCE.getParameter_DefaultValue());
+				return isSetOwnedElements();
 			case UML2Package.PARAMETER__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getParameter_Operation());
+				return isSetOwner();
 			case UML2Package.PARAMETER__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PARAMETER__TEMPLATE_BINDING:
@@ -1367,29 +1397,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		result.append(effect);
 		result.append(')');
 		return result.toString();
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		ValueSpecification upperValue = getUpperValue();
-		if (upperValue != null) {
-			ownedElement.add(upperValue);
-		}
-		ValueSpecification lowerValue = getLowerValue();
-		if (lowerValue != null) {
-			ownedElement.add(lowerValue);
-		}
-		ValueSpecification defaultValue = getDefaultValue();
-		if (defaultValue != null) {
-			ownedElement.add(defaultValue);
-		}
-		return ownedElement;
 	}
 
 

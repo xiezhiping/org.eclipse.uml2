@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.23 2005/10/05 15:24:17 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.24 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
-import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -25,18 +23,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 //import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Extension;
 import org.eclipse.uml2.ExtensionEnd;
 import org.eclipse.uml2.Property;
-import org.eclipse.uml2.StringExpression;
-import org.eclipse.uml2.TemplateParameter;
-import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 
@@ -145,6 +137,15 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedEnds() {
+		return ownedEnd != null && !ownedEnd.isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 * @deprecated Use #createOwnedEnd() instead.
 	 */
@@ -184,129 +185,6 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.EXTENSION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.EXTENSION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.EXTENSION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__TEMPLATE_PARAMETER:
-					if (templateParameter != null)
-						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
-				case UML2Package.EXTENSION__OWNING_PARAMETER:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.EXTENSION__OWNING_PARAMETER, msgs);
-				case UML2Package.EXTENSION__GENERALIZATION:
-					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__USE_CASE:
-					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__OWNED_END:
-					return ((InternalEList)getOwnedEnds()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXTENSION__MEMBER_END:
-					return ((InternalEList)getMemberEnds()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.EXTENSION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.EXTENSION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.EXTENSION__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__TEMPLATE_PARAMETER:
-					return basicSetTemplateParameter(null, msgs);
-				case UML2Package.EXTENSION__OWNING_PARAMETER:
-					return eBasicSetContainer(null, UML2Package.EXTENSION__OWNING_PARAMETER, msgs);
-				case UML2Package.EXTENSION__GENERALIZATION:
-					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__OWNED_USE_CASE:
-					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__USE_CASE:
-					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__OCCURRENCE:
-					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__OWNED_END:
-					return ((InternalEList)getOwnedEnds()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXTENSION__MEMBER_END:
-					return ((InternalEList)getMemberEnds()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.EXTENSION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -412,227 +290,14 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.EXTENSION__EANNOTATIONS:
-				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__OWNED_COMMENT:
-				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__TEMPLATE_BINDING:
-				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__OWNED_TEMPLATE_SIGNATURE:
-				setOwnedTemplateSignature((TemplateSignature)newValue);
-				return;
-			case UML2Package.EXTENSION__NAME:
-				setName((String)newValue);
-				return;
-			case UML2Package.EXTENSION__VISIBILITY:
-				setVisibility((VisibilityKind)newValue);
-				return;
-			case UML2Package.EXTENSION__CLIENT_DEPENDENCY:
-				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__NAME_EXPRESSION:
-				setNameExpression((StringExpression)newValue);
-				return;
-			case UML2Package.EXTENSION__OWNED_RULE:
-				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__ELEMENT_IMPORT:
-				getElementImports().clear();
-				getElementImports().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__PACKAGE_IMPORT:
-				getPackageImports().clear();
-				getPackageImports().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__TEMPLATE_PARAMETER:
-				setTemplateParameter((TemplateParameter)newValue);
-				return;
-			case UML2Package.EXTENSION__OWNING_PARAMETER:
-				setOwningParameter((TemplateParameter)newValue);
-				return;
-			case UML2Package.EXTENSION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				setPackageableElement_visibility((VisibilityKind)newValue);
-				return;
-			case UML2Package.EXTENSION__IS_LEAF:
-				setIsLeaf(((Boolean)newValue).booleanValue());
-				return;
-			case UML2Package.EXTENSION__IS_ABSTRACT:
-				setIsAbstract(((Boolean)newValue).booleanValue());
-				return;
-			case UML2Package.EXTENSION__GENERALIZATION:
-				getGeneralizations().clear();
-				getGeneralizations().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__REDEFINED_CLASSIFIER:
-				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__OWNED_USE_CASE:
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__USE_CASE:
-				getUseCases().clear();
-				getUseCases().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__REPRESENTATION:
-				setRepresentation((CollaborationOccurrence)newValue);
-				return;
-			case UML2Package.EXTENSION__OCCURRENCE:
-				getOccurrences().clear();
-				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__IS_DERIVED:
-				setIsDerived(((Boolean)newValue).booleanValue());
-				return;
-			case UML2Package.EXTENSION__OWNED_END:
-				getOwnedEnds().clear();
-				getOwnedEnds().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXTENSION__MEMBER_END:
-				getMemberEnds().clear();
-				getMemberEnds().addAll((Collection)newValue);
-				return;
-		}
-		eDynamicSet(eFeature, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.EXTENSION__EANNOTATIONS:
-				getEAnnotations().clear();
-				return;
-			case UML2Package.EXTENSION__OWNED_COMMENT:
-				getOwnedComments().clear();
-				return;
-			case UML2Package.EXTENSION__TEMPLATE_BINDING:
-				getTemplateBindings().clear();
-				return;
-			case UML2Package.EXTENSION__OWNED_TEMPLATE_SIGNATURE:
-				setOwnedTemplateSignature((TemplateSignature)null);
-				return;
-			case UML2Package.EXTENSION__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case UML2Package.EXTENSION__VISIBILITY:
-				setVisibility(VISIBILITY_EDEFAULT);
-				return;
-			case UML2Package.EXTENSION__CLIENT_DEPENDENCY:
-				getClientDependencies().clear();
-				return;
-			case UML2Package.EXTENSION__NAME_EXPRESSION:
-				setNameExpression((StringExpression)null);
-				return;
-			case UML2Package.EXTENSION__OWNED_RULE:
-				getOwnedRules().clear();
-				return;
-			case UML2Package.EXTENSION__ELEMENT_IMPORT:
-				getElementImports().clear();
-				return;
-			case UML2Package.EXTENSION__PACKAGE_IMPORT:
-				getPackageImports().clear();
-				return;
-			case UML2Package.EXTENSION__TEMPLATE_PARAMETER:
-				setTemplateParameter((TemplateParameter)null);
-				return;
-			case UML2Package.EXTENSION__OWNING_PARAMETER:
-				setOwningParameter((TemplateParameter)null);
-				return;
-			case UML2Package.EXTENSION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
-				return;
-			case UML2Package.EXTENSION__IS_LEAF:
-				setIsLeaf(IS_LEAF_EDEFAULT);
-				return;
-			case UML2Package.EXTENSION__IS_ABSTRACT:
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
-				return;
-			case UML2Package.EXTENSION__GENERALIZATION:
-				getGeneralizations().clear();
-				return;
-			case UML2Package.EXTENSION__REDEFINED_CLASSIFIER:
-				getRedefinedClassifiers().clear();
-				return;
-			case UML2Package.EXTENSION__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
-			case UML2Package.EXTENSION__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
-			case UML2Package.EXTENSION__OWNED_USE_CASE:
-				getOwnedUseCases().clear();
-				return;
-			case UML2Package.EXTENSION__USE_CASE:
-				getUseCases().clear();
-				return;
-			case UML2Package.EXTENSION__REPRESENTATION:
-				setRepresentation((CollaborationOccurrence)null);
-				return;
-			case UML2Package.EXTENSION__OCCURRENCE:
-				getOccurrences().clear();
-				return;
-			case UML2Package.EXTENSION__IS_DERIVED:
-				setIsDerived(IS_DERIVED_EDEFAULT);
-				return;
-			case UML2Package.EXTENSION__OWNED_END:
-				getOwnedEnds().clear();
-				return;
-			case UML2Package.EXTENSION__MEMBER_END:
-				getMemberEnds().clear();
-				return;
-		}
-		eDynamicUnset(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.EXTENSION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXTENSION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
-					|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
+				return isSetOwnedElements();
 			case UML2Package.EXTENSION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
+				return isSetOwner();
 			case UML2Package.EXTENSION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.EXTENSION__TEMPLATE_BINDING:
@@ -650,12 +315,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.EXTENSION__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd())
-					|| eIsSet(UML2Package.eINSTANCE.getAssociation_MemberEnd());
+				return isSetMembers();
 			case UML2Package.EXTENSION__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.EXTENSION__IMPORTED_MEMBER:
@@ -669,15 +329,15 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.EXTENSION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.EXTENSION__PACKAGE:
 				return getPackage() != null;
 			case UML2Package.EXTENSION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.EXTENSION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.EXTENSION__FEATURE:
-				return eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
+				return isSetFeatures();
 			case UML2Package.EXTENSION__IS_ABSTRACT:
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.EXTENSION__INHERITED_MEMBER:
@@ -687,7 +347,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.EXTENSION__ATTRIBUTE:
-				return !getAttributes().isEmpty();
+				return isSetAttributes();
 			case UML2Package.EXTENSION__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.EXTENSION__SUBSTITUTION:
@@ -703,7 +363,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.EXTENSION__RELATED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getAssociation_EndType());
+				return isSetRelatedElements();
 			case UML2Package.EXTENSION__IS_DERIVED:
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UML2Package.EXTENSION__OWNED_END:
@@ -725,8 +385,6 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.EXTENSION__VISIBILITY:
 				return false;
-			case UML2Package.EXTENSION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}

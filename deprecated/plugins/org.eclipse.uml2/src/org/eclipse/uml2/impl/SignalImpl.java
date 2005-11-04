@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.20 2005/10/04 21:55:12 khussey Exp $
+ * $Id: SignalImpl.java,v 1.21 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -38,6 +38,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Signal</b></em>'.
@@ -45,6 +47,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.SignalImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SignalImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  * </ul>
  * </p>
@@ -85,6 +88,28 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getSignal();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getAttributes() {
+		if (attribute == null) {
+			attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.SIGNAL__ATTRIBUTE, new EStructuralFeature[] {UML2Package.eINSTANCE.getSignal_OwnedAttribute()});
+		}
+		return attribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetAttributes() {
+		return super.isSetAttributes()
+			|| eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute());
 	}
 
 	/**
@@ -148,55 +173,6 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.SIGNAL__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.SIGNAL__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.SIGNAL__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__TEMPLATE_PARAMETER:
-					if (templateParameter != null)
-						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
-				case UML2Package.SIGNAL__OWNING_PARAMETER:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.SIGNAL__OWNING_PARAMETER, msgs);
-				case UML2Package.SIGNAL__GENERALIZATION:
-					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__USE_CASE:
-					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
@@ -241,23 +217,6 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.SIGNAL__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -542,22 +501,9 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SIGNAL__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
-					|| eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute());
+				return isSetOwnedElements();
 			case UML2Package.SIGNAL__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
+				return isSetOwner();
 			case UML2Package.SIGNAL__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.SIGNAL__TEMPLATE_BINDING:
@@ -575,11 +521,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.SIGNAL__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute());
+				return isSetMembers();
 			case UML2Package.SIGNAL__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.SIGNAL__IMPORTED_MEMBER:
@@ -593,15 +535,15 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.SIGNAL__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.SIGNAL__PACKAGE:
 				return getPackage() != null;
 			case UML2Package.SIGNAL__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.SIGNAL__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.SIGNAL__FEATURE:
-				return eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute());
+				return isSetFeatures();
 			case UML2Package.SIGNAL__IS_ABSTRACT:
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.SIGNAL__INHERITED_MEMBER:
@@ -611,7 +553,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.SIGNAL__ATTRIBUTE:
-				return eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute());
+				return isSetAttributes();
 			case UML2Package.SIGNAL__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.SIGNAL__SUBSTITUTION:
@@ -637,25 +579,9 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.SIGNAL__VISIBILITY:
 				return false;
-			case UML2Package.SIGNAL__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getAttributesHelper(EList attribute) {
-		super.getAttributesHelper(attribute);
-		if (eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute())) {
-			attribute.addAll(getOwnedAttributes());
-		}
-		return attribute;
-	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -670,5 +596,14 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 		return ownedMember;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedMembers() {
+		return super.isSetOwnedMembers()
+			|| eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute());
+	}
 
 } //SignalImpl

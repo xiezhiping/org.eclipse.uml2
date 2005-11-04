@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.20 2005/09/26 15:54:22 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.21 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -44,6 +44,8 @@ import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.NamedElementOperations;
 
 /**
@@ -53,6 +55,7 @@ import org.eclipse.uml2.internal.operation.NamedElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getQualifiedName <em>Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getVisibility <em>Visibility</em>}</li>
@@ -157,6 +160,28 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getNamedElement();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.NAMED_ELEMENT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 	}
 
 	/**
@@ -413,6 +438,14 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		return namespace == null ? null : (Namespace)eResolveProxy((InternalEObject)namespace);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetNamespace() {
+		return basicGetNamespace() != null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -427,6 +460,15 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		return super.basicGetOwner();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| isSetNamespace();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -609,12 +651,9 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 			case UML2Package.NAMED_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.NAMED_ELEMENT__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+				return isSetOwnedElements();
 			case UML2Package.NAMED_ELEMENT__OWNER:
-				return basicGetOwner() != null;
+				return isSetOwner();
 			case UML2Package.NAMED_ELEMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.NAMED_ELEMENT__TEMPLATE_BINDING:
@@ -650,21 +689,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		result.append(visibility);
 		result.append(')');
 		return result.toString();
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		StringExpression nameExpression = getNameExpression();
-		if (nameExpression != null) {
-			ownedElement.add(nameExpression);
-		}
-		return ownedElement;
 	}
 
 

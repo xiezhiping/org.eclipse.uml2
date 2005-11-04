@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.13 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.14 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -38,6 +38,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Activity Partition</b></em>'.
@@ -46,6 +48,7 @@ import org.eclipse.uml2.VisibilityKind;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getSubgroups <em>Subgroup</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getActivityGroup_activity <em>Activity Group activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getContainedEdges <em>Contained Edge</em>}</li>
@@ -201,6 +204,15 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetActivityGroup_activity() {
+		return getActivityGroup_activity() != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isDimension() {
 		return (eFlags & IS_DIMENSION_EFLAG) != 0;
 	}
@@ -254,6 +266,14 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return containedEdge;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetContainedEdges() {
+		return containedEdge != null && !containedEdge.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -282,6 +302,14 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return containedNode;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetContainedNodes() {
+		return containedNode != null && !containedNode.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -310,6 +338,14 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return subgroup;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSubgroups() {
+		return subgroup != null && !subgroup.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -324,6 +360,28 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getActivityPartition_Subgroup()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| isSetSubgroups();
 	}
 
 	/**
@@ -464,20 +522,16 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return super.basicGetOwner();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getActivityPartition_Subgroup())) {
-			ownedElement.addAll(getSubgroups());
-		}
-		return ownedElement;
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| isSetSuperGroup()
+			|| isSetActivityGroup_activity();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -502,6 +556,14 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return superGroup == null ? null : (ActivityGroup)eResolveProxy((InternalEObject)superGroup);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSuperGroup() {
+		return eIsSet(UML2Package.eINSTANCE.getActivityPartition_SuperPartition());
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -803,14 +865,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 			case UML2Package.ACTIVITY_PARTITION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityPartition_Subgroup());
+				return isSetOwnedElements();
 			case UML2Package.ACTIVITY_PARTITION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityPartition_SuperPartition());
+				return isSetOwner();
 			case UML2Package.ACTIVITY_PARTITION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_PARTITION__TEMPLATE_BINDING:
@@ -828,19 +885,19 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 			case UML2Package.ACTIVITY_PARTITION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.ACTIVITY_PARTITION__SUPER_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityPartition_SuperPartition());
+				return isSetSuperGroup();
 			case UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY:
-				return getActivityGroup_activity() != null;
+				return isSetActivityGroup_activity();
 			case UML2Package.ACTIVITY_PARTITION__IS_DIMENSION:
 				return ((eFlags & IS_DIMENSION_EFLAG) != 0) != IS_DIMENSION_EDEFAULT;
 			case UML2Package.ACTIVITY_PARTITION__IS_EXTERNAL:
 				return ((eFlags & IS_EXTERNAL_EFLAG) != 0) != IS_EXTERNAL_EDEFAULT;
 			case UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE:
-				return containedEdge != null && !containedEdge.isEmpty();
+				return isSetContainedEdges();
 			case UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE:
-				return containedNode != null && !containedNode.isEmpty();
+				return isSetContainedNodes();
 			case UML2Package.ACTIVITY_PARTITION__SUBGROUP:
-				return subgroup != null && !subgroup.isEmpty();
+				return isSetSubgroups();
 			case UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION:
 				return getSuperPartition() != null;
 			case UML2Package.ACTIVITY_PARTITION__REPRESENTS:

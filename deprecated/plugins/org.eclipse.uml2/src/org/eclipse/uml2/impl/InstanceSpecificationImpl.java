@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.20 2005/09/26 15:54:22 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.21 2005/11/04 22:23:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -38,6 +38,7 @@ import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.DeployedArtifact;
 import org.eclipse.uml2.Deployment;
 import org.eclipse.uml2.DeploymentTarget;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.InstanceSpecification;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.Slot;
@@ -49,6 +50,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
@@ -63,6 +65,7 @@ import org.eclipse.uml2.internal.operation.InstanceSpecificationOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getDeployedElements <em>Deployed Element</em>}</li>
@@ -138,6 +141,30 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getInstanceSpecification();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		if (ownedElement == null) {
+			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment(), UML2Package.eINSTANCE.getInstanceSpecification_Slot(), UML2Package.eINSTANCE.getInstanceSpecification_Specification()});
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())
+			|| eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Slot())
+			|| eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Specification());
 	}
 
 	/**
@@ -487,23 +514,6 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.INSTANCE_SPECIFICATION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INSTANCE_SPECIFICATION__EANNOTATIONS:
@@ -679,15 +689,9 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			case UML2Package.INSTANCE_SPECIFICATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())
-					|| eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Slot())
-					|| eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Specification());
+				return isSetOwnedElements();
 			case UML2Package.INSTANCE_SPECIFICATION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+				return isSetOwner();
 			case UML2Package.INSTANCE_SPECIFICATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_BINDING:
@@ -709,7 +713,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			case UML2Package.INSTANCE_SPECIFICATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INSTANCE_SPECIFICATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT:
 				return deployment != null && !deployment.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__DEPLOYED_ELEMENT:
@@ -728,8 +732,6 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INSTANCE_SPECIFICATION__VISIBILITY:
 				return false;
-			case UML2Package.INSTANCE_SPECIFICATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}
@@ -774,27 +776,6 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())) {
-			ownedElement.addAll(getDeployments());
-		}
-		if (eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Slot())) {
-			ownedElement.addAll(getSlots());
-		}
-		ValueSpecification specification = getSpecification();
-		if (specification != null) {
-			ownedElement.add(specification);
-		}
-		return ownedElement;
 	}
 
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.14 2005/10/04 21:55:13 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.15 2005/11/04 22:23:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -39,6 +39,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Read Is Classified Object Action</b></em>'.
@@ -46,6 +48,8 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ReadIsClassifiedObjectActionImpl#getOutputs <em>Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ReadIsClassifiedObjectActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReadIsClassifiedObjectActionImpl#isDirect <em>Is Direct</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReadIsClassifiedObjectActionImpl#getClassifier <em>Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReadIsClassifiedObjectActionImpl#getResult <em>Result</em>}</li>
@@ -129,6 +133,50 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getReadIsClassifiedObjectAction();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOutputs() {
+		if (output == null) {
+			output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Result()});
+		}
+		return output;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOutputs() {
+		return super.isSetOutputs()
+			|| eIsSet(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Result());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getInputs() {
+		if (input == null) {
+			input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Object()});
+		}
+		return input;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetInputs() {
+		return super.isSetInputs()
+			|| eIsSet(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Object());
 	}
 
 	/**
@@ -348,51 +396,6 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OWNED_TEMPLATE_SIGNATURE:
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__INCOMING:
-					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__ACTIVITY:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__ACTIVITY, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_STRUCTURED_NODE:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicAdd(otherEnd, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__HANDLER:
-					return ((InternalEList)getHandlers()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
@@ -435,25 +438,6 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__NODE, Activity.class, msgs);
-				case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_STRUCTURED_NODE:
-					return eContainer.eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE, StructuredActivityNode.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -721,17 +705,9 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())
-					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
-					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition())
-					|| eIsSet(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Result())
-					|| eIsSet(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Object());
+				return isSetOwnedElements();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
+				return isSetOwner();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__TEMPLATE_BINDING:
@@ -749,7 +725,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTGOING:
@@ -757,13 +733,11 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_GROUP:
-				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
-					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+				return isSetInGroups();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__REDEFINED_ELEMENT:
-				return redefinedElement != null && !redefinedElement.isEmpty();
+				return isSetRedefinedElements();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_PARTITION:
@@ -775,9 +749,9 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__EFFECT:
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTPUT:
-				return eIsSet(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Result());
+				return isSetOutputs();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__INPUT:
-				return eIsSet(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Object());
+				return isSetInputs();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_PRECONDITION:
@@ -809,36 +783,6 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 		result.append((eFlags & IS_DIRECT_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOutputsHelper(EList output) {
-		super.getOutputsHelper(output);
-		OutputPin result = getResult();
-		if (result != null) {
-			output.add(result);
-		}
-		return output;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getInputsHelper(EList input) {
-		super.getInputsHelper(input);
-		InputPin object = getObject();
-		if (object != null) {
-			input.add(object);
-		}
-		return input;
 	}
 
 

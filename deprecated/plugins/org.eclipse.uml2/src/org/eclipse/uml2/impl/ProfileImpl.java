@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.23 2005/10/26 20:59:34 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.24 2005/11/04 22:22:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -124,6 +124,15 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			ownedMember = new EObjectContainmentEList(PackageableElement.class, this, UML2Package.PROFILE__OWNED_MEMBER);
 		}
 		return ownedMember;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedMembers() {
+		return ownedMember != null && !ownedMember.isEmpty();
 	}
 
 	protected EList ownedStereotype = null;
@@ -291,23 +300,6 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.PROFILE__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -546,21 +538,9 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROFILE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageMerge())
-					|| eIsSet(UML2Package.eINSTANCE.getPackage_AppliedProfile())
-					|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageExtension())
-					|| eIsSet(UML2Package.eINSTANCE.getProfile_MetaclassReference())
-					|| eIsSet(UML2Package.eINSTANCE.getProfile_MetamodelReference());
+				return isSetOwnedElements();
 			case UML2Package.PROFILE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getPackage_NestingPackage());
+				return isSetOwner();
 			case UML2Package.PROFILE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROFILE__TEMPLATE_BINDING:
@@ -578,8 +558,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.PROFILE__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember());
+				return isSetMembers();
 			case UML2Package.PROFILE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.PROFILE__IMPORTED_MEMBER:
@@ -593,7 +572,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PROFILE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.PROFILE__NESTED_PACKAGE:
 				return !getNestedPackages().isEmpty();
 			case UML2Package.PROFILE__NESTING_PACKAGE:
@@ -601,7 +580,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__OWNED_TYPE:
 				return !getOwnedTypes().isEmpty();
 			case UML2Package.PROFILE__OWNED_MEMBER:
-				return ownedMember != null && !ownedMember.isEmpty();
+				return isSetOwnedMembers();
 			case UML2Package.PROFILE__PACKAGE_MERGE:
 				return packageMerge != null && !packageMerge.isEmpty();
 			case UML2Package.PROFILE__APPLIED_PROFILE:
@@ -621,16 +600,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.PROFILE__OWNED_ELEMENT:
-				return eIsSetGen(eFeature)
-					|| eIsSetGen(UML2Package.eINSTANCE.getPackage_OwnedMember());
 			case UML2Package.PROFILE__VISIBILITY:
 				return false;
-			case UML2Package.PROFILE__MEMBER:
-				return eIsSetGen(eFeature)
-					|| eIsSetGen(UML2Package.eINSTANCE.getPackage_OwnedMember());
-			case UML2Package.PROFILE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}
 		return eIsSetGen(eFeature);
 	}

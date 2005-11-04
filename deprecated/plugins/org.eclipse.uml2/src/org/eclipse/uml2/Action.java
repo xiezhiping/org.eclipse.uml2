@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.9 2005/10/04 21:55:15 khussey Exp $
+ * $Id: Action.java,v 1.11 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -90,6 +90,7 @@ public interface Action extends ExecutableNode{
 	EList getOutputs();
 
 
+
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Output</b></em>' reference list.
 	 * <!-- begin-user-doc -->
@@ -116,6 +117,7 @@ public interface Action extends ExecutableNode{
 	 * @generated
 	 */
 	EList getInputs();
+
 
 
 	/**

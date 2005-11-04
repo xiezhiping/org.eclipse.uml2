@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationAction.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: TimeObservationAction.java,v 1.9 2005/11/04 22:23:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,6 +62,7 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	 * @generated
 	 */
 	EList getNows();
+
 
 
 	/**

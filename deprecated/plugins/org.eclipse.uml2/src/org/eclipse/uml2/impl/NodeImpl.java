@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.27 2005/10/04 21:55:12 khussey Exp $
+ * $Id: NodeImpl.java,v 1.28 2005/11/04 22:23:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -227,6 +227,14 @@ public class NodeImpl extends ClassImpl implements Node {
 		return nestedNode;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNestedNodes() {
+		return nestedNode != null && !nestedNode.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -431,23 +439,6 @@ public class NodeImpl extends ClassImpl implements Node {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.NODE__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -857,32 +848,9 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.NODE__OWNED_ELEMENT:
-				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
-					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
-					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
-					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())
-					|| eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment());
+				return isSetOwnedElements();
 			case UML2Package.NODE__OWNER:
-				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
-					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
+				return isSetOwner();
 			case UML2Package.NODE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.NODE__TEMPLATE_BINDING:
@@ -900,19 +868,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.NODE__MEMBER:
-				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
-					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
-					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
-					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception());
+				return isSetMembers();
 			case UML2Package.NODE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.NODE__IMPORTED_MEMBER:
@@ -926,19 +882,15 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.NODE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return isSetPackageableElement_visibility();
 			case UML2Package.NODE__PACKAGE:
 				return getPackage() != null;
 			case UML2Package.NODE__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return isSetRedefinitionContexts();
 			case UML2Package.NODE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.NODE__FEATURE:
-				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
-					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
-					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception());
+				return isSetFeatures();
 			case UML2Package.NODE__IS_ABSTRACT:
 				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.NODE__INHERITED_MEMBER:
@@ -948,7 +900,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.NODE__ATTRIBUTE:
-				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
+				return isSetAttributes();
 			case UML2Package.NODE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.NODE__SUBSTITUTION:
@@ -972,13 +924,13 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OWNED_TRIGGER:
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.NODE__OWNED_STATE_MACHINE:
-				return !getOwnedStateMachines().isEmpty();
+				return isSetOwnedStateMachines();
 			case UML2Package.NODE__OWNED_ATTRIBUTE:
 				return !getOwnedAttributes().isEmpty();
 			case UML2Package.NODE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.NODE__ROLE:
-				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
+				return isSetRoles();
 			case UML2Package.NODE__OWNED_CONNECTOR:
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.NODE__OWNED_PORT:
@@ -986,7 +938,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.NODE__SUPER_CLASS:
-				return !getSuperClasses().isEmpty();
+				return isSetSuperClasses();
 			case UML2Package.NODE__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.NODE__NESTED_CLASSIFIER:
@@ -1000,7 +952,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();
 			case UML2Package.NODE__NESTED_NODE:
-				return nestedNode != null && !nestedNode.isEmpty();
+				return isSetNestedNodes();
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -1009,12 +961,8 @@ public class NodeImpl extends ClassImpl implements Node {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.NODE__VISIBILITY:
 				return false;
-			case UML2Package.NODE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.NODE__OWNED_BEHAVIOR:
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.NODE__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.NODE__NESTED_CLASSIFIER:
 				return false;
 			case UML2Package.NODE__OWNED_ATTRIBUTE:
@@ -1069,6 +1017,15 @@ public class NodeImpl extends ClassImpl implements Node {
 		return ownedElement;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment());
+	}
 
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
