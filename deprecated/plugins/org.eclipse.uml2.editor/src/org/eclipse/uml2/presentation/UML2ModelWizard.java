@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ModelWizard.java,v 1.10 2005/06/06 19:32:46 khussey Exp $
+ * $Id: UML2ModelWizard.java,v 1.11 2005/11/04 22:18:22 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -114,7 +114,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UML2Package umL2Package = UML2Package.eINSTANCE;
+	protected UML2Package uml2Package = UML2Package.eINSTANCE;
 
 	/**
 	 * This caches an instance of the model factory.
@@ -122,7 +122,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UML2Factory umL2Factory = umL2Package.getUML2Factory();
+	protected UML2Factory uml2Factory = uml2Package.getUML2Factory();
 
 	/**
 	 * This is the file creation page.
@@ -186,7 +186,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	protected Collection getInitialObjectNamesGen() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList();
-			for (Iterator classifiers = umL2Package.getEClassifiers().iterator(); classifiers.hasNext(); ) {
+			for (Iterator classifiers = uml2Package.getEClassifiers().iterator(); classifiers.hasNext(); ) {
 				EClassifier eClassifier = (EClassifier)classifiers.next();
 				if (eClassifier instanceof EClass) {
 					EClass eClass = (EClass)eClassifier;
@@ -203,8 +203,8 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	protected Collection getInitialObjectNames() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList();
-			initialObjectNames.add(umL2Package.getModel().getName());
-			initialObjectNames.add(umL2Package.getProfile().getName());
+			initialObjectNames.add(uml2Package.getModel().getName());
+			initialObjectNames.add(uml2Package.getProfile().getName());
 		}
 		return initialObjectNames;
 	}
@@ -216,8 +216,8 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass)umL2Package.getEClassifier(initialObjectCreationPage.getInitialObjectName());
-		EObject rootObject = umL2Factory.create(eClass);
+		EClass eClass = (EClass)uml2Package.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		EObject rootObject = uml2Factory.create(eClass);
 		return rootObject;
 	}
 
