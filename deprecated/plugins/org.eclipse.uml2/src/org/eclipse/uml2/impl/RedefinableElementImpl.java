@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.16 2005/11/04 22:23:01 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.17 2005/11/08 18:26:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -38,7 +38,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
@@ -161,7 +161,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 */
 	public EList getRedefinitionContexts() {
 		if (redefinitionContext == null) {
-			redefinitionContext = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, new EStructuralFeature[] {});
+			redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()});
 		}
 		return redefinitionContext;
 	}
@@ -433,19 +433,6 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		result.append((eFlags & IS_LEAF_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected EList getRedefinitionContextsHelper(EList redefinitionContext) {
-		if (eContainer instanceof Classifier) {
-			redefinitionContext.add(eContainer);
-		}
-		return redefinitionContext;
 	}
 
 } //RedefinableElementImpl

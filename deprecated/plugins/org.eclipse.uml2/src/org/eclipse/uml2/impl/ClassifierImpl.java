@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.32 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.33 2005/11/08 18:26:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -69,6 +69,7 @@ import org.eclipse.uml2.UseCase;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentEList;
@@ -480,11 +481,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public EList getRedefinitionContexts() {
 		if (redefinitionContext == null) {
-			redefinitionContext = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.CLASSIFIER__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()}) {
-				protected boolean isIncluded(EStructuralFeature feature) {
-					return dataClass.isAssignableFrom(feature.getEType().getInstanceClass());
-				}
-			};
+			redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.CLASSIFIER__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()});
 		}
 		return redefinitionContext;
 	}
@@ -1210,18 +1207,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.eINSTANCE.getType_Package());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected EList getRedefinitionContextsHelper(EList redefinitionContext) {
-		if (eContainer instanceof Classifier) {
-			redefinitionContext.add(eContainer);
-		}
-		return redefinitionContext;
 	}
 
 	/**
