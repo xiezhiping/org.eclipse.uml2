@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.12 2005/10/19 19:42:10 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.13 2005/11/09 22:48:00 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -143,6 +143,7 @@ public final class NamespaceOperations extends UML2Operations {
 					namesOfMember.add(name);
 				}
 			} else {
+				Set elementImportNames = new HashSet();
 
 				for (Iterator elementImports = namespace.getElementImports()
 					.iterator(); elementImports.hasNext();) {
@@ -154,12 +155,12 @@ public final class NamespaceOperations extends UML2Operations {
 						String name = elementImport.getName();
 
 						if (!isEmpty(name)) {
-							namesOfMember.add(name);
+							elementImportNames.add(name);
 						}
 					}
 				}
 
-				if (namesOfMember.isEmpty()) {
+				if (elementImportNames.isEmpty()) {
 
 					for (Iterator packageImports = namespace
 						.getPackageImports().iterator(); packageImports
