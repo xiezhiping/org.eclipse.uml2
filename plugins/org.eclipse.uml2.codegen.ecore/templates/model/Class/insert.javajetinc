@@ -28,15 +28,21 @@
 	{
     <%for (Iterator j = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();%>
       <%if (!genClass.getExtendedGenFeatures().contains(subsetGenFeature)) {%>
-        <%if (genClass.isField(subsetGenFeature)) {%>
-		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+        <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
+		if (isSet<%=subsetGenFeature.getAccessorName()%>()) {
 			return <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();
 		}
         <%} else {%>
+          <%if (genClass.isField(subsetGenFeature)) {%>
+		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+			return <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();
+		}
+          <%} else {%>
 		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();			
 		if (<%=subsetGenFeature.getSafeName()%> != null) {
 			return <%=subsetGenFeature.getSafeName()%>;
 		}
+          <%}%>
         <%}%>
       <%}%>
     <%}%>
@@ -77,37 +83,57 @@
           <%if (!genClass.getExtendedGenFeatures().contains(subsetGenFeature)) {%>
             <%if (subsetGenFeature.isListType()) {%>
               <%if (subsetGenFeature.isResolveProxies() || UML2GenModelUtil.isUnion(subsetGenFeature)) {%>
-                <%if (genClass.isField(subsetGenFeature)) {%>
-		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+                <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
+		if (isSet<%=subsetGenFeature.getAccessorName()%>()) {
 			for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); ) {
 				<%=genFeature.getSafeName()%>.add(i.next());
 			}
 		}
                 <%} else {%>
+                  <%if (genClass.isField(subsetGenFeature)) {%>
+		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+			for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); ) {
+				<%=genFeature.getSafeName()%>.add(i.next());
+			}
+		}
+                  <%} else {%>
 		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
 		if (!<%=subsetGenFeature.getSafeName()%>.isEmpty()) {
 			for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getSafeName()%>).basicIterator(); i.hasNext(); ) {
 				<%=genFeature.getSafeName()%>.add(i.next());
 			}
 		}
+                  <%}%>
                 <%}%>
               <%} else {%>
-                <%if (genClass.isField(subsetGenFeature)) {%>
-		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+                <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
+		if (isSet<%=subsetGenFeature.getAccessorName()%>()) {
 			<%=genFeature.getSafeName()%>.addAll(<%=subsetGenFeature.getGetAccessor()%>());
 		}
                 <%} else {%>
+                  <%if (genClass.isField(subsetGenFeature)) {%>
+		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+			<%=genFeature.getSafeName()%>.addAll(<%=subsetGenFeature.getGetAccessor()%>());
+		}
+                  <%} else {%>
 		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
 		if (!<%=subsetGenFeature.getSafeName()%>.isEmpty()) {
 			<%=genFeature.getSafeName()%>.addAll(<%=subsetGenFeature.getSafeName()%>);
 		}
+                  <%}%>
                 <%}%>
               <%}%>
             <%} else {%>
+              <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
+		if (isSet<%=subsetGenFeature.getAccessorName()%>()) {
+			<%=genFeature.getSafeName()%>.add(<%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>());
+		}
+              <%} else {%>
 		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();
 		if (<%=subsetGenFeature.getSafeName()%> != null) {
 			<%=genFeature.getSafeName()%>.add(<%=subsetGenFeature.getSafeName()%>);
 		}
+              <%}%>
             <%}%>
           <%}%>
         <%}%>
@@ -163,15 +189,21 @@
 	{
       <%for (Iterator j = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();%>
         <%if (!genClass.getExtendedGenFeatures().contains(subsetGenFeature)) {%>
-          <%if (genClass.isField(subsetGenFeature) && !subsetGenFeature.isBasicGet()) {%>
-		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+          <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
+		if (isSet<%=subsetGenFeature.getAccessorName()%>()) {
 			return <%=subsetGenFeature.getGetAccessor()%>();
 		}
           <%} else {%>
+            <%if (genClass.isField(subsetGenFeature) && !subsetGenFeature.isBasicGet()) {%>
+		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+			return <%=subsetGenFeature.getGetAccessor()%>();
+		}
+            <%} else {%>
 		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
 		if (<%=subsetGenFeature.getSafeName()%> != null) {
 			return <%=subsetGenFeature.getSafeName()%>;
 		}
+            <%}%>
           <%}%>
         <%}%>
       <%}%>
@@ -180,8 +212,54 @@
 
     <%}%>
   <%}%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSet<%=genFeature.getAccessorName()%>()
+	{
+  <%if (!UML2GenModelUtil.getIsSetSubsetGenFeatures(genClass, genFeature).isEmpty()) { boolean first = true;%>
+    <%if (first && genClass.getExtendedGenFeatures().contains(genFeature)) { first = false;%>
+		return super.isSet<%=genFeature.getAccessorName()%>()
+    <%}%>
+    <%for (Iterator j = UML2GenModelUtil.getIsSetSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();%>
+      <%if (first) { first = false;%>
+        <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
+		return isSet<%=subsetGenFeature.getAccessorName()%>()<%if (!j.hasNext()) {%>;<%}%>
+        <%} else if (UML2GenModelUtil.isDuplicate(subsetGenFeature) && !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {%>
+          <%if (subsetGenFeature.isListType()) {%>
+		return !<%=subsetGenFeature.getGetAccessor()%>().isEmpty()<%if (!j.hasNext()) {%>;<%}%>
+          <%} else {%>
+		return <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>() != null<%if (!j.hasNext()) {%>;<%}%>
+          <%}%>
+        <%} else {%>
+		return eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())<%if (!j.hasNext()) {%>;<%}%>
+        <%}%>
+      <%} else {%>
+        <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
+			|| isSet<%=subsetGenFeature.getAccessorName()%>()<%if (!j.hasNext()) {%>;<%}%>
+        <%} else if (UML2GenModelUtil.isDuplicate(subsetGenFeature) && !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {%>
+          <%if (subsetGenFeature.isListType()) {%>
+			|| !<%=subsetGenFeature.getGetAccessor()%>().isEmpty()<%if (!j.hasNext()) {%>;<%}%>
+          <%} else {%>
+			|| <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>() != null<%if (!j.hasNext()) {%>;<%}%>
+          <%}%>
+        <%} else {%>
+			|| eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())<%if (!j.hasNext()) {%>;<%}%>
+        <%}%>
+      <%}%>
+    <%}%>
+  <%} else {%>
+    <%if (genClass.getExtendedGenFeatures().contains(genFeature)) {%>
+		return super.isSet<%=genFeature.getAccessorName()%>();
+    <%} else {%>
+		return false;
+    <%}%>
+  <%}%>
+	}
+
   <%if (!UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature)) {%>
-<%@ include file="isSetGenFeature.override.javajetinc" fail="silent" %>
 <%@ include file="implementedGenFeature.insert.javajetinc" fail="silent" %>
   <%}%>
 <%}%>
@@ -272,9 +350,6 @@
     <%}%>
 	}
 
-  <%}%>
-  <%if (UML2GenModelUtil.isRedefinition(genFeature)) {%>
-<%@ include file="isSetGenFeature.override.javajetinc" fail="silent" %>
   <%}%>
 <%@ include file="implementedGenFeature.insert.javajetinc" fail="silent" %>
 <%}%>

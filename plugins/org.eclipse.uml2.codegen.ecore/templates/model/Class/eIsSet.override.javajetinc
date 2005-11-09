@@ -9,7 +9,7 @@
 		{
 <%for (Iterator i=genClass.getAllGenFeatures().iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
 			case <%=genClass.getQualifiedFeatureID(genFeature)%>:
-  <%if (UML2GenModelUtil.isUnion(genFeature) || UML2GenModelUtil.isRedefinition(genFeature)) {%>
+  <%if (UML2GenModelUtil.isUnion(genFeature) || UML2GenModelUtil.isRedefinition(genFeature) || UML2GenModelUtil.isRedefined(genClass, genFeature)) {%>
 				return isSet<%=genFeature.getAccessorName()%>();
   <%} else {%>
     <%if (genFeature.isListType() && !genFeature.isUnsettable()) {%>
