@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.33 2005/11/04 22:23:02 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.34 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -161,6 +161,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 		return relatedElement;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -181,6 +182,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 		}
 		return feature;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -215,6 +217,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -239,6 +242,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 		return super.isSetMembers()
 			|| eIsSet(UML2Package.eINSTANCE.getAssociation_MemberEnd());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -434,6 +438,8 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
+				case UML2Package.ASSOCIATION_CLASS__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__OWNED_END:
@@ -447,15 +453,6 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.ASSOCIATION_CLASS__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -943,7 +940,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ASSOCIATION_CLASS__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -962,7 +959,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ASSOCIATION_CLASS__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.ASSOCIATION_CLASS__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__NAME_EXPRESSION:
@@ -992,11 +989,11 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__FEATURE:
 				return isSetFeatures();
 			case UML2Package.ASSOCIATION_CLASS__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.ASSOCIATION_CLASS__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.ASSOCIATION_CLASS__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__ATTRIBUTE:
@@ -1016,7 +1013,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__OWNED_BEHAVIOR:
-				return !getOwnedBehaviors().isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.ASSOCIATION_CLASS__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.ASSOCIATION_CLASS__IMPLEMENTATION:
@@ -1026,7 +1023,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.ASSOCIATION_CLASS__OWNED_ATTRIBUTE:
-				return !getOwnedAttributes().isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.ASSOCIATION_CLASS__PART:
 				return !getParts().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__ROLE:
@@ -1059,18 +1056,6 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				return memberEnd != null && !memberEnd.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.ASSOCIATION_CLASS__VISIBILITY:
-				return false;
-			case UML2Package.ASSOCIATION_CLASS__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.ASSOCIATION_CLASS__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**

@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableClassifierImpl.java,v 1.20 2005/11/04 22:23:02 khussey Exp $
+ * $Id: ParameterableClassifierImpl.java,v 1.21 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.ParameterableClassifier;
 import org.eclipse.uml2.UML2Package;
 
@@ -52,13 +51,5 @@ public abstract class ParameterableClassifierImpl extends ClassifierImpl impleme
 		return UML2Package.eINSTANCE.getParameterableClassifier();
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.PARAMETERABLE_CLASSIFIER__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //ParameterableClassifierImpl

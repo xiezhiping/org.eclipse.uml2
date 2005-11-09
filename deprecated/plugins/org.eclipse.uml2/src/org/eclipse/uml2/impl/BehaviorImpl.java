@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.29 2005/11/04 22:23:00 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.30 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -645,6 +645,8 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
+				case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__CONTEXT:
@@ -662,15 +664,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -1225,7 +1218,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.BEHAVIOR__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1244,7 +1237,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.BEHAVIOR__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.BEHAVIOR__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.BEHAVIOR__NAME_EXPRESSION:
@@ -1274,11 +1267,11 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__FEATURE:
 				return isSetFeatures();
 			case UML2Package.BEHAVIOR__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.BEHAVIOR__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.BEHAVIOR__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.BEHAVIOR__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.BEHAVIOR__ATTRIBUTE:
@@ -1298,7 +1291,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
-				return !getOwnedBehaviors().isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.BEHAVIOR__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.BEHAVIOR__IMPLEMENTATION:
@@ -1308,7 +1301,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.BEHAVIOR__OWNED_ATTRIBUTE:
-				return !getOwnedAttributes().isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.BEHAVIOR__PART:
 				return !getParts().isEmpty();
 			case UML2Package.BEHAVIOR__ROLE:
@@ -1353,18 +1346,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 		return eDynamicIsSet(eFeature);
 	}
 
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.BEHAVIOR__VISIBILITY:
-				return false;
-			case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.BEHAVIOR__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
-		}
-		return eIsSetGen(eFeature);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1406,6 +1387,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			|| eIsSet(UML2Package.eINSTANCE.getBehavior_RedefinedBehavior());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1428,5 +1410,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 		return super.isSetOwnedMembers()
 			|| eIsSet(UML2Package.eINSTANCE.getBehavior_Parameter());
 	}
+
 
 } //BehaviorImpl

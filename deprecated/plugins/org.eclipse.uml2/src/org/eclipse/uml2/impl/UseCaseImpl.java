@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.21 2005/11/04 22:23:01 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.22 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -368,6 +368,8 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
+				case UML2Package.USE_CASE__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__INCLUDE:
 					return ((InternalEList)getIncludes()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__EXTEND:
@@ -383,15 +385,6 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.USE_CASE__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -807,7 +800,7 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.USE_CASE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -826,7 +819,7 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.USE_CASE__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.USE_CASE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.USE_CASE__NAME_EXPRESSION:
@@ -880,7 +873,7 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.USE_CASE__OWNED_BEHAVIOR:
-				return !getOwnedBehaviors().isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.USE_CASE__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.USE_CASE__IMPLEMENTATION:
@@ -901,16 +894,6 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.USE_CASE__VISIBILITY:
-				return false;
-			case UML2Package.USE_CASE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-		}
-		return eIsSetGen(eFeature);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -942,5 +925,6 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			|| eIsSet(UML2Package.eINSTANCE.getUseCase_Extend())
 			|| eIsSet(UML2Package.eINSTANCE.getUseCase_ExtensionPoint());
 	}
+
 
 } //UseCaseImpl

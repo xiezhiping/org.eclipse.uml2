@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.26 2005/11/04 22:22:59 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.27 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -173,6 +173,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		return attribute;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,6 +195,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		}
 		return feature;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -901,7 +903,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INTERFACE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -920,7 +922,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERFACE__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.INTERFACE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERFACE__NAME_EXPRESSION:
@@ -990,14 +992,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	}
 
 
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.INTERFACE__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1038,6 +1032,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			|| eIsSet(UML2Package.eINSTANCE.getInterface_Protocol());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1062,6 +1057,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UML2Package.eINSTANCE.getInterface_RedefinedInterface());
 	}
+
 
 	// <!-- begin-custom-operations -->
 

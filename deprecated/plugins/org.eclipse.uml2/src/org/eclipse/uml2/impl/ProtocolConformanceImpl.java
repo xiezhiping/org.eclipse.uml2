@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.11 2005/11/04 22:23:02 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.12 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -99,6 +99,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 		return source;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -120,6 +121,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 		}
 		return target;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -226,6 +228,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

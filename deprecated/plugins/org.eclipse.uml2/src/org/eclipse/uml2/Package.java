@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.19 2005/11/04 22:23:04 khussey Exp $
+ * $Id: Package.java,v 1.20 2005/11/09 22:53:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -157,7 +157,6 @@ public interface Package extends Namespace, PackageableElement{
 	 * @generated
 	 */
 	EList getOwnedMembers();
-
 
 
 	/**

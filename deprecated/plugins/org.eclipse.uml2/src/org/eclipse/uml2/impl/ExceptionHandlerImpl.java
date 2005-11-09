@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.8 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.9 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -273,6 +273,7 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getExceptionHandler_ProtectedNode());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

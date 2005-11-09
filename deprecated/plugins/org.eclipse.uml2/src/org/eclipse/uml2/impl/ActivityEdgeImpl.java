@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.15 2005/11/04 22:23:00 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.16 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -348,6 +348,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return inGroup;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -369,6 +370,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -453,14 +455,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return redefinedElement;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetRedefinedElements() {
-		return redefinedElement != null && !redefinedElement.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -475,6 +469,15 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedElements() {
+		return redefinedElement != null && !redefinedElement.isEmpty();
 	}
 
 	/**
@@ -683,6 +686,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Activity());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

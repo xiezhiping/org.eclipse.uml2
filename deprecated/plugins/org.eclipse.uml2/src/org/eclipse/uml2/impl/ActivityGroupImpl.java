@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.14 2005/11/04 22:23:04 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -105,6 +105,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return false;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,7 +118,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Activity getActivityGroup_activity() {
 		if (eContainerFeatureID != UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY) return null;
@@ -127,7 +128,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public void setActivityGroup_activity(Activity newActivityGroup_activity) {
 		if (newActivityGroup_activity != eContainer || (eContainerFeatureID != UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY && newActivityGroup_activity != null)) {
@@ -143,6 +144,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, newActivityGroup_activity, newActivityGroup_activity));
+
 	}
 
 
@@ -188,6 +190,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return false;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -195,9 +198,8 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		ownedElement.addAll(super.getOwnedElements());
-		EList subgroup = getSubgroups();
-		if (!subgroup.isEmpty()) {
-			for (Iterator i = ((InternalEList) subgroup).basicIterator(); i.hasNext(); ) {
+		if (isSetSubgroups()) {
+			for (Iterator i = ((InternalEList) getSubgroups()).basicIterator(); i.hasNext(); ) {
 				ownedElement.add(i.next());
 			}
 		}
@@ -233,6 +235,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			|| isSetSubgroups();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -255,6 +258,50 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
+		if (featureID >= 0) {
+			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
+				case UML2Package.ACTIVITY_GROUP__EANNOTATIONS:
+					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+				case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
+				default:
+					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
+			}
+		}
+		if (eContainer != null)
+			msgs = eBasicRemoveFromContainer(msgs);
+		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
+		if (featureID >= 0) {
+			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
+				case UML2Package.ACTIVITY_GROUP__EANNOTATIONS:
+					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTIVITY_GROUP__OWNED_COMMENT:
+					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
+					return eBasicSetContainer(null, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
+				default:
+					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
+			}
+		}
+		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**
@@ -305,14 +352,21 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetActivity() {
+		return getActivity() != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Element basicGetOwner() {
-		ActivityGroup superGroup = basicGetSuperGroup();			
-		if (superGroup != null) {
-			return superGroup;
+		if (isSetSuperGroup()) {
+			return basicGetSuperGroup();
 		}
-		Activity activityGroup_activity = getActivityGroup_activity();			
-		if (activityGroup_activity != null) {
-			return activityGroup_activity;
+		if (isSetActivityGroup_activity()) {
+			return getActivityGroup_activity();
 		}
 		return super.basicGetOwner();
 	}
@@ -328,6 +382,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			|| isSetActivityGroup_activity();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -335,26 +390,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 */
 	protected EList getSubgroupsHelper(EList subgroup) {
 		return subgroup;
-	}
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
-	}
-
-	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
-			default :
-				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**

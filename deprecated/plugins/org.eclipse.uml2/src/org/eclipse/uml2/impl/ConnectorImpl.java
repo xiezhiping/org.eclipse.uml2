@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.13 2005/11/04 22:23:00 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.14 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -159,6 +159,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -623,5 +624,6 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UML2Package.eINSTANCE.getConnector_RedefinedConnector());
 	}
+
 
 } //ConnectorImpl

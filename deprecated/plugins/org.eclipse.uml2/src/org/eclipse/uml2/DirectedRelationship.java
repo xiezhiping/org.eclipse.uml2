@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationship.java,v 1.9 2005/11/04 22:23:04 khussey Exp $
+ * $Id: DirectedRelationship.java,v 1.10 2005/11/09 22:53:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -63,7 +63,6 @@ public interface DirectedRelationship extends Relationship{
 	EList getSources();
 
 
-
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Element}.
@@ -82,7 +81,6 @@ public interface DirectedRelationship extends Relationship{
 	 * @generated
 	 */
 	EList getTargets();
-
 
 
 } // DirectedRelationship

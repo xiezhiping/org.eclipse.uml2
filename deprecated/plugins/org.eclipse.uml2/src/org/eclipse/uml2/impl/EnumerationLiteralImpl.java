@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.11 2005/11/04 22:22:59 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.12 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -130,6 +130,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.eINSTANCE.getEnumerationLiteral_Enumeration());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -415,7 +416,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ENUMERATION_LITERAL__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -434,7 +435,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ENUMERATION_LITERAL__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.ENUMERATION_LITERAL__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__NAME_EXPRESSION:
@@ -461,13 +462,5 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.ENUMERATION_LITERAL__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //EnumerationLiteralImpl

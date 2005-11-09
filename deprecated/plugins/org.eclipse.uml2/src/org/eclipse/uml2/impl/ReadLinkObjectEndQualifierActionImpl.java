@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.15 2005/11/04 22:22:59 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.16 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -126,6 +126,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 		return input;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -147,6 +148,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 		}
 		return output;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

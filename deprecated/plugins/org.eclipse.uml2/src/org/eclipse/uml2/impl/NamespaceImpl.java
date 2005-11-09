@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.23 2005/11/04 22:23:00 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.24 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -153,6 +153,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		return eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
 			|| isSetOwnedMembers();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -469,6 +470,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -497,9 +499,8 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		if (eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())) {
 			ownedElement.addAll(getPackageImports());
 		}
-		EList ownedMember = getOwnedMembers();
-		if (!ownedMember.isEmpty()) {
-			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext(); ) {
+		if (isSetOwnedMembers()) {
+			for (Iterator i = ((InternalEList) getOwnedMembers()).basicIterator(); i.hasNext(); ) {
 				ownedElement.add(i.next());
 			}
 		}
@@ -536,6 +537,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 			|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
 			|| isSetOwnedMembers();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -798,9 +800,8 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 				member.add(i.next());
 			}
 		}
-		EList ownedMember = getOwnedMembers();
-		if (!ownedMember.isEmpty()) {
-			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext(); ) {
+		if (isSetOwnedMembers()) {
+			for (Iterator i = ((InternalEList) getOwnedMembers()).basicIterator(); i.hasNext(); ) {
 				member.add(i.next());
 			}
 		}

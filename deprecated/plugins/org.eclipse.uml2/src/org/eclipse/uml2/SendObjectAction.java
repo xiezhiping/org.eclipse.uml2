@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectAction.java,v 1.8 2005/11/04 22:23:04 khussey Exp $
+ * $Id: SendObjectAction.java,v 1.9 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -116,7 +116,6 @@ public interface SendObjectAction extends InvocationAction{
 	 * @generated
 	 */
 	void setRequest(InputPin value);
-
 
 
 	/**

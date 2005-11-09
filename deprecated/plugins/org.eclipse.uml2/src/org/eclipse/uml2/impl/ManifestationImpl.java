@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.16 2005/11/04 22:23:02 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.17 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -344,7 +344,7 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.MANIFESTATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -363,7 +363,7 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 			case UML2Package.MANIFESTATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.MANIFESTATION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.MANIFESTATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.MANIFESTATION__NAME_EXPRESSION:
@@ -392,13 +392,5 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.MANIFESTATION__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //ManifestationImpl

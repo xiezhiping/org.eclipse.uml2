@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.17 2005/11/04 22:23:00 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.18 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -119,6 +119,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 		return ownedElement;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -148,15 +149,15 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 		return isSetNamespace();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Namespace basicGetContext() {
-		Namespace namespace = getNamespace();			
-		if (namespace != null) {
-			return namespace;
+		if (isSetNamespace()) {
+			return getNamespace();
 		}
 		return null;
 	}
@@ -192,6 +193,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONSTRAINT__NAMESPACE, newNamespace, newNamespace));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -543,7 +545,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.CONSTRAINT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -562,7 +564,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 			case UML2Package.CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONSTRAINT__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.CONSTRAINT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CONSTRAINT__NAME_EXPRESSION:
@@ -585,13 +587,5 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.CONSTRAINT__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //ConstraintImpl

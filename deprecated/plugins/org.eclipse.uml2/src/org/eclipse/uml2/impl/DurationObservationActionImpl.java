@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.14 2005/11/04 22:23:01 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -102,14 +102,6 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 		return duration;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetDurations() {
-		return duration != null && !duration.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,6 +116,15 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetDurations() {
+		return duration != null && !duration.isEmpty();
 	}
 
 	/**
@@ -182,6 +183,15 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 		throw new UnsupportedOperationException();
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetValue() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -495,7 +505,7 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.DURATION_OBSERVATION_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -558,21 +568,13 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 			case UML2Package.DURATION_OBSERVATION_ACTION__OBJECT:
 				return object != null;
 			case UML2Package.DURATION_OBSERVATION_ACTION__VALUE:
-				return getValue() != null;
+				return isSetValue();
 			case UML2Package.DURATION_OBSERVATION_ACTION__DURATION:
 				return isSetDurations();
 		}
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.DURATION_OBSERVATION_ACTION__VALUE:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 	public EList getInputs() {
 		if (input == null) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.14 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -147,6 +147,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		return target;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,6 +169,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		}
 		return source;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -348,6 +350,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getElementImport_ImportingNamespace());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

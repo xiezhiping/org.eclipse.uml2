@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.11 2005/11/04 22:23:04 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.12 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -131,7 +131,6 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	EList getContainedEdges();
 
 
-
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' reference list.
 	 * <!-- begin-user-doc -->
@@ -162,7 +161,6 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	EList getContainedNodes();
 
 
-
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
@@ -191,7 +189,6 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @generated
 	 */
 	EList getSubgroups();
-
 
 
     /**

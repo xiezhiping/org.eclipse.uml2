@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.29 2005/11/04 22:23:00 khussey Exp $
+ * $Id: OperationImpl.java,v 1.30 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -487,6 +487,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return redefinitionContext;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -509,6 +510,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		}
 		return featuringClassifier;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -556,6 +558,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return formalParameter;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetOwnedParameters() {
+		return formalParameter != null && !formalParameter.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -896,6 +907,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1057,15 +1069,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetRaisedExceptions() {
-		return raisedException != null && !raisedException.isEmpty();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
     public Type getRaisedException(String name) {
 		for (Iterator i = getRaisedExceptions().iterator(); i.hasNext(); ) {
 			Type raisedException = (Type) i.next();
@@ -1079,19 +1082,19 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public EList getFormalParameters() {
-		return getOwnedParameters();
+	public boolean isSetRaisedExceptions() {
+		return raisedException != null && !raisedException.isEmpty();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean isSetFormalParameters() {
-		return formalParameter != null && !formalParameter.isEmpty();
+	public EList getFormalParameters() {
+		return getOwnedParameters();
 	}
 
 	/**
@@ -1123,6 +1126,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public boolean isSetFormalParameters() {
+		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public Type basicGetType() {
 		return type();
 	}
@@ -1130,10 +1142,13 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetType() {
-		return basicGetType() != null;
+		return null != returnResult
+			&& 1 == returnResult.size()
+			&& ((Parameter) returnResult.get(0))
+				.eIsSet(UML2Package.eINSTANCE.getTypedElement_Type());
 	}
 
 	/**
@@ -1181,6 +1196,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1216,6 +1232,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			|| eIsSet(UML2Package.eINSTANCE.getOperation_BodyCondition());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1240,6 +1257,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UML2Package.eINSTANCE.getOperation_RedefinedOperation());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1729,7 +1747,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.OPERATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1774,11 +1792,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__PARAMETER:
 				return isSetParameters();
 			case UML2Package.OPERATION__FORMAL_PARAMETER:
-				return !getFormalParameters().isEmpty();
+				return isSetFormalParameters();
 			case UML2Package.OPERATION__RETURN_RESULT:
 				return returnResult != null && !returnResult.isEmpty();
 			case UML2Package.OPERATION__RAISED_EXCEPTION:
-				return !getRaisedExceptions().isEmpty();
+				return isSetRaisedExceptions();
 			case UML2Package.OPERATION__IS_ABSTRACT:
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.OPERATION__METHOD:
@@ -1786,15 +1804,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__CONCURRENCY:
 				return concurrency != CONCURRENCY_EDEFAULT;
 			case UML2Package.OPERATION__TYPE:
-				return basicGetType() != null;
+				return isSetType();
 			case UML2Package.OPERATION__IS_ORDERED:
-				return isOrdered() != IS_ORDERED_EDEFAULT;
+				return isSetIsOrdered();
 			case UML2Package.OPERATION__IS_UNIQUE:
-				return isUnique() != IS_UNIQUE_EDEFAULT;
+				return isSetIsUnique();
 			case UML2Package.OPERATION__LOWER:
-				return getLower() != LOWER_EDEFAULT;
+				return isSetLower();
 			case UML2Package.OPERATION__UPPER:
-				return getUpper() != UPPER_EDEFAULT;
+				return isSetUpper();
 			case UML2Package.OPERATION__UPPER_VALUE:
 				return upperValue != null;
 			case UML2Package.OPERATION__LOWER_VALUE:
@@ -1804,7 +1822,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.OPERATION__OWNED_PARAMETER:
-				return !getOwnedParameters().isEmpty();
+				return isSetOwnedParameters();
 			case UML2Package.OPERATION__CLASS_:
 				return getClass_() != null;
 			case UML2Package.OPERATION__IS_QUERY:
@@ -1821,21 +1839,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 				return bodyCondition != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.OPERATION__FORMAL_PARAMETER:
-				return false;
-			case UML2Package.OPERATION__OWNED_PARAMETER:
-				return formalParameter != null && !formalParameter.isEmpty();
-			case UML2Package.OPERATION__TYPE:
-				return null != returnResult
-					&& 1 == returnResult.size()
-					&& ((Parameter) returnResult.get(0))
-						.eIsSet(UML2Package.eINSTANCE.getTypedElement_Type());
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -1948,6 +1951,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
 			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
 	}
+
 
 	// <!-- begin-custom-operations -->
 

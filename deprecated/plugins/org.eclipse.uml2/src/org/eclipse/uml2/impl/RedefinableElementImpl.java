@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.17 2005/11/08 18:26:42 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.18 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -38,6 +38,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
+//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 
@@ -157,7 +158,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getRedefinitionContexts() {
 		if (redefinitionContext == null) {
@@ -165,6 +166,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		}
 		return redefinitionContext;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,6 +251,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	public boolean isSetRedefinedElements() {
 		return false;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -434,5 +437,6 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //RedefinableElementImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.24 2005/11/04 22:23:02 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.25 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -234,6 +234,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 		return role;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -270,6 +271,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 		return attribute;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -291,6 +293,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 		}
 		return feature;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -329,6 +332,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -336,7 +340,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_Role())) {
+		if (isSetRoles()) {
 			for (Iterator i = ((InternalEList) getRoles()).basicIterator(); i.hasNext(); ) {
 				member.add(i.next());
 			}
@@ -353,6 +357,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 		return super.isSetMembers()
 			|| isSetRoles();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -754,7 +759,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.STRUCTURED_CLASSIFIER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -773,7 +778,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STRUCTURED_CLASSIFIER__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.STRUCTURED_CLASSIFIER__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__NAME_EXPRESSION:
@@ -838,13 +843,5 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.STRUCTURED_CLASSIFIER__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //StructuredClassifierImpl

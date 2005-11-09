@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionActionImpl.java,v 1.14 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ApplyFunctionActionImpl.java,v 1.15 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -128,6 +128,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 		return input;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,6 +150,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 		}
 		return output;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

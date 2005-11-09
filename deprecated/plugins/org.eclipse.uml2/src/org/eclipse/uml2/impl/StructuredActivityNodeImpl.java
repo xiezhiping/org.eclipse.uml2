@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.27 2005/11/04 22:22:59 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.28 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -218,6 +218,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
 			|| isSetOwnedMembers();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -452,6 +453,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return false;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -562,14 +564,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return containedNode;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetContainedNodes() {
-		return containedNode != null && !containedNode.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -584,6 +578,15 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetContainedNodes() {
+		return containedNode != null && !containedNode.isEmpty();
 	}
 
 	/**
@@ -612,14 +615,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return containedEdge;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetContainedEdges() {
-		return containedEdge != null && !containedEdge.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -634,6 +629,15 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetContainedEdges() {
+		return containedEdge != null && !containedEdge.isEmpty();
 	}
 
 	/**
@@ -745,19 +749,18 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return false;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		ActivityGroup superGroup = basicGetSuperGroup();			
-		if (superGroup != null) {
-			return superGroup;
+		if (isSetSuperGroup()) {
+			return basicGetSuperGroup();
 		}
-		Activity activityGroup_activity = getActivityGroup_activity();			
-		if (activityGroup_activity != null) {
-			return activityGroup_activity;
+		if (isSetActivityGroup_activity()) {
+			return getActivityGroup_activity();
 		}
 		return super.basicGetOwner();
 	}
@@ -772,6 +775,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			|| isSetSuperGroup()
 			|| isSetActivityGroup_activity();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -795,10 +799,10 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetActivity() {
-		return getActivity() != null;
+		return false;
 	}
 
 	public void setActivity(Activity newActivity) {
@@ -827,10 +831,10 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetActivityGroup_activity() {
-		return getActivityGroup_activity() != null;
+		return false;
 	}
 
 	/**
@@ -867,6 +871,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			|| eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -895,15 +900,13 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		if (eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())) {
 			ownedElement.addAll(getPackageImports());
 		}
-		EList ownedMember = getOwnedMembers();
-		if (!ownedMember.isEmpty()) {
-			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext(); ) {
+		if (isSetOwnedMembers()) {
+			for (Iterator i = ((InternalEList) getOwnedMembers()).basicIterator(); i.hasNext(); ) {
 				ownedElement.add(i.next());
 			}
 		}
-		EList subgroup = getSubgroups();
-		if (!subgroup.isEmpty()) {
-			for (Iterator i = ((InternalEList) subgroup).basicIterator(); i.hasNext(); ) {
+		if (isSetSubgroups()) {
+			for (Iterator i = ((InternalEList) getSubgroups()).basicIterator(); i.hasNext(); ) {
 				ownedElement.add(i.next());
 			}
 		}
@@ -941,6 +944,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			|| isSetOwnedMembers()
 			|| isSetSubgroups();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -984,6 +988,10 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
+				case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY:
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE:
 					return ((InternalEList)getVariables()).basicAdd(otherEnd, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE:
@@ -997,20 +1005,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * @see org.eclipse.emf.ecore.impl.EObjectImpl#eDynamicInverseAdd(org.eclipse.emf.ecore.InternalEObject, int, java.lang.Class, org.eclipse.emf.common.notify.NotificationChain)
-	 */
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY :
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -1057,6 +1051,8 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
+				case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY:
+					return eBasicSetContainer(null, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE:
 					return ((InternalEList)getVariables()).basicRemove(otherEnd, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE:
@@ -1068,15 +1064,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
-			default :
-				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -1383,7 +1370,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1418,7 +1405,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY:
-				return getActivity() != null;
+				return isSetActivity();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__REDEFINED_ELEMENT:
 				return isSetRedefinedElements();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE:
@@ -1465,16 +1452,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY:
-				return false;
-			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -1557,9 +1534,8 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 				member.add(i.next());
 			}
 		}
-		EList ownedMember = getOwnedMembers();
-		if (!ownedMember.isEmpty()) {
-			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext(); ) {
+		if (isSetOwnedMembers()) {
+			for (Iterator i = ((InternalEList) getOwnedMembers()).basicIterator(); i.hasNext(); ) {
 				member.add(i.next());
 			}
 		}

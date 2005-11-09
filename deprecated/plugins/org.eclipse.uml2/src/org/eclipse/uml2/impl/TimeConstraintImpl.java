@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.11 2005/11/04 22:23:02 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.12 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -169,7 +169,7 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.TIME_CONSTRAINT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -188,7 +188,7 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 			case UML2Package.TIME_CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TIME_CONSTRAINT__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.TIME_CONSTRAINT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TIME_CONSTRAINT__NAME_EXPRESSION:
@@ -204,20 +204,12 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 			case UML2Package.TIME_CONSTRAINT__NAMESPACE:
 				return isSetNamespace();
 			case UML2Package.TIME_CONSTRAINT__SPECIFICATION:
-				return getSpecification() != null;
+				return isSetSpecification();
 			case UML2Package.TIME_CONSTRAINT__CONSTRAINED_ELEMENT:
 				return constrainedElement != null && !constrainedElement.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.TIME_CONSTRAINT__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //TimeConstraintImpl

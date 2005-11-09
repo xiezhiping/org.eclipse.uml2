@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.12 2005/11/04 22:23:01 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.13 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -405,15 +405,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetCovereds() {
-		return covered != null && !covered.isEmpty();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
     public Lifeline getCovered(String name) {
 		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
 			Lifeline covered = (Lifeline) i.next();
@@ -422,6 +413,15 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetCovereds() {
+		return covered != null && !covered.isEmpty();
 	}
 
 	/**
@@ -750,7 +750,7 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			case UML2Package.EVENT_OCCURRENCE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.EVENT_OCCURRENCE__COVERED:
-				return !getCovereds().isEmpty();
+				return isSetCovereds();
 			case UML2Package.EVENT_OCCURRENCE__GENERAL_ORDERING:
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:

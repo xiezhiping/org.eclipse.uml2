@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.16 2005/11/04 22:23:01 khussey Exp $
+ * $Id: CreateLinkObjectActionImpl.java,v 1.17 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -104,6 +104,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 		}
 		return output;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -201,15 +202,6 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetEndData() {
-		return endData != null && !endData.isEmpty();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 * @deprecated Use #createEndData() instead.
 	 */
@@ -234,6 +226,15 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 		}
 		getEndData().add(newEndData);
 		return newEndData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetEndData() {
+		return endData != null && !endData.isEmpty();
 	}
 
 	/**
@@ -588,7 +589,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA:
-				return !getEndData().isEmpty();
+				return isSetEndData();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT:
 				return result != null;
 		}

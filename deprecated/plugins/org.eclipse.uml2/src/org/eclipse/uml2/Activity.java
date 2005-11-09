@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Activity.java,v 1.11 2005/11/09 22:53:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -223,7 +223,7 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Group</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Group()
 	 * @see org.eclipse.uml2.ActivityGroup#getActivityGroup_activity
-	 * @model type="org.eclipse.uml2.ActivityGroup" opposite="activityGroup_activity" containment="true" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ActivityGroup" opposite="activityGroup_activity" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getGroups();

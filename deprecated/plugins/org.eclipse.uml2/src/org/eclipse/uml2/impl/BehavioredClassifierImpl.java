@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.23 2005/11/04 22:23:01 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.24 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -125,7 +125,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOwnedStateMachines()
-	 * @generated NOT
+	 * @generated
 	 * @ordered
 	 */
 	protected EList ownedStateMachine = null;
@@ -158,6 +158,15 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 			ownedBehavior = new SupersetEObjectContainmentWithInverseEList(Behavior.class, this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, new int[] {UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR}, UML2Package.BEHAVIOR__CONTEXT);
 		}
 		return ownedBehavior;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetOwnedBehaviors() {
+		return ownedBehavior != null && !ownedBehavior.isEmpty();
 	}
 
 	/**
@@ -317,7 +326,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList getOwnedStateMachines() {
 		if (ownedStateMachine == null) {
@@ -436,6 +445,8 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
+				case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -443,15 +454,6 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -823,7 +825,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.BEHAVIORED_CLASSIFIER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -842,7 +844,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.BEHAVIORED_CLASSIFIER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.BEHAVIORED_CLASSIFIER__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__NAME_EXPRESSION:
@@ -896,7 +898,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.BEHAVIORED_CLASSIFIER__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR:
-				return !getOwnedBehaviors().isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:
@@ -910,16 +912,6 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	}
 
 
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.BEHAVIORED_CLASSIFIER__VISIBILITY:
-				return false;
-			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-		}
-		return eIsSetGen(eFeature);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -927,9 +919,8 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		EList ownedBehavior = getOwnedBehaviors();
-		if (!ownedBehavior.isEmpty()) {
-			ownedMember.addAll(ownedBehavior);
+		if (isSetOwnedBehaviors()) {
+			ownedMember.addAll(getOwnedBehaviors());
 		}
 		if (eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())) {
 			ownedMember.addAll(getOwnedTriggers());
@@ -944,9 +935,10 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
+			|| isSetOwnedBehaviors()
 			|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -970,6 +962,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation());
 	}
+
 
 	// <!-- begin-custom-operations -->
 

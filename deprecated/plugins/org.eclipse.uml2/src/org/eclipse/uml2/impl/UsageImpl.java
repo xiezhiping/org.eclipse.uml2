@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UsageImpl.java,v 1.10 2005/11/04 22:23:00 khussey Exp $
+ * $Id: UsageImpl.java,v 1.11 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.Usage;
 
@@ -52,13 +51,5 @@ public class UsageImpl extends DependencyImpl implements Usage {
 		return UML2Package.eINSTANCE.getUsage();
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.USAGE__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //UsageImpl

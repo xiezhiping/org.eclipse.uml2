@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.22 2005/11/04 22:23:00 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.23 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -551,7 +551,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ENUMERATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -570,7 +570,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ENUMERATION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.ENUMERATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ENUMERATION__NAME_EXPRESSION:
@@ -634,14 +634,6 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	}
 
 
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.ENUMERATION__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -664,6 +656,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 		return super.isSetOwnedMembers()
 			|| eIsSet(UML2Package.eINSTANCE.getEnumeration_OwnedLiteral());
 	}
+
 
 	// <!-- begin-custom-operations -->
 

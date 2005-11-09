@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.18 2005/11/04 22:22:59 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.19 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -294,6 +294,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		return redefinitionContext;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -361,6 +362,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		}
 		return featuringClassifier;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -462,6 +464,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		return parameter;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -494,7 +497,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		if (eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_Parameter())) {
+		if (isSetParameters()) {
 			for (Iterator i = ((InternalEList) getParameters()).basicIterator(); i.hasNext(); ) {
 				member.add(i.next());
 			}
@@ -511,6 +514,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		return super.isSetMembers()
 			|| isSetParameters();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -538,6 +542,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
 			|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -759,6 +764,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	public boolean isSetRedefinedElements() {
 		return false;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

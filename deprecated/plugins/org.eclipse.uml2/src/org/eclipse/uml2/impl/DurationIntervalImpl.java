@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationIntervalImpl.java,v 1.11 2005/11/04 22:23:00 khussey Exp $
+ * $Id: DurationIntervalImpl.java,v 1.12 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -75,14 +75,6 @@ public class DurationIntervalImpl extends IntervalImpl implements DurationInterv
 		return min;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetMins() {
-		return min != null && !min.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,11 +96,8 @@ public class DurationIntervalImpl extends IntervalImpl implements DurationInterv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMaxes() {
-		if (max == null) {
-			max = new EObjectResolvingEList(Duration.class, this, UML2Package.DURATION_INTERVAL__MAX);
-		}
-		return max;
+	public boolean isSetMins() {
+		return min != null && !min.isEmpty();
 	}
 
 	/**
@@ -116,9 +105,13 @@ public class DurationIntervalImpl extends IntervalImpl implements DurationInterv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetMaxes() {
-		return max != null && !max.isEmpty();
+	public EList getMaxes() {
+		if (max == null) {
+			max = new EObjectResolvingEList(Duration.class, this, UML2Package.DURATION_INTERVAL__MAX);
+		}
+		return max;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +126,15 @@ public class DurationIntervalImpl extends IntervalImpl implements DurationInterv
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetMaxes() {
+		return max != null && !max.isEmpty();
 	}
 
 	/**
@@ -217,9 +219,9 @@ public class DurationIntervalImpl extends IntervalImpl implements DurationInterv
 			case UML2Package.DURATION_INTERVAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DURATION_INTERVAL__MIN:
-				return !getMins().isEmpty();
+				return isSetMins();
 			case UML2Package.DURATION_INTERVAL__MAX:
-				return !getMaxes().isEmpty();
+				return isSetMaxes();
 		}
 		return eDynamicIsSet(eFeature);
 	}

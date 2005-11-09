@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.34 2005/11/04 22:22:59 khussey Exp $
+ * $Id: PackageImpl.java,v 1.35 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -386,14 +386,6 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return ownedMember;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetOwnedMembers() {
-		return ownedMember != null && !ownedMember.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -408,6 +400,15 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedMembers() {
+		return ownedMember != null && !ownedMember.isEmpty();
 	}
 
 	/**
@@ -553,6 +554,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -571,6 +573,15 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		setPackageableElement_visibility(newVisibility);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetVisibility() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -629,6 +640,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.eINSTANCE.getPackage_NestingPackage());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -991,7 +1003,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PACKAGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1010,7 +1022,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PACKAGE__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.PACKAGE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PACKAGE__NAME_EXPRESSION:
@@ -1047,14 +1059,6 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 				return packageExtension != null && !packageExtension.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.PACKAGE__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**

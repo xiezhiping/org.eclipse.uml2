@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.14 2005/11/04 22:23:01 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.15 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -141,6 +141,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -389,6 +390,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.eINSTANCE.getLifeline_Interaction());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

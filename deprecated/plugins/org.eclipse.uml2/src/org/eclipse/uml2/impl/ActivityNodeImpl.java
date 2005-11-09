@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.13 2005/11/04 22:23:02 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.14 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -221,6 +221,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return inGroup;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -277,14 +278,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return redefinedElement;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetRedefinedElements() {
-		return redefinedElement != null && !redefinedElement.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -299,6 +292,15 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedElements() {
+		return redefinedElement != null && !redefinedElement.isEmpty();
 	}
 
 	/**
@@ -397,6 +399,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

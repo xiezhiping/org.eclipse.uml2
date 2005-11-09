@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.15 2005/11/04 22:23:01 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.16 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -125,6 +125,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 		return target;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,6 +147,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 		}
 		return source;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -284,6 +286,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportingNamespace());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

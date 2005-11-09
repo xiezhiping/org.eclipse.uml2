@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.13 2005/11/04 22:23:01 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.14 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -123,6 +123,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -269,6 +270,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getTemplateParameterSubstitution_TemplateBinding());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

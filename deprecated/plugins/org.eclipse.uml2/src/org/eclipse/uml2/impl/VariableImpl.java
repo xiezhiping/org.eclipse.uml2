@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.14 2005/11/04 22:23:00 khussey Exp $
+ * $Id: VariableImpl.java,v 1.15 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -236,6 +236,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -595,6 +596,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getVariable_Scope());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

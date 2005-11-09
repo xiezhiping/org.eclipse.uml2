@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.11 2005/11/04 22:22:59 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.12 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -98,6 +98,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 		return source;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,6 +120,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 		}
 		return target;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -225,6 +227,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

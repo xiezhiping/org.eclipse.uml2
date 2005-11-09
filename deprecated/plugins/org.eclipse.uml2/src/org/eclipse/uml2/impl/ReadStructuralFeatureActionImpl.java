@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionImpl.java,v 1.15 2005/11/04 22:23:00 khussey Exp $
+ * $Id: ReadStructuralFeatureActionImpl.java,v 1.16 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -102,6 +102,7 @@ public class ReadStructuralFeatureActionImpl extends StructuralFeatureActionImpl
 		}
 		return output;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

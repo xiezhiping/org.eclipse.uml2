@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.13 2005/11/04 22:23:01 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.14 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -250,6 +250,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -268,6 +269,15 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 		setPackageableElement_visibility(newVisibility);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetVisibility() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -490,7 +500,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PACKAGEABLE_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -509,7 +519,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 			case UML2Package.PACKAGEABLE_ELEMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PACKAGEABLE_ELEMENT__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PACKAGEABLE_ELEMENT__NAME_EXPRESSION:
@@ -522,14 +532,6 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 				return isSetPackageableElement_visibility();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.PACKAGEABLE_ELEMENT__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.16 2005/11/04 22:23:00 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.17 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -144,6 +144,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 		}
 		return relatedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -485,7 +486,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.DEPENDENCY__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -504,7 +505,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 			case UML2Package.DEPENDENCY__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPENDENCY__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.DEPENDENCY__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEPENDENCY__NAME_EXPRESSION:
@@ -527,14 +528,6 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 				return supplier != null && !supplier.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.DEPENDENCY__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**

@@ -1892,8 +1892,7 @@
       <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStateMachine" ordered="false"
-        upperBound="-1" eType="#//StateMachine" volatile="true" containment="true"
-        eOpposite="#//StateMachine/stateMachine_redefinitionContext">
+        upperBound="-1" eType="#//StateMachine" containment="true" eOpposite="#//StateMachine/stateMachine_redefinitionContext">
       <eAnnotations source="redefines" references="#//BehavioredClassifier/ownedBehavior"/>
     </eStructuralFeatures>
   </eClassifiers>
@@ -1918,8 +1917,7 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="group" ordered="false"
-        upperBound="-1" eType="#//ActivityGroup" volatile="true" containment="true"
-        eOpposite="#//ActivityGroup/activityGroup_activity">
+        upperBound="-1" eType="#//ActivityGroup" containment="true" eOpposite="#//ActivityGroup/activityGroup_activity">
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" ordered="false" upperBound="-1"
@@ -2222,7 +2220,7 @@
       <eAnnotations source="subsets" references="#//Element/owner"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activityGroup_activity"
-        eType="#//Activity" volatile="true" transient="true" eOpposite="#//Activity/group">
+        eType="#//Activity" transient="true" eOpposite="#//Activity/group">
       <eAnnotations source="subsets" references="#//Element/owner"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Activity containing the group."/>
@@ -3533,7 +3531,7 @@
       <eAnnotations source="redefines" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateMachine_redefinitionContext"
-        eType="#//BehavioredClassifier" volatile="true" transient="true" eOpposite="#//BehavioredClassifier/ownedStateMachine">
+        eType="#//BehavioredClassifier" transient="true" eOpposite="#//BehavioredClassifier/ownedStateMachine">
       <eAnnotations source="redefines" references="#//RedefinableElement/redefinitionContext"/>
     </eStructuralFeatures>
   </eClassifiers>

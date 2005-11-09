@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.20 2005/11/04 22:23:01 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.21 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -383,7 +383,7 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INFORMATION_ITEM__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -402,7 +402,7 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 			case UML2Package.INFORMATION_ITEM__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INFORMATION_ITEM__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.INFORMATION_ITEM__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INFORMATION_ITEM__NAME_EXPRESSION:
@@ -461,13 +461,5 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.INFORMATION_ITEM__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //InformationItemImpl

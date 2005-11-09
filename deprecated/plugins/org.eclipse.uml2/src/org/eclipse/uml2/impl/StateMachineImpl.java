@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.29 2005/11/04 22:23:00 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.30 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -276,6 +276,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -341,10 +342,28 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetRedefinedElements() {
+		return !getRedefinedElements().isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getRedefinitionContexts() {
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), 0, Collections.EMPTY_LIST.toArray());
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinitionContexts() {
+		return !getRedefinitionContexts().isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -390,6 +409,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__CONTEXT:
@@ -402,6 +423,10 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 					return basicSetSpecification((BehavioralFeature)otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__REGION:
 					return ((InternalEList)getRegions()).basicAdd(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd, UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -409,19 +434,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			case UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -498,20 +510,13 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 					return ((InternalEList)getRegions()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__CONNECTION_POINT:
 					return ((InternalEList)getConnectionPoints()).basicRemove(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
+					return eBasicSetContainer(null, UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT, msgs);
 				default:
 					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
-				return eBasicSetContainer(null, UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT, msgs);
-			default :
-				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -1026,7 +1031,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.STATE_MACHINE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1045,7 +1050,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STATE_MACHINE__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.STATE_MACHINE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.STATE_MACHINE__NAME_EXPRESSION:
@@ -1075,11 +1080,11 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__FEATURE:
 				return isSetFeatures();
 			case UML2Package.STATE_MACHINE__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.STATE_MACHINE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.STATE_MACHINE__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.STATE_MACHINE__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.STATE_MACHINE__ATTRIBUTE:
@@ -1099,7 +1104,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
-				return !getOwnedBehaviors().isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.STATE_MACHINE__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.STATE_MACHINE__IMPLEMENTATION:
@@ -1109,7 +1114,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
-				return !getOwnedAttributes().isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.STATE_MACHINE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.STATE_MACHINE__ROLE:
@@ -1163,18 +1168,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	}
 
 
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.STATE_MACHINE__VISIBILITY:
-				return false;
-			case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
-		}
-		return eIsSetGen(eFeature);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1201,6 +1194,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			|| eIsSet(UML2Package.eINSTANCE.getStateMachine_Region())
 			|| eIsSet(UML2Package.eINSTANCE.getStateMachine_ConnectionPoint());
 	}
+
 
 	// <!-- begin-custom-operations -->
 

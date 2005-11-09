@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.13 2005/11/04 22:23:01 khussey Exp $
+ * $Id: PinImpl.java,v 1.14 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -184,6 +184,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

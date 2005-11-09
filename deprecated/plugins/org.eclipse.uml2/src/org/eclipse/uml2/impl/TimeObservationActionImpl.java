@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionImpl.java,v 1.14 2005/11/04 22:23:02 khussey Exp $
+ * $Id: TimeObservationActionImpl.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -102,14 +102,6 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 		return now;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetNows() {
-		return now != null && !now.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,6 +116,15 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNows() {
+		return now != null && !now.isEmpty();
 	}
 
 	/**
@@ -182,6 +183,15 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 		throw new UnsupportedOperationException();
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetValue() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -495,7 +505,7 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.TIME_OBSERVATION_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -558,21 +568,13 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 			case UML2Package.TIME_OBSERVATION_ACTION__OBJECT:
 				return object != null;
 			case UML2Package.TIME_OBSERVATION_ACTION__VALUE:
-				return getValue() != null;
+				return isSetValue();
 			case UML2Package.TIME_OBSERVATION_ACTION__NOW:
 				return isSetNows();
 		}
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.TIME_OBSERVATION_ACTION__VALUE:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 	public EList getInputs() {
 		if (input == null) {

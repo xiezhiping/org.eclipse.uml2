@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.29 2005/11/04 22:22:59 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.30 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,6 +79,16 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getGroups() <em>Group</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList group = null;
+
+	/**
 	 * The cached value of the '{@link #getNodes() <em>Node</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -137,16 +147,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @ordered
 	 */
 	protected EList edge = null;
-
-	/**
-	 * The cached value of the '{@link #getGroups() <em>Group</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGroups()
-	 * @generated NOT
-	 * @ordered
-	 */
-	protected EList group = null;
 
 	/**
 	 * The cached value of the '{@link #getActions() <em>Action</em>}' reference list.
@@ -355,7 +355,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList getGroups() {
 		if (group == null) {
@@ -363,6 +363,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		}
 		return group;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -521,6 +522,8 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
+				case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__CONTEXT:
@@ -533,6 +536,8 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return basicSetSpecification((BehavioralFeature)otherEnd, msgs);
 				case UML2Package.ACTIVITY__EDGE:
 					return ((InternalEList)getEdges()).basicAdd(otherEnd, msgs);
+				case UML2Package.ACTIVITY__GROUP:
+					return ((InternalEList)getGroups()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__NODE:
 					return ((InternalEList)getNodes()).basicAdd(otherEnd, msgs);
 				default:
@@ -542,19 +547,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.ACTIVITY__GROUP:
-				return ((InternalEList)getGroups()).basicAdd(otherEnd, msgs);
-			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			case UML2Package.ACTIVITY__STRUCTURED_NODE :
-				return ((InternalEList) getStructuredNodes()).basicAdd(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -638,15 +630,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.ACTIVITY__STRUCTURED_NODE :
-				return ((InternalEList) getStructuredNodes()).basicRemove(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -1175,7 +1158,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ACTIVITY__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1194,7 +1177,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACTIVITY__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.ACTIVITY__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ACTIVITY__NAME_EXPRESSION:
@@ -1224,11 +1207,11 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__FEATURE:
 				return isSetFeatures();
 			case UML2Package.ACTIVITY__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.ACTIVITY__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.ACTIVITY__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.ACTIVITY__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.ACTIVITY__ATTRIBUTE:
@@ -1248,7 +1231,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
-				return !getOwnedBehaviors().isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.ACTIVITY__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.ACTIVITY__IMPLEMENTATION:
@@ -1258,7 +1241,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
-				return !getOwnedAttributes().isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.ACTIVITY__PART:
 				return !getParts().isEmpty();
 			case UML2Package.ACTIVITY__ROLE:
@@ -1306,7 +1289,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__EDGE:
 				return edge != null && !edge.isEmpty();
 			case UML2Package.ACTIVITY__GROUP:
-				return !getGroups().isEmpty();
+				return group != null && !group.isEmpty();
 			case UML2Package.ACTIVITY__NODE:
 				return node != null && !node.isEmpty();
 			case UML2Package.ACTIVITY__ACTION:
@@ -1319,20 +1302,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.ACTIVITY__VISIBILITY:
-				return false;
-			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.ACTIVITY__GROUP:
-				return group != null && !group.isEmpty();
-			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -1367,9 +1336,8 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		if (eIsSet(UML2Package.eINSTANCE.getActivity_Edge())) {
 			ownedElement.addAll(getEdges());
 		}
-		EList group = getGroups();
-		if (!group.isEmpty()) {
-			ownedElement.addAll(group);
+		if (eIsSet(UML2Package.eINSTANCE.getActivity_Group())) {
+			ownedElement.addAll(getGroups());
 		}
 		if (eIsSet(UML2Package.eINSTANCE.getActivity_Node())) {
 			ownedElement.addAll(getNodes());
@@ -1388,5 +1356,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			|| eIsSet(UML2Package.eINSTANCE.getActivity_Group())
 			|| eIsSet(UML2Package.eINSTANCE.getActivity_Node());
 	}
+
 
 } //ActivityImpl

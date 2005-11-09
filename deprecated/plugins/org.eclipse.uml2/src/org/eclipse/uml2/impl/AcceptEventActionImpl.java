@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.13 2005/11/04 22:23:01 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.14 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -105,6 +105,7 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 		}
 		return output;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

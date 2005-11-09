@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.31 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.32 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -315,14 +315,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 		return ownedMember;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetOwnedMembers() {
-		return ownedMember != null && !ownedMember.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -337,6 +329,15 @@ public class ComponentImpl extends ClassImpl implements Component {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedMembers() {
+		return ownedMember != null && !ownedMember.isEmpty();
 	}
 
 	/**
@@ -410,6 +411,8 @@ public class ComponentImpl extends ClassImpl implements Component {
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
+				case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__REALIZATION:
@@ -421,15 +424,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -917,7 +911,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.COMPONENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -936,7 +930,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COMPONENT__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.COMPONENT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.COMPONENT__NAME_EXPRESSION:
@@ -966,11 +960,11 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__FEATURE:
 				return isSetFeatures();
 			case UML2Package.COMPONENT__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.COMPONENT__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.COMPONENT__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.COMPONENT__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.COMPONENT__ATTRIBUTE:
@@ -990,7 +984,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
-				return !getOwnedBehaviors().isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.COMPONENT__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.COMPONENT__IMPLEMENTATION:
@@ -1000,7 +994,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
-				return !getOwnedAttributes().isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.COMPONENT__PART:
 				return !getParts().isEmpty();
 			case UML2Package.COMPONENT__ROLE:
@@ -1033,18 +1027,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return isSetOwnedMembers();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.COMPONENT__VISIBILITY:
-				return false;
-			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**

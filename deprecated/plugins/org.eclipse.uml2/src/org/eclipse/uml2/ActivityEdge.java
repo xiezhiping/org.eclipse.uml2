@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.9 2005/11/04 22:23:04 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.10 2005/11/09 22:53:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -153,7 +153,6 @@ public interface ActivityEdge extends RedefinableElement{
 	EList getInGroups();
 
 
-
 	/**
 	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -207,7 +206,6 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @generated
 	 */
 	EList getRedefinedElements();
-
 
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.15 2005/11/04 22:23:02 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.16 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -135,6 +135,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		return relatedElement;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -230,6 +231,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		return source;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -250,6 +252,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		}
 		return target;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

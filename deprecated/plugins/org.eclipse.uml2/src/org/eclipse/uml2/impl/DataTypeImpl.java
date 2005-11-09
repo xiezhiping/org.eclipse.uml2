@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.25 2005/11/04 22:23:01 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.26 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -125,6 +125,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 		return attribute;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,6 +147,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 		}
 		return feature;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -671,7 +673,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.DATA_TYPE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -690,7 +692,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 			case UML2Package.DATA_TYPE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DATA_TYPE__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.DATA_TYPE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DATA_TYPE__NAME_EXPRESSION:
@@ -752,14 +754,6 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	}
 
 
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.DATA_TYPE__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -786,6 +780,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 			|| eIsSet(UML2Package.eINSTANCE.getDataType_OwnedAttribute())
 			|| eIsSet(UML2Package.eINSTANCE.getDataType_OwnedOperation());
 	}
+
 
 	// <!-- begin-custom-operations -->
 

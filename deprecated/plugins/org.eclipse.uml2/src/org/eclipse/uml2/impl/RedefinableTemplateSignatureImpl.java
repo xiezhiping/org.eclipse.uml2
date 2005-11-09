@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.13 2005/11/04 22:23:02 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.14 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -138,6 +138,7 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -334,6 +335,7 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getTemplateSignature_Template());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

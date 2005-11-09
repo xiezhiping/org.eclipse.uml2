@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PermissionImpl.java,v 1.10 2005/11/04 22:23:00 khussey Exp $
+ * $Id: PermissionImpl.java,v 1.11 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.Permission;
 import org.eclipse.uml2.UML2Package;
 
@@ -52,13 +51,5 @@ public class PermissionImpl extends DependencyImpl implements Permission {
 		return UML2Package.eINSTANCE.getPermission();
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.PERMISSION__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //PermissionImpl

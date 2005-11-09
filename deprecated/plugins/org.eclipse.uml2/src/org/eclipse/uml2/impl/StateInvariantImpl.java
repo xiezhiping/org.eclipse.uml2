@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.16 2005/11/04 22:23:00 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.17 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -106,6 +106,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -211,15 +212,6 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetCovereds() {
-		return covered != null && !covered.isEmpty();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
     public Lifeline getCovered(String name) {
 		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
 			Lifeline covered = (Lifeline) i.next();
@@ -228,6 +220,15 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetCovereds() {
+		return covered != null && !covered.isEmpty();
 	}
 
 	/**
@@ -447,7 +448,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 			case UML2Package.STATE_INVARIANT__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.STATE_INVARIANT__COVERED:
-				return !getCovereds().isEmpty();
+				return isSetCovereds();
 			case UML2Package.STATE_INVARIANT__GENERAL_ORDERING:
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UML2Package.STATE_INVARIANT__ENCLOSING_INTERACTION:

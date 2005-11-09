@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommunicationPathImpl.java,v 1.20 2005/11/04 22:22:59 khussey Exp $
+ * $Id: CommunicationPathImpl.java,v 1.21 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.CommunicationPath;
 import org.eclipse.uml2.UML2Package;
 
@@ -52,13 +51,5 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 		return UML2Package.eINSTANCE.getCommunicationPath();
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.COMMUNICATION_PATH__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //CommunicationPathImpl

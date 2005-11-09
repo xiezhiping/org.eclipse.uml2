@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.18 2005/11/04 22:23:00 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.19 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -360,6 +360,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -909,6 +910,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.eINSTANCE.getParameter_Operation());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

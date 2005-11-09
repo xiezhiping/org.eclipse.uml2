@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.10 2005/11/04 22:23:00 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.11 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -75,14 +75,6 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 		return max;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetMaxes() {
-		return max != null && !max.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,11 +96,8 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMins() {
-		if (min == null) {
-			min = new EObjectResolvingEList(TimeExpression.class, this, UML2Package.TIME_INTERVAL__MIN);
-		}
-		return min;
+	public boolean isSetMaxes() {
+		return max != null && !max.isEmpty();
 	}
 
 	/**
@@ -116,9 +105,13 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetMins() {
-		return min != null && !min.isEmpty();
+	public EList getMins() {
+		if (min == null) {
+			min = new EObjectResolvingEList(TimeExpression.class, this, UML2Package.TIME_INTERVAL__MIN);
+		}
+		return min;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +126,15 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetMins() {
+		return min != null && !min.isEmpty();
 	}
 
 	/**
@@ -217,9 +219,9 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 			case UML2Package.TIME_INTERVAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.TIME_INTERVAL__MIN:
-				return !getMins().isEmpty();
+				return isSetMins();
 			case UML2Package.TIME_INTERVAL__MAX:
-				return !getMaxes().isEmpty();
+				return isSetMaxes();
 		}
 		return eDynamicIsSet(eFeature);
 	}

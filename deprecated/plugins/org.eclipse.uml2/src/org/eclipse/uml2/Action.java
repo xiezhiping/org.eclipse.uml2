@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.11 2005/11/04 22:23:04 khussey Exp $
+ * $Id: Action.java,v 1.12 2005/11/09 22:53:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -90,7 +90,6 @@ public interface Action extends ExecutableNode{
 	EList getOutputs();
 
 
-
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Output</b></em>' reference list.
 	 * <!-- begin-user-doc -->
@@ -117,7 +116,6 @@ public interface Action extends ExecutableNode{
 	 * @generated
 	 */
 	EList getInputs();
-
 
 
 	/**

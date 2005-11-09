@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.13 2005/11/04 22:23:01 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.14 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -137,6 +137,7 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 		}
 		return featuringClassifier;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

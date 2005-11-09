@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.33 2005/11/08 18:26:42 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.34 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -559,6 +559,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return feature;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -590,7 +591,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		if (eIsSet(UML2Package.eINSTANCE.getClassifier_Feature())) {
+		if (isSetFeatures()) {
 			for (Iterator i = ((InternalEList) getFeatures()).basicIterator(); i.hasNext(); ) {
 				member.add(i.next());
 			}
@@ -614,6 +615,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			|| isSetFeatures()
 			|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -645,6 +647,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
 			|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -789,6 +792,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return attribute;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -835,6 +839,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return super.isSetOwnedMembers()
 			|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1140,6 +1145,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1158,6 +1164,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		setPackageableElement_visibility(newVisibility);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetVisibility() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1208,6 +1223,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.eINSTANCE.getType_Package());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1425,6 +1441,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean isSetRedefinedElements() {
 		return eIsSet(UML2Package.eINSTANCE.getClassifier_RedefinedClassifier());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1837,7 +1854,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.CLASSIFIER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1856,7 +1873,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CLASSIFIER__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.CLASSIFIER__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CLASSIFIER__NAME_EXPRESSION:
@@ -1911,14 +1928,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				return occurrence != null && !occurrence.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.CLASSIFIER__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**

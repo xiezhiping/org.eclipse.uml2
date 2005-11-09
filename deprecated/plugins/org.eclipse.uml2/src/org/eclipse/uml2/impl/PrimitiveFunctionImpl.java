@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveFunctionImpl.java,v 1.11 2005/11/04 22:23:01 khussey Exp $
+ * $Id: PrimitiveFunctionImpl.java,v 1.12 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -308,7 +308,7 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PRIMITIVE_FUNCTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -327,7 +327,7 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 			case UML2Package.PRIMITIVE_FUNCTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PRIMITIVE_FUNCTION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.PRIMITIVE_FUNCTION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PRIMITIVE_FUNCTION__NAME_EXPRESSION:
@@ -344,14 +344,6 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.PRIMITIVE_FUNCTION__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**

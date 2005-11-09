@@ -8,15 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionEnvironmentImpl.java,v 1.25 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ExecutionEnvironmentImpl.java,v 1.26 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.ExecutionEnvironment;
 import org.eclipse.uml2.UML2Package;
 
@@ -55,28 +51,5 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 		return UML2Package.eINSTANCE.getExecutionEnvironment();
 	}
 
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.EXECUTION_ENVIRONMENT__VISIBILITY:
-				return false;
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.EXECUTION_ENVIRONMENT__NESTED_CLASSIFIER:
-				return false;
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //ExecutionEnvironmentImpl

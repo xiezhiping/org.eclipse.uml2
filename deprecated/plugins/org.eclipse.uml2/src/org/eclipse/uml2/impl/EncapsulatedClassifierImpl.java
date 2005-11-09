@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.21 2005/11/04 22:22:59 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.22 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -102,6 +102,7 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 		}
 		return feature;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -524,7 +525,7 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ENCAPSULATED_CLASSIFIER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -543,7 +544,7 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 			case UML2Package.ENCAPSULATED_CLASSIFIER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ENCAPSULATED_CLASSIFIER__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION:
@@ -611,14 +612,6 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	}
 
 
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.ENCAPSULATED_CLASSIFIER__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -641,5 +634,6 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 		return super.isSetOwnedMembers()
 			|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort());
 	}
+
 
 } //EncapsulatedClassifierImpl

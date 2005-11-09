@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.16 2005/11/04 22:22:59 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.17 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -175,6 +175,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

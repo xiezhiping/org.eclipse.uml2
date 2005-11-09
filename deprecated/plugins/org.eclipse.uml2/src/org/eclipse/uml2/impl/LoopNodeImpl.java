@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.15 2005/11/04 22:23:01 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.16 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -205,6 +205,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return output;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -226,6 +227,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		}
 		return input;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -626,6 +628,8 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
 				case UML2Package.LOOP_NODE__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
+				case UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY:
+					return eBasicSetContainer(null, UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.LOOP_NODE__VARIABLE:
 					return ((InternalEList)getVariables()).basicRemove(otherEnd, msgs);
 				case UML2Package.LOOP_NODE__CONTAINED_NODE:
@@ -643,15 +647,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
-			default :
-				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -1038,7 +1033,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.LOOP_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1073,7 +1068,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 			case UML2Package.LOOP_NODE__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.LOOP_NODE__ACTIVITY:
-				return getActivity() != null;
+				return isSetActivity();
 			case UML2Package.LOOP_NODE__REDEFINED_ELEMENT:
 				return isSetRedefinedElements();
 			case UML2Package.LOOP_NODE__IN_STRUCTURED_NODE:
@@ -1140,16 +1135,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return eDynamicIsSet(eFeature);
 	}
 
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.LOOP_NODE__ACTIVITY:
-				return false;
-			case UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1188,5 +1173,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.eINSTANCE.getLoopNode_LoopVariable());
 	}
+
 
 } //LoopNodeImpl

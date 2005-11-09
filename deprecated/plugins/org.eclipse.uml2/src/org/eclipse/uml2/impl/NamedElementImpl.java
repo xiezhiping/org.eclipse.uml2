@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.21 2005/11/04 22:23:01 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.22 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -173,6 +173,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -453,9 +454,8 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		Namespace namespace = basicGetNamespace();			
-		if (namespace != null) {
-			return namespace;
+		if (isSetNamespace()) {
+			return basicGetNamespace();
 		}
 		return super.basicGetOwner();
 	}
@@ -469,6 +469,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		return super.isSetOwner()
 			|| isSetNamespace();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

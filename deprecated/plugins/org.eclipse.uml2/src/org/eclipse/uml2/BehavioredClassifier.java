@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.13 2005/11/04 22:23:04 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.14 2005/11/09 22:53:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -231,11 +231,10 @@ public interface BehavioredClassifier extends Classifier{
 	 * @return the value of the '<em>Owned State Machine</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedStateMachine()
 	 * @see org.eclipse.uml2.StateMachine#getStateMachine_redefinitionContext
-	 * @model type="org.eclipse.uml2.StateMachine" opposite="stateMachine_redefinitionContext" containment="true" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.StateMachine" opposite="stateMachine_redefinitionContext" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedStateMachines();
-
 
 
 	/**

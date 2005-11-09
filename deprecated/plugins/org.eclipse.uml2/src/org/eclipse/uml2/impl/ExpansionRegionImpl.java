@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.12 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.13 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -237,6 +237,10 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXPANSION_REGION__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
+				case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.EXPANSION_REGION__VARIABLE:
 					return ((InternalEList)getVariables()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXPANSION_REGION__CONTAINED_NODE:
@@ -300,6 +304,8 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXPANSION_REGION__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
+				case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
+					return eBasicSetContainer(null, UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.EXPANSION_REGION__VARIABLE:
 					return ((InternalEList)getVariables()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXPANSION_REGION__CONTAINED_NODE:
@@ -315,15 +321,6 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
-			default :
-				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -656,7 +653,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.EXPANSION_REGION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -691,7 +688,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.EXPANSION_REGION__ACTIVITY:
-				return getActivity() != null;
+				return isSetActivity();
 			case UML2Package.EXPANSION_REGION__REDEFINED_ELEMENT:
 				return isSetRedefinedElements();
 			case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
@@ -744,16 +741,6 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 				return inputElement != null && !inputElement.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.EXPANSION_REGION__ACTIVITY:
-				return false;
-			case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**

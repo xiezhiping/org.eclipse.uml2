@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.16 2005/11/04 22:23:00 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.17 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,6 +114,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 		}
 		return input;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -244,14 +245,6 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetRequest() {
-		return request != null;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -286,10 +279,28 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetRequest() {
+		return request != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getArguments() {
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getInvocationAction_Argument(), 0, Collections.EMPTY_LIST.toArray());
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetArguments() {
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -603,7 +614,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.SEND_OBJECT_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -662,7 +673,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 			case UML2Package.SEND_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__ARGUMENT:
-				return !getArguments().isEmpty();
+				return isSetArguments();
 			case UML2Package.SEND_OBJECT_ACTION__ON_PORT:
 				return onPort != null;
 			case UML2Package.SEND_OBJECT_ACTION__TARGET:
@@ -673,13 +684,5 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.SEND_OBJECT_ACTION__ARGUMENT:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //SendObjectActionImpl

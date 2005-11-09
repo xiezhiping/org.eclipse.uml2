@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.21 2005/11/04 22:23:01 khussey Exp $
+ * $Id: SignalImpl.java,v 1.22 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -101,6 +101,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 		}
 		return attribute;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -496,7 +497,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.SIGNAL__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -515,7 +516,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.SIGNAL__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.SIGNAL__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.SIGNAL__NAME_EXPRESSION:
@@ -575,14 +576,6 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	}
 
 
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.SIGNAL__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -605,5 +598,6 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 		return super.isSetOwnedMembers()
 			|| eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute());
 	}
+
 
 } //SignalImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.17 2005/11/04 22:23:00 khussey Exp $
+ * $Id: RegionImpl.java,v 1.18 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -161,6 +161,15 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinitionContexts() {
+		return !getRedefinitionContexts().isEmpty();
 	}
 
 	/**
@@ -389,6 +398,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -473,19 +483,19 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetRedefinitionContexts() {
-		return !getRedefinitionContexts().isEmpty();
+	public EList getRedefinedElements() {
+		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
-		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
+	public boolean isSetRedefinedElements() {
+		return !getRedefinedElements().isEmpty();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -529,6 +539,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			|| eIsSet(UML2Package.eINSTANCE.getRegion_StateMachine())
 			|| eIsSet(UML2Package.eINSTANCE.getRegion_State());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -958,5 +969,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			|| eIsSet(UML2Package.eINSTANCE.getRegion_Subvertex())
 			|| eIsSet(UML2Package.eINSTANCE.getRegion_Transition());
 	}
+
 
 } //RegionImpl

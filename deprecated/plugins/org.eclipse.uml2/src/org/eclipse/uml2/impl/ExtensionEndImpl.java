@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.12 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.13 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -255,7 +255,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.EXTENSION_END__TYPE:
-				return basicGetType() != null;
+				return isSetType();
 			case UML2Package.EXTENSION_END__IS_ORDERED:
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.EXTENSION_END__IS_UNIQUE:
@@ -269,7 +269,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__LOWER_VALUE:
 				return lowerValue != null;
 			case UML2Package.EXTENSION_END__IS_READ_ONLY:
-				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
+				return isSetIsReadOnly();
 			case UML2Package.EXTENSION_END__TEMPLATE_PARAMETER:
 				return templateParameter != null;
 			case UML2Package.EXTENSION_END__OWNING_PARAMETER:

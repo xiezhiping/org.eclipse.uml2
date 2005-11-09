@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.24 2005/11/04 22:23:02 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.25 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -137,15 +137,6 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetOwnedEnds() {
-		return ownedEnd != null && !ownedEnd.isEmpty();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 * @deprecated Use #createOwnedEnd() instead.
 	 */
@@ -185,6 +176,15 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedEnds() {
+		return ownedEnd != null && !ownedEnd.isEmpty();
 	}
 
 	/**
@@ -290,7 +290,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.EXTENSION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -309,7 +309,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXTENSION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.EXTENSION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.EXTENSION__NAME_EXPRESSION:
@@ -367,7 +367,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__IS_DERIVED:
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UML2Package.EXTENSION__OWNED_END:
-				return !getOwnedEnds().isEmpty();
+				return isSetOwnedEnds();
 			case UML2Package.EXTENSION__END_TYPE:
 				return !getEndTypes().isEmpty();
 			case UML2Package.EXTENSION__MEMBER_END:
@@ -380,13 +380,5 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.EXTENSION__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //ExtensionImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.25 2005/11/04 22:23:02 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.26 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -263,6 +263,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 		return attribute;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -284,6 +285,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 		}
 		return feature;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -322,6 +324,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -329,7 +332,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_Role())) {
+		if (isSetRoles()) {
 			for (Iterator i = ((InternalEList) getRoles()).basicIterator(); i.hasNext(); ) {
 				member.add(i.next());
 			}
@@ -346,6 +349,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 		return super.isSetMembers()
 			|| isSetRoles();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -444,6 +448,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 		return role;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -452,15 +457,6 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	public boolean isSetRoles() {
 		return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
 			|| eIsSet(UML2Package.eINSTANCE.getCollaboration_CollaborationRole());
-	}
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.COLLABORATION__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -867,7 +863,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.COLLABORATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -886,7 +882,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			case UML2Package.COLLABORATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COLLABORATION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.COLLABORATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.COLLABORATION__NAME_EXPRESSION:
@@ -940,7 +936,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			case UML2Package.COLLABORATION__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_BEHAVIOR:
-				return !getOwnedBehaviors().isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.COLLABORATION__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.COLLABORATION__IMPLEMENTATION:
@@ -961,16 +957,6 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				return collaborationRole != null && !collaborationRole.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.COLLABORATION__VISIBILITY:
-				return false;
-			case UML2Package.COLLABORATION__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**

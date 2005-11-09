@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.17 2005/11/04 22:23:00 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.18 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -192,6 +192,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -425,6 +426,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -650,15 +652,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetRedefinitionContexts() {
-		return !getRedefinitionContexts().isEmpty();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
     public Classifier getRedefinitionContext(String name) {
 		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
 			Classifier redefinitionContext = (Classifier) i.next();
@@ -667,6 +660,15 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinitionContexts() {
+		return !getRedefinitionContexts().isEmpty();
 	}
 
 	/**
@@ -692,6 +694,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			|| eIsSet(UML2Package.eINSTANCE.getTransition_Container());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -701,6 +704,15 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedElements() {
+		return !getRedefinedElements().isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

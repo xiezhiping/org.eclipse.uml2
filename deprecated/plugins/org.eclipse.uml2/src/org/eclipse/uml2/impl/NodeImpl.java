@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.28 2005/11/04 22:23:00 khussey Exp $
+ * $Id: NodeImpl.java,v 1.29 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -227,14 +227,6 @@ public class NodeImpl extends ClassImpl implements Node {
 		return nestedNode;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetNestedNodes() {
-		return nestedNode != null && !nestedNode.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,6 +241,15 @@ public class NodeImpl extends ClassImpl implements Node {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNestedNodes() {
+		return nestedNode != null && !nestedNode.isEmpty();
 	}
 
 	/**
@@ -305,6 +306,15 @@ public class NodeImpl extends ClassImpl implements Node {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetNestedClassifiers() {
+		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
@@ -346,6 +356,8 @@ public class NodeImpl extends ClassImpl implements Node {
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
+				case UML2Package.NODE__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__DEPLOYMENT:
@@ -357,15 +369,6 @@ public class NodeImpl extends ClassImpl implements Node {
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.NODE__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -843,7 +846,7 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -862,7 +865,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.NODE__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.NODE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.NODE__NAME_EXPRESSION:
@@ -892,11 +895,11 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__FEATURE:
 				return isSetFeatures();
 			case UML2Package.NODE__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.NODE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.NODE__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.NODE__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.NODE__ATTRIBUTE:
@@ -916,7 +919,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.NODE__OWNED_BEHAVIOR:
-				return !getOwnedBehaviors().isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.NODE__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.NODE__IMPLEMENTATION:
@@ -926,7 +929,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.NODE__OWNED_ATTRIBUTE:
-				return !getOwnedAttributes().isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.NODE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.NODE__ROLE:
@@ -942,7 +945,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.NODE__NESTED_CLASSIFIER:
-				return !getNestedClassifiers().isEmpty();
+				return isSetNestedClassifiers();
 			case UML2Package.NODE__IS_ACTIVE:
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.NODE__OWNED_RECEPTION:
@@ -955,20 +958,6 @@ public class NodeImpl extends ClassImpl implements Node {
 				return isSetNestedNodes();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.NODE__VISIBILITY:
-				return false;
-			case UML2Package.NODE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.NODE__NESTED_CLASSIFIER:
-				return false;
-			case UML2Package.NODE__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -1026,6 +1015,7 @@ public class NodeImpl extends ClassImpl implements Node {
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment());
 	}
+
 
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);

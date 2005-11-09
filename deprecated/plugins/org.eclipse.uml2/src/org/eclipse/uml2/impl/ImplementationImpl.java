@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.17 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.18 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Component;
+//import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.NamedElement;
@@ -41,6 +42,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
@@ -552,7 +554,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.IMPLEMENTATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -571,7 +573,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			case UML2Package.IMPLEMENTATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.IMPLEMENTATION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.IMPLEMENTATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.IMPLEMENTATION__NAME_EXPRESSION:
@@ -606,13 +608,5 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.IMPLEMENTATION__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //ImplementationImpl

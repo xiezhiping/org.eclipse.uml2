@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.12 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.13 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -113,6 +113,7 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

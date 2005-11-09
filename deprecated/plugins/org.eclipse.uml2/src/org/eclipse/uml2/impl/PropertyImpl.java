@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.26 2005/11/04 22:22:59 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.27 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -419,6 +419,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return ownedElement;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -547,6 +548,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		}
 		return featuringClassifier;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1187,6 +1189,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			|| eIsSet(UML2Package.eINSTANCE.getProperty_Datatype());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1211,6 +1214,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UML2Package.eINSTANCE.getProperty_RedefinedProperty());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1239,6 +1243,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
 			|| eIsSet(UML2Package.eINSTANCE.getProperty_AssociationEnd());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1754,7 +1759,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__LOWER_VALUE:
 				return lowerValue != null;
 			case UML2Package.PROPERTY__IS_READ_ONLY:
-				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
+				return isSetIsReadOnly();
 			case UML2Package.PROPERTY__TEMPLATE_PARAMETER:
 				return templateParameter != null;
 			case UML2Package.PROPERTY__OWNING_PARAMETER:

@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveTypeImpl.java,v 1.20 2005/11/04 22:23:02 khussey Exp $
+ * $Id: PrimitiveTypeImpl.java,v 1.21 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.UML2Package;
 
@@ -53,12 +52,4 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 	}
 
 
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.PRIMITIVE_TYPE__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
-	
 } //PrimitiveTypeImpl

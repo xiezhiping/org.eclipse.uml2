@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.11 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.12 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -234,6 +234,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

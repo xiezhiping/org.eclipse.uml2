@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.9 2005/11/04 22:23:04 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.10 2005/11/09 22:53:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -141,7 +141,6 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	EList getContainedNodes();
 
 
-
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -181,7 +180,6 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @generated
 	 */
 	EList getContainedEdges();
-
 
 
 	/**

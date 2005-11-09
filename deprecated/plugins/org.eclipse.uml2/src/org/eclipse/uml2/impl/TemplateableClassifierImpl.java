@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableClassifierImpl.java,v 1.20 2005/11/04 22:22:59 khussey Exp $
+ * $Id: TemplateableClassifierImpl.java,v 1.21 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.TemplateableClassifier;
 import org.eclipse.uml2.UML2Package;
 
@@ -52,13 +51,5 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 		return UML2Package.eINSTANCE.getTemplateableClassifier();
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.TEMPLATEABLE_CLASSIFIER__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 } //TemplateableClassifierImpl

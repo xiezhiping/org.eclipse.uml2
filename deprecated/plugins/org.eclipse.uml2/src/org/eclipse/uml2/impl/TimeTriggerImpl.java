@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeTriggerImpl.java,v 1.14 2005/11/04 22:22:59 khussey Exp $
+ * $Id: TimeTriggerImpl.java,v 1.15 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -120,6 +120,7 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

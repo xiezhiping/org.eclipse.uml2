@@ -8,15 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeviceImpl.java,v 1.25 2005/11/04 22:23:00 khussey Exp $
+ * $Id: DeviceImpl.java,v 1.26 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Device;
 import org.eclipse.uml2.UML2Package;
 
@@ -53,30 +49,6 @@ public class DeviceImpl extends NodeImpl implements Device {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getDevice();
-	}
-
-
-	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.DEVICE__OWNED_STATE_MACHINE:
-				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-			default :
-				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
-		}
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.DEVICE__VISIBILITY:
-				return false;
-			case UML2Package.DEVICE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.DEVICE__NESTED_CLASSIFIER:
-				return false;
-			case UML2Package.DEVICE__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
-		}
-		return eIsSetGen(eFeature);
 	}
 
 } //DeviceImpl

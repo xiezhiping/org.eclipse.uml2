@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.19 2005/11/04 22:23:00 khussey Exp $
+ * $Id: StateImpl.java,v 1.20 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -306,6 +306,15 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetRedefinitionContexts() {
+		return !getRedefinitionContexts().isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isLeaf() {
 		return (eFlags & IS_LEAF_EFLAG) != 0;
 	}
@@ -355,6 +364,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STATE__CONTAINER, newContainer, newContainer));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -592,6 +602,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STATE__REDEFINED_STATE, oldRedefinedState, redefinedState));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1048,6 +1059,15 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return basicGetOwner() != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList getRedefinitionContexts() {
@@ -1084,19 +1104,19 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetRedefinitionContexts() {
-		return !getRedefinitionContexts().isEmpty();
+	public EList getRedefinedElements() {
+		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
-		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
+	public boolean isSetRedefinedElements() {
+		return !getRedefinedElements().isEmpty();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1679,6 +1699,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			|| eIsSet(UML2Package.eINSTANCE.getState_StateInvariant());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1701,5 +1722,6 @@ public class StateImpl extends NamespaceImpl implements State {
 		return super.isSetOwnedMembers()
 			|| eIsSet(UML2Package.eINSTANCE.getState_Region());
 	}
+
 
 } //StateImpl

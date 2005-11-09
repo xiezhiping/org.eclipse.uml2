@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.11 2005/11/04 22:23:02 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.12 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -99,6 +99,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -207,6 +208,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getStringExpression_OwningExpression());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

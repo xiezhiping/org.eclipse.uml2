@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElement.java,v 1.8 2005/11/04 22:23:04 khussey Exp $
+ * $Id: PackageableElement.java,v 1.9 2005/11/09 22:53:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -72,7 +72,6 @@ public interface PackageableElement extends NamedElement, ParameterableElement{
 	 * @generated
 	 */
 	void setPackageableElement_visibility(VisibilityKind value);
-
 
 
 } // PackageableElement

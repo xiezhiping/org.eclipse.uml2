@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.14 2005/11/04 22:23:02 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -104,6 +104,7 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 		return output;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -166,14 +167,6 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 		return trigger;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetTriggers() {
-		return trigger != null && !trigger.isEmpty();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -188,6 +181,15 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTriggers() {
+		return trigger != null && !trigger.isEmpty();
 	}
 
 	/**
@@ -503,7 +505,7 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			case UML2Package.ACCEPT_CALL_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__TRIGGER:
-				return !getTriggers().isEmpty();
+				return isSetTriggers();
 			case UML2Package.ACCEPT_CALL_ACTION__RESULT:
 				return result != null && !result.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION:

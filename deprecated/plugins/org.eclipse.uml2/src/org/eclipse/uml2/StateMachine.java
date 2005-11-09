@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.8 2005/11/04 22:23:04 khussey Exp $
+ * $Id: StateMachine.java,v 1.9 2005/11/09 22:53:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -172,7 +172,6 @@ public interface StateMachine extends Behavior{
 	void setExtendedStateMachine(StateMachine value);
 
 
-
 	/**
 	 * Returns the value of the '<em><b>State Machine redefinition Context</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.BehavioredClassifier#getOwnedStateMachines <em>Owned State Machine</em>}'.
@@ -186,7 +185,7 @@ public interface StateMachine extends Behavior{
 	 * @see #setStateMachine_redefinitionContext(BehavioredClassifier)
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_StateMachine_redefinitionContext()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getOwnedStateMachines
-	 * @model opposite="ownedStateMachine" volatile="true"
+	 * @model opposite="ownedStateMachine"
 	 * @generated
 	 */
 	BehavioredClassifier getStateMachine_redefinitionContext();
@@ -200,7 +199,6 @@ public interface StateMachine extends Behavior{
 	 * @generated
 	 */
 	void setStateMachine_redefinitionContext(BehavioredClassifier value);
-
 
 
 	/**
@@ -217,7 +215,6 @@ public interface StateMachine extends Behavior{
 	 * @generated
 	 */
 	EList getRedefinedElements();
-
 
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.15 2005/11/04 22:22:59 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.16 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -141,6 +141,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		return relatedElement;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -163,6 +164,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		return source;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -183,6 +185,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		}
 		return target;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -396,7 +399,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INFORMATION_FLOW__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -415,7 +418,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 			case UML2Package.INFORMATION_FLOW__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INFORMATION_FLOW__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.INFORMATION_FLOW__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INFORMATION_FLOW__NAME_EXPRESSION:
@@ -438,14 +441,6 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 				return conveyed != null && !conveyed.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.INFORMATION_FLOW__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**

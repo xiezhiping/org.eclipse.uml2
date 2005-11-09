@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.17 2005/11/04 22:23:00 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.18 2005/11/09 22:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -253,6 +253,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

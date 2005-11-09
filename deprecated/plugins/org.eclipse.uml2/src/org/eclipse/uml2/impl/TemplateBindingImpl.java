@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.13 2005/11/04 22:23:00 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.14 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -115,6 +115,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return source;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -137,6 +138,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return target;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -158,6 +160,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -306,6 +309,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_BoundElement());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

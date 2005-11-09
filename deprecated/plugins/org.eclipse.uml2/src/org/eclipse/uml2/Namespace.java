@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.13 2005/11/04 22:23:04 khussey Exp $
+ * $Id: Namespace.java,v 1.14 2005/11/09 22:53:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -70,7 +70,6 @@ public interface Namespace extends NamedElement{
 	 * @generated
 	 */
 	EList getMembers();
-
 
 
 	/**
@@ -366,7 +365,6 @@ public interface Namespace extends NamedElement{
 	 * @generated
 	 */
 	EList getOwnedMembers();
-
 
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.14 2005/11/04 22:23:02 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,6 +114,7 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 		}
 		return input;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

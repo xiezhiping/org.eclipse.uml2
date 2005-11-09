@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadVariableActionImpl.java,v 1.15 2005/11/04 22:23:04 khussey Exp $
+ * $Id: ReadVariableActionImpl.java,v 1.16 2005/11/09 22:53:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -101,6 +101,7 @@ public class ReadVariableActionImpl extends VariableActionImpl implements ReadVa
 		}
 		return output;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

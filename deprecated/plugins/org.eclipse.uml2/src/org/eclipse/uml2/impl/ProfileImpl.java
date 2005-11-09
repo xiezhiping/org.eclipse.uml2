@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.24 2005/11/04 22:22:59 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.25 2005/11/09 22:53:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -125,6 +125,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		}
 		return ownedMember;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -533,7 +534,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PROFILE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -552,7 +553,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PROFILE__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.PROFILE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PROFILE__NAME_EXPRESSION:
@@ -597,14 +598,6 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		return eDynamicIsSet(eFeature);
 	}
 
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.PROFILE__VISIBILITY:
-				return false;
-		}
-		return eIsSetGen(eFeature);
-	}
 
 	// <!-- begin-custom-operations -->
 
