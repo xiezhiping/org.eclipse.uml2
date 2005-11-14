@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Factory.java,v 1.5 2005/05/18 16:38:30 khussey Exp $
+ * $Id: UML2Factory.java,v 1.6 2005/11/14 21:53:43 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -36,7 +36,7 @@ public interface UML2Factory extends EFactory{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	UML2Factory eINSTANCE = new org.eclipse.uml2.impl.UML2FactoryImpl();
+	UML2Factory eINSTANCE = org.eclipse.uml2.impl.UML2FactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Opaque Expression</em>'.

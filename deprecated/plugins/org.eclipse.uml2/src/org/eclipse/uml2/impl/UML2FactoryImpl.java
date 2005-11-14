@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2FactoryImpl.java,v 1.19 2005/09/23 21:22:53 khussey Exp $
+ * $Id: UML2FactoryImpl.java,v 1.20 2005/11/14 21:53:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,7 +18,11 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.eclipse.uml2.Abstraction;
 import org.eclipse.uml2.AcceptCallAction;
@@ -226,6 +230,25 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static UML2Factory init() {
+		try {
+			UML2Factory theUML2Factory = (UML2Factory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/uml2/1.0.0/UML"); //$NON-NLS-1$ 
+			if (theUML2Factory != null) {
+				return theUML2Factory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new UML2FactoryImpl();
+	}
 
 	/**
 	 * Creates an instance of the factory.
