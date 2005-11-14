@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.6 2005/11/14 16:54:12 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.7 2005/11/14 21:35:46 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1020,6 +1020,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX;
+
+	/**
+	 * The feature id for the '<em><b>Reflection Package Suffix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX;
 
 	/**
 	 * The feature id for the '<em><b>Class Package Suffix</b></em>' attribute.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.5 2005/11/14 16:54:12 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.6 2005/11/14 21:35:46 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -199,6 +199,8 @@ public class GenPackageImpl
 					: Boolean.FALSE;
 			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
 				return getInterfacePackageSuffix();
+			case GenModelPackage.GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX :
+				return getReflectionPackageSuffix();
 			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
 				return getClassPackageSuffix();
 			case GenModelPackage.GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX :
@@ -267,6 +269,9 @@ public class GenPackageImpl
 				return;
 			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
 				setInterfacePackageSuffix((String) newValue);
+				return;
+			case GenModelPackage.GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX :
+				setReflectionPackageSuffix((String) newValue);
 				return;
 			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
 				setClassPackageSuffix((String) newValue);
@@ -346,6 +351,9 @@ public class GenPackageImpl
 			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
 				setInterfacePackageSuffix(INTERFACE_PACKAGE_SUFFIX_EDEFAULT);
 				return;
+			case GenModelPackage.GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX :
+				setReflectionPackageSuffix(REFLECTION_PACKAGE_SUFFIX_EDEFAULT);
+				return;
 			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
 				setClassPackageSuffix(CLASS_PACKAGE_SUFFIX_EDEFAULT);
 				return;
@@ -420,6 +428,11 @@ public class GenPackageImpl
 					? interfacePackageSuffix != null
 					: !INTERFACE_PACKAGE_SUFFIX_EDEFAULT
 						.equals(interfacePackageSuffix);
+			case GenModelPackage.GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX :
+				return REFLECTION_PACKAGE_SUFFIX_EDEFAULT == null
+					? reflectionPackageSuffix != null
+					: !REFLECTION_PACKAGE_SUFFIX_EDEFAULT
+						.equals(reflectionPackageSuffix);
 			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
 				return CLASS_PACKAGE_SUFFIX_EDEFAULT == null
 					? classPackageSuffix != null
