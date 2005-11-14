@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2005 IBM Corporation and others.
+ All rights reserved.   This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+ Contributors:
+   IBM - initial API and implementation
+
+ $Id: plugin.xml,v 1.1 2005/11/14 22:15:02 khussey Exp $
+-->
+
+<plugin>
+
+
+  <extension
+    point = "org.eclipse.ui.newWizards">
+    <category
+      id = "org.eclipse.emf.ecore.Wizard.category.ID"
+      name="%_UI_Wizard_category">
+    </category>
+    <wizard
+      id = "org.eclipse.uml2.uml.editor.presentation.UMLModelWizardID"
+      name = "%_UI_UMLModelWizard_label"
+      class = "org.eclipse.uml2.uml.editor.presentation.UMLModelWizard"
+      category = "org.eclipse.emf.ecore.Wizard.category.ID"
+      icon = "icons/full/obj16/UMLModelFile.gif">
+      <description>%_UI_UMLModelWizard_description</description>
+      <selection class = "org.eclipse.core.resources.IResource" />
+    </wizard>
+  </extension>
+
+  <extension point = "org.eclipse.ui.editors">
+    <editor
+        id = "org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+        name = "%_UI_UMLEditor_label"
+        icon = "icons/full/obj16/UMLModelFile.gif"
+        extensions = "uml"
+        class = "org.eclipse.uml2.uml.editor.presentation.UMLEditor" 
+        contributorClass="org.eclipse.uml2.uml.editor.presentation.UMLActionBarContributor" >
+    </editor>
+  </extension>    
+</plugin>
