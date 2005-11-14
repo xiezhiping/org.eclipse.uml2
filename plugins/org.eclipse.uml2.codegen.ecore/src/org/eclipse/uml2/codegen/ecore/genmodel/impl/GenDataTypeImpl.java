@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenDataTypeImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenDataTypeImpl.java,v 1.3 2005/11/14 16:54:12 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -55,66 +55,6 @@ public class GenDataTypeImpl
 	 */
 	protected EClass eStaticClass() {
 		return GenModelPackage.eINSTANCE.getGenDataType();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_DATA_TYPE__GEN_PACKAGE :
-				return getGenPackage();
-			case GenModelPackage.GEN_DATA_TYPE__ECORE_DATA_TYPE :
-				if (resolve)
-					return getEcoreDataType();
-				return basicGetEcoreDataType();
-		}
-		return eDynamicGet(eFeature, resolve);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_DATA_TYPE__ECORE_DATA_TYPE :
-				setEcoreDataType((EDataType) newValue);
-				return;
-		}
-		eDynamicSet(eFeature, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_DATA_TYPE__ECORE_DATA_TYPE :
-				setEcoreDataType((EDataType) null);
-				return;
-		}
-		eDynamicUnset(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_DATA_TYPE__GEN_PACKAGE :
-				return getGenPackage() != null;
-			case GenModelPackage.GEN_DATA_TYPE__ECORE_DATA_TYPE :
-				return ecoreDataType != null;
-		}
-		return eDynamicIsSet(eFeature);
 	}
 
 } //GenDataTypeImpl

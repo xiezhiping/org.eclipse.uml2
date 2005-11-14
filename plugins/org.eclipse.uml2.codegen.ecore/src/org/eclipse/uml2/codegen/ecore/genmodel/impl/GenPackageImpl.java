@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.4 2005/06/03 19:53:35 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.5 2005/11/14 16:54:12 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -170,84 +170,6 @@ public class GenPackageImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE,
 				oldOperationsPackage, operationsPackage));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GenModelPackage.GEN_PACKAGE__GEN_MODEL :
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						GenModelPackage.GEN_PACKAGE__GEN_MODEL, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GenModelPackage.GEN_PACKAGE__GEN_MODEL :
-					return eBasicSetContainer(null,
-						GenModelPackage.GEN_PACKAGE__GEN_MODEL, msgs);
-				case GenModelPackage.GEN_PACKAGE__GEN_ENUMS :
-					return ((InternalEList) getGenEnums()).basicRemove(
-						otherEnd, msgs);
-				case GenModelPackage.GEN_PACKAGE__GEN_DATA_TYPES :
-					return ((InternalEList) getGenDataTypes()).basicRemove(
-						otherEnd, msgs);
-				case GenModelPackage.GEN_PACKAGE__GEN_CLASSES :
-					return ((InternalEList) getGenClasses()).basicRemove(
-						otherEnd, msgs);
-				case GenModelPackage.GEN_PACKAGE__NESTED_GEN_PACKAGES :
-					return ((InternalEList) getNestedGenPackages())
-						.basicRemove(otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case GenModelPackage.GEN_PACKAGE__GEN_MODEL :
-					return eContainer
-						.eInverseRemove(
-							this,
-							org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__GEN_PACKAGES,
-							GenModel.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
 	}
 
 	/**

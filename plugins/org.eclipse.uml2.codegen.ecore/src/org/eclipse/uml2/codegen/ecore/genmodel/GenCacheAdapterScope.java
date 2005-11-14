@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GenCacheAdapterScope.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenCacheAdapterScope.java,v 1.3 2005/11/14 16:54:12 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -85,7 +85,7 @@ public final class GenCacheAdapterScope
 	 * @ordered
 	 */
 	public static final GenCacheAdapterScope NONE_LITERAL = new GenCacheAdapterScope(
-		NONE, "None"); //$NON-NLS-1$
+		NONE, "None", "None"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Global</b></em>' literal object.
@@ -96,7 +96,7 @@ public final class GenCacheAdapterScope
 	 * @ordered
 	 */
 	public static final GenCacheAdapterScope GLOBAL_LITERAL = new GenCacheAdapterScope(
-		GLOBAL, "Global"); //$NON-NLS-1$
+		GLOBAL, "Global", "Global"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Resource</b></em>' literal object.
@@ -107,7 +107,7 @@ public final class GenCacheAdapterScope
 	 * @ordered
 	 */
 	public static final GenCacheAdapterScope RESOURCE_LITERAL = new GenCacheAdapterScope(
-		RESOURCE, "Resource"); //$NON-NLS-1$
+		RESOURCE, "Resource", "Resource"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Gen Cache Adapter Scope</b></em>' enumerators.
@@ -128,15 +128,15 @@ public final class GenCacheAdapterScope
 		.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Gen Cache Adapter Scope</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Gen Cache Adapter Scope</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static GenCacheAdapterScope get(String name) {
+	public static GenCacheAdapterScope get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			GenCacheAdapterScope result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -144,7 +144,23 @@ public final class GenCacheAdapterScope
 	}
 
 	/**
-	 * Returns the '<em><b>Gen Cache Adapter Scope</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Gen Cache Adapter Scope</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static GenCacheAdapterScope getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			GenCacheAdapterScope result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Gen Cache Adapter Scope</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -167,8 +183,8 @@ public final class GenCacheAdapterScope
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private GenCacheAdapterScope(int value, String name) {
-		super(value, name);
+	private GenCacheAdapterScope(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //GenCacheAdapterScope

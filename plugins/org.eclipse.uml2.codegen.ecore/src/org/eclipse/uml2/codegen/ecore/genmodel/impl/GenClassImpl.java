@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.10 2005/11/04 21:55:54 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.11 2005/11/14 16:54:12 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -23,15 +22,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
-import org.eclipse.emf.codegen.ecore.genmodel.GenProviderKind;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin;
 import org.eclipse.uml2.codegen.ecore.Generator;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenClass;
@@ -75,170 +70,6 @@ public class GenClassImpl
 	 */
 	protected EClass eStaticClass() {
 		return GenModelPackage.eINSTANCE.getGenClass();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GenModelPackage.GEN_CLASS__GEN_FEATURES :
-					return ((InternalEList) getGenFeatures()).basicAdd(
-						otherEnd, msgs);
-				case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
-					return ((InternalEList) getGenOperations()).basicAdd(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GenModelPackage.GEN_CLASS__GEN_FEATURES :
-					return ((InternalEList) getGenFeatures()).basicRemove(
-						otherEnd, msgs);
-				case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
-					return ((InternalEList) getGenOperations()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_CLASS__GEN_PACKAGE :
-				return getGenPackage();
-			case GenModelPackage.GEN_CLASS__PROVIDER :
-				return getProvider();
-			case GenModelPackage.GEN_CLASS__IMAGE :
-				return isImage()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_CLASS__ECORE_CLASS :
-				if (resolve)
-					return getEcoreClass();
-				return basicGetEcoreClass();
-			case GenModelPackage.GEN_CLASS__GEN_FEATURES :
-				return getGenFeatures();
-			case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
-				return getGenOperations();
-			case GenModelPackage.GEN_CLASS__LABEL_FEATURE :
-				if (resolve)
-					return getLabelFeature();
-				return basicGetLabelFeature();
-		}
-		return eDynamicGet(eFeature, resolve);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_CLASS__PROVIDER :
-				setProvider((GenProviderKind) newValue);
-				return;
-			case GenModelPackage.GEN_CLASS__IMAGE :
-				setImage(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_CLASS__ECORE_CLASS :
-				setEcoreClass((EClass) newValue);
-				return;
-			case GenModelPackage.GEN_CLASS__GEN_FEATURES :
-				getGenFeatures().clear();
-				getGenFeatures().addAll((Collection) newValue);
-				return;
-			case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
-				getGenOperations().clear();
-				getGenOperations().addAll((Collection) newValue);
-				return;
-			case GenModelPackage.GEN_CLASS__LABEL_FEATURE :
-				setLabelFeature((GenFeature) newValue);
-				return;
-		}
-		eDynamicSet(eFeature, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_CLASS__PROVIDER :
-				setProvider(PROVIDER_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_CLASS__IMAGE :
-				setImage(IMAGE_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_CLASS__ECORE_CLASS :
-				setEcoreClass((EClass) null);
-				return;
-			case GenModelPackage.GEN_CLASS__GEN_FEATURES :
-				getGenFeatures().clear();
-				return;
-			case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
-				getGenOperations().clear();
-				return;
-			case GenModelPackage.GEN_CLASS__LABEL_FEATURE :
-				setLabelFeature((GenFeature) null);
-				return;
-		}
-		eDynamicUnset(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_CLASS__GEN_PACKAGE :
-				return getGenPackage() != null;
-			case GenModelPackage.GEN_CLASS__PROVIDER :
-				return provider != PROVIDER_EDEFAULT;
-			case GenModelPackage.GEN_CLASS__IMAGE :
-				return image != IMAGE_EDEFAULT;
-			case GenModelPackage.GEN_CLASS__ECORE_CLASS :
-				return ecoreClass != null;
-			case GenModelPackage.GEN_CLASS__GEN_FEATURES :
-				return genFeatures != null && !genFeatures.isEmpty();
-			case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
-				return genOperations != null && !genOperations.isEmpty();
-			case GenModelPackage.GEN_CLASS__LABEL_FEATURE :
-				return labelFeature != null;
-		}
-		return eDynamicIsSet(eFeature);
 	}
 
 	public void generate(IProgressMonitor progressMonitor) {
@@ -417,7 +248,8 @@ public class GenClassImpl
 						if (getExtendedGenFeatures().contains(
 							redefinedGenFeature)) {
 
-							return (!UML2GenModelUtil.isUnion(redefinedGenFeature) || isDerivedUnionListType(redefinedGenFeature))
+							return (!UML2GenModelUtil
+								.isUnion(redefinedGenFeature) || isDerivedUnionListType(redefinedGenFeature))
 								&& !isRedefined(redefinedGenFeature);
 						}
 					}
@@ -1424,6 +1256,17 @@ public class GenClassImpl
 
 			allGenFeatures = getAllDuplicateGenFeatures();
 		}
+	}
+
+	public List getToStringGenFeatures() {
+		return collectGenFeatures(null, getImplementedGenFeatures(),
+			new GenFeatureFilter() {
+
+				public boolean accept(GenFeature genFeature) {
+					return genFeature.isField()
+						&& !genFeature.isReferenceType();
+				}
+			});
 	}
 
 }

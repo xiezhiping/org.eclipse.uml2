@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassifierImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenClassifierImpl.java,v 1.3 2005/11/14 16:54:12 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -54,32 +54,6 @@ public abstract class GenClassifierImpl
 	 */
 	protected EClass eStaticClass() {
 		return GenModelPackage.eINSTANCE.getGenClassifier();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE :
-				return getGenPackage();
-		}
-		return eDynamicGet(eFeature, resolve);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE :
-				return getGenPackage() != null;
-		}
-		return eDynamicIsSet(eFeature);
 	}
 
 } //GenClassifierImpl

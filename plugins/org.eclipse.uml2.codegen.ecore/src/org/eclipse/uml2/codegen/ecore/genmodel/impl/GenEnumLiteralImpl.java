@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenEnumLiteralImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenEnumLiteralImpl.java,v 1.3 2005/11/14 16:54:12 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -60,138 +60,6 @@ public class GenEnumLiteralImpl
 	 */
 	protected EClass eStaticClass() {
 		return GenModelPackage.eINSTANCE.getGenEnumLiteral();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GenModelPackage.GEN_ENUM_LITERAL__GEN_ENUM :
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						GenModelPackage.GEN_ENUM_LITERAL__GEN_ENUM, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GenModelPackage.GEN_ENUM_LITERAL__GEN_ENUM :
-					return eBasicSetContainer(null,
-						GenModelPackage.GEN_ENUM_LITERAL__GEN_ENUM, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case GenModelPackage.GEN_ENUM_LITERAL__GEN_ENUM :
-					return eContainer
-						.eInverseRemove(
-							this,
-							org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS,
-							GenEnum.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_ENUM_LITERAL__GEN_ENUM :
-				return getGenEnum();
-			case GenModelPackage.GEN_ENUM_LITERAL__ECORE_ENUM_LITERAL :
-				if (resolve)
-					return getEcoreEnumLiteral();
-				return basicGetEcoreEnumLiteral();
-		}
-		return eDynamicGet(eFeature, resolve);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_ENUM_LITERAL__GEN_ENUM :
-				setGenEnum((GenEnum) newValue);
-				return;
-			case GenModelPackage.GEN_ENUM_LITERAL__ECORE_ENUM_LITERAL :
-				setEcoreEnumLiteral((EEnumLiteral) newValue);
-				return;
-		}
-		eDynamicSet(eFeature, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_ENUM_LITERAL__GEN_ENUM :
-				setGenEnum((GenEnum) null);
-				return;
-			case GenModelPackage.GEN_ENUM_LITERAL__ECORE_ENUM_LITERAL :
-				setEcoreEnumLiteral((EEnumLiteral) null);
-				return;
-		}
-		eDynamicUnset(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case GenModelPackage.GEN_ENUM_LITERAL__GEN_ENUM :
-				return getGenEnum() != null;
-			case GenModelPackage.GEN_ENUM_LITERAL__ECORE_ENUM_LITERAL :
-				return ecoreEnumLiteral != null;
-		}
-		return eDynamicIsSet(eFeature);
 	}
 
 } //GenEnumLiteralImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelFactoryImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenModelFactoryImpl.java,v 1.3 2005/11/14 16:54:12 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -85,14 +85,9 @@ public class GenModelFactoryImpl
 	 */
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case GenModelPackage.GEN_CACHE_ADAPTER_SCOPE : {
-				GenCacheAdapterScope result = GenCacheAdapterScope
-					.get(initialValue);
-				if (result == null)
-					throw new IllegalArgumentException(
-						"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
+			case GenModelPackage.GEN_CACHE_ADAPTER_SCOPE :
+				return createGenCacheAdapterScopeFromString(eDataType,
+					initialValue);
 			default :
 				throw new IllegalArgumentException(
 					"The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -107,9 +102,8 @@ public class GenModelFactoryImpl
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case GenModelPackage.GEN_CACHE_ADAPTER_SCOPE :
-				return instanceValue == null
-					? null
-					: instanceValue.toString();
+				return convertGenCacheAdapterScopeToString(eDataType,
+					instanceValue);
 			default :
 				throw new IllegalArgumentException(
 					"The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -204,6 +198,32 @@ public class GenModelFactoryImpl
 	public GenParameter createGenParameter() {
 		GenParameterImpl genParameter = new GenParameterImpl();
 		return genParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GenCacheAdapterScope createGenCacheAdapterScopeFromString(
+			EDataType eDataType, String initialValue) {
+		GenCacheAdapterScope result = GenCacheAdapterScope.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGenCacheAdapterScopeToString(EDataType eDataType,
+			Object instanceValue) {
+		return instanceValue == null
+			? null
+			: instanceValue.toString();
 	}
 
 	/**

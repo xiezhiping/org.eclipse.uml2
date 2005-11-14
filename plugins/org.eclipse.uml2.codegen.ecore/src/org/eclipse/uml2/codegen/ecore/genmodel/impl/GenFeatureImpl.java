@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.7 2005/11/09 22:50:36 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.8 2005/11/14 16:54:12 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -121,72 +121,6 @@ public class GenFeatureImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				GenModelPackage.GEN_FEATURE__KEY, oldKey, newKey));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GenModelPackage.GEN_FEATURE__GEN_CLASS :
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						GenModelPackage.GEN_FEATURE__GEN_CLASS, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GenModelPackage.GEN_FEATURE__GEN_CLASS :
-					return eBasicSetContainer(null,
-						GenModelPackage.GEN_FEATURE__GEN_CLASS, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case GenModelPackage.GEN_FEATURE__GEN_CLASS :
-					return eContainer
-						.eInverseRemove(
-							this,
-							org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__GEN_FEATURES,
-							GenClass.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
 	}
 
 	/**

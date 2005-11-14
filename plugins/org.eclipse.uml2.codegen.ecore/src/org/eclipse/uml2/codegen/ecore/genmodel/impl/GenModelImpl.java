@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.4 2005/06/07 14:36:03 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.5 2005/11/14 16:54:12 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
 import java.util.Collection;
+import org.eclipse.emf.codegen.ecore.genmodel.GenDelegationKind;
+
 import java.util.List;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
@@ -321,48 +323,6 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
-					return ((InternalEList) getGenPackages()).basicAdd(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
-					return ((InternalEList) getGenPackages()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case GenModelPackage.GEN_MODEL__COPYRIGHT_TEXT :
@@ -473,6 +433,8 @@ public class GenModelImpl
 				return isBundleManifest()
 					? Boolean.TRUE
 					: Boolean.FALSE;
+			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
+				return getFeatureDelegation();
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				return getGenPackages();
 			case GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES :
@@ -629,6 +591,9 @@ public class GenModelImpl
 			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
 				setBundleManifest(((Boolean) newValue).booleanValue());
 				return;
+			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
+				setFeatureDelegation((GenDelegationKind) newValue);
+				return;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				getGenPackages().clear();
 				getGenPackages().addAll((Collection) newValue);
@@ -783,6 +748,9 @@ public class GenModelImpl
 			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
 				setBundleManifest(BUNDLE_MANIFEST_EDEFAULT);
 				return;
+			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
+				setFeatureDelegation(FEATURE_DELEGATION_EDEFAULT);
+				return;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				getGenPackages().clear();
 				return;
@@ -915,7 +883,7 @@ public class GenModelImpl
 			case GenModelPackage.GEN_MODEL__RICH_CLIENT_PLATFORM :
 				return richClientPlatform != RICH_CLIENT_PLATFORM_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__REFLECTIVE_DELEGATION :
-				return reflectiveDelegation != REFLECTIVE_DELEGATION_EDEFAULT;
+				return isReflectiveDelegation() != REFLECTIVE_DELEGATION_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__CODE_FORMATTING :
 				return codeFormatting != CODE_FORMATTING_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__TESTS_DIRECTORY :
@@ -934,6 +902,8 @@ public class GenModelImpl
 					: !IMPORTER_ID_EDEFAULT.equals(importerID);
 			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
 				return bundleManifest != BUNDLE_MANIFEST_EDEFAULT;
+			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
+				return featureDelegation != FEATURE_DELEGATION_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				return genPackages != null && !genPackages.isEmpty();
 			case GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES :

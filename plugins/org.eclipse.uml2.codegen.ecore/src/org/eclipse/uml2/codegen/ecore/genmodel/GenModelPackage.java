@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.5 2005/06/22 20:41:42 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.6 2005/11/14 16:54:12 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -86,7 +86,7 @@ public interface GenModelPackage
 	int GEN_BASE = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Base</em>' class.
+	 * The number of structural features of the '<em>Gen Base</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -168,7 +168,7 @@ public interface GenModelPackage
 	int GEN_CLASS__LABEL_FEATURE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__LABEL_FEATURE;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Class</em>' class.
+	 * The number of structural features of the '<em>Gen Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -196,7 +196,7 @@ public interface GenModelPackage
 	int GEN_CLASSIFIER__GEN_PACKAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Classifier</em>' class.
+	 * The number of structural features of the '<em>Gen Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -233,7 +233,7 @@ public interface GenModelPackage
 	int GEN_DATA_TYPE__ECORE_DATA_TYPE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__ECORE_DATA_TYPE;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Data Type</em>' class.
+	 * The number of structural features of the '<em>Gen Data Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -288,7 +288,7 @@ public interface GenModelPackage
 	int GEN_ENUM__GEN_ENUM_LITERALS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Enum</em>' class.
+	 * The number of structural features of the '<em>Gen Enum</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -325,7 +325,7 @@ public interface GenModelPackage
 	int GEN_ENUM_LITERAL__ECORE_ENUM_LITERAL = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM_LITERAL__ECORE_ENUM_LITERAL;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Enum Literal</em>' class.
+	 * The number of structural features of the '<em>Gen Enum Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -434,7 +434,7 @@ public interface GenModelPackage
 	int GEN_FEATURE__KEY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Feature</em>' class.
+	 * The number of structural features of the '<em>Gen Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -813,6 +813,15 @@ public interface GenModelPackage
 	int GEN_MODEL__BUNDLE_MANIFEST = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST;
 
 	/**
+	 * The feature id for the '<em><b>Feature Delegation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__FEATURE_DELEGATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__FEATURE_DELEGATION;
+
+	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -876,7 +885,7 @@ public interface GenModelPackage
 	int GEN_MODEL__INVARIANT_PREFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Model</em>' class.
+	 * The number of structural features of the '<em>Gen Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -931,7 +940,7 @@ public interface GenModelPackage
 	int GEN_OPERATION__CACHE_ADAPTER_SCOPE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Operation</em>' class.
+	 * The number of structural features of the '<em>Gen Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1148,7 +1157,7 @@ public interface GenModelPackage
 	int GEN_PACKAGE__OPERATIONS_PACKAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Package</em>' class.
+	 * The number of structural features of the '<em>Gen Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1185,7 +1194,7 @@ public interface GenModelPackage
 	int GEN_PARAMETER__ECORE_PARAMETER = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Parameter</em>' class.
+	 * The number of structural features of the '<em>Gen Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1204,7 +1213,7 @@ public interface GenModelPackage
 	int GEN_TYPED_ELEMENT = 11;
 
 	/**
-	 * The number of structural features of the the '<em>Gen Typed Element</em>' class.
+	 * The number of structural features of the '<em>Gen Typed Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
