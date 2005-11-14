@@ -8,9 +8,6 @@
 	 */
 	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass) {
 		<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> new<%=genFeature.getCapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) eClass.getEPackage().getEFactoryInstance().create(eClass);
-		if (eNotificationRequired()) {
-			eNotify(new <%=genModel.getImportedName("org.eclipse.emf.ecore.impl.ENotificationImpl")%>(this, 0, <%=genClass.getQualifiedFeatureID(genFeature)%>, null, new<%=genFeature.getCapName()%>));
-		}
       <%if (genFeature.isListType()) {%>
 		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
       <%} else {%>
@@ -28,9 +25,6 @@
 	 */
 	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>() {
 		<%=childGenClass.getImportedInterfaceName()%> new<%=genFeature.getCapName()%> = <%=childGenClass.getGenPackage().getImportedFactoryInterfaceName()%>.eINSTANCE.create<%=childGenClass.getName()%>();
-		if (eNotificationRequired()) {
-			eNotify(new <%=genModel.getImportedName("org.eclipse.emf.ecore.impl.ENotificationImpl")%>(this, 0, <%=genClass.getQualifiedFeatureID(genFeature)%>, null, new<%=genFeature.getCapName()%>));
-		}
       <%if (genFeature.isListType()) {%>
 		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
       <%} else {%>
