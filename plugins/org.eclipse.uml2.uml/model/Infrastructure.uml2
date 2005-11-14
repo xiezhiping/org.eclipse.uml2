@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_DhVogBmQEdqvcs97umGEYQ" name="Infrastructure">
+  <ownedMember xmi:type="uml:Package" xmi:id="_h1xQUBmQEdqvcs97umGEYQ" name="Compliance"/>
+</uml:Model>

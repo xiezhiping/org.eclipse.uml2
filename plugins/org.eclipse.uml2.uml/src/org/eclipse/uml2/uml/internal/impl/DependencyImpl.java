@@ -1,0 +1,548 @@
+/*
+ * Copyright (c) 2005 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - initial API and implementation
+ *
+ * $Id: DependencyImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ */
+package org.eclipse.uml2.uml.internal.impl;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.DirectedRelationship;
+import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Relationship;
+import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.VisibilityKind;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Dependency</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getSuppliers <em>Supplier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getClients <em>Client</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated
+ */
+public class DependencyImpl
+		extends PackageableElementImpl
+		implements Dependency {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DependencyImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EClass eStaticClass() {
+		return UMLPackage.eINSTANCE.getDependency();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getRelatedElements() {
+		List relatedElement = (List) eVirtualGet(UMLPackage.DEPENDENCY__RELATED_ELEMENT);
+		if (relatedElement == null) {
+			eVirtualSet(UMLPackage.DEPENDENCY__RELATED_ELEMENT,
+				relatedElement = new DerivedUnionEObjectEList(Element.class,
+					this, UMLPackage.DEPENDENCY__RELATED_ELEMENT,
+					new EStructuralFeature[]{
+						UMLPackage.eINSTANCE.getDirectedRelationship_Source(),
+						UMLPackage.eINSTANCE.getDirectedRelationship_Target()}));
+		}
+		return relatedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getSources() {
+		List source = (List) eVirtualGet(UMLPackage.DEPENDENCY__SOURCE);
+		if (source == null) {
+			eVirtualSet(UMLPackage.DEPENDENCY__SOURCE,
+				source = new DerivedUnionEObjectEList(Element.class, this,
+					UMLPackage.DEPENDENCY__SOURCE,
+					new EStructuralFeature[]{UMLPackage.eINSTANCE
+						.getDependency_Client()}));
+		}
+		return source;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getTargets() {
+		List target = (List) eVirtualGet(UMLPackage.DEPENDENCY__TARGET);
+		if (target == null) {
+			eVirtualSet(UMLPackage.DEPENDENCY__TARGET,
+				target = new DerivedUnionEObjectEList(Element.class, this,
+					UMLPackage.DEPENDENCY__TARGET,
+					new EStructuralFeature[]{UMLPackage.eINSTANCE
+						.getDependency_Supplier()}));
+		}
+		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getSuppliers() {
+		List supplier = (List) eVirtualGet(UMLPackage.DEPENDENCY__SUPPLIER);
+		if (supplier == null) {
+			eVirtualSet(UMLPackage.DEPENDENCY__SUPPLIER,
+				supplier = new EObjectResolvingEList(NamedElement.class, this,
+					UMLPackage.DEPENDENCY__SUPPLIER));
+		}
+		return supplier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getSupplier(String name) {
+		for (Iterator i = getSuppliers().iterator(); i.hasNext();) {
+			NamedElement supplier = (NamedElement) i.next();
+			if (name.equals(supplier.getName())) {
+				return supplier;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getClients() {
+		List client = (List) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT);
+		if (client == null) {
+			eVirtualSet(UMLPackage.DEPENDENCY__CLIENT,
+				client = new EObjectWithInverseResolvingEList.ManyInverse(
+					NamedElement.class, this, UMLPackage.DEPENDENCY__CLIENT,
+					UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY));
+		}
+		return client;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getClient(String name) {
+		for (Iterator i = getClients().iterator(); i.hasNext();) {
+			NamedElement client = (NamedElement) i.next();
+			if (name.equals(client.getName())) {
+				return client;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, Class baseClass, NotificationChain msgs) {
+		if (featureID >= 0) {
+			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
+				case UMLPackage.DEPENDENCY__EANNOTATIONS :
+					return ((InternalEList) getEAnnotations()).basicAdd(
+						otherEnd, msgs);
+				case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
+					return ((InternalEList) getClientDependencies()).basicAdd(
+						otherEnd, msgs);
+				case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+					TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER);
+					if (templateParameter != null)
+						msgs = ((InternalEObject) templateParameter)
+							.eInverseRemove(
+								this,
+								UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+								TemplateParameter.class, msgs);
+					return basicSetTemplateParameter(
+						(TemplateParameter) otherEnd, msgs);
+				case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd,
+						UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER, msgs);
+				case UMLPackage.DEPENDENCY__CLIENT :
+					return ((InternalEList) getClients()).basicAdd(otherEnd,
+						msgs);
+				default :
+					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
+						msgs);
+			}
+		}
+		if (eContainer != null)
+			msgs = eBasicRemoveFromContainer(msgs);
+		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, Class baseClass, NotificationChain msgs) {
+		if (featureID >= 0) {
+			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
+				case UMLPackage.DEPENDENCY__EANNOTATIONS :
+					return ((InternalEList) getEAnnotations()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.DEPENDENCY__OWNED_COMMENT :
+					return ((InternalEList) getOwnedComments()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
+					return ((InternalEList) getClientDependencies())
+						.basicRemove(otherEnd, msgs);
+				case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
+					return basicSetNameExpression(null, msgs);
+				case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+					return basicSetTemplateParameter(null, msgs);
+				case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
+					return eBasicSetContainer(null,
+						UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER, msgs);
+				case UMLPackage.DEPENDENCY__CLIENT :
+					return ((InternalEList) getClients()).basicRemove(otherEnd,
+						msgs);
+				default :
+					return eDynamicInverseRemove(otherEnd, featureID,
+						baseClass, msgs);
+			}
+		}
+		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.DEPENDENCY__EANNOTATIONS :
+				return getEAnnotations();
+			case UMLPackage.DEPENDENCY__OWNED_ELEMENT :
+				return getOwnedElements();
+			case UMLPackage.DEPENDENCY__OWNER :
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
+			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
+				return getOwnedComments();
+			case UMLPackage.DEPENDENCY__NAME :
+				return getName();
+			case UMLPackage.DEPENDENCY__VISIBILITY :
+				return getVisibility();
+			case UMLPackage.DEPENDENCY__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
+				return getClientDependencies();
+			case UMLPackage.DEPENDENCY__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
+				return getNameExpression();
+			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
+			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
+				return getOwningTemplateParameter();
+			case UMLPackage.DEPENDENCY__RELATED_ELEMENT :
+				return getRelatedElements();
+			case UMLPackage.DEPENDENCY__SOURCE :
+				return getSources();
+			case UMLPackage.DEPENDENCY__TARGET :
+				return getTargets();
+			case UMLPackage.DEPENDENCY__SUPPLIER :
+				return getSuppliers();
+			case UMLPackage.DEPENDENCY__CLIENT :
+				return getClients();
+		}
+		return eDynamicGet(eFeature, resolve);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void eSet(EStructuralFeature eFeature, Object newValue) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.DEPENDENCY__EANNOTATIONS :
+				getEAnnotations().clear();
+				getEAnnotations().addAll((Collection) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
+				getOwnedComments().clear();
+				getOwnedComments().addAll((Collection) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__NAME :
+				setName((String) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				getClientDependencies().addAll((Collection) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
+				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__SUPPLIER :
+				getSuppliers().clear();
+				getSuppliers().addAll((Collection) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__CLIENT :
+				getClients().clear();
+				getClients().addAll((Collection) newValue);
+				return;
+		}
+		eDynamicSet(eFeature, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void eUnset(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.DEPENDENCY__EANNOTATIONS :
+				getEAnnotations().clear();
+				return;
+			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
+				getOwnedComments().clear();
+				return;
+			case UMLPackage.DEPENDENCY__NAME :
+				setName(NAME_EDEFAULT);
+				return;
+			case UMLPackage.DEPENDENCY__VISIBILITY :
+				setVisibility(VISIBILITY_EDEFAULT);
+				return;
+			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				return;
+			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
+				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.DEPENDENCY__SUPPLIER :
+				getSuppliers().clear();
+				return;
+			case UMLPackage.DEPENDENCY__CLIENT :
+				getClients().clear();
+				return;
+		}
+		eDynamicUnset(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.DEPENDENCY__EANNOTATIONS :
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.DEPENDENCY__OWNED_ELEMENT :
+				return isSetOwnedElements();
+			case UMLPackage.DEPENDENCY__OWNER :
+				return isSetOwner();
+			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
+				List ownedComment = (List) eVirtualGet(UMLPackage.DEPENDENCY__OWNED_COMMENT);
+				return ownedComment != null && !ownedComment.isEmpty();
+			case UMLPackage.DEPENDENCY__NAME :
+				String name = eVirtualIsSet(UMLPackage.DEPENDENCY__NAME)
+					? (String) eVirtualGet(UMLPackage.DEPENDENCY__NAME)
+					: NAME_EDEFAULT;
+				return NAME_EDEFAULT == null
+					? name != null
+					: !NAME_EDEFAULT.equals(name);
+			case UMLPackage.DEPENDENCY__VISIBILITY :
+				return eVirtualIsSet(UMLPackage.DEPENDENCY__VISIBILITY)
+					&& eVirtualGet(UMLPackage.DEPENDENCY__VISIBILITY) != VISIBILITY_EDEFAULT;
+			case UMLPackage.DEPENDENCY__QUALIFIED_NAME :
+				return QUALIFIED_NAME_EDEFAULT == null
+					? getQualifiedName() != null
+					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
+			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
+				List clientDependency = (List) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY);
+				return clientDependency != null && !clientDependency.isEmpty();
+			case UMLPackage.DEPENDENCY__NAMESPACE :
+				return isSetNamespace();
+			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
+				return eVirtualGet(UMLPackage.DEPENDENCY__NAME_EXPRESSION) != null;
+			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER) != null;
+			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
+				return getOwningTemplateParameter() != null;
+			case UMLPackage.DEPENDENCY__RELATED_ELEMENT :
+				return isSetRelatedElements();
+			case UMLPackage.DEPENDENCY__SOURCE :
+				return isSetSources();
+			case UMLPackage.DEPENDENCY__TARGET :
+				return isSetTargets();
+			case UMLPackage.DEPENDENCY__SUPPLIER :
+				List supplier = (List) eVirtualGet(UMLPackage.DEPENDENCY__SUPPLIER);
+				return supplier != null && !supplier.isEmpty();
+			case UMLPackage.DEPENDENCY__CLIENT :
+				List client = (List) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT);
+				return client != null && !client.isEmpty();
+		}
+		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+		if (baseClass == Relationship.class) {
+			switch (derivedFeatureID) {
+				case UMLPackage.DEPENDENCY__RELATED_ELEMENT :
+					return UMLPackage.RELATIONSHIP__RELATED_ELEMENT;
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == DirectedRelationship.class) {
+			switch (derivedFeatureID) {
+				case UMLPackage.DEPENDENCY__SOURCE :
+					return UMLPackage.DIRECTED_RELATIONSHIP__SOURCE;
+				case UMLPackage.DEPENDENCY__TARGET :
+					return UMLPackage.DIRECTED_RELATIONSHIP__TARGET;
+				default :
+					return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+		if (baseClass == Relationship.class) {
+			switch (baseFeatureID) {
+				case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :
+					return UMLPackage.DEPENDENCY__RELATED_ELEMENT;
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == DirectedRelationship.class) {
+			switch (baseFeatureID) {
+				case UMLPackage.DIRECTED_RELATIONSHIP__SOURCE :
+					return UMLPackage.DEPENDENCY__SOURCE;
+				case UMLPackage.DIRECTED_RELATIONSHIP__TARGET :
+					return UMLPackage.DEPENDENCY__TARGET;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRelatedElements() {
+		return isSetSources() || isSetTargets();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSources() {
+		return eIsSet(UMLPackage.eINSTANCE.getDependency_Client());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return eIsSet(UMLPackage.eINSTANCE.getDependency_Supplier());
+	}
+
+} //DependencyImpl

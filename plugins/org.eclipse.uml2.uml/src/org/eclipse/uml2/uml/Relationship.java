@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2005 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - initial API and implementation
+ *
+ * $Id: Relationship.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ */
+package org.eclipse.uml2.uml;
+
+import java.util.List;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Relationship</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A relationship references one or more related elements. Relationship is an abstract metaclass.
+ * <!-- end-model-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Relationship#getRelatedElements <em>Related Element</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @see org.eclipse.uml2.uml.UMLPackage#getRelationship()
+ * @model abstract="true"
+ * @generated
+ */
+public interface Relationship
+		extends Element {
+
+	/**
+	 * Returns the value of the '<em><b>Related Element</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.Element}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the elements related by the Relationship.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Related Element</em>' reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getRelationship_RelatedElement()
+	 * @model type="org.eclipse.uml2.uml.Element" required="true" transient="true" changeable="false" derived="true" ordered="false"
+	 * @generated
+	 */
+	List getRelatedElements();
+
+} // Relationship

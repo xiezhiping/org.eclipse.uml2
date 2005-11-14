@@ -1,0 +1,545 @@
+/*
+ * Copyright (c) 2005 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - initial API and implementation
+ *
+ * $Id: ValuePinImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ */
+package org.eclipse.uml2.uml.internal.impl;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.ObjectNodeOrderingKind;
+import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValuePin;
+import org.eclipse.uml2.uml.ValueSpecification;
+import org.eclipse.uml2.uml.VisibilityKind;
+
+import org.eclipse.uml2.uml.internal.operations.ValuePinOperations;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Value Pin</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ValuePinImpl#getValue <em>Value</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated
+ */
+public class ValuePinImpl
+		extends InputPinImpl
+		implements ValuePin {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ValuePinImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EClass eStaticClass() {
+		return UMLPackage.eINSTANCE.getValuePin();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification getValue() {
+		ValueSpecification value = (ValueSpecification) eVirtualGet(UMLPackage.VALUE_PIN__VALUE);
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetValue(ValueSpecification newValue,
+			NotificationChain msgs) {
+		Object oldValue = eVirtualSet(UMLPackage.VALUE_PIN__VALUE, newValue);
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+				Notification.SET, UMLPackage.VALUE_PIN__VALUE,
+				oldValue == EVIRTUAL_NO_VALUE
+					? null
+					: oldValue, newValue);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValue(ValueSpecification newValue) {
+		ValueSpecification value = (ValueSpecification) eVirtualGet(UMLPackage.VALUE_PIN__VALUE);
+		if (newValue != value) {
+			NotificationChain msgs = null;
+			if (value != null)
+				msgs = ((InternalEObject) value).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.VALUE_PIN__VALUE, null,
+					msgs);
+			if (newValue != null)
+				msgs = ((InternalEObject) newValue).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.VALUE_PIN__VALUE, null,
+					msgs);
+			msgs = basicSetValue(newValue, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.VALUE_PIN__VALUE, newValue, newValue));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification createValue(EClass eClass) {
+		ValueSpecification newValue = (ValueSpecification) eClass.getEPackage()
+			.getEFactoryInstance().create(eClass);
+		setValue(newValue);
+		return newValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCompatibleType(DiagnosticChain diagnostics,
+			Map context) {
+		return ValuePinOperations.validateCompatibleType(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, Class baseClass, NotificationChain msgs) {
+		if (featureID >= 0) {
+			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
+				case UMLPackage.VALUE_PIN__EANNOTATIONS :
+					return ((InternalEList) getEAnnotations()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.VALUE_PIN__OWNED_COMMENT :
+					return ((InternalEList) getOwnedComments()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.VALUE_PIN__CLIENT_DEPENDENCY :
+					return ((InternalEList) getClientDependencies())
+						.basicRemove(otherEnd, msgs);
+				case UMLPackage.VALUE_PIN__NAME_EXPRESSION :
+					return basicSetNameExpression(null, msgs);
+				case UMLPackage.VALUE_PIN__OUTGOING :
+					return ((InternalEList) getOutgoings()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.VALUE_PIN__IN_PARTITION :
+					return ((InternalEList) getInPartitions()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
+					return eBasicSetContainer(null,
+						UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE, msgs);
+				case UMLPackage.VALUE_PIN__ACTIVITY :
+					return eBasicSetContainer(null,
+						UMLPackage.VALUE_PIN__ACTIVITY, msgs);
+				case UMLPackage.VALUE_PIN__INCOMING :
+					return ((InternalEList) getIncomings()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.VALUE_PIN__IN_INTERRUPTIBLE_REGION :
+					return ((InternalEList) getInInterruptibleRegions())
+						.basicRemove(otherEnd, msgs);
+				case UMLPackage.VALUE_PIN__UPPER_BOUND :
+					return basicSetUpperBound(null, msgs);
+				case UMLPackage.VALUE_PIN__VALUE :
+					return basicSetValue(null, msgs);
+				default :
+					return eDynamicInverseRemove(otherEnd, featureID,
+						baseClass, msgs);
+			}
+		}
+		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.VALUE_PIN__EANNOTATIONS :
+				return getEAnnotations();
+			case UMLPackage.VALUE_PIN__OWNED_ELEMENT :
+				return getOwnedElements();
+			case UMLPackage.VALUE_PIN__OWNER :
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
+			case UMLPackage.VALUE_PIN__OWNED_COMMENT :
+				return getOwnedComments();
+			case UMLPackage.VALUE_PIN__NAME :
+				return getName();
+			case UMLPackage.VALUE_PIN__VISIBILITY :
+				return getVisibility();
+			case UMLPackage.VALUE_PIN__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.VALUE_PIN__CLIENT_DEPENDENCY :
+				return getClientDependencies();
+			case UMLPackage.VALUE_PIN__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.VALUE_PIN__NAME_EXPRESSION :
+				return getNameExpression();
+			case UMLPackage.VALUE_PIN__IS_LEAF :
+				return isLeaf()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case UMLPackage.VALUE_PIN__REDEFINED_ELEMENT :
+				return getRedefinedElements();
+			case UMLPackage.VALUE_PIN__REDEFINITION_CONTEXT :
+				return getRedefinitionContexts();
+			case UMLPackage.VALUE_PIN__OUTGOING :
+				return getOutgoings();
+			case UMLPackage.VALUE_PIN__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.VALUE_PIN__IN_PARTITION :
+				return getInPartitions();
+			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
+				return getInStructuredNode();
+			case UMLPackage.VALUE_PIN__ACTIVITY :
+				return getActivity();
+			case UMLPackage.VALUE_PIN__INCOMING :
+				return getIncomings();
+			case UMLPackage.VALUE_PIN__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
+			case UMLPackage.VALUE_PIN__REDEFINED_NODE :
+				return getRedefinedNodes();
+			case UMLPackage.VALUE_PIN__TYPE :
+				if (resolve)
+					return getType();
+				return basicGetType();
+			case UMLPackage.VALUE_PIN__ORDERING :
+				return getOrdering();
+			case UMLPackage.VALUE_PIN__IS_CONTROL_TYPE :
+				return isControlType()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case UMLPackage.VALUE_PIN__UPPER_BOUND :
+				return getUpperBound();
+			case UMLPackage.VALUE_PIN__IN_STATE :
+				return getInStates();
+			case UMLPackage.VALUE_PIN__SELECTION :
+				if (resolve)
+					return getSelection();
+				return basicGetSelection();
+			case UMLPackage.VALUE_PIN__IS_CONTROL :
+				return isControl()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case UMLPackage.VALUE_PIN__VALUE :
+				return getValue();
+		}
+		return eDynamicGet(eFeature, resolve);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void eSet(EStructuralFeature eFeature, Object newValue) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.VALUE_PIN__EANNOTATIONS :
+				getEAnnotations().clear();
+				getEAnnotations().addAll((Collection) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__OWNED_COMMENT :
+				getOwnedComments().clear();
+				getOwnedComments().addAll((Collection) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__NAME :
+				setName((String) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				getClientDependencies().addAll((Collection) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__NAME_EXPRESSION :
+				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__IS_LEAF :
+				setIsLeaf(((Boolean) newValue).booleanValue());
+				return;
+			case UMLPackage.VALUE_PIN__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__ACTIVITY :
+				setActivity((Activity) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__INCOMING :
+				getIncomings().clear();
+				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
+				getInInterruptibleRegions().addAll((Collection) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__REDEFINED_NODE :
+				getRedefinedNodes().clear();
+				getRedefinedNodes().addAll((Collection) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__TYPE :
+				setType((Type) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__ORDERING :
+				setOrdering((ObjectNodeOrderingKind) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__IS_CONTROL_TYPE :
+				setIsControlType(((Boolean) newValue).booleanValue());
+				return;
+			case UMLPackage.VALUE_PIN__UPPER_BOUND :
+				setUpperBound((ValueSpecification) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__IN_STATE :
+				getInStates().clear();
+				getInStates().addAll((Collection) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__SELECTION :
+				setSelection((Behavior) newValue);
+				return;
+			case UMLPackage.VALUE_PIN__IS_CONTROL :
+				setIsControl(((Boolean) newValue).booleanValue());
+				return;
+			case UMLPackage.VALUE_PIN__VALUE :
+				setValue((ValueSpecification) newValue);
+				return;
+		}
+		eDynamicSet(eFeature, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void eUnset(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.VALUE_PIN__EANNOTATIONS :
+				getEAnnotations().clear();
+				return;
+			case UMLPackage.VALUE_PIN__OWNED_COMMENT :
+				getOwnedComments().clear();
+				return;
+			case UMLPackage.VALUE_PIN__NAME :
+				setName(NAME_EDEFAULT);
+				return;
+			case UMLPackage.VALUE_PIN__VISIBILITY :
+				setVisibility(VISIBILITY_EDEFAULT);
+				return;
+			case UMLPackage.VALUE_PIN__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				return;
+			case UMLPackage.VALUE_PIN__NAME_EXPRESSION :
+				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.VALUE_PIN__IS_LEAF :
+				setIsLeaf(IS_LEAF_EDEFAULT);
+				return;
+			case UMLPackage.VALUE_PIN__OUTGOING :
+				getOutgoings().clear();
+				return;
+			case UMLPackage.VALUE_PIN__IN_PARTITION :
+				getInPartitions().clear();
+				return;
+			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) null);
+				return;
+			case UMLPackage.VALUE_PIN__ACTIVITY :
+				setActivity((Activity) null);
+				return;
+			case UMLPackage.VALUE_PIN__INCOMING :
+				getIncomings().clear();
+				return;
+			case UMLPackage.VALUE_PIN__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
+				return;
+			case UMLPackage.VALUE_PIN__REDEFINED_NODE :
+				getRedefinedNodes().clear();
+				return;
+			case UMLPackage.VALUE_PIN__TYPE :
+				setType((Type) null);
+				return;
+			case UMLPackage.VALUE_PIN__ORDERING :
+				setOrdering(ORDERING_EDEFAULT);
+				return;
+			case UMLPackage.VALUE_PIN__IS_CONTROL_TYPE :
+				setIsControlType(IS_CONTROL_TYPE_EDEFAULT);
+				return;
+			case UMLPackage.VALUE_PIN__UPPER_BOUND :
+				setUpperBound((ValueSpecification) null);
+				return;
+			case UMLPackage.VALUE_PIN__IN_STATE :
+				getInStates().clear();
+				return;
+			case UMLPackage.VALUE_PIN__SELECTION :
+				setSelection((Behavior) null);
+				return;
+			case UMLPackage.VALUE_PIN__IS_CONTROL :
+				setIsControl(IS_CONTROL_EDEFAULT);
+				return;
+			case UMLPackage.VALUE_PIN__VALUE :
+				setValue((ValueSpecification) null);
+				return;
+		}
+		eDynamicUnset(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.VALUE_PIN__EANNOTATIONS :
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.VALUE_PIN__OWNED_ELEMENT :
+				return isSetOwnedElements();
+			case UMLPackage.VALUE_PIN__OWNER :
+				return isSetOwner();
+			case UMLPackage.VALUE_PIN__OWNED_COMMENT :
+				List ownedComment = (List) eVirtualGet(UMLPackage.VALUE_PIN__OWNED_COMMENT);
+				return ownedComment != null && !ownedComment.isEmpty();
+			case UMLPackage.VALUE_PIN__NAME :
+				String name = eVirtualIsSet(UMLPackage.VALUE_PIN__NAME)
+					? (String) eVirtualGet(UMLPackage.VALUE_PIN__NAME)
+					: NAME_EDEFAULT;
+				return NAME_EDEFAULT == null
+					? name != null
+					: !NAME_EDEFAULT.equals(name);
+			case UMLPackage.VALUE_PIN__VISIBILITY :
+				return eVirtualIsSet(UMLPackage.VALUE_PIN__VISIBILITY)
+					&& eVirtualGet(UMLPackage.VALUE_PIN__VISIBILITY) != VISIBILITY_EDEFAULT;
+			case UMLPackage.VALUE_PIN__QUALIFIED_NAME :
+				return QUALIFIED_NAME_EDEFAULT == null
+					? getQualifiedName() != null
+					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
+			case UMLPackage.VALUE_PIN__CLIENT_DEPENDENCY :
+				List clientDependency = (List) eVirtualGet(UMLPackage.VALUE_PIN__CLIENT_DEPENDENCY);
+				return clientDependency != null && !clientDependency.isEmpty();
+			case UMLPackage.VALUE_PIN__NAMESPACE :
+				return isSetNamespace();
+			case UMLPackage.VALUE_PIN__NAME_EXPRESSION :
+				return eVirtualGet(UMLPackage.VALUE_PIN__NAME_EXPRESSION) != null;
+			case UMLPackage.VALUE_PIN__IS_LEAF :
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
+			case UMLPackage.VALUE_PIN__REDEFINED_ELEMENT :
+				return isSetRedefinedElements();
+			case UMLPackage.VALUE_PIN__REDEFINITION_CONTEXT :
+				return isSetRedefinitionContexts();
+			case UMLPackage.VALUE_PIN__OUTGOING :
+				List outgoing = (List) eVirtualGet(UMLPackage.VALUE_PIN__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
+			case UMLPackage.VALUE_PIN__IN_GROUP :
+				return isSetInGroups();
+			case UMLPackage.VALUE_PIN__IN_PARTITION :
+				List inPartition = (List) eVirtualGet(UMLPackage.VALUE_PIN__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
+			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
+				return getInStructuredNode() != null;
+			case UMLPackage.VALUE_PIN__ACTIVITY :
+				return getActivity() != null;
+			case UMLPackage.VALUE_PIN__INCOMING :
+				List incoming = (List) eVirtualGet(UMLPackage.VALUE_PIN__INCOMING);
+				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.VALUE_PIN__IN_INTERRUPTIBLE_REGION :
+				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.VALUE_PIN__IN_INTERRUPTIBLE_REGION);
+				return inInterruptibleRegion != null
+					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.VALUE_PIN__REDEFINED_NODE :
+				List redefinedNode = (List) eVirtualGet(UMLPackage.VALUE_PIN__REDEFINED_NODE);
+				return redefinedNode != null && !redefinedNode.isEmpty();
+			case UMLPackage.VALUE_PIN__TYPE :
+				return eVirtualGet(UMLPackage.VALUE_PIN__TYPE) != null;
+			case UMLPackage.VALUE_PIN__ORDERING :
+				return eVirtualIsSet(UMLPackage.VALUE_PIN__ORDERING)
+					&& eVirtualGet(UMLPackage.VALUE_PIN__ORDERING) != ORDERING_EDEFAULT;
+			case UMLPackage.VALUE_PIN__IS_CONTROL_TYPE :
+				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
+			case UMLPackage.VALUE_PIN__UPPER_BOUND :
+				return eVirtualGet(UMLPackage.VALUE_PIN__UPPER_BOUND) != null;
+			case UMLPackage.VALUE_PIN__IN_STATE :
+				List inState = (List) eVirtualGet(UMLPackage.VALUE_PIN__IN_STATE);
+				return inState != null && !inState.isEmpty();
+			case UMLPackage.VALUE_PIN__SELECTION :
+				return eVirtualGet(UMLPackage.VALUE_PIN__SELECTION) != null;
+			case UMLPackage.VALUE_PIN__IS_CONTROL :
+				return ((eFlags & IS_CONTROL_EFLAG) != 0) != IS_CONTROL_EDEFAULT;
+			case UMLPackage.VALUE_PIN__VALUE :
+				return eVirtualGet(UMLPackage.VALUE_PIN__VALUE) != null;
+		}
+		return eDynamicIsSet(eFeature);
+	}
+
+} //ValuePinImpl

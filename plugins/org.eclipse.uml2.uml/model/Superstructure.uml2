@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="3ADC7B74022D" name="Superstructure" appliedProfile="_rNyEkBTaEdqZu-3Jy1-uYg">
+  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_rNyEkBTaEdqZu-3Jy1-uYg">
+    <eAnnotations xmi:id="_rNyEkRTaEdqZu-3Jy1-uYg" source="attributes">
+      <details xmi:id="_rNyEkhTaEdqZu-3Jy1-uYg" key="version" value="2"/>
+    </eAnnotations>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Ecore.profile.uml2#_siPt4K87Edi5QpYeY_yIpg"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Ecore.profile.uml2#_siPt4K87Edi5QpYeY_yIpg"/>
+  </packageImport>
+  <ownedMember xmi:type="uml:Package" xmi:id="_WecywBmQEdqvcs97umGEYQ" name="Compliance"/>
+</uml:Model>

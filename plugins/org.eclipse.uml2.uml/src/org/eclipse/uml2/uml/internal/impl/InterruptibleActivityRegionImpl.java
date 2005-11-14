@@ -1,0 +1,381 @@
+/*
+ * Copyright (c) 2005 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - initial API and implementation
+ *
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ */
+package org.eclipse.uml2.uml.internal.impl;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
+import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
+import org.eclipse.uml2.uml.UMLPackage;
+
+import org.eclipse.uml2.uml.internal.operations.InterruptibleActivityRegionOperations;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Interruptible Activity Region</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getContainedNodes <em>Contained Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getNodes <em>Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getInterruptingEdges <em>Interrupting Edge</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated
+ */
+public class InterruptibleActivityRegionImpl
+		extends ActivityGroupImpl
+		implements InterruptibleActivityRegion {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InterruptibleActivityRegionImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EClass eStaticClass() {
+		return UMLPackage.eINSTANCE.getInterruptibleActivityRegion();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getContainedNodes() {
+		List containedNode = (List) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE);
+		if (containedNode == null) {
+			eVirtualSet(
+				UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
+				containedNode = new DerivedUnionEObjectEList(
+					ActivityNode.class, this,
+					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
+					new EStructuralFeature[]{UMLPackage.eINSTANCE
+						.getInterruptibleActivityRegion_Node()}));
+		}
+		return containedNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getNodes() {
+		List node = (List) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE);
+		if (node == null) {
+			eVirtualSet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE,
+				node = new EObjectWithInverseResolvingEList.ManyInverse(
+					ActivityNode.class, this,
+					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE,
+					UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION));
+		}
+		return node;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getNode(String name) {
+		for (Iterator i = getNodes().iterator(); i.hasNext();) {
+			ActivityNode node = (ActivityNode) i.next();
+			if (name.equals(node.getName())) {
+				return node;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getInterruptingEdges() {
+		List interruptingEdge = (List) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE);
+		if (interruptingEdge == null) {
+			eVirtualSet(
+				UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
+				interruptingEdge = new EObjectWithInverseResolvingEList(
+					ActivityEdge.class,
+					this,
+					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
+					UMLPackage.ACTIVITY_EDGE__INTERRUPTS));
+		}
+		return interruptingEdge;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getInterruptingEdge(String name) {
+		for (Iterator i = getInterruptingEdges().iterator(); i.hasNext();) {
+			ActivityEdge interruptingEdge = (ActivityEdge) i.next();
+			if (name.equals(interruptingEdge.getName())) {
+				return interruptingEdge;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateInterruptingEdges(DiagnosticChain diagnostics,
+			Map context) {
+		return InterruptibleActivityRegionOperations.validateInterruptingEdges(
+			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, Class baseClass, NotificationChain msgs) {
+		if (featureID >= 0) {
+			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
+				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
+					return ((InternalEList) getEAnnotations()).basicAdd(
+						otherEnd, msgs);
+				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd,
+						UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY,
+						msgs);
+				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+					return ((InternalEList) getNodes())
+						.basicAdd(otherEnd, msgs);
+				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
+					return ((InternalEList) getInterruptingEdges()).basicAdd(
+						otherEnd, msgs);
+				default :
+					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
+						msgs);
+			}
+		}
+		if (eContainer != null)
+			msgs = eBasicRemoveFromContainer(msgs);
+		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, Class baseClass, NotificationChain msgs) {
+		if (featureID >= 0) {
+			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
+				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
+					return ((InternalEList) getEAnnotations()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
+					return ((InternalEList) getOwnedComments()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
+					return eBasicSetContainer(null,
+						UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY,
+						msgs);
+				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+					return ((InternalEList) getNodes()).basicRemove(otherEnd,
+						msgs);
+				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
+					return ((InternalEList) getInterruptingEdges())
+						.basicRemove(otherEnd, msgs);
+				default :
+					return eDynamicInverseRemove(otherEnd, featureID,
+						baseClass, msgs);
+			}
+		}
+		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
+				return getEAnnotations();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT :
+				return getOwnedElements();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNER :
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
+				return getOwnedComments();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUBGROUP :
+				return getSubgroups();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP :
+				if (resolve)
+					return getSuperGroup();
+				return basicGetSuperGroup();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE :
+				return getContainedNodes();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
+				return getInActivity();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_EDGE :
+				return getContainedEdges();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				return getNodes();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
+				return getInterruptingEdges();
+		}
+		return eDynamicGet(eFeature, resolve);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void eSet(EStructuralFeature eFeature, Object newValue) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
+				getEAnnotations().clear();
+				getEAnnotations().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
+				getOwnedComments().clear();
+				getOwnedComments().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
+				setInActivity((Activity) newValue);
+				return;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				getNodes().clear();
+				getNodes().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
+				getInterruptingEdges().clear();
+				getInterruptingEdges().addAll((Collection) newValue);
+				return;
+		}
+		eDynamicSet(eFeature, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void eUnset(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
+				getEAnnotations().clear();
+				return;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
+				getOwnedComments().clear();
+				return;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
+				setInActivity((Activity) null);
+				return;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				getNodes().clear();
+				return;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
+				getInterruptingEdges().clear();
+				return;
+		}
+		eDynamicUnset(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT :
+				return isSetOwnedElements();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNER :
+				return isSetOwner();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
+				List ownedComment = (List) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT);
+				return ownedComment != null && !ownedComment.isEmpty();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUBGROUP :
+				return isSetSubgroups();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP :
+				return isSetSuperGroup();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE :
+				return isSetContainedNodes();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
+				return getInActivity() != null;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_EDGE :
+				return isSetContainedEdges();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				List node = (List) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE);
+				return node != null && !node.isEmpty();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
+				List interruptingEdge = (List) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE);
+				return interruptingEdge != null && !interruptingEdge.isEmpty();
+		}
+		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetContainedNodes() {
+		return super.isSetContainedNodes()
+			|| eIsSet(UMLPackage.eINSTANCE
+				.getInterruptibleActivityRegion_Node());
+	}
+
+} //InterruptibleActivityRegionImpl

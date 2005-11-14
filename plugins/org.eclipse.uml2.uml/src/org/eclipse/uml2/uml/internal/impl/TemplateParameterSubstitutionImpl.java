@@ -1,0 +1,496 @@
+/*
+ * Copyright (c) 2005 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - initial API and implementation
+ *
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ */
+package org.eclipse.uml2.uml.internal.impl;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+import org.eclipse.uml2.common.util.SubsetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
+
+import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ParameterableElement;
+import org.eclipse.uml2.uml.TemplateBinding;
+import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.TemplateParameterSubstitution;
+import org.eclipse.uml2.uml.UMLPackage;
+
+import org.eclipse.uml2.uml.internal.operations.TemplateParameterSubstitutionOperations;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Template Parameter Substitution</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getActuals <em>Actual</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getFormal <em>Formal</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwnedActuals <em>Owned Actual</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getTemplateBinding <em>Template Binding</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated
+ */
+public class TemplateParameterSubstitutionImpl
+		extends ElementImpl
+		implements TemplateParameterSubstitution {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TemplateParameterSubstitutionImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EClass eStaticClass() {
+		return UMLPackage.eINSTANCE.getTemplateParameterSubstitution();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getOwnedElements() {
+		List ownedElement = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT);
+		if (ownedElement == null) {
+			eVirtualSet(
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT,
+				ownedElement = new DerivedUnionEObjectEList(Element.class,
+					this,
+					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT,
+					new EStructuralFeature[]{
+						UMLPackage.eINSTANCE.getElement_OwnedComment(),
+						UMLPackage.eINSTANCE
+							.getTemplateParameterSubstitution_OwnedActual()}));
+		}
+		return ownedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getActuals() {
+		List actual = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
+		if (actual == null) {
+			eVirtualSet(
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL,
+				actual = new SupersetEObjectResolvingEList(
+					ParameterableElement.class,
+					this,
+					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL,
+					new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL}));
+		}
+		return actual;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateParameter getFormal() {
+		TemplateParameter formal = (TemplateParameter) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL);
+		if (formal != null && formal.eIsProxy()) {
+			TemplateParameter oldFormal = formal;
+			formal = (TemplateParameter) eResolveProxy((InternalEObject) formal);
+			if (formal != oldFormal) {
+				eVirtualSet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL,
+					formal);
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL,
+						oldFormal, formal));
+			}
+		}
+		return formal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateParameter basicGetFormal() {
+		return (TemplateParameter) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFormal(TemplateParameter newFormal) {
+		TemplateParameter formal = newFormal;
+		Object oldFormal = eVirtualSet(
+			UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL, formal);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL,
+				oldFormal == EVIRTUAL_NO_VALUE
+					? null
+					: oldFormal, formal));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getOwnedActuals() {
+		List ownedActual = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
+		if (ownedActual == null) {
+			eVirtualSet(
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+				ownedActual = new SubsetEObjectContainmentEList(
+					ParameterableElement.class,
+					this,
+					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+					new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL}));
+		}
+		return ownedActual;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterableElement createOwnedActual(EClass eClass) {
+		ParameterableElement newOwnedActual = (ParameterableElement) eClass
+			.getEPackage().getEFactoryInstance().create(eClass);
+		getOwnedActuals().add(newOwnedActual);
+		return newOwnedActual;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding() {
+		if (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING)
+			return null;
+		return (TemplateBinding) eContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTemplateBinding(TemplateBinding newTemplateBinding) {
+		if (newTemplateBinding != eContainer
+			|| (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING && newTemplateBinding != null)) {
+			if (EcoreUtil.isAncestor(this, (EObject) newTemplateBinding))
+				throw new IllegalArgumentException(
+					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eContainer != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newTemplateBinding != null)
+				msgs = ((InternalEObject) newTemplateBinding).eInverseAdd(this,
+					UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,
+					TemplateBinding.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newTemplateBinding,
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING,
+				msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING,
+				newTemplateBinding, newTemplateBinding));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMustBeCompatible(DiagnosticChain diagnostics,
+			Map context) {
+		return TemplateParameterSubstitutionOperations
+			.validateMustBeCompatible(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, Class baseClass, NotificationChain msgs) {
+		if (featureID >= 0) {
+			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
+				case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS :
+					return ((InternalEList) getEAnnotations()).basicAdd(
+						otherEnd, msgs);
+				case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(
+						otherEnd,
+						UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING,
+						msgs);
+				default :
+					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
+						msgs);
+			}
+		}
+		if (eContainer != null)
+			msgs = eBasicRemoveFromContainer(msgs);
+		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, Class baseClass, NotificationChain msgs) {
+		if (featureID >= 0) {
+			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
+				case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS :
+					return ((InternalEList) getEAnnotations()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
+					return ((InternalEList) getOwnedComments()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
+					return ((InternalEList) getOwnedActuals()).basicRemove(
+						otherEnd, msgs);
+				case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
+					return eBasicSetContainer(
+						null,
+						UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING,
+						msgs);
+				default :
+					return eDynamicInverseRemove(otherEnd, featureID,
+						baseClass, msgs);
+			}
+		}
+		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
+		if (eContainerFeatureID >= 0) {
+			switch (eContainerFeatureID) {
+				case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
+					return eContainer.eInverseRemove(this,
+						UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,
+						TemplateBinding.class, msgs);
+				default :
+					return eDynamicBasicRemoveFromContainer(msgs);
+			}
+		}
+		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+			- eContainerFeatureID, null, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS :
+				return getEAnnotations();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT :
+				return getOwnedElements();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNER :
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
+				return getOwnedComments();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL :
+				if (resolve)
+					return getFormal();
+				return basicGetFormal();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
+				return getActuals();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
+				return getOwnedActuals();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
+				return getTemplateBinding();
+		}
+		return eDynamicGet(eFeature, resolve);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void eSet(EStructuralFeature eFeature, Object newValue) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS :
+				getEAnnotations().clear();
+				getEAnnotations().addAll((Collection) newValue);
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
+				getOwnedComments().clear();
+				getOwnedComments().addAll((Collection) newValue);
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL :
+				setFormal((TemplateParameter) newValue);
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
+				getActuals().clear();
+				getActuals().addAll((Collection) newValue);
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
+				getOwnedActuals().clear();
+				getOwnedActuals().addAll((Collection) newValue);
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
+				setTemplateBinding((TemplateBinding) newValue);
+				return;
+		}
+		eDynamicSet(eFeature, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void eUnset(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS :
+				getEAnnotations().clear();
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
+				getOwnedComments().clear();
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL :
+				setFormal((TemplateParameter) null);
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
+				getActuals().clear();
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
+				getOwnedActuals().clear();
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
+				setTemplateBinding((TemplateBinding) null);
+				return;
+		}
+		eDynamicUnset(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS :
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT :
+				return isSetOwnedElements();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNER :
+				return isSetOwner();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
+				List ownedComment = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT);
+				return ownedComment != null && !ownedComment.isEmpty();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL :
+				return eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL) != null;
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
+				List actual = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
+				return actual != null && !actual.isEmpty();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
+				List ownedActual = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
+				return ownedActual != null && !ownedActual.isEmpty();
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
+				return getTemplateBinding() != null;
+		}
+		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UMLPackage.eINSTANCE
+				.getTemplateParameterSubstitution_OwnedActual());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element basicGetOwner() {
+		TemplateBinding templateBinding = getTemplateBinding();
+		if (templateBinding != null) {
+			return templateBinding;
+		}
+		return super.basicGetOwner();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UMLPackage.eINSTANCE
+				.getTemplateParameterSubstitution_TemplateBinding());
+	}
+
+} //TemplateParameterSubstitutionImpl

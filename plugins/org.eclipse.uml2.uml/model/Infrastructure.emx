@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_DhVogBmQEdqvcs97umGEYQ" name="Infrastructure" appliedProfile="_DhVohBmQEdqvcs97umGEYQ _DhVohxmQEdqvcs97umGEYQ _DhVoihmQEdqvcs97umGEYQ _DhVojRmQEdqvcs97umGEYQ _DhVokBmQEdqvcs97umGEYQ">
+  <eAnnotations xmi:id="_DhVogRmQEdqvcs97umGEYQ" source="uml2.diagrams"/>
+  <eAnnotations xmi:id="_GcDtMBmQEdqvcs97umGEYQ" source="uml2.ownedShortcuts">
+    <contents xmi:type="ecore:EAnnotation" xmi:id="_GcDtMRmQEdqvcs97umGEYQ" source="eObjectShortcut">
+      <references xmi:type="uml:Model" href="InfrastructureLibrary.emx#_z3j3UBZaEdqs4ZsykdgStg?InfrastructureLibrary"/>
+    </contents>
+  </eAnnotations>
+  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_DhVohBmQEdqvcs97umGEYQ">
+    <eAnnotations xmi:id="_DhVohRmQEdqvcs97umGEYQ" source="attributes">
+      <details xmi:id="_DhVohhmQEdqvcs97umGEYQ" key="version" value="0"/>
+    </eAnnotations>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
+  </packageImport>
+  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_DhVohxmQEdqvcs97umGEYQ">
+    <eAnnotations xmi:id="_DhVoiBmQEdqvcs97umGEYQ" source="attributes">
+      <details xmi:id="_DhVoiRmQEdqvcs97umGEYQ" key="version" value="0"/>
+    </eAnnotations>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Intermediate.profile.uml2#_Cz7csK87Edih9-GG5afQ0g"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Intermediate.profile.uml2#_Cz7csK87Edih9-GG5afQ0g"/>
+  </packageImport>
+  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_DhVoihmQEdqvcs97umGEYQ">
+    <eAnnotations xmi:id="_DhVoixmQEdqvcs97umGEYQ" source="attributes">
+      <details xmi:id="_DhVojBmQEdqvcs97umGEYQ" key="version" value="0"/>
+    </eAnnotations>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Complete.profile.uml2#_M7pTkK87Edih9-GG5afQ0g"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Complete.profile.uml2#_M7pTkK87Edih9-GG5afQ0g"/>
+  </packageImport>
+  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_DhVojRmQEdqvcs97umGEYQ">
+    <eAnnotations xmi:id="_DhVojhmQEdqvcs97umGEYQ" source="attributes">
+      <details xmi:id="_DhVojxmQEdqvcs97umGEYQ" key="version" value="0"/>
+    </eAnnotations>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default"/>
+    <importedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default"/>
+  </packageImport>
+  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_DhVokBmQEdqvcs97umGEYQ">
+    <eAnnotations xmi:id="_DhVokRmQEdqvcs97umGEYQ" source="attributes">
+      <details xmi:id="_DhVokhmQEdqvcs97umGEYQ" key="version" value="0"/>
+    </eAnnotations>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment"/>
+    <importedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment"/>
+  </packageImport>
+  <packageImport xmi:id="_DhVokxmQEdqvcs97umGEYQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_EfRZoK86EdieaYgxtVWN8Q"/>
+  </packageImport>
+  <ownedMember xmi:type="uml:Package" xmi:id="_h1xQUBmQEdqvcs97umGEYQ" name="Compliance">
+    <eAnnotations xmi:id="_h1xQURmQEdqvcs97umGEYQ" source="uml2.diagrams"/>
+    <eAnnotations xmi:id="_kJltEBmQEdqvcs97umGEYQ" source="uml2.ownedShortcuts">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_JQp7wBmQEdqvcs97umGEYQ" source="eObjectShortcut">
+        <references xmi:type="uml:Model" href="LM.emx#_FA4sgBmMEdqvcs97umGEYQ?LM"/>
+      </contents>
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_IKeW0BmQEdqvcs97umGEYQ" source="eObjectShortcut">
+        <references xmi:type="uml:Model" href="L0.emx#__yy3ABmLEdqvcs97umGEYQ?L0"/>
+      </contents>
+    </eAnnotations>
+  </ownedMember>
+</uml:Model>
