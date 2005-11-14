@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.27 2005/11/14 17:31:08 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.28 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -173,7 +173,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -187,7 +187,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute() {
 		Property newOwnedAttribute = UML2Factory.eINSTANCE.createProperty();
@@ -245,7 +245,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Operation createOwnedOperation() {
 		Operation newOwnedOperation = UML2Factory.eINSTANCE.createOperation();

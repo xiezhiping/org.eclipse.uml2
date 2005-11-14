@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.33 2005/11/14 17:31:06 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.34 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -259,7 +259,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Realization createRealization(EClass eClass) {
 		Realization newRealization = (Realization) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -273,7 +273,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Realization createRealization() {
 		Realization newRealization = UML2Factory.eINSTANCE.createRealization();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionImpl.java,v 1.16 2005/11/14 17:31:09 khussey Exp $
+ * $Id: TimeObservationActionImpl.java,v 1.17 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -145,7 +145,7 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public TimeExpression createNow() {
 		TimeExpression newNow = UML2Factory.eINSTANCE.createTimeExpression();

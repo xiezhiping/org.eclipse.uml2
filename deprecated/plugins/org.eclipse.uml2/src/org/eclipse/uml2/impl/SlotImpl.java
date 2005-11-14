@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.13 2005/11/14 17:31:08 khussey Exp $
+ * $Id: SlotImpl.java,v 1.14 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -170,7 +170,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ValueSpecification createValue(EClass eClass) {
 		ValueSpecification newValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.31 2005/11/14 17:31:08 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.32 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -317,7 +317,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Parameter createParameter() {
 		Parameter newParameter = UML2Factory.eINSTANCE.createParameter();
@@ -524,7 +524,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ParameterSet createOwnedParameterSet() {
 		ParameterSet newOwnedParameterSet = UML2Factory.eINSTANCE.createParameterSet();

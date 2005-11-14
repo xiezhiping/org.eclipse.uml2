@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.18 2005/11/14 17:31:08 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.19 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -159,7 +159,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createInvariant(EClass eClass) {
 		Constraint newInvariant = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -173,7 +173,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createInvariant() {
 		Constraint newInvariant = UML2Factory.eINSTANCE.createConstraint();

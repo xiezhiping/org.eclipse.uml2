@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.17 2005/11/14 17:31:09 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -155,7 +155,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ValueSpecification createMinint(EClass eClass) {
 		ValueSpecification newMinint = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -216,7 +216,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ValueSpecification createMaxint(EClass eClass) {
 		ValueSpecification newMaxint = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);

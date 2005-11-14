@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.16 2005/11/14 17:31:06 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.17 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -268,7 +268,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OpaqueExpression createSelector(EClass eClass) {
 		OpaqueExpression newSelector = (OpaqueExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -282,7 +282,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OpaqueExpression createSelector() {
 		OpaqueExpression newSelector = UML2Factory.eINSTANCE.createOpaqueExpression();

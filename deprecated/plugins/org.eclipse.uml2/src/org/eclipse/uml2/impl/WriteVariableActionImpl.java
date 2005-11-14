@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableActionImpl.java,v 1.17 2005/11/14 17:31:07 khussey Exp $
+ * $Id: WriteVariableActionImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -154,7 +154,7 @@ public abstract class WriteVariableActionImpl extends VariableActionImpl impleme
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createValue(EClass eClass) {
 		InputPin newValue = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -168,7 +168,7 @@ public abstract class WriteVariableActionImpl extends VariableActionImpl impleme
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createValue() {
 		InputPin newValue = UML2Factory.eINSTANCE.createInputPin();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.29 2005/11/14 17:31:06 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.30 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -232,7 +232,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createOwnedRule(EClass eClass) {
 		Constraint newOwnedRule = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -246,7 +246,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createOwnedRule() {
 		Constraint newOwnedRule = UML2Factory.eINSTANCE.createConstraint();
@@ -334,7 +334,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ElementImport createElementImport() {
 		ElementImport newElementImport = UML2Factory.eINSTANCE.createElementImport();
@@ -362,7 +362,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public PackageImport createPackageImport(EClass eClass) {
 		PackageImport newPackageImport = (PackageImport) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -376,7 +376,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public PackageImport createPackageImport() {
 		PackageImport newPackageImport = UML2Factory.eINSTANCE.createPackageImport();
@@ -495,7 +495,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Variable createVariable() {
 		Variable newVariable = UML2Factory.eINSTANCE.createVariable();
@@ -548,7 +548,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     public ActivityNode createContainedNode(EClass eClass) {
 		ActivityNode newContainedNode = (ActivityNode) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -601,7 +601,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ActivityEdge createContainedEdge(EClass eClass) {
 		ActivityEdge newContainedEdge = (ActivityEdge) eClass.getEPackage().getEFactoryInstance().create(eClass);

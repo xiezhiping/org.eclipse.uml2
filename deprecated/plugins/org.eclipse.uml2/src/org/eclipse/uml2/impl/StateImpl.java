@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.21 2005/11/14 17:31:08 khussey Exp $
+ * $Id: StateImpl.java,v 1.22 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -447,7 +447,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ConnectionPointReference createConnection() {
 		ConnectionPointReference newConnection = UML2Factory.eINSTANCE.createConnectionPointReference();
@@ -585,7 +585,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Region createRegion() {
 		Region newRegion = UML2Factory.eINSTANCE.createRegion();
@@ -661,7 +661,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Activity createEntry() {
 		Activity newEntry = UML2Factory.eINSTANCE.createActivity();
@@ -737,7 +737,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Activity createExit() {
 		Activity newExit = UML2Factory.eINSTANCE.createActivity();
@@ -813,7 +813,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Activity createDoActivity() {
 		Activity newDoActivity = UML2Factory.eINSTANCE.createActivity();
@@ -874,7 +874,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createStateInvariant(EClass eClass) {
 		Constraint newStateInvariant = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -888,7 +888,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createStateInvariant() {
 		Constraint newStateInvariant = UML2Factory.eINSTANCE.createConstraint();

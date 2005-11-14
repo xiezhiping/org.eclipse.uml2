@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.36 2005/11/14 17:31:07 khussey Exp $
+ * $Id: PackageImpl.java,v 1.37 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -412,7 +412,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public PackageMerge createPackageMerge() {
 		PackageMerge newPackageMerge = UML2Factory.eINSTANCE.createPackageMerge();
@@ -469,7 +469,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public PackageMerge createPackageExtension() {
 		PackageMerge newPackageExtension = UML2Factory.eINSTANCE.createPackageMerge();

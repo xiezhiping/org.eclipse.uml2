@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.14 2005/11/14 17:31:09 khussey Exp $
+ * $Id: MessageImpl.java,v 1.15 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -453,7 +453,7 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ValueSpecification createArgument(EClass eClass) {
 		ValueSpecification newArgument = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);

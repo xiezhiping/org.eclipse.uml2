@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.14 2005/11/14 17:31:09 khussey Exp $
+ * $Id: CommentImpl.java,v 1.15 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -217,7 +217,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public StringExpression createBodyExpression() {
 		StringExpression newBodyExpression = UML2Factory.eINSTANCE.createStringExpression();

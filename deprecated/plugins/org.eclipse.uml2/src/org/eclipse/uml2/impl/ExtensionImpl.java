@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.26 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.27 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -163,7 +163,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedEnd() {
 		ExtensionEnd newOwnedEnd = UML2Factory.eINSTANCE.createExtensionEnd();

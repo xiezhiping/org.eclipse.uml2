@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.35 2005/11/14 17:31:09 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.36 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -273,7 +273,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedEnd(EClass eClass) {
 		Property newOwnedEnd = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -287,7 +287,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedEnd() {
 		Property newOwnedEnd = UML2Factory.eINSTANCE.createProperty();

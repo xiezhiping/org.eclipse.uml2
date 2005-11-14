@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.15 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.16 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -135,7 +135,7 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ExceptionHandler createHandler() {
 		ExceptionHandler newHandler = UML2Factory.eINSTANCE.createExceptionHandler();

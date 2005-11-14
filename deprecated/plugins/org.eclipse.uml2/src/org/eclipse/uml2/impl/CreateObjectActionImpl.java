@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectActionImpl.java,v 1.17 2005/11/14 17:31:07 khussey Exp $
+ * $Id: CreateObjectActionImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -212,7 +212,7 @@ public class CreateObjectActionImpl extends ActionImpl implements CreateObjectAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OutputPin createResult() {
 		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();

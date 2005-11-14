@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentActionImpl.java,v 1.17 2005/11/14 17:31:09 khussey Exp $
+ * $Id: ReadExtentActionImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -170,7 +170,7 @@ public class ReadExtentActionImpl extends ActionImpl implements ReadExtentAction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OutputPin createResult() {
 		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();

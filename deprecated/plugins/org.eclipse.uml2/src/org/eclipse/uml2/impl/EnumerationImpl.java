@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.24 2005/11/14 17:31:07 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.25 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -126,7 +126,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EnumerationLiteral createOwnedLiteral() {
 		EnumerationLiteral newOwnedLiteral = UML2Factory.eINSTANCE.createEnumerationLiteral();

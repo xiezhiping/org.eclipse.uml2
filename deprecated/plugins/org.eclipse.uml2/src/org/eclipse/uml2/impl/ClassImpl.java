@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.39 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ClassImpl.java,v 1.40 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -178,7 +178,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -192,7 +192,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute() {
 		Property newOwnedAttribute = UML2Factory.eINSTANCE.createProperty();
@@ -458,7 +458,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Connector createOwnedConnector() {
 		Connector newOwnedConnector = UML2Factory.eINSTANCE.createConnector();
@@ -516,7 +516,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Port createOwnedPort() {
 		Port newOwnedPort = UML2Factory.eINSTANCE.createPort();
@@ -597,7 +597,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Operation createOwnedOperation() {
 		Operation newOwnedOperation = UML2Factory.eINSTANCE.createOperation();
@@ -736,7 +736,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Classifier createNestedClassifier(EClass eClass) {
 		Classifier newNestedClassifier = (Classifier) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -794,7 +794,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Reception createOwnedReception() {
 		Reception newOwnedReception = UML2Factory.eINSTANCE.createReception();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.17 2005/11/14 17:31:10 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -360,7 +360,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OutputPin createResult() {
 		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();
@@ -418,7 +418,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OutputPin createLoopVariable() {
 		OutputPin newLoopVariable = UML2Factory.eINSTANCE.createOutputPin();
@@ -490,7 +490,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createLoopVariableInput(EClass eClass) {
 		InputPin newLoopVariableInput = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -504,7 +504,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createLoopVariableInput() {
 		InputPin newLoopVariableInput = UML2Factory.eINSTANCE.createInputPin();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionImpl.java,v 1.17 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ReadLinkActionImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -168,7 +168,7 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OutputPin createResult() {
 		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();

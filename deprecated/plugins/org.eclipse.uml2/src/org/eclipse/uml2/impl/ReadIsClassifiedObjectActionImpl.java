@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.17 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -291,7 +291,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OutputPin createResult() {
 		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();
@@ -352,7 +352,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createObject(EClass eClass) {
 		InputPin newObject = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -366,7 +366,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createObject() {
 		InputPin newObject = UML2Factory.eINSTANCE.createInputPin();

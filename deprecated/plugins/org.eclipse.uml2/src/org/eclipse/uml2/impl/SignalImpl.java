@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.23 2005/11/14 17:31:06 khussey Exp $
+ * $Id: SignalImpl.java,v 1.24 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -136,7 +136,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -150,7 +150,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute() {
 		Property newOwnedAttribute = UML2Factory.eINSTANCE.createProperty();

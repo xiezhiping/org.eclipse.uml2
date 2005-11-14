@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrenceImpl.java,v 1.14 2005/11/14 17:31:08 khussey Exp $
+ * $Id: CollaborationOccurrenceImpl.java,v 1.15 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -180,7 +180,7 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Dependency createRoleBinding(EClass eClass) {
 		Dependency newRoleBinding = (Dependency) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -194,7 +194,7 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Dependency createRoleBinding() {
 		Dependency newRoleBinding = UML2Factory.eINSTANCE.createDependency();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.26 2005/11/14 17:31:09 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.27 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -213,7 +213,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Artifact createNestedArtifact(EClass eClass) {
 		Artifact newNestedArtifact = (Artifact) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -227,7 +227,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Artifact createNestedArtifact() {
 		Artifact newNestedArtifact = UML2Factory.eINSTANCE.createArtifact();
@@ -285,7 +285,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Manifestation createManifestation() {
 		Manifestation newManifestation = UML2Factory.eINSTANCE.createManifestation();
@@ -343,7 +343,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Operation createOwnedOperation() {
 		Operation newOwnedOperation = UML2Factory.eINSTANCE.createOperation();
@@ -386,7 +386,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -400,7 +400,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute() {
 		Property newOwnedAttribute = UML2Factory.eINSTANCE.createProperty();

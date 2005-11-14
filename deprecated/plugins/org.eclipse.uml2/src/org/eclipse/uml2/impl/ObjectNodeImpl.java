@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.17 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -240,7 +240,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ValueSpecification createUpperBound(EClass eClass) {
 		ValueSpecification newUpperBound = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);

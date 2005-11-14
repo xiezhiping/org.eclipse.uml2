@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeTriggerImpl.java,v 1.16 2005/11/14 17:31:07 khussey Exp $
+ * $Id: TimeTriggerImpl.java,v 1.17 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -196,7 +196,7 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ValueSpecification createWhen(EClass eClass) {
 		ValueSpecification newWhen = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.23 2005/11/14 17:31:09 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.24 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -176,7 +176,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Deployment createDeployment() {
 		Deployment newDeployment = UML2Factory.eINSTANCE.createDeployment();
@@ -267,7 +267,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Slot createSlot() {
 		Slot newSlot = UML2Factory.eINSTANCE.createSlot();
@@ -357,7 +357,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ValueSpecification createSpecification(EClass eClass) {
 		ValueSpecification newSpecification = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);

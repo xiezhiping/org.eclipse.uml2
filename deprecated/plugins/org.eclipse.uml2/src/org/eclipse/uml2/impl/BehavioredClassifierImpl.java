@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.25 2005/11/14 17:31:08 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.26 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -140,7 +140,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Behavior createOwnedBehavior(EClass eClass) {
 		Behavior newOwnedBehavior = (Behavior) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -225,7 +225,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Implementation createImplementation() {
 		Implementation newImplementation = UML2Factory.eINSTANCE.createImplementation();
@@ -268,7 +268,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Trigger createOwnedTrigger(EClass eClass) {
 		Trigger newOwnedTrigger = (Trigger) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -321,7 +321,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public StateMachine createOwnedStateMachine(EClass eClass) {
 		StateMachine newOwnedStateMachine = (StateMachine) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -335,7 +335,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public StateMachine createOwnedStateMachine() {
 		StateMachine newOwnedStateMachine = UML2Factory.eINSTANCE.createStateMachine();

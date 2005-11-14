@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrenceImpl.java,v 1.14 2005/11/14 17:31:10 khussey Exp $
+ * $Id: InteractionOccurrenceImpl.java,v 1.15 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -197,7 +197,7 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Gate createActualGate() {
 		Gate newActualGate = UML2Factory.eINSTANCE.createGate();
@@ -240,7 +240,7 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createArgument(EClass eClass) {
 		InputPin newArgument = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -254,7 +254,7 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createArgument() {
 		InputPin newArgument = UML2Factory.eINSTANCE.createInputPin();

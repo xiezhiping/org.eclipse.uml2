@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.16 2005/11/14 17:31:08 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.17 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -145,7 +145,7 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Duration createDuration() {
 		Duration newDuration = UML2Factory.eINSTANCE.createDuration();

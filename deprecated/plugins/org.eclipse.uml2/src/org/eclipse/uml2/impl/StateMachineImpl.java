@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.31 2005/11/14 17:31:08 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.32 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -148,7 +148,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Region createRegion() {
 		Region newRegion = UML2Factory.eINSTANCE.createRegion();
@@ -206,7 +206,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Pseudostate createConnectionPoint() {
 		Pseudostate newConnectionPoint = UML2Factory.eINSTANCE.createPseudostate();

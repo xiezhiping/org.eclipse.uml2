@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionActionImpl.java,v 1.16 2005/11/14 17:31:06 khussey Exp $
+ * $Id: ApplyFunctionActionImpl.java,v 1.17 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -208,7 +208,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createArgument(EClass eClass) {
 		InputPin newArgument = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -222,7 +222,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createArgument() {
 		InputPin newArgument = UML2Factory.eINSTANCE.createInputPin();
@@ -280,7 +280,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OutputPin createResult() {
 		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.17 2005/11/14 17:31:07 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -164,7 +164,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createTarget(EClass eClass) {
 		InputPin newTarget = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -178,7 +178,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createTarget() {
 		InputPin newTarget = UML2Factory.eINSTANCE.createInputPin();

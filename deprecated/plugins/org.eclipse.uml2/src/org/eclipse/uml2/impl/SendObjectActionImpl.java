@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.18 2005/11/14 17:31:08 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.19 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -165,7 +165,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createTarget(EClass eClass) {
 		InputPin newTarget = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -179,7 +179,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createTarget() {
 		InputPin newTarget = UML2Factory.eINSTANCE.createInputPin();
@@ -249,7 +249,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createRequest(EClass eClass) {
 		InputPin newRequest = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -263,7 +263,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createRequest() {
 		InputPin newRequest = UML2Factory.eINSTANCE.createInputPin();

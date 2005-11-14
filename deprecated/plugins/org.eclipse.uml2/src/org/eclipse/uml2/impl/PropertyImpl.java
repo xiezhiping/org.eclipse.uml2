@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.28 2005/11/14 17:31:07 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.29 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -401,7 +401,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Deployment createDeployment() {
 		Deployment newDeployment = UML2Factory.eINSTANCE.createDeployment();
@@ -848,7 +848,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ValueSpecification createDefaultValue(EClass eClass) {
 		ValueSpecification newDefaultValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -891,7 +891,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createQualifier(EClass eClass) {
 		Property newQualifier = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -905,7 +905,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createQualifier() {
 		Property newQualifier = UML2Factory.eINSTANCE.createProperty();

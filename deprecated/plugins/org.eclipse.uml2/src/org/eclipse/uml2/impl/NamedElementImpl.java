@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.23 2005/11/14 17:31:06 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.24 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -312,7 +312,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public StringExpression createNameExpression() {
 		StringExpression newNameExpression = UML2Factory.eINSTANCE.createStringExpression();

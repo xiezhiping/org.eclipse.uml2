@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.15 2005/11/14 17:31:08 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.16 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -249,7 +249,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ConnectorEnd createEnd() {
 		ConnectorEnd newEnd = UML2Factory.eINSTANCE.createConnectorEnd();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.15 2005/11/14 17:31:08 khussey Exp $
+ * $Id: PinImpl.java,v 1.16 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -300,7 +300,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ValueSpecification createUpperValue(EClass eClass) {
 		ValueSpecification newUpperValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -361,7 +361,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ValueSpecification createLowerValue(EClass eClass) {
 		ValueSpecification newLowerValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);

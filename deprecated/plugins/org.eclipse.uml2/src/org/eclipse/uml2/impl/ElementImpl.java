@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.31 2005/11/14 17:31:08 khussey Exp $
+ * $Id: ElementImpl.java,v 1.32 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -245,7 +245,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Comment createOwnedComment() {
 		Comment newOwnedComment = UML2Factory.eINSTANCE.createComment();

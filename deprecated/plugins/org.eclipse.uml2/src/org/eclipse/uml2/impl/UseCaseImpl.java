@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.23 2005/11/14 17:31:08 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.24 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -132,7 +132,7 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Include createInclude() {
 		Include newInclude = UML2Factory.eINSTANCE.createInclude();
@@ -190,7 +190,7 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Extend createExtend() {
 		Extend newExtend = UML2Factory.eINSTANCE.createExtend();
@@ -248,7 +248,7 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ExtensionPoint createExtensionPoint() {
 		ExtensionPoint newExtensionPoint = UML2Factory.eINSTANCE.createExtensionPoint();

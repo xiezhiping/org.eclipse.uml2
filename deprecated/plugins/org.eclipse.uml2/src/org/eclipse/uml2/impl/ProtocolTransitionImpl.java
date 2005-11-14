@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.18 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.19 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -177,7 +177,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createPostCondition(EClass eClass) {
 		Constraint newPostCondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -191,7 +191,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createPostCondition() {
 		Constraint newPostCondition = UML2Factory.eINSTANCE.createConstraint();

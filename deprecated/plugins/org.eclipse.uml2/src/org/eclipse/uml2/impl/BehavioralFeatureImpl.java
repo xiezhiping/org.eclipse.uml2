@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.20 2005/11/14 17:31:06 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.21 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -518,7 +518,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Parameter createFormalParameter() {
 		Parameter newFormalParameter = UML2Factory.eINSTANCE.createParameter();
@@ -576,7 +576,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Parameter createReturnResult() {
 		Parameter newReturnResult = UML2Factory.eINSTANCE.createParameter();

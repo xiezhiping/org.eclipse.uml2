@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.17 2005/11/14 17:31:09 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -227,7 +227,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Clause createClause() {
 		Clause newClause = UML2Factory.eINSTANCE.createClause();
@@ -285,7 +285,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OutputPin createResult() {
 		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();

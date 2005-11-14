@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionImpl.java,v 1.17 2005/11/14 17:31:06 khussey Exp $
+ * $Id: AddVariableValueActionImpl.java,v 1.18 2005/11/14 19:49:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -206,7 +206,7 @@ public class AddVariableValueActionImpl extends WriteVariableActionImpl implemen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createInsertAt(EClass eClass) {
 		InputPin newInsertAt = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -220,7 +220,7 @@ public class AddVariableValueActionImpl extends WriteVariableActionImpl implemen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createInsertAt() {
 		InputPin newInsertAt = UML2Factory.eINSTANCE.createInputPin();

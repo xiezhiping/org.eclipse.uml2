@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.15 2005/11/14 17:31:09 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.16 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -142,7 +142,7 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public TemplateParameter createOwnedParameter(EClass eClass) {
 		TemplateParameter newOwnedParameter = (TemplateParameter) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -156,7 +156,7 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public TemplateParameter createOwnedParameter() {
 		TemplateParameter newOwnedParameter = UML2Factory.eINSTANCE.createTemplateParameter();

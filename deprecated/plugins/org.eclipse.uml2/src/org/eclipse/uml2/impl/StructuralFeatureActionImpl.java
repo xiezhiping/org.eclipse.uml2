@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionImpl.java,v 1.17 2005/11/14 17:31:08 khussey Exp $
+ * $Id: StructuralFeatureActionImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -197,7 +197,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createObject(EClass eClass) {
 		InputPin newObject = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -211,7 +211,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createObject() {
 		InputPin newObject = UML2Factory.eINSTANCE.createInputPin();

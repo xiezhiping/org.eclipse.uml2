@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.13 2005/11/14 17:31:10 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.14 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -139,7 +139,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public TemplateParameter createOwnedParameter(EClass eClass) {
 		TemplateParameter newOwnedParameter = (TemplateParameter) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -153,7 +153,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public TemplateParameter createOwnedParameter() {
 		TemplateParameter newOwnedParameter = UML2Factory.eINSTANCE.createTemplateParameter();

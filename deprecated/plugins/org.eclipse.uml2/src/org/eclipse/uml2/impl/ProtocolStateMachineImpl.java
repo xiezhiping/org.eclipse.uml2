@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.28 2005/11/14 17:31:09 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.29 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -112,7 +112,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ProtocolConformance createConformance() {
 		ProtocolConformance newConformance = UML2Factory.eINSTANCE.createProtocolConformance();

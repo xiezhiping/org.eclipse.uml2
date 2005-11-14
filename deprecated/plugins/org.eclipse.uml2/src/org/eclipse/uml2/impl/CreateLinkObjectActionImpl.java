@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.18 2005/11/14 17:31:06 khussey Exp $
+ * $Id: CreateLinkObjectActionImpl.java,v 1.19 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -172,7 +172,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OutputPin createResult() {
 		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();
@@ -219,7 +219,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public LinkEndData createEndData() {
 		LinkEndCreationData newEndData = UML2Factory.eINSTANCE.createLinkEndCreationData();

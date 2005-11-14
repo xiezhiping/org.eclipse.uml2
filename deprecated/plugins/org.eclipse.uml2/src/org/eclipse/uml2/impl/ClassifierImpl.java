@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.35 2005/11/14 17:31:08 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.36 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -667,7 +667,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Generalization createGeneralization() {
 		Generalization newGeneralization = UML2Factory.eINSTANCE.createGeneralization();
@@ -817,7 +817,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Substitution createSubstitution() {
 		Substitution newSubstitution = UML2Factory.eINSTANCE.createSubstitution();
@@ -904,7 +904,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public UseCase createOwnedUseCase() {
 		UseCase newOwnedUseCase = UML2Factory.eINSTANCE.createUseCase();
@@ -1018,7 +1018,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public CollaborationOccurrence createOccurrence() {
 		CollaborationOccurrence newOccurrence = UML2Factory.eINSTANCE.createCollaborationOccurrence();

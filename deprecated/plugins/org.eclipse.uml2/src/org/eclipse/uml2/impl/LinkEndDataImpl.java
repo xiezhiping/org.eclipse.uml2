@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.10 2005/11/14 17:31:10 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.11 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -187,7 +187,7 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public QualifierValue createQualifier() {
 		QualifierValue newQualifier = UML2Factory.eINSTANCE.createQualifierValue();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.28 2005/11/14 17:31:10 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.29 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -181,7 +181,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public GeneralOrdering createGeneralOrdering() {
 		GeneralOrdering newGeneralOrdering = UML2Factory.eINSTANCE.createGeneralOrdering();
@@ -305,7 +305,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Lifeline createLifeline() {
 		Lifeline newLifeline = UML2Factory.eINSTANCE.createLifeline();
@@ -363,7 +363,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Message createMessage() {
 		Message newMessage = UML2Factory.eINSTANCE.createMessage();
@@ -406,7 +406,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InteractionFragment createFragment(EClass eClass) {
 		InteractionFragment newFragment = (InteractionFragment) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -464,7 +464,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Gate createFormalGate() {
 		Gate newFormalGate = UML2Factory.eINSTANCE.createGate();

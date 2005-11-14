@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.17 2005/11/14 17:31:08 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -159,7 +159,7 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Deployment createDeployment() {
 		Deployment newDeployment = UML2Factory.eINSTANCE.createDeployment();

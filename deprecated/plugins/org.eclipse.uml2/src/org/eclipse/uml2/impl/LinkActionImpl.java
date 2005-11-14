@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.13 2005/11/14 17:31:07 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.14 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -89,7 +89,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public LinkEndData createEndData(EClass eClass) {
 		LinkEndData newEndData = (LinkEndData) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -103,7 +103,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public LinkEndData createEndData() {
 		LinkEndData newEndData = UML2Factory.eINSTANCE.createLinkEndData();

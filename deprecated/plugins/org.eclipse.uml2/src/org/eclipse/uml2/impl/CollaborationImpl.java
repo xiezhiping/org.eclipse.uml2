@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.27 2005/11/14 17:31:10 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.28 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -128,7 +128,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -142,7 +142,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute() {
 		Property newOwnedAttribute = UML2Factory.eINSTANCE.createProperty();
@@ -363,7 +363,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Connector createOwnedConnector() {
 		Connector newOwnedConnector = UML2Factory.eINSTANCE.createConnector();

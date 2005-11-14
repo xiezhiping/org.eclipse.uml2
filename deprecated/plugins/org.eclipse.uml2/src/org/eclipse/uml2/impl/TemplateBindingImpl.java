@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.15 2005/11/14 17:31:07 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.16 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -262,7 +262,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public TemplateParameterSubstitution createParameterSubstitution() {
 		TemplateParameterSubstitution newParameterSubstitution = UML2Factory.eINSTANCE.createTemplateParameterSubstitution();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.17 2005/11/14 17:31:10 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -182,7 +182,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createFirst(EClass eClass) {
 		InputPin newFirst = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -196,7 +196,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createFirst() {
 		InputPin newFirst = UML2Factory.eINSTANCE.createInputPin();
@@ -257,7 +257,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createSecond(EClass eClass) {
 		InputPin newSecond = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -271,7 +271,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createSecond() {
 		InputPin newSecond = UML2Factory.eINSTANCE.createInputPin();
@@ -347,7 +347,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OutputPin createResult() {
 		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();

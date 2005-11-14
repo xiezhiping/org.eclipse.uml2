@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.19 2005/11/14 17:31:08 khussey Exp $
+ * $Id: RegionImpl.java,v 1.20 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -188,7 +188,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Vertex createSubvertex(EClass eClass) {
 		Vertex newSubvertex = (Vertex) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -231,7 +231,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Transition createTransition(EClass eClass) {
 		Transition newTransition = (Transition) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -245,7 +245,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Transition createTransition() {
 		Transition newTransition = UML2Factory.eINSTANCE.createTransition();

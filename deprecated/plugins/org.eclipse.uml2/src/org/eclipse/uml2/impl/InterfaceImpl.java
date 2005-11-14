@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.28 2005/11/14 17:31:06 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.29 2005/11/14 19:49:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -182,7 +182,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -196,7 +196,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute() {
 		Property newOwnedAttribute = UML2Factory.eINSTANCE.createProperty();
@@ -254,7 +254,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Operation createOwnedOperation() {
 		Operation newOwnedOperation = UML2Factory.eINSTANCE.createOperation();
@@ -326,7 +326,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Classifier createNestedClassifier(EClass eClass) {
 		Classifier newNestedClassifier = (Classifier) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -384,7 +384,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Reception createOwnedReception() {
 		Reception newOwnedReception = UML2Factory.eINSTANCE.createReception();
@@ -460,7 +460,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ProtocolStateMachine createProtocol() {
 		ProtocolStateMachine newProtocol = UML2Factory.eINSTANCE.createProtocolStateMachine();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.18 2005/11/14 17:31:09 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.19 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -240,7 +240,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createTarget(EClass eClass) {
 		InputPin newTarget = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -254,7 +254,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createTarget() {
 		InputPin newTarget = UML2Factory.eINSTANCE.createInputPin();

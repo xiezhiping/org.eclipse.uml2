@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.16 2005/11/14 17:31:09 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.17 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -139,7 +139,7 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createArgument(EClass eClass) {
 		InputPin newArgument = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -153,7 +153,7 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public InputPin createArgument() {
 		InputPin newArgument = UML2Factory.eINSTANCE.createInputPin();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.26 2005/11/14 17:31:09 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.27 2005/11/14 19:49:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -124,7 +124,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -138,7 +138,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Property createOwnedAttribute() {
 		Property newOwnedAttribute = UML2Factory.eINSTANCE.createProperty();
@@ -382,7 +382,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Connector createOwnedConnector() {
 		Connector newOwnedConnector = UML2Factory.eINSTANCE.createConnector();

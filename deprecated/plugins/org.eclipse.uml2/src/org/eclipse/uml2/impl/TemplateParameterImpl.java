@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.18 2005/11/14 17:31:08 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.19 2005/11/14 19:49:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -259,7 +259,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ParameterableElement createOwnedParameteredElement(EClass eClass) {
 		ParameterableElement newOwnedParameteredElement = (ParameterableElement) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -368,7 +368,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ParameterableElement createOwnedDefault(EClass eClass) {
 		ParameterableElement newOwnedDefault = (ParameterableElement) eClass.getEPackage().getEFactoryInstance().create(eClass);
