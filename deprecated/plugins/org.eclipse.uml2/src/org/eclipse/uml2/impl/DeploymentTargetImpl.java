@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.16 2005/11/09 22:53:07 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.17 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,16 +71,6 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployments()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList deployment = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -104,8 +94,9 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPLOYMENT_TARGET__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment()});
+			eVirtualSet(UML2Package.DEPLOYMENT_TARGET__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPLOYMENT_TARGET__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment()}));
 		}
 		return ownedElement;
 	}
@@ -127,8 +118,9 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	 * @generated
 	 */
 	public EList getDeployments() {
+		EList deployment = (EList)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT);
 		if (deployment == null) {
-			deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, new int[] {UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION);
+			eVirtualSet(UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, new int[] {UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION));
 		}
 		return deployment;
 	}
@@ -232,8 +224,9 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	 * @generated
 	 */
 	public EList getClientDependencies() {
+		EList clientDependency = (EList)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
-			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY, new int[] {UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT);
+			eVirtualSet(UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY, clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY, new int[] {UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT));
 		}
 		return clientDependency;
 	}
@@ -252,6 +245,7 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 				case UML2Package.DEPLOYMENT_TARGET__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -430,22 +424,27 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 			case UML2Package.DEPLOYMENT_TARGET__OWNER:
 				return isSetOwner();
 			case UML2Package.DEPLOYMENT_TARGET__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.DEPLOYMENT_TARGET__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.DEPLOYMENT_TARGET__NAME:
+				String name = eVirtualIsSet(UML2Package.DEPLOYMENT_TARGET__NAME) ? (String)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DEPLOYMENT_TARGET__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPLOYMENT_TARGET__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.DEPLOYMENT_TARGET__VISIBILITY) && eVirtualGet(UML2Package.DEPLOYMENT_TARGET__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEPLOYMENT_TARGET__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.DEPLOYMENT_TARGET__NAME_EXPRESSION) != null;
 			case UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT:
+				EList deployment = (EList)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT);
 				return deployment != null && !deployment.isEmpty();
 			case UML2Package.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();

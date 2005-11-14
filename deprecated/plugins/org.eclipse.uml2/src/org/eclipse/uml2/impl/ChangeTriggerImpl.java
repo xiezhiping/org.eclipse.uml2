@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeTriggerImpl.java,v 1.14 2005/11/09 22:53:08 khussey Exp $
+ * $Id: ChangeTriggerImpl.java,v 1.15 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -60,16 +60,6 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getChangeExpression() <em>Change Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getChangeExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected ValueSpecification changeExpression = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -93,8 +83,9 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.CHANGE_TRIGGER__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.CHANGE_TRIGGER__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression()});
+			eVirtualSet(UML2Package.CHANGE_TRIGGER__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.CHANGE_TRIGGER__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression()}));
 		}
 		return ownedElement;
 	}
@@ -116,6 +107,7 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	 * @generated
 	 */
 	public ValueSpecification getChangeExpression() {
+		ValueSpecification changeExpression = (ValueSpecification)eVirtualGet(UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION);
 		return changeExpression;
 	}
 
@@ -125,10 +117,9 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	 * @generated
 	 */
 	public NotificationChain basicSetChangeExpression(ValueSpecification newChangeExpression, NotificationChain msgs) {
-		ValueSpecification oldChangeExpression = changeExpression;
-		changeExpression = newChangeExpression;
+		Object oldChangeExpression = eVirtualSet(UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION, newChangeExpression);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION, oldChangeExpression, newChangeExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION, oldChangeExpression == EVIRTUAL_NO_VALUE ? null : oldChangeExpression, newChangeExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -141,6 +132,7 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	 * @generated
 	 */
 	public void setChangeExpression(ValueSpecification newChangeExpression) {
+		ValueSpecification changeExpression = (ValueSpecification)eVirtualGet(UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION);
 		if (newChangeExpression != changeExpression) {
 			NotificationChain msgs = null;
 			if (changeExpression != null)
@@ -338,25 +330,30 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 			case UML2Package.CHANGE_TRIGGER__OWNER:
 				return isSetOwner();
 			case UML2Package.CHANGE_TRIGGER__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.CHANGE_TRIGGER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CHANGE_TRIGGER__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.CHANGE_TRIGGER__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.CHANGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.CHANGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CHANGE_TRIGGER__NAME:
+				String name = eVirtualIsSet(UML2Package.CHANGE_TRIGGER__NAME) ? (String)eVirtualGet(UML2Package.CHANGE_TRIGGER__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CHANGE_TRIGGER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CHANGE_TRIGGER__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.CHANGE_TRIGGER__VISIBILITY) && eVirtualGet(UML2Package.CHANGE_TRIGGER__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.CHANGE_TRIGGER__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.CHANGE_TRIGGER__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CHANGE_TRIGGER__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.CHANGE_TRIGGER__NAME_EXPRESSION) != null;
 			case UML2Package.CHANGE_TRIGGER__PORT:
+				EList port = (EList)eVirtualGet(UML2Package.CHANGE_TRIGGER__PORT);
 				return port != null && !port.isEmpty();
 			case UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION:
-				return changeExpression != null;
+				return eVirtualGet(UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

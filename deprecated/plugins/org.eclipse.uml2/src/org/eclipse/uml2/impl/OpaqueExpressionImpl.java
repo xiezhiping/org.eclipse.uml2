@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.12 2005/11/04 22:23:00 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.13 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -65,16 +67,6 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	protected static final String BODY_EDEFAULT = ""; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getBody() <em>Body</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBody()
-	 * @generated
-	 * @ordered
-	 */
-	protected String body = BODY_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,26 +75,6 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 * @ordered
 	 */
 	protected static final String LANGUAGE_EDEFAULT = ""; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLanguage()
-	 * @generated
-	 * @ordered
-	 */
-	protected String language = LANGUAGE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBehavior()
-	 * @generated
-	 * @ordered
-	 */
-	protected Behavior behavior = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,7 +100,8 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 * @generated
 	 */
 	public String getBody() {
-		return body;
+		String body = (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BODY);
+		return body == null ? BODY_EDEFAULT : body;
 	}
 
 	/**
@@ -138,10 +111,10 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 */
 	public void setBody(String newBody) {
 		newBody = newBody == null ? BODY_EDEFAULT : newBody;
-		String oldBody = body;
-		body = newBody;
+		String body = newBody;
+		Object oldBody = eVirtualSet(UML2Package.OPAQUE_EXPRESSION__BODY, body);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPAQUE_EXPRESSION__BODY, oldBody, body));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPAQUE_EXPRESSION__BODY, oldBody == EVIRTUAL_NO_VALUE ? BODY_EDEFAULT : oldBody, body));
 
 	}
 
@@ -152,7 +125,8 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 * @generated
 	 */
 	public String getLanguage() {
-		return language;
+		String language = (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE);
+		return language == null ? LANGUAGE_EDEFAULT : language;
 	}
 
 	/**
@@ -162,10 +136,10 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 */
 	public void setLanguage(String newLanguage) {
 		newLanguage = newLanguage == null ? LANGUAGE_EDEFAULT : newLanguage;
-		String oldLanguage = language;
-		language = newLanguage;
+		String language = newLanguage;
+		Object oldLanguage = eVirtualSet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE, language);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPAQUE_EXPRESSION__LANGUAGE, oldLanguage, language));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPAQUE_EXPRESSION__LANGUAGE, oldLanguage == EVIRTUAL_NO_VALUE ? LANGUAGE_EDEFAULT : oldLanguage, language));
 
 	}
 
@@ -205,10 +179,12 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 * @generated
 	 */
 	public Behavior getBehavior() {
+		Behavior behavior = (Behavior)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BEHAVIOR);
 		if (behavior != null && behavior.eIsProxy()) {
 			Behavior oldBehavior = behavior;
 			behavior = (Behavior)eResolveProxy((InternalEObject)behavior);
 			if (behavior != oldBehavior) {
+				eVirtualSet(UML2Package.OPAQUE_EXPRESSION__BEHAVIOR, behavior);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.OPAQUE_EXPRESSION__BEHAVIOR, oldBehavior, behavior));
 			}
@@ -222,7 +198,7 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 * @generated
 	 */
 	public Behavior basicGetBehavior() {
-		return behavior;
+		return (Behavior)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BEHAVIOR);
 	}
 
 	/**
@@ -231,10 +207,10 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 * @generated
 	 */
 	public void setBehavior(Behavior newBehavior) {
-		Behavior oldBehavior = behavior;
-		behavior = newBehavior;
+		Behavior behavior = newBehavior;
+		Object oldBehavior = eVirtualSet(UML2Package.OPAQUE_EXPRESSION__BEHAVIOR, behavior);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPAQUE_EXPRESSION__BEHAVIOR, oldBehavior, behavior));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPAQUE_EXPRESSION__BEHAVIOR, oldBehavior == EVIRTUAL_NO_VALUE ? null : oldBehavior, behavior));
 
 	}
 
@@ -415,35 +391,41 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 			case UML2Package.OPAQUE_EXPRESSION__OWNER:
 				return isSetOwner();
 			case UML2Package.OPAQUE_EXPRESSION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.OPAQUE_EXPRESSION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.OPAQUE_EXPRESSION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.OPAQUE_EXPRESSION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.OPAQUE_EXPRESSION__NAME:
+				String name = eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__NAME) ? (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.OPAQUE_EXPRESSION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.OPAQUE_EXPRESSION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__VISIBILITY) && eVirtualGet(UML2Package.OPAQUE_EXPRESSION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.OPAQUE_EXPRESSION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.OPAQUE_EXPRESSION__NAME_EXPRESSION) != null;
 			case UML2Package.OPAQUE_EXPRESSION__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.OPAQUE_EXPRESSION__TYPE) != null;
 			case UML2Package.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UML2Package.OPAQUE_EXPRESSION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.OPAQUE_EXPRESSION__BODY:
+				String body = eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__BODY) ? (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BODY) : BODY_EDEFAULT;
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.OPAQUE_EXPRESSION__LANGUAGE:
+				String language = eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE) ? (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE) : LANGUAGE_EDEFAULT;
 				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 			case UML2Package.OPAQUE_EXPRESSION__RESULT:
 				return basicGetResult() != null;
 			case UML2Package.OPAQUE_EXPRESSION__BEHAVIOR:
-				return behavior != null;
+				return eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BEHAVIOR) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -458,9 +440,9 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(body);
+		result.append(eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__BODY) ? eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BODY) : BODY_EDEFAULT);
 		result.append(", language: "); //$NON-NLS-1$
-		result.append(language);
+		result.append(eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE) ? eVirtualGet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE) : LANGUAGE_EDEFAULT);
 		result.append(')');
 		return result.toString();
 	}

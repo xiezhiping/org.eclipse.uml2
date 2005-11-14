@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.10 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.11 2005/11/14 17:31:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -99,26 +101,6 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	protected static final int IS_MULTIRECEIVE_EFLAG = 1 << 10;
 
 	/**
-	 * The cached value of the '{@link #getTransformation() <em>Transformation</em>}' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getTransformation()
-	 * @generated
-	 * @ordered
-	 */
-    protected Behavior transformation = null;
-
-	/**
-	 * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getSelection()
-	 * @generated
-	 * @ordered
-	 */
-    protected Behavior selection = null;
-
-	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -188,10 +170,12 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     public Behavior getTransformation() {
+		Behavior transformation = (Behavior)eVirtualGet(UML2Package.OBJECT_FLOW__TRANSFORMATION);
 		if (transformation != null && transformation.eIsProxy()) {
 			Behavior oldTransformation = transformation;
 			transformation = (Behavior)eResolveProxy((InternalEObject)transformation);
 			if (transformation != oldTransformation) {
+				eVirtualSet(UML2Package.OBJECT_FLOW__TRANSFORMATION, transformation);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.OBJECT_FLOW__TRANSFORMATION, oldTransformation, transformation));
 			}
@@ -205,7 +189,7 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     public Behavior basicGetTransformation() {
-		return transformation;
+		return (Behavior)eVirtualGet(UML2Package.OBJECT_FLOW__TRANSFORMATION);
 	}
 
 	/**
@@ -214,10 +198,10 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     public void setTransformation(Behavior newTransformation) {
-		Behavior oldTransformation = transformation;
-		transformation = newTransformation;
+		Behavior transformation = newTransformation;
+		Object oldTransformation = eVirtualSet(UML2Package.OBJECT_FLOW__TRANSFORMATION, transformation);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__TRANSFORMATION, oldTransformation, transformation));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__TRANSFORMATION, oldTransformation == EVIRTUAL_NO_VALUE ? null : oldTransformation, transformation));
 
 	}
 
@@ -228,10 +212,12 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     public Behavior getSelection() {
+		Behavior selection = (Behavior)eVirtualGet(UML2Package.OBJECT_FLOW__SELECTION);
 		if (selection != null && selection.eIsProxy()) {
 			Behavior oldSelection = selection;
 			selection = (Behavior)eResolveProxy((InternalEObject)selection);
 			if (selection != oldSelection) {
+				eVirtualSet(UML2Package.OBJECT_FLOW__SELECTION, selection);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.OBJECT_FLOW__SELECTION, oldSelection, selection));
 			}
@@ -245,7 +231,7 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     public Behavior basicGetSelection() {
-		return selection;
+		return (Behavior)eVirtualGet(UML2Package.OBJECT_FLOW__SELECTION);
 	}
 
 	/**
@@ -254,10 +240,10 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     public void setSelection(Behavior newSelection) {
-		Behavior oldSelection = selection;
-		selection = newSelection;
+		Behavior selection = newSelection;
+		Object oldSelection = eVirtualSet(UML2Package.OBJECT_FLOW__SELECTION, selection);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__SELECTION, oldSelection, selection));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__SELECTION, oldSelection == EVIRTUAL_NO_VALUE ? null : oldSelection, selection));
 
 	}
 
@@ -507,21 +493,25 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 			case UML2Package.OBJECT_FLOW__OWNER:
 				return isSetOwner();
 			case UML2Package.OBJECT_FLOW__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.OBJECT_FLOW__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.OBJECT_FLOW__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.OBJECT_FLOW__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.OBJECT_FLOW__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.OBJECT_FLOW__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.OBJECT_FLOW__NAME:
+				String name = eVirtualIsSet(UML2Package.OBJECT_FLOW__NAME) ? (String)eVirtualGet(UML2Package.OBJECT_FLOW__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.OBJECT_FLOW__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.OBJECT_FLOW__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.OBJECT_FLOW__VISIBILITY) && eVirtualGet(UML2Package.OBJECT_FLOW__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.OBJECT_FLOW__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.OBJECT_FLOW__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.OBJECT_FLOW__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.OBJECT_FLOW__NAME_EXPRESSION) != null;
 			case UML2Package.OBJECT_FLOW__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.OBJECT_FLOW__IS_LEAF:
@@ -529,31 +519,32 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 			case UML2Package.OBJECT_FLOW__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.OBJECT_FLOW__SOURCE:
-				return source != null;
+				return eVirtualGet(UML2Package.OBJECT_FLOW__SOURCE) != null;
 			case UML2Package.OBJECT_FLOW__TARGET:
-				return target != null;
+				return eVirtualGet(UML2Package.OBJECT_FLOW__TARGET) != null;
 			case UML2Package.OBJECT_FLOW__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.OBJECT_FLOW__GUARD:
-				return guard != null;
+				return eVirtualGet(UML2Package.OBJECT_FLOW__GUARD) != null;
 			case UML2Package.OBJECT_FLOW__REDEFINED_ELEMENT:
 				return isSetRedefinedElements();
 			case UML2Package.OBJECT_FLOW__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.OBJECT_FLOW__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.OBJECT_FLOW__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.OBJECT_FLOW__WEIGHT:
-				return weight != null;
+				return eVirtualGet(UML2Package.OBJECT_FLOW__WEIGHT) != null;
 			case UML2Package.OBJECT_FLOW__INTERRUPTS:
-				return interrupts != null;
+				return eVirtualGet(UML2Package.OBJECT_FLOW__INTERRUPTS) != null;
 			case UML2Package.OBJECT_FLOW__IS_MULTICAST:
 				return ((eFlags & IS_MULTICAST_EFLAG) != 0) != IS_MULTICAST_EDEFAULT;
 			case UML2Package.OBJECT_FLOW__IS_MULTIRECEIVE:
 				return ((eFlags & IS_MULTIRECEIVE_EFLAG) != 0) != IS_MULTIRECEIVE_EDEFAULT;
 			case UML2Package.OBJECT_FLOW__TRANSFORMATION:
-				return transformation != null;
+				return eVirtualGet(UML2Package.OBJECT_FLOW__TRANSFORMATION) != null;
 			case UML2Package.OBJECT_FLOW__SELECTION:
-				return selection != null;
+				return eVirtualGet(UML2Package.OBJECT_FLOW__SELECTION) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

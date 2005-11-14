@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.17 2005/11/09 22:53:08 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.18 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,56 +66,6 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRelatedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList relatedElement = null;
-
-	/**
-	 * The cached value of the '{@link #getSources() <em>Source</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSources()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList source = null;
-
-	/**
-	 * The cached value of the '{@link #getTargets() <em>Target</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTargets()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList target = null;
-
-	/**
-	 * The cached value of the '{@link #getClients() <em>Client</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClients()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList client = null;
-
-	/**
-	 * The cached value of the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuppliers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList supplier = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -139,8 +89,9 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated
 	 */
 	public EList getRelatedElements() {
+		EList relatedElement = (EList)eVirtualGet(UML2Package.DEPENDENCY__RELATED_ELEMENT);
 		if (relatedElement == null) {
-			relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()});
+			eVirtualSet(UML2Package.DEPENDENCY__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()}));
 		}
 		return relatedElement;
 	}
@@ -162,8 +113,9 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated NOT
 	 */
 	public EList getSources() {
+		EList source = (EList)eVirtualGet(UML2Package.DEPENDENCY__SOURCE);
 		if (source == null) {
-			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Client()});
+			eVirtualSet(UML2Package.DEPENDENCY__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Client()}));
 		}
 		return source;
 	}
@@ -183,8 +135,9 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated NOT
 	 */
 	public EList getTargets() {
+		EList target = (EList)eVirtualGet(UML2Package.DEPENDENCY__TARGET);
 		if (target == null) {
-			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Supplier()});
+			eVirtualSet(UML2Package.DEPENDENCY__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Supplier()}));
 		}
 		return target;
 	}
@@ -204,8 +157,9 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated
 	 */
 	public EList getClients() {
+		EList client = (EList)eVirtualGet(UML2Package.DEPENDENCY__CLIENT);
 		if (client == null) {
-			client = new EObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.DEPENDENCY__CLIENT, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
+			eVirtualSet(UML2Package.DEPENDENCY__CLIENT, client = new EObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.DEPENDENCY__CLIENT, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY));
 		}
 		return client;
 	}
@@ -232,8 +186,9 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated
 	 */
 	public EList getSuppliers() {
+		EList supplier = (EList)eVirtualGet(UML2Package.DEPENDENCY__SUPPLIER);
 		if (supplier == null) {
-			supplier = new EObjectResolvingEList(NamedElement.class, this, UML2Package.DEPENDENCY__SUPPLIER);
+			eVirtualSet(UML2Package.DEPENDENCY__SUPPLIER, supplier = new EObjectResolvingEList(NamedElement.class, this, UML2Package.DEPENDENCY__SUPPLIER));
 		}
 		return supplier;
 	}
@@ -267,12 +222,14 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 				case UML2Package.DEPENDENCY__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.DEPENDENCY__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.DEPENDENCY__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.DEPENDENCY__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.DEPENDENCY__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.DEPENDENCY__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.DEPENDENCY__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -495,23 +452,27 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 			case UML2Package.DEPENDENCY__OWNER:
 				return isSetOwner();
 			case UML2Package.DEPENDENCY__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.DEPENDENCY__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.DEPENDENCY__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.DEPENDENCY__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.DEPENDENCY__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.DEPENDENCY__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.DEPENDENCY__NAME:
+				String name = eVirtualIsSet(UML2Package.DEPENDENCY__NAME) ? (String)eVirtualGet(UML2Package.DEPENDENCY__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DEPENDENCY__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPENDENCY__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.DEPENDENCY__VISIBILITY) && eVirtualGet(UML2Package.DEPENDENCY__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.DEPENDENCY__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.DEPENDENCY__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEPENDENCY__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.DEPENDENCY__NAME_EXPRESSION) != null;
 			case UML2Package.DEPENDENCY__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.DEPENDENCY__TEMPLATE_PARAMETER) != null;
 			case UML2Package.DEPENDENCY__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DEPENDENCY__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -523,8 +484,10 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 			case UML2Package.DEPENDENCY__TARGET:
 				return isSetTargets();
 			case UML2Package.DEPENDENCY__CLIENT:
+				EList client = (EList)eVirtualGet(UML2Package.DEPENDENCY__CLIENT);
 				return client != null && !client.isEmpty();
 			case UML2Package.DEPENDENCY__SUPPLIER:
+				EList supplier = (EList)eVirtualGet(UML2Package.DEPENDENCY__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.16 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -65,16 +65,6 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getReturnInformation() <em>Return Information</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReturnInformation()
-	 * @generated
-	 * @ordered
-	 */
-	protected OutputPin returnInformation = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -98,8 +88,9 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 * @generated
 	 */
 	public EList getOutputs() {
+		EList output = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__OUTPUT);
 		if (output == null) {
-			output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACCEPT_CALL_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getAcceptEventAction_Result(), UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation()});
+			eVirtualSet(UML2Package.ACCEPT_CALL_ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACCEPT_CALL_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getAcceptEventAction_Result(), UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation()}));
 		}
 		return output;
 	}
@@ -121,10 +112,12 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 * @generated
 	 */
 	public OutputPin getReturnInformation() {
+		OutputPin returnInformation = (OutputPin)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION);
 		if (returnInformation != null && returnInformation.eIsProxy()) {
 			OutputPin oldReturnInformation = returnInformation;
 			returnInformation = (OutputPin)eResolveProxy((InternalEObject)returnInformation);
 			if (returnInformation != oldReturnInformation) {
+				eVirtualSet(UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION, returnInformation);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION, oldReturnInformation, returnInformation));
 			}
@@ -138,7 +131,7 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 * @generated
 	 */
 	public OutputPin basicGetReturnInformation() {
-		return returnInformation;
+		return (OutputPin)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION);
 	}
 
 	/**
@@ -147,10 +140,10 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 * @generated
 	 */
 	public void setReturnInformation(OutputPin newReturnInformation) {
-		OutputPin oldReturnInformation = returnInformation;
-		returnInformation = newReturnInformation;
+		OutputPin returnInformation = newReturnInformation;
+		Object oldReturnInformation = eVirtualSet(UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION, returnInformation);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION, oldReturnInformation, returnInformation));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION, oldReturnInformation == EVIRTUAL_NO_VALUE ? null : oldReturnInformation, returnInformation));
 
 	}
 
@@ -161,12 +154,23 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 * @generated
 	 */
 	public EList getTriggers() {
+		EList trigger = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__TRIGGER);
 		if (trigger == null) {
-			trigger = new EObjectResolvingEList(CallTrigger.class, this, UML2Package.ACCEPT_CALL_ACTION__TRIGGER);
+			eVirtualSet(UML2Package.ACCEPT_CALL_ACTION__TRIGGER, trigger = new EObjectResolvingEList(CallTrigger.class, this, UML2Package.ACCEPT_CALL_ACTION__TRIGGER));
 		}
 		return trigger;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTriggers() {
+		EList trigger = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__TRIGGER);
+		return trigger != null && !trigger.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -181,15 +185,6 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetTriggers() {
-		return trigger != null && !trigger.isEmpty();
 	}
 
 	/**
@@ -455,28 +450,34 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			case UML2Package.ACCEPT_CALL_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.ACCEPT_CALL_ACTION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.ACCEPT_CALL_ACTION__NAME:
+				String name = eVirtualIsSet(UML2Package.ACCEPT_CALL_ACTION__NAME) ? (String)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ACCEPT_CALL_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACCEPT_CALL_ACTION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.ACCEPT_CALL_ACTION__VISIBILITY) && eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.ACCEPT_CALL_ACTION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__NAME_EXPRESSION) != null;
 			case UML2Package.ACCEPT_CALL_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.ACCEPT_CALL_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ACCEPT_CALL_ACTION__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__IN_GROUP:
 				return isSetInGroups();
@@ -487,12 +488,16 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			case UML2Package.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.ACCEPT_CALL_ACTION__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__HANDLER:
+				EList handler = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__EFFECT:
+				String effect = eVirtualIsSet(UML2Package.ACCEPT_CALL_ACTION__EFFECT) ? (String)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__EFFECT) : EFFECT_EDEFAULT;
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.ACCEPT_CALL_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -501,15 +506,19 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			case UML2Package.ACCEPT_CALL_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.ACCEPT_CALL_ACTION__LOCAL_PRECONDITION:
+				EList localPrecondition = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__LOCAL_POSTCONDITION:
+				EList localPostcondition = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__TRIGGER:
-				return isSetTriggers();
+				EList trigger = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__TRIGGER);
+				return trigger != null && !trigger.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__RESULT:
+				EList result = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__RESULT);
 				return result != null && !result.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION:
-				return returnInformation != null;
+				return eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

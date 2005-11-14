@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.14 2005/11/09 22:53:08 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.15 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -31,7 +31,9 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,16 +56,6 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getFeaturingClassifiers() <em>Featuring Classifier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFeaturingClassifiers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList featuringClassifier = null;
 
 	/**
 	 * The default value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
@@ -129,11 +121,12 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getFeaturingClassifiers() {
+		EList featuringClassifier = (EList)eVirtualGet(UML2Package.FEATURE__FEATURING_CLASSIFIER);
 		if (featuringClassifier == null) {
-			featuringClassifier = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.FEATURE__FEATURING_CLASSIFIER, new EStructuralFeature[] {});
+			eVirtualSet(UML2Package.FEATURE__FEATURING_CLASSIFIER, featuringClassifier = new DerivedEObjectEList(Classifier.class, this, UML2Package.FEATURE__FEATURING_CLASSIFIER, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()}));
 		}
 		return featuringClassifier;
 	}
@@ -142,10 +135,10 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetFeaturingClassifiers() {
-		return false;
+		return basicGetOwner() instanceof Classifier;
 	}
 
 	/**
@@ -305,21 +298,25 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 			case UML2Package.FEATURE__OWNER:
 				return isSetOwner();
 			case UML2Package.FEATURE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.FEATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.FEATURE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.FEATURE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.FEATURE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.FEATURE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.FEATURE__NAME:
+				String name = eVirtualIsSet(UML2Package.FEATURE__NAME) ? (String)eVirtualGet(UML2Package.FEATURE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.FEATURE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.FEATURE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.FEATURE__VISIBILITY) && eVirtualGet(UML2Package.FEATURE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.FEATURE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.FEATURE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.FEATURE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.FEATURE__NAME_EXPRESSION) != null;
 			case UML2Package.FEATURE__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.FEATURE__IS_LEAF:
@@ -347,17 +344,5 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 		return result.toString();
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected EList getFeaturingClassifiersHelper(EList featuringClassifier) {
-		if (eContainer instanceof Classifier) {
-			featuringClassifier.add(eContainer);
-		}
-		return featuringClassifier;
-	}
 
 } //FeatureImpl

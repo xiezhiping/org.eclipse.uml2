@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.16 2005/11/09 22:53:07 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.17 2005/11/14 17:31:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -67,36 +67,6 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObject()
-	 * @generated
-	 * @ordered
-	 */
-	protected InputPin object = null;
-
-	/**
-	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResult()
-	 * @generated
-	 * @ordered
-	 */
-	protected OutputPin result = null;
-
-	/**
-	 * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQualifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Property qualifier = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -120,8 +90,9 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public EList getInputs() {
+		EList input = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT);
 		if (input == null) {
-			input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getReadLinkObjectEndQualifierAction_Object()});
+			eVirtualSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getReadLinkObjectEndQualifierAction_Object()}));
 		}
 		return input;
 	}
@@ -143,8 +114,9 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public EList getOutputs() {
+		EList output = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTPUT);
 		if (output == null) {
-			output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getReadLinkObjectEndQualifierAction_Result()});
+			eVirtualSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getReadLinkObjectEndQualifierAction_Result()}));
 		}
 		return output;
 	}
@@ -166,6 +138,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public InputPin getObject() {
+		InputPin object = (InputPin)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT);
 		return object;
 	}
 
@@ -175,10 +148,9 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public NotificationChain basicSetObject(InputPin newObject, NotificationChain msgs) {
-		InputPin oldObject = object;
-		object = newObject;
+		Object oldObject = eVirtualSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT, newObject);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT, oldObject, newObject);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT, oldObject == EVIRTUAL_NO_VALUE ? null : oldObject, newObject);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -191,6 +163,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
+		InputPin object = (InputPin)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT);
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -240,6 +213,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public OutputPin getResult() {
+		OutputPin result = (OutputPin)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT);
 		return result;
 	}
 
@@ -249,10 +223,9 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public NotificationChain basicSetResult(OutputPin newResult, NotificationChain msgs) {
-		OutputPin oldResult = result;
-		result = newResult;
+		Object oldResult = eVirtualSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT, newResult);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT, oldResult, newResult);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT, oldResult == EVIRTUAL_NO_VALUE ? null : oldResult, newResult);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -265,6 +238,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
+		OutputPin result = (OutputPin)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT);
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -315,10 +289,12 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public Property getQualifier() {
+		Property qualifier = (Property)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER);
 		if (qualifier != null && qualifier.eIsProxy()) {
 			Property oldQualifier = qualifier;
 			qualifier = (Property)eResolveProxy((InternalEObject)qualifier);
 			if (qualifier != oldQualifier) {
+				eVirtualSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER, qualifier);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER, oldQualifier, qualifier));
 			}
@@ -332,7 +308,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public Property basicGetQualifier() {
-		return qualifier;
+		return (Property)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER);
 	}
 
 	/**
@@ -341,10 +317,10 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	public void setQualifier(Property newQualifier) {
-		Property oldQualifier = qualifier;
-		qualifier = newQualifier;
+		Property qualifier = newQualifier;
+		Object oldQualifier = eVirtualSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER, qualifier);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER, oldQualifier, qualifier));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER, oldQualifier == EVIRTUAL_NO_VALUE ? null : oldQualifier, qualifier));
 
 	}
 
@@ -659,28 +635,34 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME:
+				String name = eVirtualIsSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME) ? (String)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__VISIBILITY) && eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME_EXPRESSION) != null;
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_GROUP:
 				return isSetInGroups();
@@ -691,12 +673,16 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__HANDLER:
+				EList handler = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EFFECT:
+				String effect = eVirtualIsSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EFFECT) ? (String)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EFFECT) : EFFECT_EDEFAULT;
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -705,15 +691,17 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_PRECONDITION:
+				EList localPrecondition = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_POSTCONDITION:
+				EList localPostcondition = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT:
-				return object != null;
+				return eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT) != null;
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT:
-				return result != null;
+				return eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT) != null;
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER:
-				return qualifier != null;
+				return eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

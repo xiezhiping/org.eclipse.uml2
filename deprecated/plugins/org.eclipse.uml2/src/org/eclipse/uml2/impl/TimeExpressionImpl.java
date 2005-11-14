@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionImpl.java,v 1.10 2005/11/04 22:23:00 khussey Exp $
+ * $Id: TimeExpressionImpl.java,v 1.11 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -71,16 +73,6 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	protected static final int FIRST_TIME_EFLAG = 1 << 8;
 
 	/**
-	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEvent()
-	 * @generated
-	 * @ordered
-	 */
-	protected NamedElement event = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -128,10 +120,12 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	 * @generated
 	 */
 	public NamedElement getEvent() {
+		NamedElement event = (NamedElement)eVirtualGet(UML2Package.TIME_EXPRESSION__EVENT);
 		if (event != null && event.eIsProxy()) {
 			NamedElement oldEvent = event;
 			event = (NamedElement)eResolveProxy((InternalEObject)event);
 			if (event != oldEvent) {
+				eVirtualSet(UML2Package.TIME_EXPRESSION__EVENT, event);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.TIME_EXPRESSION__EVENT, oldEvent, event));
 			}
@@ -145,7 +139,7 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	 * @generated
 	 */
 	public NamedElement basicGetEvent() {
-		return event;
+		return (NamedElement)eVirtualGet(UML2Package.TIME_EXPRESSION__EVENT);
 	}
 
 	/**
@@ -154,10 +148,10 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	 * @generated
 	 */
 	public void setEvent(NamedElement newEvent) {
-		NamedElement oldEvent = event;
-		event = newEvent;
+		NamedElement event = newEvent;
+		Object oldEvent = eVirtualSet(UML2Package.TIME_EXPRESSION__EVENT, event);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TIME_EXPRESSION__EVENT, oldEvent, event));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TIME_EXPRESSION__EVENT, oldEvent == EVIRTUAL_NO_VALUE ? null : oldEvent, event));
 
 	}
 
@@ -327,31 +321,35 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 			case UML2Package.TIME_EXPRESSION__OWNER:
 				return isSetOwner();
 			case UML2Package.TIME_EXPRESSION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.TIME_EXPRESSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.TIME_EXPRESSION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.TIME_EXPRESSION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.TIME_EXPRESSION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.TIME_EXPRESSION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.TIME_EXPRESSION__NAME:
+				String name = eVirtualIsSet(UML2Package.TIME_EXPRESSION__NAME) ? (String)eVirtualGet(UML2Package.TIME_EXPRESSION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.TIME_EXPRESSION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TIME_EXPRESSION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.TIME_EXPRESSION__VISIBILITY) && eVirtualGet(UML2Package.TIME_EXPRESSION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.TIME_EXPRESSION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.TIME_EXPRESSION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TIME_EXPRESSION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.TIME_EXPRESSION__NAME_EXPRESSION) != null;
 			case UML2Package.TIME_EXPRESSION__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.TIME_EXPRESSION__TYPE) != null;
 			case UML2Package.TIME_EXPRESSION__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.TIME_EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UML2Package.TIME_EXPRESSION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.TIME_EXPRESSION__FIRST_TIME:
 				return ((eFlags & FIRST_TIME_EFLAG) != 0) != FIRST_TIME_EDEFAULT;
 			case UML2Package.TIME_EXPRESSION__EVENT:
-				return event != null;
+				return eVirtualGet(UML2Package.TIME_EXPRESSION__EVENT) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

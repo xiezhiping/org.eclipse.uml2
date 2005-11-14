@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.29 2005/11/09 22:53:07 khussey Exp $
+ * $Id: NodeImpl.java,v 1.30 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -73,26 +73,6 @@ public class NodeImpl extends ClassImpl implements Node {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployments()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList deployment = null;
-
-	/**
-	 * The cached value of the '{@link #getNestedNodes() <em>Nested Node</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNestedNodes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList nestedNode = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -116,8 +96,9 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * @generated
 	 */
 	public EList getDeployments() {
+		EList deployment = (EList)eVirtualGet(UML2Package.NODE__DEPLOYMENT);
 		if (deployment == null) {
-			deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.NODE__DEPLOYMENT, new int[] {UML2Package.NODE__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION);
+			eVirtualSet(UML2Package.NODE__DEPLOYMENT, deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.NODE__DEPLOYMENT, new int[] {UML2Package.NODE__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION));
 		}
 		return deployment;
 	}
@@ -221,12 +202,23 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * @generated
 	 */
 	public EList getNestedNodes() {
+		EList nestedNode = (EList)eVirtualGet(UML2Package.NODE__NESTED_NODE);
 		if (nestedNode == null) {
-			nestedNode = new EObjectContainmentEList(Node.class, this, UML2Package.NODE__NESTED_NODE);
+			eVirtualSet(UML2Package.NODE__NESTED_NODE, nestedNode = new EObjectContainmentEList(Node.class, this, UML2Package.NODE__NESTED_NODE));
 		}
 		return nestedNode;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNestedNodes() {
+		EList nestedNode = (EList)eVirtualGet(UML2Package.NODE__NESTED_NODE);
+		return nestedNode != null && !nestedNode.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -241,15 +233,6 @@ public class NodeImpl extends ClassImpl implements Node {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetNestedNodes() {
-		return nestedNode != null && !nestedNode.isEmpty();
 	}
 
 	/**
@@ -286,8 +269,9 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * @generated
 	 */
 	public EList getClientDependencies() {
+		EList clientDependency = (EList)eVirtualGet(UML2Package.NODE__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
-			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.NODE__CLIENT_DEPENDENCY, new int[] {UML2Package.NODE__SUBSTITUTION, UML2Package.NODE__IMPLEMENTATION, UML2Package.NODE__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT);
+			eVirtualSet(UML2Package.NODE__CLIENT_DEPENDENCY, clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.NODE__CLIENT_DEPENDENCY, new int[] {UML2Package.NODE__SUBSTITUTION, UML2Package.NODE__IMPLEMENTATION, UML2Package.NODE__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT));
 		}
 		return clientDependency;
 	}
@@ -306,10 +290,10 @@ public class NodeImpl extends ClassImpl implements Node {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean isSetNestedClassifiers() {
-		return false;
+  		return false;
 	}
 
 	/**
@@ -325,6 +309,7 @@ public class NodeImpl extends ClassImpl implements Node {
 				case UML2Package.NODE__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.NODE__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.NODE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -337,6 +322,7 @@ public class NodeImpl extends ClassImpl implements Node {
 				case UML2Package.NODE__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.NODE__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -855,33 +841,40 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OWNER:
 				return isSetOwner();
 			case UML2Package.NODE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.NODE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.NODE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.NODE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.NODE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.NODE__NAME:
+				String name = eVirtualIsSet(UML2Package.NODE__NAME) ? (String)eVirtualGet(UML2Package.NODE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.NODE__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.NODE__VISIBILITY) && eVirtualGet(UML2Package.NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.NODE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.NODE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.NODE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.NODE__NAME_EXPRESSION) != null;
 			case UML2Package.NODE__MEMBER:
 				return isSetMembers();
 			case UML2Package.NODE__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.NODE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.NODE__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.NODE__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.NODE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.NODE__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.NODE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.NODE__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.NODE__TEMPLATE_PARAMETER) != null;
 			case UML2Package.NODE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.NODE__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -895,62 +888,79 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__FEATURE:
 				return isSetFeatures();
 			case UML2Package.NODE__IS_ABSTRACT:
-				return isSetIsAbstract();
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.NODE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.NODE__GENERAL:
-				return isSetGenerals();
+				return !getGenerals().isEmpty();
 			case UML2Package.NODE__GENERALIZATION:
+				EList generalization = (EList)eVirtualGet(UML2Package.NODE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.NODE__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.NODE__REDEFINED_CLASSIFIER:
+				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.NODE__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.NODE__SUBSTITUTION:
+				EList substitution = (EList)eVirtualGet(UML2Package.NODE__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UML2Package.NODE__POWERTYPE_EXTENT:
+				EList powertypeExtent = (EList)eVirtualGet(UML2Package.NODE__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.NODE__OWNED_USE_CASE:
+				EList ownedUseCase = (EList)eVirtualGet(UML2Package.NODE__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.NODE__USE_CASE:
+				EList useCase = (EList)eVirtualGet(UML2Package.NODE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UML2Package.NODE__REPRESENTATION:
-				return representation != null;
+				return eVirtualGet(UML2Package.NODE__REPRESENTATION) != null;
 			case UML2Package.NODE__OCCURRENCE:
+				EList occurrence = (EList)eVirtualGet(UML2Package.NODE__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.NODE__OWNED_BEHAVIOR:
-				return isSetOwnedBehaviors();
+				EList ownedBehavior = (EList)eVirtualGet(UML2Package.NODE__OWNED_BEHAVIOR);
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UML2Package.NODE__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
+				return eVirtualGet(UML2Package.NODE__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.NODE__IMPLEMENTATION:
+				EList implementation = (EList)eVirtualGet(UML2Package.NODE__IMPLEMENTATION);
 				return implementation != null && !implementation.isEmpty();
 			case UML2Package.NODE__OWNED_TRIGGER:
+				EList ownedTrigger = (EList)eVirtualGet(UML2Package.NODE__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.NODE__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.NODE__OWNED_ATTRIBUTE:
-				return isSetOwnedAttributes();
+				EList ownedAttribute = (EList)eVirtualGet(UML2Package.NODE__OWNED_ATTRIBUTE);
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UML2Package.NODE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.NODE__ROLE:
 				return isSetRoles();
 			case UML2Package.NODE__OWNED_CONNECTOR:
+				EList ownedConnector = (EList)eVirtualGet(UML2Package.NODE__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.NODE__OWNED_PORT:
+				EList ownedPort = (EList)eVirtualGet(UML2Package.NODE__OWNED_PORT);
 				return ownedPort != null && !ownedPort.isEmpty();
 			case UML2Package.NODE__OWNED_OPERATION:
+				EList ownedOperation = (EList)eVirtualGet(UML2Package.NODE__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.NODE__SUPER_CLASS:
 				return isSetSuperClasses();
 			case UML2Package.NODE__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.NODE__NESTED_CLASSIFIER:
-				return isSetNestedClassifiers();
+				EList nestedClassifier = (EList)eVirtualGet(UML2Package.NODE__NESTED_CLASSIFIER);
+				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.NODE__IS_ACTIVE:
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.NODE__OWNED_RECEPTION:
+				EList ownedReception = (EList)eVirtualGet(UML2Package.NODE__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.NODE__DEPLOYMENT:
+				EList deployment = (EList)eVirtualGet(UML2Package.NODE__DEPLOYMENT);
 				return deployment != null && !deployment.isEmpty();
 			case UML2Package.NODE__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();
@@ -1000,8 +1010,9 @@ public class NodeImpl extends ClassImpl implements Node {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())) {
-			ownedElement.addAll(getDeployments());
+		EList deployment = getDeployments();
+		if (!deployment.isEmpty()) {
+			ownedElement.addAll(deployment);
 		}
 		return ownedElement;
 	}

@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypedElementImpl.java,v 1.10 2005/11/04 22:23:01 khussey Exp $
+ * $Id: TypedElementImpl.java,v 1.11 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -48,16 +50,6 @@ public abstract class TypedElementImpl extends NamedElementImpl implements Typed
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected Type type = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -81,10 +73,12 @@ public abstract class TypedElementImpl extends NamedElementImpl implements Typed
 	 * @generated
 	 */
 	public Type getType() {
+		Type type = (Type)eVirtualGet(UML2Package.TYPED_ELEMENT__TYPE);
 		if (type != null && type.eIsProxy()) {
 			Type oldType = type;
 			type = (Type)eResolveProxy((InternalEObject)type);
 			if (type != oldType) {
+				eVirtualSet(UML2Package.TYPED_ELEMENT__TYPE, type);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.TYPED_ELEMENT__TYPE, oldType, type));
 			}
@@ -98,7 +92,7 @@ public abstract class TypedElementImpl extends NamedElementImpl implements Typed
 	 * @generated
 	 */
 	public Type basicGetType() {
-		return type;
+		return (Type)eVirtualGet(UML2Package.TYPED_ELEMENT__TYPE);
 	}
 
 	/**
@@ -107,10 +101,10 @@ public abstract class TypedElementImpl extends NamedElementImpl implements Typed
 	 * @generated
 	 */
 	public void setType(Type newType) {
-		Type oldType = type;
-		type = newType;
+		Type type = newType;
+		Object oldType = eVirtualSet(UML2Package.TYPED_ELEMENT__TYPE, type);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TYPED_ELEMENT__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TYPED_ELEMENT__TYPE, oldType == EVIRTUAL_NO_VALUE ? null : oldType, type));
 
 	}
 
@@ -246,23 +240,27 @@ public abstract class TypedElementImpl extends NamedElementImpl implements Typed
 			case UML2Package.TYPED_ELEMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.TYPED_ELEMENT__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.TYPED_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.TYPED_ELEMENT__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.TYPED_ELEMENT__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.TYPED_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.TYPED_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.TYPED_ELEMENT__NAME:
+				String name = eVirtualIsSet(UML2Package.TYPED_ELEMENT__NAME) ? (String)eVirtualGet(UML2Package.TYPED_ELEMENT__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.TYPED_ELEMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TYPED_ELEMENT__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.TYPED_ELEMENT__VISIBILITY) && eVirtualGet(UML2Package.TYPED_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.TYPED_ELEMENT__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.TYPED_ELEMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TYPED_ELEMENT__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.TYPED_ELEMENT__NAME_EXPRESSION) != null;
 			case UML2Package.TYPED_ELEMENT__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.TYPED_ELEMENT__TYPE) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

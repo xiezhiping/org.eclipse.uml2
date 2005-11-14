@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.17 2005/11/09 22:53:09 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.18 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -69,16 +69,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getRealizingClassifier() <em>Realizing Classifier</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRealizingClassifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Classifier realizingClassifier = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,10 +170,12 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @generated
 	 */
 	public Classifier getRealizingClassifier() {
+		Classifier realizingClassifier = (Classifier)eVirtualGet(UML2Package.REALIZATION__REALIZING_CLASSIFIER);
 		if (realizingClassifier != null && realizingClassifier.eIsProxy()) {
 			Classifier oldRealizingClassifier = realizingClassifier;
 			realizingClassifier = (Classifier)eResolveProxy((InternalEObject)realizingClassifier);
 			if (realizingClassifier != oldRealizingClassifier) {
+				eVirtualSet(UML2Package.REALIZATION__REALIZING_CLASSIFIER, realizingClassifier);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.REALIZATION__REALIZING_CLASSIFIER, oldRealizingClassifier, realizingClassifier));
 			}
@@ -197,7 +189,7 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @generated
 	 */
 	public Classifier basicGetRealizingClassifier() {
-		return realizingClassifier;
+		return (Classifier)eVirtualGet(UML2Package.REALIZATION__REALIZING_CLASSIFIER);
 	}
 
 	/**
@@ -209,10 +201,10 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 		if (newRealizingClassifier != null && !getSuppliers().contains(newRealizingClassifier)) {
 			getSuppliers().add(newRealizingClassifier);
 		}
-		Classifier oldRealizingClassifier = realizingClassifier;
-		realizingClassifier = newRealizingClassifier;
+		Classifier realizingClassifier = newRealizingClassifier;
+		Object oldRealizingClassifier = eVirtualSet(UML2Package.REALIZATION__REALIZING_CLASSIFIER, realizingClassifier);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REALIZATION__REALIZING_CLASSIFIER, oldRealizingClassifier, realizingClassifier));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REALIZATION__REALIZING_CLASSIFIER, oldRealizingClassifier == EVIRTUAL_NO_VALUE ? null : oldRealizingClassifier, realizingClassifier));
 
 	}
 
@@ -247,8 +239,9 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @generated
 	 */
 	public EList getClients() {
+		EList client = (EList)eVirtualGet(UML2Package.REALIZATION__CLIENT);
 		if (client == null) {
-			client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.REALIZATION__CLIENT, new int[] {UML2Package.REALIZATION__ABSTRACTION}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
+			eVirtualSet(UML2Package.REALIZATION__CLIENT, client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.REALIZATION__CLIENT, new int[] {UML2Package.REALIZATION__ABSTRACTION}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY));
 		}
 		return client;
 	}
@@ -260,8 +253,9 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @generated
 	 */
 	public EList getSuppliers() {
+		EList supplier = (EList)eVirtualGet(UML2Package.REALIZATION__SUPPLIER);
 		if (supplier == null) {
-			supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.REALIZATION__SUPPLIER, new int[] {UML2Package.REALIZATION__REALIZING_CLASSIFIER});
+			eVirtualSet(UML2Package.REALIZATION__SUPPLIER, supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.REALIZATION__SUPPLIER, new int[] {UML2Package.REALIZATION__REALIZING_CLASSIFIER}));
 		}
 		return supplier;
 	}
@@ -280,12 +274,14 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 				case UML2Package.REALIZATION__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.REALIZATION__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.REALIZATION__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.REALIZATION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.REALIZATION__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.REALIZATION__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.REALIZATION__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -560,23 +556,27 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 			case UML2Package.REALIZATION__OWNER:
 				return isSetOwner();
 			case UML2Package.REALIZATION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.REALIZATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.REALIZATION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.REALIZATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.REALIZATION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.REALIZATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.REALIZATION__NAME:
+				String name = eVirtualIsSet(UML2Package.REALIZATION__NAME) ? (String)eVirtualGet(UML2Package.REALIZATION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.REALIZATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.REALIZATION__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.REALIZATION__VISIBILITY) && eVirtualGet(UML2Package.REALIZATION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.REALIZATION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.REALIZATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.REALIZATION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.REALIZATION__NAME_EXPRESSION) != null;
 			case UML2Package.REALIZATION__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.REALIZATION__TEMPLATE_PARAMETER) != null;
 			case UML2Package.REALIZATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.REALIZATION__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -588,15 +588,17 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 			case UML2Package.REALIZATION__TARGET:
 				return isSetTargets();
 			case UML2Package.REALIZATION__CLIENT:
+				EList client = (EList)eVirtualGet(UML2Package.REALIZATION__CLIENT);
 				return client != null && !client.isEmpty();
 			case UML2Package.REALIZATION__SUPPLIER:
+				EList supplier = (EList)eVirtualGet(UML2Package.REALIZATION__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 			case UML2Package.REALIZATION__MAPPING:
-				return mapping != null;
+				return eVirtualGet(UML2Package.REALIZATION__MAPPING) != null;
 			case UML2Package.REALIZATION__ABSTRACTION:
 				return getAbstraction() != null;
 			case UML2Package.REALIZATION__REALIZING_CLASSIFIER:
-				return realizingClassifier != null;
+				return eVirtualGet(UML2Package.REALIZATION__REALIZING_CLASSIFIER) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

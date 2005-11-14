@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.17 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.18 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -62,16 +62,6 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getUtilizedElement() <em>Utilized Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUtilizedElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected PackageableElement utilizedElement = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -115,10 +105,12 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * @generated
 	 */
 	public PackageableElement getUtilizedElement() {
+		PackageableElement utilizedElement = (PackageableElement)eVirtualGet(UML2Package.MANIFESTATION__UTILIZED_ELEMENT);
 		if (utilizedElement != null && utilizedElement.eIsProxy()) {
 			PackageableElement oldUtilizedElement = utilizedElement;
 			utilizedElement = (PackageableElement)eResolveProxy((InternalEObject)utilizedElement);
 			if (utilizedElement != oldUtilizedElement) {
+				eVirtualSet(UML2Package.MANIFESTATION__UTILIZED_ELEMENT, utilizedElement);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.MANIFESTATION__UTILIZED_ELEMENT, oldUtilizedElement, utilizedElement));
 			}
@@ -132,7 +124,7 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * @generated
 	 */
 	public PackageableElement basicGetUtilizedElement() {
-		return utilizedElement;
+		return (PackageableElement)eVirtualGet(UML2Package.MANIFESTATION__UTILIZED_ELEMENT);
 	}
 
 	/**
@@ -144,10 +136,10 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 		if (newUtilizedElement != null && !getSuppliers().contains(newUtilizedElement)) {
 			getSuppliers().add(newUtilizedElement);
 		}
-		PackageableElement oldUtilizedElement = utilizedElement;
-		utilizedElement = newUtilizedElement;
+		PackageableElement utilizedElement = newUtilizedElement;
+		Object oldUtilizedElement = eVirtualSet(UML2Package.MANIFESTATION__UTILIZED_ELEMENT, utilizedElement);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MANIFESTATION__UTILIZED_ELEMENT, oldUtilizedElement, utilizedElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MANIFESTATION__UTILIZED_ELEMENT, oldUtilizedElement == EVIRTUAL_NO_VALUE ? null : oldUtilizedElement, utilizedElement));
 
 	}
 
@@ -158,8 +150,9 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * @generated
 	 */
 	public EList getSuppliers() {
+		EList supplier = (EList)eVirtualGet(UML2Package.MANIFESTATION__SUPPLIER);
 		if (supplier == null) {
-			supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.MANIFESTATION__SUPPLIER, new int[] {UML2Package.MANIFESTATION__UTILIZED_ELEMENT});
+			eVirtualSet(UML2Package.MANIFESTATION__SUPPLIER, supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.MANIFESTATION__SUPPLIER, new int[] {UML2Package.MANIFESTATION__UTILIZED_ELEMENT}));
 		}
 		return supplier;
 	}
@@ -353,23 +346,27 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 			case UML2Package.MANIFESTATION__OWNER:
 				return isSetOwner();
 			case UML2Package.MANIFESTATION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.MANIFESTATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.MANIFESTATION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.MANIFESTATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.MANIFESTATION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.MANIFESTATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.MANIFESTATION__NAME:
+				String name = eVirtualIsSet(UML2Package.MANIFESTATION__NAME) ? (String)eVirtualGet(UML2Package.MANIFESTATION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.MANIFESTATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.MANIFESTATION__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.MANIFESTATION__VISIBILITY) && eVirtualGet(UML2Package.MANIFESTATION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.MANIFESTATION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.MANIFESTATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.MANIFESTATION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.MANIFESTATION__NAME_EXPRESSION) != null;
 			case UML2Package.MANIFESTATION__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.MANIFESTATION__TEMPLATE_PARAMETER) != null;
 			case UML2Package.MANIFESTATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.MANIFESTATION__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -381,13 +378,15 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 			case UML2Package.MANIFESTATION__TARGET:
 				return isSetTargets();
 			case UML2Package.MANIFESTATION__CLIENT:
+				EList client = (EList)eVirtualGet(UML2Package.MANIFESTATION__CLIENT);
 				return client != null && !client.isEmpty();
 			case UML2Package.MANIFESTATION__SUPPLIER:
+				EList supplier = (EList)eVirtualGet(UML2Package.MANIFESTATION__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 			case UML2Package.MANIFESTATION__MAPPING:
-				return mapping != null;
+				return eVirtualGet(UML2Package.MANIFESTATION__MAPPING) != null;
 			case UML2Package.MANIFESTATION__UTILIZED_ELEMENT:
-				return utilizedElement != null;
+				return eVirtualGet(UML2Package.MANIFESTATION__UTILIZED_ELEMENT) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

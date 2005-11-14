@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.22 2005/11/09 22:53:08 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.23 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -86,46 +86,6 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployments()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList deployment = null;
-
-	/**
-	 * The cached value of the '{@link #getSlots() <em>Slot</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSlots()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList slot = null;
-
-	/**
-	 * The cached value of the '{@link #getClassifiers() <em>Classifier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClassifiers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList classifier = null;
-
-	/**
-	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSpecification()
-	 * @generated
-	 * @ordered
-	 */
-	protected ValueSpecification specification = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -149,8 +109,9 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment(), UML2Package.eINSTANCE.getInstanceSpecification_Slot(), UML2Package.eINSTANCE.getInstanceSpecification_Specification()});
+			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment(), UML2Package.eINSTANCE.getInstanceSpecification_Slot(), UML2Package.eINSTANCE.getInstanceSpecification_Specification()}));
 		}
 		return ownedElement;
 	}
@@ -174,8 +135,9 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	public EList getDeployments() {
+		EList deployment = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT);
 		if (deployment == null) {
-			deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, new int[] {UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION);
+			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, new int[] {UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION));
 		}
 		return deployment;
 	}
@@ -279,8 +241,9 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	public EList getSlots() {
+		EList slot = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__SLOT);
 		if (slot == null) {
-			slot = new EObjectContainmentWithInverseEList(Slot.class, this, UML2Package.INSTANCE_SPECIFICATION__SLOT, UML2Package.SLOT__OWNING_INSTANCE);
+			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__SLOT, slot = new EObjectContainmentWithInverseEList(Slot.class, this, UML2Package.INSTANCE_SPECIFICATION__SLOT, UML2Package.SLOT__OWNING_INSTANCE));
 		}
 		return slot;
 	}
@@ -321,8 +284,9 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	public EList getClassifiers() {
+		EList classifier = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__CLASSIFIER);
 		if (classifier == null) {
-			classifier = new EObjectResolvingEList(Classifier.class, this, UML2Package.INSTANCE_SPECIFICATION__CLASSIFIER);
+			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__CLASSIFIER, classifier = new EObjectResolvingEList(Classifier.class, this, UML2Package.INSTANCE_SPECIFICATION__CLASSIFIER));
 		}
 		return classifier;
 	}
@@ -349,6 +313,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
+		ValueSpecification specification = (ValueSpecification)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION);
 		return specification;
 	}
 
@@ -358,10 +323,9 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	public NotificationChain basicSetSpecification(ValueSpecification newSpecification, NotificationChain msgs) {
-		ValueSpecification oldSpecification = specification;
-		specification = newSpecification;
+		Object oldSpecification = eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION, newSpecification);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION, oldSpecification, newSpecification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION, oldSpecification == EVIRTUAL_NO_VALUE ? null : oldSpecification, newSpecification);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -374,6 +338,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
+		ValueSpecification specification = (ValueSpecification)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION);
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -427,8 +392,9 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	public EList getClientDependencies() {
+		EList clientDependency = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
-			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY, new int[] {UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT);
+			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY, clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY, new int[] {UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT));
 		}
 		return clientDependency;
 	}
@@ -447,12 +413,14 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 				case UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.INSTANCE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.INSTANCE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -694,37 +662,44 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			case UML2Package.INSTANCE_SPECIFICATION__OWNER:
 				return isSetOwner();
 			case UML2Package.INSTANCE_SPECIFICATION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.INSTANCE_SPECIFICATION__NAME:
+				String name = eVirtualIsSet(UML2Package.INSTANCE_SPECIFICATION__NAME) ? (String)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INSTANCE_SPECIFICATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INSTANCE_SPECIFICATION__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.INSTANCE_SPECIFICATION__VISIBILITY) && eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__NAME_EXPRESSION) != null;
 			case UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER) != null;
 			case UML2Package.INSTANCE_SPECIFICATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INSTANCE_SPECIFICATION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return isSetPackageableElement_visibility();
 			case UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT:
+				EList deployment = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT);
 				return deployment != null && !deployment.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__SLOT:
+				EList slot = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__SLOT);
 				return slot != null && !slot.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__CLASSIFIER:
+				EList classifier = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__CLASSIFIER);
 				return classifier != null && !classifier.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION:
-				return specification != null;
+				return eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

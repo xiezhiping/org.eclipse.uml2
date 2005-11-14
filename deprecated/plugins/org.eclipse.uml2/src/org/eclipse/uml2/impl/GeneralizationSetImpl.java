@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.13 2005/11/09 22:53:09 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.14 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -97,26 +97,6 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	protected static final int IS_DISJOINT_EFLAG = 1 << 9;
 
 	/**
-	 * The cached value of the '{@link #getPowertype() <em>Powertype</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPowertype()
-	 * @generated
-	 * @ordered
-	 */
-	protected Classifier powertype = null;
-
-	/**
-	 * The cached value of the '{@link #getGeneralizations() <em>Generalization</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGeneralizations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList generalization = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -186,10 +166,12 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 */
 	public Classifier getPowertype() {
+		Classifier powertype = (Classifier)eVirtualGet(UML2Package.GENERALIZATION_SET__POWERTYPE);
 		if (powertype != null && powertype.eIsProxy()) {
 			Classifier oldPowertype = powertype;
 			powertype = (Classifier)eResolveProxy((InternalEObject)powertype);
 			if (powertype != oldPowertype) {
+				eVirtualSet(UML2Package.GENERALIZATION_SET__POWERTYPE, powertype);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.GENERALIZATION_SET__POWERTYPE, oldPowertype, powertype));
 			}
@@ -203,7 +185,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 */
 	public Classifier basicGetPowertype() {
-		return powertype;
+		return (Classifier)eVirtualGet(UML2Package.GENERALIZATION_SET__POWERTYPE);
 	}
 
 	/**
@@ -212,10 +194,9 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 */
 	public NotificationChain basicSetPowertype(Classifier newPowertype, NotificationChain msgs) {
-		Classifier oldPowertype = powertype;
-		powertype = newPowertype;
+		Object oldPowertype = eVirtualSet(UML2Package.GENERALIZATION_SET__POWERTYPE, newPowertype);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION_SET__POWERTYPE, oldPowertype, newPowertype);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION_SET__POWERTYPE, oldPowertype == EVIRTUAL_NO_VALUE ? null : oldPowertype, newPowertype);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -228,6 +209,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 */
 	public void setPowertype(Classifier newPowertype) {
+		Classifier powertype = (Classifier)eVirtualGet(UML2Package.GENERALIZATION_SET__POWERTYPE);
 		if (newPowertype != powertype) {
 			NotificationChain msgs = null;
 			if (powertype != null)
@@ -249,8 +231,9 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 */
 	public EList getGeneralizations() {
+		EList generalization = (EList)eVirtualGet(UML2Package.GENERALIZATION_SET__GENERALIZATION);
 		if (generalization == null) {
-			generalization = new EObjectWithInverseResolvingEList.ManyInverse(Generalization.class, this, UML2Package.GENERALIZATION_SET__GENERALIZATION, UML2Package.GENERALIZATION__GENERALIZATION_SET);
+			eVirtualSet(UML2Package.GENERALIZATION_SET__GENERALIZATION, generalization = new EObjectWithInverseResolvingEList.ManyInverse(Generalization.class, this, UML2Package.GENERALIZATION_SET__GENERALIZATION, UML2Package.GENERALIZATION__GENERALIZATION_SET));
 		}
 		return generalization;
 	}
@@ -269,12 +252,14 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 				case UML2Package.GENERALIZATION_SET__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.GENERALIZATION_SET__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.GENERALIZATION_SET__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.GENERALIZATION_SET__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.GENERALIZATION_SET__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.GENERALIZATION_SET__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.GENERALIZATION_SET__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -283,6 +268,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.GENERALIZATION_SET__OWNING_PARAMETER, msgs);
 				case UML2Package.GENERALIZATION_SET__POWERTYPE:
+					Classifier powertype = (Classifier)eVirtualGet(UML2Package.GENERALIZATION_SET__POWERTYPE);
 					if (powertype != null)
 						msgs = ((InternalEObject)powertype).eInverseRemove(this, UML2Package.CLASSIFIER__POWERTYPE_EXTENT, Classifier.class, msgs);
 					return basicSetPowertype((Classifier)otherEnd, msgs);
@@ -513,23 +499,27 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 			case UML2Package.GENERALIZATION_SET__OWNER:
 				return isSetOwner();
 			case UML2Package.GENERALIZATION_SET__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.GENERALIZATION_SET__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.GENERALIZATION_SET__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.GENERALIZATION_SET__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.GENERALIZATION_SET__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.GENERALIZATION_SET__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.GENERALIZATION_SET__NAME:
+				String name = eVirtualIsSet(UML2Package.GENERALIZATION_SET__NAME) ? (String)eVirtualGet(UML2Package.GENERALIZATION_SET__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.GENERALIZATION_SET__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.GENERALIZATION_SET__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.GENERALIZATION_SET__VISIBILITY) && eVirtualGet(UML2Package.GENERALIZATION_SET__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.GENERALIZATION_SET__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.GENERALIZATION_SET__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.GENERALIZATION_SET__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.GENERALIZATION_SET__NAME_EXPRESSION) != null;
 			case UML2Package.GENERALIZATION_SET__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.GENERALIZATION_SET__TEMPLATE_PARAMETER) != null;
 			case UML2Package.GENERALIZATION_SET__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.GENERALIZATION_SET__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -539,8 +529,9 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 			case UML2Package.GENERALIZATION_SET__IS_DISJOINT:
 				return ((eFlags & IS_DISJOINT_EFLAG) != 0) != IS_DISJOINT_EDEFAULT;
 			case UML2Package.GENERALIZATION_SET__POWERTYPE:
-				return powertype != null;
+				return eVirtualGet(UML2Package.GENERALIZATION_SET__POWERTYPE) != null;
 			case UML2Package.GENERALIZATION_SET__GENERALIZATION:
+				EList generalization = (EList)eVirtualGet(UML2Package.GENERALIZATION_SET__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

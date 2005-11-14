@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.10 2005/11/04 22:23:02 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.11 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,8 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -114,6 +116,7 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 				case UML2Package.EXTENSION_POINT__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -318,21 +321,25 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 			case UML2Package.EXTENSION_POINT__OWNER:
 				return isSetOwner();
 			case UML2Package.EXTENSION_POINT__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.EXTENSION_POINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.EXTENSION_POINT__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.EXTENSION_POINT__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.EXTENSION_POINT__NAME:
+				String name = eVirtualIsSet(UML2Package.EXTENSION_POINT__NAME) ? (String)eVirtualGet(UML2Package.EXTENSION_POINT__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXTENSION_POINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXTENSION_POINT__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.EXTENSION_POINT__VISIBILITY) && eVirtualGet(UML2Package.EXTENSION_POINT__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.EXTENSION_POINT__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.EXTENSION_POINT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.EXTENSION_POINT__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.EXTENSION_POINT__NAME_EXPRESSION) != null;
 			case UML2Package.EXTENSION_POINT__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.EXTENSION_POINT__IS_LEAF:

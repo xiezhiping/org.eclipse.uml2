@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.27 2005/11/09 22:53:07 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.28 2005/11/14 17:31:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,44 +114,12 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
+	 * A bit field representing the indices of non-primitive feature values.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTemplateParameter()
 	 * @generated
-	 * @ordered
 	 */
-	protected TemplateParameter templateParameter = null;
-
-	/**
-	 * The cached value of the '{@link #getEnds() <em>End</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnds()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList end = null;
-
-	/**
-	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployments()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList deployment = null;
-
-	/**
-	 * The cached value of the '{@link #getAssociation() <em>Association</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAssociation()
-	 * @generated
-	 * @ordered
-	 */
-	protected Association association = null;
+	protected int eVirtualIndexBits1 = 0;
 
 	/**
 	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
@@ -214,26 +182,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	protected static final int IS_DERIVED_UNION_EFLAG = 1 << 14;
 
 	/**
-	 * The cached value of the '{@link #getRedefinedProperties() <em>Redefined Property</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRedefinedProperties()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList redefinedProperty = null;
-
-	/**
-	 * The cached value of the '{@link #getSubsettedProperties() <em>Subsetted Property</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubsettedProperties()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList subsettedProperty = null;
-
-	/**
 	 * The default value of the '{@link #getAggregation() <em>Aggregation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -242,36 +190,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @ordered
 	 */
 	protected static final AggregationKind AGGREGATION_EDEFAULT = AggregationKind.NONE_LITERAL;
-
-	/**
-	 * The cached value of the '{@link #getAggregation() <em>Aggregation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAggregation()
-	 * @generated
-	 * @ordered
-	 */
-	protected AggregationKind aggregation = AGGREGATION_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected ValueSpecification defaultValue = null;
-
-	/**
-	 * The cached value of the '{@link #getQualifiers() <em>Qualifier</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQualifiers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList qualifier = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -297,10 +215,12 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
+		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.PROPERTY__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			TemplateParameter oldTemplateParameter = templateParameter;
 			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
 			if (templateParameter != oldTemplateParameter) {
+				eVirtualSet(UML2Package.PROPERTY__TEMPLATE_PARAMETER, templateParameter);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PROPERTY__TEMPLATE_PARAMETER, oldTemplateParameter, templateParameter));
 			}
@@ -314,7 +234,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
-		return templateParameter;
+		return (TemplateParameter)eVirtualGet(UML2Package.PROPERTY__TEMPLATE_PARAMETER);
 	}
 
 	/**
@@ -323,10 +243,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplateParameter(TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		TemplateParameter oldTemplateParameter = templateParameter;
-		templateParameter = newTemplateParameter;
+		Object oldTemplateParameter = eVirtualSet(UML2Package.PROPERTY__TEMPLATE_PARAMETER, newTemplateParameter);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__TEMPLATE_PARAMETER, oldTemplateParameter, newTemplateParameter);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__TEMPLATE_PARAMETER, oldTemplateParameter == EVIRTUAL_NO_VALUE ? null : oldTemplateParameter, newTemplateParameter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -342,6 +261,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
+		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.PROPERTY__TEMPLATE_PARAMETER);
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -388,7 +308,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 
-		if (newOwningParameter != null || oldOwningParameter == templateParameter) {
+		if (newOwningParameter != null || oldOwningParameter == eVirtualGet(UML2Package.PROPERTY__TEMPLATE_PARAMETER)) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
@@ -400,8 +320,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getEnds() {
+		EList end = (EList)eVirtualGet(UML2Package.PROPERTY__END);
 		if (end == null) {
-			end = new EObjectWithInverseResolvingEList(ConnectorEnd.class, this, UML2Package.PROPERTY__END, UML2Package.CONNECTOR_END__ROLE);
+			eVirtualSet(UML2Package.PROPERTY__END, end = new EObjectWithInverseResolvingEList(ConnectorEnd.class, this, UML2Package.PROPERTY__END, UML2Package.CONNECTOR_END__ROLE));
 		}
 		return end;
 	}
@@ -413,8 +334,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.PROPERTY__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROPERTY__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(), UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment(), UML2Package.eINSTANCE.getProperty_DefaultValue(), UML2Package.eINSTANCE.getProperty_Qualifier()});
+			eVirtualSet(UML2Package.PROPERTY__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROPERTY__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(), UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment(), UML2Package.eINSTANCE.getProperty_DefaultValue(), UML2Package.eINSTANCE.getProperty_Qualifier()}));
 		}
 		return ownedElement;
 	}
@@ -438,8 +360,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getDeployments() {
+		EList deployment = (EList)eVirtualGet(UML2Package.PROPERTY__DEPLOYMENT);
 		if (deployment == null) {
-			deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.PROPERTY__DEPLOYMENT, new int[] {UML2Package.PROPERTY__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION);
+			eVirtualSet(UML2Package.PROPERTY__DEPLOYMENT, deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.PROPERTY__DEPLOYMENT, new int[] {UML2Package.PROPERTY__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION));
 		}
 		return deployment;
 	}
@@ -543,8 +466,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
+		EList featuringClassifier = (EList)eVirtualGet(UML2Package.PROPERTY__FEATURING_CLASSIFIER);
 		if (featuringClassifier == null) {
-			featuringClassifier = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.PROPERTY__FEATURING_CLASSIFIER, new EStructuralFeature[] {UML2Package.eINSTANCE.getProperty_Class_(), UML2Package.eINSTANCE.getProperty_OwningAssociation(), UML2Package.eINSTANCE.getProperty_Datatype()});
+			eVirtualSet(UML2Package.PROPERTY__FEATURING_CLASSIFIER, featuringClassifier = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.PROPERTY__FEATURING_CLASSIFIER, new EStructuralFeature[] {UML2Package.eINSTANCE.getProperty_Class_(), UML2Package.eINSTANCE.getProperty_OwningAssociation(), UML2Package.eINSTANCE.getProperty_Datatype()}));
 		}
 		return featuringClassifier;
 	}
@@ -562,7 +486,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			|| eIsSet(UML2Package.eINSTANCE.getProperty_Datatype());
 	}
 
-	/**
+		/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -632,7 +556,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public AggregationKind getAggregation() {
-		return aggregation;
+		AggregationKind aggregation = (AggregationKind)eVirtualGet(UML2Package.PROPERTY__AGGREGATION);
+		return aggregation == null ? AGGREGATION_EDEFAULT : aggregation;
 	}
 
 	/**
@@ -641,15 +566,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setAggregation(AggregationKind newAggregation) {
-		AggregationKind oldAggregation = aggregation;
-		aggregation = newAggregation == null ? AGGREGATION_EDEFAULT : newAggregation;
+		AggregationKind aggregation = newAggregation == null ? AGGREGATION_EDEFAULT : newAggregation;
+		Object oldAggregation = eVirtualSet(UML2Package.PROPERTY__AGGREGATION, aggregation);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__AGGREGATION, oldAggregation, aggregation));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__AGGREGATION, oldAggregation == EVIRTUAL_NO_VALUE ? AGGREGATION_EDEFAULT : oldAggregation, aggregation));
 
 	}
 
 
-	/**
+		/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -668,7 +593,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return opposite == null ? null : (opposite.eIsProxy() ? (Property)eResolveProxy((InternalEObject)opposite) : opposite);
 	}
 
-	/**
+		/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -708,7 +633,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__OWNING_ASSOCIATION, newOwningAssociation, newOwningAssociation));
 
-		if (newOwningAssociation != null || oldOwningAssociation == association) {
+		if (newOwningAssociation != null || oldOwningAssociation == eVirtualGet(UML2Package.PROPERTY__ASSOCIATION)) {
 			setAssociation(newOwningAssociation);
 		}
 	}
@@ -720,8 +645,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getRedefinedProperties() {
+		EList redefinedProperty = (EList)eVirtualGet(UML2Package.PROPERTY__REDEFINED_PROPERTY);
 		if (redefinedProperty == null) {
-			redefinedProperty = new EObjectResolvingEList(Property.class, this, UML2Package.PROPERTY__REDEFINED_PROPERTY);
+			eVirtualSet(UML2Package.PROPERTY__REDEFINED_PROPERTY, redefinedProperty = new EObjectResolvingEList(Property.class, this, UML2Package.PROPERTY__REDEFINED_PROPERTY));
 		}
 		return redefinedProperty;
 	}
@@ -748,8 +674,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getSubsettedProperties() {
+		EList subsettedProperty = (EList)eVirtualGet(UML2Package.PROPERTY__SUBSETTED_PROPERTY);
 		if (subsettedProperty == null) {
-			subsettedProperty = new EObjectResolvingEList(Property.class, this, UML2Package.PROPERTY__SUBSETTED_PROPERTY);
+			eVirtualSet(UML2Package.PROPERTY__SUBSETTED_PROPERTY, subsettedProperty = new EObjectResolvingEList(Property.class, this, UML2Package.PROPERTY__SUBSETTED_PROPERTY));
 		}
 		return subsettedProperty;
 	}
@@ -809,10 +736,12 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public Association getAssociation() {
+		Association association = (Association)eVirtualGet(UML2Package.PROPERTY__ASSOCIATION);
 		if (association != null && association.eIsProxy()) {
 			Association oldAssociation = association;
 			association = (Association)eResolveProxy((InternalEObject)association);
 			if (association != oldAssociation) {
+				eVirtualSet(UML2Package.PROPERTY__ASSOCIATION, association);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PROPERTY__ASSOCIATION, oldAssociation, association));
 			}
@@ -826,7 +755,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public Association basicGetAssociation() {
-		return association;
+		return (Association)eVirtualGet(UML2Package.PROPERTY__ASSOCIATION);
 	}
 
 	/**
@@ -835,10 +764,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public NotificationChain basicSetAssociation(Association newAssociation, NotificationChain msgs) {
-		Association oldAssociation = association;
-		association = newAssociation;
+		Object oldAssociation = eVirtualSet(UML2Package.PROPERTY__ASSOCIATION, newAssociation);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__ASSOCIATION, oldAssociation, newAssociation);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__ASSOCIATION, oldAssociation == EVIRTUAL_NO_VALUE ? null : oldAssociation, newAssociation);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -854,6 +782,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setAssociation(Association newAssociation) {
+		Association association = (Association)eVirtualGet(UML2Package.PROPERTY__ASSOCIATION);
 		if (newAssociation != association) {
 			NotificationChain msgs = null;
 			if (association != null)
@@ -875,6 +804,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
+		ValueSpecification defaultValue = (ValueSpecification)eVirtualGet(UML2Package.PROPERTY__DEFAULT_VALUE);
 		return defaultValue;
 	}
 
@@ -884,10 +814,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public NotificationChain basicSetDefaultValue(ValueSpecification newDefaultValue, NotificationChain msgs) {
-		ValueSpecification oldDefaultValue = defaultValue;
-		defaultValue = newDefaultValue;
+		Object oldDefaultValue = eVirtualSet(UML2Package.PROPERTY__DEFAULT_VALUE, newDefaultValue);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__DEFAULT_VALUE, oldDefaultValue, newDefaultValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__DEFAULT_VALUE, oldDefaultValue == EVIRTUAL_NO_VALUE ? null : oldDefaultValue, newDefaultValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -900,6 +829,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setDefaultValue(ValueSpecification newDefaultValue) {
+		ValueSpecification defaultValue = (ValueSpecification)eVirtualGet(UML2Package.PROPERTY__DEFAULT_VALUE);
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
 			if (defaultValue != null)
@@ -935,8 +865,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getQualifiers() {
+		EList qualifier = (EList)eVirtualGet(UML2Package.PROPERTY__QUALIFIER);
 		if (qualifier == null) {
-			qualifier = new EObjectContainmentWithInverseEList(Property.class, this, UML2Package.PROPERTY__QUALIFIER, UML2Package.PROPERTY__ASSOCIATION_END);
+			eVirtualSet(UML2Package.PROPERTY__QUALIFIER, qualifier = new EObjectContainmentWithInverseEList(Property.class, this, UML2Package.PROPERTY__QUALIFIER, UML2Package.PROPERTY__ASSOCIATION_END));
 		}
 		return qualifier;
 	}
@@ -1024,8 +955,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getClientDependencies() {
+		EList clientDependency = (EList)eVirtualGet(UML2Package.PROPERTY__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
-			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.PROPERTY__CLIENT_DEPENDENCY, new int[] {UML2Package.PROPERTY__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT);
+			eVirtualSet(UML2Package.PROPERTY__CLIENT_DEPENDENCY, clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.PROPERTY__CLIENT_DEPENDENCY, new int[] {UML2Package.PROPERTY__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT));
 		}
 		return clientDependency;
 	}
@@ -1120,7 +1052,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return PropertyOperations.subsettingContext(this);
 	}
 
-	/**
+		/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -1197,8 +1129,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	protected EList getRedefinedElementsHelper(EList redefinedElement) {
 		super.getRedefinedElementsHelper(redefinedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getProperty_RedefinedProperty())) {
-			for (Iterator i = ((InternalEList) getRedefinedProperties()).basicIterator(); i.hasNext(); ) {
+		EList redefinedProperty = getRedefinedProperties();
+		if (!redefinedProperty.isEmpty()) {
+			for (Iterator i = ((InternalEList) redefinedProperty).basicIterator(); i.hasNext(); ) {
 				redefinedElement.add(i.next());
 			}
 		}
@@ -1258,12 +1191,14 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 				case UML2Package.PROPERTY__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.PROPERTY__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.PROPERTY__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.PROPERTY__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.PROPERTY__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.PROPERTY__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.PROPERTY__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -1284,6 +1219,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PROPERTY__DATATYPE, msgs);
 				case UML2Package.PROPERTY__ASSOCIATION:
+					Association association = (Association)eVirtualGet(UML2Package.PROPERTY__ASSOCIATION);
 					if (association != null)
 						msgs = ((InternalEObject)association).eInverseRemove(this, UML2Package.ASSOCIATION__MEMBER_END, Association.class, msgs);
 					return basicSetAssociation((Association)otherEnd, msgs);
@@ -1351,18 +1287,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * @see org.eclipse.emf.ecore.impl.EObjectImpl#eDynamicInverseRemove(org.eclipse.emf.ecore.InternalEObject, int, java.lang.Class, org.eclipse.emf.common.notify.NotificationChain)
-	 */
-	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
-		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
-			case UML2Package.PROPERTY__CLASS_ :
-				return eBasicSetContainer(null, UML2Package.PROPERTY__CLASS_, msgs);
-			default :
-				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
-		}
 	}
 
 	/**
@@ -1721,21 +1645,25 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__OWNER:
 				return isSetOwner();
 			case UML2Package.PROPERTY__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.PROPERTY__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROPERTY__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.PROPERTY__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.PROPERTY__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.PROPERTY__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PROPERTY__NAME:
+				String name = eVirtualIsSet(UML2Package.PROPERTY__NAME) ? (String)eVirtualGet(UML2Package.PROPERTY__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PROPERTY__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PROPERTY__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.PROPERTY__VISIBILITY) && eVirtualGet(UML2Package.PROPERTY__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.PROPERTY__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.PROPERTY__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PROPERTY__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.PROPERTY__NAME_EXPRESSION) != null;
 			case UML2Package.PROPERTY__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.PROPERTY__IS_LEAF:
@@ -1745,7 +1673,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.PROPERTY__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.PROPERTY__TYPE) != null;
 			case UML2Package.PROPERTY__IS_ORDERED:
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.PROPERTY__IS_UNIQUE:
@@ -1755,18 +1683,20 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__UPPER:
 				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.PROPERTY__UPPER_VALUE:
-				return upperValue != null;
+				return eVirtualGet(UML2Package.PROPERTY__UPPER_VALUE) != null;
 			case UML2Package.PROPERTY__LOWER_VALUE:
-				return lowerValue != null;
+				return eVirtualGet(UML2Package.PROPERTY__LOWER_VALUE) != null;
 			case UML2Package.PROPERTY__IS_READ_ONLY:
-				return isSetIsReadOnly();
+				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
 			case UML2Package.PROPERTY__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.PROPERTY__TEMPLATE_PARAMETER) != null;
 			case UML2Package.PROPERTY__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PROPERTY__END:
+				EList end = (EList)eVirtualGet(UML2Package.PROPERTY__END);
 				return end != null && !end.isEmpty();
 			case UML2Package.PROPERTY__DEPLOYMENT:
+				EList deployment = (EList)eVirtualGet(UML2Package.PROPERTY__DEPLOYMENT);
 				return deployment != null && !deployment.isEmpty();
 			case UML2Package.PROPERTY__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();
@@ -1785,18 +1715,21 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__OWNING_ASSOCIATION:
 				return getOwningAssociation() != null;
 			case UML2Package.PROPERTY__REDEFINED_PROPERTY:
+				EList redefinedProperty = (EList)eVirtualGet(UML2Package.PROPERTY__REDEFINED_PROPERTY);
 				return redefinedProperty != null && !redefinedProperty.isEmpty();
 			case UML2Package.PROPERTY__SUBSETTED_PROPERTY:
+				EList subsettedProperty = (EList)eVirtualGet(UML2Package.PROPERTY__SUBSETTED_PROPERTY);
 				return subsettedProperty != null && !subsettedProperty.isEmpty();
 			case UML2Package.PROPERTY__DATATYPE:
 				return getDatatype() != null;
 			case UML2Package.PROPERTY__ASSOCIATION:
-				return association != null;
+				return eVirtualGet(UML2Package.PROPERTY__ASSOCIATION) != null;
 			case UML2Package.PROPERTY__AGGREGATION:
-				return aggregation != AGGREGATION_EDEFAULT;
+				return eVirtualIsSet(UML2Package.PROPERTY__AGGREGATION) && eVirtualGet(UML2Package.PROPERTY__AGGREGATION) != AGGREGATION_EDEFAULT;
 			case UML2Package.PROPERTY__DEFAULT_VALUE:
-				return defaultValue != null;
+				return eVirtualGet(UML2Package.PROPERTY__DEFAULT_VALUE) != null;
 			case UML2Package.PROPERTY__QUALIFIER:
+				EList qualifier = (EList)eVirtualGet(UML2Package.PROPERTY__QUALIFIER);
 				return qualifier != null && !qualifier.isEmpty();
 			case UML2Package.PROPERTY__ASSOCIATION_END:
 				return getAssociationEnd() != null;
@@ -1867,6 +1800,40 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	protected int eVirtualIndexBits(int offset) {
+		switch (offset) {
+			case 0 :
+				return eVirtualIndexBits0;
+			case 1 :
+				return eVirtualIndexBits1;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
+		switch (offset) {
+			case 0 :
+				eVirtualIndexBits0 = newIndexBits;
+				break;
+			case 1 :
+				eVirtualIndexBits1 = newIndexBits;
+				break;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
@@ -1876,13 +1843,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		result.append(", isDerivedUnion: "); //$NON-NLS-1$
 		result.append((eFlags & IS_DERIVED_UNION_EFLAG) != 0);
 		result.append(", aggregation: "); //$NON-NLS-1$
-		result.append(aggregation);
+		result.append(eVirtualIsSet(UML2Package.PROPERTY__AGGREGATION) ? eVirtualGet(UML2Package.PROPERTY__AGGREGATION) : AGGREGATION_EDEFAULT);
+		result.append(", isReadOnly: "); //$NON-NLS-1$
+		result.append((eFlags & IS_READ_ONLY_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}
 
 
-	// <!-- begin-custom-operations -->
+		// <!-- begin-custom-operations -->
 
 	/*
 	 * (non-Javadoc)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.13 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.14 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -65,26 +65,6 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameter</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList parameter = null;
-
-	/**
-	 * The cached value of the '{@link #getConditions() <em>Condition</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConditions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList condition = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -108,8 +88,9 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.PARAMETER_SET__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PARAMETER_SET__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getParameterSet_Condition()});
+			eVirtualSet(UML2Package.PARAMETER_SET__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PARAMETER_SET__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getParameterSet_Condition()}));
 		}
 		return ownedElement;
 	}
@@ -131,8 +112,9 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 	 * @generated
 	 */
 	public EList getParameters() {
+		EList parameter = (EList)eVirtualGet(UML2Package.PARAMETER_SET__PARAMETER);
 		if (parameter == null) {
-			parameter = new EObjectWithInverseResolvingEList.ManyInverse(Parameter.class, this, UML2Package.PARAMETER_SET__PARAMETER, UML2Package.PARAMETER__PARAMETER_SET);
+			eVirtualSet(UML2Package.PARAMETER_SET__PARAMETER, parameter = new EObjectWithInverseResolvingEList.ManyInverse(Parameter.class, this, UML2Package.PARAMETER_SET__PARAMETER, UML2Package.PARAMETER__PARAMETER_SET));
 		}
 		return parameter;
 	}
@@ -159,8 +141,9 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 	 * @generated
 	 */
 	public EList getConditions() {
+		EList condition = (EList)eVirtualGet(UML2Package.PARAMETER_SET__CONDITION);
 		if (condition == null) {
-			condition = new EObjectContainmentEList(Constraint.class, this, UML2Package.PARAMETER_SET__CONDITION);
+			eVirtualSet(UML2Package.PARAMETER_SET__CONDITION, condition = new EObjectContainmentEList(Constraint.class, this, UML2Package.PARAMETER_SET__CONDITION));
 		}
 		return condition;
 	}
@@ -222,6 +205,7 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 				case UML2Package.PARAMETER_SET__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.PARAMETER_SET__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.PARAMETER_SET__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.PARAMETER_SET__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -409,24 +393,30 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 			case UML2Package.PARAMETER_SET__OWNER:
 				return isSetOwner();
 			case UML2Package.PARAMETER_SET__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.PARAMETER_SET__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PARAMETER_SET__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.PARAMETER_SET__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.PARAMETER_SET__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.PARAMETER_SET__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PARAMETER_SET__NAME:
+				String name = eVirtualIsSet(UML2Package.PARAMETER_SET__NAME) ? (String)eVirtualGet(UML2Package.PARAMETER_SET__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PARAMETER_SET__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PARAMETER_SET__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.PARAMETER_SET__VISIBILITY) && eVirtualGet(UML2Package.PARAMETER_SET__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.PARAMETER_SET__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.PARAMETER_SET__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PARAMETER_SET__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.PARAMETER_SET__NAME_EXPRESSION) != null;
 			case UML2Package.PARAMETER_SET__PARAMETER:
+				EList parameter = (EList)eVirtualGet(UML2Package.PARAMETER_SET__PARAMETER);
 				return parameter != null && !parameter.isEmpty();
 			case UML2Package.PARAMETER_SET__CONDITION:
+				EList condition = (EList)eVirtualGet(UML2Package.PARAMETER_SET__CONDITION);
 				return condition != null && !condition.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

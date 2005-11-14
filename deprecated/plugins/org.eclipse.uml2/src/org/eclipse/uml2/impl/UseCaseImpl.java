@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.22 2005/11/09 22:53:09 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.23 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,46 +68,6 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getIncludes() <em>Include</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIncludes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList include = null;
-
-	/**
-	 * The cached value of the '{@link #getExtends() <em>Extend</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtends()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList extend = null;
-
-	/**
-	 * The cached value of the '{@link #getExtensionPoints() <em>Extension Point</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtensionPoints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList extensionPoint = null;
-
-	/**
-	 * The cached value of the '{@link #getSubjects() <em>Subject</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubjects()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList subject = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -131,8 +91,9 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	 * @generated
 	 */
 	public EList getIncludes() {
+		EList include = (EList)eVirtualGet(UML2Package.USE_CASE__INCLUDE);
 		if (include == null) {
-			include = new EObjectContainmentWithInverseEList(Include.class, this, UML2Package.USE_CASE__INCLUDE, UML2Package.INCLUDE__INCLUDING_CASE);
+			eVirtualSet(UML2Package.USE_CASE__INCLUDE, include = new EObjectContainmentWithInverseEList(Include.class, this, UML2Package.USE_CASE__INCLUDE, UML2Package.INCLUDE__INCLUDING_CASE));
 		}
 		return include;
 	}
@@ -188,8 +149,9 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	 * @generated
 	 */
 	public EList getExtends() {
+		EList extend = (EList)eVirtualGet(UML2Package.USE_CASE__EXTEND);
 		if (extend == null) {
-			extend = new EObjectContainmentWithInverseEList(Extend.class, this, UML2Package.USE_CASE__EXTEND, UML2Package.EXTEND__EXTENSION);
+			eVirtualSet(UML2Package.USE_CASE__EXTEND, extend = new EObjectContainmentWithInverseEList(Extend.class, this, UML2Package.USE_CASE__EXTEND, UML2Package.EXTEND__EXTENSION));
 		}
 		return extend;
 	}
@@ -245,8 +207,9 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	 * @generated
 	 */
 	public EList getExtensionPoints() {
+		EList extensionPoint = (EList)eVirtualGet(UML2Package.USE_CASE__EXTENSION_POINT);
 		if (extensionPoint == null) {
-			extensionPoint = new EObjectContainmentWithInverseEList(ExtensionPoint.class, this, UML2Package.USE_CASE__EXTENSION_POINT, UML2Package.EXTENSION_POINT__USE_CASE);
+			eVirtualSet(UML2Package.USE_CASE__EXTENSION_POINT, extensionPoint = new EObjectContainmentWithInverseEList(ExtensionPoint.class, this, UML2Package.USE_CASE__EXTENSION_POINT, UML2Package.EXTENSION_POINT__USE_CASE));
 		}
 		return extensionPoint;
 	}
@@ -302,8 +265,9 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	 * @generated
 	 */
 	public EList getSubjects() {
+		EList subject = (EList)eVirtualGet(UML2Package.USE_CASE__SUBJECT);
 		if (subject == null) {
-			subject = new EObjectWithInverseResolvingEList.ManyInverse(Classifier.class, this, UML2Package.USE_CASE__SUBJECT, UML2Package.CLASSIFIER__USE_CASE);
+			eVirtualSet(UML2Package.USE_CASE__SUBJECT, subject = new EObjectWithInverseResolvingEList.ManyInverse(Classifier.class, this, UML2Package.USE_CASE__SUBJECT, UML2Package.CLASSIFIER__USE_CASE));
 		}
 		return subject;
 	}
@@ -337,6 +301,7 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				case UML2Package.USE_CASE__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.USE_CASE__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.USE_CASE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -349,6 +314,7 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				case UML2Package.USE_CASE__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.USE_CASE__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -809,33 +775,40 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__OWNER:
 				return isSetOwner();
 			case UML2Package.USE_CASE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.USE_CASE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.USE_CASE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.USE_CASE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.USE_CASE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.USE_CASE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.USE_CASE__NAME:
+				String name = eVirtualIsSet(UML2Package.USE_CASE__NAME) ? (String)eVirtualGet(UML2Package.USE_CASE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.USE_CASE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.USE_CASE__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.USE_CASE__VISIBILITY) && eVirtualGet(UML2Package.USE_CASE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.USE_CASE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.USE_CASE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.USE_CASE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.USE_CASE__NAME_EXPRESSION) != null;
 			case UML2Package.USE_CASE__MEMBER:
 				return isSetMembers();
 			case UML2Package.USE_CASE__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.USE_CASE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.USE_CASE__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.USE_CASE__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.USE_CASE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.USE_CASE__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.USE_CASE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.USE_CASE__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.USE_CASE__TEMPLATE_PARAMETER) != null;
 			case UML2Package.USE_CASE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.USE_CASE__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -855,40 +828,54 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__GENERAL:
 				return !getGenerals().isEmpty();
 			case UML2Package.USE_CASE__GENERALIZATION:
+				EList generalization = (EList)eVirtualGet(UML2Package.USE_CASE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.USE_CASE__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.USE_CASE__REDEFINED_CLASSIFIER:
+				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.USE_CASE__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.USE_CASE__SUBSTITUTION:
+				EList substitution = (EList)eVirtualGet(UML2Package.USE_CASE__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UML2Package.USE_CASE__POWERTYPE_EXTENT:
+				EList powertypeExtent = (EList)eVirtualGet(UML2Package.USE_CASE__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.USE_CASE__OWNED_USE_CASE:
+				EList ownedUseCase = (EList)eVirtualGet(UML2Package.USE_CASE__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.USE_CASE__USE_CASE:
+				EList useCase = (EList)eVirtualGet(UML2Package.USE_CASE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UML2Package.USE_CASE__REPRESENTATION:
-				return representation != null;
+				return eVirtualGet(UML2Package.USE_CASE__REPRESENTATION) != null;
 			case UML2Package.USE_CASE__OCCURRENCE:
+				EList occurrence = (EList)eVirtualGet(UML2Package.USE_CASE__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.USE_CASE__OWNED_BEHAVIOR:
-				return isSetOwnedBehaviors();
+				EList ownedBehavior = (EList)eVirtualGet(UML2Package.USE_CASE__OWNED_BEHAVIOR);
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UML2Package.USE_CASE__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
+				return eVirtualGet(UML2Package.USE_CASE__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.USE_CASE__IMPLEMENTATION:
+				EList implementation = (EList)eVirtualGet(UML2Package.USE_CASE__IMPLEMENTATION);
 				return implementation != null && !implementation.isEmpty();
 			case UML2Package.USE_CASE__OWNED_TRIGGER:
+				EList ownedTrigger = (EList)eVirtualGet(UML2Package.USE_CASE__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.USE_CASE__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.USE_CASE__INCLUDE:
+				EList include = (EList)eVirtualGet(UML2Package.USE_CASE__INCLUDE);
 				return include != null && !include.isEmpty();
 			case UML2Package.USE_CASE__EXTEND:
+				EList extend = (EList)eVirtualGet(UML2Package.USE_CASE__EXTEND);
 				return extend != null && !extend.isEmpty();
 			case UML2Package.USE_CASE__EXTENSION_POINT:
+				EList extensionPoint = (EList)eVirtualGet(UML2Package.USE_CASE__EXTENSION_POINT);
 				return extensionPoint != null && !extensionPoint.isEmpty();
 			case UML2Package.USE_CASE__SUBJECT:
+				EList subject = (EList)eVirtualGet(UML2Package.USE_CASE__SUBJECT);
 				return subject != null && !subject.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
@@ -902,14 +889,17 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (eIsSet(UML2Package.eINSTANCE.getUseCase_Include())) {
-			ownedMember.addAll(getIncludes());
+		EList include = getIncludes();
+		if (!include.isEmpty()) {
+			ownedMember.addAll(include);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getUseCase_Extend())) {
-			ownedMember.addAll(getExtends());
+		EList extend = getExtends();
+		if (!extend.isEmpty()) {
+			ownedMember.addAll(extend);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getUseCase_ExtensionPoint())) {
-			ownedMember.addAll(getExtensionPoints());
+		EList extensionPoint = getExtensionPoints();
+		if (!extensionPoint.isEmpty()) {
+			ownedMember.addAll(extensionPoint);
 		}
 		return ownedMember;
 	}

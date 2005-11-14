@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.15 2005/11/09 22:53:08 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.16 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -83,16 +83,6 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	protected static final int IS_COMBINE_DUPLICATE_EFLAG = 1 << 9;
 
 	/**
-	 * The cached value of the '{@link #getJoinSpec() <em>Join Spec</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJoinSpec()
-	 * @generated
-	 * @ordered
-	 */
-	protected ValueSpecification joinSpec = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -117,8 +107,9 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.JOIN_NODE__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.JOIN_NODE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getJoinNode_JoinSpec()});
+			eVirtualSet(UML2Package.JOIN_NODE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.JOIN_NODE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getJoinNode_JoinSpec()}));
 		}
 		return ownedElement;
 	}
@@ -163,6 +154,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * @generated
 	 */
 	public ValueSpecification getJoinSpec() {
+		ValueSpecification joinSpec = (ValueSpecification)eVirtualGet(UML2Package.JOIN_NODE__JOIN_SPEC);
 		return joinSpec;
 	}
 
@@ -172,10 +164,9 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * @generated
 	 */
 	public NotificationChain basicSetJoinSpec(ValueSpecification newJoinSpec, NotificationChain msgs) {
-		ValueSpecification oldJoinSpec = joinSpec;
-		joinSpec = newJoinSpec;
+		Object oldJoinSpec = eVirtualSet(UML2Package.JOIN_NODE__JOIN_SPEC, newJoinSpec);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.JOIN_NODE__JOIN_SPEC, oldJoinSpec, newJoinSpec);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.JOIN_NODE__JOIN_SPEC, oldJoinSpec == EVIRTUAL_NO_VALUE ? null : oldJoinSpec, newJoinSpec);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -188,6 +179,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * @generated
 	 */
 	public void setJoinSpec(ValueSpecification newJoinSpec) {
+		ValueSpecification joinSpec = (ValueSpecification)eVirtualGet(UML2Package.JOIN_NODE__JOIN_SPEC);
 		if (newJoinSpec != joinSpec) {
 			NotificationChain msgs = null;
 			if (joinSpec != null)
@@ -469,28 +461,34 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 			case UML2Package.JOIN_NODE__OWNER:
 				return isSetOwner();
 			case UML2Package.JOIN_NODE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.JOIN_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.JOIN_NODE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.JOIN_NODE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.JOIN_NODE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.JOIN_NODE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.JOIN_NODE__NAME:
+				String name = eVirtualIsSet(UML2Package.JOIN_NODE__NAME) ? (String)eVirtualGet(UML2Package.JOIN_NODE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.JOIN_NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.JOIN_NODE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.JOIN_NODE__VISIBILITY) && eVirtualGet(UML2Package.JOIN_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.JOIN_NODE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.JOIN_NODE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.JOIN_NODE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.JOIN_NODE__NAME_EXPRESSION) != null;
 			case UML2Package.JOIN_NODE__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.JOIN_NODE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.JOIN_NODE__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.JOIN_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.JOIN_NODE__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.JOIN_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.JOIN_NODE__IN_GROUP:
 				return isSetInGroups();
@@ -501,13 +499,15 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 			case UML2Package.JOIN_NODE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.JOIN_NODE__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.JOIN_NODE__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.JOIN_NODE__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.JOIN_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.JOIN_NODE__IS_COMBINE_DUPLICATE:
 				return ((eFlags & IS_COMBINE_DUPLICATE_EFLAG) != 0) != IS_COMBINE_DUPLICATE_EDEFAULT;
 			case UML2Package.JOIN_NODE__JOIN_SPEC:
-				return joinSpec != null;
+				return eVirtualGet(UML2Package.JOIN_NODE__JOIN_SPEC) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

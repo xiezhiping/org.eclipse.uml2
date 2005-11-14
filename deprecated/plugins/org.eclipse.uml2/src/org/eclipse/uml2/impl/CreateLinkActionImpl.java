@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.13 2005/11/09 22:53:08 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.14 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -64,11 +64,21 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 	}
 
 	public EList getEndData() {
-
+		EList endData = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__END_DATA);
 		if (endData == null) {
-			endData = new EObjectContainmentEList(LinkEndCreationData.class, this, UML2Package.CREATE_LINK_ACTION__END_DATA);
+			eVirtualSet(UML2Package.CREATE_LINK_ACTION__END_DATA, endData = new EObjectContainmentEList(LinkEndCreationData.class, this, UML2Package.CREATE_LINK_ACTION__END_DATA));
 		}
 		return endData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetEndData() {
+		EList endData = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__END_DATA);
+		return endData != null && !endData.isEmpty();
 	}
 
 	/**
@@ -98,15 +108,6 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 		}
 		getEndData().add(newEndData);
 		return newEndData;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetEndData() {
-		return endData != null && !endData.isEmpty();
 	}
 
 	/**
@@ -193,28 +194,34 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 			case UML2Package.CREATE_LINK_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.CREATE_LINK_ACTION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.CREATE_LINK_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CREATE_LINK_ACTION__NAME:
+				String name = eVirtualIsSet(UML2Package.CREATE_LINK_ACTION__NAME) ? (String)eVirtualGet(UML2Package.CREATE_LINK_ACTION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CREATE_LINK_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CREATE_LINK_ACTION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.CREATE_LINK_ACTION__VISIBILITY) && eVirtualGet(UML2Package.CREATE_LINK_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.CREATE_LINK_ACTION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.CREATE_LINK_ACTION__NAME_EXPRESSION) != null;
 			case UML2Package.CREATE_LINK_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.CREATE_LINK_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CREATE_LINK_ACTION__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__IN_GROUP:
 				return isSetInGroups();
@@ -225,12 +232,16 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 			case UML2Package.CREATE_LINK_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.CREATE_LINK_ACTION__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__HANDLER:
+				EList handler = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__EFFECT:
+				String effect = eVirtualIsSet(UML2Package.CREATE_LINK_ACTION__EFFECT) ? (String)eVirtualGet(UML2Package.CREATE_LINK_ACTION__EFFECT) : EFFECT_EDEFAULT;
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.CREATE_LINK_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -239,11 +250,14 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 			case UML2Package.CREATE_LINK_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.CREATE_LINK_ACTION__LOCAL_PRECONDITION:
+				EList localPrecondition = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__LOCAL_POSTCONDITION:
+				EList localPostcondition = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__END_DATA:
-				return isSetEndData();
+				EList endData = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__END_DATA);
+				return endData != null && !endData.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}

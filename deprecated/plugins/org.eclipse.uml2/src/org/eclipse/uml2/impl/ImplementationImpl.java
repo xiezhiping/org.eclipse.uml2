@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.18 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.19 2005/11/14 17:31:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,16 +71,6 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getContract() <em>Contract</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContract()
-	 * @generated
-	 * @ordered
-	 */
-	protected Interface contract = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,10 +136,12 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public Interface getContract() {
+		Interface contract = (Interface)eVirtualGet(UML2Package.IMPLEMENTATION__CONTRACT);
 		if (contract != null && contract.eIsProxy()) {
 			Interface oldContract = contract;
 			contract = (Interface)eResolveProxy((InternalEObject)contract);
 			if (contract != oldContract) {
+				eVirtualSet(UML2Package.IMPLEMENTATION__CONTRACT, contract);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.IMPLEMENTATION__CONTRACT, oldContract, contract));
 			}
@@ -163,7 +155,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public Interface basicGetContract() {
-		return contract;
+		return (Interface)eVirtualGet(UML2Package.IMPLEMENTATION__CONTRACT);
 	}
 
 	/**
@@ -175,10 +167,10 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 		if (newContract != null && !getSuppliers().contains(newContract)) {
 			getSuppliers().add(newContract);
 		}
-		Interface oldContract = contract;
-		contract = newContract;
+		Interface contract = newContract;
+		Object oldContract = eVirtualSet(UML2Package.IMPLEMENTATION__CONTRACT, contract);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.IMPLEMENTATION__CONTRACT, oldContract, contract));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.IMPLEMENTATION__CONTRACT, oldContract == EVIRTUAL_NO_VALUE ? null : oldContract, contract));
 
 	}
 
@@ -225,8 +217,9 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public EList getSuppliers() {
+		EList supplier = (EList)eVirtualGet(UML2Package.IMPLEMENTATION__SUPPLIER);
 		if (supplier == null) {
-			supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.IMPLEMENTATION__SUPPLIER, new int[] {UML2Package.IMPLEMENTATION__REALIZING_CLASSIFIER, UML2Package.IMPLEMENTATION__CONTRACT});
+			eVirtualSet(UML2Package.IMPLEMENTATION__SUPPLIER, supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.IMPLEMENTATION__SUPPLIER, new int[] {UML2Package.IMPLEMENTATION__REALIZING_CLASSIFIER, UML2Package.IMPLEMENTATION__CONTRACT}));
 		}
 		return supplier;
 	}
@@ -238,8 +231,9 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public EList getClients() {
+		EList client = (EList)eVirtualGet(UML2Package.IMPLEMENTATION__CLIENT);
 		if (client == null) {
-			client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.IMPLEMENTATION__CLIENT, new int[] {UML2Package.IMPLEMENTATION__ABSTRACTION, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
+			eVirtualSet(UML2Package.IMPLEMENTATION__CLIENT, client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.IMPLEMENTATION__CLIENT, new int[] {UML2Package.IMPLEMENTATION__ABSTRACTION, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY));
 		}
 		return client;
 	}
@@ -258,12 +252,14 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 				case UML2Package.IMPLEMENTATION__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.IMPLEMENTATION__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.IMPLEMENTATION__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.IMPLEMENTATION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.IMPLEMENTATION__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.IMPLEMENTATION__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.IMPLEMENTATION__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -563,23 +559,27 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			case UML2Package.IMPLEMENTATION__OWNER:
 				return isSetOwner();
 			case UML2Package.IMPLEMENTATION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.IMPLEMENTATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.IMPLEMENTATION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.IMPLEMENTATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.IMPLEMENTATION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.IMPLEMENTATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.IMPLEMENTATION__NAME:
+				String name = eVirtualIsSet(UML2Package.IMPLEMENTATION__NAME) ? (String)eVirtualGet(UML2Package.IMPLEMENTATION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.IMPLEMENTATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.IMPLEMENTATION__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.IMPLEMENTATION__VISIBILITY) && eVirtualGet(UML2Package.IMPLEMENTATION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.IMPLEMENTATION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.IMPLEMENTATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.IMPLEMENTATION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.IMPLEMENTATION__NAME_EXPRESSION) != null;
 			case UML2Package.IMPLEMENTATION__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.IMPLEMENTATION__TEMPLATE_PARAMETER) != null;
 			case UML2Package.IMPLEMENTATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.IMPLEMENTATION__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -591,17 +591,19 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			case UML2Package.IMPLEMENTATION__TARGET:
 				return isSetTargets();
 			case UML2Package.IMPLEMENTATION__CLIENT:
+				EList client = (EList)eVirtualGet(UML2Package.IMPLEMENTATION__CLIENT);
 				return client != null && !client.isEmpty();
 			case UML2Package.IMPLEMENTATION__SUPPLIER:
+				EList supplier = (EList)eVirtualGet(UML2Package.IMPLEMENTATION__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 			case UML2Package.IMPLEMENTATION__MAPPING:
-				return mapping != null;
+				return eVirtualGet(UML2Package.IMPLEMENTATION__MAPPING) != null;
 			case UML2Package.IMPLEMENTATION__ABSTRACTION:
 				return getAbstraction() != null;
 			case UML2Package.IMPLEMENTATION__REALIZING_CLASSIFIER:
-				return realizingClassifier != null;
+				return eVirtualGet(UML2Package.IMPLEMENTATION__REALIZING_CLASSIFIER) != null;
 			case UML2Package.IMPLEMENTATION__CONTRACT:
-				return contract != null;
+				return eVirtualGet(UML2Package.IMPLEMENTATION__CONTRACT) != null;
 			case UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER:
 				return getImplementingClassifier() != null;
 		}

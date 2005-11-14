@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.12 2005/11/09 22:53:07 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.13 2005/11/14 17:31:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,8 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -145,12 +147,14 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 				case UML2Package.ENUMERATION_LITERAL__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENUMERATION_LITERAL__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.ENUMERATION_LITERAL__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ENUMERATION_LITERAL__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.ENUMERATION_LITERAL__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENUMERATION_LITERAL__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.ENUMERATION_LITERAL__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -425,37 +429,44 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__OWNER:
 				return isSetOwner();
 			case UML2Package.ENUMERATION_LITERAL__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.ENUMERATION_LITERAL__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.ENUMERATION_LITERAL__NAME:
+				String name = eVirtualIsSet(UML2Package.ENUMERATION_LITERAL__NAME) ? (String)eVirtualGet(UML2Package.ENUMERATION_LITERAL__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ENUMERATION_LITERAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ENUMERATION_LITERAL__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.ENUMERATION_LITERAL__VISIBILITY) && eVirtualGet(UML2Package.ENUMERATION_LITERAL__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.ENUMERATION_LITERAL__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.ENUMERATION_LITERAL__NAME_EXPRESSION) != null;
 			case UML2Package.ENUMERATION_LITERAL__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.ENUMERATION_LITERAL__TEMPLATE_PARAMETER) != null;
 			case UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ENUMERATION_LITERAL__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return isSetPackageableElement_visibility();
 			case UML2Package.ENUMERATION_LITERAL__DEPLOYMENT:
+				EList deployment = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__DEPLOYMENT);
 				return deployment != null && !deployment.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__SLOT:
+				EList slot = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__SLOT);
 				return slot != null && !slot.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__CLASSIFIER:
+				EList classifier = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__CLASSIFIER);
 				return classifier != null && !classifier.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__SPECIFICATION:
-				return specification != null;
+				return eVirtualGet(UML2Package.ENUMERATION_LITERAL__SPECIFICATION) != null;
 			case UML2Package.ENUMERATION_LITERAL__ENUMERATION:
 				return getEnumeration() != null;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.24 2005/11/09 22:53:08 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.25 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,36 +76,6 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedRules()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedRule = null;
-
-	/**
-	 * The cached value of the '{@link #getElementImports() <em>Element Import</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getElementImports()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList elementImport = null;
-
-	/**
-	 * The cached value of the '{@link #getPackageImports() <em>Package Import</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPackageImports()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList packageImport = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,8 +146,9 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
-		if (eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())) {
-			ownedMember.addAll(getOwnedRules());
+		EList ownedRule = getOwnedRules();
+		if (!ownedRule.isEmpty()) {
+			ownedMember.addAll(ownedRule);
 		}
 		return ownedMember;
 	}
@@ -188,8 +159,9 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public EList getOwnedRules() {
+		EList ownedRule = (EList)eVirtualGet(UML2Package.NAMESPACE__OWNED_RULE);
 		if (ownedRule == null) {
-			ownedRule = new EObjectContainmentWithInverseEList(Constraint.class, this, UML2Package.NAMESPACE__OWNED_RULE, UML2Package.CONSTRAINT__NAMESPACE);
+			eVirtualSet(UML2Package.NAMESPACE__OWNED_RULE, ownedRule = new EObjectContainmentWithInverseEList(Constraint.class, this, UML2Package.NAMESPACE__OWNED_RULE, UML2Package.CONSTRAINT__NAMESPACE));
 		}
 		return ownedRule;
 	}
@@ -289,8 +261,9 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public EList getElementImports() {
+		EList elementImport = (EList)eVirtualGet(UML2Package.NAMESPACE__ELEMENT_IMPORT);
 		if (elementImport == null) {
-			elementImport = new EObjectContainmentWithInverseEList(ElementImport.class, this, UML2Package.NAMESPACE__ELEMENT_IMPORT, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
+			eVirtualSet(UML2Package.NAMESPACE__ELEMENT_IMPORT, elementImport = new EObjectContainmentWithInverseEList(ElementImport.class, this, UML2Package.NAMESPACE__ELEMENT_IMPORT, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE));
 		}
 		return elementImport;
 	}
@@ -331,8 +304,9 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public EList getPackageImports() {
+		EList packageImport = (EList)eVirtualGet(UML2Package.NAMESPACE__PACKAGE_IMPORT);
 		if (packageImport == null) {
-			packageImport = new EObjectContainmentWithInverseEList(PackageImport.class, this, UML2Package.NAMESPACE__PACKAGE_IMPORT, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
+			eVirtualSet(UML2Package.NAMESPACE__PACKAGE_IMPORT, packageImport = new EObjectContainmentWithInverseEList(PackageImport.class, this, UML2Package.NAMESPACE__PACKAGE_IMPORT, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
 		}
 		return packageImport;
 	}
@@ -493,11 +467,13 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		ownedElement.addAll(super.getOwnedElements());
-		if (eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())) {
-			ownedElement.addAll(getElementImports());
+		EList elementImport = getElementImports();
+		if (!elementImport.isEmpty()) {
+			ownedElement.addAll(elementImport);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())) {
-			ownedElement.addAll(getPackageImports());
+		EList packageImport = getPackageImports();
+		if (!packageImport.isEmpty()) {
+			ownedElement.addAll(packageImport);
 		}
 		if (isSetOwnedMembers()) {
 			for (Iterator i = ((InternalEList) getOwnedMembers()).basicIterator(); i.hasNext(); ) {
@@ -552,6 +528,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 				case UML2Package.NAMESPACE__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.NAMESPACE__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.NAMESPACE__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.NAMESPACE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -758,30 +735,37 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 			case UML2Package.NAMESPACE__OWNER:
 				return isSetOwner();
 			case UML2Package.NAMESPACE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.NAMESPACE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.NAMESPACE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.NAMESPACE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.NAMESPACE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.NAMESPACE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.NAMESPACE__NAME:
+				String name = eVirtualIsSet(UML2Package.NAMESPACE__NAME) ? (String)eVirtualGet(UML2Package.NAMESPACE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.NAMESPACE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.NAMESPACE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.NAMESPACE__VISIBILITY) && eVirtualGet(UML2Package.NAMESPACE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.NAMESPACE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.NAMESPACE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.NAMESPACE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.NAMESPACE__NAME_EXPRESSION) != null;
 			case UML2Package.NAMESPACE__MEMBER:
 				return isSetMembers();
 			case UML2Package.NAMESPACE__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.NAMESPACE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.NAMESPACE__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.NAMESPACE__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.NAMESPACE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.NAMESPACE__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.NAMESPACE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

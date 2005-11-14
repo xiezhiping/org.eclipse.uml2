@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallTriggerImpl.java,v 1.9 2005/11/04 22:22:59 khussey Exp $
+ * $Id: CallTriggerImpl.java,v 1.10 2005/11/14 17:31:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -49,16 +51,6 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOperation()
-	 * @generated
-	 * @ordered
-	 */
-	protected Operation operation = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -82,10 +74,12 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 	 * @generated
 	 */
 	public Operation getOperation() {
+		Operation operation = (Operation)eVirtualGet(UML2Package.CALL_TRIGGER__OPERATION);
 		if (operation != null && operation.eIsProxy()) {
 			Operation oldOperation = operation;
 			operation = (Operation)eResolveProxy((InternalEObject)operation);
 			if (operation != oldOperation) {
+				eVirtualSet(UML2Package.CALL_TRIGGER__OPERATION, operation);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.CALL_TRIGGER__OPERATION, oldOperation, operation));
 			}
@@ -99,7 +93,7 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 	 * @generated
 	 */
 	public Operation basicGetOperation() {
-		return operation;
+		return (Operation)eVirtualGet(UML2Package.CALL_TRIGGER__OPERATION);
 	}
 
 	/**
@@ -108,10 +102,10 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 	 * @generated
 	 */
 	public void setOperation(Operation newOperation) {
-		Operation oldOperation = operation;
-		operation = newOperation;
+		Operation operation = newOperation;
+		Object oldOperation = eVirtualSet(UML2Package.CALL_TRIGGER__OPERATION, operation);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CALL_TRIGGER__OPERATION, oldOperation, operation));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CALL_TRIGGER__OPERATION, oldOperation == EVIRTUAL_NO_VALUE ? null : oldOperation, operation));
 
 	}
 
@@ -256,25 +250,30 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 			case UML2Package.CALL_TRIGGER__OWNER:
 				return isSetOwner();
 			case UML2Package.CALL_TRIGGER__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.CALL_TRIGGER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CALL_TRIGGER__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.CALL_TRIGGER__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.CALL_TRIGGER__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.CALL_TRIGGER__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CALL_TRIGGER__NAME:
+				String name = eVirtualIsSet(UML2Package.CALL_TRIGGER__NAME) ? (String)eVirtualGet(UML2Package.CALL_TRIGGER__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CALL_TRIGGER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CALL_TRIGGER__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.CALL_TRIGGER__VISIBILITY) && eVirtualGet(UML2Package.CALL_TRIGGER__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.CALL_TRIGGER__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.CALL_TRIGGER__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CALL_TRIGGER__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.CALL_TRIGGER__NAME_EXPRESSION) != null;
 			case UML2Package.CALL_TRIGGER__PORT:
+				EList port = (EList)eVirtualGet(UML2Package.CALL_TRIGGER__PORT);
 				return port != null && !port.isEmpty();
 			case UML2Package.CALL_TRIGGER__OPERATION:
-				return operation != null;
+				return eVirtualGet(UML2Package.CALL_TRIGGER__OPERATION) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

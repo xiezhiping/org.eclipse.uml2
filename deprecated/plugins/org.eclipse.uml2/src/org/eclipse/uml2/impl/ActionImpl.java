@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.17 2005/11/09 22:53:08 khussey Exp $
+ * $Id: ActionImpl.java,v 1.18 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,26 +71,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getOutputs() <em>Output</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutputs()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList output = null;
-
-	/**
-	 * The cached value of the '{@link #getInputs() <em>Input</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputs()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList input = null;
-
-	/**
 	 * The default value of the '{@link #getEffect() <em>Effect</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -99,36 +79,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @ordered
 	 */
 	protected static final String EFFECT_EDEFAULT = ""; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEffect()
-	 * @generated
-	 * @ordered
-	 */
-	protected String effect = EFFECT_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getLocalPreconditions() <em>Local Precondition</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLocalPreconditions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList localPrecondition = null;
-
-	/**
-	 * The cached value of the '{@link #getLocalPostconditions() <em>Local Postcondition</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLocalPostconditions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList localPostcondition = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,7 +104,8 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public String getEffect() {
-		return effect;
+		String effect = (String)eVirtualGet(UML2Package.ACTION__EFFECT);
+		return effect == null ? EFFECT_EDEFAULT : effect;
 	}
 
 	/**
@@ -164,10 +115,10 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 */
 	public void setEffect(String newEffect) {
 		newEffect = newEffect == null ? EFFECT_EDEFAULT : newEffect;
-		String oldEffect = effect;
-		effect = newEffect;
+		String effect = newEffect;
+		Object oldEffect = eVirtualSet(UML2Package.ACTION__EFFECT, effect);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTION__EFFECT, oldEffect, effect));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTION__EFFECT, oldEffect == EVIRTUAL_NO_VALUE ? EFFECT_EDEFAULT : oldEffect, effect));
 
 	}
 
@@ -178,8 +129,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getOutputs() {
+		EList output = (EList)eVirtualGet(UML2Package.ACTION__OUTPUT);
 		if (output == null) {
-			output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACTION__OUTPUT, new EStructuralFeature[] {});
+			eVirtualSet(UML2Package.ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACTION__OUTPUT, new EStructuralFeature[] {}));
 		}
 		return output;
 	}
@@ -215,8 +167,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.ACTION__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getExecutableNode_Handler(), UML2Package.eINSTANCE.getAction_Output(), UML2Package.eINSTANCE.getAction_Input(), UML2Package.eINSTANCE.getAction_LocalPrecondition(), UML2Package.eINSTANCE.getAction_LocalPostcondition()});
+			eVirtualSet(UML2Package.ACTION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getExecutableNode_Handler(), UML2Package.eINSTANCE.getAction_Output(), UML2Package.eINSTANCE.getAction_Input(), UML2Package.eINSTANCE.getAction_LocalPrecondition(), UML2Package.eINSTANCE.getAction_LocalPostcondition()}));
 		}
 		return ownedElement;
 	}
@@ -241,8 +194,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getInputs() {
+		EList input = (EList)eVirtualGet(UML2Package.ACTION__INPUT);
 		if (input == null) {
-			input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.ACTION__INPUT, new EStructuralFeature[] {});
+			eVirtualSet(UML2Package.ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.ACTION__INPUT, new EStructuralFeature[] {}));
 		}
 		return input;
 	}
@@ -287,8 +241,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getLocalPreconditions() {
+		EList localPrecondition = (EList)eVirtualGet(UML2Package.ACTION__LOCAL_PRECONDITION);
 		if (localPrecondition == null) {
-			localPrecondition = new EObjectContainmentEList(Constraint.class, this, UML2Package.ACTION__LOCAL_PRECONDITION);
+			eVirtualSet(UML2Package.ACTION__LOCAL_PRECONDITION, localPrecondition = new EObjectContainmentEList(Constraint.class, this, UML2Package.ACTION__LOCAL_PRECONDITION));
 		}
 		return localPrecondition;
 	}
@@ -343,8 +298,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getLocalPostconditions() {
+		EList localPostcondition = (EList)eVirtualGet(UML2Package.ACTION__LOCAL_POSTCONDITION);
 		if (localPostcondition == null) {
-			localPostcondition = new EObjectContainmentEList(Constraint.class, this, UML2Package.ACTION__LOCAL_POSTCONDITION);
+			eVirtualSet(UML2Package.ACTION__LOCAL_POSTCONDITION, localPostcondition = new EObjectContainmentEList(Constraint.class, this, UML2Package.ACTION__LOCAL_POSTCONDITION));
 		}
 		return localPostcondition;
 	}
@@ -674,28 +630,34 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case UML2Package.ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.ACTION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.ACTION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.ACTION__NAME:
+				String name = eVirtualIsSet(UML2Package.ACTION__NAME) ? (String)eVirtualGet(UML2Package.ACTION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACTION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.ACTION__VISIBILITY) && eVirtualGet(UML2Package.ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.ACTION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ACTION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.ACTION__NAME_EXPRESSION) != null;
 			case UML2Package.ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ACTION__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.ACTION__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.ACTION__IN_GROUP:
 				return isSetInGroups();
@@ -706,12 +668,16 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case UML2Package.ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.ACTION__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.ACTION__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.ACTION__HANDLER:
+				EList handler = (EList)eVirtualGet(UML2Package.ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.ACTION__EFFECT:
+				String effect = eVirtualIsSet(UML2Package.ACTION__EFFECT) ? (String)eVirtualGet(UML2Package.ACTION__EFFECT) : EFFECT_EDEFAULT;
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.ACTION__OUTPUT:
 				return isSetOutputs();
@@ -720,8 +686,10 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case UML2Package.ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.ACTION__LOCAL_PRECONDITION:
+				EList localPrecondition = (EList)eVirtualGet(UML2Package.ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.ACTION__LOCAL_POSTCONDITION:
+				EList localPostcondition = (EList)eVirtualGet(UML2Package.ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null && !localPostcondition.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
@@ -737,7 +705,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (effect: "); //$NON-NLS-1$
-		result.append(effect);
+		result.append(eVirtualIsSet(UML2Package.ACTION__EFFECT) ? eVirtualGet(UML2Package.ACTION__EFFECT) : EFFECT_EDEFAULT);
 		result.append(')');
 		return result.toString();
 	}

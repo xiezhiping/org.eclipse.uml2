@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.11 2005/11/09 22:53:07 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.12 2005/11/14 17:31:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -45,16 +45,6 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRelatedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList relatedElement = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -78,8 +68,9 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 	 * @generated
 	 */
 	public EList getRelatedElements() {
+		EList relatedElement = (EList)eVirtualGet(UML2Package.RELATIONSHIP__RELATED_ELEMENT);
 		if (relatedElement == null) {
-			relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.RELATIONSHIP__RELATED_ELEMENT, new EStructuralFeature[] {});
+			eVirtualSet(UML2Package.RELATIONSHIP__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.RELATIONSHIP__RELATED_ELEMENT, new EStructuralFeature[] {}));
 		}
 		return relatedElement;
 	}
@@ -130,6 +121,7 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 			case UML2Package.RELATIONSHIP__OWNER:
 				return isSetOwner();
 			case UML2Package.RELATIONSHIP__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.RELATIONSHIP__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.RELATIONSHIP__RELATED_ELEMENT:
 				return isSetRelatedElements();

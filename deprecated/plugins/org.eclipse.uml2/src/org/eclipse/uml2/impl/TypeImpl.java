@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.14 2005/11/09 22:53:08 khussey Exp $
+ * $Id: TypeImpl.java,v 1.15 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -19,6 +21,7 @@ import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
+
 import org.eclipse.uml2.internal.operation.TypeOperations;
 
 /**
@@ -159,23 +162,27 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 			case UML2Package.TYPE__OWNER:
 				return isSetOwner();
 			case UML2Package.TYPE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.TYPE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.TYPE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.TYPE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.TYPE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.TYPE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.TYPE__NAME:
+				String name = eVirtualIsSet(UML2Package.TYPE__NAME) ? (String)eVirtualGet(UML2Package.TYPE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.TYPE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TYPE__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.TYPE__VISIBILITY) && eVirtualGet(UML2Package.TYPE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.TYPE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.TYPE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TYPE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.TYPE__NAME_EXPRESSION) != null;
 			case UML2Package.TYPE__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.TYPE__TEMPLATE_PARAMETER) != null;
 			case UML2Package.TYPE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.TYPE__PACKAGEABLE_ELEMENT_VISIBILITY:

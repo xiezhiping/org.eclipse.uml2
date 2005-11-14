@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.12 2005/11/09 22:53:08 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.13 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -59,26 +59,6 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTemplateParameter()
-	 * @generated
-	 * @ordered
-	 */
-	protected TemplateParameter templateParameter = null;
-
-	/**
-	 * The cached value of the '{@link #getEnds() <em>End</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnds()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList end = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -102,10 +82,12 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
+		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			TemplateParameter oldTemplateParameter = templateParameter;
 			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
 			if (templateParameter != oldTemplateParameter) {
+				eVirtualSet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER, templateParameter);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER, oldTemplateParameter, templateParameter));
 			}
@@ -119,7 +101,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
-		return templateParameter;
+		return (TemplateParameter)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER);
 	}
 
 	/**
@@ -128,10 +110,9 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplateParameter(TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		TemplateParameter oldTemplateParameter = templateParameter;
-		templateParameter = newTemplateParameter;
+		Object oldTemplateParameter = eVirtualSet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER, newTemplateParameter);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER, oldTemplateParameter, newTemplateParameter);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER, oldTemplateParameter == EVIRTUAL_NO_VALUE ? null : oldTemplateParameter, newTemplateParameter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -147,6 +128,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
+		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER);
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -193,7 +175,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 
-		if (newOwningParameter != null || oldOwningParameter == templateParameter) {
+		if (newOwningParameter != null || oldOwningParameter == eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER)) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
@@ -205,8 +187,9 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public EList getEnds() {
+		EList end = (EList)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__END);
 		if (end == null) {
-			end = new EObjectWithInverseResolvingEList(ConnectorEnd.class, this, UML2Package.CONNECTABLE_ELEMENT__END, UML2Package.CONNECTOR_END__ROLE);
+			eVirtualSet(UML2Package.CONNECTABLE_ELEMENT__END, end = new EObjectWithInverseResolvingEList(ConnectorEnd.class, this, UML2Package.CONNECTABLE_ELEMENT__END, UML2Package.CONNECTOR_END__ROLE));
 		}
 		return end;
 	}
@@ -249,12 +232,14 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 				case UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.CONNECTABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.CONNECTABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -471,26 +456,31 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 			case UML2Package.CONNECTABLE_ELEMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.CONNECTABLE_ELEMENT__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.CONNECTABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CONNECTABLE_ELEMENT__NAME:
+				String name = eVirtualIsSet(UML2Package.CONNECTABLE_ELEMENT__NAME) ? (String)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CONNECTABLE_ELEMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONNECTABLE_ELEMENT__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.CONNECTABLE_ELEMENT__VISIBILITY) && eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CONNECTABLE_ELEMENT__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__NAME_EXPRESSION) != null;
 			case UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER) != null;
 			case UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.CONNECTABLE_ELEMENT__END:
+				EList end = (EList)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__END);
 				return end != null && !end.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

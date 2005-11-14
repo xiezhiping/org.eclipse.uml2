@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.12 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.13 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -60,16 +60,6 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getGeneralMachine() <em>General Machine</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGeneralMachine()
-	 * @generated
-	 * @ordered
-	 */
-	protected ProtocolStateMachine generalMachine = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -93,8 +83,9 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	 * @generated
 	 */
 	public EList getSources() {
+		EList source = (EList)eVirtualGet(UML2Package.PROTOCOL_CONFORMANCE__SOURCE);
 		if (source == null) {
-			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_CONFORMANCE__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine()});
+			eVirtualSet(UML2Package.PROTOCOL_CONFORMANCE__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_CONFORMANCE__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine()}));
 		}
 		return source;
 	}
@@ -116,8 +107,9 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	 * @generated
 	 */
 	public EList getTargets() {
+		EList target = (EList)eVirtualGet(UML2Package.PROTOCOL_CONFORMANCE__TARGET);
 		if (target == null) {
-			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_CONFORMANCE__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine()});
+			eVirtualSet(UML2Package.PROTOCOL_CONFORMANCE__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_CONFORMANCE__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine()}));
 		}
 		return target;
 	}
@@ -172,10 +164,12 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	 * @generated
 	 */
 	public ProtocolStateMachine getGeneralMachine() {
+		ProtocolStateMachine generalMachine = (ProtocolStateMachine)eVirtualGet(UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE);
 		if (generalMachine != null && generalMachine.eIsProxy()) {
 			ProtocolStateMachine oldGeneralMachine = generalMachine;
 			generalMachine = (ProtocolStateMachine)eResolveProxy((InternalEObject)generalMachine);
 			if (generalMachine != oldGeneralMachine) {
+				eVirtualSet(UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE, generalMachine);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE, oldGeneralMachine, generalMachine));
 			}
@@ -189,7 +183,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	 * @generated
 	 */
 	public ProtocolStateMachine basicGetGeneralMachine() {
-		return generalMachine;
+		return (ProtocolStateMachine)eVirtualGet(UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE);
 	}
 
 	/**
@@ -198,10 +192,10 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	 * @generated
 	 */
 	public void setGeneralMachine(ProtocolStateMachine newGeneralMachine) {
-		ProtocolStateMachine oldGeneralMachine = generalMachine;
-		generalMachine = newGeneralMachine;
+		ProtocolStateMachine generalMachine = newGeneralMachine;
+		Object oldGeneralMachine = eVirtualSet(UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE, generalMachine);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE, oldGeneralMachine, generalMachine));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE, oldGeneralMachine == EVIRTUAL_NO_VALUE ? null : oldGeneralMachine, generalMachine));
 
 	}
 
@@ -384,6 +378,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 			case UML2Package.PROTOCOL_CONFORMANCE__OWNER:
 				return isSetOwner();
 			case UML2Package.PROTOCOL_CONFORMANCE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.PROTOCOL_CONFORMANCE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROTOCOL_CONFORMANCE__RELATED_ELEMENT:
 				return isSetRelatedElements();
@@ -394,7 +389,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 			case UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE:
 				return getSpecificMachine() != null;
 			case UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE:
-				return generalMachine != null;
+				return eVirtualGet(UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

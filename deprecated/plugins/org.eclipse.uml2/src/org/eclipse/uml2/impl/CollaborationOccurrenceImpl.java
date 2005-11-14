@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrenceImpl.java,v 1.13 2005/11/09 22:53:07 khussey Exp $
+ * $Id: CollaborationOccurrenceImpl.java,v 1.14 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -65,26 +65,6 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected Collaboration type = null;
-
-	/**
-	 * The cached value of the '{@link #getRoleBindings() <em>Role Binding</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRoleBindings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList roleBinding = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -108,8 +88,9 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.COLLABORATION_OCCURRENCE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding()});
+			eVirtualSet(UML2Package.COLLABORATION_OCCURRENCE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.COLLABORATION_OCCURRENCE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding()}));
 		}
 		return ownedElement;
 	}
@@ -131,10 +112,12 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	 * @generated
 	 */
 	public Collaboration getType() {
+		Collaboration type = (Collaboration)eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__TYPE);
 		if (type != null && type.eIsProxy()) {
 			Collaboration oldType = type;
 			type = (Collaboration)eResolveProxy((InternalEObject)type);
 			if (type != oldType) {
+				eVirtualSet(UML2Package.COLLABORATION_OCCURRENCE__TYPE, type);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.COLLABORATION_OCCURRENCE__TYPE, oldType, type));
 			}
@@ -148,7 +131,7 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	 * @generated
 	 */
 	public Collaboration basicGetType() {
-		return type;
+		return (Collaboration)eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__TYPE);
 	}
 
 	/**
@@ -157,10 +140,10 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	 * @generated
 	 */
 	public void setType(Collaboration newType) {
-		Collaboration oldType = type;
-		type = newType;
+		Collaboration type = newType;
+		Object oldType = eVirtualSet(UML2Package.COLLABORATION_OCCURRENCE__TYPE, type);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COLLABORATION_OCCURRENCE__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COLLABORATION_OCCURRENCE__TYPE, oldType == EVIRTUAL_NO_VALUE ? null : oldType, type));
 
 	}
 
@@ -171,8 +154,9 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	 * @generated
 	 */
 	public EList getRoleBindings() {
+		EList roleBinding = (EList)eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__ROLE_BINDING);
 		if (roleBinding == null) {
-			roleBinding = new EObjectContainmentEList(Dependency.class, this, UML2Package.COLLABORATION_OCCURRENCE__ROLE_BINDING);
+			eVirtualSet(UML2Package.COLLABORATION_OCCURRENCE__ROLE_BINDING, roleBinding = new EObjectContainmentEList(Dependency.class, this, UML2Package.COLLABORATION_OCCURRENCE__ROLE_BINDING));
 		}
 		return roleBinding;
 	}
@@ -390,24 +374,29 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 			case UML2Package.COLLABORATION_OCCURRENCE__OWNER:
 				return isSetOwner();
 			case UML2Package.COLLABORATION_OCCURRENCE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.COLLABORATION_OCCURRENCE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.COLLABORATION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.COLLABORATION_OCCURRENCE__NAME:
+				String name = eVirtualIsSet(UML2Package.COLLABORATION_OCCURRENCE__NAME) ? (String)eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.COLLABORATION_OCCURRENCE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COLLABORATION_OCCURRENCE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.COLLABORATION_OCCURRENCE__VISIBILITY) && eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.COLLABORATION_OCCURRENCE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.COLLABORATION_OCCURRENCE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__NAME_EXPRESSION) != null;
 			case UML2Package.COLLABORATION_OCCURRENCE__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__TYPE) != null;
 			case UML2Package.COLLABORATION_OCCURRENCE__ROLE_BINDING:
+				EList roleBinding = (EList)eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__ROLE_BINDING);
 				return roleBinding != null && !roleBinding.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

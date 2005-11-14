@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalImpl.java,v 1.9 2005/11/04 22:23:01 khussey Exp $
+ * $Id: IntervalImpl.java,v 1.10 2005/11/14 17:31:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -53,26 +53,6 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getMins() <em>Min</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMins()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList min = null;
-
-	/**
-	 * The cached value of the '{@link #getMaxes() <em>Max</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList max = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -96,8 +76,9 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 	 * @generated
 	 */
 	public EList getMins() {
+		EList min = (EList)eVirtualGet(UML2Package.INTERVAL__MIN);
 		if (min == null) {
-			min = new EObjectResolvingEList(ValueSpecification.class, this, UML2Package.INTERVAL__MIN);
+			eVirtualSet(UML2Package.INTERVAL__MIN, min = new EObjectResolvingEList(ValueSpecification.class, this, UML2Package.INTERVAL__MIN));
 		}
 		return min;
 	}
@@ -124,8 +105,9 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 	 * @generated
 	 */
 	public EList getMaxes() {
+		EList max = (EList)eVirtualGet(UML2Package.INTERVAL__MAX);
 		if (max == null) {
-			max = new EObjectResolvingEList(ValueSpecification.class, this, UML2Package.INTERVAL__MAX);
+			eVirtualSet(UML2Package.INTERVAL__MAX, max = new EObjectResolvingEList(ValueSpecification.class, this, UML2Package.INTERVAL__MAX));
 		}
 		return max;
 	}
@@ -312,30 +294,36 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 			case UML2Package.INTERVAL__OWNER:
 				return isSetOwner();
 			case UML2Package.INTERVAL__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.INTERVAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INTERVAL__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.INTERVAL__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.INTERVAL__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.INTERVAL__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.INTERVAL__NAME:
+				String name = eVirtualIsSet(UML2Package.INTERVAL__NAME) ? (String)eVirtualGet(UML2Package.INTERVAL__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INTERVAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERVAL__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.INTERVAL__VISIBILITY) && eVirtualGet(UML2Package.INTERVAL__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.INTERVAL__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.INTERVAL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERVAL__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.INTERVAL__NAME_EXPRESSION) != null;
 			case UML2Package.INTERVAL__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.INTERVAL__TYPE) != null;
 			case UML2Package.INTERVAL__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.INTERVAL__TEMPLATE_PARAMETER) != null;
 			case UML2Package.INTERVAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INTERVAL__MIN:
+				EList min = (EList)eVirtualGet(UML2Package.INTERVAL__MIN);
 				return min != null && !min.isEmpty();
 			case UML2Package.INTERVAL__MAX:
+				EList max = (EList)eVirtualGet(UML2Package.INTERVAL__MAX);
 				return max != null && !max.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

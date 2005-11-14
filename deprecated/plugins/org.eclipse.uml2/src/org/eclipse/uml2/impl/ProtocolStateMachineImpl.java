@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.27 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.28 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -63,16 +63,6 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getConformances() <em>Conformance</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConformances()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList conformance = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -96,8 +86,9 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	 * @generated
 	 */
 	public EList getConformances() {
+		EList conformance = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE);
 		if (conformance == null) {
-			conformance = new EObjectContainmentWithInverseEList(ProtocolConformance.class, this, UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE, UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE);
+			eVirtualSet(UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE, conformance = new EObjectContainmentWithInverseEList(ProtocolConformance.class, this, UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE, UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE));
 		}
 		return conformance;
 	}
@@ -145,6 +136,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				case UML2Package.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -157,6 +149,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -185,6 +178,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PROTOCOL_STATE_MACHINE__CONTEXT, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__SPECIFICATION:
+					BehavioralFeature specification = (BehavioralFeature)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__SPECIFICATION);
 					if (specification != null)
 						msgs = ((InternalEObject)specification).eInverseRemove(this, UML2Package.BEHAVIORAL_FEATURE__METHOD, BehavioralFeature.class, msgs);
 					return basicSetSpecification((BehavioralFeature)otherEnd, msgs);
@@ -799,33 +793,40 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNER:
 				return isSetOwner();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__NAME:
+				String name = eVirtualIsSet(UML2Package.PROTOCOL_STATE_MACHINE__NAME) ? (String)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PROTOCOL_STATE_MACHINE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PROTOCOL_STATE_MACHINE__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.PROTOCOL_STATE_MACHINE__VISIBILITY) && eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION) != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__MEMBER:
 				return isSetMembers();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__TEMPLATE_PARAMETER) != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -839,90 +840,114 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__FEATURE:
 				return isSetFeatures();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ABSTRACT:
-				return isSetIsAbstract();
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__GENERAL:
-				return isSetGenerals();
+				return !getGenerals().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__GENERALIZATION:
+				EList generalization = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.PROTOCOL_STATE_MACHINE__REDEFINED_CLASSIFIER:
+				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__SUBSTITUTION:
+				EList substitution = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT:
+				EList powertypeExtent = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE:
+				EList ownedUseCase = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__USE_CASE:
+				EList useCase = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__REPRESENTATION:
-				return representation != null;
+				return eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__REPRESENTATION) != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OCCURRENCE:
+				EList occurrence = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
-				return isSetOwnedBehaviors();
+				EList ownedBehavior = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR);
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
+				return eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__IMPLEMENTATION:
+				EList implementation = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__IMPLEMENTATION);
 				return implementation != null && !implementation.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER:
+				EList ownedTrigger = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
-				return isSetOwnedAttributes();
+				EList ownedAttribute = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE);
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__ROLE:
 				return isSetRoles();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR:
+				EList ownedConnector = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PORT:
+				EList ownedPort = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PORT);
 				return ownedPort != null && !ownedPort.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_OPERATION:
+				EList ownedOperation = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__SUPER_CLASS:
 				return isSetSuperClasses();
 			case UML2Package.PROTOCOL_STATE_MACHINE__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER:
+				EList nestedClassifier = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ACTIVE:
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION:
+				EList ownedReception = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_REENTRANT:
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__CONTEXT:
 				return getContext() != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR:
+				EList redefinedBehavior = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null && !redefinedBehavior.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__SPECIFICATION:
-				return specification != null;
+				return eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__SPECIFICATION) != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__PARAMETER:
+				EList parameter = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__PARAMETER);
 				return parameter != null && !parameter.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__FORMAL_PARAMETER:
 				return !getFormalParameters().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__RETURN_RESULT:
 				return !getReturnResults().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__PRECONDITION:
+				EList precondition = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__PRECONDITION);
 				return precondition != null && !precondition.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__POSTCONDITION:
+				EList postcondition = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__POSTCONDITION);
 				return postcondition != null && !postcondition.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET:
+				EList ownedParameterSet = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__REGION:
+				EList region = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__REGION);
 				return region != null && !region.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__CONNECTION_POINT:
+				EList connectionPoint = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__CONNECTION_POINT);
 				return connectionPoint != null && !connectionPoint.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE:
 				return isSetExtendedStateMachine();
 			case UML2Package.PROTOCOL_STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
 				return isSetStateMachine_redefinitionContext();
 			case UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE:
+				EList conformance = (EList)eVirtualGet(UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE);
 				return conformance != null && !conformance.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
@@ -936,8 +961,9 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getProtocolStateMachine_Conformance())) {
-			ownedElement.addAll(getConformances());
+		EList conformance = getConformances();
+		if (!conformance.isEmpty()) {
+			ownedElement.addAll(conformance);
 		}
 		return ownedElement;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.14 2005/11/09 22:53:08 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.15 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,36 +71,6 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected Association type = null;
-
-	/**
-	 * The cached value of the '{@link #getRedefinedConnectors() <em>Redefined Connector</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRedefinedConnectors()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList redefinedConnector = null;
-
-	/**
-	 * The cached value of the '{@link #getEnds() <em>End</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnds()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList end = null;
-
-	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -109,26 +79,6 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @ordered
 	 */
 	protected static final ConnectorKind KIND_EDEFAULT = ConnectorKind.ASSEMBLY_LITERAL;
-
-	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
-	protected ConnectorKind kind = KIND_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getContracts() <em>Contract</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContracts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList contract = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,8 +104,9 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.CONNECTOR__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.CONNECTOR__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getConnector_End()});
+			eVirtualSet(UML2Package.CONNECTOR__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.CONNECTOR__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getConnector_End()}));
 		}
 		return ownedElement;
 	}
@@ -177,7 +128,8 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @generated
 	 */
 	public ConnectorKind getKind() {
-		return kind;
+		ConnectorKind kind = (ConnectorKind)eVirtualGet(UML2Package.CONNECTOR__KIND);
+		return kind == null ? KIND_EDEFAULT : kind;
 	}
 
 	/**
@@ -186,10 +138,10 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @generated
 	 */
 	public void setKind(ConnectorKind newKind) {
-		ConnectorKind oldKind = kind;
-		kind = newKind == null ? KIND_EDEFAULT : newKind;
+		ConnectorKind kind = newKind == null ? KIND_EDEFAULT : newKind;
+		Object oldKind = eVirtualSet(UML2Package.CONNECTOR__KIND, kind);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTOR__KIND, oldKind, kind));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTOR__KIND, oldKind == EVIRTUAL_NO_VALUE ? KIND_EDEFAULT : oldKind, kind));
 
 	}
 
@@ -200,10 +152,12 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @generated
 	 */
 	public Association getType() {
+		Association type = (Association)eVirtualGet(UML2Package.CONNECTOR__TYPE);
 		if (type != null && type.eIsProxy()) {
 			Association oldType = type;
 			type = (Association)eResolveProxy((InternalEObject)type);
 			if (type != oldType) {
+				eVirtualSet(UML2Package.CONNECTOR__TYPE, type);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.CONNECTOR__TYPE, oldType, type));
 			}
@@ -217,7 +171,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @generated
 	 */
 	public Association basicGetType() {
-		return type;
+		return (Association)eVirtualGet(UML2Package.CONNECTOR__TYPE);
 	}
 
 	/**
@@ -226,10 +180,10 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @generated
 	 */
 	public void setType(Association newType) {
-		Association oldType = type;
-		type = newType;
+		Association type = newType;
+		Object oldType = eVirtualSet(UML2Package.CONNECTOR__TYPE, type);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTOR__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTOR__TYPE, oldType == EVIRTUAL_NO_VALUE ? null : oldType, type));
 
 	}
 
@@ -240,8 +194,9 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @generated
 	 */
 	public EList getRedefinedConnectors() {
+		EList redefinedConnector = (EList)eVirtualGet(UML2Package.CONNECTOR__REDEFINED_CONNECTOR);
 		if (redefinedConnector == null) {
-			redefinedConnector = new EObjectResolvingEList(Connector.class, this, UML2Package.CONNECTOR__REDEFINED_CONNECTOR);
+			eVirtualSet(UML2Package.CONNECTOR__REDEFINED_CONNECTOR, redefinedConnector = new EObjectResolvingEList(Connector.class, this, UML2Package.CONNECTOR__REDEFINED_CONNECTOR));
 		}
 		return redefinedConnector;
 	}
@@ -268,8 +223,9 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @generated
 	 */
 	public EList getEnds() {
+		EList end = (EList)eVirtualGet(UML2Package.CONNECTOR__END);
 		if (end == null) {
-			end = new EObjectContainmentEList(ConnectorEnd.class, this, UML2Package.CONNECTOR__END);
+			eVirtualSet(UML2Package.CONNECTOR__END, end = new EObjectContainmentEList(ConnectorEnd.class, this, UML2Package.CONNECTOR__END));
 		}
 		return end;
 	}
@@ -310,8 +266,9 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @generated
 	 */
 	public EList getContracts() {
+		EList contract = (EList)eVirtualGet(UML2Package.CONNECTOR__CONTRACT);
 		if (contract == null) {
-			contract = new EObjectResolvingEList(Behavior.class, this, UML2Package.CONNECTOR__CONTRACT);
+			eVirtualSet(UML2Package.CONNECTOR__CONTRACT, contract = new EObjectResolvingEList(Behavior.class, this, UML2Package.CONNECTOR__CONTRACT));
 		}
 		return contract;
 	}
@@ -547,21 +504,25 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 			case UML2Package.CONNECTOR__OWNER:
 				return isSetOwner();
 			case UML2Package.CONNECTOR__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.CONNECTOR__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONNECTOR__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.CONNECTOR__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.CONNECTOR__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.CONNECTOR__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CONNECTOR__NAME:
+				String name = eVirtualIsSet(UML2Package.CONNECTOR__NAME) ? (String)eVirtualGet(UML2Package.CONNECTOR__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CONNECTOR__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONNECTOR__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.CONNECTOR__VISIBILITY) && eVirtualGet(UML2Package.CONNECTOR__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.CONNECTOR__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.CONNECTOR__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CONNECTOR__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.CONNECTOR__NAME_EXPRESSION) != null;
 			case UML2Package.CONNECTOR__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.CONNECTOR__IS_LEAF:
@@ -571,14 +532,17 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 			case UML2Package.CONNECTOR__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.CONNECTOR__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.CONNECTOR__TYPE) != null;
 			case UML2Package.CONNECTOR__REDEFINED_CONNECTOR:
+				EList redefinedConnector = (EList)eVirtualGet(UML2Package.CONNECTOR__REDEFINED_CONNECTOR);
 				return redefinedConnector != null && !redefinedConnector.isEmpty();
 			case UML2Package.CONNECTOR__END:
+				EList end = (EList)eVirtualGet(UML2Package.CONNECTOR__END);
 				return end != null && !end.isEmpty();
 			case UML2Package.CONNECTOR__KIND:
-				return kind != KIND_EDEFAULT;
+				return eVirtualIsSet(UML2Package.CONNECTOR__KIND) && eVirtualGet(UML2Package.CONNECTOR__KIND) != KIND_EDEFAULT;
 			case UML2Package.CONNECTOR__CONTRACT:
+				EList contract = (EList)eVirtualGet(UML2Package.CONNECTOR__CONTRACT);
 				return contract != null && !contract.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
@@ -594,7 +558,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(kind);
+		result.append(eVirtualIsSet(UML2Package.CONNECTOR__KIND) ? eVirtualGet(UML2Package.CONNECTOR__KIND) : KIND_EDEFAULT);
 		result.append(')');
 		return result.toString();
 	}
@@ -607,8 +571,9 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 */
 	protected EList getRedefinedElementsHelper(EList redefinedElement) {
 		super.getRedefinedElementsHelper(redefinedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getConnector_RedefinedConnector())) {
-			for (Iterator i = ((InternalEList) getRedefinedConnectors()).basicIterator(); i.hasNext(); ) {
+		EList redefinedConnector = getRedefinedConnectors();
+		if (!redefinedConnector.isEmpty()) {
+			for (Iterator i = ((InternalEList) redefinedConnector).basicIterator(); i.hasNext(); ) {
 				redefinedElement.add(i.next());
 			}
 		}

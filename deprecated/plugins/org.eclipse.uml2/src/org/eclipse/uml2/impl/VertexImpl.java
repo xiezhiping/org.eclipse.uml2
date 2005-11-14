@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.11 2005/11/09 22:53:09 khussey Exp $
+ * $Id: VertexImpl.java,v 1.12 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -57,26 +57,6 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutgoings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList outgoing = null;
-
-	/**
-	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIncomings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList incoming = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -144,8 +124,9 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
 	public EList getOutgoings() {
+		EList outgoing = (EList)eVirtualGet(UML2Package.VERTEX__OUTGOING);
 		if (outgoing == null) {
-			outgoing = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.VERTEX__OUTGOING, UML2Package.TRANSITION__SOURCE);
+			eVirtualSet(UML2Package.VERTEX__OUTGOING, outgoing = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.VERTEX__OUTGOING, UML2Package.TRANSITION__SOURCE));
 		}
 		return outgoing;
 	}
@@ -172,8 +153,9 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
 	public EList getIncomings() {
+		EList incoming = (EList)eVirtualGet(UML2Package.VERTEX__INCOMING);
 		if (incoming == null) {
-			incoming = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.VERTEX__INCOMING, UML2Package.TRANSITION__TARGET);
+			eVirtualSet(UML2Package.VERTEX__INCOMING, incoming = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.VERTEX__INCOMING, UML2Package.TRANSITION__TARGET));
 		}
 		return incoming;
 	}
@@ -223,7 +205,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
 	public boolean isSetOwner() {
-		return basicGetOwner() != null;
+  		return false;
 	}
 
 	/**
@@ -239,6 +221,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 				case UML2Package.VERTEX__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.VERTEX__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.VERTEX__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.VERTEX__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -459,26 +442,32 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 			case UML2Package.VERTEX__OWNER:
 				return isSetOwner();
 			case UML2Package.VERTEX__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.VERTEX__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.VERTEX__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.VERTEX__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.VERTEX__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.VERTEX__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.VERTEX__NAME:
+				String name = eVirtualIsSet(UML2Package.VERTEX__NAME) ? (String)eVirtualGet(UML2Package.VERTEX__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.VERTEX__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.VERTEX__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.VERTEX__VISIBILITY) && eVirtualGet(UML2Package.VERTEX__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.VERTEX__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.VERTEX__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.VERTEX__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.VERTEX__NAME_EXPRESSION) != null;
 			case UML2Package.VERTEX__CONTAINER:
 				return isSetContainer();
 			case UML2Package.VERTEX__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.VERTEX__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.VERTEX__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.VERTEX__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

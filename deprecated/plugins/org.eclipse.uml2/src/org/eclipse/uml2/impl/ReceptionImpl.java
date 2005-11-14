@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.10 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.11 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -49,16 +51,6 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getSignal() <em>Signal</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSignal()
-	 * @generated
-	 * @ordered
-	 */
-	protected Signal signal = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -82,10 +74,12 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 	 * @generated
 	 */
 	public Signal getSignal() {
+		Signal signal = (Signal)eVirtualGet(UML2Package.RECEPTION__SIGNAL);
 		if (signal != null && signal.eIsProxy()) {
 			Signal oldSignal = signal;
 			signal = (Signal)eResolveProxy((InternalEObject)signal);
 			if (signal != oldSignal) {
+				eVirtualSet(UML2Package.RECEPTION__SIGNAL, signal);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.RECEPTION__SIGNAL, oldSignal, signal));
 			}
@@ -99,7 +93,7 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 	 * @generated
 	 */
 	public Signal basicGetSignal() {
-		return signal;
+		return (Signal)eVirtualGet(UML2Package.RECEPTION__SIGNAL);
 	}
 
 	/**
@@ -108,10 +102,10 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
-		Signal oldSignal = signal;
-		signal = newSignal;
+		Signal signal = newSignal;
+		Object oldSignal = eVirtualSet(UML2Package.RECEPTION__SIGNAL, signal);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.RECEPTION__SIGNAL, oldSignal, signal));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.RECEPTION__SIGNAL, oldSignal == EVIRTUAL_NO_VALUE ? null : oldSignal, signal));
 
 	}
 
@@ -352,30 +346,37 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 			case UML2Package.RECEPTION__OWNER:
 				return isSetOwner();
 			case UML2Package.RECEPTION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.RECEPTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.RECEPTION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.RECEPTION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.RECEPTION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.RECEPTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.RECEPTION__NAME:
+				String name = eVirtualIsSet(UML2Package.RECEPTION__NAME) ? (String)eVirtualGet(UML2Package.RECEPTION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.RECEPTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.RECEPTION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.RECEPTION__VISIBILITY) && eVirtualGet(UML2Package.RECEPTION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.RECEPTION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.RECEPTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.RECEPTION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.RECEPTION__NAME_EXPRESSION) != null;
 			case UML2Package.RECEPTION__MEMBER:
 				return isSetMembers();
 			case UML2Package.RECEPTION__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.RECEPTION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.RECEPTION__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.RECEPTION__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.RECEPTION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.RECEPTION__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.RECEPTION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.RECEPTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
@@ -388,19 +389,23 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 			case UML2Package.RECEPTION__PARAMETER:
 				return isSetParameters();
 			case UML2Package.RECEPTION__FORMAL_PARAMETER:
+				EList formalParameter = (EList)eVirtualGet(UML2Package.RECEPTION__FORMAL_PARAMETER);
 				return formalParameter != null && !formalParameter.isEmpty();
 			case UML2Package.RECEPTION__RETURN_RESULT:
+				EList returnResult = (EList)eVirtualGet(UML2Package.RECEPTION__RETURN_RESULT);
 				return returnResult != null && !returnResult.isEmpty();
 			case UML2Package.RECEPTION__RAISED_EXCEPTION:
+				EList raisedException = (EList)eVirtualGet(UML2Package.RECEPTION__RAISED_EXCEPTION);
 				return raisedException != null && !raisedException.isEmpty();
 			case UML2Package.RECEPTION__IS_ABSTRACT:
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.RECEPTION__METHOD:
+				EList method = (EList)eVirtualGet(UML2Package.RECEPTION__METHOD);
 				return method != null && !method.isEmpty();
 			case UML2Package.RECEPTION__CONCURRENCY:
-				return concurrency != CONCURRENCY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.RECEPTION__CONCURRENCY) && eVirtualGet(UML2Package.RECEPTION__CONCURRENCY) != CONCURRENCY_EDEFAULT;
 			case UML2Package.RECEPTION__SIGNAL:
-				return signal != null;
+				return eVirtualGet(UML2Package.RECEPTION__SIGNAL) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.38 2005/11/09 22:53:08 khussey Exp $
+ * $Id: ClassImpl.java,v 1.39 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -99,66 +99,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getRoles() <em>Role</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRoles()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList role = null;
-
-	/**
-	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedAttributes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedAttribute = null;
-
-	/**
-	 * The cached value of the '{@link #getOwnedConnectors() <em>Owned Connector</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConnectors()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedConnector = null;
-
-	/**
-	 * The cached value of the '{@link #getOwnedPorts() <em>Owned Port</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedPorts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedPort = null;
-
-	/**
-	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedOperation = null;
-
-	/**
-	 * The cached value of the '{@link #getNestedClassifiers() <em>Nested Classifier</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNestedClassifiers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList nestedClassifier = null;
-
-	/**
 	 * The default value of the '{@link #isActive() <em>Is Active</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -177,16 +117,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @ordered
 	 */
 	protected static final int IS_ACTIVE_EFLAG = 1 << 10;
-
-	/**
-	 * The cached value of the '{@link #getOwnedReceptions() <em>Owned Reception</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedReceptions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedReception = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -212,12 +142,23 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated NOT
 	 */
 	public EList getOwnedAttributes() {
+		EList ownedAttribute = (EList)eVirtualGet(UML2Package.CLASS__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
-			ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.CLASS__OWNED_ATTRIBUTE);
+			eVirtualSet(UML2Package.CLASS__OWNED_ATTRIBUTE, ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.CLASS__OWNED_ATTRIBUTE));
 		}
 		return ownedAttribute;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnedAttributes() {
+		EList ownedAttribute = (EList)eVirtualGet(UML2Package.CLASS__OWNED_ATTRIBUTE);
+		return ownedAttribute != null && !ownedAttribute.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -232,15 +173,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetOwnedAttributes() {
-		return ownedAttribute != null && !ownedAttribute.isEmpty();
 	}
 
 	/**
@@ -321,8 +253,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public EList getRoles() {
+		EList role = (EList)eVirtualGet(UML2Package.CLASS__ROLE);
 		if (role == null) {
-			role = new DerivedUnionEObjectEList(ConnectableElement.class, this, UML2Package.CLASS__ROLE, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute()});
+			eVirtualSet(UML2Package.CLASS__ROLE, role = new DerivedUnionEObjectEList(ConnectableElement.class, this, UML2Package.CLASS__ROLE, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute()}));
 		}
 		return role;
 	}
@@ -358,8 +291,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public EList getAttributes() {
+		EList attribute = (EList)eVirtualGet(UML2Package.CLASS__ATTRIBUTE);
 		if (attribute == null) {
-			attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.CLASS__ATTRIBUTE, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute()});
+			eVirtualSet(UML2Package.CLASS__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.CLASS__ATTRIBUTE, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute()}));
 		}
 		return attribute;
 	}
@@ -381,8 +315,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public EList getFeatures() {
+		EList feature = (EList)eVirtualGet(UML2Package.CLASS__FEATURE);
 		if (feature == null) {
-			feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.CLASS__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute(), UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(), UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort(), UML2Package.eINSTANCE.getClass_OwnedOperation(), UML2Package.eINSTANCE.getClass_OwnedReception()});
+			eVirtualSet(UML2Package.CLASS__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.CLASS__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute(), UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(), UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort(), UML2Package.eINSTANCE.getClass_OwnedOperation(), UML2Package.eINSTANCE.getClass_OwnedReception()}));
 		}
 		return feature;
 	}
@@ -411,20 +346,25 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		if (isSetOwnedAttributes()) {
 			ownedMember.addAll(getOwnedAttributes());
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())) {
-			ownedMember.addAll(getOwnedConnectors());
+		EList ownedConnector = getOwnedConnectors();
+		if (!ownedConnector.isEmpty()) {
+			ownedMember.addAll(ownedConnector);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())) {
-			ownedMember.addAll(getOwnedPorts());
+		EList ownedPort = getOwnedPorts();
+		if (!ownedPort.isEmpty()) {
+			ownedMember.addAll(ownedPort);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())) {
-			ownedMember.addAll(getOwnedOperations());
+		EList ownedOperation = getOwnedOperations();
+		if (!ownedOperation.isEmpty()) {
+			ownedMember.addAll(ownedOperation);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())) {
-			ownedMember.addAll(getNestedClassifiers());
+		EList nestedClassifier = getNestedClassifiers();
+		if (!nestedClassifier.isEmpty()) {
+			ownedMember.addAll(nestedClassifier);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())) {
-			ownedMember.addAll(getOwnedReceptions());
+		EList ownedReception = getOwnedReceptions();
+		if (!ownedReception.isEmpty()) {
+			ownedMember.addAll(ownedReception);
 		}
 		return ownedMember;
 	}
@@ -477,8 +417,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public EList getOwnedConnectors() {
+		EList ownedConnector = (EList)eVirtualGet(UML2Package.CLASS__OWNED_CONNECTOR);
 		if (ownedConnector == null) {
-			ownedConnector = new EObjectContainmentEList(Connector.class, this, UML2Package.CLASS__OWNED_CONNECTOR);
+			eVirtualSet(UML2Package.CLASS__OWNED_CONNECTOR, ownedConnector = new EObjectContainmentEList(Connector.class, this, UML2Package.CLASS__OWNED_CONNECTOR));
 		}
 		return ownedConnector;
 	}
@@ -534,8 +475,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public EList getOwnedPorts() {
+		EList ownedPort = (EList)eVirtualGet(UML2Package.CLASS__OWNED_PORT);
 		if (ownedPort == null) {
-			ownedPort = new EObjectContainmentEList(Port.class, this, UML2Package.CLASS__OWNED_PORT);
+			eVirtualSet(UML2Package.CLASS__OWNED_PORT, ownedPort = new EObjectContainmentEList(Port.class, this, UML2Package.CLASS__OWNED_PORT));
 		}
 		return ownedPort;
 	}
@@ -614,8 +556,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public EList getOwnedOperations() {
+		EList ownedOperation = (EList)eVirtualGet(UML2Package.CLASS__OWNED_OPERATION);
 		if (ownedOperation == null) {
-			ownedOperation = new EObjectContainmentWithInverseEList(Operation.class, this, UML2Package.CLASS__OWNED_OPERATION, UML2Package.OPERATION__CLASS_);
+			eVirtualSet(UML2Package.CLASS__OWNED_OPERATION, ownedOperation = new EObjectContainmentWithInverseEList(Operation.class, this, UML2Package.CLASS__OWNED_OPERATION, UML2Package.OPERATION__CLASS_));
 		}
 		return ownedOperation;
 	}
@@ -699,6 +642,15 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetSuperClasses() {
+		return !getSuperClasses().isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
     public org.eclipse.uml2.Class getSuperClass(String name) {
 		for (Iterator i = getSuperClasses().iterator(); i.hasNext(); ) {
 			org.eclipse.uml2.Class superClass = (org.eclipse.uml2.Class) i.next();
@@ -707,15 +659,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetSuperClasses() {
-		return !getSuperClasses().isEmpty();
 	}
 
 	/**
@@ -767,8 +710,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public EList getNestedClassifiers() {
+		EList nestedClassifier = (EList)eVirtualGet(UML2Package.CLASS__NESTED_CLASSIFIER);
 		if (nestedClassifier == null) {
-			nestedClassifier = new EObjectContainmentEList(Classifier.class, this, UML2Package.CLASS__NESTED_CLASSIFIER);
+			eVirtualSet(UML2Package.CLASS__NESTED_CLASSIFIER, nestedClassifier = new EObjectContainmentEList(Classifier.class, this, UML2Package.CLASS__NESTED_CLASSIFIER));
 		}
 		return nestedClassifier;
 	}
@@ -809,8 +753,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public EList getOwnedReceptions() {
+		EList ownedReception = (EList)eVirtualGet(UML2Package.CLASS__OWNED_RECEPTION);
 		if (ownedReception == null) {
-			ownedReception = new EObjectContainmentEList(Reception.class, this, UML2Package.CLASS__OWNED_RECEPTION);
+			eVirtualSet(UML2Package.CLASS__OWNED_RECEPTION, ownedReception = new EObjectContainmentEList(Reception.class, this, UML2Package.CLASS__OWNED_RECEPTION));
 		}
 		return ownedReception;
 	}
@@ -917,7 +862,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public boolean isSetGenerals() {
-		return !getGenerals().isEmpty();
+  		return false;
 	}
 
 	/**
@@ -933,6 +878,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 				case UML2Package.CLASS__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASS__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.CLASS__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.CLASS__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -945,6 +891,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 				case UML2Package.CLASS__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASS__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.CLASS__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -1437,33 +1384,40 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__OWNER:
 				return isSetOwner();
 			case UML2Package.CLASS__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.CLASS__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CLASS__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.CLASS__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.CLASS__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.CLASS__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CLASS__NAME:
+				String name = eVirtualIsSet(UML2Package.CLASS__NAME) ? (String)eVirtualGet(UML2Package.CLASS__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CLASS__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CLASS__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.CLASS__VISIBILITY) && eVirtualGet(UML2Package.CLASS__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.CLASS__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.CLASS__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CLASS__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.CLASS__NAME_EXPRESSION) != null;
 			case UML2Package.CLASS__MEMBER:
 				return isSetMembers();
 			case UML2Package.CLASS__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.CLASS__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.CLASS__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.CLASS__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.CLASS__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.CLASS__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.CLASS__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.CLASS__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.CLASS__TEMPLATE_PARAMETER) != null;
 			case UML2Package.CLASS__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.CLASS__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -1477,60 +1431,76 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__FEATURE:
 				return isSetFeatures();
 			case UML2Package.CLASS__IS_ABSTRACT:
-				return isSetIsAbstract();
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.CLASS__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.CLASS__GENERAL:
-				return isSetGenerals();
+				return !getGenerals().isEmpty();
 			case UML2Package.CLASS__GENERALIZATION:
+				EList generalization = (EList)eVirtualGet(UML2Package.CLASS__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.CLASS__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.CLASS__REDEFINED_CLASSIFIER:
+				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.CLASS__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.CLASS__SUBSTITUTION:
+				EList substitution = (EList)eVirtualGet(UML2Package.CLASS__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UML2Package.CLASS__POWERTYPE_EXTENT:
+				EList powertypeExtent = (EList)eVirtualGet(UML2Package.CLASS__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.CLASS__OWNED_USE_CASE:
+				EList ownedUseCase = (EList)eVirtualGet(UML2Package.CLASS__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.CLASS__USE_CASE:
+				EList useCase = (EList)eVirtualGet(UML2Package.CLASS__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UML2Package.CLASS__REPRESENTATION:
-				return representation != null;
+				return eVirtualGet(UML2Package.CLASS__REPRESENTATION) != null;
 			case UML2Package.CLASS__OCCURRENCE:
+				EList occurrence = (EList)eVirtualGet(UML2Package.CLASS__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.CLASS__OWNED_BEHAVIOR:
-				return isSetOwnedBehaviors();
+				EList ownedBehavior = (EList)eVirtualGet(UML2Package.CLASS__OWNED_BEHAVIOR);
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UML2Package.CLASS__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
+				return eVirtualGet(UML2Package.CLASS__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.CLASS__IMPLEMENTATION:
+				EList implementation = (EList)eVirtualGet(UML2Package.CLASS__IMPLEMENTATION);
 				return implementation != null && !implementation.isEmpty();
 			case UML2Package.CLASS__OWNED_TRIGGER:
+				EList ownedTrigger = (EList)eVirtualGet(UML2Package.CLASS__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.CLASS__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.CLASS__OWNED_ATTRIBUTE:
-				return isSetOwnedAttributes();
+				EList ownedAttribute = (EList)eVirtualGet(UML2Package.CLASS__OWNED_ATTRIBUTE);
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UML2Package.CLASS__PART:
 				return !getParts().isEmpty();
 			case UML2Package.CLASS__ROLE:
 				return isSetRoles();
 			case UML2Package.CLASS__OWNED_CONNECTOR:
+				EList ownedConnector = (EList)eVirtualGet(UML2Package.CLASS__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.CLASS__OWNED_PORT:
+				EList ownedPort = (EList)eVirtualGet(UML2Package.CLASS__OWNED_PORT);
 				return ownedPort != null && !ownedPort.isEmpty();
 			case UML2Package.CLASS__OWNED_OPERATION:
+				EList ownedOperation = (EList)eVirtualGet(UML2Package.CLASS__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.CLASS__SUPER_CLASS:
 				return isSetSuperClasses();
 			case UML2Package.CLASS__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.CLASS__NESTED_CLASSIFIER:
+				EList nestedClassifier = (EList)eVirtualGet(UML2Package.CLASS__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.CLASS__IS_ACTIVE:
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.CLASS__OWNED_RECEPTION:
+				EList ownedReception = (EList)eVirtualGet(UML2Package.CLASS__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
@@ -1595,6 +1565,8 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isActive: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ACTIVE_EFLAG) != 0);
+		result.append(", isAbstract: "); //$NON-NLS-1$
+		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.17 2005/11/09 22:53:07 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.18 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,24 +66,12 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
+	 * A bit field representing the indices of non-primitive feature values.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTarget()
 	 * @generated
-	 * @ordered
 	 */
-	protected InputPin target = null;
-
-	/**
-	 * The cached value of the '{@link #getRequest() <em>Request</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRequest()
-	 * @generated
-	 * @ordered
-	 */
-	protected InputPin request = null;
+	protected int eVirtualIndexBits1 = 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,8 +97,9 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * @generated
 	 */
 	public EList getInputs() {
+		EList input = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__INPUT);
 		if (input == null) {
-			input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.SEND_OBJECT_ACTION__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getInvocationAction_Argument(), UML2Package.eINSTANCE.getSendObjectAction_Target()});
+			eVirtualSet(UML2Package.SEND_OBJECT_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.SEND_OBJECT_ACTION__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getInvocationAction_Argument(), UML2Package.eINSTANCE.getSendObjectAction_Target()}));
 		}
 		return input;
 	}
@@ -132,6 +121,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * @generated
 	 */
 	public InputPin getTarget() {
+		InputPin target = (InputPin)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__TARGET);
 		return target;
 	}
 
@@ -141,10 +131,9 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * @generated
 	 */
 	public NotificationChain basicSetTarget(InputPin newTarget, NotificationChain msgs) {
-		InputPin oldTarget = target;
-		target = newTarget;
+		Object oldTarget = eVirtualSet(UML2Package.SEND_OBJECT_ACTION__TARGET, newTarget);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.SEND_OBJECT_ACTION__TARGET, oldTarget, newTarget);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.SEND_OBJECT_ACTION__TARGET, oldTarget == EVIRTUAL_NO_VALUE ? null : oldTarget, newTarget);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -157,6 +146,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * @generated
 	 */
 	public void setTarget(InputPin newTarget) {
+		InputPin target = (InputPin)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__TARGET);
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -206,6 +196,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * @generated
 	 */
 	public InputPin getRequest() {
+		InputPin request = (InputPin)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__REQUEST);
 		return request;
 	}
 
@@ -215,10 +206,9 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * @generated
 	 */
 	public NotificationChain basicSetRequest(InputPin newRequest, NotificationChain msgs) {
-		InputPin oldRequest = request;
-		request = newRequest;
+		Object oldRequest = eVirtualSet(UML2Package.SEND_OBJECT_ACTION__REQUEST, newRequest);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.SEND_OBJECT_ACTION__REQUEST, oldRequest, newRequest);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.SEND_OBJECT_ACTION__REQUEST, oldRequest == EVIRTUAL_NO_VALUE ? null : oldRequest, newRequest);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -231,6 +221,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * @generated
 	 */
 	public void setRequest(InputPin newRequest) {
+		InputPin request = (InputPin)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__REQUEST);
 		if (newRequest != request) {
 			NotificationChain msgs = null;
 			if (request != null)
@@ -245,6 +236,15 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRequest() {
+		return eVirtualGet(UML2Package.SEND_OBJECT_ACTION__REQUEST) != null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -279,15 +279,6 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetRequest() {
-		return request != null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList getArguments() {
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getInvocationAction_Argument(), 0, Collections.EMPTY_LIST.toArray());
 	}
@@ -296,10 +287,10 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean isSetArguments() {
-		return false;
+  		return false;
 	}
 
 	/**
@@ -623,28 +614,34 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 			case UML2Package.SEND_OBJECT_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.SEND_OBJECT_ACTION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.SEND_OBJECT_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.SEND_OBJECT_ACTION__NAME:
+				String name = eVirtualIsSet(UML2Package.SEND_OBJECT_ACTION__NAME) ? (String)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.SEND_OBJECT_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.SEND_OBJECT_ACTION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.SEND_OBJECT_ACTION__VISIBILITY) && eVirtualGet(UML2Package.SEND_OBJECT_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.SEND_OBJECT_ACTION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.SEND_OBJECT_ACTION__NAME_EXPRESSION) != null;
 			case UML2Package.SEND_OBJECT_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.SEND_OBJECT_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.SEND_OBJECT_ACTION__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__IN_GROUP:
 				return isSetInGroups();
@@ -655,12 +652,16 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 			case UML2Package.SEND_OBJECT_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.SEND_OBJECT_ACTION__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__HANDLER:
+				EList handler = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__EFFECT:
+				String effect = eVirtualIsSet(UML2Package.SEND_OBJECT_ACTION__EFFECT) ? (String)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__EFFECT) : EFFECT_EDEFAULT;
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.SEND_OBJECT_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -669,19 +670,56 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 			case UML2Package.SEND_OBJECT_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.SEND_OBJECT_ACTION__LOCAL_PRECONDITION:
+				EList localPrecondition = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__LOCAL_POSTCONDITION:
+				EList localPostcondition = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__ARGUMENT:
-				return isSetArguments();
+				EList argument = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__ARGUMENT);
+				return argument != null && !argument.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__ON_PORT:
-				return onPort != null;
+				return eVirtualGet(UML2Package.SEND_OBJECT_ACTION__ON_PORT) != null;
 			case UML2Package.SEND_OBJECT_ACTION__TARGET:
-				return target != null;
+				return eVirtualGet(UML2Package.SEND_OBJECT_ACTION__TARGET) != null;
 			case UML2Package.SEND_OBJECT_ACTION__REQUEST:
 				return isSetRequest();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected int eVirtualIndexBits(int offset) {
+		switch (offset) {
+			case 0 :
+				return eVirtualIndexBits0;
+			case 1 :
+				return eVirtualIndexBits1;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
+		switch (offset) {
+			case 0 :
+				eVirtualIndexBits0 = newIndexBits;
+				break;
+			case 1 :
+				eVirtualIndexBits1 = newIndexBits;
+				break;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
 	}
 
 

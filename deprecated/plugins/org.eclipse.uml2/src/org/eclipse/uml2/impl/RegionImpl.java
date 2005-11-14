@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.18 2005/11/09 22:53:08 khussey Exp $
+ * $Id: RegionImpl.java,v 1.19 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -101,36 +101,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	protected static final int IS_LEAF_EFLAG = 1 << 8;
 
 	/**
-	 * The cached value of the '{@link #getSubvertices() <em>Subvertex</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubvertices()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList subvertex = null;
-
-	/**
-	 * The cached value of the '{@link #getTransitions() <em>Transition</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTransitions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList transition = null;
-
-	/**
-	 * The cached value of the '{@link #getExtendedRegion() <em>Extended Region</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtendedRegion()
-	 * @generated
-	 * @ordered
-	 */
-	protected Region extendedRegion = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -168,15 +138,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetRedefinitionContexts() {
-		return !getRedefinitionContexts().isEmpty();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isLeaf() {
 		return (eFlags & IS_LEAF_EFLAG) != 0;
 	}
@@ -201,8 +162,9 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public EList getSubvertices() {
+		EList subvertex = (EList)eVirtualGet(UML2Package.REGION__SUBVERTEX);
 		if (subvertex == null) {
-			subvertex = new EObjectContainmentWithInverseEList(Vertex.class, this, UML2Package.REGION__SUBVERTEX, UML2Package.VERTEX__CONTAINER);
+			eVirtualSet(UML2Package.REGION__SUBVERTEX, subvertex = new EObjectContainmentWithInverseEList(Vertex.class, this, UML2Package.REGION__SUBVERTEX, UML2Package.VERTEX__CONTAINER));
 		}
 		return subvertex;
 	}
@@ -243,8 +205,9 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public EList getTransitions() {
+		EList transition = (EList)eVirtualGet(UML2Package.REGION__TRANSITION);
 		if (transition == null) {
-			transition = new EObjectContainmentWithInverseEList(Transition.class, this, UML2Package.REGION__TRANSITION, UML2Package.TRANSITION__CONTAINER);
+			eVirtualSet(UML2Package.REGION__TRANSITION, transition = new EObjectContainmentWithInverseEList(Transition.class, this, UML2Package.REGION__TRANSITION, UML2Package.TRANSITION__CONTAINER));
 		}
 		return transition;
 	}
@@ -365,10 +328,12 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public Region getExtendedRegion() {
+		Region extendedRegion = (Region)eVirtualGet(UML2Package.REGION__EXTENDED_REGION);
 		if (extendedRegion != null && extendedRegion.eIsProxy()) {
 			Region oldExtendedRegion = extendedRegion;
 			extendedRegion = (Region)eResolveProxy((InternalEObject)extendedRegion);
 			if (extendedRegion != oldExtendedRegion) {
+				eVirtualSet(UML2Package.REGION__EXTENDED_REGION, extendedRegion);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.REGION__EXTENDED_REGION, oldExtendedRegion, extendedRegion));
 			}
@@ -382,7 +347,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public Region basicGetExtendedRegion() {
-		return extendedRegion;
+		return (Region)eVirtualGet(UML2Package.REGION__EXTENDED_REGION);
 	}
 
 	/**
@@ -391,10 +356,10 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public void setExtendedRegion(Region newExtendedRegion) {
-		Region oldExtendedRegion = extendedRegion;
-		extendedRegion = newExtendedRegion;
+		Region extendedRegion = newExtendedRegion;
+		Object oldExtendedRegion = eVirtualSet(UML2Package.REGION__EXTENDED_REGION, extendedRegion);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__EXTENDED_REGION, oldExtendedRegion, extendedRegion));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__EXTENDED_REGION, oldExtendedRegion == EVIRTUAL_NO_VALUE ? null : oldExtendedRegion, extendedRegion));
 
 	}
 
@@ -405,7 +370,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean isSetExtendedRegion() {
-		return extendedRegion != null;
+		return eVirtualGet(UML2Package.REGION__EXTENDED_REGION) != null;
 	}
 
 	/**
@@ -483,19 +448,19 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
-		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
+	public boolean isSetRedefinitionContexts() {
+		return !getRedefinitionContexts().isEmpty();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetRedefinedElements() {
-		return !getRedefinedElements().isEmpty();
+	public EList getRedefinedElements() {
+		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -510,6 +475,15 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedElements() {
+  		return false;
 	}
 
 	/**
@@ -554,6 +528,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 				case UML2Package.REGION__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.REGION__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.REGION__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.REGION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -852,38 +827,47 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			case UML2Package.REGION__OWNER:
 				return isSetOwner();
 			case UML2Package.REGION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.REGION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.REGION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.REGION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.REGION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.REGION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.REGION__NAME:
+				String name = eVirtualIsSet(UML2Package.REGION__NAME) ? (String)eVirtualGet(UML2Package.REGION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.REGION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.REGION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.REGION__VISIBILITY) && eVirtualGet(UML2Package.REGION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.REGION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.REGION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.REGION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.REGION__NAME_EXPRESSION) != null;
 			case UML2Package.REGION__MEMBER:
 				return isSetMembers();
 			case UML2Package.REGION__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.REGION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.REGION__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.REGION__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.REGION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.REGION__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.REGION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.REGION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.REGION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.REGION__SUBVERTEX:
+				EList subvertex = (EList)eVirtualGet(UML2Package.REGION__SUBVERTEX);
 				return subvertex != null && !subvertex.isEmpty();
 			case UML2Package.REGION__TRANSITION:
+				EList transition = (EList)eVirtualGet(UML2Package.REGION__TRANSITION);
 				return transition != null && !transition.isEmpty();
 			case UML2Package.REGION__STATE_MACHINE:
 				return getStateMachine() != null;
@@ -950,11 +934,13 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getRegion_Subvertex())) {
-			ownedElement.addAll(getSubvertices());
+		EList subvertex = getSubvertices();
+		if (!subvertex.isEmpty()) {
+			ownedElement.addAll(subvertex);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getRegion_Transition())) {
-			ownedElement.addAll(getTransitions());
+		EList transition = getTransitions();
+		if (!transition.isEmpty()) {
+			ownedElement.addAll(transition);
 		}
 		return ownedElement;
 	}

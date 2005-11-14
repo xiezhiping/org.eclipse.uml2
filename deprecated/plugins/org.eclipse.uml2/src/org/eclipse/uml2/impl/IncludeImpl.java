@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.16 2005/11/09 22:53:09 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.17 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,46 +66,6 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRelatedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList relatedElement = null;
-
-	/**
-	 * The cached value of the '{@link #getSources() <em>Source</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSources()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList source = null;
-
-	/**
-	 * The cached value of the '{@link #getTargets() <em>Target</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTargets()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList target = null;
-
-	/**
-	 * The cached value of the '{@link #getAddition() <em>Addition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAddition()
-	 * @generated
-	 * @ordered
-	 */
-	protected UseCase addition = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -129,8 +89,9 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getRelatedElements() {
+		EList relatedElement = (EList)eVirtualGet(UML2Package.INCLUDE__RELATED_ELEMENT);
 		if (relatedElement == null) {
-			relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()});
+			eVirtualSet(UML2Package.INCLUDE__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()}));
 		}
 		return relatedElement;
 	}
@@ -185,10 +146,12 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public UseCase getAddition() {
+		UseCase addition = (UseCase)eVirtualGet(UML2Package.INCLUDE__ADDITION);
 		if (addition != null && addition.eIsProxy()) {
 			UseCase oldAddition = addition;
 			addition = (UseCase)eResolveProxy((InternalEObject)addition);
 			if (addition != oldAddition) {
+				eVirtualSet(UML2Package.INCLUDE__ADDITION, addition);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.INCLUDE__ADDITION, oldAddition, addition));
 			}
@@ -202,7 +165,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public UseCase basicGetAddition() {
-		return addition;
+		return (UseCase)eVirtualGet(UML2Package.INCLUDE__ADDITION);
 	}
 
 	/**
@@ -211,10 +174,10 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public void setAddition(UseCase newAddition) {
-		UseCase oldAddition = addition;
-		addition = newAddition;
+		UseCase addition = newAddition;
+		Object oldAddition = eVirtualSet(UML2Package.INCLUDE__ADDITION, addition);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INCLUDE__ADDITION, oldAddition, addition));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INCLUDE__ADDITION, oldAddition == EVIRTUAL_NO_VALUE ? null : oldAddition, addition));
 
 	}
 
@@ -225,8 +188,9 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getSources() {
+		EList source = (EList)eVirtualGet(UML2Package.INCLUDE__SOURCE);
 		if (source == null) {
-			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getInclude_IncludingCase()});
+			eVirtualSet(UML2Package.INCLUDE__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getInclude_IncludingCase()}));
 		}
 		return source;
 	}
@@ -247,8 +211,9 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getTargets() {
+		EList target = (EList)eVirtualGet(UML2Package.INCLUDE__TARGET);
 		if (target == null) {
-			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getInclude_Addition()});
+			eVirtualSet(UML2Package.INCLUDE__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getInclude_Addition()}));
 		}
 		return target;
 	}
@@ -276,6 +241,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 				case UML2Package.INCLUDE__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.INCLUDE__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.INCLUDE__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.INCLUDE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -485,21 +451,25 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 			case UML2Package.INCLUDE__OWNER:
 				return isSetOwner();
 			case UML2Package.INCLUDE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.INCLUDE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INCLUDE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.INCLUDE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.INCLUDE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.INCLUDE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.INCLUDE__NAME:
+				String name = eVirtualIsSet(UML2Package.INCLUDE__NAME) ? (String)eVirtualGet(UML2Package.INCLUDE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INCLUDE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INCLUDE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.INCLUDE__VISIBILITY) && eVirtualGet(UML2Package.INCLUDE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.INCLUDE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.INCLUDE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INCLUDE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.INCLUDE__NAME_EXPRESSION) != null;
 			case UML2Package.INCLUDE__RELATED_ELEMENT:
 				return isSetRelatedElements();
 			case UML2Package.INCLUDE__SOURCE:
@@ -509,7 +479,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 			case UML2Package.INCLUDE__INCLUDING_CASE:
 				return getIncludingCase() != null;
 			case UML2Package.INCLUDE__ADDITION:
-				return addition != null;
+				return eVirtualGet(UML2Package.INCLUDE__ADDITION) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

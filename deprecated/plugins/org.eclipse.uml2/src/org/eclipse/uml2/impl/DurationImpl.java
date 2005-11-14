@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.10 2005/11/04 22:23:01 khussey Exp $
+ * $Id: DurationImpl.java,v 1.11 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -74,16 +74,6 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 	protected static final int FIRST_TIME_EFLAG = 1 << 8;
 
 	/**
-	 * The cached value of the '{@link #getEvents() <em>Event</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEvents()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList event = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -131,8 +121,9 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 	 * @generated
 	 */
 	public EList getEvents() {
+		EList event = (EList)eVirtualGet(UML2Package.DURATION__EVENT);
 		if (event == null) {
-			event = new EObjectResolvingEList(NamedElement.class, this, UML2Package.DURATION__EVENT);
+			eVirtualSet(UML2Package.DURATION__EVENT, event = new EObjectResolvingEList(NamedElement.class, this, UML2Package.DURATION__EVENT));
 		}
 		return event;
 	}
@@ -318,30 +309,35 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 			case UML2Package.DURATION__OWNER:
 				return isSetOwner();
 			case UML2Package.DURATION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.DURATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.DURATION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.DURATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.DURATION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.DURATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.DURATION__NAME:
+				String name = eVirtualIsSet(UML2Package.DURATION__NAME) ? (String)eVirtualGet(UML2Package.DURATION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DURATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DURATION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.DURATION__VISIBILITY) && eVirtualGet(UML2Package.DURATION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.DURATION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.DURATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DURATION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.DURATION__NAME_EXPRESSION) != null;
 			case UML2Package.DURATION__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.DURATION__TYPE) != null;
 			case UML2Package.DURATION__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.DURATION__TEMPLATE_PARAMETER) != null;
 			case UML2Package.DURATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DURATION__FIRST_TIME:
 				return ((eFlags & FIRST_TIME_EFLAG) != 0) != FIRST_TIME_EDEFAULT;
 			case UML2Package.DURATION__EVENT:
+				EList event = (EList)eVirtualGet(UML2Package.DURATION__EVENT);
 				return event != null && !event.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

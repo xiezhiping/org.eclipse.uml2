@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.15 2005/11/09 22:53:08 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.16 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -72,46 +72,6 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getCovereds() <em>Covered</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCovereds()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList covered = null;
-
-	/**
-	 * The cached value of the '{@link #getGeneralOrderings() <em>General Ordering</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGeneralOrderings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList generalOrdering = null;
-
-	/**
-	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGuard()
-	 * @generated
-	 * @ordered
-	 */
-	protected InteractionConstraint guard = null;
-
-	/**
-	 * The cached value of the '{@link #getFragments() <em>Fragment</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFragments()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList fragment = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -135,8 +95,9 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @generated
 	 */
 	public EList getCovereds() {
+		EList covered = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__COVERED);
 		if (covered == null) {
-			covered = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.INTERACTION_OPERAND__COVERED, UML2Package.LIFELINE__COVERED_BY);
+			eVirtualSet(UML2Package.INTERACTION_OPERAND__COVERED, covered = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.INTERACTION_OPERAND__COVERED, UML2Package.LIFELINE__COVERED_BY));
 		}
 		return covered;
 	}
@@ -163,8 +124,9 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @generated
 	 */
 	public EList getGeneralOrderings() {
+		EList generalOrdering = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING);
 		if (generalOrdering == null) {
-			generalOrdering = new EObjectContainmentEList(GeneralOrdering.class, this, UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING);
+			eVirtualSet(UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING, generalOrdering = new EObjectContainmentEList(GeneralOrdering.class, this, UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING));
 		}
 		return generalOrdering;
 	}
@@ -286,6 +248,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @generated
 	 */
 	public InteractionConstraint getGuard() {
+		InteractionConstraint guard = (InteractionConstraint)eVirtualGet(UML2Package.INTERACTION_OPERAND__GUARD);
 		return guard;
 	}
 
@@ -295,10 +258,9 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @generated
 	 */
 	public NotificationChain basicSetGuard(InteractionConstraint newGuard, NotificationChain msgs) {
-		InteractionConstraint oldGuard = guard;
-		guard = newGuard;
+		Object oldGuard = eVirtualSet(UML2Package.INTERACTION_OPERAND__GUARD, newGuard);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_OPERAND__GUARD, oldGuard, newGuard);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_OPERAND__GUARD, oldGuard == EVIRTUAL_NO_VALUE ? null : oldGuard, newGuard);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -311,6 +273,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @generated
 	 */
 	public void setGuard(InteractionConstraint newGuard) {
+		InteractionConstraint guard = (InteractionConstraint)eVirtualGet(UML2Package.INTERACTION_OPERAND__GUARD);
 		if (newGuard != guard) {
 			NotificationChain msgs = null;
 			if (guard != null)
@@ -361,8 +324,9 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @generated
 	 */
 	public EList getFragments() {
+		EList fragment = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__FRAGMENT);
 		if (fragment == null) {
-			fragment = new EObjectContainmentWithInverseEList(InteractionFragment.class, this, UML2Package.INTERACTION_OPERAND__FRAGMENT, UML2Package.INTERACTION_FRAGMENT__ENCLOSING_OPERAND);
+			eVirtualSet(UML2Package.INTERACTION_OPERAND__FRAGMENT, fragment = new EObjectContainmentWithInverseEList(InteractionFragment.class, this, UML2Package.INTERACTION_OPERAND__FRAGMENT, UML2Package.INTERACTION_FRAGMENT__ENCLOSING_OPERAND));
 		}
 		return fragment;
 	}
@@ -434,6 +398,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 				case UML2Package.INTERACTION_OPERAND__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERACTION_OPERAND__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.INTERACTION_OPERAND__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.INTERACTION_OPERAND__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -734,42 +699,52 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 			case UML2Package.INTERACTION_OPERAND__OWNER:
 				return isSetOwner();
 			case UML2Package.INTERACTION_OPERAND__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.INTERACTION_OPERAND__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.INTERACTION_OPERAND__NAME:
+				String name = eVirtualIsSet(UML2Package.INTERACTION_OPERAND__NAME) ? (String)eVirtualGet(UML2Package.INTERACTION_OPERAND__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INTERACTION_OPERAND__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERACTION_OPERAND__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.INTERACTION_OPERAND__VISIBILITY) && eVirtualGet(UML2Package.INTERACTION_OPERAND__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.INTERACTION_OPERAND__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.INTERACTION_OPERAND__NAME_EXPRESSION) != null;
 			case UML2Package.INTERACTION_OPERAND__MEMBER:
 				return isSetMembers();
 			case UML2Package.INTERACTION_OPERAND__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.INTERACTION_OPERAND__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__COVERED:
+				EList covered = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__COVERED);
 				return covered != null && !covered.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING:
+				EList generalOrdering = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__ENCLOSING_INTERACTION:
 				return getEnclosingInteraction() != null;
 			case UML2Package.INTERACTION_OPERAND__ENCLOSING_OPERAND:
 				return getEnclosingOperand() != null;
 			case UML2Package.INTERACTION_OPERAND__GUARD:
-				return guard != null;
+				return eVirtualGet(UML2Package.INTERACTION_OPERAND__GUARD) != null;
 			case UML2Package.INTERACTION_OPERAND__FRAGMENT:
+				EList fragment = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__FRAGMENT);
 				return fragment != null && !fragment.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
@@ -819,8 +794,9 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering())) {
-			ownedElement.addAll(getGeneralOrderings());
+		EList generalOrdering = getGeneralOrderings();
+		if (!generalOrdering.isEmpty()) {
+			ownedElement.addAll(generalOrdering);
 		}
 		InteractionConstraint guard = getGuard();
 		if (guard != null) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionEnvironmentImpl.java,v 1.26 2005/11/09 22:53:08 khussey Exp $
+ * $Id: ExecutionEnvironmentImpl.java,v 1.27 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.18 2005/11/09 22:53:09 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.19 2005/11/14 17:31:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -65,16 +65,6 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRedefinitionContexts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList redefinitionContext = null;
 
 	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
@@ -161,8 +151,9 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated NOT
 	 */
 	public EList getRedefinitionContexts() {
+		EList redefinitionContext = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
-			redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()});
+			eVirtualSet(UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()}));
 		}
 		return redefinitionContext;
 	}
@@ -171,10 +162,10 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetRedefinitionContexts() {
-		return false;
+		return basicGetOwner() instanceof Classifier;
 	}
 
 	/**
@@ -400,21 +391,25 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 			case UML2Package.REDEFINABLE_ELEMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.REDEFINABLE_ELEMENT__NAME:
+				String name = eVirtualIsSet(UML2Package.REDEFINABLE_ELEMENT__NAME) ? (String)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.REDEFINABLE_ELEMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.REDEFINABLE_ELEMENT__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.REDEFINABLE_ELEMENT__VISIBILITY) && eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION) != null;
 			case UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:

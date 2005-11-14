@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.16 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -78,16 +78,6 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.PUBLIC_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVisibility()
-	 * @generated
-	 * @ordered
-	 */
-	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getAlias() <em>Alias</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,26 +86,6 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @ordered
 	 */
 	protected static final String ALIAS_EDEFAULT = ""; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getAlias() <em>Alias</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAlias()
-	 * @generated
-	 * @ordered
-	 */
-	protected String alias = ALIAS_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getImportedElement() <em>Imported Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImportedElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected PackageableElement importedElement = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,8 +111,9 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public EList getTargets() {
+		EList target = (EList)eVirtualGet(UML2Package.ELEMENT_IMPORT__TARGET);
 		if (target == null) {
-			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT_IMPORT__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getElementImport_ImportedElement()});
+			eVirtualSet(UML2Package.ELEMENT_IMPORT__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT_IMPORT__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getElementImport_ImportedElement()}));
 		}
 		return target;
 	}
@@ -164,8 +135,9 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public EList getSources() {
+		EList source = (EList)eVirtualGet(UML2Package.ELEMENT_IMPORT__SOURCE);
 		if (source == null) {
-			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT_IMPORT__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getElementImport_ImportingNamespace()});
+			eVirtualSet(UML2Package.ELEMENT_IMPORT__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT_IMPORT__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getElementImport_ImportingNamespace()}));
 		}
 		return source;
 	}
@@ -187,7 +159,8 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return visibility;
+		VisibilityKind visibility = (VisibilityKind)eVirtualGet(UML2Package.ELEMENT_IMPORT__VISIBILITY);
+		return visibility == null ? VISIBILITY_EDEFAULT : visibility;
 	}
 
 	/**
@@ -196,10 +169,10 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = visibility;
-		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
+		VisibilityKind visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
+		Object oldVisibility = eVirtualSet(UML2Package.ELEMENT_IMPORT__VISIBILITY, visibility);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__VISIBILITY, oldVisibility, visibility));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__VISIBILITY, oldVisibility == EVIRTUAL_NO_VALUE ? VISIBILITY_EDEFAULT : oldVisibility, visibility));
 
 	}
 
@@ -210,7 +183,8 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public String getAlias() {
-		return alias;
+		String alias = (String)eVirtualGet(UML2Package.ELEMENT_IMPORT__ALIAS);
+		return alias == null ? ALIAS_EDEFAULT : alias;
 	}
 
 	/**
@@ -220,10 +194,10 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 */
 	public void setAlias(String newAlias) {
 		newAlias = newAlias == null ? ALIAS_EDEFAULT : newAlias;
-		String oldAlias = alias;
-		alias = newAlias;
+		String alias = newAlias;
+		Object oldAlias = eVirtualSet(UML2Package.ELEMENT_IMPORT__ALIAS, alias);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__ALIAS, oldAlias, alias));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__ALIAS, oldAlias == EVIRTUAL_NO_VALUE ? ALIAS_EDEFAULT : oldAlias, alias));
 
 	}
 
@@ -234,10 +208,12 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public PackageableElement getImportedElement() {
+		PackageableElement importedElement = (PackageableElement)eVirtualGet(UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT);
 		if (importedElement != null && importedElement.eIsProxy()) {
 			PackageableElement oldImportedElement = importedElement;
 			importedElement = (PackageableElement)eResolveProxy((InternalEObject)importedElement);
 			if (importedElement != oldImportedElement) {
+				eVirtualSet(UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT, importedElement);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT, oldImportedElement, importedElement));
 			}
@@ -251,7 +227,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public PackageableElement basicGetImportedElement() {
-		return importedElement;
+		return (PackageableElement)eVirtualGet(UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT);
 	}
 
 	/**
@@ -260,10 +236,10 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public void setImportedElement(PackageableElement newImportedElement) {
-		PackageableElement oldImportedElement = importedElement;
-		importedElement = newImportedElement;
+		PackageableElement importedElement = newImportedElement;
+		Object oldImportedElement = eVirtualSet(UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT, importedElement);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT, oldImportedElement, importedElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT, oldImportedElement == EVIRTUAL_NO_VALUE ? null : oldImportedElement, importedElement));
 
 	}
 
@@ -522,6 +498,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 			case UML2Package.ELEMENT_IMPORT__OWNER:
 				return isSetOwner();
 			case UML2Package.ELEMENT_IMPORT__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.ELEMENT_IMPORT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ELEMENT_IMPORT__RELATED_ELEMENT:
 				return isSetRelatedElements();
@@ -530,11 +507,12 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 			case UML2Package.ELEMENT_IMPORT__TARGET:
 				return isSetTargets();
 			case UML2Package.ELEMENT_IMPORT__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.ELEMENT_IMPORT__VISIBILITY) && eVirtualGet(UML2Package.ELEMENT_IMPORT__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.ELEMENT_IMPORT__ALIAS:
+				String alias = eVirtualIsSet(UML2Package.ELEMENT_IMPORT__ALIAS) ? (String)eVirtualGet(UML2Package.ELEMENT_IMPORT__ALIAS) : ALIAS_EDEFAULT;
 				return ALIAS_EDEFAULT == null ? alias != null : !ALIAS_EDEFAULT.equals(alias);
 			case UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT:
-				return importedElement != null;
+				return eVirtualGet(UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT) != null;
 			case UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE:
 				return getImportingNamespace() != null;
 		}
@@ -551,9 +529,9 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(visibility);
+		result.append(eVirtualIsSet(UML2Package.ELEMENT_IMPORT__VISIBILITY) ? eVirtualGet(UML2Package.ELEMENT_IMPORT__VISIBILITY) : VISIBILITY_EDEFAULT);
 		result.append(", alias: "); //$NON-NLS-1$
-		result.append(alias);
+		result.append(eVirtualIsSet(UML2Package.ELEMENT_IMPORT__ALIAS) ? eVirtualGet(UML2Package.ELEMENT_IMPORT__ALIAS) : ALIAS_EDEFAULT);
 		result.append(')');
 		return result.toString();
 	}

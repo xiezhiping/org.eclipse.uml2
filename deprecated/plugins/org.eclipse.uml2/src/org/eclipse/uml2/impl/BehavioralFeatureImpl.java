@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.19 2005/11/09 22:53:07 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.20 2005/11/14 17:31:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -54,6 +54,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 
@@ -92,16 +93,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRedefinitionContexts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList redefinitionContext = null;
-
-	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -120,16 +111,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @ordered
 	 */
 	protected static final int IS_LEAF_EFLAG = 1 << 8;
-
-	/**
-	 * The cached value of the '{@link #getFeaturingClassifiers() <em>Featuring Classifier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFeaturingClassifiers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList featuringClassifier = null;
 
 	/**
 	 * The default value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
@@ -152,46 +133,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	protected static final int IS_STATIC_EFLAG = 1 << 9;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameter</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList parameter = null;
-
-	/**
-	 * The cached value of the '{@link #getFormalParameters() <em>Formal Parameter</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFormalParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList formalParameter = null;
-
-	/**
-	 * The cached value of the '{@link #getReturnResults() <em>Return Result</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReturnResults()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList returnResult = null;
-
-	/**
-	 * The cached value of the '{@link #getRaisedExceptions() <em>Raised Exception</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRaisedExceptions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList raisedException = null;
-
-	/**
 	 * The default value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,16 +153,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	protected static final int IS_ABSTRACT_EFLAG = 1 << 10;
 
 	/**
-	 * The cached value of the '{@link #getMethods() <em>Method</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMethods()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList method = null;
-
-	/**
 	 * The default value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -230,16 +161,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @ordered
 	 */
 	protected static final CallConcurrencyKind CONCURRENCY_EDEFAULT = CallConcurrencyKind.SEQUENTIAL_LITERAL;
-
-	/**
-	 * The cached value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConcurrency()
-	 * @generated
-	 * @ordered
-	 */
-	protected CallConcurrencyKind concurrency = CONCURRENCY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -285,11 +206,12 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getRedefinitionContexts() {
+		EList redefinitionContext = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
-			redefinitionContext = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT, new EStructuralFeature[] {});
+			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT, redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()}));
 		}
 		return redefinitionContext;
 	}
@@ -298,10 +220,10 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetRedefinitionContexts() {
-		return false;
+		return basicGetOwner() instanceof Classifier;
 	}
 
 	/**
@@ -354,11 +276,12 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getFeaturingClassifiers() {
+		EList featuringClassifier = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER);
 		if (featuringClassifier == null) {
-			featuringClassifier = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER, new EStructuralFeature[] {});
+			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER, featuringClassifier = new DerivedEObjectEList(Classifier.class, this, UML2Package.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()}));
 		}
 		return featuringClassifier;
 	}
@@ -367,10 +290,10 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetFeaturingClassifiers() {
-		return false;
+		return basicGetOwner() instanceof Classifier;
 	}
 
 	/**
@@ -417,7 +340,8 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public CallConcurrencyKind getConcurrency() {
-		return concurrency;
+		CallConcurrencyKind concurrency = (CallConcurrencyKind)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY);
+		return concurrency == null ? CONCURRENCY_EDEFAULT : concurrency;
 	}
 
 	/**
@@ -426,10 +350,10 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public void setConcurrency(CallConcurrencyKind newConcurrency) {
-		CallConcurrencyKind oldConcurrency = concurrency;
-		concurrency = newConcurrency == null ? CONCURRENCY_EDEFAULT : newConcurrency;
+		CallConcurrencyKind concurrency = newConcurrency == null ? CONCURRENCY_EDEFAULT : newConcurrency;
+		Object oldConcurrency = eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY, concurrency);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY, oldConcurrency, concurrency));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY, oldConcurrency == EVIRTUAL_NO_VALUE ? CONCURRENCY_EDEFAULT : oldConcurrency, concurrency));
 
 	}
 
@@ -458,8 +382,9 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public EList getParameters() {
+		EList parameter = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__PARAMETER);
 		if (parameter == null) {
-			parameter = new DerivedUnionEObjectEList(Parameter.class, this, UML2Package.BEHAVIORAL_FEATURE__PARAMETER, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter(), UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult()});
+			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__PARAMETER, parameter = new DerivedUnionEObjectEList(Parameter.class, this, UML2Package.BEHAVIORAL_FEATURE__PARAMETER, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter(), UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult()}));
 		}
 		return parameter;
 	}
@@ -523,11 +448,13 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())) {
-			ownedMember.addAll(getFormalParameters());
+		EList formalParameter = getFormalParameters();
+		if (!formalParameter.isEmpty()) {
+			ownedMember.addAll(formalParameter);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult())) {
-			ownedMember.addAll(getReturnResults());
+		EList returnResult = getReturnResults();
+		if (!returnResult.isEmpty()) {
+			ownedMember.addAll(returnResult);
 		}
 		return ownedMember;
 	}
@@ -550,8 +477,9 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public EList getFormalParameters() {
+		EList formalParameter = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER);
 		if (formalParameter == null) {
-			formalParameter = new EObjectContainmentEList(Parameter.class, this, UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER);
+			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER, formalParameter = new EObjectContainmentEList(Parameter.class, this, UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER));
 		}
 		return formalParameter;
 	}
@@ -607,8 +535,9 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public EList getReturnResults() {
+		EList returnResult = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT);
 		if (returnResult == null) {
-			returnResult = new EObjectContainmentEList(Parameter.class, this, UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT);
+			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT, returnResult = new EObjectContainmentEList(Parameter.class, this, UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT));
 		}
 		return returnResult;
 	}
@@ -664,8 +593,9 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public EList getRaisedExceptions() {
+		EList raisedException = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
 		if (raisedException == null) {
-			raisedException = new EObjectResolvingEList(Type.class, this, UML2Package.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
+			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__RAISED_EXCEPTION, raisedException = new EObjectResolvingEList(Type.class, this, UML2Package.BEHAVIORAL_FEATURE__RAISED_EXCEPTION));
 		}
 		return raisedException;
 	}
@@ -692,8 +622,9 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public EList getMethods() {
+		EList method = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__METHOD);
 		if (method == null) {
-			method = new EObjectWithInverseResolvingEList(Behavior.class, this, UML2Package.BEHAVIORAL_FEATURE__METHOD, UML2Package.BEHAVIOR__SPECIFICATION);
+			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__METHOD, method = new EObjectWithInverseResolvingEList(Behavior.class, this, UML2Package.BEHAVIORAL_FEATURE__METHOD, UML2Package.BEHAVIOR__SPECIFICATION));
 		}
 		return method;
 	}
@@ -784,18 +715,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected EList getFeaturingClassifiersHelper(EList featuringClassifier) {
-		if (eContainer instanceof Classifier) {
-			featuringClassifier.add(eContainer);
-		}
-		return featuringClassifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isDistinguishableFrom(NamedElement n, Namespace ns) {
@@ -815,6 +734,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 				case UML2Package.BEHAVIORAL_FEATURE__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIORAL_FEATURE__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.BEHAVIORAL_FEATURE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -1103,30 +1023,37 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__OWNER:
 				return isSetOwner();
 			case UML2Package.BEHAVIORAL_FEATURE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.BEHAVIORAL_FEATURE__NAME:
+				String name = eVirtualIsSet(UML2Package.BEHAVIORAL_FEATURE__NAME) ? (String)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.BEHAVIORAL_FEATURE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.BEHAVIORAL_FEATURE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.BEHAVIORAL_FEATURE__VISIBILITY) && eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__NAME_EXPRESSION) != null;
 			case UML2Package.BEHAVIORAL_FEATURE__MEMBER:
 				return isSetMembers();
 			case UML2Package.BEHAVIORAL_FEATURE__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
@@ -1139,17 +1066,21 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__PARAMETER:
 				return isSetParameters();
 			case UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER:
+				EList formalParameter = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER);
 				return formalParameter != null && !formalParameter.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT:
+				EList returnResult = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT);
 				return returnResult != null && !returnResult.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__RAISED_EXCEPTION:
+				EList raisedException = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
 				return raisedException != null && !raisedException.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__IS_ABSTRACT:
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.BEHAVIORAL_FEATURE__METHOD:
+				EList method = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__METHOD);
 				return method != null && !method.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY:
-				return concurrency != CONCURRENCY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY) && eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY) != CONCURRENCY_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -1216,21 +1147,10 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		result.append(", isAbstract: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(", concurrency: "); //$NON-NLS-1$
-		result.append(concurrency);
+		result.append(eVirtualIsSet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY) ? eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY) : CONCURRENCY_EDEFAULT);
 		result.append(')');
 		return result.toString();
 	}
 
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected EList getRedefinitionContextsHelper(EList redefinitionContext) {
-		if (eContainer instanceof Classifier) {
-			redefinitionContext.add(eContainer);
-		}
-		return redefinitionContext;
-	}
 } //BehavioralFeatureImpl

@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerImpl.java,v 1.9 2005/11/04 22:23:00 khussey Exp $
+ * $Id: LiteralIntegerImpl.java,v 1.10 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -284,25 +286,29 @@ public class LiteralIntegerImpl extends LiteralSpecificationImpl implements Lite
 			case UML2Package.LITERAL_INTEGER__OWNER:
 				return isSetOwner();
 			case UML2Package.LITERAL_INTEGER__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.LITERAL_INTEGER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.LITERAL_INTEGER__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.LITERAL_INTEGER__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.LITERAL_INTEGER__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.LITERAL_INTEGER__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.LITERAL_INTEGER__NAME:
+				String name = eVirtualIsSet(UML2Package.LITERAL_INTEGER__NAME) ? (String)eVirtualGet(UML2Package.LITERAL_INTEGER__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.LITERAL_INTEGER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.LITERAL_INTEGER__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.LITERAL_INTEGER__VISIBILITY) && eVirtualGet(UML2Package.LITERAL_INTEGER__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.LITERAL_INTEGER__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.LITERAL_INTEGER__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.LITERAL_INTEGER__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.LITERAL_INTEGER__NAME_EXPRESSION) != null;
 			case UML2Package.LITERAL_INTEGER__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.LITERAL_INTEGER__TYPE) != null;
 			case UML2Package.LITERAL_INTEGER__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.LITERAL_INTEGER__TEMPLATE_PARAMETER) != null;
 			case UML2Package.LITERAL_INTEGER__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.LITERAL_INTEGER__VALUE:

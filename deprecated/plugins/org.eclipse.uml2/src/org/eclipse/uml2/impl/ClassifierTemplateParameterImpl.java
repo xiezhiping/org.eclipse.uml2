@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.10 2005/11/04 22:23:02 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.11 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -226,17 +228,18 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNER:
 				return isSetOwner();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE:
 				return getSignature() != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT:
-				return parameteredElement != null;
+				return eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT:
-				return ownedParameteredElement != null;
+				return eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT:
-				return default_ != null;
+				return eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT) != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT:
-				return ownedDefault != null;
+				return eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT) != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE:
 				return ((eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0) != ALLOW_SUBSTITUTABLE_EDEFAULT;
 		}

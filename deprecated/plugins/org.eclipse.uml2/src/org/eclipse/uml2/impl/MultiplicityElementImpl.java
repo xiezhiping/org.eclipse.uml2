@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.17 2005/11/09 22:53:07 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.18 2005/11/14 17:31:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -126,26 +126,6 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
-	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUpperValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected ValueSpecification upperValue = null;
-
-	/**
-	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLowerValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected ValueSpecification lowerValue = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -170,8 +150,9 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.MULTIPLICITY_ELEMENT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(), UML2Package.eINSTANCE.getMultiplicityElement_LowerValue()});
+			eVirtualSet(UML2Package.MULTIPLICITY_ELEMENT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.MULTIPLICITY_ELEMENT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(), UML2Package.eINSTANCE.getMultiplicityElement_LowerValue()}));
 		}
 		return ownedElement;
 	}
@@ -258,6 +239,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
+		ValueSpecification upperValue = (ValueSpecification)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE);
 		return upperValue;
 	}
 
@@ -267,10 +249,9 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public NotificationChain basicSetUpperValue(ValueSpecification newUpperValue, NotificationChain msgs) {
-		ValueSpecification oldUpperValue = upperValue;
-		upperValue = newUpperValue;
+		Object oldUpperValue = eVirtualSet(UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE, newUpperValue);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE, oldUpperValue, newUpperValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE, oldUpperValue == EVIRTUAL_NO_VALUE ? null : oldUpperValue, newUpperValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -283,6 +264,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
+		ValueSpecification upperValue = (ValueSpecification)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE);
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -318,6 +300,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
+		ValueSpecification lowerValue = (ValueSpecification)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE);
 		return lowerValue;
 	}
 
@@ -327,10 +310,9 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public NotificationChain basicSetLowerValue(ValueSpecification newLowerValue, NotificationChain msgs) {
-		ValueSpecification oldLowerValue = lowerValue;
-		lowerValue = newLowerValue;
+		Object oldLowerValue = eVirtualSet(UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE, newLowerValue);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE, oldLowerValue, newLowerValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE, oldLowerValue == EVIRTUAL_NO_VALUE ? null : oldLowerValue, newLowerValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -343,6 +325,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
+		ValueSpecification lowerValue = (ValueSpecification)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE);
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -609,6 +592,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 			case UML2Package.MULTIPLICITY_ELEMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.MULTIPLICITY_ELEMENT__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.MULTIPLICITY_ELEMENT__IS_ORDERED:
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
@@ -619,9 +603,9 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 			case UML2Package.MULTIPLICITY_ELEMENT__UPPER:
 				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE:
-				return upperValue != null;
+				return eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE) != null;
 			case UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE:
-				return lowerValue != null;
+				return eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

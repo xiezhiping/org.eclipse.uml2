@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.14 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.15 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,66 +76,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getInGroups() <em>In Group</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInGroups()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList inGroup = null;
-
-	/**
-	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutgoings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList outgoing = null;
-
-	/**
-	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIncomings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList incoming = null;
-
-	/**
-	 * The cached value of the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRedefinedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList redefinedElement = null;
-
-	/**
-	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getInPartitions()
-	 * @generated
-	 * @ordered
-	 */
-    protected EList inPartition = null;
-
-	/**
-	 * The cached value of the '{@link #getInInterruptibleRegions() <em>In Interruptible Region</em>}' reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getInInterruptibleRegions()
-	 * @generated
-	 * @ordered
-	 */
-    protected EList inInterruptibleRegion = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -159,8 +99,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getOutgoings() {
+		EList outgoing = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__OUTGOING);
 		if (outgoing == null) {
-			outgoing = new EObjectWithInverseResolvingEList(ActivityEdge.class, this, UML2Package.ACTIVITY_NODE__OUTGOING, UML2Package.ACTIVITY_EDGE__SOURCE);
+			eVirtualSet(UML2Package.ACTIVITY_NODE__OUTGOING, outgoing = new EObjectWithInverseResolvingEList(ActivityEdge.class, this, UML2Package.ACTIVITY_NODE__OUTGOING, UML2Package.ACTIVITY_EDGE__SOURCE));
 		}
 		return outgoing;
 	}
@@ -187,8 +128,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getIncomings() {
+		EList incoming = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__INCOMING);
 		if (incoming == null) {
-			incoming = new EObjectWithInverseResolvingEList(ActivityEdge.class, this, UML2Package.ACTIVITY_NODE__INCOMING, UML2Package.ACTIVITY_EDGE__TARGET);
+			eVirtualSet(UML2Package.ACTIVITY_NODE__INCOMING, incoming = new EObjectWithInverseResolvingEList(ActivityEdge.class, this, UML2Package.ACTIVITY_NODE__INCOMING, UML2Package.ACTIVITY_EDGE__TARGET));
 		}
 		return incoming;
 	}
@@ -215,8 +157,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getInGroups() {
+		EList inGroup = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__IN_GROUP);
 		if (inGroup == null) {
-			inGroup = new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_NODE__IN_GROUP, new EStructuralFeature[] {UML2Package.eINSTANCE.getActivityNode_InStructuredNode(), UML2Package.eINSTANCE.getActivityNode_InPartition(), UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion()});
+			eVirtualSet(UML2Package.ACTIVITY_NODE__IN_GROUP, inGroup = new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_NODE__IN_GROUP, new EStructuralFeature[] {UML2Package.eINSTANCE.getActivityNode_InStructuredNode(), UML2Package.eINSTANCE.getActivityNode_InPartition(), UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion()}));
 		}
 		return inGroup;
 	}
@@ -272,12 +215,23 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+		EList redefinedElement = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
-			redefinedElement = new EObjectResolvingEList(ActivityNode.class, this, UML2Package.ACTIVITY_NODE__REDEFINED_ELEMENT);
+			eVirtualSet(UML2Package.ACTIVITY_NODE__REDEFINED_ELEMENT, redefinedElement = new EObjectResolvingEList(ActivityNode.class, this, UML2Package.ACTIVITY_NODE__REDEFINED_ELEMENT));
 		}
 		return redefinedElement;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedElements() {
+		EList redefinedElement = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__REDEFINED_ELEMENT);
+		return redefinedElement != null && !redefinedElement.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -292,15 +246,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetRedefinedElements() {
-		return redefinedElement != null && !redefinedElement.isEmpty();
 	}
 
 	/**
@@ -342,8 +287,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getInPartitions() {
+		EList inPartition = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__IN_PARTITION);
 		if (inPartition == null) {
-			inPartition = new EObjectWithInverseResolvingEList.ManyInverse(ActivityPartition.class, this, UML2Package.ACTIVITY_NODE__IN_PARTITION, UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE);
+			eVirtualSet(UML2Package.ACTIVITY_NODE__IN_PARTITION, inPartition = new EObjectWithInverseResolvingEList.ManyInverse(ActivityPartition.class, this, UML2Package.ACTIVITY_NODE__IN_PARTITION, UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE));
 		}
 		return inPartition;
 	}
@@ -370,8 +316,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getInInterruptibleRegions() {
+		EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
 		if (inInterruptibleRegion == null) {
-			inInterruptibleRegion = new EObjectWithInverseResolvingEList.ManyInverse(InterruptibleActivityRegion.class, this, UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE);
+			eVirtualSet(UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, inInterruptibleRegion = new EObjectWithInverseResolvingEList.ManyInverse(InterruptibleActivityRegion.class, this, UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE));
 		}
 		return inInterruptibleRegion;
 	}
@@ -414,6 +361,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 				case UML2Package.ACTIVITY_NODE__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -697,28 +645,34 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_NODE__OWNER:
 				return isSetOwner();
 			case UML2Package.ACTIVITY_NODE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_NODE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.ACTIVITY_NODE__NAME:
+				String name = eVirtualIsSet(UML2Package.ACTIVITY_NODE__NAME) ? (String)eVirtualGet(UML2Package.ACTIVITY_NODE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ACTIVITY_NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACTIVITY_NODE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.ACTIVITY_NODE__VISIBILITY) && eVirtualGet(UML2Package.ACTIVITY_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.ACTIVITY_NODE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ACTIVITY_NODE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.ACTIVITY_NODE__NAME_EXPRESSION) != null;
 			case UML2Package.ACTIVITY_NODE__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.ACTIVITY_NODE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ACTIVITY_NODE__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.ACTIVITY_NODE__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.ACTIVITY_NODE__IN_GROUP:
 				return isSetInGroups();
@@ -729,8 +683,10 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_NODE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.ACTIVITY_NODE__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

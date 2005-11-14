@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.13 2005/11/09 22:53:07 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.14 2005/11/14 17:31:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,16 +77,6 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	protected static final int IS_REPLACE_ALL_EFLAG = 1 << 8;
 
 	/**
-	 * The cached value of the '{@link #getInsertAt() <em>Insert At</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInsertAt()
-	 * @generated
-	 * @ordered
-	 */
-	protected InputPin insertAt = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -133,10 +123,12 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	 * @generated
 	 */
 	public InputPin getInsertAt() {
+		InputPin insertAt = (InputPin)eVirtualGet(UML2Package.LINK_END_CREATION_DATA__INSERT_AT);
 		if (insertAt != null && insertAt.eIsProxy()) {
 			InputPin oldInsertAt = insertAt;
 			insertAt = (InputPin)eResolveProxy((InternalEObject)insertAt);
 			if (insertAt != oldInsertAt) {
+				eVirtualSet(UML2Package.LINK_END_CREATION_DATA__INSERT_AT, insertAt);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.LINK_END_CREATION_DATA__INSERT_AT, oldInsertAt, insertAt));
 			}
@@ -150,7 +142,7 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	 * @generated
 	 */
 	public InputPin basicGetInsertAt() {
-		return insertAt;
+		return (InputPin)eVirtualGet(UML2Package.LINK_END_CREATION_DATA__INSERT_AT);
 	}
 
 	/**
@@ -159,10 +151,10 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	 * @generated
 	 */
 	public void setInsertAt(InputPin newInsertAt) {
-		InputPin oldInsertAt = insertAt;
-		insertAt = newInsertAt;
+		InputPin insertAt = newInsertAt;
+		Object oldInsertAt = eVirtualSet(UML2Package.LINK_END_CREATION_DATA__INSERT_AT, insertAt);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LINK_END_CREATION_DATA__INSERT_AT, oldInsertAt, insertAt));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LINK_END_CREATION_DATA__INSERT_AT, oldInsertAt == EVIRTUAL_NO_VALUE ? null : oldInsertAt, insertAt));
 
 	}
 
@@ -173,8 +165,9 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	 * @generated NOT
 	 */
 	public EList getQualifiers() {
-		if (null == qualifier) {
-			qualifier = new EObjectContainmentEList(QualifierValue.class, this, UML2Package.LINK_END_CREATION_DATA__QUALIFIER);
+		EList qualifier = (EList)eVirtualGet(UML2Package.LINK_END_CREATION_DATA__QUALIFIER);
+		if (qualifier == null) {
+			eVirtualSet(UML2Package.LINK_END_CREATION_DATA__QUALIFIER, qualifier = new EObjectContainmentEList(QualifierValue.class, this, UML2Package.LINK_END_CREATION_DATA__QUALIFIER));
 		}
 		return qualifier;
 	}
@@ -185,6 +178,7 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	 * @generated
 	 */
 	public boolean isSetQualifiers() {
+		EList qualifier = (EList)eVirtualGet(UML2Package.LINK_END_CREATION_DATA__QUALIFIER);
 		return qualifier != null && !qualifier.isEmpty();
 	}
 
@@ -302,17 +296,19 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 			case UML2Package.LINK_END_CREATION_DATA__OWNER:
 				return isSetOwner();
 			case UML2Package.LINK_END_CREATION_DATA__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.LINK_END_CREATION_DATA__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.LINK_END_CREATION_DATA__VALUE:
-				return value != null;
+				return eVirtualGet(UML2Package.LINK_END_CREATION_DATA__VALUE) != null;
 			case UML2Package.LINK_END_CREATION_DATA__END:
-				return end != null;
+				return eVirtualGet(UML2Package.LINK_END_CREATION_DATA__END) != null;
 			case UML2Package.LINK_END_CREATION_DATA__QUALIFIER:
-				return isSetQualifiers();
+				EList qualifier = (EList)eVirtualGet(UML2Package.LINK_END_CREATION_DATA__QUALIFIER);
+				return qualifier != null && !qualifier.isEmpty();
 			case UML2Package.LINK_END_CREATION_DATA__IS_REPLACE_ALL:
 				return ((eFlags & IS_REPLACE_ALL_EFLAG) != 0) != IS_REPLACE_ALL_EDEFAULT;
 			case UML2Package.LINK_END_CREATION_DATA__INSERT_AT:
-				return insertAt != null;
+				return eVirtualGet(UML2Package.LINK_END_CREATION_DATA__INSERT_AT) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

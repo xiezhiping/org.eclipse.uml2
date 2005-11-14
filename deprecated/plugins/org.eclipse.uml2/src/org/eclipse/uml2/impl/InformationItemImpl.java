@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.21 2005/11/09 22:53:09 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.22 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -51,16 +51,6 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getRepresenteds() <em>Represented</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRepresenteds()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList represented = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -84,8 +74,9 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 	 * @generated
 	 */
 	public EList getRepresenteds() {
+		EList represented = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__REPRESENTED);
 		if (represented == null) {
-			represented = new EObjectResolvingEList(Classifier.class, this, UML2Package.INFORMATION_ITEM__REPRESENTED);
+			eVirtualSet(UML2Package.INFORMATION_ITEM__REPRESENTED, represented = new EObjectResolvingEList(Classifier.class, this, UML2Package.INFORMATION_ITEM__REPRESENTED));
 		}
 		return represented;
 	}
@@ -392,33 +383,40 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 			case UML2Package.INFORMATION_ITEM__OWNER:
 				return isSetOwner();
 			case UML2Package.INFORMATION_ITEM__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INFORMATION_ITEM__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.INFORMATION_ITEM__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.INFORMATION_ITEM__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.INFORMATION_ITEM__NAME:
+				String name = eVirtualIsSet(UML2Package.INFORMATION_ITEM__NAME) ? (String)eVirtualGet(UML2Package.INFORMATION_ITEM__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INFORMATION_ITEM__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INFORMATION_ITEM__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.INFORMATION_ITEM__VISIBILITY) && eVirtualGet(UML2Package.INFORMATION_ITEM__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.INFORMATION_ITEM__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INFORMATION_ITEM__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.INFORMATION_ITEM__NAME_EXPRESSION) != null;
 			case UML2Package.INFORMATION_ITEM__MEMBER:
 				return isSetMembers();
 			case UML2Package.INFORMATION_ITEM__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.INFORMATION_ITEM__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.INFORMATION_ITEM__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.INFORMATION_ITEM__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.INFORMATION_ITEM__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.INFORMATION_ITEM__TEMPLATE_PARAMETER) != null;
 			case UML2Package.INFORMATION_ITEM__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INFORMATION_ITEM__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -438,24 +436,32 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 			case UML2Package.INFORMATION_ITEM__GENERAL:
 				return !getGenerals().isEmpty();
 			case UML2Package.INFORMATION_ITEM__GENERALIZATION:
+				EList generalization = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.INFORMATION_ITEM__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.INFORMATION_ITEM__REDEFINED_CLASSIFIER:
+				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.INFORMATION_ITEM__SUBSTITUTION:
+				EList substitution = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UML2Package.INFORMATION_ITEM__POWERTYPE_EXTENT:
+				EList powertypeExtent = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.INFORMATION_ITEM__OWNED_USE_CASE:
+				EList ownedUseCase = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.INFORMATION_ITEM__USE_CASE:
+				EList useCase = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UML2Package.INFORMATION_ITEM__REPRESENTATION:
-				return representation != null;
+				return eVirtualGet(UML2Package.INFORMATION_ITEM__REPRESENTATION) != null;
 			case UML2Package.INFORMATION_ITEM__OCCURRENCE:
+				EList occurrence = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.INFORMATION_ITEM__REPRESENTED:
+				EList represented = (EList)eVirtualGet(UML2Package.INFORMATION_ITEM__REPRESENTED);
 				return represented != null && !represented.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

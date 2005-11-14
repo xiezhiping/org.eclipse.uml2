@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.30 2005/11/09 22:53:08 khussey Exp $
+ * $Id: ElementImpl.java,v 1.31 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,26 +79,70 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * An array of objects representing the values of non-primitive features.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
 	 * @generated
-	 * @ordered
 	 */
-	protected EList ownedElement = null;
+	protected Object[] eVirtualValues = null;
 
 	/**
-	 * The cached value of the '{@link #getOwnedComments() <em>Owned Comment</em>}' containment reference list.
+	 * A bit field representing the indices of non-primitive feature values.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedComments()
 	 * @generated
-	 * @ordered
 	 */
-	protected EList ownedComment = null;
+	protected int eVirtualIndexBits0 = 0;
 
-    /**
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Object[] eVirtualValues() {
+		return eVirtualValues;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void eSetVirtualValues(Object[] newValues) {
+		eVirtualValues = newValues;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected int eVirtualIndexBits(int offset) {
+		switch (offset) {
+			case 0 :
+				return eVirtualIndexBits0;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
+		switch (offset) {
+			case 0 :
+				eVirtualIndexBits0 = newIndexBits;
+				break;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
+
+
+	/**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated NOT
@@ -124,8 +168,9 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.ELEMENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment()});
+			eVirtualSet(UML2Package.ELEMENT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment()}));
 		}
 		return ownedElement;
 	}
@@ -174,8 +219,9 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * @generated
 	 */
 	public EList getOwnedComments() {
+		EList ownedComment = (EList)eVirtualGet(UML2Package.ELEMENT__OWNED_COMMENT);
 		if (ownedComment == null) {
-			ownedComment = new EObjectContainmentEList(Comment.class, this, UML2Package.ELEMENT__OWNED_COMMENT);
+			eVirtualSet(UML2Package.ELEMENT__OWNED_COMMENT, ownedComment = new EObjectContainmentEList(Comment.class, this, UML2Package.ELEMENT__OWNED_COMMENT));
 		}
 		return ownedComment;
 	}
@@ -343,11 +389,11 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			case UML2Package.ELEMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.ELEMENT__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}
-
 
 	/**
 	 * Retrieves the cache adapter for this '<em><b>Element</b></em>'.

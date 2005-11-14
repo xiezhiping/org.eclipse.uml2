@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.12 2005/11/04 22:23:04 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.13 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -17,6 +17,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -52,26 +54,6 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getRole() <em>Role</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRole()
-	 * @generated
-	 * @ordered
-	 */
-	protected ConnectableElement role = null;
-
-	/**
-	 * The cached value of the '{@link #getPartWithPort() <em>Part With Port</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPartWithPort()
-	 * @generated
-	 * @ordered
-	 */
-	protected Property partWithPort = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,10 +113,12 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * @generated
 	 */
 	public ConnectableElement getRole() {
+		ConnectableElement role = (ConnectableElement)eVirtualGet(UML2Package.CONNECTOR_END__ROLE);
 		if (role != null && role.eIsProxy()) {
 			ConnectableElement oldRole = role;
 			role = (ConnectableElement)eResolveProxy((InternalEObject)role);
 			if (role != oldRole) {
+				eVirtualSet(UML2Package.CONNECTOR_END__ROLE, role);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.CONNECTOR_END__ROLE, oldRole, role));
 			}
@@ -148,7 +132,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * @generated
 	 */
 	public ConnectableElement basicGetRole() {
-		return role;
+		return (ConnectableElement)eVirtualGet(UML2Package.CONNECTOR_END__ROLE);
 	}
 
 	/**
@@ -157,10 +141,9 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * @generated
 	 */
 	public NotificationChain basicSetRole(ConnectableElement newRole, NotificationChain msgs) {
-		ConnectableElement oldRole = role;
-		role = newRole;
+		Object oldRole = eVirtualSet(UML2Package.CONNECTOR_END__ROLE, newRole);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTOR_END__ROLE, oldRole, newRole);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTOR_END__ROLE, oldRole == EVIRTUAL_NO_VALUE ? null : oldRole, newRole);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -173,6 +156,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * @generated
 	 */
 	public void setRole(ConnectableElement newRole) {
+		ConnectableElement role = (ConnectableElement)eVirtualGet(UML2Package.CONNECTOR_END__ROLE);
 		if (newRole != role) {
 			NotificationChain msgs = null;
 			if (role != null)
@@ -194,10 +178,12 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * @generated
 	 */
 	public Property getPartWithPort() {
+		Property partWithPort = (Property)eVirtualGet(UML2Package.CONNECTOR_END__PART_WITH_PORT);
 		if (partWithPort != null && partWithPort.eIsProxy()) {
 			Property oldPartWithPort = partWithPort;
 			partWithPort = (Property)eResolveProxy((InternalEObject)partWithPort);
 			if (partWithPort != oldPartWithPort) {
+				eVirtualSet(UML2Package.CONNECTOR_END__PART_WITH_PORT, partWithPort);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.CONNECTOR_END__PART_WITH_PORT, oldPartWithPort, partWithPort));
 			}
@@ -211,7 +197,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * @generated
 	 */
 	public Property basicGetPartWithPort() {
-		return partWithPort;
+		return (Property)eVirtualGet(UML2Package.CONNECTOR_END__PART_WITH_PORT);
 	}
 
 	/**
@@ -220,10 +206,10 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * @generated
 	 */
 	public void setPartWithPort(Property newPartWithPort) {
-		Property oldPartWithPort = partWithPort;
-		partWithPort = newPartWithPort;
+		Property partWithPort = newPartWithPort;
+		Object oldPartWithPort = eVirtualSet(UML2Package.CONNECTOR_END__PART_WITH_PORT, partWithPort);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTOR_END__PART_WITH_PORT, oldPartWithPort, partWithPort));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTOR_END__PART_WITH_PORT, oldPartWithPort == EVIRTUAL_NO_VALUE ? null : oldPartWithPort, partWithPort));
 
 	}
 
@@ -239,6 +225,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 				case UML2Package.CONNECTOR_END__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
 				case UML2Package.CONNECTOR_END__ROLE:
+					ConnectableElement role = (ConnectableElement)eVirtualGet(UML2Package.CONNECTOR_END__ROLE);
 					if (role != null)
 						msgs = ((InternalEObject)role).eInverseRemove(this, UML2Package.CONNECTABLE_ELEMENT__END, ConnectableElement.class, msgs);
 					return basicSetRole((ConnectableElement)otherEnd, msgs);
@@ -403,6 +390,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 			case UML2Package.CONNECTOR_END__OWNER:
 				return isSetOwner();
 			case UML2Package.CONNECTOR_END__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.CONNECTOR_END__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONNECTOR_END__IS_ORDERED:
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
@@ -413,15 +401,15 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 			case UML2Package.CONNECTOR_END__UPPER:
 				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.CONNECTOR_END__UPPER_VALUE:
-				return upperValue != null;
+				return eVirtualGet(UML2Package.CONNECTOR_END__UPPER_VALUE) != null;
 			case UML2Package.CONNECTOR_END__LOWER_VALUE:
-				return lowerValue != null;
+				return eVirtualGet(UML2Package.CONNECTOR_END__LOWER_VALUE) != null;
 			case UML2Package.CONNECTOR_END__DEFINING_END:
 				return basicGetDefiningEnd() != null;
 			case UML2Package.CONNECTOR_END__ROLE:
-				return role != null;
+				return eVirtualGet(UML2Package.CONNECTOR_END__ROLE) != null;
 			case UML2Package.CONNECTOR_END__PART_WITH_PORT:
-				return partWithPort != null;
+				return eVirtualGet(UML2Package.CONNECTOR_END__PART_WITH_PORT) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

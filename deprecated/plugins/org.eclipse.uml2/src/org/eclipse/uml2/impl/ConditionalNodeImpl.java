@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.16 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.17 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -108,26 +108,6 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	protected static final int IS_ASSURED_EFLAG = 1 << 11;
 
 	/**
-	 * The cached value of the '{@link #getClauses() <em>Clause</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClauses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList clause = null;
-
-	/**
-	 * The cached value of the '{@link #getResults() <em>Result</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResults()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList result = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -151,8 +131,9 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 * @generated
 	 */
 	public EList getOutputs() {
+		EList output = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__OUTPUT);
 		if (output == null) {
-			output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.CONDITIONAL_NODE__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getConditionalNode_Result()});
+			eVirtualSet(UML2Package.CONDITIONAL_NODE__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.CONDITIONAL_NODE__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getConditionalNode_Result()}));
 		}
 		return output;
 	}
@@ -220,8 +201,9 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 * @generated
 	 */
 	public EList getClauses() {
+		EList clause = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__CLAUSE);
 		if (clause == null) {
-			clause = new EObjectContainmentEList(Clause.class, this, UML2Package.CONDITIONAL_NODE__CLAUSE);
+			eVirtualSet(UML2Package.CONDITIONAL_NODE__CLAUSE, clause = new EObjectContainmentEList(Clause.class, this, UML2Package.CONDITIONAL_NODE__CLAUSE));
 		}
 		return clause;
 	}
@@ -262,8 +244,9 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 * @generated
 	 */
 	public EList getResults() {
+		EList result = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__RESULT);
 		if (result == null) {
-			result = new EObjectContainmentEList(OutputPin.class, this, UML2Package.CONDITIONAL_NODE__RESULT);
+			eVirtualSet(UML2Package.CONDITIONAL_NODE__RESULT, result = new EObjectContainmentEList(OutputPin.class, this, UML2Package.CONDITIONAL_NODE__RESULT));
 		}
 		return result;
 	}
@@ -723,44 +706,54 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__OWNER:
 				return isSetOwner();
 			case UML2Package.CONDITIONAL_NODE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.CONDITIONAL_NODE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CONDITIONAL_NODE__NAME:
+				String name = eVirtualIsSet(UML2Package.CONDITIONAL_NODE__NAME) ? (String)eVirtualGet(UML2Package.CONDITIONAL_NODE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CONDITIONAL_NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONDITIONAL_NODE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.CONDITIONAL_NODE__VISIBILITY) && eVirtualGet(UML2Package.CONDITIONAL_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.CONDITIONAL_NODE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.CONDITIONAL_NODE__NAME_EXPRESSION) != null;
 			case UML2Package.CONDITIONAL_NODE__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.CONDITIONAL_NODE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CONDITIONAL_NODE__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.CONDITIONAL_NODE__ACTIVITY:
-				return isSetActivity();
+				return getActivity() != null;
 			case UML2Package.CONDITIONAL_NODE__REDEFINED_ELEMENT:
 				return isSetRedefinedElements();
 			case UML2Package.CONDITIONAL_NODE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.CONDITIONAL_NODE__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__HANDLER:
+				EList handler = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__EFFECT:
+				String effect = eVirtualIsSet(UML2Package.CONDITIONAL_NODE__EFFECT) ? (String)eVirtualGet(UML2Package.CONDITIONAL_NODE__EFFECT) : EFFECT_EDEFAULT;
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.CONDITIONAL_NODE__OUTPUT:
 				return isSetOutputs();
@@ -769,24 +762,30 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__CONTEXT:
 				return getContext() != null;
 			case UML2Package.CONDITIONAL_NODE__LOCAL_PRECONDITION:
+				EList localPrecondition = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__LOCAL_PRECONDITION);
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__LOCAL_POSTCONDITION:
+				EList localPostcondition = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__LOCAL_POSTCONDITION);
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__MEMBER:
 				return isSetMembers();
 			case UML2Package.CONDITIONAL_NODE__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.CONDITIONAL_NODE__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__SUPER_GROUP:
 				return isSetSuperGroup();
 			case UML2Package.CONDITIONAL_NODE__ACTIVITY_GROUP_ACTIVITY:
 				return isSetActivityGroup_activity();
 			case UML2Package.CONDITIONAL_NODE__VARIABLE:
+				EList variable = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__VARIABLE);
 				return variable != null && !variable.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__CONTAINED_NODE:
 				return isSetContainedNodes();
@@ -799,8 +798,10 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__IS_ASSURED:
 				return ((eFlags & IS_ASSURED_EFLAG) != 0) != IS_ASSURED_EDEFAULT;
 			case UML2Package.CONDITIONAL_NODE__CLAUSE:
+				EList clause = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__CLAUSE);
 				return clause != null && !clause.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__RESULT:
+				EList result = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__RESULT);
 				return result != null && !result.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
@@ -831,8 +832,9 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getConditionalNode_Clause())) {
-			ownedElement.addAll(getClauses());
+		EList clause = getClauses();
+		if (!clause.isEmpty()) {
+			ownedElement.addAll(clause);
 		}
 		return ownedElement;
 	}

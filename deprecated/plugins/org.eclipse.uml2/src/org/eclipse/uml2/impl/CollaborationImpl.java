@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.26 2005/11/09 22:53:09 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.27 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,46 +79,6 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getRoles() <em>Role</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRoles()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList role = null;
-
-	/**
-	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedAttributes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedAttribute = null;
-
-	/**
-	 * The cached value of the '{@link #getOwnedConnectors() <em>Owned Connector</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConnectors()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedConnector = null;
-
-	/**
-	 * The cached value of the '{@link #getCollaborationRoles() <em>Collaboration Role</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCollaborationRoles()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList collaborationRole = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -142,8 +102,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
+		EList ownedAttribute = (EList)eVirtualGet(UML2Package.COLLABORATION__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
-			ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.COLLABORATION__OWNED_ATTRIBUTE);
+			eVirtualSet(UML2Package.COLLABORATION__OWNED_ATTRIBUTE, ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.COLLABORATION__OWNED_ATTRIBUTE));
 		}
 		return ownedAttribute;
 	}
@@ -257,8 +218,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated
 	 */
 	public EList getAttributes() {
+		EList attribute = (EList)eVirtualGet(UML2Package.COLLABORATION__ATTRIBUTE);
 		if (attribute == null) {
-			attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.COLLABORATION__ATTRIBUTE, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute()});
+			eVirtualSet(UML2Package.COLLABORATION__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.COLLABORATION__ATTRIBUTE, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute()}));
 		}
 		return attribute;
 	}
@@ -280,8 +242,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated
 	 */
 	public EList getFeatures() {
+		EList feature = (EList)eVirtualGet(UML2Package.COLLABORATION__FEATURE);
 		if (feature == null) {
-			feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.COLLABORATION__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute(), UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector()});
+			eVirtualSet(UML2Package.COLLABORATION__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.COLLABORATION__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute(), UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector()}));
 		}
 		return feature;
 	}
@@ -304,11 +267,13 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())) {
-			ownedMember.addAll(getOwnedAttributes());
+		EList ownedAttribute = getOwnedAttributes();
+		if (!ownedAttribute.isEmpty()) {
+			ownedMember.addAll(ownedAttribute);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())) {
-			ownedMember.addAll(getOwnedConnectors());
+		EList ownedConnector = getOwnedConnectors();
+		if (!ownedConnector.isEmpty()) {
+			ownedMember.addAll(ownedConnector);
 		}
 		return ownedMember;
 	}
@@ -357,8 +322,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated
 	 */
 	public EList getOwnedConnectors() {
+		EList ownedConnector = (EList)eVirtualGet(UML2Package.COLLABORATION__OWNED_CONNECTOR);
 		if (ownedConnector == null) {
-			ownedConnector = new EObjectContainmentEList(Connector.class, this, UML2Package.COLLABORATION__OWNED_CONNECTOR);
+			eVirtualSet(UML2Package.COLLABORATION__OWNED_CONNECTOR, ownedConnector = new EObjectContainmentEList(Connector.class, this, UML2Package.COLLABORATION__OWNED_CONNECTOR));
 		}
 		return ownedConnector;
 	}
@@ -414,8 +380,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated
 	 */
 	public EList getCollaborationRoles() {
+		EList collaborationRole = (EList)eVirtualGet(UML2Package.COLLABORATION__COLLABORATION_ROLE);
 		if (collaborationRole == null) {
-			collaborationRole = new EObjectResolvingEList(ConnectableElement.class, this, UML2Package.COLLABORATION__COLLABORATION_ROLE);
+			eVirtualSet(UML2Package.COLLABORATION__COLLABORATION_ROLE, collaborationRole = new EObjectResolvingEList(ConnectableElement.class, this, UML2Package.COLLABORATION__COLLABORATION_ROLE));
 		}
 		return collaborationRole;
 	}
@@ -442,8 +409,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated
 	 */
 	public EList getRoles() {
+		EList role = (EList)eVirtualGet(UML2Package.COLLABORATION__ROLE);
 		if (role == null) {
-			role = new DerivedUnionEObjectEList(ConnectableElement.class, this, UML2Package.COLLABORATION__ROLE, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(), UML2Package.eINSTANCE.getCollaboration_CollaborationRole()});
+			eVirtualSet(UML2Package.COLLABORATION__ROLE, role = new DerivedUnionEObjectEList(ConnectableElement.class, this, UML2Package.COLLABORATION__ROLE, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(), UML2Package.eINSTANCE.getCollaboration_CollaborationRole()}));
 		}
 		return role;
 	}
@@ -872,33 +840,40 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			case UML2Package.COLLABORATION__OWNER:
 				return isSetOwner();
 			case UML2Package.COLLABORATION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.COLLABORATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.COLLABORATION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.COLLABORATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.COLLABORATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.COLLABORATION__NAME:
+				String name = eVirtualIsSet(UML2Package.COLLABORATION__NAME) ? (String)eVirtualGet(UML2Package.COLLABORATION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.COLLABORATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COLLABORATION__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.COLLABORATION__VISIBILITY) && eVirtualGet(UML2Package.COLLABORATION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.COLLABORATION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.COLLABORATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.COLLABORATION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.COLLABORATION__NAME_EXPRESSION) != null;
 			case UML2Package.COLLABORATION__MEMBER:
 				return isSetMembers();
 			case UML2Package.COLLABORATION__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.COLLABORATION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.COLLABORATION__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.COLLABORATION__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.COLLABORATION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.COLLABORATION__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.COLLABORATION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.COLLABORATION__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.COLLABORATION__TEMPLATE_PARAMETER) != null;
 			case UML2Package.COLLABORATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.COLLABORATION__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -918,42 +893,55 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			case UML2Package.COLLABORATION__GENERAL:
 				return !getGenerals().isEmpty();
 			case UML2Package.COLLABORATION__GENERALIZATION:
+				EList generalization = (EList)eVirtualGet(UML2Package.COLLABORATION__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.COLLABORATION__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.COLLABORATION__REDEFINED_CLASSIFIER:
+				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.COLLABORATION__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.COLLABORATION__SUBSTITUTION:
+				EList substitution = (EList)eVirtualGet(UML2Package.COLLABORATION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
+				EList powertypeExtent = (EList)eVirtualGet(UML2Package.COLLABORATION__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_USE_CASE:
+				EList ownedUseCase = (EList)eVirtualGet(UML2Package.COLLABORATION__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.COLLABORATION__USE_CASE:
+				EList useCase = (EList)eVirtualGet(UML2Package.COLLABORATION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UML2Package.COLLABORATION__REPRESENTATION:
-				return representation != null;
+				return eVirtualGet(UML2Package.COLLABORATION__REPRESENTATION) != null;
 			case UML2Package.COLLABORATION__OCCURRENCE:
+				EList occurrence = (EList)eVirtualGet(UML2Package.COLLABORATION__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_BEHAVIOR:
-				return isSetOwnedBehaviors();
+				EList ownedBehavior = (EList)eVirtualGet(UML2Package.COLLABORATION__OWNED_BEHAVIOR);
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UML2Package.COLLABORATION__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
+				return eVirtualGet(UML2Package.COLLABORATION__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.COLLABORATION__IMPLEMENTATION:
+				EList implementation = (EList)eVirtualGet(UML2Package.COLLABORATION__IMPLEMENTATION);
 				return implementation != null && !implementation.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_TRIGGER:
+				EList ownedTrigger = (EList)eVirtualGet(UML2Package.COLLABORATION__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.COLLABORATION__OWNED_ATTRIBUTE:
+				EList ownedAttribute = (EList)eVirtualGet(UML2Package.COLLABORATION__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UML2Package.COLLABORATION__PART:
 				return !getParts().isEmpty();
 			case UML2Package.COLLABORATION__ROLE:
 				return isSetRoles();
 			case UML2Package.COLLABORATION__OWNED_CONNECTOR:
+				EList ownedConnector = (EList)eVirtualGet(UML2Package.COLLABORATION__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.COLLABORATION__COLLABORATION_ROLE:
+				EList collaborationRole = (EList)eVirtualGet(UML2Package.COLLABORATION__COLLABORATION_ROLE);
 				return collaborationRole != null && !collaborationRole.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

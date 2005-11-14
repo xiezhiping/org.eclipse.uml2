@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.26 2005/11/09 22:53:09 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.27 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,26 +76,6 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedAttributes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedAttribute = null;
-
-	/**
-	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedOperation = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -119,8 +99,9 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 * @generated
 	 */
 	public EList getAttributes() {
+		EList attribute = (EList)eVirtualGet(UML2Package.DATA_TYPE__ATTRIBUTE);
 		if (attribute == null) {
-			attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.DATA_TYPE__ATTRIBUTE, new EStructuralFeature[] {UML2Package.eINSTANCE.getDataType_OwnedAttribute()});
+			eVirtualSet(UML2Package.DATA_TYPE__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.DATA_TYPE__ATTRIBUTE, new EStructuralFeature[] {UML2Package.eINSTANCE.getDataType_OwnedAttribute()}));
 		}
 		return attribute;
 	}
@@ -142,8 +123,9 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 * @generated
 	 */
 	public EList getFeatures() {
+		EList feature = (EList)eVirtualGet(UML2Package.DATA_TYPE__FEATURE);
 		if (feature == null) {
-			feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.DATA_TYPE__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute(), UML2Package.eINSTANCE.getDataType_OwnedOperation()});
+			eVirtualSet(UML2Package.DATA_TYPE__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.DATA_TYPE__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute(), UML2Package.eINSTANCE.getDataType_OwnedOperation()}));
 		}
 		return feature;
 	}
@@ -165,8 +147,9 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
+		EList ownedAttribute = (EList)eVirtualGet(UML2Package.DATA_TYPE__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
-			ownedAttribute = new EObjectContainmentWithInverseEList(Property.class, this, UML2Package.DATA_TYPE__OWNED_ATTRIBUTE, UML2Package.PROPERTY__DATATYPE);
+			eVirtualSet(UML2Package.DATA_TYPE__OWNED_ATTRIBUTE, ownedAttribute = new EObjectContainmentWithInverseEList(Property.class, this, UML2Package.DATA_TYPE__OWNED_ATTRIBUTE, UML2Package.PROPERTY__DATATYPE));
 		}
 		return ownedAttribute;
 	}
@@ -221,8 +204,9 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 * @generated
 	 */
 	public EList getOwnedOperations() {
+		EList ownedOperation = (EList)eVirtualGet(UML2Package.DATA_TYPE__OWNED_OPERATION);
 		if (ownedOperation == null) {
-			ownedOperation = new EObjectContainmentWithInverseEList(Operation.class, this, UML2Package.DATA_TYPE__OWNED_OPERATION, UML2Package.OPERATION__DATATYPE);
+			eVirtualSet(UML2Package.DATA_TYPE__OWNED_OPERATION, ownedOperation = new EObjectContainmentWithInverseEList(Operation.class, this, UML2Package.DATA_TYPE__OWNED_OPERATION, UML2Package.OPERATION__DATATYPE));
 		}
 		return ownedOperation;
 	}
@@ -294,6 +278,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				case UML2Package.DATA_TYPE__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -306,6 +291,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				case UML2Package.DATA_TYPE__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.DATA_TYPE__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -682,33 +668,40 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 			case UML2Package.DATA_TYPE__OWNER:
 				return isSetOwner();
 			case UML2Package.DATA_TYPE__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.DATA_TYPE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.DATA_TYPE__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.DATA_TYPE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.DATA_TYPE__NAME:
+				String name = eVirtualIsSet(UML2Package.DATA_TYPE__NAME) ? (String)eVirtualGet(UML2Package.DATA_TYPE__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DATA_TYPE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DATA_TYPE__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.DATA_TYPE__VISIBILITY) && eVirtualGet(UML2Package.DATA_TYPE__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.DATA_TYPE__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.DATA_TYPE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DATA_TYPE__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.DATA_TYPE__NAME_EXPRESSION) != null;
 			case UML2Package.DATA_TYPE__MEMBER:
 				return isSetMembers();
 			case UML2Package.DATA_TYPE__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.DATA_TYPE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.DATA_TYPE__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.DATA_TYPE__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.DATA_TYPE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.DATA_TYPE__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.DATA_TYPE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.DATA_TYPE__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.DATA_TYPE__TEMPLATE_PARAMETER) != null;
 			case UML2Package.DATA_TYPE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DATA_TYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -728,26 +721,35 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 			case UML2Package.DATA_TYPE__GENERAL:
 				return !getGenerals().isEmpty();
 			case UML2Package.DATA_TYPE__GENERALIZATION:
+				EList generalization = (EList)eVirtualGet(UML2Package.DATA_TYPE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.DATA_TYPE__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER:
+				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.DATA_TYPE__SUBSTITUTION:
+				EList substitution = (EList)eVirtualGet(UML2Package.DATA_TYPE__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+				EList powertypeExtent = (EList)eVirtualGet(UML2Package.DATA_TYPE__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
+				EList ownedUseCase = (EList)eVirtualGet(UML2Package.DATA_TYPE__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.DATA_TYPE__USE_CASE:
+				EList useCase = (EList)eVirtualGet(UML2Package.DATA_TYPE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UML2Package.DATA_TYPE__REPRESENTATION:
-				return representation != null;
+				return eVirtualGet(UML2Package.DATA_TYPE__REPRESENTATION) != null;
 			case UML2Package.DATA_TYPE__OCCURRENCE:
+				EList occurrence = (EList)eVirtualGet(UML2Package.DATA_TYPE__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.DATA_TYPE__OWNED_ATTRIBUTE:
+				EList ownedAttribute = (EList)eVirtualGet(UML2Package.DATA_TYPE__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UML2Package.DATA_TYPE__OWNED_OPERATION:
+				EList ownedOperation = (EList)eVirtualGet(UML2Package.DATA_TYPE__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
@@ -761,11 +763,13 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (eIsSet(UML2Package.eINSTANCE.getDataType_OwnedAttribute())) {
-			ownedMember.addAll(getOwnedAttributes());
+		EList ownedAttribute = getOwnedAttributes();
+		if (!ownedAttribute.isEmpty()) {
+			ownedMember.addAll(ownedAttribute);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getDataType_OwnedOperation())) {
-			ownedMember.addAll(getOwnedOperations());
+		EList ownedOperation = getOwnedOperations();
+		if (!ownedOperation.isEmpty()) {
+			ownedMember.addAll(ownedOperation);
 		}
 		return ownedMember;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.16 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -353,7 +353,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated
 	 */
 	public boolean isSetActivity() {
-		return getActivity() != null;
+  		return false;
 	}
 
 	/**
@@ -490,6 +490,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			case UML2Package.ACTIVITY_GROUP__OWNER:
 				return isSetOwner();
 			case UML2Package.ACTIVITY_GROUP__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.ACTIVITY_GROUP__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_GROUP__SUPER_GROUP:
 				return isSetSuperGroup();

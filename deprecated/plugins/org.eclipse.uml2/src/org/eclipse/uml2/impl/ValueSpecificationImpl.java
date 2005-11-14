@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationImpl.java,v 1.12 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ValueSpecificationImpl.java,v 1.13 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,8 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -58,16 +60,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTemplateParameter()
-	 * @generated
-	 * @ordered
-	 */
-	protected TemplateParameter templateParameter = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -91,10 +83,12 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
+		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			TemplateParameter oldTemplateParameter = templateParameter;
 			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
 			if (templateParameter != oldTemplateParameter) {
+				eVirtualSet(UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER, templateParameter);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER, oldTemplateParameter, templateParameter));
 			}
@@ -108,7 +102,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
-		return templateParameter;
+		return (TemplateParameter)eVirtualGet(UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER);
 	}
 
 	/**
@@ -117,10 +111,9 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplateParameter(TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		TemplateParameter oldTemplateParameter = templateParameter;
-		templateParameter = newTemplateParameter;
+		Object oldTemplateParameter = eVirtualSet(UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER, newTemplateParameter);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER, oldTemplateParameter, newTemplateParameter);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER, oldTemplateParameter == EVIRTUAL_NO_VALUE ? null : oldTemplateParameter, newTemplateParameter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -136,6 +129,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
+		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER);
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -182,7 +176,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VALUE_SPECIFICATION__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 
-		if (newOwningParameter != null || oldOwningParameter == templateParameter) {
+		if (newOwningParameter != null || oldOwningParameter == eVirtualGet(UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER)) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
@@ -279,12 +273,14 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 				case UML2Package.VALUE_SPECIFICATION__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.VALUE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.VALUE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.VALUE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.VALUE_SPECIFICATION__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER:
+					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER);
 					if (templateParameter != null)
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
@@ -497,25 +493,29 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 			case UML2Package.VALUE_SPECIFICATION__OWNER:
 				return isSetOwner();
 			case UML2Package.VALUE_SPECIFICATION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.VALUE_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.VALUE_SPECIFICATION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.VALUE_SPECIFICATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.VALUE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.VALUE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.VALUE_SPECIFICATION__NAME:
+				String name = eVirtualIsSet(UML2Package.VALUE_SPECIFICATION__NAME) ? (String)eVirtualGet(UML2Package.VALUE_SPECIFICATION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.VALUE_SPECIFICATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.VALUE_SPECIFICATION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.VALUE_SPECIFICATION__VISIBILITY) && eVirtualGet(UML2Package.VALUE_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.VALUE_SPECIFICATION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.VALUE_SPECIFICATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.VALUE_SPECIFICATION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.VALUE_SPECIFICATION__NAME_EXPRESSION) != null;
 			case UML2Package.VALUE_SPECIFICATION__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.VALUE_SPECIFICATION__TYPE) != null;
 			case UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.VALUE_SPECIFICATION__TEMPLATE_PARAMETER) != null;
 			case UML2Package.VALUE_SPECIFICATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 		}

@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.18 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ModelImpl.java,v 1.19 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -58,16 +60,6 @@ public class ModelImpl extends PackageImpl implements Model {
 	protected static final String VIEWPOINT_EDEFAULT = ""; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getViewpoint() <em>Viewpoint</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getViewpoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected String viewpoint = VIEWPOINT_EDEFAULT;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -91,7 +83,8 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * @generated
 	 */
 	public String getViewpoint() {
-		return viewpoint;
+		String viewpoint = (String)eVirtualGet(UML2Package.MODEL__VIEWPOINT);
+		return viewpoint == null ? VIEWPOINT_EDEFAULT : viewpoint;
 	}
 
 	/**
@@ -101,10 +94,10 @@ public class ModelImpl extends PackageImpl implements Model {
 	 */
 	public void setViewpoint(String newViewpoint) {
 		newViewpoint = newViewpoint == null ? VIEWPOINT_EDEFAULT : newViewpoint;
-		String oldViewpoint = viewpoint;
-		viewpoint = newViewpoint;
+		String viewpoint = newViewpoint;
+		Object oldViewpoint = eVirtualSet(UML2Package.MODEL__VIEWPOINT, viewpoint);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MODEL__VIEWPOINT, oldViewpoint, viewpoint));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MODEL__VIEWPOINT, oldViewpoint == EVIRTUAL_NO_VALUE ? VIEWPOINT_EDEFAULT : oldViewpoint, viewpoint));
 
 	}
 
@@ -337,33 +330,40 @@ public class ModelImpl extends PackageImpl implements Model {
 			case UML2Package.MODEL__OWNER:
 				return isSetOwner();
 			case UML2Package.MODEL__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.MODEL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.MODEL__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.MODEL__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.MODEL__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.MODEL__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.MODEL__NAME:
+				String name = eVirtualIsSet(UML2Package.MODEL__NAME) ? (String)eVirtualGet(UML2Package.MODEL__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.MODEL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.MODEL__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.MODEL__VISIBILITY) && eVirtualGet(UML2Package.MODEL__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.MODEL__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.MODEL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.MODEL__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.MODEL__NAME_EXPRESSION) != null;
 			case UML2Package.MODEL__MEMBER:
 				return isSetMembers();
 			case UML2Package.MODEL__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.MODEL__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.MODEL__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.MODEL__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.MODEL__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.MODEL__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.MODEL__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.MODEL__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.MODEL__TEMPLATE_PARAMETER) != null;
 			case UML2Package.MODEL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.MODEL__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -377,12 +377,16 @@ public class ModelImpl extends PackageImpl implements Model {
 			case UML2Package.MODEL__OWNED_MEMBER:
 				return isSetOwnedMembers();
 			case UML2Package.MODEL__PACKAGE_MERGE:
+				EList packageMerge = (EList)eVirtualGet(UML2Package.MODEL__PACKAGE_MERGE);
 				return packageMerge != null && !packageMerge.isEmpty();
 			case UML2Package.MODEL__APPLIED_PROFILE:
+				EList appliedProfile = (EList)eVirtualGet(UML2Package.MODEL__APPLIED_PROFILE);
 				return appliedProfile != null && !appliedProfile.isEmpty();
 			case UML2Package.MODEL__PACKAGE_EXTENSION:
+				EList packageExtension = (EList)eVirtualGet(UML2Package.MODEL__PACKAGE_EXTENSION);
 				return packageExtension != null && !packageExtension.isEmpty();
 			case UML2Package.MODEL__VIEWPOINT:
+				String viewpoint = eVirtualIsSet(UML2Package.MODEL__VIEWPOINT) ? (String)eVirtualGet(UML2Package.MODEL__VIEWPOINT) : VIEWPOINT_EDEFAULT;
 				return VIEWPOINT_EDEFAULT == null ? viewpoint != null : !VIEWPOINT_EDEFAULT.equals(viewpoint);
 		}
 		return eDynamicIsSet(eFeature);
@@ -398,7 +402,7 @@ public class ModelImpl extends PackageImpl implements Model {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (viewpoint: "); //$NON-NLS-1$
-		result.append(viewpoint);
+		result.append(eVirtualIsSet(UML2Package.MODEL__VIEWPOINT) ? eVirtualGet(UML2Package.MODEL__VIEWPOINT) : VIEWPOINT_EDEFAULT);
 		result.append(')');
 		return result.toString();
 	}

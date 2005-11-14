@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.9 2005/11/04 22:22:59 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.10 2005/11/14 17:31:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,8 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -51,26 +53,6 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getBefore() <em>Before</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBefore()
-	 * @generated
-	 * @ordered
-	 */
-	protected EventOccurrence before = null;
-
-	/**
-	 * The cached value of the '{@link #getAfter() <em>After</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAfter()
-	 * @generated
-	 * @ordered
-	 */
-	protected EventOccurrence after = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -94,10 +76,12 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	 * @generated
 	 */
 	public EventOccurrence getBefore() {
+		EventOccurrence before = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__BEFORE);
 		if (before != null && before.eIsProxy()) {
 			EventOccurrence oldBefore = before;
 			before = (EventOccurrence)eResolveProxy((InternalEObject)before);
 			if (before != oldBefore) {
+				eVirtualSet(UML2Package.GENERAL_ORDERING__BEFORE, before);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.GENERAL_ORDERING__BEFORE, oldBefore, before));
 			}
@@ -111,7 +95,7 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	 * @generated
 	 */
 	public EventOccurrence basicGetBefore() {
-		return before;
+		return (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__BEFORE);
 	}
 
 	/**
@@ -120,10 +104,9 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	 * @generated
 	 */
 	public NotificationChain basicSetBefore(EventOccurrence newBefore, NotificationChain msgs) {
-		EventOccurrence oldBefore = before;
-		before = newBefore;
+		Object oldBefore = eVirtualSet(UML2Package.GENERAL_ORDERING__BEFORE, newBefore);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.GENERAL_ORDERING__BEFORE, oldBefore, newBefore);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.GENERAL_ORDERING__BEFORE, oldBefore == EVIRTUAL_NO_VALUE ? null : oldBefore, newBefore);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -136,6 +119,7 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	 * @generated
 	 */
 	public void setBefore(EventOccurrence newBefore) {
+		EventOccurrence before = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__BEFORE);
 		if (newBefore != before) {
 			NotificationChain msgs = null;
 			if (before != null)
@@ -157,10 +141,12 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	 * @generated
 	 */
 	public EventOccurrence getAfter() {
+		EventOccurrence after = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__AFTER);
 		if (after != null && after.eIsProxy()) {
 			EventOccurrence oldAfter = after;
 			after = (EventOccurrence)eResolveProxy((InternalEObject)after);
 			if (after != oldAfter) {
+				eVirtualSet(UML2Package.GENERAL_ORDERING__AFTER, after);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.GENERAL_ORDERING__AFTER, oldAfter, after));
 			}
@@ -174,7 +160,7 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	 * @generated
 	 */
 	public EventOccurrence basicGetAfter() {
-		return after;
+		return (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__AFTER);
 	}
 
 	/**
@@ -183,10 +169,9 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	 * @generated
 	 */
 	public NotificationChain basicSetAfter(EventOccurrence newAfter, NotificationChain msgs) {
-		EventOccurrence oldAfter = after;
-		after = newAfter;
+		Object oldAfter = eVirtualSet(UML2Package.GENERAL_ORDERING__AFTER, newAfter);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.GENERAL_ORDERING__AFTER, oldAfter, newAfter);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.GENERAL_ORDERING__AFTER, oldAfter == EVIRTUAL_NO_VALUE ? null : oldAfter, newAfter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -199,6 +184,7 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	 * @generated
 	 */
 	public void setAfter(EventOccurrence newAfter) {
+		EventOccurrence after = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__AFTER);
 		if (newAfter != after) {
 			NotificationChain msgs = null;
 			if (after != null)
@@ -227,16 +213,19 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 				case UML2Package.GENERAL_ORDERING__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.GENERAL_ORDERING__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.GENERAL_ORDERING__BEFORE:
+					EventOccurrence before = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__BEFORE);
 					if (before != null)
 						msgs = ((InternalEObject)before).eInverseRemove(this, UML2Package.EVENT_OCCURRENCE__TO_AFTER, EventOccurrence.class, msgs);
 					return basicSetBefore((EventOccurrence)otherEnd, msgs);
 				case UML2Package.GENERAL_ORDERING__AFTER:
+					EventOccurrence after = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__AFTER);
 					if (after != null)
 						msgs = ((InternalEObject)after).eInverseRemove(this, UML2Package.EVENT_OCCURRENCE__TO_BEFORE, EventOccurrence.class, msgs);
 					return basicSetAfter((EventOccurrence)otherEnd, msgs);
@@ -420,25 +409,29 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 			case UML2Package.GENERAL_ORDERING__OWNER:
 				return isSetOwner();
 			case UML2Package.GENERAL_ORDERING__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.GENERAL_ORDERING__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.GENERAL_ORDERING__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.GENERAL_ORDERING__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.GENERAL_ORDERING__NAME:
+				String name = eVirtualIsSet(UML2Package.GENERAL_ORDERING__NAME) ? (String)eVirtualGet(UML2Package.GENERAL_ORDERING__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.GENERAL_ORDERING__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.GENERAL_ORDERING__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.GENERAL_ORDERING__VISIBILITY) && eVirtualGet(UML2Package.GENERAL_ORDERING__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.GENERAL_ORDERING__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.GENERAL_ORDERING__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.GENERAL_ORDERING__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.GENERAL_ORDERING__NAME_EXPRESSION) != null;
 			case UML2Package.GENERAL_ORDERING__BEFORE:
-				return before != null;
+				return eVirtualGet(UML2Package.GENERAL_ORDERING__BEFORE) != null;
 			case UML2Package.GENERAL_ORDERING__AFTER:
-				return after != null;
+				return eVirtualGet(UML2Package.GENERAL_ORDERING__AFTER) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.16 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,36 +71,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getSubgroups() <em>Subgroup</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubgroups()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList subgroup = null;
-
-	/**
-	 * The cached value of the '{@link #getContainedNodes() <em>Contained Node</em>}' reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getContainedNodes()
-	 * @generated
-	 * @ordered
-	 */
-    protected EList containedNode = null;
-
-	/**
-	 * The cached value of the '{@link #getContainedEdges() <em>Contained Edge</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContainedEdges()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList containedEdge = null;
-
-	/**
 	 * The default value of the '{@link #isDimension() <em>Is Dimension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -141,16 +111,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	protected static final int IS_EXTERNAL_EFLAG = 1 << 9;
 
 	/**
-	 * The cached value of the '{@link #getRepresents() <em>Represents</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRepresents()
-	 * @generated
-	 * @ordered
-	 */
-	protected Element represents = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -171,7 +131,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Activity getActivityGroup_activity() {
 		if (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY) return null;
@@ -181,7 +141,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public void setActivityGroup_activity(Activity newActivityGroup_activity) {
 		if (newActivityGroup_activity != eContainer || (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY && newActivityGroup_activity != null)) {
@@ -197,7 +157,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY, newActivityGroup_activity, newActivityGroup_activity));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,12 +222,23 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public EList getContainedEdges() {
+		EList containedEdge = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE);
 		if (containedEdge == null) {
-			containedEdge = new EObjectWithInverseResolvingEList.ManyInverse(ActivityEdge.class, this, UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE, UML2Package.ACTIVITY_EDGE__IN_PARTITION);
+			eVirtualSet(UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE, containedEdge = new EObjectWithInverseResolvingEList.ManyInverse(ActivityEdge.class, this, UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE, UML2Package.ACTIVITY_EDGE__IN_PARTITION));
 		}
 		return containedEdge;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetContainedEdges() {
+		EList containedEdge = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE);
+		return containedEdge != null && !containedEdge.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -287,22 +260,24 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetContainedEdges() {
-		return containedEdge != null && !containedEdge.isEmpty();
+	public EList getContainedNodes() {
+		EList containedNode = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE);
+		if (containedNode == null) {
+			eVirtualSet(UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE, containedNode = new EObjectWithInverseResolvingEList.ManyInverse(ActivityNode.class, this, UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE, UML2Package.ACTIVITY_NODE__IN_PARTITION));
+		}
+		return containedNode;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getContainedNodes() {
-		if (containedNode == null) {
-			containedNode = new EObjectWithInverseResolvingEList.ManyInverse(ActivityNode.class, this, UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE, UML2Package.ACTIVITY_NODE__IN_PARTITION);
-		}
-		return containedNode;
+	public boolean isSetContainedNodes() {
+		EList containedNode = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE);
+		return containedNode != null && !containedNode.isEmpty();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -324,22 +299,24 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetContainedNodes() {
-		return containedNode != null && !containedNode.isEmpty();
+	public EList getSubgroups() {
+		EList subgroup = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__SUBGROUP);
+		if (subgroup == null) {
+			eVirtualSet(UML2Package.ACTIVITY_PARTITION__SUBGROUP, subgroup = new EObjectContainmentWithInverseEList(ActivityPartition.class, this, UML2Package.ACTIVITY_PARTITION__SUBGROUP, UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION));
+		}
+		return subgroup;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSubgroups() {
-		if (subgroup == null) {
-			subgroup = new EObjectContainmentWithInverseEList(ActivityPartition.class, this, UML2Package.ACTIVITY_PARTITION__SUBGROUP, UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION);
-		}
-		return subgroup;
+	public boolean isSetSubgroups() {
+		EList subgroup = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__SUBGROUP);
+		return subgroup != null && !subgroup.isEmpty();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -361,18 +338,10 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetSubgroups() {
-		return subgroup != null && !subgroup.isEmpty();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getActivityPartition_Subgroup()});
+			eVirtualSet(UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getActivityPartition_Subgroup()}));
 		}
 		return ownedElement;
 	}
@@ -456,10 +425,12 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public Element getRepresents() {
+		Element represents = (Element)eVirtualGet(UML2Package.ACTIVITY_PARTITION__REPRESENTS);
 		if (represents != null && represents.eIsProxy()) {
 			Element oldRepresents = represents;
 			represents = (Element)eResolveProxy((InternalEObject)represents);
 			if (represents != oldRepresents) {
+				eVirtualSet(UML2Package.ACTIVITY_PARTITION__REPRESENTS, represents);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.ACTIVITY_PARTITION__REPRESENTS, oldRepresents, represents));
 			}
@@ -473,7 +444,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public Element basicGetRepresents() {
-		return represents;
+		return (Element)eVirtualGet(UML2Package.ACTIVITY_PARTITION__REPRESENTS);
 	}
 
 	/**
@@ -482,10 +453,10 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public void setRepresents(Element newRepresents) {
-		Element oldRepresents = represents;
-		represents = newRepresents;
+		Element represents = newRepresents;
+		Object oldRepresents = eVirtualSet(UML2Package.ACTIVITY_PARTITION__REPRESENTS, represents);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__REPRESENTS, oldRepresents, represents));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__REPRESENTS, oldRepresents == EVIRTUAL_NO_VALUE ? null : oldRepresents, represents));
 
 	}
 
@@ -515,7 +486,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public boolean isSetActivity() {
-		return getActivity() != null;
+  		return false;
 	}
 
 	/**
@@ -591,6 +562,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 				case UML2Package.ACTIVITY_PARTITION__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY_PARTITION__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.ACTIVITY_PARTITION__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ACTIVITY_PARTITION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -868,21 +840,25 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 			case UML2Package.ACTIVITY_PARTITION__OWNER:
 				return isSetOwner();
 			case UML2Package.ACTIVITY_PARTITION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_PARTITION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.ACTIVITY_PARTITION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.ACTIVITY_PARTITION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.ACTIVITY_PARTITION__NAME:
+				String name = eVirtualIsSet(UML2Package.ACTIVITY_PARTITION__NAME) ? (String)eVirtualGet(UML2Package.ACTIVITY_PARTITION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ACTIVITY_PARTITION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACTIVITY_PARTITION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.ACTIVITY_PARTITION__VISIBILITY) && eVirtualGet(UML2Package.ACTIVITY_PARTITION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.ACTIVITY_PARTITION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ACTIVITY_PARTITION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.ACTIVITY_PARTITION__NAME_EXPRESSION) != null;
 			case UML2Package.ACTIVITY_PARTITION__SUPER_GROUP:
 				return isSetSuperGroup();
 			case UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY:
@@ -900,7 +876,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 			case UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION:
 				return getSuperPartition() != null;
 			case UML2Package.ACTIVITY_PARTITION__REPRESENTS:
-				return represents != null;
+				return eVirtualGet(UML2Package.ACTIVITY_PARTITION__REPRESENTS) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

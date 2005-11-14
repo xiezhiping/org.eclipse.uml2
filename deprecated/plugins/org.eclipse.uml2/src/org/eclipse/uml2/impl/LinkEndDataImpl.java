@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.9 2005/11/04 22:23:01 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.10 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -54,36 +54,6 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected InputPin value = null;
-
-	/**
-	 * The cached value of the '{@link #getEnd() <em>End</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnd()
-	 * @generated
-	 * @ordered
-	 */
-	protected Property end = null;
-
-	/**
-	 * The cached value of the '{@link #getQualifiers() <em>Qualifier</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQualifiers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList qualifier = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -107,10 +77,12 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * @generated
 	 */
 	public InputPin getValue() {
+		InputPin value = (InputPin)eVirtualGet(UML2Package.LINK_END_DATA__VALUE);
 		if (value != null && value.eIsProxy()) {
 			InputPin oldValue = value;
 			value = (InputPin)eResolveProxy((InternalEObject)value);
 			if (value != oldValue) {
+				eVirtualSet(UML2Package.LINK_END_DATA__VALUE, value);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.LINK_END_DATA__VALUE, oldValue, value));
 			}
@@ -124,7 +96,7 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * @generated
 	 */
 	public InputPin basicGetValue() {
-		return value;
+		return (InputPin)eVirtualGet(UML2Package.LINK_END_DATA__VALUE);
 	}
 
 	/**
@@ -133,10 +105,10 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * @generated
 	 */
 	public void setValue(InputPin newValue) {
-		InputPin oldValue = value;
-		value = newValue;
+		InputPin value = newValue;
+		Object oldValue = eVirtualSet(UML2Package.LINK_END_DATA__VALUE, value);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LINK_END_DATA__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LINK_END_DATA__VALUE, oldValue == EVIRTUAL_NO_VALUE ? null : oldValue, value));
 
 	}
 
@@ -147,10 +119,12 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * @generated
 	 */
 	public Property getEnd() {
+		Property end = (Property)eVirtualGet(UML2Package.LINK_END_DATA__END);
 		if (end != null && end.eIsProxy()) {
 			Property oldEnd = end;
 			end = (Property)eResolveProxy((InternalEObject)end);
 			if (end != oldEnd) {
+				eVirtualSet(UML2Package.LINK_END_DATA__END, end);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.LINK_END_DATA__END, oldEnd, end));
 			}
@@ -164,7 +138,7 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * @generated
 	 */
 	public Property basicGetEnd() {
-		return end;
+		return (Property)eVirtualGet(UML2Package.LINK_END_DATA__END);
 	}
 
 	/**
@@ -173,10 +147,10 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * @generated
 	 */
 	public void setEnd(Property newEnd) {
-		Property oldEnd = end;
-		end = newEnd;
+		Property end = newEnd;
+		Object oldEnd = eVirtualSet(UML2Package.LINK_END_DATA__END, end);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LINK_END_DATA__END, oldEnd, end));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LINK_END_DATA__END, oldEnd == EVIRTUAL_NO_VALUE ? null : oldEnd, end));
 
 	}
 
@@ -187,8 +161,9 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * @generated
 	 */
 	public EList getQualifiers() {
+		EList qualifier = (EList)eVirtualGet(UML2Package.LINK_END_DATA__QUALIFIER);
 		if (qualifier == null) {
-			qualifier = new EObjectContainmentEList(QualifierValue.class, this, UML2Package.LINK_END_DATA__QUALIFIER);
+			eVirtualSet(UML2Package.LINK_END_DATA__QUALIFIER, qualifier = new EObjectContainmentEList(QualifierValue.class, this, UML2Package.LINK_END_DATA__QUALIFIER));
 		}
 		return qualifier;
 	}
@@ -341,12 +316,14 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 			case UML2Package.LINK_END_DATA__OWNER:
 				return isSetOwner();
 			case UML2Package.LINK_END_DATA__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.LINK_END_DATA__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.LINK_END_DATA__VALUE:
-				return value != null;
+				return eVirtualGet(UML2Package.LINK_END_DATA__VALUE) != null;
 			case UML2Package.LINK_END_DATA__END:
-				return end != null;
+				return eVirtualGet(UML2Package.LINK_END_DATA__END) != null;
 			case UML2Package.LINK_END_DATA__QUALIFIER:
+				EList qualifier = (EList)eVirtualGet(UML2Package.LINK_END_DATA__QUALIFIER);
 				return qualifier != null && !qualifier.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

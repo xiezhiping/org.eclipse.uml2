@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.13 2005/11/09 22:53:08 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.14 2005/11/14 17:31:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -69,36 +69,6 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	protected static final ExpansionKind MODE_EDEFAULT = ExpansionKind.PARALLEL_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getMode() <em>Mode</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMode()
-	 * @generated
-	 * @ordered
-	 */
-	protected ExpansionKind mode = MODE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getOutputElements() <em>Output Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutputElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList outputElement = null;
-
-	/**
-	 * The cached value of the '{@link #getInputElements() <em>Input Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList inputElement = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -122,7 +92,8 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * @generated
 	 */
 	public ExpansionKind getMode() {
-		return mode;
+		ExpansionKind mode = (ExpansionKind)eVirtualGet(UML2Package.EXPANSION_REGION__MODE);
+		return mode == null ? MODE_EDEFAULT : mode;
 	}
 
 	/**
@@ -131,10 +102,10 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * @generated
 	 */
 	public void setMode(ExpansionKind newMode) {
-		ExpansionKind oldMode = mode;
-		mode = newMode == null ? MODE_EDEFAULT : newMode;
+		ExpansionKind mode = newMode == null ? MODE_EDEFAULT : newMode;
+		Object oldMode = eVirtualSet(UML2Package.EXPANSION_REGION__MODE, mode);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXPANSION_REGION__MODE, oldMode, mode));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXPANSION_REGION__MODE, oldMode == EVIRTUAL_NO_VALUE ? MODE_EDEFAULT : oldMode, mode));
 
 	}
 
@@ -145,8 +116,9 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * @generated
 	 */
 	public EList getOutputElements() {
+		EList outputElement = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT);
 		if (outputElement == null) {
-			outputElement = new EObjectWithInverseResolvingEList(ExpansionNode.class, this, UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT, UML2Package.EXPANSION_NODE__REGION_AS_OUTPUT);
+			eVirtualSet(UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT, outputElement = new EObjectWithInverseResolvingEList(ExpansionNode.class, this, UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT, UML2Package.EXPANSION_NODE__REGION_AS_OUTPUT));
 		}
 		return outputElement;
 	}
@@ -173,8 +145,9 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * @generated
 	 */
 	public EList getInputElements() {
+		EList inputElement = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__INPUT_ELEMENT);
 		if (inputElement == null) {
-			inputElement = new EObjectWithInverseResolvingEList(ExpansionNode.class, this, UML2Package.EXPANSION_REGION__INPUT_ELEMENT, UML2Package.EXPANSION_NODE__REGION_AS_INPUT);
+			eVirtualSet(UML2Package.EXPANSION_REGION__INPUT_ELEMENT, inputElement = new EObjectWithInverseResolvingEList(ExpansionNode.class, this, UML2Package.EXPANSION_REGION__INPUT_ELEMENT, UML2Package.EXPANSION_NODE__REGION_AS_INPUT));
 		}
 		return inputElement;
 	}
@@ -208,6 +181,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 				case UML2Package.EXPANSION_REGION__TEMPLATE_BINDING:
 					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE:
+					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE);
 					if (ownedTemplateSignature != null)
 						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -662,44 +636,54 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__OWNER:
 				return isSetOwner();
 			case UML2Package.EXPANSION_REGION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.EXPANSION_REGION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.EXPANSION_REGION__NAME:
+				String name = eVirtualIsSet(UML2Package.EXPANSION_REGION__NAME) ? (String)eVirtualGet(UML2Package.EXPANSION_REGION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXPANSION_REGION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXPANSION_REGION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.EXPANSION_REGION__VISIBILITY) && eVirtualGet(UML2Package.EXPANSION_REGION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.EXPANSION_REGION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.EXPANSION_REGION__NAME_EXPRESSION) != null;
 			case UML2Package.EXPANSION_REGION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.EXPANSION_REGION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.EXPANSION_REGION__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.EXPANSION_REGION__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.EXPANSION_REGION__ACTIVITY:
-				return isSetActivity();
+				return getActivity() != null;
 			case UML2Package.EXPANSION_REGION__REDEFINED_ELEMENT:
 				return isSetRedefinedElements();
 			case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.EXPANSION_REGION__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.EXPANSION_REGION__HANDLER:
+				EList handler = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.EXPANSION_REGION__EFFECT:
+				String effect = eVirtualIsSet(UML2Package.EXPANSION_REGION__EFFECT) ? (String)eVirtualGet(UML2Package.EXPANSION_REGION__EFFECT) : EFFECT_EDEFAULT;
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.EXPANSION_REGION__OUTPUT:
 				return isSetOutputs();
@@ -708,24 +692,30 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.EXPANSION_REGION__LOCAL_PRECONDITION:
+				EList localPrecondition = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__LOCAL_PRECONDITION);
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.EXPANSION_REGION__LOCAL_POSTCONDITION:
+				EList localPostcondition = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__LOCAL_POSTCONDITION);
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.EXPANSION_REGION__MEMBER:
 				return isSetMembers();
 			case UML2Package.EXPANSION_REGION__OWNED_RULE:
+				EList ownedRule = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.EXPANSION_REGION__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.EXPANSION_REGION__ELEMENT_IMPORT:
+				EList elementImport = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UML2Package.EXPANSION_REGION__PACKAGE_IMPORT:
+				EList packageImport = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.EXPANSION_REGION__SUPER_GROUP:
 				return isSetSuperGroup();
 			case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
 				return isSetActivityGroup_activity();
 			case UML2Package.EXPANSION_REGION__VARIABLE:
+				EList variable = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__VARIABLE);
 				return variable != null && !variable.isEmpty();
 			case UML2Package.EXPANSION_REGION__CONTAINED_NODE:
 				return isSetContainedNodes();
@@ -734,10 +724,12 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__MUST_ISOLATE:
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__MODE:
-				return mode != MODE_EDEFAULT;
+				return eVirtualIsSet(UML2Package.EXPANSION_REGION__MODE) && eVirtualGet(UML2Package.EXPANSION_REGION__MODE) != MODE_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT:
+				EList outputElement = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT);
 				return outputElement != null && !outputElement.isEmpty();
 			case UML2Package.EXPANSION_REGION__INPUT_ELEMENT:
+				EList inputElement = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__INPUT_ELEMENT);
 				return inputElement != null && !inputElement.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
@@ -753,7 +745,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mode: "); //$NON-NLS-1$
-		result.append(mode);
+		result.append(eVirtualIsSet(UML2Package.EXPANSION_REGION__MODE) ? eVirtualGet(UML2Package.EXPANSION_REGION__MODE) : MODE_EDEFAULT);
 		result.append(')');
 		return result.toString();
 	}

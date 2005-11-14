@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.12 2005/11/09 22:53:09 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.13 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
@@ -80,7 +82,7 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 	 * @generated
 	 */
 	public ValueSpecification basicGetSpecification() {
-		return specification;
+		return (ValueSpecification)eVirtualGet(UML2Package.TIME_CONSTRAINT__SPECIFICATION);
 	}
 
 	/**
@@ -92,6 +94,7 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 		if (newSpecification != null && !(newSpecification instanceof TimeInterval)) {
 			throw new IllegalArgumentException(String.valueOf(newSpecification));
 		}
+		ValueSpecification specification = (ValueSpecification)eVirtualGet(UML2Package.TIME_CONSTRAINT__SPECIFICATION);
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -111,7 +114,7 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 	 * @generated
 	 */
 	public boolean isSetSpecification() {
-		return specification != null;
+		return eVirtualGet(UML2Package.TIME_CONSTRAINT__SPECIFICATION) != null;
 	}
 
 	/**
@@ -178,23 +181,27 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 			case UML2Package.TIME_CONSTRAINT__OWNER:
 				return isSetOwner();
 			case UML2Package.TIME_CONSTRAINT__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.TIME_CONSTRAINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.TIME_CONSTRAINT__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.TIME_CONSTRAINT__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.TIME_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.TIME_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.TIME_CONSTRAINT__NAME:
+				String name = eVirtualIsSet(UML2Package.TIME_CONSTRAINT__NAME) ? (String)eVirtualGet(UML2Package.TIME_CONSTRAINT__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.TIME_CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TIME_CONSTRAINT__VISIBILITY:
-				return isSetVisibility();
+				return eVirtualIsSet(UML2Package.TIME_CONSTRAINT__VISIBILITY) && eVirtualGet(UML2Package.TIME_CONSTRAINT__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.TIME_CONSTRAINT__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.TIME_CONSTRAINT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TIME_CONSTRAINT__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.TIME_CONSTRAINT__NAME_EXPRESSION) != null;
 			case UML2Package.TIME_CONSTRAINT__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.TIME_CONSTRAINT__TEMPLATE_PARAMETER) != null;
 			case UML2Package.TIME_CONSTRAINT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.TIME_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -204,8 +211,9 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 			case UML2Package.TIME_CONSTRAINT__NAMESPACE:
 				return isSetNamespace();
 			case UML2Package.TIME_CONSTRAINT__SPECIFICATION:
-				return isSetSpecification();
+				return eVirtualGet(UML2Package.TIME_CONSTRAINT__SPECIFICATION) != null;
 			case UML2Package.TIME_CONSTRAINT__CONSTRAINED_ELEMENT:
+				EList constrainedElement = (EList)eVirtualGet(UML2Package.TIME_CONSTRAINT__CONSTRAINED_ELEMENT);
 				return constrainedElement != null && !constrainedElement.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

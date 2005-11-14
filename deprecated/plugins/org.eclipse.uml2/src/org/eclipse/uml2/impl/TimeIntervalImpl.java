@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.11 2005/11/09 22:53:07 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.12 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -69,12 +69,23 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 	 * @generated
 	 */
 	public EList getMaxes() {
+		EList max = (EList)eVirtualGet(UML2Package.TIME_INTERVAL__MAX);
 		if (max == null) {
-			max = new EObjectResolvingEList(TimeExpression.class, this, UML2Package.TIME_INTERVAL__MAX);
+			eVirtualSet(UML2Package.TIME_INTERVAL__MAX, max = new EObjectResolvingEList(TimeExpression.class, this, UML2Package.TIME_INTERVAL__MAX));
 		}
 		return max;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetMaxes() {
+		EList max = (EList)eVirtualGet(UML2Package.TIME_INTERVAL__MAX);
+		return max != null && !max.isEmpty();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -96,22 +107,24 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetMaxes() {
-		return max != null && !max.isEmpty();
+	public EList getMins() {
+		EList min = (EList)eVirtualGet(UML2Package.TIME_INTERVAL__MIN);
+		if (min == null) {
+			eVirtualSet(UML2Package.TIME_INTERVAL__MIN, min = new EObjectResolvingEList(TimeExpression.class, this, UML2Package.TIME_INTERVAL__MIN));
+		}
+		return min;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMins() {
-		if (min == null) {
-			min = new EObjectResolvingEList(TimeExpression.class, this, UML2Package.TIME_INTERVAL__MIN);
-		}
-		return min;
+	public boolean isSetMins() {
+		EList min = (EList)eVirtualGet(UML2Package.TIME_INTERVAL__MIN);
+		return min != null && !min.isEmpty();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,15 +139,6 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetMins() {
-		return min != null && !min.isEmpty();
 	}
 
 	/**
@@ -197,31 +201,37 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 			case UML2Package.TIME_INTERVAL__OWNER:
 				return isSetOwner();
 			case UML2Package.TIME_INTERVAL__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.TIME_INTERVAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.TIME_INTERVAL__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.TIME_INTERVAL__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.TIME_INTERVAL__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.TIME_INTERVAL__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.TIME_INTERVAL__NAME:
+				String name = eVirtualIsSet(UML2Package.TIME_INTERVAL__NAME) ? (String)eVirtualGet(UML2Package.TIME_INTERVAL__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.TIME_INTERVAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TIME_INTERVAL__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.TIME_INTERVAL__VISIBILITY) && eVirtualGet(UML2Package.TIME_INTERVAL__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.TIME_INTERVAL__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.TIME_INTERVAL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TIME_INTERVAL__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.TIME_INTERVAL__NAME_EXPRESSION) != null;
 			case UML2Package.TIME_INTERVAL__TYPE:
-				return type != null;
+				return eVirtualGet(UML2Package.TIME_INTERVAL__TYPE) != null;
 			case UML2Package.TIME_INTERVAL__TEMPLATE_PARAMETER:
-				return templateParameter != null;
+				return eVirtualGet(UML2Package.TIME_INTERVAL__TEMPLATE_PARAMETER) != null;
 			case UML2Package.TIME_INTERVAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.TIME_INTERVAL__MIN:
-				return isSetMins();
+				EList min = (EList)eVirtualGet(UML2Package.TIME_INTERVAL__MIN);
+				return min != null && !min.isEmpty();
 			case UML2Package.TIME_INTERVAL__MAX:
-				return isSetMaxes();
+				EList max = (EList)eVirtualGet(UML2Package.TIME_INTERVAL__MAX);
+				return max != null && !max.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}

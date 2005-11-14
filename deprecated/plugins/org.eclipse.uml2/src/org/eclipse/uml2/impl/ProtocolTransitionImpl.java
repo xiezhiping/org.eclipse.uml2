@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.17 2005/11/09 22:53:09 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.18 2005/11/14 17:31:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,26 +76,6 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPostCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected Constraint postCondition = null;
-
-	/**
-	 * The cached value of the '{@link #getPreCondition() <em>Pre Condition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPreCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected Constraint preCondition = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -119,8 +99,9 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+		EList ownedElement = (EList)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_TRANSITION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getTransition_Guard(), UML2Package.eINSTANCE.getTransition_Effect(), UML2Package.eINSTANCE.getProtocolTransition_PostCondition()});
+			eVirtualSet(UML2Package.PROTOCOL_TRANSITION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_TRANSITION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getTransition_Guard(), UML2Package.eINSTANCE.getTransition_Effect(), UML2Package.eINSTANCE.getProtocolTransition_PostCondition()}));
 		}
 		return ownedElement;
 	}
@@ -142,6 +123,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public Constraint getGuard() {
+		Constraint guard = (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__GUARD);
 		return guard;
 	}
 
@@ -151,6 +133,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public Constraint getPostCondition() {
+		Constraint postCondition = (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__POST_CONDITION);
 		return postCondition;
 	}
 
@@ -160,10 +143,9 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public NotificationChain basicSetPostCondition(Constraint newPostCondition, NotificationChain msgs) {
-		Constraint oldPostCondition = postCondition;
-		postCondition = newPostCondition;
+		Object oldPostCondition = eVirtualSet(UML2Package.PROTOCOL_TRANSITION__POST_CONDITION, newPostCondition);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__POST_CONDITION, oldPostCondition, newPostCondition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__POST_CONDITION, oldPostCondition == EVIRTUAL_NO_VALUE ? null : oldPostCondition, newPostCondition);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -176,6 +158,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public void setPostCondition(Constraint newPostCondition) {
+		Constraint postCondition = (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__POST_CONDITION);
 		if (newPostCondition != postCondition) {
 			NotificationChain msgs = null;
 			if (postCondition != null)
@@ -271,6 +254,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public Constraint getPreCondition() {
+		Constraint preCondition = (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION);
 		return preCondition;
 	}
 
@@ -280,12 +264,12 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public void setPreCondition(Constraint newPreCondition) {
-		Constraint oldPreCondition = preCondition;
-		preCondition = newPreCondition;
+		Constraint preCondition = newPreCondition;
+		Object oldPreCondition = eVirtualSet(UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION, preCondition);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION, oldPreCondition, preCondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION, oldPreCondition == EVIRTUAL_NO_VALUE ? null : oldPreCondition, preCondition));
 
-		if (newPreCondition != null || oldPreCondition == guard) {
+		if (newPreCondition != null || oldPreCondition == eVirtualGet(UML2Package.PROTOCOL_TRANSITION__GUARD)) {
 			setGuard(newPreCondition);
 		}
 	}
@@ -297,14 +281,13 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public NotificationChain basicSetGuard(Constraint newGuard, NotificationChain msgs) {
-		Constraint oldGuard = guard;
-		guard = newGuard;
+		Object oldGuard = eVirtualSet(UML2Package.PROTOCOL_TRANSITION__GUARD, newGuard);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__GUARD, oldGuard, newGuard);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__GUARD, oldGuard == EVIRTUAL_NO_VALUE ? null : oldGuard, newGuard);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
-		if (preCondition != null && preCondition != newGuard) {
+		if (eVirtualGet(UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION) != null && eVirtualGet(UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION) != newGuard) {
 			setPreCondition(null);
 		}
 		return msgs;
@@ -316,6 +299,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public void setGuard(Constraint newGuard) {
+		Constraint guard = (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__GUARD);
 		if (newGuard != guard) {
 			NotificationChain msgs = null;
 			if (guard != null)
@@ -588,47 +572,52 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			case UML2Package.PROTOCOL_TRANSITION__OWNER:
 				return isSetOwner();
 			case UML2Package.PROTOCOL_TRANSITION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PROTOCOL_TRANSITION__NAME:
+				String name = eVirtualIsSet(UML2Package.PROTOCOL_TRANSITION__NAME) ? (String)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PROTOCOL_TRANSITION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PROTOCOL_TRANSITION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.PROTOCOL_TRANSITION__VISIBILITY) && eVirtualGet(UML2Package.PROTOCOL_TRANSITION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__NAME_EXPRESSION) != null;
 			case UML2Package.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.PROTOCOL_TRANSITION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__KIND:
-				return kind != KIND_EDEFAULT;
+				return eVirtualIsSet(UML2Package.PROTOCOL_TRANSITION__KIND) && eVirtualGet(UML2Package.PROTOCOL_TRANSITION__KIND) != KIND_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__CONTAINER:
 				return getContainer() != null;
 			case UML2Package.PROTOCOL_TRANSITION__SOURCE:
-				return source != null;
+				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__SOURCE) != null;
 			case UML2Package.PROTOCOL_TRANSITION__TARGET:
-				return target != null;
+				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__TARGET) != null;
 			case UML2Package.PROTOCOL_TRANSITION__REDEFINED_TRANSITION:
 				return isSetRedefinedTransition();
 			case UML2Package.PROTOCOL_TRANSITION__TRIGGER:
+				EList trigger = (EList)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__TRIGGER);
 				return trigger != null && !trigger.isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__GUARD:
-				return guard != null;
+				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__GUARD) != null;
 			case UML2Package.PROTOCOL_TRANSITION__EFFECT:
-				return effect != null;
+				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__EFFECT) != null;
 			case UML2Package.PROTOCOL_TRANSITION__POST_CONDITION:
-				return postCondition != null;
+				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__POST_CONDITION) != null;
 			case UML2Package.PROTOCOL_TRANSITION__REFERRED:
 				return !getReferreds().isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION:
-				return preCondition != null;
+				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.17 2005/11/09 22:53:08 khussey Exp $
+ * $Id: CreateLinkObjectActionImpl.java,v 1.18 2005/11/14 17:31:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,16 +66,6 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResult()
-	 * @generated
-	 * @ordered
-	 */
-	protected OutputPin result = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -99,8 +89,9 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	 * @generated
 	 */
 	public EList getOutputs() {
+		EList output = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__OUTPUT);
 		if (output == null) {
-			output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.CREATE_LINK_OBJECT_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getCreateLinkObjectAction_Result()});
+			eVirtualSet(UML2Package.CREATE_LINK_OBJECT_ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.CREATE_LINK_OBJECT_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getCreateLinkObjectAction_Result()}));
 		}
 		return output;
 	}
@@ -122,6 +113,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	 * @generated
 	 */
 	public OutputPin getResult() {
+		OutputPin result = (OutputPin)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT);
 		return result;
 	}
 
@@ -131,10 +123,9 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	 * @generated
 	 */
 	public NotificationChain basicSetResult(OutputPin newResult, NotificationChain msgs) {
-		OutputPin oldResult = result;
-		result = newResult;
+		Object oldResult = eVirtualSet(UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT, newResult);
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT, oldResult, newResult);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT, oldResult == EVIRTUAL_NO_VALUE ? null : oldResult, newResult);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -147,6 +138,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
+		OutputPin result = (OutputPin)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT);
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -192,11 +184,21 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	}
 
 	public EList getEndData() {
-
+		EList endData = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA);
 		if (endData == null) {
-			endData = new EObjectContainmentEList(LinkEndCreationData.class, this, UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA);
+			eVirtualSet(UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA, endData = new EObjectContainmentEList(LinkEndCreationData.class, this, UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA));
 		}
 		return endData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetEndData() {
+		EList endData = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA);
+		return endData != null && !endData.isEmpty();
 	}
 
 	/**
@@ -226,15 +228,6 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 		}
 		getEndData().add(newEndData);
 		return newEndData;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetEndData() {
-		return endData != null && !endData.isEmpty();
 	}
 
 	/**
@@ -539,28 +532,34 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__NAME:
+				String name = eVirtualIsSet(UML2Package.CREATE_LINK_OBJECT_ACTION__NAME) ? (String)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.CREATE_LINK_OBJECT_ACTION__VISIBILITY) && eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__NAME_EXPRESSION) != null;
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__IN_GROUP:
 				return isSetInGroups();
@@ -571,12 +570,16 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__HANDLER:
+				EList handler = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__EFFECT:
+				String effect = eVirtualIsSet(UML2Package.CREATE_LINK_OBJECT_ACTION__EFFECT) ? (String)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__EFFECT) : EFFECT_EDEFAULT;
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -585,13 +588,16 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__LOCAL_PRECONDITION:
+				EList localPrecondition = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__LOCAL_POSTCONDITION:
+				EList localPostcondition = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA:
-				return isSetEndData();
+				EList endData = (EList)eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA);
+				return endData != null && !endData.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT:
-				return result != null;
+				return eVirtualGet(UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT) != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

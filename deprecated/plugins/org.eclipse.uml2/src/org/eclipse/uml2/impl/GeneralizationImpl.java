@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.13 2005/11/09 22:53:08 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.14 2005/11/14 17:31:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -65,16 +65,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getGeneral() <em>General</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGeneral()
-	 * @generated
-	 * @ordered
-	 */
-	protected Classifier general = null;
-
-	/**
 	 * The default value of the '{@link #isSubstitutable() <em>Is Substitutable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,16 +83,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @ordered
 	 */
 	protected static final int IS_SUBSTITUTABLE_EFLAG = 1 << 8;
-
-	/**
-	 * The cached value of the '{@link #getGeneralizationSets() <em>Generalization Set</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGeneralizationSets()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList generalizationSet = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,8 +108,9 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @generated
 	 */
 	public EList getSources() {
+		EList source = (EList)eVirtualGet(UML2Package.GENERALIZATION__SOURCE);
 		if (source == null) {
-			source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.GENERALIZATION__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getGeneralization_Specific()});
+			eVirtualSet(UML2Package.GENERALIZATION__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.GENERALIZATION__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getGeneralization_Specific()}));
 		}
 		return source;
 	}
@@ -151,8 +132,9 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @generated
 	 */
 	public EList getTargets() {
+		EList target = (EList)eVirtualGet(UML2Package.GENERALIZATION__TARGET);
 		if (target == null) {
-			target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.GENERALIZATION__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getGeneralization_General()});
+			eVirtualSet(UML2Package.GENERALIZATION__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.GENERALIZATION__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getGeneralization_General()}));
 		}
 		return target;
 	}
@@ -230,10 +212,12 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @generated
 	 */
 	public Classifier getGeneral() {
+		Classifier general = (Classifier)eVirtualGet(UML2Package.GENERALIZATION__GENERAL);
 		if (general != null && general.eIsProxy()) {
 			Classifier oldGeneral = general;
 			general = (Classifier)eResolveProxy((InternalEObject)general);
 			if (general != oldGeneral) {
+				eVirtualSet(UML2Package.GENERALIZATION__GENERAL, general);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.GENERALIZATION__GENERAL, oldGeneral, general));
 			}
@@ -247,7 +231,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @generated
 	 */
 	public Classifier basicGetGeneral() {
-		return general;
+		return (Classifier)eVirtualGet(UML2Package.GENERALIZATION__GENERAL);
 	}
 
 	/**
@@ -256,10 +240,10 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @generated
 	 */
 	public void setGeneral(Classifier newGeneral) {
-		Classifier oldGeneral = general;
-		general = newGeneral;
+		Classifier general = newGeneral;
+		Object oldGeneral = eVirtualSet(UML2Package.GENERALIZATION__GENERAL, general);
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION__GENERAL, oldGeneral, general));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION__GENERAL, oldGeneral == EVIRTUAL_NO_VALUE ? null : oldGeneral, general));
 
 	}
 
@@ -270,8 +254,9 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @generated
 	 */
 	public EList getGeneralizationSets() {
+		EList generalizationSet = (EList)eVirtualGet(UML2Package.GENERALIZATION__GENERALIZATION_SET);
 		if (generalizationSet == null) {
-			generalizationSet = new EObjectWithInverseResolvingEList.ManyInverse(GeneralizationSet.class, this, UML2Package.GENERALIZATION__GENERALIZATION_SET, UML2Package.GENERALIZATION_SET__GENERALIZATION);
+			eVirtualSet(UML2Package.GENERALIZATION__GENERALIZATION_SET, generalizationSet = new EObjectWithInverseResolvingEList.ManyInverse(GeneralizationSet.class, this, UML2Package.GENERALIZATION__GENERALIZATION_SET, UML2Package.GENERALIZATION_SET__GENERALIZATION));
 		}
 		return generalizationSet;
 	}
@@ -491,6 +476,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 			case UML2Package.GENERALIZATION__OWNER:
 				return isSetOwner();
 			case UML2Package.GENERALIZATION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.GENERALIZATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.GENERALIZATION__RELATED_ELEMENT:
 				return isSetRelatedElements();
@@ -501,10 +487,11 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 			case UML2Package.GENERALIZATION__SPECIFIC:
 				return getSpecific() != null;
 			case UML2Package.GENERALIZATION__GENERAL:
-				return general != null;
+				return eVirtualGet(UML2Package.GENERALIZATION__GENERAL) != null;
 			case UML2Package.GENERALIZATION__IS_SUBSTITUTABLE:
 				return ((eFlags & IS_SUBSTITUTABLE_EFLAG) != 0) != IS_SUBSTITUTABLE_EDEFAULT;
 			case UML2Package.GENERALIZATION__GENERALIZATION_SET:
+				EList generalizationSet = (EList)eVirtualGet(UML2Package.GENERALIZATION__GENERALIZATION_SET);
 				return generalizationSet != null && !generalizationSet.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);

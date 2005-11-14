@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.14 2005/11/09 22:53:09 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.15 2005/11/14 17:31:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -57,26 +57,6 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getTriggers() <em>Trigger</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTriggers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList trigger = null;
-
-	/**
-	 * The cached value of the '{@link #getResults() <em>Result</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResults()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList result = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -100,8 +80,9 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	 * @generated
 	 */
 	public EList getOutputs() {
+		EList output = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__OUTPUT);
 		if (output == null) {
-			output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACCEPT_EVENT_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getAcceptEventAction_Result()});
+			eVirtualSet(UML2Package.ACCEPT_EVENT_ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACCEPT_EVENT_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getAcceptEventAction_Result()}));
 		}
 		return output;
 	}
@@ -123,8 +104,9 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	 * @generated
 	 */
 	public EList getTriggers() {
+		EList trigger = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__TRIGGER);
 		if (trigger == null) {
-			trigger = new EObjectResolvingEList(Trigger.class, this, UML2Package.ACCEPT_EVENT_ACTION__TRIGGER);
+			eVirtualSet(UML2Package.ACCEPT_EVENT_ACTION__TRIGGER, trigger = new EObjectResolvingEList(Trigger.class, this, UML2Package.ACCEPT_EVENT_ACTION__TRIGGER));
 		}
 		return trigger;
 	}
@@ -151,8 +133,9 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	 * @generated
 	 */
 	public EList getResults() {
+		EList result = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__RESULT);
 		if (result == null) {
-			result = new EObjectResolvingEList(OutputPin.class, this, UML2Package.ACCEPT_EVENT_ACTION__RESULT);
+			eVirtualSet(UML2Package.ACCEPT_EVENT_ACTION__RESULT, result = new EObjectResolvingEList(OutputPin.class, this, UML2Package.ACCEPT_EVENT_ACTION__RESULT));
 		}
 		return result;
 	}
@@ -427,28 +410,34 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 			case UML2Package.ACCEPT_EVENT_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.ACCEPT_EVENT_ACTION__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return ownedTemplateSignature != null;
+				return eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.ACCEPT_EVENT_ACTION__NAME:
+				String name = eVirtualIsSet(UML2Package.ACCEPT_EVENT_ACTION__NAME) ? (String)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__NAME) : NAME_EDEFAULT;
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ACCEPT_EVENT_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACCEPT_EVENT_ACTION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return eVirtualIsSet(UML2Package.ACCEPT_EVENT_ACTION__VISIBILITY) && eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
 			case UML2Package.ACCEPT_EVENT_ACTION__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__NAME_EXPRESSION:
-				return nameExpression != null;
+				return eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__NAME_EXPRESSION) != null;
 			case UML2Package.ACCEPT_EVENT_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.ACCEPT_EVENT_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ACCEPT_EVENT_ACTION__OUTGOING:
+				EList outgoing = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__INCOMING:
+				EList incoming = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__IN_GROUP:
 				return isSetInGroups();
@@ -459,12 +448,16 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 			case UML2Package.ACCEPT_EVENT_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.ACCEPT_EVENT_ACTION__IN_PARTITION:
+				EList inPartition = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__IN_INTERRUPTIBLE_REGION:
+				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__HANDLER:
+				EList handler = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__EFFECT:
+				String effect = eVirtualIsSet(UML2Package.ACCEPT_EVENT_ACTION__EFFECT) ? (String)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__EFFECT) : EFFECT_EDEFAULT;
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.ACCEPT_EVENT_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -473,12 +466,16 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 			case UML2Package.ACCEPT_EVENT_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.ACCEPT_EVENT_ACTION__LOCAL_PRECONDITION:
+				EList localPrecondition = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__LOCAL_POSTCONDITION:
+				EList localPostcondition = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__TRIGGER:
+				EList trigger = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__TRIGGER);
 				return trigger != null && !trigger.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__RESULT:
+				EList result = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__RESULT);
 				return result != null && !result.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
