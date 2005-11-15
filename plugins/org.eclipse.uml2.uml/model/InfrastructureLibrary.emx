@@ -16339,6 +16339,12 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ruaFdxTaEdqZu-3Jy1-uYg" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruaFdhTaEdqZu-3Jy1-uYg"/>
       </ownedAttribute>
+      <ownedOperation xmi:id="_4xcu4FYKEdqrn7iZ0eqieg" name="getExtensions" visibility="protected" type="_3ADC7B74022D3CBDA5E903C7">
+        <returnResult xmi:id="_8-RUoFYKEdqrn7iZ0eqieg" type="_3ADC7B74022D3CBDA5E903C7" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-3Q2kVYKEdqrn7iZ0eqieg" value="-1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-3Q2kFYKEdqrn7iZ0eqieg"/>
+        </returnResult>
+      </ownedOperation>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CBDA36602FA" name="ProfileApplication">
       <ownedComment xmi:id="_ruHKeRTaEdqZu-3Jy1-uYg" body="ProfileApplication is a kind of PackageImport that adds the capability to state that a Profile is applied to a Package." annotatedElement="_3ADC7B74022D3CBDA36602FA">
