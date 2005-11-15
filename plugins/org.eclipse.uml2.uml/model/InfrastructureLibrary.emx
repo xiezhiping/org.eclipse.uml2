@@ -1237,6 +1237,9 @@
             <returnResult xmi:id="_rRzB4hTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return"/>
           </ownedOperation>
           <ownedOperation xmi:id="_3ADC7B74022D3E1065EF023E" name="qualifiedName" type="_3ADC7B74022D3CA010B103C3" isQuery="true" bodyCondition="_rRzB7BTaEdqZu-3Jy1-uYg">
+            <eAnnotations xmi:id="_OGZFcFYGEdqrn7iZ0eqieg" source="appliedStereotypes">
+              <contents xmi:type="Ecore_0:Ecore__EOperation" xmi:id="_OGZFcVYGEdqrn7iZ0eqieg" operationName="getQualifiedName"/>
+            </eAnnotations>
             <ownedComment xmi:id="_rRzB6BTaEdqZu-3Jy1-uYg" body="When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces." annotatedElement="_3ADC7B74022D3E1065EF023E">
               <eAnnotations xmi:id="_rRzB6RTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rRzB6hTaEdqZu-3Jy1-uYg"/>
@@ -15039,6 +15042,9 @@
           <returnResult xmi:id="_rpDEXxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return"/>
         </ownedOperation>
         <ownedOperation xmi:id="_3ADC7B74022D42EE305C00A6" name="qualifiedName" type="_3ADC7B74022D3CA010B103C3" isQuery="true" bodyCondition="_rpDEaRTaEdqZu-3Jy1-uYg">
+          <eAnnotations xmi:id="_RAzoIFYGEdqrn7iZ0eqieg" source="appliedStereotypes">
+            <contents xmi:type="Ecore_0:Ecore__EOperation" xmi:id="_RAzoIVYGEdqrn7iZ0eqieg" operationName="getQualifiedName"/>
+          </eAnnotations>
           <ownedComment xmi:id="_rpDEZRTaEdqZu-3Jy1-uYg" body="When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces." annotatedElement="_3ADC7B74022D42EE305C00A6">
             <eAnnotations xmi:id="_rpDEZhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpDEZxTaEdqZu-3Jy1-uYg"/>
@@ -16427,6 +16433,9 @@
         <returnResult xmi:id="_7E4UADajEdqq1tCaRkgBQQ" type="_3ADC7B74022D3DE6D57500AC" direction="return"/>
       </ownedOperation>
       <ownedOperation xmi:id="_Ccgo4DakEdqq1tCaRkgBQQ" name="metaclass" type="_3ADC7B74022D3CA22B8803DA" isQuery="true" bodyCondition="_IyQqADakEdqq1tCaRkgBQQ">
+        <eAnnotations xmi:id="_I7cDgFYGEdqrn7iZ0eqieg" source="appliedStereotypes">
+          <contents xmi:type="Ecore_0:Ecore__EOperation" xmi:id="_I7cDgVYGEdqrn7iZ0eqieg" operationName="getMetaclass"/>
+        </eAnnotations>
         <ownedComment xmi:id="_O8Em8DqAEdq16aujGBCOZg" body="The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype)." annotatedElement="_Ccgo4DakEdqq1tCaRkgBQQ">
           <eAnnotations xmi:id="_O8Em8TqAEdq16aujGBCOZg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_O8Em8jqAEdq16aujGBCOZg"/>
