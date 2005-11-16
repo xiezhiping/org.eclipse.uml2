@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.45 2005/10/26 21:11:24 khussey Exp $
+ * $Id: UML2Util.java,v 1.46 2005/11/16 17:45:01 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -4151,13 +4151,19 @@ public class UML2Util
 						.eGet(eContainingFeature));
 		}
 
-		protected EObject getPreviouslyMergedEObject(EObject eObject) {
-			List mergedEObjects = (List) resultingToMergedEObjectMap
-				.get(eObject);
+		protected List getMergedEObjects(EObject resultingEObject) {
+			Object mergedEObjects = resultingToMergedEObjectMap
+				.get(resultingEObject);
 
 			return null == mergedEObjects
-				? eObject
-				: (EObject) mergedEObjects.get(0);
+				? Collections.singletonList(resultingEObject)
+				: (List) mergedEObjects;
+		}
+
+		protected EObject getPreviouslyMergedEObject(EObject resultingEObject) {
+			List mergedEObjects = getMergedEObjects(resultingEObject);
+
+			return (EObject) mergedEObjects.get(mergedEObjects.size() - 1);
 		}
 
 		protected String getResultingQName(EObject eObject) {
@@ -4401,22 +4407,32 @@ public class UML2Util
 				TypedElement receivingTypedElement,
 				TypedElement mergedTypedElement) {
 
-			Classifier receivingType = (Classifier) receivingTypedElement
-				.getType();
+			Type receivingType = receivingTypedElement.getType();
 			Type mergedType = mergedTypedElement.getType();
+
+			if (null != receivingType && mergedType instanceof Classifier) {
+				Set allParents = ((Classifier) mergedType).allParents();
+
+				for (Iterator mergedEObjects = getMergedEObjects(receivingType)
+					.iterator(); mergedEObjects.hasNext();) {
+
+					EObject mergedEObject = (EObject) mergedEObjects.next();
+
+					if (null != findEObject(allParents,
+						new ResultingQNameMatcher(mergedEObject))) {
+
+						mergedType = (Type) mergedEObject;
+					}
+				}
+			}
+
 			Type resultingType = null == mergedType
 				? null
 				: (Type) get(mergedType);
 
-			if (null == receivingType
-				|| receivingType.conformsTo(null == resultingType
-					? mergedType
-					: resultingType)) {
-
-				receivingTypedElement.setType(null == resultingType
-					? mergedType
-					: resultingType);
-			}
+			receivingTypedElement.setType(null == resultingType
+				? mergedType
+				: resultingType);
 		}
 
 		protected void copyReference(EReference eReference, EObject eObject,
