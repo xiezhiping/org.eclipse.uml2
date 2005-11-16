@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -125,9 +125,7 @@ public class ExtensionImpl
 	 * @generated
 	 */
 	public boolean isRequired() {
-		// TODO: implement this method to return the 'Is Required' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ExtensionOperations.isRequired(this);
 	}
 
 	/**
@@ -150,10 +148,7 @@ public class ExtensionImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Class basicGetMetaclass() {
-		// TODO: implement this method to return the 'Metaclass' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ExtensionOperations.getMetaclass(this);
 	}
 
 	/**
@@ -182,15 +177,6 @@ public class ExtensionImpl
 	 */
 	public Property metaclassEnd() {
 		return ExtensionOperations.metaclassEnd(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.eclipse.uml2.uml.Class metaclass() {
-		return ExtensionOperations.metaclass(this);
 	}
 
 	/**

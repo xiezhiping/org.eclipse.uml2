@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: ClassOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,6 +30,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Class#validatePassiveClass(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Passive Class</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Class#getExtensions() <em>Get Extensions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#inherit(java.util.List) <em>Inherit</em>}</li>
  * </ul>
  * </p>
@@ -78,6 +79,17 @@ public final class ClassOperations {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static List getExtensions(org.eclipse.uml2.uml.Class class_) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

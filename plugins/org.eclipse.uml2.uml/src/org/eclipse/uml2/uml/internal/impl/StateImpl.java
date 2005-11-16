@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.1 2005/11/14 22:26:07 khussey Exp $
+ * $Id: StateImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -429,9 +429,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isComposite() {
-		// TODO: implement this method to return the 'Is Composite' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return StateOperations.isComposite(this);
 	}
 
 	/**
@@ -440,9 +438,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isOrthogonal() {
-		// TODO: implement this method to return the 'Is Orthogonal' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return StateOperations.isOrthogonal(this);
 	}
 
 	/**
@@ -451,9 +447,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isSimple() {
-		// TODO: implement this method to return the 'Is Simple' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return StateOperations.isSimple(this);
 	}
 
 	/**
@@ -462,9 +456,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isSubmachineState() {
-		// TODO: implement this method to return the 'Is Submachine State' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return StateOperations.isSubmachineState(this);
 	}
 
 	/**

@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: RedefinableTemplateSignatureOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -32,6 +33,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#validateInheritedParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Inherited Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#getInheritedParameters() <em>Get Inherited Parameters</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
  * </ul>
  * </p>
@@ -80,6 +82,18 @@ public final class RedefinableTemplateSignatureOperations {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static List getInheritedParameters(
+			RedefinableTemplateSignature redefinableTemplateSignature) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ClassImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -618,9 +618,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public List getExtensions() {
-		// TODO: implement this method to return the 'Extension' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ClassOperations.getExtensions(this);
 	}
 
 	/**

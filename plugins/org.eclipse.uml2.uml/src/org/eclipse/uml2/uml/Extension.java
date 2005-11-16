@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extension.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: Extension.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -106,18 +106,5 @@ public interface Extension
 	 * @generated
 	 */
 	Property metaclassEnd();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).
-	 * result = metaclassEnd().type
-	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
-	 * @generated
-	 */
-	org.eclipse.uml2.uml.Class metaclass();
 
 } // Extension

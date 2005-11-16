@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -42,6 +42,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#includesMultiplicity(org.eclipse.uml2.uml.MultiplicityElement) <em>Includes Multiplicity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#lowerBound() <em>Lower Bound</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#upperBound() <em>Upper Bound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setLower(int) <em>Set Lower</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setUpper(int) <em>Set Upper</em>}</li>
  * </ul>
  * </p>
  *
@@ -330,6 +332,30 @@ public final class MultiplicityElementOperations {
 	 * @generated
 	 */
 	public static int upperBound(MultiplicityElement multiplicityElement) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Object setLower(MultiplicityElement multiplicityElement,
+			int newLower) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Object setUpper(MultiplicityElement multiplicityElement,
+			int newUpper) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

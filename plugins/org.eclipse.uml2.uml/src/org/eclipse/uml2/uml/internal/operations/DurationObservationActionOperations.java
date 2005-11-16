@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: DurationObservationActionOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,6 +33,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.DurationObservationAction#validateInputValueDuration(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Value Duration</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.DurationObservationAction#getDuration() <em>Get Duration</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DurationObservationAction#setDuration(org.eclipse.uml2.uml.Duration) <em>Set Duration</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,6 +93,19 @@ public final class DurationObservationActionOperations {
 	 */
 	public static Duration getDuration(
 			DurationObservationAction durationObservationAction) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Object setDuration(
+			DurationObservationAction durationObservationAction,
+			Duration newDuration) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

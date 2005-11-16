@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -888,9 +888,18 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public List getInheritedMembers() {
-		// TODO: implement this method to return the 'Inherited Member' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this, UMLPackage.eINSTANCE
+				.getClassifier_InheritedMember());
+			if (result == null) {
+				cache.put(this, UMLPackage.eINSTANCE
+					.getClassifier_InheritedMember(),
+					result = ClassifierOperations.getInheritedMembers(this));
+			}
+			return result;
+		}
+		return ClassifierOperations.getInheritedMembers(this);
 	}
 
 	/**
@@ -945,9 +954,18 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public List getGenerals() {
-		// TODO: implement this method to return the 'General' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(eResource(), this,
+				UMLPackage.eINSTANCE.getClassifier_General());
+			if (result == null) {
+				cache.put(eResource(), this, UMLPackage.eINSTANCE
+					.getClassifier_General(), result = ClassifierOperations
+					.getGenerals(this));
+			}
+			return result;
+		}
+		return ClassifierOperations.getGenerals(this);
 	}
 
 	/**

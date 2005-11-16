@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,8 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.OpaqueExpression;
+
+import org.eclipse.uml2.uml.Parameter;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -38,6 +40,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#isIntegral() <em>Is Integral</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#isPositive() <em>Is Positive</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#isNonNegative() <em>Is Non Negative</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#getResult() <em>Get Result</em>}</li>
  * </ul>
  * </p>
  *
@@ -249,6 +252,17 @@ public final class OpaqueExpressionOperations {
 	 * @generated
 	 */
 	public static boolean isNonNegative(OpaqueExpression opaqueExpression) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Parameter getResult(OpaqueExpression opaqueExpression) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

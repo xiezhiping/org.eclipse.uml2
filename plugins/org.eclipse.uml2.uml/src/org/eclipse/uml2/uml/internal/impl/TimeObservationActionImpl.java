@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: TimeObservationActionImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,9 +82,7 @@ public class TimeObservationActionImpl
 	 * @generated
 	 */
 	public TimeExpression getNow() {
-		// TODO: implement this method to return the 'Now' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return TimeObservationActionOperations.getNow(this);
 	}
 
 	/**
@@ -93,9 +91,7 @@ public class TimeObservationActionImpl
 	 * @generated
 	 */
 	public void setNow(TimeExpression newNow) {
-		// TODO: implement this method to set the 'Now' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		TimeObservationActionOperations.setNow(this, newNow);
 	}
 
 	/**

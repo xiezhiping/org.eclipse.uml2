@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: MessageImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -139,9 +139,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageKind getMessageKind() {
-		// TODO: implement this method to return the 'Message Kind' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return MessageOperations.getMessageKind(this);
 	}
 
 	/**
@@ -419,10 +417,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public NamedElement basicGetSignature() {
-		// TODO: implement this method to return the 'Signature' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return MessageOperations.getSignature(this);
 	}
 
 	/**

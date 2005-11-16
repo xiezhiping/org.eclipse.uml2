@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.1 2005/11/14 22:26:07 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Constraint;
@@ -300,9 +301,18 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public List getImportedMembers() {
-		// TODO: implement this method to return the 'Imported Member' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this, UMLPackage.eINSTANCE
+				.getNamespace_ImportedMember());
+			if (result == null) {
+				cache.put(this, UMLPackage.eINSTANCE
+					.getNamespace_ImportedMember(),
+					result = NamespaceOperations.getImportedMembers(this));
+			}
+			return result;
+		}
+		return NamespaceOperations.getImportedMembers(this);
 	}
 
 	/**

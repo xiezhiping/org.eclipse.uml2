@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: NamedElement.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -232,24 +232,6 @@ public interface NamedElement
 	 */
 	boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics,
 			Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.
-	 * result = if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()
-	 * then 
-	 *     self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))
-	 * else
-	 *     Set{}
-	 * endif
-	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
-	 * @generated
-	 */
-	String qualifiedName();
 
 	/**
 	 * <!-- begin-user-doc -->

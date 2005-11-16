@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -35,7 +35,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateNoName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Needs Ownership</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#qualifiedName() <em>Qualified Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#getQualifiedName() <em>Get Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#allNamespaces() <em>All Namespaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#isDistinguishableFrom(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Namespace) <em>Is Distinguishable From</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#separator() <em>Separator</em>}</li>
@@ -168,7 +168,7 @@ public final class NamedElementOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static String qualifiedName(NamedElement namedElement) {
+	public static String getQualifiedName(NamedElement namedElement) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

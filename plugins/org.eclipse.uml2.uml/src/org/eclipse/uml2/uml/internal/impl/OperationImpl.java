@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: OperationImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -588,9 +588,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isOrdered() {
-		// TODO: implement this method to return the 'Is Ordered' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return OperationOperations.isOrdered(this);
 	}
 
 	/**
@@ -599,9 +597,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-		// TODO: implement this method to set the 'Is Ordered' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		OperationOperations.setIsOrdered(this, newIsOrdered);
 	}
 
 	/**
@@ -610,9 +606,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isUnique() {
-		// TODO: implement this method to return the 'Is Unique' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return OperationOperations.isUnique(this);
 	}
 
 	/**
@@ -621,9 +615,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-		// TODO: implement this method to set the 'Is Unique' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		OperationOperations.setIsUnique(this, newIsUnique);
 	}
 
 	/**
@@ -632,9 +624,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public int getLower() {
-		// TODO: implement this method to return the 'Lower' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return OperationOperations.getLower(this);
 	}
 
 	/**
@@ -643,9 +633,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
-		// TODO: implement this method to set the 'Lower' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		OperationOperations.setLower(this, newLower);
 	}
 
 	/**
@@ -654,9 +642,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public int getUpper() {
-		// TODO: implement this method to return the 'Upper' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return OperationOperations.getUpper(this);
 	}
 
 	/**
@@ -665,9 +651,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
-		// TODO: implement this method to set the 'Upper' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		OperationOperations.setUpper(this, newUpper);
 	}
 
 	/**
@@ -892,10 +876,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Type basicGetType() {
-		// TODO: implement this method to return the 'Type' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return OperationOperations.getType(this);
 	}
 
 	/**
@@ -904,9 +885,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
-		// TODO: implement this method to set the 'Type' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		OperationOperations.setType(this, newType);
 	}
 
 	/**

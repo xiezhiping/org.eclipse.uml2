@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: MessageOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,9 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.Message;
+
+import org.eclipse.uml2.uml.MessageKind;
+import org.eclipse.uml2.uml.NamedElement;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -37,6 +40,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Message#validateArguments(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Arguments</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#validateCannotCrossBoundaries(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Cross Boundaries</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#validateOccurrenceSpecifications(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Occurrence Specifications</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Message#getMessageKind() <em>Get Message Kind</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Message#getSignature() <em>Get Signature</em>}</li>
  * </ul>
  * </p>
  *
@@ -281,6 +286,28 @@ public final class MessageOperations {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static MessageKind getMessageKind(Message message) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static NamedElement getSignature(Message message) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // MessageOperations

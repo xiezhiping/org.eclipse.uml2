@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -303,10 +303,7 @@ public class BehaviorImpl
 	 * @generated
 	 */
 	public BehavioredClassifier basicGetContext() {
-		// TODO: implement this method to return the 'Context' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return BehaviorOperations.getContext(this);
 	}
 
 	/**
@@ -315,9 +312,7 @@ public class BehaviorImpl
 	 * @generated
 	 */
 	public void setContext(BehavioredClassifier newContext) {
-		// TODO: implement this method to set the 'Context' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		BehaviorOperations.setContext(this, newContext);
 	}
 
 	/**

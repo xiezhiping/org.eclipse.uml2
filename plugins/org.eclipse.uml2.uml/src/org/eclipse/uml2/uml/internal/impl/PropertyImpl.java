@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,6 +67,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import org.eclipse.uml2.uml.internal.operations.DeploymentTargetOperations;
 import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.PropertyOperations;
 import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
@@ -468,9 +469,19 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public List getDeployedElements() {
-		// TODO: implement this method to return the 'Deployed Element' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this, UMLPackage.eINSTANCE
+				.getDeploymentTarget_DeployedElement());
+			if (result == null) {
+				cache.put(this, UMLPackage.eINSTANCE
+					.getDeploymentTarget_DeployedElement(),
+					result = DeploymentTargetOperations
+						.getDeployedElements(this));
+			}
+			return result;
+		}
+		return DeploymentTargetOperations.getDeployedElements(this);
 	}
 
 	/**
@@ -828,9 +839,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public String getDefault() {
-		// TODO: implement this method to return the 'Default' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return PropertyOperations.getDefault(this);
 	}
 
 	/**
@@ -842,9 +851,8 @@ public class PropertyImpl
 		newDefault = newDefault == null
 			? DEFAULT_EDEFAULT
 			: newDefault;
-		// TODO: implement this method to set the 'Default' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		PropertyOperations.setDefault(this, newDefault);
 	}
 
 	/**
@@ -885,9 +893,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isComposite() {
-		// TODO: implement this method to return the 'Is Composite' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return PropertyOperations.isComposite(this);
 	}
 
 	/**
@@ -896,9 +902,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setIsComposite(boolean newIsComposite) {
-		// TODO: implement this method to set the 'Is Composite' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		PropertyOperations.setIsComposite(this, newIsComposite);
 	}
 
 	/**
@@ -1080,10 +1084,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Property basicGetOpposite() {
-		// TODO: implement this method to return the 'Opposite' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return PropertyOperations.getOpposite(this);
 	}
 
 	/**
@@ -1092,9 +1093,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setOpposite(Property newOpposite) {
-		// TODO: implement this method to set the 'Opposite' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		PropertyOperations.setOpposite(this, newOpposite);
 	}
 
 	/**

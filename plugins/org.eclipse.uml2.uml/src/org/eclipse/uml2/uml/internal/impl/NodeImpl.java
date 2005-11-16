@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: NodeImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
@@ -49,6 +50,7 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import org.eclipse.uml2.uml.internal.operations.DeploymentTargetOperations;
 import org.eclipse.uml2.uml.internal.operations.NodeOperations;
 
 /**
@@ -192,9 +194,19 @@ public class NodeImpl
 	 * @generated
 	 */
 	public List getDeployedElements() {
-		// TODO: implement this method to return the 'Deployed Element' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this, UMLPackage.eINSTANCE
+				.getDeploymentTarget_DeployedElement());
+			if (result == null) {
+				cache.put(this, UMLPackage.eINSTANCE
+					.getDeploymentTarget_DeployedElement(),
+					result = DeploymentTargetOperations
+						.getDeployedElements(this));
+			}
+			return result;
+		}
+		return DeploymentTargetOperations.getDeployedElements(this);
 	}
 
 	/**

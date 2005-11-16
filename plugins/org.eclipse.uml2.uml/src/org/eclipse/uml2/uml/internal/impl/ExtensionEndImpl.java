@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -127,9 +127,7 @@ public class ExtensionEndImpl
 	 * @generated
 	 */
 	public int getLower() {
-		// TODO: implement this method to return the 'Lower' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ExtensionEndOperations.getLower(this);
 	}
 
 	/**
@@ -138,9 +136,7 @@ public class ExtensionEndImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
-		// TODO: implement this method to set the 'Lower' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ExtensionEndOperations.setLower(this, newLower);
 	}
 
 	/**

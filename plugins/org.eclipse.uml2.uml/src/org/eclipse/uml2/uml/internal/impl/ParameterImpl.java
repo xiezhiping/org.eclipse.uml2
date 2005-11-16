@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -312,9 +312,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public int getUpper() {
-		// TODO: implement this method to return the 'Upper' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return MultiplicityElementOperations.getUpper(this);
 	}
 
 	/**
@@ -323,9 +321,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
-		// TODO: implement this method to set the 'Upper' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		MultiplicityElementOperations.setUpper(this, newUpper);
 	}
 
 	/**
@@ -334,9 +330,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public int getLower() {
-		// TODO: implement this method to return the 'Lower' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return MultiplicityElementOperations.getLower(this);
 	}
 
 	/**
@@ -345,9 +339,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
-		// TODO: implement this method to set the 'Lower' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		MultiplicityElementOperations.setLower(this, newLower);
 	}
 
 	/**
@@ -591,9 +583,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public String getDefault() {
-		// TODO: implement this method to return the 'Default' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ParameterOperations.getDefault(this);
 	}
 
 	/**
@@ -605,9 +595,8 @@ public class ParameterImpl
 		newDefault = newDefault == null
 			? DEFAULT_EDEFAULT
 			: newDefault;
-		// TODO: implement this method to set the 'Default' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		ParameterOperations.setDefault(this, newDefault);
 	}
 
 	/**

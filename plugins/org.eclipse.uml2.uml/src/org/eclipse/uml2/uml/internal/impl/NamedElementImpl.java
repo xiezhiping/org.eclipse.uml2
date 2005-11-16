@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -202,9 +202,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public String getQualifiedName() {
-		// TODO: implement this method to return the 'Qualified Name' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return NamedElementOperations.getQualifiedName(this);
 	}
 
 	/**
@@ -343,15 +341,6 @@ public abstract class NamedElementImpl
 			DiagnosticChain diagnostics, Map context) {
 		return NamedElementOperations.validateVisibilityNeedsOwnership(this,
 			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String qualifiedName() {
-		return NamedElementOperations.qualifiedName(this);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: AssociationOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -35,7 +35,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Association#validateSpecializedEndTypes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Specialized End Types</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#validateBinaryAssociations(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binary Associations</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#validateAssociationEnds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Ends</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Association#endType() <em>End Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Association#getEndTypes() <em>Get End Types</em>}</li>
  * </ul>
  * </p>
  *
@@ -189,7 +189,7 @@ public final class AssociationOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static List endType(Association association) {
+	public static List getEndTypes(Association association) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

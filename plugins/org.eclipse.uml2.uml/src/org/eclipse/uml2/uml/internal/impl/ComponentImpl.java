@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -206,9 +206,17 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public List getRequireds() {
-		// TODO: implement this method to return the 'Required' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this, UMLPackage.eINSTANCE
+				.getComponent_Required());
+			if (result == null) {
+				cache.put(this, UMLPackage.eINSTANCE.getComponent_Required(),
+					result = ComponentOperations.getRequireds(this));
+			}
+			return result;
+		}
+		return ComponentOperations.getRequireds(this);
 	}
 
 	/**
@@ -232,9 +240,17 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public List getProvideds() {
-		// TODO: implement this method to return the 'Provided' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this, UMLPackage.eINSTANCE
+				.getComponent_Provided());
+			if (result == null) {
+				cache.put(this, UMLPackage.eINSTANCE.getComponent_Provided(),
+					result = ComponentOperations.getProvideds(this));
+			}
+			return result;
+		}
+		return ComponentOperations.getProvideds(this);
 	}
 
 	/**

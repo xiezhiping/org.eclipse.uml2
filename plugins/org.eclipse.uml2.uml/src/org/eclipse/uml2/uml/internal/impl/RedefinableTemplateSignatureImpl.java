@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -300,9 +300,8 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public List getInheritedParameters() {
-		// TODO: implement this method to return the 'Inherited Parameter' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return RedefinableTemplateSignatureOperations
+			.getInheritedParameters(this);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: ConnectorEndOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,8 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.ConnectorEnd;
+
+import org.eclipse.uml2.uml.Property;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -34,6 +36,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.ConnectorEnd#validatePartWithPortEmpty(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Part With Port Empty</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ConnectorEnd#validateRoleAndPartWithPort(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Role And Part With Port</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ConnectorEnd#validateSelfPartWithPort(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Self Part With Port</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConnectorEnd#getDefiningEnd() <em>Get Defining End</em>}</li>
  * </ul>
  * </p>
  *
@@ -176,6 +179,17 @@ public final class ConnectorEndOperations {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Property getDefiningEnd(ConnectorEnd connectorEnd) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // ConnectorEndOperations

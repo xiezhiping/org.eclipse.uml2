@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,9 +82,7 @@ public class DurationObservationActionImpl
 	 * @generated
 	 */
 	public Duration getDuration() {
-		// TODO: implement this method to return the 'Duration' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return DurationObservationActionOperations.getDuration(this);
 	}
 
 	/**
@@ -93,9 +91,7 @@ public class DurationObservationActionImpl
 	 * @generated
 	 */
 	public void setDuration(Duration newDuration) {
-		// TODO: implement this method to set the 'Duration' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		DurationObservationActionOperations.setDuration(this, newDuration);
 	}
 
 	/**

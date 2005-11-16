@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: BehaviorOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,8 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.Behavior;
+
+import org.eclipse.uml2.uml.BehavioredClassifier;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -34,6 +36,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateFeatureOfContextClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Feature Of Context Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMustRealize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Must Realize</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMostOneBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Most One Behaviour</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#getContext() <em>Get Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#setContext(org.eclipse.uml2.uml.BehavioredClassifier) <em>Set Context</em>}</li>
  * </ul>
  * </p>
  *
@@ -176,6 +180,29 @@ public final class BehaviorOperations {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static BehavioredClassifier getContext(Behavior behavior) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Object setContext(Behavior behavior,
+			BehavioredClassifier newContext) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // BehaviorOperations

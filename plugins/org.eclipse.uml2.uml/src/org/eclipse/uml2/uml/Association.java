@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: Association.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -255,18 +255,5 @@ public interface Association
 	 * @generated
 	 */
 	boolean validateAssociationEnds(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * endType is derived from the types of the member ends.
-	 * result = self.memberEnd->collect(e | e.type)
-	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Type"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
-	 * @generated
-	 */
-	List endType();
 
 } // Association

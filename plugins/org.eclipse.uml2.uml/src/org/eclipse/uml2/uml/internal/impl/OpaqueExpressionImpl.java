@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -127,10 +127,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public Parameter basicGetResult() {
-		// TODO: implement this method to return the 'Result' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return OpaqueExpressionOperations.getResult(this);
 	}
 
 	/**

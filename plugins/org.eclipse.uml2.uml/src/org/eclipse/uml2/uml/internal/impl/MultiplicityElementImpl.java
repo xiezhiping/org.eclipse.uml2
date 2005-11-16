@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -221,9 +221,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public int getUpper() {
-		// TODO: implement this method to return the 'Upper' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return MultiplicityElementOperations.getUpper(this);
 	}
 
 	/**
@@ -232,9 +230,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
-		// TODO: implement this method to set the 'Upper' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		MultiplicityElementOperations.setUpper(this, newUpper);
 	}
 
 	/**
@@ -243,9 +239,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public int getLower() {
-		// TODO: implement this method to return the 'Lower' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return MultiplicityElementOperations.getLower(this);
 	}
 
 	/**
@@ -254,9 +248,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
-		// TODO: implement this method to set the 'Lower' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		MultiplicityElementOperations.setLower(this, newLower);
 	}
 
 	/**

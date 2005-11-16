@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -335,9 +335,17 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public List getEndTypes() {
-		// TODO: implement this method to return the 'End Type' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this, UMLPackage.eINSTANCE
+				.getAssociation_EndType());
+			if (result == null) {
+				cache.put(this, UMLPackage.eINSTANCE.getAssociation_EndType(),
+					result = AssociationOperations.getEndTypes(this));
+			}
+			return result;
+		}
+		return AssociationOperations.getEndTypes(this);
 	}
 
 	/**
@@ -428,26 +436,6 @@ public class AssociationClassImpl
 			Map context) {
 		return AssociationOperations.validateAssociationEnds(this, diagnostics,
 			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List endType() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getAssociation().getEOperations().get(4));
-			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE.getAssociation()
-					.getEOperations().get(4), result = AssociationOperations
-					.endType(this));
-			}
-			return result;
-		}
-		return AssociationOperations.endType(this);
 	}
 
 	/**

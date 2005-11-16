@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionOperations.java,v 1.1 2005/11/14 22:25:53 khussey Exp $
+ * $Id: ExtensionOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -34,7 +34,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Extension#validateNonOwnedEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Non Owned End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Extension#validateIsBinary(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Is Binary</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Extension#metaclassEnd() <em>Metaclass End</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Extension#metaclass() <em>Metaclass</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Extension#getMetaclass() <em>Get Metaclass</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Extension#isRequired() <em>Is Required</em>}</li>
  * </ul>
  * </p>
@@ -140,7 +140,7 @@ public final class ExtensionOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static org.eclipse.uml2.uml.Class metaclass(Extension extension) {
+	public static org.eclipse.uml2.uml.Class getMetaclass(Extension extension) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
