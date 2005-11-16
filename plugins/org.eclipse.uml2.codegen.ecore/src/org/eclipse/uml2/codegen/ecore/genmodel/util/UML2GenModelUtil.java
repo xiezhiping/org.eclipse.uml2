@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.5 2005/11/04 21:55:54 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.6 2005/11/16 17:59:09 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -372,6 +372,14 @@ public class UML2GenModelUtil {
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getRedefinitionGenOperations(genOperation)
 			: Collections.EMPTY_LIST;
+	}
+
+	public static GenOperation getImplementedCollidingGenOperation(
+			GenClass genClass, GenFeature genFeature) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getImplementedCollidingGenOperation(genFeature)
+			: null;
 	}
 
 	// GenFeature utilities

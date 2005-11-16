@@ -1,0 +1,10 @@
+<%{ GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingGenOperation(genClass, genFeature); %>
+  <%if (genOperation != null && UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage())) { GenClass opClass = genOperation.getGenClass();%>
+		return <%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>);
+  <%} else {%>
+		// TODO: implement this method to return the '<%=genFeature.getFormattedName()%>' <%=genFeature.getFeatureKind()%>
+		// -> do not perform proxy resolution
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+  <%}%>
+<%}%>

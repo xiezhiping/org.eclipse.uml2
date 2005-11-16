@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.11 2005/11/14 16:54:12 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.12 2005/11/16 17:59:09 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -401,6 +401,23 @@ public class GenClassImpl
 				return super.accept(genOperation) && !isRedefined(genOperation);
 			}
 		});
+	}
+
+	public GenOperation getImplementedCollidingGenOperation(
+			final GenFeature genFeature) {
+		List implementedCollidingGenOperations = getImplementedGenOperations(new CollidingGenOperationFilter() {
+
+			public boolean accept(GenOperation genOperation) {
+				return !super.accept(genOperation)
+					&& (genOperation.getName().equals(
+						genFeature.getGetAccessor()) || genOperation.getName()
+						.endsWith(genFeature.getAccessorName()));
+			}
+		});
+
+		return implementedCollidingGenOperations.isEmpty()
+			? null
+			: (GenOperation) implementedCollidingGenOperations.get(0);
 	}
 
 	public List getExtendedGenOperations() {
