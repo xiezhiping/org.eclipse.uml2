@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: InvocationActionOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,7 +30,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.InvocationAction#validateOnPort(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate On Port</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InvocationAction#validateOnPortReceiver(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate On Port Receiver</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,8 +56,9 @@ public final class InvocationActionOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateOnPort(InvocationAction invocationAction,
-			DiagnosticChain diagnostics, Map context) {
+	public static boolean validateOnPortReceiver(
+			InvocationAction invocationAction, DiagnosticChain diagnostics,
+			Map context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -68,10 +69,10 @@ public final class InvocationActionOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INVOCATION_ACTION__ON_PORT,
+						UMLValidator.INVOCATION_ACTION__ON_PORT_RECEIVER,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOnPort", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(invocationAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOnPortReceiver", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(invocationAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{invocationAction}));
 			}
 			return false;

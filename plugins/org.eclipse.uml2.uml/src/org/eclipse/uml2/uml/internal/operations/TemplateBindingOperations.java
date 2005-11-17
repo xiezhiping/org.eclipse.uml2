@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: TemplateBindingOperations.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,7 +30,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.TemplateBinding#validateParameterSubstitution(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameter Substitution</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.TemplateBinding#validateParameterSubstitutionFormal(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameter Substitution Formal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TemplateBinding#validateOneParameterSubstitution(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Parameter Substitution</em>}</li>
  * </ul>
  * </p>
@@ -57,7 +57,7 @@ public final class TemplateBindingOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateParameterSubstitution(
+	public static boolean validateParameterSubstitutionFormal(
 			TemplateBinding templateBinding, DiagnosticChain diagnostics,
 			Map context) {
 		// TODO: implement this method
@@ -70,10 +70,10 @@ public final class TemplateBindingOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,
+						UMLValidator.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION_FORMAL,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateParameterSubstitution", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(templateBinding, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateParameterSubstitutionFormal", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(templateBinding, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{templateBinding}));
 			}
 			return false;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -335,9 +335,9 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMembersAreDistinguishable(
-			DiagnosticChain diagnostics, Map context) {
-		return NamespaceOperations.validateMembersAreDistinguishable(this,
+	public boolean validateMembersDistinguishable(DiagnosticChain diagnostics,
+			Map context) {
+		return NamespaceOperations.validateMembersDistinguishable(this,
 			diagnostics, context);
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -205,9 +205,10 @@ public abstract class InvocationActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOnPort(DiagnosticChain diagnostics, Map context) {
-		return InvocationActionOperations.validateOnPort(this, diagnostics,
-			context);
+	public boolean validateOnPortReceiver(DiagnosticChain diagnostics,
+			Map context) {
+		return InvocationActionOperations.validateOnPortReceiver(this,
+			diagnostics, context);
 	}
 
 	/**

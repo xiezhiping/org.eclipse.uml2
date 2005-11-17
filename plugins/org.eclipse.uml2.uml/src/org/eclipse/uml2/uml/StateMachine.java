@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: StateMachine.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -236,5 +236,18 @@ public interface StateMachine
 	 * @generated
 	 */
 	boolean ancestor(State s1, State s2);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
+	 * result = true
+	 * <!-- end-model-doc -->
+	 * @model required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
+	 * @generated
+	 */
+	boolean isRedefinitionContextValid(StateMachine redefined);
 
 } // StateMachine

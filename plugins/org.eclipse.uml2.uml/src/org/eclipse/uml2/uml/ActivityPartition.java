@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.1 2005/11/14 22:25:57 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -254,7 +254,8 @@ public interface ActivityPartition
 	 * @model
 	 * @generated
 	 */
-	boolean validateIsDimension(DiagnosticChain diagnostics, Map context);
+	boolean validateDimensionNotContained(DiagnosticChain diagnostics,
+			Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

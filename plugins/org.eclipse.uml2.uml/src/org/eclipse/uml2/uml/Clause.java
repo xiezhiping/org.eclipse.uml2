@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Clause.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: Clause.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -204,6 +204,6 @@ public interface Clause
 	 * @model
 	 * @generated
 	 */
-	boolean validateBodyOutput(DiagnosticChain diagnostics, Map context);
+	boolean validateBodyOutputPins(DiagnosticChain diagnostics, Map context);
 
 } // Clause

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1233,9 +1233,9 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
+	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
 		return RedefinableElementOperations.isRedefinitionContextValid(this,
-			redefinable);
+			redefined);
 	}
 
 	/**
@@ -1245,15 +1245,6 @@ public abstract class ClassifierImpl
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
 		return RedefinableElementOperations.isConsistentWith(this, redefinee);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isRedefinitionContextValid() {
-		return RedefinableElementOperations.isRedefinitionContextValid(this);
 	}
 
 	/**
@@ -1343,16 +1334,6 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSpecialize(DiagnosticChain diagnostics, Map context) {
-		return ClassifierOperations.validateSpecialize(this, diagnostics,
-			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateMapsToGeneralizationSet(DiagnosticChain diagnostics,
 			Map context) {
 		return ClassifierOperations.validateMapsToGeneralizationSet(this,
@@ -1377,10 +1358,10 @@ public abstract class ClassifierImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getClassifier().getEOperations().get(8));
+				.getClassifier().getEOperations().get(6));
 			if (result == null) {
 				cache.put(this, UMLPackage.eINSTANCE.getClassifier()
-					.getEOperations().get(8), result = ClassifierOperations
+					.getEOperations().get(6), result = ClassifierOperations
 					.allFeatures(this));
 			}
 			return result;
@@ -1397,10 +1378,10 @@ public abstract class ClassifierImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getClassifier().getEOperations().get(9));
+				UMLPackage.eINSTANCE.getClassifier().getEOperations().get(7));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getClassifier().getEOperations().get(9),
+					.getClassifier().getEOperations().get(7),
 					result = ClassifierOperations.parents(this));
 			}
 			return result;
@@ -1449,23 +1430,14 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean maySpecializeType() {
-		return ClassifierOperations.maySpecializeType(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public List allParents() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getClassifier().getEOperations().get(15));
+				.getClassifier().getEOperations().get(13));
 			if (result == null) {
 				cache.put(this, UMLPackage.eINSTANCE.getClassifier()
-					.getEOperations().get(15), result = ClassifierOperations
+					.getEOperations().get(13), result = ClassifierOperations
 					.allParents(this));
 			}
 			return result;

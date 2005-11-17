@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -159,7 +159,7 @@ public interface ProtocolTransition
 	 * @model
 	 * @generated
 	 */
-	boolean validateBelongsToPsm(DiagnosticChain diagnostics, Map context);
+	boolean validateBelongsPsm(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

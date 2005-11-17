@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNode.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: ActivityParameterNode.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -74,7 +74,7 @@ public interface ActivityParameterNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateParameter(DiagnosticChain diagnostics, Map context);
+	boolean validateHasParameters(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

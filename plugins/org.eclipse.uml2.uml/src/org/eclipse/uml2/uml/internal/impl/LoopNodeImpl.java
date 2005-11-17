@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.1 2005/11/14 22:26:07 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -518,9 +518,10 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBodyOutput(DiagnosticChain diagnostics, Map context) {
-		return LoopNodeOperations
-			.validateBodyOutput(this, diagnostics, context);
+	public boolean validateBodyOutputPins(DiagnosticChain diagnostics,
+			Map context) {
+		return LoopNodeOperations.validateBodyOutputPins(this, diagnostics,
+			context);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -264,8 +264,10 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBodyOutput(DiagnosticChain diagnostics, Map context) {
-		return ClauseOperations.validateBodyOutput(this, diagnostics, context);
+	public boolean validateBodyOutputPins(DiagnosticChain diagnostics,
+			Map context) {
+		return ClauseOperations.validateBodyOutputPins(this, diagnostics,
+			context);
 	}
 
 	/**

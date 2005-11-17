@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.1 2005/11/14 22:25:53 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -32,9 +32,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#validateRedefinitionContextValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#validateRedefinitionConsistent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Consistent</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.uml.RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#isRedefinitionContextValid() <em>Is Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.uml.RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,7 +121,7 @@ public final class RedefinableElementOperations {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
-	 * result = self.redefinitionContext->exists(c | redefinable.redefinitionContext->exists(r | c.allParents()->includes(r)))
+	 * result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext)))
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -148,22 +147,6 @@ public final class RedefinableElementOperations {
 	 */
 	public static boolean isConsistentWith(
 			RedefinableElement redefinableElement, RedefinableElement redefinee) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
-	 * result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext))
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean isRedefinitionContextValid(
-			RedefinableElement redefinableElement) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

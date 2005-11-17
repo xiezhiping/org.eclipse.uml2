@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -330,10 +330,10 @@ public class ClassifierTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateConstrainingClassifier(DiagnosticChain diagnostics,
-			Map context) {
+	public boolean validateHasConstrainingClassifier(
+			DiagnosticChain diagnostics, Map context) {
 		return ClassifierTemplateParameterOperations
-			.validateConstrainingClassifier(this, diagnostics, context);
+			.validateHasConstrainingClassifier(this, diagnostics, context);
 	}
 
 	/**

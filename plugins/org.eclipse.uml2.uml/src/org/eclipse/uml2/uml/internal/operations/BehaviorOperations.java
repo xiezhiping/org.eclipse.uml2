@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: BehaviorOperations.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -32,7 +32,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Behavior#validateParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#validateParametersMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameters Match</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateFeatureOfContextClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Feature Of Context Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMustRealize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Must Realize</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMostOneBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Most One Behaviour</em>}</li>
@@ -63,7 +63,7 @@ public final class BehaviorOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateParameters(Behavior behavior,
+	public static boolean validateParametersMatch(Behavior behavior,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -75,10 +75,10 @@ public final class BehaviorOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.BEHAVIOR__PARAMETERS,
+						UMLValidator.BEHAVIOR__PARAMETERS_MATCH,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateParameters", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(behavior, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateParametersMatch", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(behavior, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{behavior}));
 			}
 			return false;

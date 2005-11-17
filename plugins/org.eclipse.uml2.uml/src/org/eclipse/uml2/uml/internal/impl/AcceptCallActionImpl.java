@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -169,9 +169,9 @@ public class AcceptCallActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateIsUnmarshall(DiagnosticChain diagnostics, Map context) {
-		return AcceptCallActionOperations.validateIsUnmarshall(this,
-			diagnostics, context);
+	public boolean validateUnmarshall(DiagnosticChain diagnostics, Map context) {
+		return AcceptCallActionOperations.validateUnmarshall(this, diagnostics,
+			context);
 	}
 
 	/**

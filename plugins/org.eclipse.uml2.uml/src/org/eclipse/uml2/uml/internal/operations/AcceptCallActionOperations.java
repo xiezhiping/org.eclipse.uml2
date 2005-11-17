@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: AcceptCallActionOperations.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -32,7 +32,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.AcceptCallAction#validateResultPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.AcceptCallAction#validateTriggerCallEvent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Trigger Call Event</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.AcceptCallAction#validateIsUnmarshall(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Is Unmarshall</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.AcceptCallAction#validateUnmarshall(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Unmarshall</em>}</li>
  * </ul>
  * </p>
  *
@@ -123,9 +123,8 @@ public final class AcceptCallActionOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateIsUnmarshall(
-			AcceptCallAction acceptCallAction, DiagnosticChain diagnostics,
-			Map context) {
+	public static boolean validateUnmarshall(AcceptCallAction acceptCallAction,
+			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -136,10 +135,10 @@ public final class AcceptCallActionOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACCEPT_CALL_ACTION__IS_UNMARSHALL,
+						UMLValidator.ACCEPT_CALL_ACTION__UNMARSHALL,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIsUnmarshall", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(acceptCallAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateUnmarshall", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(acceptCallAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{acceptCallAction}));
 			}
 			return false;

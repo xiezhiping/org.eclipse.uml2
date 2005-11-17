@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,7 +33,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Property#validateMultiplicityOfComposite(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Composite</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#validateSubsettingContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#validateSubsettingContextConforms(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Context Conforms</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#validateNavigablePropertyRedefinition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Property Redefinition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#validateSubsettingRules(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Rules</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#validateNavigableReadonly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Readonly</em>}</li>
@@ -112,7 +112,7 @@ public final class PropertyOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateSubsettingContext(Property property,
+	public static boolean validateSubsettingContextConforms(Property property,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -124,10 +124,10 @@ public final class PropertyOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__SUBSETTING_CONTEXT,
+						UMLValidator.PROPERTY__SUBSETTING_CONTEXT_CONFORMS,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSubsettingContext", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSubsettingContextConforms", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{property}));
 			}
 			return false;

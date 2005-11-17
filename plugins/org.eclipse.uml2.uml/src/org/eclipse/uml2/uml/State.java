@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: State.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -648,5 +648,18 @@ public interface State
 	 * @generated
 	 */
 	Classifier redefinitionContext();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a state are properly related to the redefinition contexts of the specified state to allow this element to redefine the other. The containing region of a redefining state must redefine the containing region of the redefined state.
+	 * result = true
+	 * <!-- end-model-doc -->
+	 * @model required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
+	 * @generated
+	 */
+	boolean isRedefinitionContextValid(State redefined);
 
 } // State

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1319,10 +1319,10 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSubsettingContext(DiagnosticChain diagnostics,
-			Map context) {
-		return PropertyOperations.validateSubsettingContext(this, diagnostics,
-			context);
+	public boolean validateSubsettingContextConforms(
+			DiagnosticChain diagnostics, Map context) {
+		return PropertyOperations.validateSubsettingContextConforms(this,
+			diagnostics, context);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBinding.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: TemplateBinding.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -131,7 +131,7 @@ public interface TemplateBinding
 	 * @model
 	 * @generated
 	 */
-	boolean validateParameterSubstitution(DiagnosticChain diagnostics,
+	boolean validateParameterSubstitutionFormal(DiagnosticChain diagnostics,
 			Map context);
 
 	/**

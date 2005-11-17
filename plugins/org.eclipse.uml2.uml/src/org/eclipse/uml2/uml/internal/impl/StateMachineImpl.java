@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -351,8 +351,9 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid() {
-		return StateMachineOperations.isRedefinitionContextValid(this);
+	public boolean isRedefinitionContextValid(StateMachine redefined) {
+		return StateMachineOperations.isRedefinitionContextValid(this,
+			redefined);
 	}
 
 	/**
@@ -1266,6 +1267,15 @@ public class StateMachineImpl
 		return super.isSetRedefinedElements()
 			|| eIsSet(UMLPackage.eINSTANCE
 				.getStateMachine_ExtendedStateMachine());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
+		return isRedefinitionContextValid(redefined);
 	}
 
 } //StateMachineImpl

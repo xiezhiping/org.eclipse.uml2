@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -176,6 +176,7 @@ public interface AcceptEventAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateIsUnmarshall(DiagnosticChain diagnostics, Map context);
+	boolean validateUnmarshallSignalEvents(DiagnosticChain diagnostics,
+			Map context);
 
 } // AcceptEventAction

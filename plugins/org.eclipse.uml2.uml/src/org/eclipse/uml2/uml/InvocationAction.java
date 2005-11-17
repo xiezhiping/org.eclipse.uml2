@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationAction.java,v 1.1 2005/11/14 22:25:57 khussey Exp $
+ * $Id: InvocationAction.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -126,6 +126,6 @@ public interface InvocationAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateOnPort(DiagnosticChain diagnostics, Map context);
+	boolean validateOnPortReceiver(DiagnosticChain diagnostics, Map context);
 
 } // InvocationAction

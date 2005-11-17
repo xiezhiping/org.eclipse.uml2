@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: InteractionConstraintOperations.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,8 +33,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateDynamicVariables(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Dynamic Variables</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateGlobalData(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Global Data</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMinintMaxint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Minint Maxint</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMinint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Minint</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMaxint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maxint</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMinintNonNegative(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Minint Non Negative</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMaxintPositive(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maxint Positive</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMaxintGreaterEqualMinint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maxint Greater Equal Minint</em>}</li>
  * </ul>
  * </p>
@@ -160,7 +160,7 @@ public final class InteractionConstraintOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateMinint(
+	public static boolean validateMinintNonNegative(
 			InteractionConstraint interactionConstraint,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
@@ -173,10 +173,10 @@ public final class InteractionConstraintOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INTERACTION_CONSTRAINT__MININT,
+						UMLValidator.INTERACTION_CONSTRAINT__MININT_NON_NEGATIVE,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMinint", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interactionConstraint, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMinintNonNegative", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interactionConstraint, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{interactionConstraint}));
 			}
 			return false;
@@ -193,7 +193,7 @@ public final class InteractionConstraintOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateMaxint(
+	public static boolean validateMaxintPositive(
 			InteractionConstraint interactionConstraint,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
@@ -206,10 +206,10 @@ public final class InteractionConstraintOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INTERACTION_CONSTRAINT__MAXINT,
+						UMLValidator.INTERACTION_CONSTRAINT__MAXINT_POSITIVE,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMaxint", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interactionConstraint, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMaxintPositive", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interactionConstraint, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{interactionConstraint}));
 			}
 			return false;

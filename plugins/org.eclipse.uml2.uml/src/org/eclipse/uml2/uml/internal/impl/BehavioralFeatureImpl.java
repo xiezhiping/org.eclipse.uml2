@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -571,9 +571,9 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
+	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
 		return RedefinableElementOperations.isRedefinitionContextValid(this,
-			redefinable);
+			redefined);
 	}
 
 	/**
@@ -583,15 +583,6 @@ public class BehavioralFeatureImpl
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
 		return RedefinableElementOperations.isConsistentWith(this, redefinee);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isRedefinitionContextValid() {
-		return RedefinableElementOperations.isRedefinitionContextValid(this);
 	}
 
 	/**

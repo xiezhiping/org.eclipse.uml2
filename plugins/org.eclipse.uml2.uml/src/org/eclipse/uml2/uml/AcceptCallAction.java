@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallAction.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: AcceptCallAction.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -87,5 +87,17 @@ public interface AcceptCallAction
 	 * @generated
 	 */
 	boolean validateTriggerCallEvent(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * isUnmrashall must be true for an AcceptCallAction.
+	 * isUnmarshall = true
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateUnmarshall(DiagnosticChain diagnostics, Map context);
 
 } // AcceptCallAction

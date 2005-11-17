@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionOperations.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: ProtocolTransitionOperations.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,7 +30,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ProtocolTransition#validateBelongsToPsm(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Belongs To Psm</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ProtocolTransition#validateBelongsPsm(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Belongs Psm</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ProtocolTransition#validateAssociatedActions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Associated Actions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ProtocolTransition#validateRefersToOperation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Refers To Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ProtocolTransition#belongsToPSM() <em>Belongs To PSM</em>}</li>
@@ -59,7 +59,7 @@ public final class ProtocolTransitionOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateBelongsToPsm(
+	public static boolean validateBelongsPsm(
 			ProtocolTransition protocolTransition, DiagnosticChain diagnostics,
 			Map context) {
 		// TODO: implement this method
@@ -72,10 +72,10 @@ public final class ProtocolTransitionOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROTOCOL_TRANSITION__BELONGS_TO_PSM,
+						UMLValidator.PROTOCOL_TRANSITION__BELONGS_PSM,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBelongsToPsm", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(protocolTransition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBelongsPsm", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(protocolTransition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{protocolTransition}));
 			}
 			return false;

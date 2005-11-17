@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: ClassifierTemplateParameterOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,7 +30,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ClassifierTemplateParameter#validateConstrainingClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Constraining Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ClassifierTemplateParameter#validateHasConstrainingClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has Constraining Classifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,7 +56,7 @@ public final class ClassifierTemplateParameterOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateConstrainingClassifier(
+	public static boolean validateHasConstrainingClassifier(
 			ClassifierTemplateParameter classifierTemplateParameter,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
@@ -69,10 +69,10 @@ public final class ClassifierTemplateParameterOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER,
+						UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__HAS_CONSTRAINING_CLASSIFIER,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateConstrainingClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifierTemplateParameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHasConstrainingClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifierTemplateParameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{classifierTemplateParameter}));
 			}
 			return false;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.3 2005/11/17 21:23:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -32,8 +32,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateNoName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Name</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualified Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateHasNoQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has No Qualified Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateHasQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Needs Ownership</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getQualifiedName() <em>Get Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#allNamespaces() <em>All Namespaces</em>}</li>
@@ -66,7 +66,7 @@ public final class NamedElementOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateNoName(NamedElement namedElement,
+	public static boolean validateHasNoQualifiedName(NamedElement namedElement,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -78,10 +78,10 @@ public final class NamedElementOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.NAMED_ELEMENT__NO_NAME,
+						UMLValidator.NAMED_ELEMENT__HAS_NO_QUALIFIED_NAME,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoName", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(namedElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHasNoQualifiedName", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(namedElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{namedElement}));
 			}
 			return false;
@@ -99,7 +99,7 @@ public final class NamedElementOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateQualifiedName(NamedElement namedElement,
+	public static boolean validateHasQualifiedName(NamedElement namedElement,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -111,10 +111,10 @@ public final class NamedElementOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.NAMED_ELEMENT__QUALIFIED_NAME,
+						UMLValidator.NAMED_ELEMENT__HAS_QUALIFIED_NAME,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateQualifiedName", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(namedElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHasQualifiedName", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(namedElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{namedElement}));
 			}
 			return false;

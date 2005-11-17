@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -674,9 +674,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMembersAreDistinguishable(
-			DiagnosticChain diagnostics, Map context) {
-		return NamespaceOperations.validateMembersAreDistinguishable(this,
+	public boolean validateMembersDistinguishable(DiagnosticChain diagnostics,
+			Map context) {
+		return NamespaceOperations.validateMembersDistinguishable(this,
 			diagnostics, context);
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -210,9 +210,9 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
+	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
 		return RedefinableElementOperations.isRedefinitionContextValid(this,
-			redefinable);
+			redefined);
 	}
 
 	/**
@@ -222,15 +222,6 @@ public abstract class RedefinableElementImpl
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
 		return RedefinableElementOperations.isConsistentWith(this, redefinee);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isRedefinitionContextValid() {
-		return RedefinableElementOperations.isRedefinitionContextValid(this);
 	}
 
 	/**

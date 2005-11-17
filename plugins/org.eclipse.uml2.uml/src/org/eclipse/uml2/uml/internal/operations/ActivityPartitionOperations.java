@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionOperations.java,v 1.1 2005/11/14 22:25:53 khussey Exp $
+ * $Id: ActivityPartitionOperations.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,7 +30,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateIsDimension(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Is Dimension</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateDimensionNotContained(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Dimension Not Contained</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateNodeOrEdge(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Node Or Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateRepresentsPart(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Represents Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateRepresentsClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Represents Classifier</em>}</li>
@@ -60,7 +60,7 @@ public final class ActivityPartitionOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateIsDimension(
+	public static boolean validateDimensionNotContained(
 			ActivityPartition activityPartition, DiagnosticChain diagnostics,
 			Map context) {
 		// TODO: implement this method
@@ -73,10 +73,10 @@ public final class ActivityPartitionOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARTITION__IS_DIMENSION,
+						UMLValidator.ACTIVITY_PARTITION__DIMENSION_NOT_CONTAINED,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIsDimension", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityPartition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDimensionNotContained", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityPartition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{activityPartition}));
 			}
 			return false;

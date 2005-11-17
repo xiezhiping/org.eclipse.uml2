@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: ActivityParameterNodeOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,7 +30,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateHasParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has Parameters</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateNoEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Edges</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateNoIncomingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Incoming Edges</em>}</li>
@@ -60,7 +60,7 @@ public final class ActivityParameterNodeOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateParameter(
+	public static boolean validateHasParameters(
 			ActivityParameterNode activityParameterNode,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
@@ -73,10 +73,10 @@ public final class ActivityParameterNodeOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARAMETER_NODE__PARAMETER,
+						UMLValidator.ACTIVITY_PARAMETER_NODE__HAS_PARAMETERS,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateParameter", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityParameterNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHasParameters", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityParameterNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{activityParameterNode}));
 			}
 			return false;

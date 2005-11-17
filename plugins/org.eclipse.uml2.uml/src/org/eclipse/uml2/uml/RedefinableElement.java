@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -152,9 +152,9 @@ public interface RedefinableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
-	 * result = self.redefinitionContext->exists(c | redefinable.redefinitionContext->exists(r | c.allParents()->includes(r)))
+	 * result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext)))
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" redefinableRequired="true" redefinableOrdered="false"
+	 * @model required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -175,18 +175,5 @@ public interface RedefinableElement
 	 * @generated
 	 */
 	boolean isConsistentWith(RedefinableElement redefinee);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
-	 * result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext))
-	 * <!-- end-model-doc -->
-	 * @model kind="operation" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
-	 * @generated
-	 */
-	boolean isRedefinitionContextValid();
 
 } // RedefinableElement

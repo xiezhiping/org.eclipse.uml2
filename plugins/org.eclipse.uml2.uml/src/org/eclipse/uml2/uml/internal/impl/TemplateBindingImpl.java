@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -261,10 +261,10 @@ public class TemplateBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateParameterSubstitution(DiagnosticChain diagnostics,
-			Map context) {
-		return TemplateBindingOperations.validateParameterSubstitution(this,
-			diagnostics, context);
+	public boolean validateParameterSubstitutionFormal(
+			DiagnosticChain diagnostics, Map context) {
+		return TemplateBindingOperations.validateParameterSubstitutionFormal(
+			this, diagnostics, context);
 	}
 
 	/**

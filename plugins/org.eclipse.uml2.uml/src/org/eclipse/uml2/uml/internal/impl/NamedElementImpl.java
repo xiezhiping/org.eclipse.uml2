@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -316,9 +316,10 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNoName(DiagnosticChain diagnostics, Map context) {
-		return NamedElementOperations
-			.validateNoName(this, diagnostics, context);
+	public boolean validateHasNoQualifiedName(DiagnosticChain diagnostics,
+			Map context) {
+		return NamedElementOperations.validateHasNoQualifiedName(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -326,10 +327,10 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateQualifiedName(DiagnosticChain diagnostics,
+	public boolean validateHasQualifiedName(DiagnosticChain diagnostics,
 			Map context) {
-		return NamedElementOperations.validateQualifiedName(this, diagnostics,
-			context);
+		return NamedElementOperations.validateHasQualifiedName(this,
+			diagnostics, context);
 	}
 
 	/**

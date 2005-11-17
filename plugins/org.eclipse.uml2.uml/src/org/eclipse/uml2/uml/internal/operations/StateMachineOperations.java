@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: StateMachineOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -39,7 +39,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateMethod(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Method</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#LCA(org.eclipse.uml2.uml.State, org.eclipse.uml2.uml.State) <em>LCA</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#ancestor(org.eclipse.uml2.uml.State, org.eclipse.uml2.uml.State) <em>Ancestor</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#isRedefinitionContextValid() <em>Is Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#isRedefinitionContextValid(org.eclipse.uml2.uml.StateMachine) <em>Is Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
  * </ul>
  * </p>
@@ -232,7 +232,8 @@ public final class StateMachineOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean isRedefinitionContextValid(StateMachine stateMachine) {
+	public static boolean isRedefinitionContextValid(StateMachine stateMachine,
+			StateMachine redefined) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

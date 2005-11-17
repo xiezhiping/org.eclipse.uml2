@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionOperations.java,v 1.1 2005/11/14 22:25:53 khussey Exp $
+ * $Id: AcceptEventActionOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,7 +33,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateNoInputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Input Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateNoOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Output Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateTriggerEvents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Trigger Events</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateIsUnmarshall(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Is Unmarshall</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateUnmarshallSignalEvents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Unmarshall Signal Events</em>}</li>
  * </ul>
  * </p>
  *
@@ -158,7 +158,7 @@ public final class AcceptEventActionOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateIsUnmarshall(
+	public static boolean validateUnmarshallSignalEvents(
 			AcceptEventAction acceptEventAction, DiagnosticChain diagnostics,
 			Map context) {
 		// TODO: implement this method
@@ -171,10 +171,10 @@ public final class AcceptEventActionOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACCEPT_EVENT_ACTION__IS_UNMARSHALL,
+						UMLValidator.ACCEPT_EVENT_ACTION__UNMARSHALL_SIGNAL_EVENTS,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIsUnmarshall", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(acceptEventAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateUnmarshallSignalEvents", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(acceptEventAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{acceptEventAction}));
 			}
 			return false;

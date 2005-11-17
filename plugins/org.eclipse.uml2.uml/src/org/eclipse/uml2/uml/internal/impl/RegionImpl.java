@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: RegionImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -477,9 +477,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
-		return RedefinableElementOperations.isRedefinitionContextValid(this,
-			redefinable);
+	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
+		return isRedefinitionContextValid(redefined);
 	}
 
 	/**
@@ -489,15 +488,6 @@ public class RegionImpl
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
 		return RegionOperations.isConsistentWith(this, redefinee);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isRedefinitionContextValid() {
-		return RegionOperations.isRedefinitionContextValid(this);
 	}
 
 	/**
@@ -549,6 +539,15 @@ public class RegionImpl
 	 */
 	public Classifier redefinitionContext() {
 		return RegionOperations.redefinitionContext(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRedefinitionContextValid(Region redefined) {
+		return RegionOperations.isRedefinitionContextValid(this, redefined);
 	}
 
 	/**

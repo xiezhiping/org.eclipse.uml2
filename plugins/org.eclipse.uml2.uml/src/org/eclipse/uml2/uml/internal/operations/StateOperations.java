@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: StateOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -44,7 +44,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.State#isOrthogonal() <em>Is Orthogonal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isSubmachineState() <em>Is Submachine State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#redefinitionContext() <em>Redefinition Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.State#isRedefinitionContextValid() <em>Is Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.State#isRedefinitionContextValid(org.eclipse.uml2.uml.State) <em>Is Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#containingStateMachine() <em>Containing State Machine</em>}</li>
  * </ul>
@@ -346,7 +346,8 @@ public final class StateOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean isRedefinitionContextValid(State state) {
+	public static boolean isRedefinitionContextValid(State state,
+			State redefined) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

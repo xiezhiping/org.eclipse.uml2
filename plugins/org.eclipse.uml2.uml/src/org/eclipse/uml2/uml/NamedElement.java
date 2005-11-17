@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: NamedElement.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -205,7 +205,7 @@ public interface NamedElement
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoName(DiagnosticChain diagnostics, Map context);
+	boolean validateHasNoQualifiedName(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -218,7 +218,7 @@ public interface NamedElement
 	 * @model
 	 * @generated
 	 */
-	boolean validateQualifiedName(DiagnosticChain diagnostics, Map context);
+	boolean validateHasQualifiedName(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

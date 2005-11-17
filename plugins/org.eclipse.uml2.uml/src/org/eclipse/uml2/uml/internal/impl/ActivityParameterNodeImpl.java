@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -129,8 +129,9 @@ public class ActivityParameterNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateParameter(DiagnosticChain diagnostics, Map context) {
-		return ActivityParameterNodeOperations.validateParameter(this,
+	public boolean validateHasParameters(DiagnosticChain diagnostics,
+			Map context) {
+		return ActivityParameterNodeOperations.validateHasParameters(this,
 			diagnostics, context);
 	}
 

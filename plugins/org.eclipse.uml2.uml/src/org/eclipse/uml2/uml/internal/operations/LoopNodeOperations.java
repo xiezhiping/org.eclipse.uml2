@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: LoopNodeOperations.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,7 +31,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateInputEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Edges</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateBodyOutput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Body Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateBodyOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Body Output Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateResultNoIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result No Incoming</em>}</li>
  * </ul>
  * </p>
@@ -90,7 +90,7 @@ public final class LoopNodeOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateBodyOutput(LoopNode loopNode,
+	public static boolean validateBodyOutputPins(LoopNode loopNode,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -102,10 +102,10 @@ public final class LoopNodeOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LOOP_NODE__BODY_OUTPUT,
+						UMLValidator.LOOP_NODE__BODY_OUTPUT_PINS,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBodyOutput", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBodyOutputPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{loopNode}));
 			}
 			return false;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -323,8 +323,8 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBelongsToPsm(DiagnosticChain diagnostics, Map context) {
-		return ProtocolTransitionOperations.validateBelongsToPsm(this,
+	public boolean validateBelongsPsm(DiagnosticChain diagnostics, Map context) {
+		return ProtocolTransitionOperations.validateBelongsPsm(this,
 			diagnostics, context);
 	}
 

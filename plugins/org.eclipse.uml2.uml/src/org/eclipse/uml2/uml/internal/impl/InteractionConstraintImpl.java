@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -281,8 +281,9 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMinint(DiagnosticChain diagnostics, Map context) {
-		return InteractionConstraintOperations.validateMinint(this,
+	public boolean validateMinintNonNegative(DiagnosticChain diagnostics,
+			Map context) {
+		return InteractionConstraintOperations.validateMinintNonNegative(this,
 			diagnostics, context);
 	}
 
@@ -291,8 +292,9 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMaxint(DiagnosticChain diagnostics, Map context) {
-		return InteractionConstraintOperations.validateMaxint(this,
+	public boolean validateMaxintPositive(DiagnosticChain diagnostics,
+			Map context) {
+		return InteractionConstraintOperations.validateMaxintPositive(this,
 			diagnostics, context);
 	}
 

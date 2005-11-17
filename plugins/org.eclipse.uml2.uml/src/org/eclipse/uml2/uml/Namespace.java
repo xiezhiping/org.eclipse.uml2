@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: Namespace.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -267,7 +267,7 @@ public interface Namespace
 	 * @model
 	 * @generated
 	 */
-	boolean validateMembersAreDistinguishable(DiagnosticChain diagnostics,
+	boolean validateMembersDistinguishable(DiagnosticChain diagnostics,
 			Map context);
 
 	/**

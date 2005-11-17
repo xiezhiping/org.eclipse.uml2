@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNode.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: LoopNode.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -347,7 +347,7 @@ public interface LoopNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateBodyOutput(DiagnosticChain diagnostics, Map context);
+	boolean validateBodyOutputPins(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

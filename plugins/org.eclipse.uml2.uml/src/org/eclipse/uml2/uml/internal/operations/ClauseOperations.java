@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: ClauseOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,7 +31,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Clause#validateDeciderOutput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Decider Output</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Clause#validateBodyOutput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Body Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Clause#validateBodyOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Body Output Pins</em>}</li>
  * </ul>
  * </p>
  *
@@ -89,7 +89,7 @@ public final class ClauseOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateBodyOutput(Clause clause,
+	public static boolean validateBodyOutputPins(Clause clause,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -101,10 +101,10 @@ public final class ClauseOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLAUSE__BODY_OUTPUT,
+						UMLValidator.CLAUSE__BODY_OUTPUT_PINS,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBodyOutput", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(clause, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBodyOutputPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(clause, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{clause}));
 			}
 			return false;
