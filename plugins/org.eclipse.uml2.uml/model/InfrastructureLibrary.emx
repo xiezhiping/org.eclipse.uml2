@@ -1145,7 +1145,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rRNMBhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rRgG8xTaEdqZu-3Jy1-uYg" name="no_name" constrainedElement="_3ADC7B74022D3CA0071C02FD">
+          <ownedRule xmi:id="_rRgG8xTaEdqZu-3Jy1-uYg" name="has_no_qualified_name" constrainedElement="_3ADC7B74022D3CA0071C02FD">
             <ownedComment xmi:id="_rRW9ARTaEdqZu-3Jy1-uYg" body="If there is no name, or one of the containing namespaces has no name, there is no qualified name." annotatedElement="_rRgG8xTaEdqZu-3Jy1-uYg">
               <eAnnotations xmi:id="_rRgG8BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rRgG8RTaEdqZu-3Jy1-uYg"/>
@@ -1153,7 +1153,7 @@
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rRgG9BTaEdqZu-3Jy1-uYg" body="(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())&#xD;&#xA;  implies self.qualifiedName->isEmpty()" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rRgG_BTaEdqZu-3Jy1-uYg" name="qualified_name" constrainedElement="_3ADC7B74022D3CA0071C02FD">
+          <ownedRule xmi:id="_rRgG_BTaEdqZu-3Jy1-uYg" name="has_qualified_name" constrainedElement="_3ADC7B74022D3CA0071C02FD">
             <ownedComment xmi:id="_rRgG-BTaEdqZu-3Jy1-uYg" body="When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces." annotatedElement="_rRgG_BTaEdqZu-3Jy1-uYg">
               <eAnnotations xmi:id="_rRgG-RTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rRgG-hTaEdqZu-3Jy1-uYg"/>
@@ -1257,7 +1257,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rSZe0RTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rSZe2BTaEdqZu-3Jy1-uYg" name="members_are_distinguishable" constrainedElement="_3ADC7B74022D3CA0072700FA">
+          <ownedRule xmi:id="_rSZe2BTaEdqZu-3Jy1-uYg" name="members_distinguishable" constrainedElement="_3ADC7B74022D3CA0072700FA">
             <ownedComment xmi:id="_rSZe1BTaEdqZu-3Jy1-uYg" body="All the members of a Namespace are distinguishable within it." annotatedElement="_rSZe2BTaEdqZu-3Jy1-uYg">
               <eAnnotations xmi:id="_rSZe1RTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rSZe1hTaEdqZu-3Jy1-uYg"/>
@@ -13411,7 +13411,7 @@
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rln80RTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
         </ownedComment>
-        <ownedRule xmi:id="_rlxGzRTaEdqZu-3Jy1-uYg" name="members_are_distinguishable" constrainedElement="_3ADC7B74022D3DE6C03E0388">
+        <ownedRule xmi:id="_rlxGzRTaEdqZu-3Jy1-uYg" name="members_distinguishable" constrainedElement="_3ADC7B74022D3DE6C03E0388">
           <ownedComment xmi:id="_rlxGyRTaEdqZu-3Jy1-uYg" body="All the members of a Namespace are distinguishable within it." annotatedElement="_rlxGzRTaEdqZu-3Jy1-uYg">
             <eAnnotations xmi:id="_rlxGyhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rlxGyxTaEdqZu-3Jy1-uYg"/>
@@ -13917,7 +13917,7 @@
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmqeqBTaEdqZu-3Jy1-uYg" body="isComposite implies (upperBound()->isEmpty() or upperBound() &lt;= 1)" language="OCL"/>
         </ownedRule>
-        <ownedRule xmi:id="_rmqesBTaEdqZu-3Jy1-uYg" name="subsetting_context" constrainedElement="_3ADC7B74022D3DE6D57500AC">
+        <ownedRule xmi:id="_rmqesBTaEdqZu-3Jy1-uYg" name="subsetting_context_conforms" constrainedElement="_3ADC7B74022D3DE6D57500AC">
           <ownedComment xmi:id="_rmqerBTaEdqZu-3Jy1-uYg" body="Subsetting may only occur when the context of the subsetting property conforms to the context of the subsetted property." annotatedElement="_rmqesBTaEdqZu-3Jy1-uYg">
             <eAnnotations xmi:id="_rmqerRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmqerhTaEdqZu-3Jy1-uYg"/>
@@ -14945,7 +14945,7 @@
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ro5TUxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
         </ownedComment>
-        <ownedRule xmi:id="_ro5TWhTaEdqZu-3Jy1-uYg" name="no_name" constrainedElement="_3ADC7B74022D3DE6BC6B01BD">
+        <ownedRule xmi:id="_ro5TWhTaEdqZu-3Jy1-uYg" name="has_no_qualified_name" constrainedElement="_3ADC7B74022D3DE6BC6B01BD">
           <ownedComment xmi:id="_ro5TVhTaEdqZu-3Jy1-uYg" body="If there is no name, or one of the containing namespaces has no name, there is no qualified name." annotatedElement="_ro5TWhTaEdqZu-3Jy1-uYg">
             <eAnnotations xmi:id="_ro5TVxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ro5TWBTaEdqZu-3Jy1-uYg"/>
@@ -14953,7 +14953,7 @@
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_ro5TWxTaEdqZu-3Jy1-uYg" body="(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())&#xD;&#xA;  implies self.qualifiedName->isEmpty()" language="OCL"/>
         </ownedRule>
-        <ownedRule xmi:id="_rpDEQxTaEdqZu-3Jy1-uYg" name="qualified_name" constrainedElement="_3ADC7B74022D3DE6BC6B01BD">
+        <ownedRule xmi:id="_rpDEQxTaEdqZu-3Jy1-uYg" name="has_qualified_name" constrainedElement="_3ADC7B74022D3DE6BC6B01BD">
           <ownedComment xmi:id="_ro5TXxTaEdqZu-3Jy1-uYg" body="When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces." annotatedElement="_rpDEQxTaEdqZu-3Jy1-uYg">
             <eAnnotations xmi:id="_rpDEQBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpDEQRTaEdqZu-3Jy1-uYg"/>
