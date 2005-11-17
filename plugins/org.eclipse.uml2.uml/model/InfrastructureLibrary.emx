@@ -3446,10 +3446,10 @@
               </eAnnotations>
             </ownedComment>
             <ownedRule xmi:id="_rWkNMxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106C8A007D">
-              <specification xmi:type="uml:OpaqueExpression" xmi:id="_rWkNNBTaEdqZu-3Jy1-uYg" body="result = redefinitionContext->exists(c |&#xA;c.allparents()->&#xA;includes (redefined.redefinitionContext))" language="OCL"/>
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_rWkNNBTaEdqZu-3Jy1-uYg" body="result = redefinitionContext->exists(c | c.allParents()->includes (redefined.redefinitionContext)))" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rWkNMRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
-            <ownedParameter xmi:id="_3ADC7B74022D42EE305C00D8" name="redefinable" type="_3ADC7B74022D3CA019640144" direction="inout"/>
+            <ownedParameter xmi:id="_3ADC7B74022D42EE305C00D8" name="redefined" type="_3ADC7B74022D3CA019640144" direction="inout"/>
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3CA01B1E012C" name="A_redefinedElement_redefinableElement" memberEnd="_3ADC7B74022D3CA01B20019D _3ADC7B74022D3CA01B20019F">
@@ -13641,10 +13641,10 @@
             </eAnnotations>
           </ownedComment>
           <ownedRule xmi:id="_rl635RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00D6">
-            <specification xmi:type="uml:OpaqueExpression" xmi:id="_rl635hTaEdqZu-3Jy1-uYg" body="result = self.redefinitionContext->exists(c | redefinable.redefinitionContext->exists(r | c.allParents()->includes(r)))" language="OCL"/>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_rl635hTaEdqZu-3Jy1-uYg" body="result = self.redefinitionContext->exists(c | redefined.redefinitionContext->exists(r | c.allParents()->includes(r)))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rl634xTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
-          <ownedParameter xmi:id="_3ADC7B74022D42EE64EE00CE" name="redefinable" type="_3ADC7B74022D3DE6C81D0244" direction="inout"/>
+          <ownedParameter xmi:id="_3ADC7B74022D42EE64EE00CE" name="redefined" type="_3ADC7B74022D3DE6C81D0244" direction="inout"/>
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C8270177" name="Relationship" isAbstract="true">
