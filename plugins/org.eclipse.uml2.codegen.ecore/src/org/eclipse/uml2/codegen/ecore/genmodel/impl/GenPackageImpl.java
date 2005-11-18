@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.6 2005/11/14 21:35:46 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.7 2005/11/18 16:33:41 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -16,22 +16,16 @@ import java.util.Collection;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
-
 import org.eclipse.emf.codegen.ecore.genmodel.GenResourceKind;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.Monitor;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin;
 import org.eclipse.uml2.codegen.ecore.Generator;
@@ -574,7 +568,7 @@ public class GenPackageImpl
 		}
 	}
 
-	public void generate(IProgressMonitor progressMonitor) {
+	public void generate(Monitor progressMonitor) {
 		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75925
 
 		try {
@@ -591,7 +585,7 @@ public class GenPackageImpl
 					"_UI_GeneratingJavaClass_message", //$NON-NLS-1$
 					new Object[]{getQualifiedResourceInterfaceName()}));
 				generate(
-					new SubProgressMonitor(progressMonitor, 1),
+					createMonitor(progressMonitor, 1),
 					Generator.EMF_MODEL_PROJECT_STYLE,
 					getGenModel().getEffectiveModelPluginVariables(),
 					getGenModel().getModelDirectory(),

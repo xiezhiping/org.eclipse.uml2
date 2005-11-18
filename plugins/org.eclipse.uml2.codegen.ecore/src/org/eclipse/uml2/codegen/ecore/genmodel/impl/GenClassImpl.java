@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.13 2005/11/16 18:53:44 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.14 2005/11/18 16:33:41 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -18,10 +18,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
+import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
@@ -72,7 +71,7 @@ public class GenClassImpl
 		return GenModelPackage.eINSTANCE.getGenClass();
 	}
 
-	public void generate(IProgressMonitor progressMonitor) {
+	public void generate(Monitor progressMonitor) {
 		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75925
 
 		try {
@@ -90,7 +89,7 @@ public class GenClassImpl
 					progressMonitor.subTask(CodeGenEcorePlugin.INSTANCE
 						.getString("_UI_GeneratingJavaClass_message", //$NON-NLS-1$
 							new Object[]{getQualifiedOperationsClassName()}));
-					generate(new SubProgressMonitor(progressMonitor, 1),
+					generate(createMonitor(progressMonitor, 1),
 						Generator.EMF_MODEL_PROJECT_STYLE, getGenModel()
 							.getEffectiveModelPluginVariables(), getGenModel()
 							.getModelDirectory(), UML2GenModelUtil
