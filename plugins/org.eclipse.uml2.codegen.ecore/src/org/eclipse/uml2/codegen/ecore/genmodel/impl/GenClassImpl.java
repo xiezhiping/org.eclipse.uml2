@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.14 2005/11/18 16:33:41 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.15 2005/11/21 19:36:53 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -515,6 +515,9 @@ public class GenClassImpl
 						.getImportedName(
 							"org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList")); //$NON-NLS-1$
 				sb.append(unsettable);
+				if (genFeature.isResolveProxies()) {
+					sb.append(".Resolving"); //$NON-NLS-1$
+				}
 				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
 				sb.append(".class, this, "); //$NON-NLS-1$
@@ -531,6 +534,9 @@ public class GenClassImpl
 						.getImportedName(
 							"org.eclipse.uml2.common.util.SubsetEObjectContainmentEList")); //$NON-NLS-1$
 				sb.append(unsettable);
+				if (genFeature.isResolveProxies()) {
+					sb.append(".Resolving"); //$NON-NLS-1$
+				}
 				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
 				sb.append(".class, this, "); //$NON-NLS-1$
@@ -611,6 +617,9 @@ public class GenClassImpl
 						.getImportedName(
 							"org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList")); //$NON-NLS-1$
 				sb.append(unsettable);
+				if (genFeature.isResolveProxies()) {
+					sb.append(".Resolving"); //$NON-NLS-1$
+				}
 				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
 				sb.append(".class, this, "); //$NON-NLS-1$
@@ -627,6 +636,9 @@ public class GenClassImpl
 						.getImportedName(
 							"org.eclipse.uml2.common.util.SupersetEObjectContainmentEList")); //$NON-NLS-1$
 				sb.append(unsettable);
+				if (genFeature.isResolveProxies()) {
+					sb.append(".Resolving"); //$NON-NLS-1$
+				}
 				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
 				sb.append(".class, this, "); //$NON-NLS-1$

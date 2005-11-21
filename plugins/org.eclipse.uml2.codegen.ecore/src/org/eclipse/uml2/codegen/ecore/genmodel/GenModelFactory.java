@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelFactory.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenModelFactory.java,v 1.3 2005/11/21 19:36:53 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -38,7 +38,8 @@ public interface GenModelFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	GenModelFactory eINSTANCE = new org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelFactoryImpl();
+	GenModelFactory eINSTANCE = org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelFactoryImpl
+		.init();
 
 	/**
 	 * Returns a new object of class '<em>Gen Class</em>'.

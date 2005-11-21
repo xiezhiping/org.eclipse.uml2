@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelFactoryImpl.java,v 1.3 2005/11/14 16:54:12 khussey Exp $
+ * $Id: GenModelFactoryImpl.java,v 1.4 2005/11/21 19:36:53 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -16,7 +16,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.*;
 
@@ -36,6 +40,25 @@ public class GenModelFactoryImpl
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static GenModelFactory init() {
+		try {
+			GenModelFactory theGenModelFactory = (GenModelFactory) EPackage.Registry.INSTANCE
+				.getEFactory("http://www.eclipse.org/uml2/1.1.0/GenModel"); //$NON-NLS-1$ 
+			if (theGenModelFactory != null) {
+				return theGenModelFactory;
+			}
+		} catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new GenModelFactoryImpl();
+	}
 
 	/**
 	 * Creates an instance of the factory.

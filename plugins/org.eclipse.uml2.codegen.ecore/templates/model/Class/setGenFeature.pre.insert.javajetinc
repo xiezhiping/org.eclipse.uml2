@@ -10,7 +10,7 @@
 		}
       <%} else {%>
         <%if (first) { first = false;%>
-		<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> old<%=genFeature.getCapName()%> = eContainer;
+		<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> old<%=genFeature.getCapName()%> = eContainer();
         <%}%>
       <%}%>
     <%}%>

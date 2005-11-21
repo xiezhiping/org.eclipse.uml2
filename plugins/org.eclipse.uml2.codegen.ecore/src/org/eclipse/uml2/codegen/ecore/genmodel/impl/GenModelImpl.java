@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.5 2005/11/14 16:54:12 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.6 2005/11/21 19:36:53 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -435,6 +435,10 @@ public class GenModelImpl
 					: Boolean.FALSE;
 			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
 				return getFeatureDelegation();
+			case GenModelPackage.GEN_MODEL__CONTAINMENT_PROXIES :
+				return isContainmentProxies()
+					? Boolean.TRUE
+					: Boolean.FALSE;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				return getGenPackages();
 			case GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES :
@@ -594,6 +598,9 @@ public class GenModelImpl
 			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
 				setFeatureDelegation((GenDelegationKind) newValue);
 				return;
+			case GenModelPackage.GEN_MODEL__CONTAINMENT_PROXIES :
+				setContainmentProxies(((Boolean) newValue).booleanValue());
+				return;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				getGenPackages().clear();
 				getGenPackages().addAll((Collection) newValue);
@@ -751,6 +758,9 @@ public class GenModelImpl
 			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
 				setFeatureDelegation(FEATURE_DELEGATION_EDEFAULT);
 				return;
+			case GenModelPackage.GEN_MODEL__CONTAINMENT_PROXIES :
+				setContainmentProxies(CONTAINMENT_PROXIES_EDEFAULT);
+				return;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				getGenPackages().clear();
 				return;
@@ -904,6 +914,8 @@ public class GenModelImpl
 				return bundleManifest != BUNDLE_MANIFEST_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
 				return featureDelegation != FEATURE_DELEGATION_EDEFAULT;
+			case GenModelPackage.GEN_MODEL__CONTAINMENT_PROXIES :
+				return containmentProxies != CONTAINMENT_PROXIES_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				return genPackages != null && !genPackages.isEmpty();
 			case GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES :

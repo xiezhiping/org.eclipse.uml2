@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.7 2005/11/14 21:35:46 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.8 2005/11/21 19:36:53 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -820,6 +820,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__FEATURE_DELEGATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__FEATURE_DELEGATION;
+
+	/**
+	 * The feature id for the '<em><b>Containment Proxies</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__CONTAINMENT_PROXIES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__CONTAINMENT_PROXIES;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.
