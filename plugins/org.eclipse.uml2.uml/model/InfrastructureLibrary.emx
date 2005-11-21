@@ -15035,7 +15035,7 @@
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCB86501A0" name="namespace" type="_3ADC7B74022D3DE6C03E0388" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3DFCA80700BE" association="_3ADC7B74022D3DFCB86303CD">
           <eAnnotations xmi:id="_rsn8vxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rsn8wBTaEdqZu-3Jy1-uYg" isTransient="true" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rsn8wBTaEdqZu-3Jy1-uYg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsn8uhTaEdqZu-3Jy1-uYg" body="Specifies the namespace that owns the NamedElement." annotatedElement="_3ADC7B74022D3DFCB86501A0">
             <eAnnotations xmi:id="_rsn8uxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
