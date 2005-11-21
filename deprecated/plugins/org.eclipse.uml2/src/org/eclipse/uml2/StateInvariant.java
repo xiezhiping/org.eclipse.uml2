@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariant.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
+ * $Id: StateInvariant.java,v 1.8 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface StateInvariant extends InteractionFragment{
 	 * @return the value of the '<em>Invariant</em>' containment reference.
 	 * @see #setInvariant(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getStateInvariant_Invariant()
-	 * @model containment="true" required="true"
+	 * @model containment="true" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	Constraint getInvariant();

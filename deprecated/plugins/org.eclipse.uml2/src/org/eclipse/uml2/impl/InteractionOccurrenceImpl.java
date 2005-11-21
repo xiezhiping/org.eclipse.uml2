@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrenceImpl.java,v 1.15 2005/11/14 19:49:15 khussey Exp $
+ * $Id: InteractionOccurrenceImpl.java,v 1.16 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -116,8 +116,8 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	public Interaction getRefersTo() {
 		Interaction refersTo = (Interaction)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__REFERS_TO);
 		if (refersTo != null && refersTo.eIsProxy()) {
-			Interaction oldRefersTo = refersTo;
-			refersTo = (Interaction)eResolveProxy((InternalEObject)refersTo);
+			InternalEObject oldRefersTo = (InternalEObject)refersTo;
+			refersTo = (Interaction)eResolveProxy(oldRefersTo);
 			if (refersTo != oldRefersTo) {
 				eVirtualSet(UML2Package.INTERACTION_OCCURRENCE__REFERS_TO, refersTo);
 				if (eNotificationRequired())

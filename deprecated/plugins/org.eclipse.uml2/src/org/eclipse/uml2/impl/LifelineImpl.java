@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.17 2005/11/14 19:49:14 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.18 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -151,8 +151,8 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	public ConnectableElement getRepresents() {
 		ConnectableElement represents = (ConnectableElement)eVirtualGet(UML2Package.LIFELINE__REPRESENTS);
 		if (represents != null && represents.eIsProxy()) {
-			ConnectableElement oldRepresents = represents;
-			represents = (ConnectableElement)eResolveProxy((InternalEObject)represents);
+			InternalEObject oldRepresents = (InternalEObject)represents;
+			represents = (ConnectableElement)eResolveProxy(oldRepresents);
 			if (represents != oldRepresents) {
 				eVirtualSet(UML2Package.LIFELINE__REPRESENTS, represents);
 				if (eNotificationRequired())
@@ -192,7 +192,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 */
 	public Interaction getInteraction() {
 		if (eContainerFeatureID != UML2Package.LIFELINE__INTERACTION) return null;
-		return (Interaction)eContainer;
+		return (Interaction)eContainer();
 	}
 
 	/**
@@ -201,11 +201,11 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public void setInteraction(Interaction newInteraction) {
-		if (newInteraction != eContainer || (eContainerFeatureID != UML2Package.LIFELINE__INTERACTION && newInteraction != null)) {
+		if (newInteraction != eInternalContainer() || (eContainerFeatureID != UML2Package.LIFELINE__INTERACTION && newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newInteraction))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInteraction != null)
 				msgs = ((InternalEObject)newInteraction).eInverseAdd(this, UML2Package.INTERACTION__LIFELINE, Interaction.class, msgs);
@@ -301,8 +301,8 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	public PartDecomposition getDecomposedAs() {
 		PartDecomposition decomposedAs = (PartDecomposition)eVirtualGet(UML2Package.LIFELINE__DECOMPOSED_AS);
 		if (decomposedAs != null && decomposedAs.eIsProxy()) {
-			PartDecomposition oldDecomposedAs = decomposedAs;
-			decomposedAs = (PartDecomposition)eResolveProxy((InternalEObject)decomposedAs);
+			InternalEObject oldDecomposedAs = (InternalEObject)decomposedAs;
+			decomposedAs = (PartDecomposition)eResolveProxy(oldDecomposedAs);
 			if (decomposedAs != oldDecomposedAs) {
 				eVirtualSet(UML2Package.LIFELINE__DECOMPOSED_AS, decomposedAs);
 				if (eNotificationRequired())
@@ -381,14 +381,14 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 				case UML2Package.LIFELINE__COVERED_BY:
 					return ((InternalEList)getCoveredBys()).basicAdd(otherEnd, msgs);
 				case UML2Package.LIFELINE__INTERACTION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.LIFELINE__INTERACTION, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -435,12 +435,12 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.LIFELINE__INTERACTION:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION__LIFELINE, Interaction.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.INTERACTION__LIFELINE, Interaction.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

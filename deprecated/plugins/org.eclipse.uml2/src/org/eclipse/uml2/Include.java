@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Include.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Include.java,v 1.7 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,7 +57,7 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * @see #setIncludingCase(UseCase)
 	 * @see org.eclipse.uml2.UML2Package#getInclude_IncludingCase()
 	 * @see org.eclipse.uml2.UseCase#getIncludes
-	 * @model opposite="include" required="true"
+	 * @model opposite="include" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	UseCase getIncludingCase();

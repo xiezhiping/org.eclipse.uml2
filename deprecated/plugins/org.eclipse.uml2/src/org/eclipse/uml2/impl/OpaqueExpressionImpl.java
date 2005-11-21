@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.13 2005/11/14 17:31:09 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.14 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -151,7 +151,7 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 */
 	public Parameter getResult() {
 		Parameter result = basicGetResult();
-		return result == null ? null : (result.eIsProxy() ? (Parameter)eResolveProxy((InternalEObject)result) : result);
+		return result != null && result.eIsProxy() ? (Parameter)eResolveProxy((InternalEObject)result) : result;
 	}
 
 	/**
@@ -181,8 +181,8 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	public Behavior getBehavior() {
 		Behavior behavior = (Behavior)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BEHAVIOR);
 		if (behavior != null && behavior.eIsProxy()) {
-			Behavior oldBehavior = behavior;
-			behavior = (Behavior)eResolveProxy((InternalEObject)behavior);
+			InternalEObject oldBehavior = (InternalEObject)behavior;
+			behavior = (Behavior)eResolveProxy(oldBehavior);
 			if (behavior != oldBehavior) {
 				eVirtualSet(UML2Package.OPAQUE_EXPRESSION__BEHAVIOR, behavior);
 				if (eNotificationRequired())

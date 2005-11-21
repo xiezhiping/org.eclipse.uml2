@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.14 2005/11/14 17:31:07 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.15 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -125,8 +125,8 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	public InputPin getInsertAt() {
 		InputPin insertAt = (InputPin)eVirtualGet(UML2Package.LINK_END_CREATION_DATA__INSERT_AT);
 		if (insertAt != null && insertAt.eIsProxy()) {
-			InputPin oldInsertAt = insertAt;
-			insertAt = (InputPin)eResolveProxy((InternalEObject)insertAt);
+			InternalEObject oldInsertAt = (InternalEObject)insertAt;
+			insertAt = (InputPin)eResolveProxy(oldInsertAt);
 			if (insertAt != oldInsertAt) {
 				eVirtualSet(UML2Package.LINK_END_CREATION_DATA__INSERT_AT, insertAt);
 				if (eNotificationRequired())

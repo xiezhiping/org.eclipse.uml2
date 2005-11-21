@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.12 2005/11/09 22:53:10 khussey Exp $
+ * $Id: Constraint.java,v 1.13 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -82,7 +82,7 @@ public interface Constraint extends PackageableElement{
 	 * @see #setNamespace(Namespace)
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_Namespace()
 	 * @see org.eclipse.uml2.Namespace#getOwnedRules
-	 * @model opposite="ownedRule"
+	 * @model opposite="ownedRule" resolveProxies="false"
 	 * @generated
 	 */
 	Namespace getNamespace();
@@ -112,7 +112,7 @@ public interface Constraint extends PackageableElement{
 	 * @return the value of the '<em>Specification</em>' containment reference.
 	 * @see #setSpecification(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_Specification()
-	 * @model containment="true" required="true"
+	 * @model containment="true" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	ValueSpecification getSpecification();

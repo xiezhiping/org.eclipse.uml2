@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.32 2005/11/14 19:49:14 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.33 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -225,8 +225,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	public StateMachine getExtendedStateMachine() {
 		StateMachine extendedStateMachine = (StateMachine)eVirtualGet(UML2Package.STATE_MACHINE__EXTENDED_STATE_MACHINE);
 		if (extendedStateMachine != null && extendedStateMachine.eIsProxy()) {
-			StateMachine oldExtendedStateMachine = extendedStateMachine;
-			extendedStateMachine = (StateMachine)eResolveProxy((InternalEObject)extendedStateMachine);
+			InternalEObject oldExtendedStateMachine = (InternalEObject)extendedStateMachine;
+			extendedStateMachine = (StateMachine)eResolveProxy(oldExtendedStateMachine);
 			if (extendedStateMachine != oldExtendedStateMachine) {
 				eVirtualSet(UML2Package.STATE_MACHINE__EXTENDED_STATE_MACHINE, extendedStateMachine);
 				if (eNotificationRequired())
@@ -275,7 +275,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 */
 	public BehavioredClassifier getStateMachine_redefinitionContext() {
 		if (eContainerFeatureID != UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT) return null;
-		return (BehavioredClassifier)eContainer;
+		return (BehavioredClassifier)eContainer();
 	}
 
 	/**
@@ -284,11 +284,11 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * @generated
 	 */
 	public void setStateMachine_redefinitionContext(BehavioredClassifier newStateMachine_redefinitionContext) {
-		if (newStateMachine_redefinitionContext != eContainer || (eContainerFeatureID != UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT && newStateMachine_redefinitionContext != null)) {
+		if (newStateMachine_redefinitionContext != eInternalContainer() || (eContainerFeatureID != UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT && newStateMachine_redefinitionContext != null)) {
 			if (EcoreUtil.isAncestor(this, newStateMachine_redefinitionContext))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newStateMachine_redefinitionContext != null)
 				msgs = ((InternalEObject)newStateMachine_redefinitionContext).eInverseAdd(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE, BehavioredClassifier.class, msgs);
@@ -379,7 +379,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.STATE_MACHINE__OWNING_PARAMETER, msgs);
 				case UML2Package.STATE_MACHINE__GENERALIZATION:
@@ -399,7 +399,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				case UML2Package.STATE_MACHINE__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__CONTEXT:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.STATE_MACHINE__CONTEXT, msgs);
 				case UML2Package.STATE_MACHINE__SPECIFICATION:
@@ -410,14 +410,14 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				case UML2Package.STATE_MACHINE__REGION:
 					return ((InternalEList)getRegions()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -514,16 +514,16 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.STATE_MACHINE__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.STATE_MACHINE__CONTEXT:
-					return eContainer.eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, BehavioredClassifier.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, BehavioredClassifier.class, msgs);
 				case UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
-					return eContainer.eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE, BehavioredClassifier.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE, BehavioredClassifier.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

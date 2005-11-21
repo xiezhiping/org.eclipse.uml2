@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.17 2005/11/14 19:49:14 khussey Exp $
+ * $Id: VariableImpl.java,v 1.18 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -163,8 +163,8 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	public Type getType() {
 		Type type = (Type)eVirtualGet(UML2Package.VARIABLE__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Type oldType = type;
-			type = (Type)eResolveProxy((InternalEObject)type);
+			InternalEObject oldType = (InternalEObject)type;
+			type = (Type)eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UML2Package.VARIABLE__TYPE, type);
 				if (eNotificationRequired())
@@ -415,7 +415,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 */
 	public StructuredActivityNode getScope() {
 		if (eContainerFeatureID != UML2Package.VARIABLE__SCOPE) return null;
-		return (StructuredActivityNode)eContainer;
+		return (StructuredActivityNode)eContainer();
 	}
 
 	/**
@@ -424,11 +424,11 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public void setScope(StructuredActivityNode newScope) {
-		if (newScope != eContainer || (eContainerFeatureID != UML2Package.VARIABLE__SCOPE && newScope != null)) {
+		if (newScope != eInternalContainer() || (eContainerFeatureID != UML2Package.VARIABLE__SCOPE && newScope != null)) {
 			if (EcoreUtil.isAncestor(this, newScope))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newScope != null)
 				msgs = ((InternalEObject)newScope).eInverseAdd(this, UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE, StructuredActivityNode.class, msgs);
@@ -598,20 +598,20 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.VARIABLE__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.VARIABLE__OWNING_PARAMETER, msgs);
 				case UML2Package.VARIABLE__END:
 					return ((InternalEList)getEnds()).basicAdd(otherEnd, msgs);
 				case UML2Package.VARIABLE__SCOPE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.VARIABLE__SCOPE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -664,14 +664,14 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.VARIABLE__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.VARIABLE__SCOPE:
-					return eContainer.eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE, StructuredActivityNode.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE, StructuredActivityNode.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

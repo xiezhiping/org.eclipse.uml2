@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationAction.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
+ * $Id: CallOperationAction.java,v 1.8 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -87,7 +87,7 @@ public interface CallOperationAction extends CallAction{
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getCallOperationAction_Target()
-	 * @model containment="true" required="true"
+	 * @model containment="true" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	InputPin getTarget();

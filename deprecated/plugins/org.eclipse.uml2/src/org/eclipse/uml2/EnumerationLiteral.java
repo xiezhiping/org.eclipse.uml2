@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteral.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: EnumerationLiteral.java,v 1.8 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,7 +57,7 @@ public interface EnumerationLiteral extends InstanceSpecification{
 	 * @see #setEnumeration(Enumeration)
 	 * @see org.eclipse.uml2.UML2Package#getEnumerationLiteral_Enumeration()
 	 * @see org.eclipse.uml2.Enumeration#getOwnedLiterals
-	 * @model opposite="ownedLiteral"
+	 * @model opposite="ownedLiteral" resolveProxies="false"
 	 * @generated
 	 */
 	Enumeration getEnumeration();

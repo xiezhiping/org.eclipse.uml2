@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.20 2005/11/14 19:49:14 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.21 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -180,8 +180,8 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	public Type getType() {
 		Type type = (Type)eVirtualGet(UML2Package.STRUCTURAL_FEATURE__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Type oldType = type;
-			type = (Type)eResolveProxy((InternalEObject)type);
+			InternalEObject oldType = (InternalEObject)type;
+			type = (Type)eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UML2Package.STRUCTURAL_FEATURE__TYPE, type);
 				if (eNotificationRequired())

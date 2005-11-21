@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.16 2005/11/14 19:49:14 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.17 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -154,8 +154,8 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	public Association getType() {
 		Association type = (Association)eVirtualGet(UML2Package.CONNECTOR__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Association oldType = type;
-			type = (Association)eResolveProxy((InternalEObject)type);
+			InternalEObject oldType = (InternalEObject)type;
+			type = (Association)eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UML2Package.CONNECTOR__TYPE, type);
 				if (eNotificationRequired())

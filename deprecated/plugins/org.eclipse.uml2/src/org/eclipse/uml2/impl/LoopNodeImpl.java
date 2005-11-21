@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -250,8 +250,8 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	public OutputPin getDecider() {
 		OutputPin decider = (OutputPin)eVirtualGet(UML2Package.LOOP_NODE__DECIDER);
 		if (decider != null && decider.eIsProxy()) {
-			OutputPin oldDecider = decider;
-			decider = (OutputPin)eResolveProxy((InternalEObject)decider);
+			InternalEObject oldDecider = (InternalEObject)decider;
+			decider = (OutputPin)eResolveProxy(oldDecider);
 			if (decider != oldDecider) {
 				eVirtualSet(UML2Package.LOOP_NODE__DECIDER, decider);
 				if (eNotificationRequired())

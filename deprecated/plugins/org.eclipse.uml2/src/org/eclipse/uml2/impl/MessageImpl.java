@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.15 2005/11/14 19:49:14 khussey Exp $
+ * $Id: MessageImpl.java,v 1.16 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -182,8 +182,8 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	public MessageEnd getReceiveEvent() {
 		MessageEnd receiveEvent = (MessageEnd)eVirtualGet(UML2Package.MESSAGE__RECEIVE_EVENT);
 		if (receiveEvent != null && receiveEvent.eIsProxy()) {
-			MessageEnd oldReceiveEvent = receiveEvent;
-			receiveEvent = (MessageEnd)eResolveProxy((InternalEObject)receiveEvent);
+			InternalEObject oldReceiveEvent = (InternalEObject)receiveEvent;
+			receiveEvent = (MessageEnd)eResolveProxy(oldReceiveEvent);
 			if (receiveEvent != oldReceiveEvent) {
 				eVirtualSet(UML2Package.MESSAGE__RECEIVE_EVENT, receiveEvent);
 				if (eNotificationRequired())
@@ -247,8 +247,8 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	public MessageEnd getSendEvent() {
 		MessageEnd sendEvent = (MessageEnd)eVirtualGet(UML2Package.MESSAGE__SEND_EVENT);
 		if (sendEvent != null && sendEvent.eIsProxy()) {
-			MessageEnd oldSendEvent = sendEvent;
-			sendEvent = (MessageEnd)eResolveProxy((InternalEObject)sendEvent);
+			InternalEObject oldSendEvent = (InternalEObject)sendEvent;
+			sendEvent = (MessageEnd)eResolveProxy(oldSendEvent);
 			if (sendEvent != oldSendEvent) {
 				eVirtualSet(UML2Package.MESSAGE__SEND_EVENT, sendEvent);
 				if (eNotificationRequired())
@@ -312,8 +312,8 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	public Connector getConnector() {
 		Connector connector = (Connector)eVirtualGet(UML2Package.MESSAGE__CONNECTOR);
 		if (connector != null && connector.eIsProxy()) {
-			Connector oldConnector = connector;
-			connector = (Connector)eResolveProxy((InternalEObject)connector);
+			InternalEObject oldConnector = (InternalEObject)connector;
+			connector = (Connector)eResolveProxy(oldConnector);
 			if (connector != oldConnector) {
 				eVirtualSet(UML2Package.MESSAGE__CONNECTOR, connector);
 				if (eNotificationRequired())
@@ -353,7 +353,7 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	 */
 	public Interaction getInteraction() {
 		if (eContainerFeatureID != UML2Package.MESSAGE__INTERACTION) return null;
-		return (Interaction)eContainer;
+		return (Interaction)eContainer();
 	}
 
 	/**
@@ -362,11 +362,11 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	 * @generated
 	 */
 	public void setInteraction(Interaction newInteraction) {
-		if (newInteraction != eContainer || (eContainerFeatureID != UML2Package.MESSAGE__INTERACTION && newInteraction != null)) {
+		if (newInteraction != eInternalContainer() || (eContainerFeatureID != UML2Package.MESSAGE__INTERACTION && newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newInteraction))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInteraction != null)
 				msgs = ((InternalEObject)newInteraction).eInverseAdd(this, UML2Package.INTERACTION__MESSAGE, Interaction.class, msgs);
@@ -387,8 +387,8 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	public NamedElement getSignature() {
 		NamedElement signature = (NamedElement)eVirtualGet(UML2Package.MESSAGE__SIGNATURE);
 		if (signature != null && signature.eIsProxy()) {
-			NamedElement oldSignature = signature;
-			signature = (NamedElement)eResolveProxy((InternalEObject)signature);
+			InternalEObject oldSignature = (InternalEObject)signature;
+			signature = (NamedElement)eResolveProxy(oldSignature);
 			if (signature != oldSignature) {
 				eVirtualSet(UML2Package.MESSAGE__SIGNATURE, signature);
 				if (eNotificationRequired())
@@ -518,14 +518,14 @@ public class MessageImpl extends NamedElementImpl implements Message {
 						msgs = ((InternalEObject)sendEvent).eInverseRemove(this, UML2Package.MESSAGE_END__SEND_MESSAGE, MessageEnd.class, msgs);
 					return basicSetSendEvent((MessageEnd)otherEnd, msgs);
 				case UML2Package.MESSAGE__INTERACTION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.MESSAGE__INTERACTION, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -574,12 +574,12 @@ public class MessageImpl extends NamedElementImpl implements Message {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.MESSAGE__INTERACTION:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION__MESSAGE, Interaction.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.INTERACTION__MESSAGE, Interaction.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

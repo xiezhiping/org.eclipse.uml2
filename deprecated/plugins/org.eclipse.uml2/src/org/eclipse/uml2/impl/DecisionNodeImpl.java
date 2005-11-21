@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeImpl.java,v 1.11 2005/11/14 17:31:09 khussey Exp $
+ * $Id: DecisionNodeImpl.java,v 1.12 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,8 +77,8 @@ public class DecisionNodeImpl extends ControlNodeImpl implements DecisionNode {
 	public Behavior getDecisionInput() {
 		Behavior decisionInput = (Behavior)eVirtualGet(UML2Package.DECISION_NODE__DECISION_INPUT);
 		if (decisionInput != null && decisionInput.eIsProxy()) {
-			Behavior oldDecisionInput = decisionInput;
-			decisionInput = (Behavior)eResolveProxy((InternalEObject)decisionInput);
+			InternalEObject oldDecisionInput = (InternalEObject)decisionInput;
+			decisionInput = (Behavior)eResolveProxy(oldDecisionInput);
 			if (decisionInput != oldDecisionInput) {
 				eVirtualSet(UML2Package.DECISION_NODE__DECISION_INPUT, decisionInput);
 				if (eNotificationRequired())

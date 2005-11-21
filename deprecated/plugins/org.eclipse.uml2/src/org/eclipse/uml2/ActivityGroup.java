@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.9 2005/11/09 22:53:10 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.10 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -75,7 +75,7 @@ public interface ActivityGroup extends Element{
 	 * @see #setActivityGroup_activity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getActivityGroup_ActivityGroup_activity()
 	 * @see org.eclipse.uml2.Activity#getGroups
-	 * @model opposite="group"
+	 * @model opposite="group" resolveProxies="false"
 	 * @generated
 	 */
 	Activity getActivityGroup_activity();
@@ -167,7 +167,7 @@ public interface ActivityGroup extends Element{
 	 * @see #setActivity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_Activity()
 	 * @see org.eclipse.uml2.Activity#getNodes
-	 * @model opposite="node"
+	 * @model opposite="node" resolveProxies="false"
 	 * @generated
 	 */
 	Activity getActivity();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionImpl.java,v 1.12 2005/11/14 17:31:07 khussey Exp $
+ * $Id: CallBehaviorActionImpl.java,v 1.13 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -78,8 +78,8 @@ public class CallBehaviorActionImpl extends CallActionImpl implements CallBehavi
 	public Behavior getBehavior() {
 		Behavior behavior = (Behavior)eVirtualGet(UML2Package.CALL_BEHAVIOR_ACTION__BEHAVIOR);
 		if (behavior != null && behavior.eIsProxy()) {
-			Behavior oldBehavior = behavior;
-			behavior = (Behavior)eResolveProxy((InternalEObject)behavior);
+			InternalEObject oldBehavior = (InternalEObject)behavior;
+			behavior = (Behavior)eResolveProxy(oldBehavior);
 			if (behavior != oldBehavior) {
 				eVirtualSet(UML2Package.CALL_BEHAVIOR_ACTION__BEHAVIOR, behavior);
 				if (eNotificationRequired())

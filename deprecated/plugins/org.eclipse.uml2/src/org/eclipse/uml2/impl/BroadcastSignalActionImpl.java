@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.12 2005/11/14 17:31:07 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.13 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -78,8 +78,8 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	public Signal getSignal() {
 		Signal signal = (Signal)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL);
 		if (signal != null && signal.eIsProxy()) {
-			Signal oldSignal = signal;
-			signal = (Signal)eResolveProxy((InternalEObject)signal);
+			InternalEObject oldSignal = (InternalEObject)signal;
+			signal = (Signal)eResolveProxy(oldSignal);
 			if (signal != oldSignal) {
 				eVirtualSet(UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL, signal);
 				if (eNotificationRequired())

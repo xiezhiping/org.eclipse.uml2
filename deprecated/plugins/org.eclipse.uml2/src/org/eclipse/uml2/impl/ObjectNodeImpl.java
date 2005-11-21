@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -108,8 +108,8 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	public Type getType() {
 		Type type = (Type)eVirtualGet(UML2Package.OBJECT_NODE__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Type oldType = type;
-			type = (Type)eResolveProxy((InternalEObject)type);
+			InternalEObject oldType = (InternalEObject)type;
+			type = (Type)eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UML2Package.OBJECT_NODE__TYPE, type);
 				if (eNotificationRequired())
@@ -288,8 +288,8 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	public Behavior getSelection() {
 		Behavior selection = (Behavior)eVirtualGet(UML2Package.OBJECT_NODE__SELECTION);
 		if (selection != null && selection.eIsProxy()) {
-			Behavior oldSelection = selection;
-			selection = (Behavior)eResolveProxy((InternalEObject)selection);
+			InternalEObject oldSelection = (InternalEObject)selection;
+			selection = (Behavior)eResolveProxy(oldSelection);
 			if (selection != oldSelection) {
 				eVirtualSet(UML2Package.OBJECT_NODE__SELECTION, selection);
 				if (eNotificationRequired())

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.14 2005/11/14 19:49:14 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.15 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -152,7 +152,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 */
 	public StringExpression getOwningExpression() {
 		if (eContainerFeatureID != UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION) return null;
-		return (StringExpression)eContainer;
+		return (StringExpression)eContainer();
 	}
 
 	/**
@@ -161,11 +161,11 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 * @generated
 	 */
 	public void setOwningExpression(StringExpression newOwningExpression) {
-		if (newOwningExpression != eContainer || (eContainerFeatureID != UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION && newOwningExpression != null)) {
+		if (newOwningExpression != eInternalContainer() || (eContainerFeatureID != UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION && newOwningExpression != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningExpression))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningExpression != null)
 				msgs = ((InternalEObject)newOwningExpression).eInverseAdd(this, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, StringExpression.class, msgs);
@@ -222,14 +222,14 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 				case UML2Package.STRING_EXPRESSION__SUB_EXPRESSION:
 					return ((InternalEList)getSubExpressions()).basicAdd(otherEnd, msgs);
 				case UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -270,12 +270,12 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION:
-					return eContainer.eInverseRemove(this, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, StringExpression.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, StringExpression.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.17 2005/11/14 17:31:09 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.18 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,7 +114,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 */
 	public UseCase getIncludingCase() {
 		if (eContainerFeatureID != UML2Package.INCLUDE__INCLUDING_CASE) return null;
-		return (UseCase)eContainer;
+		return (UseCase)eContainer();
 	}
 
 	/**
@@ -123,11 +123,11 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public void setIncludingCase(UseCase newIncludingCase) {
-		if (newIncludingCase != eContainer || (eContainerFeatureID != UML2Package.INCLUDE__INCLUDING_CASE && newIncludingCase != null)) {
+		if (newIncludingCase != eInternalContainer() || (eContainerFeatureID != UML2Package.INCLUDE__INCLUDING_CASE && newIncludingCase != null)) {
 			if (EcoreUtil.isAncestor(this, newIncludingCase))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newIncludingCase != null)
 				msgs = ((InternalEObject)newIncludingCase).eInverseAdd(this, UML2Package.USE_CASE__INCLUDE, UseCase.class, msgs);
@@ -148,8 +148,8 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	public UseCase getAddition() {
 		UseCase addition = (UseCase)eVirtualGet(UML2Package.INCLUDE__ADDITION);
 		if (addition != null && addition.eIsProxy()) {
-			UseCase oldAddition = addition;
-			addition = (UseCase)eResolveProxy((InternalEObject)addition);
+			InternalEObject oldAddition = (InternalEObject)addition;
+			addition = (UseCase)eResolveProxy(oldAddition);
 			if (addition != oldAddition) {
 				eVirtualSet(UML2Package.INCLUDE__ADDITION, addition);
 				if (eNotificationRequired())
@@ -248,14 +248,14 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 				case UML2Package.INCLUDE__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.INCLUDE__INCLUDING_CASE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.INCLUDE__INCLUDING_CASE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -298,12 +298,12 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.INCLUDE__INCLUDING_CASE:
-					return eContainer.eInverseRemove(this, UML2Package.USE_CASE__INCLUDE, UseCase.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.USE_CASE__INCLUDE, UseCase.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

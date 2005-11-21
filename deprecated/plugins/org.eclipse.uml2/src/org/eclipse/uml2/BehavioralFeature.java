@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.12 2005/11/09 22:53:10 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.13 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -155,7 +155,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_FormalParameter()
-	 * @model type="org.eclipse.uml2.Parameter" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Parameter" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getFormalParameters();
@@ -208,7 +208,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Return Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_ReturnResult()
-	 * @model type="org.eclipse.uml2.Parameter" containment="true"
+	 * @model type="org.eclipse.uml2.Parameter" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getReturnResults();

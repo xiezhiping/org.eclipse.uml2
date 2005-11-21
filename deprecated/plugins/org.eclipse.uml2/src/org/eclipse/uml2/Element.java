@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.18 2005/11/09 22:53:10 khussey Exp $
+ * $Id: Element.java,v 1.19 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -108,7 +108,7 @@ public interface Element extends EModelElement{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Comment</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getElement_OwnedComment()
-	 * @model type="org.eclipse.uml2.Comment" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Comment" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedComments();

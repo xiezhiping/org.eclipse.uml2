@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.9 2005/11/14 17:31:06 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.10 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -169,8 +169,8 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	public OutputPin getDecider() {
 		OutputPin decider = (OutputPin)eVirtualGet(UML2Package.CLAUSE__DECIDER);
 		if (decider != null && decider.eIsProxy()) {
-			OutputPin oldDecider = decider;
-			decider = (OutputPin)eResolveProxy((InternalEObject)decider);
+			InternalEObject oldDecider = (InternalEObject)decider;
+			decider = (OutputPin)eResolveProxy(oldDecider);
 			if (decider != oldDecider) {
 				eVirtualSet(UML2Package.CLAUSE__DECIDER, decider);
 				if (eNotificationRequired())
@@ -250,7 +250,7 @@ public class ClauseImpl extends ElementImpl implements Clause {
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

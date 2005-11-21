@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.16 2005/11/14 19:49:14 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.17 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -162,7 +162,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 */
 	public TemplateableElement getBoundElement() {
 		if (eContainerFeatureID != UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT) return null;
-		return (TemplateableElement)eContainer;
+		return (TemplateableElement)eContainer();
 	}
 
 	/**
@@ -171,11 +171,11 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * @generated
 	 */
 	public void setBoundElement(TemplateableElement newBoundElement) {
-		if (newBoundElement != eContainer || (eContainerFeatureID != UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT && newBoundElement != null)) {
+		if (newBoundElement != eInternalContainer() || (eContainerFeatureID != UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT && newBoundElement != null)) {
 			if (EcoreUtil.isAncestor(this, newBoundElement))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newBoundElement != null)
 				msgs = ((InternalEObject)newBoundElement).eInverseAdd(this, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, TemplateableElement.class, msgs);
@@ -196,8 +196,8 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	public TemplateSignature getSignature() {
 		TemplateSignature signature = (TemplateSignature)eVirtualGet(UML2Package.TEMPLATE_BINDING__SIGNATURE);
 		if (signature != null && signature.eIsProxy()) {
-			TemplateSignature oldSignature = signature;
-			signature = (TemplateSignature)eResolveProxy((InternalEObject)signature);
+			InternalEObject oldSignature = (InternalEObject)signature;
+			signature = (TemplateSignature)eResolveProxy(oldSignature);
 			if (signature != oldSignature) {
 				eVirtualSet(UML2Package.TEMPLATE_BINDING__SIGNATURE, signature);
 				if (eNotificationRequired())
@@ -308,7 +308,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 				case UML2Package.TEMPLATE_BINDING__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
 				case UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
 				case UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION:
@@ -317,7 +317,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -354,12 +354,12 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, TemplateableElement.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, TemplateableElement.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

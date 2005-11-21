@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.37 2005/11/14 19:49:14 khussey Exp $
+ * $Id: PackageImpl.java,v 1.38 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -132,8 +132,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.PACKAGE__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject)templateParameter;
+			templateParameter = (TemplateParameter)eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(UML2Package.PACKAGE__TEMPLATE_PARAMETER, templateParameter);
 				if (eNotificationRequired())
@@ -199,7 +199,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	public TemplateParameter getOwningParameter() {
 		if (eContainerFeatureID != UML2Package.PACKAGE__OWNING_PARAMETER) return null;
-		return (TemplateParameter)eContainer;
+		return (TemplateParameter)eContainer();
 	}
 
 	/**
@@ -208,12 +208,12 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		EObject oldOwningParameter = eContainer;
-		if (newOwningParameter != eContainer || (eContainerFeatureID != UML2Package.PACKAGE__OWNING_PARAMETER && newOwningParameter != null)) {
+		EObject oldOwningParameter = eContainer();
+		if (newOwningParameter != eInternalContainer() || (eContainerFeatureID != UML2Package.PACKAGE__OWNING_PARAMETER && newOwningParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningParameter != null)
 				msgs = ((InternalEObject)newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
@@ -292,11 +292,22 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public org.eclipse.uml2.Package getNestingPackage() {
+		org.eclipse.uml2.Package nestingPackage = basicGetNestingPackage();
+		return nestingPackage != null && nestingPackage.eIsProxy() ? (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)nestingPackage) : nestingPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public org.eclipse.uml2.Package basicGetNestingPackage() {
 		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer : null;
 	}
+
 
 	protected EList ownedType = null;
 
@@ -335,7 +346,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	public EList getOwnedMembers() {
 		EList ownedMember = (EList)eVirtualGet(UML2Package.PACKAGE__OWNED_MEMBER);
 		if (ownedMember == null) {
-			eVirtualSet(UML2Package.PACKAGE__OWNED_MEMBER, ownedMember = new EObjectContainmentEList(PackageableElement.class, this, UML2Package.PACKAGE__OWNED_MEMBER));
+			eVirtualSet(UML2Package.PACKAGE__OWNED_MEMBER, ownedMember = new EObjectContainmentEList.Resolving(PackageableElement.class, this, UML2Package.PACKAGE__OWNED_MEMBER));
 		}
 		return ownedMember;
 	}
@@ -582,7 +593,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.Package nestingPackage = getNestingPackage();			
+		org.eclipse.uml2.Package nestingPackage = basicGetNestingPackage();			
 		if (nestingPackage != null) {
 			return nestingPackage;
 		}
@@ -679,7 +690,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.PACKAGE__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PACKAGE__OWNING_PARAMETER, msgs);
 				case UML2Package.PACKAGE__PACKAGE_MERGE:
@@ -688,7 +699,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -745,12 +756,12 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.PACKAGE__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -803,7 +814,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__NESTED_PACKAGE:
 				return getNestedPackages();
 			case UML2Package.PACKAGE__NESTING_PACKAGE:
-				return getNestingPackage();
+				if (resolve) return getNestingPackage();
+				return basicGetNestingPackage();
 			case UML2Package.PACKAGE__OWNED_TYPE:
 				return getOwnedTypes();
 			case UML2Package.PACKAGE__OWNED_MEMBER:
@@ -1014,7 +1026,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__NESTED_PACKAGE:
 				return !getNestedPackages().isEmpty();
 			case UML2Package.PACKAGE__NESTING_PACKAGE:
-				return getNestingPackage() != null;
+				return basicGetNestingPackage() != null;
 			case UML2Package.PACKAGE__OWNED_TYPE:
 				return !getOwnedTypes().isEmpty();
 			case UML2Package.PACKAGE__OWNED_MEMBER:

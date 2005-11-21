@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Message.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Message.java,v 1.9 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -212,7 +212,7 @@ public interface Message extends NamedElement{
 	 * @see #setInteraction(Interaction)
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Interaction()
 	 * @see org.eclipse.uml2.Interaction#getMessages
-	 * @model opposite="message" required="true"
+	 * @model opposite="message" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	Interaction getInteraction();
@@ -272,7 +272,7 @@ public interface Message extends NamedElement{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Argument()
-	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getArguments();

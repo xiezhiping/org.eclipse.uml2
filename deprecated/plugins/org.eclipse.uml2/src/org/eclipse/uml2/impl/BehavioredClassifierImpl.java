@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.26 2005/11/14 19:49:14 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.27 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -391,7 +391,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.BEHAVIORED_CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__GENERALIZATION:
@@ -412,7 +412,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

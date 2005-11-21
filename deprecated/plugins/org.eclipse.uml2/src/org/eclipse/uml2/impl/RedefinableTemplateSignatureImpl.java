@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.16 2005/11/14 19:49:15 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.17 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -189,8 +189,8 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	public TemplateSignature getNestingSignature() {
 		TemplateSignature nestingSignature = (TemplateSignature)eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
 		if (nestingSignature != null && nestingSignature.eIsProxy()) {
-			TemplateSignature oldNestingSignature = nestingSignature;
-			nestingSignature = (TemplateSignature)eResolveProxy((InternalEObject)nestingSignature);
+			InternalEObject oldNestingSignature = (InternalEObject)nestingSignature;
+			nestingSignature = (TemplateSignature)eResolveProxy(oldNestingSignature);
 			if (nestingSignature != oldNestingSignature) {
 				eVirtualSet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTING_SIGNATURE, nestingSignature);
 				if (eNotificationRequired())
@@ -253,7 +253,7 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	 */
 	public TemplateableElement getTemplate() {
 		if (eContainerFeatureID != UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE) return null;
-		return (TemplateableElement)eContainer;
+		return (TemplateableElement)eContainer();
 	}
 
 	/**
@@ -262,11 +262,11 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	 * @generated
 	 */
 	public void setTemplate(TemplateableElement newTemplate) {
-		if (newTemplate != eContainer || (eContainerFeatureID != UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
+		if (newTemplate != eInternalContainer() || (eContainerFeatureID != UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplate != null)
 				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, TemplateableElement.class, msgs);
@@ -332,14 +332,14 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 						msgs = ((InternalEObject)nestingSignature).eInverseRemove(this, UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE, TemplateSignature.class, msgs);
 					return basicSetNestingSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -388,12 +388,12 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, TemplateableElement.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, TemplateableElement.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

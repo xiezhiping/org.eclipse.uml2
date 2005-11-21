@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceImpl.java,v 1.10 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ExecutionOccurrenceImpl.java,v 1.11 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,8 +84,8 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 	public EventOccurrence getStart() {
 		EventOccurrence start = (EventOccurrence)eVirtualGet(UML2Package.EXECUTION_OCCURRENCE__START);
 		if (start != null && start.eIsProxy()) {
-			EventOccurrence oldStart = start;
-			start = (EventOccurrence)eResolveProxy((InternalEObject)start);
+			InternalEObject oldStart = (InternalEObject)start;
+			start = (EventOccurrence)eResolveProxy(oldStart);
 			if (start != oldStart) {
 				eVirtualSet(UML2Package.EXECUTION_OCCURRENCE__START, start);
 				if (eNotificationRequired())
@@ -149,8 +149,8 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 	public EventOccurrence getFinish() {
 		EventOccurrence finish = (EventOccurrence)eVirtualGet(UML2Package.EXECUTION_OCCURRENCE__FINISH);
 		if (finish != null && finish.eIsProxy()) {
-			EventOccurrence oldFinish = finish;
-			finish = (EventOccurrence)eResolveProxy((InternalEObject)finish);
+			InternalEObject oldFinish = (InternalEObject)finish;
+			finish = (EventOccurrence)eResolveProxy(oldFinish);
 			if (finish != oldFinish) {
 				eVirtualSet(UML2Package.EXECUTION_OCCURRENCE__FINISH, finish);
 				if (eNotificationRequired())
@@ -257,11 +257,11 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 				case UML2Package.EXECUTION_OCCURRENCE__COVERED:
 					return ((InternalEList)getCovereds()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXECUTION_OCCURRENCE__ENCLOSING_INTERACTION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXECUTION_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
 				case UML2Package.EXECUTION_OCCURRENCE__ENCLOSING_OPERAND:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXECUTION_OCCURRENCE__ENCLOSING_OPERAND, msgs);
 				case UML2Package.EXECUTION_OCCURRENCE__START:
@@ -278,7 +278,7 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

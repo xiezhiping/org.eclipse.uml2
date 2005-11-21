@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Deployment.java,v 1.8 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -83,7 +83,7 @@ public interface Deployment extends Dependency{
 	 * @see #setLocation(DeploymentTarget)
 	 * @see org.eclipse.uml2.UML2Package#getDeployment_Location()
 	 * @see org.eclipse.uml2.DeploymentTarget#getDeployments
-	 * @model opposite="deployment" required="true"
+	 * @model opposite="deployment" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	DeploymentTarget getLocation();
@@ -110,7 +110,7 @@ public interface Deployment extends Dependency{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Configuration</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDeployment_Configuration()
-	 * @model type="org.eclipse.uml2.DeploymentSpecification" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.DeploymentSpecification" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getConfigurations();

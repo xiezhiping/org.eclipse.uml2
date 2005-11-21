@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.14 2005/10/04 21:55:15 khussey Exp $
+ * $Id: Property.java,v 1.15 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -240,7 +240,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see #setOwningAssociation(Association)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_OwningAssociation()
 	 * @see org.eclipse.uml2.Association#getOwnedEnds
-	 * @model opposite="ownedEnd"
+	 * @model opposite="ownedEnd" resolveProxies="false"
 	 * @generated
 	 */
 	Association getOwningAssociation();
@@ -328,7 +328,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see #setDatatype(DataType)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Datatype()
 	 * @see org.eclipse.uml2.DataType#getOwnedAttributes
-	 * @model opposite="ownedAttribute"
+	 * @model opposite="ownedAttribute" resolveProxies="false"
 	 * @generated
 	 */
 	DataType getDatatype();
@@ -390,7 +390,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_DefaultValue()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	ValueSpecification getDefaultValue();
@@ -430,7 +430,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Qualifier()
 	 * @see org.eclipse.uml2.Property#getAssociationEnd
-	 * @model type="org.eclipse.uml2.Property" opposite="associationEnd" containment="true"
+	 * @model type="org.eclipse.uml2.Property" opposite="associationEnd" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getQualifiers();
@@ -481,7 +481,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see #setAssociationEnd(Property)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_AssociationEnd()
 	 * @see org.eclipse.uml2.Property#getQualifiers
-	 * @model opposite="qualifier"
+	 * @model opposite="qualifier" resolveProxies="false"
 	 * @generated
 	 */
 	Property getAssociationEnd();

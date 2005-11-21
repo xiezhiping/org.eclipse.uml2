@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragment.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
+ * $Id: InteractionFragment.java,v 1.10 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -89,7 +89,7 @@ public interface InteractionFragment extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>General Ordering</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteractionFragment_GeneralOrdering()
-	 * @model type="org.eclipse.uml2.GeneralOrdering" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.GeneralOrdering" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getGeneralOrderings();
@@ -141,7 +141,7 @@ public interface InteractionFragment extends NamedElement{
 	 * @see #setEnclosingInteraction(Interaction)
 	 * @see org.eclipse.uml2.UML2Package#getInteractionFragment_EnclosingInteraction()
 	 * @see org.eclipse.uml2.Interaction#getFragments
-	 * @model opposite="fragment"
+	 * @model opposite="fragment" resolveProxies="false"
 	 * @generated
 	 */
 	Interaction getEnclosingInteraction();
@@ -173,7 +173,7 @@ public interface InteractionFragment extends NamedElement{
 	 * @see #setEnclosingOperand(InteractionOperand)
 	 * @see org.eclipse.uml2.UML2Package#getInteractionFragment_EnclosingOperand()
 	 * @see org.eclipse.uml2.InteractionOperand#getFragments
-	 * @model opposite="fragment"
+	 * @model opposite="fragment" resolveProxies="false"
 	 * @generated
 	 */
 	InteractionOperand getEnclosingOperand();

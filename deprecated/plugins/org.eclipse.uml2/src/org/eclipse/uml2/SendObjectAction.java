@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectAction.java,v 1.9 2005/11/09 22:53:09 khussey Exp $
+ * $Id: SendObjectAction.java,v 1.10 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,7 @@ public interface SendObjectAction extends InvocationAction{
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getSendObjectAction_Target()
-	 * @model containment="true" required="true"
+	 * @model containment="true" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	InputPin getTarget();
@@ -102,7 +102,7 @@ public interface SendObjectAction extends InvocationAction{
 	 * @return the value of the '<em>Request</em>' containment reference.
 	 * @see #setRequest(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getSendObjectAction_Request()
-	 * @model containment="true" required="true"
+	 * @model containment="true" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	InputPin getRequest();

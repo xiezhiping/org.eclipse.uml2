@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.29 2005/11/14 19:49:15 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.30 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -398,7 +398,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.ASSOCIATION__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.ASSOCIATION__OWNING_PARAMETER, msgs);
 				case UML2Package.ASSOCIATION__GENERALIZATION:
@@ -417,7 +417,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

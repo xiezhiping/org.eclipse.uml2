@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.20 2005/11/14 19:49:14 khussey Exp $
+ * $Id: RegionImpl.java,v 1.21 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -263,7 +263,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 */
 	public StateMachine getStateMachine() {
 		if (eContainerFeatureID != UML2Package.REGION__STATE_MACHINE) return null;
-		return (StateMachine)eContainer;
+		return (StateMachine)eContainer();
 	}
 
 	/**
@@ -272,11 +272,11 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public void setStateMachine(StateMachine newStateMachine) {
-		if (newStateMachine != eContainer || (eContainerFeatureID != UML2Package.REGION__STATE_MACHINE && newStateMachine != null)) {
+		if (newStateMachine != eInternalContainer() || (eContainerFeatureID != UML2Package.REGION__STATE_MACHINE && newStateMachine != null)) {
 			if (EcoreUtil.isAncestor(this, newStateMachine))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newStateMachine != null)
 				msgs = ((InternalEObject)newStateMachine).eInverseAdd(this, UML2Package.STATE_MACHINE__REGION, StateMachine.class, msgs);
@@ -296,7 +296,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 */
 	public State getState() {
 		if (eContainerFeatureID != UML2Package.REGION__STATE) return null;
-		return (State)eContainer;
+		return (State)eContainer();
 	}
 
 	/**
@@ -305,11 +305,11 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public void setState(State newState) {
-		if (newState != eContainer || (eContainerFeatureID != UML2Package.REGION__STATE && newState != null)) {
+		if (newState != eInternalContainer() || (eContainerFeatureID != UML2Package.REGION__STATE && newState != null)) {
 			if (EcoreUtil.isAncestor(this, newState))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newState != null)
 				msgs = ((InternalEObject)newState).eInverseAdd(this, UML2Package.STATE__REGION, State.class, msgs);
@@ -330,8 +330,8 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	public Region getExtendedRegion() {
 		Region extendedRegion = (Region)eVirtualGet(UML2Package.REGION__EXTENDED_REGION);
 		if (extendedRegion != null && extendedRegion.eIsProxy()) {
-			Region oldExtendedRegion = extendedRegion;
-			extendedRegion = (Region)eResolveProxy((InternalEObject)extendedRegion);
+			InternalEObject oldExtendedRegion = (InternalEObject)extendedRegion;
+			extendedRegion = (Region)eResolveProxy(oldExtendedRegion);
 			if (extendedRegion != oldExtendedRegion) {
 				eVirtualSet(UML2Package.REGION__EXTENDED_REGION, extendedRegion);
 				if (eNotificationRequired())
@@ -545,18 +545,18 @@ public class RegionImpl extends NamespaceImpl implements Region {
 				case UML2Package.REGION__TRANSITION:
 					return ((InternalEList)getTransitions()).basicAdd(otherEnd, msgs);
 				case UML2Package.REGION__STATE_MACHINE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.REGION__STATE_MACHINE, msgs);
 				case UML2Package.REGION__STATE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.REGION__STATE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -611,14 +611,14 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.REGION__STATE_MACHINE:
-					return eContainer.eInverseRemove(this, UML2Package.STATE_MACHINE__REGION, StateMachine.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.STATE_MACHINE__REGION, StateMachine.class, msgs);
 				case UML2Package.REGION__STATE:
-					return eContainer.eInverseRemove(this, UML2Package.STATE__REGION, State.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.STATE__REGION, State.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMerge.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: PackageMerge.java,v 1.8 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,7 +57,7 @@ public interface PackageMerge extends DirectedRelationship{
 	 * @see #setMergingPackage(org.eclipse.uml2.Package)
 	 * @see org.eclipse.uml2.UML2Package#getPackageMerge_MergingPackage()
 	 * @see org.eclipse.uml2.Package#getPackageMerges
-	 * @model opposite="packageMerge" required="true"
+	 * @model opposite="packageMerge" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	org.eclipse.uml2.Package getMergingPackage();

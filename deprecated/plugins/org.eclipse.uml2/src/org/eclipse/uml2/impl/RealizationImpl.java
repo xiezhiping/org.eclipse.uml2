@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.18 2005/11/14 17:31:09 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -135,7 +135,7 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 */
 	public Component getAbstraction() {
 		if (eContainerFeatureID != UML2Package.REALIZATION__ABSTRACTION) return null;
-		return (Component)eContainer;
+		return (Component)eContainer();
 	}
 
 	/**
@@ -147,11 +147,11 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 		if (newAbstraction != null && !getClients().contains(newAbstraction)) {
 			getClients().add(newAbstraction);
 		}
-		if (newAbstraction != eContainer || (eContainerFeatureID != UML2Package.REALIZATION__ABSTRACTION && newAbstraction != null)) {
+		if (newAbstraction != eInternalContainer() || (eContainerFeatureID != UML2Package.REALIZATION__ABSTRACTION && newAbstraction != null)) {
 			if (EcoreUtil.isAncestor(this, newAbstraction))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newAbstraction != null)
 				msgs = ((InternalEObject)newAbstraction).eInverseAdd(this, UML2Package.COMPONENT__REALIZATION, Component.class, msgs);
@@ -172,8 +172,8 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	public Classifier getRealizingClassifier() {
 		Classifier realizingClassifier = (Classifier)eVirtualGet(UML2Package.REALIZATION__REALIZING_CLASSIFIER);
 		if (realizingClassifier != null && realizingClassifier.eIsProxy()) {
-			Classifier oldRealizingClassifier = realizingClassifier;
-			realizingClassifier = (Classifier)eResolveProxy((InternalEObject)realizingClassifier);
+			InternalEObject oldRealizingClassifier = (InternalEObject)realizingClassifier;
+			realizingClassifier = (Classifier)eResolveProxy(oldRealizingClassifier);
 			if (realizingClassifier != oldRealizingClassifier) {
 				eVirtualSet(UML2Package.REALIZATION__REALIZING_CLASSIFIER, realizingClassifier);
 				if (eNotificationRequired())
@@ -286,20 +286,20 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.REALIZATION__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.REALIZATION__OWNING_PARAMETER, msgs);
 				case UML2Package.REALIZATION__CLIENT:
 					return ((InternalEList)getClients()).basicAdd(otherEnd, msgs);
 				case UML2Package.REALIZATION__ABSTRACTION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.REALIZATION__ABSTRACTION, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -350,14 +350,14 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.REALIZATION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.REALIZATION__ABSTRACTION:
-					return eContainer.eInverseRemove(this, UML2Package.COMPONENT__REALIZATION, Component.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.COMPONENT__REALIZATION, Component.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

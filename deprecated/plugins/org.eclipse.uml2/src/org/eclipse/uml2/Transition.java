@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.10 2005/11/09 22:53:10 khussey Exp $
+ * $Id: Transition.java,v 1.11 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -93,7 +93,7 @@ public interface Transition extends RedefinableElement{
 	 * @see #setContainer(Region)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Container()
 	 * @see org.eclipse.uml2.Region#getTransitions
-	 * @model opposite="transition" required="true"
+	 * @model opposite="transition" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	Region getContainer();
@@ -245,7 +245,7 @@ public interface Transition extends RedefinableElement{
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Guard()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	Constraint getGuard();
@@ -296,7 +296,7 @@ public interface Transition extends RedefinableElement{
 	 * @return the value of the '<em>Effect</em>' containment reference.
 	 * @see #setEffect(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Effect()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	Activity getEffect();

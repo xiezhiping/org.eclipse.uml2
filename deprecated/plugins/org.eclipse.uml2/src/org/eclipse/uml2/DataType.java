@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataType.java,v 1.11 2005/09/27 20:03:02 khussey Exp $
+ * $Id: DataType.java,v 1.12 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -63,7 +63,7 @@ public interface DataType extends Classifier{
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDataType_OwnedAttribute()
 	 * @see org.eclipse.uml2.Property#getDatatype
-	 * @model type="org.eclipse.uml2.Property" opposite="datatype" containment="true"
+	 * @model type="org.eclipse.uml2.Property" opposite="datatype" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -117,7 +117,7 @@ public interface DataType extends Classifier{
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDataType_OwnedOperation()
 	 * @see org.eclipse.uml2.Operation#getDatatype
-	 * @model type="org.eclipse.uml2.Operation" opposite="datatype" containment="true"
+	 * @model type="org.eclipse.uml2.Operation" opposite="datatype" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getOwnedOperations();

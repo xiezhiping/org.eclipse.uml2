@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNode.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
+ * $Id: LoopNode.java,v 1.10 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -200,7 +200,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_Result()
-	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
+	 * @model type="org.eclipse.uml2.OutputPin" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getResults();
@@ -253,7 +253,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Loop Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_LoopVariable()
-	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
+	 * @model type="org.eclipse.uml2.OutputPin" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getLoopVariables();
@@ -337,7 +337,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Loop Variable Input</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_LoopVariableInput()
-	 * @model type="org.eclipse.uml2.InputPin" containment="true"
+	 * @model type="org.eclipse.uml2.InputPin" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getLoopVariableInputs();

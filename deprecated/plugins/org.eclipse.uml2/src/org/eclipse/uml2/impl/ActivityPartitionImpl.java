@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.16 2005/11/14 17:31:09 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.17 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -135,7 +135,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 */
 	public Activity getActivityGroup_activity() {
 		if (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY) return null;
-		return (Activity)eContainer;
+		return (Activity)eContainer();
 	}
 
 	/**
@@ -144,11 +144,11 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public void setActivityGroup_activity(Activity newActivityGroup_activity) {
-		if (newActivityGroup_activity != eContainer || (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY && newActivityGroup_activity != null)) {
+		if (newActivityGroup_activity != eInternalContainer() || (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY && newActivityGroup_activity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivityGroup_activity))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newActivityGroup_activity != null)
 				msgs = ((InternalEObject)newActivityGroup_activity).eInverseAdd(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
@@ -393,7 +393,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 */
 	public ActivityPartition getSuperPartition() {
 		if (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION) return null;
-		return (ActivityPartition)eContainer;
+		return (ActivityPartition)eContainer();
 	}
 
 	/**
@@ -402,11 +402,11 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public void setSuperPartition(ActivityPartition newSuperPartition) {
-		if (newSuperPartition != eContainer || (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION && newSuperPartition != null)) {
+		if (newSuperPartition != eInternalContainer() || (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION && newSuperPartition != null)) {
 			if (EcoreUtil.isAncestor(this, newSuperPartition))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSuperPartition != null)
 				msgs = ((InternalEObject)newSuperPartition).eInverseAdd(this, UML2Package.ACTIVITY_PARTITION__SUBGROUP, ActivityPartition.class, msgs);
@@ -427,8 +427,8 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	public Element getRepresents() {
 		Element represents = (Element)eVirtualGet(UML2Package.ACTIVITY_PARTITION__REPRESENTS);
 		if (represents != null && represents.eIsProxy()) {
-			Element oldRepresents = represents;
-			represents = (Element)eResolveProxy((InternalEObject)represents);
+			InternalEObject oldRepresents = (InternalEObject)represents;
+			represents = (Element)eResolveProxy(oldRepresents);
 			if (represents != oldRepresents) {
 				eVirtualSet(UML2Package.ACTIVITY_PARTITION__REPRESENTS, represents);
 				if (eNotificationRequired())
@@ -569,7 +569,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 				case UML2Package.ACTIVITY_PARTITION__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE:
@@ -579,14 +579,14 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 				case UML2Package.ACTIVITY_PARTITION__SUBGROUP:
 					return ((InternalEList)getSubgroups()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -637,14 +637,14 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
 				case UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY_PARTITION__SUBGROUP, ActivityPartition.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.ACTIVITY_PARTITION__SUBGROUP, ActivityPartition.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

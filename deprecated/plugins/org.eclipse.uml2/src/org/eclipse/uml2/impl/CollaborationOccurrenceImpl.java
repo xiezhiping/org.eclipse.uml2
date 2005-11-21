@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrenceImpl.java,v 1.15 2005/11/14 19:49:14 khussey Exp $
+ * $Id: CollaborationOccurrenceImpl.java,v 1.16 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,8 +114,8 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	public Collaboration getType() {
 		Collaboration type = (Collaboration)eVirtualGet(UML2Package.COLLABORATION_OCCURRENCE__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Collaboration oldType = type;
-			type = (Collaboration)eResolveProxy((InternalEObject)type);
+			InternalEObject oldType = (InternalEObject)type;
+			type = (Collaboration)eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UML2Package.COLLABORATION_OCCURRENCE__TYPE, type);
 				if (eNotificationRequired())

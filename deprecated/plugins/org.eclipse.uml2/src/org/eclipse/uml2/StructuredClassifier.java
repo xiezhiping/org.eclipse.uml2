@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.11 2005/11/09 22:53:10 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.12 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -61,7 +61,7 @@ public interface StructuredClassifier extends Classifier{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.Property" containment="true"
+	 * @model type="org.eclipse.uml2.Property" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -175,7 +175,7 @@ public interface StructuredClassifier extends Classifier{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Connector</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_OwnedConnector()
-	 * @model type="org.eclipse.uml2.Connector" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Connector" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedConnectors();

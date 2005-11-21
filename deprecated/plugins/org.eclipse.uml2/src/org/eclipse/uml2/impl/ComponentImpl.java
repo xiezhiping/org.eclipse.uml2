@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.34 2005/11/14 19:49:14 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.35 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -292,7 +292,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	public EList getOwnedMembers() {
 		EList ownedMember = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_MEMBER);
 		if (ownedMember == null) {
-			eVirtualSet(UML2Package.COMPONENT__OWNED_MEMBER, ownedMember = new EObjectContainmentEList(PackageableElement.class, this, UML2Package.COMPONENT__OWNED_MEMBER));
+			eVirtualSet(UML2Package.COMPONENT__OWNED_MEMBER, ownedMember = new EObjectContainmentEList.Resolving(PackageableElement.class, this, UML2Package.COMPONENT__OWNED_MEMBER));
 		}
 		return ownedMember;
 	}
@@ -382,7 +382,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.COMPONENT__OWNING_PARAMETER, msgs);
 				case UML2Package.COMPONENT__GENERALIZATION:
@@ -407,7 +407,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

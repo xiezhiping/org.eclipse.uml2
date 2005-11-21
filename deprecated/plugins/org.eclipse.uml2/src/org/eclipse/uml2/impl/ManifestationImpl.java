@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.18 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -107,8 +107,8 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	public PackageableElement getUtilizedElement() {
 		PackageableElement utilizedElement = (PackageableElement)eVirtualGet(UML2Package.MANIFESTATION__UTILIZED_ELEMENT);
 		if (utilizedElement != null && utilizedElement.eIsProxy()) {
-			PackageableElement oldUtilizedElement = utilizedElement;
-			utilizedElement = (PackageableElement)eResolveProxy((InternalEObject)utilizedElement);
+			InternalEObject oldUtilizedElement = (InternalEObject)utilizedElement;
+			utilizedElement = (PackageableElement)eResolveProxy(oldUtilizedElement);
 			if (utilizedElement != oldUtilizedElement) {
 				eVirtualSet(UML2Package.MANIFESTATION__UTILIZED_ELEMENT, utilizedElement);
 				if (eNotificationRequired())

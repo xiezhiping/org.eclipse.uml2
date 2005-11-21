@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Slot.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Slot.java,v 1.9 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,7 +62,7 @@ public interface Slot extends Element{
 	 * @see #setOwningInstance(InstanceSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getSlot_OwningInstance()
 	 * @see org.eclipse.uml2.InstanceSpecification#getSlots
-	 * @model opposite="slot" required="true"
+	 * @model opposite="slot" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	InstanceSpecification getOwningInstance();
@@ -89,7 +89,7 @@ public interface Slot extends Element{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getSlot_Value()
-	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true"
+	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getValues();

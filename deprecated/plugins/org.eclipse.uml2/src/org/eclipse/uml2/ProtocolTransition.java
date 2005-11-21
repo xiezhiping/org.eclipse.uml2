@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.10 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -60,7 +60,7 @@ public interface ProtocolTransition extends Transition{
 	 * @return the value of the '<em>Post Condition</em>' containment reference.
 	 * @see #setPostCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolTransition_PostCondition()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	Constraint getPostCondition();

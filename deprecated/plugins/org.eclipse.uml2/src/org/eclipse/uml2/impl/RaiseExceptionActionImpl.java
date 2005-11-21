@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.16 2005/11/14 17:31:08 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.17 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -107,8 +107,8 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 	public InputPin getException() {
 		InputPin exception = (InputPin)eVirtualGet(UML2Package.RAISE_EXCEPTION_ACTION__EXCEPTION);
 		if (exception != null && exception.eIsProxy()) {
-			InputPin oldException = exception;
-			exception = (InputPin)eResolveProxy((InternalEObject)exception);
+			InternalEObject oldException = (InternalEObject)exception;
+			exception = (InputPin)eResolveProxy(oldException);
 			if (exception != oldException) {
 				eVirtualSet(UML2Package.RAISE_EXCEPTION_ACTION__EXCEPTION, exception);
 				if (eNotificationRequired())

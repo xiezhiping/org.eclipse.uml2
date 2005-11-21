@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.19 2005/11/14 19:49:15 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.20 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -124,8 +124,8 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	public UseCase getExtendedCase() {
 		UseCase extendedCase = (UseCase)eVirtualGet(UML2Package.EXTEND__EXTENDED_CASE);
 		if (extendedCase != null && extendedCase.eIsProxy()) {
-			UseCase oldExtendedCase = extendedCase;
-			extendedCase = (UseCase)eResolveProxy((InternalEObject)extendedCase);
+			InternalEObject oldExtendedCase = (InternalEObject)extendedCase;
+			extendedCase = (UseCase)eResolveProxy(oldExtendedCase);
 			if (extendedCase != oldExtendedCase) {
 				eVirtualSet(UML2Package.EXTEND__EXTENDED_CASE, extendedCase);
 				if (eNotificationRequired())
@@ -165,7 +165,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 */
 	public UseCase getExtension() {
 		if (eContainerFeatureID != UML2Package.EXTEND__EXTENSION) return null;
-		return (UseCase)eContainer;
+		return (UseCase)eContainer();
 	}
 
 	/**
@@ -174,11 +174,11 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * @generated
 	 */
 	public void setExtension(UseCase newExtension) {
-		if (newExtension != eContainer || (eContainerFeatureID != UML2Package.EXTEND__EXTENSION && newExtension != null)) {
+		if (newExtension != eInternalContainer() || (eContainerFeatureID != UML2Package.EXTEND__EXTENSION && newExtension != null)) {
 			if (EcoreUtil.isAncestor(this, newExtension))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newExtension != null)
 				msgs = ((InternalEObject)newExtension).eInverseAdd(this, UML2Package.USE_CASE__EXTEND, UseCase.class, msgs);
@@ -385,14 +385,14 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 				case UML2Package.EXTEND__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXTEND__EXTENSION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXTEND__EXTENSION, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -437,12 +437,12 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.EXTEND__EXTENSION:
-					return eContainer.eInverseRemove(this, UML2Package.USE_CASE__EXTEND, UseCase.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.USE_CASE__EXTEND, UseCase.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

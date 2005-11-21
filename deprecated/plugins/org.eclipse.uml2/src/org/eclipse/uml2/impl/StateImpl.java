@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.22 2005/11/14 19:49:14 khussey Exp $
+ * $Id: StateImpl.java,v 1.23 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -229,7 +229,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 */
 	public Region getContainer() {
 		if (eContainerFeatureID != UML2Package.STATE__CONTAINER) return null;
-		return (Region)eContainer;
+		return (Region)eContainer();
 	}
 
 	/**
@@ -238,11 +238,11 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
-		if (newContainer != eContainer || (eContainerFeatureID != UML2Package.STATE__CONTAINER && newContainer != null)) {
+		if (newContainer != eInternalContainer() || (eContainerFeatureID != UML2Package.STATE__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContainer != null)
 				msgs = ((InternalEObject)newContainer).eInverseAdd(this, UML2Package.REGION__SUBVERTEX, Region.class, msgs);
@@ -366,8 +366,8 @@ public class StateImpl extends NamespaceImpl implements State {
 	public StateMachine getSubmachine() {
 		StateMachine submachine = (StateMachine)eVirtualGet(UML2Package.STATE__SUBMACHINE);
 		if (submachine != null && submachine.eIsProxy()) {
-			StateMachine oldSubmachine = submachine;
-			submachine = (StateMachine)eResolveProxy((InternalEObject)submachine);
+			InternalEObject oldSubmachine = (InternalEObject)submachine;
+			submachine = (StateMachine)eResolveProxy(oldSubmachine);
 			if (submachine != oldSubmachine) {
 				eVirtualSet(UML2Package.STATE__SUBMACHINE, submachine);
 				if (eNotificationRequired())
@@ -466,8 +466,8 @@ public class StateImpl extends NamespaceImpl implements State {
 	public State getRedefinedState() {
 		State redefinedState = (State)eVirtualGet(UML2Package.STATE__REDEFINED_STATE);
 		if (redefinedState != null && redefinedState.eIsProxy()) {
-			State oldRedefinedState = redefinedState;
-			redefinedState = (State)eResolveProxy((InternalEObject)redefinedState);
+			InternalEObject oldRedefinedState = (InternalEObject)redefinedState;
+			redefinedState = (State)eResolveProxy(oldRedefinedState);
 			if (redefinedState != oldRedefinedState) {
 				eVirtualSet(UML2Package.STATE__REDEFINED_STATE, redefinedState);
 				if (eNotificationRequired())
@@ -1079,7 +1079,7 @@ public class StateImpl extends NamespaceImpl implements State {
 				case UML2Package.STATE__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE__CONTAINER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.STATE__CONTAINER, msgs);
 				case UML2Package.STATE__OUTGOING:
@@ -1092,7 +1092,7 @@ public class StateImpl extends NamespaceImpl implements State {
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -1157,12 +1157,12 @@ public class StateImpl extends NamespaceImpl implements State {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.STATE__CONTAINER:
-					return eContainer.eInverseRemove(this, UML2Package.REGION__SUBVERTEX, Region.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.REGION__SUBVERTEX, Region.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

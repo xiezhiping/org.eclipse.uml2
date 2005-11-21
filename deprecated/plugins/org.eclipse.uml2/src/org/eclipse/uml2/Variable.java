@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Variable.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Variable.java,v 1.8 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,7 @@ public interface Variable extends ConnectableElement, TypedElement, Multiplicity
 	 * @see #setScope(StructuredActivityNode)
 	 * @see org.eclipse.uml2.UML2Package#getVariable_Scope()
 	 * @see org.eclipse.uml2.StructuredActivityNode#getVariables
-	 * @model opposite="variable" required="true"
+	 * @model opposite="variable" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	StructuredActivityNode getScope();

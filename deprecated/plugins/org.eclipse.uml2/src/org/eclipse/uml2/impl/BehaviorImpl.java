@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.32 2005/11/14 19:49:14 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.33 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -150,7 +150,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 */
 	public BehavioredClassifier getContext() {
 		if (eContainerFeatureID != UML2Package.BEHAVIOR__CONTEXT) return null;
-		return (BehavioredClassifier)eContainer;
+		return (BehavioredClassifier)eContainer();
 	}
 
 	/**
@@ -159,11 +159,11 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated
 	 */
 	public void setContext(BehavioredClassifier newContext) {
-		if (newContext != eContainer || (eContainerFeatureID != UML2Package.BEHAVIOR__CONTEXT && newContext != null)) {
+		if (newContext != eInternalContainer() || (eContainerFeatureID != UML2Package.BEHAVIOR__CONTEXT && newContext != null)) {
 			if (EcoreUtil.isAncestor(this, newContext))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContext != null)
 				msgs = ((InternalEObject)newContext).eInverseAdd(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, BehavioredClassifier.class, msgs);
@@ -213,8 +213,8 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	public BehavioralFeature getSpecification() {
 		BehavioralFeature specification = (BehavioralFeature)eVirtualGet(UML2Package.BEHAVIOR__SPECIFICATION);
 		if (specification != null && specification.eIsProxy()) {
-			BehavioralFeature oldSpecification = specification;
-			specification = (BehavioralFeature)eResolveProxy((InternalEObject)specification);
+			InternalEObject oldSpecification = (InternalEObject)specification;
+			specification = (BehavioralFeature)eResolveProxy(oldSpecification);
 			if (specification != oldSpecification) {
 				eVirtualSet(UML2Package.BEHAVIOR__SPECIFICATION, specification);
 				if (eNotificationRequired())
@@ -580,7 +580,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.BEHAVIOR__OWNING_PARAMETER, msgs);
 				case UML2Package.BEHAVIOR__GENERALIZATION:
@@ -600,7 +600,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				case UML2Package.BEHAVIOR__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__CONTEXT:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.BEHAVIOR__CONTEXT, msgs);
 				case UML2Package.BEHAVIOR__SPECIFICATION:
@@ -612,7 +612,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -703,14 +703,14 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.BEHAVIOR__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.BEHAVIOR__CONTEXT:
-					return eContainer.eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, BehavioredClassifier.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, BehavioredClassifier.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

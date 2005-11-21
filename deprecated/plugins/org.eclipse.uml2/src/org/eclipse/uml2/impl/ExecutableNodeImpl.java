@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.16 2005/11/14 19:49:15 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.17 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -170,11 +170,11 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 				case UML2Package.EXECUTABLE_NODE__INCOMING:
 					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXECUTABLE_NODE__ACTIVITY:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXECUTABLE_NODE__ACTIVITY, msgs);
 				case UML2Package.EXECUTABLE_NODE__IN_STRUCTURED_NODE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXECUTABLE_NODE__IN_STRUCTURED_NODE, msgs);
 				case UML2Package.EXECUTABLE_NODE__IN_PARTITION:
@@ -187,7 +187,7 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

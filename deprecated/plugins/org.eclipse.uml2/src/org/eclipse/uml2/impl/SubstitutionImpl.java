@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.18 2005/11/14 17:31:10 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -136,8 +136,8 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	public Classifier getContract() {
 		Classifier contract = (Classifier)eVirtualGet(UML2Package.SUBSTITUTION__CONTRACT);
 		if (contract != null && contract.eIsProxy()) {
-			Classifier oldContract = contract;
-			contract = (Classifier)eResolveProxy((InternalEObject)contract);
+			InternalEObject oldContract = (InternalEObject)contract;
+			contract = (Classifier)eResolveProxy(oldContract);
 			if (contract != oldContract) {
 				eVirtualSet(UML2Package.SUBSTITUTION__CONTRACT, contract);
 				if (eNotificationRequired())
@@ -180,7 +180,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 */
 	public Classifier getSubstitutingClassifier() {
 		if (eContainerFeatureID != UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER) return null;
-		return (Classifier)eContainer;
+		return (Classifier)eContainer();
 	}
 
 	/**
@@ -192,11 +192,11 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 		if (newSubstitutingClassifier != null && !getClients().contains(newSubstitutingClassifier)) {
 			getClients().add(newSubstitutingClassifier);
 		}
-		if (newSubstitutingClassifier != eContainer || (eContainerFeatureID != UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER && newSubstitutingClassifier != null)) {
+		if (newSubstitutingClassifier != eInternalContainer() || (eContainerFeatureID != UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER && newSubstitutingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newSubstitutingClassifier))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSubstitutingClassifier != null)
 				msgs = ((InternalEObject)newSubstitutingClassifier).eInverseAdd(this, UML2Package.CLASSIFIER__SUBSTITUTION, Classifier.class, msgs);
@@ -262,24 +262,24 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.SUBSTITUTION__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.SUBSTITUTION__OWNING_PARAMETER, msgs);
 				case UML2Package.SUBSTITUTION__CLIENT:
 					return ((InternalEList)getClients()).basicAdd(otherEnd, msgs);
 				case UML2Package.SUBSTITUTION__ABSTRACTION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.SUBSTITUTION__ABSTRACTION, msgs);
 				case UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -332,16 +332,16 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.SUBSTITUTION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.SUBSTITUTION__ABSTRACTION:
-					return eContainer.eInverseRemove(this, UML2Package.COMPONENT__REALIZATION, Component.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.COMPONENT__REALIZATION, Component.class, msgs);
 				case UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER:
-					return eContainer.eInverseRemove(this, UML2Package.CLASSIFIER__SUBSTITUTION, Classifier.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.CLASSIFIER__SUBSTITUTION, Classifier.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.13 2005/11/14 17:31:06 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.14 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -131,7 +131,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 */
 	public org.eclipse.uml2.Package getMergingPackage() {
 		if (eContainerFeatureID != UML2Package.PACKAGE_MERGE__MERGING_PACKAGE) return null;
-		return (org.eclipse.uml2.Package)eContainer;
+		return (org.eclipse.uml2.Package)eContainer();
 	}
 
 	/**
@@ -140,11 +140,11 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 * @generated
 	 */
 	public void setMergingPackage(org.eclipse.uml2.Package newMergingPackage) {
-		if (newMergingPackage != eContainer || (eContainerFeatureID != UML2Package.PACKAGE_MERGE__MERGING_PACKAGE && newMergingPackage != null)) {
+		if (newMergingPackage != eInternalContainer() || (eContainerFeatureID != UML2Package.PACKAGE_MERGE__MERGING_PACKAGE && newMergingPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newMergingPackage))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newMergingPackage != null)
 				msgs = ((InternalEObject)newMergingPackage).eInverseAdd(this, UML2Package.PACKAGE__PACKAGE_MERGE, org.eclipse.uml2.Package.class, msgs);
@@ -165,8 +165,8 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	public org.eclipse.uml2.Package getMergedPackage() {
 		org.eclipse.uml2.Package mergedPackage = (org.eclipse.uml2.Package)eVirtualGet(UML2Package.PACKAGE_MERGE__MERGED_PACKAGE);
 		if (mergedPackage != null && mergedPackage.eIsProxy()) {
-			org.eclipse.uml2.Package oldMergedPackage = mergedPackage;
-			mergedPackage = (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)mergedPackage);
+			InternalEObject oldMergedPackage = (InternalEObject)mergedPackage;
+			mergedPackage = (org.eclipse.uml2.Package)eResolveProxy(oldMergedPackage);
 			if (mergedPackage != oldMergedPackage) {
 				eVirtualSet(UML2Package.PACKAGE_MERGE__MERGED_PACKAGE, mergedPackage);
 				if (eNotificationRequired())
@@ -234,14 +234,14 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 				case UML2Package.PACKAGE_MERGE__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
 				case UML2Package.PACKAGE_MERGE__MERGING_PACKAGE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PACKAGE_MERGE__MERGING_PACKAGE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -276,12 +276,12 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.PACKAGE_MERGE__MERGING_PACKAGE:
-					return eContainer.eInverseRemove(this, UML2Package.PACKAGE__PACKAGE_MERGE, org.eclipse.uml2.Package.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.PACKAGE__PACKAGE_MERGE, org.eclipse.uml2.Package.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

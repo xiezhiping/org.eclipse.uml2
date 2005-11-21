@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.11 2005/11/14 17:31:09 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.12 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,7 +77,7 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 	 */
 	public UseCase getUseCase() {
 		if (eContainerFeatureID != UML2Package.EXTENSION_POINT__USE_CASE) return null;
-		return (UseCase)eContainer;
+		return (UseCase)eContainer();
 	}
 
 	/**
@@ -86,11 +86,11 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 	 * @generated
 	 */
 	public void setUseCase(UseCase newUseCase) {
-		if (newUseCase != eContainer || (eContainerFeatureID != UML2Package.EXTENSION_POINT__USE_CASE && newUseCase != null)) {
+		if (newUseCase != eInternalContainer() || (eContainerFeatureID != UML2Package.EXTENSION_POINT__USE_CASE && newUseCase != null)) {
 			if (EcoreUtil.isAncestor(this, newUseCase))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newUseCase != null)
 				msgs = ((InternalEObject)newUseCase).eInverseAdd(this, UML2Package.USE_CASE__EXTENSION_POINT, UseCase.class, msgs);
@@ -123,14 +123,14 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 				case UML2Package.EXTENSION_POINT__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXTENSION_POINT__USE_CASE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXTENSION_POINT__USE_CASE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -173,12 +173,12 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.EXTENSION_POINT__USE_CASE:
-					return eContainer.eInverseRemove(this, UML2Package.USE_CASE__EXTENSION_POINT, UseCase.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.USE_CASE__EXTENSION_POINT, UseCase.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

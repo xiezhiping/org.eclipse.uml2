@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationAction.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
+ * $Id: InvocationAction.java,v 1.8 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -55,7 +55,7 @@ public interface InvocationAction extends Action{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInvocationAction_Argument()
-	 * @model type="org.eclipse.uml2.InputPin" containment="true"
+	 * @model type="org.eclipse.uml2.InputPin" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getArguments();

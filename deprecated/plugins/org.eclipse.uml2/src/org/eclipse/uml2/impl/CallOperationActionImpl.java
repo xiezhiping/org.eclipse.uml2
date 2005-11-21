@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.19 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,8 +114,8 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 	public Operation getOperation() {
 		Operation operation = (Operation)eVirtualGet(UML2Package.CALL_OPERATION_ACTION__OPERATION);
 		if (operation != null && operation.eIsProxy()) {
-			Operation oldOperation = operation;
-			operation = (Operation)eResolveProxy((InternalEObject)operation);
+			InternalEObject oldOperation = (InternalEObject)operation;
+			operation = (Operation)eResolveProxy(oldOperation);
 			if (operation != oldOperation) {
 				eVirtualSet(UML2Package.CALL_OPERATION_ACTION__OPERATION, operation);
 				if (eNotificationRequired())

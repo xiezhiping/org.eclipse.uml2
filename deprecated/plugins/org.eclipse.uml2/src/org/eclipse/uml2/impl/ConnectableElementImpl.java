@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.13 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.14 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,8 +84,8 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject)templateParameter;
+			templateParameter = (TemplateParameter)eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(UML2Package.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER, templateParameter);
 				if (eNotificationRequired())
@@ -151,7 +151,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	 */
 	public TemplateParameter getOwningParameter() {
 		if (eContainerFeatureID != UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER) return null;
-		return (TemplateParameter)eContainer;
+		return (TemplateParameter)eContainer();
 	}
 
 	/**
@@ -160,12 +160,12 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		EObject oldOwningParameter = eContainer;
-		if (newOwningParameter != eContainer || (eContainerFeatureID != UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER && newOwningParameter != null)) {
+		EObject oldOwningParameter = eContainer();
+		if (newOwningParameter != eInternalContainer() || (eContainerFeatureID != UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER && newOwningParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningParameter != null)
 				msgs = ((InternalEObject)newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
@@ -244,7 +244,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER, msgs);
 				case UML2Package.CONNECTABLE_ELEMENT__END:
@@ -253,7 +253,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -300,12 +300,12 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

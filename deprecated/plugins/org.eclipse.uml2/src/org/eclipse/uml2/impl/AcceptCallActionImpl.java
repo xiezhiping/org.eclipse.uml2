@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.16 2005/11/14 17:31:09 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.17 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,8 +114,8 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	public OutputPin getReturnInformation() {
 		OutputPin returnInformation = (OutputPin)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION);
 		if (returnInformation != null && returnInformation.eIsProxy()) {
-			OutputPin oldReturnInformation = returnInformation;
-			returnInformation = (OutputPin)eResolveProxy((InternalEObject)returnInformation);
+			InternalEObject oldReturnInformation = (InternalEObject)returnInformation;
+			returnInformation = (OutputPin)eResolveProxy(oldReturnInformation);
 			if (returnInformation != oldReturnInformation) {
 				eVirtualSet(UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION, returnInformation);
 				if (eNotificationRequired())

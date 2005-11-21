@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImport.java,v 1.11 2005/06/22 20:59:18 khussey Exp $
+ * $Id: ElementImport.java,v 1.12 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -157,7 +157,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * @see #setImportingNamespace(Namespace)
 	 * @see org.eclipse.uml2.UML2Package#getElementImport_ImportingNamespace()
 	 * @see org.eclipse.uml2.Namespace#getElementImports
-	 * @model opposite="elementImport" required="true"
+	 * @model opposite="elementImport" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	Namespace getImportingNamespace();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.19 2005/11/14 19:49:14 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.20 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -112,7 +112,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 */
 	public TemplateSignature getSignature() {
 		if (eContainerFeatureID != UML2Package.TEMPLATE_PARAMETER__SIGNATURE) return null;
-		return (TemplateSignature)eContainer;
+		return (TemplateSignature)eContainer();
 	}
 
 	/**
@@ -121,11 +121,11 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public void setSignature(TemplateSignature newSignature) {
-		if (newSignature != eContainer || (eContainerFeatureID != UML2Package.TEMPLATE_PARAMETER__SIGNATURE && newSignature != null)) {
+		if (newSignature != eInternalContainer() || (eContainerFeatureID != UML2Package.TEMPLATE_PARAMETER__SIGNATURE && newSignature != null)) {
 			if (EcoreUtil.isAncestor(this, newSignature))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSignature != null)
 				msgs = ((InternalEObject)newSignature).eInverseAdd(this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, TemplateSignature.class, msgs);
@@ -146,8 +146,8 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	public ParameterableElement getParameteredElement() {
 		ParameterableElement parameteredElement = (ParameterableElement)eVirtualGet(UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
-			ParameterableElement oldParameteredElement = parameteredElement;
-			parameteredElement = (ParameterableElement)eResolveProxy((InternalEObject)parameteredElement);
+			InternalEObject oldParameteredElement = (InternalEObject)parameteredElement;
+			parameteredElement = (ParameterableElement)eResolveProxy(oldParameteredElement);
 			if (parameteredElement != oldParameteredElement) {
 				eVirtualSet(UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, parameteredElement);
 				if (eNotificationRequired())
@@ -278,8 +278,8 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	public ParameterableElement getDefault() {
 		ParameterableElement default_ = (ParameterableElement)eVirtualGet(UML2Package.TEMPLATE_PARAMETER__DEFAULT);
 		if (default_ != null && default_.eIsProxy()) {
-			ParameterableElement oldDefault = default_;
-			default_ = (ParameterableElement)eResolveProxy((InternalEObject)default_);
+			InternalEObject oldDefault = (InternalEObject)default_;
+			default_ = (ParameterableElement)eResolveProxy(oldDefault);
 			if (default_ != oldDefault) {
 				eVirtualSet(UML2Package.TEMPLATE_PARAMETER__DEFAULT, default_);
 				if (eNotificationRequired())
@@ -414,7 +414,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 				case UML2Package.TEMPLATE_PARAMETER__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
 				case UML2Package.TEMPLATE_PARAMETER__SIGNATURE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.TEMPLATE_PARAMETER__SIGNATURE, msgs);
 				case UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT:
@@ -431,7 +431,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -472,12 +472,12 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.TEMPLATE_PARAMETER__SIGNATURE:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, TemplateSignature.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, TemplateSignature.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

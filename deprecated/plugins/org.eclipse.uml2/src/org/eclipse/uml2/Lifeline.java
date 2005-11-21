@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Lifeline.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Lifeline.java,v 1.10 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -124,7 +124,7 @@ public interface Lifeline extends NamedElement{
 	 * @see #setInteraction(Interaction)
 	 * @see org.eclipse.uml2.UML2Package#getLifeline_Interaction()
 	 * @see org.eclipse.uml2.Interaction#getLifelines
-	 * @model opposite="lifeline" required="true"
+	 * @model opposite="lifeline" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	Interaction getInteraction();
@@ -154,7 +154,7 @@ public interface Lifeline extends NamedElement{
 	 * @return the value of the '<em>Selector</em>' containment reference.
 	 * @see #setSelector(OpaqueExpression)
 	 * @see org.eclipse.uml2.UML2Package#getLifeline_Selector()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	OpaqueExpression getSelector();

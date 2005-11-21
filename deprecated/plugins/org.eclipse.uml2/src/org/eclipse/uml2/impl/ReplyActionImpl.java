@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.16 2005/11/14 17:31:07 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.17 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,8 +114,8 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	public CallTrigger getReplyToCall() {
 		CallTrigger replyToCall = (CallTrigger)eVirtualGet(UML2Package.REPLY_ACTION__REPLY_TO_CALL);
 		if (replyToCall != null && replyToCall.eIsProxy()) {
-			CallTrigger oldReplyToCall = replyToCall;
-			replyToCall = (CallTrigger)eResolveProxy((InternalEObject)replyToCall);
+			InternalEObject oldReplyToCall = (InternalEObject)replyToCall;
+			replyToCall = (CallTrigger)eResolveProxy(oldReplyToCall);
 			if (replyToCall != oldReplyToCall) {
 				eVirtualSet(UML2Package.REPLY_ACTION__REPLY_TO_CALL, replyToCall);
 				if (eNotificationRequired())
@@ -185,8 +185,8 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	public InputPin getReturnInformation() {
 		InputPin returnInformation = (InputPin)eVirtualGet(UML2Package.REPLY_ACTION__RETURN_INFORMATION);
 		if (returnInformation != null && returnInformation.eIsProxy()) {
-			InputPin oldReturnInformation = returnInformation;
-			returnInformation = (InputPin)eResolveProxy((InternalEObject)returnInformation);
+			InternalEObject oldReturnInformation = (InternalEObject)returnInformation;
+			returnInformation = (InputPin)eResolveProxy(oldReturnInformation);
 			if (returnInformation != oldReturnInformation) {
 				eVirtualSet(UML2Package.REPLY_ACTION__RETURN_INFORMATION, returnInformation);
 				if (eNotificationRequired())

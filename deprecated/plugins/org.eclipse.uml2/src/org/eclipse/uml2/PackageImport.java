@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImport.java,v 1.9 2005/06/02 15:02:47 khussey Exp $
+ * $Id: PackageImport.java,v 1.10 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -125,7 +125,7 @@ public interface PackageImport extends DirectedRelationship{
 	 * @see #setImportingNamespace(Namespace)
 	 * @see org.eclipse.uml2.UML2Package#getPackageImport_ImportingNamespace()
 	 * @see org.eclipse.uml2.Namespace#getPackageImports
-	 * @model opposite="packageImport" required="true"
+	 * @model opposite="packageImport" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	Namespace getImportingNamespace();

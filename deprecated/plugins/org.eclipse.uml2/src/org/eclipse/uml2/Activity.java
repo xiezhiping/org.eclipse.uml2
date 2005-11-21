@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.11 2005/11/09 22:53:10 khussey Exp $
+ * $Id: Activity.java,v 1.12 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -182,7 +182,7 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Edge</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Edge()
 	 * @see org.eclipse.uml2.ActivityEdge#getActivity
-	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="activity" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="activity" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getEdges();
@@ -223,7 +223,7 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Group</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Group()
 	 * @see org.eclipse.uml2.ActivityGroup#getActivityGroup_activity
-	 * @model type="org.eclipse.uml2.ActivityGroup" opposite="activityGroup_activity" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ActivityGroup" opposite="activityGroup_activity" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getGroups();
@@ -253,7 +253,7 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Node()
 	 * @see org.eclipse.uml2.ActivityNode#getActivity
-	 * @model type="org.eclipse.uml2.ActivityNode" opposite="activity" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ActivityNode" opposite="activity" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getNodes();

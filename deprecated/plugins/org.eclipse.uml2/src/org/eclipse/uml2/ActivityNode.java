@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.10 2005/11/09 22:53:10 khussey Exp $
+ * $Id: ActivityNode.java,v 1.11 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -135,7 +135,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @see #setActivity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_Activity()
 	 * @see org.eclipse.uml2.Activity#getNodes
-	 * @model opposite="node"
+	 * @model opposite="node" resolveProxies="false"
 	 * @generated
 	 */
 	Activity getActivity();
@@ -195,7 +195,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @see #setInStructuredNode(StructuredActivityNode)
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InStructuredNode()
 	 * @see org.eclipse.uml2.StructuredActivityNode#getContainedNodes
-	 * @model opposite="containedNode"
+	 * @model opposite="containedNode" resolveProxies="false"
 	 * @generated
 	 */
 	StructuredActivityNode getInStructuredNode();

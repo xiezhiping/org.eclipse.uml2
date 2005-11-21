@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.12 2005/11/14 17:31:09 khussey Exp $
+ * $Id: VertexImpl.java,v 1.13 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -83,7 +83,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 */
 	public Region getContainer() {
 		if (eContainerFeatureID != UML2Package.VERTEX__CONTAINER) return null;
-		return (Region)eContainer;
+		return (Region)eContainer();
 	}
 
 	/**
@@ -92,11 +92,11 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
-		if (newContainer != eContainer || (eContainerFeatureID != UML2Package.VERTEX__CONTAINER && newContainer != null)) {
+		if (newContainer != eInternalContainer() || (eContainerFeatureID != UML2Package.VERTEX__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContainer != null)
 				msgs = ((InternalEObject)newContainer).eInverseAdd(this, UML2Package.REGION__SUBVERTEX, Region.class, msgs);
@@ -228,7 +228,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 				case UML2Package.VERTEX__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.VERTEX__CONTAINER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.VERTEX__CONTAINER, msgs);
 				case UML2Package.VERTEX__OUTGOING:
@@ -239,7 +239,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -286,12 +286,12 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.VERTEX__CONTAINER:
-					return eContainer.eInverseRemove(this, UML2Package.REGION__SUBVERTEX, Region.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.REGION__SUBVERTEX, Region.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

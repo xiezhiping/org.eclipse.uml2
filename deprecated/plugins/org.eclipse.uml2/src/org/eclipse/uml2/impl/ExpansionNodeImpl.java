@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.11 2005/11/14 17:31:09 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.12 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,8 +84,8 @@ public class ExpansionNodeImpl extends ObjectNodeImpl implements ExpansionNode {
 	public ExpansionRegion getRegionAsOutput() {
 		ExpansionRegion regionAsOutput = (ExpansionRegion)eVirtualGet(UML2Package.EXPANSION_NODE__REGION_AS_OUTPUT);
 		if (regionAsOutput != null && regionAsOutput.eIsProxy()) {
-			ExpansionRegion oldRegionAsOutput = regionAsOutput;
-			regionAsOutput = (ExpansionRegion)eResolveProxy((InternalEObject)regionAsOutput);
+			InternalEObject oldRegionAsOutput = (InternalEObject)regionAsOutput;
+			regionAsOutput = (ExpansionRegion)eResolveProxy(oldRegionAsOutput);
 			if (regionAsOutput != oldRegionAsOutput) {
 				eVirtualSet(UML2Package.EXPANSION_NODE__REGION_AS_OUTPUT, regionAsOutput);
 				if (eNotificationRequired())
@@ -149,8 +149,8 @@ public class ExpansionNodeImpl extends ObjectNodeImpl implements ExpansionNode {
 	public ExpansionRegion getRegionAsInput() {
 		ExpansionRegion regionAsInput = (ExpansionRegion)eVirtualGet(UML2Package.EXPANSION_NODE__REGION_AS_INPUT);
 		if (regionAsInput != null && regionAsInput.eIsProxy()) {
-			ExpansionRegion oldRegionAsInput = regionAsInput;
-			regionAsInput = (ExpansionRegion)eResolveProxy((InternalEObject)regionAsInput);
+			InternalEObject oldRegionAsInput = (InternalEObject)regionAsInput;
+			regionAsInput = (ExpansionRegion)eResolveProxy(oldRegionAsInput);
 			if (regionAsInput != oldRegionAsInput) {
 				eVirtualSet(UML2Package.EXPANSION_NODE__REGION_AS_INPUT, regionAsInput);
 				if (eNotificationRequired())
@@ -230,11 +230,11 @@ public class ExpansionNodeImpl extends ObjectNodeImpl implements ExpansionNode {
 				case UML2Package.EXPANSION_NODE__INCOMING:
 					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXPANSION_NODE__ACTIVITY:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_NODE__ACTIVITY, msgs);
 				case UML2Package.EXPANSION_NODE__IN_STRUCTURED_NODE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_NODE__IN_STRUCTURED_NODE, msgs);
 				case UML2Package.EXPANSION_NODE__IN_PARTITION:
@@ -255,7 +255,7 @@ public class ExpansionNodeImpl extends ObjectNodeImpl implements ExpansionNode {
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

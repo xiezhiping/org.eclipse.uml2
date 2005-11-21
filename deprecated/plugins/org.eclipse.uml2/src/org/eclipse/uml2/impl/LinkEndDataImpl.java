@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.11 2005/11/14 19:49:15 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.12 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,8 +79,8 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	public InputPin getValue() {
 		InputPin value = (InputPin)eVirtualGet(UML2Package.LINK_END_DATA__VALUE);
 		if (value != null && value.eIsProxy()) {
-			InputPin oldValue = value;
-			value = (InputPin)eResolveProxy((InternalEObject)value);
+			InternalEObject oldValue = (InternalEObject)value;
+			value = (InputPin)eResolveProxy(oldValue);
 			if (value != oldValue) {
 				eVirtualSet(UML2Package.LINK_END_DATA__VALUE, value);
 				if (eNotificationRequired())
@@ -121,8 +121,8 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	public Property getEnd() {
 		Property end = (Property)eVirtualGet(UML2Package.LINK_END_DATA__END);
 		if (end != null && end.eIsProxy()) {
-			Property oldEnd = end;
-			end = (Property)eResolveProxy((InternalEObject)end);
+			InternalEObject oldEnd = (InternalEObject)end;
+			end = (Property)eResolveProxy(oldEnd);
 			if (end != oldEnd) {
 				eVirtualSet(UML2Package.LINK_END_DATA__END, end);
 				if (eNotificationRequired())

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.10 2005/11/09 22:53:10 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.11 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,7 +62,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see #setActivity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Activity()
 	 * @see org.eclipse.uml2.Activity#getEdges
-	 * @model opposite="edge"
+	 * @model opposite="edge" resolveProxies="false"
 	 * @generated
 	 */
 	Activity getActivity();
@@ -164,7 +164,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Guard()
-	 * @model containment="true" required="true"
+	 * @model containment="true" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	ValueSpecification getGuard();
@@ -235,7 +235,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see #setInStructuredNode(StructuredActivityNode)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InStructuredNode()
 	 * @see org.eclipse.uml2.StructuredActivityNode#getContainedEdges
-	 * @model opposite="containedEdge"
+	 * @model opposite="containedEdge" resolveProxies="false"
 	 * @generated
 	 */
 	StructuredActivityNode getInStructuredNode();
@@ -292,7 +292,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @return the value of the '<em>Weight</em>' containment reference.
 	 * @see #setWeight(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Weight()
-	 * @model containment="true" required="true"
+	 * @model containment="true" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	ValueSpecification getWeight();

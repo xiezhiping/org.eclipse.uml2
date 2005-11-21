@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.19 2005/11/14 17:31:07 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.20 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -138,8 +138,8 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	public Interface getContract() {
 		Interface contract = (Interface)eVirtualGet(UML2Package.IMPLEMENTATION__CONTRACT);
 		if (contract != null && contract.eIsProxy()) {
-			Interface oldContract = contract;
-			contract = (Interface)eResolveProxy((InternalEObject)contract);
+			InternalEObject oldContract = (InternalEObject)contract;
+			contract = (Interface)eResolveProxy(oldContract);
 			if (contract != oldContract) {
 				eVirtualSet(UML2Package.IMPLEMENTATION__CONTRACT, contract);
 				if (eNotificationRequired())
@@ -182,7 +182,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 */
 	public BehavioredClassifier getImplementingClassifier() {
 		if (eContainerFeatureID != UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER) return null;
-		return (BehavioredClassifier)eContainer;
+		return (BehavioredClassifier)eContainer();
 	}
 
 	/**
@@ -194,11 +194,11 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 		if (newImplementingClassifier != null && !getClients().contains(newImplementingClassifier)) {
 			getClients().add(newImplementingClassifier);
 		}
-		if (newImplementingClassifier != eContainer || (eContainerFeatureID != UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER && newImplementingClassifier != null)) {
+		if (newImplementingClassifier != eInternalContainer() || (eContainerFeatureID != UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER && newImplementingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newImplementingClassifier))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newImplementingClassifier != null)
 				msgs = ((InternalEObject)newImplementingClassifier).eInverseAdd(this, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, BehavioredClassifier.class, msgs);
@@ -264,24 +264,24 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.IMPLEMENTATION__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.IMPLEMENTATION__OWNING_PARAMETER, msgs);
 				case UML2Package.IMPLEMENTATION__CLIENT:
 					return ((InternalEList)getClients()).basicAdd(otherEnd, msgs);
 				case UML2Package.IMPLEMENTATION__ABSTRACTION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.IMPLEMENTATION__ABSTRACTION, msgs);
 				case UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -334,16 +334,16 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.IMPLEMENTATION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.IMPLEMENTATION__ABSTRACTION:
-					return eContainer.eInverseRemove(this, UML2Package.COMPONENT__REALIZATION, Component.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.COMPONENT__REALIZATION, Component.class, msgs);
 				case UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER:
-					return eContainer.eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, BehavioredClassifier.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, BehavioredClassifier.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

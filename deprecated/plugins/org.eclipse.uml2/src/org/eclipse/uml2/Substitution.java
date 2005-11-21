@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Substitution.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Substitution.java,v 1.8 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -87,7 +87,7 @@ public interface Substitution extends Realization{
 	 * @see #setSubstitutingClassifier(Classifier)
 	 * @see org.eclipse.uml2.UML2Package#getSubstitution_SubstitutingClassifier()
 	 * @see org.eclipse.uml2.Classifier#getSubstitutions
-	 * @model opposite="substitution" required="true"
+	 * @model opposite="substitution" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	Classifier getSubstitutingClassifier();

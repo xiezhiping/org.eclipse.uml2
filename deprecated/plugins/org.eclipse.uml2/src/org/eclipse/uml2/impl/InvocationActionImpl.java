@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.17 2005/11/14 19:49:14 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.18 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -172,8 +172,8 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	public Port getOnPort() {
 		Port onPort = (Port)eVirtualGet(UML2Package.INVOCATION_ACTION__ON_PORT);
 		if (onPort != null && onPort.eIsProxy()) {
-			Port oldOnPort = onPort;
-			onPort = (Port)eResolveProxy((InternalEObject)onPort);
+			InternalEObject oldOnPort = (InternalEObject)onPort;
+			onPort = (Port)eResolveProxy(oldOnPort);
 			if (onPort != oldOnPort) {
 				eVirtualSet(UML2Package.INVOCATION_ACTION__ON_PORT, onPort);
 				if (eNotificationRequired())

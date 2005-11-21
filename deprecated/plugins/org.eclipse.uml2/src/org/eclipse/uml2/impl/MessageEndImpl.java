@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageEndImpl.java,v 1.10 2005/11/14 17:31:08 khussey Exp $
+ * $Id: MessageEndImpl.java,v 1.11 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -78,8 +78,8 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	public Message getReceiveMessage() {
 		Message receiveMessage = (Message)eVirtualGet(UML2Package.MESSAGE_END__RECEIVE_MESSAGE);
 		if (receiveMessage != null && receiveMessage.eIsProxy()) {
-			Message oldReceiveMessage = receiveMessage;
-			receiveMessage = (Message)eResolveProxy((InternalEObject)receiveMessage);
+			InternalEObject oldReceiveMessage = (InternalEObject)receiveMessage;
+			receiveMessage = (Message)eResolveProxy(oldReceiveMessage);
 			if (receiveMessage != oldReceiveMessage) {
 				eVirtualSet(UML2Package.MESSAGE_END__RECEIVE_MESSAGE, receiveMessage);
 				if (eNotificationRequired())
@@ -143,8 +143,8 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	public Message getSendMessage() {
 		Message sendMessage = (Message)eVirtualGet(UML2Package.MESSAGE_END__SEND_MESSAGE);
 		if (sendMessage != null && sendMessage.eIsProxy()) {
-			Message oldSendMessage = sendMessage;
-			sendMessage = (Message)eResolveProxy((InternalEObject)sendMessage);
+			InternalEObject oldSendMessage = (InternalEObject)sendMessage;
+			sendMessage = (Message)eResolveProxy(oldSendMessage);
 			if (sendMessage != oldSendMessage) {
 				eVirtualSet(UML2Package.MESSAGE_END__SEND_MESSAGE, sendMessage);
 				if (eNotificationRequired())
@@ -233,7 +233,7 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

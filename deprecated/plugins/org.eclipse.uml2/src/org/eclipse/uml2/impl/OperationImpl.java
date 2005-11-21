@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.32 2005/11/14 19:49:14 khussey Exp $
+ * $Id: OperationImpl.java,v 1.33 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -320,8 +320,8 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.OPERATION__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject)templateParameter;
+			templateParameter = (TemplateParameter)eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(UML2Package.OPERATION__TEMPLATE_PARAMETER, templateParameter);
 				if (eNotificationRequired())
@@ -387,7 +387,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public TemplateParameter getOwningParameter() {
 		if (eContainerFeatureID != UML2Package.OPERATION__OWNING_PARAMETER) return null;
-		return (TemplateParameter)eContainer;
+		return (TemplateParameter)eContainer();
 	}
 
 	/**
@@ -396,12 +396,12 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		EObject oldOwningParameter = eContainer;
-		if (newOwningParameter != eContainer || (eContainerFeatureID != UML2Package.OPERATION__OWNING_PARAMETER && newOwningParameter != null)) {
+		EObject oldOwningParameter = eContainer();
+		if (newOwningParameter != eInternalContainer() || (eContainerFeatureID != UML2Package.OPERATION__OWNING_PARAMETER && newOwningParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningParameter != null)
 				msgs = ((InternalEObject)newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
@@ -565,7 +565,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public org.eclipse.uml2.Class getClass_() {
 		if (eContainerFeatureID != UML2Package.OPERATION__CLASS_) return null;
-		return (org.eclipse.uml2.Class)eContainer;
+		return (org.eclipse.uml2.Class)eContainer();
 	}
 
 	/**
@@ -574,11 +574,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setClass_(org.eclipse.uml2.Class newClass_) {
-		if (newClass_ != eContainer || (eContainerFeatureID != UML2Package.OPERATION__CLASS_ && newClass_ != null)) {
+		if (newClass_ != eInternalContainer() || (eContainerFeatureID != UML2Package.OPERATION__CLASS_ && newClass_ != null)) {
 			if (EcoreUtil.isAncestor(this, newClass_))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newClass_ != null)
 				msgs = ((InternalEObject)newClass_).eInverseAdd(this, UML2Package.CLASS__OWNED_OPERATION, org.eclipse.uml2.Class.class, msgs);
@@ -598,7 +598,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public DataType getDatatype() {
 		if (eContainerFeatureID != UML2Package.OPERATION__DATATYPE) return null;
-		return (DataType)eContainer;
+		return (DataType)eContainer();
 	}
 
 	/**
@@ -607,11 +607,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setDatatype(DataType newDatatype) {
-		if (newDatatype != eContainer || (eContainerFeatureID != UML2Package.OPERATION__DATATYPE && newDatatype != null)) {
+		if (newDatatype != eInternalContainer() || (eContainerFeatureID != UML2Package.OPERATION__DATATYPE && newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, newDatatype))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDatatype != null)
 				msgs = ((InternalEObject)newDatatype).eInverseAdd(this, UML2Package.DATA_TYPE__OWNED_OPERATION, DataType.class, msgs);
@@ -1258,24 +1258,24 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.OPERATION__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.OPERATION__OWNING_PARAMETER, msgs);
 				case UML2Package.OPERATION__OWNED_PARAMETER:
 					return ((InternalEList)getOwnedParameters()).basicAdd(otherEnd, msgs);
 				case UML2Package.OPERATION__CLASS_:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.OPERATION__CLASS_, msgs);
 				case UML2Package.OPERATION__DATATYPE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.OPERATION__DATATYPE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -1342,16 +1342,16 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.OPERATION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.OPERATION__CLASS_:
-					return eContainer.eInverseRemove(this, UML2Package.CLASS__OWNED_OPERATION, org.eclipse.uml2.Class.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.CLASS__OWNED_OPERATION, org.eclipse.uml2.Class.class, msgs);
 				case UML2Package.OPERATION__DATATYPE:
-					return eContainer.eInverseRemove(this, UML2Package.DATA_TYPE__OWNED_OPERATION, DataType.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.DATA_TYPE__OWNED_OPERATION, DataType.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.9 2005/11/09 22:53:10 khussey Exp $
+ * $Id: StateMachine.java,v 1.10 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface StateMachine extends Behavior{
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_Region()
 	 * @see org.eclipse.uml2.Region#getStateMachine
-	 * @model type="org.eclipse.uml2.Region" opposite="stateMachine" containment="true" required="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Region" opposite="stateMachine" containment="true" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getRegions();
@@ -106,7 +106,7 @@ public interface StateMachine extends Behavior{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_ConnectionPoint()
-	 * @model type="org.eclipse.uml2.Pseudostate" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Pseudostate" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getConnectionPoints();
@@ -185,7 +185,7 @@ public interface StateMachine extends Behavior{
 	 * @see #setStateMachine_redefinitionContext(BehavioredClassifier)
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_StateMachine_redefinitionContext()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getOwnedStateMachines
-	 * @model opposite="ownedStateMachine"
+	 * @model opposite="ownedStateMachine" resolveProxies="false"
 	 * @generated
 	 */
 	BehavioredClassifier getStateMachine_redefinitionContext();

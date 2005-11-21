@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.17 2005/11/14 17:31:09 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.18 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -173,8 +173,8 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	public org.eclipse.uml2.Package getImportedPackage() {
 		org.eclipse.uml2.Package importedPackage = (org.eclipse.uml2.Package)eVirtualGet(UML2Package.PACKAGE_IMPORT__IMPORTED_PACKAGE);
 		if (importedPackage != null && importedPackage.eIsProxy()) {
-			org.eclipse.uml2.Package oldImportedPackage = importedPackage;
-			importedPackage = (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)importedPackage);
+			InternalEObject oldImportedPackage = (InternalEObject)importedPackage;
+			importedPackage = (org.eclipse.uml2.Package)eResolveProxy(oldImportedPackage);
 			if (importedPackage != oldImportedPackage) {
 				eVirtualSet(UML2Package.PACKAGE_IMPORT__IMPORTED_PACKAGE, importedPackage);
 				if (eNotificationRequired())
@@ -214,7 +214,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 */
 	public Namespace getImportingNamespace() {
 		if (eContainerFeatureID != UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE) return null;
-		return (Namespace)eContainer;
+		return (Namespace)eContainer();
 	}
 
 	/**
@@ -223,11 +223,11 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 * @generated
 	 */
 	public void setImportingNamespace(Namespace newImportingNamespace) {
-		if (newImportingNamespace != eContainer || (eContainerFeatureID != UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE && newImportingNamespace != null)) {
+		if (newImportingNamespace != eInternalContainer() || (eContainerFeatureID != UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE && newImportingNamespace != null)) {
 			if (EcoreUtil.isAncestor(this, newImportingNamespace))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newImportingNamespace != null)
 				msgs = ((InternalEObject)newImportingNamespace).eInverseAdd(this, UML2Package.NAMESPACE__PACKAGE_IMPORT, Namespace.class, msgs);
@@ -284,14 +284,14 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 				case UML2Package.PACKAGE_IMPORT__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
 				case UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -326,12 +326,12 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE:
-					return eContainer.eInverseRemove(this, UML2Package.NAMESPACE__PACKAGE_IMPORT, Namespace.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.NAMESPACE__PACKAGE_IMPORT, Namespace.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

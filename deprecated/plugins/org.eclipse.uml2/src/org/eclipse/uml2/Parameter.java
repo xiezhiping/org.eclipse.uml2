@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Parameter.java,v 1.11 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -204,7 +204,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @see #setOperation(Operation)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_Operation()
 	 * @see org.eclipse.uml2.Operation#getOwnedParameters
-	 * @model opposite="ownedParameter"
+	 * @model opposite="ownedParameter" resolveProxies="false"
 	 * @generated
 	 */
 	Operation getOperation();
@@ -234,7 +234,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_DefaultValue()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	ValueSpecification getDefaultValue();

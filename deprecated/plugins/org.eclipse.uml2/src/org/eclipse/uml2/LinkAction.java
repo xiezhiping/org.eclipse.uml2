@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkAction.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: LinkAction.java,v 1.9 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,7 +58,7 @@ public interface LinkAction extends Action{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End Data</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLinkAction_EndData()
-	 * @model type="org.eclipse.uml2.LinkEndData" containment="true" lower="2" ordered="false"
+	 * @model type="org.eclipse.uml2.LinkEndData" containment="true" resolveProxies="false" lower="2" ordered="false"
 	 * @generated
 	 */
 	EList getEndData();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.13 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.14 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -132,7 +132,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	 */
 	public ProtocolStateMachine getSpecificMachine() {
 		if (eContainerFeatureID != UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE) return null;
-		return (ProtocolStateMachine)eContainer;
+		return (ProtocolStateMachine)eContainer();
 	}
 
 	/**
@@ -141,11 +141,11 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	 * @generated
 	 */
 	public void setSpecificMachine(ProtocolStateMachine newSpecificMachine) {
-		if (newSpecificMachine != eContainer || (eContainerFeatureID != UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE && newSpecificMachine != null)) {
+		if (newSpecificMachine != eInternalContainer() || (eContainerFeatureID != UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE && newSpecificMachine != null)) {
 			if (EcoreUtil.isAncestor(this, newSpecificMachine))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSpecificMachine != null)
 				msgs = ((InternalEObject)newSpecificMachine).eInverseAdd(this, UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE, ProtocolStateMachine.class, msgs);
@@ -166,8 +166,8 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	public ProtocolStateMachine getGeneralMachine() {
 		ProtocolStateMachine generalMachine = (ProtocolStateMachine)eVirtualGet(UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE);
 		if (generalMachine != null && generalMachine.eIsProxy()) {
-			ProtocolStateMachine oldGeneralMachine = generalMachine;
-			generalMachine = (ProtocolStateMachine)eResolveProxy((InternalEObject)generalMachine);
+			InternalEObject oldGeneralMachine = (InternalEObject)generalMachine;
+			generalMachine = (ProtocolStateMachine)eResolveProxy(oldGeneralMachine);
 			if (generalMachine != oldGeneralMachine) {
 				eVirtualSet(UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE, generalMachine);
 				if (eNotificationRequired())
@@ -235,14 +235,14 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 				case UML2Package.PROTOCOL_CONFORMANCE__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
 				case UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -277,12 +277,12 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE:
-					return eContainer.eInverseRemove(this, UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE, ProtocolStateMachine.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE, ProtocolStateMachine.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

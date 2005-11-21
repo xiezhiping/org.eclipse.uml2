@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndActionImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
+ * $Id: ReadLinkObjectEndActionImpl.java,v 1.19 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -215,8 +215,8 @@ public class ReadLinkObjectEndActionImpl extends ActionImpl implements ReadLinkO
 	public Property getEnd() {
 		Property end = (Property)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_ACTION__END);
 		if (end != null && end.eIsProxy()) {
-			Property oldEnd = end;
-			end = (Property)eResolveProxy((InternalEObject)end);
+			InternalEObject oldEnd = (InternalEObject)end;
+			end = (Property)eResolveProxy(oldEnd);
 			if (end != oldEnd) {
 				eVirtualSet(UML2Package.READ_LINK_OBJECT_END_ACTION__END, end);
 				if (eNotificationRequired())

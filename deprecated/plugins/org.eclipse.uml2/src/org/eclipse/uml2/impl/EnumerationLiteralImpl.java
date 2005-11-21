@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.13 2005/11/14 17:31:07 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.14 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,7 +84,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 	 */
 	public Enumeration getEnumeration() {
 		if (eContainerFeatureID != UML2Package.ENUMERATION_LITERAL__ENUMERATION) return null;
-		return (Enumeration)eContainer;
+		return (Enumeration)eContainer();
 	}
 
 	/**
@@ -93,11 +93,11 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 	 * @generated
 	 */
 	public void setEnumeration(Enumeration newEnumeration) {
-		if (newEnumeration != eContainer || (eContainerFeatureID != UML2Package.ENUMERATION_LITERAL__ENUMERATION && newEnumeration != null)) {
+		if (newEnumeration != eInternalContainer() || (eContainerFeatureID != UML2Package.ENUMERATION_LITERAL__ENUMERATION && newEnumeration != null)) {
 			if (EcoreUtil.isAncestor(this, newEnumeration))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnumeration != null)
 				msgs = ((InternalEObject)newEnumeration).eInverseAdd(this, UML2Package.ENUMERATION__OWNED_LITERAL, Enumeration.class, msgs);
@@ -159,7 +159,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER, msgs);
 				case UML2Package.ENUMERATION_LITERAL__DEPLOYMENT:
@@ -167,14 +167,14 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 				case UML2Package.ENUMERATION_LITERAL__SLOT:
 					return ((InternalEList)getSlots()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENUMERATION_LITERAL__ENUMERATION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.ENUMERATION_LITERAL__ENUMERATION, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -227,14 +227,14 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.ENUMERATION_LITERAL__ENUMERATION:
-					return eContainer.eInverseRemove(this, UML2Package.ENUMERATION__OWNED_LITERAL, Enumeration.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.ENUMERATION__OWNED_LITERAL, Enumeration.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationAction.java,v 1.10 2005/11/09 22:53:10 khussey Exp $
+ * $Id: TimeObservationAction.java,v 1.11 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,7 +58,7 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Now</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTimeObservationAction_Now()
-	 * @model type="org.eclipse.uml2.TimeExpression" containment="true"
+	 * @model type="org.eclipse.uml2.TimeExpression" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getNows();

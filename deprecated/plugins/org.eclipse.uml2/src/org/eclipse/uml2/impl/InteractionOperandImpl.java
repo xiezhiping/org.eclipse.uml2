@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.17 2005/11/14 19:49:15 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.18 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -183,7 +183,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 */
 	public Interaction getEnclosingInteraction() {
 		if (eContainerFeatureID != UML2Package.INTERACTION_OPERAND__ENCLOSING_INTERACTION) return null;
-		return (Interaction)eContainer;
+		return (Interaction)eContainer();
 	}
 
 	/**
@@ -192,11 +192,11 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @generated
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
-		if (newEnclosingInteraction != eContainer || (eContainerFeatureID != UML2Package.INTERACTION_OPERAND__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
+		if (newEnclosingInteraction != eInternalContainer() || (eContainerFeatureID != UML2Package.INTERACTION_OPERAND__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingInteraction != null)
 				msgs = ((InternalEObject)newEnclosingInteraction).eInverseAdd(this, UML2Package.INTERACTION__FRAGMENT, Interaction.class, msgs);
@@ -216,7 +216,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 */
 	public InteractionOperand getEnclosingOperand() {
 		if (eContainerFeatureID != UML2Package.INTERACTION_OPERAND__ENCLOSING_OPERAND) return null;
-		return (InteractionOperand)eContainer;
+		return (InteractionOperand)eContainer();
 	}
 
 	/**
@@ -225,11 +225,11 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @generated
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
-		if (newEnclosingOperand != eContainer || (eContainerFeatureID != UML2Package.INTERACTION_OPERAND__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
+		if (newEnclosingOperand != eInternalContainer() || (eContainerFeatureID != UML2Package.INTERACTION_OPERAND__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingOperand != null)
 				msgs = ((InternalEObject)newEnclosingOperand).eInverseAdd(this, UML2Package.INTERACTION_OPERAND__FRAGMENT, InteractionOperand.class, msgs);
@@ -413,11 +413,11 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 				case UML2Package.INTERACTION_OPERAND__COVERED:
 					return ((InternalEList)getCovereds()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERACTION_OPERAND__ENCLOSING_INTERACTION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.INTERACTION_OPERAND__ENCLOSING_INTERACTION, msgs);
 				case UML2Package.INTERACTION_OPERAND__ENCLOSING_OPERAND:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.INTERACTION_OPERAND__ENCLOSING_OPERAND, msgs);
 				case UML2Package.INTERACTION_OPERAND__FRAGMENT:
@@ -426,7 +426,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -485,14 +485,14 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.INTERACTION_OPERAND__ENCLOSING_INTERACTION:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION__FRAGMENT, Interaction.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.INTERACTION__FRAGMENT, Interaction.class, msgs);
 				case UML2Package.INTERACTION_OPERAND__ENCLOSING_OPERAND:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION_OPERAND__FRAGMENT, InteractionOperand.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.INTERACTION_OPERAND__FRAGMENT, InteractionOperand.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

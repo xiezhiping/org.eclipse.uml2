@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.21 2005/11/14 19:49:14 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.22 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -247,8 +247,8 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	public Type getType() {
 		Type type = (Type)eVirtualGet(UML2Package.PARAMETER__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Type oldType = type;
-			type = (Type)eResolveProxy((InternalEObject)type);
+			InternalEObject oldType = (InternalEObject)type;
+			type = (Type)eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UML2Package.PARAMETER__TYPE, type);
 				if (eNotificationRequired())
@@ -603,7 +603,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 */
 	public Operation getOperation() {
 		if (eContainerFeatureID != UML2Package.PARAMETER__OPERATION) return null;
-		return (Operation)eContainer;
+		return (Operation)eContainer();
 	}
 
 	/**
@@ -612,11 +612,11 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setOperation(Operation newOperation) {
-		if (newOperation != eContainer || (eContainerFeatureID != UML2Package.PARAMETER__OPERATION && newOperation != null)) {
+		if (newOperation != eInternalContainer() || (eContainerFeatureID != UML2Package.PARAMETER__OPERATION && newOperation != null)) {
 			if (EcoreUtil.isAncestor(this, newOperation))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOperation != null)
 				msgs = ((InternalEObject)newOperation).eInverseAdd(this, UML2Package.OPERATION__OWNED_PARAMETER, Operation.class, msgs);
@@ -876,13 +876,13 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.PARAMETER__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PARAMETER__OWNING_PARAMETER, msgs);
 				case UML2Package.PARAMETER__END:
 					return ((InternalEList)getEnds()).basicAdd(otherEnd, msgs);
 				case UML2Package.PARAMETER__OPERATION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PARAMETER__OPERATION, msgs);
 				case UML2Package.PARAMETER__PARAMETER_SET:
@@ -891,7 +891,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -948,14 +948,14 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.PARAMETER__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.PARAMETER__OPERATION:
-					return eContainer.eInverseRemove(this, UML2Package.OPERATION__OWNED_PARAMETER, Operation.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.OPERATION__OWNED_PARAMETER, Operation.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

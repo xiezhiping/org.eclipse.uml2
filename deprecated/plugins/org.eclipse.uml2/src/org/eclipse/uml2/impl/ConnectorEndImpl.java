@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.13 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.14 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -80,7 +80,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 */
 	public Property getDefiningEnd() {
 		Property definingEnd = basicGetDefiningEnd();
-		return definingEnd == null ? null : (definingEnd.eIsProxy() ? (Property)eResolveProxy((InternalEObject)definingEnd) : definingEnd);
+		return definingEnd != null && definingEnd.eIsProxy() ? (Property)eResolveProxy((InternalEObject)definingEnd) : definingEnd;
 	}
 
 	/**
@@ -115,8 +115,8 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	public ConnectableElement getRole() {
 		ConnectableElement role = (ConnectableElement)eVirtualGet(UML2Package.CONNECTOR_END__ROLE);
 		if (role != null && role.eIsProxy()) {
-			ConnectableElement oldRole = role;
-			role = (ConnectableElement)eResolveProxy((InternalEObject)role);
+			InternalEObject oldRole = (InternalEObject)role;
+			role = (ConnectableElement)eResolveProxy(oldRole);
 			if (role != oldRole) {
 				eVirtualSet(UML2Package.CONNECTOR_END__ROLE, role);
 				if (eNotificationRequired())
@@ -180,8 +180,8 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	public Property getPartWithPort() {
 		Property partWithPort = (Property)eVirtualGet(UML2Package.CONNECTOR_END__PART_WITH_PORT);
 		if (partWithPort != null && partWithPort.eIsProxy()) {
-			Property oldPartWithPort = partWithPort;
-			partWithPort = (Property)eResolveProxy((InternalEObject)partWithPort);
+			InternalEObject oldPartWithPort = (InternalEObject)partWithPort;
+			partWithPort = (Property)eResolveProxy(oldPartWithPort);
 			if (partWithPort != oldPartWithPort) {
 				eVirtualSet(UML2Package.CONNECTOR_END__PART_WITH_PORT, partWithPort);
 				if (eNotificationRequired())
@@ -233,7 +233,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

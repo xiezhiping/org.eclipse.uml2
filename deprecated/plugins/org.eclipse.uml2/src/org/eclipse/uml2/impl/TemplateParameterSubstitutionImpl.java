@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.16 2005/11/14 19:49:15 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.17 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,8 +114,8 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	public TemplateParameter getFormal() {
 		TemplateParameter formal = (TemplateParameter)eVirtualGet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL);
 		if (formal != null && formal.eIsProxy()) {
-			TemplateParameter oldFormal = formal;
-			formal = (TemplateParameter)eResolveProxy((InternalEObject)formal);
+			InternalEObject oldFormal = (InternalEObject)formal;
+			formal = (TemplateParameter)eResolveProxy(oldFormal);
 			if (formal != oldFormal) {
 				eVirtualSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL, formal);
 				if (eNotificationRequired())
@@ -155,7 +155,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 */
 	public TemplateBinding getTemplateBinding() {
 		if (eContainerFeatureID != UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING) return null;
-		return (TemplateBinding)eContainer;
+		return (TemplateBinding)eContainer();
 	}
 
 	/**
@@ -164,11 +164,11 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 * @generated
 	 */
 	public void setTemplateBinding(TemplateBinding newTemplateBinding) {
-		if (newTemplateBinding != eContainer || (eContainerFeatureID != UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING && newTemplateBinding != null)) {
+		if (newTemplateBinding != eInternalContainer() || (eContainerFeatureID != UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING && newTemplateBinding != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplateBinding))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplateBinding != null)
 				msgs = ((InternalEObject)newTemplateBinding).eInverseAdd(this, UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION, TemplateBinding.class, msgs);
@@ -258,14 +258,14 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 				case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
 				case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -302,12 +302,12 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION, TemplateBinding.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION, TemplateBinding.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

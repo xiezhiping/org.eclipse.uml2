@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionImpl.java,v 1.11 2005/11/14 17:31:09 khussey Exp $
+ * $Id: TimeExpressionImpl.java,v 1.12 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -122,8 +122,8 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	public NamedElement getEvent() {
 		NamedElement event = (NamedElement)eVirtualGet(UML2Package.TIME_EXPRESSION__EVENT);
 		if (event != null && event.eIsProxy()) {
-			NamedElement oldEvent = event;
-			event = (NamedElement)eResolveProxy((InternalEObject)event);
+			InternalEObject oldEvent = (InternalEObject)event;
+			event = (NamedElement)eResolveProxy(oldEvent);
 			if (event != oldEvent) {
 				eVirtualSet(UML2Package.TIME_EXPRESSION__EVENT, event);
 				if (eNotificationRequired())

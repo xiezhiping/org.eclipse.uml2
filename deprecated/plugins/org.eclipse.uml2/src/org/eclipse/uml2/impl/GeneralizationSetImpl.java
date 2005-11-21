@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.14 2005/11/14 17:31:08 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.15 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -168,8 +168,8 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	public Classifier getPowertype() {
 		Classifier powertype = (Classifier)eVirtualGet(UML2Package.GENERALIZATION_SET__POWERTYPE);
 		if (powertype != null && powertype.eIsProxy()) {
-			Classifier oldPowertype = powertype;
-			powertype = (Classifier)eResolveProxy((InternalEObject)powertype);
+			InternalEObject oldPowertype = (InternalEObject)powertype;
+			powertype = (Classifier)eResolveProxy(oldPowertype);
 			if (powertype != oldPowertype) {
 				eVirtualSet(UML2Package.GENERALIZATION_SET__POWERTYPE, powertype);
 				if (eNotificationRequired())
@@ -264,7 +264,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.GENERALIZATION_SET__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.GENERALIZATION_SET__OWNING_PARAMETER, msgs);
 				case UML2Package.GENERALIZATION_SET__POWERTYPE:
@@ -278,7 +278,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

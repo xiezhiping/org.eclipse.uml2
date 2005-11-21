@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.19 2005/11/14 19:49:15 khussey Exp $
+ * $Id: ActionImpl.java,v 1.20 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -232,7 +232,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated NOT
 	 */
 	public Classifier getContext() {
-		return eContainer instanceof Behavior ? ((Behavior) eContainer).getContext() : null;
+		return eContainer instanceof Behavior ? ((Behavior) eContainer()).getContext() : null;
 	}
 
 	/**

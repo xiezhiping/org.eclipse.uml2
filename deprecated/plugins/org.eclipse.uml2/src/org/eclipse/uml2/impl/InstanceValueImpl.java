@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueImpl.java,v 1.11 2005/11/14 17:31:10 khussey Exp $
+ * $Id: InstanceValueImpl.java,v 1.12 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,8 +79,8 @@ public class InstanceValueImpl extends ValueSpecificationImpl implements Instanc
 	public InstanceSpecification getInstance() {
 		InstanceSpecification instance = (InstanceSpecification)eVirtualGet(UML2Package.INSTANCE_VALUE__INSTANCE);
 		if (instance != null && instance.eIsProxy()) {
-			InstanceSpecification oldInstance = instance;
-			instance = (InstanceSpecification)eResolveProxy((InternalEObject)instance);
+			InternalEObject oldInstance = (InternalEObject)instance;
+			instance = (InstanceSpecification)eResolveProxy(oldInstance);
 			if (instance != oldInstance) {
 				eVirtualSet(UML2Package.INSTANCE_VALUE__INSTANCE, instance);
 				if (eNotificationRequired())

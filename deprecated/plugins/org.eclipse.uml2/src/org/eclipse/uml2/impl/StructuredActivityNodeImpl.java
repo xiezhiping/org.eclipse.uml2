@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.30 2005/11/14 19:49:14 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.31 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -930,11 +930,11 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__INCOMING:
 					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_PARTITION:
@@ -950,7 +950,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE:
@@ -963,7 +963,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableActionImpl.java,v 1.12 2005/11/14 17:31:07 khussey Exp $
+ * $Id: VariableActionImpl.java,v 1.13 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,8 +77,8 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 	public Variable getVariable() {
 		Variable variable = (Variable)eVirtualGet(UML2Package.VARIABLE_ACTION__VARIABLE);
 		if (variable != null && variable.eIsProxy()) {
-			Variable oldVariable = variable;
-			variable = (Variable)eResolveProxy((InternalEObject)variable);
+			InternalEObject oldVariable = (InternalEObject)variable;
+			variable = (Variable)eResolveProxy(oldVariable);
 			if (variable != oldVariable) {
 				eVirtualSet(UML2Package.VARIABLE_ACTION__VARIABLE, variable);
 				if (eNotificationRequired())

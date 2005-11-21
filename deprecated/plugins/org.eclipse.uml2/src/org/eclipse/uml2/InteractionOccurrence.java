@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrence.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
+ * $Id: InteractionOccurrence.java,v 1.10 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -90,7 +90,7 @@ public interface InteractionOccurrence extends InteractionFragment{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Actual Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteractionOccurrence_ActualGate()
-	 * @model type="org.eclipse.uml2.Gate" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Gate" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getActualGates();
@@ -143,7 +143,7 @@ public interface InteractionOccurrence extends InteractionFragment{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteractionOccurrence_Argument()
-	 * @model type="org.eclipse.uml2.InputPin" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.InputPin" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getArguments();

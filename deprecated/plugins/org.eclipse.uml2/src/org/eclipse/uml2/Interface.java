@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.12 2005/09/27 20:03:02 khussey Exp $
+ * $Id: Interface.java,v 1.13 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -65,7 +65,7 @@ public interface Interface extends Classifier{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.Property" containment="true"
+	 * @model type="org.eclipse.uml2.Property" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -117,7 +117,7 @@ public interface Interface extends Classifier{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedOperation()
-	 * @model type="org.eclipse.uml2.Operation" containment="true"
+	 * @model type="org.eclipse.uml2.Operation" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getOwnedOperations();
@@ -198,7 +198,7 @@ public interface Interface extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_NestedClassifier()
-	 * @model type="org.eclipse.uml2.Classifier" containment="true"
+	 * @model type="org.eclipse.uml2.Classifier" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getNestedClassifiers();
@@ -240,7 +240,7 @@ public interface Interface extends Classifier{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedReception()
-	 * @model type="org.eclipse.uml2.Reception" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Reception" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedReceptions();
@@ -293,7 +293,7 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Protocol</em>' containment reference.
 	 * @see #setProtocol(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getInterface_Protocol()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	ProtocolStateMachine getProtocol();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.19 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -194,7 +194,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 */
 	public DeploymentTarget getLocation() {
 		if (eContainerFeatureID != UML2Package.DEPLOYMENT__LOCATION) return null;
-		return (DeploymentTarget)eContainer;
+		return (DeploymentTarget)eContainer();
 	}
 
 	/**
@@ -206,11 +206,11 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 		if (newLocation != null && !getClients().contains(newLocation)) {
 			getClients().add(newLocation);
 		}
-		if (newLocation != eContainer || (eContainerFeatureID != UML2Package.DEPLOYMENT__LOCATION && newLocation != null)) {
+		if (newLocation != eInternalContainer() || (eContainerFeatureID != UML2Package.DEPLOYMENT__LOCATION && newLocation != null)) {
 			if (EcoreUtil.isAncestor(this, newLocation))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newLocation != null)
 				msgs = ((InternalEObject)newLocation).eInverseAdd(this, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, DeploymentTarget.class, msgs);
@@ -334,20 +334,20 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.DEPLOYMENT__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.DEPLOYMENT__OWNING_PARAMETER, msgs);
 				case UML2Package.DEPLOYMENT__CLIENT:
 					return ((InternalEList)getClients()).basicAdd(otherEnd, msgs);
 				case UML2Package.DEPLOYMENT__LOCATION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.DEPLOYMENT__LOCATION, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -398,14 +398,14 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.DEPLOYMENT__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.DEPLOYMENT__LOCATION:
-					return eContainer.eInverseRemove(this, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, DeploymentTarget.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, DeploymentTarget.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.20 2005/11/14 19:49:14 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.21 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -167,7 +167,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 */
 	public Region getContainer() {
 		if (eContainerFeatureID != UML2Package.TRANSITION__CONTAINER) return null;
-		return (Region)eContainer;
+		return (Region)eContainer();
 	}
 
 	/**
@@ -176,11 +176,11 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
-		if (newContainer != eContainer || (eContainerFeatureID != UML2Package.TRANSITION__CONTAINER && newContainer != null)) {
+		if (newContainer != eInternalContainer() || (eContainerFeatureID != UML2Package.TRANSITION__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContainer != null)
 				msgs = ((InternalEObject)newContainer).eInverseAdd(this, UML2Package.REGION__TRANSITION, Region.class, msgs);
@@ -201,8 +201,8 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	public Vertex getSource() {
 		Vertex source = (Vertex)eVirtualGet(UML2Package.TRANSITION__SOURCE);
 		if (source != null && source.eIsProxy()) {
-			Vertex oldSource = source;
-			source = (Vertex)eResolveProxy((InternalEObject)source);
+			InternalEObject oldSource = (InternalEObject)source;
+			source = (Vertex)eResolveProxy(oldSource);
 			if (source != oldSource) {
 				eVirtualSet(UML2Package.TRANSITION__SOURCE, source);
 				if (eNotificationRequired())
@@ -266,8 +266,8 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	public Vertex getTarget() {
 		Vertex target = (Vertex)eVirtualGet(UML2Package.TRANSITION__TARGET);
 		if (target != null && target.eIsProxy()) {
-			Vertex oldTarget = target;
-			target = (Vertex)eResolveProxy((InternalEObject)target);
+			InternalEObject oldTarget = (InternalEObject)target;
+			target = (Vertex)eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				eVirtualSet(UML2Package.TRANSITION__TARGET, target);
 				if (eNotificationRequired())
@@ -331,8 +331,8 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	public Transition getRedefinedTransition() {
 		Transition redefinedTransition = (Transition)eVirtualGet(UML2Package.TRANSITION__REDEFINED_TRANSITION);
 		if (redefinedTransition != null && redefinedTransition.eIsProxy()) {
-			Transition oldRedefinedTransition = redefinedTransition;
-			redefinedTransition = (Transition)eResolveProxy((InternalEObject)redefinedTransition);
+			InternalEObject oldRedefinedTransition = (InternalEObject)redefinedTransition;
+			redefinedTransition = (Transition)eResolveProxy(oldRedefinedTransition);
 			if (redefinedTransition != oldRedefinedTransition) {
 				eVirtualSet(UML2Package.TRANSITION__REDEFINED_TRANSITION, redefinedTransition);
 				if (eNotificationRequired())
@@ -675,7 +675,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 				case UML2Package.TRANSITION__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.TRANSITION__CONTAINER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.TRANSITION__CONTAINER, msgs);
 				case UML2Package.TRANSITION__SOURCE:
@@ -692,7 +692,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -743,12 +743,12 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.TRANSITION__CONTAINER:
-					return eContainer.eInverseRemove(this, UML2Package.REGION__TRANSITION, Region.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.REGION__TRANSITION, Region.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

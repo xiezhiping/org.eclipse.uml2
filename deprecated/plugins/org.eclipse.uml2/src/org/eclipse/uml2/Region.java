@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.9 2005/11/09 22:53:10 khussey Exp $
+ * $Id: Region.java,v 1.10 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,7 +57,7 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @return the value of the '<em>Subvertex</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRegion_Subvertex()
 	 * @see org.eclipse.uml2.Vertex#getContainer
-	 * @model type="org.eclipse.uml2.Vertex" opposite="container" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Vertex" opposite="container" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getSubvertices();
@@ -98,7 +98,7 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @return the value of the '<em>Transition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRegion_Transition()
 	 * @see org.eclipse.uml2.Transition#getContainer
-	 * @model type="org.eclipse.uml2.Transition" opposite="container" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Transition" opposite="container" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getTransitions();
@@ -149,7 +149,7 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @see #setStateMachine(StateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getRegion_StateMachine()
 	 * @see org.eclipse.uml2.StateMachine#getRegions
-	 * @model opposite="region"
+	 * @model opposite="region" resolveProxies="false"
 	 * @generated
 	 */
 	StateMachine getStateMachine();
@@ -178,7 +178,7 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @see #setState(State)
 	 * @see org.eclipse.uml2.UML2Package#getRegion_State()
 	 * @see org.eclipse.uml2.State#getRegions
-	 * @model opposite="region"
+	 * @model opposite="region" resolveProxies="false"
 	 * @generated
 	 */
 	State getState();

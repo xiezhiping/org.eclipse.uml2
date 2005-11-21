@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.18 2005/11/14 17:31:09 khussey Exp $
+ * $Id: PortImpl.java,v 1.19 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -302,8 +302,8 @@ public class PortImpl extends PropertyImpl implements Port {
 	public ProtocolStateMachine getProtocol() {
 		ProtocolStateMachine protocol = (ProtocolStateMachine)eVirtualGet(UML2Package.PORT__PROTOCOL);
 		if (protocol != null && protocol.eIsProxy()) {
-			ProtocolStateMachine oldProtocol = protocol;
-			protocol = (ProtocolStateMachine)eResolveProxy((InternalEObject)protocol);
+			InternalEObject oldProtocol = (InternalEObject)protocol;
+			protocol = (ProtocolStateMachine)eResolveProxy(oldProtocol);
 			if (protocol != oldProtocol) {
 				eVirtualSet(UML2Package.PORT__PROTOCOL, protocol);
 				if (eNotificationRequired())

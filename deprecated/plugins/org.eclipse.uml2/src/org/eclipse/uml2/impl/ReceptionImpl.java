@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.11 2005/11/14 17:31:08 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.12 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,8 +76,8 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 	public Signal getSignal() {
 		Signal signal = (Signal)eVirtualGet(UML2Package.RECEPTION__SIGNAL);
 		if (signal != null && signal.eIsProxy()) {
-			Signal oldSignal = signal;
-			signal = (Signal)eResolveProxy((InternalEObject)signal);
+			InternalEObject oldSignal = (InternalEObject)signal;
+			signal = (Signal)eResolveProxy(oldSignal);
 			if (signal != oldSignal) {
 				eVirtualSet(UML2Package.RECEPTION__SIGNAL, signal);
 				if (eNotificationRequired())

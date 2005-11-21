@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Behavior.java,v 1.12 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -99,7 +99,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @see #setContext(BehavioredClassifier)
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Context()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors
-	 * @model opposite="ownedBehavior"
+	 * @model opposite="ownedBehavior" resolveProxies="false"
 	 * @generated
 	 */
 	BehavioredClassifier getContext();
@@ -189,7 +189,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Parameter()
-	 * @model type="org.eclipse.uml2.Parameter" containment="true"
+	 * @model type="org.eclipse.uml2.Parameter" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getParameters();
@@ -351,7 +351,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Parameter Set</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_OwnedParameterSet()
-	 * @model type="org.eclipse.uml2.ParameterSet" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ParameterSet" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedParameterSets();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
+ * $Id: StructuralFeatureActionImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -113,8 +113,8 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 	public StructuralFeature getStructuralFeature() {
 		StructuralFeature structuralFeature = (StructuralFeature)eVirtualGet(UML2Package.STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE);
 		if (structuralFeature != null && structuralFeature.eIsProxy()) {
-			StructuralFeature oldStructuralFeature = structuralFeature;
-			structuralFeature = (StructuralFeature)eResolveProxy((InternalEObject)structuralFeature);
+			InternalEObject oldStructuralFeature = (InternalEObject)structuralFeature;
+			structuralFeature = (StructuralFeature)eResolveProxy(oldStructuralFeature);
 			if (structuralFeature != oldStructuralFeature) {
 				eVirtualSet(UML2Package.STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE, structuralFeature);
 				if (eNotificationRequired())

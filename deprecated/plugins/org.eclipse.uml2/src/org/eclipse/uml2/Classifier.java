@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.22 2005/11/09 22:53:09 khussey Exp $
+ * $Id: Classifier.java,v 1.23 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -190,7 +190,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Generalization</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Generalization()
 	 * @see org.eclipse.uml2.Generalization#getSpecific
-	 * @model type="org.eclipse.uml2.Generalization" opposite="specific" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Generalization" opposite="specific" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getGeneralizations();
@@ -287,7 +287,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Substitution</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Substitution()
 	 * @see org.eclipse.uml2.Substitution#getSubstitutingClassifier
-	 * @model type="org.eclipse.uml2.Substitution" opposite="substitutingClassifier" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Substitution" opposite="substitutingClassifier" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getSubstitutions();
@@ -367,7 +367,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Use Case</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_OwnedUseCase()
-	 * @model type="org.eclipse.uml2.UseCase" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.UseCase" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedUseCases();
@@ -480,7 +480,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Occurrence</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Occurrence()
-	 * @model type="org.eclipse.uml2.CollaborationOccurrence" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.CollaborationOccurrence" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getOccurrences();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSet.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ParameterSet.java,v 1.9 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -86,7 +86,7 @@ public interface ParameterSet extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Condition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getParameterSet_Condition()
-	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Constraint" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getConditions();

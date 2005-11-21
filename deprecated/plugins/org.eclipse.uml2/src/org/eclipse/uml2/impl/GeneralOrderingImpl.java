@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.10 2005/11/14 17:31:07 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.11 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -78,8 +78,8 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	public EventOccurrence getBefore() {
 		EventOccurrence before = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__BEFORE);
 		if (before != null && before.eIsProxy()) {
-			EventOccurrence oldBefore = before;
-			before = (EventOccurrence)eResolveProxy((InternalEObject)before);
+			InternalEObject oldBefore = (InternalEObject)before;
+			before = (EventOccurrence)eResolveProxy(oldBefore);
 			if (before != oldBefore) {
 				eVirtualSet(UML2Package.GENERAL_ORDERING__BEFORE, before);
 				if (eNotificationRequired())
@@ -143,8 +143,8 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	public EventOccurrence getAfter() {
 		EventOccurrence after = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__AFTER);
 		if (after != null && after.eIsProxy()) {
-			EventOccurrence oldAfter = after;
-			after = (EventOccurrence)eResolveProxy((InternalEObject)after);
+			InternalEObject oldAfter = (InternalEObject)after;
+			after = (EventOccurrence)eResolveProxy(oldAfter);
 			if (after != oldAfter) {
 				eVirtualSet(UML2Package.GENERAL_ORDERING__AFTER, after);
 				if (eNotificationRequired())
@@ -233,7 +233,7 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.29 2005/11/14 19:49:14 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.30 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -217,8 +217,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.PROPERTY__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject)templateParameter;
+			templateParameter = (TemplateParameter)eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(UML2Package.PROPERTY__TEMPLATE_PARAMETER, templateParameter);
 				if (eNotificationRequired())
@@ -284,7 +284,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public TemplateParameter getOwningParameter() {
 		if (eContainerFeatureID != UML2Package.PROPERTY__OWNING_PARAMETER) return null;
-		return (TemplateParameter)eContainer;
+		return (TemplateParameter)eContainer();
 	}
 
 	/**
@@ -293,12 +293,12 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		EObject oldOwningParameter = eContainer;
-		if (newOwningParameter != eContainer || (eContainerFeatureID != UML2Package.PROPERTY__OWNING_PARAMETER && newOwningParameter != null)) {
+		EObject oldOwningParameter = eContainer();
+		if (newOwningParameter != eInternalContainer() || (eContainerFeatureID != UML2Package.PROPERTY__OWNING_PARAMETER && newOwningParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningParameter != null)
 				msgs = ((InternalEObject)newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
@@ -580,7 +580,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated NOT
 	 */
 	public org.eclipse.uml2.Class getClass_() {
-		return eContainer instanceof org.eclipse.uml2.Class	? (org.eclipse.uml2.Class) eContainer : null;
+		return eContainer instanceof org.eclipse.uml2.Class	? (org.eclipse.uml2.Class) eContainer() : null;
 	}
 
 	/**
@@ -590,7 +590,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public Property getOpposite() {
 		Property opposite = basicGetOpposite();
-		return opposite == null ? null : (opposite.eIsProxy() ? (Property)eResolveProxy((InternalEObject)opposite) : opposite);
+		return opposite != null && opposite.eIsProxy() ? (Property)eResolveProxy((InternalEObject)opposite) : opposite;
 	}
 
 		/**
@@ -609,7 +609,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public Association getOwningAssociation() {
 		if (eContainerFeatureID != UML2Package.PROPERTY__OWNING_ASSOCIATION) return null;
-		return (Association)eContainer;
+		return (Association)eContainer();
 	}
 
 	/**
@@ -618,12 +618,12 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setOwningAssociation(Association newOwningAssociation) {
-		EObject oldOwningAssociation = eContainer;
-		if (newOwningAssociation != eContainer || (eContainerFeatureID != UML2Package.PROPERTY__OWNING_ASSOCIATION && newOwningAssociation != null)) {
+		EObject oldOwningAssociation = eContainer();
+		if (newOwningAssociation != eInternalContainer() || (eContainerFeatureID != UML2Package.PROPERTY__OWNING_ASSOCIATION && newOwningAssociation != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningAssociation))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningAssociation != null)
 				msgs = ((InternalEObject)newOwningAssociation).eInverseAdd(this, UML2Package.ASSOCIATION__OWNED_END, Association.class, msgs);
@@ -704,7 +704,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public DataType getDatatype() {
 		if (eContainerFeatureID != UML2Package.PROPERTY__DATATYPE) return null;
-		return (DataType)eContainer;
+		return (DataType)eContainer();
 	}
 
 	/**
@@ -713,11 +713,11 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setDatatype(DataType newDatatype) {
-		if (newDatatype != eContainer || (eContainerFeatureID != UML2Package.PROPERTY__DATATYPE && newDatatype != null)) {
+		if (newDatatype != eInternalContainer() || (eContainerFeatureID != UML2Package.PROPERTY__DATATYPE && newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, newDatatype))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDatatype != null)
 				msgs = ((InternalEObject)newDatatype).eInverseAdd(this, UML2Package.DATA_TYPE__OWNED_ATTRIBUTE, DataType.class, msgs);
@@ -738,8 +738,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public Association getAssociation() {
 		Association association = (Association)eVirtualGet(UML2Package.PROPERTY__ASSOCIATION);
 		if (association != null && association.eIsProxy()) {
-			Association oldAssociation = association;
-			association = (Association)eResolveProxy((InternalEObject)association);
+			InternalEObject oldAssociation = (InternalEObject)association;
+			association = (Association)eResolveProxy(oldAssociation);
 			if (association != oldAssociation) {
 				eVirtualSet(UML2Package.PROPERTY__ASSOCIATION, association);
 				if (eNotificationRequired())
@@ -923,7 +923,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public Property getAssociationEnd() {
 		if (eContainerFeatureID != UML2Package.PROPERTY__ASSOCIATION_END) return null;
-		return (Property)eContainer;
+		return (Property)eContainer();
 	}
 
 	/**
@@ -932,11 +932,11 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setAssociationEnd(Property newAssociationEnd) {
-		if (newAssociationEnd != eContainer || (eContainerFeatureID != UML2Package.PROPERTY__ASSOCIATION_END && newAssociationEnd != null)) {
+		if (newAssociationEnd != eInternalContainer() || (eContainerFeatureID != UML2Package.PROPERTY__ASSOCIATION_END && newAssociationEnd != null)) {
 			if (EcoreUtil.isAncestor(this, newAssociationEnd))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newAssociationEnd != null)
 				msgs = ((InternalEObject)newAssociationEnd).eInverseAdd(this, UML2Package.PROPERTY__QUALIFIER, Property.class, msgs);
@@ -1203,7 +1203,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.PROPERTY__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PROPERTY__OWNING_PARAMETER, msgs);
 				case UML2Package.PROPERTY__END:
@@ -1211,11 +1211,11 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 				case UML2Package.PROPERTY__DEPLOYMENT:
 					return ((InternalEList)getDeployments()).basicAdd(otherEnd, msgs);
 				case UML2Package.PROPERTY__OWNING_ASSOCIATION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PROPERTY__OWNING_ASSOCIATION, msgs);
 				case UML2Package.PROPERTY__DATATYPE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PROPERTY__DATATYPE, msgs);
 				case UML2Package.PROPERTY__ASSOCIATION:
@@ -1226,14 +1226,14 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 				case UML2Package.PROPERTY__QUALIFIER:
 					return ((InternalEList)getQualifiers()).basicAdd(otherEnd, msgs);
 				case UML2Package.PROPERTY__ASSOCIATION_END:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PROPERTY__ASSOCIATION_END, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -1298,18 +1298,18 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.PROPERTY__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.PROPERTY__OWNING_ASSOCIATION:
-					return eContainer.eInverseRemove(this, UML2Package.ASSOCIATION__OWNED_END, Association.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.ASSOCIATION__OWNED_END, Association.class, msgs);
 				case UML2Package.PROPERTY__DATATYPE:
-					return eContainer.eInverseRemove(this, UML2Package.DATA_TYPE__OWNED_ATTRIBUTE, DataType.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.DATA_TYPE__OWNED_ATTRIBUTE, DataType.class, msgs);
 				case UML2Package.PROPERTY__ASSOCIATION_END:
-					return eContainer.eInverseRemove(this, UML2Package.PROPERTY__QUALIFIER, Property.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.PROPERTY__QUALIFIER, Property.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

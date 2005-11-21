@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -197,8 +197,8 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	public Signal getSignal() {
 		Signal signal = (Signal)eVirtualGet(UML2Package.SEND_SIGNAL_ACTION__SIGNAL);
 		if (signal != null && signal.eIsProxy()) {
-			Signal oldSignal = signal;
-			signal = (Signal)eResolveProxy((InternalEObject)signal);
+			InternalEObject oldSignal = (InternalEObject)signal;
+			signal = (Signal)eResolveProxy(oldSignal);
 			if (signal != oldSignal) {
 				eVirtualSet(UML2Package.SEND_SIGNAL_ACTION__SIGNAL, signal);
 				if (eNotificationRequired())

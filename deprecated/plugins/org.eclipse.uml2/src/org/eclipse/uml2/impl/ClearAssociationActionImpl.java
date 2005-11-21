@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationActionImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
+ * $Id: ClearAssociationActionImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -187,8 +187,8 @@ public class ClearAssociationActionImpl extends ActionImpl implements ClearAssoc
 	public Association getAssociation() {
 		Association association = (Association)eVirtualGet(UML2Package.CLEAR_ASSOCIATION_ACTION__ASSOCIATION);
 		if (association != null && association.eIsProxy()) {
-			Association oldAssociation = association;
-			association = (Association)eResolveProxy((InternalEObject)association);
+			InternalEObject oldAssociation = (InternalEObject)association;
+			association = (Association)eResolveProxy(oldAssociation);
 			if (association != oldAssociation) {
 				eVirtualSet(UML2Package.CLEAR_ASSOCIATION_ACTION__ASSOCIATION, association);
 				if (eNotificationRequired())

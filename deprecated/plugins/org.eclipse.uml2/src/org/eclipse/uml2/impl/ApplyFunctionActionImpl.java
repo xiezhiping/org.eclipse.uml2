@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionActionImpl.java,v 1.17 2005/11/14 19:49:14 khussey Exp $
+ * $Id: ApplyFunctionActionImpl.java,v 1.18 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -142,8 +142,8 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	public PrimitiveFunction getFunction() {
 		PrimitiveFunction function = (PrimitiveFunction)eVirtualGet(UML2Package.APPLY_FUNCTION_ACTION__FUNCTION);
 		if (function != null && function.eIsProxy()) {
-			PrimitiveFunction oldFunction = function;
-			function = (PrimitiveFunction)eResolveProxy((InternalEObject)function);
+			InternalEObject oldFunction = (InternalEObject)function;
+			function = (PrimitiveFunction)eResolveProxy(oldFunction);
 			if (function != oldFunction) {
 				eVirtualSet(UML2Package.APPLY_FUNCTION_ACTION__FUNCTION, function);
 				if (eNotificationRequired())

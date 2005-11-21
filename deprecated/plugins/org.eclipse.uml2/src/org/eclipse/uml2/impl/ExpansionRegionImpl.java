@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.14 2005/11/14 17:31:09 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.15 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -192,11 +192,11 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 				case UML2Package.EXPANSION_REGION__INCOMING:
 					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXPANSION_REGION__ACTIVITY:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_REGION__ACTIVITY, msgs);
 				case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE, msgs);
 				case UML2Package.EXPANSION_REGION__IN_PARTITION:
@@ -212,7 +212,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 				case UML2Package.EXPANSION_REGION__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.EXPANSION_REGION__VARIABLE:
@@ -229,7 +229,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

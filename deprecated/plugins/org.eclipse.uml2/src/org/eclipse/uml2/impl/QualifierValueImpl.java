@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.9 2005/11/14 17:31:09 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.10 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -74,8 +74,8 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	public Property getQualifier() {
 		Property qualifier = (Property)eVirtualGet(UML2Package.QUALIFIER_VALUE__QUALIFIER);
 		if (qualifier != null && qualifier.eIsProxy()) {
-			Property oldQualifier = qualifier;
-			qualifier = (Property)eResolveProxy((InternalEObject)qualifier);
+			InternalEObject oldQualifier = (InternalEObject)qualifier;
+			qualifier = (Property)eResolveProxy(oldQualifier);
 			if (qualifier != oldQualifier) {
 				eVirtualSet(UML2Package.QUALIFIER_VALUE__QUALIFIER, qualifier);
 				if (eNotificationRequired())
@@ -116,8 +116,8 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	public InputPin getValue() {
 		InputPin value = (InputPin)eVirtualGet(UML2Package.QUALIFIER_VALUE__VALUE);
 		if (value != null && value.eIsProxy()) {
-			InputPin oldValue = value;
-			value = (InputPin)eResolveProxy((InternalEObject)value);
+			InternalEObject oldValue = (InternalEObject)value;
+			value = (InputPin)eResolveProxy(oldValue);
 			if (value != oldValue) {
 				eVirtualSet(UML2Package.QUALIFIER_VALUE__VALUE, value);
 				if (eNotificationRequired())

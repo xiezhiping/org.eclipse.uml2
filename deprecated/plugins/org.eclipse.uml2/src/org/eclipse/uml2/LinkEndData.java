@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndData.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
+ * $Id: LinkEndData.java,v 1.10 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -116,7 +116,7 @@ public interface LinkEndData extends Element{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndData_Qualifier()
-	 * @model type="org.eclipse.uml2.QualifierValue" containment="true"
+	 * @model type="org.eclipse.uml2.QualifierValue" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getQualifiers();

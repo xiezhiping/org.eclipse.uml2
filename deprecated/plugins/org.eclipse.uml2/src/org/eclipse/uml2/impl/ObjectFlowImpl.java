@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.11 2005/11/14 17:31:07 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.12 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -172,8 +172,8 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
     public Behavior getTransformation() {
 		Behavior transformation = (Behavior)eVirtualGet(UML2Package.OBJECT_FLOW__TRANSFORMATION);
 		if (transformation != null && transformation.eIsProxy()) {
-			Behavior oldTransformation = transformation;
-			transformation = (Behavior)eResolveProxy((InternalEObject)transformation);
+			InternalEObject oldTransformation = (InternalEObject)transformation;
+			transformation = (Behavior)eResolveProxy(oldTransformation);
 			if (transformation != oldTransformation) {
 				eVirtualSet(UML2Package.OBJECT_FLOW__TRANSFORMATION, transformation);
 				if (eNotificationRequired())
@@ -214,8 +214,8 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
     public Behavior getSelection() {
 		Behavior selection = (Behavior)eVirtualGet(UML2Package.OBJECT_FLOW__SELECTION);
 		if (selection != null && selection.eIsProxy()) {
-			Behavior oldSelection = selection;
-			selection = (Behavior)eResolveProxy((InternalEObject)selection);
+			InternalEObject oldSelection = (InternalEObject)selection;
+			selection = (Behavior)eResolveProxy(oldSelection);
 			if (selection != oldSelection) {
 				eVirtualSet(UML2Package.OBJECT_FLOW__SELECTION, selection);
 				if (eNotificationRequired())

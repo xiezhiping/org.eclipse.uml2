@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.29 2005/11/14 19:49:15 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.30 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -199,7 +199,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 */
 	public Interaction getEnclosingInteraction() {
 		if (eContainerFeatureID != UML2Package.INTERACTION__ENCLOSING_INTERACTION) return null;
-		return (Interaction)eContainer;
+		return (Interaction)eContainer();
 	}
 
 	/**
@@ -208,11 +208,11 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
-		if (newEnclosingInteraction != eContainer || (eContainerFeatureID != UML2Package.INTERACTION__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
+		if (newEnclosingInteraction != eInternalContainer() || (eContainerFeatureID != UML2Package.INTERACTION__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingInteraction != null)
 				msgs = ((InternalEObject)newEnclosingInteraction).eInverseAdd(this, UML2Package.INTERACTION__FRAGMENT, Interaction.class, msgs);
@@ -232,7 +232,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 */
 	public InteractionOperand getEnclosingOperand() {
 		if (eContainerFeatureID != UML2Package.INTERACTION__ENCLOSING_OPERAND) return null;
-		return (InteractionOperand)eContainer;
+		return (InteractionOperand)eContainer();
 	}
 
 	/**
@@ -241,11 +241,11 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
-		if (newEnclosingOperand != eContainer || (eContainerFeatureID != UML2Package.INTERACTION__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
+		if (newEnclosingOperand != eInternalContainer() || (eContainerFeatureID != UML2Package.INTERACTION__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingOperand != null)
 				msgs = ((InternalEObject)newEnclosingOperand).eInverseAdd(this, UML2Package.INTERACTION_OPERAND__FRAGMENT, InteractionOperand.class, msgs);
@@ -565,7 +565,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.INTERACTION__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.INTERACTION__OWNING_PARAMETER, msgs);
 				case UML2Package.INTERACTION__GENERALIZATION:
@@ -585,7 +585,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				case UML2Package.INTERACTION__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERACTION__CONTEXT:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.INTERACTION__CONTEXT, msgs);
 				case UML2Package.INTERACTION__SPECIFICATION:
@@ -596,11 +596,11 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				case UML2Package.INTERACTION__COVERED:
 					return ((InternalEList)getCovereds()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERACTION__ENCLOSING_INTERACTION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.INTERACTION__ENCLOSING_INTERACTION, msgs);
 				case UML2Package.INTERACTION__ENCLOSING_OPERAND:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.INTERACTION__ENCLOSING_OPERAND, msgs);
 				case UML2Package.INTERACTION__LIFELINE:
@@ -613,7 +613,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -720,18 +720,18 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.INTERACTION__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				case UML2Package.INTERACTION__CONTEXT:
-					return eContainer.eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, BehavioredClassifier.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, BehavioredClassifier.class, msgs);
 				case UML2Package.INTERACTION__ENCLOSING_INTERACTION:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION__FRAGMENT, Interaction.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.INTERACTION__FRAGMENT, Interaction.class, msgs);
 				case UML2Package.INTERACTION__ENCLOSING_OPERAND:
-					return eContainer.eInverseRemove(this, UML2Package.INTERACTION_OPERAND__FRAGMENT, InteractionOperand.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.INTERACTION_OPERAND__FRAGMENT, InteractionOperand.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

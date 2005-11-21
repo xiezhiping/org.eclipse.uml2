@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.10 2005/11/14 17:31:07 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.11 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -87,7 +87,7 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 	 */
 	public ExecutableNode getProtectedNode() {
 		if (eContainerFeatureID != UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE) return null;
-		return (ExecutableNode)eContainer;
+		return (ExecutableNode)eContainer();
 	}
 
 	/**
@@ -96,11 +96,11 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 	 * @generated
 	 */
 	public void setProtectedNode(ExecutableNode newProtectedNode) {
-		if (newProtectedNode != eContainer || (eContainerFeatureID != UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE && newProtectedNode != null)) {
+		if (newProtectedNode != eInternalContainer() || (eContainerFeatureID != UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE && newProtectedNode != null)) {
 			if (EcoreUtil.isAncestor(this, newProtectedNode))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newProtectedNode != null)
 				msgs = ((InternalEObject)newProtectedNode).eInverseAdd(this, UML2Package.EXECUTABLE_NODE__HANDLER, ExecutableNode.class, msgs);
@@ -121,8 +121,8 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 	public ExecutableNode getHandlerBody() {
 		ExecutableNode handlerBody = (ExecutableNode)eVirtualGet(UML2Package.EXCEPTION_HANDLER__HANDLER_BODY);
 		if (handlerBody != null && handlerBody.eIsProxy()) {
-			ExecutableNode oldHandlerBody = handlerBody;
-			handlerBody = (ExecutableNode)eResolveProxy((InternalEObject)handlerBody);
+			InternalEObject oldHandlerBody = (InternalEObject)handlerBody;
+			handlerBody = (ExecutableNode)eResolveProxy(oldHandlerBody);
 			if (handlerBody != oldHandlerBody) {
 				eVirtualSet(UML2Package.EXCEPTION_HANDLER__HANDLER_BODY, handlerBody);
 				if (eNotificationRequired())
@@ -163,8 +163,8 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 	public ObjectNode getExceptionInput() {
 		ObjectNode exceptionInput = (ObjectNode)eVirtualGet(UML2Package.EXCEPTION_HANDLER__EXCEPTION_INPUT);
 		if (exceptionInput != null && exceptionInput.eIsProxy()) {
-			ObjectNode oldExceptionInput = exceptionInput;
-			exceptionInput = (ObjectNode)eResolveProxy((InternalEObject)exceptionInput);
+			InternalEObject oldExceptionInput = (InternalEObject)exceptionInput;
+			exceptionInput = (ObjectNode)eResolveProxy(oldExceptionInput);
 			if (exceptionInput != oldExceptionInput) {
 				eVirtualSet(UML2Package.EXCEPTION_HANDLER__EXCEPTION_INPUT, exceptionInput);
 				if (eNotificationRequired())
@@ -261,14 +261,14 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 				case UML2Package.EXCEPTION_HANDLER__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -303,12 +303,12 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE:
-					return eContainer.eInverseRemove(this, UML2Package.EXECUTABLE_NODE__HANDLER, ExecutableNode.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.EXECUTABLE_NODE__HANDLER, ExecutableNode.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

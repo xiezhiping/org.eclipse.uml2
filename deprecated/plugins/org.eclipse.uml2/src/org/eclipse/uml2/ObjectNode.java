@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ObjectNode.java,v 1.9 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -88,7 +88,7 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * @return the value of the '<em>Upper Bound</em>' containment reference.
 	 * @see #setUpperBound(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getObjectNode_UpperBound()
-	 * @model containment="true" required="true"
+	 * @model containment="true" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	ValueSpecification getUpperBound();

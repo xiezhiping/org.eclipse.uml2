@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Implementation.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Implementation.java,v 1.8 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -87,7 +87,7 @@ public interface Implementation extends Realization{
 	 * @see #setImplementingClassifier(BehavioredClassifier)
 	 * @see org.eclipse.uml2.UML2Package#getImplementation_ImplementingClassifier()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getImplementations
-	 * @model opposite="implementation" required="true"
+	 * @model opposite="implementation" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	BehavioredClassifier getImplementingClassifier();

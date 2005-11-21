@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.10 2005/11/09 22:53:10 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.11 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -83,7 +83,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @return the value of the '<em>Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_Variable()
 	 * @see org.eclipse.uml2.Variable#getScope
-	 * @model type="org.eclipse.uml2.Variable" opposite="scope" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Variable" opposite="scope" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getVariables();
@@ -135,7 +135,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @return the value of the '<em>Contained Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_ContainedNode()
 	 * @see org.eclipse.uml2.ActivityNode#getInStructuredNode
-	 * @model type="org.eclipse.uml2.ActivityNode" opposite="inStructuredNode" containment="true"
+	 * @model type="org.eclipse.uml2.ActivityNode" opposite="inStructuredNode" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getContainedNodes();
@@ -176,7 +176,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @return the value of the '<em>Contained Edge</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_ContainedEdge()
 	 * @see org.eclipse.uml2.ActivityEdge#getInStructuredNode
-	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="inStructuredNode" containment="true"
+	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="inStructuredNode" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getContainedEdges();

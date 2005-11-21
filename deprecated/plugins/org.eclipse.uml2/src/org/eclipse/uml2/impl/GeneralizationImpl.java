@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.14 2005/11/14 17:31:06 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.15 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -180,7 +180,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 */
 	public Classifier getSpecific() {
 		if (eContainerFeatureID != UML2Package.GENERALIZATION__SPECIFIC) return null;
-		return (Classifier)eContainer;
+		return (Classifier)eContainer();
 	}
 
 	/**
@@ -189,11 +189,11 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @generated
 	 */
 	public void setSpecific(Classifier newSpecific) {
-		if (newSpecific != eContainer || (eContainerFeatureID != UML2Package.GENERALIZATION__SPECIFIC && newSpecific != null)) {
+		if (newSpecific != eInternalContainer() || (eContainerFeatureID != UML2Package.GENERALIZATION__SPECIFIC && newSpecific != null)) {
 			if (EcoreUtil.isAncestor(this, newSpecific))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSpecific != null)
 				msgs = ((InternalEObject)newSpecific).eInverseAdd(this, UML2Package.CLASSIFIER__GENERALIZATION, Classifier.class, msgs);
@@ -214,8 +214,8 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	public Classifier getGeneral() {
 		Classifier general = (Classifier)eVirtualGet(UML2Package.GENERALIZATION__GENERAL);
 		if (general != null && general.eIsProxy()) {
-			Classifier oldGeneral = general;
-			general = (Classifier)eResolveProxy((InternalEObject)general);
+			InternalEObject oldGeneral = (InternalEObject)general;
+			general = (Classifier)eResolveProxy(oldGeneral);
 			if (general != oldGeneral) {
 				eVirtualSet(UML2Package.GENERALIZATION__GENERAL, general);
 				if (eNotificationRequired())
@@ -312,7 +312,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 				case UML2Package.GENERALIZATION__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
 				case UML2Package.GENERALIZATION__SPECIFIC:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.GENERALIZATION__SPECIFIC, msgs);
 				case UML2Package.GENERALIZATION__GENERALIZATION_SET:
@@ -321,7 +321,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -358,12 +358,12 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.GENERALIZATION__SPECIFIC:
-					return eContainer.eInverseRemove(this, UML2Package.CLASSIFIER__GENERALIZATION, Classifier.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.CLASSIFIER__GENERALIZATION, Classifier.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

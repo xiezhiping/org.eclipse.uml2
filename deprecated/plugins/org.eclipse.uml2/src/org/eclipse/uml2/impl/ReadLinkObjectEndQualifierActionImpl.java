@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.19 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -291,8 +291,8 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	public Property getQualifier() {
 		Property qualifier = (Property)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER);
 		if (qualifier != null && qualifier.eIsProxy()) {
-			Property oldQualifier = qualifier;
-			qualifier = (Property)eResolveProxy((InternalEObject)qualifier);
+			InternalEObject oldQualifier = (InternalEObject)qualifier;
+			qualifier = (Property)eResolveProxy(oldQualifier);
 			if (qualifier != oldQualifier) {
 				eVirtualSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER, qualifier);
 				if (eNotificationRequired())

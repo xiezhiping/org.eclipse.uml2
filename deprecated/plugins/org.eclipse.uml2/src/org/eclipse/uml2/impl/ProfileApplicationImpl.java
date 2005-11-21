@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.12 2005/11/14 17:31:09 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.13 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -75,8 +75,8 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	public org.eclipse.uml2.Package getImportedPackage() {
 		org.eclipse.uml2.Package importedPackage = (org.eclipse.uml2.Package)eVirtualGet(UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE);
 		if (importedPackage != null && importedPackage.eIsProxy()) {
-			org.eclipse.uml2.Package oldImportedPackage = importedPackage;
-			importedPackage = (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)importedPackage);
+			InternalEObject oldImportedPackage = (InternalEObject)importedPackage;
+			importedPackage = (org.eclipse.uml2.Package)eResolveProxy(oldImportedPackage);
 			if (importedPackage != oldImportedPackage) {
 				eVirtualSet(UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, importedPackage);
 				if (eNotificationRequired())
@@ -103,8 +103,8 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	public Profile getImportedProfile() {
 		Profile importedProfile = (Profile)eVirtualGet(UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE);
 		if (importedProfile != null && importedProfile.eIsProxy()) {
-			Profile oldImportedProfile = importedProfile;
-			importedProfile = (Profile)eResolveProxy((InternalEObject)importedProfile);
+			InternalEObject oldImportedProfile = (InternalEObject)importedProfile;
+			importedProfile = (Profile)eResolveProxy(oldImportedProfile);
 			if (importedProfile != oldImportedProfile) {
 				eVirtualSet(UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE, importedProfile);
 				if (eNotificationRequired())

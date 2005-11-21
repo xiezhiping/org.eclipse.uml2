@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.36 2005/11/14 19:49:14 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.37 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -204,8 +204,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.CLASSIFIER__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject)templateParameter;
+			templateParameter = (TemplateParameter)eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(UML2Package.CLASSIFIER__TEMPLATE_PARAMETER, templateParameter);
 				if (eNotificationRequired())
@@ -271,7 +271,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public TemplateParameter getOwningParameter() {
 		if (eContainerFeatureID != UML2Package.CLASSIFIER__OWNING_PARAMETER) return null;
-		return (TemplateParameter)eContainer;
+		return (TemplateParameter)eContainer();
 	}
 
 	/**
@@ -280,12 +280,12 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		EObject oldOwningParameter = eContainer;
-		if (newOwningParameter != eContainer || (eContainerFeatureID != UML2Package.CLASSIFIER__OWNING_PARAMETER && newOwningParameter != null)) {
+		EObject oldOwningParameter = eContainer();
+		if (newOwningParameter != eInternalContainer() || (eContainerFeatureID != UML2Package.CLASSIFIER__OWNING_PARAMETER && newOwningParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningParameter != null)
 				msgs = ((InternalEObject)newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
@@ -339,7 +339,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated NOT
 	 */
 	public org.eclipse.uml2.Package getPackage() {
-		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer : null;
+		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer() : null;
 	}
 
 	/**
@@ -1410,7 +1410,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.CLASSIFIER__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.CLASSIFIER__GENERALIZATION:
@@ -1425,7 +1425,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -1488,12 +1488,12 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.CLASSIFIER__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

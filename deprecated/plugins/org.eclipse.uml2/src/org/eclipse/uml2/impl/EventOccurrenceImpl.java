@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.14 2005/11/14 17:31:07 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.15 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -97,8 +97,8 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	public Message getReceiveMessage() {
 		Message receiveMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE);
 		if (receiveMessage != null && receiveMessage.eIsProxy()) {
-			Message oldReceiveMessage = receiveMessage;
-			receiveMessage = (Message)eResolveProxy((InternalEObject)receiveMessage);
+			InternalEObject oldReceiveMessage = (InternalEObject)receiveMessage;
+			receiveMessage = (Message)eResolveProxy(oldReceiveMessage);
 			if (receiveMessage != oldReceiveMessage) {
 				eVirtualSet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE, receiveMessage);
 				if (eNotificationRequired())
@@ -162,8 +162,8 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	public Message getSendMessage() {
 		Message sendMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE);
 		if (sendMessage != null && sendMessage.eIsProxy()) {
-			Message oldSendMessage = sendMessage;
-			sendMessage = (Message)eResolveProxy((InternalEObject)sendMessage);
+			InternalEObject oldSendMessage = (InternalEObject)sendMessage;
+			sendMessage = (Message)eResolveProxy(oldSendMessage);
 			if (sendMessage != oldSendMessage) {
 				eVirtualSet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE, sendMessage);
 				if (eNotificationRequired())
@@ -396,11 +396,11 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 				case UML2Package.EVENT_OCCURRENCE__COVERED:
 					return ((InternalEList)getCovereds()).basicAdd(otherEnd, msgs);
 				case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
 				case UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND, msgs);
 				case UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE:
@@ -425,7 +425,7 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}

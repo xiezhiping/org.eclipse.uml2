@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.16 2005/11/09 22:53:10 khussey Exp $
+ * $Id: NamedElement.java,v 1.17 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -180,7 +180,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @return the value of the '<em>Name Expression</em>' containment reference.
 	 * @see #setNameExpression(StringExpression)
 	 * @see org.eclipse.uml2.UML2Package#getNamedElement_NameExpression()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	StringExpression getNameExpression();

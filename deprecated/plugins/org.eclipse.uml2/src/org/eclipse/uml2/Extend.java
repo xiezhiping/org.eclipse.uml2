@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extend.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Extend.java,v 1.9 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -90,7 +90,7 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 * @see #setExtension(UseCase)
 	 * @see org.eclipse.uml2.UML2Package#getExtend_Extension()
 	 * @see org.eclipse.uml2.UseCase#getExtends
-	 * @model opposite="extend" required="true"
+	 * @model opposite="extend" resolveProxies="false" required="true"
 	 * @generated
 	 */
 	UseCase getExtension();
@@ -117,7 +117,7 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 * @return the value of the '<em>Condition</em>' containment reference.
 	 * @see #setCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getExtend_Condition()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	Constraint getCondition();

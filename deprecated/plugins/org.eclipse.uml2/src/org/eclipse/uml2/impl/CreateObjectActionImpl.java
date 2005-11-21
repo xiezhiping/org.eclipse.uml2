@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectActionImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
+ * $Id: CreateObjectActionImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -113,8 +113,8 @@ public class CreateObjectActionImpl extends ActionImpl implements CreateObjectAc
 	public Classifier getClassifier() {
 		Classifier classifier = (Classifier)eVirtualGet(UML2Package.CREATE_OBJECT_ACTION__CLASSIFIER);
 		if (classifier != null && classifier.eIsProxy()) {
-			Classifier oldClassifier = classifier;
-			classifier = (Classifier)eResolveProxy((InternalEObject)classifier);
+			InternalEObject oldClassifier = (InternalEObject)classifier;
+			classifier = (Classifier)eResolveProxy(oldClassifier);
 			if (classifier != oldClassifier) {
 				eVirtualSet(UML2Package.CREATE_OBJECT_ACTION__CLASSIFIER, classifier);
 				if (eNotificationRequired())

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.19 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -104,7 +104,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 */
 	public Activity getActivity() {
 		if (eContainerFeatureID != UML2Package.ACTIVITY_EDGE__ACTIVITY) return null;
-		return (Activity)eContainer;
+		return (Activity)eContainer();
 	}
 
 	/**
@@ -113,11 +113,11 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-		if (newActivity != eContainer || (eContainerFeatureID != UML2Package.ACTIVITY_EDGE__ACTIVITY && newActivity != null)) {
+		if (newActivity != eInternalContainer() || (eContainerFeatureID != UML2Package.ACTIVITY_EDGE__ACTIVITY && newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivity))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newActivity != null)
 				msgs = ((InternalEObject)newActivity).eInverseAdd(this, UML2Package.ACTIVITY__EDGE, Activity.class, msgs);
@@ -138,8 +138,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	public ActivityNode getSource() {
 		ActivityNode source = (ActivityNode)eVirtualGet(UML2Package.ACTIVITY_EDGE__SOURCE);
 		if (source != null && source.eIsProxy()) {
-			ActivityNode oldSource = source;
-			source = (ActivityNode)eResolveProxy((InternalEObject)source);
+			InternalEObject oldSource = (InternalEObject)source;
+			source = (ActivityNode)eResolveProxy(oldSource);
 			if (source != oldSource) {
 				eVirtualSet(UML2Package.ACTIVITY_EDGE__SOURCE, source);
 				if (eNotificationRequired())
@@ -203,8 +203,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	public ActivityNode getTarget() {
 		ActivityNode target = (ActivityNode)eVirtualGet(UML2Package.ACTIVITY_EDGE__TARGET);
 		if (target != null && target.eIsProxy()) {
-			ActivityNode oldTarget = target;
-			target = (ActivityNode)eResolveProxy((InternalEObject)target);
+			InternalEObject oldTarget = (InternalEObject)target;
+			target = (ActivityNode)eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				eVirtualSet(UML2Package.ACTIVITY_EDGE__TARGET, target);
 				if (eNotificationRequired())
@@ -416,7 +416,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 */
 	public StructuredActivityNode getInStructuredNode() {
 		if (eContainerFeatureID != UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE) return null;
-		return (StructuredActivityNode)eContainer;
+		return (StructuredActivityNode)eContainer();
 	}
 
 	/**
@@ -425,11 +425,11 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
-		if (newInStructuredNode != eContainer || (eContainerFeatureID != UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
+		if (newInStructuredNode != eInternalContainer() || (eContainerFeatureID != UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, newInStructuredNode))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInStructuredNode != null)
 				msgs = ((InternalEObject)newInStructuredNode).eInverseAdd(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE, StructuredActivityNode.class, msgs);
@@ -540,8 +540,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	public InterruptibleActivityRegion getInterrupts() {
 		InterruptibleActivityRegion interrupts = (InterruptibleActivityRegion)eVirtualGet(UML2Package.ACTIVITY_EDGE__INTERRUPTS);
 		if (interrupts != null && interrupts.eIsProxy()) {
-			InterruptibleActivityRegion oldInterrupts = interrupts;
-			interrupts = (InterruptibleActivityRegion)eResolveProxy((InternalEObject)interrupts);
+			InternalEObject oldInterrupts = (InternalEObject)interrupts;
+			interrupts = (InterruptibleActivityRegion)eResolveProxy(oldInterrupts);
 			if (interrupts != oldInterrupts) {
 				eVirtualSet(UML2Package.ACTIVITY_EDGE__INTERRUPTS, interrupts);
 				if (eNotificationRequired())
@@ -641,7 +641,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 				case UML2Package.ACTIVITY_EDGE__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY_EDGE__ACTIVITY:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_EDGE__ACTIVITY, msgs);
 				case UML2Package.ACTIVITY_EDGE__SOURCE:
@@ -655,7 +655,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 						msgs = ((InternalEObject)target).eInverseRemove(this, UML2Package.ACTIVITY_NODE__INCOMING, ActivityNode.class, msgs);
 					return basicSetTarget((ActivityNode)otherEnd, msgs);
 				case UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
 				case UML2Package.ACTIVITY_EDGE__IN_PARTITION:
@@ -669,7 +669,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -726,14 +726,14 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UML2Package.ACTIVITY_EDGE__ACTIVITY:
-					return eContainer.eInverseRemove(this, UML2Package.ACTIVITY__EDGE, Activity.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.ACTIVITY__EDGE, Activity.class, msgs);
 				case UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE:
-					return eContainer.eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE, StructuredActivityNode.class, msgs);
+					return eInternalContainer().eInverseRemove(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE, StructuredActivityNode.class, msgs);
 				default:
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.11 2005/11/14 17:31:07 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.12 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -85,8 +85,8 @@ public class ActivityParameterNodeImpl extends ObjectNodeImpl implements Activit
 	public Parameter getParameter() {
 		Parameter parameter = (Parameter)eVirtualGet(UML2Package.ACTIVITY_PARAMETER_NODE__PARAMETER);
 		if (parameter != null && parameter.eIsProxy()) {
-			Parameter oldParameter = parameter;
-			parameter = (Parameter)eResolveProxy((InternalEObject)parameter);
+			InternalEObject oldParameter = (InternalEObject)parameter;
+			parameter = (Parameter)eResolveProxy(oldParameter);
 			if (parameter != oldParameter) {
 				eVirtualSet(UML2Package.ACTIVITY_PARAMETER_NODE__PARAMETER, parameter);
 				if (eNotificationRequired())

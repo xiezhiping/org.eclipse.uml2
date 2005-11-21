@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallTriggerImpl.java,v 1.10 2005/11/14 17:31:07 khussey Exp $
+ * $Id: CallTriggerImpl.java,v 1.11 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,8 +76,8 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 	public Operation getOperation() {
 		Operation operation = (Operation)eVirtualGet(UML2Package.CALL_TRIGGER__OPERATION);
 		if (operation != null && operation.eIsProxy()) {
-			Operation oldOperation = operation;
-			operation = (Operation)eResolveProxy((InternalEObject)operation);
+			InternalEObject oldOperation = (InternalEObject)operation;
+			operation = (Operation)eResolveProxy(oldOperation);
 			if (operation != oldOperation) {
 				eVirtualSet(UML2Package.CALL_TRIGGER__OPERATION, operation);
 				if (eNotificationRequired())

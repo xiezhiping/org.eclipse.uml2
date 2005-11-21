@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.27 2005/11/14 19:49:15 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.28 2005/11/21 21:48:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -100,7 +100,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 */
 	public org.eclipse.uml2.Class getMetaclass() {
 		org.eclipse.uml2.Class metaclass = basicGetMetaclass();
-		return metaclass == null ? null : (metaclass.eIsProxy() ? (org.eclipse.uml2.Class)eResolveProxy((InternalEObject)metaclass) : metaclass);
+		return metaclass != null && metaclass.eIsProxy() ? (org.eclipse.uml2.Class)eResolveProxy((InternalEObject)metaclass) : metaclass;
 	}
 
 	/**

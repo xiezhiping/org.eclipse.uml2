@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.14 2005/11/09 22:53:10 khussey Exp $
+ * $Id: Namespace.java,v 1.15 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -99,7 +99,7 @@ public interface Namespace extends NamedElement{
 	 * @return the value of the '<em>Owned Rule</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_OwnedRule()
 	 * @see org.eclipse.uml2.Constraint#getNamespace
-	 * @model type="org.eclipse.uml2.Constraint" opposite="namespace" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Constraint" opposite="namespace" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedRules();
@@ -184,7 +184,7 @@ public interface Namespace extends NamedElement{
 	 * @return the value of the '<em>Element Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_ElementImport()
 	 * @see org.eclipse.uml2.ElementImport#getImportingNamespace
-	 * @model type="org.eclipse.uml2.ElementImport" opposite="importingNamespace" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ElementImport" opposite="importingNamespace" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getElementImports();
@@ -228,7 +228,7 @@ public interface Namespace extends NamedElement{
 	 * @return the value of the '<em>Package Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_PackageImport()
 	 * @see org.eclipse.uml2.PackageImport#getImportingNamespace
-	 * @model type="org.eclipse.uml2.PackageImport" opposite="importingNamespace" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.PackageImport" opposite="importingNamespace" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getPackageImports();

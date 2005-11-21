@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.26 2005/11/14 17:31:07 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.27 2005/11/21 21:48:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -102,7 +102,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	public EList getOwnedMembers() {
 		EList ownedMember = (EList)eVirtualGet(UML2Package.PROFILE__OWNED_MEMBER);
 		if (ownedMember == null) {
-			eVirtualSet(UML2Package.PROFILE__OWNED_MEMBER, ownedMember = new EObjectContainmentEList(PackageableElement.class, this, UML2Package.PROFILE__OWNED_MEMBER));
+			eVirtualSet(UML2Package.PROFILE__OWNED_MEMBER, ownedMember = new EObjectContainmentEList.Resolving(PackageableElement.class, this, UML2Package.PROFILE__OWNED_MEMBER));
 		}
 		return ownedMember;
 	}
@@ -234,7 +234,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 				case UML2Package.PROFILE__OWNING_PARAMETER:
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd, UML2Package.PROFILE__OWNING_PARAMETER, msgs);
 				case UML2Package.PROFILE__PACKAGE_MERGE:
@@ -243,7 +243,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -341,7 +341,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__NESTED_PACKAGE:
 				return getNestedPackages();
 			case UML2Package.PROFILE__NESTING_PACKAGE:
-				return getNestingPackage();
+				if (resolve) return getNestingPackage();
+				return basicGetNestingPackage();
 			case UML2Package.PROFILE__OWNED_TYPE:
 				return getOwnedTypes();
 			case UML2Package.PROFILE__OWNED_MEMBER:
@@ -572,7 +573,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__NESTED_PACKAGE:
 				return !getNestedPackages().isEmpty();
 			case UML2Package.PROFILE__NESTING_PACKAGE:
-				return getNestingPackage() != null;
+				return basicGetNestingPackage() != null;
 			case UML2Package.PROFILE__OWNED_TYPE:
 				return !getOwnedTypes().isEmpty();
 			case UML2Package.PROFILE__OWNED_MEMBER:

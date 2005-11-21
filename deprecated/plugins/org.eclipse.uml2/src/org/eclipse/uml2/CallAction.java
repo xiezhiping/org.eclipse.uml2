@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallAction.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: CallAction.java,v 1.9 2005/11/21 21:48:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -90,7 +90,7 @@ public interface CallAction extends InvocationAction{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCallAction_Result()
-	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
+	 * @model type="org.eclipse.uml2.OutputPin" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getResults();
