@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.46 2005/11/16 17:45:01 khussey Exp $
+ * $Id: UML2Util.java,v 1.47 2005/11/21 22:01:47 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -2859,14 +2859,14 @@ public class UML2Util
 						if (null == subsettedProperty.getAssociation()
 							|| subsettedProperty.isNavigable()) {
 
-							EStructuralFeature eStructuralFeature = (EStructuralFeature) elementToEModelElementMap
+							EStructuralFeature subsettedEStructuralFeature = (EStructuralFeature) elementToEModelElementMap
 								.get(subsettedProperty);
 
 							if (DEBUG) {
 								System.out
 									.println(getQualifiedText(eModelElement)
 										+ " subsets " //$NON-NLS-1$
-										+ getQualifiedText(eStructuralFeature));
+										+ getQualifiedText(subsettedEStructuralFeature));
 							}
 
 							if (OPTION__PROCESS.equals(options
@@ -2883,20 +2883,26 @@ public class UML2Util
 													"_UI_UML22EcoreConverter_ProcessSubsettingProperty_diagnostic", //$NON-NLS-1$
 													getMessageSubstitutions(
 														context, eModelElement,
-														eStructuralFeature)),
+														subsettedEStructuralFeature)),
 											new Object[]{eModelElement,
-												eStructuralFeature}));
+												subsettedEStructuralFeature}));
 								}
 
-								if (!eStructuralFeature.isDerived()
-									&& eStructuralFeature instanceof EReference
-									&& ((EReference) eStructuralFeature)
-										.isContainment()) {
+								if (!subsettedEStructuralFeature.isDerived()
+									&& subsettedEStructuralFeature instanceof EReference) {
 
+									EReference subsettedEReference = (EReference) subsettedEStructuralFeature;
 									EReference eReference = (EReference) eModelElement;
 
-									eReference.setContainment(false);
-									eReference.setResolveProxies(false);
+									if (subsettedEReference.isContainment()) {
+										eReference.setContainment(false);
+									}
+
+									if (!eReference.isContainment()) {
+										eReference
+											.setResolveProxies(subsettedEReference
+												.isResolveProxies());
+									}
 								}
 
 								getEAnnotation(eModelElement,
@@ -2918,9 +2924,9 @@ public class UML2Util
 												"_UI_UML22EcoreConverter_ReportSubsettingProperty_diagnostic", //$NON-NLS-1$
 												getMessageSubstitutions(
 													context, eModelElement,
-													eStructuralFeature)),
+													subsettedEStructuralFeature)),
 										new Object[]{eModelElement,
-											eStructuralFeature}));
+											subsettedEStructuralFeature}));
 							}
 						}
 					}
