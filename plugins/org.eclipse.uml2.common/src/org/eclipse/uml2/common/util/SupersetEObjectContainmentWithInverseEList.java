@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SupersetEObjectContainmentWithInverseEList.java,v 1.1 2005/05/17 22:02:04 khussey Exp $
+ * $Id: SupersetEObjectContainmentWithInverseEList.java,v 1.2 2005/11/21 19:29:49 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**
@@ -23,6 +24,30 @@ public class SupersetEObjectContainmentWithInverseEList
 
 	public static class Unsettable
 			extends SupersetEObjectContainmentWithInverseEList {
+
+		public static class Resolving
+				extends Unsettable {
+
+			public Resolving(Class dataClass, InternalEObject owner,
+					int featureID, int[] subsetFeatureIDs, int inverseFeatureID) {
+				super(dataClass, owner, featureID, subsetFeatureIDs,
+					inverseFeatureID);
+			}
+
+			public Resolving(Class dataClass, InternalEObject owner,
+					int featureID, int subsetFeatureID, int inverseFeatureID) {
+				this(dataClass, owner, featureID, new int[]{subsetFeatureID},
+					inverseFeatureID);
+			}
+
+			protected boolean hasProxies() {
+				return true;
+			}
+
+			protected Object resolve(int index, Object object) {
+				return resolve(index, (EObject) object);
+			}
+		}
 
 		protected boolean isSet;
 
@@ -73,6 +98,30 @@ public class SupersetEObjectContainmentWithInverseEList
 			} else {
 				isSet = false;
 			}
+		}
+	}
+
+	public static class Resolving
+			extends SupersetEObjectContainmentWithInverseEList {
+
+		public Resolving(Class dataClass, InternalEObject owner, int featureID,
+				int[] subsetFeatureIDs, int inverseFeatureID) {
+			super(dataClass, owner, featureID, subsetFeatureIDs,
+				inverseFeatureID);
+		}
+
+		public Resolving(Class dataClass, InternalEObject owner, int featureID,
+				int subsetFeatureID, int inverseFeatureID) {
+			this(dataClass, owner, featureID, new int[]{subsetFeatureID},
+				inverseFeatureID);
+		}
+
+		protected boolean hasProxies() {
+			return true;
+		}
+
+		protected Object resolve(int index, Object object) {
+			return resolve(index, (EObject) object);
 		}
 	}
 

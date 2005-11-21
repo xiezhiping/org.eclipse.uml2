@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetEObjectContainmentEList.java,v 1.1 2005/05/17 22:02:04 khussey Exp $
+ * $Id: SubsetEObjectContainmentEList.java,v 1.2 2005/11/21 19:29:49 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**
@@ -26,6 +27,28 @@ public class SubsetEObjectContainmentEList
 
 	public static class Unsettable
 			extends SubsetEObjectContainmentEList {
+
+		public static class Resolving
+				extends Unsettable {
+
+			public Resolving(Class dataClass, InternalEObject owner,
+					int featureID, int[] supersetFeatureIDs) {
+				super(dataClass, owner, featureID, supersetFeatureIDs);
+			}
+
+			public Resolving(Class dataClass, InternalEObject owner,
+					int featureID, int supersetFeatureID) {
+				this(dataClass, owner, featureID, new int[]{supersetFeatureID});
+			}
+
+			protected boolean hasProxies() {
+				return true;
+			}
+
+			protected Object resolve(int index, Object object) {
+				return resolve(index, (EObject) object);
+			}
+		}
 
 		protected boolean isSet;
 
@@ -74,6 +97,28 @@ public class SubsetEObjectContainmentEList
 			} else {
 				isSet = false;
 			}
+		}
+	}
+
+	public static class Resolving
+			extends SubsetEObjectContainmentEList {
+
+		public Resolving(Class dataClass, InternalEObject owner, int featureID,
+				int[] supersetFeatureIDs) {
+			super(dataClass, owner, featureID, supersetFeatureIDs);
+		}
+
+		public Resolving(Class dataClass, InternalEObject owner, int featureID,
+				int supersetFeatureID) {
+			this(dataClass, owner, featureID, new int[]{supersetFeatureID});
+		}
+
+		protected boolean hasProxies() {
+			return true;
+		}
+
+		protected Object resolve(int index, Object object) {
+			return resolve(index, (EObject) object);
 		}
 	}
 
