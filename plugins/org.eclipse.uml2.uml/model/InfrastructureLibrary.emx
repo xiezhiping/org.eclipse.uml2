@@ -14776,7 +14776,7 @@
         <generalization xmi:id="_3ADC7B74022D3DE6DFA30185" general="_3ADC7B74022D3DE6C03E0388"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E0F500FF" name="packagedElement" type="_3ADC7B74022D3DE6C1F002C3" subsettedProperty="_3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E0F402CA" aggregation="composite">
           <eAnnotations xmi:id="_n2LOwjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n2LOwzwaEdqNYOqRUhe_HQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n2LOwzwaEdqNYOqRUhe_HQ"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrR45hTaEdqZu-3Jy1-uYg" body="Specifies the packageable elements that are owned by this Package." annotatedElement="_3ADC7B74022D3DE6E0F500FF">
             <eAnnotations xmi:id="_rrR45xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
@@ -14788,7 +14788,7 @@
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE344701CC" name="ownedType" type="_3ADC7B74022D3E555229003B" isDerived="true" subsettedProperty="_3ADC7B74022D3DE6E0F500FF" association="_3ADC7B74022D3DEE344602C4" aggregation="composite">
           <eAnnotations xmi:id="_rrR49RTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rrR49hTaEdqZu-3Jy1-uYg" isTransient="true" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rrR49hTaEdqZu-3Jy1-uYg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrR48BTaEdqZu-3Jy1-uYg" body="References the packaged elements that are Types." annotatedElement="_3ADC7B74022D3DEE344701CC">
             <eAnnotations xmi:id="_rrR48RTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
@@ -14800,7 +14800,7 @@
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE6FD3029F" name="nestedPackage" type="_3ADC7B74022D3DE6D5DA0183" isDerived="true" subsettedProperty="_3ADC7B74022D3DE6E0F500FF" association="_3ADC7B74022D3DEE6FD102CF" aggregation="composite">
           <eAnnotations xmi:id="_rrbp9BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rrbp9RTaEdqZu-3Jy1-uYg" isTransient="true" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rrbp9RTaEdqZu-3Jy1-uYg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrbp7xTaEdqZu-3Jy1-uYg" body="References the packaged elements that are Packages." annotatedElement="_3ADC7B74022D3DEE6FD3029F">
             <eAnnotations xmi:id="_rrbp8BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
@@ -14812,7 +14812,7 @@
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE6FD302F9" name="nestingPackage" type="_3ADC7B74022D3DE6D5DA0183" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_3ADC7B74022D3DEE6FD102CF">
           <eAnnotations xmi:id="_H9HS8DWtEdqst7wr5_7CAQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_H9HS8TWtEdqst7wr5_7CAQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_H9HS8TWtEdqst7wr5_7CAQ"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrbp9xTaEdqZu-3Jy1-uYg" body="References the owning package of a package." annotatedElement="_3ADC7B74022D3DEE6FD302F9">
             <eAnnotations xmi:id="_rrla4BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
@@ -16294,7 +16294,7 @@
       <generalization xmi:id="_bC_LMEfCEdq0rbStTpEubg" general="_3ADC7B74022D3DE6D5DA0183"/>
       <ownedAttribute xmi:id="_3ADC7B74022D3CB24B21030C" name="ownedStereotype" type="_3ADC7B74022D3CA186DB0022" subsettedProperty="_3ADC7B74022D3DE6E0F500FF" association="_3ADC7B74022D3CB24B21012C" aggregation="composite">
         <eAnnotations xmi:id="_n55RIDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n55RITwaEdqNYOqRUhe_HQ" isResolveProxies="false"/>
+          <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n55RITwaEdqNYOqRUhe_HQ"/>
         </eAnnotations>
         <ownedComment xmi:id="_ruQ7iRTaEdqZu-3Jy1-uYg" body="References the Stereotypes that are owned by the Profile." annotatedElement="_3ADC7B74022D3CB24B21030C">
           <eAnnotations xmi:id="_ruaFYBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
