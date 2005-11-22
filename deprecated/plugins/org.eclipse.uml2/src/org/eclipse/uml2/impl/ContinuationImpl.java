@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.11 2005/11/14 17:31:08 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.12 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -283,12 +283,12 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 			case UML2Package.CONTINUATION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.CONTINUATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CONTINUATION__NAME:
-				String name = eVirtualIsSet(UML2Package.CONTINUATION__NAME) ? (String)eVirtualGet(UML2Package.CONTINUATION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.CONTINUATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CONTINUATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONTINUATION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.CONTINUATION__VISIBILITY) && eVirtualGet(UML2Package.CONTINUATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.CONTINUATION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.CONTINUATION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.CONTINUATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

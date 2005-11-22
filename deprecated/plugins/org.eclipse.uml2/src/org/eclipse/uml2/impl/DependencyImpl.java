@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.19 2005/11/21 21:48:00 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.20 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -460,12 +460,12 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 			case UML2Package.DEPENDENCY__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.DEPENDENCY__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.DEPENDENCY__NAME:
-				String name = eVirtualIsSet(UML2Package.DEPENDENCY__NAME) ? (String)eVirtualGet(UML2Package.DEPENDENCY__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.DEPENDENCY__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DEPENDENCY__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPENDENCY__VISIBILITY:
-				return eVirtualIsSet(UML2Package.DEPENDENCY__VISIBILITY) && eVirtualGet(UML2Package.DEPENDENCY__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.DEPENDENCY__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.DEPENDENCY__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

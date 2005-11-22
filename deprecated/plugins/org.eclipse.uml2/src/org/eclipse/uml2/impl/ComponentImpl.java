@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.35 2005/11/21 21:48:01 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.36 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -914,12 +914,12 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.COMPONENT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.COMPONENT__NAME:
-				String name = eVirtualIsSet(UML2Package.COMPONENT__NAME) ? (String)eVirtualGet(UML2Package.COMPONENT__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.COMPONENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.COMPONENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COMPONENT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.COMPONENT__VISIBILITY) && eVirtualGet(UML2Package.COMPONENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.COMPONENT__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.COMPONENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -953,11 +953,11 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__FEATURE:
 				return isSetFeatures();
 			case UML2Package.COMPONENT__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.COMPONENT__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.COMPONENT__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.COMPONENT__GENERALIZATION:
 				EList generalization = (EList)eVirtualGet(UML2Package.COMPONENT__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -984,8 +984,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 				EList occurrence = (EList)eVirtualGet(UML2Package.COMPONENT__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
-				EList ownedBehavior = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_BEHAVIOR);
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.COMPONENT__CLASSIFIER_BEHAVIOR:
 				return eVirtualGet(UML2Package.COMPONENT__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.COMPONENT__IMPLEMENTATION:
@@ -997,8 +996,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
-				EList ownedAttribute = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.COMPONENT__PART:
 				return !getParts().isEmpty();
 			case UML2Package.COMPONENT__ROLE:

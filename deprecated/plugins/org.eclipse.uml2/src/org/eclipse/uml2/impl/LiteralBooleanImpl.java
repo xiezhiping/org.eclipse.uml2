@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.11 2005/11/14 17:31:08 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.12 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -294,12 +294,12 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 			case UML2Package.LITERAL_BOOLEAN__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.LITERAL_BOOLEAN__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.LITERAL_BOOLEAN__NAME:
-				String name = eVirtualIsSet(UML2Package.LITERAL_BOOLEAN__NAME) ? (String)eVirtualGet(UML2Package.LITERAL_BOOLEAN__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.LITERAL_BOOLEAN__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.LITERAL_BOOLEAN__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.LITERAL_BOOLEAN__VISIBILITY:
-				return eVirtualIsSet(UML2Package.LITERAL_BOOLEAN__VISIBILITY) && eVirtualGet(UML2Package.LITERAL_BOOLEAN__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.LITERAL_BOOLEAN__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.LITERAL_BOOLEAN__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.LITERAL_BOOLEAN__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.19 2005/11/21 21:48:00 khussey Exp $
+ * $Id: PortImpl.java,v 1.20 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -715,12 +715,12 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.PORT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PORT__NAME:
-				String name = eVirtualIsSet(UML2Package.PORT__NAME) ? (String)eVirtualGet(UML2Package.PORT__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.PORT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PORT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PORT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.PORT__VISIBILITY) && eVirtualGet(UML2Package.PORT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.PORT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.PORT__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.PORT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -749,7 +749,7 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__LOWER_VALUE:
 				return eVirtualGet(UML2Package.PORT__LOWER_VALUE) != null;
 			case UML2Package.PORT__IS_READ_ONLY:
-				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
+				return isSetIsReadOnly();
 			case UML2Package.PORT__TEMPLATE_PARAMETER:
 				return eVirtualGet(UML2Package.PORT__TEMPLATE_PARAMETER) != null;
 			case UML2Package.PORT__OWNING_PARAMETER:
@@ -787,7 +787,7 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__ASSOCIATION:
 				return eVirtualGet(UML2Package.PORT__ASSOCIATION) != null;
 			case UML2Package.PORT__AGGREGATION:
-				return eVirtualIsSet(UML2Package.PORT__AGGREGATION) && eVirtualGet(UML2Package.PORT__AGGREGATION) != AGGREGATION_EDEFAULT;
+				return eVirtualGet(UML2Package.PORT__AGGREGATION, AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UML2Package.PORT__DEFAULT_VALUE:
 				return eVirtualGet(UML2Package.PORT__DEFAULT_VALUE) != null;
 			case UML2Package.PORT__QUALIFIER:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.19 2005/11/21 21:48:00 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.20 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -315,8 +315,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public ValueSpecification getGuard() {
-		ValueSpecification guard = (ValueSpecification)eVirtualGet(UML2Package.ACTIVITY_EDGE__GUARD);
-		return guard;
+		return (ValueSpecification)eVirtualGet(UML2Package.ACTIVITY_EDGE__GUARD);
 	}
 
 	/**
@@ -477,8 +476,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public ValueSpecification getWeight() {
-		ValueSpecification weight = (ValueSpecification)eVirtualGet(UML2Package.ACTIVITY_EDGE__WEIGHT);
-		return weight;
+		return (ValueSpecification)eVirtualGet(UML2Package.ACTIVITY_EDGE__WEIGHT);
 	}
 
 	/**
@@ -955,12 +953,12 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.ACTIVITY_EDGE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.ACTIVITY_EDGE__NAME:
-				String name = eVirtualIsSet(UML2Package.ACTIVITY_EDGE__NAME) ? (String)eVirtualGet(UML2Package.ACTIVITY_EDGE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.ACTIVITY_EDGE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ACTIVITY_EDGE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACTIVITY_EDGE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.ACTIVITY_EDGE__VISIBILITY) && eVirtualGet(UML2Package.ACTIVITY_EDGE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.ACTIVITY_EDGE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.ACTIVITY_EDGE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

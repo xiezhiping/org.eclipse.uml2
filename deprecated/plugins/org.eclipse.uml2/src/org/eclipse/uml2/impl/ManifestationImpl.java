@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.20 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -354,12 +354,12 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 			case UML2Package.MANIFESTATION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.MANIFESTATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.MANIFESTATION__NAME:
-				String name = eVirtualIsSet(UML2Package.MANIFESTATION__NAME) ? (String)eVirtualGet(UML2Package.MANIFESTATION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.MANIFESTATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.MANIFESTATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.MANIFESTATION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.MANIFESTATION__VISIBILITY) && eVirtualGet(UML2Package.MANIFESTATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.MANIFESTATION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.MANIFESTATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

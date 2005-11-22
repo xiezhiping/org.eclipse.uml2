@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.33 2005/11/21 21:48:00 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.34 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -170,8 +170,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public String getBody() {
-		String body = (String)eVirtualGet(UML2Package.ACTIVITY__BODY);
-		return body == null ? BODY_EDEFAULT : body;
+		return (String)eVirtualGet(UML2Package.ACTIVITY__BODY, BODY_EDEFAULT);
 	}
 
 	/**
@@ -195,8 +194,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public String getLanguage() {
-		String language = (String)eVirtualGet(UML2Package.ACTIVITY__LANGUAGE);
-		return language == null ? LANGUAGE_EDEFAULT : language;
+		return (String)eVirtualGet(UML2Package.ACTIVITY__LANGUAGE, LANGUAGE_EDEFAULT);
 	}
 
 	/**
@@ -1131,12 +1129,12 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.ACTIVITY__NAME:
-				String name = eVirtualIsSet(UML2Package.ACTIVITY__NAME) ? (String)eVirtualGet(UML2Package.ACTIVITY__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.ACTIVITY__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ACTIVITY__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACTIVITY__VISIBILITY:
-				return eVirtualIsSet(UML2Package.ACTIVITY__VISIBILITY) && eVirtualGet(UML2Package.ACTIVITY__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.ACTIVITY__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.ACTIVITY__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -1170,11 +1168,11 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__FEATURE:
 				return isSetFeatures();
 			case UML2Package.ACTIVITY__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.ACTIVITY__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.ACTIVITY__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.ACTIVITY__GENERALIZATION:
 				EList generalization = (EList)eVirtualGet(UML2Package.ACTIVITY__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -1201,8 +1199,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				EList occurrence = (EList)eVirtualGet(UML2Package.ACTIVITY__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
-				EList ownedBehavior = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_BEHAVIOR);
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.ACTIVITY__CLASSIFIER_BEHAVIOR:
 				return eVirtualGet(UML2Package.ACTIVITY__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.ACTIVITY__IMPLEMENTATION:
@@ -1214,8 +1211,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
-				EList ownedAttribute = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.ACTIVITY__PART:
 				return !getParts().isEmpty();
 			case UML2Package.ACTIVITY__ROLE:
@@ -1267,10 +1263,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				EList ownedParameterSet = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
 			case UML2Package.ACTIVITY__BODY:
-				String body = eVirtualIsSet(UML2Package.ACTIVITY__BODY) ? (String)eVirtualGet(UML2Package.ACTIVITY__BODY) : BODY_EDEFAULT;
+				String body = (String)eVirtualGet(UML2Package.ACTIVITY__BODY, BODY_EDEFAULT);
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.ACTIVITY__LANGUAGE:
-				String language = eVirtualIsSet(UML2Package.ACTIVITY__LANGUAGE) ? (String)eVirtualGet(UML2Package.ACTIVITY__LANGUAGE) : LANGUAGE_EDEFAULT;
+				String language = (String)eVirtualGet(UML2Package.ACTIVITY__LANGUAGE, LANGUAGE_EDEFAULT);
 				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 			case UML2Package.ACTIVITY__EDGE:
 				EList edge = (EList)eVirtualGet(UML2Package.ACTIVITY__EDGE);
@@ -1343,9 +1339,9 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.ACTIVITY__BODY) ? eVirtualGet(UML2Package.ACTIVITY__BODY) : BODY_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.ACTIVITY__BODY, BODY_EDEFAULT));
 		result.append(", language: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.ACTIVITY__LANGUAGE) ? eVirtualGet(UML2Package.ACTIVITY__LANGUAGE) : LANGUAGE_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.ACTIVITY__LANGUAGE, LANGUAGE_EDEFAULT));
 		result.append(", isSingleExecution: "); //$NON-NLS-1$
 		result.append((eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0);
 		result.append(", isReadOnly: "); //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.22 2005/11/21 21:48:00 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.23 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -340,8 +340,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public CallConcurrencyKind getConcurrency() {
-		CallConcurrencyKind concurrency = (CallConcurrencyKind)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY);
-		return concurrency == null ? CONCURRENCY_EDEFAULT : concurrency;
+		return (CallConcurrencyKind)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY, CONCURRENCY_EDEFAULT);
 	}
 
 	/**
@@ -1031,12 +1030,12 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.BEHAVIORAL_FEATURE__NAME:
-				String name = eVirtualIsSet(UML2Package.BEHAVIORAL_FEATURE__NAME) ? (String)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.BEHAVIORAL_FEATURE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.BEHAVIORAL_FEATURE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.BEHAVIORAL_FEATURE__VISIBILITY) && eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -1080,7 +1079,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 				EList method = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__METHOD);
 				return method != null && !method.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY:
-				return eVirtualIsSet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY) && eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY) != CONCURRENCY_EDEFAULT;
+				return eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY, CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -1147,7 +1146,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		result.append(", isAbstract: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(", concurrency: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY) ? eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY) : CONCURRENCY_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY, CONCURRENCY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

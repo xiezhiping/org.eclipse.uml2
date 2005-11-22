@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.17 2005/11/21 21:48:01 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.18 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -159,8 +159,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		VisibilityKind visibility = (VisibilityKind)eVirtualGet(UML2Package.ELEMENT_IMPORT__VISIBILITY);
-		return visibility == null ? VISIBILITY_EDEFAULT : visibility;
+		return (VisibilityKind)eVirtualGet(UML2Package.ELEMENT_IMPORT__VISIBILITY, VISIBILITY_EDEFAULT);
 	}
 
 	/**
@@ -183,8 +182,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public String getAlias() {
-		String alias = (String)eVirtualGet(UML2Package.ELEMENT_IMPORT__ALIAS);
-		return alias == null ? ALIAS_EDEFAULT : alias;
+		return (String)eVirtualGet(UML2Package.ELEMENT_IMPORT__ALIAS, ALIAS_EDEFAULT);
 	}
 
 	/**
@@ -507,9 +505,9 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 			case UML2Package.ELEMENT_IMPORT__TARGET:
 				return isSetTargets();
 			case UML2Package.ELEMENT_IMPORT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.ELEMENT_IMPORT__VISIBILITY) && eVirtualGet(UML2Package.ELEMENT_IMPORT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.ELEMENT_IMPORT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.ELEMENT_IMPORT__ALIAS:
-				String alias = eVirtualIsSet(UML2Package.ELEMENT_IMPORT__ALIAS) ? (String)eVirtualGet(UML2Package.ELEMENT_IMPORT__ALIAS) : ALIAS_EDEFAULT;
+				String alias = (String)eVirtualGet(UML2Package.ELEMENT_IMPORT__ALIAS, ALIAS_EDEFAULT);
 				return ALIAS_EDEFAULT == null ? alias != null : !ALIAS_EDEFAULT.equals(alias);
 			case UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT:
 				return eVirtualGet(UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT) != null;
@@ -529,9 +527,9 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.ELEMENT_IMPORT__VISIBILITY) ? eVirtualGet(UML2Package.ELEMENT_IMPORT__VISIBILITY) : VISIBILITY_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.ELEMENT_IMPORT__VISIBILITY, VISIBILITY_EDEFAULT));
 		result.append(", alias: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.ELEMENT_IMPORT__ALIAS) ? eVirtualGet(UML2Package.ELEMENT_IMPORT__ALIAS) : ALIAS_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.ELEMENT_IMPORT__ALIAS, ALIAS_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

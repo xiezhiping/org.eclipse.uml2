@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.32 2005/11/21 21:48:00 khussey Exp $
+ * $Id: NodeImpl.java,v 1.33 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -849,12 +849,12 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.NODE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.NODE__NAME:
-				String name = eVirtualIsSet(UML2Package.NODE__NAME) ? (String)eVirtualGet(UML2Package.NODE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.NODE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.NODE__VISIBILITY) && eVirtualGet(UML2Package.NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.NODE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.NODE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -888,11 +888,11 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__FEATURE:
 				return isSetFeatures();
 			case UML2Package.NODE__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.NODE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.NODE__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.NODE__GENERALIZATION:
 				EList generalization = (EList)eVirtualGet(UML2Package.NODE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -919,8 +919,7 @@ public class NodeImpl extends ClassImpl implements Node {
 				EList occurrence = (EList)eVirtualGet(UML2Package.NODE__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.NODE__OWNED_BEHAVIOR:
-				EList ownedBehavior = (EList)eVirtualGet(UML2Package.NODE__OWNED_BEHAVIOR);
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.NODE__CLASSIFIER_BEHAVIOR:
 				return eVirtualGet(UML2Package.NODE__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.NODE__IMPLEMENTATION:
@@ -932,8 +931,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.NODE__OWNED_ATTRIBUTE:
-				EList ownedAttribute = (EList)eVirtualGet(UML2Package.NODE__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.NODE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.NODE__ROLE:
@@ -952,8 +950,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.NODE__NESTED_CLASSIFIER:
-				EList nestedClassifier = (EList)eVirtualGet(UML2Package.NODE__NESTED_CLASSIFIER);
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
+				return isSetNestedClassifiers();
 			case UML2Package.NODE__IS_ACTIVE:
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.NODE__OWNED_RECEPTION:

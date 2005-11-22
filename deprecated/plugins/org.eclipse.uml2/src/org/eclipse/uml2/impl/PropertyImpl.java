@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.30 2005/11/21 21:48:00 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.31 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -556,8 +556,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public AggregationKind getAggregation() {
-		AggregationKind aggregation = (AggregationKind)eVirtualGet(UML2Package.PROPERTY__AGGREGATION);
-		return aggregation == null ? AGGREGATION_EDEFAULT : aggregation;
+		return (AggregationKind)eVirtualGet(UML2Package.PROPERTY__AGGREGATION, AGGREGATION_EDEFAULT);
 	}
 
 	/**
@@ -804,8 +803,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
-		ValueSpecification defaultValue = (ValueSpecification)eVirtualGet(UML2Package.PROPERTY__DEFAULT_VALUE);
-		return defaultValue;
+		return (ValueSpecification)eVirtualGet(UML2Package.PROPERTY__DEFAULT_VALUE);
 	}
 
 	/**
@@ -1653,12 +1651,12 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.PROPERTY__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PROPERTY__NAME:
-				String name = eVirtualIsSet(UML2Package.PROPERTY__NAME) ? (String)eVirtualGet(UML2Package.PROPERTY__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.PROPERTY__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PROPERTY__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PROPERTY__VISIBILITY:
-				return eVirtualIsSet(UML2Package.PROPERTY__VISIBILITY) && eVirtualGet(UML2Package.PROPERTY__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.PROPERTY__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.PROPERTY__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.PROPERTY__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -1687,7 +1685,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__LOWER_VALUE:
 				return eVirtualGet(UML2Package.PROPERTY__LOWER_VALUE) != null;
 			case UML2Package.PROPERTY__IS_READ_ONLY:
-				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
+				return isSetIsReadOnly();
 			case UML2Package.PROPERTY__TEMPLATE_PARAMETER:
 				return eVirtualGet(UML2Package.PROPERTY__TEMPLATE_PARAMETER) != null;
 			case UML2Package.PROPERTY__OWNING_PARAMETER:
@@ -1725,7 +1723,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__ASSOCIATION:
 				return eVirtualGet(UML2Package.PROPERTY__ASSOCIATION) != null;
 			case UML2Package.PROPERTY__AGGREGATION:
-				return eVirtualIsSet(UML2Package.PROPERTY__AGGREGATION) && eVirtualGet(UML2Package.PROPERTY__AGGREGATION) != AGGREGATION_EDEFAULT;
+				return eVirtualGet(UML2Package.PROPERTY__AGGREGATION, AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UML2Package.PROPERTY__DEFAULT_VALUE:
 				return eVirtualGet(UML2Package.PROPERTY__DEFAULT_VALUE) != null;
 			case UML2Package.PROPERTY__QUALIFIER:
@@ -1843,7 +1841,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		result.append(", isDerivedUnion: "); //$NON-NLS-1$
 		result.append((eFlags & IS_DERIVED_UNION_EFLAG) != 0);
 		result.append(", aggregation: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.PROPERTY__AGGREGATION) ? eVirtualGet(UML2Package.PROPERTY__AGGREGATION) : AGGREGATION_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.PROPERTY__AGGREGATION, AGGREGATION_EDEFAULT));
 		result.append(", isReadOnly: "); //$NON-NLS-1$
 		result.append((eFlags & IS_READ_ONLY_EFLAG) != 0);
 		result.append(')');

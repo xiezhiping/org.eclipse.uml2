@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.19 2005/11/21 21:48:02 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.20 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -232,8 +232,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * @generated
 	 */
 	public OutputPin getResult() {
-		OutputPin result = (OutputPin)eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT);
-		return result;
+		return (OutputPin)eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT);
 	}
 
 	/**
@@ -308,8 +307,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * @generated
 	 */
 	public InputPin getObject() {
-		InputPin object = (InputPin)eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT);
-		return object;
+		return (InputPin)eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT);
 	}
 
 	/**
@@ -703,12 +701,12 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__NAME:
-				String name = eVirtualIsSet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__NAME) ? (String)eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__VISIBILITY) && eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -742,7 +740,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 				EList handler = (EList)eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__EFFECT:
-				String effect = eVirtualIsSet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__EFFECT) ? (String)eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__EFFECT) : EFFECT_EDEFAULT;
+				String effect = (String)eVirtualGet(UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__EFFECT, EFFECT_EDEFAULT);
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTPUT:
 				return isSetOutputs();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.23 2005/11/21 21:48:00 khussey Exp $
+ * $Id: StateImpl.java,v 1.24 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -602,8 +602,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public Activity getEntry() {
-		Activity entry = (Activity)eVirtualGet(UML2Package.STATE__ENTRY);
-		return entry;
+		return (Activity)eVirtualGet(UML2Package.STATE__ENTRY);
 	}
 
 	/**
@@ -678,8 +677,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public Activity getExit() {
-		Activity exit = (Activity)eVirtualGet(UML2Package.STATE__EXIT);
-		return exit;
+		return (Activity)eVirtualGet(UML2Package.STATE__EXIT);
 	}
 
 	/**
@@ -754,8 +752,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public Activity getDoActivity() {
-		Activity doActivity = (Activity)eVirtualGet(UML2Package.STATE__DO_ACTIVITY);
-		return doActivity;
+		return (Activity)eVirtualGet(UML2Package.STATE__DO_ACTIVITY);
 	}
 
 	/**
@@ -830,8 +827,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public Constraint getStateInvariant() {
-		Constraint stateInvariant = (Constraint)eVirtualGet(UML2Package.STATE__STATE_INVARIANT);
-		return stateInvariant;
+		return (Constraint)eVirtualGet(UML2Package.STATE__STATE_INVARIANT);
 	}
 
 	/**
@@ -1447,12 +1443,12 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.STATE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.STATE__NAME:
-				String name = eVirtualIsSet(UML2Package.STATE__NAME) ? (String)eVirtualGet(UML2Package.STATE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.STATE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.STATE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STATE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.STATE__VISIBILITY) && eVirtualGet(UML2Package.STATE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.STATE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.STATE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.STATE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

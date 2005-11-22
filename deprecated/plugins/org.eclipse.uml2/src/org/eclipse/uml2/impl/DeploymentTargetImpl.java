@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.19 2005/11/21 21:48:00 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.20 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -432,12 +432,12 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 			case UML2Package.DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.DEPLOYMENT_TARGET__NAME:
-				String name = eVirtualIsSet(UML2Package.DEPLOYMENT_TARGET__NAME) ? (String)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DEPLOYMENT_TARGET__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPLOYMENT_TARGET__VISIBILITY:
-				return eVirtualIsSet(UML2Package.DEPLOYMENT_TARGET__VISIBILITY) && eVirtualGet(UML2Package.DEPLOYMENT_TARGET__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.DEPLOYMENT_TARGET__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.15 2005/11/21 21:48:01 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.16 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -92,8 +92,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * @generated
 	 */
 	public ExpansionKind getMode() {
-		ExpansionKind mode = (ExpansionKind)eVirtualGet(UML2Package.EXPANSION_REGION__MODE);
-		return mode == null ? MODE_EDEFAULT : mode;
+		return (ExpansionKind)eVirtualGet(UML2Package.EXPANSION_REGION__MODE, MODE_EDEFAULT);
 	}
 
 	/**
@@ -644,12 +643,12 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.EXPANSION_REGION__NAME:
-				String name = eVirtualIsSet(UML2Package.EXPANSION_REGION__NAME) ? (String)eVirtualGet(UML2Package.EXPANSION_REGION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.EXPANSION_REGION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXPANSION_REGION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXPANSION_REGION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.EXPANSION_REGION__VISIBILITY) && eVirtualGet(UML2Package.EXPANSION_REGION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.EXPANSION_REGION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -668,7 +667,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.EXPANSION_REGION__ACTIVITY:
-				return getActivity() != null;
+				return isSetActivity();
 			case UML2Package.EXPANSION_REGION__REDEFINED_ELEMENT:
 				return isSetRedefinedElements();
 			case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
@@ -683,7 +682,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 				EList handler = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.EXPANSION_REGION__EFFECT:
-				String effect = eVirtualIsSet(UML2Package.EXPANSION_REGION__EFFECT) ? (String)eVirtualGet(UML2Package.EXPANSION_REGION__EFFECT) : EFFECT_EDEFAULT;
+				String effect = (String)eVirtualGet(UML2Package.EXPANSION_REGION__EFFECT, EFFECT_EDEFAULT);
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.EXPANSION_REGION__OUTPUT:
 				return isSetOutputs();
@@ -724,7 +723,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__MUST_ISOLATE:
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__MODE:
-				return eVirtualIsSet(UML2Package.EXPANSION_REGION__MODE) && eVirtualGet(UML2Package.EXPANSION_REGION__MODE) != MODE_EDEFAULT;
+				return eVirtualGet(UML2Package.EXPANSION_REGION__MODE, MODE_EDEFAULT) != MODE_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT:
 				EList outputElement = (EList)eVirtualGet(UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT);
 				return outputElement != null && !outputElement.isEmpty();
@@ -745,7 +744,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mode: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.EXPANSION_REGION__MODE) ? eVirtualGet(UML2Package.EXPANSION_REGION__MODE) : MODE_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.EXPANSION_REGION__MODE, MODE_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

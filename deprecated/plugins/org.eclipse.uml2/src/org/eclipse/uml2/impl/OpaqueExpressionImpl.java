@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.14 2005/11/21 21:48:00 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.15 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -100,8 +100,7 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 * @generated
 	 */
 	public String getBody() {
-		String body = (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BODY);
-		return body == null ? BODY_EDEFAULT : body;
+		return (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BODY, BODY_EDEFAULT);
 	}
 
 	/**
@@ -125,8 +124,7 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 * @generated
 	 */
 	public String getLanguage() {
-		String language = (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE);
-		return language == null ? LANGUAGE_EDEFAULT : language;
+		return (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE, LANGUAGE_EDEFAULT);
 	}
 
 	/**
@@ -399,12 +397,12 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 			case UML2Package.OPAQUE_EXPRESSION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.OPAQUE_EXPRESSION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.OPAQUE_EXPRESSION__NAME:
-				String name = eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__NAME) ? (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.OPAQUE_EXPRESSION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.OPAQUE_EXPRESSION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__VISIBILITY) && eVirtualGet(UML2Package.OPAQUE_EXPRESSION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.OPAQUE_EXPRESSION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -417,10 +415,10 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 			case UML2Package.OPAQUE_EXPRESSION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.OPAQUE_EXPRESSION__BODY:
-				String body = eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__BODY) ? (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BODY) : BODY_EDEFAULT;
+				String body = (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BODY, BODY_EDEFAULT);
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.OPAQUE_EXPRESSION__LANGUAGE:
-				String language = eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE) ? (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE) : LANGUAGE_EDEFAULT;
+				String language = (String)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE, LANGUAGE_EDEFAULT);
 				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 			case UML2Package.OPAQUE_EXPRESSION__RESULT:
 				return basicGetResult() != null;
@@ -440,9 +438,9 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__BODY) ? eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BODY) : BODY_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.OPAQUE_EXPRESSION__BODY, BODY_EDEFAULT));
 		result.append(", language: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE) ? eVirtualGet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE) : LANGUAGE_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.OPAQUE_EXPRESSION__LANGUAGE, LANGUAGE_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

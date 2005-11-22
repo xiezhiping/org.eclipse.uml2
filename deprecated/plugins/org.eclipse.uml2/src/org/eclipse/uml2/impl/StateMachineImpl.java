@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.33 2005/11/21 21:48:00 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.34 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1034,12 +1034,12 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.STATE_MACHINE__NAME:
-				String name = eVirtualIsSet(UML2Package.STATE_MACHINE__NAME) ? (String)eVirtualGet(UML2Package.STATE_MACHINE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.STATE_MACHINE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.STATE_MACHINE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STATE_MACHINE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.STATE_MACHINE__VISIBILITY) && eVirtualGet(UML2Package.STATE_MACHINE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.STATE_MACHINE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.STATE_MACHINE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -1073,11 +1073,11 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__FEATURE:
 				return isSetFeatures();
 			case UML2Package.STATE_MACHINE__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.STATE_MACHINE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.STATE_MACHINE__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.STATE_MACHINE__GENERALIZATION:
 				EList generalization = (EList)eVirtualGet(UML2Package.STATE_MACHINE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -1104,8 +1104,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				EList occurrence = (EList)eVirtualGet(UML2Package.STATE_MACHINE__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
-				EList ownedBehavior = (EList)eVirtualGet(UML2Package.STATE_MACHINE__OWNED_BEHAVIOR);
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.STATE_MACHINE__CLASSIFIER_BEHAVIOR:
 				return eVirtualGet(UML2Package.STATE_MACHINE__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.STATE_MACHINE__IMPLEMENTATION:
@@ -1117,8 +1116,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
-				EList ownedAttribute = (EList)eVirtualGet(UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.STATE_MACHINE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.STATE_MACHINE__ROLE:

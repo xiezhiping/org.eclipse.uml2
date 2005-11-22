@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.22 2005/11/14 17:31:08 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.23 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -94,8 +94,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 	 * @generated
 	 */
 	public String getDeploymentLocation() {
-		String deploymentLocation = (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION);
-		return deploymentLocation == null ? DEPLOYMENT_LOCATION_EDEFAULT : deploymentLocation;
+		return (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION, DEPLOYMENT_LOCATION_EDEFAULT);
 	}
 
 	/**
@@ -119,8 +118,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 	 * @generated
 	 */
 	public String getExecutionLocation() {
-		String executionLocation = (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION);
-		return executionLocation == null ? EXECUTION_LOCATION_EDEFAULT : executionLocation;
+		return (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION, EXECUTION_LOCATION_EDEFAULT);
 	}
 
 	/**
@@ -483,12 +481,12 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 			case UML2Package.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.DEPLOYMENT_SPECIFICATION__NAME:
-				String name = eVirtualIsSet(UML2Package.DEPLOYMENT_SPECIFICATION__NAME) ? (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DEPLOYMENT_SPECIFICATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPLOYMENT_SPECIFICATION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.DEPLOYMENT_SPECIFICATION__VISIBILITY) && eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -553,7 +551,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 				EList occurrence = (EList)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.DEPLOYMENT_SPECIFICATION__FILE_NAME:
-				String fileName = eVirtualIsSet(UML2Package.DEPLOYMENT_SPECIFICATION__FILE_NAME) ? (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__FILE_NAME) : FILE_NAME_EDEFAULT;
+				String fileName = (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__FILE_NAME, FILE_NAME_EDEFAULT);
 				return FILE_NAME_EDEFAULT == null ? fileName != null : !FILE_NAME_EDEFAULT.equals(fileName);
 			case UML2Package.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT:
 				EList nestedArtifact = (EList)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT);
@@ -568,10 +566,10 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 				EList ownedAttribute = (EList)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UML2Package.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION:
-				String deploymentLocation = eVirtualIsSet(UML2Package.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION) ? (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION) : DEPLOYMENT_LOCATION_EDEFAULT;
+				String deploymentLocation = (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION, DEPLOYMENT_LOCATION_EDEFAULT);
 				return DEPLOYMENT_LOCATION_EDEFAULT == null ? deploymentLocation != null : !DEPLOYMENT_LOCATION_EDEFAULT.equals(deploymentLocation);
 			case UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION:
-				String executionLocation = eVirtualIsSet(UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION) ? (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION) : EXECUTION_LOCATION_EDEFAULT;
+				String executionLocation = (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION, EXECUTION_LOCATION_EDEFAULT);
 				return EXECUTION_LOCATION_EDEFAULT == null ? executionLocation != null : !EXECUTION_LOCATION_EDEFAULT.equals(executionLocation);
 		}
 		return eDynamicIsSet(eFeature);
@@ -587,9 +585,9 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (deploymentLocation: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION) ? eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION) : DEPLOYMENT_LOCATION_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION, DEPLOYMENT_LOCATION_EDEFAULT));
 		result.append(", executionLocation: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION) ? eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION) : EXECUTION_LOCATION_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION, EXECUTION_LOCATION_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.15 2005/11/14 19:49:15 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.16 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -123,8 +123,7 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 	 * @generated
 	 */
 	public String getSymbol() {
-		String symbol = (String)eVirtualGet(UML2Package.EXPRESSION__SYMBOL);
-		return symbol == null ? SYMBOL_EDEFAULT : symbol;
+		return (String)eVirtualGet(UML2Package.EXPRESSION__SYMBOL, SYMBOL_EDEFAULT);
 	}
 
 	/**
@@ -419,12 +418,12 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 			case UML2Package.EXPRESSION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.EXPRESSION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.EXPRESSION__NAME:
-				String name = eVirtualIsSet(UML2Package.EXPRESSION__NAME) ? (String)eVirtualGet(UML2Package.EXPRESSION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.EXPRESSION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXPRESSION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXPRESSION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.EXPRESSION__VISIBILITY) && eVirtualGet(UML2Package.EXPRESSION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.EXPRESSION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.EXPRESSION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.EXPRESSION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -437,17 +436,17 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 			case UML2Package.EXPRESSION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.EXPRESSION__BODY:
-				String body = eVirtualIsSet(UML2Package.EXPRESSION__BODY) ? (String)eVirtualGet(UML2Package.EXPRESSION__BODY) : BODY_EDEFAULT;
+				String body = (String)eVirtualGet(UML2Package.EXPRESSION__BODY, BODY_EDEFAULT);
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.EXPRESSION__LANGUAGE:
-				String language = eVirtualIsSet(UML2Package.EXPRESSION__LANGUAGE) ? (String)eVirtualGet(UML2Package.EXPRESSION__LANGUAGE) : LANGUAGE_EDEFAULT;
+				String language = (String)eVirtualGet(UML2Package.EXPRESSION__LANGUAGE, LANGUAGE_EDEFAULT);
 				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 			case UML2Package.EXPRESSION__RESULT:
 				return basicGetResult() != null;
 			case UML2Package.EXPRESSION__BEHAVIOR:
 				return eVirtualGet(UML2Package.EXPRESSION__BEHAVIOR) != null;
 			case UML2Package.EXPRESSION__SYMBOL:
-				String symbol = eVirtualIsSet(UML2Package.EXPRESSION__SYMBOL) ? (String)eVirtualGet(UML2Package.EXPRESSION__SYMBOL) : SYMBOL_EDEFAULT;
+				String symbol = (String)eVirtualGet(UML2Package.EXPRESSION__SYMBOL, SYMBOL_EDEFAULT);
 				return SYMBOL_EDEFAULT == null ? symbol != null : !SYMBOL_EDEFAULT.equals(symbol);
 			case UML2Package.EXPRESSION__OPERAND:
 				EList operand = (EList)eVirtualGet(UML2Package.EXPRESSION__OPERAND);
@@ -466,7 +465,7 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (symbol: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.EXPRESSION__SYMBOL) ? eVirtualGet(UML2Package.EXPRESSION__SYMBOL) : SYMBOL_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.EXPRESSION__SYMBOL, SYMBOL_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.19 2005/11/14 19:49:15 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.20 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -123,8 +123,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public Constraint getGuard() {
-		Constraint guard = (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__GUARD);
-		return guard;
+		return (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__GUARD);
 	}
 
 	/**
@@ -133,8 +132,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public Constraint getPostCondition() {
-		Constraint postCondition = (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__POST_CONDITION);
-		return postCondition;
+		return (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__POST_CONDITION);
 	}
 
 	/**
@@ -254,8 +252,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	public Constraint getPreCondition() {
-		Constraint preCondition = (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION);
-		return preCondition;
+		return (Constraint)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION);
 	}
 
 	/**
@@ -580,12 +577,12 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			case UML2Package.PROTOCOL_TRANSITION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PROTOCOL_TRANSITION__NAME:
-				String name = eVirtualIsSet(UML2Package.PROTOCOL_TRANSITION__NAME) ? (String)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PROTOCOL_TRANSITION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PROTOCOL_TRANSITION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.PROTOCOL_TRANSITION__VISIBILITY) && eVirtualGet(UML2Package.PROTOCOL_TRANSITION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -596,7 +593,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			case UML2Package.PROTOCOL_TRANSITION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__KIND:
-				return eVirtualIsSet(UML2Package.PROTOCOL_TRANSITION__KIND) && eVirtualGet(UML2Package.PROTOCOL_TRANSITION__KIND) != KIND_EDEFAULT;
+				return eVirtualGet(UML2Package.PROTOCOL_TRANSITION__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__CONTAINER:
 				return getContainer() != null;
 			case UML2Package.PROTOCOL_TRANSITION__SOURCE:

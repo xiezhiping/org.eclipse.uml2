@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.29 2005/11/14 19:49:13 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.30 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -401,8 +401,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public ProtocolStateMachine getProtocol() {
-		ProtocolStateMachine protocol = (ProtocolStateMachine)eVirtualGet(UML2Package.INTERFACE__PROTOCOL);
-		return protocol;
+		return (ProtocolStateMachine)eVirtualGet(UML2Package.INTERFACE__PROTOCOL);
 	}
 
 	/**
@@ -868,12 +867,12 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.INTERFACE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.INTERFACE__NAME:
-				String name = eVirtualIsSet(UML2Package.INTERFACE__NAME) ? (String)eVirtualGet(UML2Package.INTERFACE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.INTERFACE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INTERFACE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERFACE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.INTERFACE__VISIBILITY) && eVirtualGet(UML2Package.INTERFACE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.INTERFACE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.INTERFACE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

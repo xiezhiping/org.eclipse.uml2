@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringImpl.java,v 1.10 2005/11/14 17:31:09 khussey Exp $
+ * $Id: LiteralStringImpl.java,v 1.11 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -85,8 +85,7 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 	 * @generated
 	 */
 	public String getValue() {
-		String value = (String)eVirtualGet(UML2Package.LITERAL_STRING__VALUE);
-		return value == null ? VALUE_EDEFAULT : value;
+		return (String)eVirtualGet(UML2Package.LITERAL_STRING__VALUE, VALUE_EDEFAULT);
 	}
 
 	/**
@@ -286,12 +285,12 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 			case UML2Package.LITERAL_STRING__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.LITERAL_STRING__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.LITERAL_STRING__NAME:
-				String name = eVirtualIsSet(UML2Package.LITERAL_STRING__NAME) ? (String)eVirtualGet(UML2Package.LITERAL_STRING__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.LITERAL_STRING__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.LITERAL_STRING__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.LITERAL_STRING__VISIBILITY:
-				return eVirtualIsSet(UML2Package.LITERAL_STRING__VISIBILITY) && eVirtualGet(UML2Package.LITERAL_STRING__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.LITERAL_STRING__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.LITERAL_STRING__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.LITERAL_STRING__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -304,7 +303,7 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 			case UML2Package.LITERAL_STRING__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.LITERAL_STRING__VALUE:
-				String value = eVirtualIsSet(UML2Package.LITERAL_STRING__VALUE) ? (String)eVirtualGet(UML2Package.LITERAL_STRING__VALUE) : VALUE_EDEFAULT;
+				String value = (String)eVirtualGet(UML2Package.LITERAL_STRING__VALUE, VALUE_EDEFAULT);
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return eDynamicIsSet(eFeature);
@@ -320,7 +319,7 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.LITERAL_STRING__VALUE) ? eVirtualGet(UML2Package.LITERAL_STRING__VALUE) : VALUE_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.LITERAL_STRING__VALUE, VALUE_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

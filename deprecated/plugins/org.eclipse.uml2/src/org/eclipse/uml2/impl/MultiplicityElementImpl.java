@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.19 2005/11/14 19:49:14 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.20 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -239,8 +239,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE);
-		return upperValue;
+		return (ValueSpecification)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE);
 	}
 
 	/**
@@ -300,8 +299,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE);
-		return lowerValue;
+		return (ValueSpecification)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE);
 	}
 
 	/**

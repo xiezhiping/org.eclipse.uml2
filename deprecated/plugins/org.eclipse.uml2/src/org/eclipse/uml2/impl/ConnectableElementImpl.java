@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.14 2005/11/21 21:48:01 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.15 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -464,12 +464,12 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 			case UML2Package.CONNECTABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CONNECTABLE_ELEMENT__NAME:
-				String name = eVirtualIsSet(UML2Package.CONNECTABLE_ELEMENT__NAME) ? (String)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CONNECTABLE_ELEMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONNECTABLE_ELEMENT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.CONNECTABLE_ELEMENT__VISIBILITY) && eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.19 2005/11/14 19:49:14 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.20 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -115,8 +115,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	public Constraint getInvariant() {
-		Constraint invariant = (Constraint)eVirtualGet(UML2Package.STATE_INVARIANT__INVARIANT);
-		return invariant;
+		return (Constraint)eVirtualGet(UML2Package.STATE_INVARIANT__INVARIANT);
 	}
 
 	/**
@@ -431,20 +430,19 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 			case UML2Package.STATE_INVARIANT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.STATE_INVARIANT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.STATE_INVARIANT__NAME:
-				String name = eVirtualIsSet(UML2Package.STATE_INVARIANT__NAME) ? (String)eVirtualGet(UML2Package.STATE_INVARIANT__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.STATE_INVARIANT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.STATE_INVARIANT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STATE_INVARIANT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.STATE_INVARIANT__VISIBILITY) && eVirtualGet(UML2Package.STATE_INVARIANT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.STATE_INVARIANT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.STATE_INVARIANT__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.STATE_INVARIANT__NAME_EXPRESSION:
 				return eVirtualGet(UML2Package.STATE_INVARIANT__NAME_EXPRESSION) != null;
 			case UML2Package.STATE_INVARIANT__COVERED:
-				EList covered = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__COVERED);
-				return covered != null && !covered.isEmpty();
+				return isSetCovereds();
 			case UML2Package.STATE_INVARIANT__GENERAL_ORDERING:
 				EList generalOrdering = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.24 2005/11/14 19:49:14 khussey Exp $
+ * $Id: SignalImpl.java,v 1.25 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -506,12 +506,12 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.SIGNAL__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.SIGNAL__NAME:
-				String name = eVirtualIsSet(UML2Package.SIGNAL__NAME) ? (String)eVirtualGet(UML2Package.SIGNAL__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.SIGNAL__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.SIGNAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.SIGNAL__VISIBILITY:
-				return eVirtualIsSet(UML2Package.SIGNAL__VISIBILITY) && eVirtualGet(UML2Package.SIGNAL__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.SIGNAL__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.SIGNAL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

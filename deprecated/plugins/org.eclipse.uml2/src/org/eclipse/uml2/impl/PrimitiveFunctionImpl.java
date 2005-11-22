@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveFunctionImpl.java,v 1.13 2005/11/14 17:31:09 khussey Exp $
+ * $Id: PrimitiveFunctionImpl.java,v 1.14 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -94,8 +94,7 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 	 * @generated
 	 */
 	public String getBody() {
-		String body = (String)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__BODY);
-		return body == null ? BODY_EDEFAULT : body;
+		return (String)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__BODY, BODY_EDEFAULT);
 	}
 
 	/**
@@ -119,8 +118,7 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 	 * @generated
 	 */
 	public String getLanguage() {
-		String language = (String)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__LANGUAGE);
-		return language == null ? LANGUAGE_EDEFAULT : language;
+		return (String)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__LANGUAGE, LANGUAGE_EDEFAULT);
 	}
 
 	/**
@@ -309,12 +307,12 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 			case UML2Package.PRIMITIVE_FUNCTION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PRIMITIVE_FUNCTION__NAME:
-				String name = eVirtualIsSet(UML2Package.PRIMITIVE_FUNCTION__NAME) ? (String)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PRIMITIVE_FUNCTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PRIMITIVE_FUNCTION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.PRIMITIVE_FUNCTION__VISIBILITY) && eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.PRIMITIVE_FUNCTION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -327,10 +325,10 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 			case UML2Package.PRIMITIVE_FUNCTION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return isSetPackageableElement_visibility();
 			case UML2Package.PRIMITIVE_FUNCTION__BODY:
-				String body = eVirtualIsSet(UML2Package.PRIMITIVE_FUNCTION__BODY) ? (String)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__BODY) : BODY_EDEFAULT;
+				String body = (String)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__BODY, BODY_EDEFAULT);
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.PRIMITIVE_FUNCTION__LANGUAGE:
-				String language = eVirtualIsSet(UML2Package.PRIMITIVE_FUNCTION__LANGUAGE) ? (String)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__LANGUAGE) : LANGUAGE_EDEFAULT;
+				String language = (String)eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__LANGUAGE, LANGUAGE_EDEFAULT);
 				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 		}
 		return eDynamicIsSet(eFeature);
@@ -346,9 +344,9 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.PRIMITIVE_FUNCTION__BODY) ? eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__BODY) : BODY_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__BODY, BODY_EDEFAULT));
 		result.append(", language: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.PRIMITIVE_FUNCTION__LANGUAGE) ? eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__LANGUAGE) : LANGUAGE_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.PRIMITIVE_FUNCTION__LANGUAGE, LANGUAGE_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

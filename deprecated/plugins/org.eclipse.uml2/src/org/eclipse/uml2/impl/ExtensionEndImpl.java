@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.15 2005/11/21 21:48:01 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.16 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -242,12 +242,12 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.EXTENSION_END__NAME:
-				String name = eVirtualIsSet(UML2Package.EXTENSION_END__NAME) ? (String)eVirtualGet(UML2Package.EXTENSION_END__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.EXTENSION_END__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXTENSION_END__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXTENSION_END__VISIBILITY:
-				return eVirtualIsSet(UML2Package.EXTENSION_END__VISIBILITY) && eVirtualGet(UML2Package.EXTENSION_END__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.EXTENSION_END__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.EXTENSION_END__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.EXTENSION_END__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -262,7 +262,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.EXTENSION_END__TYPE:
-				return eVirtualGet(UML2Package.EXTENSION_END__TYPE) != null;
+				return isSetType();
 			case UML2Package.EXTENSION_END__IS_ORDERED:
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.EXTENSION_END__IS_UNIQUE:
@@ -276,7 +276,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__LOWER_VALUE:
 				return eVirtualGet(UML2Package.EXTENSION_END__LOWER_VALUE) != null;
 			case UML2Package.EXTENSION_END__IS_READ_ONLY:
-				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
+				return isSetIsReadOnly();
 			case UML2Package.EXTENSION_END__TEMPLATE_PARAMETER:
 				return eVirtualGet(UML2Package.EXTENSION_END__TEMPLATE_PARAMETER) != null;
 			case UML2Package.EXTENSION_END__OWNING_PARAMETER:
@@ -314,7 +314,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__ASSOCIATION:
 				return eVirtualGet(UML2Package.EXTENSION_END__ASSOCIATION) != null;
 			case UML2Package.EXTENSION_END__AGGREGATION:
-				return eVirtualIsSet(UML2Package.EXTENSION_END__AGGREGATION) && eVirtualGet(UML2Package.EXTENSION_END__AGGREGATION) != AGGREGATION_EDEFAULT;
+				return eVirtualGet(UML2Package.EXTENSION_END__AGGREGATION, AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UML2Package.EXTENSION_END__DEFAULT_VALUE:
 				return eVirtualGet(UML2Package.EXTENSION_END__DEFAULT_VALUE) != null;
 			case UML2Package.EXTENSION_END__QUALIFIER:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeTriggerImpl.java,v 1.16 2005/11/14 19:49:14 khussey Exp $
+ * $Id: ChangeTriggerImpl.java,v 1.17 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -107,8 +107,7 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	 * @generated
 	 */
 	public ValueSpecification getChangeExpression() {
-		ValueSpecification changeExpression = (ValueSpecification)eVirtualGet(UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION);
-		return changeExpression;
+		return (ValueSpecification)eVirtualGet(UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION);
 	}
 
 	/**
@@ -338,12 +337,12 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 			case UML2Package.CHANGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.CHANGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CHANGE_TRIGGER__NAME:
-				String name = eVirtualIsSet(UML2Package.CHANGE_TRIGGER__NAME) ? (String)eVirtualGet(UML2Package.CHANGE_TRIGGER__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.CHANGE_TRIGGER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CHANGE_TRIGGER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CHANGE_TRIGGER__VISIBILITY:
-				return eVirtualIsSet(UML2Package.CHANGE_TRIGGER__VISIBILITY) && eVirtualGet(UML2Package.CHANGE_TRIGGER__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.CHANGE_TRIGGER__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.CHANGE_TRIGGER__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.CHANGE_TRIGGER__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

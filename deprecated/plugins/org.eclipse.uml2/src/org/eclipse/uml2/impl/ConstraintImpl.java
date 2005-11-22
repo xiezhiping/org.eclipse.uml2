@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.21 2005/11/21 21:48:00 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.22 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -191,8 +191,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		ValueSpecification specification = (ValueSpecification)eVirtualGet(UML2Package.CONSTRAINT__SPECIFICATION);
-		return specification;
+		return (ValueSpecification)eVirtualGet(UML2Package.CONSTRAINT__SPECIFICATION);
 	}
 
 	/**
@@ -547,12 +546,12 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 			case UML2Package.CONSTRAINT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.CONSTRAINT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CONSTRAINT__NAME:
-				String name = eVirtualIsSet(UML2Package.CONSTRAINT__NAME) ? (String)eVirtualGet(UML2Package.CONSTRAINT__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.CONSTRAINT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONSTRAINT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.CONSTRAINT__VISIBILITY) && eVirtualGet(UML2Package.CONSTRAINT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.CONSTRAINT__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.CONSTRAINT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

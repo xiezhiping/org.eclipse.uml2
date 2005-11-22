@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.25 2005/11/21 21:48:01 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.26 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -783,12 +783,12 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.USE_CASE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.USE_CASE__NAME:
-				String name = eVirtualIsSet(UML2Package.USE_CASE__NAME) ? (String)eVirtualGet(UML2Package.USE_CASE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.USE_CASE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.USE_CASE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.USE_CASE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.USE_CASE__VISIBILITY) && eVirtualGet(UML2Package.USE_CASE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.USE_CASE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.USE_CASE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -853,8 +853,7 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				EList occurrence = (EList)eVirtualGet(UML2Package.USE_CASE__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.USE_CASE__OWNED_BEHAVIOR:
-				EList ownedBehavior = (EList)eVirtualGet(UML2Package.USE_CASE__OWNED_BEHAVIOR);
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.USE_CASE__CLASSIFIER_BEHAVIOR:
 				return eVirtualGet(UML2Package.USE_CASE__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.USE_CASE__IMPLEMENTATION:

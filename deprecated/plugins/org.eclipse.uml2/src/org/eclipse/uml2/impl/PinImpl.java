@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.16 2005/11/14 19:49:14 khussey Exp $
+ * $Id: PinImpl.java,v 1.17 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -256,8 +256,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification)eVirtualGet(UML2Package.PIN__UPPER_VALUE);
-		return upperValue;
+		return (ValueSpecification)eVirtualGet(UML2Package.PIN__UPPER_VALUE);
 	}
 
 	/**
@@ -317,8 +316,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification)eVirtualGet(UML2Package.PIN__LOWER_VALUE);
-		return lowerValue;
+		return (ValueSpecification)eVirtualGet(UML2Package.PIN__LOWER_VALUE);
 	}
 
 	/**
@@ -807,12 +805,12 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			case UML2Package.PIN__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.PIN__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PIN__NAME:
-				String name = eVirtualIsSet(UML2Package.PIN__NAME) ? (String)eVirtualGet(UML2Package.PIN__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.PIN__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PIN__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PIN__VISIBILITY:
-				return eVirtualIsSet(UML2Package.PIN__VISIBILITY) && eVirtualGet(UML2Package.PIN__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.PIN__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.PIN__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.PIN__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -845,7 +843,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			case UML2Package.PIN__TYPE:
 				return eVirtualGet(UML2Package.PIN__TYPE) != null;
 			case UML2Package.PIN__ORDERING:
-				return eVirtualIsSet(UML2Package.PIN__ORDERING) && eVirtualGet(UML2Package.PIN__ORDERING) != ORDERING_EDEFAULT;
+				return eVirtualGet(UML2Package.PIN__ORDERING, ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
 			case UML2Package.PIN__UPPER_BOUND:
 				return eVirtualGet(UML2Package.PIN__UPPER_BOUND) != null;
 			case UML2Package.PIN__IN_STATE:

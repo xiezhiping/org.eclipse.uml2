@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentActionImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
+ * $Id: ReadExtentActionImpl.java,v 1.20 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -111,8 +111,7 @@ public class ReadExtentActionImpl extends ActionImpl implements ReadExtentAction
 	 * @generated
 	 */
 	public OutputPin getResult() {
-		OutputPin result = (OutputPin)eVirtualGet(UML2Package.READ_EXTENT_ACTION__RESULT);
-		return result;
+		return (OutputPin)eVirtualGet(UML2Package.READ_EXTENT_ACTION__RESULT);
 	}
 
 	/**
@@ -531,12 +530,12 @@ public class ReadExtentActionImpl extends ActionImpl implements ReadExtentAction
 			case UML2Package.READ_EXTENT_ACTION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.READ_EXTENT_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.READ_EXTENT_ACTION__NAME:
-				String name = eVirtualIsSet(UML2Package.READ_EXTENT_ACTION__NAME) ? (String)eVirtualGet(UML2Package.READ_EXTENT_ACTION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.READ_EXTENT_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.READ_EXTENT_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.READ_EXTENT_ACTION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.READ_EXTENT_ACTION__VISIBILITY) && eVirtualGet(UML2Package.READ_EXTENT_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.READ_EXTENT_ACTION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.READ_EXTENT_ACTION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.READ_EXTENT_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -570,7 +569,7 @@ public class ReadExtentActionImpl extends ActionImpl implements ReadExtentAction
 				EList handler = (EList)eVirtualGet(UML2Package.READ_EXTENT_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.READ_EXTENT_ACTION__EFFECT:
-				String effect = eVirtualIsSet(UML2Package.READ_EXTENT_ACTION__EFFECT) ? (String)eVirtualGet(UML2Package.READ_EXTENT_ACTION__EFFECT) : EFFECT_EDEFAULT;
+				String effect = (String)eVirtualGet(UML2Package.READ_EXTENT_ACTION__EFFECT, EFFECT_EDEFAULT);
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.READ_EXTENT_ACTION__OUTPUT:
 				return isSetOutputs();

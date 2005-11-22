@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.25 2005/11/21 21:48:01 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.26 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -313,8 +313,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		ValueSpecification specification = (ValueSpecification)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION);
-		return specification;
+		return (ValueSpecification)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION);
 	}
 
 	/**
@@ -670,12 +669,12 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			case UML2Package.INSTANCE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.INSTANCE_SPECIFICATION__NAME:
-				String name = eVirtualIsSet(UML2Package.INSTANCE_SPECIFICATION__NAME) ? (String)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INSTANCE_SPECIFICATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INSTANCE_SPECIFICATION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.INSTANCE_SPECIFICATION__VISIBILITY) && eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

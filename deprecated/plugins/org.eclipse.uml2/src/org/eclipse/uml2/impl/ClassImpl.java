@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.41 2005/11/21 21:48:01 khussey Exp $
+ * $Id: ClassImpl.java,v 1.42 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1392,12 +1392,12 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.CLASS__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CLASS__NAME:
-				String name = eVirtualIsSet(UML2Package.CLASS__NAME) ? (String)eVirtualGet(UML2Package.CLASS__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.CLASS__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CLASS__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CLASS__VISIBILITY:
-				return eVirtualIsSet(UML2Package.CLASS__VISIBILITY) && eVirtualGet(UML2Package.CLASS__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.CLASS__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.CLASS__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -1431,11 +1431,11 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__FEATURE:
 				return isSetFeatures();
 			case UML2Package.CLASS__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UML2Package.CLASS__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.CLASS__GENERAL:
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UML2Package.CLASS__GENERALIZATION:
 				EList generalization = (EList)eVirtualGet(UML2Package.CLASS__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -1462,8 +1462,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 				EList occurrence = (EList)eVirtualGet(UML2Package.CLASS__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.CLASS__OWNED_BEHAVIOR:
-				EList ownedBehavior = (EList)eVirtualGet(UML2Package.CLASS__OWNED_BEHAVIOR);
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.CLASS__CLASSIFIER_BEHAVIOR:
 				return eVirtualGet(UML2Package.CLASS__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.CLASS__IMPLEMENTATION:
@@ -1475,8 +1474,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.CLASS__OWNED_ATTRIBUTE:
-				EList ownedAttribute = (EList)eVirtualGet(UML2Package.CLASS__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UML2Package.CLASS__PART:
 				return !getParts().isEmpty();
 			case UML2Package.CLASS__ROLE:

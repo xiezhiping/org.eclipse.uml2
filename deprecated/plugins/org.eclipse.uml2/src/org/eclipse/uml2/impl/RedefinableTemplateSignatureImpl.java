@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.17 2005/11/21 21:48:01 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.18 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -580,12 +580,12 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NAME:
-				String name = eVirtualIsSet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NAME) ? (String)eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY) && eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

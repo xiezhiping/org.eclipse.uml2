@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.25 2005/11/21 21:48:01 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.26 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -152,8 +152,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public String getName() {
-		String name = (String)eVirtualGet(UML2Package.NAMED_ELEMENT__NAME);
-		return name == null ? NAME_EDEFAULT : name;
+		return (String)eVirtualGet(UML2Package.NAMED_ELEMENT__NAME, NAME_EDEFAULT);
 	}
 
 	/**
@@ -200,8 +199,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		VisibilityKind visibility = (VisibilityKind)eVirtualGet(UML2Package.NAMED_ELEMENT__VISIBILITY);
-		return visibility == null ? VISIBILITY_EDEFAULT : visibility;
+		return (VisibilityKind)eVirtualGet(UML2Package.NAMED_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT);
 	}
 
 	/**
@@ -253,8 +251,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public StringExpression getNameExpression() {
-		StringExpression nameExpression = (StringExpression)eVirtualGet(UML2Package.NAMED_ELEMENT__NAME_EXPRESSION);
-		return nameExpression;
+		return (StringExpression)eVirtualGet(UML2Package.NAMED_ELEMENT__NAME_EXPRESSION);
 	}
 
 	/**
@@ -630,12 +627,12 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 			case UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.NAMED_ELEMENT__NAME:
-				String name = eVirtualIsSet(UML2Package.NAMED_ELEMENT__NAME) ? (String)eVirtualGet(UML2Package.NAMED_ELEMENT__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.NAMED_ELEMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.NAMED_ELEMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.NAMED_ELEMENT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.NAMED_ELEMENT__VISIBILITY) && eVirtualGet(UML2Package.NAMED_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.NAMED_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -655,9 +652,9 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.NAMED_ELEMENT__NAME) ? eVirtualGet(UML2Package.NAMED_ELEMENT__NAME) : NAME_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.NAMED_ELEMENT__NAME, NAME_EDEFAULT));
 		result.append(", visibility: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.NAMED_ELEMENT__VISIBILITY) ? eVirtualGet(UML2Package.NAMED_ELEMENT__VISIBILITY) : VISIBILITY_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.NAMED_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

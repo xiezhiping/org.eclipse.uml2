@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.27 2005/11/21 21:48:00 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.28 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -743,12 +743,12 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 			case UML2Package.NAMESPACE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.NAMESPACE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.NAMESPACE__NAME:
-				String name = eVirtualIsSet(UML2Package.NAMESPACE__NAME) ? (String)eVirtualGet(UML2Package.NAMESPACE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.NAMESPACE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.NAMESPACE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.NAMESPACE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.NAMESPACE__VISIBILITY) && eVirtualGet(UML2Package.NAMESPACE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.NAMESPACE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.NAMESPACE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.NAMESPACE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

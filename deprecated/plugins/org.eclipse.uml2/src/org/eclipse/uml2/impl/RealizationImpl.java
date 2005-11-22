@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.19 2005/11/21 21:48:01 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.20 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -564,12 +564,12 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 			case UML2Package.REALIZATION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.REALIZATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.REALIZATION__NAME:
-				String name = eVirtualIsSet(UML2Package.REALIZATION__NAME) ? (String)eVirtualGet(UML2Package.REALIZATION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.REALIZATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.REALIZATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.REALIZATION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.REALIZATION__VISIBILITY) && eVirtualGet(UML2Package.REALIZATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.REALIZATION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.REALIZATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

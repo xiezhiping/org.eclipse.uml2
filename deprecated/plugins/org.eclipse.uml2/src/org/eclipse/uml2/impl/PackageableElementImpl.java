@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.16 2005/11/21 21:48:01 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.17 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -196,8 +196,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 	 * @generated NOT
 	 */
 	public VisibilityKind getPackageableElement_visibility() {
-		VisibilityKind packageableElement_visibility = (VisibilityKind)eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY);
-		return packageableElement_visibility == null ? PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT : packageableElement_visibility;
+		return (VisibilityKind)eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY, PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
 	}
 
 	/**
@@ -219,7 +218,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 	 * @generated NOT
 	 */
 	public boolean isSetPackageableElement_visibility() {
-		return eVirtualIsSet(UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY) && eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY) != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		return eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY, PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT) != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -514,12 +513,12 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 			case UML2Package.PACKAGEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PACKAGEABLE_ELEMENT__NAME:
-				String name = eVirtualIsSet(UML2Package.PACKAGEABLE_ELEMENT__NAME) ? (String)eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PACKAGEABLE_ELEMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PACKAGEABLE_ELEMENT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.PACKAGEABLE_ELEMENT__VISIBILITY) && eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationIntervalImpl.java,v 1.13 2005/11/14 17:31:09 khussey Exp $
+ * $Id: DurationIntervalImpl.java,v 1.14 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -209,12 +209,12 @@ public class DurationIntervalImpl extends IntervalImpl implements DurationInterv
 			case UML2Package.DURATION_INTERVAL__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.DURATION_INTERVAL__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.DURATION_INTERVAL__NAME:
-				String name = eVirtualIsSet(UML2Package.DURATION_INTERVAL__NAME) ? (String)eVirtualGet(UML2Package.DURATION_INTERVAL__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.DURATION_INTERVAL__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DURATION_INTERVAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DURATION_INTERVAL__VISIBILITY:
-				return eVirtualIsSet(UML2Package.DURATION_INTERVAL__VISIBILITY) && eVirtualGet(UML2Package.DURATION_INTERVAL__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.DURATION_INTERVAL__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.DURATION_INTERVAL__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.DURATION_INTERVAL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -227,11 +227,9 @@ public class DurationIntervalImpl extends IntervalImpl implements DurationInterv
 			case UML2Package.DURATION_INTERVAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DURATION_INTERVAL__MIN:
-				EList min = (EList)eVirtualGet(UML2Package.DURATION_INTERVAL__MIN);
-				return min != null && !min.isEmpty();
+				return isSetMins();
 			case UML2Package.DURATION_INTERVAL__MAX:
-				EList max = (EList)eVirtualGet(UML2Package.DURATION_INTERVAL__MAX);
-				return max != null && !max.isEmpty();
+				return isSetMaxes();
 		}
 		return eDynamicIsSet(eFeature);
 	}

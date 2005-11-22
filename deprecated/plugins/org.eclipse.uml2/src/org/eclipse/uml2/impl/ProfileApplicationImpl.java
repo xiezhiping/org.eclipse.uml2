@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.13 2005/11/21 21:48:00 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.14 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -276,7 +276,7 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 			case UML2Package.PROFILE_APPLICATION__TARGET:
 				return isSetTargets();
 			case UML2Package.PROFILE_APPLICATION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.PROFILE_APPLICATION__VISIBILITY) && eVirtualGet(UML2Package.PROFILE_APPLICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.PROFILE_APPLICATION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE:
 				return eVirtualGet(UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE) != null;
 			case UML2Package.PROFILE_APPLICATION__IMPORTING_NAMESPACE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.18 2005/11/14 19:49:15 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionImpl.java,v 1.19 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -162,8 +162,7 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 	 * @generated
 	 */
 	public InputPin getInsertAt() {
-		InputPin insertAt = (InputPin)eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT);
-		return insertAt;
+		return (InputPin)eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT);
 	}
 
 	/**
@@ -567,12 +566,12 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__NAME:
-				String name = eVirtualIsSet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__NAME) ? (String)eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__VISIBILITY) && eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -606,7 +605,7 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 				EList handler = (EList)eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__EFFECT:
-				String effect = eVirtualIsSet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__EFFECT) ? (String)eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__EFFECT) : EFFECT_EDEFAULT;
+				String effect = (String)eVirtualGet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__EFFECT, EFFECT_EDEFAULT);
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__OUTPUT:
 				return isSetOutputs();

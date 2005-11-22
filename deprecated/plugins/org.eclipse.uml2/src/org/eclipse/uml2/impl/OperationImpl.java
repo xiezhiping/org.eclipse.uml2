@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.33 2005/11/21 21:48:00 khussey Exp $
+ * $Id: OperationImpl.java,v 1.34 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -196,8 +196,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification)eVirtualGet(UML2Package.OPERATION__UPPER_VALUE);
-		return upperValue;
+		return (ValueSpecification)eVirtualGet(UML2Package.OPERATION__UPPER_VALUE);
 	}
 
 	/**
@@ -257,8 +256,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification)eVirtualGet(UML2Package.OPERATION__LOWER_VALUE);
-		return lowerValue;
+		return (ValueSpecification)eVirtualGet(UML2Package.OPERATION__LOWER_VALUE);
 	}
 
 	/**
@@ -717,8 +715,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public Constraint getBodyCondition() {
-		Constraint bodyCondition = (Constraint)eVirtualGet(UML2Package.OPERATION__BODY_CONDITION);
-		return bodyCondition;
+		return (Constraint)eVirtualGet(UML2Package.OPERATION__BODY_CONDITION);
 	}
 
 	/**
@@ -1719,12 +1716,12 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.OPERATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.OPERATION__NAME:
-				String name = eVirtualIsSet(UML2Package.OPERATION__NAME) ? (String)eVirtualGet(UML2Package.OPERATION__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.OPERATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.OPERATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.OPERATION__VISIBILITY:
-				return eVirtualIsSet(UML2Package.OPERATION__VISIBILITY) && eVirtualGet(UML2Package.OPERATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.OPERATION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.OPERATION__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.OPERATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -1754,31 +1751,29 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__PARAMETER:
 				return isSetParameters();
 			case UML2Package.OPERATION__FORMAL_PARAMETER:
-				EList formalParameter = (EList)eVirtualGet(UML2Package.OPERATION__FORMAL_PARAMETER);
-				return formalParameter != null && !formalParameter.isEmpty();
+				return isSetFormalParameters();
 			case UML2Package.OPERATION__RETURN_RESULT:
 				EList returnResult = (EList)eVirtualGet(UML2Package.OPERATION__RETURN_RESULT);
 				return returnResult != null && !returnResult.isEmpty();
 			case UML2Package.OPERATION__RAISED_EXCEPTION:
-				EList raisedException = (EList)eVirtualGet(UML2Package.OPERATION__RAISED_EXCEPTION);
-				return raisedException != null && !raisedException.isEmpty();
+				return isSetRaisedExceptions();
 			case UML2Package.OPERATION__IS_ABSTRACT:
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.OPERATION__METHOD:
 				EList method = (EList)eVirtualGet(UML2Package.OPERATION__METHOD);
 				return method != null && !method.isEmpty();
 			case UML2Package.OPERATION__CONCURRENCY:
-				return eVirtualIsSet(UML2Package.OPERATION__CONCURRENCY) && eVirtualGet(UML2Package.OPERATION__CONCURRENCY) != CONCURRENCY_EDEFAULT;
+				return eVirtualGet(UML2Package.OPERATION__CONCURRENCY, CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
 			case UML2Package.OPERATION__TYPE:
-				return eVirtualGet(UML2Package.OPERATION__TYPE) != null;
+				return isSetType();
 			case UML2Package.OPERATION__IS_ORDERED:
-				return isOrdered() != IS_ORDERED_EDEFAULT;
+				return isSetIsOrdered();
 			case UML2Package.OPERATION__IS_UNIQUE:
-				return isUnique() != IS_UNIQUE_EDEFAULT;
+				return isSetIsUnique();
 			case UML2Package.OPERATION__LOWER:
-				return getLower() != LOWER_EDEFAULT;
+				return isSetLower();
 			case UML2Package.OPERATION__UPPER:
-				return getUpper() != UPPER_EDEFAULT;
+				return isSetUpper();
 			case UML2Package.OPERATION__UPPER_VALUE:
 				return eVirtualGet(UML2Package.OPERATION__UPPER_VALUE) != null;
 			case UML2Package.OPERATION__LOWER_VALUE:
@@ -1788,8 +1783,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.OPERATION__OWNED_PARAMETER:
-				EList ownedParameter = (EList)eVirtualGet(UML2Package.OPERATION__OWNED_PARAMETER);
-				return ownedParameter != null && !ownedParameter.isEmpty();
+				return isSetOwnedParameters();
 			case UML2Package.OPERATION__CLASS_:
 				return getClass_() != null;
 			case UML2Package.OPERATION__IS_QUERY:

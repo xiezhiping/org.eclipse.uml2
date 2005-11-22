@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.27 2005/11/21 21:48:00 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.28 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -540,12 +540,12 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.PROFILE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PROFILE__NAME:
-				String name = eVirtualIsSet(UML2Package.PROFILE__NAME) ? (String)eVirtualGet(UML2Package.PROFILE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.PROFILE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PROFILE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PROFILE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.PROFILE__VISIBILITY) && eVirtualGet(UML2Package.PROFILE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.PROFILE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.PROFILE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

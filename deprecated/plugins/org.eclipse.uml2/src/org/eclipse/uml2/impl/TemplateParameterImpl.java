@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.20 2005/11/21 21:48:01 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.21 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -212,8 +212,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public ParameterableElement getOwnedParameteredElement() {
-		ParameterableElement ownedParameteredElement = (ParameterableElement)eVirtualGet(UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
-		return ownedParameteredElement;
+		return (ParameterableElement)eVirtualGet(UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 	}
 
 	/**
@@ -321,8 +320,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public ParameterableElement getOwnedDefault() {
-		ParameterableElement ownedDefault = (ParameterableElement)eVirtualGet(UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT);
-		return ownedDefault;
+		return (ParameterableElement)eVirtualGet(UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT);
 	}
 
 	/**

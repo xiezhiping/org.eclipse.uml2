@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.13 2005/11/14 17:31:10 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.14 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -189,12 +189,12 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 			case UML2Package.TIME_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.TIME_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.TIME_CONSTRAINT__NAME:
-				String name = eVirtualIsSet(UML2Package.TIME_CONSTRAINT__NAME) ? (String)eVirtualGet(UML2Package.TIME_CONSTRAINT__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.TIME_CONSTRAINT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.TIME_CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TIME_CONSTRAINT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.TIME_CONSTRAINT__VISIBILITY) && eVirtualGet(UML2Package.TIME_CONSTRAINT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.TIME_CONSTRAINT__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.TIME_CONSTRAINT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -211,7 +211,7 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 			case UML2Package.TIME_CONSTRAINT__NAMESPACE:
 				return isSetNamespace();
 			case UML2Package.TIME_CONSTRAINT__SPECIFICATION:
-				return eVirtualGet(UML2Package.TIME_CONSTRAINT__SPECIFICATION) != null;
+				return isSetSpecification();
 			case UML2Package.TIME_CONSTRAINT__CONSTRAINED_ELEMENT:
 				EList constrainedElement = (EList)eVirtualGet(UML2Package.TIME_CONSTRAINT__CONSTRAINED_ELEMENT);
 				return constrainedElement != null && !constrainedElement.isEmpty();

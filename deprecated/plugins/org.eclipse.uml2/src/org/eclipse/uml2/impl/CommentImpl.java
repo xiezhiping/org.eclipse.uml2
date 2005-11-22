@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.15 2005/11/14 19:49:15 khussey Exp $
+ * $Id: CommentImpl.java,v 1.16 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -119,8 +119,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 * @generated
 	 */
 	public String getBody() {
-		String body = (String)eVirtualGet(UML2Package.COMMENT__BODY);
-		return body == null ? BODY_EDEFAULT : body;
+		return (String)eVirtualGet(UML2Package.COMMENT__BODY, BODY_EDEFAULT);
 	}
 
 	/**
@@ -158,8 +157,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 * @generated
 	 */
 	public StringExpression getBodyExpression() {
-		StringExpression bodyExpression = (StringExpression)eVirtualGet(UML2Package.COMMENT__BODY_EXPRESSION);
-		return bodyExpression;
+		return (StringExpression)eVirtualGet(UML2Package.COMMENT__BODY_EXPRESSION);
 	}
 
 	/**
@@ -373,7 +371,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 			case UML2Package.COMMENT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.COMMENT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.COMMENT__BODY:
-				String body = eVirtualIsSet(UML2Package.COMMENT__BODY) ? (String)eVirtualGet(UML2Package.COMMENT__BODY) : BODY_EDEFAULT;
+				String body = (String)eVirtualGet(UML2Package.COMMENT__BODY, BODY_EDEFAULT);
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.COMMENT__ANNOTATED_ELEMENT:
 				EList annotatedElement = (EList)eVirtualGet(UML2Package.COMMENT__ANNOTATED_ELEMENT);
@@ -394,7 +392,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.COMMENT__BODY) ? eVirtualGet(UML2Package.COMMENT__BODY) : BODY_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.COMMENT__BODY, BODY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

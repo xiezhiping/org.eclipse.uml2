@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.22 2005/11/21 21:48:00 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.23 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -377,8 +377,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__UPPER_VALUE);
-		return upperValue;
+		return (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__UPPER_VALUE);
 	}
 
 	/**
@@ -438,8 +437,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__LOWER_VALUE);
-		return lowerValue;
+		return (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__LOWER_VALUE);
 	}
 
 	/**
@@ -508,8 +506,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public ParameterDirectionKind getDirection() {
-		ParameterDirectionKind direction = (ParameterDirectionKind)eVirtualGet(UML2Package.PARAMETER__DIRECTION);
-		return direction == null ? DIRECTION_EDEFAULT : direction;
+		return (ParameterDirectionKind)eVirtualGet(UML2Package.PARAMETER__DIRECTION, DIRECTION_EDEFAULT);
 	}
 
 	/**
@@ -578,8 +575,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public ParameterEffectKind getEffect() {
-		ParameterEffectKind effect = (ParameterEffectKind)eVirtualGet(UML2Package.PARAMETER__EFFECT);
-		return effect == null ? EFFECT_EDEFAULT : effect;
+		return (ParameterEffectKind)eVirtualGet(UML2Package.PARAMETER__EFFECT, EFFECT_EDEFAULT);
 	}
 
 	/**
@@ -635,8 +631,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
-		ValueSpecification defaultValue = (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__DEFAULT_VALUE);
-		return defaultValue;
+		return (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__DEFAULT_VALUE);
 	}
 
 	/**
@@ -1218,12 +1213,12 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.PARAMETER__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.PARAMETER__NAME:
-				String name = eVirtualIsSet(UML2Package.PARAMETER__NAME) ? (String)eVirtualGet(UML2Package.PARAMETER__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.PARAMETER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PARAMETER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PARAMETER__VISIBILITY:
-				return eVirtualIsSet(UML2Package.PARAMETER__VISIBILITY) && eVirtualGet(UML2Package.PARAMETER__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.PARAMETER__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.PARAMETER__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.PARAMETER__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -1255,7 +1250,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__DEFAULT:
 				return DEFAULT_EDEFAULT == null ? getDefault() != null : !DEFAULT_EDEFAULT.equals(getDefault());
 			case UML2Package.PARAMETER__DIRECTION:
-				return eVirtualIsSet(UML2Package.PARAMETER__DIRECTION) && eVirtualGet(UML2Package.PARAMETER__DIRECTION) != DIRECTION_EDEFAULT;
+				return eVirtualGet(UML2Package.PARAMETER__DIRECTION, DIRECTION_EDEFAULT) != DIRECTION_EDEFAULT;
 			case UML2Package.PARAMETER__DEFAULT_VALUE:
 				return eVirtualGet(UML2Package.PARAMETER__DEFAULT_VALUE) != null;
 			case UML2Package.PARAMETER__IS_EXCEPTION:
@@ -1263,7 +1258,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__IS_STREAM:
 				return ((eFlags & IS_STREAM_EFLAG) != 0) != IS_STREAM_EDEFAULT;
 			case UML2Package.PARAMETER__EFFECT:
-				return eVirtualIsSet(UML2Package.PARAMETER__EFFECT) && eVirtualGet(UML2Package.PARAMETER__EFFECT) != EFFECT_EDEFAULT;
+				return eVirtualGet(UML2Package.PARAMETER__EFFECT, EFFECT_EDEFAULT) != EFFECT_EDEFAULT;
 			case UML2Package.PARAMETER__PARAMETER_SET:
 				EList parameterSet = (EList)eVirtualGet(UML2Package.PARAMETER__PARAMETER_SET);
 				return parameterSet != null && !parameterSet.isEmpty();
@@ -1337,13 +1332,13 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		result.append(", isUnique: "); //$NON-NLS-1$
 		result.append((eFlags & IS_UNIQUE_EFLAG) != 0);
 		result.append(", direction: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.PARAMETER__DIRECTION) ? eVirtualGet(UML2Package.PARAMETER__DIRECTION) : DIRECTION_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.PARAMETER__DIRECTION, DIRECTION_EDEFAULT));
 		result.append(", isException: "); //$NON-NLS-1$
 		result.append((eFlags & IS_EXCEPTION_EFLAG) != 0);
 		result.append(", isStream: "); //$NON-NLS-1$
 		result.append((eFlags & IS_STREAM_EFLAG) != 0);
 		result.append(", effect: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.PARAMETER__EFFECT) ? eVirtualGet(UML2Package.PARAMETER__EFFECT) : EFFECT_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.PARAMETER__EFFECT, EFFECT_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

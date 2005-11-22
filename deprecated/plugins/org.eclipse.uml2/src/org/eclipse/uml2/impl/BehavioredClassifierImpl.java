@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.27 2005/11/21 21:48:01 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.28 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -157,8 +157,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public Behavior getClassifierBehavior() {
-		Behavior classifierBehavior = (Behavior)eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR);
-		return classifierBehavior;
+		return (Behavior)eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR);
 	}
 
 	/**
@@ -803,12 +802,12 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.BEHAVIORED_CLASSIFIER__NAME:
-				String name = eVirtualIsSet(UML2Package.BEHAVIORED_CLASSIFIER__NAME) ? (String)eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.BEHAVIORED_CLASSIFIER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.BEHAVIORED_CLASSIFIER__VISIBILITY:
-				return eVirtualIsSet(UML2Package.BEHAVIORED_CLASSIFIER__VISIBILITY) && eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -873,8 +872,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 				EList occurrence = (EList)eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR:
-				EList ownedBehavior = (EList)eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR);
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return isSetOwnedBehaviors();
 			case UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR:
 				return eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR) != null;
 			case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.20 2005/11/21 21:48:02 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.21 2005/11/22 14:57:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -197,8 +197,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * @generated
 	 */
 	public Constraint getCondition() {
-		Constraint condition = (Constraint)eVirtualGet(UML2Package.EXTEND__CONDITION);
-		return condition;
+		return (Constraint)eVirtualGet(UML2Package.EXTEND__CONDITION);
 	}
 
 	/**
@@ -615,12 +614,12 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 			case UML2Package.EXTEND__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.EXTEND__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.EXTEND__NAME:
-				String name = eVirtualIsSet(UML2Package.EXTEND__NAME) ? (String)eVirtualGet(UML2Package.EXTEND__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.EXTEND__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXTEND__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXTEND__VISIBILITY:
-				return eVirtualIsSet(UML2Package.EXTEND__VISIBILITY) && eVirtualGet(UML2Package.EXTEND__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.EXTEND__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.EXTEND__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.EXTEND__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.15 2005/11/21 21:48:01 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.16 2005/11/22 14:57:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -695,20 +695,19 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			case UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.EVENT_OCCURRENCE__NAME:
-				String name = eVirtualIsSet(UML2Package.EVENT_OCCURRENCE__NAME) ? (String)eVirtualGet(UML2Package.EVENT_OCCURRENCE__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.EVENT_OCCURRENCE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EVENT_OCCURRENCE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EVENT_OCCURRENCE__VISIBILITY:
-				return eVirtualIsSet(UML2Package.EVENT_OCCURRENCE__VISIBILITY) && eVirtualGet(UML2Package.EVENT_OCCURRENCE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UML2Package.EVENT_OCCURRENCE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UML2Package.EVENT_OCCURRENCE__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__NAME_EXPRESSION:
 				return eVirtualGet(UML2Package.EVENT_OCCURRENCE__NAME_EXPRESSION) != null;
 			case UML2Package.EVENT_OCCURRENCE__COVERED:
-				EList covered = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__COVERED);
-				return covered != null && !covered.isEmpty();
+				return isSetCovereds();
 			case UML2Package.EVENT_OCCURRENCE__GENERAL_ORDERING:
 				EList generalOrdering = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();

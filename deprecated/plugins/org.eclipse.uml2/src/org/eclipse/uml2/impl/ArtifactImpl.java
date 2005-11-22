@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.28 2005/11/21 21:48:01 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.29 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -162,8 +162,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
 	public String getFileName() {
-		String fileName = (String)eVirtualGet(UML2Package.ARTIFACT__FILE_NAME);
-		return fileName == null ? FILE_NAME_EDEFAULT : fileName;
+		return (String)eVirtualGet(UML2Package.ARTIFACT__FILE_NAME, FILE_NAME_EDEFAULT);
 	}
 
 	/**
@@ -862,12 +861,12 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			case UML2Package.ARTIFACT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.ARTIFACT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.ARTIFACT__NAME:
-				String name = eVirtualIsSet(UML2Package.ARTIFACT__NAME) ? (String)eVirtualGet(UML2Package.ARTIFACT__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.ARTIFACT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ARTIFACT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ARTIFACT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.ARTIFACT__VISIBILITY) && eVirtualGet(UML2Package.ARTIFACT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.ARTIFACT__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.ARTIFACT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
@@ -932,7 +931,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 				EList occurrence = (EList)eVirtualGet(UML2Package.ARTIFACT__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.ARTIFACT__FILE_NAME:
-				String fileName = eVirtualIsSet(UML2Package.ARTIFACT__FILE_NAME) ? (String)eVirtualGet(UML2Package.ARTIFACT__FILE_NAME) : FILE_NAME_EDEFAULT;
+				String fileName = (String)eVirtualGet(UML2Package.ARTIFACT__FILE_NAME, FILE_NAME_EDEFAULT);
 				return FILE_NAME_EDEFAULT == null ? fileName != null : !FILE_NAME_EDEFAULT.equals(fileName);
 			case UML2Package.ARTIFACT__NESTED_ARTIFACT:
 				EList nestedArtifact = (EList)eVirtualGet(UML2Package.ARTIFACT__NESTED_ARTIFACT);
@@ -960,7 +959,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (fileName: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UML2Package.ARTIFACT__FILE_NAME) ? eVirtualGet(UML2Package.ARTIFACT__FILE_NAME) : FILE_NAME_EDEFAULT);
+		result.append(eVirtualGet(UML2Package.ARTIFACT__FILE_NAME, FILE_NAME_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

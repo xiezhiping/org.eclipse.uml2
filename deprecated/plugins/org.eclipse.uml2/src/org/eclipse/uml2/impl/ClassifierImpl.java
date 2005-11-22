@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.37 2005/11/21 21:48:01 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.38 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -307,8 +307,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated NOT
 	 */
 	public VisibilityKind getPackageableElement_visibility() {
-		VisibilityKind packageableElement_visibility = (VisibilityKind)eVirtualGet(UML2Package.CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY);
-		return packageableElement_visibility == null ? PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT : packageableElement_visibility;
+		return (VisibilityKind)eVirtualGet(UML2Package.CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY, PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
 	}
 
 	/**
@@ -330,7 +329,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated NOT
 	 */
 	public boolean isSetPackageableElement_visibility() {
-		return eVirtualIsSet(UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY) && eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY) != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		return eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY, PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT) != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -950,8 +949,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public CollaborationOccurrence getRepresentation() {
-		CollaborationOccurrence representation = (CollaborationOccurrence)eVirtualGet(UML2Package.CLASSIFIER__REPRESENTATION);
-		return representation;
+		return (CollaborationOccurrence)eVirtualGet(UML2Package.CLASSIFIER__REPRESENTATION);
 	}
 
 	/**
@@ -1781,12 +1779,12 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.CLASSIFIER__NAME:
-				String name = eVirtualIsSet(UML2Package.CLASSIFIER__NAME) ? (String)eVirtualGet(UML2Package.CLASSIFIER__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.CLASSIFIER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CLASSIFIER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CLASSIFIER__VISIBILITY:
-				return eVirtualIsSet(UML2Package.CLASSIFIER__VISIBILITY) && eVirtualGet(UML2Package.CLASSIFIER__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.CLASSIFIER__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.CLASSIFIER__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();

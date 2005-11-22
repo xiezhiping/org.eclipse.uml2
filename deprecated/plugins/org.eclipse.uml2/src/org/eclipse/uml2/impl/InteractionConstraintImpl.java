@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.18 2005/11/14 19:49:14 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.19 2005/11/22 14:57:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -111,8 +111,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * @generated
 	 */
 	public ValueSpecification getMinint() {
-		ValueSpecification minint = (ValueSpecification)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__MININT);
-		return minint;
+		return (ValueSpecification)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__MININT);
 	}
 
 	/**
@@ -172,8 +171,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * @generated
 	 */
 	public ValueSpecification getMaxint() {
-		ValueSpecification maxint = (ValueSpecification)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__MAXINT);
-		return maxint;
+		return (ValueSpecification)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__MAXINT);
 	}
 
 	/**
@@ -465,12 +463,12 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 			case UML2Package.INTERACTION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE:
 				return eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UML2Package.INTERACTION_CONSTRAINT__NAME:
-				String name = eVirtualIsSet(UML2Package.INTERACTION_CONSTRAINT__NAME) ? (String)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__NAME) : NAME_EDEFAULT;
+				String name = (String)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INTERACTION_CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERACTION_CONSTRAINT__VISIBILITY:
-				return eVirtualIsSet(UML2Package.INTERACTION_CONSTRAINT__VISIBILITY) && eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UML2Package.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY:
 				EList clientDependency = (EList)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
