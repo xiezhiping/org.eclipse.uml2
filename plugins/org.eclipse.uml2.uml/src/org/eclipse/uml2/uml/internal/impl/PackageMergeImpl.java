@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -114,8 +114,8 @@ public class PackageMergeImpl
 	public org.eclipse.uml2.uml.Package getMergedPackage() {
 		org.eclipse.uml2.uml.Package mergedPackage = (org.eclipse.uml2.uml.Package) eVirtualGet(UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE);
 		if (mergedPackage != null && mergedPackage.eIsProxy()) {
-			org.eclipse.uml2.uml.Package oldMergedPackage = mergedPackage;
-			mergedPackage = (org.eclipse.uml2.uml.Package) eResolveProxy((InternalEObject) mergedPackage);
+			InternalEObject oldMergedPackage = (InternalEObject) mergedPackage;
+			mergedPackage = (org.eclipse.uml2.uml.Package) eResolveProxy(oldMergedPackage);
 			if (mergedPackage != oldMergedPackage) {
 				eVirtualSet(UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE,
 					mergedPackage);
@@ -163,7 +163,7 @@ public class PackageMergeImpl
 	public org.eclipse.uml2.uml.Package getReceivingPackage() {
 		if (eContainerFeatureID != UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE)
 			return null;
-		return (org.eclipse.uml2.uml.Package) eContainer;
+		return (org.eclipse.uml2.uml.Package) eContainer();
 	}
 
 	/**
@@ -173,13 +173,13 @@ public class PackageMergeImpl
 	 */
 	public void setReceivingPackage(
 			org.eclipse.uml2.uml.Package newReceivingPackage) {
-		if (newReceivingPackage != eContainer
+		if (newReceivingPackage != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE && newReceivingPackage != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newReceivingPackage))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newReceivingPackage != null)
 				msgs = ((InternalEObject) newReceivingPackage).eInverseAdd(
@@ -209,7 +209,7 @@ public class PackageMergeImpl
 					return ((InternalEList) getEAnnotations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE, msgs);
@@ -218,7 +218,7 @@ public class PackageMergeImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -258,15 +258,15 @@ public class PackageMergeImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.PACKAGE__PACKAGE_MERGE,
 						org.eclipse.uml2.uml.Package.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -281,9 +281,7 @@ public class PackageMergeImpl
 			case UMLPackage.PACKAGE_MERGE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PACKAGE_MERGE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PACKAGE_MERGE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PACKAGE_MERGE__RELATED_ELEMENT :
@@ -405,12 +403,12 @@ public class PackageMergeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		org.eclipse.uml2.uml.Package receivingPackage = getReceivingPackage();
 		if (receivingPackage != null) {
 			return receivingPackage;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

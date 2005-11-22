@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -234,7 +234,7 @@ public class ProtocolStateMachineImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.PROTOCOL_STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -306,7 +306,7 @@ public class ProtocolStateMachineImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -433,9 +433,7 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME :
@@ -477,7 +475,9 @@ public class ProtocolStateMachineImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE :
 				return getPackage();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
@@ -943,15 +943,13 @@ public class ProtocolStateMachineImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME :
-				String name = eVirtualIsSet(UMLPackage.PROTOCOL_STATE_MACHINE__NAME)
-					? (String) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.PROTOCOL_STATE_MACHINE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.PROTOCOL_STATE_MACHINE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -985,9 +983,9 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
@@ -996,7 +994,7 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_ABSTRACT :
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERALIZATION :
 				List generalization = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -1012,7 +1010,7 @@ public class ProtocolStateMachineImpl
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERAL :
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
 				List ownedUseCase = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
@@ -1032,8 +1030,7 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE) != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ROLE :

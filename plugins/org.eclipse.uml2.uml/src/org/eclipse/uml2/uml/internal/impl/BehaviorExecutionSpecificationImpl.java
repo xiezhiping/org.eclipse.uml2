@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorExecutionSpecificationImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: BehaviorExecutionSpecificationImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -75,8 +75,8 @@ public class BehaviorExecutionSpecificationImpl
 	public Behavior getBehavior() {
 		Behavior behavior = (Behavior) eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR);
 		if (behavior != null && behavior.eIsProxy()) {
-			Behavior oldBehavior = behavior;
-			behavior = (Behavior) eResolveProxy((InternalEObject) behavior);
+			InternalEObject oldBehavior = (InternalEObject) behavior;
+			behavior = (Behavior) eResolveProxy(oldBehavior);
 			if (behavior != oldBehavior) {
 				eVirtualSet(
 					UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR,
@@ -129,9 +129,7 @@ public class BehaviorExecutionSpecificationImpl
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
@@ -294,15 +292,16 @@ public class BehaviorExecutionSpecificationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME)
-					? (String) eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

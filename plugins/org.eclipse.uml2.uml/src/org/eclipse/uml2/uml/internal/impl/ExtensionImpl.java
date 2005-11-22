@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -135,11 +135,9 @@ public class ExtensionImpl
 	 */
 	public org.eclipse.uml2.uml.Class getMetaclass() {
 		org.eclipse.uml2.uml.Class metaclass = basicGetMetaclass();
-		return metaclass == null
-			? null
-			: (metaclass.eIsProxy()
-				? (org.eclipse.uml2.uml.Class) eResolveProxy((InternalEObject) metaclass)
-				: metaclass);
+		return metaclass != null && metaclass.eIsProxy()
+			? (org.eclipse.uml2.uml.Class) eResolveProxy((InternalEObject) metaclass)
+			: metaclass;
 	}
 
 	/**
@@ -191,9 +189,7 @@ public class ExtensionImpl
 			case UMLPackage.EXTENSION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXTENSION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXTENSION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXTENSION__NAME :
@@ -235,7 +231,9 @@ public class ExtensionImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.EXTENSION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.EXTENSION__PACKAGE :
 				return getPackage();
 			case UMLPackage.EXTENSION__TEMPLATE_BINDING :
@@ -315,15 +313,13 @@ public class ExtensionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXTENSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXTENSION__NAME :
-				String name = eVirtualIsSet(UMLPackage.EXTENSION__NAME)
-					? (String) eVirtualGet(UMLPackage.EXTENSION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.EXTENSION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.EXTENSION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.EXTENSION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.EXTENSION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.EXTENSION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -357,9 +353,9 @@ public class ExtensionImpl
 			case UMLPackage.EXTENSION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.EXTENSION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.EXTENSION__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.EXTENSION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.EXTENSION__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.EXTENSION__TEMPLATE_BINDING :
@@ -417,8 +413,7 @@ public class ExtensionImpl
 				return navigableOwnedEnd != null
 					&& !navigableOwnedEnd.isEmpty();
 			case UMLPackage.EXTENSION__OWNED_END :
-				List ownedEnd = (List) eVirtualGet(UMLPackage.EXTENSION__OWNED_END);
-				return ownedEnd != null && !ownedEnd.isEmpty();
+				return isSetOwnedEnds();
 			case UMLPackage.EXTENSION__IS_REQUIRED :
 				return isRequired() != IS_REQUIRED_EDEFAULT;
 			case UMLPackage.EXTENSION__METACLASS :

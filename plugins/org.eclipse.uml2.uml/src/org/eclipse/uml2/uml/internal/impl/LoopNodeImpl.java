@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.3 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -271,8 +271,8 @@ public class LoopNodeImpl
 	public OutputPin getDecider() {
 		OutputPin decider = (OutputPin) eVirtualGet(UMLPackage.LOOP_NODE__DECIDER);
 		if (decider != null && decider.eIsProxy()) {
-			OutputPin oldDecider = decider;
-			decider = (OutputPin) eResolveProxy((InternalEObject) decider);
+			InternalEObject oldDecider = (InternalEObject) decider;
+			decider = (OutputPin) eResolveProxy(oldDecider);
 			if (decider != oldDecider) {
 				eVirtualSet(UMLPackage.LOOP_NODE__DECIDER, decider);
 				if (eNotificationRequired())
@@ -632,9 +632,7 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LOOP_NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.LOOP_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LOOP_NODE__NAME :
@@ -702,9 +700,7 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.LOOP_NODE__SUPER_GROUP :
-				if (resolve)
-					return getSuperGroup();
-				return basicGetSuperGroup();
+				return getSuperGroup();
 			case UMLPackage.LOOP_NODE__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
@@ -1014,15 +1010,14 @@ public class LoopNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.LOOP_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LOOP_NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.LOOP_NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.LOOP_NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.LOOP_NODE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.LOOP_NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.LOOP_NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.LOOP_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.LOOP_NODE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.LOOP_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1051,7 +1046,7 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.LOOP_NODE__ACTIVITY :
-				return getActivity() != null;
+				return isSetActivity();
 			case UMLPackage.LOOP_NODE__INCOMING :
 				List incoming = (List) eVirtualGet(UMLPackage.LOOP_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
@@ -1101,7 +1096,7 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
-				return getInActivity() != null;
+				return isSetInActivity();
 			case UMLPackage.LOOP_NODE__CONTAINED_EDGE :
 				return isSetContainedEdges();
 			case UMLPackage.LOOP_NODE__VARIABLE :

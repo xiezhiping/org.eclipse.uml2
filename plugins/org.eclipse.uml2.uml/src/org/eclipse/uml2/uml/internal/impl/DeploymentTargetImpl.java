@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.3 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -220,7 +220,7 @@ public abstract class DeploymentTargetImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -268,9 +268,7 @@ public abstract class DeploymentTargetImpl
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DEPLOYMENT_TARGET__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
@@ -380,15 +378,14 @@ public abstract class DeploymentTargetImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
-				String name = eVirtualIsSet(UMLPackage.DEPLOYMENT_TARGET__NAME)
-					? (String) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.DEPLOYMENT_TARGET__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DEPLOYMENT_TARGET__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.DEPLOYMENT_TARGET__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

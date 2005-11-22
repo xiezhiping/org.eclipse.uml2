@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: LiteralIntegerImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -139,9 +139,7 @@ public class LiteralIntegerImpl
 			case UMLPackage.LITERAL_INTEGER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LITERAL_INTEGER__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.LITERAL_INTEGER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LITERAL_INTEGER__NAME :
@@ -163,7 +161,9 @@ public class LiteralIntegerImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.LITERAL_INTEGER__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.LITERAL_INTEGER__TYPE :
 				if (resolve)
 					return getType();
@@ -276,15 +276,13 @@ public class LiteralIntegerImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.LITERAL_INTEGER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LITERAL_INTEGER__NAME :
-				String name = eVirtualIsSet(UMLPackage.LITERAL_INTEGER__NAME)
-					? (String) eVirtualGet(UMLPackage.LITERAL_INTEGER__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.LITERAL_INTEGER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.LITERAL_INTEGER__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.LITERAL_INTEGER__VISIBILITY)
-					&& eVirtualGet(UMLPackage.LITERAL_INTEGER__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.LITERAL_INTEGER__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -299,7 +297,7 @@ public class LiteralIntegerImpl
 			case UMLPackage.LITERAL_INTEGER__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.LITERAL_INTEGER__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.LITERAL_INTEGER__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.LITERAL_INTEGER__TYPE :
 				return eVirtualGet(UMLPackage.LITERAL_INTEGER__TYPE) != null;
 			case UMLPackage.LITERAL_INTEGER__VALUE :

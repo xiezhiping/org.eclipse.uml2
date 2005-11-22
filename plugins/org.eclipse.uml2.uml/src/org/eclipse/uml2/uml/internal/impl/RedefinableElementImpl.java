@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -236,9 +236,7 @@ public abstract class RedefinableElementImpl
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME :
@@ -351,15 +349,14 @@ public abstract class RedefinableElementImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.REDEFINABLE_ELEMENT__NAME)
-					? (String) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.REDEFINABLE_ELEMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.REDEFINABLE_ELEMENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.REDEFINABLE_ELEMENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.REDEFINABLE_ELEMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -380,9 +380,7 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INFORMATION_FLOW__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INFORMATION_FLOW__NAME :
@@ -404,7 +402,9 @@ public class InformationFlowImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.INFORMATION_FLOW__SOURCE :
@@ -568,15 +568,13 @@ public class InformationFlowImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__NAME :
-				String name = eVirtualIsSet(UMLPackage.INFORMATION_FLOW__NAME)
-					? (String) eVirtualGet(UMLPackage.INFORMATION_FLOW__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.INFORMATION_FLOW__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INFORMATION_FLOW__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INFORMATION_FLOW__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.INFORMATION_FLOW__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -591,7 +589,7 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.INFORMATION_FLOW__SOURCE :

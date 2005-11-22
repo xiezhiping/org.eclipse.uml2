@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: Parameter.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -90,7 +90,7 @@ public interface Parameter
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operation</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_Operation()
-	 * @model transient="true" changeable="false" volatile="true" ordered="false"
+	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" ordered="false"
 	 * @generated
 	 */
 	Operation getOperation();

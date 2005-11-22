@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -214,10 +214,8 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public String getFileName() {
-		String fileName = (String) eVirtualGet(UMLPackage.ARTIFACT__FILE_NAME);
-		return fileName == null
-			? FILE_NAME_EDEFAULT
-			: fileName;
+		return (String) eVirtualGet(UMLPackage.ARTIFACT__FILE_NAME,
+			FILE_NAME_EDEFAULT);
 	}
 
 	/**
@@ -467,7 +465,7 @@ public class ArtifactImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.ARTIFACT__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ARTIFACT__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -511,7 +509,7 @@ public class ArtifactImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -607,9 +605,7 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ARTIFACT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ARTIFACT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ARTIFACT__NAME :
@@ -651,7 +647,9 @@ public class ArtifactImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.ARTIFACT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.ARTIFACT__PACKAGE :
 				return getPackage();
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
@@ -953,15 +951,13 @@ public class ArtifactImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ARTIFACT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ARTIFACT__NAME :
-				String name = eVirtualIsSet(UMLPackage.ARTIFACT__NAME)
-					? (String) eVirtualGet(UMLPackage.ARTIFACT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.ARTIFACT__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ARTIFACT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ARTIFACT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ARTIFACT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.ARTIFACT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -995,9 +991,9 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.ARTIFACT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.ARTIFACT__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.ARTIFACT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.ARTIFACT__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
@@ -1042,9 +1038,8 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.ARTIFACT__OWNED_SIGNATURE) != null;
 			case UMLPackage.ARTIFACT__FILE_NAME :
-				String fileName = eVirtualIsSet(UMLPackage.ARTIFACT__FILE_NAME)
-					? (String) eVirtualGet(UMLPackage.ARTIFACT__FILE_NAME)
-					: FILE_NAME_EDEFAULT;
+				String fileName = (String) eVirtualGet(
+					UMLPackage.ARTIFACT__FILE_NAME, FILE_NAME_EDEFAULT);
 				return FILE_NAME_EDEFAULT == null
 					? fileName != null
 					: !FILE_NAME_EDEFAULT.equals(fileName);
@@ -1075,9 +1070,8 @@ public class ArtifactImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (fileName: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.ARTIFACT__FILE_NAME)
-			? eVirtualGet(UMLPackage.ARTIFACT__FILE_NAME)
-			: FILE_NAME_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.ARTIFACT__FILE_NAME,
+			FILE_NAME_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

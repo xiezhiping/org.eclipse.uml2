@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.2 2005/11/22 15:32:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -68,8 +68,7 @@ public class DurationConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__SPECIFICATION);
-		return specification;
+		return (ValueSpecification) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__SPECIFICATION);
 	}
 
 	/**
@@ -159,9 +158,7 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DURATION_CONSTRAINT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DURATION_CONSTRAINT__NAME :
@@ -183,7 +180,9 @@ public class DurationConstraintImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.DURATION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.DURATION_CONSTRAINT__CONSTRAINED_ELEMENT :
 				return getConstrainedElements();
 			case UMLPackage.DURATION_CONSTRAINT__SPECIFICATION :
@@ -211,15 +210,13 @@ public class DurationConstraintImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DURATION_CONSTRAINT__NAME :
-				String name = eVirtualIsSet(UMLPackage.DURATION_CONSTRAINT__NAME)
-					? (String) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.DURATION_CONSTRAINT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DURATION_CONSTRAINT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DURATION_CONSTRAINT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DURATION_CONSTRAINT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.DURATION_CONSTRAINT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -234,13 +231,13 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.DURATION_CONSTRAINT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DURATION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DURATION_CONSTRAINT__CONSTRAINED_ELEMENT :
 				List constrainedElement = (List) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__CONSTRAINED_ELEMENT);
 				return constrainedElement != null
 					&& !constrainedElement.isEmpty();
 			case UMLPackage.DURATION_CONSTRAINT__SPECIFICATION :
-				return eVirtualGet(UMLPackage.DURATION_CONSTRAINT__SPECIFICATION) != null;
+				return isSetSpecification();
 			case UMLPackage.DURATION_CONSTRAINT__CONTEXT :
 				return getContext() != null;
 		}

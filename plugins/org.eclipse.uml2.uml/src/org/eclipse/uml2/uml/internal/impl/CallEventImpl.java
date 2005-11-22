@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallEventImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: CallEventImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -73,8 +73,8 @@ public class CallEventImpl
 	public Operation getOperation() {
 		Operation operation = (Operation) eVirtualGet(UMLPackage.CALL_EVENT__OPERATION);
 		if (operation != null && operation.eIsProxy()) {
-			Operation oldOperation = operation;
-			operation = (Operation) eResolveProxy((InternalEObject) operation);
+			InternalEObject oldOperation = (InternalEObject) operation;
+			operation = (Operation) eResolveProxy(oldOperation);
 			if (operation != oldOperation) {
 				eVirtualSet(UMLPackage.CALL_EVENT__OPERATION, operation);
 				if (eNotificationRequired())
@@ -125,9 +125,7 @@ public class CallEventImpl
 			case UMLPackage.CALL_EVENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CALL_EVENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CALL_EVENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CALL_EVENT__NAME :
@@ -149,7 +147,9 @@ public class CallEventImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.CALL_EVENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.CALL_EVENT__OPERATION :
 				if (resolve)
 					return getOperation();
@@ -254,15 +254,13 @@ public class CallEventImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CALL_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CALL_EVENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.CALL_EVENT__NAME)
-					? (String) eVirtualGet(UMLPackage.CALL_EVENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.CALL_EVENT__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CALL_EVENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CALL_EVENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CALL_EVENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CALL_EVENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -277,7 +275,7 @@ public class CallEventImpl
 			case UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.CALL_EVENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CALL_EVENT__OPERATION :
 				return eVirtualGet(UMLPackage.CALL_EVENT__OPERATION) != null;
 		}

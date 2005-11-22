@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -180,8 +180,8 @@ public class GeneralizationSetImpl
 	public Classifier getPowertype() {
 		Classifier powertype = (Classifier) eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE);
 		if (powertype != null && powertype.eIsProxy()) {
-			Classifier oldPowertype = powertype;
-			powertype = (Classifier) eResolveProxy((InternalEObject) powertype);
+			InternalEObject oldPowertype = (InternalEObject) powertype;
+			powertype = (Classifier) eResolveProxy(oldPowertype);
 			if (powertype != oldPowertype) {
 				eVirtualSet(UMLPackage.GENERALIZATION_SET__POWERTYPE, powertype);
 				if (eNotificationRequired())
@@ -319,7 +319,7 @@ public class GeneralizationSetImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -340,7 +340,7 @@ public class GeneralizationSetImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -397,9 +397,7 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.GENERALIZATION_SET__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.GENERALIZATION_SET__NAME :
@@ -421,7 +419,9 @@ public class GeneralizationSetImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
 				return isCovering()
 					? Boolean.TRUE
@@ -555,15 +555,13 @@ public class GeneralizationSetImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.GENERALIZATION_SET__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.GENERALIZATION_SET__NAME :
-				String name = eVirtualIsSet(UMLPackage.GENERALIZATION_SET__NAME)
-					? (String) eVirtualGet(UMLPackage.GENERALIZATION_SET__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.GENERALIZATION_SET__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.GENERALIZATION_SET__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.GENERALIZATION_SET__VISIBILITY)
-					&& eVirtualGet(UMLPackage.GENERALIZATION_SET__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.GENERALIZATION_SET__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -578,7 +576,7 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
 				return ((eFlags & IS_COVERING_EFLAG) != 0) != IS_COVERING_EDEFAULT;
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :

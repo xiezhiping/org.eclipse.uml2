@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -184,7 +184,7 @@ public class InterruptibleActivityRegionImpl
 					return ((InternalEList) getEAnnotations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY,
@@ -200,7 +200,7 @@ public class InterruptibleActivityRegionImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -250,17 +250,13 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP :
-				if (resolve)
-					return getSuperGroup();
-				return basicGetSuperGroup();
+				return getSuperGroup();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :

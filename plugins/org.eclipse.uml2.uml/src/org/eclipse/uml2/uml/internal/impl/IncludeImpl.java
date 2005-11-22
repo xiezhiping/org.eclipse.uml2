@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -138,8 +138,8 @@ public class IncludeImpl
 	public UseCase getAddition() {
 		UseCase addition = (UseCase) eVirtualGet(UMLPackage.INCLUDE__ADDITION);
 		if (addition != null && addition.eIsProxy()) {
-			UseCase oldAddition = addition;
-			addition = (UseCase) eResolveProxy((InternalEObject) addition);
+			InternalEObject oldAddition = (InternalEObject) addition;
+			addition = (UseCase) eResolveProxy(oldAddition);
 			if (addition != oldAddition) {
 				eVirtualSet(UMLPackage.INCLUDE__ADDITION, addition);
 				if (eNotificationRequired())
@@ -183,7 +183,7 @@ public class IncludeImpl
 	public UseCase getIncludingCase() {
 		if (eContainerFeatureID != UMLPackage.INCLUDE__INCLUDING_CASE)
 			return null;
-		return (UseCase) eContainer;
+		return (UseCase) eContainer();
 	}
 
 	/**
@@ -192,13 +192,13 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public void setIncludingCase(UseCase newIncludingCase) {
-		if (newIncludingCase != eContainer
+		if (newIncludingCase != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INCLUDE__INCLUDING_CASE && newIncludingCase != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newIncludingCase))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newIncludingCase != null)
 				msgs = ((InternalEObject) newIncludingCase).eInverseAdd(this,
@@ -230,7 +230,7 @@ public class IncludeImpl
 					return ((InternalEList) getClientDependencies()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.INCLUDE__INCLUDING_CASE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.INCLUDE__INCLUDING_CASE, msgs);
@@ -239,7 +239,7 @@ public class IncludeImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -284,14 +284,14 @@ public class IncludeImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.INCLUDE__INCLUDING_CASE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.USE_CASE__INCLUDE, UseCase.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -306,9 +306,7 @@ public class IncludeImpl
 			case UMLPackage.INCLUDE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INCLUDE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INCLUDE__NAME :
@@ -431,15 +429,14 @@ public class IncludeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INCLUDE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INCLUDE__NAME :
-				String name = eVirtualIsSet(UMLPackage.INCLUDE__NAME)
-					? (String) eVirtualGet(UMLPackage.INCLUDE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.INCLUDE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INCLUDE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INCLUDE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INCLUDE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.INCLUDE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.INCLUDE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

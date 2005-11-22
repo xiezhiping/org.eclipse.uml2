@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationIntervalImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: DurationIntervalImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -70,8 +70,8 @@ public class DurationIntervalImpl
 	public ValueSpecification getMin() {
 		ValueSpecification min = (ValueSpecification) eVirtualGet(UMLPackage.DURATION_INTERVAL__MIN);
 		if (min != null && min.eIsProxy()) {
-			ValueSpecification oldMin = min;
-			min = (ValueSpecification) eResolveProxy((InternalEObject) min);
+			InternalEObject oldMin = (InternalEObject) min;
+			min = (ValueSpecification) eResolveProxy(oldMin);
 			if (min != oldMin) {
 				eVirtualSet(UMLPackage.DURATION_INTERVAL__MIN, min);
 				if (eNotificationRequired())
@@ -124,8 +124,8 @@ public class DurationIntervalImpl
 	public ValueSpecification getMax() {
 		ValueSpecification max = (ValueSpecification) eVirtualGet(UMLPackage.DURATION_INTERVAL__MAX);
 		if (max != null && max.eIsProxy()) {
-			ValueSpecification oldMax = max;
-			max = (ValueSpecification) eResolveProxy((InternalEObject) max);
+			InternalEObject oldMax = (InternalEObject) max;
+			max = (ValueSpecification) eResolveProxy(oldMax);
 			if (max != oldMax) {
 				eVirtualSet(UMLPackage.DURATION_INTERVAL__MAX, max);
 				if (eNotificationRequired())
@@ -182,9 +182,7 @@ public class DurationIntervalImpl
 			case UMLPackage.DURATION_INTERVAL__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DURATION_INTERVAL__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DURATION_INTERVAL__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DURATION_INTERVAL__NAME :
@@ -206,7 +204,9 @@ public class DurationIntervalImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.DURATION_INTERVAL__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.DURATION_INTERVAL__TYPE :
 				if (resolve)
 					return getType();
@@ -240,15 +240,13 @@ public class DurationIntervalImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DURATION_INTERVAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DURATION_INTERVAL__NAME :
-				String name = eVirtualIsSet(UMLPackage.DURATION_INTERVAL__NAME)
-					? (String) eVirtualGet(UMLPackage.DURATION_INTERVAL__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.DURATION_INTERVAL__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DURATION_INTERVAL__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DURATION_INTERVAL__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DURATION_INTERVAL__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.DURATION_INTERVAL__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -263,13 +261,13 @@ public class DurationIntervalImpl
 			case UMLPackage.DURATION_INTERVAL__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.DURATION_INTERVAL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DURATION_INTERVAL__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DURATION_INTERVAL__TYPE :
 				return eVirtualGet(UMLPackage.DURATION_INTERVAL__TYPE) != null;
 			case UMLPackage.DURATION_INTERVAL__MIN :
-				return eVirtualGet(UMLPackage.DURATION_INTERVAL__MIN) != null;
+				return isSetMin();
 			case UMLPackage.DURATION_INTERVAL__MAX :
-				return eVirtualGet(UMLPackage.DURATION_INTERVAL__MAX) != null;
+				return isSetMax();
 		}
 		return eDynamicIsSet(eFeature);
 	}

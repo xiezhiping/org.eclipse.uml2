@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,7 +80,7 @@ public class EnumerationLiteralImpl
 	public Enumeration getEnumeration() {
 		if (eContainerFeatureID != UMLPackage.ENUMERATION_LITERAL__ENUMERATION)
 			return null;
-		return (Enumeration) eContainer;
+		return (Enumeration) eContainer();
 	}
 
 	/**
@@ -89,13 +89,13 @@ public class EnumerationLiteralImpl
 	 * @generated
 	 */
 	public void setEnumeration(Enumeration newEnumeration) {
-		if (newEnumeration != eContainer
+		if (newEnumeration != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ENUMERATION_LITERAL__ENUMERATION && newEnumeration != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newEnumeration))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnumeration != null)
 				msgs = ((InternalEObject) newEnumeration).eInverseAdd(this,
@@ -141,7 +141,7 @@ public class EnumerationLiteralImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.ENUMERATION_LITERAL__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -151,7 +151,7 @@ public class EnumerationLiteralImpl
 					return ((InternalEList) getSlots())
 						.basicAdd(otherEnd, msgs);
 				case UMLPackage.ENUMERATION_LITERAL__ENUMERATION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ENUMERATION_LITERAL__ENUMERATION, msgs);
@@ -160,7 +160,7 @@ public class EnumerationLiteralImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -220,21 +220,21 @@ public class EnumerationLiteralImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.ENUMERATION_LITERAL__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				case UMLPackage.ENUMERATION_LITERAL__ENUMERATION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.ENUMERATION__OWNED_LITERAL,
 						Enumeration.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -249,9 +249,7 @@ public class EnumerationLiteralImpl
 			case UMLPackage.ENUMERATION_LITERAL__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ENUMERATION_LITERAL__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ENUMERATION_LITERAL__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ENUMERATION_LITERAL__NAME :
@@ -277,7 +275,9 @@ public class EnumerationLiteralImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.ENUMERATION_LITERAL__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.ENUMERATION_LITERAL__CLASSIFIER :
 				return getClassifiers();
 			case UMLPackage.ENUMERATION_LITERAL__SPECIFICATION :
@@ -413,15 +413,13 @@ public class EnumerationLiteralImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ENUMERATION_LITERAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ENUMERATION_LITERAL__NAME :
-				String name = eVirtualIsSet(UMLPackage.ENUMERATION_LITERAL__NAME)
-					? (String) eVirtualGet(UMLPackage.ENUMERATION_LITERAL__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.ENUMERATION_LITERAL__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ENUMERATION_LITERAL__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ENUMERATION_LITERAL__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ENUMERATION_LITERAL__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.ENUMERATION_LITERAL__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -441,7 +439,7 @@ public class EnumerationLiteralImpl
 			case UMLPackage.ENUMERATION_LITERAL__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.ENUMERATION_LITERAL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.ENUMERATION_LITERAL__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.ENUMERATION_LITERAL__CLASSIFIER :
 				List classifier = (List) eVirtualGet(UMLPackage.ENUMERATION_LITERAL__CLASSIFIER);
 				return classifier != null && !classifier.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -115,8 +115,8 @@ public class ProtocolConformanceImpl
 	public ProtocolStateMachine getGeneralMachine() {
 		ProtocolStateMachine generalMachine = (ProtocolStateMachine) eVirtualGet(UMLPackage.PROTOCOL_CONFORMANCE__GENERAL_MACHINE);
 		if (generalMachine != null && generalMachine.eIsProxy()) {
-			ProtocolStateMachine oldGeneralMachine = generalMachine;
-			generalMachine = (ProtocolStateMachine) eResolveProxy((InternalEObject) generalMachine);
+			InternalEObject oldGeneralMachine = (InternalEObject) generalMachine;
+			generalMachine = (ProtocolStateMachine) eResolveProxy(oldGeneralMachine);
 			if (generalMachine != oldGeneralMachine) {
 				eVirtualSet(UMLPackage.PROTOCOL_CONFORMANCE__GENERAL_MACHINE,
 					generalMachine);
@@ -164,7 +164,7 @@ public class ProtocolConformanceImpl
 	public ProtocolStateMachine getSpecificMachine() {
 		if (eContainerFeatureID != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE)
 			return null;
-		return (ProtocolStateMachine) eContainer;
+		return (ProtocolStateMachine) eContainer();
 	}
 
 	/**
@@ -173,13 +173,13 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public void setSpecificMachine(ProtocolStateMachine newSpecificMachine) {
-		if (newSpecificMachine != eContainer
+		if (newSpecificMachine != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE && newSpecificMachine != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newSpecificMachine))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSpecificMachine != null)
 				msgs = ((InternalEObject) newSpecificMachine).eInverseAdd(this,
@@ -209,7 +209,7 @@ public class ProtocolConformanceImpl
 					return ((InternalEList) getEAnnotations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE, msgs);
@@ -218,7 +218,7 @@ public class ProtocolConformanceImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -258,15 +258,15 @@ public class ProtocolConformanceImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE,
 						ProtocolStateMachine.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -281,9 +281,7 @@ public class ProtocolConformanceImpl
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PROTOCOL_CONFORMANCE__RELATED_ELEMENT :
@@ -407,12 +405,12 @@ public class ProtocolConformanceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		ProtocolStateMachine specificMachine = getSpecificMachine();
 		if (specificMachine != null) {
 			return specificMachine;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

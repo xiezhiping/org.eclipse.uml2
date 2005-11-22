@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -128,8 +128,8 @@ public abstract class ObjectNodeImpl
 	public Type getType() {
 		Type type = (Type) eVirtualGet(UMLPackage.OBJECT_NODE__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Type oldType = type;
-			type = (Type) eResolveProxy((InternalEObject) type);
+			InternalEObject oldType = (InternalEObject) type;
+			type = (Type) eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UMLPackage.OBJECT_NODE__TYPE, type);
 				if (eNotificationRequired())
@@ -190,10 +190,8 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public ObjectNodeOrderingKind getOrdering() {
-		ObjectNodeOrderingKind ordering = (ObjectNodeOrderingKind) eVirtualGet(UMLPackage.OBJECT_NODE__ORDERING);
-		return ordering == null
-			? ORDERING_EDEFAULT
-			: ordering;
+		return (ObjectNodeOrderingKind) eVirtualGet(
+			UMLPackage.OBJECT_NODE__ORDERING, ORDERING_EDEFAULT);
 	}
 
 	/**
@@ -249,8 +247,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperBound() {
-		ValueSpecification upperBound = (ValueSpecification) eVirtualGet(UMLPackage.OBJECT_NODE__UPPER_BOUND);
-		return upperBound;
+		return (ValueSpecification) eVirtualGet(UMLPackage.OBJECT_NODE__UPPER_BOUND);
 	}
 
 	/**
@@ -354,8 +351,8 @@ public abstract class ObjectNodeImpl
 	public Behavior getSelection() {
 		Behavior selection = (Behavior) eVirtualGet(UMLPackage.OBJECT_NODE__SELECTION);
 		if (selection != null && selection.eIsProxy()) {
-			Behavior oldSelection = selection;
-			selection = (Behavior) eResolveProxy((InternalEObject) selection);
+			InternalEObject oldSelection = (InternalEObject) selection;
+			selection = (Behavior) eResolveProxy(oldSelection);
 			if (selection != oldSelection) {
 				eVirtualSet(UMLPackage.OBJECT_NODE__SELECTION, selection);
 				if (eNotificationRequired())
@@ -497,9 +494,7 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OBJECT_NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.OBJECT_NODE__NAME :
@@ -730,15 +725,14 @@ public abstract class ObjectNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.OBJECT_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OBJECT_NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.OBJECT_NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.OBJECT_NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.OBJECT_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.OBJECT_NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.OBJECT_NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.OBJECT_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.OBJECT_NODE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.OBJECT_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -781,8 +775,8 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__TYPE :
 				return eVirtualGet(UMLPackage.OBJECT_NODE__TYPE) != null;
 			case UMLPackage.OBJECT_NODE__ORDERING :
-				return eVirtualIsSet(UMLPackage.OBJECT_NODE__ORDERING)
-					&& eVirtualGet(UMLPackage.OBJECT_NODE__ORDERING) != ORDERING_EDEFAULT;
+				return eVirtualGet(UMLPackage.OBJECT_NODE__ORDERING,
+					ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
 			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
@@ -841,9 +835,8 @@ public abstract class ObjectNodeImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (ordering: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.OBJECT_NODE__ORDERING)
-			? eVirtualGet(UMLPackage.OBJECT_NODE__ORDERING)
-			: ORDERING_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.OBJECT_NODE__ORDERING,
+			ORDERING_EDEFAULT));
 		result.append(", isControlType: "); //$NON-NLS-1$
 		result.append((eFlags & IS_CONTROL_TYPE_EFLAG) != 0);
 		result.append(')');

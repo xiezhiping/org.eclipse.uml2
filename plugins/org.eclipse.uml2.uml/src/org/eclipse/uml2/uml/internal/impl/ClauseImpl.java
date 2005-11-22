@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.3 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -181,8 +181,8 @@ public class ClauseImpl
 	public OutputPin getDecider() {
 		OutputPin decider = (OutputPin) eVirtualGet(UMLPackage.CLAUSE__DECIDER);
 		if (decider != null && decider.eIsProxy()) {
-			OutputPin oldDecider = decider;
-			decider = (OutputPin) eResolveProxy((InternalEObject) decider);
+			InternalEObject oldDecider = (InternalEObject) decider;
+			decider = (OutputPin) eResolveProxy(oldDecider);
 			if (decider != oldDecider) {
 				eVirtualSet(UMLPackage.CLAUSE__DECIDER, decider);
 				if (eNotificationRequired())
@@ -293,7 +293,7 @@ public class ClauseImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -339,9 +339,7 @@ public class ClauseImpl
 			case UMLPackage.CLAUSE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CLAUSE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CLAUSE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CLAUSE__TEST :

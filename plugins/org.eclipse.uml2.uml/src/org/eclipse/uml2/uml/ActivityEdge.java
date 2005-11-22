@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.1 2005/11/14 22:25:57 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -63,7 +63,7 @@ public interface ActivityEdge
 	 * @see #setActivity(Activity)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_Activity()
 	 * @see org.eclipse.uml2.uml.Activity#getEdges
-	 * @model opposite="edge" ordered="false"
+	 * @model opposite="edge" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	Activity getActivity();
@@ -136,7 +136,7 @@ public interface ActivityEdge
 	 * @see #setInStructuredNode(StructuredActivityNode)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_InStructuredNode()
 	 * @see org.eclipse.uml2.uml.StructuredActivityNode#getEdges
-	 * @model opposite="edge" ordered="false"
+	 * @model opposite="edge" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	StructuredActivityNode getInStructuredNode();

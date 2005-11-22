@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -188,10 +188,8 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public TransitionKind getKind() {
-		TransitionKind kind = (TransitionKind) eVirtualGet(UMLPackage.TRANSITION__KIND);
-		return kind == null
-			? KIND_EDEFAULT
-			: kind;
+		return (TransitionKind) eVirtualGet(UMLPackage.TRANSITION__KIND,
+			KIND_EDEFAULT);
 	}
 
 	/**
@@ -220,7 +218,7 @@ public class TransitionImpl
 	public Region getContainer() {
 		if (eContainerFeatureID != UMLPackage.TRANSITION__CONTAINER)
 			return null;
-		return (Region) eContainer;
+		return (Region) eContainer();
 	}
 
 	/**
@@ -229,13 +227,13 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
-		if (newContainer != eContainer
+		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TRANSITION__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newContainer))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContainer != null)
 				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
@@ -258,8 +256,8 @@ public class TransitionImpl
 	public Vertex getTarget() {
 		Vertex target = (Vertex) eVirtualGet(UMLPackage.TRANSITION__TARGET);
 		if (target != null && target.eIsProxy()) {
-			Vertex oldTarget = target;
-			target = (Vertex) eResolveProxy((InternalEObject) target);
+			InternalEObject oldTarget = (InternalEObject) target;
+			target = (Vertex) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				eVirtualSet(UMLPackage.TRANSITION__TARGET, target);
 				if (eNotificationRequired())
@@ -334,8 +332,8 @@ public class TransitionImpl
 	public Transition getRedefinedTransition() {
 		Transition redefinedTransition = (Transition) eVirtualGet(UMLPackage.TRANSITION__REDEFINED_TRANSITION);
 		if (redefinedTransition != null && redefinedTransition.eIsProxy()) {
-			Transition oldRedefinedTransition = redefinedTransition;
-			redefinedTransition = (Transition) eResolveProxy((InternalEObject) redefinedTransition);
+			InternalEObject oldRedefinedTransition = (InternalEObject) redefinedTransition;
+			redefinedTransition = (Transition) eResolveProxy(oldRedefinedTransition);
 			if (redefinedTransition != oldRedefinedTransition) {
 				eVirtualSet(UMLPackage.TRANSITION__REDEFINED_TRANSITION,
 					redefinedTransition);
@@ -381,8 +379,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Constraint getGuard() {
-		Constraint guard = (Constraint) eVirtualGet(UMLPackage.TRANSITION__GUARD);
-		return guard;
+		return (Constraint) eVirtualGet(UMLPackage.TRANSITION__GUARD);
 	}
 
 	/**
@@ -463,8 +460,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Behavior getEffect() {
-		Behavior effect = (Behavior) eVirtualGet(UMLPackage.TRANSITION__EFFECT);
-		return effect;
+		return (Behavior) eVirtualGet(UMLPackage.TRANSITION__EFFECT);
 	}
 
 	/**
@@ -588,8 +584,8 @@ public class TransitionImpl
 	public Vertex getSource() {
 		Vertex source = (Vertex) eVirtualGet(UMLPackage.TRANSITION__SOURCE);
 		if (source != null && source.eIsProxy()) {
-			Vertex oldSource = source;
-			source = (Vertex) eResolveProxy((InternalEObject) source);
+			InternalEObject oldSource = (InternalEObject) source;
+			source = (Vertex) eResolveProxy(oldSource);
 			if (source != oldSource) {
 				eVirtualSet(UMLPackage.TRANSITION__SOURCE, source);
 				if (eNotificationRequired())
@@ -776,7 +772,7 @@ public class TransitionImpl
 					return ((InternalEList) getClientDependencies()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.TRANSITION__CONTAINER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.TRANSITION__CONTAINER, msgs);
@@ -797,7 +793,7 @@ public class TransitionImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -853,14 +849,14 @@ public class TransitionImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.TRANSITION__CONTAINER :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.REGION__TRANSITION, Region.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -875,9 +871,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TRANSITION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TRANSITION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TRANSITION__NAME :
@@ -1061,15 +1055,14 @@ public class TransitionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TRANSITION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TRANSITION__NAME :
-				String name = eVirtualIsSet(UMLPackage.TRANSITION__NAME)
-					? (String) eVirtualGet(UMLPackage.TRANSITION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.TRANSITION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.TRANSITION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.TRANSITION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.TRANSITION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.TRANSITION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.TRANSITION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1088,8 +1081,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.TRANSITION__KIND :
-				return eVirtualIsSet(UMLPackage.TRANSITION__KIND)
-					&& eVirtualGet(UMLPackage.TRANSITION__KIND) != KIND_EDEFAULT;
+				return eVirtualGet(UMLPackage.TRANSITION__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
 			case UMLPackage.TRANSITION__CONTAINER :
 				return getContainer() != null;
 			case UMLPackage.TRANSITION__TARGET :
@@ -1120,9 +1112,7 @@ public class TransitionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.TRANSITION__KIND)
-			? eVirtualGet(UMLPackage.TRANSITION__KIND)
-			: KIND_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.TRANSITION__KIND, KIND_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,8 +123,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.CONSTRAINT__SPECIFICATION);
-		return specification;
+		return (ValueSpecification) eVirtualGet(UMLPackage.CONSTRAINT__SPECIFICATION);
 	}
 
 	/**
@@ -198,7 +197,7 @@ public class ConstraintImpl
 	public Namespace getContext() {
 		if (eContainerFeatureID != UMLPackage.CONSTRAINT__CONTEXT)
 			return null;
-		return (Namespace) eContainer;
+		return (Namespace) eContainer();
 	}
 
 	/**
@@ -207,13 +206,13 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public void setContext(Namespace newContext) {
-		if (newContext != eContainer
+		if (newContext != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CONSTRAINT__CONTEXT && newContext != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newContext))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContext != null)
 				msgs = ((InternalEObject) newContext).eInverseAdd(this,
@@ -308,12 +307,12 @@ public class ConstraintImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER, msgs);
 				case UMLPackage.CONSTRAINT__CONTEXT :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.CONSTRAINT__CONTEXT, msgs);
@@ -322,7 +321,7 @@ public class ConstraintImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -374,21 +373,21 @@ public class ConstraintImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				case UMLPackage.CONSTRAINT__CONTEXT :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(this, UMLPackage.NAMESPACE__OWNED_RULE,
 							Namespace.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -403,9 +402,7 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONSTRAINT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONSTRAINT__NAME :
@@ -427,7 +424,9 @@ public class ConstraintImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				return getConstrainedElements();
 			case UMLPackage.CONSTRAINT__SPECIFICATION :
@@ -547,15 +546,13 @@ public class ConstraintImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONSTRAINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONSTRAINT__NAME :
-				String name = eVirtualIsSet(UMLPackage.CONSTRAINT__NAME)
-					? (String) eVirtualGet(UMLPackage.CONSTRAINT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.CONSTRAINT__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CONSTRAINT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CONSTRAINT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CONSTRAINT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CONSTRAINT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -570,7 +567,7 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				List constrainedElement = (List) eVirtualGet(UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
 				return constrainedElement != null

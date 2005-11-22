@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -126,7 +126,7 @@ public class TemplateSignatureImpl
 	public TemplateableElement getTemplate() {
 		if (eContainerFeatureID != UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE)
 			return null;
-		return (TemplateableElement) eContainer;
+		return (TemplateableElement) eContainer();
 	}
 
 	/**
@@ -135,13 +135,13 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public void setTemplate(TemplateableElement newTemplate) {
-		if (newTemplate != eContainer
+		if (newTemplate != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newTemplate))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplate != null)
 				msgs = ((InternalEObject) newTemplate).eInverseAdd(this,
@@ -223,7 +223,7 @@ public class TemplateSignatureImpl
 					return ((InternalEList) getEAnnotations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
@@ -235,7 +235,7 @@ public class TemplateSignatureImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -278,7 +278,7 @@ public class TemplateSignatureImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
@@ -287,8 +287,8 @@ public class TemplateSignatureImpl
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -303,9 +303,7 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
@@ -407,12 +405,12 @@ public class TemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateableElement template = getTemplate();
 		if (template != null) {
 			return template;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

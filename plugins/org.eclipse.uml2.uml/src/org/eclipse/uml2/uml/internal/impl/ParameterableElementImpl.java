@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -79,8 +79,8 @@ public abstract class ParameterableElementImpl
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy((InternalEObject) templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
+			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(
 					UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
@@ -168,7 +168,18 @@ public abstract class ParameterableElementImpl
 	public TemplateParameter getOwningTemplateParameter() {
 		if (eContainerFeatureID != UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER)
 			return null;
-		return (TemplateParameter) eContainer;
+		return (TemplateParameter) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateParameter basicGetOwningTemplateParameter() {
+		if (eContainerFeatureID != UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER)
+			return null;
+		return (TemplateParameter) eInternalContainer();
 	}
 
 	/**
@@ -178,15 +189,15 @@ public abstract class ParameterableElementImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer;
-		if (newOwningTemplateParameter != eContainer
+		EObject oldOwningTemplateParameter = eContainer();
+		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil
 				.isAncestor(this, (EObject) newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
@@ -252,7 +263,7 @@ public abstract class ParameterableElementImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -263,7 +274,7 @@ public abstract class ParameterableElementImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -307,7 +318,7 @@ public abstract class ParameterableElementImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -316,8 +327,8 @@ public abstract class ParameterableElementImpl
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -332,9 +343,7 @@ public abstract class ParameterableElementImpl
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
@@ -342,7 +351,9 @@ public abstract class ParameterableElementImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -414,7 +425,7 @@ public abstract class ParameterableElementImpl
 			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -424,12 +435,12 @@ public abstract class ParameterableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

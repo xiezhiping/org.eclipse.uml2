@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: IntervalImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -75,8 +75,8 @@ public class IntervalImpl
 	public ValueSpecification getMin() {
 		ValueSpecification min = (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL__MIN);
 		if (min != null && min.eIsProxy()) {
-			ValueSpecification oldMin = min;
-			min = (ValueSpecification) eResolveProxy((InternalEObject) min);
+			InternalEObject oldMin = (InternalEObject) min;
+			min = (ValueSpecification) eResolveProxy(oldMin);
 			if (min != oldMin) {
 				eVirtualSet(UMLPackage.INTERVAL__MIN, min);
 				if (eNotificationRequired())
@@ -120,8 +120,8 @@ public class IntervalImpl
 	public ValueSpecification getMax() {
 		ValueSpecification max = (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL__MAX);
 		if (max != null && max.eIsProxy()) {
-			ValueSpecification oldMax = max;
-			max = (ValueSpecification) eResolveProxy((InternalEObject) max);
+			InternalEObject oldMax = (InternalEObject) max;
+			max = (ValueSpecification) eResolveProxy(oldMax);
 			if (max != oldMax) {
 				eVirtualSet(UMLPackage.INTERVAL__MAX, max);
 				if (eNotificationRequired())
@@ -169,9 +169,7 @@ public class IntervalImpl
 			case UMLPackage.INTERVAL__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INTERVAL__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INTERVAL__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INTERVAL__NAME :
@@ -193,7 +191,9 @@ public class IntervalImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.INTERVAL__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.INTERVAL__TYPE :
 				if (resolve)
 					return getType();
@@ -318,15 +318,13 @@ public class IntervalImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERVAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERVAL__NAME :
-				String name = eVirtualIsSet(UMLPackage.INTERVAL__NAME)
-					? (String) eVirtualGet(UMLPackage.INTERVAL__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.INTERVAL__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INTERVAL__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INTERVAL__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INTERVAL__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.INTERVAL__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -341,7 +339,7 @@ public class IntervalImpl
 			case UMLPackage.INTERVAL__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.INTERVAL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INTERVAL__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INTERVAL__TYPE :
 				return eVirtualGet(UMLPackage.INTERVAL__TYPE) != null;
 			case UMLPackage.INTERVAL__MIN :

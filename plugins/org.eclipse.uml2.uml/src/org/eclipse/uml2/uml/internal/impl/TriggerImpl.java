@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: TriggerImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -77,8 +77,8 @@ public class TriggerImpl
 	public Event getEvent() {
 		Event event = (Event) eVirtualGet(UMLPackage.TRIGGER__EVENT);
 		if (event != null && event.eIsProxy()) {
-			Event oldEvent = event;
-			event = (Event) eResolveProxy((InternalEObject) event);
+			InternalEObject oldEvent = (InternalEObject) event;
+			event = (Event) eResolveProxy(oldEvent);
 			if (event != oldEvent) {
 				eVirtualSet(UMLPackage.TRIGGER__EVENT, event);
 				if (eNotificationRequired())
@@ -156,9 +156,7 @@ public class TriggerImpl
 			case UMLPackage.TRIGGER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TRIGGER__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TRIGGER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TRIGGER__NAME :
@@ -276,15 +274,14 @@ public class TriggerImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TRIGGER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TRIGGER__NAME :
-				String name = eVirtualIsSet(UMLPackage.TRIGGER__NAME)
-					? (String) eVirtualGet(UMLPackage.TRIGGER__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.TRIGGER__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.TRIGGER__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.TRIGGER__VISIBILITY)
-					&& eVirtualGet(UMLPackage.TRIGGER__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.TRIGGER__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.TRIGGER__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

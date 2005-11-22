@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.2 2005/11/22 15:32:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -144,8 +144,8 @@ public class ConnectorImpl
 	public Association getType() {
 		Association type = (Association) eVirtualGet(UMLPackage.CONNECTOR__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Association oldType = type;
-			type = (Association) eResolveProxy((InternalEObject) type);
+			InternalEObject oldType = (InternalEObject) type;
+			type = (Association) eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UMLPackage.CONNECTOR__TYPE, type);
 				if (eNotificationRequired())
@@ -243,10 +243,8 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public ConnectorKind getKind() {
-		ConnectorKind kind = (ConnectorKind) eVirtualGet(UMLPackage.CONNECTOR__KIND);
-		return kind == null
-			? KIND_EDEFAULT
-			: kind;
+		return (ConnectorKind) eVirtualGet(UMLPackage.CONNECTOR__KIND,
+			KIND_EDEFAULT);
 	}
 
 	/**
@@ -423,9 +421,7 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONNECTOR__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CONNECTOR__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONNECTOR__NAME :
@@ -595,15 +591,14 @@ public class ConnectorImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONNECTOR__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONNECTOR__NAME :
-				String name = eVirtualIsSet(UMLPackage.CONNECTOR__NAME)
-					? (String) eVirtualGet(UMLPackage.CONNECTOR__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.CONNECTOR__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CONNECTOR__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CONNECTOR__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CONNECTOR__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.CONNECTOR__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CONNECTOR__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -635,8 +630,7 @@ public class ConnectorImpl
 				List end = (List) eVirtualGet(UMLPackage.CONNECTOR__END);
 				return end != null && !end.isEmpty();
 			case UMLPackage.CONNECTOR__KIND :
-				return eVirtualIsSet(UMLPackage.CONNECTOR__KIND)
-					&& eVirtualGet(UMLPackage.CONNECTOR__KIND) != KIND_EDEFAULT;
+				return eVirtualGet(UMLPackage.CONNECTOR__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
 			case UMLPackage.CONNECTOR__CONTRACT :
 				List contract = (List) eVirtualGet(UMLPackage.CONNECTOR__CONTRACT);
 				return contract != null && !contract.isEmpty();
@@ -655,9 +649,7 @@ public class ConnectorImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.CONNECTOR__KIND)
-			? eVirtualGet(UMLPackage.CONNECTOR__KIND)
-			: KIND_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.CONNECTOR__KIND, KIND_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

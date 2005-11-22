@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: InterfaceRealizationImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -168,8 +168,8 @@ public class InterfaceRealizationImpl
 	public Interface getContract() {
 		Interface contract = (Interface) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CONTRACT);
 		if (contract != null && contract.eIsProxy()) {
-			Interface oldContract = contract;
-			contract = (Interface) eResolveProxy((InternalEObject) contract);
+			InternalEObject oldContract = (InternalEObject) contract;
+			contract = (Interface) eResolveProxy(oldContract);
 			if (contract != oldContract) {
 				eVirtualSet(UMLPackage.INTERFACE_REALIZATION__CONTRACT,
 					contract);
@@ -220,7 +220,18 @@ public class InterfaceRealizationImpl
 	public BehavioredClassifier getImplementingClassifier() {
 		if (eContainerFeatureID != UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER)
 			return null;
-		return (BehavioredClassifier) eContainer;
+		return (BehavioredClassifier) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BehavioredClassifier basicGetImplementingClassifier() {
+		if (eContainerFeatureID != UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER)
+			return null;
+		return (BehavioredClassifier) eInternalContainer();
 	}
 
 	/**
@@ -234,13 +245,13 @@ public class InterfaceRealizationImpl
 			&& !getClients().contains(newImplementingClassifier)) {
 			getClients().add(newImplementingClassifier);
 		}
-		if (newImplementingClassifier != eContainer
+		if (newImplementingClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER && newImplementingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newImplementingClassifier))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newImplementingClassifier != null)
 				msgs = ((InternalEObject) newImplementingClassifier)
@@ -286,7 +297,7 @@ public class InterfaceRealizationImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -296,7 +307,7 @@ public class InterfaceRealizationImpl
 					return ((InternalEList) getClients()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -307,7 +318,7 @@ public class InterfaceRealizationImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -366,13 +377,13 @@ public class InterfaceRealizationImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
@@ -381,8 +392,8 @@ public class InterfaceRealizationImpl
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -397,9 +408,7 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INTERFACE_REALIZATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
@@ -421,7 +430,9 @@ public class InterfaceRealizationImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.INTERFACE_REALIZATION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.INTERFACE_REALIZATION__SOURCE :
@@ -439,7 +450,9 @@ public class InterfaceRealizationImpl
 					return getContract();
 				return basicGetContract();
 			case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
-				return getImplementingClassifier();
+				if (resolve)
+					return getImplementingClassifier();
+				return basicGetImplementingClassifier();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -566,15 +579,13 @@ public class InterfaceRealizationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.INTERFACE_REALIZATION__NAME)
-					? (String) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.INTERFACE_REALIZATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INTERFACE_REALIZATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INTERFACE_REALIZATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.INTERFACE_REALIZATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -589,7 +600,7 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INTERFACE_REALIZATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.INTERFACE_REALIZATION__SOURCE :
@@ -607,7 +618,7 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__CONTRACT :
 				return eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CONTRACT) != null;
 			case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
-				return getImplementingClassifier() != null;
+				return basicGetImplementingClassifier() != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

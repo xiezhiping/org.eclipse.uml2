@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOccurrenceSpecificationImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: MessageOccurrenceSpecificationImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -77,8 +77,8 @@ public class MessageOccurrenceSpecificationImpl
 	public Message getMessage() {
 		Message message = (Message) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE);
 		if (message != null && message.eIsProxy()) {
-			Message oldMessage = message;
-			message = (Message) eResolveProxy((InternalEObject) message);
+			InternalEObject oldMessage = (InternalEObject) message;
+			message = (Message) eResolveProxy(oldMessage);
 			if (message != oldMessage) {
 				eVirtualSet(
 					UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE,
@@ -127,8 +127,8 @@ public class MessageOccurrenceSpecificationImpl
 	public Event getEvent() {
 		Event event = (Event) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT);
 		if (event != null && event.eIsProxy()) {
-			Event oldEvent = event;
-			event = (Event) eResolveProxy((InternalEObject) event);
+			InternalEObject oldEvent = (InternalEObject) event;
+			event = (Event) eResolveProxy(oldEvent);
 			if (event != oldEvent) {
 				eVirtualSet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT,
 					event);
@@ -189,9 +189,7 @@ public class MessageOccurrenceSpecificationImpl
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME :
@@ -362,15 +360,16 @@ public class MessageOccurrenceSpecificationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME)
-					? (String) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -383,8 +382,7 @@ public class MessageOccurrenceSpecificationImpl
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION) != null;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__COVERED :
-				List covered = (List) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__COVERED);
-				return covered != null && !covered.isEmpty();
+				return isSetCovereds();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				List generalOrdering = (List) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
@@ -396,7 +394,7 @@ public class MessageOccurrenceSpecificationImpl
 				List toBefore = (List) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_BEFORE);
 				return toBefore != null && !toBefore.isEmpty();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT :
-				return eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT) != null;
+				return isSetEvent();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_AFTER :
 				List toAfter = (List) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_AFTER);
 				return toAfter != null && !toAfter.isEmpty();

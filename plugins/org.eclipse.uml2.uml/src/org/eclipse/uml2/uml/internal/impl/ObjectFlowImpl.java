@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -179,8 +179,8 @@ public class ObjectFlowImpl
 	public Behavior getTransformation() {
 		Behavior transformation = (Behavior) eVirtualGet(UMLPackage.OBJECT_FLOW__TRANSFORMATION);
 		if (transformation != null && transformation.eIsProxy()) {
-			Behavior oldTransformation = transformation;
-			transformation = (Behavior) eResolveProxy((InternalEObject) transformation);
+			InternalEObject oldTransformation = (InternalEObject) transformation;
+			transformation = (Behavior) eResolveProxy(oldTransformation);
 			if (transformation != oldTransformation) {
 				eVirtualSet(UMLPackage.OBJECT_FLOW__TRANSFORMATION,
 					transformation);
@@ -228,8 +228,8 @@ public class ObjectFlowImpl
 	public Behavior getSelection() {
 		Behavior selection = (Behavior) eVirtualGet(UMLPackage.OBJECT_FLOW__SELECTION);
 		if (selection != null && selection.eIsProxy()) {
-			Behavior oldSelection = selection;
-			selection = (Behavior) eResolveProxy((InternalEObject) selection);
+			InternalEObject oldSelection = (InternalEObject) selection;
+			selection = (Behavior) eResolveProxy(oldSelection);
 			if (selection != oldSelection) {
 				eVirtualSet(UMLPackage.OBJECT_FLOW__SELECTION, selection);
 				if (eNotificationRequired())
@@ -365,9 +365,7 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OBJECT_FLOW__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.OBJECT_FLOW__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.OBJECT_FLOW__NAME :
@@ -602,15 +600,14 @@ public class ObjectFlowImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.OBJECT_FLOW__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OBJECT_FLOW__NAME :
-				String name = eVirtualIsSet(UMLPackage.OBJECT_FLOW__NAME)
-					? (String) eVirtualGet(UMLPackage.OBJECT_FLOW__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.OBJECT_FLOW__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.OBJECT_FLOW__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.OBJECT_FLOW__VISIBILITY)
-					&& eVirtualGet(UMLPackage.OBJECT_FLOW__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.OBJECT_FLOW__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.OBJECT_FLOW__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

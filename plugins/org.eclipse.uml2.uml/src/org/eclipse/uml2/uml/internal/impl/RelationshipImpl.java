@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -86,9 +86,7 @@ public abstract class RelationshipImpl
 			case UMLPackage.RELATIONSHIP__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.RELATIONSHIP__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.RELATIONSHIP__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :

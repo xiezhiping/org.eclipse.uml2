@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,10 +123,9 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public InteractionOperatorKind getInteractionOperator() {
-		InteractionOperatorKind interactionOperator = (InteractionOperatorKind) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR);
-		return interactionOperator == null
-			? INTERACTION_OPERATOR_EDEFAULT
-			: interactionOperator;
+		return (InteractionOperatorKind) eVirtualGet(
+			UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
+			INTERACTION_OPERATOR_EDEFAULT);
 	}
 
 	/**
@@ -336,9 +335,7 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.COMBINED_FRAGMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.COMBINED_FRAGMENT__NAME :
@@ -497,15 +494,14 @@ public class CombinedFragmentImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.COMBINED_FRAGMENT__NAME)
-					? (String) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.COMBINED_FRAGMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.COMBINED_FRAGMENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.COMBINED_FRAGMENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.COMBINED_FRAGMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.COMBINED_FRAGMENT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.COMBINED_FRAGMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -528,8 +524,9 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
 				return getEnclosingOperand() != null;
 			case UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR :
-				return eVirtualIsSet(UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR)
-					&& eVirtualGet(UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR) != INTERACTION_OPERATOR_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
+					INTERACTION_OPERATOR_EDEFAULT) != INTERACTION_OPERATOR_EDEFAULT;
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
 				List operand = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OPERAND);
 				return operand != null && !operand.isEmpty();
@@ -551,10 +548,9 @@ public class CombinedFragmentImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (interactionOperator: "); //$NON-NLS-1$
-		result
-			.append(eVirtualIsSet(UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR)
-				? eVirtualGet(UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR)
-				: INTERACTION_OPERATOR_EDEFAULT);
+		result.append(eVirtualGet(
+			UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
+			INTERACTION_OPERATOR_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

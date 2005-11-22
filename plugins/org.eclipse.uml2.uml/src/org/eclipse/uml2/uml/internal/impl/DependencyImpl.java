@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -216,7 +216,7 @@ public class DependencyImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -228,7 +228,7 @@ public class DependencyImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -281,9 +281,7 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DEPENDENCY__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DEPENDENCY__NAME :
@@ -305,7 +303,9 @@ public class DependencyImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.DEPENDENCY__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.DEPENDENCY__SOURCE :
@@ -424,15 +424,13 @@ public class DependencyImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DEPENDENCY__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPENDENCY__NAME :
-				String name = eVirtualIsSet(UMLPackage.DEPENDENCY__NAME)
-					? (String) eVirtualGet(UMLPackage.DEPENDENCY__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.DEPENDENCY__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DEPENDENCY__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DEPENDENCY__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DEPENDENCY__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.DEPENDENCY__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -447,7 +445,7 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DEPENDENCY__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.DEPENDENCY__SOURCE :

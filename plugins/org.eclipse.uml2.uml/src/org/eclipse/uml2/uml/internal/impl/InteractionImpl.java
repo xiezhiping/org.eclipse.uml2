@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -226,7 +226,7 @@ public class InteractionImpl
 	public Interaction getEnclosingInteraction() {
 		if (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_INTERACTION)
 			return null;
-		return (Interaction) eContainer;
+		return (Interaction) eContainer();
 	}
 
 	/**
@@ -235,13 +235,13 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
-		if (newEnclosingInteraction != eContainer
+		if (newEnclosingInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newEnclosingInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingInteraction != null)
 				msgs = ((InternalEObject) newEnclosingInteraction).eInverseAdd(
@@ -267,7 +267,7 @@ public class InteractionImpl
 	public InteractionOperand getEnclosingOperand() {
 		if (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_OPERAND)
 			return null;
-		return (InteractionOperand) eContainer;
+		return (InteractionOperand) eContainer();
 	}
 
 	/**
@@ -276,13 +276,13 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
-		if (newEnclosingOperand != eContainer
+		if (newEnclosingOperand != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newEnclosingOperand))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingOperand != null)
 				msgs = ((InternalEObject) newEnclosingOperand).eInverseAdd(
@@ -591,7 +591,7 @@ public class InteractionImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.INTERACTION__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.INTERACTION__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -649,12 +649,12 @@ public class InteractionImpl
 					return ((InternalEList) getCovereds()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.INTERACTION__ENCLOSING_INTERACTION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.INTERACTION__ENCLOSING_INTERACTION, msgs);
 				case UMLPackage.INTERACTION__ENCLOSING_OPERAND :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.INTERACTION__ENCLOSING_OPERAND, msgs);
@@ -672,7 +672,7 @@ public class InteractionImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -812,25 +812,25 @@ public class InteractionImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.INTERACTION__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				case UMLPackage.INTERACTION__ENCLOSING_INTERACTION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.INTERACTION__FRAGMENT, Interaction.class,
 						msgs);
 				case UMLPackage.INTERACTION__ENCLOSING_OPERAND :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.INTERACTION_OPERAND__FRAGMENT,
 						InteractionOperand.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -845,9 +845,7 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INTERACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INTERACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INTERACTION__NAME :
@@ -889,7 +887,9 @@ public class InteractionImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.INTERACTION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.INTERACTION__PACKAGE :
 				return getPackage();
 			case UMLPackage.INTERACTION__TEMPLATE_BINDING :
@@ -1397,15 +1397,13 @@ public class InteractionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.INTERACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.INTERACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.INTERACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INTERACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INTERACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INTERACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.INTERACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1439,9 +1437,9 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.INTERACTION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INTERACTION__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.INTERACTION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INTERACTION__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.INTERACTION__TEMPLATE_BINDING :
@@ -1450,7 +1448,7 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.INTERACTION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.INTERACTION__IS_ABSTRACT :
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.INTERACTION__GENERALIZATION :
 				List generalization = (List) eVirtualGet(UMLPackage.INTERACTION__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -1466,7 +1464,7 @@ public class InteractionImpl
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.INTERACTION__GENERAL :
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UMLPackage.INTERACTION__OWNED_USE_CASE :
 				List ownedUseCase = (List) eVirtualGet(UMLPackage.INTERACTION__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
@@ -1486,8 +1484,7 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.INTERACTION__OWNED_SIGNATURE) != null;
 			case UMLPackage.INTERACTION__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.INTERACTION__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UMLPackage.INTERACTION__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.INTERACTION__ROLE :

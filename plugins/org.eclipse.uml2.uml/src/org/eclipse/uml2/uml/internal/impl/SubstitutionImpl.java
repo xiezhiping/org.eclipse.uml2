@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -162,8 +162,8 @@ public class SubstitutionImpl
 	public Classifier getContract() {
 		Classifier contract = (Classifier) eVirtualGet(UMLPackage.SUBSTITUTION__CONTRACT);
 		if (contract != null && contract.eIsProxy()) {
-			Classifier oldContract = contract;
-			contract = (Classifier) eResolveProxy((InternalEObject) contract);
+			InternalEObject oldContract = (InternalEObject) contract;
+			contract = (Classifier) eResolveProxy(oldContract);
 			if (contract != oldContract) {
 				eVirtualSet(UMLPackage.SUBSTITUTION__CONTRACT, contract);
 				if (eNotificationRequired())
@@ -213,7 +213,18 @@ public class SubstitutionImpl
 	public Classifier getSubstitutingClassifier() {
 		if (eContainerFeatureID != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER)
 			return null;
-		return (Classifier) eContainer;
+		return (Classifier) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier basicGetSubstitutingClassifier() {
+		if (eContainerFeatureID != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER)
+			return null;
+		return (Classifier) eInternalContainer();
 	}
 
 	/**
@@ -226,13 +237,13 @@ public class SubstitutionImpl
 			&& !getClients().contains(newSubstitutingClassifier)) {
 			getClients().add(newSubstitutingClassifier);
 		}
-		if (newSubstitutingClassifier != eContainer
+		if (newSubstitutingClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER && newSubstitutingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newSubstitutingClassifier))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSubstitutingClassifier != null)
 				msgs = ((InternalEObject) newSubstitutingClassifier)
@@ -276,7 +287,7 @@ public class SubstitutionImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER,
@@ -285,7 +296,7 @@ public class SubstitutionImpl
 					return ((InternalEList) getClients()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
@@ -294,7 +305,7 @@ public class SubstitutionImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -350,21 +361,21 @@ public class SubstitutionImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.CLASSIFIER__SUBSTITUTION, Classifier.class,
 						msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -379,9 +390,7 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.SUBSTITUTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.SUBSTITUTION__NAME :
@@ -403,7 +412,9 @@ public class SubstitutionImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.SUBSTITUTION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.SUBSTITUTION__SOURCE :
@@ -421,7 +432,9 @@ public class SubstitutionImpl
 					return getContract();
 				return basicGetContract();
 			case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
-				return getSubstitutingClassifier();
+				if (resolve)
+					return getSubstitutingClassifier();
+				return basicGetSubstitutingClassifier();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -548,15 +561,13 @@ public class SubstitutionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.SUBSTITUTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.SUBSTITUTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.SUBSTITUTION__NAME)
-					? (String) eVirtualGet(UMLPackage.SUBSTITUTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.SUBSTITUTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.SUBSTITUTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.SUBSTITUTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.SUBSTITUTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.SUBSTITUTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -571,7 +582,7 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.SUBSTITUTION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.SUBSTITUTION__SOURCE :
@@ -589,7 +600,7 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__CONTRACT :
 				return eVirtualGet(UMLPackage.SUBSTITUTION__CONTRACT) != null;
 			case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
-				return getSubstitutingClassifier() != null;
+				return basicGetSubstitutingClassifier() != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

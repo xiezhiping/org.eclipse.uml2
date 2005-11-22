@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -257,8 +257,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE);
-		return upperValue;
+		return (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE);
 	}
 
 	/**
@@ -332,8 +331,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE);
-		return lowerValue;
+		return (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE);
 	}
 
 	/**
@@ -537,9 +535,7 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :

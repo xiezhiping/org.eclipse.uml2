@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.1 2005/11/14 22:26:07 khussey Exp $
+ * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -76,8 +76,8 @@ public class ExecutionOccurrenceSpecificationImpl
 	public ExecutionSpecification getExecution() {
 		ExecutionSpecification execution = (ExecutionSpecification) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION);
 		if (execution != null && execution.eIsProxy()) {
-			ExecutionSpecification oldExecution = execution;
-			execution = (ExecutionSpecification) eResolveProxy((InternalEObject) execution);
+			InternalEObject oldExecution = (InternalEObject) execution;
+			execution = (ExecutionSpecification) eResolveProxy(oldExecution);
 			if (execution != oldExecution) {
 				eVirtualSet(
 					UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION,
@@ -128,8 +128,8 @@ public class ExecutionOccurrenceSpecificationImpl
 	public Event getEvent() {
 		Event event = (Event) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT);
 		if (event != null && event.eIsProxy()) {
-			Event oldEvent = event;
-			event = (Event) eResolveProxy((InternalEObject) event);
+			InternalEObject oldEvent = (InternalEObject) event;
+			event = (Event) eResolveProxy(oldEvent);
 			if (event != oldEvent) {
 				eVirtualSet(
 					UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT, event);
@@ -190,9 +190,7 @@ public class ExecutionOccurrenceSpecificationImpl
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
@@ -363,15 +361,16 @@ public class ExecutionOccurrenceSpecificationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME)
-					? (String) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -384,8 +383,7 @@ public class ExecutionOccurrenceSpecificationImpl
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION) != null;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__COVERED :
-				List covered = (List) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__COVERED);
-				return covered != null && !covered.isEmpty();
+				return isSetCovereds();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				List generalOrdering = (List) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
@@ -397,7 +395,7 @@ public class ExecutionOccurrenceSpecificationImpl
 				List toBefore = (List) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE);
 				return toBefore != null && !toBefore.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT :
-				return eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT) != null;
+				return isSetEvent();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_AFTER :
 				List toAfter = (List) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_AFTER);
 				return toAfter != null && !toAfter.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -142,12 +142,12 @@ public abstract class ExecutableNodeImpl
 					return ((InternalEList) getInPartitions()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE, msgs);
 				case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.EXECUTABLE_NODE__ACTIVITY, msgs);
@@ -165,7 +165,7 @@ public abstract class ExecutableNodeImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -231,9 +231,7 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXECUTABLE_NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXECUTABLE_NODE__NAME :
@@ -418,15 +416,14 @@ public abstract class ExecutableNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.EXECUTABLE_NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.EXECUTABLE_NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.EXECUTABLE_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.EXECUTABLE_NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.EXECUTABLE_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.EXECUTABLE_NODE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.EXECUTABLE_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

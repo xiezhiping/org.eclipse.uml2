@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -88,8 +88,8 @@ public class ExceptionHandlerImpl
 	public ExecutableNode getHandlerBody() {
 		ExecutableNode handlerBody = (ExecutableNode) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY);
 		if (handlerBody != null && handlerBody.eIsProxy()) {
-			ExecutableNode oldHandlerBody = handlerBody;
-			handlerBody = (ExecutableNode) eResolveProxy((InternalEObject) handlerBody);
+			InternalEObject oldHandlerBody = (InternalEObject) handlerBody;
+			handlerBody = (ExecutableNode) eResolveProxy(oldHandlerBody);
 			if (handlerBody != oldHandlerBody) {
 				eVirtualSet(UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY,
 					handlerBody);
@@ -137,8 +137,8 @@ public class ExceptionHandlerImpl
 	public ObjectNode getExceptionInput() {
 		ObjectNode exceptionInput = (ObjectNode) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT);
 		if (exceptionInput != null && exceptionInput.eIsProxy()) {
-			ObjectNode oldExceptionInput = exceptionInput;
-			exceptionInput = (ObjectNode) eResolveProxy((InternalEObject) exceptionInput);
+			InternalEObject oldExceptionInput = (InternalEObject) exceptionInput;
+			exceptionInput = (ObjectNode) eResolveProxy(oldExceptionInput);
 			if (exceptionInput != oldExceptionInput) {
 				eVirtualSet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT,
 					exceptionInput);
@@ -216,7 +216,7 @@ public class ExceptionHandlerImpl
 	public ExecutableNode getProtectedNode() {
 		if (eContainerFeatureID != UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE)
 			return null;
-		return (ExecutableNode) eContainer;
+		return (ExecutableNode) eContainer();
 	}
 
 	/**
@@ -225,13 +225,13 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public void setProtectedNode(ExecutableNode newProtectedNode) {
-		if (newProtectedNode != eContainer
+		if (newProtectedNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE && newProtectedNode != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newProtectedNode))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newProtectedNode != null)
 				msgs = ((InternalEObject) newProtectedNode).eInverseAdd(this,
@@ -303,7 +303,7 @@ public class ExceptionHandlerImpl
 					return ((InternalEList) getEAnnotations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE, msgs);
@@ -312,7 +312,7 @@ public class ExceptionHandlerImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -352,15 +352,15 @@ public class ExceptionHandlerImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.EXECUTABLE_NODE__HANDLER,
 						ExecutableNode.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -375,9 +375,7 @@ public class ExceptionHandlerImpl
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXCEPTION_HANDLER__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
@@ -491,12 +489,12 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		ExecutableNode protectedNode = getProtectedNode();
 		if (protectedNode != null) {
 			return protectedNode;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

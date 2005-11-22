@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -105,8 +105,7 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public Constraint getInvariant() {
-		Constraint invariant = (Constraint) eVirtualGet(UMLPackage.STATE_INVARIANT__INVARIANT);
-		return invariant;
+		return (Constraint) eVirtualGet(UMLPackage.STATE_INVARIANT__INVARIANT);
 	}
 
 	/**
@@ -277,9 +276,7 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STATE_INVARIANT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STATE_INVARIANT__NAME :
@@ -420,15 +417,14 @@ public class StateInvariantImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STATE_INVARIANT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STATE_INVARIANT__NAME :
-				String name = eVirtualIsSet(UMLPackage.STATE_INVARIANT__NAME)
-					? (String) eVirtualGet(UMLPackage.STATE_INVARIANT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.STATE_INVARIANT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.STATE_INVARIANT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.STATE_INVARIANT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.STATE_INVARIANT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.STATE_INVARIANT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.STATE_INVARIANT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -441,8 +437,7 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.STATE_INVARIANT__NAME_EXPRESSION) != null;
 			case UMLPackage.STATE_INVARIANT__COVERED :
-				List covered = (List) eVirtualGet(UMLPackage.STATE_INVARIANT__COVERED);
-				return covered != null && !covered.isEmpty();
+				return isSetCovereds();
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
 				List generalOrdering = (List) eVirtualGet(UMLPackage.STATE_INVARIANT__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();

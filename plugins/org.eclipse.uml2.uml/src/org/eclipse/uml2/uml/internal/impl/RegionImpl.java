@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: RegionImpl.java,v 1.3 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -333,7 +333,7 @@ public class RegionImpl
 	public State getState() {
 		if (eContainerFeatureID != UMLPackage.REGION__STATE)
 			return null;
-		return (State) eContainer;
+		return (State) eContainer();
 	}
 
 	/**
@@ -342,13 +342,13 @@ public class RegionImpl
 	 * @generated
 	 */
 	public void setState(State newState) {
-		if (newState != eContainer
+		if (newState != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REGION__STATE && newState != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newState))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newState != null)
 				msgs = ((InternalEObject) newState).eInverseAdd(this,
@@ -371,8 +371,8 @@ public class RegionImpl
 	public Region getExtendedRegion() {
 		Region extendedRegion = (Region) eVirtualGet(UMLPackage.REGION__EXTENDED_REGION);
 		if (extendedRegion != null && extendedRegion.eIsProxy()) {
-			Region oldExtendedRegion = extendedRegion;
-			extendedRegion = (Region) eResolveProxy((InternalEObject) extendedRegion);
+			InternalEObject oldExtendedRegion = (InternalEObject) extendedRegion;
+			extendedRegion = (Region) eResolveProxy(oldExtendedRegion);
 			if (extendedRegion != oldExtendedRegion) {
 				eVirtualSet(UMLPackage.REGION__EXTENDED_REGION, extendedRegion);
 				if (eNotificationRequired())
@@ -419,7 +419,7 @@ public class RegionImpl
 	public StateMachine getStateMachine() {
 		if (eContainerFeatureID != UMLPackage.REGION__STATE_MACHINE)
 			return null;
-		return (StateMachine) eContainer;
+		return (StateMachine) eContainer();
 	}
 
 	/**
@@ -428,13 +428,13 @@ public class RegionImpl
 	 * @generated
 	 */
 	public void setStateMachine(StateMachine newStateMachine) {
-		if (newStateMachine != eContainer
+		if (newStateMachine != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REGION__STATE_MACHINE && newStateMachine != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newStateMachine))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newStateMachine != null)
 				msgs = ((InternalEObject) newStateMachine).eInverseAdd(this,
@@ -590,12 +590,12 @@ public class RegionImpl
 					return ((InternalEList) getTransitions()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.REGION__STATE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.REGION__STATE, msgs);
 				case UMLPackage.REGION__STATE_MACHINE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.REGION__STATE_MACHINE, msgs);
@@ -604,7 +604,7 @@ public class RegionImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -667,18 +667,18 @@ public class RegionImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.REGION__STATE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.STATE__REGION, State.class, msgs);
 				case UMLPackage.REGION__STATE_MACHINE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.STATE_MACHINE__REGION, StateMachine.class,
 						msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -693,9 +693,7 @@ public class RegionImpl
 			case UMLPackage.REGION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.REGION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.REGION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.REGION__NAME :
@@ -885,15 +883,14 @@ public class RegionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.REGION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.REGION__NAME :
-				String name = eVirtualIsSet(UMLPackage.REGION__NAME)
-					? (String) eVirtualGet(UMLPackage.REGION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.REGION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.REGION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.REGION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.REGION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.REGION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.REGION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

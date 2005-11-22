@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: TypeImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -105,9 +105,7 @@ public abstract class TypeImpl
 			case UMLPackage.TYPE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TYPE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TYPE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TYPE__NAME :
@@ -129,7 +127,9 @@ public abstract class TypeImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.TYPE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.TYPE__PACKAGE :
 				return getPackage();
 		}
@@ -232,15 +232,13 @@ public abstract class TypeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TYPE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TYPE__NAME :
-				String name = eVirtualIsSet(UMLPackage.TYPE__NAME)
-					? (String) eVirtualGet(UMLPackage.TYPE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.TYPE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.TYPE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.TYPE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.TYPE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.TYPE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -255,7 +253,7 @@ public abstract class TypeImpl
 			case UMLPackage.TYPE__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.TYPE__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.TYPE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TYPE__PACKAGE :
 				return getPackage() != null;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Lifeline.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: Lifeline.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -94,7 +94,7 @@ public interface Lifeline
 	 * @see #setInteraction(Interaction)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLifeline_Interaction()
 	 * @see org.eclipse.uml2.uml.Interaction#getLifelines
-	 * @model opposite="lifeline" required="true" ordered="false"
+	 * @model opposite="lifeline" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
 	Interaction getInteraction();

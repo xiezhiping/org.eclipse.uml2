@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -132,8 +132,7 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
-		return ownedTemplateSignature;
+		return (TemplateSignature) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -278,7 +277,7 @@ public abstract class TemplateableElementImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -323,9 +322,7 @@ public abstract class TemplateableElementImpl
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :

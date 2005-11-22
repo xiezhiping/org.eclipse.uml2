@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -160,8 +160,8 @@ public abstract class InvocationActionImpl
 	public Port getOnPort() {
 		Port onPort = (Port) eVirtualGet(UMLPackage.INVOCATION_ACTION__ON_PORT);
 		if (onPort != null && onPort.eIsProxy()) {
-			Port oldOnPort = onPort;
-			onPort = (Port) eResolveProxy((InternalEObject) onPort);
+			InternalEObject oldOnPort = (InternalEObject) onPort;
+			onPort = (Port) eResolveProxy(oldOnPort);
 			if (onPort != oldOnPort) {
 				eVirtualSet(UMLPackage.INVOCATION_ACTION__ON_PORT, onPort);
 				if (eNotificationRequired())
@@ -281,9 +281,7 @@ public abstract class InvocationActionImpl
 			case UMLPackage.INVOCATION_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INVOCATION_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INVOCATION_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INVOCATION_ACTION__NAME :
@@ -511,15 +509,14 @@ public abstract class InvocationActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INVOCATION_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INVOCATION_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.INVOCATION_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.INVOCATION_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.INVOCATION_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INVOCATION_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INVOCATION_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INVOCATION_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.INVOCATION_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.INVOCATION_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.1 2005/11/14 22:26:07 khussey Exp $
+ * $Id: CommentImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,10 +80,7 @@ public class CommentImpl
 	 * @generated
 	 */
 	public String getBody() {
-		String body = (String) eVirtualGet(UMLPackage.COMMENT__BODY);
-		return body == null
-			? BODY_EDEFAULT
-			: body;
+		return (String) eVirtualGet(UMLPackage.COMMENT__BODY, BODY_EDEFAULT);
 	}
 
 	/**
@@ -132,9 +129,7 @@ public class CommentImpl
 			case UMLPackage.COMMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.COMMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.COMMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.COMMENT__BODY :
@@ -211,9 +206,8 @@ public class CommentImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.COMMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COMMENT__BODY :
-				String body = eVirtualIsSet(UMLPackage.COMMENT__BODY)
-					? (String) eVirtualGet(UMLPackage.COMMENT__BODY)
-					: BODY_EDEFAULT;
+				String body = (String) eVirtualGet(UMLPackage.COMMENT__BODY,
+					BODY_EDEFAULT);
 				return BODY_EDEFAULT == null
 					? body != null
 					: !BODY_EDEFAULT.equals(body);
@@ -235,9 +229,7 @@ public class CommentImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.COMMENT__BODY)
-			? eVirtualGet(UMLPackage.COMMENT__BODY)
-			: BODY_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.COMMENT__BODY, BODY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

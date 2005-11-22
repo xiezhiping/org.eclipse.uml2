@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -125,8 +125,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public InputPin getObject() {
-		InputPin object = (InputPin) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT);
-		return object;
+		return (InputPin) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT);
 	}
 
 	/**
@@ -216,8 +215,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public OutputPin getResult() {
-		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT);
-		return result;
+		return (OutputPin) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT);
 	}
 
 	/**
@@ -297,8 +295,8 @@ public class ReadLinkObjectEndQualifierActionImpl
 	public Property getQualifier() {
 		Property qualifier = (Property) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER);
 		if (qualifier != null && qualifier.eIsProxy()) {
-			Property oldQualifier = qualifier;
-			qualifier = (Property) eResolveProxy((InternalEObject) qualifier);
+			InternalEObject oldQualifier = (InternalEObject) qualifier;
+			qualifier = (Property) eResolveProxy(oldQualifier);
 			if (qualifier != oldQualifier) {
 				eVirtualSet(
 					UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER,
@@ -503,9 +501,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME :
@@ -740,15 +736,16 @@ public class ReadLinkObjectEndQualifierActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

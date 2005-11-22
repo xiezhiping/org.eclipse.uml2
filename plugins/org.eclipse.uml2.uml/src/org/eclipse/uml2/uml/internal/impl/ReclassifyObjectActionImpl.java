@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -214,8 +214,7 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public InputPin getObject() {
-		InputPin object = (InputPin) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT);
-		return object;
+		return (InputPin) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT);
 	}
 
 	/**
@@ -396,9 +395,7 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME :
@@ -643,15 +640,15 @@ public class ReclassifyObjectActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.RECLASSIFY_OBJECT_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.RECLASSIFY_OBJECT_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

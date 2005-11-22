@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -277,7 +277,7 @@ public class ComponentImpl
 		List packagedElement = (List) eVirtualGet(UMLPackage.COMPONENT__PACKAGED_ELEMENT);
 		if (packagedElement == null) {
 			eVirtualSet(UMLPackage.COMPONENT__PACKAGED_ELEMENT,
-				packagedElement = new EObjectContainmentEList(
+				packagedElement = new EObjectContainmentEList.Resolving(
 					PackageableElement.class, this,
 					UMLPackage.COMPONENT__PACKAGED_ELEMENT));
 		}
@@ -430,7 +430,7 @@ public class ComponentImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -483,7 +483,7 @@ public class ComponentImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -597,9 +597,7 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.COMPONENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.COMPONENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.COMPONENT__NAME :
@@ -641,7 +639,9 @@ public class ComponentImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.COMPONENT__PACKAGE :
 				return getPackage();
 			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
@@ -1045,15 +1045,13 @@ public class ComponentImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.COMPONENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COMPONENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.COMPONENT__NAME)
-					? (String) eVirtualGet(UMLPackage.COMPONENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.COMPONENT__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.COMPONENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.COMPONENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.COMPONENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.COMPONENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1087,9 +1085,9 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.COMPONENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.COMPONENT__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.COMPONENT__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
@@ -1098,7 +1096,7 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.COMPONENT__IS_ABSTRACT :
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.COMPONENT__GENERALIZATION :
 				List generalization = (List) eVirtualGet(UMLPackage.COMPONENT__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -1114,7 +1112,7 @@ public class ComponentImpl
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.COMPONENT__GENERAL :
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UMLPackage.COMPONENT__OWNED_USE_CASE :
 				List ownedUseCase = (List) eVirtualGet(UMLPackage.COMPONENT__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
@@ -1134,8 +1132,7 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.COMPONENT__OWNED_SIGNATURE) != null;
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.COMPONENT__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UMLPackage.COMPONENT__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.COMPONENT__ROLE :

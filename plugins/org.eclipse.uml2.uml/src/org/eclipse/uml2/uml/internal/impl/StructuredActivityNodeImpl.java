@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.4 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -779,14 +779,14 @@ public class StructuredActivityNodeImpl
 					return ((InternalEList) getInPartitions()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
 						UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE,
 						msgs);
 				case UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY, msgs);
@@ -809,7 +809,7 @@ public class StructuredActivityNodeImpl
 					return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY, msgs);
@@ -827,7 +827,7 @@ public class StructuredActivityNodeImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -922,9 +922,7 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME :
@@ -992,9 +990,7 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__SUPER_GROUP :
-				if (resolve)
-					return getSuperGroup();
-				return basicGetSuperGroup();
+				return getSuperGroup();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
@@ -1221,15 +1217,15 @@ public class StructuredActivityNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.STRUCTURED_ACTIVITY_NODE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1258,7 +1254,7 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY :
-				return getActivity() != null;
+				return isSetActivity();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__INCOMING :
 				List incoming = (List) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
@@ -1308,7 +1304,7 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
-				return getInActivity() != null;
+				return isSetInActivity();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE :
 				return isSetContainedEdges();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE :
@@ -1508,20 +1504,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityGroup basicGetSuperGroup() {
-		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ActivityGroup getSuperGroup() {
-		ActivityGroup superGroup = basicGetSuperGroup();
-		return superGroup == null
-			? null
-			: (ActivityGroup) eResolveProxy((InternalEObject) superGroup);
+		return null;
 	}
 
 	/**
@@ -1538,14 +1522,14 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		if (isSetSuperGroup()) {
-			return basicGetSuperGroup();
+			return getSuperGroup();
 		}
 		if (isSetInActivity()) {
 			return getInActivity();
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

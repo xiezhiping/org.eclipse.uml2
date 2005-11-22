@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionSpecificationImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ExecutionSpecificationImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,8 +80,8 @@ public abstract class ExecutionSpecificationImpl
 	public ExecutionOccurrenceSpecification getStart() {
 		ExecutionOccurrenceSpecification start = (ExecutionOccurrenceSpecification) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__START);
 		if (start != null && start.eIsProxy()) {
-			ExecutionOccurrenceSpecification oldStart = start;
-			start = (ExecutionOccurrenceSpecification) eResolveProxy((InternalEObject) start);
+			InternalEObject oldStart = (InternalEObject) start;
+			start = (ExecutionOccurrenceSpecification) eResolveProxy(oldStart);
 			if (start != oldStart) {
 				eVirtualSet(UMLPackage.EXECUTION_SPECIFICATION__START, start);
 				if (eNotificationRequired())
@@ -128,8 +128,8 @@ public abstract class ExecutionSpecificationImpl
 	public ExecutionOccurrenceSpecification getFinish() {
 		ExecutionOccurrenceSpecification finish = (ExecutionOccurrenceSpecification) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__FINISH);
 		if (finish != null && finish.eIsProxy()) {
-			ExecutionOccurrenceSpecification oldFinish = finish;
-			finish = (ExecutionOccurrenceSpecification) eResolveProxy((InternalEObject) finish);
+			InternalEObject oldFinish = (InternalEObject) finish;
+			finish = (ExecutionOccurrenceSpecification) eResolveProxy(oldFinish);
 			if (finish != oldFinish) {
 				eVirtualSet(UMLPackage.EXECUTION_SPECIFICATION__FINISH, finish);
 				if (eNotificationRequired())
@@ -190,9 +190,7 @@ public abstract class ExecutionSpecificationImpl
 			case UMLPackage.EXECUTION_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXECUTION_SPECIFICATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXECUTION_SPECIFICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME :
@@ -345,15 +343,15 @@ public abstract class ExecutionSpecificationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.EXECUTION_SPECIFICATION__NAME)
-					? (String) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.EXECUTION_SPECIFICATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.EXECUTION_SPECIFICATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.EXECUTION_SPECIFICATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.EXECUTION_SPECIFICATION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.EXECUTION_SPECIFICATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

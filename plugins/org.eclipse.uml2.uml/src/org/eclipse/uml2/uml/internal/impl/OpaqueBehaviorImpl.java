@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,9 +110,7 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME :
@@ -154,7 +152,9 @@ public class OpaqueBehaviorImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
 				return getPackage();
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
@@ -601,15 +601,13 @@ public class OpaqueBehaviorImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME :
-				String name = eVirtualIsSet(UMLPackage.OPAQUE_BEHAVIOR__NAME)
-					? (String) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.OPAQUE_BEHAVIOR__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.OPAQUE_BEHAVIOR__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.OPAQUE_BEHAVIOR__VISIBILITY)
-					&& eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.OPAQUE_BEHAVIOR__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -643,9 +641,9 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
@@ -654,7 +652,7 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ABSTRACT :
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERALIZATION :
 				List generalization = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -670,7 +668,7 @@ public class OpaqueBehaviorImpl
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERAL :
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
 				List ownedUseCase = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
@@ -690,8 +688,7 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UMLPackage.OPAQUE_BEHAVIOR__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__ROLE :
@@ -767,13 +764,9 @@ public class OpaqueBehaviorImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.OPAQUE_BEHAVIOR__BODY)
-			? eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__BODY)
-			: null);
+		result.append(eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__BODY));
 		result.append(", language: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE)
-			? eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE)
-			: null);
+		result.append(eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE));
 		result.append(')');
 		return result.toString();
 	}

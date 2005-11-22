@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -319,8 +319,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public ActivityPartition getPartition() {
-		ActivityPartition partition = (ActivityPartition) eVirtualGet(UMLPackage.ACTIVITY__PARTITION);
-		return partition;
+		return (ActivityPartition) eVirtualGet(UMLPackage.ACTIVITY__PARTITION);
 	}
 
 	/**
@@ -561,7 +560,7 @@ public class ActivityImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -632,7 +631,7 @@ public class ActivityImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -760,9 +759,7 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ACTIVITY__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTIVITY__NAME :
@@ -804,7 +801,9 @@ public class ActivityImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.ACTIVITY__PACKAGE :
 				return getPackage();
 			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
@@ -1299,15 +1298,13 @@ public class ActivityImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY__NAME :
-				String name = eVirtualIsSet(UMLPackage.ACTIVITY__NAME)
-					? (String) eVirtualGet(UMLPackage.ACTIVITY__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.ACTIVITY__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ACTIVITY__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ACTIVITY__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ACTIVITY__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.ACTIVITY__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1341,9 +1338,9 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.ACTIVITY__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.ACTIVITY__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
@@ -1352,7 +1349,7 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.ACTIVITY__IS_ABSTRACT :
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.ACTIVITY__GENERALIZATION :
 				List generalization = (List) eVirtualGet(UMLPackage.ACTIVITY__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -1368,7 +1365,7 @@ public class ActivityImpl
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.ACTIVITY__GENERAL :
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
 				List ownedUseCase = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
@@ -1388,8 +1385,7 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.ACTIVITY__OWNED_SIGNATURE) != null;
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UMLPackage.ACTIVITY__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.ACTIVITY__ROLE :

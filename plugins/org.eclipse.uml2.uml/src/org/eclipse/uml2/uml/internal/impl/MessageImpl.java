@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: MessageImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -148,10 +148,8 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageSort getMessageSort() {
-		MessageSort messageSort = (MessageSort) eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT);
-		return messageSort == null
-			? MESSAGE_SORT_EDEFAULT
-			: messageSort;
+		return (MessageSort) eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
+			MESSAGE_SORT_EDEFAULT);
 	}
 
 	/**
@@ -182,8 +180,8 @@ public class MessageImpl
 	public MessageEnd getReceiveEvent() {
 		MessageEnd receiveEvent = (MessageEnd) eVirtualGet(UMLPackage.MESSAGE__RECEIVE_EVENT);
 		if (receiveEvent != null && receiveEvent.eIsProxy()) {
-			MessageEnd oldReceiveEvent = receiveEvent;
-			receiveEvent = (MessageEnd) eResolveProxy((InternalEObject) receiveEvent);
+			InternalEObject oldReceiveEvent = (InternalEObject) receiveEvent;
+			receiveEvent = (MessageEnd) eResolveProxy(oldReceiveEvent);
 			if (receiveEvent != oldReceiveEvent) {
 				eVirtualSet(UMLPackage.MESSAGE__RECEIVE_EVENT, receiveEvent);
 				if (eNotificationRequired())
@@ -230,8 +228,8 @@ public class MessageImpl
 	public MessageEnd getSendEvent() {
 		MessageEnd sendEvent = (MessageEnd) eVirtualGet(UMLPackage.MESSAGE__SEND_EVENT);
 		if (sendEvent != null && sendEvent.eIsProxy()) {
-			MessageEnd oldSendEvent = sendEvent;
-			sendEvent = (MessageEnd) eResolveProxy((InternalEObject) sendEvent);
+			InternalEObject oldSendEvent = (InternalEObject) sendEvent;
+			sendEvent = (MessageEnd) eResolveProxy(oldSendEvent);
 			if (sendEvent != oldSendEvent) {
 				eVirtualSet(UMLPackage.MESSAGE__SEND_EVENT, sendEvent);
 				if (eNotificationRequired())
@@ -277,8 +275,8 @@ public class MessageImpl
 	public Connector getConnector() {
 		Connector connector = (Connector) eVirtualGet(UMLPackage.MESSAGE__CONNECTOR);
 		if (connector != null && connector.eIsProxy()) {
-			Connector oldConnector = connector;
-			connector = (Connector) eResolveProxy((InternalEObject) connector);
+			InternalEObject oldConnector = (InternalEObject) connector;
+			connector = (Connector) eResolveProxy(oldConnector);
 			if (connector != oldConnector) {
 				eVirtualSet(UMLPackage.MESSAGE__CONNECTOR, connector);
 				if (eNotificationRequired())
@@ -324,7 +322,7 @@ public class MessageImpl
 	public Interaction getInteraction() {
 		if (eContainerFeatureID != UMLPackage.MESSAGE__INTERACTION)
 			return null;
-		return (Interaction) eContainer;
+		return (Interaction) eContainer();
 	}
 
 	/**
@@ -333,13 +331,13 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setInteraction(Interaction newInteraction) {
-		if (newInteraction != eContainer
+		if (newInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.MESSAGE__INTERACTION && newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInteraction != null)
 				msgs = ((InternalEObject) newInteraction).eInverseAdd(this,
@@ -404,11 +402,9 @@ public class MessageImpl
 	 */
 	public NamedElement getSignature() {
 		NamedElement signature = basicGetSignature();
-		return signature == null
-			? null
-			: (signature.eIsProxy()
-				? (NamedElement) eResolveProxy((InternalEObject) signature)
-				: signature);
+		return signature != null && signature.eIsProxy()
+			? (NamedElement) eResolveProxy((InternalEObject) signature)
+			: signature;
 	}
 
 	/**
@@ -511,7 +507,7 @@ public class MessageImpl
 					return ((InternalEList) getClientDependencies()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.MESSAGE__INTERACTION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.MESSAGE__INTERACTION, msgs);
@@ -520,7 +516,7 @@ public class MessageImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -568,15 +564,15 @@ public class MessageImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.MESSAGE__INTERACTION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.INTERACTION__MESSAGE, Interaction.class,
 						msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -591,9 +587,7 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MESSAGE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.MESSAGE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.MESSAGE__NAME :
@@ -753,15 +747,14 @@ public class MessageImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.MESSAGE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MESSAGE__NAME :
-				String name = eVirtualIsSet(UMLPackage.MESSAGE__NAME)
-					? (String) eVirtualGet(UMLPackage.MESSAGE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.MESSAGE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.MESSAGE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.MESSAGE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.MESSAGE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.MESSAGE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.MESSAGE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -776,8 +769,8 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__MESSAGE_KIND :
 				return getMessageKind() != MESSAGE_KIND_EDEFAULT;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
-				return eVirtualIsSet(UMLPackage.MESSAGE__MESSAGE_SORT)
-					&& eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT) != MESSAGE_SORT_EDEFAULT;
+				return eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
+					MESSAGE_SORT_EDEFAULT) != MESSAGE_SORT_EDEFAULT;
 			case UMLPackage.MESSAGE__RECEIVE_EVENT :
 				return eVirtualGet(UMLPackage.MESSAGE__RECEIVE_EVENT) != null;
 			case UMLPackage.MESSAGE__SEND_EVENT :
@@ -806,9 +799,8 @@ public class MessageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (messageSort: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.MESSAGE__MESSAGE_SORT)
-			? eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT)
-			: MESSAGE_SORT_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
+			MESSAGE_SORT_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

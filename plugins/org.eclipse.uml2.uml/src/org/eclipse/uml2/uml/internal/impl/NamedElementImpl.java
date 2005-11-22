@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.4 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -139,10 +139,8 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public String getName() {
-		String name = (String) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME);
-		return name == null
-			? NAME_EDEFAULT
-			: name;
+		return (String) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME,
+			NAME_EDEFAULT);
 	}
 
 	/**
@@ -170,10 +168,8 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		VisibilityKind visibility = (VisibilityKind) eVirtualGet(UMLPackage.NAMED_ELEMENT__VISIBILITY);
-		return visibility == null
-			? VISIBILITY_EDEFAULT
-			: visibility;
+		return (VisibilityKind) eVirtualGet(
+			UMLPackage.NAMED_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT);
 	}
 
 	/**
@@ -244,8 +240,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public StringExpression getNameExpression() {
-		StringExpression nameExpression = (StringExpression) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION);
-		return nameExpression;
+		return (StringExpression) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION);
 	}
 
 	/**
@@ -402,7 +397,7 @@ public abstract class NamedElementImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -447,9 +442,7 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.NAMED_ELEMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.NAMED_ELEMENT__NAME :
@@ -548,15 +541,14 @@ public abstract class NamedElementImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.NAMED_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.NAMED_ELEMENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.NAMED_ELEMENT__NAME)
-					? (String) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.NAMED_ELEMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.NAMED_ELEMENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.NAMED_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.NAMED_ELEMENT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.NAMED_ELEMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -583,13 +575,11 @@ public abstract class NamedElementImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.NAMED_ELEMENT__NAME)
-			? eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME)
-			: NAME_EDEFAULT);
+		result
+			.append(eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME, NAME_EDEFAULT));
 		result.append(", visibility: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.NAMED_ELEMENT__VISIBILITY)
-			? eVirtualGet(UMLPackage.NAMED_ELEMENT__VISIBILITY)
-			: VISIBILITY_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.NAMED_ELEMENT__VISIBILITY,
+			VISIBILITY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}
@@ -629,11 +619,11 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		if (isSetNamespace()) {
-			return basicGetNamespace();
+			return getNamespace();
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

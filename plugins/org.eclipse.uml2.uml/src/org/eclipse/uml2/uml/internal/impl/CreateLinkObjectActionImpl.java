@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: CreateLinkObjectActionImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -101,8 +101,7 @@ public class CreateLinkObjectActionImpl
 	 * @generated
 	 */
 	public OutputPin getResult() {
-		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.CREATE_LINK_OBJECT_ACTION__RESULT);
-		return result;
+		return (OutputPin) eVirtualGet(UMLPackage.CREATE_LINK_OBJECT_ACTION__RESULT);
 	}
 
 	/**
@@ -277,9 +276,7 @@ public class CreateLinkObjectActionImpl
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__NAME :
@@ -514,15 +511,15 @@ public class CreateLinkObjectActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CREATE_LINK_OBJECT_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.CREATE_LINK_OBJECT_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.CREATE_LINK_OBJECT_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.CREATE_LINK_OBJECT_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CREATE_LINK_OBJECT_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CREATE_LINK_OBJECT_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.CREATE_LINK_OBJECT_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -580,8 +577,7 @@ public class CreateLinkObjectActionImpl
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__END_DATA :
-				List endData = (List) eVirtualGet(UMLPackage.CREATE_LINK_OBJECT_ACTION__END_DATA);
-				return endData != null && !endData.isEmpty();
+				return isSetEndData();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__INPUT_VALUE :
 				List inputValue = (List) eVirtualGet(UMLPackage.CREATE_LINK_OBJECT_ACTION__INPUT_VALUE);
 				return inputValue != null && !inputValue.isEmpty();

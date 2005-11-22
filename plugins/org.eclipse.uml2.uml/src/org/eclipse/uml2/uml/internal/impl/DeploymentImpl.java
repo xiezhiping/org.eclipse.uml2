@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -261,7 +261,18 @@ public class DeploymentImpl
 	public DeploymentTarget getLocation() {
 		if (eContainerFeatureID != UMLPackage.DEPLOYMENT__LOCATION)
 			return null;
-		return (DeploymentTarget) eContainer;
+		return (DeploymentTarget) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeploymentTarget basicGetLocation() {
+		if (eContainerFeatureID != UMLPackage.DEPLOYMENT__LOCATION)
+			return null;
+		return (DeploymentTarget) eInternalContainer();
 	}
 
 	/**
@@ -273,13 +284,13 @@ public class DeploymentImpl
 		if (newLocation != null && !getClients().contains(newLocation)) {
 			getClients().add(newLocation);
 		}
-		if (newLocation != eContainer
+		if (newLocation != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.DEPLOYMENT__LOCATION && newLocation != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newLocation))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newLocation != null)
 				msgs = ((InternalEObject) newLocation).eInverseAdd(this,
@@ -321,7 +332,7 @@ public class DeploymentImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -332,7 +343,7 @@ public class DeploymentImpl
 					return ((InternalEList) getConfigurations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.DEPLOYMENT__LOCATION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.DEPLOYMENT__LOCATION, msgs);
@@ -341,7 +352,7 @@ public class DeploymentImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -397,21 +408,21 @@ public class DeploymentImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				case UMLPackage.DEPLOYMENT__LOCATION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
 						DeploymentTarget.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -426,9 +437,7 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DEPLOYMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DEPLOYMENT__NAME :
@@ -450,7 +459,9 @@ public class DeploymentImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.DEPLOYMENT__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.DEPLOYMENT__SOURCE :
@@ -466,7 +477,9 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
 				return getConfigurations();
 			case UMLPackage.DEPLOYMENT__LOCATION :
-				return getLocation();
+				if (resolve)
+					return getLocation();
+				return basicGetLocation();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -595,15 +608,13 @@ public class DeploymentImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DEPLOYMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPLOYMENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.DEPLOYMENT__NAME)
-					? (String) eVirtualGet(UMLPackage.DEPLOYMENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.DEPLOYMENT__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DEPLOYMENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DEPLOYMENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DEPLOYMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.DEPLOYMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -618,7 +629,7 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DEPLOYMENT__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.DEPLOYMENT__SOURCE :
@@ -638,7 +649,7 @@ public class DeploymentImpl
 				List configuration = (List) eVirtualGet(UMLPackage.DEPLOYMENT__CONFIGURATION);
 				return configuration != null && !configuration.isEmpty();
 			case UMLPackage.DEPLOYMENT__LOCATION :
-				return getLocation() != null;
+				return basicGetLocation() != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

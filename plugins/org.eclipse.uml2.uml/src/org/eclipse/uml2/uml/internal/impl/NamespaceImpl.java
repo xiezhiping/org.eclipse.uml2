@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.4 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -406,7 +406,7 @@ public abstract class NamespaceImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -460,9 +460,7 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.NAMESPACE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.NAMESPACE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.NAMESPACE__NAME :
@@ -594,15 +592,14 @@ public abstract class NamespaceImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.NAMESPACE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.NAMESPACE__NAME :
-				String name = eVirtualIsSet(UMLPackage.NAMESPACE__NAME)
-					? (String) eVirtualGet(UMLPackage.NAMESPACE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.NAMESPACE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.NAMESPACE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.NAMESPACE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.NAMESPACE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.NAMESPACE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.NAMESPACE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionExecutionSpecificationImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: ActionExecutionSpecificationImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,8 +80,8 @@ public class ActionExecutionSpecificationImpl
 	public Action getAction() {
 		Action action = (Action) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION);
 		if (action != null && action.eIsProxy()) {
-			Action oldAction = action;
-			action = (Action) eResolveProxy((InternalEObject) action);
+			InternalEObject oldAction = (InternalEObject) action;
+			action = (Action) eResolveProxy(oldAction);
 			if (action != oldAction) {
 				eVirtualSet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION,
 					action);
@@ -144,9 +144,7 @@ public class ActionExecutionSpecificationImpl
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__NAME :
@@ -309,15 +307,16 @@ public class ActionExecutionSpecificationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__NAME)
-					? (String) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.ACTION_EXECUTION_SPECIFICATION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.ACTION_EXECUTION_SPECIFICATION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

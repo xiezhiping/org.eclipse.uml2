@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: ClassImpl.java,v 1.3 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -273,8 +273,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Behavior getClassifierBehavior() {
-		Behavior classifierBehavior = (Behavior) eVirtualGet(UMLPackage.CLASS__CLASSIFIER_BEHAVIOR);
-		return classifierBehavior;
+		return (Behavior) eVirtualGet(UMLPackage.CLASS__CLASSIFIER_BEHAVIOR);
 	}
 
 	/**
@@ -799,7 +798,7 @@ public class ClassImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -846,7 +845,7 @@ public class ClassImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -954,9 +953,7 @@ public class ClassImpl
 			case UMLPackage.CLASS__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CLASS__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CLASS__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CLASS__NAME :
@@ -998,7 +995,9 @@ public class ClassImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.CLASS__PACKAGE :
 				return getPackage();
 			case UMLPackage.CLASS__TEMPLATE_BINDING :
@@ -1370,15 +1369,13 @@ public class ClassImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CLASS__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CLASS__NAME :
-				String name = eVirtualIsSet(UMLPackage.CLASS__NAME)
-					? (String) eVirtualGet(UMLPackage.CLASS__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.CLASS__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CLASS__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CLASS__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CLASS__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CLASS__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1412,9 +1409,9 @@ public class ClassImpl
 			case UMLPackage.CLASS__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.CLASS__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.CLASS__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CLASS__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.CLASS__TEMPLATE_BINDING :
@@ -1423,7 +1420,7 @@ public class ClassImpl
 			case UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.CLASS__IS_ABSTRACT :
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.CLASS__GENERALIZATION :
 				List generalization = (List) eVirtualGet(UMLPackage.CLASS__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -1439,7 +1436,7 @@ public class ClassImpl
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.CLASS__GENERAL :
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UMLPackage.CLASS__OWNED_USE_CASE :
 				List ownedUseCase = (List) eVirtualGet(UMLPackage.CLASS__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
@@ -1459,8 +1456,7 @@ public class ClassImpl
 			case UMLPackage.CLASS__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.CLASS__OWNED_SIGNATURE) != null;
 			case UMLPackage.CLASS__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.CLASS__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UMLPackage.CLASS__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.CLASS__ROLE :

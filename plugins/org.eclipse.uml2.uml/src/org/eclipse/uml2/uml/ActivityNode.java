@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: ActivityNode.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -134,7 +134,7 @@ public interface ActivityNode
 	 * @see #setInStructuredNode(StructuredActivityNode)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_InStructuredNode()
 	 * @see org.eclipse.uml2.uml.StructuredActivityNode#getNodes
-	 * @model opposite="node" ordered="false"
+	 * @model opposite="node" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	StructuredActivityNode getInStructuredNode();
@@ -161,7 +161,7 @@ public interface ActivityNode
 	 * @see #setActivity(Activity)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_Activity()
 	 * @see org.eclipse.uml2.uml.Activity#getNodes
-	 * @model opposite="node" ordered="false"
+	 * @model opposite="node" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	Activity getActivity();

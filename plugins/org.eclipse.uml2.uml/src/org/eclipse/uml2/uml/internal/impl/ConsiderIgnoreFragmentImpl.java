@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -133,9 +133,7 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
@@ -303,15 +301,15 @@ public class ConsiderIgnoreFragmentImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME)
-					? (String) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.CONSIDER_IGNORE_FRAGMENT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -334,8 +332,9 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_OPERAND :
 				return getEnclosingOperand() != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR :
-				return eVirtualIsSet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR)
-					&& eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR) != INTERACTION_OPERATOR_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR,
+					INTERACTION_OPERATOR_EDEFAULT) != INTERACTION_OPERATOR_EDEFAULT;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND :
 				List operand = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND);
 				return operand != null && !operand.isEmpty();

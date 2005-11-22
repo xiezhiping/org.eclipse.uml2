@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -197,8 +197,7 @@ public class DestroyObjectActionImpl
 	 * @generated
 	 */
 	public InputPin getTarget() {
-		InputPin target = (InputPin) eVirtualGet(UMLPackage.DESTROY_OBJECT_ACTION__TARGET);
-		return target;
+		return (InputPin) eVirtualGet(UMLPackage.DESTROY_OBJECT_ACTION__TARGET);
 	}
 
 	/**
@@ -364,9 +363,7 @@ public class DestroyObjectActionImpl
 			case UMLPackage.DESTROY_OBJECT_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DESTROY_OBJECT_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DESTROY_OBJECT_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DESTROY_OBJECT_ACTION__NAME :
@@ -603,15 +600,15 @@ public class DestroyObjectActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DESTROY_OBJECT_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DESTROY_OBJECT_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.DESTROY_OBJECT_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.DESTROY_OBJECT_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.DESTROY_OBJECT_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DESTROY_OBJECT_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DESTROY_OBJECT_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DESTROY_OBJECT_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.DESTROY_OBJECT_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.DESTROY_OBJECT_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

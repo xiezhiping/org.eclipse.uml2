@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: OperationImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -199,8 +199,8 @@ public class OperationImpl
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy((InternalEObject) templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
+			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(UMLPackage.OPERATION__TEMPLATE_PARAMETER,
 					templateParameter);
@@ -294,7 +294,18 @@ public class OperationImpl
 	public TemplateParameter getOwningTemplateParameter() {
 		if (eContainerFeatureID != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER)
 			return null;
-		return (TemplateParameter) eContainer;
+		return (TemplateParameter) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateParameter basicGetOwningTemplateParameter() {
+		if (eContainerFeatureID != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER)
+			return null;
+		return (TemplateParameter) eInternalContainer();
 	}
 
 	/**
@@ -304,15 +315,15 @@ public class OperationImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer;
-		if (newOwningTemplateParameter != eContainer
+		EObject oldOwningTemplateParameter = eContainer();
+		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil
 				.isAncestor(this, (EObject) newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
@@ -396,8 +407,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
-		return ownedTemplateSignature;
+		return (TemplateSignature) eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -662,7 +672,7 @@ public class OperationImpl
 	public org.eclipse.uml2.uml.Class getClass_() {
 		if (eContainerFeatureID != UMLPackage.OPERATION__CLASS_)
 			return null;
-		return (org.eclipse.uml2.uml.Class) eContainer;
+		return (org.eclipse.uml2.uml.Class) eContainer();
 	}
 
 	/**
@@ -671,13 +681,13 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setClass_(org.eclipse.uml2.uml.Class newClass_) {
-		if (newClass_ != eContainer
+		if (newClass_ != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__CLASS_ && newClass_ != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newClass_))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newClass_ != null)
 				msgs = ((InternalEObject) newClass_).eInverseAdd(this,
@@ -793,7 +803,7 @@ public class OperationImpl
 	public DataType getDatatype() {
 		if (eContainerFeatureID != UMLPackage.OPERATION__DATATYPE)
 			return null;
-		return (DataType) eContainer;
+		return (DataType) eContainer();
 	}
 
 	/**
@@ -802,13 +812,13 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setDatatype(DataType newDatatype) {
-		if (newDatatype != eContainer
+		if (newDatatype != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__DATATYPE && newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newDatatype))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDatatype != null)
 				msgs = ((InternalEObject) newDatatype)
@@ -830,8 +840,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Constraint getBodyCondition() {
-		Constraint bodyCondition = (Constraint) eVirtualGet(UMLPackage.OPERATION__BODY_CONDITION);
-		return bodyCondition;
+		return (Constraint) eVirtualGet(UMLPackage.OPERATION__BODY_CONDITION);
 	}
 
 	/**
@@ -863,11 +872,9 @@ public class OperationImpl
 	 */
 	public Type getType() {
 		Type type = basicGetType();
-		return type == null
-			? null
-			: (type.eIsProxy()
-				? (Type) eResolveProxy((InternalEObject) type)
-				: type);
+		return type != null && type.eIsProxy()
+			? (Type) eResolveProxy((InternalEObject) type)
+			: type;
 	}
 
 	/**
@@ -896,7 +903,7 @@ public class OperationImpl
 	public Interface getInterface() {
 		if (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE)
 			return null;
-		return (Interface) eContainer;
+		return (Interface) eContainer();
 	}
 
 	/**
@@ -905,13 +912,13 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setInterface(Interface newInterface) {
-		if (newInterface != eContainer
+		if (newInterface != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE && newInterface != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newInterface))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInterface != null)
 				msgs = ((InternalEObject) newInterface).eInverseAdd(this,
@@ -1176,7 +1183,7 @@ public class OperationImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -1195,17 +1202,17 @@ public class OperationImpl
 					return basicSetOwnedTemplateSignature(
 						(TemplateSignature) otherEnd, msgs);
 				case UMLPackage.OPERATION__CLASS_ :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.OPERATION__CLASS_, msgs);
 				case UMLPackage.OPERATION__DATATYPE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.OPERATION__DATATYPE, msgs);
 				case UMLPackage.OPERATION__INTERFACE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.OPERATION__INTERFACE, msgs);
@@ -1214,7 +1221,7 @@ public class OperationImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -1293,29 +1300,29 @@ public class OperationImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				case UMLPackage.OPERATION__CLASS_ :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.CLASS__OWNED_OPERATION,
 						org.eclipse.uml2.uml.Class.class, msgs);
 				case UMLPackage.OPERATION__DATATYPE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.DATA_TYPE__OWNED_OPERATION, DataType.class,
 						msgs);
 				case UMLPackage.OPERATION__INTERFACE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
 						msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -1330,9 +1337,7 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OPERATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.OPERATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.OPERATION__NAME :
@@ -1394,7 +1399,9 @@ public class OperationImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
@@ -1694,15 +1701,14 @@ public class OperationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.OPERATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPERATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.OPERATION__NAME)
-					? (String) eVirtualGet(UMLPackage.OPERATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.OPERATION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.OPERATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.OPERATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.OPERATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.OPERATION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.OPERATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1740,27 +1746,25 @@ public class OperationImpl
 			case UMLPackage.OPERATION__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
 			case UMLPackage.OPERATION__OWNED_PARAMETER :
-				List ownedParameter = (List) eVirtualGet(UMLPackage.OPERATION__OWNED_PARAMETER);
-				return ownedParameter != null && !ownedParameter.isEmpty();
+				return isSetOwnedParameters();
 			case UMLPackage.OPERATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.OPERATION__METHOD :
 				List method = (List) eVirtualGet(UMLPackage.OPERATION__METHOD);
 				return method != null && !method.isEmpty();
 			case UMLPackage.OPERATION__CONCURRENCY :
-				return eVirtualIsSet(UMLPackage.OPERATION__CONCURRENCY)
-					&& eVirtualGet(UMLPackage.OPERATION__CONCURRENCY) != CONCURRENCY_EDEFAULT;
+				return eVirtualGet(UMLPackage.OPERATION__CONCURRENCY,
+					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
 			case UMLPackage.OPERATION__RAISED_EXCEPTION :
-				List raisedException = (List) eVirtualGet(UMLPackage.OPERATION__RAISED_EXCEPTION);
-				return raisedException != null && !raisedException.isEmpty();
+				return isSetRaisedExceptions();
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
 				List ownedParameterSet = (List) eVirtualGet(UMLPackage.OPERATION__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
@@ -1913,12 +1917,12 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

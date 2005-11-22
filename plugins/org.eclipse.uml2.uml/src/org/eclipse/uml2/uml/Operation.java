@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: Operation.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -207,7 +207,7 @@ public interface Operation
 	 * @see #setClass_(org.eclipse.uml2.uml.Class)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Class_()
 	 * @see org.eclipse.uml2.uml.Class#getOwnedOperations
-	 * @model opposite="ownedOperation" ordered="false"
+	 * @model opposite="ownedOperation" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Class getClass_();
@@ -313,7 +313,7 @@ public interface Operation
 	 * @see #setDatatype(DataType)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Datatype()
 	 * @see org.eclipse.uml2.uml.DataType#getOwnedOperations
-	 * @model opposite="ownedOperation" ordered="false"
+	 * @model opposite="ownedOperation" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	DataType getDatatype();
@@ -391,7 +391,7 @@ public interface Operation
 	 * @see #setInterface(Interface)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Interface()
 	 * @see org.eclipse.uml2.uml.Interface#getOwnedOperations
-	 * @model opposite="ownedOperation" ordered="false"
+	 * @model opposite="ownedOperation" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	Interface getInterface();

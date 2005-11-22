@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: SlotImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -103,7 +103,7 @@ public class SlotImpl
 	public InstanceSpecification getOwningInstance() {
 		if (eContainerFeatureID != UMLPackage.SLOT__OWNING_INSTANCE)
 			return null;
-		return (InstanceSpecification) eContainer;
+		return (InstanceSpecification) eContainer();
 	}
 
 	/**
@@ -112,13 +112,13 @@ public class SlotImpl
 	 * @generated
 	 */
 	public void setOwningInstance(InstanceSpecification newOwningInstance) {
-		if (newOwningInstance != eContainer
+		if (newOwningInstance != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.SLOT__OWNING_INSTANCE && newOwningInstance != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newOwningInstance))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningInstance != null)
 				msgs = ((InternalEObject) newOwningInstance).eInverseAdd(this,
@@ -143,8 +143,8 @@ public class SlotImpl
 	public StructuralFeature getDefiningFeature() {
 		StructuralFeature definingFeature = (StructuralFeature) eVirtualGet(UMLPackage.SLOT__DEFINING_FEATURE);
 		if (definingFeature != null && definingFeature.eIsProxy()) {
-			StructuralFeature oldDefiningFeature = definingFeature;
-			definingFeature = (StructuralFeature) eResolveProxy((InternalEObject) definingFeature);
+			InternalEObject oldDefiningFeature = (InternalEObject) definingFeature;
+			definingFeature = (StructuralFeature) eResolveProxy(oldDefiningFeature);
 			if (definingFeature != oldDefiningFeature) {
 				eVirtualSet(UMLPackage.SLOT__DEFINING_FEATURE, definingFeature);
 				if (eNotificationRequired())
@@ -238,7 +238,7 @@ public class SlotImpl
 					return ((InternalEList) getEAnnotations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.SLOT__OWNING_INSTANCE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.SLOT__OWNING_INSTANCE, msgs);
@@ -247,7 +247,7 @@ public class SlotImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -290,15 +290,15 @@ public class SlotImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.SLOT__OWNING_INSTANCE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.INSTANCE_SPECIFICATION__SLOT,
 						InstanceSpecification.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -313,9 +313,7 @@ public class SlotImpl
 			case UMLPackage.SLOT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.SLOT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.SLOT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.SLOT__OWNING_INSTANCE :
@@ -417,12 +415,12 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		InstanceSpecification owningInstance = getOwningInstance();
 		if (owningInstance != null) {
 			return owningInstance;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

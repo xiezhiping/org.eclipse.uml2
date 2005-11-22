@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -142,9 +142,7 @@ public class LiteralBooleanImpl
 			case UMLPackage.LITERAL_BOOLEAN__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LITERAL_BOOLEAN__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.LITERAL_BOOLEAN__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LITERAL_BOOLEAN__NAME :
@@ -166,7 +164,9 @@ public class LiteralBooleanImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.LITERAL_BOOLEAN__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.LITERAL_BOOLEAN__TYPE :
 				if (resolve)
 					return getType();
@@ -281,15 +281,13 @@ public class LiteralBooleanImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.LITERAL_BOOLEAN__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LITERAL_BOOLEAN__NAME :
-				String name = eVirtualIsSet(UMLPackage.LITERAL_BOOLEAN__NAME)
-					? (String) eVirtualGet(UMLPackage.LITERAL_BOOLEAN__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.LITERAL_BOOLEAN__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.LITERAL_BOOLEAN__VISIBILITY)
-					&& eVirtualGet(UMLPackage.LITERAL_BOOLEAN__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.LITERAL_BOOLEAN__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -304,7 +302,7 @@ public class LiteralBooleanImpl
 			case UMLPackage.LITERAL_BOOLEAN__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.LITERAL_BOOLEAN__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.LITERAL_BOOLEAN__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.LITERAL_BOOLEAN__TYPE :
 				return eVirtualGet(UMLPackage.LITERAL_BOOLEAN__TYPE) != null;
 			case UMLPackage.LITERAL_BOOLEAN__VALUE :

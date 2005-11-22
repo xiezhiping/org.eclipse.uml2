@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -87,8 +87,8 @@ public abstract class ConnectableElementImpl
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy((InternalEObject) templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
+			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(UMLPackage.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER,
 					templateParameter);
@@ -184,7 +184,18 @@ public abstract class ConnectableElementImpl
 	public TemplateParameter getOwningTemplateParameter() {
 		if (eContainerFeatureID != UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER)
 			return null;
-		return (TemplateParameter) eContainer;
+		return (TemplateParameter) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateParameter basicGetOwningTemplateParameter() {
+		if (eContainerFeatureID != UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER)
+			return null;
+		return (TemplateParameter) eInternalContainer();
 	}
 
 	/**
@@ -194,15 +205,15 @@ public abstract class ConnectableElementImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer;
-		if (newOwningTemplateParameter != eContainer
+		EObject oldOwningTemplateParameter = eContainer();
+		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil
 				.isAncestor(this, (EObject) newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
@@ -286,7 +297,7 @@ public abstract class ConnectableElementImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -299,7 +310,7 @@ public abstract class ConnectableElementImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -351,7 +362,7 @@ public abstract class ConnectableElementImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -360,8 +371,8 @@ public abstract class ConnectableElementImpl
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -376,9 +387,7 @@ public abstract class ConnectableElementImpl
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
@@ -404,7 +413,9 @@ public abstract class ConnectableElementImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.CONNECTABLE_ELEMENT__END :
 				return getEnds();
 		}
@@ -514,15 +525,14 @@ public abstract class ConnectableElementImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.CONNECTABLE_ELEMENT__NAME)
-					? (String) eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.CONNECTABLE_ELEMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CONNECTABLE_ELEMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -537,9 +547,9 @@ public abstract class ConnectableElementImpl
 			case UMLPackage.CONNECTABLE_ELEMENT__TYPE :
 				return eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT__TYPE) != null;
 			case UMLPackage.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CONNECTABLE_ELEMENT__END :
 				List end = (List) eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT__END);
 				return end != null && !end.isEmpty();
@@ -590,12 +600,12 @@ public abstract class ConnectableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

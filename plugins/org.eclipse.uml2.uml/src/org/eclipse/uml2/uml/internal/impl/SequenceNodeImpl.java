@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -212,9 +212,7 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.SEQUENCE_NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.SEQUENCE_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.SEQUENCE_NODE__NAME :
@@ -282,9 +280,7 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.SEQUENCE_NODE__SUPER_GROUP :
-				if (resolve)
-					return getSuperGroup();
-				return basicGetSuperGroup();
+				return getSuperGroup();
 			case UMLPackage.SEQUENCE_NODE__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
@@ -520,15 +516,14 @@ public class SequenceNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.SEQUENCE_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.SEQUENCE_NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.SEQUENCE_NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.SEQUENCE_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.SEQUENCE_NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.SEQUENCE_NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.SEQUENCE_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.SEQUENCE_NODE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.SEQUENCE_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -557,7 +552,7 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.SEQUENCE_NODE__ACTIVITY :
-				return getActivity() != null;
+				return isSetActivity();
 			case UMLPackage.SEQUENCE_NODE__INCOMING :
 				List incoming = (List) eVirtualGet(UMLPackage.SEQUENCE_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
@@ -607,15 +602,14 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
-				return getInActivity() != null;
+				return isSetInActivity();
 			case UMLPackage.SEQUENCE_NODE__CONTAINED_EDGE :
 				return isSetContainedEdges();
 			case UMLPackage.SEQUENCE_NODE__VARIABLE :
 				List variable = (List) eVirtualGet(UMLPackage.SEQUENCE_NODE__VARIABLE);
 				return variable != null && !variable.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__NODE :
-				List node = (List) eVirtualGet(UMLPackage.SEQUENCE_NODE__NODE);
-				return node != null && !node.isEmpty();
+				return isSetNodes();
 			case UMLPackage.SEQUENCE_NODE__MUST_ISOLATE :
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.SEQUENCE_NODE__EDGE :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.3 2005/11/22 15:32:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -144,7 +144,7 @@ public class RedefinableTemplateSignatureImpl
 	public TemplateableElement getTemplate() {
 		if (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE)
 			return null;
-		return (TemplateableElement) eContainer;
+		return (TemplateableElement) eContainer();
 	}
 
 	/**
@@ -153,13 +153,13 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public void setTemplate(TemplateableElement newTemplate) {
-		if (newTemplate != eContainer
+		if (newTemplate != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newTemplate))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplate != null)
 				msgs = ((InternalEObject) newTemplate).eInverseAdd(this,
@@ -312,7 +312,7 @@ public class RedefinableTemplateSignatureImpl
 	public Classifier getClassifier() {
 		if (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER)
 			return null;
-		return (Classifier) eContainer;
+		return (Classifier) eContainer();
 	}
 
 	/**
@@ -321,13 +321,13 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public void setClassifier(Classifier newClassifier) {
-		if (newClassifier != eContainer
+		if (newClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER && newClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newClassifier))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newClassifier != null)
 				msgs = ((InternalEObject) newClassifier).eInverseAdd(this,
@@ -391,7 +391,7 @@ public class RedefinableTemplateSignatureImpl
 					return ((InternalEList) getClientDependencies()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE,
@@ -400,7 +400,7 @@ public class RedefinableTemplateSignatureImpl
 					return ((InternalEList) getOwnedParameters()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER,
@@ -410,7 +410,7 @@ public class RedefinableTemplateSignatureImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -463,21 +463,21 @@ public class RedefinableTemplateSignatureImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 							TemplateableElement.class, msgs);
 				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.CLASSIFIER__OWNED_SIGNATURE,
 						Classifier.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -492,9 +492,7 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME :
@@ -652,15 +650,16 @@ public class RedefinableTemplateSignatureImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME :
-				String name = eVirtualIsSet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME)
-					? (String) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -745,12 +744,12 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateableElement template = getTemplate();
 		if (template != null) {
 			return template;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

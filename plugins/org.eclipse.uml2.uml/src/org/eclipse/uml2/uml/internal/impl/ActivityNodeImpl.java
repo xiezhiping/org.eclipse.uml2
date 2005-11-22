@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -207,7 +207,7 @@ public abstract class ActivityNodeImpl
 	public StructuredActivityNode getInStructuredNode() {
 		if (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE)
 			return null;
-		return (StructuredActivityNode) eContainer;
+		return (StructuredActivityNode) eContainer();
 	}
 
 	/**
@@ -216,13 +216,13 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
-		if (newInStructuredNode != eContainer
+		if (newInStructuredNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newInStructuredNode))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInStructuredNode != null)
 				msgs = ((InternalEObject) newInStructuredNode).eInverseAdd(
@@ -247,7 +247,7 @@ public abstract class ActivityNodeImpl
 	public Activity getActivity() {
 		if (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__ACTIVITY)
 			return null;
-		return (Activity) eContainer;
+		return (Activity) eContainer();
 	}
 
 	/**
@@ -256,13 +256,13 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-		if (newActivity != eContainer
+		if (newActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__ACTIVITY && newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newActivity != null)
 				msgs = ((InternalEObject) newActivity).eInverseAdd(this,
@@ -399,12 +399,12 @@ public abstract class ActivityNodeImpl
 					return ((InternalEList) getInPartitions()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
 				case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
@@ -419,7 +419,7 @@ public abstract class ActivityNodeImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -479,18 +479,18 @@ public abstract class ActivityNodeImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
 						StructuredActivityNode.class, msgs);
 				case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.ACTIVITY__NODE, Activity.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -505,9 +505,7 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY_NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTIVITY_NODE__NAME :
@@ -683,15 +681,14 @@ public abstract class ActivityNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.ACTIVITY_NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.ACTIVITY_NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.ACTIVITY_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ACTIVITY_NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ACTIVITY_NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ACTIVITY_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.ACTIVITY_NODE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.ACTIVITY_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -752,12 +749,12 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		Activity activity = getActivity();
 		if (activity != null) {
 			return activity;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

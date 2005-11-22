@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReference.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: ConnectionPointReference.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -106,7 +106,7 @@ public interface ConnectionPointReference
 	 * @see #setState(State)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectionPointReference_State()
 	 * @see org.eclipse.uml2.uml.State#getConnections
-	 * @model opposite="connection" ordered="false"
+	 * @model opposite="connection" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	State getState();

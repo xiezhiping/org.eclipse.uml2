@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -468,9 +468,7 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.COLLABORATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.COLLABORATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.COLLABORATION__NAME :
@@ -512,7 +510,9 @@ public class CollaborationImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.COLLABORATION__PACKAGE :
 				return getPackage();
 			case UMLPackage.COLLABORATION__TEMPLATE_BINDING :
@@ -836,15 +836,13 @@ public class CollaborationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COLLABORATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.COLLABORATION__NAME)
-					? (String) eVirtualGet(UMLPackage.COLLABORATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.COLLABORATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.COLLABORATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.COLLABORATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.COLLABORATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.COLLABORATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -878,9 +876,9 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.COLLABORATION__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.COLLABORATION__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.COLLABORATION__TEMPLATE_BINDING :

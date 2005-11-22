@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: ElementImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -218,9 +218,7 @@ public abstract class ElementImpl
 			case UMLPackage.ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ELEMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 		}
@@ -361,20 +359,8 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
-		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Element getOwner() {
-		Element owner = basicGetOwner();
-		return owner == null
-			? null
-			: (Element) eResolveProxy((InternalEObject) owner);
+		return null;
 	}
 
 	/**

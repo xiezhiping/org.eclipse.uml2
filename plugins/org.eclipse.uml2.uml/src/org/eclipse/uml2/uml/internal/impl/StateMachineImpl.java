@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -243,8 +243,8 @@ public class StateMachineImpl
 	public StateMachine getExtendedStateMachine() {
 		StateMachine extendedStateMachine = (StateMachine) eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
 		if (extendedStateMachine != null && extendedStateMachine.eIsProxy()) {
-			StateMachine oldExtendedStateMachine = extendedStateMachine;
-			extendedStateMachine = (StateMachine) eResolveProxy((InternalEObject) extendedStateMachine);
+			InternalEObject oldExtendedStateMachine = (InternalEObject) extendedStateMachine;
+			extendedStateMachine = (StateMachine) eResolveProxy(oldExtendedStateMachine);
 			if (extendedStateMachine != oldExtendedStateMachine) {
 				eVirtualSet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE,
 					extendedStateMachine);
@@ -400,7 +400,7 @@ public class StateMachineImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER,
@@ -466,7 +466,7 @@ public class StateMachineImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -589,9 +589,7 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STATE_MACHINE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.STATE_MACHINE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STATE_MACHINE__NAME :
@@ -633,7 +631,9 @@ public class StateMachineImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.STATE_MACHINE__PACKAGE :
 				return getPackage();
 			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
@@ -1090,15 +1090,13 @@ public class StateMachineImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STATE_MACHINE__NAME :
-				String name = eVirtualIsSet(UMLPackage.STATE_MACHINE__NAME)
-					? (String) eVirtualGet(UMLPackage.STATE_MACHINE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.STATE_MACHINE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.STATE_MACHINE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.STATE_MACHINE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.STATE_MACHINE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.STATE_MACHINE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1132,9 +1130,9 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.STATE_MACHINE__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
@@ -1143,7 +1141,7 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
 				List generalization = (List) eVirtualGet(UMLPackage.STATE_MACHINE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -1159,7 +1157,7 @@ public class StateMachineImpl
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.STATE_MACHINE__GENERAL :
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UMLPackage.STATE_MACHINE__OWNED_USE_CASE :
 				List ownedUseCase = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
@@ -1179,8 +1177,7 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_SIGNATURE) != null;
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UMLPackage.STATE_MACHINE__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.STATE_MACHINE__ROLE :

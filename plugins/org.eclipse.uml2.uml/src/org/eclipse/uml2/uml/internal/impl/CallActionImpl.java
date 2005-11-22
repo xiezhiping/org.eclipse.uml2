@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -294,9 +294,7 @@ public abstract class CallActionImpl
 			case UMLPackage.CALL_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CALL_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CALL_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CALL_ACTION__NAME :
@@ -543,15 +541,14 @@ public abstract class CallActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CALL_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CALL_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.CALL_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.CALL_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.CALL_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CALL_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CALL_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CALL_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.CALL_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CALL_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

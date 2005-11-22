@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: VertexImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -148,7 +148,7 @@ public abstract class VertexImpl
 	public Region getContainer() {
 		if (eContainerFeatureID != UMLPackage.VERTEX__CONTAINER)
 			return null;
-		return (Region) eContainer;
+		return (Region) eContainer();
 	}
 
 	/**
@@ -157,13 +157,13 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
-		if (newContainer != eContainer
+		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VERTEX__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newContainer))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContainer != null)
 				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
@@ -209,7 +209,7 @@ public abstract class VertexImpl
 					return ((InternalEList) getIncomings()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.VERTEX__CONTAINER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.VERTEX__CONTAINER, msgs);
@@ -218,7 +218,7 @@ public abstract class VertexImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -269,14 +269,14 @@ public abstract class VertexImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.VERTEX__CONTAINER :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -291,9 +291,7 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.VERTEX__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.VERTEX__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.VERTEX__NAME :
@@ -418,15 +416,14 @@ public abstract class VertexImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.VERTEX__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.VERTEX__NAME :
-				String name = eVirtualIsSet(UMLPackage.VERTEX__NAME)
-					? (String) eVirtualGet(UMLPackage.VERTEX__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.VERTEX__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.VERTEX__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.VERTEX__VISIBILITY)
-					&& eVirtualGet(UMLPackage.VERTEX__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.VERTEX__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.VERTEX__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

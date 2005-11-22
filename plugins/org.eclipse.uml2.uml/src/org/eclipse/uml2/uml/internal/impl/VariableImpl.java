@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: VariableImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -268,8 +268,7 @@ public class VariableImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__UPPER_VALUE);
-		return upperValue;
+		return (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__UPPER_VALUE);
 	}
 
 	/**
@@ -340,8 +339,7 @@ public class VariableImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__LOWER_VALUE);
-		return lowerValue;
+		return (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__LOWER_VALUE);
 	}
 
 	/**
@@ -414,7 +412,7 @@ public class VariableImpl
 	public Activity getActivityScope() {
 		if (eContainerFeatureID != UMLPackage.VARIABLE__ACTIVITY_SCOPE)
 			return null;
-		return (Activity) eContainer;
+		return (Activity) eContainer();
 	}
 
 	/**
@@ -423,13 +421,13 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setActivityScope(Activity newActivityScope) {
-		if (newActivityScope != eContainer
+		if (newActivityScope != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VARIABLE__ACTIVITY_SCOPE && newActivityScope != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newActivityScope))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newActivityScope != null)
 				msgs = ((InternalEObject) newActivityScope).eInverseAdd(this,
@@ -453,7 +451,7 @@ public class VariableImpl
 	public StructuredActivityNode getScope() {
 		if (eContainerFeatureID != UMLPackage.VARIABLE__SCOPE)
 			return null;
-		return (StructuredActivityNode) eContainer;
+		return (StructuredActivityNode) eContainer();
 	}
 
 	/**
@@ -462,13 +460,13 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setScope(StructuredActivityNode newScope) {
-		if (newScope != eContainer
+		if (newScope != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VARIABLE__SCOPE && newScope != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newScope))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newScope != null)
 				msgs = ((InternalEObject) newScope).eInverseAdd(this,
@@ -615,12 +613,12 @@ public class VariableImpl
 					return ((InternalEList) getClientDependencies()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
 				case UMLPackage.VARIABLE__SCOPE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.VARIABLE__SCOPE, msgs);
@@ -629,7 +627,7 @@ public class VariableImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -681,18 +679,18 @@ public class VariableImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.ACTIVITY__VARIABLE, Activity.class, msgs);
 				case UMLPackage.VARIABLE__SCOPE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
 						StructuredActivityNode.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -707,9 +705,7 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.VARIABLE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.VARIABLE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.VARIABLE__NAME :
@@ -886,15 +882,14 @@ public class VariableImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.VARIABLE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.VARIABLE__NAME :
-				String name = eVirtualIsSet(UMLPackage.VARIABLE__NAME)
-					? (String) eVirtualGet(UMLPackage.VARIABLE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.VARIABLE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.VARIABLE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.VARIABLE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.VARIABLE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.VARIABLE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.VARIABLE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1016,7 +1011,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		Activity activityScope = getActivityScope();
 		if (activityScope != null) {
 			return activityScope;
@@ -1025,7 +1020,7 @@ public class VariableImpl
 		if (scope != null) {
 			return scope;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

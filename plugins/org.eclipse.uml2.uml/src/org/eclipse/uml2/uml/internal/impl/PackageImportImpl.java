@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -130,10 +130,8 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		VisibilityKind visibility = (VisibilityKind) eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY);
-		return visibility == null
-			? VISIBILITY_EDEFAULT
-			: visibility;
+		return (VisibilityKind) eVirtualGet(
+			UMLPackage.PACKAGE_IMPORT__VISIBILITY, VISIBILITY_EDEFAULT);
 	}
 
 	/**
@@ -164,8 +162,8 @@ public class PackageImportImpl
 	public org.eclipse.uml2.uml.Package getImportedPackage() {
 		org.eclipse.uml2.uml.Package importedPackage = (org.eclipse.uml2.uml.Package) eVirtualGet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE);
 		if (importedPackage != null && importedPackage.eIsProxy()) {
-			org.eclipse.uml2.uml.Package oldImportedPackage = importedPackage;
-			importedPackage = (org.eclipse.uml2.uml.Package) eResolveProxy((InternalEObject) importedPackage);
+			InternalEObject oldImportedPackage = (InternalEObject) importedPackage;
+			importedPackage = (org.eclipse.uml2.uml.Package) eResolveProxy(oldImportedPackage);
 			if (importedPackage != oldImportedPackage) {
 				eVirtualSet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE,
 					importedPackage);
@@ -214,7 +212,7 @@ public class PackageImportImpl
 	public Namespace getImportingNamespace() {
 		if (eContainerFeatureID != UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE)
 			return null;
-		return (Namespace) eContainer;
+		return (Namespace) eContainer();
 	}
 
 	/**
@@ -223,13 +221,13 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public void setImportingNamespace(Namespace newImportingNamespace) {
-		if (newImportingNamespace != eContainer
+		if (newImportingNamespace != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE && newImportingNamespace != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newImportingNamespace))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newImportingNamespace != null)
 				msgs = ((InternalEObject) newImportingNamespace).eInverseAdd(
@@ -270,7 +268,7 @@ public class PackageImportImpl
 					return ((InternalEList) getEAnnotations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE, msgs);
@@ -279,7 +277,7 @@ public class PackageImportImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -319,15 +317,15 @@ public class PackageImportImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.NAMESPACE__PACKAGE_IMPORT, Namespace.class,
 						msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -342,9 +340,7 @@ public class PackageImportImpl
 			case UMLPackage.PACKAGE_IMPORT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PACKAGE_IMPORT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PACKAGE_IMPORT__RELATED_ELEMENT :
@@ -442,8 +438,8 @@ public class PackageImportImpl
 			case UMLPackage.PACKAGE_IMPORT__TARGET :
 				return isSetTargets();
 			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.PACKAGE_IMPORT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				return eVirtualGet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE) != null;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
@@ -463,9 +459,8 @@ public class PackageImportImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.PACKAGE_IMPORT__VISIBILITY)
-			? eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY)
-			: VISIBILITY_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY,
+			VISIBILITY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}
@@ -496,12 +491,12 @@ public class PackageImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		Namespace importingNamespace = getImportingNamespace();
 		if (importingNamespace != null) {
 			return importingNamespace;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

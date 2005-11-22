@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -159,9 +159,7 @@ public class ContinuationImpl
 			case UMLPackage.CONTINUATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONTINUATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CONTINUATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONTINUATION__NAME :
@@ -304,15 +302,14 @@ public class ContinuationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONTINUATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONTINUATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.CONTINUATION__NAME)
-					? (String) eVirtualGet(UMLPackage.CONTINUATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.CONTINUATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CONTINUATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CONTINUATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CONTINUATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.CONTINUATION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CONTINUATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

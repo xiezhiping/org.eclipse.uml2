@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -96,8 +96,7 @@ public class RaiseExceptionActionImpl
 	 * @generated
 	 */
 	public InputPin getException() {
-		InputPin exception = (InputPin) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION);
-		return exception;
+		return (InputPin) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION);
 	}
 
 	/**
@@ -246,9 +245,7 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
@@ -465,15 +462,15 @@ public class RaiseExceptionActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.RAISE_EXCEPTION_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.RAISE_EXCEPTION_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
+ * $Id: StateImpl.java,v 1.4 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -348,7 +348,7 @@ public class StateImpl
 	public Region getContainer() {
 		if (eContainerFeatureID != UMLPackage.STATE__CONTAINER)
 			return null;
-		return (Region) eContainer;
+		return (Region) eContainer();
 	}
 
 	/**
@@ -357,13 +357,13 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
-		if (newContainer != eContainer
+		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.STATE__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newContainer))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContainer != null)
 				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
@@ -467,8 +467,8 @@ public class StateImpl
 	public StateMachine getSubmachine() {
 		StateMachine submachine = (StateMachine) eVirtualGet(UMLPackage.STATE__SUBMACHINE);
 		if (submachine != null && submachine.eIsProxy()) {
-			StateMachine oldSubmachine = submachine;
-			submachine = (StateMachine) eResolveProxy((InternalEObject) submachine);
+			InternalEObject oldSubmachine = (InternalEObject) submachine;
+			submachine = (StateMachine) eResolveProxy(oldSubmachine);
 			if (submachine != oldSubmachine) {
 				eVirtualSet(UMLPackage.STATE__SUBMACHINE, submachine);
 				if (eNotificationRequired())
@@ -603,8 +603,8 @@ public class StateImpl
 	public State getRedefinedState() {
 		State redefinedState = (State) eVirtualGet(UMLPackage.STATE__REDEFINED_STATE);
 		if (redefinedState != null && redefinedState.eIsProxy()) {
-			State oldRedefinedState = redefinedState;
-			redefinedState = (State) eResolveProxy((InternalEObject) redefinedState);
+			InternalEObject oldRedefinedState = (InternalEObject) redefinedState;
+			redefinedState = (State) eResolveProxy(oldRedefinedState);
 			if (redefinedState != oldRedefinedState) {
 				eVirtualSet(UMLPackage.STATE__REDEFINED_STATE, redefinedState);
 				if (eNotificationRequired())
@@ -649,8 +649,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Constraint getStateInvariant() {
-		Constraint stateInvariant = (Constraint) eVirtualGet(UMLPackage.STATE__STATE_INVARIANT);
-		return stateInvariant;
+		return (Constraint) eVirtualGet(UMLPackage.STATE__STATE_INVARIANT);
 	}
 
 	/**
@@ -733,8 +732,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior getEntry() {
-		Behavior entry = (Behavior) eVirtualGet(UMLPackage.STATE__ENTRY);
-		return entry;
+		return (Behavior) eVirtualGet(UMLPackage.STATE__ENTRY);
 	}
 
 	/**
@@ -815,8 +813,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior getExit() {
-		Behavior exit = (Behavior) eVirtualGet(UMLPackage.STATE__EXIT);
-		return exit;
+		return (Behavior) eVirtualGet(UMLPackage.STATE__EXIT);
 	}
 
 	/**
@@ -897,8 +894,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior getDoActivity() {
-		Behavior doActivity = (Behavior) eVirtualGet(UMLPackage.STATE__DO_ACTIVITY);
-		return doActivity;
+		return (Behavior) eVirtualGet(UMLPackage.STATE__DO_ACTIVITY);
 	}
 
 	/**
@@ -1216,7 +1212,7 @@ public class StateImpl
 					return ((InternalEList) getIncomings()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.STATE__CONTAINER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.STATE__CONTAINER, msgs);
@@ -1234,7 +1230,7 @@ public class StateImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -1314,14 +1310,14 @@ public class StateImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.STATE__CONTAINER :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -1336,9 +1332,7 @@ public class StateImpl
 			case UMLPackage.STATE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STATE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.STATE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STATE__NAME :
@@ -1614,15 +1608,14 @@ public class StateImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STATE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STATE__NAME :
-				String name = eVirtualIsSet(UMLPackage.STATE__NAME)
-					? (String) eVirtualGet(UMLPackage.STATE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.STATE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.STATE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.STATE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.STATE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.STATE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.STATE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Message.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: Message.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -182,7 +182,7 @@ public interface Message
 	 * @see #setInteraction(Interaction)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMessage_Interaction()
 	 * @see org.eclipse.uml2.uml.Interaction#getMessages
-	 * @model opposite="message" required="true" ordered="false"
+	 * @model opposite="message" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
 	Interaction getInteraction();

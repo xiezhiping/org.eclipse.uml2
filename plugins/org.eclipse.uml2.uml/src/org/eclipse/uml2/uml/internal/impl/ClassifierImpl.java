@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.4 2005/11/22 15:32:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -282,8 +282,8 @@ public abstract class ClassifierImpl
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy((InternalEObject) templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
+			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER,
 					templateParameter);
@@ -377,7 +377,18 @@ public abstract class ClassifierImpl
 	public TemplateParameter getOwningTemplateParameter() {
 		if (eContainerFeatureID != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER)
 			return null;
-		return (TemplateParameter) eContainer;
+		return (TemplateParameter) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateParameter basicGetOwningTemplateParameter() {
+		if (eContainerFeatureID != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER)
+			return null;
+		return (TemplateParameter) eInternalContainer();
 	}
 
 	/**
@@ -387,15 +398,15 @@ public abstract class ClassifierImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer;
-		if (newOwningTemplateParameter != eContainer
+		EObject oldOwningTemplateParameter = eContainer();
+		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil
 				.isAncestor(this, (EObject) newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
@@ -425,10 +436,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		VisibilityKind visibility = (VisibilityKind) eVirtualGet(UMLPackage.CLASSIFIER__VISIBILITY);
-		return visibility == null
-			? VISIBILITY_EDEFAULT
-			: visibility;
+		return (VisibilityKind) eVirtualGet(UMLPackage.CLASSIFIER__VISIBILITY,
+			VISIBILITY_EDEFAULT);
 	}
 
 	/**
@@ -457,8 +466,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public boolean isSetVisibility() {
-		return eVirtualIsSet(UMLPackage.CLASSIFIER__VISIBILITY)
-			&& eVirtualGet(UMLPackage.CLASSIFIER__VISIBILITY) != VISIBILITY_EDEFAULT;
+		return eVirtualGet(UMLPackage.CLASSIFIER__VISIBILITY,
+			VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -547,8 +556,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE);
-		return ownedTemplateSignature;
+		return (TemplateSignature) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -1106,8 +1114,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public CollaborationUse getRepresentation() {
-		CollaborationUse representation = (CollaborationUse) eVirtualGet(UMLPackage.CLASSIFIER__REPRESENTATION);
-		return representation;
+		return (CollaborationUse) eVirtualGet(UMLPackage.CLASSIFIER__REPRESENTATION);
 	}
 
 	/**
@@ -1138,8 +1145,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public RedefinableTemplateSignature getOwnedSignature() {
-		RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_SIGNATURE);
-		return ownedSignature;
+		return (RedefinableTemplateSignature) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_SIGNATURE);
 	}
 
 	/**
@@ -1480,7 +1486,7 @@ public abstract class ClassifierImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -1524,7 +1530,7 @@ public abstract class ClassifierImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -1605,7 +1611,7 @@ public abstract class ClassifierImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -1614,8 +1620,8 @@ public abstract class ClassifierImpl
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -1630,9 +1636,7 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CLASSIFIER__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CLASSIFIER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CLASSIFIER__NAME :
@@ -1674,7 +1678,9 @@ public abstract class ClassifierImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.CLASSIFIER__PACKAGE :
 				return getPackage();
 			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
@@ -1932,15 +1938,13 @@ public abstract class ClassifierImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CLASSIFIER__NAME :
-				String name = eVirtualIsSet(UMLPackage.CLASSIFIER__NAME)
-					? (String) eVirtualGet(UMLPackage.CLASSIFIER__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.CLASSIFIER__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CLASSIFIER__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CLASSIFIER__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CLASSIFIER__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CLASSIFIER__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1974,9 +1978,9 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CLASSIFIER__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
@@ -2181,9 +2185,8 @@ public abstract class ClassifierImpl
 		result.append(" (isLeaf: "); //$NON-NLS-1$
 		result.append((eFlags & IS_LEAF_EFLAG) != 0);
 		result.append(", visibility: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.CLASSIFIER__VISIBILITY)
-			? eVirtualGet(UMLPackage.CLASSIFIER__VISIBILITY)
-			: VISIBILITY_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.CLASSIFIER__VISIBILITY,
+			VISIBILITY_EDEFAULT));
 		result.append(", isAbstract: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(')');
@@ -2213,12 +2216,12 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

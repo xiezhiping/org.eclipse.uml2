@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -175,7 +175,7 @@ public class EnumerationImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -228,7 +228,7 @@ public class EnumerationImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -321,9 +321,7 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ENUMERATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ENUMERATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ENUMERATION__NAME :
@@ -365,7 +363,9 @@ public class EnumerationImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.ENUMERATION__PACKAGE :
 				return getPackage();
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
@@ -650,15 +650,13 @@ public class EnumerationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ENUMERATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.ENUMERATION__NAME)
-					? (String) eVirtualGet(UMLPackage.ENUMERATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.ENUMERATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ENUMERATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ENUMERATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ENUMERATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.ENUMERATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -692,9 +690,9 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.ENUMERATION__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.ENUMERATION__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :

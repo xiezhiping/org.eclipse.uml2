@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -115,8 +115,8 @@ public class CallOperationActionImpl
 	public Operation getOperation() {
 		Operation operation = (Operation) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__OPERATION);
 		if (operation != null && operation.eIsProxy()) {
-			Operation oldOperation = operation;
-			operation = (Operation) eResolveProxy((InternalEObject) operation);
+			InternalEObject oldOperation = (InternalEObject) operation;
+			operation = (Operation) eResolveProxy(oldOperation);
 			if (operation != oldOperation) {
 				eVirtualSet(UMLPackage.CALL_OPERATION_ACTION__OPERATION,
 					operation);
@@ -162,8 +162,7 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public InputPin getTarget() {
-		InputPin target = (InputPin) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__TARGET);
-		return target;
+		return (InputPin) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__TARGET);
 	}
 
 	/**
@@ -359,9 +358,7 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CALL_OPERATION_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CALL_OPERATION_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CALL_OPERATION_ACTION__NAME :
@@ -626,15 +623,15 @@ public class CallOperationActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.CALL_OPERATION_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.CALL_OPERATION_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CALL_OPERATION_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CALL_OPERATION_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.CALL_OPERATION_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CALL_OPERATION_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

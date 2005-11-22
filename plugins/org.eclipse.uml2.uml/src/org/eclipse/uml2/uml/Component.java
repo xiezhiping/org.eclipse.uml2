@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: Component.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -136,7 +136,7 @@ public interface Component
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Packaged Element</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponent_PackagedElement()
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" ordered="false"
 	 * @generated
 	 */
 	List getPackagedElements();

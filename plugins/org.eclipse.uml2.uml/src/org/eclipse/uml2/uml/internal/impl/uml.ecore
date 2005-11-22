@@ -66,7 +66,8 @@
       <eAnnotations source="union"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owner" ordered="false"
-        eType="#//Element" changeable="false" transient="true" derived="true" eOpposite="#//Element/ownedElement">
+        eType="#//Element" changeable="false" transient="true" derived="true" resolveProxies="false"
+        eOpposite="#//Element/ownedElement">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The Element that owns this element."/>
       </eAnnotations>
@@ -406,7 +407,8 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="signature" ordered="false"
-        lowerBound="1" eType="#//TemplateSignature" transient="true" eOpposite="#//TemplateSignature/ownedParameter">
+        lowerBound="1" eType="#//TemplateSignature" transient="true" resolveProxies="false"
+        eOpposite="#//TemplateSignature/ownedParameter">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The template signature that owns this template parameter."/>
       </eAnnotations>
@@ -458,7 +460,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="template" ordered="false"
-        lowerBound="1" eType="#//TemplateableElement" transient="true" eOpposite="#//TemplateableElement/ownedTemplateSignature">
+        lowerBound="1" eType="#//TemplateableElement" transient="true" resolveProxies="false"
+        eOpposite="#//TemplateableElement/ownedTemplateSignature">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The element that owns this template signature."/>
       </eAnnotations>
@@ -545,7 +548,8 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="boundElement" ordered="false"
-        lowerBound="1" eType="#//TemplateableElement" transient="true" eOpposite="#//TemplateableElement/templateBinding">
+        lowerBound="1" eType="#//TemplateableElement" transient="true" resolveProxies="false"
+        eOpposite="#//TemplateableElement/templateBinding">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The element that is bound by this binding."/>
       </eAnnotations>
@@ -583,7 +587,8 @@
       <eAnnotations source="subsets" references="#//TemplateParameterSubstitution/actual #//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="templateBinding" ordered="false"
-        lowerBound="1" eType="#//TemplateBinding" transient="true" eOpposite="#//TemplateBinding/parameterSubstitution">
+        lowerBound="1" eType="#//TemplateBinding" transient="true" resolveProxies="false"
+        eOpposite="#//TemplateBinding/parameterSubstitution">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The optional bindings from this element to templates."/>
       </eAnnotations>
@@ -747,7 +752,8 @@
       <eAnnotations source="subsets" references="#//DirectedRelationship/target"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importingNamespace" ordered="false"
-        lowerBound="1" eType="#//Namespace" transient="true" eOpposite="#//Namespace/elementImport">
+        lowerBound="1" eType="#//Namespace" transient="true" resolveProxies="false"
+        eOpposite="#//Namespace/elementImport">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the Namespace that imports a PackageableElement from another Package."/>
       </eAnnotations>
@@ -779,7 +785,8 @@
       <eAnnotations source="subsets" references="#//DirectedRelationship/target"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importingNamespace" ordered="false"
-        lowerBound="1" eType="#//Namespace" transient="true" eOpposite="#//Namespace/packageImport">
+        lowerBound="1" eType="#//Namespace" transient="true" resolveProxies="false"
+        eOpposite="#//Namespace/packageImport">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the Namespace that imports the members from a Package."/>
       </eAnnotations>
@@ -835,7 +842,7 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="packagedElement" ordered="false"
-        upperBound="-1" eType="#//PackageableElement" containment="true" resolveProxies="false">
+        upperBound="-1" eType="#//PackageableElement" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the packageable elements that are owned by this Package."/>
       </eAnnotations>
@@ -843,7 +850,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedType" ordered="false"
         upperBound="-1" eType="#//Type" volatile="true" transient="true" derived="true"
-        resolveProxies="false" eOpposite="#//Type/package">
+        eOpposite="#//Type/package">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the packaged elements that are Types."/>
       </eAnnotations>
@@ -851,15 +858,14 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedPackage" ordered="false"
         upperBound="-1" eType="#//Package" volatile="true" transient="true" derived="true"
-        resolveProxies="false" eOpposite="#//Package/nestingPackage">
+        eOpposite="#//Package/nestingPackage">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the packaged elements that are Packages."/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Package/packagedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestingPackage" ordered="false"
-        eType="#//Package" volatile="true" transient="true" derived="true" resolveProxies="false"
-        eOpposite="#//Package/nestedPackage">
+        eType="#//Package" volatile="true" transient="true" derived="true" eOpposite="#//Package/nestedPackage">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the owning package of a package.&#xD;&#xA;References the Package that owns this Package."/>
       </eAnnotations>
@@ -885,7 +891,8 @@
       <eAnnotations source="subsets" references="#//DirectedRelationship/target"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="receivingPackage" ordered="false"
-        lowerBound="1" eType="#//Package" transient="true" eOpposite="#//Package/packageMerge">
+        lowerBound="1" eType="#//Package" transient="true" resolveProxies="false"
+        eOpposite="#//Package/packageMerge">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the Package that is being extended with the contents of the merged package of the PackageMerge."/>
       </eAnnotations>
@@ -959,7 +966,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStereotype" ordered="false"
-        upperBound="-1" eType="#//Stereotype" resolveProxies="false">
+        upperBound="-1" eType="#//Stereotype">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the Stereotypes that are owned by the Profile."/>
       </eAnnotations>
@@ -1459,7 +1466,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specific" ordered="false"
-        lowerBound="1" eType="#//Classifier" transient="true" eOpposite="#//Classifier/generalization">
+        lowerBound="1" eType="#//Classifier" transient="true" resolveProxies="false"
+        eOpposite="#//Classifier/generalization">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the specializing classifier in the Generalization relationship."/>
       </eAnnotations>
@@ -1612,7 +1620,8 @@
       <eAnnotations source="subsets" references="#//DirectedRelationship/target"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="includingCase" ordered="false"
-        lowerBound="1" eType="#//UseCase" transient="true" eOpposite="#//UseCase/include">
+        lowerBound="1" eType="#//UseCase" transient="true" resolveProxies="false"
+        eOpposite="#//UseCase/include">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the use case which will include the addition and owns the include relationship."/>
       </eAnnotations>
@@ -1651,7 +1660,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extension" ordered="false"
-        lowerBound="1" eType="#//UseCase" transient="true" eOpposite="#//UseCase/extend">
+        lowerBound="1" eType="#//UseCase" transient="true" resolveProxies="false"
+        eOpposite="#//UseCase/extend">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the use case that represents the extension and owns the extend relationship."/>
       </eAnnotations>
@@ -1711,7 +1721,7 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" ordered="false"
-        eType="#//Namespace" transient="true" eOpposite="#//Namespace/ownedRule">
+        eType="#//Namespace" transient="true" resolveProxies="false" eOpposite="#//Namespace/ownedRule">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the namespace that owns the NamedElement."/>
       </eAnnotations>
@@ -1730,7 +1740,8 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="useCase" ordered="false"
-        lowerBound="1" eType="#//UseCase" transient="true" eOpposite="#//UseCase/extensionPoint">
+        lowerBound="1" eType="#//UseCase" transient="true" resolveProxies="false"
+        eOpposite="#//UseCase/extensionPoint">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the use case that owns this extension point."/>
       </eAnnotations>
@@ -1909,7 +1920,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" ordered="false"
-        eType="#//Operation" changeable="false" volatile="true" transient="true">
+        eType="#//Operation" changeable="false" volatile="true" transient="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the Operation for which this is a formal parameter.&#xD;&#xA;References the Operation owning this parameter."/>
       </eAnnotations>
@@ -2316,7 +2327,7 @@
       <eParameters name="newOpposite" ordered="false" lowerBound="1" eType="#//Property"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" ordered="false"
-        eType="#//DataType" transient="true" eOpposite="#//DataType/ownedAttribute">
+        eType="#//DataType" transient="true" resolveProxies="false" eOpposite="#//DataType/ownedAttribute">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property.&#xA;&#xA;"/>
       </eAnnotations>
@@ -2407,7 +2418,7 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="associationEnd" ordered="false"
-        eType="#//Property" transient="true" eOpposite="#//Property/qualifier">
+        eType="#//Property" transient="true" resolveProxies="false" eOpposite="#//Property/qualifier">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Designates the optional association end that owns a qualifier attribute."/>
       </eAnnotations>
@@ -2505,7 +2516,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deployment" ordered="false"
-        eType="#//Deployment" transient="true" eOpposite="#//Deployment/configuration">
+        eType="#//Deployment" transient="true" resolveProxies="false" eOpposite="#//Deployment/configuration">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The deployment with which the DeploymentSpecification is associated."/>
       </eAnnotations>
@@ -2715,7 +2726,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class_" ordered="false"
-        eType="#//Class" transient="true" eOpposite="#//Class/ownedOperation">
+        eType="#//Class" transient="true" resolveProxies="false" eOpposite="#//Class/ownedOperation">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The class that owns the operation.&#xD;&#xA;The class that owns this operation."/>
       </eAnnotations>
@@ -2743,11 +2754,11 @@
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" ordered="false"
-        eType="#//DataType" transient="true" eOpposite="#//DataType/ownedOperation">
+        eType="#//DataType" transient="true" resolveProxies="false" eOpposite="#//DataType/ownedOperation">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint" resolveProxies="false">
@@ -2763,7 +2774,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interface" ordered="false"
-        eType="#//Interface" transient="true" eOpposite="#//Interface/ownedOperation">
+        eType="#//Interface" transient="true" resolveProxies="false" eOpposite="#//Interface/ownedOperation">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The Interface that owns this Operation."/>
       </eAnnotations>
@@ -3328,7 +3339,7 @@
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" ordered="false"
-        eType="#//State" transient="true" eOpposite="#//State/region">
+        eType="#//State" transient="true" resolveProxies="false" eOpposite="#//State/region">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine."/>
       </eAnnotations>
@@ -3342,7 +3353,7 @@
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateMachine" ordered="false"
-        eType="#//StateMachine" transient="true" eOpposite="#//StateMachine/region">
+        eType="#//StateMachine" transient="true" resolveProxies="false" eOpposite="#//StateMachine/region">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State."/>
       </eAnnotations>
@@ -3374,7 +3385,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" ordered="false"
-        eType="#//Region" transient="true" eOpposite="#//Region/subvertex">
+        eType="#//Region" transient="true" resolveProxies="false" eOpposite="#//Region/subvertex">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The region that contains this vertex."/>
       </eAnnotations>
@@ -3479,7 +3490,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" ordered="false"
-        lowerBound="1" eType="#//Region" transient="true" eOpposite="#//Region/transition">
+        lowerBound="1" eType="#//Region" transient="true" resolveProxies="false" eOpposite="#//Region/transition">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Designates the region that owns this transition."/>
       </eAnnotations>
@@ -3906,7 +3917,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" ordered="false"
-        eType="#//State" transient="true" eOpposite="#//State/connection">
+        eType="#//State" transient="true" resolveProxies="false" eOpposite="#//State/connection">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The State in which the connection point refreshens are defined."/>
       </eAnnotations>
@@ -3987,14 +3998,14 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateMachine" ordered="false"
-        eType="#//StateMachine" transient="true" eOpposite="#//StateMachine/connectionPoint">
+        eType="#//StateMachine" transient="true" resolveProxies="false" eOpposite="#//StateMachine/connectionPoint">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint."/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" ordered="false"
-        eType="#//State" transient="true" eOpposite="#//State/connectionPoint">
+        eType="#//State" transient="true" resolveProxies="false" eOpposite="#//State/connectionPoint">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The State that owns the pseudostate. If a Pseudostat is owned by a State, then it cannot also be owned by a StateMachine."/>
       </eAnnotations>
@@ -4068,7 +4079,8 @@
       <eAnnotations source="subsets" references="#//DirectedRelationship/target"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specificMachine" ordered="false"
-        lowerBound="1" eType="#//ProtocolStateMachine" transient="true" eOpposite="#//ProtocolStateMachine/conformance">
+        lowerBound="1" eType="#//ProtocolStateMachine" transient="true" resolveProxies="false"
+        eOpposite="#//ProtocolStateMachine/conformance">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the state machine which conforms to the general state machine."/>
       </eAnnotations>
@@ -4482,7 +4494,8 @@
       <eAnnotations source="subsets" references="#//TemplateSignature/parameter"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classifier" ordered="false"
-        lowerBound="1" eType="#//Classifier" transient="true" eOpposite="#//Classifier/ownedSignature">
+        lowerBound="1" eType="#//Classifier" transient="true" resolveProxies="false"
+        eOpposite="#//Classifier/ownedSignature">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The classifier that owns this template signature."/>
       </eAnnotations>
@@ -4726,7 +4739,7 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningExpression" ordered="false"
-        eType="#//StringExpression" transient="true" eOpposite="#//StringExpression/subExpression">
+        eType="#//StringExpression" transient="true" resolveProxies="false" eOpposite="#//StringExpression/subExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The string expression of which this expression is a substring."/>
       </eAnnotations>
@@ -4882,7 +4895,8 @@
       <details key="documentation" value="A slot is owned by an instance specification. It specifies the value or values for its defining feature, which must be a structural feature of a classifier of the instance specification owning the slot."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningInstance" ordered="false"
-        lowerBound="1" eType="#//InstanceSpecification" transient="true" eOpposite="#//InstanceSpecification/slot">
+        lowerBound="1" eType="#//InstanceSpecification" transient="true" resolveProxies="false"
+        eOpposite="#//InstanceSpecification/slot">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The instance specification that owns this slot."/>
       </eAnnotations>
@@ -4972,7 +4986,7 @@
       <details key="documentation" value="An enumeration literal is a value of an enumeration.&#xD;&#xA;An enumeration literal is a user-defined data value for an enumeration."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="enumeration" ordered="false"
-        eType="#//Enumeration" transient="true" eOpposite="#//Enumeration/ownedLiteral">
+        eType="#//Enumeration" transient="true" resolveProxies="false" eOpposite="#//Enumeration/ownedLiteral">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The enumeration that this literal belongs to.&#xD;&#xA;The Enumeration that this EnumerationLiteral is a member of."/>
       </eAnnotations>
@@ -5175,7 +5189,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interaction" ordered="false"
-        lowerBound="1" eType="#//Interaction" transient="true" eOpposite="#//Interaction/message">
+        lowerBound="1" eType="#//Interaction" transient="true" resolveProxies="false"
+        eOpposite="#//Interaction/message">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The enclosing Interaction owning the Message"/>
       </eAnnotations>
@@ -5313,13 +5328,13 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="enclosingInteraction" ordered="false"
-        eType="#//Interaction" transient="true" eOpposite="#//Interaction/fragment">
+        eType="#//Interaction" transient="true" resolveProxies="false" eOpposite="#//Interaction/fragment">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The Interaction enclosing this InteractionFragment."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="enclosingOperand" ordered="false"
-        eType="#//InteractionOperand" transient="true" eOpposite="#//InteractionOperand/fragment">
+        eType="#//InteractionOperand" transient="true" resolveProxies="false" eOpposite="#//InteractionOperand/fragment">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The operand enclosing this InteractionFragment (they may nest recursively)"/>
       </eAnnotations>
@@ -5358,7 +5373,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interaction" ordered="false"
-        lowerBound="1" eType="#//Interaction" transient="true" eOpposite="#//Interaction/lifeline">
+        lowerBound="1" eType="#//Interaction" transient="true" resolveProxies="false"
+        eOpposite="#//Interaction/lifeline">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the Interaction enclosing this Lifeline."/>
       </eAnnotations>
@@ -5572,14 +5588,15 @@
       <eAnnotations source="subsets" references="#//ActivityNode/inGroup"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inStructuredNode" ordered="false"
-        eType="#//StructuredActivityNode" transient="true" eOpposite="#//StructuredActivityNode/node">
+        eType="#//StructuredActivityNode" transient="true" resolveProxies="false"
+        eOpposite="#//StructuredActivityNode/node">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Structured activity node containing the node."/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//ActivityNode/inGroup"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activity" ordered="false"
-        eType="#//Activity" transient="true" eOpposite="#//Activity/node">
+        eType="#//Activity" transient="true" resolveProxies="false" eOpposite="#//Activity/node">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Activity containing the node."/>
       </eAnnotations>
@@ -5632,7 +5649,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activity" ordered="false"
-        eType="#//Activity" transient="true" eOpposite="#//Activity/edge">
+        eType="#//Activity" transient="true" resolveProxies="false" eOpposite="#//Activity/edge">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Activity containing the edge."/>
       </eAnnotations>
@@ -5654,7 +5671,8 @@
       <eAnnotations source="subsets" references="#//ActivityEdge/inGroup"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inStructuredNode" ordered="false"
-        eType="#//StructuredActivityNode" transient="true" eOpposite="#//StructuredActivityNode/edge">
+        eType="#//StructuredActivityNode" transient="true" resolveProxies="false"
+        eOpposite="#//StructuredActivityNode/edge">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Structured activity node containing the edge."/>
       </eAnnotations>
@@ -5860,7 +5878,7 @@
       <eAnnotations source="subsets" references="#//ActivityGroup/subgroup"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="superPartition" ordered="false"
-        eType="#//ActivityPartition" transient="true" eOpposite="#//ActivityPartition/subpartition">
+        eType="#//ActivityPartition" transient="true" resolveProxies="false" eOpposite="#//ActivityPartition/subpartition">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Partition immediately containing the partition."/>
       </eAnnotations>
@@ -5909,7 +5927,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="superGroup" ordered="false"
         eType="#//ActivityGroup" changeable="false" transient="true" derived="true"
-        eOpposite="#//ActivityGroup/subgroup">
+        resolveProxies="false" eOpposite="#//ActivityGroup/subgroup">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Group immediately containing the group."/>
       </eAnnotations>
@@ -5925,7 +5943,7 @@
       <eAnnotations source="union"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inActivity" ordered="false"
-        eType="#//Activity" transient="true" eOpposite="#//Activity/group">
+        eType="#//Activity" transient="true" resolveProxies="false" eOpposite="#//Activity/group">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Activity containing the group."/>
       </eAnnotations>
@@ -6010,14 +6028,15 @@
       <eParameters name="a" ordered="false" lowerBound="1" eType="#//Action"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activityScope" ordered="false"
-        eType="#//Activity" transient="true" eOpposite="#//Activity/variable">
+        eType="#//Activity" transient="true" resolveProxies="false" eOpposite="#//Activity/variable">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An activity that owns the variable."/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Element/owner"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scope" ordered="false"
-        eType="#//StructuredActivityNode" transient="true" eOpposite="#//StructuredActivityNode/variable">
+        eType="#//StructuredActivityNode" transient="true" resolveProxies="false"
+        eOpposite="#//StructuredActivityNode/variable">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A structured activity node that owns the variable."/>
       </eAnnotations>
@@ -6100,7 +6119,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="protectedNode" ordered="false"
-        lowerBound="1" eType="#//ExecutableNode" transient="true" eOpposite="#//ExecutableNode/handler">
+        lowerBound="1" eType="#//ExecutableNode" transient="true" resolveProxies="false"
+        eOpposite="#//ExecutableNode/handler">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The node protected by the handler. The handler is examined if an exception propagates to the outside of the node."/>
       </eAnnotations>
@@ -9404,7 +9424,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="packagedElement" ordered="false"
-        upperBound="-1" eType="#//PackageableElement" containment="true" resolveProxies="false">
+        upperBound="-1" eType="#//PackageableElement" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts."/>
       </eAnnotations>

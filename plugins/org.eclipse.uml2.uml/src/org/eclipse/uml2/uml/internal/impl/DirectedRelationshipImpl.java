@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.1 2005/11/14 22:26:07 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,9 +122,7 @@ public abstract class DirectedRelationshipImpl
 			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DIRECTED_RELATIONSHIP__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT :

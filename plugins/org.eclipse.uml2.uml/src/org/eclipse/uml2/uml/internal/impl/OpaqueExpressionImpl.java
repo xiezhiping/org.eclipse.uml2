@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -114,11 +114,9 @@ public class OpaqueExpressionImpl
 	 */
 	public Parameter getResult() {
 		Parameter result = basicGetResult();
-		return result == null
-			? null
-			: (result.eIsProxy()
-				? (Parameter) eResolveProxy((InternalEObject) result)
-				: result);
+		return result != null && result.eIsProxy()
+			? (Parameter) eResolveProxy((InternalEObject) result)
+			: result;
 	}
 
 	/**
@@ -138,8 +136,8 @@ public class OpaqueExpressionImpl
 	public Behavior getBehavior() {
 		Behavior behavior = (Behavior) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR);
 		if (behavior != null && behavior.eIsProxy()) {
-			Behavior oldBehavior = behavior;
-			behavior = (Behavior) eResolveProxy((InternalEObject) behavior);
+			InternalEObject oldBehavior = (InternalEObject) behavior;
+			behavior = (Behavior) eResolveProxy(oldBehavior);
 			if (behavior != oldBehavior) {
 				eVirtualSet(UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR, behavior);
 				if (eNotificationRequired())
@@ -270,9 +268,7 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
@@ -294,7 +290,9 @@ public class OpaqueExpressionImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
 				if (resolve)
 					return getType();
@@ -431,15 +429,13 @@ public class OpaqueExpressionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
-				String name = eVirtualIsSet(UMLPackage.OPAQUE_EXPRESSION__NAME)
-					? (String) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.OPAQUE_EXPRESSION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.OPAQUE_EXPRESSION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.OPAQUE_EXPRESSION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -454,7 +450,7 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
 				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__TYPE) != null;
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :
@@ -482,13 +478,9 @@ public class OpaqueExpressionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.OPAQUE_EXPRESSION__BODY)
-			? eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY)
-			: null);
+		result.append(eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY));
 		result.append(", language: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE)
-			? eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE)
-			: null);
+		result.append(eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE));
 		result.append(')');
 		return result.toString();
 	}

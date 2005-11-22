@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -109,8 +109,7 @@ public class ActionInputPinImpl
 	 * @generated
 	 */
 	public Action getFromAction() {
-		Action fromAction = (Action) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__FROM_ACTION);
-		return fromAction;
+		return (Action) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__FROM_ACTION);
 	}
 
 	/**
@@ -280,9 +279,7 @@ public class ActionInputPinImpl
 			case UMLPackage.ACTION_INPUT_PIN__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTION_INPUT_PIN__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ACTION_INPUT_PIN__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTION_INPUT_PIN__NAME :
@@ -531,15 +528,14 @@ public class ActionInputPinImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__NAME :
-				String name = eVirtualIsSet(UMLPackage.ACTION_INPUT_PIN__NAME)
-					? (String) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.ACTION_INPUT_PIN__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ACTION_INPUT_PIN__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ACTION_INPUT_PIN__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ACTION_INPUT_PIN__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -582,8 +578,8 @@ public class ActionInputPinImpl
 			case UMLPackage.ACTION_INPUT_PIN__TYPE :
 				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__TYPE) != null;
 			case UMLPackage.ACTION_INPUT_PIN__ORDERING :
-				return eVirtualIsSet(UMLPackage.ACTION_INPUT_PIN__ORDERING)
-					&& eVirtualGet(UMLPackage.ACTION_INPUT_PIN__ORDERING) != ORDERING_EDEFAULT;
+				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__ORDERING,
+					ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_BOUND :

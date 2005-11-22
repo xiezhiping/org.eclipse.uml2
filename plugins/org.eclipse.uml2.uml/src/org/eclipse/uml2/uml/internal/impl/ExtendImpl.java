@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -170,8 +170,8 @@ public class ExtendImpl
 	public UseCase getExtendedCase() {
 		UseCase extendedCase = (UseCase) eVirtualGet(UMLPackage.EXTEND__EXTENDED_CASE);
 		if (extendedCase != null && extendedCase.eIsProxy()) {
-			UseCase oldExtendedCase = extendedCase;
-			extendedCase = (UseCase) eResolveProxy((InternalEObject) extendedCase);
+			InternalEObject oldExtendedCase = (InternalEObject) extendedCase;
+			extendedCase = (UseCase) eResolveProxy(oldExtendedCase);
 			if (extendedCase != oldExtendedCase) {
 				eVirtualSet(UMLPackage.EXTEND__EXTENDED_CASE, extendedCase);
 				if (eNotificationRequired())
@@ -216,8 +216,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public Constraint getCondition() {
-		Constraint condition = (Constraint) eVirtualGet(UMLPackage.EXTEND__CONDITION);
-		return condition;
+		return (Constraint) eVirtualGet(UMLPackage.EXTEND__CONDITION);
 	}
 
 	/**
@@ -332,7 +331,7 @@ public class ExtendImpl
 	public UseCase getExtension() {
 		if (eContainerFeatureID != UMLPackage.EXTEND__EXTENSION)
 			return null;
-		return (UseCase) eContainer;
+		return (UseCase) eContainer();
 	}
 
 	/**
@@ -341,13 +340,13 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public void setExtension(UseCase newExtension) {
-		if (newExtension != eContainer
+		if (newExtension != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXTEND__EXTENSION && newExtension != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newExtension))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newExtension != null)
 				msgs = ((InternalEObject) newExtension).eInverseAdd(this,
@@ -389,7 +388,7 @@ public class ExtendImpl
 					return ((InternalEList) getClientDependencies()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.EXTEND__EXTENSION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.EXTEND__EXTENSION, msgs);
@@ -398,7 +397,7 @@ public class ExtendImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -445,14 +444,14 @@ public class ExtendImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.EXTEND__EXTENSION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.USE_CASE__EXTEND, UseCase.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -467,9 +466,7 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXTEND__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXTEND__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXTEND__NAME :
@@ -609,15 +606,14 @@ public class ExtendImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXTEND__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXTEND__NAME :
-				String name = eVirtualIsSet(UMLPackage.EXTEND__NAME)
-					? (String) eVirtualGet(UMLPackage.EXTEND__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.EXTEND__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.EXTEND__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.EXTEND__VISIBILITY)
-					&& eVirtualGet(UMLPackage.EXTEND__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.EXTEND__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.EXTEND__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

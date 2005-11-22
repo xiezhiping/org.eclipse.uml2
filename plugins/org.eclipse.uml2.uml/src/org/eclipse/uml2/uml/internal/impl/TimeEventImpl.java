@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -150,8 +150,7 @@ public class TimeEventImpl
 	 * @generated
 	 */
 	public ValueSpecification getWhen() {
-		ValueSpecification when = (ValueSpecification) eVirtualGet(UMLPackage.TIME_EVENT__WHEN);
-		return when;
+		return (ValueSpecification) eVirtualGet(UMLPackage.TIME_EVENT__WHEN);
 	}
 
 	/**
@@ -272,9 +271,7 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TIME_EVENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TIME_EVENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TIME_EVENT__NAME :
@@ -296,7 +293,9 @@ public class TimeEventImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
 				return isRelative()
 					? Boolean.TRUE
@@ -409,15 +408,13 @@ public class TimeEventImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TIME_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TIME_EVENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.TIME_EVENT__NAME)
-					? (String) eVirtualGet(UMLPackage.TIME_EVENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.TIME_EVENT__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.TIME_EVENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.TIME_EVENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.TIME_EVENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.TIME_EVENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -432,7 +429,7 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
 				return ((eFlags & IS_RELATIVE_EFLAG) != 0) != IS_RELATIVE_EDEFAULT;
 			case UMLPackage.TIME_EVENT__WHEN :

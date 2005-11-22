@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -113,8 +113,8 @@ public class InteractionUseImpl
 	public Interaction getRefersTo() {
 		Interaction refersTo = (Interaction) eVirtualGet(UMLPackage.INTERACTION_USE__REFERS_TO);
 		if (refersTo != null && refersTo.eIsProxy()) {
-			Interaction oldRefersTo = refersTo;
-			refersTo = (Interaction) eResolveProxy((InternalEObject) refersTo);
+			InternalEObject oldRefersTo = (InternalEObject) refersTo;
+			refersTo = (Interaction) eResolveProxy(oldRefersTo);
 			if (refersTo != oldRefersTo) {
 				eVirtualSet(UMLPackage.INTERACTION_USE__REFERS_TO, refersTo);
 				if (eNotificationRequired())
@@ -347,9 +347,7 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INTERACTION_USE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INTERACTION_USE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INTERACTION_USE__NAME :
@@ -510,15 +508,14 @@ public class InteractionUseImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERACTION_USE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERACTION_USE__NAME :
-				String name = eVirtualIsSet(UMLPackage.INTERACTION_USE__NAME)
-					? (String) eVirtualGet(UMLPackage.INTERACTION_USE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.INTERACTION_USE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INTERACTION_USE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INTERACTION_USE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INTERACTION_USE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.INTERACTION_USE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.INTERACTION_USE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

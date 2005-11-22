@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -157,9 +157,7 @@ public abstract class FeatureImpl
 			case UMLPackage.FEATURE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.FEATURE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.FEATURE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.FEATURE__NAME :
@@ -284,15 +282,14 @@ public abstract class FeatureImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.FEATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.FEATURE__NAME :
-				String name = eVirtualIsSet(UMLPackage.FEATURE__NAME)
-					? (String) eVirtualGet(UMLPackage.FEATURE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.FEATURE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.FEATURE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.FEATURE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.FEATURE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.FEATURE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.FEATURE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

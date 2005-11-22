@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: PackageImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -117,8 +117,8 @@ public class PackageImpl
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy((InternalEObject) templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
+			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER,
 					templateParameter);
@@ -203,7 +203,18 @@ public class PackageImpl
 	public TemplateParameter getOwningTemplateParameter() {
 		if (eContainerFeatureID != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER)
 			return null;
-		return (TemplateParameter) eContainer;
+		return (TemplateParameter) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateParameter basicGetOwningTemplateParameter() {
+		if (eContainerFeatureID != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER)
+			return null;
+		return (TemplateParameter) eInternalContainer();
 	}
 
 	/**
@@ -213,15 +224,15 @@ public class PackageImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer;
-		if (newOwningTemplateParameter != eContainer
+		EObject oldOwningTemplateParameter = eContainer();
+		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil
 				.isAncestor(this, (EObject) newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
@@ -251,10 +262,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		VisibilityKind visibility = (VisibilityKind) eVirtualGet(UMLPackage.PACKAGE__VISIBILITY);
-		return visibility == null
-			? VISIBILITY_EDEFAULT
-			: visibility;
+		return (VisibilityKind) eVirtualGet(UMLPackage.PACKAGE__VISIBILITY,
+			VISIBILITY_EDEFAULT);
 	}
 
 	/**
@@ -283,8 +292,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public boolean isSetVisibility() {
-		return eVirtualIsSet(UMLPackage.PACKAGE__VISIBILITY)
-			&& eVirtualGet(UMLPackage.PACKAGE__VISIBILITY) != VISIBILITY_EDEFAULT;
+		return eVirtualGet(UMLPackage.PACKAGE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -348,8 +356,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE);
-		return ownedTemplateSignature;
+		return (TemplateSignature) eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -458,7 +465,7 @@ public class PackageImpl
 		List packagedElement = (List) eVirtualGet(UMLPackage.PACKAGE__PACKAGED_ELEMENT);
 		if (packagedElement == null) {
 			eVirtualSet(UMLPackage.PACKAGE__PACKAGED_ELEMENT,
-				packagedElement = new EObjectContainmentEList(
+				packagedElement = new EObjectContainmentEList.Resolving(
 					PackageableElement.class, this,
 					UMLPackage.PACKAGE__PACKAGED_ELEMENT));
 		}
@@ -598,7 +605,20 @@ public class PackageImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package getNestingPackage() {
+		org.eclipse.uml2.uml.Package nestingPackage = basicGetNestingPackage();
+		return nestingPackage != null && nestingPackage.eIsProxy()
+			? (org.eclipse.uml2.uml.Package) eResolveProxy((InternalEObject) nestingPackage)
+			: nestingPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.eclipse.uml2.uml.Package basicGetNestingPackage() {
 		// TODO: implement this method to return the 'Nesting Package' reference
+		// -> do not perform proxy resolution
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
@@ -764,7 +784,7 @@ public class PackageImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -788,7 +808,7 @@ public class PackageImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -855,7 +875,7 @@ public class PackageImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -864,8 +884,8 @@ public class PackageImpl
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -880,9 +900,7 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PACKAGE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PACKAGE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PACKAGE__NAME :
@@ -916,7 +934,9 @@ public class PackageImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
@@ -930,7 +950,9 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__NESTED_PACKAGE :
 				return getNestedPackages();
 			case UMLPackage.PACKAGE__NESTING_PACKAGE :
-				return getNestingPackage();
+				if (resolve)
+					return getNestingPackage();
+				return basicGetNestingPackage();
 			case UMLPackage.PACKAGE__APPLIED_PROFILE :
 				return getAppliedProfiles();
 		}
@@ -1102,15 +1124,13 @@ public class PackageImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PACKAGE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PACKAGE__NAME :
-				String name = eVirtualIsSet(UMLPackage.PACKAGE__NAME)
-					? (String) eVirtualGet(UMLPackage.PACKAGE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.PACKAGE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.PACKAGE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.PACKAGE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.PACKAGE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PACKAGE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1140,7 +1160,7 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
@@ -1157,7 +1177,7 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__NESTED_PACKAGE :
 				return !getNestedPackages().isEmpty();
 			case UMLPackage.PACKAGE__NESTING_PACKAGE :
-				return getNestingPackage() != null;
+				return basicGetNestingPackage() != null;
 			case UMLPackage.PACKAGE__APPLIED_PROFILE :
 				List appliedProfile = (List) eVirtualGet(UMLPackage.PACKAGE__APPLIED_PROFILE);
 				return appliedProfile != null && !appliedProfile.isEmpty();
@@ -1246,9 +1266,8 @@ public class PackageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.PACKAGE__VISIBILITY)
-			? eVirtualGet(UMLPackage.PACKAGE__VISIBILITY)
-			: VISIBILITY_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.PACKAGE__VISIBILITY,
+			VISIBILITY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}
@@ -1258,12 +1277,12 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**
@@ -1307,7 +1326,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.uml.Package nestingPackage = getNestingPackage();
+		org.eclipse.uml2.uml.Package nestingPackage = basicGetNestingPackage();
 		if (nestingPackage != null) {
 			return nestingPackage;
 		}

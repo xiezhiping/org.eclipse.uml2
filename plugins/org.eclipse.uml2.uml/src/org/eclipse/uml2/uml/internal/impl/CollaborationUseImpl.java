@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: CollaborationUseImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -109,8 +109,8 @@ public class CollaborationUseImpl
 	public Collaboration getType() {
 		Collaboration type = (Collaboration) eVirtualGet(UMLPackage.COLLABORATION_USE__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Collaboration oldType = type;
-			type = (Collaboration) eResolveProxy((InternalEObject) type);
+			InternalEObject oldType = (InternalEObject) type;
+			type = (Collaboration) eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UMLPackage.COLLABORATION_USE__TYPE, type);
 				if (eNotificationRequired())
@@ -274,9 +274,7 @@ public class CollaborationUseImpl
 			case UMLPackage.COLLABORATION_USE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.COLLABORATION_USE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.COLLABORATION_USE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.COLLABORATION_USE__NAME :
@@ -394,15 +392,14 @@ public class CollaborationUseImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.COLLABORATION_USE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COLLABORATION_USE__NAME :
-				String name = eVirtualIsSet(UMLPackage.COLLABORATION_USE__NAME)
-					? (String) eVirtualGet(UMLPackage.COLLABORATION_USE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.COLLABORATION_USE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.COLLABORATION_USE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.COLLABORATION_USE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.COLLABORATION_USE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.COLLABORATION_USE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.COLLABORATION_USE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

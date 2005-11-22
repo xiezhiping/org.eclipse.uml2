@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -71,8 +71,8 @@ public class ConnectableElementTemplateParameterImpl
 	public ParameterableElement getParameteredElement() {
 		ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
-			ParameterableElement oldParameteredElement = parameteredElement;
-			parameteredElement = (ParameterableElement) eResolveProxy((InternalEObject) parameteredElement);
+			InternalEObject oldParameteredElement = (InternalEObject) parameteredElement;
+			parameteredElement = (ParameterableElement) eResolveProxy(oldParameteredElement);
 			if (parameteredElement != oldParameteredElement) {
 				eVirtualSet(
 					UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
@@ -174,9 +174,7 @@ public class ConnectableElementTemplateParameterImpl
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE :
@@ -222,7 +220,7 @@ public class ConnectableElementTemplateParameterImpl
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT) != null;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				return eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) != null;
+				return isSetParameteredElement();
 		}
 		return eDynamicIsSet(eFeature);
 	}

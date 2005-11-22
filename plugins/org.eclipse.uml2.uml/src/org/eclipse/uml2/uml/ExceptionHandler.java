@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandler.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: ExceptionHandler.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -131,7 +131,7 @@ public interface ExceptionHandler
 	 * @see #setProtectedNode(ExecutableNode)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExceptionHandler_ProtectedNode()
 	 * @see org.eclipse.uml2.uml.ExecutableNode#getHandlers
-	 * @model opposite="handler" required="true" ordered="false"
+	 * @model opposite="handler" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
 	ExecutableNode getProtectedNode();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -348,8 +348,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE);
-		return upperValue;
+		return (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE);
 	}
 
 	/**
@@ -420,8 +419,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__LOWER_VALUE);
-		return lowerValue;
+		return (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__LOWER_VALUE);
 	}
 
 	/**
@@ -525,22 +523,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public Operation getOperation() {
-		Operation operation = basicGetOperation();
-		return operation == null
-			? null
-			: (operation.eIsProxy()
-				? (Operation) eResolveProxy((InternalEObject) operation)
-				: operation);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Operation basicGetOperation() {
 		// TODO: implement this method to return the 'Operation' reference
-		// -> do not perform proxy resolution
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
@@ -551,10 +534,8 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ParameterDirectionKind getDirection() {
-		ParameterDirectionKind direction = (ParameterDirectionKind) eVirtualGet(UMLPackage.PARAMETER__DIRECTION);
-		return direction == null
-			? DIRECTION_EDEFAULT
-			: direction;
+		return (ParameterDirectionKind) eVirtualGet(
+			UMLPackage.PARAMETER__DIRECTION, DIRECTION_EDEFAULT);
 	}
 
 	/**
@@ -605,8 +586,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
-		ValueSpecification defaultValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__DEFAULT_VALUE);
-		return defaultValue;
+		return (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__DEFAULT_VALUE);
 	}
 
 	/**
@@ -731,10 +711,8 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ParameterEffectKind getEffect() {
-		ParameterEffectKind effect = (ParameterEffectKind) eVirtualGet(UMLPackage.PARAMETER__EFFECT);
-		return effect == null
-			? EFFECT_EDEFAULT
-			: effect;
+		return (ParameterEffectKind) eVirtualGet(UMLPackage.PARAMETER__EFFECT,
+			EFFECT_EDEFAULT);
 	}
 
 	/**
@@ -929,7 +907,7 @@ public class ParameterImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.PARAMETER__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.PARAMETER__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -943,7 +921,7 @@ public class ParameterImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -1005,9 +983,7 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PARAMETER__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PARAMETER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PARAMETER__NAME :
@@ -1033,7 +1009,9 @@ public class ParameterImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.PARAMETER__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.PARAMETER__END :
 				return getEnds();
 			case UMLPackage.PARAMETER__IS_ORDERED :
@@ -1055,9 +1033,7 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__PARAMETER_SET :
 				return getParameterSets();
 			case UMLPackage.PARAMETER__OPERATION :
-				if (resolve)
-					return getOperation();
-				return basicGetOperation();
+				return getOperation();
 			case UMLPackage.PARAMETER__DIRECTION :
 				return getDirection();
 			case UMLPackage.PARAMETER__DEFAULT :
@@ -1260,15 +1236,14 @@ public class ParameterImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PARAMETER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PARAMETER__NAME :
-				String name = eVirtualIsSet(UMLPackage.PARAMETER__NAME)
-					? (String) eVirtualGet(UMLPackage.PARAMETER__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.PARAMETER__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.PARAMETER__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.PARAMETER__VISIBILITY)
-					&& eVirtualGet(UMLPackage.PARAMETER__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.PARAMETER__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.PARAMETER__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1283,9 +1258,9 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__TYPE :
 				return eVirtualGet(UMLPackage.PARAMETER__TYPE) != null;
 			case UMLPackage.PARAMETER__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.PARAMETER__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.PARAMETER__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PARAMETER__END :
 				List end = (List) eVirtualGet(UMLPackage.PARAMETER__END);
 				return end != null && !end.isEmpty();
@@ -1305,10 +1280,10 @@ public class ParameterImpl
 				List parameterSet = (List) eVirtualGet(UMLPackage.PARAMETER__PARAMETER_SET);
 				return parameterSet != null && !parameterSet.isEmpty();
 			case UMLPackage.PARAMETER__OPERATION :
-				return basicGetOperation() != null;
+				return getOperation() != null;
 			case UMLPackage.PARAMETER__DIRECTION :
-				return eVirtualIsSet(UMLPackage.PARAMETER__DIRECTION)
-					&& eVirtualGet(UMLPackage.PARAMETER__DIRECTION) != DIRECTION_EDEFAULT;
+				return eVirtualGet(UMLPackage.PARAMETER__DIRECTION,
+					DIRECTION_EDEFAULT) != DIRECTION_EDEFAULT;
 			case UMLPackage.PARAMETER__DEFAULT :
 				return DEFAULT_EDEFAULT == null
 					? getDefault() != null
@@ -1320,8 +1295,8 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__IS_STREAM :
 				return ((eFlags & IS_STREAM_EFLAG) != 0) != IS_STREAM_EDEFAULT;
 			case UMLPackage.PARAMETER__EFFECT :
-				return eVirtualIsSet(UMLPackage.PARAMETER__EFFECT)
-					&& eVirtualGet(UMLPackage.PARAMETER__EFFECT) != EFFECT_EDEFAULT;
+				return eVirtualGet(UMLPackage.PARAMETER__EFFECT,
+					EFFECT_EDEFAULT) != EFFECT_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -1395,17 +1370,15 @@ public class ParameterImpl
 		result.append(", isUnique: "); //$NON-NLS-1$
 		result.append((eFlags & IS_UNIQUE_EFLAG) != 0);
 		result.append(", direction: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.PARAMETER__DIRECTION)
-			? eVirtualGet(UMLPackage.PARAMETER__DIRECTION)
-			: DIRECTION_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.PARAMETER__DIRECTION,
+			DIRECTION_EDEFAULT));
 		result.append(", isException: "); //$NON-NLS-1$
 		result.append((eFlags & IS_EXCEPTION_EFLAG) != 0);
 		result.append(", isStream: "); //$NON-NLS-1$
 		result.append((eFlags & IS_STREAM_EFLAG) != 0);
 		result.append(", effect: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.PARAMETER__EFFECT)
-			? eVirtualGet(UMLPackage.PARAMETER__EFFECT)
-			: EFFECT_EDEFAULT);
+		result
+			.append(eVirtualGet(UMLPackage.PARAMETER__EFFECT, EFFECT_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}
@@ -1428,7 +1401,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		Operation operation = basicGetOperation();
+		Operation operation = getOperation();
 		if (operation != null) {
 			return operation;
 		}

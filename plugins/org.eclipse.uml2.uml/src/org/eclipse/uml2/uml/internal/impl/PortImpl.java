@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: PortImpl.java,v 1.3 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -288,8 +288,8 @@ public class PortImpl
 	public ProtocolStateMachine getProtocol() {
 		ProtocolStateMachine protocol = (ProtocolStateMachine) eVirtualGet(UMLPackage.PORT__PROTOCOL);
 		if (protocol != null && protocol.eIsProxy()) {
-			ProtocolStateMachine oldProtocol = protocol;
-			protocol = (ProtocolStateMachine) eResolveProxy((InternalEObject) protocol);
+			InternalEObject oldProtocol = (InternalEObject) protocol;
+			protocol = (ProtocolStateMachine) eResolveProxy(oldProtocol);
 			if (protocol != oldProtocol) {
 				eVirtualSet(UMLPackage.PORT__PROTOCOL, protocol);
 				if (eNotificationRequired())
@@ -378,9 +378,7 @@ public class PortImpl
 			case UMLPackage.PORT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PORT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PORT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PORT__NAME :
@@ -440,7 +438,9 @@ public class PortImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.PORT__END :
 				return getEnds();
 			case UMLPackage.PORT__DEPLOYMENT :
@@ -474,7 +474,9 @@ public class PortImpl
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
 				return getRedefinedProperties();
 			case UMLPackage.PORT__OWNING_ASSOCIATION :
-				return getOwningAssociation();
+				if (resolve)
+					return getOwningAssociation();
+				return basicGetOwningAssociation();
 			case UMLPackage.PORT__ASSOCIATION :
 				if (resolve)
 					return getAssociation();
@@ -802,15 +804,14 @@ public class PortImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PORT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PORT__NAME :
-				String name = eVirtualIsSet(UMLPackage.PORT__NAME)
-					? (String) eVirtualGet(UMLPackage.PORT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.PORT__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.PORT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.PORT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.PORT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.PORT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.PORT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -847,11 +848,11 @@ public class PortImpl
 			case UMLPackage.PORT__LOWER_VALUE :
 				return eVirtualGet(UMLPackage.PORT__LOWER_VALUE) != null;
 			case UMLPackage.PORT__IS_READ_ONLY :
-				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
+				return isSetIsReadOnly();
 			case UMLPackage.PORT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.PORT__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PORT__END :
 				List end = (List) eVirtualGet(UMLPackage.PORT__END);
 				return end != null && !end.isEmpty();
@@ -876,8 +877,8 @@ public class PortImpl
 					? getDefault() != null
 					: !DEFAULT_EDEFAULT.equals(getDefault());
 			case UMLPackage.PORT__AGGREGATION :
-				return eVirtualIsSet(UMLPackage.PORT__AGGREGATION)
-					&& eVirtualGet(UMLPackage.PORT__AGGREGATION) != AGGREGATION_EDEFAULT;
+				return eVirtualGet(UMLPackage.PORT__AGGREGATION,
+					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UMLPackage.PORT__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.PORT__CLASS_ :
@@ -887,7 +888,7 @@ public class PortImpl
 				return redefinedProperty != null
 					&& !redefinedProperty.isEmpty();
 			case UMLPackage.PORT__OWNING_ASSOCIATION :
-				return getOwningAssociation() != null;
+				return basicGetOwningAssociation() != null;
 			case UMLPackage.PORT__ASSOCIATION :
 				return eVirtualGet(UMLPackage.PORT__ASSOCIATION) != null;
 			case UMLPackage.PORT__DEFAULT_VALUE :

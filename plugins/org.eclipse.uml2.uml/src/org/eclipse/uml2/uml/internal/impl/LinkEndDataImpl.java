@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -84,8 +84,8 @@ public class LinkEndDataImpl
 	public InputPin getValue() {
 		InputPin value = (InputPin) eVirtualGet(UMLPackage.LINK_END_DATA__VALUE);
 		if (value != null && value.eIsProxy()) {
-			InputPin oldValue = value;
-			value = (InputPin) eResolveProxy((InternalEObject) value);
+			InternalEObject oldValue = (InternalEObject) value;
+			value = (InputPin) eResolveProxy(oldValue);
 			if (value != oldValue) {
 				eVirtualSet(UMLPackage.LINK_END_DATA__VALUE, value);
 				if (eNotificationRequired())
@@ -129,8 +129,8 @@ public class LinkEndDataImpl
 	public Property getEnd() {
 		Property end = (Property) eVirtualGet(UMLPackage.LINK_END_DATA__END);
 		if (end != null && end.eIsProxy()) {
-			Property oldEnd = end;
-			end = (Property) eResolveProxy((InternalEObject) end);
+			InternalEObject oldEnd = (InternalEObject) end;
+			end = (Property) eResolveProxy(oldEnd);
 			if (end != oldEnd) {
 				eVirtualSet(UMLPackage.LINK_END_DATA__END, end);
 				if (eNotificationRequired())
@@ -283,9 +283,7 @@ public class LinkEndDataImpl
 			case UMLPackage.LINK_END_DATA__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LINK_END_DATA__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LINK_END_DATA__VALUE :

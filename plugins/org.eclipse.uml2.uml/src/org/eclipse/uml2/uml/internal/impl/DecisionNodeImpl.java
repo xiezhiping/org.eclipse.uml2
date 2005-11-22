@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: DecisionNodeImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -79,8 +79,8 @@ public class DecisionNodeImpl
 	public Behavior getDecisionInput() {
 		Behavior decisionInput = (Behavior) eVirtualGet(UMLPackage.DECISION_NODE__DECISION_INPUT);
 		if (decisionInput != null && decisionInput.eIsProxy()) {
-			Behavior oldDecisionInput = decisionInput;
-			decisionInput = (Behavior) eResolveProxy((InternalEObject) decisionInput);
+			InternalEObject oldDecisionInput = (InternalEObject) decisionInput;
+			decisionInput = (Behavior) eResolveProxy(oldDecisionInput);
 			if (decisionInput != oldDecisionInput) {
 				eVirtualSet(UMLPackage.DECISION_NODE__DECISION_INPUT,
 					decisionInput);
@@ -163,9 +163,7 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DECISION_NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DECISION_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DECISION_NODE__NAME :
@@ -351,15 +349,14 @@ public class DecisionNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DECISION_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DECISION_NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.DECISION_NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.DECISION_NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.DECISION_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DECISION_NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DECISION_NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DECISION_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.DECISION_NODE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.DECISION_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -212,9 +212,7 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME :
@@ -256,7 +254,9 @@ public abstract class EncapsulatedClassifierImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE :
 				return getPackage();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
@@ -545,15 +545,13 @@ public abstract class EncapsulatedClassifierImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME :
-				String name = eVirtualIsSet(UMLPackage.ENCAPSULATED_CLASSIFIER__NAME)
-					? (String) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.ENCAPSULATED_CLASSIFIER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ENCAPSULATED_CLASSIFIER__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -587,9 +585,9 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :

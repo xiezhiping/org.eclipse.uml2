@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,9 +110,7 @@ public class DestroyLinkActionImpl
 			case UMLPackage.DESTROY_LINK_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DESTROY_LINK_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DESTROY_LINK_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DESTROY_LINK_ACTION__NAME :
@@ -190,15 +188,14 @@ public class DestroyLinkActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.DESTROY_LINK_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.DESTROY_LINK_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DESTROY_LINK_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DESTROY_LINK_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.DESTROY_LINK_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -256,8 +253,7 @@ public class DestroyLinkActionImpl
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__END_DATA :
-				List endData = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__END_DATA);
-				return endData != null && !endData.isEmpty();
+				return isSetEndData();
 			case UMLPackage.DESTROY_LINK_ACTION__INPUT_VALUE :
 				List inputValue = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__INPUT_VALUE);
 				return inputValue != null && !inputValue.isEmpty();

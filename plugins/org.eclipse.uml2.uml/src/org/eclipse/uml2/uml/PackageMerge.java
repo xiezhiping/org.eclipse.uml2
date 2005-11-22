@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMerge.java,v 1.1 2005/11/14 22:25:57 khussey Exp $
+ * $Id: PackageMerge.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -88,7 +88,7 @@ public interface PackageMerge
 	 * @see #setReceivingPackage(org.eclipse.uml2.uml.Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackageMerge_ReceivingPackage()
 	 * @see org.eclipse.uml2.uml.Package#getPackageMerges
-	 * @model opposite="packageMerge" required="true" ordered="false"
+	 * @model opposite="packageMerge" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Package getReceivingPackage();

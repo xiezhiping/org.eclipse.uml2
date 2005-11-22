@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: Package.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -91,7 +91,7 @@ public interface Package
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Packaged Element</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_PackagedElement()
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" ordered="false"
 	 * @generated
 	 */
 	List getPackagedElements();
@@ -130,7 +130,7 @@ public interface Package
 	 * @return the value of the '<em>Owned Type</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_OwnedType()
 	 * @see org.eclipse.uml2.uml.Type#getPackage
-	 * @model type="org.eclipse.uml2.uml.Type" opposite="package" resolveProxies="false" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Type" opposite="package" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	List getOwnedTypes();
@@ -158,7 +158,7 @@ public interface Package
 	 * @return the value of the '<em>Nested Package</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_NestedPackage()
 	 * @see org.eclipse.uml2.uml.Package#getNestingPackage
-	 * @model type="org.eclipse.uml2.uml.Package" opposite="nestingPackage" resolveProxies="false" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Package" opposite="nestingPackage" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	List getNestedPackages();
@@ -187,7 +187,7 @@ public interface Package
 	 * @see #setNestingPackage(Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_NestingPackage()
 	 * @see org.eclipse.uml2.uml.Package#getNestedPackages
-	 * @model opposite="nestedPackage" resolveProxies="false" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model opposite="nestedPackage" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	Package getNestingPackage();

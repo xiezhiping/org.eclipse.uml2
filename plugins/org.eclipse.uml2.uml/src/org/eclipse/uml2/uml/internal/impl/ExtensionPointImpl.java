@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,7 +82,7 @@ public class ExtensionPointImpl
 	public UseCase getUseCase() {
 		if (eContainerFeatureID != UMLPackage.EXTENSION_POINT__USE_CASE)
 			return null;
-		return (UseCase) eContainer;
+		return (UseCase) eContainer();
 	}
 
 	/**
@@ -91,13 +91,13 @@ public class ExtensionPointImpl
 	 * @generated
 	 */
 	public void setUseCase(UseCase newUseCase) {
-		if (newUseCase != eContainer
+		if (newUseCase != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXTENSION_POINT__USE_CASE && newUseCase != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newUseCase))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newUseCase != null)
 				msgs = ((InternalEObject) newUseCase).eInverseAdd(this,
@@ -138,7 +138,7 @@ public class ExtensionPointImpl
 					return ((InternalEList) getClientDependencies()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.EXTENSION_POINT__USE_CASE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.EXTENSION_POINT__USE_CASE, msgs);
@@ -147,7 +147,7 @@ public class ExtensionPointImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -192,15 +192,15 @@ public class ExtensionPointImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.EXTENSION_POINT__USE_CASE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.USE_CASE__EXTENSION_POINT, UseCase.class,
 						msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -215,9 +215,7 @@ public class ExtensionPointImpl
 			case UMLPackage.EXTENSION_POINT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXTENSION_POINT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXTENSION_POINT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXTENSION_POINT__NAME :
@@ -338,15 +336,14 @@ public class ExtensionPointImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXTENSION_POINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXTENSION_POINT__NAME :
-				String name = eVirtualIsSet(UMLPackage.EXTENSION_POINT__NAME)
-					? (String) eVirtualGet(UMLPackage.EXTENSION_POINT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.EXTENSION_POINT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.EXTENSION_POINT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.EXTENSION_POINT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.EXTENSION_POINT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.EXTENSION_POINT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.EXTENSION_POINT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: LiteralStringImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,10 +82,8 @@ public class LiteralStringImpl
 	 * @generated
 	 */
 	public String getValue() {
-		String value = (String) eVirtualGet(UMLPackage.LITERAL_STRING__VALUE);
-		return value == null
-			? VALUE_EDEFAULT
-			: value;
+		return (String) eVirtualGet(UMLPackage.LITERAL_STRING__VALUE,
+			VALUE_EDEFAULT);
 	}
 
 	/**
@@ -137,9 +135,7 @@ public class LiteralStringImpl
 			case UMLPackage.LITERAL_STRING__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LITERAL_STRING__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.LITERAL_STRING__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LITERAL_STRING__NAME :
@@ -161,7 +157,9 @@ public class LiteralStringImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.LITERAL_STRING__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.LITERAL_STRING__TYPE :
 				if (resolve)
 					return getType();
@@ -274,15 +272,13 @@ public class LiteralStringImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.LITERAL_STRING__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LITERAL_STRING__NAME :
-				String name = eVirtualIsSet(UMLPackage.LITERAL_STRING__NAME)
-					? (String) eVirtualGet(UMLPackage.LITERAL_STRING__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.LITERAL_STRING__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.LITERAL_STRING__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.LITERAL_STRING__VISIBILITY)
-					&& eVirtualGet(UMLPackage.LITERAL_STRING__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.LITERAL_STRING__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -297,13 +293,12 @@ public class LiteralStringImpl
 			case UMLPackage.LITERAL_STRING__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.LITERAL_STRING__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.LITERAL_STRING__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.LITERAL_STRING__TYPE :
 				return eVirtualGet(UMLPackage.LITERAL_STRING__TYPE) != null;
 			case UMLPackage.LITERAL_STRING__VALUE :
-				String value = eVirtualIsSet(UMLPackage.LITERAL_STRING__VALUE)
-					? (String) eVirtualGet(UMLPackage.LITERAL_STRING__VALUE)
-					: VALUE_EDEFAULT;
+				String value = (String) eVirtualGet(
+					UMLPackage.LITERAL_STRING__VALUE, VALUE_EDEFAULT);
 				return VALUE_EDEFAULT == null
 					? value != null
 					: !VALUE_EDEFAULT.equals(value);
@@ -322,9 +317,8 @@ public class LiteralStringImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.LITERAL_STRING__VALUE)
-			? eVirtualGet(UMLPackage.LITERAL_STRING__VALUE)
-			: VALUE_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.LITERAL_STRING__VALUE,
+			VALUE_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

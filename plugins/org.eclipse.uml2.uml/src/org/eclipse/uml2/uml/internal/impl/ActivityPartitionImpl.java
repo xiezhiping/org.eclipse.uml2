@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -246,7 +246,7 @@ public class ActivityPartitionImpl
 	public Activity getInActivity() {
 		if (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY)
 			return null;
-		return (Activity) eContainer;
+		return (Activity) eContainer();
 	}
 
 	/**
@@ -255,13 +255,13 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setInActivity(Activity newInActivity) {
-		if (newInActivity != eContainer
+		if (newInActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY && newInActivity != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newInActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInActivity != null)
 				msgs = ((InternalEObject) newInActivity).eInverseAdd(this,
@@ -447,7 +447,7 @@ public class ActivityPartitionImpl
 	public ActivityPartition getSuperPartition() {
 		if (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION)
 			return null;
-		return (ActivityPartition) eContainer;
+		return (ActivityPartition) eContainer();
 	}
 
 	/**
@@ -456,13 +456,13 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setSuperPartition(ActivityPartition newSuperPartition) {
-		if (newSuperPartition != eContainer
+		if (newSuperPartition != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION && newSuperPartition != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newSuperPartition))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSuperPartition != null)
 				msgs = ((InternalEObject) newSuperPartition).eInverseAdd(this,
@@ -487,8 +487,8 @@ public class ActivityPartitionImpl
 	public Element getRepresents() {
 		Element represents = (Element) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__REPRESENTS);
 		if (represents != null && represents.eIsProxy()) {
-			Element oldRepresents = represents;
-			represents = (Element) eResolveProxy((InternalEObject) represents);
+			InternalEObject oldRepresents = (InternalEObject) represents;
+			represents = (Element) eResolveProxy(oldRepresents);
 			if (represents != oldRepresents) {
 				eVirtualSet(UMLPackage.ACTIVITY_PARTITION__REPRESENTS,
 					represents);
@@ -629,7 +629,7 @@ public class ActivityPartitionImpl
 					return ((InternalEList) getClientDependencies()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
@@ -643,7 +643,7 @@ public class ActivityPartitionImpl
 					return ((InternalEList) getSubpartitions()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
@@ -652,7 +652,7 @@ public class ActivityPartitionImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -709,18 +709,18 @@ public class ActivityPartitionImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);
 				case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.ACTIVITY_PARTITION__SUBPARTITION,
 						ActivityPartition.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -735,9 +735,7 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY_PARTITION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTIVITY_PARTITION__NAME :
@@ -757,9 +755,7 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :
-				if (resolve)
-					return getSuperGroup();
-				return basicGetSuperGroup();
+				return getSuperGroup();
 			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
@@ -919,15 +915,14 @@ public class ActivityPartitionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__NAME :
-				String name = eVirtualIsSet(UMLPackage.ACTIVITY_PARTITION__NAME)
-					? (String) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.ACTIVITY_PARTITION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ACTIVITY_PARTITION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ACTIVITY_PARTITION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.ACTIVITY_PARTITION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARTITION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1061,24 +1056,12 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityGroup basicGetSuperGroup() {
+	public ActivityGroup getSuperGroup() {
 		ActivityPartition superPartition = getSuperPartition();
 		if (superPartition != null) {
 			return superPartition;
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActivityGroup getSuperGroup() {
-		ActivityGroup superGroup = basicGetSuperGroup();
-		return superGroup == null
-			? null
-			: (ActivityGroup) eResolveProxy((InternalEObject) superGroup);
 	}
 
 	/**
@@ -1096,15 +1079,15 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		if (isSetSuperGroup()) {
-			return basicGetSuperGroup();
+			return getSuperGroup();
 		}
 		Activity inActivity = getInActivity();
 		if (inActivity != null) {
 			return inActivity;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

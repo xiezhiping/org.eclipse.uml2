@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -187,7 +187,7 @@ public abstract class InteractionFragmentImpl
 	public Interaction getEnclosingInteraction() {
 		if (eContainerFeatureID != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION)
 			return null;
-		return (Interaction) eContainer;
+		return (Interaction) eContainer();
 	}
 
 	/**
@@ -196,13 +196,13 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
-		if (newEnclosingInteraction != eContainer
+		if (newEnclosingInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newEnclosingInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingInteraction != null)
 				msgs = ((InternalEObject) newEnclosingInteraction).eInverseAdd(
@@ -228,7 +228,7 @@ public abstract class InteractionFragmentImpl
 	public InteractionOperand getEnclosingOperand() {
 		if (eContainerFeatureID != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND)
 			return null;
-		return (InteractionOperand) eContainer;
+		return (InteractionOperand) eContainer();
 	}
 
 	/**
@@ -237,13 +237,13 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
-		if (newEnclosingOperand != eContainer
+		if (newEnclosingOperand != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newEnclosingOperand))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingOperand != null)
 				msgs = ((InternalEObject) newEnclosingOperand).eInverseAdd(
@@ -279,13 +279,13 @@ public abstract class InteractionFragmentImpl
 					return ((InternalEList) getCovereds()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
 						msgs);
 				case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND,
@@ -295,7 +295,7 @@ public abstract class InteractionFragmentImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -351,19 +351,19 @@ public abstract class InteractionFragmentImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.INTERACTION__FRAGMENT, Interaction.class,
 						msgs);
 				case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.INTERACTION_OPERAND__FRAGMENT,
 						InteractionOperand.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -378,9 +378,7 @@ public abstract class InteractionFragmentImpl
 			case UMLPackage.INTERACTION_FRAGMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INTERACTION_FRAGMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INTERACTION_FRAGMENT__NAME :
@@ -513,15 +511,14 @@ public abstract class InteractionFragmentImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERACTION_FRAGMENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.INTERACTION_FRAGMENT__NAME)
-					? (String) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.INTERACTION_FRAGMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INTERACTION_FRAGMENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INTERACTION_FRAGMENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.INTERACTION_FRAGMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

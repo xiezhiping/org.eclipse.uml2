@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.3 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -145,8 +145,8 @@ public class TemplateBindingImpl
 	public TemplateSignature getSignature() {
 		TemplateSignature signature = (TemplateSignature) eVirtualGet(UMLPackage.TEMPLATE_BINDING__SIGNATURE);
 		if (signature != null && signature.eIsProxy()) {
-			TemplateSignature oldSignature = signature;
-			signature = (TemplateSignature) eResolveProxy((InternalEObject) signature);
+			InternalEObject oldSignature = (InternalEObject) signature;
+			signature = (TemplateSignature) eResolveProxy(oldSignature);
 			if (signature != oldSignature) {
 				eVirtualSet(UMLPackage.TEMPLATE_BINDING__SIGNATURE, signature);
 				if (eNotificationRequired())
@@ -224,7 +224,7 @@ public class TemplateBindingImpl
 	public TemplateableElement getBoundElement() {
 		if (eContainerFeatureID != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT)
 			return null;
-		return (TemplateableElement) eContainer;
+		return (TemplateableElement) eContainer();
 	}
 
 	/**
@@ -233,13 +233,13 @@ public class TemplateBindingImpl
 	 * @generated
 	 */
 	public void setBoundElement(TemplateableElement newBoundElement) {
-		if (newBoundElement != eContainer
+		if (newBoundElement != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT && newBoundElement != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newBoundElement))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newBoundElement != null)
 				msgs = ((InternalEObject) newBoundElement).eInverseAdd(this,
@@ -294,7 +294,7 @@ public class TemplateBindingImpl
 					return ((InternalEList) getParameterSubstitutions())
 						.basicAdd(otherEnd, msgs);
 				case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
@@ -303,7 +303,7 @@ public class TemplateBindingImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -346,15 +346,15 @@ public class TemplateBindingImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 						TemplateableElement.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -369,9 +369,7 @@ public class TemplateBindingImpl
 			case UMLPackage.TEMPLATE_BINDING__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TEMPLATE_BINDING__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TEMPLATE_BINDING__RELATED_ELEMENT :
@@ -507,12 +505,12 @@ public class TemplateBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateableElement boundElement = getBoundElement();
 		if (boundElement != null) {
 			return boundElement;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

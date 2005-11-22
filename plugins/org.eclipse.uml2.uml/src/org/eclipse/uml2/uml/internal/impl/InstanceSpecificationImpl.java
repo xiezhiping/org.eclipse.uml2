@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.2 2005/11/22 15:32:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,8 +102,8 @@ public class InstanceSpecificationImpl
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy((InternalEObject) templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
+			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(
 					UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER,
@@ -191,7 +191,18 @@ public class InstanceSpecificationImpl
 	public TemplateParameter getOwningTemplateParameter() {
 		if (eContainerFeatureID != UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER)
 			return null;
-		return (TemplateParameter) eContainer;
+		return (TemplateParameter) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateParameter basicGetOwningTemplateParameter() {
+		if (eContainerFeatureID != UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER)
+			return null;
+		return (TemplateParameter) eInternalContainer();
 	}
 
 	/**
@@ -201,15 +212,15 @@ public class InstanceSpecificationImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer;
-		if (newOwningTemplateParameter != eContainer
+		EObject oldOwningTemplateParameter = eContainer();
+		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil
 				.isAncestor(this, (EObject) newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
@@ -240,10 +251,8 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		VisibilityKind visibility = (VisibilityKind) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY);
-		return visibility == null
-			? VISIBILITY_EDEFAULT
-			: visibility;
+		return (VisibilityKind) eVirtualGet(
+			UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY, VISIBILITY_EDEFAULT);
 	}
 
 	/**
@@ -272,8 +281,8 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public boolean isSetVisibility() {
-		return eVirtualIsSet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY)
-			&& eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+		return eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY,
+			VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -334,8 +343,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION);
-		return specification;
+		return (ValueSpecification) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION);
 	}
 
 	/**
@@ -522,7 +530,7 @@ public class InstanceSpecificationImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -536,7 +544,7 @@ public class InstanceSpecificationImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -593,7 +601,7 @@ public class InstanceSpecificationImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -602,8 +610,8 @@ public class InstanceSpecificationImpl
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -618,9 +626,7 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME :
@@ -646,7 +652,9 @@ public class InstanceSpecificationImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER :
 				return getClassifiers();
 			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
@@ -774,15 +782,13 @@ public class InstanceSpecificationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.INSTANCE_SPECIFICATION__NAME)
-					? (String) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.INSTANCE_SPECIFICATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.INSTANCE_SPECIFICATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -802,7 +808,7 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER :
 				List classifier = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER);
 				return classifier != null && !classifier.isEmpty();
@@ -889,9 +895,8 @@ public class InstanceSpecificationImpl
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
 		result
-			.append(eVirtualIsSet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY)
-				? eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY)
-				: VISIBILITY_EDEFAULT);
+			.append(eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY,
+				VISIBILITY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}
@@ -901,12 +906,12 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

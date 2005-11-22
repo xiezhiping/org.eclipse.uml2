@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.1 2005/11/14 22:26:07 khussey Exp $
+ * $Id: DurationImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -158,9 +158,7 @@ public class DurationImpl
 			case UMLPackage.DURATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DURATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DURATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DURATION__NAME :
@@ -182,7 +180,9 @@ public class DurationImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.DURATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.DURATION__TYPE :
 				if (resolve)
 					return getType();
@@ -306,15 +306,13 @@ public class DurationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DURATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DURATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.DURATION__NAME)
-					? (String) eVirtualGet(UMLPackage.DURATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.DURATION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DURATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DURATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DURATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.DURATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -329,7 +327,7 @@ public class DurationImpl
 			case UMLPackage.DURATION__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.DURATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DURATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DURATION__TYPE :
 				return eVirtualGet(UMLPackage.DURATION__TYPE) != null;
 			case UMLPackage.DURATION__FIRST_TIME :

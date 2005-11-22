@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: ModelImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,10 +80,8 @@ public class ModelImpl
 	 * @generated
 	 */
 	public String getViewpoint() {
-		String viewpoint = (String) eVirtualGet(UMLPackage.MODEL__VIEWPOINT);
-		return viewpoint == null
-			? VIEWPOINT_EDEFAULT
-			: viewpoint;
+		return (String) eVirtualGet(UMLPackage.MODEL__VIEWPOINT,
+			VIEWPOINT_EDEFAULT);
 	}
 
 	/**
@@ -118,9 +116,7 @@ public class ModelImpl
 			case UMLPackage.MODEL__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MODEL__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.MODEL__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.MODEL__NAME :
@@ -154,7 +150,9 @@ public class ModelImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
@@ -168,7 +166,9 @@ public class ModelImpl
 			case UMLPackage.MODEL__NESTED_PACKAGE :
 				return getNestedPackages();
 			case UMLPackage.MODEL__NESTING_PACKAGE :
-				return getNestingPackage();
+				if (resolve)
+					return getNestingPackage();
+				return basicGetNestingPackage();
 			case UMLPackage.MODEL__APPLIED_PROFILE :
 				return getAppliedProfiles();
 			case UMLPackage.MODEL__VIEWPOINT :
@@ -348,15 +348,13 @@ public class ModelImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.MODEL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MODEL__NAME :
-				String name = eVirtualIsSet(UMLPackage.MODEL__NAME)
-					? (String) eVirtualGet(UMLPackage.MODEL__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.MODEL__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.MODEL__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.MODEL__VISIBILITY)
-					&& eVirtualGet(UMLPackage.MODEL__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.MODEL__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -386,7 +384,7 @@ public class ModelImpl
 			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.MODEL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.MODEL__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
@@ -403,14 +401,13 @@ public class ModelImpl
 			case UMLPackage.MODEL__NESTED_PACKAGE :
 				return !getNestedPackages().isEmpty();
 			case UMLPackage.MODEL__NESTING_PACKAGE :
-				return getNestingPackage() != null;
+				return basicGetNestingPackage() != null;
 			case UMLPackage.MODEL__APPLIED_PROFILE :
 				List appliedProfile = (List) eVirtualGet(UMLPackage.MODEL__APPLIED_PROFILE);
 				return appliedProfile != null && !appliedProfile.isEmpty();
 			case UMLPackage.MODEL__VIEWPOINT :
-				String viewpoint = eVirtualIsSet(UMLPackage.MODEL__VIEWPOINT)
-					? (String) eVirtualGet(UMLPackage.MODEL__VIEWPOINT)
-					: VIEWPOINT_EDEFAULT;
+				String viewpoint = (String) eVirtualGet(
+					UMLPackage.MODEL__VIEWPOINT, VIEWPOINT_EDEFAULT);
 				return VIEWPOINT_EDEFAULT == null
 					? viewpoint != null
 					: !VIEWPOINT_EDEFAULT.equals(viewpoint);
@@ -429,9 +426,8 @@ public class ModelImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (viewpoint: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.MODEL__VIEWPOINT)
-			? eVirtualGet(UMLPackage.MODEL__VIEWPOINT)
-			: VIEWPOINT_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.MODEL__VIEWPOINT,
+			VIEWPOINT_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

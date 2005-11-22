@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -106,10 +106,9 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public String getDeploymentLocation() {
-		String deploymentLocation = (String) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION);
-		return deploymentLocation == null
-			? DEPLOYMENT_LOCATION_EDEFAULT
-			: deploymentLocation;
+		return (String) eVirtualGet(
+			UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
+			DEPLOYMENT_LOCATION_EDEFAULT);
 	}
 
 	/**
@@ -140,10 +139,9 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public String getExecutionLocation() {
-		String executionLocation = (String) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION);
-		return executionLocation == null
-			? EXECUTION_LOCATION_EDEFAULT
-			: executionLocation;
+		return (String) eVirtualGet(
+			UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
+			EXECUTION_LOCATION_EDEFAULT);
 	}
 
 	/**
@@ -176,7 +174,7 @@ public class DeploymentSpecificationImpl
 	public Deployment getDeployment() {
 		if (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT)
 			return null;
-		return (Deployment) eContainer;
+		return (Deployment) eContainer();
 	}
 
 	/**
@@ -185,13 +183,13 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setDeployment(Deployment newDeployment) {
-		if (newDeployment != eContainer
+		if (newDeployment != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT && newDeployment != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newDeployment))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDeployment != null)
 				msgs = ((InternalEObject) newDeployment).eInverseAdd(this,
@@ -265,7 +263,7 @@ public class DeploymentSpecificationImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -309,7 +307,7 @@ public class DeploymentSpecificationImpl
 					return basicSetOwnedSignature(
 						(RedefinableTemplateSignature) otherEnd, msgs);
 				case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, msgs);
@@ -318,7 +316,7 @@ public class DeploymentSpecificationImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -416,21 +414,21 @@ public class DeploymentSpecificationImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.DEPLOYMENT__CONFIGURATION, Deployment.class,
 						msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -445,9 +443,7 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME :
@@ -489,7 +485,9 @@ public class DeploymentSpecificationImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE :
 				return getPackage();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
@@ -815,15 +813,13 @@ public class DeploymentSpecificationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__NAME)
-					? (String) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.DEPLOYMENT_SPECIFICATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -857,9 +853,9 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
@@ -904,9 +900,9 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
-				String fileName = eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME)
-					? (String) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME)
-					: FILE_NAME_EDEFAULT;
+				String fileName = (String) eVirtualGet(
+					UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME,
+					FILE_NAME_EDEFAULT);
 				return FILE_NAME_EDEFAULT == null
 					? fileName != null
 					: !FILE_NAME_EDEFAULT.equals(fileName);
@@ -923,16 +919,16 @@ public class DeploymentSpecificationImpl
 				List ownedAttribute = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION :
-				String deploymentLocation = eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION)
-					? (String) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION)
-					: DEPLOYMENT_LOCATION_EDEFAULT;
+				String deploymentLocation = (String) eVirtualGet(
+					UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
+					DEPLOYMENT_LOCATION_EDEFAULT);
 				return DEPLOYMENT_LOCATION_EDEFAULT == null
 					? deploymentLocation != null
 					: !DEPLOYMENT_LOCATION_EDEFAULT.equals(deploymentLocation);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION :
-				String executionLocation = eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION)
-					? (String) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION)
-					: EXECUTION_LOCATION_EDEFAULT;
+				String executionLocation = (String) eVirtualGet(
+					UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
+					EXECUTION_LOCATION_EDEFAULT);
 				return EXECUTION_LOCATION_EDEFAULT == null
 					? executionLocation != null
 					: !EXECUTION_LOCATION_EDEFAULT.equals(executionLocation);
@@ -953,15 +949,13 @@ public class DeploymentSpecificationImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (deploymentLocation: "); //$NON-NLS-1$
-		result
-			.append(eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION)
-				? eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION)
-				: DEPLOYMENT_LOCATION_EDEFAULT);
+		result.append(eVirtualGet(
+			UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
+			DEPLOYMENT_LOCATION_EDEFAULT));
 		result.append(", executionLocation: "); //$NON-NLS-1$
-		result
-			.append(eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION)
-				? eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION)
-				: EXECUTION_LOCATION_EDEFAULT);
+		result.append(eVirtualGet(
+			UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
+			EXECUTION_LOCATION_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -117,8 +117,8 @@ public abstract class OccurrenceSpecificationImpl
 	public Event getEvent() {
 		Event event = (Event) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__EVENT);
 		if (event != null && event.eIsProxy()) {
-			Event oldEvent = event;
-			event = (Event) eResolveProxy((InternalEObject) event);
+			InternalEObject oldEvent = (InternalEObject) event;
+			event = (Event) eResolveProxy(oldEvent);
 			if (event != oldEvent) {
 				eVirtualSet(UMLPackage.OCCURRENCE_SPECIFICATION__EVENT, event);
 				if (eNotificationRequired())
@@ -248,14 +248,14 @@ public abstract class OccurrenceSpecificationImpl
 					return ((InternalEList) getCovereds()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
 						UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION,
 						msgs);
 				case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND,
@@ -271,7 +271,7 @@ public abstract class OccurrenceSpecificationImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -337,9 +337,7 @@ public abstract class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME :
@@ -500,15 +498,15 @@ public abstract class OccurrenceSpecificationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.OCCURRENCE_SPECIFICATION__NAME)
-					? (String) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.OCCURRENCE_SPECIFICATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.OCCURRENCE_SPECIFICATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.OCCURRENCE_SPECIFICATION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -521,8 +519,7 @@ public abstract class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION) != null;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
-				List covered = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED);
-				return covered != null && !covered.isEmpty();
+				return isSetCovereds();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				List generalOrdering = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();

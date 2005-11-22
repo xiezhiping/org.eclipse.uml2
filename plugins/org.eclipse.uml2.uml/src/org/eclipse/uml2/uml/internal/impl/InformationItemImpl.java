@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -145,9 +145,7 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INFORMATION_ITEM__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INFORMATION_ITEM__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INFORMATION_ITEM__NAME :
@@ -189,7 +187,9 @@ public class InformationItemImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.INFORMATION_ITEM__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.INFORMATION_ITEM__PACKAGE :
 				return getPackage();
 			case UMLPackage.INFORMATION_ITEM__TEMPLATE_BINDING :
@@ -456,15 +456,13 @@ public class InformationItemImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INFORMATION_ITEM__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INFORMATION_ITEM__NAME :
-				String name = eVirtualIsSet(UMLPackage.INFORMATION_ITEM__NAME)
-					? (String) eVirtualGet(UMLPackage.INFORMATION_ITEM__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.INFORMATION_ITEM__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INFORMATION_ITEM__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INFORMATION_ITEM__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INFORMATION_ITEM__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.INFORMATION_ITEM__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -498,9 +496,9 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.INFORMATION_ITEM__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INFORMATION_ITEM__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.INFORMATION_ITEM__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INFORMATION_ITEM__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.INFORMATION_ITEM__TEMPLATE_BINDING :

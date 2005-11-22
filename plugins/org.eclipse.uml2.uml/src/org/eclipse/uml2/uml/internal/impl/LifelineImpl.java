@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,8 +116,8 @@ public class LifelineImpl
 	public ConnectableElement getRepresents() {
 		ConnectableElement represents = (ConnectableElement) eVirtualGet(UMLPackage.LIFELINE__REPRESENTS);
 		if (represents != null && represents.eIsProxy()) {
-			ConnectableElement oldRepresents = represents;
-			represents = (ConnectableElement) eResolveProxy((InternalEObject) represents);
+			InternalEObject oldRepresents = (InternalEObject) represents;
+			represents = (ConnectableElement) eResolveProxy(oldRepresents);
 			if (represents != oldRepresents) {
 				eVirtualSet(UMLPackage.LIFELINE__REPRESENTS, represents);
 				if (eNotificationRequired())
@@ -164,7 +164,7 @@ public class LifelineImpl
 	public Interaction getInteraction() {
 		if (eContainerFeatureID != UMLPackage.LIFELINE__INTERACTION)
 			return null;
-		return (Interaction) eContainer;
+		return (Interaction) eContainer();
 	}
 
 	/**
@@ -173,13 +173,13 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public void setInteraction(Interaction newInteraction) {
-		if (newInteraction != eContainer
+		if (newInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.LIFELINE__INTERACTION && newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInteraction != null)
 				msgs = ((InternalEObject) newInteraction).eInverseAdd(this,
@@ -201,8 +201,7 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public ValueSpecification getSelector() {
-		ValueSpecification selector = (ValueSpecification) eVirtualGet(UMLPackage.LIFELINE__SELECTOR);
-		return selector;
+		return (ValueSpecification) eVirtualGet(UMLPackage.LIFELINE__SELECTOR);
 	}
 
 	/**
@@ -275,8 +274,8 @@ public class LifelineImpl
 	public PartDecomposition getDecomposedAs() {
 		PartDecomposition decomposedAs = (PartDecomposition) eVirtualGet(UMLPackage.LIFELINE__DECOMPOSED_AS);
 		if (decomposedAs != null && decomposedAs.eIsProxy()) {
-			PartDecomposition oldDecomposedAs = decomposedAs;
-			decomposedAs = (PartDecomposition) eResolveProxy((InternalEObject) decomposedAs);
+			InternalEObject oldDecomposedAs = (InternalEObject) decomposedAs;
+			decomposedAs = (PartDecomposition) eResolveProxy(oldDecomposedAs);
 			if (decomposedAs != oldDecomposedAs) {
 				eVirtualSet(UMLPackage.LIFELINE__DECOMPOSED_AS, decomposedAs);
 				if (eNotificationRequired())
@@ -396,7 +395,7 @@ public class LifelineImpl
 					return ((InternalEList) getClientDependencies()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.LIFELINE__INTERACTION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.LIFELINE__INTERACTION, msgs);
@@ -408,7 +407,7 @@ public class LifelineImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -458,15 +457,15 @@ public class LifelineImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.LIFELINE__INTERACTION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.INTERACTION__LIFELINE, Interaction.class,
 						msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -481,9 +480,7 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LIFELINE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.LIFELINE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LIFELINE__NAME :
@@ -627,15 +624,14 @@ public class LifelineImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.LIFELINE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LIFELINE__NAME :
-				String name = eVirtualIsSet(UMLPackage.LIFELINE__NAME)
-					? (String) eVirtualGet(UMLPackage.LIFELINE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.LIFELINE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.LIFELINE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.LIFELINE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.LIFELINE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.LIFELINE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.LIFELINE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

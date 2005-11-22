@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -126,9 +126,7 @@ public class CreateLinkActionImpl
 			case UMLPackage.CREATE_LINK_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CREATE_LINK_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CREATE_LINK_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CREATE_LINK_ACTION__NAME :
@@ -206,15 +204,14 @@ public class CreateLinkActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.CREATE_LINK_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.CREATE_LINK_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CREATE_LINK_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CREATE_LINK_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CREATE_LINK_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.CREATE_LINK_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CREATE_LINK_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -272,8 +269,7 @@ public class CreateLinkActionImpl
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__END_DATA :
-				List endData = (List) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__END_DATA);
-				return endData != null && !endData.isEmpty();
+				return isSetEndData();
 			case UMLPackage.CREATE_LINK_ACTION__INPUT_VALUE :
 				List inputValue = (List) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__INPUT_VALUE);
 				return inputValue != null && !inputValue.isEmpty();

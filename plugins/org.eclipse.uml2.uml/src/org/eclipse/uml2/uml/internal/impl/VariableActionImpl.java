@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableActionImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: VariableActionImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -79,8 +79,8 @@ public abstract class VariableActionImpl
 	public Variable getVariable() {
 		Variable variable = (Variable) eVirtualGet(UMLPackage.VARIABLE_ACTION__VARIABLE);
 		if (variable != null && variable.eIsProxy()) {
-			Variable oldVariable = variable;
-			variable = (Variable) eResolveProxy((InternalEObject) variable);
+			InternalEObject oldVariable = (InternalEObject) variable;
+			variable = (Variable) eResolveProxy(oldVariable);
 			if (variable != oldVariable) {
 				eVirtualSet(UMLPackage.VARIABLE_ACTION__VARIABLE, variable);
 				if (eNotificationRequired())
@@ -142,9 +142,7 @@ public abstract class VariableActionImpl
 			case UMLPackage.VARIABLE_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.VARIABLE_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.VARIABLE_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.VARIABLE_ACTION__NAME :
@@ -363,15 +361,14 @@ public abstract class VariableActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.VARIABLE_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.VARIABLE_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.VARIABLE_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.VARIABLE_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.VARIABLE_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.VARIABLE_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.VARIABLE_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.VARIABLE_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.VARIABLE_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.VARIABLE_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

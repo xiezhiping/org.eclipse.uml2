@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -167,7 +167,18 @@ public class ComponentRealizationImpl
 	public Component getAbstraction() {
 		if (eContainerFeatureID != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION)
 			return null;
-		return (Component) eContainer;
+		return (Component) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Component basicGetAbstraction() {
+		if (eContainerFeatureID != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION)
+			return null;
+		return (Component) eInternalContainer();
 	}
 
 	/**
@@ -179,13 +190,13 @@ public class ComponentRealizationImpl
 		if (newAbstraction != null && !getClients().contains(newAbstraction)) {
 			getClients().add(newAbstraction);
 		}
-		if (newAbstraction != eContainer
+		if (newAbstraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION && newAbstraction != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newAbstraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newAbstraction != null)
 				msgs = ((InternalEObject) newAbstraction).eInverseAdd(this,
@@ -209,8 +220,8 @@ public class ComponentRealizationImpl
 	public Classifier getRealizingClassifier() {
 		Classifier realizingClassifier = (Classifier) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER);
 		if (realizingClassifier != null && realizingClassifier.eIsProxy()) {
-			Classifier oldRealizingClassifier = realizingClassifier;
-			realizingClassifier = (Classifier) eResolveProxy((InternalEObject) realizingClassifier);
+			InternalEObject oldRealizingClassifier = (InternalEObject) realizingClassifier;
+			realizingClassifier = (Classifier) eResolveProxy(oldRealizingClassifier);
 			if (realizingClassifier != oldRealizingClassifier) {
 				eVirtualSet(
 					UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
@@ -282,7 +293,7 @@ public class ComponentRealizationImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -292,7 +303,7 @@ public class ComponentRealizationImpl
 					return ((InternalEList) getClients()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
@@ -301,7 +312,7 @@ public class ComponentRealizationImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -358,21 +369,21 @@ public class ComponentRealizationImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.COMPONENT__REALIZATION, Component.class,
 						msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -387,9 +398,7 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.COMPONENT_REALIZATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.COMPONENT_REALIZATION__NAME :
@@ -411,7 +420,9 @@ public class ComponentRealizationImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.COMPONENT_REALIZATION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.COMPONENT_REALIZATION__SOURCE :
@@ -425,7 +436,9 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
 				return getMapping();
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				return getAbstraction();
+				if (resolve)
+					return getAbstraction();
+				return basicGetAbstraction();
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
 				if (resolve)
 					return getRealizingClassifier();
@@ -556,15 +569,13 @@ public class ComponentRealizationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.COMPONENT_REALIZATION__NAME)
-					? (String) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.COMPONENT_REALIZATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.COMPONENT_REALIZATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.COMPONENT_REALIZATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.COMPONENT_REALIZATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -579,7 +590,7 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.COMPONENT_REALIZATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.COMPONENT_REALIZATION__SOURCE :
@@ -595,7 +606,7 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
 				return eVirtualGet(UMLPackage.COMPONENT_REALIZATION__MAPPING) != null;
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				return getAbstraction() != null;
+				return basicGetAbstraction() != null;
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
 				return eVirtualGet(UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) != null;
 		}
@@ -618,12 +629,12 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		Component abstraction = getAbstraction();
 		if (abstraction != null) {
 			return abstraction;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

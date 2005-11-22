@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -149,8 +149,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE);
-		return ownedTemplateSignature;
+		return (TemplateSignature) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -285,7 +284,7 @@ public class StringExpressionImpl
 	public StringExpression getOwningExpression() {
 		if (eContainerFeatureID != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION)
 			return null;
-		return (StringExpression) eContainer;
+		return (StringExpression) eContainer();
 	}
 
 	/**
@@ -294,13 +293,13 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public void setOwningExpression(StringExpression newOwningExpression) {
-		if (newOwningExpression != eContainer
+		if (newOwningExpression != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION && newOwningExpression != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newOwningExpression))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningExpression != null)
 				msgs = ((InternalEObject) newOwningExpression).eInverseAdd(
@@ -404,7 +403,7 @@ public class StringExpressionImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -428,7 +427,7 @@ public class StringExpressionImpl
 					return ((InternalEList) getSubExpressions()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
@@ -437,7 +436,7 @@ public class StringExpressionImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -500,21 +499,21 @@ public class StringExpressionImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION,
 						StringExpression.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -529,9 +528,7 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STRING_EXPRESSION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STRING_EXPRESSION__NAME :
@@ -553,7 +550,9 @@ public class StringExpressionImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.STRING_EXPRESSION__TYPE :
 				if (resolve)
 					return getType();
@@ -709,15 +708,13 @@ public class StringExpressionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__NAME :
-				String name = eVirtualIsSet(UMLPackage.STRING_EXPRESSION__NAME)
-					? (String) eVirtualGet(UMLPackage.STRING_EXPRESSION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.STRING_EXPRESSION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.STRING_EXPRESSION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.STRING_EXPRESSION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.STRING_EXPRESSION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.STRING_EXPRESSION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -732,13 +729,12 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.STRING_EXPRESSION__TYPE :
 				return eVirtualGet(UMLPackage.STRING_EXPRESSION__TYPE) != null;
 			case UMLPackage.STRING_EXPRESSION__SYMBOL :
-				String symbol = eVirtualIsSet(UMLPackage.STRING_EXPRESSION__SYMBOL)
-					? (String) eVirtualGet(UMLPackage.STRING_EXPRESSION__SYMBOL)
-					: SYMBOL_EDEFAULT;
+				String symbol = (String) eVirtualGet(
+					UMLPackage.STRING_EXPRESSION__SYMBOL, SYMBOL_EDEFAULT);
 				return SYMBOL_EDEFAULT == null
 					? symbol != null
 					: !SYMBOL_EDEFAULT.equals(symbol);
@@ -816,12 +812,12 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		StringExpression owningExpression = getOwningExpression();
 		if (owningExpression != null) {
 			return owningExpression;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

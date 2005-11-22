@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,8 +110,8 @@ public class TemplateParameterImpl
 	public ParameterableElement getParameteredElement() {
 		ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
-			ParameterableElement oldParameteredElement = parameteredElement;
-			parameteredElement = (ParameterableElement) eResolveProxy((InternalEObject) parameteredElement);
+			InternalEObject oldParameteredElement = (InternalEObject) parameteredElement;
+			parameteredElement = (ParameterableElement) eResolveProxy(oldParameteredElement);
 			if (parameteredElement != oldParameteredElement) {
 				eVirtualSet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 					parameteredElement);
@@ -198,8 +198,8 @@ public class TemplateParameterImpl
 	public ParameterableElement getDefault() {
 		ParameterableElement default_ = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__DEFAULT);
 		if (default_ != null && default_.eIsProxy()) {
-			ParameterableElement oldDefault = default_;
-			default_ = (ParameterableElement) eResolveProxy((InternalEObject) default_);
+			InternalEObject oldDefault = (InternalEObject) default_;
+			default_ = (ParameterableElement) eResolveProxy(oldDefault);
 			if (default_ != oldDefault) {
 				eVirtualSet(UMLPackage.TEMPLATE_PARAMETER__DEFAULT, default_);
 				if (eNotificationRequired())
@@ -250,7 +250,7 @@ public class TemplateParameterImpl
 	public TemplateSignature getSignature() {
 		if (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER__SIGNATURE)
 			return null;
-		return (TemplateSignature) eContainer;
+		return (TemplateSignature) eContainer();
 	}
 
 	/**
@@ -259,13 +259,13 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setSignature(TemplateSignature newSignature) {
-		if (newSignature != eContainer
+		if (newSignature != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER__SIGNATURE && newSignature != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newSignature))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSignature != null)
 				msgs = ((InternalEObject) newSignature).eInverseAdd(this,
@@ -288,8 +288,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement getOwnedParameteredElement() {
-		ParameterableElement ownedParameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
-		return ownedParameteredElement;
+		return (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 	}
 
 	/**
@@ -374,8 +373,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement getOwnedDefault() {
-		ParameterableElement ownedDefault = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
-		return ownedDefault;
+		return (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
 	}
 
 	/**
@@ -471,7 +469,7 @@ public class TemplateParameterImpl
 					return ((InternalEList) getEAnnotations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, msgs);
@@ -501,7 +499,7 @@ public class TemplateParameterImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -547,15 +545,15 @@ public class TemplateParameterImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
 						TemplateSignature.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -570,9 +568,7 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
@@ -694,12 +690,12 @@ public class TemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateSignature signature = getSignature();
 		if (signature != null) {
 			return signature;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

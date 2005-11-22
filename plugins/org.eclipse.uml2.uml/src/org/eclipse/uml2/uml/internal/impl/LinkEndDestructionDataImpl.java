@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionDataImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: LinkEndDestructionDataImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -124,8 +124,8 @@ public class LinkEndDestructionDataImpl
 	public InputPin getDestroyAt() {
 		InputPin destroyAt = (InputPin) eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT);
 		if (destroyAt != null && destroyAt.eIsProxy()) {
-			InputPin oldDestroyAt = destroyAt;
-			destroyAt = (InputPin) eResolveProxy((InternalEObject) destroyAt);
+			InternalEObject oldDestroyAt = (InternalEObject) destroyAt;
+			destroyAt = (InputPin) eResolveProxy(oldDestroyAt);
 			if (destroyAt != oldDestroyAt) {
 				eVirtualSet(UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT,
 					destroyAt);
@@ -199,9 +199,7 @@ public class LinkEndDestructionDataImpl
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :

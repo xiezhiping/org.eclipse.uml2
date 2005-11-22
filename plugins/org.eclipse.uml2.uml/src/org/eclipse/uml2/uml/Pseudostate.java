@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Pseudostate.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: Pseudostate.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -81,7 +81,7 @@ public interface Pseudostate
 	 * @see #setStateMachine(StateMachine)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPseudostate_StateMachine()
 	 * @see org.eclipse.uml2.uml.StateMachine#getConnectionPoints
-	 * @model opposite="connectionPoint" ordered="false"
+	 * @model opposite="connectionPoint" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	StateMachine getStateMachine();
@@ -108,7 +108,7 @@ public interface Pseudostate
 	 * @see #setState(State)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPseudostate_State()
 	 * @see org.eclipse.uml2.uml.State#getConnectionPoints
-	 * @model opposite="connectionPoint" ordered="false"
+	 * @model opposite="connectionPoint" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	State getState();

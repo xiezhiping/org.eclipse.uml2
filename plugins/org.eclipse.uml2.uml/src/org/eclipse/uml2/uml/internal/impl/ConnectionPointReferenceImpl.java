@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -149,7 +149,7 @@ public class ConnectionPointReferenceImpl
 	public State getState() {
 		if (eContainerFeatureID != UMLPackage.CONNECTION_POINT_REFERENCE__STATE)
 			return null;
-		return (State) eContainer;
+		return (State) eContainer();
 	}
 
 	/**
@@ -158,13 +158,13 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public void setState(State newState) {
-		if (newState != eContainer
+		if (newState != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CONNECTION_POINT_REFERENCE__STATE && newState != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newState))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newState != null)
 				msgs = ((InternalEObject) newState).eInverseAdd(this,
@@ -224,12 +224,12 @@ public class ConnectionPointReferenceImpl
 					return ((InternalEList) getIncomings()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER, msgs);
 				case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.CONNECTION_POINT_REFERENCE__STATE, msgs);
@@ -238,7 +238,7 @@ public class ConnectionPointReferenceImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -292,17 +292,17 @@ public class ConnectionPointReferenceImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
 				case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.STATE__CONNECTION, State.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -317,9 +317,7 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
@@ -470,15 +468,15 @@ public class ConnectionPointReferenceImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
-				String name = eVirtualIsSet(UMLPackage.CONNECTION_POINT_REFERENCE__NAME)
-					? (String) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.CONNECTION_POINT_REFERENCE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

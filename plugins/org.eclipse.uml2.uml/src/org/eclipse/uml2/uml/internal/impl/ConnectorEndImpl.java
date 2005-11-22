@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -81,11 +81,9 @@ public class ConnectorEndImpl
 	 */
 	public Property getDefiningEnd() {
 		Property definingEnd = basicGetDefiningEnd();
-		return definingEnd == null
-			? null
-			: (definingEnd.eIsProxy()
-				? (Property) eResolveProxy((InternalEObject) definingEnd)
-				: definingEnd);
+		return definingEnd != null && definingEnd.eIsProxy()
+			? (Property) eResolveProxy((InternalEObject) definingEnd)
+			: definingEnd;
 	}
 
 	/**
@@ -105,8 +103,8 @@ public class ConnectorEndImpl
 	public Property getPartWithPort() {
 		Property partWithPort = (Property) eVirtualGet(UMLPackage.CONNECTOR_END__PART_WITH_PORT);
 		if (partWithPort != null && partWithPort.eIsProxy()) {
-			Property oldPartWithPort = partWithPort;
-			partWithPort = (Property) eResolveProxy((InternalEObject) partWithPort);
+			InternalEObject oldPartWithPort = (InternalEObject) partWithPort;
+			partWithPort = (Property) eResolveProxy(oldPartWithPort);
 			if (partWithPort != oldPartWithPort) {
 				eVirtualSet(UMLPackage.CONNECTOR_END__PART_WITH_PORT,
 					partWithPort);
@@ -154,8 +152,8 @@ public class ConnectorEndImpl
 	public ConnectableElement getRole() {
 		ConnectableElement role = (ConnectableElement) eVirtualGet(UMLPackage.CONNECTOR_END__ROLE);
 		if (role != null && role.eIsProxy()) {
-			ConnectableElement oldRole = role;
-			role = (ConnectableElement) eResolveProxy((InternalEObject) role);
+			InternalEObject oldRole = (InternalEObject) role;
+			role = (ConnectableElement) eResolveProxy(oldRole);
 			if (role != oldRole) {
 				eVirtualSet(UMLPackage.CONNECTOR_END__ROLE, role);
 				if (eNotificationRequired())
@@ -291,7 +289,7 @@ public class ConnectorEndImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -337,9 +335,7 @@ public class ConnectorEndImpl
 			case UMLPackage.CONNECTOR_END__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONNECTOR_END__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CONNECTOR_END__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONNECTOR_END__IS_ORDERED :

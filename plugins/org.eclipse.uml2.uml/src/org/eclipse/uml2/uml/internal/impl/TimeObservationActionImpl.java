@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: TimeObservationActionImpl.java,v 1.3 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -100,8 +100,7 @@ public class TimeObservationActionImpl
 	 * @generated
 	 */
 	public InputPin getValue() {
-		InputPin value = (InputPin) eVirtualGet(UMLPackage.TIME_OBSERVATION_ACTION__VALUE);
-		return value;
+		return (InputPin) eVirtualGet(UMLPackage.TIME_OBSERVATION_ACTION__VALUE);
 	}
 
 	/**
@@ -209,9 +208,7 @@ public class TimeObservationActionImpl
 			case UMLPackage.TIME_OBSERVATION_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TIME_OBSERVATION_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TIME_OBSERVATION_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TIME_OBSERVATION_ACTION__NAME :
@@ -454,15 +451,15 @@ public class TimeObservationActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TIME_OBSERVATION_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TIME_OBSERVATION_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.TIME_OBSERVATION_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.TIME_OBSERVATION_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.TIME_OBSERVATION_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.TIME_OBSERVATION_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.TIME_OBSERVATION_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.TIME_OBSERVATION_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.TIME_OBSERVATION_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.TIME_OBSERVATION_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -524,7 +521,7 @@ public class TimeObservationActionImpl
 			case UMLPackage.TIME_OBSERVATION_ACTION__OBJECT :
 				return eVirtualGet(UMLPackage.TIME_OBSERVATION_ACTION__OBJECT) != null;
 			case UMLPackage.TIME_OBSERVATION_ACTION__VALUE :
-				return eVirtualGet(UMLPackage.TIME_OBSERVATION_ACTION__VALUE) != null;
+				return isSetValue();
 			case UMLPackage.TIME_OBSERVATION_ACTION__NOW :
 				return getNow() != null;
 		}

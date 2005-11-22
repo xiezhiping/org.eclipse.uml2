@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -100,8 +100,7 @@ public class DurationObservationActionImpl
 	 * @generated
 	 */
 	public InputPin getValue() {
-		InputPin value = (InputPin) eVirtualGet(UMLPackage.DURATION_OBSERVATION_ACTION__VALUE);
-		return value;
+		return (InputPin) eVirtualGet(UMLPackage.DURATION_OBSERVATION_ACTION__VALUE);
 	}
 
 	/**
@@ -213,9 +212,7 @@ public class DurationObservationActionImpl
 			case UMLPackage.DURATION_OBSERVATION_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DURATION_OBSERVATION_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.DURATION_OBSERVATION_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DURATION_OBSERVATION_ACTION__NAME :
@@ -458,15 +455,15 @@ public class DurationObservationActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DURATION_OBSERVATION_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DURATION_OBSERVATION_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.DURATION_OBSERVATION_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.DURATION_OBSERVATION_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.DURATION_OBSERVATION_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.DURATION_OBSERVATION_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.DURATION_OBSERVATION_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.DURATION_OBSERVATION_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.DURATION_OBSERVATION_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.DURATION_OBSERVATION_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -528,7 +525,7 @@ public class DurationObservationActionImpl
 			case UMLPackage.DURATION_OBSERVATION_ACTION__OBJECT :
 				return eVirtualGet(UMLPackage.DURATION_OBSERVATION_ACTION__OBJECT) != null;
 			case UMLPackage.DURATION_OBSERVATION_ACTION__VALUE :
-				return eVirtualGet(UMLPackage.DURATION_OBSERVATION_ACTION__VALUE) != null;
+				return isSetValue();
 			case UMLPackage.DURATION_OBSERVATION_ACTION__DURATION :
 				return getDuration() != null;
 		}

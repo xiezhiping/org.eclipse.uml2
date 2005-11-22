@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -77,8 +77,8 @@ public class QualifierValueImpl
 	public Property getQualifier() {
 		Property qualifier = (Property) eVirtualGet(UMLPackage.QUALIFIER_VALUE__QUALIFIER);
 		if (qualifier != null && qualifier.eIsProxy()) {
-			Property oldQualifier = qualifier;
-			qualifier = (Property) eResolveProxy((InternalEObject) qualifier);
+			InternalEObject oldQualifier = (InternalEObject) qualifier;
+			qualifier = (Property) eResolveProxy(oldQualifier);
 			if (qualifier != oldQualifier) {
 				eVirtualSet(UMLPackage.QUALIFIER_VALUE__QUALIFIER, qualifier);
 				if (eNotificationRequired())
@@ -125,8 +125,8 @@ public class QualifierValueImpl
 	public InputPin getValue() {
 		InputPin value = (InputPin) eVirtualGet(UMLPackage.QUALIFIER_VALUE__VALUE);
 		if (value != null && value.eIsProxy()) {
-			InputPin oldValue = value;
-			value = (InputPin) eResolveProxy((InternalEObject) value);
+			InternalEObject oldValue = (InternalEObject) value;
+			value = (InputPin) eResolveProxy(oldValue);
 			if (value != oldValue) {
 				eVirtualSet(UMLPackage.QUALIFIER_VALUE__VALUE, value);
 				if (eNotificationRequired())
@@ -208,9 +208,7 @@ public class QualifierValueImpl
 			case UMLPackage.QUALIFIER_VALUE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.QUALIFIER_VALUE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.QUALIFIER_VALUE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.QUALIFIER_VALUE__QUALIFIER :

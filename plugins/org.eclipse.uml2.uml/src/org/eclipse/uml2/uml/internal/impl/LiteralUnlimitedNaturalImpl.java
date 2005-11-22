@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -139,9 +139,7 @@ public class LiteralUnlimitedNaturalImpl
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME :
@@ -163,7 +161,9 @@ public class LiteralUnlimitedNaturalImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TYPE :
 				if (resolve)
 					return getType();
@@ -276,15 +276,13 @@ public class LiteralUnlimitedNaturalImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME :
-				String name = eVirtualIsSet(UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME)
-					? (String) eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.LITERAL_UNLIMITED_NATURAL__VISIBILITY)
-					&& eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -299,7 +297,7 @@ public class LiteralUnlimitedNaturalImpl
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TYPE :
 				return eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__TYPE) != null;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__VALUE :

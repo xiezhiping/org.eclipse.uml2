@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecification.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: DeploymentSpecification.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -103,7 +103,7 @@ public interface DeploymentSpecification
 	 * @see #setDeployment(Deployment)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentSpecification_Deployment()
 	 * @see org.eclipse.uml2.uml.Deployment#getConfigurations
-	 * @model opposite="configuration" ordered="false"
+	 * @model opposite="configuration" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	Deployment getDeployment();

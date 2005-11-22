@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationActionImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: ClearAssociationActionImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -103,8 +103,7 @@ public class ClearAssociationActionImpl
 	 * @generated
 	 */
 	public InputPin getObject() {
-		InputPin object = (InputPin) eVirtualGet(UMLPackage.CLEAR_ASSOCIATION_ACTION__OBJECT);
-		return object;
+		return (InputPin) eVirtualGet(UMLPackage.CLEAR_ASSOCIATION_ACTION__OBJECT);
 	}
 
 	/**
@@ -191,8 +190,8 @@ public class ClearAssociationActionImpl
 	public Association getAssociation() {
 		Association association = (Association) eVirtualGet(UMLPackage.CLEAR_ASSOCIATION_ACTION__ASSOCIATION);
 		if (association != null && association.eIsProxy()) {
-			Association oldAssociation = association;
-			association = (Association) eResolveProxy((InternalEObject) association);
+			InternalEObject oldAssociation = (InternalEObject) association;
+			association = (Association) eResolveProxy(oldAssociation);
 			if (association != oldAssociation) {
 				eVirtualSet(UMLPackage.CLEAR_ASSOCIATION_ACTION__ASSOCIATION,
 					association);
@@ -323,9 +322,7 @@ public class ClearAssociationActionImpl
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__NAME :
@@ -552,15 +549,15 @@ public class ClearAssociationActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CLEAR_ASSOCIATION_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.CLEAR_ASSOCIATION_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.CLEAR_ASSOCIATION_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.CLEAR_ASSOCIATION_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CLEAR_ASSOCIATION_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CLEAR_ASSOCIATION_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.CLEAR_ASSOCIATION_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

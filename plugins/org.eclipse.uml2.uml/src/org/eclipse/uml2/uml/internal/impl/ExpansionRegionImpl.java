@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -95,10 +95,8 @@ public class ExpansionRegionImpl
 	 * @generated
 	 */
 	public ExpansionKind getMode() {
-		ExpansionKind mode = (ExpansionKind) eVirtualGet(UMLPackage.EXPANSION_REGION__MODE);
-		return mode == null
-			? MODE_EDEFAULT
-			: mode;
+		return (ExpansionKind) eVirtualGet(UMLPackage.EXPANSION_REGION__MODE,
+			MODE_EDEFAULT);
 	}
 
 	/**
@@ -216,12 +214,12 @@ public class ExpansionRegionImpl
 					return ((InternalEList) getInPartitions()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE, msgs);
 				case UMLPackage.EXPANSION_REGION__ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.EXPANSION_REGION__ACTIVITY, msgs);
@@ -244,7 +242,7 @@ public class ExpansionRegionImpl
 					return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.EXPANSION_REGION__IN_ACTIVITY, msgs);
@@ -268,7 +266,7 @@ public class ExpansionRegionImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -367,9 +365,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXPANSION_REGION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXPANSION_REGION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXPANSION_REGION__NAME :
@@ -437,9 +433,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.EXPANSION_REGION__SUPER_GROUP :
-				if (resolve)
-					return getSuperGroup();
-				return basicGetSuperGroup();
+				return getSuperGroup();
 			case UMLPackage.EXPANSION_REGION__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
@@ -692,15 +686,14 @@ public class ExpansionRegionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXPANSION_REGION__NAME :
-				String name = eVirtualIsSet(UMLPackage.EXPANSION_REGION__NAME)
-					? (String) eVirtualGet(UMLPackage.EXPANSION_REGION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.EXPANSION_REGION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.EXPANSION_REGION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.EXPANSION_REGION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.EXPANSION_REGION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.EXPANSION_REGION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.EXPANSION_REGION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -729,7 +722,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
-				return getActivity() != null;
+				return isSetActivity();
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				List incoming = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
@@ -779,7 +772,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
-				return getInActivity() != null;
+				return isSetInActivity();
 			case UMLPackage.EXPANSION_REGION__CONTAINED_EDGE :
 				return isSetContainedEdges();
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
@@ -794,8 +787,8 @@ public class ExpansionRegionImpl
 				List edge = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__EDGE);
 				return edge != null && !edge.isEmpty();
 			case UMLPackage.EXPANSION_REGION__MODE :
-				return eVirtualIsSet(UMLPackage.EXPANSION_REGION__MODE)
-					&& eVirtualGet(UMLPackage.EXPANSION_REGION__MODE) != MODE_EDEFAULT;
+				return eVirtualGet(UMLPackage.EXPANSION_REGION__MODE,
+					MODE_EDEFAULT) != MODE_EDEFAULT;
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
 				List inputElement = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__INPUT_ELEMENT);
 				return inputElement != null && !inputElement.isEmpty();
@@ -817,9 +810,8 @@ public class ExpansionRegionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mode: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.EXPANSION_REGION__MODE)
-			? eVirtualGet(UMLPackage.EXPANSION_REGION__MODE)
-			: MODE_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.EXPANSION_REGION__MODE,
+			MODE_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

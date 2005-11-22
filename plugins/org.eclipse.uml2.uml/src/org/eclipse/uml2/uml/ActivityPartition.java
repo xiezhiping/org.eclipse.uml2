@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.3 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -204,7 +204,7 @@ public interface ActivityPartition
 	 * @see #setSuperPartition(ActivityPartition)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_SuperPartition()
 	 * @see org.eclipse.uml2.uml.ActivityPartition#getSubpartitions
-	 * @model opposite="subpartition" ordered="false"
+	 * @model opposite="subpartition" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	ActivityPartition getSuperPartition();

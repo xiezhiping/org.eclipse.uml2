@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendOperationEventImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: SendOperationEventImpl.java,v 1.2 2005/11/22 15:32:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -73,8 +73,8 @@ public class SendOperationEventImpl
 	public Operation getOperation() {
 		Operation operation = (Operation) eVirtualGet(UMLPackage.SEND_OPERATION_EVENT__OPERATION);
 		if (operation != null && operation.eIsProxy()) {
-			Operation oldOperation = operation;
-			operation = (Operation) eResolveProxy((InternalEObject) operation);
+			InternalEObject oldOperation = (InternalEObject) operation;
+			operation = (Operation) eResolveProxy(oldOperation);
 			if (operation != oldOperation) {
 				eVirtualSet(UMLPackage.SEND_OPERATION_EVENT__OPERATION,
 					operation);
@@ -126,9 +126,7 @@ public class SendOperationEventImpl
 			case UMLPackage.SEND_OPERATION_EVENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.SEND_OPERATION_EVENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.SEND_OPERATION_EVENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.SEND_OPERATION_EVENT__NAME :
@@ -150,7 +148,9 @@ public class SendOperationEventImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.SEND_OPERATION_EVENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.SEND_OPERATION_EVENT__OPERATION :
 				if (resolve)
 					return getOperation();
@@ -255,15 +255,13 @@ public class SendOperationEventImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.SEND_OPERATION_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.SEND_OPERATION_EVENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.SEND_OPERATION_EVENT__NAME)
-					? (String) eVirtualGet(UMLPackage.SEND_OPERATION_EVENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.SEND_OPERATION_EVENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.SEND_OPERATION_EVENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.SEND_OPERATION_EVENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.SEND_OPERATION_EVENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.SEND_OPERATION_EVENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -278,7 +276,7 @@ public class SendOperationEventImpl
 			case UMLPackage.SEND_OPERATION_EVENT__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.SEND_OPERATION_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.SEND_OPERATION_EVENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.SEND_OPERATION_EVENT__OPERATION :
 				return eVirtualGet(UMLPackage.SEND_OPERATION_EVENT__OPERATION) != null;
 		}

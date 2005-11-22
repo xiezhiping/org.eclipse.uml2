@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameter.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: TemplateParameter.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +57,7 @@ public interface TemplateParameter
 	 * @see #setSignature(TemplateSignature)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateParameter_Signature()
 	 * @see org.eclipse.uml2.uml.TemplateSignature#getOwnedParameters
-	 * @model opposite="ownedParameter" required="true" ordered="false"
+	 * @model opposite="ownedParameter" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
 	TemplateSignature getSignature();

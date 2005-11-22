@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,8 +80,8 @@ public class BroadcastSignalActionImpl
 	public Signal getSignal() {
 		Signal signal = (Signal) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__SIGNAL);
 		if (signal != null && signal.eIsProxy()) {
-			Signal oldSignal = signal;
-			signal = (Signal) eResolveProxy((InternalEObject) signal);
+			InternalEObject oldSignal = (InternalEObject) signal;
+			signal = (Signal) eResolveProxy(oldSignal);
 			if (signal != oldSignal) {
 				eVirtualSet(UMLPackage.BROADCAST_SIGNAL_ACTION__SIGNAL, signal);
 				if (eNotificationRequired())
@@ -154,9 +154,7 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__NAME :
@@ -394,15 +392,15 @@ public class BroadcastSignalActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.BROADCAST_SIGNAL_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.BROADCAST_SIGNAL_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.BROADCAST_SIGNAL_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.BROADCAST_SIGNAL_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

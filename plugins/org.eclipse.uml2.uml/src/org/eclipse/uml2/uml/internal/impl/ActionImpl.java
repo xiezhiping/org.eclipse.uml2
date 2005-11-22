@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: ActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -351,9 +351,7 @@ public class ActionImpl
 			case UMLPackage.ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTION__NAME :
@@ -562,15 +560,14 @@ public class ActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.ACTION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

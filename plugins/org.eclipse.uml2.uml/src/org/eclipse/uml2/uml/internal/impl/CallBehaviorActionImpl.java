@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: CallBehaviorActionImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -88,8 +88,8 @@ public class CallBehaviorActionImpl
 	public Behavior getBehavior() {
 		Behavior behavior = (Behavior) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR);
 		if (behavior != null && behavior.eIsProxy()) {
-			Behavior oldBehavior = behavior;
-			behavior = (Behavior) eResolveProxy((InternalEObject) behavior);
+			InternalEObject oldBehavior = (InternalEObject) behavior;
+			behavior = (Behavior) eResolveProxy(oldBehavior);
 			if (behavior != oldBehavior) {
 				eVirtualSet(UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, behavior);
 				if (eNotificationRequired())
@@ -173,9 +173,7 @@ public class CallBehaviorActionImpl
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME :
@@ -432,15 +430,14 @@ public class CallBehaviorActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.CALL_BEHAVIOR_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.CALL_BEHAVIOR_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

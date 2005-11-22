@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -75,8 +75,8 @@ public class ExtensionEndImpl
 	public Type getType() {
 		Type type = (Type) eVirtualGet(UMLPackage.EXTENSION_END__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Type oldType = type;
-			type = (Type) eResolveProxy((InternalEObject) type);
+			InternalEObject oldType = (InternalEObject) type;
+			type = (Type) eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UMLPackage.EXTENSION_END__TYPE, type);
 				if (eNotificationRequired())
@@ -189,9 +189,7 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXTENSION_END__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXTENSION_END__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXTENSION_END__NAME :
@@ -251,7 +249,9 @@ public class ExtensionEndImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.EXTENSION_END__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.EXTENSION_END__END :
 				return getEnds();
 			case UMLPackage.EXTENSION_END__DEPLOYMENT :
@@ -285,7 +285,9 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__REDEFINED_PROPERTY :
 				return getRedefinedProperties();
 			case UMLPackage.EXTENSION_END__OWNING_ASSOCIATION :
-				return getOwningAssociation();
+				if (resolve)
+					return getOwningAssociation();
+				return basicGetOwningAssociation();
 			case UMLPackage.EXTENSION_END__ASSOCIATION :
 				if (resolve)
 					return getAssociation();
@@ -323,15 +325,14 @@ public class ExtensionEndImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXTENSION_END__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXTENSION_END__NAME :
-				String name = eVirtualIsSet(UMLPackage.EXTENSION_END__NAME)
-					? (String) eVirtualGet(UMLPackage.EXTENSION_END__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.EXTENSION_END__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.EXTENSION_END__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.EXTENSION_END__VISIBILITY)
-					&& eVirtualGet(UMLPackage.EXTENSION_END__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.EXTENSION_END__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.EXTENSION_END__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -354,7 +355,7 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
 			case UMLPackage.EXTENSION_END__TYPE :
-				return eVirtualGet(UMLPackage.EXTENSION_END__TYPE) != null;
+				return isSetType();
 			case UMLPackage.EXTENSION_END__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.EXTENSION_END__IS_UNIQUE :
@@ -362,17 +363,17 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__UPPER :
 				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.EXTENSION_END__LOWER :
-				return getLower() != LOWER_EDEFAULT;
+				return isSetLower();
 			case UMLPackage.EXTENSION_END__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.EXTENSION_END__UPPER_VALUE) != null;
 			case UMLPackage.EXTENSION_END__LOWER_VALUE :
 				return eVirtualGet(UMLPackage.EXTENSION_END__LOWER_VALUE) != null;
 			case UMLPackage.EXTENSION_END__IS_READ_ONLY :
-				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
+				return isSetIsReadOnly();
 			case UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.EXTENSION_END__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.EXTENSION_END__END :
 				List end = (List) eVirtualGet(UMLPackage.EXTENSION_END__END);
 				return end != null && !end.isEmpty();
@@ -397,8 +398,8 @@ public class ExtensionEndImpl
 					? getDefault() != null
 					: !DEFAULT_EDEFAULT.equals(getDefault());
 			case UMLPackage.EXTENSION_END__AGGREGATION :
-				return eVirtualIsSet(UMLPackage.EXTENSION_END__AGGREGATION)
-					&& eVirtualGet(UMLPackage.EXTENSION_END__AGGREGATION) != AGGREGATION_EDEFAULT;
+				return eVirtualGet(UMLPackage.EXTENSION_END__AGGREGATION,
+					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UMLPackage.EXTENSION_END__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.EXTENSION_END__CLASS_ :
@@ -408,7 +409,7 @@ public class ExtensionEndImpl
 				return redefinedProperty != null
 					&& !redefinedProperty.isEmpty();
 			case UMLPackage.EXTENSION_END__OWNING_ASSOCIATION :
-				return getOwningAssociation() != null;
+				return basicGetOwningAssociation() != null;
 			case UMLPackage.EXTENSION_END__ASSOCIATION :
 				return eVirtualGet(UMLPackage.EXTENSION_END__ASSOCIATION) != null;
 			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :

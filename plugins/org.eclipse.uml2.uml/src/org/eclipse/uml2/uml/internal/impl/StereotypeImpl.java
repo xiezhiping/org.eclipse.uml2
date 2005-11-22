@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.1 2005/11/14 22:26:07 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -118,9 +118,7 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STEREOTYPE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.STEREOTYPE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STEREOTYPE__NAME :
@@ -162,7 +160,9 @@ public class StereotypeImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.STEREOTYPE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.STEREOTYPE__PACKAGE :
 				return getPackage();
 			case UMLPackage.STEREOTYPE__TEMPLATE_BINDING :
@@ -543,15 +543,13 @@ public class StereotypeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STEREOTYPE__NAME :
-				String name = eVirtualIsSet(UMLPackage.STEREOTYPE__NAME)
-					? (String) eVirtualGet(UMLPackage.STEREOTYPE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.STEREOTYPE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.STEREOTYPE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.STEREOTYPE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.STEREOTYPE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.STEREOTYPE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -585,9 +583,9 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.STEREOTYPE__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.STEREOTYPE__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.STEREOTYPE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.STEREOTYPE__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.STEREOTYPE__TEMPLATE_BINDING :
@@ -596,7 +594,7 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.STEREOTYPE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.STEREOTYPE__IS_ABSTRACT :
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.STEREOTYPE__GENERALIZATION :
 				List generalization = (List) eVirtualGet(UMLPackage.STEREOTYPE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -612,7 +610,7 @@ public class StereotypeImpl
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.STEREOTYPE__GENERAL :
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
 				List ownedUseCase = (List) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
@@ -632,8 +630,7 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.STEREOTYPE__OWNED_SIGNATURE) != null;
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UMLPackage.STEREOTYPE__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.STEREOTYPE__ROLE :

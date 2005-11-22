@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -124,8 +124,8 @@ public class LinkEndCreationDataImpl
 	public InputPin getInsertAt() {
 		InputPin insertAt = (InputPin) eVirtualGet(UMLPackage.LINK_END_CREATION_DATA__INSERT_AT);
 		if (insertAt != null && insertAt.eIsProxy()) {
-			InputPin oldInsertAt = insertAt;
-			insertAt = (InputPin) eResolveProxy((InternalEObject) insertAt);
+			InternalEObject oldInsertAt = (InternalEObject) insertAt;
+			insertAt = (InputPin) eResolveProxy(oldInsertAt);
 			if (insertAt != oldInsertAt) {
 				eVirtualSet(UMLPackage.LINK_END_CREATION_DATA__INSERT_AT,
 					insertAt);
@@ -199,9 +199,7 @@ public class LinkEndCreationDataImpl
 			case UMLPackage.LINK_END_CREATION_DATA__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LINK_END_CREATION_DATA__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.LINK_END_CREATION_DATA__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LINK_END_CREATION_DATA__VALUE :

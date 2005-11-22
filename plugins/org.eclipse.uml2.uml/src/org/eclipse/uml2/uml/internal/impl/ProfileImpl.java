@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
+import org.eclipse.uml2.common.util.SubsetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
@@ -93,8 +94,9 @@ public class ProfileImpl
 	public List getPackagedElements() {
 		List packagedElement = (List) eVirtualGet(UMLPackage.PROFILE__PACKAGED_ELEMENT);
 		if (packagedElement == null) {
-			eVirtualSet(UMLPackage.PROFILE__PACKAGED_ELEMENT,
-				packagedElement = new SupersetEObjectContainmentEList(
+			eVirtualSet(
+				UMLPackage.PROFILE__PACKAGED_ELEMENT,
+				packagedElement = new SupersetEObjectContainmentEList.Resolving(
 					PackageableElement.class, this,
 					UMLPackage.PROFILE__PACKAGED_ELEMENT,
 					new int[]{UMLPackage.PROFILE__OWNED_STEREOTYPE}));
@@ -148,8 +150,9 @@ public class ProfileImpl
 		List ownedStereotype = (List) eVirtualGet(UMLPackage.PROFILE__OWNED_STEREOTYPE);
 		if (ownedStereotype == null) {
 			eVirtualSet(UMLPackage.PROFILE__OWNED_STEREOTYPE,
-				ownedStereotype = new SubsetEObjectEList(Stereotype.class,
-					this, UMLPackage.PROFILE__OWNED_STEREOTYPE,
+				ownedStereotype = new SubsetEObjectResolvingEList(
+					Stereotype.class, this,
+					UMLPackage.PROFILE__OWNED_STEREOTYPE,
 					new int[]{UMLPackage.PROFILE__PACKAGED_ELEMENT}));
 		}
 		return ownedStereotype;
@@ -281,7 +284,7 @@ public class ProfileImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.PROFILE__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.PROFILE__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -305,7 +308,7 @@ public class ProfileImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -375,9 +378,7 @@ public class ProfileImpl
 			case UMLPackage.PROFILE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PROFILE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PROFILE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PROFILE__NAME :
@@ -411,7 +412,9 @@ public class ProfileImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.PROFILE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.PROFILE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE :
@@ -425,7 +428,9 @@ public class ProfileImpl
 			case UMLPackage.PROFILE__NESTED_PACKAGE :
 				return getNestedPackages();
 			case UMLPackage.PROFILE__NESTING_PACKAGE :
-				return getNestingPackage();
+				if (resolve)
+					return getNestingPackage();
+				return basicGetNestingPackage();
 			case UMLPackage.PROFILE__APPLIED_PROFILE :
 				return getAppliedProfiles();
 			case UMLPackage.PROFILE__OWNED_STEREOTYPE :
@@ -624,15 +629,13 @@ public class ProfileImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PROFILE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PROFILE__NAME :
-				String name = eVirtualIsSet(UMLPackage.PROFILE__NAME)
-					? (String) eVirtualGet(UMLPackage.PROFILE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.PROFILE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.PROFILE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.PROFILE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.PROFILE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PROFILE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -662,7 +665,7 @@ public class ProfileImpl
 			case UMLPackage.PROFILE__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.PROFILE__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.PROFILE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PROFILE__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.PROFILE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
@@ -679,7 +682,7 @@ public class ProfileImpl
 			case UMLPackage.PROFILE__NESTED_PACKAGE :
 				return !getNestedPackages().isEmpty();
 			case UMLPackage.PROFILE__NESTING_PACKAGE :
-				return getNestingPackage() != null;
+				return basicGetNestingPackage() != null;
 			case UMLPackage.PROFILE__APPLIED_PROFILE :
 				List appliedProfile = (List) eVirtualGet(UMLPackage.PROFILE__APPLIED_PROFILE);
 				return appliedProfile != null && !appliedProfile.isEmpty();

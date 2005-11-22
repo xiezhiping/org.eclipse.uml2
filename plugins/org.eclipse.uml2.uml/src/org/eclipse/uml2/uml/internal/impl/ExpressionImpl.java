@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -111,10 +111,8 @@ public class ExpressionImpl
 	 * @generated
 	 */
 	public String getSymbol() {
-		String symbol = (String) eVirtualGet(UMLPackage.EXPRESSION__SYMBOL);
-		return symbol == null
-			? SYMBOL_EDEFAULT
-			: symbol;
+		return (String) eVirtualGet(UMLPackage.EXPRESSION__SYMBOL,
+			SYMBOL_EDEFAULT);
 	}
 
 	/**
@@ -226,9 +224,7 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXPRESSION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXPRESSION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXPRESSION__NAME :
@@ -250,7 +246,9 @@ public class ExpressionImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.EXPRESSION__TYPE :
 				if (resolve)
 					return getType();
@@ -372,15 +370,13 @@ public class ExpressionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXPRESSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXPRESSION__NAME :
-				String name = eVirtualIsSet(UMLPackage.EXPRESSION__NAME)
-					? (String) eVirtualGet(UMLPackage.EXPRESSION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.EXPRESSION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.EXPRESSION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.EXPRESSION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.EXPRESSION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.EXPRESSION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -395,13 +391,12 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.EXPRESSION__TYPE :
 				return eVirtualGet(UMLPackage.EXPRESSION__TYPE) != null;
 			case UMLPackage.EXPRESSION__SYMBOL :
-				String symbol = eVirtualIsSet(UMLPackage.EXPRESSION__SYMBOL)
-					? (String) eVirtualGet(UMLPackage.EXPRESSION__SYMBOL)
-					: SYMBOL_EDEFAULT;
+				String symbol = (String) eVirtualGet(
+					UMLPackage.EXPRESSION__SYMBOL, SYMBOL_EDEFAULT);
 				return SYMBOL_EDEFAULT == null
 					? symbol != null
 					: !SYMBOL_EDEFAULT.equals(symbol);
@@ -423,9 +418,8 @@ public class ExpressionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (symbol: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.EXPRESSION__SYMBOL)
-			? eVirtualGet(UMLPackage.EXPRESSION__SYMBOL)
-			: SYMBOL_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.EXPRESSION__SYMBOL,
+			SYMBOL_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

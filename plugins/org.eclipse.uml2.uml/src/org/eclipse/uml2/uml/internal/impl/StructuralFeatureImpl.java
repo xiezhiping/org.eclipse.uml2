@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -175,8 +175,8 @@ public abstract class StructuralFeatureImpl
 	public Type getType() {
 		Type type = (Type) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__TYPE);
 		if (type != null && type.eIsProxy()) {
-			Type oldType = type;
-			type = (Type) eResolveProxy((InternalEObject) type);
+			InternalEObject oldType = (InternalEObject) type;
+			type = (Type) eResolveProxy(oldType);
 			if (type != oldType) {
 				eVirtualSet(UMLPackage.STRUCTURAL_FEATURE__TYPE, type);
 				if (eNotificationRequired())
@@ -331,8 +331,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE);
-		return upperValue;
+		return (ValueSpecification) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE);
 	}
 
 	/**
@@ -406,8 +405,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE);
-		return lowerValue;
+		return (ValueSpecification) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE);
 	}
 
 	/**
@@ -643,9 +641,7 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STRUCTURAL_FEATURE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
@@ -842,15 +838,14 @@ public abstract class StructuralFeatureImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
-				String name = eVirtualIsSet(UMLPackage.STRUCTURAL_FEATURE__NAME)
-					? (String) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.STRUCTURAL_FEATURE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.STRUCTURAL_FEATURE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

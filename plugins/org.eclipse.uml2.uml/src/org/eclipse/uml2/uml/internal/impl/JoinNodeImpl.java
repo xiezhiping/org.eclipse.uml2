@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.2 2005/11/22 15:32:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -152,8 +152,7 @@ public class JoinNodeImpl
 	 * @generated
 	 */
 	public ValueSpecification getJoinSpec() {
-		ValueSpecification joinSpec = (ValueSpecification) eVirtualGet(UMLPackage.JOIN_NODE__JOIN_SPEC);
-		return joinSpec;
+		return (ValueSpecification) eVirtualGet(UMLPackage.JOIN_NODE__JOIN_SPEC);
 	}
 
 	/**
@@ -300,9 +299,7 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.JOIN_NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.JOIN_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.JOIN_NODE__NAME :
@@ -496,15 +493,14 @@ public class JoinNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.JOIN_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.JOIN_NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.JOIN_NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.JOIN_NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.JOIN_NODE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.JOIN_NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.JOIN_NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.JOIN_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.JOIN_NODE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.JOIN_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

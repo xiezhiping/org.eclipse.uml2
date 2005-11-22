@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -202,7 +202,7 @@ public class InteractionOperandImpl
 	public Interaction getEnclosingInteraction() {
 		if (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION)
 			return null;
-		return (Interaction) eContainer;
+		return (Interaction) eContainer();
 	}
 
 	/**
@@ -211,13 +211,13 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
-		if (newEnclosingInteraction != eContainer
+		if (newEnclosingInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newEnclosingInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingInteraction != null)
 				msgs = ((InternalEObject) newEnclosingInteraction).eInverseAdd(
@@ -243,7 +243,7 @@ public class InteractionOperandImpl
 	public InteractionOperand getEnclosingOperand() {
 		if (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND)
 			return null;
-		return (InteractionOperand) eContainer;
+		return (InteractionOperand) eContainer();
 	}
 
 	/**
@@ -252,13 +252,13 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
-		if (newEnclosingOperand != eContainer
+		if (newEnclosingOperand != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newEnclosingOperand))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingOperand != null)
 				msgs = ((InternalEObject) newEnclosingOperand).eInverseAdd(
@@ -299,8 +299,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public InteractionConstraint getGuard() {
-		InteractionConstraint guard = (InteractionConstraint) eVirtualGet(UMLPackage.INTERACTION_OPERAND__GUARD);
-		return guard;
+		return (InteractionConstraint) eVirtualGet(UMLPackage.INTERACTION_OPERAND__GUARD);
 	}
 
 	/**
@@ -459,13 +458,13 @@ public class InteractionOperandImpl
 					return ((InternalEList) getCovereds()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION,
 						msgs);
 				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND, msgs);
@@ -477,7 +476,7 @@ public class InteractionOperandImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -546,19 +545,19 @@ public class InteractionOperandImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.INTERACTION__FRAGMENT, Interaction.class,
 						msgs);
 				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.INTERACTION_OPERAND__FRAGMENT,
 						InteractionOperand.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -573,9 +572,7 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INTERACTION_OPERAND__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INTERACTION_OPERAND__NAME :
@@ -758,15 +755,14 @@ public class InteractionOperandImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__NAME :
-				String name = eVirtualIsSet(UMLPackage.INTERACTION_OPERAND__NAME)
-					? (String) eVirtualGet(UMLPackage.INTERACTION_OPERAND__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.INTERACTION_OPERAND__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.INTERACTION_OPERAND__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.INTERACTION_OPERAND__VISIBILITY)
-					&& eVirtualGet(UMLPackage.INTERACTION_OPERAND__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.INTERACTION_OPERAND__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.INTERACTION_OPERAND__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

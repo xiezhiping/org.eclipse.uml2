@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: PinImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -140,9 +140,7 @@ public class PinImpl
 			case UMLPackage.PIN__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PIN__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PIN__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PIN__NAME :
@@ -383,15 +381,14 @@ public class PinImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PIN__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PIN__NAME :
-				String name = eVirtualIsSet(UMLPackage.PIN__NAME)
-					? (String) eVirtualGet(UMLPackage.PIN__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.PIN__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.PIN__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.PIN__VISIBILITY)
-					&& eVirtualGet(UMLPackage.PIN__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.PIN__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.PIN__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -434,8 +431,7 @@ public class PinImpl
 			case UMLPackage.PIN__TYPE :
 				return eVirtualGet(UMLPackage.PIN__TYPE) != null;
 			case UMLPackage.PIN__ORDERING :
-				return eVirtualIsSet(UMLPackage.PIN__ORDERING)
-					&& eVirtualGet(UMLPackage.PIN__ORDERING) != ORDERING_EDEFAULT;
+				return eVirtualGet(UMLPackage.PIN__ORDERING, ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
 			case UMLPackage.PIN__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.PIN__UPPER_BOUND :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.3 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -83,8 +83,8 @@ public class ActivityParameterNodeImpl
 	public Parameter getParameter() {
 		Parameter parameter = (Parameter) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER);
 		if (parameter != null && parameter.eIsProxy()) {
-			Parameter oldParameter = parameter;
-			parameter = (Parameter) eResolveProxy((InternalEObject) parameter);
+			InternalEObject oldParameter = (InternalEObject) parameter;
+			parameter = (Parameter) eResolveProxy(oldParameter);
 			if (parameter != oldParameter) {
 				eVirtualSet(UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER,
 					parameter);
@@ -189,9 +189,7 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME :
@@ -432,15 +430,15 @@ public class ActivityParameterNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.ACTIVITY_PARAMETER_NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.ACTIVITY_PARAMETER_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ACTIVITY_PARAMETER_NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.ACTIVITY_PARAMETER_NODE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -483,8 +481,9 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
 				return eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE) != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ORDERING :
-				return eVirtualIsSet(UMLPackage.ACTIVITY_PARAMETER_NODE__ORDERING)
-					&& eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__ORDERING) != ORDERING_EDEFAULT;
+				return eVirtualGet(
+					UMLPackage.ACTIVITY_PARAMETER_NODE__ORDERING,
+					ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__UPPER_BOUND :

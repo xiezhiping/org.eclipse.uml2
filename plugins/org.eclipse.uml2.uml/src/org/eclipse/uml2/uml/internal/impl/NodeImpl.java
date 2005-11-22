@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.2 2005/11/16 19:03:04 khussey Exp $
+ * $Id: NodeImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -353,7 +353,7 @@ public class NodeImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.NODE__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.NODE__OWNING_TEMPLATE_PARAMETER, msgs);
@@ -403,7 +403,7 @@ public class NodeImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -517,9 +517,7 @@ public class NodeImpl
 			case UMLPackage.NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.NODE__NAME :
@@ -561,7 +559,9 @@ public class NodeImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.NODE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.NODE__PACKAGE :
 				return getPackage();
 			case UMLPackage.NODE__TEMPLATE_BINDING :
@@ -953,15 +953,13 @@ public class NodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.NODE__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -995,9 +993,9 @@ public class NodeImpl
 			case UMLPackage.NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.NODE__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.NODE__TEMPLATE_PARAMETER) != null;
+				return isSetTemplateParameter();
 			case UMLPackage.NODE__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.NODE__PACKAGE :
 				return getPackage() != null;
 			case UMLPackage.NODE__TEMPLATE_BINDING :
@@ -1006,7 +1004,7 @@ public class NodeImpl
 			case UMLPackage.NODE__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.NODE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.NODE__IS_ABSTRACT :
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.NODE__GENERALIZATION :
 				List generalization = (List) eVirtualGet(UMLPackage.NODE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
@@ -1022,7 +1020,7 @@ public class NodeImpl
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.NODE__GENERAL :
-				return !getGenerals().isEmpty();
+				return isSetGenerals();
 			case UMLPackage.NODE__OWNED_USE_CASE :
 				List ownedUseCase = (List) eVirtualGet(UMLPackage.NODE__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
@@ -1042,8 +1040,7 @@ public class NodeImpl
 			case UMLPackage.NODE__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.NODE__OWNED_SIGNATURE) != null;
 			case UMLPackage.NODE__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.NODE__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return isSetOwnedAttributes();
 			case UMLPackage.NODE__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.NODE__ROLE :

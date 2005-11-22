@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -119,8 +119,8 @@ public class ManifestationImpl
 	public PackageableElement getUtilizedElement() {
 		PackageableElement utilizedElement = (PackageableElement) eVirtualGet(UMLPackage.MANIFESTATION__UTILIZED_ELEMENT);
 		if (utilizedElement != null && utilizedElement.eIsProxy()) {
-			PackageableElement oldUtilizedElement = utilizedElement;
-			utilizedElement = (PackageableElement) eResolveProxy((InternalEObject) utilizedElement);
+			InternalEObject oldUtilizedElement = (InternalEObject) utilizedElement;
+			utilizedElement = (PackageableElement) eResolveProxy(oldUtilizedElement);
 			if (utilizedElement != oldUtilizedElement) {
 				eVirtualSet(UMLPackage.MANIFESTATION__UTILIZED_ELEMENT,
 					utilizedElement);
@@ -176,9 +176,7 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MANIFESTATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.MANIFESTATION__NAME :
@@ -200,7 +198,9 @@ public class ManifestationImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 			case UMLPackage.MANIFESTATION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.MANIFESTATION__SOURCE :
@@ -337,15 +337,13 @@ public class ManifestationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.MANIFESTATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MANIFESTATION__NAME :
-				String name = eVirtualIsSet(UMLPackage.MANIFESTATION__NAME)
-					? (String) eVirtualGet(UMLPackage.MANIFESTATION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.MANIFESTATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.MANIFESTATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.MANIFESTATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.MANIFESTATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.MANIFESTATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -360,7 +358,7 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.MANIFESTATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.MANIFESTATION__SOURCE :

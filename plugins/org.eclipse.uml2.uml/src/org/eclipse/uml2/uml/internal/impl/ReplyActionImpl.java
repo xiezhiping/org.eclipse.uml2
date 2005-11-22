@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.1 2005/11/14 22:26:07 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -112,8 +112,8 @@ public class ReplyActionImpl
 	public Trigger getReplyToCall() {
 		Trigger replyToCall = (Trigger) eVirtualGet(UMLPackage.REPLY_ACTION__REPLY_TO_CALL);
 		if (replyToCall != null && replyToCall.eIsProxy()) {
-			Trigger oldReplyToCall = replyToCall;
-			replyToCall = (Trigger) eResolveProxy((InternalEObject) replyToCall);
+			InternalEObject oldReplyToCall = (InternalEObject) replyToCall;
+			replyToCall = (Trigger) eResolveProxy(oldReplyToCall);
 			if (replyToCall != oldReplyToCall) {
 				eVirtualSet(UMLPackage.REPLY_ACTION__REPLY_TO_CALL, replyToCall);
 				if (eNotificationRequired())
@@ -158,8 +158,7 @@ public class ReplyActionImpl
 	 * @generated
 	 */
 	public InputPin getReturnInformation() {
-		InputPin returnInformation = (InputPin) eVirtualGet(UMLPackage.REPLY_ACTION__RETURN_INFORMATION);
-		return returnInformation;
+		return (InputPin) eVirtualGet(UMLPackage.REPLY_ACTION__RETURN_INFORMATION);
 	}
 
 	/**
@@ -385,9 +384,7 @@ public class ReplyActionImpl
 			case UMLPackage.REPLY_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.REPLY_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.REPLY_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.REPLY_ACTION__NAME :
@@ -623,15 +620,14 @@ public class ReplyActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.REPLY_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.REPLY_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.REPLY_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.REPLY_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.REPLY_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.REPLY_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.REPLY_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.REPLY_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.REPLY_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.REPLY_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -188,7 +188,7 @@ public abstract class ActivityGroupImpl
 	public Activity getInActivity() {
 		if (eContainerFeatureID != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY)
 			return null;
-		return (Activity) eContainer;
+		return (Activity) eContainer();
 	}
 
 	/**
@@ -197,13 +197,13 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public void setInActivity(Activity newInActivity) {
-		if (newInActivity != eContainer
+		if (newInActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY && newInActivity != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newInActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInActivity != null)
 				msgs = ((InternalEObject) newInActivity).eInverseAdd(this,
@@ -263,7 +263,7 @@ public abstract class ActivityGroupImpl
 					return ((InternalEList) getEAnnotations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY, msgs);
@@ -272,7 +272,7 @@ public abstract class ActivityGroupImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -312,14 +312,14 @@ public abstract class ActivityGroupImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -334,17 +334,13 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY_GROUP__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTIVITY_GROUP__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
-				if (resolve)
-					return getSuperGroup();
-				return basicGetSuperGroup();
+				return getSuperGroup();
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
@@ -450,20 +446,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityGroup basicGetSuperGroup() {
-		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ActivityGroup getSuperGroup() {
-		ActivityGroup superGroup = basicGetSuperGroup();
-		return superGroup == null
-			? null
-			: (ActivityGroup) eResolveProxy((InternalEObject) superGroup);
+		return null;
 	}
 
 	/**
@@ -480,15 +464,15 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		if (isSetSuperGroup()) {
-			return basicGetSuperGroup();
+			return getSuperGroup();
 		}
 		Activity inActivity = getInActivity();
 		if (inActivity != null) {
 			return inActivity;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

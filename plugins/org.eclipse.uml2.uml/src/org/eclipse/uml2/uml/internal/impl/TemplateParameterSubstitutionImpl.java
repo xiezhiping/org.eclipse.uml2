@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -131,8 +131,8 @@ public class TemplateParameterSubstitutionImpl
 	public TemplateParameter getFormal() {
 		TemplateParameter formal = (TemplateParameter) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL);
 		if (formal != null && formal.eIsProxy()) {
-			TemplateParameter oldFormal = formal;
-			formal = (TemplateParameter) eResolveProxy((InternalEObject) formal);
+			InternalEObject oldFormal = (InternalEObject) formal;
+			formal = (TemplateParameter) eResolveProxy(oldFormal);
 			if (formal != oldFormal) {
 				eVirtualSet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL,
 					formal);
@@ -211,7 +211,7 @@ public class TemplateParameterSubstitutionImpl
 	public TemplateBinding getTemplateBinding() {
 		if (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING)
 			return null;
-		return (TemplateBinding) eContainer;
+		return (TemplateBinding) eContainer();
 	}
 
 	/**
@@ -220,13 +220,13 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public void setTemplateBinding(TemplateBinding newTemplateBinding) {
-		if (newTemplateBinding != eContainer
+		if (newTemplateBinding != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING && newTemplateBinding != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newTemplateBinding))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplateBinding != null)
 				msgs = ((InternalEObject) newTemplateBinding).eInverseAdd(this,
@@ -268,7 +268,7 @@ public class TemplateParameterSubstitutionImpl
 					return ((InternalEList) getEAnnotations()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -279,7 +279,7 @@ public class TemplateParameterSubstitutionImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -324,15 +324,15 @@ public class TemplateParameterSubstitutionImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,
 						TemplateBinding.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -347,9 +347,7 @@ public class TemplateParameterSubstitutionImpl
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL :
@@ -474,12 +472,12 @@ public class TemplateParameterSubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateBinding templateBinding = getTemplateBinding();
 		if (templateBinding != null) {
 			return templateBinding;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -165,7 +165,7 @@ public class ActivityEdgeImpl
 	public Activity getActivity() {
 		if (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__ACTIVITY)
 			return null;
-		return (Activity) eContainer;
+		return (Activity) eContainer();
 	}
 
 	/**
@@ -174,13 +174,13 @@ public class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-		if (newActivity != eContainer
+		if (newActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__ACTIVITY && newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newActivity != null)
 				msgs = ((InternalEObject) newActivity).eInverseAdd(this,
@@ -235,7 +235,7 @@ public class ActivityEdgeImpl
 	public StructuredActivityNode getInStructuredNode() {
 		if (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
 			return null;
-		return (StructuredActivityNode) eContainer;
+		return (StructuredActivityNode) eContainer();
 	}
 
 	/**
@@ -244,13 +244,13 @@ public class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
-		if (newInStructuredNode != eContainer
+		if (newInStructuredNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newInStructuredNode))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInStructuredNode != null)
 				msgs = ((InternalEObject) newInStructuredNode).eInverseAdd(
@@ -275,8 +275,8 @@ public class ActivityEdgeImpl
 	public ActivityNode getTarget() {
 		ActivityNode target = (ActivityNode) eVirtualGet(UMLPackage.ACTIVITY_EDGE__TARGET);
 		if (target != null && target.eIsProxy()) {
-			ActivityNode oldTarget = target;
-			target = (ActivityNode) eResolveProxy((InternalEObject) target);
+			InternalEObject oldTarget = (InternalEObject) target;
+			target = (ActivityNode) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				eVirtualSet(UMLPackage.ACTIVITY_EDGE__TARGET, target);
 				if (eNotificationRequired())
@@ -382,8 +382,7 @@ public class ActivityEdgeImpl
 	 * @generated
 	 */
 	public ValueSpecification getGuard() {
-		ValueSpecification guard = (ValueSpecification) eVirtualGet(UMLPackage.ACTIVITY_EDGE__GUARD);
-		return guard;
+		return (ValueSpecification) eVirtualGet(UMLPackage.ACTIVITY_EDGE__GUARD);
 	}
 
 	/**
@@ -453,8 +452,7 @@ public class ActivityEdgeImpl
 	 * @generated
 	 */
 	public ValueSpecification getWeight() {
-		ValueSpecification weight = (ValueSpecification) eVirtualGet(UMLPackage.ACTIVITY_EDGE__WEIGHT);
-		return weight;
+		return (ValueSpecification) eVirtualGet(UMLPackage.ACTIVITY_EDGE__WEIGHT);
 	}
 
 	/**
@@ -527,8 +525,8 @@ public class ActivityEdgeImpl
 	public InterruptibleActivityRegion getInterrupts() {
 		InterruptibleActivityRegion interrupts = (InterruptibleActivityRegion) eVirtualGet(UMLPackage.ACTIVITY_EDGE__INTERRUPTS);
 		if (interrupts != null && interrupts.eIsProxy()) {
-			InterruptibleActivityRegion oldInterrupts = interrupts;
-			interrupts = (InterruptibleActivityRegion) eResolveProxy((InternalEObject) interrupts);
+			InternalEObject oldInterrupts = (InternalEObject) interrupts;
+			interrupts = (InterruptibleActivityRegion) eResolveProxy(oldInterrupts);
 			if (interrupts != oldInterrupts) {
 				eVirtualSet(UMLPackage.ACTIVITY_EDGE__INTERRUPTS, interrupts);
 				if (eNotificationRequired())
@@ -612,8 +610,8 @@ public class ActivityEdgeImpl
 	public ActivityNode getSource() {
 		ActivityNode source = (ActivityNode) eVirtualGet(UMLPackage.ACTIVITY_EDGE__SOURCE);
 		if (source != null && source.eIsProxy()) {
-			ActivityNode oldSource = source;
-			source = (ActivityNode) eResolveProxy((InternalEObject) source);
+			InternalEObject oldSource = (InternalEObject) source;
+			source = (ActivityNode) eResolveProxy(oldSource);
 			if (source != oldSource) {
 				eVirtualSet(UMLPackage.ACTIVITY_EDGE__SOURCE, source);
 				if (eNotificationRequired())
@@ -730,7 +728,7 @@ public class ActivityEdgeImpl
 					return ((InternalEList) getClientDependencies()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ACTIVITY_EDGE__ACTIVITY, msgs);
@@ -738,7 +736,7 @@ public class ActivityEdgeImpl
 					return ((InternalEList) getInPartitions()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
@@ -771,7 +769,7 @@ public class ActivityEdgeImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -832,18 +830,18 @@ public class ActivityEdgeImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.ACTIVITY__EDGE, Activity.class, msgs);
 				case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
 						StructuredActivityNode.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -858,9 +856,7 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY_EDGE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTIVITY_EDGE__NAME :
@@ -1055,15 +1051,14 @@ public class ActivityEdgeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__NAME :
-				String name = eVirtualIsSet(UMLPackage.ACTIVITY_EDGE__NAME)
-					? (String) eVirtualGet(UMLPackage.ACTIVITY_EDGE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.ACTIVITY_EDGE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.ACTIVITY_EDGE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.ACTIVITY_EDGE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.ACTIVITY_EDGE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.ACTIVITY_EDGE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1112,12 +1107,12 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		Activity activity = getActivity();
 		if (activity != null) {
 			return activity;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

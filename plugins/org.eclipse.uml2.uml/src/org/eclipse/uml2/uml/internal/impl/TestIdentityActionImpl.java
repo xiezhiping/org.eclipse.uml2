@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,8 +123,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin getFirst() {
-		InputPin first = (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__FIRST);
-		return first;
+		return (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__FIRST);
 	}
 
 	/**
@@ -206,8 +205,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin getSecond() {
-		InputPin second = (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__SECOND);
-		return second;
+		return (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__SECOND);
 	}
 
 	/**
@@ -289,8 +287,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public OutputPin getResult() {
-		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__RESULT);
-		return result;
+		return (OutputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__RESULT);
 	}
 
 	/**
@@ -459,9 +456,7 @@ public class TestIdentityActionImpl
 			case UMLPackage.TEST_IDENTITY_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TEST_IDENTITY_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.TEST_IDENTITY_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TEST_IDENTITY_ACTION__NAME :
@@ -694,15 +689,14 @@ public class TestIdentityActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.TEST_IDENTITY_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.TEST_IDENTITY_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.TEST_IDENTITY_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.TEST_IDENTITY_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.TEST_IDENTITY_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

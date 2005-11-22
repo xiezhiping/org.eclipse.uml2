@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,8 +82,8 @@ public class ExpansionNodeImpl
 	public ExpansionRegion getRegionAsOutput() {
 		ExpansionRegion regionAsOutput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT);
 		if (regionAsOutput != null && regionAsOutput.eIsProxy()) {
-			ExpansionRegion oldRegionAsOutput = regionAsOutput;
-			regionAsOutput = (ExpansionRegion) eResolveProxy((InternalEObject) regionAsOutput);
+			InternalEObject oldRegionAsOutput = (InternalEObject) regionAsOutput;
+			regionAsOutput = (ExpansionRegion) eResolveProxy(oldRegionAsOutput);
 			if (regionAsOutput != oldRegionAsOutput) {
 				eVirtualSet(UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT,
 					regionAsOutput);
@@ -164,8 +164,8 @@ public class ExpansionNodeImpl
 	public ExpansionRegion getRegionAsInput() {
 		ExpansionRegion regionAsInput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_INPUT);
 		if (regionAsInput != null && regionAsInput.eIsProxy()) {
-			ExpansionRegion oldRegionAsInput = regionAsInput;
-			regionAsInput = (ExpansionRegion) eResolveProxy((InternalEObject) regionAsInput);
+			InternalEObject oldRegionAsInput = (InternalEObject) regionAsInput;
+			regionAsInput = (ExpansionRegion) eResolveProxy(oldRegionAsInput);
 			if (regionAsInput != oldRegionAsInput) {
 				eVirtualSet(UMLPackage.EXPANSION_NODE__REGION_AS_INPUT,
 					regionAsInput);
@@ -260,12 +260,12 @@ public class ExpansionNodeImpl
 					return ((InternalEList) getInPartitions()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE, msgs);
 				case UMLPackage.EXPANSION_NODE__ACTIVITY :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.EXPANSION_NODE__ACTIVITY, msgs);
@@ -298,7 +298,7 @@ public class ExpansionNodeImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -367,9 +367,7 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXPANSION_NODE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.EXPANSION_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXPANSION_NODE__NAME :
@@ -620,15 +618,14 @@ public class ExpansionNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXPANSION_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXPANSION_NODE__NAME :
-				String name = eVirtualIsSet(UMLPackage.EXPANSION_NODE__NAME)
-					? (String) eVirtualGet(UMLPackage.EXPANSION_NODE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.EXPANSION_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.EXPANSION_NODE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.EXPANSION_NODE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.EXPANSION_NODE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.EXPANSION_NODE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.EXPANSION_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -671,8 +668,8 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__TYPE :
 				return eVirtualGet(UMLPackage.EXPANSION_NODE__TYPE) != null;
 			case UMLPackage.EXPANSION_NODE__ORDERING :
-				return eVirtualIsSet(UMLPackage.EXPANSION_NODE__ORDERING)
-					&& eVirtualGet(UMLPackage.EXPANSION_NODE__ORDERING) != ORDERING_EDEFAULT;
+				return eVirtualGet(UMLPackage.EXPANSION_NODE__ORDERING,
+					ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
 			case UMLPackage.EXPANSION_NODE__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.EXPANSION_NODE__UPPER_BOUND :

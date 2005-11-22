@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageEndImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: MessageEndImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -72,8 +72,8 @@ public abstract class MessageEndImpl
 	public Message getMessage() {
 		Message message = (Message) eVirtualGet(UMLPackage.MESSAGE_END__MESSAGE);
 		if (message != null && message.eIsProxy()) {
-			Message oldMessage = message;
-			message = (Message) eResolveProxy((InternalEObject) message);
+			InternalEObject oldMessage = (InternalEObject) message;
+			message = (Message) eResolveProxy(oldMessage);
 			if (message != oldMessage) {
 				eVirtualSet(UMLPackage.MESSAGE_END__MESSAGE, message);
 				if (eNotificationRequired())
@@ -123,9 +123,7 @@ public abstract class MessageEndImpl
 			case UMLPackage.MESSAGE_END__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MESSAGE_END__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.MESSAGE_END__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.MESSAGE_END__NAME :
@@ -234,15 +232,14 @@ public abstract class MessageEndImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.MESSAGE_END__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MESSAGE_END__NAME :
-				String name = eVirtualIsSet(UMLPackage.MESSAGE_END__NAME)
-					? (String) eVirtualGet(UMLPackage.MESSAGE_END__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.MESSAGE_END__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.MESSAGE_END__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.MESSAGE_END__VISIBILITY)
-					&& eVirtualGet(UMLPackage.MESSAGE_END__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.MESSAGE_END__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.MESSAGE_END__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

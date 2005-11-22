@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -172,8 +172,8 @@ public class GeneralizationImpl
 	public Classifier getGeneral() {
 		Classifier general = (Classifier) eVirtualGet(UMLPackage.GENERALIZATION__GENERAL);
 		if (general != null && general.eIsProxy()) {
-			Classifier oldGeneral = general;
-			general = (Classifier) eResolveProxy((InternalEObject) general);
+			InternalEObject oldGeneral = (InternalEObject) general;
+			general = (Classifier) eResolveProxy(oldGeneral);
 			if (general != oldGeneral) {
 				eVirtualSet(UMLPackage.GENERALIZATION__GENERAL, general);
 				if (eNotificationRequired())
@@ -252,7 +252,7 @@ public class GeneralizationImpl
 	public Classifier getSpecific() {
 		if (eContainerFeatureID != UMLPackage.GENERALIZATION__SPECIFIC)
 			return null;
-		return (Classifier) eContainer;
+		return (Classifier) eContainer();
 	}
 
 	/**
@@ -261,13 +261,13 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public void setSpecific(Classifier newSpecific) {
-		if (newSpecific != eContainer
+		if (newSpecific != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.GENERALIZATION__SPECIFIC && newSpecific != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newSpecific))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSpecific != null)
 				msgs = ((InternalEObject) newSpecific).eInverseAdd(this,
@@ -310,7 +310,7 @@ public class GeneralizationImpl
 					return ((InternalEList) getGeneralizationSets()).basicAdd(
 						otherEnd, msgs);
 				case UMLPackage.GENERALIZATION__SPECIFIC :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.GENERALIZATION__SPECIFIC, msgs);
@@ -319,7 +319,7 @@ public class GeneralizationImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -362,15 +362,15 @@ public class GeneralizationImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.GENERALIZATION__SPECIFIC :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.CLASSIFIER__GENERALIZATION,
 						Classifier.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -385,9 +385,7 @@ public class GeneralizationImpl
 			case UMLPackage.GENERALIZATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.GENERALIZATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.GENERALIZATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.GENERALIZATION__RELATED_ELEMENT :
@@ -550,12 +548,12 @@ public class GeneralizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		Classifier specific = getSpecific();
 		if (specific != null) {
 			return specific;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

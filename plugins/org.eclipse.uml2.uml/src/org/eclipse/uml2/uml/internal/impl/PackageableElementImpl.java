@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -83,8 +83,8 @@ public abstract class PackageableElementImpl
 	public TemplateParameter getTemplateParameter() {
 		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
-			TemplateParameter oldTemplateParameter = templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy((InternalEObject) templateParameter);
+			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
+			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				eVirtualSet(UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER,
 					templateParameter);
@@ -171,7 +171,18 @@ public abstract class PackageableElementImpl
 	public TemplateParameter getOwningTemplateParameter() {
 		if (eContainerFeatureID != UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER)
 			return null;
-		return (TemplateParameter) eContainer;
+		return (TemplateParameter) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateParameter basicGetOwningTemplateParameter() {
+		if (eContainerFeatureID != UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER)
+			return null;
+		return (TemplateParameter) eInternalContainer();
 	}
 
 	/**
@@ -181,15 +192,15 @@ public abstract class PackageableElementImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer;
-		if (newOwningTemplateParameter != eContainer
+		EObject oldOwningTemplateParameter = eContainer();
+		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil
 				.isAncestor(this, (EObject) newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
@@ -219,10 +230,8 @@ public abstract class PackageableElementImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		VisibilityKind visibility = (VisibilityKind) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY);
-		return visibility == null
-			? VISIBILITY_EDEFAULT
-			: visibility;
+		return (VisibilityKind) eVirtualGet(
+			UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT);
 	}
 
 	/**
@@ -251,8 +260,8 @@ public abstract class PackageableElementImpl
 	 * @generated
 	 */
 	public boolean isSetVisibility() {
-		return eVirtualIsSet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY)
-			&& eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+		return eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY,
+			VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -299,7 +308,7 @@ public abstract class PackageableElementImpl
 					return basicSetTemplateParameter(
 						(TemplateParameter) otherEnd, msgs);
 				case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(
 						otherEnd,
@@ -310,7 +319,7 @@ public abstract class PackageableElementImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -359,7 +368,7 @@ public abstract class PackageableElementImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-					return eContainer
+					return eInternalContainer()
 						.eInverseRemove(
 							this,
 							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -368,8 +377,8 @@ public abstract class PackageableElementImpl
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -384,9 +393,7 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME :
@@ -408,7 +415,9 @@ public abstract class PackageableElementImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter();
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -503,15 +512,13 @@ public abstract class PackageableElementImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME :
-				String name = eVirtualIsSet(UMLPackage.PACKAGEABLE_ELEMENT__NAME)
-					? (String) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.PACKAGEABLE_ELEMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY)
-					&& eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PACKAGEABLE_ELEMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -526,7 +533,7 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
 				return eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-				return getOwningTemplateParameter() != null;
+				return basicGetOwningTemplateParameter() != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -580,9 +587,8 @@ public abstract class PackageableElementImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY)
-			? eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY)
-			: VISIBILITY_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY,
+			VISIBILITY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}
@@ -592,12 +598,12 @@ public abstract class PackageableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -94,8 +94,8 @@ public class ProfileApplicationImpl
 	public org.eclipse.uml2.uml.Package getImportedPackage() {
 		org.eclipse.uml2.uml.Package importedPackage = (org.eclipse.uml2.uml.Package) eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE);
 		if (importedPackage != null && importedPackage.eIsProxy()) {
-			org.eclipse.uml2.uml.Package oldImportedPackage = importedPackage;
-			importedPackage = (org.eclipse.uml2.uml.Package) eResolveProxy((InternalEObject) importedPackage);
+			InternalEObject oldImportedPackage = (InternalEObject) importedPackage;
+			importedPackage = (org.eclipse.uml2.uml.Package) eResolveProxy(oldImportedPackage);
 			if (importedPackage != oldImportedPackage) {
 				eVirtualSet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE,
 					importedPackage);
@@ -148,8 +148,8 @@ public class ProfileApplicationImpl
 	public Profile getImportedProfile() {
 		Profile importedProfile = (Profile) eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE);
 		if (importedProfile != null && importedProfile.eIsProxy()) {
-			Profile oldImportedProfile = importedProfile;
-			importedProfile = (Profile) eResolveProxy((InternalEObject) importedProfile);
+			InternalEObject oldImportedProfile = (InternalEObject) importedProfile;
+			importedProfile = (Profile) eResolveProxy(oldImportedProfile);
 			if (importedProfile != oldImportedProfile) {
 				eVirtualSet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE,
 					importedProfile);
@@ -232,9 +232,7 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PROFILE_APPLICATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PROFILE_APPLICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PROFILE_APPLICATION__RELATED_ELEMENT :
@@ -352,8 +350,8 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION__TARGET :
 				return isSetTargets();
 			case UMLPackage.PROFILE_APPLICATION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.PROFILE_APPLICATION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.PROFILE_APPLICATION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.PROFILE_APPLICATION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE :
 				return eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE) != null;
 			case UMLPackage.PROFILE_APPLICATION__IMPORTING_NAMESPACE :

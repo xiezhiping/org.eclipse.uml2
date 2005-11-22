@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,10 +97,8 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public PseudostateKind getKind() {
-		PseudostateKind kind = (PseudostateKind) eVirtualGet(UMLPackage.PSEUDOSTATE__KIND);
-		return kind == null
-			? KIND_EDEFAULT
-			: kind;
+		return (PseudostateKind) eVirtualGet(UMLPackage.PSEUDOSTATE__KIND,
+			KIND_EDEFAULT);
 	}
 
 	/**
@@ -129,7 +127,7 @@ public class PseudostateImpl
 	public StateMachine getStateMachine() {
 		if (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE_MACHINE)
 			return null;
-		return (StateMachine) eContainer;
+		return (StateMachine) eContainer();
 	}
 
 	/**
@@ -138,13 +136,13 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public void setStateMachine(StateMachine newStateMachine) {
-		if (newStateMachine != eContainer
+		if (newStateMachine != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE_MACHINE && newStateMachine != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newStateMachine))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newStateMachine != null)
 				msgs = ((InternalEObject) newStateMachine).eInverseAdd(this,
@@ -169,7 +167,7 @@ public class PseudostateImpl
 	public State getState() {
 		if (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE)
 			return null;
-		return (State) eContainer;
+		return (State) eContainer();
 	}
 
 	/**
@@ -178,13 +176,13 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public void setState(State newState) {
-		if (newState != eContainer
+		if (newState != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE && newState != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject) newState))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newState != null)
 				msgs = ((InternalEObject) newState).eInverseAdd(this,
@@ -317,17 +315,17 @@ public class PseudostateImpl
 					return ((InternalEList) getIncomings()).basicAdd(otherEnd,
 						msgs);
 				case UMLPackage.PSEUDOSTATE__CONTAINER :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.PSEUDOSTATE__CONTAINER, msgs);
 				case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.PSEUDOSTATE__STATE_MACHINE, msgs);
 				case UMLPackage.PSEUDOSTATE__STATE :
-					if (eContainer != null)
+					if (eInternalContainer() != null)
 						msgs = eBasicRemoveFromContainer(msgs);
 					return eBasicSetContainer(otherEnd,
 						UMLPackage.PSEUDOSTATE__STATE, msgs);
@@ -336,7 +334,7 @@ public class PseudostateImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -393,21 +391,21 @@ public class PseudostateImpl
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
 				case UMLPackage.PSEUDOSTATE__CONTAINER :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
 				case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.STATE_MACHINE__CONNECTION_POINT,
 						StateMachine.class, msgs);
 				case UMLPackage.PSEUDOSTATE__STATE :
-					return eContainer.eInverseRemove(this,
+					return eInternalContainer().eInverseRemove(this,
 						UMLPackage.STATE__CONNECTION_POINT, State.class, msgs);
 				default :
 					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-			- eContainerFeatureID, null, msgs);
+		return eInternalContainer().eInverseRemove(this,
+			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -422,9 +420,7 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PSEUDOSTATE__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PSEUDOSTATE__NAME :
@@ -573,15 +569,14 @@ public class PseudostateImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PSEUDOSTATE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PSEUDOSTATE__NAME :
-				String name = eVirtualIsSet(UMLPackage.PSEUDOSTATE__NAME)
-					? (String) eVirtualGet(UMLPackage.PSEUDOSTATE__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.PSEUDOSTATE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.PSEUDOSTATE__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.PSEUDOSTATE__VISIBILITY)
-					&& eVirtualGet(UMLPackage.PSEUDOSTATE__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.PSEUDOSTATE__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.PSEUDOSTATE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -602,8 +597,7 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return getContainer() != null;
 			case UMLPackage.PSEUDOSTATE__KIND :
-				return eVirtualIsSet(UMLPackage.PSEUDOSTATE__KIND)
-					&& eVirtualGet(UMLPackage.PSEUDOSTATE__KIND) != KIND_EDEFAULT;
+				return eVirtualGet(UMLPackage.PSEUDOSTATE__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				return getStateMachine() != null;
 			case UMLPackage.PSEUDOSTATE__STATE :
@@ -623,9 +617,7 @@ public class PseudostateImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.PSEUDOSTATE__KIND)
-			? eVirtualGet(UMLPackage.PSEUDOSTATE__KIND)
-			: KIND_EDEFAULT);
+		result.append(eVirtualGet(UMLPackage.PSEUDOSTATE__KIND, KIND_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}
@@ -658,12 +650,12 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Element getOwner() {
 		State state = getState();
 		if (state != null) {
 			return state;
 		}
-		return super.basicGetOwner();
+		return super.getOwner();
 	}
 
 	/**

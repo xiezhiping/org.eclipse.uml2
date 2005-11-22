@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.2 2005/11/22 15:32:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -78,8 +78,8 @@ public class ReceptionImpl
 	public Signal getSignal() {
 		Signal signal = (Signal) eVirtualGet(UMLPackage.RECEPTION__SIGNAL);
 		if (signal != null && signal.eIsProxy()) {
-			Signal oldSignal = signal;
-			signal = (Signal) eResolveProxy((InternalEObject) signal);
+			InternalEObject oldSignal = (InternalEObject) signal;
+			signal = (Signal) eResolveProxy(oldSignal);
 			if (signal != oldSignal) {
 				eVirtualSet(UMLPackage.RECEPTION__SIGNAL, signal);
 				if (eNotificationRequired())
@@ -136,9 +136,7 @@ public class ReceptionImpl
 			case UMLPackage.RECEPTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.RECEPTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.RECEPTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.RECEPTION__NAME :
@@ -360,15 +358,14 @@ public class ReceptionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.RECEPTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.RECEPTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.RECEPTION__NAME)
-					? (String) eVirtualGet(UMLPackage.RECEPTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(UMLPackage.RECEPTION__NAME,
+					NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.RECEPTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.RECEPTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.RECEPTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.RECEPTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.RECEPTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -414,8 +411,8 @@ public class ReceptionImpl
 				List method = (List) eVirtualGet(UMLPackage.RECEPTION__METHOD);
 				return method != null && !method.isEmpty();
 			case UMLPackage.RECEPTION__CONCURRENCY :
-				return eVirtualIsSet(UMLPackage.RECEPTION__CONCURRENCY)
-					&& eVirtualGet(UMLPackage.RECEPTION__CONCURRENCY) != CONCURRENCY_EDEFAULT;
+				return eVirtualGet(UMLPackage.RECEPTION__CONCURRENCY,
+					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
 			case UMLPackage.RECEPTION__RAISED_EXCEPTION :
 				List raisedException = (List) eVirtualGet(UMLPackage.RECEPTION__RAISED_EXCEPTION);
 				return raisedException != null && !raisedException.isEmpty();

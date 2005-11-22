@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -76,8 +76,8 @@ public class GeneralOrderingImpl
 	public OccurrenceSpecification getBefore() {
 		OccurrenceSpecification before = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__BEFORE);
 		if (before != null && before.eIsProxy()) {
-			OccurrenceSpecification oldBefore = before;
-			before = (OccurrenceSpecification) eResolveProxy((InternalEObject) before);
+			InternalEObject oldBefore = (InternalEObject) before;
+			before = (OccurrenceSpecification) eResolveProxy(oldBefore);
 			if (before != oldBefore) {
 				eVirtualSet(UMLPackage.GENERAL_ORDERING__BEFORE, before);
 				if (eNotificationRequired())
@@ -155,8 +155,8 @@ public class GeneralOrderingImpl
 	public OccurrenceSpecification getAfter() {
 		OccurrenceSpecification after = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__AFTER);
 		if (after != null && after.eIsProxy()) {
-			OccurrenceSpecification oldAfter = after;
-			after = (OccurrenceSpecification) eResolveProxy((InternalEObject) after);
+			InternalEObject oldAfter = (InternalEObject) after;
+			after = (OccurrenceSpecification) eResolveProxy(oldAfter);
 			if (after != oldAfter) {
 				eVirtualSet(UMLPackage.GENERAL_ORDERING__AFTER, after);
 				if (eNotificationRequired())
@@ -262,7 +262,7 @@ public class GeneralOrderingImpl
 						msgs);
 			}
 		}
-		if (eContainer != null)
+		if (eInternalContainer() != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
@@ -311,9 +311,7 @@ public class GeneralOrderingImpl
 			case UMLPackage.GENERAL_ORDERING__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.GENERAL_ORDERING__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.GENERAL_ORDERING__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.GENERAL_ORDERING__NAME :
@@ -432,15 +430,14 @@ public class GeneralOrderingImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.GENERAL_ORDERING__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.GENERAL_ORDERING__NAME :
-				String name = eVirtualIsSet(UMLPackage.GENERAL_ORDERING__NAME)
-					? (String) eVirtualGet(UMLPackage.GENERAL_ORDERING__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.GENERAL_ORDERING__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.GENERAL_ORDERING__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.GENERAL_ORDERING__VISIBILITY)
-					&& eVirtualGet(UMLPackage.GENERAL_ORDERING__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.GENERAL_ORDERING__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.GENERAL_ORDERING__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

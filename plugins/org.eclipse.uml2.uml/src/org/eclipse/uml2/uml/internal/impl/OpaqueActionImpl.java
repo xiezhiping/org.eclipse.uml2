@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -209,9 +209,7 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OPAQUE_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
+				return getOwner();
 			case UMLPackage.OPAQUE_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.OPAQUE_ACTION__NAME :
@@ -456,15 +454,14 @@ public class OpaqueActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__NAME :
-				String name = eVirtualIsSet(UMLPackage.OPAQUE_ACTION__NAME)
-					? (String) eVirtualGet(UMLPackage.OPAQUE_ACTION__NAME)
-					: NAME_EDEFAULT;
+				String name = (String) eVirtualGet(
+					UMLPackage.OPAQUE_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null
 					? name != null
 					: !NAME_EDEFAULT.equals(name);
 			case UMLPackage.OPAQUE_ACTION__VISIBILITY :
-				return eVirtualIsSet(UMLPackage.OPAQUE_ACTION__VISIBILITY)
-					&& eVirtualGet(UMLPackage.OPAQUE_ACTION__VISIBILITY) != VISIBILITY_EDEFAULT;
+				return eVirtualGet(UMLPackage.OPAQUE_ACTION__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.OPAQUE_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -548,13 +545,9 @@ public class OpaqueActionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.OPAQUE_ACTION__BODY)
-			? eVirtualGet(UMLPackage.OPAQUE_ACTION__BODY)
-			: null);
+		result.append(eVirtualGet(UMLPackage.OPAQUE_ACTION__BODY));
 		result.append(", language: "); //$NON-NLS-1$
-		result.append(eVirtualIsSet(UMLPackage.OPAQUE_ACTION__LANGUAGE)
-			? eVirtualGet(UMLPackage.OPAQUE_ACTION__LANGUAGE)
-			: null);
+		result.append(eVirtualGet(UMLPackage.OPAQUE_ACTION__LANGUAGE));
 		result.append(')');
 		return result.toString();
 	}
