@@ -7,8 +7,8 @@
     editPluginClass="org.eclipse.uml2.uml.edit.UMLEditPlugin" editorPluginClass="org.eclipse.uml2.uml.editor.UMLEditorPlugin"
     nonNLSMarkers="true" suppressEMFTypes="true" codeFormatting="true" booleanFlagsField="eFlags"
     booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.ecore.importer" featureDelegation="Virtual"
-    factoryMethods="true" pluralizedGetters="true" cacheAdapterSupport="true" safeStrings="true"
-    invariantPrefix="validate">
+    containmentProxies="true" factoryMethods="true" pluralizedGetters="true" cacheAdapterSupport="true"
+    safeStrings="true" invariantPrefix="validate">
   <foreignModel>L3.merged.uml2</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="UML" basePackage="org.eclipse.uml2"
       disposableProviderFactory="true" loadInitialization="true" classPackageSuffix="internal.impl"
