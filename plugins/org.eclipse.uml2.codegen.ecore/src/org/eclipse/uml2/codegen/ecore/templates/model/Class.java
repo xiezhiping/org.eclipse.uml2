@@ -4469,7 +4469,7 @@ public class Class
     stringBuffer.append(TEXT_1145);
     stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
     stringBuffer.append(TEXT_1146);
-    if (UML2GenModelUtil.isUnion(genFeature) || UML2GenModelUtil.isRedefinition(genFeature)) {
+    if (UML2GenModelUtil.isUnion(genFeature) || UML2GenModelUtil.isRedefinition(genFeature) || UML2GenModelUtil.isRedefined(genClass, genFeature)) {
     stringBuffer.append(TEXT_1147);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_1148);
