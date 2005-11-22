@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.22 2005/10/26 20:51:27 khussey Exp $
+ * $Id: UML2Operations.java,v 1.23 2005/11/22 22:04:53 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -20,7 +20,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -32,19 +31,14 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
-import org.eclipse.emf.ecore.util.EContentsEList;
-import org.eclipse.emf.ecore.util.ECrossReferenceEList;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Util;
 import org.osgi.framework.Bundle;
@@ -52,189 +46,37 @@ import org.osgi.framework.Bundle;
 class UML2Operations
 		extends UML2Util {
 
-	protected static class FilteredECrossReferenceEList
-			extends ECrossReferenceEList {
+	protected static class UML2CrossReferenceAdapter
+			extends ECrossReferenceAdapter {
 
-		private final FilteredUsageCrossReferencer.Filter filter;
+		protected void adapt(EObject eObject) {
+			Resource resource = eObject.eResource();
 
-		protected static class FilteredFeatureIteratorImpl
-				extends ECrossReferenceEList.FeatureIteratorImpl {
+			if (resource == null) {
+				addAdapter(EcoreUtil.getRootContainer(eObject));
+			} else {
+				ResourceSet resourceSet = resource.getResourceSet();
 
-			private final FilteredUsageCrossReferencer.Filter filter;
-
-			public FilteredFeatureIteratorImpl(EObject eObject,
-					EStructuralFeature[] eStructuralFeatures,
-					FilteredUsageCrossReferencer.Filter filter) {
-				super(eObject, eStructuralFeatures);
-
-				this.filter = filter;
-			}
-
-			protected boolean isIncluded(EStructuralFeature eStructuralFeature) {
-				return super.isIncluded(eStructuralFeature)
-					&& filter.accept(eStructuralFeature);
-			}
-
-			protected boolean isIncludedEntry(
-					EStructuralFeature eStructuralFeature) {
-				return super.isIncludedEntry(eStructuralFeature)
-					&& filter.accept(eStructuralFeature);
-			}
-		}
-
-		protected static class FilteredResolvingFeatureIteratorImpl
-				extends FilteredFeatureIteratorImpl {
-
-			public FilteredResolvingFeatureIteratorImpl(EObject eObject,
-					EStructuralFeature[] eStructuralFeatures,
-					FilteredUsageCrossReferencer.Filter filter) {
-				super(eObject, eStructuralFeatures, filter);
-			}
-
-			protected boolean resolve() {
-				return true;
-			}
-		}
-
-		protected FilteredECrossReferenceEList(EObject eObject,
-				FilteredUsageCrossReferencer.Filter filter) {
-			super(eObject);
-
-			this.filter = filter;
-		}
-
-		protected FilteredECrossReferenceEList(EObject eObject,
-				EStructuralFeature[] eStructuralFeatures,
-				FilteredUsageCrossReferencer.Filter filter) {
-			super(eObject, eStructuralFeatures);
-
-			this.filter = filter;
-		}
-
-		protected boolean isIncluded(EStructuralFeature eStructuralFeature) {
-			return super.isIncluded(eStructuralFeature)
-				&& filter.accept(eStructuralFeature);
-		}
-
-		protected ListIterator newListIterator() {
-			return this.resolve()
-				? new FilteredResolvingFeatureIteratorImpl(eObject,
-					eStructuralFeatures, filter)
-				: new FilteredFeatureIteratorImpl(eObject, eStructuralFeatures,
-					filter);
-		}
-
-		public List basicList() {
-			return new FilteredECrossReferenceEList(eObject,
-				eStructuralFeatures, filter) {
-
-				protected boolean resolve() {
-					return false;
+				if (resourceSet == null) {
+					addAdapter(resource);
+				} else {
+					addAdapter(resourceSet);
 				}
-			};
+			}
 		}
 
-		public Iterator basicIterator() {
-
-			if (null == eStructuralFeatures) {
-				return FilteredFeatureIteratorImpl.EMPTY_ITERATOR;
-			}
-
-			return new FilteredFeatureIteratorImpl(eObject,
-				eStructuralFeatures, filter);
+		public Collection getNonNavigableInverseReferences(EObject eObject) {
+			adapt(eObject);
+			return super.getNonNavigableInverseReferences(eObject);
 		}
 
-		public ListIterator basicListIterator() {
-
-			if (null == eStructuralFeatures) {
-				return FeatureIteratorImpl.EMPTY_ITERATOR;
-			}
-
-			return new FilteredFeatureIteratorImpl(eObject,
-				eStructuralFeatures, filter);
+		public Collection getInverseReferences(EObject eObject) {
+			adapt(eObject);
+			return super.getInverseReferences(eObject);
 		}
-
-		public ListIterator basicListIterator(int index) {
-
-			if (null == eStructuralFeatures) {
-
-				if (0 > index || 1 < index) {
-					throw new IndexOutOfBoundsException("index = " + index //$NON-NLS-1$
-						+ ", size = 0"); //$NON-NLS-1$
-				}
-
-				return FilteredFeatureIteratorImpl.EMPTY_ITERATOR;
-			}
-
-			ListIterator result = new FilteredFeatureIteratorImpl(eObject,
-				eStructuralFeatures, filter);
-
-			for (int i = 0; i < index; i++) {
-				result.next();
-			}
-
-			return result;
-		}
-
 	}
 
-	protected static class FilteredUsageCrossReferencer
-			extends EcoreUtil.UsageCrossReferencer {
-
-		protected static interface Filter {
-
-			boolean accept(EStructuralFeature eStructuralFeature);
-
-		}
-
-		private final Filter filter;
-
-		public static Collection find(EObject eObject, ResourceSet resourceSet,
-				Filter filter) {
-			return new FilteredUsageCrossReferencer(resourceSet, filter)
-				.findUsage(eObject);
-		}
-
-		protected static Collection find(EObject eObject, Resource resource,
-				Filter filter) {
-			return new FilteredUsageCrossReferencer(resource, filter)
-				.findUsage(eObject);
-		}
-
-		protected FilteredUsageCrossReferencer(ResourceSet resourceSet,
-				Filter filter) {
-			super(resourceSet);
-
-			this.filter = filter;
-		}
-
-		protected FilteredUsageCrossReferencer(Resource resource, Filter filter) {
-			super(resource);
-
-			this.filter = filter;
-		}
-
-		protected void handleCrossReference(EObject eObject) {
-			InternalEList filteredCrossReferences = new FilteredECrossReferenceEList(
-				eObject, filter);
-
-			EContentsEList.FeatureIterator crossReferences = (EContentsEList.FeatureIterator) (resolve()
-				? filteredCrossReferences.iterator()
-				: filteredCrossReferences.basicIterator());
-
-			while (crossReferences.hasNext()) {
-				EObject crossReferencedEObject = (EObject) crossReferences
-					.next();
-				EReference eReference = (EReference) crossReferences.feature();
-
-				if (crossReference(eObject, eReference, crossReferencedEObject)) {
-					getCollection(crossReferencedEObject).add(
-						((InternalEObject) eObject).eSetting(eReference));
-				}
-			}
-		}
-
-	}
+	private static final UML2CrossReferenceAdapter CROSS_REFERENCE_ADAPTER = new UML2CrossReferenceAdapter();
 
 	/**
 	 * The default URI converter for resource bundle look-ups.
@@ -490,6 +332,15 @@ class UML2Operations
 		}
 
 		return string;
+	}
+
+	protected static Collection getInverseReferences(EObject eObject) {
+		return CROSS_REFERENCE_ADAPTER.getInverseReferences(eObject);
+	}
+
+	protected static Collection getNonNavigableInverseReferences(EObject eObject) {
+		return CROSS_REFERENCE_ADAPTER
+			.getNonNavigableInverseReferences(eObject);
 	}
 
 }

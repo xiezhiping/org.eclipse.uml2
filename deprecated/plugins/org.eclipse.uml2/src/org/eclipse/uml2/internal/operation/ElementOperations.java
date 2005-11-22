@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.13 2005/06/15 17:18:21 khussey Exp $
+ * $Id: ElementOperations.java,v 1.14 2005/11/22 22:04:53 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -25,8 +25,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -241,35 +239,23 @@ public final class ElementOperations extends UML2Operations {
 			throw new IllegalArgumentException(String.valueOf(element));
 		}
 
-		Resource resource = element.eResource();
+		for (Iterator allContents = getAllContents(element, true, true); allContents
+			.hasNext();) {
 
-		if (null != resource) {
-			ResourceSet resourceSet = resource.getResourceSet();
+			EObject eObject = (EObject) allContents.next();
 
-			FilteredUsageCrossReferencer.Filter filter = new FilteredUsageCrossReferencer.Filter() {
+			for (Iterator inverseReferences = getInverseReferences(eObject)
+				.iterator(); inverseReferences.hasNext();) {
 
-				public boolean accept(EStructuralFeature eStructuralFeature) {
-					return eStructuralFeature.isChangeable();
-				}
-			};
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
+					.next();
 
-			for (Iterator allContents = getAllContents(element, true, true); allContents
-				.hasNext();) {
-
-				EObject eObject = (EObject) allContents.next();
-
-				Iterator settings = null == resourceSet
-					? FilteredUsageCrossReferencer.find(eObject, resource,
-						filter).iterator()
-					: FilteredUsageCrossReferencer.find(eObject, resourceSet,
-						filter).iterator();
-
-				while (settings.hasNext()) {
-					EcoreUtil.remove((EStructuralFeature.Setting) settings
-						.next(), eObject);
+				if (setting.getEStructuralFeature().isChangeable()) {
+					EcoreUtil.remove(setting, eObject);
 				}
 			}
 
+			eObject.eAdapters().clear();
 		}
 
 		EcoreUtil.remove(element);

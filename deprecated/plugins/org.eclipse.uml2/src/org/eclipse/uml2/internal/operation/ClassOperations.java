@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.7 2005/05/25 15:21:32 khussey Exp $
+ * $Id: ClassOperations.java,v 1.8 2005/11/22 22:04:53 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -19,11 +19,13 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Classifier;
+import org.eclipse.uml2.Extension;
 import org.eclipse.uml2.NamedElement;
+import org.eclipse.uml2.Property;
 import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.UML2Package;
 
@@ -114,27 +116,26 @@ public final class ClassOperations extends UML2Operations {
 		Set extensions = new HashSet();
 
 		if (null != class_ && class_.isMetaclass()) {
-			Resource resource = class_.eResource();
 
-			if (null != resource) {
-				FilteredUsageCrossReferencer.Filter filter = new FilteredUsageCrossReferencer.Filter() {
+			for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
+				class_).iterator(); nonNavigableInverseReferences.hasNext();) {
 
-					public boolean accept(EStructuralFeature eStructuralFeature) {
-						return UML2Package.eINSTANCE.getExtension_Metaclass() == eStructuralFeature;
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
+					.next();
+
+				if (UML2Package.eINSTANCE.getTypedElement_Type() == setting
+					.getEStructuralFeature()) {
+
+					EObject eObject = setting.getEObject();
+
+					if (eObject instanceof Property) {
+						Association association = ((Property) eObject)
+							.getAssociation();
+
+						if (association instanceof Extension) {
+							extensions.add(association);
+						}
 					}
-				};
-
-				ResourceSet resourceSet = resource.getResourceSet();
-
-				Iterator settings = null == resourceSet
-					? FilteredUsageCrossReferencer.find(class_,
-						resource, filter).iterator()
-					: FilteredUsageCrossReferencer.find(class_,
-						resourceSet, filter).iterator();
-
-				while (settings.hasNext()) {
-					extensions.add(((EStructuralFeature.Setting) settings
-						.next()).getEObject());
 				}
 			}
 		}
