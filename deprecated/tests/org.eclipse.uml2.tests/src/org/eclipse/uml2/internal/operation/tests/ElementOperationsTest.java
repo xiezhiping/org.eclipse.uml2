@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperationsTest.java,v 1.4 2005/05/18 17:04:28 khussey Exp $
+ * $Id: ElementOperationsTest.java,v 1.5 2005/11/23 21:52:34 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -36,7 +36,7 @@ import org.eclipse.uml2.util.UML2Switch;
  * A test case for the '<em><b>Element Operations</b></em>' utility.
  */
 public class ElementOperationsTest
-	extends UML2OperationsTest {
+		extends UML2OperationsTest {
 
 	public static void main(String[] args) {
 		TestRunner.run(ElementOperationsTest.class);
@@ -55,7 +55,7 @@ public class ElementOperationsTest
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp()
-		throws Exception {
+			throws Exception {
 
 		super.setUp();
 
@@ -212,22 +212,23 @@ public class ElementOperationsTest
 			setElement((Element) UML2Factory.eINSTANCE
 				.create((EClass) eAllSubClasses.next()));
 
+			model.eResource().getContents().add(getElement());
+
+			assertTrue(model.eResource().getContents().contains(getElement()));
+
+			ElementOperations.destroy(getElement());
+
+			assertFalse(model.eResource().getContents().contains(getElement()));
+
 			comment1.getAnnotatedElements().add(getElement());
 			comment2.getAnnotatedElements().add(getElement());
 
 			new UML2Switch() {
 
 				public Object caseElement(Element object) {
-					ElementOperations.destroy(getElement());
-
 					assertTrue(comment1.getAnnotatedElements().contains(
 						getElement()));
 					assertTrue(comment2.getAnnotatedElements().contains(
-						getElement()));
-
-					model.eResource().getContents().add(getElement());
-
-					assertTrue(model.eResource().getContents().contains(
 						getElement()));
 
 					ElementOperations.destroy(getElement());
@@ -235,32 +236,19 @@ public class ElementOperationsTest
 					assertTrue(comment1.getAnnotatedElements().contains(
 						getElement()));
 					assertFalse(comment2.getAnnotatedElements().contains(
-						getElement()));
-
-					assertFalse(model.eResource().getContents().contains(
 						getElement()));
 
 					return this;
 				}
 
 				public Object casePackageableElement(PackageableElement object) {
-					ElementOperations.destroy(getElement());
-
-					assertTrue(comment1.getAnnotatedElements().contains(
-						getElement()));
-					assertTrue(comment2.getAnnotatedElements().contains(
-						getElement()));
+					caseElement(object);
 
 					model.getOwnedMembers().add(getElement());
 
 					assertTrue(model.getOwnedMembers().contains(getElement()));
 
 					ElementOperations.destroy(getElement());
-
-					assertTrue(comment1.getAnnotatedElements().contains(
-						getElement()));
-					assertFalse(comment2.getAnnotatedElements().contains(
-						getElement()));
 
 					assertFalse(model.getOwnedMembers().contains(getElement()));
 
