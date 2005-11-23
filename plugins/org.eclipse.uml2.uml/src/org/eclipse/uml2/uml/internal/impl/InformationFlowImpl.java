@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,8 +20,6 @@ import java.util.Map;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -97,9 +95,8 @@ public class InformationFlowImpl
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT,
 				relatedElement = new DerivedUnionEObjectEList(Element.class,
 					this, UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDirectedRelationship_Source(),
-						UMLPackage.eINSTANCE.getDirectedRelationship_Target()}));
+					new int[]{UMLPackage.INFORMATION_FLOW__SOURCE,
+						UMLPackage.INFORMATION_FLOW__TARGET}));
 		}
 		return relatedElement;
 	}
@@ -115,8 +112,7 @@ public class InformationFlowImpl
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.INFORMATION_FLOW__SOURCE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getInformationFlow_InformationSource()}));
+					new int[]{UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE}));
 		}
 		return source;
 	}
@@ -132,8 +128,7 @@ public class InformationFlowImpl
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.INFORMATION_FLOW__TARGET,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getInformationFlow_InformationTarget()}));
+					new int[]{UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET}));
 		}
 		return target;
 	}
@@ -373,8 +368,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.INFORMATION_FLOW__OWNED_ELEMENT :
@@ -426,7 +421,7 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE :
 				return getRealizingMessages();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -434,8 +429,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -492,7 +487,7 @@ public class InformationFlowImpl
 				getRealizingMessages().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -500,8 +495,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -548,7 +543,7 @@ public class InformationFlowImpl
 				getRealizingMessages().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -556,8 +551,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__OWNED_ELEMENT :
@@ -622,7 +617,7 @@ public class InformationFlowImpl
 				List realizingMessage = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE);
 				return realizingMessage != null && !realizingMessage.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -694,8 +689,7 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public boolean isSetSources() {
-		return eIsSet(UMLPackage.eINSTANCE
-			.getInformationFlow_InformationSource());
+		return eIsSet(UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
 	}
 
 	/**
@@ -704,8 +698,7 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public boolean isSetTargets() {
-		return eIsSet(UMLPackage.eINSTANCE
-			.getInformationFlow_InformationTarget());
+		return eIsSet(UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET);
 	}
 
 } //InformationFlowImpl

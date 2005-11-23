@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -81,11 +80,11 @@ public class ProtocolConformanceImpl
 	public List getTargets() {
 		List target = (List) eVirtualGet(UMLPackage.PROTOCOL_CONFORMANCE__TARGET);
 		if (target == null) {
-			eVirtualSet(UMLPackage.PROTOCOL_CONFORMANCE__TARGET,
+			eVirtualSet(
+				UMLPackage.PROTOCOL_CONFORMANCE__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.PROTOCOL_CONFORMANCE__TARGET,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getProtocolConformance_GeneralMachine()}));
+					new int[]{UMLPackage.PROTOCOL_CONFORMANCE__GENERAL_MACHINE}));
 		}
 		return target;
 	}
@@ -98,11 +97,13 @@ public class ProtocolConformanceImpl
 	public List getSources() {
 		List source = (List) eVirtualGet(UMLPackage.PROTOCOL_CONFORMANCE__SOURCE);
 		if (source == null) {
-			eVirtualSet(UMLPackage.PROTOCOL_CONFORMANCE__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
+			eVirtualSet(
+				UMLPackage.PROTOCOL_CONFORMANCE__SOURCE,
+				source = new DerivedUnionEObjectEList(
+					Element.class,
+					this,
 					UMLPackage.PROTOCOL_CONFORMANCE__SOURCE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getProtocolConformance_SpecificMachine()}));
+					new int[]{UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE}));
 		}
 		return source;
 	}
@@ -274,8 +275,8 @@ public class ProtocolConformanceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.PROTOCOL_CONFORMANCE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_ELEMENT :
@@ -297,7 +298,7 @@ public class ProtocolConformanceImpl
 			case UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE :
 				return getSpecificMachine();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -305,8 +306,8 @@ public class ProtocolConformanceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.PROTOCOL_CONFORMANCE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -322,7 +323,7 @@ public class ProtocolConformanceImpl
 				setSpecificMachine((ProtocolStateMachine) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -330,8 +331,8 @@ public class ProtocolConformanceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PROTOCOL_CONFORMANCE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -345,7 +346,7 @@ public class ProtocolConformanceImpl
 				setSpecificMachine((ProtocolStateMachine) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -353,8 +354,8 @@ public class ProtocolConformanceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PROTOCOL_CONFORMANCE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_ELEMENT :
@@ -375,7 +376,7 @@ public class ProtocolConformanceImpl
 			case UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE :
 				return getSpecificMachine() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -385,8 +386,7 @@ public class ProtocolConformanceImpl
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getProtocolConformance_GeneralMachine());
+			|| eIsSet(UMLPackage.PROTOCOL_CONFORMANCE__GENERAL_MACHINE);
 	}
 
 	/**
@@ -396,8 +396,7 @@ public class ProtocolConformanceImpl
 	 */
 	public boolean isSetSources() {
 		return super.isSetSources()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getProtocolConformance_SpecificMachine());
+			|| eIsSet(UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE);
 	}
 
 	/**
@@ -420,8 +419,7 @@ public class ProtocolConformanceImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getProtocolConformance_SpecificMachine());
+			|| eIsSet(UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE);
 	}
 
 } //ProtocolConformanceImpl

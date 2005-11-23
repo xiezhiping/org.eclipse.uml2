@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -118,15 +117,14 @@ public class RemoveStructuralFeatureValueActionImpl
 		if (input == null) {
 			eVirtualSet(
 				UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__INPUT,
-				input = new DerivedUnionEObjectEList(InputPin.class, this,
+				input = new DerivedUnionEObjectEList(
+					InputPin.class,
+					this,
 					UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__INPUT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE
-							.getStructuralFeatureAction_Object(),
-						UMLPackage.eINSTANCE
-							.getWriteStructuralFeatureAction_Value(),
-						UMLPackage.eINSTANCE
-							.getRemoveStructuralFeatureValueAction_RemoveAt()}));
+					new int[]{
+						UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__OBJECT,
+						UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE,
+						UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT}));
 		}
 		return input;
 	}
@@ -332,8 +330,8 @@ public class RemoveStructuralFeatureValueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__OWNED_ELEMENT :
@@ -407,7 +405,7 @@ public class RemoveStructuralFeatureValueActionImpl
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT :
 				return getRemoveAt();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -415,8 +413,8 @@ public class RemoveStructuralFeatureValueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -495,7 +493,7 @@ public class RemoveStructuralFeatureValueActionImpl
 				setRemoveAt((InputPin) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -503,8 +501,8 @@ public class RemoveStructuralFeatureValueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -572,7 +570,7 @@ public class RemoveStructuralFeatureValueActionImpl
 				setRemoveAt((InputPin) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -580,8 +578,8 @@ public class RemoveStructuralFeatureValueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__OWNED_ELEMENT :
@@ -669,7 +667,7 @@ public class RemoveStructuralFeatureValueActionImpl
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT :
 				return eVirtualGet(UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -729,8 +727,7 @@ public class RemoveStructuralFeatureValueActionImpl
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getRemoveStructuralFeatureValueAction_RemoveAt());
+			|| eIsSet(UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT);
 	}
 
 } //RemoveStructuralFeatureValueActionImpl

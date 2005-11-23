@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerImpl.java,v 1.11 2005/11/22 14:57:01 khussey Exp $
+ * $Id: TriggerImpl.java,v 1.12 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,7 +18,6 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.uml2.Port;
 import org.eclipse.uml2.StringExpression;
@@ -101,8 +100,8 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.TRIGGER__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.TRIGGER__OWNED_ELEMENT:
@@ -129,7 +128,7 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 			case UML2Package.TRIGGER__PORT:
 				return getPorts();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -137,8 +136,8 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.TRIGGER__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -172,7 +171,7 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 				getPorts().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -180,8 +179,8 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.TRIGGER__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -210,7 +209,7 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 				getPorts().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -218,8 +217,8 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.TRIGGER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TRIGGER__OWNED_ELEMENT:
@@ -250,7 +249,7 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 				EList port = (EList)eVirtualGet(UML2Package.TRIGGER__PORT);
 				return port != null && !port.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

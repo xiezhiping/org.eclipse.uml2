@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.32 2005/11/22 14:57:01 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.33 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -163,7 +162,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public boolean isSetMembers() {
-		return eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+		return eIsSet(UML2Package.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER)
 			|| isSetOwnedMembers();
 	}
 
@@ -825,8 +824,8 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public boolean isSetOwnedMembers() {
-		return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
-			|| eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable());
+		return eIsSet(UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_RULE)
+			|| eIsSet(UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE);
 	}
 
 
@@ -899,8 +898,8 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
-			|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+			|| eIsSet(UML2Package.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT)
+			|| eIsSet(UML2Package.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT)
 			|| isSetOwnedMembers()
 			|| isSetSubgroups();
 	}
@@ -1032,8 +1031,8 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT:
@@ -1115,7 +1114,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE:
 				return isMustIsolate() ? Boolean.TRUE : Boolean.FALSE;
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1123,8 +1122,8 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -1228,7 +1227,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 				setMustIsolate(((Boolean)newValue).booleanValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1236,8 +1235,8 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -1323,7 +1322,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 				setMustIsolate(MUST_ISOLATE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1331,8 +1330,8 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT:
@@ -1428,7 +1427,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE:
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

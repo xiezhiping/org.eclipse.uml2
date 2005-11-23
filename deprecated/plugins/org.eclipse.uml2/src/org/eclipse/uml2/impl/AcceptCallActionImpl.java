@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.18 2005/11/22 14:57:03 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.19 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -90,7 +89,7 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	public EList getOutputs() {
 		EList output = (EList)eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__OUTPUT);
 		if (output == null) {
-			eVirtualSet(UML2Package.ACCEPT_CALL_ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACCEPT_CALL_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getAcceptEventAction_Result(), UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation()}));
+			eVirtualSet(UML2Package.ACCEPT_CALL_ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACCEPT_CALL_ACTION__OUTPUT, new int[] {UML2Package.ACCEPT_CALL_ACTION__RESULT, UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION}));
 		}
 		return output;
 	}
@@ -103,7 +102,7 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 */
 	public boolean isSetOutputs() {
 		return super.isSetOutputs()
-			|| eIsSet(UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation());
+			|| eIsSet(UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION);
 	}
 
 	/**
@@ -177,23 +176,8 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Trigger getTrigger(String name) {
-		for (Iterator i = getTriggers().iterator(); i.hasNext(); ) {
-			CallTrigger trigger = (CallTrigger) i.next();
-			if (name.equals(trigger.getName())) {
-				return trigger;
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.ACCEPT_CALL_ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.ACCEPT_CALL_ACTION__OWNED_ELEMENT:
@@ -259,7 +243,7 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 				if (resolve) return getReturnInformation();
 				return basicGetReturnInformation();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -267,8 +251,8 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.ACCEPT_CALL_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -353,7 +337,7 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 				setReturnInformation((OutputPin)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -361,8 +345,8 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.ACCEPT_CALL_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -433,7 +417,7 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 				setReturnInformation((OutputPin)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -441,8 +425,8 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.ACCEPT_CALL_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACCEPT_CALL_ACTION__OWNED_ELEMENT:
@@ -519,8 +503,23 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 			case UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION:
 				return eVirtualGet(UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Trigger getTrigger(String name) {
+		for (Iterator i = getTriggers().iterator(); i.hasNext(); ) {
+			CallTrigger trigger = (CallTrigger) i.next();
+			if (name.equals(trigger.getName())) {
+				return trigger;
+			}
+		}
+		return null;
+	}
 
 } //AcceptCallActionImpl

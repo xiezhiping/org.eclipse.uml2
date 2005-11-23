@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.4 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -182,8 +181,8 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.EXTENSION_END__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.EXTENSION_END__OWNED_ELEMENT :
@@ -305,7 +304,7 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
 				return getAssociationEnd();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -313,8 +312,8 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.EXTENSION_END__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXTENSION_END__OWNED_ELEMENT :
@@ -426,7 +425,7 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
 				return getAssociationEnd() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 } //ExtensionEndImpl

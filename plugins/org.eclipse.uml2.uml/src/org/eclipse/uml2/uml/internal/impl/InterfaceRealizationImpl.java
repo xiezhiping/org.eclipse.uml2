@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: InterfaceRealizationImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -91,15 +90,11 @@ public class InterfaceRealizationImpl
 	public List getTargets() {
 		List target = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__TARGET);
 		if (target == null) {
-			eVirtualSet(
-				UMLPackage.INTERFACE_REALIZATION__TARGET,
-				target = new DerivedUnionEObjectEList(
-					Element.class,
-					this,
-					UMLPackage.INTERFACE_REALIZATION__TARGET,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDependency_Supplier(),
-						UMLPackage.eINSTANCE.getInterfaceRealization_Contract()}));
+			eVirtualSet(UMLPackage.INTERFACE_REALIZATION__TARGET,
+				target = new DerivedUnionEObjectEList(Element.class, this,
+					UMLPackage.INTERFACE_REALIZATION__TARGET, new int[]{
+						UMLPackage.INTERFACE_REALIZATION__SUPPLIER,
+						UMLPackage.INTERFACE_REALIZATION__CONTRACT}));
 		}
 		return target;
 	}
@@ -112,13 +107,15 @@ public class InterfaceRealizationImpl
 	public List getSources() {
 		List source = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__SOURCE);
 		if (source == null) {
-			eVirtualSet(UMLPackage.INTERFACE_REALIZATION__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
+			eVirtualSet(
+				UMLPackage.INTERFACE_REALIZATION__SOURCE,
+				source = new DerivedUnionEObjectEList(
+					Element.class,
+					this,
 					UMLPackage.INTERFACE_REALIZATION__SOURCE,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDependency_Client(),
-						UMLPackage.eINSTANCE
-							.getInterfaceRealization_ImplementingClassifier()}));
+					new int[]{
+						UMLPackage.INTERFACE_REALIZATION__CLIENT,
+						UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER}));
 		}
 		return source;
 	}
@@ -401,8 +398,8 @@ public class InterfaceRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_ELEMENT :
@@ -454,7 +451,7 @@ public class InterfaceRealizationImpl
 					return getImplementingClassifier();
 				return basicGetImplementingClassifier();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -462,8 +459,8 @@ public class InterfaceRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -509,7 +506,7 @@ public class InterfaceRealizationImpl
 				setImplementingClassifier((BehavioredClassifier) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -517,8 +514,8 @@ public class InterfaceRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -559,7 +556,7 @@ public class InterfaceRealizationImpl
 				setImplementingClassifier((BehavioredClassifier) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -567,8 +564,8 @@ public class InterfaceRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_ELEMENT :
@@ -620,7 +617,7 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
 				return basicGetImplementingClassifier() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -630,7 +627,7 @@ public class InterfaceRealizationImpl
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UMLPackage.eINSTANCE.getInterfaceRealization_Contract());
+			|| eIsSet(UMLPackage.INTERFACE_REALIZATION__CONTRACT);
 	}
 
 	/**
@@ -640,8 +637,7 @@ public class InterfaceRealizationImpl
 	 */
 	public boolean isSetSources() {
 		return super.isSetSources()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getInterfaceRealization_ImplementingClassifier());
+			|| eIsSet(UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER);
 	}
 
 } //InterfaceRealizationImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.20 2005/11/22 14:57:01 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.21 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -98,7 +97,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	public EList getInputs() {
 		EList input = (EList)eVirtualGet(UML2Package.SEND_SIGNAL_ACTION__INPUT);
 		if (input == null) {
-			eVirtualSet(UML2Package.SEND_SIGNAL_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.SEND_SIGNAL_ACTION__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getInvocationAction_Argument(), UML2Package.eINSTANCE.getSendSignalAction_Target()}));
+			eVirtualSet(UML2Package.SEND_SIGNAL_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.SEND_SIGNAL_ACTION__INPUT, new int[] {UML2Package.SEND_SIGNAL_ACTION__ARGUMENT, UML2Package.SEND_SIGNAL_ACTION__TARGET}));
 		}
 		return input;
 	}
@@ -111,7 +110,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UML2Package.eINSTANCE.getSendSignalAction_Target());
+			|| eIsSet(UML2Package.SEND_SIGNAL_ACTION__TARGET);
 	}
 
 	/**
@@ -284,8 +283,8 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.SEND_SIGNAL_ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.SEND_SIGNAL_ACTION__OWNED_ELEMENT:
@@ -354,7 +353,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 				if (resolve) return getSignal();
 				return basicGetSignal();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -362,8 +361,8 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.SEND_SIGNAL_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -450,7 +449,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 				setSignal((Signal)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -458,8 +457,8 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.SEND_SIGNAL_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -533,7 +532,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 				setSignal((Signal)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -541,8 +540,8 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.SEND_SIGNAL_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SEND_SIGNAL_ACTION__OWNED_ELEMENT:
@@ -621,7 +620,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 			case UML2Package.SEND_SIGNAL_ACTION__SIGNAL:
 				return eVirtualGet(UML2Package.SEND_SIGNAL_ACTION__SIGNAL) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.12 2005/11/21 21:48:01 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.13 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,7 +19,6 @@ import java.util.Iterator;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -194,8 +193,8 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT:
@@ -215,7 +214,7 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE:
 				return getContainedNodes();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -223,8 +222,8 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -245,7 +244,7 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 				getContainedNodes().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -253,8 +252,8 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -271,7 +270,7 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 				getContainedNodes().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -279,8 +278,8 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT:
@@ -300,7 +299,7 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE:
 				return isSetContainedNodes();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

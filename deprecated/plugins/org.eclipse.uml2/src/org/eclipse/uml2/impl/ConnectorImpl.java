@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.18 2005/11/22 14:57:02 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.19 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -106,7 +105,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.CONNECTOR__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.CONNECTOR__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.CONNECTOR__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getConnector_End()}));
+			eVirtualSet(UML2Package.CONNECTOR__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.CONNECTOR__OWNED_ELEMENT, new int[] {UML2Package.CONNECTOR__OWNED_COMMENT, UML2Package.CONNECTOR__TEMPLATE_BINDING, UML2Package.CONNECTOR__OWNED_TEMPLATE_SIGNATURE, UML2Package.CONNECTOR__NAME_EXPRESSION, UML2Package.CONNECTOR__END}));
 		}
 		return ownedElement;
 	}
@@ -119,7 +118,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getConnector_End());
+			|| eIsSet(UML2Package.CONNECTOR__END);
 	}
 
 	/**
@@ -322,8 +321,8 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.CONNECTOR__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.CONNECTOR__OWNED_ELEMENT:
@@ -367,7 +366,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 			case UML2Package.CONNECTOR__CONTRACT:
 				return getContracts();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -375,8 +374,8 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.CONNECTOR__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -430,7 +429,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 				getContracts().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -438,8 +437,8 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.CONNECTOR__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -486,7 +485,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 				getContracts().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -494,8 +493,8 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.CONNECTOR__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONNECTOR__OWNED_ELEMENT:
@@ -544,7 +543,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 				EList contract = (EList)eVirtualGet(UML2Package.CONNECTOR__CONTRACT);
 				return contract != null && !contract.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -586,7 +585,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getConnector_RedefinedConnector());
+			|| eIsSet(UML2Package.CONNECTOR__REDEFINED_CONNECTOR);
 	}
 
 

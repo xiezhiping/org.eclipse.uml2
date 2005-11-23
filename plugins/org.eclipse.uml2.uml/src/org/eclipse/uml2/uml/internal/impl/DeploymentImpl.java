@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.3 2005/11/23 13:27:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -99,9 +98,9 @@ public class DeploymentImpl
 		if (target == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.DEPLOYMENT__TARGET, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDependency_Supplier(),
-						UMLPackage.eINSTANCE.getDeployment_DeployedArtifact()}));
+					UMLPackage.DEPLOYMENT__TARGET, new int[]{
+						UMLPackage.DEPLOYMENT__SUPPLIER,
+						UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT}));
 		}
 		return target;
 	}
@@ -116,11 +115,10 @@ public class DeploymentImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.DEPLOYMENT__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getDeployment_Configuration()}));
+					this, UMLPackage.DEPLOYMENT__OWNED_ELEMENT, new int[]{
+						UMLPackage.DEPLOYMENT__OWNED_COMMENT,
+						UMLPackage.DEPLOYMENT__NAME_EXPRESSION,
+						UMLPackage.DEPLOYMENT__CONFIGURATION}));
 		}
 		return ownedElement;
 	}
@@ -135,9 +133,9 @@ public class DeploymentImpl
 		if (source == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.DEPLOYMENT__SOURCE, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDependency_Client(),
-						UMLPackage.eINSTANCE.getDeployment_Location()}));
+					UMLPackage.DEPLOYMENT__SOURCE, new int[]{
+						UMLPackage.DEPLOYMENT__CLIENT,
+						UMLPackage.DEPLOYMENT__LOCATION}));
 		}
 		return source;
 	}
@@ -430,8 +428,8 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.DEPLOYMENT__OWNED_ELEMENT :
@@ -481,7 +479,7 @@ public class DeploymentImpl
 					return getLocation();
 				return basicGetLocation();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -489,8 +487,8 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -538,7 +536,7 @@ public class DeploymentImpl
 				setLocation((DeploymentTarget) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -546,8 +544,8 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -588,7 +586,7 @@ public class DeploymentImpl
 				setLocation((DeploymentTarget) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -596,8 +594,8 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DEPLOYMENT__OWNED_ELEMENT :
@@ -651,7 +649,7 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				return basicGetLocation() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -661,7 +659,7 @@ public class DeploymentImpl
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UMLPackage.eINSTANCE.getDeployment_DeployedArtifact());
+			|| eIsSet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT);
 	}
 
 	/**
@@ -671,7 +669,7 @@ public class DeploymentImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getDeployment_Configuration());
+			|| eIsSet(UMLPackage.DEPLOYMENT__CONFIGURATION);
 	}
 
 	/**
@@ -680,8 +678,7 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public boolean isSetSources() {
-		return super.isSetSources()
-			|| eIsSet(UMLPackage.eINSTANCE.getDeployment_Location());
+		return super.isSetSources() || eIsSet(UMLPackage.DEPLOYMENT__LOCATION);
 	}
 
 } //DeploymentImpl

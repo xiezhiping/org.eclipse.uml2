@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.3 2005/11/23 13:27:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -97,11 +96,13 @@ public abstract class StructuredClassifierImpl
 	public List getRoles() {
 		List role = (List) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__ROLE);
 		if (role == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_CLASSIFIER__ROLE,
-				role = new DerivedUnionEObjectEList(ConnectableElement.class,
-					this, UMLPackage.STRUCTURED_CLASSIFIER__ROLE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getStructuredClassifier_OwnedAttribute()}));
+			eVirtualSet(
+				UMLPackage.STRUCTURED_CLASSIFIER__ROLE,
+				role = new DerivedUnionEObjectEList(
+					ConnectableElement.class,
+					this,
+					UMLPackage.STRUCTURED_CLASSIFIER__ROLE,
+					new int[]{UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE}));
 		}
 		return role;
 	}
@@ -132,13 +133,10 @@ public abstract class StructuredClassifierImpl
 			eVirtualSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
 					this, UMLPackage.STRUCTURED_CLASSIFIER__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedAttribute(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedConnector()}));
+					new int[]{UMLPackage.STRUCTURED_CLASSIFIER__OWNED_RULE,
+						UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE,
+						UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
+						UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR}));
 		}
 		return ownedMember;
 	}
@@ -151,11 +149,13 @@ public abstract class StructuredClassifierImpl
 	public List getAttributes() {
 		List attribute = (List) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__ATTRIBUTE);
 		if (attribute == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_CLASSIFIER__ATTRIBUTE,
-				attribute = new DerivedUnionEObjectEList(Property.class, this,
+			eVirtualSet(
+				UMLPackage.STRUCTURED_CLASSIFIER__ATTRIBUTE,
+				attribute = new DerivedUnionEObjectEList(
+					Property.class,
+					this,
 					UMLPackage.STRUCTURED_CLASSIFIER__ATTRIBUTE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getStructuredClassifier_OwnedAttribute()}));
+					new int[]{UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE}));
 		}
 		return attribute;
 	}
@@ -170,13 +170,12 @@ public abstract class StructuredClassifierImpl
 		if (member == null) {
 			eVirtualSet(UMLPackage.STRUCTURED_CLASSIFIER__MEMBER,
 				member = new DerivedUnionEObjectEList(NamedElement.class, this,
-					UMLPackage.STRUCTURED_CLASSIFIER__MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_ImportedMember(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE.getClassifier_Feature(),
-						UMLPackage.eINSTANCE.getClassifier_InheritedMember(),
-						UMLPackage.eINSTANCE.getStructuredClassifier_Role()}));
+					UMLPackage.STRUCTURED_CLASSIFIER__MEMBER, new int[]{
+						UMLPackage.STRUCTURED_CLASSIFIER__IMPORTED_MEMBER,
+						UMLPackage.STRUCTURED_CLASSIFIER__OWNED_MEMBER,
+						UMLPackage.STRUCTURED_CLASSIFIER__FEATURE,
+						UMLPackage.STRUCTURED_CLASSIFIER__INHERITED_MEMBER,
+						UMLPackage.STRUCTURED_CLASSIFIER__ROLE}));
 		}
 		return member;
 	}
@@ -191,11 +190,9 @@ public abstract class StructuredClassifierImpl
 		if (feature == null) {
 			eVirtualSet(UMLPackage.STRUCTURED_CLASSIFIER__FEATURE,
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
-					UMLPackage.STRUCTURED_CLASSIFIER__FEATURE,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getClassifier_Attribute(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedConnector()}));
+					UMLPackage.STRUCTURED_CLASSIFIER__FEATURE, new int[]{
+						UMLPackage.STRUCTURED_CLASSIFIER__ATTRIBUTE,
+						UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR}));
 		}
 		return feature;
 	}
@@ -411,8 +408,8 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.STRUCTURED_CLASSIFIER__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ELEMENT :
@@ -508,7 +505,7 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR :
 				return getOwnedConnectors();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -516,8 +513,8 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.STRUCTURED_CLASSIFIER__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -624,7 +621,7 @@ public abstract class StructuredClassifierImpl
 				getOwnedConnectors().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -632,8 +629,8 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.STRUCTURED_CLASSIFIER__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -722,7 +719,7 @@ public abstract class StructuredClassifierImpl
 				getOwnedConnectors().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -730,8 +727,8 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.STRUCTURED_CLASSIFIER__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ELEMENT :
@@ -839,7 +836,7 @@ public abstract class StructuredClassifierImpl
 				List ownedConnector = (List) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -848,8 +845,7 @@ public abstract class StructuredClassifierImpl
 	 * @generated
 	 */
 	public boolean isSetRoles() {
-		return eIsSet(UMLPackage.eINSTANCE
-			.getStructuredClassifier_OwnedAttribute());
+		return eIsSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
 	}
 
 	/**
@@ -859,10 +855,8 @@ public abstract class StructuredClassifierImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedAttribute())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedConnector());
+			|| eIsSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE)
+			|| eIsSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 	}
 
 	/**
@@ -872,8 +866,7 @@ public abstract class StructuredClassifierImpl
 	 */
 	public boolean isSetAttributes() {
 		return super.isSetAttributes()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedAttribute());
+			|| eIsSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
 	}
 
 	/**
@@ -892,8 +885,7 @@ public abstract class StructuredClassifierImpl
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedConnector());
+			|| eIsSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 	}
 
 } //StructuredClassifierImpl

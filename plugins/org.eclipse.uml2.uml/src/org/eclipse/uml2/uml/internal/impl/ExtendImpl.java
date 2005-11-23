@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -101,10 +100,8 @@ public class ExtendImpl
 		if (relatedElement == null) {
 			eVirtualSet(UMLPackage.EXTEND__RELATED_ELEMENT,
 				relatedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.EXTEND__RELATED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDirectedRelationship_Source(),
-						UMLPackage.eINSTANCE.getDirectedRelationship_Target()}));
+					this, UMLPackage.EXTEND__RELATED_ELEMENT, new int[]{
+						UMLPackage.EXTEND__SOURCE, UMLPackage.EXTEND__TARGET}));
 		}
 		return relatedElement;
 	}
@@ -120,8 +117,7 @@ public class ExtendImpl
 			eVirtualSet(UMLPackage.EXTEND__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.EXTEND__SOURCE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getExtend_Extension()}));
+					new int[]{UMLPackage.EXTEND__EXTENSION}));
 		}
 		return source;
 	}
@@ -137,8 +133,7 @@ public class ExtendImpl
 			eVirtualSet(UMLPackage.EXTEND__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.EXTEND__TARGET,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getExtend_ExtendedCase()}));
+					new int[]{UMLPackage.EXTEND__EXTENDED_CASE}));
 		}
 		return target;
 	}
@@ -153,11 +148,10 @@ public class ExtendImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.EXTEND__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.EXTEND__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getExtend_Condition()}));
+					this, UMLPackage.EXTEND__OWNED_ELEMENT, new int[]{
+						UMLPackage.EXTEND__OWNED_COMMENT,
+						UMLPackage.EXTEND__NAME_EXPRESSION,
+						UMLPackage.EXTEND__CONDITION}));
 		}
 		return ownedElement;
 	}
@@ -459,8 +453,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.EXTEND__OWNED_ELEMENT :
@@ -500,7 +494,7 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__EXTENSION :
 				return getExtension();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -508,8 +502,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -545,7 +539,7 @@ public class ExtendImpl
 				setExtension((UseCase) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -553,8 +547,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -586,7 +580,7 @@ public class ExtendImpl
 				setExtension((UseCase) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -594,8 +588,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXTEND__OWNED_ELEMENT :
@@ -642,7 +636,7 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__EXTENSION :
 				return getExtension() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -714,7 +708,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public boolean isSetSources() {
-		return eIsSet(UMLPackage.eINSTANCE.getExtend_Extension());
+		return eIsSet(UMLPackage.EXTEND__EXTENSION);
 	}
 
 	/**
@@ -723,7 +717,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public boolean isSetTargets() {
-		return eIsSet(UMLPackage.eINSTANCE.getExtend_ExtendedCase());
+		return eIsSet(UMLPackage.EXTEND__EXTENDED_CASE);
 	}
 
 	/**
@@ -733,7 +727,7 @@ public class ExtendImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getExtend_Condition());
+			|| eIsSet(UMLPackage.EXTEND__CONDITION);
 	}
 
 } //ExtendImpl

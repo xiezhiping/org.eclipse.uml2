@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.34 2005/11/22 14:57:02 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.35 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -531,8 +530,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.STATE_MACHINE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.STATE_MACHINE__OWNED_ELEMENT:
@@ -668,7 +667,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
 				return getStateMachine_redefinitionContext();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -676,8 +675,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.STATE_MACHINE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -854,7 +853,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				setStateMachine_redefinitionContext((BehavioredClassifier)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -862,8 +861,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.STATE_MACHINE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -1009,7 +1008,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				setStateMachine_redefinitionContext((BehavioredClassifier)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1017,8 +1016,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.STATE_MACHINE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STATE_MACHINE__OWNED_ELEMENT:
@@ -1178,7 +1177,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
 				return isSetStateMachine_redefinitionContext();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1246,8 +1245,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getStateMachine_Region())
-			|| eIsSet(UML2Package.eINSTANCE.getStateMachine_ConnectionPoint());
+			|| eIsSet(UML2Package.STATE_MACHINE__REGION)
+			|| eIsSet(UML2Package.STATE_MACHINE__CONNECTION_POINT);
 	}
 
 

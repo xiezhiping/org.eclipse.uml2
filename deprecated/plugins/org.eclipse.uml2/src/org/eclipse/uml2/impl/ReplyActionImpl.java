@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.18 2005/11/22 14:57:01 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.19 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -89,7 +88,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	public EList getInputs() {
 		EList input = (EList)eVirtualGet(UML2Package.REPLY_ACTION__INPUT);
 		if (input == null) {
-			eVirtualSet(UML2Package.REPLY_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.REPLY_ACTION__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getReplyAction_ReplyValue(), UML2Package.eINSTANCE.getReplyAction_ReturnInformation()}));
+			eVirtualSet(UML2Package.REPLY_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.REPLY_ACTION__INPUT, new int[] {UML2Package.REPLY_ACTION__REPLY_VALUE, UML2Package.REPLY_ACTION__RETURN_INFORMATION}));
 		}
 		return input;
 	}
@@ -102,8 +101,8 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UML2Package.eINSTANCE.getReplyAction_ReplyValue())
-			|| eIsSet(UML2Package.eINSTANCE.getReplyAction_ReturnInformation());
+			|| eIsSet(UML2Package.REPLY_ACTION__REPLY_VALUE)
+			|| eIsSet(UML2Package.REPLY_ACTION__RETURN_INFORMATION);
 	}
 
 	/**
@@ -224,8 +223,8 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.REPLY_ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.REPLY_ACTION__OWNED_ELEMENT:
@@ -292,7 +291,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 				if (resolve) return getReturnInformation();
 				return basicGetReturnInformation();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -300,8 +299,8 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.REPLY_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -385,7 +384,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 				setReturnInformation((InputPin)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -393,8 +392,8 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.REPLY_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -465,7 +464,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 				setReturnInformation((InputPin)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -473,8 +472,8 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.REPLY_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.REPLY_ACTION__OWNED_ELEMENT:
@@ -551,7 +550,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 			case UML2Package.REPLY_ACTION__RETURN_INFORMATION:
 				return eVirtualGet(UML2Package.REPLY_ACTION__RETURN_INFORMATION) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

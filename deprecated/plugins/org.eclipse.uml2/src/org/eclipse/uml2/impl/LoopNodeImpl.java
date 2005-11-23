@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.20 2005/11/22 14:57:03 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.21 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -121,7 +120,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	public EList getOutputs() {
 		EList output = (EList)eVirtualGet(UML2Package.LOOP_NODE__OUTPUT);
 		if (output == null) {
-			eVirtualSet(UML2Package.LOOP_NODE__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.LOOP_NODE__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getLoopNode_Result()}));
+			eVirtualSet(UML2Package.LOOP_NODE__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.LOOP_NODE__OUTPUT, new int[] {UML2Package.LOOP_NODE__RESULT}));
 		}
 		return output;
 	}
@@ -134,7 +133,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 */
 	public boolean isSetOutputs() {
 		return super.isSetOutputs()
-			|| eIsSet(UML2Package.eINSTANCE.getLoopNode_Result());
+			|| eIsSet(UML2Package.LOOP_NODE__RESULT);
 	}
 
 	/**
@@ -145,7 +144,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	public EList getInputs() {
 		EList input = (EList)eVirtualGet(UML2Package.LOOP_NODE__INPUT);
 		if (input == null) {
-			eVirtualSet(UML2Package.LOOP_NODE__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.LOOP_NODE__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getLoopNode_LoopVariableInput()}));
+			eVirtualSet(UML2Package.LOOP_NODE__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.LOOP_NODE__INPUT, new int[] {UML2Package.LOOP_NODE__LOOP_VARIABLE_INPUT}));
 		}
 		return input;
 	}
@@ -158,7 +157,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UML2Package.eINSTANCE.getLoopNode_LoopVariableInput());
+			|| eIsSet(UML2Package.LOOP_NODE__LOOP_VARIABLE_INPUT);
 	}
 
 	/**
@@ -585,8 +584,8 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.LOOP_NODE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.LOOP_NODE__OWNED_ELEMENT:
@@ -687,7 +686,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 			case UML2Package.LOOP_NODE__LOOP_VARIABLE_INPUT:
 				return getLoopVariableInputs();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -695,8 +694,8 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.LOOP_NODE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -834,7 +833,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 				getLoopVariableInputs().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -842,8 +841,8 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.LOOP_NODE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -956,7 +955,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 				getLoopVariableInputs().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -964,8 +963,8 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.LOOP_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.LOOP_NODE__OWNED_ELEMENT:
@@ -1086,7 +1085,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 				EList loopVariableInput = (EList)eVirtualGet(UML2Package.LOOP_NODE__LOOP_VARIABLE_INPUT);
 				return loopVariableInput != null && !loopVariableInput.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1126,7 +1125,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getLoopNode_LoopVariable());
+			|| eIsSet(UML2Package.LOOP_NODE__LOOP_VARIABLE);
 	}
 
 

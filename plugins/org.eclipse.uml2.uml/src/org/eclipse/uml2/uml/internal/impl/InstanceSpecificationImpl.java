@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.2 2005/11/22 15:32:37 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -296,13 +295,11 @@ public class InstanceSpecificationImpl
 			eVirtualSet(UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
 					this, UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getDeploymentTarget_Deployment(),
-						UMLPackage.eINSTANCE
-							.getInstanceSpecification_Specification(),
-						UMLPackage.eINSTANCE.getInstanceSpecification_Slot()}));
+					new int[]{UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT,
+						UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION,
+						UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT,
+						UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION,
+						UMLPackage.INSTANCE_SPECIFICATION__SLOT}));
 		}
 		return ownedElement;
 	}
@@ -619,8 +616,8 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT :
@@ -662,7 +659,7 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
 				return getSlots();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -670,8 +667,8 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -715,7 +712,7 @@ public class InstanceSpecificationImpl
 				getSlots().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -723,8 +720,8 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -762,7 +759,7 @@ public class InstanceSpecificationImpl
 				getSlots().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -770,8 +767,8 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT :
@@ -818,7 +815,7 @@ public class InstanceSpecificationImpl
 				List slot = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SLOT);
 				return slot != null && !slot.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -921,8 +918,7 @@ public class InstanceSpecificationImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getParameterableElement_OwningTemplateParameter());
+			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER);
 	}
 
 	/**
@@ -932,9 +928,8 @@ public class InstanceSpecificationImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getInstanceSpecification_Specification())
-			|| eIsSet(UMLPackage.eINSTANCE.getInstanceSpecification_Slot());
+			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION)
+			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__SLOT);
 	}
 
 } //InstanceSpecificationImpl

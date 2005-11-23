@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.20 2005/11/22 14:57:02 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.21 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -93,7 +92,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.STATE_INVARIANT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.STATE_INVARIANT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering(), UML2Package.eINSTANCE.getStateInvariant_Invariant()}));
+			eVirtualSet(UML2Package.STATE_INVARIANT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.STATE_INVARIANT__OWNED_ELEMENT, new int[] {UML2Package.STATE_INVARIANT__OWNED_COMMENT, UML2Package.STATE_INVARIANT__TEMPLATE_BINDING, UML2Package.STATE_INVARIANT__OWNED_TEMPLATE_SIGNATURE, UML2Package.STATE_INVARIANT__NAME_EXPRESSION, UML2Package.STATE_INVARIANT__GENERAL_ORDERING, UML2Package.STATE_INVARIANT__INVARIANT}));
 		}
 		return ownedElement;
 	}
@@ -106,7 +105,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getStateInvariant_Invariant());
+			|| eIsSet(UML2Package.STATE_INVARIANT__INVARIANT);
 	}
 
 	/**
@@ -263,8 +262,8 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.STATE_INVARIANT__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.STATE_INVARIANT__OWNED_ELEMENT:
@@ -299,7 +298,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 			case UML2Package.STATE_INVARIANT__INVARIANT:
 				return getInvariant();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -307,8 +306,8 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.STATE_INVARIANT__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -355,7 +354,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 				setInvariant((Constraint)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -363,8 +362,8 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.STATE_INVARIANT__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -405,7 +404,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 				setInvariant((Constraint)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -413,8 +412,8 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.STATE_INVARIANT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STATE_INVARIANT__OWNED_ELEMENT:
@@ -453,7 +452,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 			case UML2Package.STATE_INVARIANT__INVARIANT:
 				return eVirtualGet(UML2Package.STATE_INVARIANT__INVARIANT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

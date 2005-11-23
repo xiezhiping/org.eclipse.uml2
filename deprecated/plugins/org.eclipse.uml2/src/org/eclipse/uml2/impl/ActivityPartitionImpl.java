@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.18 2005/11/22 14:57:02 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.19 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -341,7 +340,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getActivityPartition_Subgroup()}));
+			eVirtualSet(UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT, new int[] {UML2Package.ACTIVITY_PARTITION__OWNED_COMMENT, UML2Package.ACTIVITY_PARTITION__TEMPLATE_BINDING, UML2Package.ACTIVITY_PARTITION__OWNED_TEMPLATE_SIGNATURE, UML2Package.ACTIVITY_PARTITION__NAME_EXPRESSION, UML2Package.ACTIVITY_PARTITION__SUBGROUP}));
 		}
 		return ownedElement;
 	}
@@ -545,7 +544,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public boolean isSetSuperGroup() {
-		return eIsSet(UML2Package.eINSTANCE.getActivityPartition_SuperPartition());
+		return eIsSet(UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION);
 	}
 
 
@@ -652,8 +651,8 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_PARTITION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT:
@@ -698,7 +697,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 				if (resolve) return getRepresents();
 				return basicGetRepresents();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -706,8 +705,8 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_PARTITION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -764,7 +763,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 				setRepresents((Element)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -772,8 +771,8 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_PARTITION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -823,7 +822,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 				setRepresents((Element)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -831,8 +830,8 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_PARTITION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT:
@@ -878,7 +877,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 			case UML2Package.ACTIVITY_PARTITION__REPRESENTS:
 				return eVirtualGet(UML2Package.ACTIVITY_PARTITION__REPRESENTS) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

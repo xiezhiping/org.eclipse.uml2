@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.2 2005/11/22 15:32:37 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -137,19 +136,18 @@ public class ConditionalNodeImpl
 			eVirtualSet(UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
 					this, UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getExecutableNode_Handler(),
-						UMLPackage.eINSTANCE.getAction_Output(),
-						UMLPackage.eINSTANCE.getAction_Input(),
-						UMLPackage.eINSTANCE.getAction_LocalPrecondition(),
-						UMLPackage.eINSTANCE.getAction_LocalPostcondition(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE.getActivityGroup_Subgroup(),
-						UMLPackage.eINSTANCE.getConditionalNode_Clause()}));
+					new int[]{UMLPackage.CONDITIONAL_NODE__OWNED_COMMENT,
+						UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION,
+						UMLPackage.CONDITIONAL_NODE__HANDLER,
+						UMLPackage.CONDITIONAL_NODE__OUTPUT,
+						UMLPackage.CONDITIONAL_NODE__INPUT,
+						UMLPackage.CONDITIONAL_NODE__LOCAL_PRECONDITION,
+						UMLPackage.CONDITIONAL_NODE__LOCAL_POSTCONDITION,
+						UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT,
+						UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT,
+						UMLPackage.CONDITIONAL_NODE__OWNED_MEMBER,
+						UMLPackage.CONDITIONAL_NODE__SUBGROUP,
+						UMLPackage.CONDITIONAL_NODE__CLAUSE}));
 		}
 		return ownedElement;
 	}
@@ -165,8 +163,7 @@ public class ConditionalNodeImpl
 			eVirtualSet(UMLPackage.CONDITIONAL_NODE__OUTPUT,
 				output = new DerivedUnionEObjectEList(OutputPin.class, this,
 					UMLPackage.CONDITIONAL_NODE__OUTPUT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getConditionalNode_Result()}));
+					new int[]{UMLPackage.CONDITIONAL_NODE__RESULT}));
 		}
 		return output;
 	}
@@ -390,8 +387,8 @@ public class ConditionalNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.CONDITIONAL_NODE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT :
@@ -495,7 +492,7 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__RESULT :
 				return getResults();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -503,8 +500,8 @@ public class ConditionalNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.CONDITIONAL_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -612,7 +609,7 @@ public class ConditionalNodeImpl
 				getResults().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -620,8 +617,8 @@ public class ConditionalNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.CONDITIONAL_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -710,7 +707,7 @@ public class ConditionalNodeImpl
 				getResults().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -718,8 +715,8 @@ public class ConditionalNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.CONDITIONAL_NODE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT :
@@ -841,7 +838,7 @@ public class ConditionalNodeImpl
 				List result = (List) eVirtualGet(UMLPackage.CONDITIONAL_NODE__RESULT);
 				return result != null && !result.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -869,7 +866,7 @@ public class ConditionalNodeImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getConditionalNode_Clause());
+			|| eIsSet(UMLPackage.CONDITIONAL_NODE__CLAUSE);
 	}
 
 	/**
@@ -879,7 +876,7 @@ public class ConditionalNodeImpl
 	 */
 	public boolean isSetOutputs() {
 		return super.isSetOutputs()
-			|| eIsSet(UMLPackage.eINSTANCE.getConditionalNode_Result());
+			|| eIsSet(UMLPackage.CONDITIONAL_NODE__RESULT);
 	}
 
 } //ConditionalNodeImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.14 2005/11/21 21:48:02 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.15 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -268,8 +267,8 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.CONNECTOR_END__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.CONNECTOR_END__OWNED_ELEMENT:
@@ -301,7 +300,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 				if (resolve) return getPartWithPort();
 				return basicGetPartWithPort();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -309,8 +308,8 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.CONNECTOR_END__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -338,7 +337,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 				setPartWithPort((Property)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -346,8 +345,8 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.CONNECTOR_END__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -373,7 +372,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 				setPartWithPort((Property)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -381,8 +380,8 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.CONNECTOR_END__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONNECTOR_END__OWNED_ELEMENT:
@@ -411,7 +410,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 			case UML2Package.CONNECTOR_END__PART_WITH_PORT:
 				return eVirtualGet(UML2Package.CONNECTOR_END__PART_WITH_PORT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

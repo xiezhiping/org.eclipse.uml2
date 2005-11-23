@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.22 2005/11/22 14:57:02 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.23 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -119,7 +118,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.TRANSITION__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.TRANSITION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TRANSITION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getTransition_Guard(), UML2Package.eINSTANCE.getTransition_Effect()}));
+			eVirtualSet(UML2Package.TRANSITION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TRANSITION__OWNED_ELEMENT, new int[] {UML2Package.TRANSITION__OWNED_COMMENT, UML2Package.TRANSITION__TEMPLATE_BINDING, UML2Package.TRANSITION__OWNED_TEMPLATE_SIGNATURE, UML2Package.TRANSITION__NAME_EXPRESSION, UML2Package.TRANSITION__GUARD, UML2Package.TRANSITION__EFFECT}));
 		}
 		return ownedElement;
 	}
@@ -132,8 +131,8 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getTransition_Guard())
-			|| eIsSet(UML2Package.eINSTANCE.getTransition_Effect());
+			|| eIsSet(UML2Package.TRANSITION__GUARD)
+			|| eIsSet(UML2Package.TRANSITION__EFFECT);
 	}
 
 	/**
@@ -629,7 +628,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getTransition_Container());
+			|| eIsSet(UML2Package.TRANSITION__CONTAINER);
 	}
 
 
@@ -753,8 +752,8 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.TRANSITION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.TRANSITION__OWNED_ELEMENT:
@@ -802,7 +801,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			case UML2Package.TRANSITION__EFFECT:
 				return getEffect();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -810,8 +809,8 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.TRANSITION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -869,7 +868,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 				setEffect((Activity)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -877,8 +876,8 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.TRANSITION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -931,7 +930,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 				setEffect((Activity)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -939,8 +938,8 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.TRANSITION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TRANSITION__OWNED_ELEMENT:
@@ -989,7 +988,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			case UML2Package.TRANSITION__EFFECT:
 				return eVirtualGet(UML2Package.TRANSITION__EFFECT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

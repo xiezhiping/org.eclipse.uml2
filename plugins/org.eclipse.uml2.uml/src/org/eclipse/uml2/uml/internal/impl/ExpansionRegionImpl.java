@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -358,8 +357,8 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.EXPANSION_REGION__OWNED_ELEMENT :
@@ -457,7 +456,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT :
 				return getOutputElements();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -465,8 +464,8 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -571,7 +570,7 @@ public class ExpansionRegionImpl
 				getOutputElements().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -579,8 +578,8 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -666,7 +665,7 @@ public class ExpansionRegionImpl
 				getOutputElements().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -674,8 +673,8 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXPANSION_REGION__OWNED_ELEMENT :
@@ -796,7 +795,7 @@ public class ExpansionRegionImpl
 				List outputElement = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT);
 				return outputElement != null && !outputElement.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

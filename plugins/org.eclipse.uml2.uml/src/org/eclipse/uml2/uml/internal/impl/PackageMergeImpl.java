@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -83,8 +82,7 @@ public class PackageMergeImpl
 			eVirtualSet(UMLPackage.PACKAGE_MERGE__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.PACKAGE_MERGE__TARGET,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getPackageMerge_MergedPackage()}));
+					new int[]{UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE}));
 		}
 		return target;
 	}
@@ -100,8 +98,7 @@ public class PackageMergeImpl
 			eVirtualSet(UMLPackage.PACKAGE_MERGE__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.PACKAGE_MERGE__SOURCE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getPackageMerge_ReceivingPackage()}));
+					new int[]{UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE}));
 		}
 		return source;
 	}
@@ -274,8 +271,8 @@ public class PackageMergeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.PACKAGE_MERGE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.PACKAGE_MERGE__OWNED_ELEMENT :
@@ -297,7 +294,7 @@ public class PackageMergeImpl
 			case UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE :
 				return getReceivingPackage();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -305,8 +302,8 @@ public class PackageMergeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.PACKAGE_MERGE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -322,7 +319,7 @@ public class PackageMergeImpl
 				setReceivingPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -330,8 +327,8 @@ public class PackageMergeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PACKAGE_MERGE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -345,7 +342,7 @@ public class PackageMergeImpl
 				setReceivingPackage((org.eclipse.uml2.uml.Package) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -353,8 +350,8 @@ public class PackageMergeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PACKAGE_MERGE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PACKAGE_MERGE__OWNED_ELEMENT :
@@ -375,7 +372,7 @@ public class PackageMergeImpl
 			case UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE :
 				return getReceivingPackage() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -385,7 +382,7 @@ public class PackageMergeImpl
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UMLPackage.eINSTANCE.getPackageMerge_MergedPackage());
+			|| eIsSet(UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE);
 	}
 
 	/**
@@ -395,7 +392,7 @@ public class PackageMergeImpl
 	 */
 	public boolean isSetSources() {
 		return super.isSetSources()
-			|| eIsSet(UMLPackage.eINSTANCE.getPackageMerge_ReceivingPackage());
+			|| eIsSet(UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE);
 	}
 
 	/**
@@ -418,7 +415,7 @@ public class PackageMergeImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE.getPackageMerge_ReceivingPackage());
+			|| eIsSet(UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE);
 	}
 
 } //PackageMergeImpl

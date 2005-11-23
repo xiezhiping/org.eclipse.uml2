@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -87,16 +86,14 @@ public class InteractionConstraintImpl
 	public List getOwnedElements() {
 		List ownedElement = (List) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(
-				UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT,
+			eVirtualSet(UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
 					this, UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getConstraint_Specification(),
-						UMLPackage.eINSTANCE.getInteractionConstraint_Minint(),
-						UMLPackage.eINSTANCE.getInteractionConstraint_Maxint()}));
+					new int[]{UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT,
+						UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION,
+						UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION,
+						UMLPackage.INTERACTION_CONSTRAINT__MININT,
+						UMLPackage.INTERACTION_CONSTRAINT__MAXINT}));
 		}
 		return ownedElement;
 	}
@@ -356,8 +353,8 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT :
@@ -399,7 +396,7 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT__MAXINT :
 				return getMaxint();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -407,8 +404,8 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -453,7 +450,7 @@ public class InteractionConstraintImpl
 				setMaxint((ValueSpecification) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -461,8 +458,8 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -503,7 +500,7 @@ public class InteractionConstraintImpl
 				setMaxint((ValueSpecification) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -511,8 +508,8 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT :
@@ -558,7 +555,7 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT__MAXINT :
 				return eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__MAXINT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -568,8 +565,8 @@ public class InteractionConstraintImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getInteractionConstraint_Minint())
-			|| eIsSet(UMLPackage.eINSTANCE.getInteractionConstraint_Maxint());
+			|| eIsSet(UMLPackage.INTERACTION_CONSTRAINT__MININT)
+			|| eIsSet(UMLPackage.INTERACTION_CONSTRAINT__MAXINT);
 	}
 
 } //InteractionConstraintImpl

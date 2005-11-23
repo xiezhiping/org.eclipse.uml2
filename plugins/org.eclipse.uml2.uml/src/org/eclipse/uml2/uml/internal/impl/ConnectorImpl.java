@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.2 2005/11/22 15:32:37 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -111,8 +110,7 @@ public class ConnectorImpl
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
 					UMLPackage.CONNECTOR__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getConnector_RedefinedConnector()}));
+					new int[]{UMLPackage.CONNECTOR__REDEFINED_CONNECTOR}));
 		}
 		return redefinedElement;
 	}
@@ -127,11 +125,10 @@ public class ConnectorImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.CONNECTOR__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.CONNECTOR__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getConnector_End()}));
+					this, UMLPackage.CONNECTOR__OWNED_ELEMENT, new int[]{
+						UMLPackage.CONNECTOR__OWNED_COMMENT,
+						UMLPackage.CONNECTOR__NAME_EXPRESSION,
+						UMLPackage.CONNECTOR__END}));
 		}
 		return ownedElement;
 	}
@@ -414,8 +411,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.CONNECTOR__OWNED_ELEMENT :
@@ -465,7 +462,7 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR__CONTRACT :
 				return getContracts();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -473,8 +470,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -521,7 +518,7 @@ public class ConnectorImpl
 				getContracts().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -529,8 +526,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -571,7 +568,7 @@ public class ConnectorImpl
 				getContracts().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -579,8 +576,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CONNECTOR__OWNED_ELEMENT :
@@ -635,7 +632,7 @@ public class ConnectorImpl
 				List contract = (List) eVirtualGet(UMLPackage.CONNECTOR__CONTRACT);
 				return contract != null && !contract.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -661,7 +658,7 @@ public class ConnectorImpl
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getConnector_RedefinedConnector());
+			|| eIsSet(UMLPackage.CONNECTOR__REDEFINED_CONNECTOR);
 	}
 
 	/**
@@ -670,8 +667,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedElements() {
-		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getConnector_End());
+		return super.isSetOwnedElements() || eIsSet(UMLPackage.CONNECTOR__END);
 	}
 
 } //ConnectorImpl

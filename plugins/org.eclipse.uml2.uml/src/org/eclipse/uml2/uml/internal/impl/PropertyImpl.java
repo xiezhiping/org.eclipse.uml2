@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.4 2005/11/22 15:32:34 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.5 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -393,21 +392,16 @@ public class PropertyImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.PROPERTY__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PROPERTY__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE
-							.getMultiplicityElement_UpperValue(),
-						UMLPackage.eINSTANCE
-							.getMultiplicityElement_LowerValue(),
-						UMLPackage.eINSTANCE.getDeploymentTarget_Deployment(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature(),
-						UMLPackage.eINSTANCE.getProperty_DefaultValue(),
-						UMLPackage.eINSTANCE.getProperty_Qualifier()}));
+					this, UMLPackage.PROPERTY__OWNED_ELEMENT, new int[]{
+						UMLPackage.PROPERTY__OWNED_COMMENT,
+						UMLPackage.PROPERTY__NAME_EXPRESSION,
+						UMLPackage.PROPERTY__UPPER_VALUE,
+						UMLPackage.PROPERTY__LOWER_VALUE,
+						UMLPackage.PROPERTY__DEPLOYMENT,
+						UMLPackage.PROPERTY__TEMPLATE_BINDING,
+						UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
+						UMLPackage.PROPERTY__DEFAULT_VALUE,
+						UMLPackage.PROPERTY__QUALIFIER}));
 		}
 		return ownedElement;
 	}
@@ -639,11 +633,10 @@ public class PropertyImpl
 			eVirtualSet(UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
 				featuringClassifier = new DerivedUnionEObjectEList(
 					Classifier.class, this,
-					UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getProperty_Datatype(),
-						UMLPackage.eINSTANCE.getProperty_Class_(),
-						UMLPackage.eINSTANCE.getProperty_OwningAssociation()}));
+					UMLPackage.PROPERTY__FEATURING_CLASSIFIER, new int[]{
+						UMLPackage.PROPERTY__DATATYPE,
+						UMLPackage.PROPERTY__CLASS_,
+						UMLPackage.PROPERTY__OWNING_ASSOCIATION}));
 		}
 		return featuringClassifier;
 	}
@@ -660,8 +653,7 @@ public class PropertyImpl
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
 					UMLPackage.PROPERTY__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getProperty_RedefinedProperty()}));
+					new int[]{UMLPackage.PROPERTY__REDEFINED_PROPERTY}));
 		}
 		return redefinedElement;
 	}
@@ -1651,8 +1643,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.PROPERTY__OWNED_ELEMENT :
@@ -1774,7 +1766,7 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				return getAssociationEnd();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1782,8 +1774,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -1902,7 +1894,7 @@ public class PropertyImpl
 				setAssociationEnd((Property) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1910,8 +1902,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -2021,7 +2013,7 @@ public class PropertyImpl
 				setAssociationEnd((Property) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -2029,8 +2021,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PROPERTY__OWNED_ELEMENT :
@@ -2142,7 +2134,7 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				return getAssociationEnd() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -2320,9 +2312,8 @@ public class PropertyImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getParameterableElement_OwningTemplateParameter())
-			|| eIsSet(UMLPackage.eINSTANCE.getProperty_AssociationEnd());
+			|| eIsSet(UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER)
+			|| eIsSet(UMLPackage.PROPERTY__ASSOCIATION_END);
 	}
 
 	/**
@@ -2332,13 +2323,11 @@ public class PropertyImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getDeploymentTarget_Deployment())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateableElement_TemplateBinding())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateableElement_OwnedTemplateSignature())
-			|| eIsSet(UMLPackage.eINSTANCE.getProperty_DefaultValue())
-			|| eIsSet(UMLPackage.eINSTANCE.getProperty_Qualifier());
+			|| eIsSet(UMLPackage.PROPERTY__DEPLOYMENT)
+			|| eIsSet(UMLPackage.PROPERTY__TEMPLATE_BINDING)
+			|| eIsSet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE)
+			|| eIsSet(UMLPackage.PROPERTY__DEFAULT_VALUE)
+			|| eIsSet(UMLPackage.PROPERTY__QUALIFIER);
 	}
 
 	/**
@@ -2368,10 +2357,9 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isSetNamespace() {
-		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.eINSTANCE.getProperty_Datatype())
-			|| eIsSet(UMLPackage.eINSTANCE.getProperty_Class_())
-			|| eIsSet(UMLPackage.eINSTANCE.getProperty_OwningAssociation());
+		return super.isSetNamespace() || eIsSet(UMLPackage.PROPERTY__DATATYPE)
+			|| eIsSet(UMLPackage.PROPERTY__CLASS_)
+			|| eIsSet(UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}
 
 	/**
@@ -2381,9 +2369,9 @@ public class PropertyImpl
 	 */
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
-			|| eIsSet(UMLPackage.eINSTANCE.getProperty_Datatype())
-			|| eIsSet(UMLPackage.eINSTANCE.getProperty_Class_())
-			|| eIsSet(UMLPackage.eINSTANCE.getProperty_OwningAssociation());
+			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
+			|| eIsSet(UMLPackage.PROPERTY__CLASS_)
+			|| eIsSet(UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}
 
 	/**
@@ -2393,7 +2381,7 @@ public class PropertyImpl
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getProperty_RedefinedProperty());
+			|| eIsSet(UMLPackage.PROPERTY__REDEFINED_PROPERTY);
 	}
 
 } //PropertyImpl

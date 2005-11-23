@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -92,9 +91,9 @@ public class SubstitutionImpl
 		if (target == null) {
 			eVirtualSet(UMLPackage.SUBSTITUTION__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.SUBSTITUTION__TARGET, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDependency_Supplier(),
-						UMLPackage.eINSTANCE.getSubstitution_Contract()}));
+					UMLPackage.SUBSTITUTION__TARGET, new int[]{
+						UMLPackage.SUBSTITUTION__SUPPLIER,
+						UMLPackage.SUBSTITUTION__CONTRACT}));
 		}
 		return target;
 	}
@@ -109,10 +108,9 @@ public class SubstitutionImpl
 		if (source == null) {
 			eVirtualSet(UMLPackage.SUBSTITUTION__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.SUBSTITUTION__SOURCE, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDependency_Client(),
-						UMLPackage.eINSTANCE
-							.getSubstitution_SubstitutingClassifier()}));
+					UMLPackage.SUBSTITUTION__SOURCE, new int[]{
+						UMLPackage.SUBSTITUTION__CLIENT,
+						UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER}));
 		}
 		return source;
 	}
@@ -383,8 +381,8 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.SUBSTITUTION__OWNED_ELEMENT :
@@ -436,7 +434,7 @@ public class SubstitutionImpl
 					return getSubstitutingClassifier();
 				return basicGetSubstitutingClassifier();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -444,8 +442,8 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -491,7 +489,7 @@ public class SubstitutionImpl
 				setSubstitutingClassifier((Classifier) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -499,8 +497,8 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -541,7 +539,7 @@ public class SubstitutionImpl
 				setSubstitutingClassifier((Classifier) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -549,8 +547,8 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.SUBSTITUTION__OWNED_ELEMENT :
@@ -602,7 +600,7 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
 				return basicGetSubstitutingClassifier() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -612,7 +610,7 @@ public class SubstitutionImpl
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UMLPackage.eINSTANCE.getSubstitution_Contract());
+			|| eIsSet(UMLPackage.SUBSTITUTION__CONTRACT);
 	}
 
 	/**
@@ -622,8 +620,7 @@ public class SubstitutionImpl
 	 */
 	public boolean isSetSources() {
 		return super.isSetSources()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getSubstitution_SubstitutingClassifier());
+			|| eIsSet(UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER);
 	}
 
 } //SubstitutionImpl

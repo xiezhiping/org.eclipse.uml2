@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -147,8 +146,7 @@ public class ActivityPartitionImpl
 			eVirtualSet(UMLPackage.ACTIVITY_PARTITION__SUBGROUP,
 				subgroup = new DerivedUnionEObjectEList(ActivityGroup.class,
 					this, UMLPackage.ACTIVITY_PARTITION__SUBGROUP,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getActivityPartition_Subpartition()}));
+					new int[]{UMLPackage.ACTIVITY_PARTITION__SUBPARTITION}));
 		}
 		return subgroup;
 	}
@@ -164,10 +162,9 @@ public class ActivityPartitionImpl
 			eVirtualSet(UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
 					this, UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getActivityGroup_Subgroup()}));
+					new int[]{UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT,
+						UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION,
+						UMLPackage.ACTIVITY_PARTITION__SUBGROUP}));
 		}
 		return ownedElement;
 	}
@@ -184,8 +181,7 @@ public class ActivityPartitionImpl
 				containedNode = new DerivedUnionEObjectEList(
 					ActivityNode.class, this,
 					UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getActivityPartition_Node()}));
+					new int[]{UMLPackage.ACTIVITY_PARTITION__NODE}));
 		}
 		return containedNode;
 	}
@@ -217,8 +213,7 @@ public class ActivityPartitionImpl
 				containedEdge = new DerivedUnionEObjectEList(
 					ActivityEdge.class, this,
 					UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getActivityPartition_Edge()}));
+					new int[]{UMLPackage.ACTIVITY_PARTITION__EDGE}));
 		}
 		return containedEdge;
 	}
@@ -728,8 +723,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT :
@@ -783,7 +778,7 @@ public class ActivityPartitionImpl
 					return getRepresents();
 				return basicGetRepresents();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -791,8 +786,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -842,7 +837,7 @@ public class ActivityPartitionImpl
 				setRepresents((Element) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -850,8 +845,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -895,7 +890,7 @@ public class ActivityPartitionImpl
 				setRepresents((Element) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -903,8 +898,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT :
@@ -962,7 +957,7 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
 				return eVirtualGet(UMLPackage.ACTIVITY_PARTITION__REPRESENTS) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1039,7 +1034,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public boolean isSetSubgroups() {
-		return eIsSet(UMLPackage.eINSTANCE.getActivityPartition_Subpartition());
+		return eIsSet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION);
 	}
 
 	/**
@@ -1070,8 +1065,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public boolean isSetSuperGroup() {
-		return eIsSet(UMLPackage.eINSTANCE
-			.getActivityPartition_SuperPartition());
+		return eIsSet(UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION);
 	}
 
 	/**
@@ -1097,7 +1091,7 @@ public class ActivityPartitionImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner() || isSetSuperGroup()
-			|| eIsSet(UMLPackage.eINSTANCE.getActivityGroup_InActivity());
+			|| eIsSet(UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY);
 	}
 
 	/**
@@ -1106,7 +1100,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public boolean isSetContainedNodes() {
-		return eIsSet(UMLPackage.eINSTANCE.getActivityPartition_Node());
+		return eIsSet(UMLPackage.ACTIVITY_PARTITION__NODE);
 	}
 
 	/**
@@ -1115,7 +1109,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public boolean isSetContainedEdges() {
-		return eIsSet(UMLPackage.eINSTANCE.getActivityPartition_Edge());
+		return eIsSet(UMLPackage.ACTIVITY_PARTITION__EDGE);
 	}
 
 } //ActivityPartitionImpl

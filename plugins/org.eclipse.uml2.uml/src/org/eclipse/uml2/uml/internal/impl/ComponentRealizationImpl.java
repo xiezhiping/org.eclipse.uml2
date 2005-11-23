@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -93,11 +92,9 @@ public class ComponentRealizationImpl
 		if (source == null) {
 			eVirtualSet(UMLPackage.COMPONENT_REALIZATION__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.COMPONENT_REALIZATION__SOURCE,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDependency_Client(),
-						UMLPackage.eINSTANCE
-							.getComponentRealization_Abstraction()}));
+					UMLPackage.COMPONENT_REALIZATION__SOURCE, new int[]{
+						UMLPackage.COMPONENT_REALIZATION__CLIENT,
+						UMLPackage.COMPONENT_REALIZATION__ABSTRACTION}));
 		}
 		return source;
 	}
@@ -110,13 +107,12 @@ public class ComponentRealizationImpl
 	public List getTargets() {
 		List target = (List) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__TARGET);
 		if (target == null) {
-			eVirtualSet(UMLPackage.COMPONENT_REALIZATION__TARGET,
+			eVirtualSet(
+				UMLPackage.COMPONENT_REALIZATION__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.COMPONENT_REALIZATION__TARGET,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDependency_Supplier(),
-						UMLPackage.eINSTANCE
-							.getComponentRealization_RealizingClassifier()}));
+					UMLPackage.COMPONENT_REALIZATION__TARGET, new int[]{
+						UMLPackage.COMPONENT_REALIZATION__SUPPLIER,
+						UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER}));
 		}
 		return target;
 	}
@@ -391,8 +387,8 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_ELEMENT :
@@ -444,7 +440,7 @@ public class ComponentRealizationImpl
 					return getRealizingClassifier();
 				return basicGetRealizingClassifier();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -452,8 +448,8 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -499,7 +495,7 @@ public class ComponentRealizationImpl
 				setRealizingClassifier((Classifier) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -507,8 +503,8 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -549,7 +545,7 @@ public class ComponentRealizationImpl
 				setRealizingClassifier((Classifier) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -557,8 +553,8 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_ELEMENT :
@@ -610,7 +606,7 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
 				return eVirtualGet(UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -620,8 +616,7 @@ public class ComponentRealizationImpl
 	 */
 	public boolean isSetSources() {
 		return super.isSetSources()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getComponentRealization_Abstraction());
+			|| eIsSet(UMLPackage.COMPONENT_REALIZATION__ABSTRACTION);
 	}
 
 	/**
@@ -644,8 +639,7 @@ public class ComponentRealizationImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getComponentRealization_Abstraction());
+			|| eIsSet(UMLPackage.COMPONENT_REALIZATION__ABSTRACTION);
 	}
 
 	/**
@@ -655,8 +649,7 @@ public class ComponentRealizationImpl
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getComponentRealization_RealizingClassifier());
+			|| eIsSet(UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER);
 	}
 
 } //ComponentRealizationImpl

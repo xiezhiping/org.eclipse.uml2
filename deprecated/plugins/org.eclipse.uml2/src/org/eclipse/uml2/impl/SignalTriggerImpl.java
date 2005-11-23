@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalTriggerImpl.java,v 1.11 2005/11/22 14:57:03 khussey Exp $
+ * $Id: SignalTriggerImpl.java,v 1.12 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,7 +18,6 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.uml2.Signal;
 import org.eclipse.uml2.SignalTrigger;
@@ -101,8 +100,8 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.SIGNAL_TRIGGER__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.SIGNAL_TRIGGER__OWNED_ELEMENT:
@@ -131,7 +130,7 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 			case UML2Package.SIGNAL_TRIGGER__SIGNAL:
 				return getSignals();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -139,8 +138,8 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.SIGNAL_TRIGGER__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -178,7 +177,7 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 				getSignals().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -186,8 +185,8 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.SIGNAL_TRIGGER__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -219,7 +218,7 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 				getSignals().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -227,8 +226,8 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.SIGNAL_TRIGGER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SIGNAL_TRIGGER__OWNED_ELEMENT:
@@ -262,7 +261,7 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 				EList signal = (EList)eVirtualGet(UML2Package.SIGNAL_TRIGGER__SIGNAL);
 				return signal != null && !signal.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

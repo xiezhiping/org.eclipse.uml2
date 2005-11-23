@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.17 2005/11/22 14:57:02 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.18 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -97,7 +96,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.INTERACTION_FRAGMENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.INTERACTION_FRAGMENT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INTERACTION_FRAGMENT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering()}));
+			eVirtualSet(UML2Package.INTERACTION_FRAGMENT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INTERACTION_FRAGMENT__OWNED_ELEMENT, new int[] {UML2Package.INTERACTION_FRAGMENT__OWNED_COMMENT, UML2Package.INTERACTION_FRAGMENT__TEMPLATE_BINDING, UML2Package.INTERACTION_FRAGMENT__OWNED_TEMPLATE_SIGNATURE, UML2Package.INTERACTION_FRAGMENT__NAME_EXPRESSION, UML2Package.INTERACTION_FRAGMENT__GENERAL_ORDERING}));
 		}
 		return ownedElement;
 	}
@@ -110,7 +109,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
+			|| eIsSet(UML2Package.INTERACTION_FRAGMENT__GENERAL_ORDERING);
 	}
 
 	/**
@@ -286,7 +285,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+			|| eIsSet(UML2Package.INTERACTION_FRAGMENT__ENCLOSING_OPERAND);
 	}
 
 
@@ -387,8 +386,8 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.INTERACTION_FRAGMENT__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.INTERACTION_FRAGMENT__OWNED_ELEMENT:
@@ -421,7 +420,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 			case UML2Package.INTERACTION_FRAGMENT__ENCLOSING_OPERAND:
 				return getEnclosingOperand();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -429,8 +428,8 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.INTERACTION_FRAGMENT__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -474,7 +473,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 				setEnclosingOperand((InteractionOperand)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -482,8 +481,8 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.INTERACTION_FRAGMENT__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -521,7 +520,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 				setEnclosingOperand((InteractionOperand)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -529,8 +528,8 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.INTERACTION_FRAGMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION_FRAGMENT__OWNED_ELEMENT:
@@ -568,7 +567,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 			case UML2Package.INTERACTION_FRAGMENT__ENCLOSING_OPERAND:
 				return getEnclosingOperand() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

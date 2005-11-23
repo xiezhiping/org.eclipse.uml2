@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.20 2005/11/22 14:57:02 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.21 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -268,7 +267,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	public EList getInGroups() {
 		EList inGroup = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__IN_GROUP);
 		if (inGroup == null) {
-			eVirtualSet(UML2Package.ACTIVITY_EDGE__IN_GROUP, inGroup = new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_EDGE__IN_GROUP, new EStructuralFeature[] {UML2Package.eINSTANCE.getActivityEdge_InStructuredNode(), UML2Package.eINSTANCE.getActivityEdge_InPartition()}));
+			eVirtualSet(UML2Package.ACTIVITY_EDGE__IN_GROUP, inGroup = new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_EDGE__IN_GROUP, new int[] {UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE, UML2Package.ACTIVITY_EDGE__IN_PARTITION}));
 		}
 		return inGroup;
 	}
@@ -280,8 +279,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public boolean isSetInGroups() {
-		return eIsSet(UML2Package.eINSTANCE.getActivityEdge_InStructuredNode())
-			|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_InPartition());
+		return eIsSet(UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
+			|| eIsSet(UML2Package.ACTIVITY_EDGE__IN_PARTITION);
 	}
 
 	/**
@@ -292,7 +291,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getActivityEdge_Guard(), UML2Package.eINSTANCE.getActivityEdge_Weight()}));
+			eVirtualSet(UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT, new int[] {UML2Package.ACTIVITY_EDGE__OWNED_COMMENT, UML2Package.ACTIVITY_EDGE__TEMPLATE_BINDING, UML2Package.ACTIVITY_EDGE__OWNED_TEMPLATE_SIGNATURE, UML2Package.ACTIVITY_EDGE__NAME_EXPRESSION, UML2Package.ACTIVITY_EDGE__GUARD, UML2Package.ACTIVITY_EDGE__WEIGHT}));
 		}
 		return ownedElement;
 	}
@@ -305,8 +304,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Guard())
-			|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Weight());
+			|| eIsSet(UML2Package.ACTIVITY_EDGE__GUARD)
+			|| eIsSet(UML2Package.ACTIVITY_EDGE__WEIGHT);
 	}
 
 	/**
@@ -615,7 +614,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Activity());
+			|| eIsSet(UML2Package.ACTIVITY_EDGE__ACTIVITY);
 	}
 
 
@@ -739,8 +738,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_EDGE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT:
@@ -792,7 +791,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 				if (resolve) return getInterrupts();
 				return basicGetInterrupts();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -800,8 +799,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_EDGE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -863,7 +862,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 				setInterrupts((InterruptibleActivityRegion)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -871,8 +870,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_EDGE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -928,7 +927,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 				setInterrupts((InterruptibleActivityRegion)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -936,8 +935,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_EDGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT:
@@ -990,7 +989,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__INTERRUPTS:
 				return eVirtualGet(UML2Package.ACTIVITY_EDGE__INTERRUPTS) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

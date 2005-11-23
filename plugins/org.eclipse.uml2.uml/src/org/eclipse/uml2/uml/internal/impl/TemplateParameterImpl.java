@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -89,15 +88,16 @@ public class TemplateParameterImpl
 	public List getOwnedElements() {
 		List ownedElement = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE
-							.getTemplateParameter_OwnedParameteredElement(),
-						UMLPackage.eINSTANCE
-							.getTemplateParameter_OwnedDefault()}));
+			eVirtualSet(
+				UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT,
+				ownedElement = new DerivedUnionEObjectEList(
+					Element.class,
+					this,
+					UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT,
+					new int[]{
+						UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT,
+						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+						UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT}));
 		}
 		return ownedElement;
 	}
@@ -561,8 +561,8 @@ public class TemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT :
@@ -586,7 +586,7 @@ public class TemplateParameterImpl
 					return getParameteredElement();
 				return basicGetParameteredElement();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -594,8 +594,8 @@ public class TemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -620,7 +620,7 @@ public class TemplateParameterImpl
 				setParameteredElement((ParameterableElement) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -628,8 +628,8 @@ public class TemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -652,7 +652,7 @@ public class TemplateParameterImpl
 				setParameteredElement((ParameterableElement) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -660,8 +660,8 @@ public class TemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT :
@@ -682,7 +682,7 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -705,7 +705,7 @@ public class TemplateParameterImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE.getTemplateParameter_Signature());
+			|| eIsSet(UMLPackage.TEMPLATE_PARAMETER__SIGNATURE);
 	}
 
 	/**
@@ -715,9 +715,8 @@ public class TemplateParameterImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateParameter_OwnedParameteredElement())
-			|| eIsSet(UMLPackage.eINSTANCE.getTemplateParameter_OwnedDefault());
+			|| eIsSet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT)
+			|| eIsSet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
 	}
 
 } //TemplateParameterImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.3 2005/11/23 13:27:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -106,15 +105,11 @@ public class ActivityEdgeImpl
 	public List getInGroups() {
 		List inGroup = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__IN_GROUP);
 		if (inGroup == null) {
-			eVirtualSet(
-				UMLPackage.ACTIVITY_EDGE__IN_GROUP,
-				inGroup = new DerivedUnionEObjectEList(
-					ActivityGroup.class,
-					this,
-					UMLPackage.ACTIVITY_EDGE__IN_GROUP,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getActivityEdge_InPartition(),
-						UMLPackage.eINSTANCE.getActivityEdge_InStructuredNode()}));
+			eVirtualSet(UMLPackage.ACTIVITY_EDGE__IN_GROUP,
+				inGroup = new DerivedUnionEObjectEList(ActivityGroup.class,
+					this, UMLPackage.ACTIVITY_EDGE__IN_GROUP, new int[]{
+						UMLPackage.ACTIVITY_EDGE__IN_PARTITION,
+						UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE}));
 		}
 		return inGroup;
 	}
@@ -131,8 +126,7 @@ public class ActivityEdgeImpl
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
 					UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getActivityEdge_RedefinedEdge()}));
+					new int[]{UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE}));
 		}
 		return redefinedElement;
 	}
@@ -147,12 +141,11 @@ public class ActivityEdgeImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getActivityEdge_Guard(),
-						UMLPackage.eINSTANCE.getActivityEdge_Weight()}));
+					this, UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT, new int[]{
+						UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT,
+						UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION,
+						UMLPackage.ACTIVITY_EDGE__GUARD,
+						UMLPackage.ACTIVITY_EDGE__WEIGHT}));
 		}
 		return ownedElement;
 	}
@@ -849,8 +842,8 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT :
@@ -908,7 +901,7 @@ public class ActivityEdgeImpl
 					return getSource();
 				return basicGetSource();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -916,8 +909,8 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -972,7 +965,7 @@ public class ActivityEdgeImpl
 				setSource((ActivityNode) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -980,8 +973,8 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1031,7 +1024,7 @@ public class ActivityEdgeImpl
 				setSource((ActivityNode) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1039,8 +1032,8 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT :
@@ -1099,7 +1092,7 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
 				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__SOURCE) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1121,8 +1114,7 @@ public class ActivityEdgeImpl
 	 * @generated
 	 */
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE.getActivityEdge_Activity());
+		return super.isSetOwner() || eIsSet(UMLPackage.ACTIVITY_EDGE__ACTIVITY);
 	}
 
 	/**
@@ -1131,8 +1123,8 @@ public class ActivityEdgeImpl
 	 * @generated
 	 */
 	public boolean isSetInGroups() {
-		return eIsSet(UMLPackage.eINSTANCE.getActivityEdge_InPartition())
-			|| eIsSet(UMLPackage.eINSTANCE.getActivityEdge_InStructuredNode());
+		return eIsSet(UMLPackage.ACTIVITY_EDGE__IN_PARTITION)
+			|| eIsSet(UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE);
 	}
 
 	/**
@@ -1142,7 +1134,7 @@ public class ActivityEdgeImpl
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getActivityEdge_RedefinedEdge());
+			|| eIsSet(UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE);
 	}
 
 	/**
@@ -1152,8 +1144,8 @@ public class ActivityEdgeImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getActivityEdge_Guard())
-			|| eIsSet(UMLPackage.eINSTANCE.getActivityEdge_Weight());
+			|| eIsSet(UMLPackage.ACTIVITY_EDGE__GUARD)
+			|| eIsSet(UMLPackage.ACTIVITY_EDGE__WEIGHT);
 	}
 
 } //ActivityEdgeImpl

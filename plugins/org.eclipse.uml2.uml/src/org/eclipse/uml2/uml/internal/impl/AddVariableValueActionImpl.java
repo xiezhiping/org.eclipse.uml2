@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: AddVariableValueActionImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -110,11 +109,9 @@ public class AddVariableValueActionImpl
 		if (input == null) {
 			eVirtualSet(UMLPackage.ADD_VARIABLE_VALUE_ACTION__INPUT,
 				input = new DerivedUnionEObjectEList(InputPin.class, this,
-					UMLPackage.ADD_VARIABLE_VALUE_ACTION__INPUT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getWriteVariableAction_Value(),
-						UMLPackage.eINSTANCE
-							.getAddVariableValueAction_InsertAt()}));
+					UMLPackage.ADD_VARIABLE_VALUE_ACTION__INPUT, new int[]{
+						UMLPackage.ADD_VARIABLE_VALUE_ACTION__VALUE,
+						UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT}));
 		}
 		return input;
 	}
@@ -309,8 +306,8 @@ public class AddVariableValueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__OWNED_ELEMENT :
@@ -382,7 +379,7 @@ public class AddVariableValueActionImpl
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT :
 				return getInsertAt();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -390,8 +387,8 @@ public class AddVariableValueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -467,7 +464,7 @@ public class AddVariableValueActionImpl
 				setInsertAt((InputPin) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -475,8 +472,8 @@ public class AddVariableValueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -541,7 +538,7 @@ public class AddVariableValueActionImpl
 				setInsertAt((InputPin) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -549,8 +546,8 @@ public class AddVariableValueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__OWNED_ELEMENT :
@@ -635,7 +632,7 @@ public class AddVariableValueActionImpl
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT :
 				return eVirtualGet(UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -661,7 +658,7 @@ public class AddVariableValueActionImpl
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UMLPackage.eINSTANCE.getAddVariableValueAction_InsertAt());
+			|| eIsSet(UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT);
 	}
 
 } //AddVariableValueActionImpl

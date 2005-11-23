@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
+ * $Id: NodeImpl.java,v 1.4 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -103,24 +102,20 @@ public class NodeImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.NODE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.NODE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature(),
-						UMLPackage.eINSTANCE.getClassifier_Generalization(),
-						UMLPackage.eINSTANCE.getClassifier_Substitution(),
-						UMLPackage.eINSTANCE.getClassifier_CollaborationUse(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedSignature(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_InterfaceRealization(),
-						UMLPackage.eINSTANCE.getDeploymentTarget_Deployment()}));
+					this, UMLPackage.NODE__OWNED_ELEMENT, new int[]{
+						UMLPackage.NODE__OWNED_COMMENT,
+						UMLPackage.NODE__NAME_EXPRESSION,
+						UMLPackage.NODE__ELEMENT_IMPORT,
+						UMLPackage.NODE__PACKAGE_IMPORT,
+						UMLPackage.NODE__OWNED_MEMBER,
+						UMLPackage.NODE__TEMPLATE_BINDING,
+						UMLPackage.NODE__OWNED_TEMPLATE_SIGNATURE,
+						UMLPackage.NODE__GENERALIZATION,
+						UMLPackage.NODE__SUBSTITUTION,
+						UMLPackage.NODE__COLLABORATION_USE,
+						UMLPackage.NODE__OWNED_SIGNATURE,
+						UMLPackage.NODE__INTERFACE_REALIZATION,
+						UMLPackage.NODE__DEPLOYMENT}));
 		}
 		return ownedElement;
 	}
@@ -234,22 +229,17 @@ public class NodeImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.NODE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.NODE__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedAttribute(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedConnector(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedBehavior(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedTrigger(),
-						UMLPackage.eINSTANCE.getClass_OwnedOperation(),
-						UMLPackage.eINSTANCE.getClass_NestedClassifier(),
-						UMLPackage.eINSTANCE.getClass_OwnedReception(),
-						UMLPackage.eINSTANCE.getNode_NestedNode()}));
+					this, UMLPackage.NODE__OWNED_MEMBER, new int[]{
+						UMLPackage.NODE__OWNED_RULE,
+						UMLPackage.NODE__OWNED_USE_CASE,
+						UMLPackage.NODE__OWNED_ATTRIBUTE,
+						UMLPackage.NODE__OWNED_CONNECTOR,
+						UMLPackage.NODE__OWNED_BEHAVIOR,
+						UMLPackage.NODE__OWNED_TRIGGER,
+						UMLPackage.NODE__OWNED_OPERATION,
+						UMLPackage.NODE__NESTED_CLASSIFIER,
+						UMLPackage.NODE__OWNED_RECEPTION,
+						UMLPackage.NODE__NESTED_NODE}));
 		}
 		return ownedMember;
 	}
@@ -510,8 +500,8 @@ public class NodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.NODE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.NODE__OWNED_ELEMENT :
@@ -637,7 +627,7 @@ public class NodeImpl
 			case UMLPackage.NODE__NESTED_NODE :
 				return getNestedNodes();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -645,8 +635,8 @@ public class NodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.NODE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -799,7 +789,7 @@ public class NodeImpl
 				getNestedNodes().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -807,8 +797,8 @@ public class NodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.NODE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -933,7 +923,7 @@ public class NodeImpl
 				getNestedNodes().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -941,8 +931,8 @@ public class NodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.NODE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.NODE__OWNED_ELEMENT :
@@ -1087,7 +1077,7 @@ public class NodeImpl
 				List nestedNode = (List) eVirtualGet(UMLPackage.NODE__NESTED_NODE);
 				return nestedNode != null && !nestedNode.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1135,7 +1125,7 @@ public class NodeImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getDeploymentTarget_Deployment());
+			|| eIsSet(UMLPackage.NODE__DEPLOYMENT);
 	}
 
 	/**
@@ -1145,7 +1135,7 @@ public class NodeImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getNode_NestedNode());
+			|| eIsSet(UMLPackage.NODE__NESTED_NODE);
 	}
 
 } //NodeImpl

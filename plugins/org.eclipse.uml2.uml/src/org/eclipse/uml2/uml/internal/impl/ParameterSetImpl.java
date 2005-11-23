@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -89,11 +88,10 @@ public class ParameterSetImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.PARAMETER_SET__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PARAMETER_SET__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getParameterSet_Condition()}));
+					this, UMLPackage.PARAMETER_SET__OWNED_ELEMENT, new int[]{
+						UMLPackage.PARAMETER_SET__OWNED_COMMENT,
+						UMLPackage.PARAMETER_SET__NAME_EXPRESSION,
+						UMLPackage.PARAMETER_SET__CONDITION}));
 		}
 		return ownedElement;
 	}
@@ -280,8 +278,8 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.PARAMETER_SET__OWNED_ELEMENT :
@@ -309,7 +307,7 @@ public class ParameterSetImpl
 			case UMLPackage.PARAMETER_SET__CONDITION :
 				return getConditions();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -317,8 +315,8 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -349,7 +347,7 @@ public class ParameterSetImpl
 				getConditions().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -357,8 +355,8 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -384,7 +382,7 @@ public class ParameterSetImpl
 				getConditions().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -392,8 +390,8 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PARAMETER_SET__OWNED_ELEMENT :
@@ -430,7 +428,7 @@ public class ParameterSetImpl
 				List condition = (List) eVirtualGet(UMLPackage.PARAMETER_SET__CONDITION);
 				return condition != null && !condition.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -440,7 +438,7 @@ public class ParameterSetImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getParameterSet_Condition());
+			|| eIsSet(UMLPackage.PARAMETER_SET__CONDITION);
 	}
 
 } //ParameterSetImpl

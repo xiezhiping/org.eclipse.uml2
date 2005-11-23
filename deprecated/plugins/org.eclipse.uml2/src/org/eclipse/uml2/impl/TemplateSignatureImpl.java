@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.15 2005/11/21 21:48:02 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.16 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -92,7 +91,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateSignature_OwnedParameter()}));
+			eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT, new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_COMMENT, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER}));
 		}
 		return ownedElement;
 	}
@@ -105,7 +104,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getTemplateSignature_OwnedParameter());
+			|| eIsSet(UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 	}
 
 	/**
@@ -296,7 +295,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getTemplateSignature_Template());
+			|| eIsSet(UML2Package.TEMPLATE_SIGNATURE__TEMPLATE);
 	}
 
 
@@ -381,8 +380,8 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_SIGNATURE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT:
@@ -404,7 +403,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 			case UML2Package.TEMPLATE_SIGNATURE__TEMPLATE:
 				return getTemplate();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -412,8 +411,8 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_SIGNATURE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -441,7 +440,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 				setTemplate((TemplateableElement)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -449,8 +448,8 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_SIGNATURE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -473,7 +472,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 				setTemplate((TemplateableElement)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -481,8 +480,8 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_SIGNATURE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT:
@@ -506,7 +505,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 			case UML2Package.TEMPLATE_SIGNATURE__TEMPLATE:
 				return getTemplate() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

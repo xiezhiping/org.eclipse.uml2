@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.20 2005/11/22 14:57:03 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.21 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -91,7 +90,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	public EList getRelatedElements() {
 		EList relatedElement = (EList)eVirtualGet(UML2Package.DEPENDENCY__RELATED_ELEMENT);
 		if (relatedElement == null) {
-			eVirtualSet(UML2Package.DEPENDENCY__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()}));
+			eVirtualSet(UML2Package.DEPENDENCY__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__RELATED_ELEMENT, new int[] {UML2Package.DEPENDENCY__SOURCE, UML2Package.DEPENDENCY__TARGET}));
 		}
 		return relatedElement;
 	}
@@ -115,7 +114,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	public EList getSources() {
 		EList source = (EList)eVirtualGet(UML2Package.DEPENDENCY__SOURCE);
 		if (source == null) {
-			eVirtualSet(UML2Package.DEPENDENCY__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Client()}));
+			eVirtualSet(UML2Package.DEPENDENCY__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__SOURCE, new int[] {UML2Package.DEPENDENCY__CLIENT}));
 		}
 		return source;
 	}
@@ -137,7 +136,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	public EList getTargets() {
 		EList target = (EList)eVirtualGet(UML2Package.DEPENDENCY__TARGET);
 		if (target == null) {
-			eVirtualSet(UML2Package.DEPENDENCY__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Supplier()}));
+			eVirtualSet(UML2Package.DEPENDENCY__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPENDENCY__TARGET, new int[] {UML2Package.DEPENDENCY__SUPPLIER}));
 		}
 		return target;
 	}
@@ -286,8 +285,8 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.DEPENDENCY__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.DEPENDENCY__OWNED_ELEMENT:
@@ -329,7 +328,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 			case UML2Package.DEPENDENCY__SUPPLIER:
 				return getSuppliers();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -337,8 +336,8 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.DEPENDENCY__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -385,7 +384,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 				getSuppliers().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -393,8 +392,8 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.DEPENDENCY__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -435,7 +434,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 				getSuppliers().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -443,8 +442,8 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.DEPENDENCY__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DEPENDENCY__OWNED_ELEMENT:
@@ -490,7 +489,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 				EList supplier = (EList)eVirtualGet(UML2Package.DEPENDENCY__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -101,28 +100,22 @@ public class StateMachineImpl
 	public List getOwnedMembers() {
 		List ownedMember = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_MEMBER);
 		if (ownedMember == null) {
-			eVirtualSet(
-				UMLPackage.STATE_MACHINE__OWNED_MEMBER,
+			eVirtualSet(UMLPackage.STATE_MACHINE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.STATE_MACHINE__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedAttribute(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedConnector(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedBehavior(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedTrigger(),
-						UMLPackage.eINSTANCE.getClass_OwnedOperation(),
-						UMLPackage.eINSTANCE.getClass_NestedClassifier(),
-						UMLPackage.eINSTANCE.getClass_OwnedReception(),
-						UMLPackage.eINSTANCE.getBehavior_OwnedParameter(),
-						UMLPackage.eINSTANCE.getBehavior_OwnedParameterSet(),
-						UMLPackage.eINSTANCE.getStateMachine_Region(),
-						UMLPackage.eINSTANCE.getStateMachine_ConnectionPoint()}));
+					this, UMLPackage.STATE_MACHINE__OWNED_MEMBER, new int[]{
+						UMLPackage.STATE_MACHINE__OWNED_RULE,
+						UMLPackage.STATE_MACHINE__OWNED_USE_CASE,
+						UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE,
+						UMLPackage.STATE_MACHINE__OWNED_CONNECTOR,
+						UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR,
+						UMLPackage.STATE_MACHINE__OWNED_TRIGGER,
+						UMLPackage.STATE_MACHINE__OWNED_OPERATION,
+						UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER,
+						UMLPackage.STATE_MACHINE__OWNED_RECEPTION,
+						UMLPackage.STATE_MACHINE__OWNED_PARAMETER,
+						UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET,
+						UMLPackage.STATE_MACHINE__REGION,
+						UMLPackage.STATE_MACHINE__CONNECTION_POINT}));
 		}
 		return ownedMember;
 	}
@@ -138,13 +131,10 @@ public class StateMachineImpl
 			eVirtualSet(UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
-					UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE
-							.getClassifier_RedefinedClassifier(),
-						UMLPackage.eINSTANCE.getBehavior_RedefinedBehavior(),
-						UMLPackage.eINSTANCE
-							.getStateMachine_ExtendedStateMachine()}));
+					UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT, new int[]{
+						UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER,
+						UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR,
+						UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE}));
 		}
 		return redefinedElement;
 	}
@@ -582,8 +572,8 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.STATE_MACHINE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.STATE_MACHINE__OWNED_ELEMENT :
@@ -729,7 +719,7 @@ public class StateMachineImpl
 					return getExtendedStateMachine();
 				return basicGetExtendedStateMachine();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -737,8 +727,8 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.STATE_MACHINE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -915,7 +905,7 @@ public class StateMachineImpl
 				setExtendedStateMachine((StateMachine) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -923,8 +913,8 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.STATE_MACHINE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1070,7 +1060,7 @@ public class StateMachineImpl
 				setExtendedStateMachine((StateMachine) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1078,8 +1068,8 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.STATE_MACHINE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_ELEMENT :
@@ -1241,7 +1231,7 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
 				return eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1251,8 +1241,8 @@ public class StateMachineImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getStateMachine_Region())
-			|| eIsSet(UMLPackage.eINSTANCE.getStateMachine_ConnectionPoint());
+			|| eIsSet(UMLPackage.STATE_MACHINE__REGION)
+			|| eIsSet(UMLPackage.STATE_MACHINE__CONNECTION_POINT);
 	}
 
 	/**
@@ -1262,8 +1252,7 @@ public class StateMachineImpl
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getStateMachine_ExtendedStateMachine());
+			|| eIsSet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
 	}
 
 	/**

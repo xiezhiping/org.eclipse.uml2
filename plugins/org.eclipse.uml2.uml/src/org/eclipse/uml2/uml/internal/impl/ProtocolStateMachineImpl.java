@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -91,27 +90,26 @@ public class ProtocolStateMachineImpl
 	public List getOwnedElements() {
 		List ownedElement = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature(),
-						UMLPackage.eINSTANCE.getClassifier_Generalization(),
-						UMLPackage.eINSTANCE.getClassifier_Substitution(),
-						UMLPackage.eINSTANCE.getClassifier_CollaborationUse(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedSignature(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_InterfaceRealization(),
-						UMLPackage.eINSTANCE
-							.getProtocolStateMachine_Conformance()}));
+			eVirtualSet(
+				UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT,
+				ownedElement = new DerivedUnionEObjectEList(
+					Element.class,
+					this,
+					UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT,
+					new int[]{
+						UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_COMMENT,
+						UMLPackage.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION,
+						UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT,
+						UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT,
+						UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_MEMBER,
+						UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING,
+						UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE,
+						UMLPackage.PROTOCOL_STATE_MACHINE__GENERALIZATION,
+						UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION,
+						UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE,
+						UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE,
+						UMLPackage.PROTOCOL_STATE_MACHINE__INTERFACE_REALIZATION,
+						UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE}));
 		}
 		return ownedElement;
 	}
@@ -426,8 +424,8 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT :
@@ -575,7 +573,7 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE :
 				return getConformances();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -583,8 +581,8 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -765,7 +763,7 @@ public class ProtocolStateMachineImpl
 				getConformances().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -773,8 +771,8 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -923,7 +921,7 @@ public class ProtocolStateMachineImpl
 				getConformances().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -931,8 +929,8 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT :
@@ -1097,7 +1095,7 @@ public class ProtocolStateMachineImpl
 				List conformance = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE);
 				return conformance != null && !conformance.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1107,8 +1105,7 @@ public class ProtocolStateMachineImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getProtocolStateMachine_Conformance());
+			|| eIsSet(UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE);
 	}
 
 } //ProtocolStateMachineImpl

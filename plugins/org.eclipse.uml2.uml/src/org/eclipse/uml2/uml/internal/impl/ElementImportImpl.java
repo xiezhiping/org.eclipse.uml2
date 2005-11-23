@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -113,8 +112,7 @@ public class ElementImportImpl
 			eVirtualSet(UMLPackage.ELEMENT_IMPORT__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.ELEMENT_IMPORT__TARGET,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getElementImport_ImportedElement()}));
+					new int[]{UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT}));
 		}
 		return target;
 	}
@@ -130,8 +128,7 @@ public class ElementImportImpl
 			eVirtualSet(UMLPackage.ELEMENT_IMPORT__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.ELEMENT_IMPORT__SOURCE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getElementImport_ImportingNamespace()}));
+					new int[]{UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE}));
 		}
 		return source;
 	}
@@ -404,8 +401,8 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.ELEMENT_IMPORT__OWNED_ELEMENT :
@@ -431,7 +428,7 @@ public class ElementImportImpl
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
 				return getImportingNamespace();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -439,8 +436,8 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -462,7 +459,7 @@ public class ElementImportImpl
 				setImportingNamespace((Namespace) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -470,8 +467,8 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -491,7 +488,7 @@ public class ElementImportImpl
 				setImportingNamespace((Namespace) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -499,8 +496,8 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ELEMENT_IMPORT__OWNED_ELEMENT :
@@ -530,7 +527,7 @@ public class ElementImportImpl
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
 				return getImportingNamespace() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -560,7 +557,7 @@ public class ElementImportImpl
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UMLPackage.eINSTANCE.getElementImport_ImportedElement());
+			|| eIsSet(UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT);
 	}
 
 	/**
@@ -570,8 +567,7 @@ public class ElementImportImpl
 	 */
 	public boolean isSetSources() {
 		return super.isSetSources()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getElementImport_ImportingNamespace());
+			|| eIsSet(UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 	}
 
 	/**
@@ -594,8 +590,7 @@ public class ElementImportImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getElementImport_ImportingNamespace());
+			|| eIsSet(UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 	}
 
 } //ElementImportImpl

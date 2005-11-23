@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.4 2005/11/22 15:32:37 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.5 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -195,8 +194,7 @@ public abstract class ClassifierImpl
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
 					UMLPackage.CLASSIFIER__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getClassifier_RedefinedClassifier()}));
+					new int[]{UMLPackage.CLASSIFIER__REDEFINED_CLASSIFIER}));
 		}
 		return redefinedElement;
 	}
@@ -227,8 +225,7 @@ public abstract class ClassifierImpl
 			eVirtualSet(UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
 				redefinitionContext = new DerivedUnionEObjectEList(
 					Classifier.class, this,
-					UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
-					new EStructuralFeature[]{}));
+					UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT, new int[]{}));
 		}
 		return redefinitionContext;
 	}
@@ -502,21 +499,18 @@ public abstract class ClassifierImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.CLASSIFIER__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.CLASSIFIER__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature(),
-						UMLPackage.eINSTANCE.getClassifier_Generalization(),
-						UMLPackage.eINSTANCE.getClassifier_Substitution(),
-						UMLPackage.eINSTANCE.getClassifier_CollaborationUse(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedSignature()}));
+					this, UMLPackage.CLASSIFIER__OWNED_ELEMENT, new int[]{
+						UMLPackage.CLASSIFIER__OWNED_COMMENT,
+						UMLPackage.CLASSIFIER__NAME_EXPRESSION,
+						UMLPackage.CLASSIFIER__ELEMENT_IMPORT,
+						UMLPackage.CLASSIFIER__PACKAGE_IMPORT,
+						UMLPackage.CLASSIFIER__OWNED_MEMBER,
+						UMLPackage.CLASSIFIER__TEMPLATE_BINDING,
+						UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE,
+						UMLPackage.CLASSIFIER__GENERALIZATION,
+						UMLPackage.CLASSIFIER__SUBSTITUTION,
+						UMLPackage.CLASSIFIER__COLLABORATION_USE,
+						UMLPackage.CLASSIFIER__OWNED_SIGNATURE}));
 		}
 		return ownedElement;
 	}
@@ -650,8 +644,7 @@ public abstract class ClassifierImpl
 			eVirtualSet(UMLPackage.CLASSIFIER__FEATURE,
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
 					UMLPackage.CLASSIFIER__FEATURE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getClassifier_Attribute()}));
+					new int[]{UMLPackage.CLASSIFIER__ATTRIBUTE}));
 		}
 		return feature;
 	}
@@ -681,11 +674,11 @@ public abstract class ClassifierImpl
 		if (member == null) {
 			eVirtualSet(UMLPackage.CLASSIFIER__MEMBER,
 				member = new DerivedUnionEObjectEList(NamedElement.class, this,
-					UMLPackage.CLASSIFIER__MEMBER, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_ImportedMember(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE.getClassifier_Feature(),
-						UMLPackage.eINSTANCE.getClassifier_InheritedMember()}));
+					UMLPackage.CLASSIFIER__MEMBER, new int[]{
+						UMLPackage.CLASSIFIER__IMPORTED_MEMBER,
+						UMLPackage.CLASSIFIER__OWNED_MEMBER,
+						UMLPackage.CLASSIFIER__FEATURE,
+						UMLPackage.CLASSIFIER__INHERITED_MEMBER}));
 		}
 		return member;
 	}
@@ -700,10 +693,9 @@ public abstract class ClassifierImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.CLASSIFIER__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.CLASSIFIER__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase()}));
+					this, UMLPackage.CLASSIFIER__OWNED_MEMBER, new int[]{
+						UMLPackage.CLASSIFIER__OWNED_RULE,
+						UMLPackage.CLASSIFIER__OWNED_USE_CASE}));
 		}
 		return ownedMember;
 	}
@@ -718,8 +710,7 @@ public abstract class ClassifierImpl
 		if (attribute == null) {
 			eVirtualSet(UMLPackage.CLASSIFIER__ATTRIBUTE,
 				attribute = new DerivedUnionEObjectEList(Property.class, this,
-					UMLPackage.CLASSIFIER__ATTRIBUTE,
-					new EStructuralFeature[]{}));
+					UMLPackage.CLASSIFIER__ATTRIBUTE, new int[]{}));
 		}
 		return attribute;
 	}
@@ -1629,8 +1620,8 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.CLASSIFIER__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.CLASSIFIER__OWNED_ELEMENT :
@@ -1718,7 +1709,7 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
 				return getOwnedSignature();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1726,8 +1717,8 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.CLASSIFIER__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -1826,7 +1817,7 @@ public abstract class ClassifierImpl
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1834,8 +1825,8 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.CLASSIFIER__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1918,7 +1909,7 @@ public abstract class ClassifierImpl
 				setOwnedSignature((RedefinableTemplateSignature) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1926,8 +1917,8 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.CLASSIFIER__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CLASSIFIER__OWNED_ELEMENT :
@@ -2025,7 +2016,7 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.CLASSIFIER__OWNED_SIGNATURE) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -2199,7 +2190,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public boolean isSetRedefinedElements() {
-		return eIsSet(UMLPackage.eINSTANCE.getClassifier_RedefinedClassifier());
+		return eIsSet(UMLPackage.CLASSIFIER__REDEFINED_CLASSIFIER);
 	}
 
 	/**
@@ -2231,8 +2222,7 @@ public abstract class ClassifierImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getParameterableElement_OwningTemplateParameter());
+			|| eIsSet(UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER);
 	}
 
 	/**
@@ -2254,8 +2244,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public boolean isSetNamespace() {
-		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.eINSTANCE.getType_Package());
+		return super.isSetNamespace() || eIsSet(UMLPackage.CLASSIFIER__PACKAGE);
 	}
 
 	/**
@@ -2265,14 +2254,12 @@ public abstract class ClassifierImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateableElement_TemplateBinding())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateableElement_OwnedTemplateSignature())
-			|| eIsSet(UMLPackage.eINSTANCE.getClassifier_Generalization())
-			|| eIsSet(UMLPackage.eINSTANCE.getClassifier_Substitution())
-			|| eIsSet(UMLPackage.eINSTANCE.getClassifier_CollaborationUse())
-			|| eIsSet(UMLPackage.eINSTANCE.getClassifier_OwnedSignature());
+			|| eIsSet(UMLPackage.CLASSIFIER__TEMPLATE_BINDING)
+			|| eIsSet(UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE)
+			|| eIsSet(UMLPackage.CLASSIFIER__GENERALIZATION)
+			|| eIsSet(UMLPackage.CLASSIFIER__SUBSTITUTION)
+			|| eIsSet(UMLPackage.CLASSIFIER__COLLABORATION_USE)
+			|| eIsSet(UMLPackage.CLASSIFIER__OWNED_SIGNATURE);
 	}
 
 	/**
@@ -2291,7 +2278,7 @@ public abstract class ClassifierImpl
 	 */
 	public boolean isSetMembers() {
 		return super.isSetMembers() || isSetFeatures()
-			|| eIsSet(UMLPackage.eINSTANCE.getClassifier_InheritedMember());
+			|| eIsSet(UMLPackage.CLASSIFIER__INHERITED_MEMBER);
 	}
 
 	/**
@@ -2301,7 +2288,7 @@ public abstract class ClassifierImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getClassifier_OwnedUseCase());
+			|| eIsSet(UMLPackage.CLASSIFIER__OWNED_USE_CASE);
 	}
 
 	/**

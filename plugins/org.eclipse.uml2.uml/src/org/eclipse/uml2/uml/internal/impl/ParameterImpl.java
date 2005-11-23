@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -241,15 +240,12 @@ public class ParameterImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.PARAMETER__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PARAMETER__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE
-							.getMultiplicityElement_UpperValue(),
-						UMLPackage.eINSTANCE
-							.getMultiplicityElement_LowerValue(),
-						UMLPackage.eINSTANCE.getParameter_DefaultValue()}));
+					this, UMLPackage.PARAMETER__OWNED_ELEMENT, new int[]{
+						UMLPackage.PARAMETER__OWNED_COMMENT,
+						UMLPackage.PARAMETER__NAME_EXPRESSION,
+						UMLPackage.PARAMETER__UPPER_VALUE,
+						UMLPackage.PARAMETER__LOWER_VALUE,
+						UMLPackage.PARAMETER__DEFAULT_VALUE}));
 		}
 		return ownedElement;
 	}
@@ -976,8 +972,8 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.PARAMETER__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.PARAMETER__OWNED_ELEMENT :
@@ -1051,7 +1047,7 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__EFFECT :
 				return getEffect();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1059,8 +1055,8 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.PARAMETER__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -1136,7 +1132,7 @@ public class ParameterImpl
 				setEffect((ParameterEffectKind) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1144,8 +1140,8 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PARAMETER__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1216,7 +1212,7 @@ public class ParameterImpl
 				setEffect(EFFECT_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1224,8 +1220,8 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PARAMETER__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PARAMETER__OWNED_ELEMENT :
@@ -1298,7 +1294,7 @@ public class ParameterImpl
 				return eVirtualGet(UMLPackage.PARAMETER__EFFECT,
 					EFFECT_EDEFAULT) != EFFECT_EDEFAULT;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1390,9 +1386,9 @@ public class ParameterImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue())
-			|| eIsSet(UMLPackage.eINSTANCE.getMultiplicityElement_LowerValue())
-			|| eIsSet(UMLPackage.eINSTANCE.getParameter_DefaultValue());
+			|| eIsSet(UMLPackage.PARAMETER__UPPER_VALUE)
+			|| eIsSet(UMLPackage.PARAMETER__LOWER_VALUE)
+			|| eIsSet(UMLPackage.PARAMETER__DEFAULT_VALUE);
 	}
 
 	/**
@@ -1415,7 +1411,7 @@ public class ParameterImpl
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.eINSTANCE.getParameter_Operation());
+			|| eIsSet(UMLPackage.PARAMETER__OPERATION);
 	}
 
 } //ParameterImpl

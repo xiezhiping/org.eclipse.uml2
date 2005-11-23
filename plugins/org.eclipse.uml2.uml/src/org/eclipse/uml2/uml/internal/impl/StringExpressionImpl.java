@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -100,16 +99,12 @@ public class StringExpressionImpl
 			eVirtualSet(UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
 					this, UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getExpression_Operand(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature(),
-						UMLPackage.eINSTANCE
-							.getStringExpression_SubExpression()}));
+					new int[]{UMLPackage.STRING_EXPRESSION__OWNED_COMMENT,
+						UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION,
+						UMLPackage.STRING_EXPRESSION__OPERAND,
+						UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING,
+						UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE,
+						UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION}));
 		}
 		return ownedElement;
 	}
@@ -521,8 +516,8 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT :
@@ -570,7 +565,7 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				return getOwningExpression();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -578,8 +573,8 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -632,7 +627,7 @@ public class StringExpressionImpl
 				setOwningExpression((StringExpression) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -640,8 +635,8 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -688,7 +683,7 @@ public class StringExpressionImpl
 				setOwningExpression((StringExpression) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -696,8 +691,8 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT :
@@ -752,7 +747,7 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				return getOwningExpression() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -800,11 +795,9 @@ public class StringExpressionImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateableElement_TemplateBinding())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateableElement_OwnedTemplateSignature())
-			|| eIsSet(UMLPackage.eINSTANCE.getStringExpression_SubExpression());
+			|| eIsSet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING)
+			|| eIsSet(UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE)
+			|| eIsSet(UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION);
 	}
 
 	/**
@@ -827,8 +820,7 @@ public class StringExpressionImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getStringExpression_OwningExpression());
+			|| eIsSet(UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION);
 	}
 
 } //StringExpressionImpl

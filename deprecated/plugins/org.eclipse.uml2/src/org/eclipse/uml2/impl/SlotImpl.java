@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.15 2005/11/21 21:48:00 khussey Exp $
+ * $Id: SlotImpl.java,v 1.16 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -89,7 +88,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.SLOT__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.SLOT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.SLOT__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getSlot_Value()}));
+			eVirtualSet(UML2Package.SLOT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.SLOT__OWNED_ELEMENT, new int[] {UML2Package.SLOT__OWNED_COMMENT, UML2Package.SLOT__VALUE}));
 		}
 		return ownedElement;
 	}
@@ -102,7 +101,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getSlot_Value());
+			|| eIsSet(UML2Package.SLOT__VALUE);
 	}
 
 	/**
@@ -243,7 +242,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getSlot_OwningInstance());
+			|| eIsSet(UML2Package.SLOT__OWNING_INSTANCE);
 	}
 
 
@@ -315,8 +314,8 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.SLOT__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.SLOT__OWNED_ELEMENT:
@@ -334,7 +333,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 				if (resolve) return getDefiningFeature();
 				return basicGetDefiningFeature();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -342,8 +341,8 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.SLOT__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -363,7 +362,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 				setDefiningFeature((StructuralFeature)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -371,8 +370,8 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.SLOT__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -389,7 +388,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 				setDefiningFeature((StructuralFeature)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -397,8 +396,8 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.SLOT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SLOT__OWNED_ELEMENT:
@@ -416,7 +415,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 			case UML2Package.SLOT__DEFINING_FEATURE:
 				return eVirtualGet(UML2Package.SLOT__DEFINING_FEATURE) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.19 2005/11/22 14:57:03 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.20 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -380,7 +379,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+			|| eIsSet(UML2Package.INTERACTION_OPERAND__ENCLOSING_OPERAND);
 	}
 
 
@@ -499,8 +498,8 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.INTERACTION_OPERAND__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.INTERACTION_OPERAND__OWNED_ELEMENT:
@@ -547,7 +546,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 			case UML2Package.INTERACTION_OPERAND__FRAGMENT:
 				return getFragments();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -555,8 +554,8 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.INTERACTION_OPERAND__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -619,7 +618,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 				getFragments().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -627,8 +626,8 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.INTERACTION_OPERAND__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -681,7 +680,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 				getFragments().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -689,8 +688,8 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.INTERACTION_OPERAND__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__OWNED_ELEMENT:
@@ -746,7 +745,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 				EList fragment = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__FRAGMENT);
 				return fragment != null && !fragment.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -811,8 +810,8 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering())
-			|| eIsSet(UML2Package.eINSTANCE.getInteractionOperand_Guard());
+			|| eIsSet(UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING)
+			|| eIsSet(UML2Package.INTERACTION_OPERAND__GUARD);
 	}
 
 

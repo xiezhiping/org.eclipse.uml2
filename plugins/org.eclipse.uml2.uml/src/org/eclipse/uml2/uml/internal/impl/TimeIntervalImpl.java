@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -175,8 +174,8 @@ public class TimeIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.TIME_INTERVAL__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.TIME_INTERVAL__OWNED_ELEMENT :
@@ -220,7 +219,7 @@ public class TimeIntervalImpl
 					return getMax();
 				return basicGetMax();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -228,8 +227,8 @@ public class TimeIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.TIME_INTERVAL__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TIME_INTERVAL__OWNED_ELEMENT :
@@ -269,7 +268,7 @@ public class TimeIntervalImpl
 			case UMLPackage.TIME_INTERVAL__MAX :
 				return isSetMax();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 } //TimeIntervalImpl

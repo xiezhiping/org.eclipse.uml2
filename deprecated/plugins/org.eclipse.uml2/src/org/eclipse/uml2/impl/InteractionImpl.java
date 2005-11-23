@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.31 2005/11/22 14:57:03 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.32 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -495,7 +494,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
+			|| eIsSet(UML2Package.INTERACTION__ENCLOSING_OPERAND);
 	}
 
 
@@ -528,9 +527,9 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getInteraction_Lifeline())
-			|| eIsSet(UML2Package.eINSTANCE.getInteraction_Message())
-			|| eIsSet(UML2Package.eINSTANCE.getInteraction_FormalGate());
+			|| eIsSet(UML2Package.INTERACTION__LIFELINE)
+			|| eIsSet(UML2Package.INTERACTION__MESSAGE)
+			|| eIsSet(UML2Package.INTERACTION__FORMAL_GATE);
 	}
 
 
@@ -739,8 +738,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.INTERACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.INTERACTION__OWNED_ELEMENT:
@@ -883,7 +882,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__FORMAL_GATE:
 				return getFormalGates();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -891,8 +890,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.INTERACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -1085,7 +1084,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				getFormalGates().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1093,8 +1092,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.INTERACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -1252,7 +1251,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				getFormalGates().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1260,8 +1259,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.INTERACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION__OWNED_ELEMENT:
@@ -1433,7 +1432,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				EList formalGate = (EList)eVirtualGet(UML2Package.INTERACTION__FORMAL_GATE);
 				return formalGate != null && !formalGate.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1533,7 +1532,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
+			|| eIsSet(UML2Package.INTERACTION__GENERAL_ORDERING);
 	}
 
 

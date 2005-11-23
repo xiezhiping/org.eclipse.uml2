@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -106,13 +105,10 @@ public abstract class BehavioredClassifierImpl
 			eVirtualSet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
 					this, UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedBehavior(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedTrigger()}));
+					new int[]{UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE,
+						UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_USE_CASE,
+						UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
+						UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER}));
 		}
 		return ownedMember;
 	}
@@ -125,25 +121,25 @@ public abstract class BehavioredClassifierImpl
 	public List getOwnedElements() {
 		List ownedElement = (List) eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature(),
-						UMLPackage.eINSTANCE.getClassifier_Generalization(),
-						UMLPackage.eINSTANCE.getClassifier_Substitution(),
-						UMLPackage.eINSTANCE.getClassifier_CollaborationUse(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedSignature(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_InterfaceRealization()}));
+			eVirtualSet(
+				UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_ELEMENT,
+				ownedElement = new DerivedUnionEObjectEList(
+					Element.class,
+					this,
+					UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_ELEMENT,
+					new int[]{
+						UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_COMMENT,
+						UMLPackage.BEHAVIORED_CLASSIFIER__NAME_EXPRESSION,
+						UMLPackage.BEHAVIORED_CLASSIFIER__ELEMENT_IMPORT,
+						UMLPackage.BEHAVIORED_CLASSIFIER__PACKAGE_IMPORT,
+						UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_MEMBER,
+						UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING,
+						UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE,
+						UMLPackage.BEHAVIORED_CLASSIFIER__GENERALIZATION,
+						UMLPackage.BEHAVIORED_CLASSIFIER__SUBSTITUTION,
+						UMLPackage.BEHAVIORED_CLASSIFIER__COLLABORATION_USE,
+						UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE,
+						UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION}));
 		}
 		return ownedElement;
 	}
@@ -532,8 +528,8 @@ public abstract class BehavioredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIORED_CLASSIFIER__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_ELEMENT :
@@ -629,7 +625,7 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER :
 				return getOwnedTriggers();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -637,8 +633,8 @@ public abstract class BehavioredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIORED_CLASSIFIER__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -752,7 +748,7 @@ public abstract class BehavioredClassifierImpl
 				getOwnedTriggers().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -760,8 +756,8 @@ public abstract class BehavioredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIORED_CLASSIFIER__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -856,7 +852,7 @@ public abstract class BehavioredClassifierImpl
 				getOwnedTriggers().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -864,8 +860,8 @@ public abstract class BehavioredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIORED_CLASSIFIER__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_ELEMENT :
@@ -975,7 +971,7 @@ public abstract class BehavioredClassifierImpl
 				List ownedTrigger = (List) eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -985,10 +981,8 @@ public abstract class BehavioredClassifierImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedBehavior())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedTrigger());
+			|| eIsSet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR)
+			|| eIsSet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER);
 	}
 
 	/**
@@ -998,8 +992,7 @@ public abstract class BehavioredClassifierImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getBehavioredClassifier_InterfaceRealization());
+			|| eIsSet(UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION);
 	}
 
 } //BehavioredClassifierImpl

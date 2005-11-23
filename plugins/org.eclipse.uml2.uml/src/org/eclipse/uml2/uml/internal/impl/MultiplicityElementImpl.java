@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -151,12 +150,9 @@ public abstract class MultiplicityElementImpl
 			eVirtualSet(UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
 					this, UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE
-							.getMultiplicityElement_UpperValue(),
-						UMLPackage.eINSTANCE
-							.getMultiplicityElement_LowerValue()}));
+					new int[]{UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT,
+						UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+						UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE}));
 		}
 		return ownedElement;
 	}
@@ -528,8 +524,8 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT :
@@ -555,7 +551,7 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
 				return getLowerValue();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -563,8 +559,8 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -592,7 +588,7 @@ public abstract class MultiplicityElementImpl
 				setLowerValue((ValueSpecification) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -600,8 +596,8 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -627,7 +623,7 @@ public abstract class MultiplicityElementImpl
 				setLowerValue((ValueSpecification) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -635,8 +631,8 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT :
@@ -659,7 +655,7 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
 				return eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -687,8 +683,8 @@ public abstract class MultiplicityElementImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue())
-			|| eIsSet(UMLPackage.eINSTANCE.getMultiplicityElement_LowerValue());
+			|| eIsSet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE)
+			|| eIsSet(UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE);
 	}
 
 } //MultiplicityElementImpl

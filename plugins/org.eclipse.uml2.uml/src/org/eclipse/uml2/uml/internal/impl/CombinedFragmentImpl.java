@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -105,14 +104,11 @@ public class CombinedFragmentImpl
 			eVirtualSet(UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
 					this, UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE
-							.getInteractionFragment_GeneralOrdering(),
-						UMLPackage.eINSTANCE.getCombinedFragment_Operand(),
-						UMLPackage.eINSTANCE
-							.getCombinedFragment_CfragmentGate()}));
+					new int[]{UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT,
+						UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION,
+						UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING,
+						UMLPackage.COMBINED_FRAGMENT__OPERAND,
+						UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE}));
 		}
 		return ownedElement;
 	}
@@ -328,8 +324,8 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT :
@@ -367,7 +363,7 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
 				return getCfragmentGates();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -375,8 +371,8 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -424,7 +420,7 @@ public class CombinedFragmentImpl
 				getCfragmentGates().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -432,8 +428,8 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -474,7 +470,7 @@ public class CombinedFragmentImpl
 				getCfragmentGates().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -482,8 +478,8 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT :
@@ -534,7 +530,7 @@ public class CombinedFragmentImpl
 				List cfragmentGate = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE);
 				return cfragmentGate != null && !cfragmentGate.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -562,8 +558,8 @@ public class CombinedFragmentImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getCombinedFragment_Operand())
-			|| eIsSet(UMLPackage.eINSTANCE.getCombinedFragment_CfragmentGate());
+			|| eIsSet(UMLPackage.COMBINED_FRAGMENT__OPERAND)
+			|| eIsSet(UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE);
 	}
 
 } //CombinedFragmentImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.19 2005/11/22 14:57:03 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.20 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -88,7 +87,7 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 	public EList getInputs() {
 		EList input = (EList)eVirtualGet(UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT);
 		if (input == null) {
-			eVirtualSet(UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuralFeatureAction_Object(), UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value()}));
+			eVirtualSet(UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT, new int[] {UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__OBJECT, UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE}));
 		}
 		return input;
 	}
@@ -101,7 +100,7 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value());
+			|| eIsSet(UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
 	}
 
 	/**
@@ -232,8 +231,8 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__OWNED_ELEMENT:
@@ -299,7 +298,7 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE:
 				return getValue();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -307,8 +306,8 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -391,7 +390,7 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 				setValue((InputPin)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -399,8 +398,8 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -471,7 +470,7 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 				setValue((InputPin)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -479,8 +478,8 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__OWNED_ELEMENT:
@@ -556,7 +555,7 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE:
 				return eVirtualGet(UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

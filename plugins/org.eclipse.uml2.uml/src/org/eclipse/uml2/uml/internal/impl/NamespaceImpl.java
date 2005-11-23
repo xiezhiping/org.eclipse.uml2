@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.4 2005/11/22 15:32:38 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.5 2005/11/23 13:27:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -96,13 +95,12 @@ public abstract class NamespaceImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.NAMESPACE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.NAMESPACE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember()}));
+					this, UMLPackage.NAMESPACE__OWNED_ELEMENT, new int[]{
+						UMLPackage.NAMESPACE__OWNED_COMMENT,
+						UMLPackage.NAMESPACE__NAME_EXPRESSION,
+						UMLPackage.NAMESPACE__ELEMENT_IMPORT,
+						UMLPackage.NAMESPACE__PACKAGE_IMPORT,
+						UMLPackage.NAMESPACE__OWNED_MEMBER}));
 		}
 		return ownedElement;
 	}
@@ -118,8 +116,7 @@ public abstract class NamespaceImpl
 			eVirtualSet(UMLPackage.NAMESPACE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
 					this, UMLPackage.NAMESPACE__OWNED_MEMBER,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getNamespace_OwnedRule()}));
+					new int[]{UMLPackage.NAMESPACE__OWNED_RULE}));
 		}
 		return ownedMember;
 	}
@@ -149,9 +146,9 @@ public abstract class NamespaceImpl
 		if (member == null) {
 			eVirtualSet(UMLPackage.NAMESPACE__MEMBER,
 				member = new DerivedUnionEObjectEList(NamedElement.class, this,
-					UMLPackage.NAMESPACE__MEMBER, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_ImportedMember(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember()}));
+					UMLPackage.NAMESPACE__MEMBER, new int[]{
+						UMLPackage.NAMESPACE__IMPORTED_MEMBER,
+						UMLPackage.NAMESPACE__OWNED_MEMBER}));
 		}
 		return member;
 	}
@@ -453,8 +450,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.NAMESPACE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.NAMESPACE__OWNED_ELEMENT :
@@ -490,7 +487,7 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__OWNED_MEMBER :
 				return getOwnedMembers();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -498,8 +495,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.NAMESPACE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -534,7 +531,7 @@ public abstract class NamespaceImpl
 				getOwnedRules().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -542,8 +539,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.NAMESPACE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -572,7 +569,7 @@ public abstract class NamespaceImpl
 				getOwnedRules().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -580,8 +577,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.NAMESPACE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.NAMESPACE__OWNED_ELEMENT :
@@ -627,7 +624,7 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__OWNED_MEMBER :
 				return isSetOwnedMembers();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -637,8 +634,8 @@ public abstract class NamespaceImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getNamespace_ElementImport())
-			|| eIsSet(UMLPackage.eINSTANCE.getNamespace_PackageImport())
+			|| eIsSet(UMLPackage.NAMESPACE__ELEMENT_IMPORT)
+			|| eIsSet(UMLPackage.NAMESPACE__PACKAGE_IMPORT)
 			|| isSetOwnedMembers();
 	}
 
@@ -648,7 +645,7 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedMembers() {
-		return eIsSet(UMLPackage.eINSTANCE.getNamespace_OwnedRule());
+		return eIsSet(UMLPackage.NAMESPACE__OWNED_RULE);
 	}
 
 	/**
@@ -657,7 +654,7 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public boolean isSetMembers() {
-		return eIsSet(UMLPackage.eINSTANCE.getNamespace_ImportedMember())
+		return eIsSet(UMLPackage.NAMESPACE__IMPORTED_MEMBER)
 			|| isSetOwnedMembers();
 	}
 

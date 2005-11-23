@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -99,17 +98,14 @@ public class UseCaseImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.USE_CASE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.USE_CASE__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedBehavior(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedTrigger(),
-						UMLPackage.eINSTANCE.getUseCase_Include(),
-						UMLPackage.eINSTANCE.getUseCase_Extend(),
-						UMLPackage.eINSTANCE.getUseCase_ExtensionPoint()}));
+					this, UMLPackage.USE_CASE__OWNED_MEMBER, new int[]{
+						UMLPackage.USE_CASE__OWNED_RULE,
+						UMLPackage.USE_CASE__OWNED_USE_CASE,
+						UMLPackage.USE_CASE__OWNED_BEHAVIOR,
+						UMLPackage.USE_CASE__OWNED_TRIGGER,
+						UMLPackage.USE_CASE__INCLUDE,
+						UMLPackage.USE_CASE__EXTEND,
+						UMLPackage.USE_CASE__EXTENSION_POINT}));
 		}
 		return ownedMember;
 	}
@@ -528,8 +524,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.USE_CASE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.USE_CASE__OWNED_ELEMENT :
@@ -633,7 +629,7 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__SUBJECT :
 				return getSubjects();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -641,8 +637,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.USE_CASE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -772,7 +768,7 @@ public class UseCaseImpl
 				getSubjects().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -780,8 +776,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.USE_CASE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -888,7 +884,7 @@ public class UseCaseImpl
 				getSubjects().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -896,8 +892,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.USE_CASE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.USE_CASE__OWNED_ELEMENT :
@@ -1019,7 +1015,7 @@ public class UseCaseImpl
 				List subject = (List) eVirtualGet(UMLPackage.USE_CASE__SUBJECT);
 				return subject != null && !subject.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1029,9 +1025,9 @@ public class UseCaseImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getUseCase_Include())
-			|| eIsSet(UMLPackage.eINSTANCE.getUseCase_Extend())
-			|| eIsSet(UMLPackage.eINSTANCE.getUseCase_ExtensionPoint());
+			|| eIsSet(UMLPackage.USE_CASE__INCLUDE)
+			|| eIsSet(UMLPackage.USE_CASE__EXTEND)
+			|| eIsSet(UMLPackage.USE_CASE__EXTENSION_POINT);
 	}
 
 } //UseCaseImpl

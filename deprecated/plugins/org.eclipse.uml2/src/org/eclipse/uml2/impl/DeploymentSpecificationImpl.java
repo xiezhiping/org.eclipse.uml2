@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.23 2005/11/22 14:57:02 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.24 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,7 +18,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.DeploymentSpecification;
@@ -141,8 +140,8 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.DEPLOYMENT_SPECIFICATION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.DEPLOYMENT_SPECIFICATION__OWNED_ELEMENT:
@@ -230,7 +229,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 			case UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION:
 				return getExecutionLocation();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -238,8 +237,8 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.DEPLOYMENT_SPECIFICATION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -352,7 +351,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 				setExecutionLocation((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -360,8 +359,8 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.DEPLOYMENT_SPECIFICATION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -456,7 +455,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 				setExecutionLocation(EXECUTION_LOCATION_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -464,8 +463,8 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.DEPLOYMENT_SPECIFICATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DEPLOYMENT_SPECIFICATION__OWNED_ELEMENT:
@@ -572,7 +571,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 				String executionLocation = (String)eVirtualGet(UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION, EXECUTION_LOCATION_EDEFAULT);
 				return EXECUTION_LOCATION_EDEFAULT == null ? executionLocation != null : !EXECUTION_LOCATION_EDEFAULT.equals(executionLocation);
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

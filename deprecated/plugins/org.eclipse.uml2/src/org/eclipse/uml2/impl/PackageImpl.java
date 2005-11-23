@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.39 2005/11/22 14:57:01 khussey Exp $
+ * $Id: PackageImpl.java,v 1.40 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -28,7 +28,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -268,7 +267,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	public EList getNestedPackages() {
 		if (nestedPackage == null) {
-			nestedPackage = new DerivedSubsetEObjectEList(org.eclipse.uml2.Package.class, this, UML2Package.PACKAGE__NESTED_PACKAGE, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackage_OwnedMember()});
+			nestedPackage = new DerivedSubsetEObjectEList(org.eclipse.uml2.Package.class, this, UML2Package.PACKAGE__NESTED_PACKAGE, new int[] {UML2Package.PACKAGE__OWNED_MEMBER});
 		}
 		return nestedPackage;
 	}
@@ -317,7 +316,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	public EList getOwnedTypes() {
 		if (ownedType == null) {
-			ownedType = new DerivedSubsetEObjectEList(Type.class, this, UML2Package.PACKAGE__OWNED_TYPE, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackage_OwnedMember()});
+			ownedType = new DerivedSubsetEObjectEList(Type.class, this, UML2Package.PACKAGE__OWNED_TYPE, new int[] {UML2Package.PACKAGE__OWNED_MEMBER});
 		}
 		return ownedType;
 	}
@@ -519,7 +518,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+			|| eIsSet(UML2Package.PACKAGE__OWNING_PARAMETER);
 	}
 
 
@@ -606,7 +605,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UML2Package.eINSTANCE.getPackage_NestingPackage());
+			|| eIsSet(UML2Package.PACKAGE__NESTING_PACKAGE);
 	}
 
 
@@ -768,8 +767,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.PACKAGE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.PACKAGE__OWNED_ELEMENT:
@@ -826,7 +825,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__PACKAGE_EXTENSION:
 				return getPackageExtensions();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -834,8 +833,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.PACKAGE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -902,7 +901,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 				getPackageExtensions().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -910,8 +909,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.PACKAGE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -967,7 +966,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 				getPackageExtensions().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -975,8 +974,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.PACKAGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PACKAGE__OWNED_ELEMENT:
@@ -1040,7 +1039,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 				EList packageExtension = (EList)eVirtualGet(UML2Package.PACKAGE__PACKAGE_EXTENSION);
 				return packageExtension != null && !packageExtension.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

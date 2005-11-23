@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.14 2005/11/22 14:57:01 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.15 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,7 +18,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.uml2.Activity;
@@ -117,8 +116,8 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.BROADCAST_SIGNAL_ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__OWNED_ELEMENT:
@@ -185,7 +184,7 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 				if (resolve) return getSignal();
 				return basicGetSignal();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -193,8 +192,8 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.BROADCAST_SIGNAL_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -278,7 +277,7 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 				setSignal((Signal)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -286,8 +285,8 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.BROADCAST_SIGNAL_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -358,7 +357,7 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 				setSignal((Signal)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -366,8 +365,8 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.BROADCAST_SIGNAL_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__OWNED_ELEMENT:
@@ -444,7 +443,7 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 			case UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL:
 				return eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

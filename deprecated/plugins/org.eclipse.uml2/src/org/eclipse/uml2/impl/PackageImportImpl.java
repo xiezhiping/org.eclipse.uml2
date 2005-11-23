@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.19 2005/11/22 14:57:02 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.20 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -101,7 +100,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	public EList getTargets() {
 		EList target = (EList)eVirtualGet(UML2Package.PACKAGE_IMPORT__TARGET);
 		if (target == null) {
-			eVirtualSet(UML2Package.PACKAGE_IMPORT__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_IMPORT__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackageImport_ImportedPackage()}));
+			eVirtualSet(UML2Package.PACKAGE_IMPORT__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_IMPORT__TARGET, new int[] {UML2Package.PACKAGE_IMPORT__IMPORTED_PACKAGE}));
 		}
 		return target;
 	}
@@ -114,7 +113,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportedPackage());
+			|| eIsSet(UML2Package.PACKAGE_IMPORT__IMPORTED_PACKAGE);
 	}
 
 	/**
@@ -125,7 +124,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	public EList getSources() {
 		EList source = (EList)eVirtualGet(UML2Package.PACKAGE_IMPORT__SOURCE);
 		if (source == null) {
-			eVirtualSet(UML2Package.PACKAGE_IMPORT__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_IMPORT__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackageImport_ImportingNamespace()}));
+			eVirtualSet(UML2Package.PACKAGE_IMPORT__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_IMPORT__SOURCE, new int[] {UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE}));
 		}
 		return source;
 	}
@@ -138,7 +137,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 */
 	public boolean isSetSources() {
 		return super.isSetSources()
-			|| eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportingNamespace());
+			|| eIsSet(UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 	}
 
 	/**
@@ -268,7 +267,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportingNamespace());
+			|| eIsSet(UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 	}
 
 
@@ -338,8 +337,8 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.PACKAGE_IMPORT__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.PACKAGE_IMPORT__OWNED_ELEMENT:
@@ -363,7 +362,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 			case UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE:
 				return getImportingNamespace();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -371,8 +370,8 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.PACKAGE_IMPORT__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -391,7 +390,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 				setImportingNamespace((Namespace)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -399,8 +398,8 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.PACKAGE_IMPORT__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -417,7 +416,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 				setImportingNamespace((Namespace)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -425,8 +424,8 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.PACKAGE_IMPORT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PACKAGE_IMPORT__OWNED_ELEMENT:
@@ -449,7 +448,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 			case UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE:
 				return getImportingNamespace() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

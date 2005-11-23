@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: ReadExtentActionImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -91,8 +90,7 @@ public class ReadExtentActionImpl
 			eVirtualSet(UMLPackage.READ_EXTENT_ACTION__OUTPUT,
 				output = new DerivedUnionEObjectEList(OutputPin.class, this,
 					UMLPackage.READ_EXTENT_ACTION__OUTPUT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getReadExtentAction_Result()}));
+					new int[]{UMLPackage.READ_EXTENT_ACTION__RESULT}));
 		}
 		return output;
 	}
@@ -300,8 +298,8 @@ public class ReadExtentActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.READ_EXTENT_ACTION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.READ_EXTENT_ACTION__OWNED_ELEMENT :
@@ -367,7 +365,7 @@ public class ReadExtentActionImpl
 					return getClassifier();
 				return basicGetClassifier();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -375,8 +373,8 @@ public class ReadExtentActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.READ_EXTENT_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -446,7 +444,7 @@ public class ReadExtentActionImpl
 				setClassifier((Classifier) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -454,8 +452,8 @@ public class ReadExtentActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.READ_EXTENT_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -514,7 +512,7 @@ public class ReadExtentActionImpl
 				setClassifier((Classifier) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -522,8 +520,8 @@ public class ReadExtentActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.READ_EXTENT_ACTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__OWNED_ELEMENT :
@@ -603,7 +601,7 @@ public class ReadExtentActionImpl
 			case UMLPackage.READ_EXTENT_ACTION__CLASSIFIER :
 				return eVirtualGet(UMLPackage.READ_EXTENT_ACTION__CLASSIFIER) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -613,7 +611,7 @@ public class ReadExtentActionImpl
 	 */
 	public boolean isSetOutputs() {
 		return super.isSetOutputs()
-			|| eIsSet(UMLPackage.eINSTANCE.getReadExtentAction_Result());
+			|| eIsSet(UMLPackage.READ_EXTENT_ACTION__RESULT);
 	}
 
 } //ReadExtentActionImpl

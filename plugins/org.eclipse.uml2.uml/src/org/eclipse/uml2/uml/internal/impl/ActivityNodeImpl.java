@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -102,17 +101,12 @@ public abstract class ActivityNodeImpl
 	public List getInGroups() {
 		List inGroup = (List) eVirtualGet(UMLPackage.ACTIVITY_NODE__IN_GROUP);
 		if (inGroup == null) {
-			eVirtualSet(
-				UMLPackage.ACTIVITY_NODE__IN_GROUP,
-				inGroup = new DerivedUnionEObjectEList(
-					ActivityGroup.class,
-					this,
-					UMLPackage.ACTIVITY_NODE__IN_GROUP,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getActivityNode_InPartition(),
-						UMLPackage.eINSTANCE.getActivityNode_InStructuredNode(),
-						UMLPackage.eINSTANCE
-							.getActivityNode_InInterruptibleRegion()}));
+			eVirtualSet(UMLPackage.ACTIVITY_NODE__IN_GROUP,
+				inGroup = new DerivedUnionEObjectEList(ActivityGroup.class,
+					this, UMLPackage.ACTIVITY_NODE__IN_GROUP, new int[]{
+						UMLPackage.ACTIVITY_NODE__IN_PARTITION,
+						UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE,
+						UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION}));
 		}
 		return inGroup;
 	}
@@ -129,8 +123,7 @@ public abstract class ActivityNodeImpl
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
 					UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getActivityNode_RedefinedNode()}));
+					new int[]{UMLPackage.ACTIVITY_NODE__REDEFINED_NODE}));
 		}
 		return redefinedElement;
 	}
@@ -498,8 +491,8 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.ACTIVITY_NODE__OWNED_ELEMENT :
@@ -547,7 +540,7 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -555,8 +548,8 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -608,7 +601,7 @@ public abstract class ActivityNodeImpl
 				getRedefinedNodes().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -616,8 +609,8 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -661,7 +654,7 @@ public abstract class ActivityNodeImpl
 				getRedefinedNodes().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -669,8 +662,8 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__OWNED_ELEMENT :
@@ -729,7 +722,7 @@ public abstract class ActivityNodeImpl
 				List redefinedNode = (List) eVirtualGet(UMLPackage.ACTIVITY_NODE__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -738,10 +731,9 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetInGroups() {
-		return eIsSet(UMLPackage.eINSTANCE.getActivityNode_InPartition())
-			|| eIsSet(UMLPackage.eINSTANCE.getActivityNode_InStructuredNode())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getActivityNode_InInterruptibleRegion());
+		return eIsSet(UMLPackage.ACTIVITY_NODE__IN_PARTITION)
+			|| eIsSet(UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE)
+			|| eIsSet(UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
 	}
 
 	/**
@@ -763,8 +755,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE.getActivityNode_Activity());
+		return super.isSetOwner() || eIsSet(UMLPackage.ACTIVITY_NODE__ACTIVITY);
 	}
 
 	/**
@@ -774,7 +765,7 @@ public abstract class ActivityNodeImpl
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getActivityNode_RedefinedNode());
+			|| eIsSet(UMLPackage.ACTIVITY_NODE__REDEFINED_NODE);
 	}
 
 } //ActivityNodeImpl

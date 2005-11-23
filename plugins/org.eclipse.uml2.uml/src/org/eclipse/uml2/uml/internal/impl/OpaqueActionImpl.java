@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -17,8 +17,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
@@ -84,8 +82,7 @@ public class OpaqueActionImpl
 			eVirtualSet(UMLPackage.OPAQUE_ACTION__INPUT,
 				input = new DerivedUnionEObjectEList(InputPin.class, this,
 					UMLPackage.OPAQUE_ACTION__INPUT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getOpaqueAction_InputValue()}));
+					new int[]{UMLPackage.OPAQUE_ACTION__INPUT_VALUE}));
 		}
 		return input;
 	}
@@ -101,8 +98,7 @@ public class OpaqueActionImpl
 			eVirtualSet(UMLPackage.OPAQUE_ACTION__OUTPUT,
 				output = new DerivedUnionEObjectEList(OutputPin.class, this,
 					UMLPackage.OPAQUE_ACTION__OUTPUT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getOpaqueAction_OutputValue()}));
+					new int[]{UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE}));
 		}
 		return output;
 	}
@@ -202,8 +198,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.OPAQUE_ACTION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.OPAQUE_ACTION__OWNED_ELEMENT :
@@ -271,7 +267,7 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE :
 				return getOutputValues();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -279,8 +275,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.OPAQUE_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -360,7 +356,7 @@ public class OpaqueActionImpl
 				getOutputValues().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -368,8 +364,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.OPAQUE_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -434,7 +430,7 @@ public class OpaqueActionImpl
 				getOutputValues().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -442,8 +438,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.OPAQUE_ACTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__OWNED_ELEMENT :
@@ -531,7 +527,7 @@ public class OpaqueActionImpl
 				List outputValue = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE);
 				return outputValue != null && !outputValue.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -559,7 +555,7 @@ public class OpaqueActionImpl
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UMLPackage.eINSTANCE.getOpaqueAction_InputValue());
+			|| eIsSet(UMLPackage.OPAQUE_ACTION__INPUT_VALUE);
 	}
 
 	/**
@@ -569,7 +565,7 @@ public class OpaqueActionImpl
 	 */
 	public boolean isSetOutputs() {
 		return super.isSetOutputs()
-			|| eIsSet(UMLPackage.eINSTANCE.getOpaqueAction_OutputValue());
+			|| eIsSet(UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE);
 	}
 
 } //OpaqueActionImpl

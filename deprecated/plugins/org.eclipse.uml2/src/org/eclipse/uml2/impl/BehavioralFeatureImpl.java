@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.23 2005/11/22 14:57:01 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.24 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -211,7 +210,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	public EList getRedefinitionContexts() {
 		EList redefinitionContext = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
-			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT, redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()}));
+			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT, redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT, new int[] {UML2Package.BEHAVIORAL_FEATURE__OWNER}));
 		}
 		return redefinitionContext;
 	}
@@ -281,7 +280,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	public EList getFeaturingClassifiers() {
 		EList featuringClassifier = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER);
 		if (featuringClassifier == null) {
-			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER, featuringClassifier = new DerivedEObjectEList(Classifier.class, this, UML2Package.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()}));
+			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER, featuringClassifier = new DerivedEObjectEList(Classifier.class, this, UML2Package.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER, new int[] {UML2Package.BEHAVIORAL_FEATURE__OWNER}));
 		}
 		return featuringClassifier;
 	}
@@ -383,7 +382,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	public EList getParameters() {
 		EList parameter = (EList)eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__PARAMETER);
 		if (parameter == null) {
-			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__PARAMETER, parameter = new DerivedUnionEObjectEList(Parameter.class, this, UML2Package.BEHAVIORAL_FEATURE__PARAMETER, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter(), UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult()}));
+			eVirtualSet(UML2Package.BEHAVIORAL_FEATURE__PARAMETER, parameter = new DerivedUnionEObjectEList(Parameter.class, this, UML2Package.BEHAVIORAL_FEATURE__PARAMETER, new int[] {UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER, UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT}));
 		}
 		return parameter;
 	}
@@ -395,8 +394,8 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public boolean isSetParameters() {
-		return eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
-			|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
+		return eIsSet(UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER)
+			|| eIsSet(UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT);
 	}
 
 	/**
@@ -465,8 +464,8 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
-			|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
+			|| eIsSet(UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER)
+			|| eIsSet(UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT);
 	}
 
 
@@ -800,8 +799,8 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.BEHAVIORAL_FEATURE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.BEHAVIORAL_FEATURE__OWNED_ELEMENT:
@@ -858,7 +857,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY:
 				return getConcurrency();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -866,8 +865,8 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.BEHAVIORAL_FEATURE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -937,7 +936,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 				setConcurrency((CallConcurrencyKind)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -945,8 +944,8 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.BEHAVIORAL_FEATURE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -1005,7 +1004,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 				setConcurrency(CONCURRENCY_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1013,8 +1012,8 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.BEHAVIORAL_FEATURE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__OWNED_ELEMENT:
@@ -1081,7 +1080,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY:
 				return eVirtualGet(UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY, CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.13 2005/11/22 14:57:02 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.14 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -186,8 +185,8 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.EXTENSION_POINT__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.EXTENSION_POINT__OWNED_ELEMENT:
@@ -218,7 +217,7 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 			case UML2Package.EXTENSION_POINT__USE_CASE:
 				return getUseCase();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -226,8 +225,8 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.EXTENSION_POINT__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -263,7 +262,7 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 				setUseCase((UseCase)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -271,8 +270,8 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.EXTENSION_POINT__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -304,7 +303,7 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 				setUseCase((UseCase)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -312,8 +311,8 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.EXTENSION_POINT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXTENSION_POINT__OWNED_ELEMENT:
@@ -347,7 +346,7 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 			case UML2Package.EXTENSION_POINT__USE_CASE:
 				return getUseCase() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

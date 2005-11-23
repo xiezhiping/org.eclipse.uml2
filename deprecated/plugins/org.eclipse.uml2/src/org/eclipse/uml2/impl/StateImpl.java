@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.24 2005/11/22 14:57:02 khussey Exp $
+ * $Id: StateImpl.java,v 1.25 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -1166,8 +1165,8 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.STATE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.STATE__OWNED_ELEMENT:
@@ -1240,7 +1239,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__STATE_INVARIANT:
 				return getStateInvariant();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1248,8 +1247,8 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.STATE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -1335,7 +1334,7 @@ public class StateImpl extends NamespaceImpl implements State {
 				setStateInvariant((Constraint)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1343,8 +1342,8 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.STATE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -1418,7 +1417,7 @@ public class StateImpl extends NamespaceImpl implements State {
 				setStateInvariant((Constraint)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1426,8 +1425,8 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.STATE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STATE__OWNED_ELEMENT:
@@ -1509,7 +1508,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__STATE_INVARIANT:
 				return eVirtualGet(UML2Package.STATE__STATE_INVARIANT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1647,11 +1646,11 @@ public class StateImpl extends NamespaceImpl implements State {
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getState_Connection())
-			|| eIsSet(UML2Package.eINSTANCE.getState_Entry())
-			|| eIsSet(UML2Package.eINSTANCE.getState_Exit())
-			|| eIsSet(UML2Package.eINSTANCE.getState_DoActivity())
-			|| eIsSet(UML2Package.eINSTANCE.getState_StateInvariant());
+			|| eIsSet(UML2Package.STATE__CONNECTION)
+			|| eIsSet(UML2Package.STATE__ENTRY)
+			|| eIsSet(UML2Package.STATE__EXIT)
+			|| eIsSet(UML2Package.STATE__DO_ACTIVITY)
+			|| eIsSet(UML2Package.STATE__STATE_INVARIANT);
 	}
 
 
@@ -1676,7 +1675,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getState_Region());
+			|| eIsSet(UML2Package.STATE__REGION);
 	}
 
 

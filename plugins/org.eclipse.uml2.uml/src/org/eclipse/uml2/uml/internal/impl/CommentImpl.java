@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: CommentImpl.java,v 1.3 2005/11/23 13:27:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -122,8 +120,8 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.COMMENT__OWNED_ELEMENT :
@@ -137,7 +135,7 @@ public class CommentImpl
 			case UMLPackage.COMMENT__ANNOTATED_ELEMENT :
 				return getAnnotatedElements();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -145,8 +143,8 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -163,7 +161,7 @@ public class CommentImpl
 				getAnnotatedElements().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -171,8 +169,8 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -186,7 +184,7 @@ public class CommentImpl
 				getAnnotatedElements().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -194,8 +192,8 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.COMMENT__OWNED_ELEMENT :
@@ -215,7 +213,7 @@ public class CommentImpl
 				List annotatedElement = (List) eVirtualGet(UMLPackage.COMMENT__ANNOTATED_ELEMENT);
 				return annotatedElement != null && !annotatedElement.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

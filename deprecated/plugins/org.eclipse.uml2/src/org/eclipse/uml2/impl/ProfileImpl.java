@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.28 2005/11/22 14:57:01 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.29 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -127,7 +126,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 */
 	public EList getOwnedStereotypes() {
 		if (ownedStereotype == null) {
-			ownedStereotype = new DerivedSubsetEObjectEList(Stereotype.class, this, UML2Package.PROFILE__OWNED_STEREOTYPE, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackage_OwnedMember()});
+			ownedStereotype = new DerivedSubsetEObjectEList(Stereotype.class, this, UML2Package.PROFILE__OWNED_STEREOTYPE, new int[] {UML2Package.PACKAGE__OWNED_MEMBER});
 		}
 		return ownedStereotype;
 	}
@@ -296,8 +295,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.PROFILE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.PROFILE__OWNED_ELEMENT:
@@ -360,7 +359,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__METAMODEL_REFERENCE:
 				return getMetamodelReferences();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -368,8 +367,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.PROFILE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -444,7 +443,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 				getMetamodelReferences().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -452,8 +451,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.PROFILE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -515,7 +514,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 				getMetamodelReferences().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -523,8 +522,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.PROFILE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROFILE__OWNED_ELEMENT:
@@ -596,7 +595,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 				EList metamodelReference = (EList)eVirtualGet(UML2Package.PROFILE__METAMODEL_REFERENCE);
 				return metamodelReference != null && !metamodelReference.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.3 2005/11/22 15:32:34 khussey Exp $
+ * $Id: ClassImpl.java,v 1.4 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -143,21 +142,16 @@ public class ClassImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.CLASS__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.CLASS__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedAttribute(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedConnector(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedBehavior(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedTrigger(),
-						UMLPackage.eINSTANCE.getClass_OwnedOperation(),
-						UMLPackage.eINSTANCE.getClass_NestedClassifier(),
-						UMLPackage.eINSTANCE.getClass_OwnedReception()}));
+					this, UMLPackage.CLASS__OWNED_MEMBER, new int[]{
+						UMLPackage.CLASS__OWNED_RULE,
+						UMLPackage.CLASS__OWNED_USE_CASE,
+						UMLPackage.CLASS__OWNED_ATTRIBUTE,
+						UMLPackage.CLASS__OWNED_CONNECTOR,
+						UMLPackage.CLASS__OWNED_BEHAVIOR,
+						UMLPackage.CLASS__OWNED_TRIGGER,
+						UMLPackage.CLASS__OWNED_OPERATION,
+						UMLPackage.CLASS__NESTED_CLASSIFIER,
+						UMLPackage.CLASS__OWNED_RECEPTION}));
 		}
 		return ownedMember;
 	}
@@ -172,23 +166,19 @@ public class ClassImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.CLASS__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.CLASS__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature(),
-						UMLPackage.eINSTANCE.getClassifier_Generalization(),
-						UMLPackage.eINSTANCE.getClassifier_Substitution(),
-						UMLPackage.eINSTANCE.getClassifier_CollaborationUse(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedSignature(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_InterfaceRealization()}));
+					this, UMLPackage.CLASS__OWNED_ELEMENT, new int[]{
+						UMLPackage.CLASS__OWNED_COMMENT,
+						UMLPackage.CLASS__NAME_EXPRESSION,
+						UMLPackage.CLASS__ELEMENT_IMPORT,
+						UMLPackage.CLASS__PACKAGE_IMPORT,
+						UMLPackage.CLASS__OWNED_MEMBER,
+						UMLPackage.CLASS__TEMPLATE_BINDING,
+						UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE,
+						UMLPackage.CLASS__GENERALIZATION,
+						UMLPackage.CLASS__SUBSTITUTION,
+						UMLPackage.CLASS__COLLABORATION_USE,
+						UMLPackage.CLASS__OWNED_SIGNATURE,
+						UMLPackage.CLASS__INTERFACE_REALIZATION}));
 		}
 		return ownedElement;
 	}
@@ -396,12 +386,11 @@ public class ClassImpl
 		if (feature == null) {
 			eVirtualSet(UMLPackage.CLASS__FEATURE,
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
-					UMLPackage.CLASS__FEATURE, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getClassifier_Attribute(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedConnector(),
-						UMLPackage.eINSTANCE.getClass_OwnedOperation(),
-						UMLPackage.eINSTANCE.getClass_OwnedReception()}));
+					UMLPackage.CLASS__FEATURE, new int[]{
+						UMLPackage.CLASS__ATTRIBUTE,
+						UMLPackage.CLASS__OWNED_CONNECTOR,
+						UMLPackage.CLASS__OWNED_OPERATION,
+						UMLPackage.CLASS__OWNED_RECEPTION}));
 		}
 		return feature;
 	}
@@ -417,8 +406,7 @@ public class ClassImpl
 			eVirtualSet(UMLPackage.CLASS__ATTRIBUTE,
 				attribute = new DerivedUnionEObjectEList(Property.class, this,
 					UMLPackage.CLASS__ATTRIBUTE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getStructuredClassifier_OwnedAttribute()}));
+					new int[]{UMLPackage.CLASS__OWNED_ATTRIBUTE}));
 		}
 		return attribute;
 	}
@@ -946,8 +934,8 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.CLASS__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.CLASS__OWNED_ELEMENT :
@@ -1067,7 +1055,7 @@ public class ClassImpl
 			case UMLPackage.CLASS__EXTENSION :
 				return getExtensions();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1075,8 +1063,8 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.CLASS__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -1221,7 +1209,7 @@ public class ClassImpl
 				getOwnedReceptions().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1229,8 +1217,8 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.CLASS__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1349,7 +1337,7 @@ public class ClassImpl
 				getOwnedReceptions().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1357,8 +1345,8 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.CLASS__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CLASS__OWNED_ELEMENT :
@@ -1495,7 +1483,7 @@ public class ClassImpl
 			case UMLPackage.CLASS__EXTENSION :
 				return !getExtensions().isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1568,15 +1556,12 @@ public class ClassImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedMembers() {
-		return super.isSetOwnedMembers()
-			|| isSetOwnedAttributes()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedBehavior())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedTrigger())
-			|| eIsSet(UMLPackage.eINSTANCE.getClass_OwnedOperation())
-			|| eIsSet(UMLPackage.eINSTANCE.getClass_NestedClassifier())
-			|| eIsSet(UMLPackage.eINSTANCE.getClass_OwnedReception());
+		return super.isSetOwnedMembers() || isSetOwnedAttributes()
+			|| eIsSet(UMLPackage.CLASS__OWNED_BEHAVIOR)
+			|| eIsSet(UMLPackage.CLASS__OWNED_TRIGGER)
+			|| eIsSet(UMLPackage.CLASS__OWNED_OPERATION)
+			|| eIsSet(UMLPackage.CLASS__NESTED_CLASSIFIER)
+			|| eIsSet(UMLPackage.CLASS__OWNED_RECEPTION);
 	}
 
 	/**
@@ -1586,8 +1571,7 @@ public class ClassImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getBehavioredClassifier_InterfaceRealization());
+			|| eIsSet(UMLPackage.CLASS__INTERFACE_REALIZATION);
 	}
 
 	/**
@@ -1597,8 +1581,8 @@ public class ClassImpl
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UMLPackage.eINSTANCE.getClass_OwnedOperation())
-			|| eIsSet(UMLPackage.eINSTANCE.getClass_OwnedReception());
+			|| eIsSet(UMLPackage.CLASS__OWNED_OPERATION)
+			|| eIsSet(UMLPackage.CLASS__OWNED_RECEPTION);
 	}
 
 	/**

@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 
 import org.eclipse.uml2.uml.DestroyLinkAction;
@@ -103,8 +101,8 @@ public class DestroyLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.DESTROY_LINK_ACTION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.DESTROY_LINK_ACTION__OWNED_ELEMENT :
@@ -168,7 +166,7 @@ public class DestroyLinkActionImpl
 			case UMLPackage.DESTROY_LINK_ACTION__INPUT_VALUE :
 				return getInputValues();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -176,8 +174,8 @@ public class DestroyLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.DESTROY_LINK_ACTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__OWNED_ELEMENT :
@@ -258,7 +256,7 @@ public class DestroyLinkActionImpl
 				List inputValue = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__INPUT_VALUE);
 				return inputValue != null && !inputValue.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 } //DestroyLinkActionImpl

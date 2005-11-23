@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,8 +22,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -105,7 +103,7 @@ public abstract class RedefinableElementImpl
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
 					UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{}));
+					new int[]{}));
 		}
 		return redefinedElement;
 	}
@@ -137,7 +135,7 @@ public abstract class RedefinableElementImpl
 				redefinitionContext = new DerivedUnionEObjectEList(
 					Classifier.class, this,
 					UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-					new EStructuralFeature[]{}));
+					new int[]{}));
 		}
 		return redefinitionContext;
 	}
@@ -220,17 +218,8 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return RedefinableElementOperations.isConsistentWith(this, redefinee);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.REDEFINABLE_ELEMENT__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNED_ELEMENT :
@@ -262,7 +251,7 @@ public abstract class RedefinableElementImpl
 			case UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -270,8 +259,8 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.REDEFINABLE_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -297,7 +286,7 @@ public abstract class RedefinableElementImpl
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -305,8 +294,8 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.REDEFINABLE_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -329,7 +318,7 @@ public abstract class RedefinableElementImpl
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -337,8 +326,8 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.REDEFINABLE_ELEMENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNED_ELEMENT :
@@ -375,7 +364,16 @@ public abstract class RedefinableElementImpl
 			case UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isConsistentWith(RedefinableElement redefinee) {
+		return RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
 
 	/**

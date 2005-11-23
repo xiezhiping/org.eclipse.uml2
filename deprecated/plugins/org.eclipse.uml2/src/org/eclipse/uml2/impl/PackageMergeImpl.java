@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.14 2005/11/21 21:48:00 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.15 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -84,7 +83,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	public EList getSources() {
 		EList source = (EList)eVirtualGet(UML2Package.PACKAGE_MERGE__SOURCE);
 		if (source == null) {
-			eVirtualSet(UML2Package.PACKAGE_MERGE__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_MERGE__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackageMerge_MergingPackage()}));
+			eVirtualSet(UML2Package.PACKAGE_MERGE__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_MERGE__SOURCE, new int[] {UML2Package.PACKAGE_MERGE__MERGING_PACKAGE}));
 		}
 		return source;
 	}
@@ -97,7 +96,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 */
 	public boolean isSetSources() {
 		return super.isSetSources()
-			|| eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage());
+			|| eIsSet(UML2Package.PACKAGE_MERGE__MERGING_PACKAGE);
 	}
 
 	/**
@@ -108,7 +107,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	public EList getTargets() {
 		EList target = (EList)eVirtualGet(UML2Package.PACKAGE_MERGE__TARGET);
 		if (target == null) {
-			eVirtualSet(UML2Package.PACKAGE_MERGE__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_MERGE__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackageMerge_MergedPackage()}));
+			eVirtualSet(UML2Package.PACKAGE_MERGE__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_MERGE__TARGET, new int[] {UML2Package.PACKAGE_MERGE__MERGED_PACKAGE}));
 		}
 		return target;
 	}
@@ -121,7 +120,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergedPackage());
+			|| eIsSet(UML2Package.PACKAGE_MERGE__MERGED_PACKAGE);
 	}
 
 	/**
@@ -219,7 +218,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage());
+			|| eIsSet(UML2Package.PACKAGE_MERGE__MERGING_PACKAGE);
 	}
 
 
@@ -289,8 +288,8 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.PACKAGE_MERGE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.PACKAGE_MERGE__OWNED_ELEMENT:
@@ -312,7 +311,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 				if (resolve) return getMergedPackage();
 				return basicGetMergedPackage();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -320,8 +319,8 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.PACKAGE_MERGE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -337,7 +336,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 				setMergedPackage((org.eclipse.uml2.Package)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -345,8 +344,8 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.PACKAGE_MERGE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -360,7 +359,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 				setMergedPackage((org.eclipse.uml2.Package)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -368,8 +367,8 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.PACKAGE_MERGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PACKAGE_MERGE__OWNED_ELEMENT:
@@ -390,7 +389,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 			case UML2Package.PACKAGE_MERGE__MERGED_PACKAGE:
 				return eVirtualGet(UML2Package.PACKAGE_MERGE__MERGED_PACKAGE) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

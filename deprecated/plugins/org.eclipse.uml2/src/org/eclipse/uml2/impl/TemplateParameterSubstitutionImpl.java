@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.17 2005/11/21 21:48:01 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.18 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -90,7 +89,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual()}));
+			eVirtualSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT, new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL}));
 		}
 		return ownedElement;
 	}
@@ -103,7 +102,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual());
+			|| eIsSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
 	}
 
 	/**
@@ -243,7 +242,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getTemplateParameterSubstitution_TemplateBinding());
+			|| eIsSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING);
 	}
 
 
@@ -315,8 +314,8 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT:
@@ -336,7 +335,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 			case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL:
 				return getOwnedActuals();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -344,8 +343,8 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -369,7 +368,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 				getOwnedActuals().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -377,8 +376,8 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -398,7 +397,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 				getOwnedActuals().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -406,8 +405,8 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT:
@@ -428,7 +427,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 				EList ownedActual = (EList)eVirtualGet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
 				return ownedActual != null && !ownedActual.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

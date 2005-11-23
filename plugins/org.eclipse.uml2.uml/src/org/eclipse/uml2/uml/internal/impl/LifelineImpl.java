@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -99,11 +98,10 @@ public class LifelineImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.LIFELINE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.LIFELINE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getLifeline_Selector()}));
+					this, UMLPackage.LIFELINE__OWNED_ELEMENT, new int[]{
+						UMLPackage.LIFELINE__OWNED_COMMENT,
+						UMLPackage.LIFELINE__NAME_EXPRESSION,
+						UMLPackage.LIFELINE__SELECTOR}));
 		}
 		return ownedElement;
 	}
@@ -473,8 +471,8 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.LIFELINE__OWNED_ELEMENT :
@@ -512,7 +510,7 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__COVERED_BY :
 				return getCoveredBys();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -520,8 +518,8 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -560,7 +558,7 @@ public class LifelineImpl
 				getCoveredBys().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -568,8 +566,8 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -604,7 +602,7 @@ public class LifelineImpl
 				getCoveredBys().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -612,8 +610,8 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.LIFELINE__OWNED_ELEMENT :
@@ -655,7 +653,7 @@ public class LifelineImpl
 				List coveredBy = (List) eVirtualGet(UMLPackage.LIFELINE__COVERED_BY);
 				return coveredBy != null && !coveredBy.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -678,7 +676,7 @@ public class LifelineImpl
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.eINSTANCE.getLifeline_Interaction());
+			|| eIsSet(UMLPackage.LIFELINE__INTERACTION);
 	}
 
 	/**
@@ -688,7 +686,7 @@ public class LifelineImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getLifeline_Selector());
+			|| eIsSet(UMLPackage.LIFELINE__SELECTOR);
 	}
 
 } //LifelineImpl

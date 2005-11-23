@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: SignalImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,7 +19,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -87,8 +86,7 @@ public class SignalImpl
 			eVirtualSet(UMLPackage.SIGNAL__ATTRIBUTE,
 				attribute = new DerivedUnionEObjectEList(Property.class, this,
 					UMLPackage.SIGNAL__ATTRIBUTE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getSignal_OwnedAttribute()}));
+					new int[]{UMLPackage.SIGNAL__OWNED_ATTRIBUTE}));
 		}
 		return attribute;
 	}
@@ -103,11 +101,10 @@ public class SignalImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.SIGNAL__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.SIGNAL__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE.getSignal_OwnedAttribute()}));
+					this, UMLPackage.SIGNAL__OWNED_MEMBER, new int[]{
+						UMLPackage.SIGNAL__OWNED_RULE,
+						UMLPackage.SIGNAL__OWNED_USE_CASE,
+						UMLPackage.SIGNAL__OWNED_ATTRIBUTE}));
 		}
 		return ownedMember;
 	}
@@ -240,8 +237,8 @@ public class SignalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.SIGNAL__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.SIGNAL__OWNED_ELEMENT :
@@ -331,7 +328,7 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -339,8 +336,8 @@ public class SignalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.SIGNAL__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -443,7 +440,7 @@ public class SignalImpl
 				getOwnedAttributes().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -451,8 +448,8 @@ public class SignalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.SIGNAL__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -538,7 +535,7 @@ public class SignalImpl
 				getOwnedAttributes().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -546,8 +543,8 @@ public class SignalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.SIGNAL__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.SIGNAL__OWNED_ELEMENT :
@@ -648,7 +645,7 @@ public class SignalImpl
 				List ownedAttribute = (List) eVirtualGet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -658,7 +655,7 @@ public class SignalImpl
 	 */
 	public boolean isSetAttributes() {
 		return super.isSetAttributes()
-			|| eIsSet(UMLPackage.eINSTANCE.getSignal_OwnedAttribute());
+			|| eIsSet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE);
 	}
 
 	/**
@@ -668,7 +665,7 @@ public class SignalImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getSignal_OwnedAttribute());
+			|| eIsSet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE);
 	}
 
 } //SignalImpl

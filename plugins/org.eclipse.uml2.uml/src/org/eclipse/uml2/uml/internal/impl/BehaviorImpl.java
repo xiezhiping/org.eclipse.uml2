@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.4 2005/11/22 15:32:36 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.5 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -127,11 +126,9 @@ public class BehaviorImpl
 			eVirtualSet(UMLPackage.BEHAVIOR__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
-					UMLPackage.BEHAVIOR__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE
-							.getClassifier_RedefinedClassifier(),
-						UMLPackage.eINSTANCE.getBehavior_RedefinedBehavior()}));
+					UMLPackage.BEHAVIOR__REDEFINED_ELEMENT, new int[]{
+						UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER,
+						UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR}));
 		}
 		return redefinedElement;
 	}
@@ -146,23 +143,18 @@ public class BehaviorImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.BEHAVIOR__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.BEHAVIOR__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedAttribute(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedConnector(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedBehavior(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedTrigger(),
-						UMLPackage.eINSTANCE.getClass_OwnedOperation(),
-						UMLPackage.eINSTANCE.getClass_NestedClassifier(),
-						UMLPackage.eINSTANCE.getClass_OwnedReception(),
-						UMLPackage.eINSTANCE.getBehavior_OwnedParameter(),
-						UMLPackage.eINSTANCE.getBehavior_OwnedParameterSet()}));
+					this, UMLPackage.BEHAVIOR__OWNED_MEMBER, new int[]{
+						UMLPackage.BEHAVIOR__OWNED_RULE,
+						UMLPackage.BEHAVIOR__OWNED_USE_CASE,
+						UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE,
+						UMLPackage.BEHAVIOR__OWNED_CONNECTOR,
+						UMLPackage.BEHAVIOR__OWNED_BEHAVIOR,
+						UMLPackage.BEHAVIOR__OWNED_TRIGGER,
+						UMLPackage.BEHAVIOR__OWNED_OPERATION,
+						UMLPackage.BEHAVIOR__NESTED_CLASSIFIER,
+						UMLPackage.BEHAVIOR__OWNED_RECEPTION,
+						UMLPackage.BEHAVIOR__OWNED_PARAMETER,
+						UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET}));
 		}
 		return ownedMember;
 	}
@@ -179,8 +171,7 @@ public class BehaviorImpl
 				redefinitionContext = new DerivedUnionEObjectEList(
 					Classifier.class, this,
 					UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getBehavior_Context()}));
+					new int[]{UMLPackage.BEHAVIOR__CONTEXT}));
 		}
 		return redefinitionContext;
 	}
@@ -683,8 +674,8 @@ public class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIOR__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.BEHAVIOR__OWNED_ELEMENT :
@@ -822,7 +813,7 @@ public class BehaviorImpl
 					return getSpecification();
 				return basicGetSpecification();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -830,8 +821,8 @@ public class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIOR__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -997,7 +988,7 @@ public class BehaviorImpl
 				setSpecification((BehavioralFeature) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1005,8 +996,8 @@ public class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIOR__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1143,7 +1134,7 @@ public class BehaviorImpl
 				setSpecification((BehavioralFeature) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1151,8 +1142,8 @@ public class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIOR__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_ELEMENT :
@@ -1306,7 +1297,7 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__SPECIFICATION :
 				return eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1332,7 +1323,7 @@ public class BehaviorImpl
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getBehavior_RedefinedBehavior());
+			|| eIsSet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
 	}
 
 	/**
@@ -1342,8 +1333,8 @@ public class BehaviorImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getBehavior_OwnedParameter())
-			|| eIsSet(UMLPackage.eINSTANCE.getBehavior_OwnedParameterSet());
+			|| eIsSet(UMLPackage.BEHAVIOR__OWNED_PARAMETER)
+			|| eIsSet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
 	}
 
 	/**
@@ -1353,7 +1344,7 @@ public class BehaviorImpl
 	 */
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
-			|| eIsSet(UMLPackage.eINSTANCE.getBehavior_Context());
+			|| eIsSet(UMLPackage.BEHAVIOR__CONTEXT);
 	}
 
 } //BehaviorImpl

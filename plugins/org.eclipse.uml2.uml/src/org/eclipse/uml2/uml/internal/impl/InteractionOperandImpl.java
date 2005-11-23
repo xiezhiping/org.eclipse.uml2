@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.2 2005/11/22 15:32:34 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -106,15 +105,13 @@ public class InteractionOperandImpl
 			eVirtualSet(UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
 					this, UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE
-							.getInteractionFragment_GeneralOrdering(),
-						UMLPackage.eINSTANCE.getInteractionOperand_Guard()}));
+					new int[]{UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT,
+						UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION,
+						UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT,
+						UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT,
+						UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER,
+						UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING,
+						UMLPackage.INTERACTION_OPERAND__GUARD}));
 		}
 		return ownedElement;
 	}
@@ -286,9 +283,8 @@ public class InteractionOperandImpl
 			eVirtualSet(UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
 					this, UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getInteractionOperand_Fragment()}));
+					new int[]{UMLPackage.INTERACTION_OPERAND__OWNED_RULE,
+						UMLPackage.INTERACTION_OPERAND__FRAGMENT}));
 		}
 		return ownedMember;
 	}
@@ -565,8 +561,8 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT :
@@ -614,7 +610,7 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
 				return getFragments();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -622,8 +618,8 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -679,7 +675,7 @@ public class InteractionOperandImpl
 				getFragments().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -687,8 +683,8 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -735,7 +731,7 @@ public class InteractionOperandImpl
 				getFragments().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -743,8 +739,8 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT :
@@ -805,7 +801,7 @@ public class InteractionOperandImpl
 				List fragment = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__FRAGMENT);
 				return fragment != null && !fragment.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -861,9 +857,8 @@ public class InteractionOperandImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getInteractionFragment_GeneralOrdering())
-			|| eIsSet(UMLPackage.eINSTANCE.getInteractionOperand_Guard());
+			|| eIsSet(UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING)
+			|| eIsSet(UMLPackage.INTERACTION_OPERAND__GUARD);
 	}
 
 	/**
@@ -886,8 +881,7 @@ public class InteractionOperandImpl
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getInteractionFragment_EnclosingOperand());
+			|| eIsSet(UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND);
 	}
 
 	/**
@@ -897,7 +891,7 @@ public class InteractionOperandImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getInteractionOperand_Fragment());
+			|| eIsSet(UMLPackage.INTERACTION_OPERAND__FRAGMENT);
 	}
 
 } //InteractionOperandImpl

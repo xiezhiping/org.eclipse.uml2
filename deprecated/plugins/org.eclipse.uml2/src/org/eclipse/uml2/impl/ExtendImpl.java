@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.21 2005/11/22 14:57:03 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.22 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -100,7 +99,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	public EList getRelatedElements() {
 		EList relatedElement = (EList)eVirtualGet(UML2Package.EXTEND__RELATED_ELEMENT);
 		if (relatedElement == null) {
-			eVirtualSet(UML2Package.EXTEND__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()}));
+			eVirtualSet(UML2Package.EXTEND__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__RELATED_ELEMENT, new int[] {UML2Package.EXTEND__SOURCE, UML2Package.EXTEND__TARGET}));
 		}
 		return relatedElement;
 	}
@@ -302,7 +301,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	public EList getTargets() {
 		EList target = (EList)eVirtualGet(UML2Package.EXTEND__TARGET);
 		if (target == null) {
-			eVirtualSet(UML2Package.EXTEND__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getExtend_ExtendedCase()}));
+			eVirtualSet(UML2Package.EXTEND__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__TARGET, new int[] {UML2Package.EXTEND__EXTENDED_CASE}));
 		}
 		return target;
 	}
@@ -314,7 +313,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * @generated
 	 */
 	public boolean isSetTargets() {
-		return eIsSet(UML2Package.eINSTANCE.getExtend_ExtendedCase());
+		return eIsSet(UML2Package.EXTEND__EXTENDED_CASE);
 	}
 
 	/**
@@ -325,7 +324,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.EXTEND__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.EXTEND__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getExtend_Condition()}));
+			eVirtualSet(UML2Package.EXTEND__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__OWNED_ELEMENT, new int[] {UML2Package.EXTEND__OWNED_COMMENT, UML2Package.EXTEND__TEMPLATE_BINDING, UML2Package.EXTEND__OWNED_TEMPLATE_SIGNATURE, UML2Package.EXTEND__NAME_EXPRESSION, UML2Package.EXTEND__CONDITION}));
 		}
 		return ownedElement;
 	}
@@ -338,7 +337,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getExtend_Condition());
+			|| eIsSet(UML2Package.EXTEND__CONDITION);
 	}
 
 	/**
@@ -349,7 +348,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	public EList getSources() {
 		EList source = (EList)eVirtualGet(UML2Package.EXTEND__SOURCE);
 		if (source == null) {
-			eVirtualSet(UML2Package.EXTEND__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getExtend_Extension()}));
+			eVirtualSet(UML2Package.EXTEND__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__SOURCE, new int[] {UML2Package.EXTEND__EXTENSION}));
 		}
 		return source;
 	}
@@ -361,7 +360,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * @generated
 	 */
 	public boolean isSetSources() {
-		return eIsSet(UML2Package.eINSTANCE.getExtend_Extension());
+		return eIsSet(UML2Package.EXTEND__EXTENSION);
 	}
 
 	/**
@@ -449,8 +448,8 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.EXTEND__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.EXTEND__OWNED_ELEMENT:
@@ -490,7 +489,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 			case UML2Package.EXTEND__EXTENSION_LOCATION:
 				return getExtensionLocations();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -498,8 +497,8 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.EXTEND__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -542,7 +541,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 				getExtensionLocations().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -550,8 +549,8 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.EXTEND__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -589,7 +588,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 				getExtensionLocations().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -597,8 +596,8 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.EXTEND__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXTEND__OWNED_ELEMENT:
@@ -641,7 +640,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 				EList extensionLocation = (EList)eVirtualGet(UML2Package.EXTEND__EXTENSION_LOCATION);
 				return extensionLocation != null && !extensionLocation.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

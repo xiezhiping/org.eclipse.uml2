@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.4 2005/11/22 15:32:38 khussey Exp $
+ * $Id: StateImpl.java,v 1.5 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -196,8 +195,7 @@ public class StateImpl
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
 					UMLPackage.STATE__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getState_RedefinedState()}));
+					new int[]{UMLPackage.STATE__REDEFINED_STATE}));
 		}
 		return redefinedElement;
 	}
@@ -386,13 +384,12 @@ public class StateImpl
 	public List getOwnedMembers() {
 		List ownedMember = (List) eVirtualGet(UMLPackage.STATE__OWNED_MEMBER);
 		if (ownedMember == null) {
-			eVirtualSet(UMLPackage.STATE__OWNED_MEMBER,
+			eVirtualSet(
+				UMLPackage.STATE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.STATE__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getState_Connection(),
-						UMLPackage.eINSTANCE.getState_Region()}));
+					this, UMLPackage.STATE__OWNED_MEMBER, new int[]{
+						UMLPackage.STATE__OWNED_RULE,
+						UMLPackage.STATE__CONNECTION, UMLPackage.STATE__REGION}));
 		}
 		return ownedMember;
 	}
@@ -407,18 +404,16 @@ public class StateImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.STATE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.STATE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE.getState_ConnectionPoint(),
-						UMLPackage.eINSTANCE.getState_StateInvariant(),
-						UMLPackage.eINSTANCE.getState_Entry(),
-						UMLPackage.eINSTANCE.getState_Exit(),
-						UMLPackage.eINSTANCE.getState_DoActivity()}));
+					this, UMLPackage.STATE__OWNED_ELEMENT, new int[]{
+						UMLPackage.STATE__OWNED_COMMENT,
+						UMLPackage.STATE__NAME_EXPRESSION,
+						UMLPackage.STATE__ELEMENT_IMPORT,
+						UMLPackage.STATE__PACKAGE_IMPORT,
+						UMLPackage.STATE__OWNED_MEMBER,
+						UMLPackage.STATE__CONNECTION_POINT,
+						UMLPackage.STATE__STATE_INVARIANT,
+						UMLPackage.STATE__ENTRY, UMLPackage.STATE__EXIT,
+						UMLPackage.STATE__DO_ACTIVITY}));
 		}
 		return ownedElement;
 	}
@@ -1325,8 +1320,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.STATE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.STATE__OWNED_ELEMENT :
@@ -1416,7 +1411,7 @@ public class StateImpl
 			case UMLPackage.STATE__REGION :
 				return getRegions();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1424,8 +1419,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.STATE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -1508,7 +1503,7 @@ public class StateImpl
 				getRegions().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1516,8 +1511,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.STATE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1588,7 +1583,7 @@ public class StateImpl
 				getRegions().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1596,8 +1591,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.STATE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STATE__OWNED_ELEMENT :
@@ -1690,7 +1685,7 @@ public class StateImpl
 				List region = (List) eVirtualGet(UMLPackage.STATE__REGION);
 				return region != null && !region.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1815,7 +1810,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isSetRedefinedElements() {
-		return eIsSet(UMLPackage.eINSTANCE.getState_RedefinedState());
+		return eIsSet(UMLPackage.STATE__REDEFINED_STATE);
 	}
 
 	/**
@@ -1837,8 +1832,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isSetNamespace() {
-		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.eINSTANCE.getVertex_Container());
+		return super.isSetNamespace() || eIsSet(UMLPackage.STATE__CONTAINER);
 	}
 
 	/**
@@ -1848,8 +1842,8 @@ public class StateImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getState_Connection())
-			|| eIsSet(UMLPackage.eINSTANCE.getState_Region());
+			|| eIsSet(UMLPackage.STATE__CONNECTION)
+			|| eIsSet(UMLPackage.STATE__REGION);
 	}
 
 	/**
@@ -1859,11 +1853,11 @@ public class StateImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getState_ConnectionPoint())
-			|| eIsSet(UMLPackage.eINSTANCE.getState_StateInvariant())
-			|| eIsSet(UMLPackage.eINSTANCE.getState_Entry())
-			|| eIsSet(UMLPackage.eINSTANCE.getState_Exit())
-			|| eIsSet(UMLPackage.eINSTANCE.getState_DoActivity());
+			|| eIsSet(UMLPackage.STATE__CONNECTION_POINT)
+			|| eIsSet(UMLPackage.STATE__STATE_INVARIANT)
+			|| eIsSet(UMLPackage.STATE__ENTRY)
+			|| eIsSet(UMLPackage.STATE__EXIT)
+			|| eIsSet(UMLPackage.STATE__DO_ACTIVITY);
 	}
 
 	/**

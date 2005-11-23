@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.3 2005/11/23 13:27:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,7 +18,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -81,15 +80,11 @@ public class ManifestationImpl
 	public List getTargets() {
 		List target = (List) eVirtualGet(UMLPackage.MANIFESTATION__TARGET);
 		if (target == null) {
-			eVirtualSet(
-				UMLPackage.MANIFESTATION__TARGET,
-				target = new DerivedUnionEObjectEList(
-					Element.class,
-					this,
-					UMLPackage.MANIFESTATION__TARGET,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDependency_Supplier(),
-						UMLPackage.eINSTANCE.getManifestation_UtilizedElement()}));
+			eVirtualSet(UMLPackage.MANIFESTATION__TARGET,
+				target = new DerivedUnionEObjectEList(Element.class, this,
+					UMLPackage.MANIFESTATION__TARGET, new int[]{
+						UMLPackage.MANIFESTATION__SUPPLIER,
+						UMLPackage.MANIFESTATION__UTILIZED_ELEMENT}));
 		}
 		return target;
 	}
@@ -169,8 +164,8 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.MANIFESTATION__OWNED_ELEMENT :
@@ -218,7 +213,7 @@ public class ManifestationImpl
 					return getUtilizedElement();
 				return basicGetUtilizedElement();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -226,8 +221,8 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -270,7 +265,7 @@ public class ManifestationImpl
 				setUtilizedElement((PackageableElement) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -278,8 +273,8 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -317,7 +312,7 @@ public class ManifestationImpl
 				setUtilizedElement((PackageableElement) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -325,8 +320,8 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.MANIFESTATION__OWNED_ELEMENT :
@@ -376,7 +371,7 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__UTILIZED_ELEMENT :
 				return eVirtualGet(UMLPackage.MANIFESTATION__UTILIZED_ELEMENT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -386,7 +381,7 @@ public class ManifestationImpl
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UMLPackage.eINSTANCE.getManifestation_UtilizedElement());
+			|| eIsSet(UMLPackage.MANIFESTATION__UTILIZED_ELEMENT);
 	}
 
 } //ManifestationImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -93,10 +92,11 @@ public class ReadLinkObjectEndQualifierActionImpl
 		if (input == null) {
 			eVirtualSet(
 				UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT,
-				input = new DerivedUnionEObjectEList(InputPin.class, this,
+				input = new DerivedUnionEObjectEList(
+					InputPin.class,
+					this,
 					UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getReadLinkObjectEndQualifierAction_Object()}));
+					new int[]{UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT}));
 		}
 		return input;
 	}
@@ -111,10 +111,11 @@ public class ReadLinkObjectEndQualifierActionImpl
 		if (output == null) {
 			eVirtualSet(
 				UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTPUT,
-				output = new DerivedUnionEObjectEList(OutputPin.class, this,
+				output = new DerivedUnionEObjectEList(
+					OutputPin.class,
+					this,
 					UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTPUT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getReadLinkObjectEndQualifierAction_Result()}));
+					new int[]{UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT}));
 		}
 		return output;
 	}
@@ -494,8 +495,8 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_ELEMENT :
@@ -563,7 +564,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 					return getQualifier();
 				return basicGetQualifier();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -571,8 +572,8 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -645,7 +646,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 				setQualifier((Property) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -653,8 +654,8 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -716,7 +717,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 				setQualifier((Property) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -724,8 +725,8 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_ELEMENT :
@@ -809,7 +810,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER :
 				return eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -819,8 +820,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getReadLinkObjectEndQualifierAction_Object());
+			|| eIsSet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT);
 	}
 
 	/**
@@ -830,8 +830,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 */
 	public boolean isSetOutputs() {
 		return super.isSetOutputs()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getReadLinkObjectEndQualifierAction_Result());
+			|| eIsSet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT);
 	}
 
 } //ReadLinkObjectEndQualifierActionImpl

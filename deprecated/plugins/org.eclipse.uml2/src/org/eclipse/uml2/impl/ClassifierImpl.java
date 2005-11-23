@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.38 2005/11/22 14:57:02 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.39 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -30,7 +30,6 @@ import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -372,7 +371,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public EList getRedefinitionContexts() {
 		EList redefinitionContext = (EList)eVirtualGet(UML2Package.CLASSIFIER__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
-			eVirtualSet(UML2Package.CLASSIFIER__REDEFINITION_CONTEXT, redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.CLASSIFIER__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()}));
+			eVirtualSet(UML2Package.CLASSIFIER__REDEFINITION_CONTEXT, redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.CLASSIFIER__REDEFINITION_CONTEXT, new int[] {UML2Package.CLASSIFIER__OWNER}));
 		}
 		return redefinitionContext;
 	}
@@ -447,7 +446,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public EList getFeatures() {
 		EList feature = (EList)eVirtualGet(UML2Package.CLASSIFIER__FEATURE);
 		if (feature == null) {
-			eVirtualSet(UML2Package.CLASSIFIER__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.CLASSIFIER__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute()}));
+			eVirtualSet(UML2Package.CLASSIFIER__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.CLASSIFIER__FEATURE, new int[] {UML2Package.CLASSIFIER__ATTRIBUTE}));
 		}
 		return feature;
 	}
@@ -506,7 +505,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean isSetMembers() {
 		return super.isSetMembers()
 			|| isSetFeatures()
-			|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember());
+			|| eIsSet(UML2Package.CLASSIFIER__INHERITED_MEMBER);
 	}
 
 
@@ -539,9 +538,9 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
-			|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
-			|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence());
+			|| eIsSet(UML2Package.CLASSIFIER__GENERALIZATION)
+			|| eIsSet(UML2Package.CLASSIFIER__SUBSTITUTION)
+			|| eIsSet(UML2Package.CLASSIFIER__OCCURRENCE);
 	}
 
 
@@ -685,7 +684,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public EList getAttributes() {
 		EList attribute = (EList)eVirtualGet(UML2Package.CLASSIFIER__ATTRIBUTE);
 		if (attribute == null) {
-			eVirtualSet(UML2Package.CLASSIFIER__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.CLASSIFIER__ATTRIBUTE, new EStructuralFeature[] {}));
+			eVirtualSet(UML2Package.CLASSIFIER__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.CLASSIFIER__ATTRIBUTE, new int[] {}));
 		}
 		return attribute;
 	}
@@ -736,7 +735,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase());
+			|| eIsSet(UML2Package.CLASSIFIER__OWNED_USE_CASE);
 	}
 
 
@@ -1047,7 +1046,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+			|| eIsSet(UML2Package.CLASSIFIER__OWNING_PARAMETER);
 	}
 
 
@@ -1126,7 +1125,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UML2Package.eINSTANCE.getType_Package());
+			|| eIsSet(UML2Package.CLASSIFIER__PACKAGE);
 	}
 
 
@@ -1344,7 +1343,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean isSetRedefinedElements() {
-		return eIsSet(UML2Package.eINSTANCE.getClassifier_RedefinedClassifier());
+		return eIsSet(UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER);
 	}
 
 
@@ -1499,8 +1498,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.CLASSIFIER__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.CLASSIFIER__OWNED_ELEMENT:
@@ -1574,7 +1573,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__OCCURRENCE:
 				return getOccurrences();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1582,8 +1581,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.CLASSIFIER__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -1671,7 +1670,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				getOccurrences().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1679,8 +1678,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.CLASSIFIER__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -1754,7 +1753,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				getOccurrences().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1762,8 +1761,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.CLASSIFIER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CLASSIFIER__OWNED_ELEMENT:
@@ -1849,7 +1848,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				EList occurrence = (EList)eVirtualGet(UML2Package.CLASSIFIER__OCCURRENCE);
 				return occurrence != null && !occurrence.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

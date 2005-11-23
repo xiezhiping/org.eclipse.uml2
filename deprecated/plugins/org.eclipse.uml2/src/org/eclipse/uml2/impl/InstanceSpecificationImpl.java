@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.26 2005/11/22 14:57:03 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.27 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -111,7 +110,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment(), UML2Package.eINSTANCE.getInstanceSpecification_Slot(), UML2Package.eINSTANCE.getInstanceSpecification_Specification()}));
+			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT, new int[] {UML2Package.INSTANCE_SPECIFICATION__OWNED_COMMENT, UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_BINDING, UML2Package.INSTANCE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE, UML2Package.INSTANCE_SPECIFICATION__NAME_EXPRESSION, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, UML2Package.INSTANCE_SPECIFICATION__SLOT, UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION}));
 		}
 		return ownedElement;
 	}
@@ -124,9 +123,9 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())
-			|| eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Slot())
-			|| eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Specification());
+			|| eIsSet(UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT)
+			|| eIsSet(UML2Package.INSTANCE_SPECIFICATION__SLOT)
+			|| eIsSet(UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION);
 	}
 
 	/**
@@ -482,8 +481,8 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.INSTANCE_SPECIFICATION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT:
@@ -525,7 +524,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			case UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION:
 				return getSpecification();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -533,8 +532,8 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.INSTANCE_SPECIFICATION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -588,7 +587,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 				setSpecification((ValueSpecification)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -596,8 +595,8 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.INSTANCE_SPECIFICATION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -644,7 +643,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 				setSpecification((ValueSpecification)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -652,8 +651,8 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.INSTANCE_SPECIFICATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT:
@@ -700,7 +699,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			case UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION:
 				return eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

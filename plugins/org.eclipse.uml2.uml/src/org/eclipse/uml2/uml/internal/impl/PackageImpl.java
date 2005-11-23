@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: PackageImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -305,18 +304,15 @@ public class PackageImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.PACKAGE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PACKAGE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature(),
-						UMLPackage.eINSTANCE.getPackage_PackageMerge()}));
+					this, UMLPackage.PACKAGE__OWNED_ELEMENT, new int[]{
+						UMLPackage.PACKAGE__OWNED_COMMENT,
+						UMLPackage.PACKAGE__NAME_EXPRESSION,
+						UMLPackage.PACKAGE__ELEMENT_IMPORT,
+						UMLPackage.PACKAGE__PACKAGE_IMPORT,
+						UMLPackage.PACKAGE__OWNED_MEMBER,
+						UMLPackage.PACKAGE__TEMPLATE_BINDING,
+						UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
+						UMLPackage.PACKAGE__PACKAGE_MERGE}));
 		}
 		return ownedElement;
 	}
@@ -448,10 +444,9 @@ public class PackageImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.PACKAGE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.PACKAGE__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getPackage_PackagedElement()}));
+					this, UMLPackage.PACKAGE__OWNED_MEMBER, new int[]{
+						UMLPackage.PACKAGE__OWNED_RULE,
+						UMLPackage.PACKAGE__PACKAGED_ELEMENT}));
 		}
 		return ownedMember;
 	}
@@ -893,8 +888,8 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.PACKAGE__OWNED_ELEMENT :
@@ -956,7 +951,7 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__APPLIED_PROFILE :
 				return getAppliedProfiles();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -964,8 +959,8 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -1036,7 +1031,7 @@ public class PackageImpl
 				getAppliedProfiles().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1044,8 +1039,8 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1104,7 +1099,7 @@ public class PackageImpl
 				getAppliedProfiles().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1112,8 +1107,8 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PACKAGE__OWNED_ELEMENT :
@@ -1182,7 +1177,7 @@ public class PackageImpl
 				List appliedProfile = (List) eVirtualGet(UMLPackage.PACKAGE__APPLIED_PROFILE);
 				return appliedProfile != null && !appliedProfile.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1292,8 +1287,7 @@ public class PackageImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getParameterableElement_OwningTemplateParameter());
+			|| eIsSet(UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER);
 	}
 
 	/**
@@ -1303,11 +1297,9 @@ public class PackageImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateableElement_TemplateBinding())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateableElement_OwnedTemplateSignature())
-			|| eIsSet(UMLPackage.eINSTANCE.getPackage_PackageMerge());
+			|| eIsSet(UMLPackage.PACKAGE__TEMPLATE_BINDING)
+			|| eIsSet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE)
+			|| eIsSet(UMLPackage.PACKAGE__PACKAGE_MERGE);
 	}
 
 	/**
@@ -1317,7 +1309,7 @@ public class PackageImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getPackage_PackagedElement());
+			|| eIsSet(UMLPackage.PACKAGE__PACKAGED_ELEMENT);
 	}
 
 	/**
@@ -1340,7 +1332,7 @@ public class PackageImpl
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.eINSTANCE.getPackage_NestingPackage());
+			|| eIsSet(UMLPackage.PACKAGE__NESTING_PACKAGE);
 	}
 
 } //PackageImpl

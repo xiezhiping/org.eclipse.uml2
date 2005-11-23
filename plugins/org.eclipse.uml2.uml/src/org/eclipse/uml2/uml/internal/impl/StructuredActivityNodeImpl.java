@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.4 2005/11/22 15:32:34 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.5 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -141,21 +140,24 @@ public class StructuredActivityNodeImpl
 	public List getOwnedElements() {
 		List ownedElement = (List) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getExecutableNode_Handler(),
-						UMLPackage.eINSTANCE.getAction_Output(),
-						UMLPackage.eINSTANCE.getAction_Input(),
-						UMLPackage.eINSTANCE.getAction_LocalPrecondition(),
-						UMLPackage.eINSTANCE.getAction_LocalPostcondition(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE.getActivityGroup_Subgroup()}));
+			eVirtualSet(
+				UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT,
+				ownedElement = new DerivedUnionEObjectEList(
+					Element.class,
+					this,
+					UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT,
+					new int[]{
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__HANDLER,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTPUT,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__INPUT,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP}));
 		}
 		return ownedElement;
 	}
@@ -171,10 +173,8 @@ public class StructuredActivityNodeImpl
 			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
 					this, UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE
-							.getStructuredActivityNode_Variable()}));
+					new int[]{UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE}));
 		}
 		return ownedMember;
 	}
@@ -204,10 +204,9 @@ public class StructuredActivityNodeImpl
 		if (member == null) {
 			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER,
 				member = new DerivedUnionEObjectEList(NamedElement.class, this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_ImportedMember(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember()}));
+					UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER, new int[]{
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER}));
 		}
 		return member;
 	}
@@ -398,7 +397,7 @@ public class StructuredActivityNodeImpl
 			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP,
 				subgroup = new DerivedUnionEObjectEList(ActivityGroup.class,
 					this, UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP,
-					new EStructuralFeature[]{}));
+					new int[]{}));
 		}
 		return subgroup;
 	}
@@ -415,8 +414,7 @@ public class StructuredActivityNodeImpl
 				containedNode = new DerivedUnionEObjectEList(
 					ActivityNode.class, this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getStructuredActivityNode_Node()}));
+					new int[]{UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE}));
 		}
 		return containedNode;
 	}
@@ -448,8 +446,7 @@ public class StructuredActivityNodeImpl
 				containedEdge = new DerivedUnionEObjectEList(
 					ActivityEdge.class, this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getStructuredActivityNode_Edge()}));
+					new int[]{UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE}));
 		}
 		return containedEdge;
 	}
@@ -915,8 +912,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT :
@@ -1008,7 +1005,7 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
 				return getEdges();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1016,8 +1013,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -1111,7 +1108,7 @@ public class StructuredActivityNodeImpl
 				getEdges().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1119,8 +1116,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1197,7 +1194,7 @@ public class StructuredActivityNodeImpl
 				getEdges().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1205,8 +1202,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT :
@@ -1319,7 +1316,7 @@ public class StructuredActivityNodeImpl
 				List edge = (List) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE);
 				return edge != null && !edge.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1465,8 +1462,8 @@ public class StructuredActivityNodeImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getNamespace_ElementImport())
-			|| eIsSet(UMLPackage.eINSTANCE.getNamespace_PackageImport())
+			|| eIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT)
+			|| eIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT)
 			|| isSetOwnedMembers() || isSetSubgroups();
 	}
 
@@ -1476,8 +1473,8 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedMembers() {
-		return eIsSet(UMLPackage.eINSTANCE.getNamespace_OwnedRule())
-			|| eIsSet(UMLPackage.eINSTANCE.getStructuredActivityNode_Variable());
+		return eIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE)
+			|| eIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE);
 	}
 
 	/**
@@ -1486,7 +1483,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetMembers() {
-		return eIsSet(UMLPackage.eINSTANCE.getNamespace_ImportedMember())
+		return eIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER)
 			|| isSetOwnedMembers();
 	}
 
@@ -1547,7 +1544,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetContainedNodes() {
-		return eIsSet(UMLPackage.eINSTANCE.getStructuredActivityNode_Node());
+		return eIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE);
 	}
 
 	/**
@@ -1556,7 +1553,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetContainedEdges() {
-		return eIsSet(UMLPackage.eINSTANCE.getStructuredActivityNode_Edge());
+		return eIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE);
 	}
 
 	/**

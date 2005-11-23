@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.38 2005/11/22 14:57:02 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.39 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -127,7 +126,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	public EList getRelatedElements() {
 		EList relatedElement = (EList)eVirtualGet(UML2Package.ASSOCIATION_CLASS__RELATED_ELEMENT);
 		if (relatedElement == null) {
-			eVirtualSet(UML2Package.ASSOCIATION_CLASS__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ASSOCIATION_CLASS__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getAssociation_EndType()}));
+			eVirtualSet(UML2Package.ASSOCIATION_CLASS__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ASSOCIATION_CLASS__RELATED_ELEMENT, new int[] {UML2Package.ASSOCIATION_CLASS__END_TYPE}));
 		}
 		return relatedElement;
 	}
@@ -139,7 +138,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * @generated
 	 */
 	public boolean isSetRelatedElements() {
-		return eIsSet(UML2Package.eINSTANCE.getAssociation_EndType());
+		return eIsSet(UML2Package.ASSOCIATION_CLASS__END_TYPE);
 	}
 
 	/**
@@ -150,7 +149,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	public EList getFeatures() {
 		EList feature = (EList)eVirtualGet(UML2Package.ASSOCIATION_CLASS__FEATURE);
 		if (feature == null) {
-			eVirtualSet(UML2Package.ASSOCIATION_CLASS__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.ASSOCIATION_CLASS__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute(), UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(), UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort(), UML2Package.eINSTANCE.getClass_OwnedOperation(), UML2Package.eINSTANCE.getClass_OwnedReception(), UML2Package.eINSTANCE.getAssociation_OwnedEnd()}));
+			eVirtualSet(UML2Package.ASSOCIATION_CLASS__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.ASSOCIATION_CLASS__FEATURE, new int[] {UML2Package.ASSOCIATION_CLASS__ATTRIBUTE, UML2Package.ASSOCIATION_CLASS__OWNED_CONNECTOR, UML2Package.ASSOCIATION_CLASS__OWNED_PORT, UML2Package.ASSOCIATION_CLASS__OWNED_OPERATION, UML2Package.ASSOCIATION_CLASS__OWNED_RECEPTION, UML2Package.ASSOCIATION_CLASS__OWNED_END}));
 		}
 		return feature;
 	}
@@ -163,7 +162,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
+			|| eIsSet(UML2Package.ASSOCIATION_CLASS__OWNED_END);
 	}
 
 	/**
@@ -187,7 +186,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
+			|| eIsSet(UML2Package.ASSOCIATION_CLASS__OWNED_END);
 	}
 
 
@@ -214,7 +213,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 */
 	public boolean isSetMembers() {
 		return super.isSetMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getAssociation_MemberEnd());
+			|| eIsSet(UML2Package.ASSOCIATION_CLASS__MEMBER_END);
 	}
 
 
@@ -511,8 +510,8 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.ASSOCIATION_CLASS__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.ASSOCIATION_CLASS__OWNED_ELEMENT:
@@ -628,7 +627,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__MEMBER_END:
 				return getMemberEnds();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -636,8 +635,8 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.ASSOCIATION_CLASS__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -782,7 +781,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				getMemberEnds().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -790,8 +789,8 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.ASSOCIATION_CLASS__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -910,7 +909,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				getMemberEnds().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -918,8 +917,8 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.ASSOCIATION_CLASS__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__OWNED_ELEMENT:
@@ -1056,7 +1055,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				EList memberEnd = (EList)eVirtualGet(UML2Package.ASSOCIATION_CLASS__MEMBER_END);
 				return memberEnd != null && !memberEnd.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

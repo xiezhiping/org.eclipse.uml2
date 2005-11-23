@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -304,8 +303,8 @@ public class GeneralOrderingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.GENERAL_ORDERING__OWNED_ELEMENT :
@@ -337,7 +336,7 @@ public class GeneralOrderingImpl
 					return getAfter();
 				return basicGetAfter();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -345,8 +344,8 @@ public class GeneralOrderingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -375,7 +374,7 @@ public class GeneralOrderingImpl
 				setAfter((OccurrenceSpecification) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -383,8 +382,8 @@ public class GeneralOrderingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -410,7 +409,7 @@ public class GeneralOrderingImpl
 				setAfter((OccurrenceSpecification) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -418,8 +417,8 @@ public class GeneralOrderingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.GENERAL_ORDERING__OWNED_ELEMENT :
@@ -454,7 +453,7 @@ public class GeneralOrderingImpl
 			case UMLPackage.GENERAL_ORDERING__AFTER :
 				return eVirtualGet(UMLPackage.GENERAL_ORDERING__AFTER) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 } //GeneralOrderingImpl

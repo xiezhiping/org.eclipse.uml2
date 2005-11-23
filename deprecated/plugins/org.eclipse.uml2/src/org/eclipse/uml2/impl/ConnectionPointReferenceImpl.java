@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.11 2005/11/22 14:57:02 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.12 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,7 +18,6 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.uml2.ConnectionPointReference;
 import org.eclipse.uml2.Pseudostate;
@@ -131,8 +130,8 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.CONNECTION_POINT_REFERENCE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.CONNECTION_POINT_REFERENCE__OWNED_ELEMENT:
@@ -167,7 +166,7 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 			case UML2Package.CONNECTION_POINT_REFERENCE__EXIT:
 				return getExits();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -175,8 +174,8 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.CONNECTION_POINT_REFERENCE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -225,7 +224,7 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 				getExits().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -233,8 +232,8 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.CONNECTION_POINT_REFERENCE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -275,7 +274,7 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 				getExits().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -283,8 +282,8 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.CONNECTION_POINT_REFERENCE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONNECTION_POINT_REFERENCE__OWNED_ELEMENT:
@@ -326,7 +325,7 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 				EList exit = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__EXIT);
 				return exit != null && !exit.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

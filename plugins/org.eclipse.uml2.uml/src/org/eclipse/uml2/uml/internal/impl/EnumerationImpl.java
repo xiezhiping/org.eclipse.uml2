@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,7 +19,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -85,13 +84,12 @@ public class EnumerationImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.ENUMERATION__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.ENUMERATION__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE.getDataType_OwnedAttribute(),
-						UMLPackage.eINSTANCE.getDataType_OwnedOperation(),
-						UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral()}));
+					this, UMLPackage.ENUMERATION__OWNED_MEMBER, new int[]{
+						UMLPackage.ENUMERATION__OWNED_RULE,
+						UMLPackage.ENUMERATION__OWNED_USE_CASE,
+						UMLPackage.ENUMERATION__OWNED_ATTRIBUTE,
+						UMLPackage.ENUMERATION__OWNED_OPERATION,
+						UMLPackage.ENUMERATION__OWNED_LITERAL}));
 		}
 		return ownedMember;
 	}
@@ -314,8 +312,8 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.ENUMERATION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.ENUMERATION__OWNED_ELEMENT :
@@ -409,7 +407,7 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__OWNED_LITERAL :
 				return getOwnedLiterals();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -417,8 +415,8 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.ENUMERATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -529,7 +527,7 @@ public class EnumerationImpl
 				getOwnedLiterals().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -537,8 +535,8 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ENUMERATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -630,7 +628,7 @@ public class EnumerationImpl
 				getOwnedLiterals().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -638,8 +636,8 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ENUMERATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_ELEMENT :
@@ -746,7 +744,7 @@ public class EnumerationImpl
 				List ownedLiteral = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_LITERAL);
 				return ownedLiteral != null && !ownedLiteral.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -756,7 +754,7 @@ public class EnumerationImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral());
+			|| eIsSet(UMLPackage.ENUMERATION__OWNED_LITERAL);
 	}
 
 } //EnumerationImpl

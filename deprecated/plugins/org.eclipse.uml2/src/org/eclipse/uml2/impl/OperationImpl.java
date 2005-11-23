@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.34 2005/11/22 14:57:02 khussey Exp $
+ * $Id: OperationImpl.java,v 1.35 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -423,7 +422,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public EList getRedefinitionContexts() {
 		EList redefinitionContext = (EList)eVirtualGet(UML2Package.OPERATION__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
-			eVirtualSet(UML2Package.OPERATION__REDEFINITION_CONTEXT, redefinitionContext = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getOperation_Class_(), UML2Package.eINSTANCE.getOperation_Datatype()}));
+			eVirtualSet(UML2Package.OPERATION__REDEFINITION_CONTEXT, redefinitionContext = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__REDEFINITION_CONTEXT, new int[] {UML2Package.OPERATION__CLASS_, UML2Package.OPERATION__DATATYPE}));
 		}
 		return redefinitionContext;
 	}
@@ -436,8 +435,8 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
-			|| eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
-			|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
+			|| eIsSet(UML2Package.OPERATION__CLASS_)
+			|| eIsSet(UML2Package.OPERATION__DATATYPE);
 	}
 
 	/**
@@ -448,7 +447,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public EList getFeaturingClassifiers() {
 		EList featuringClassifier = (EList)eVirtualGet(UML2Package.OPERATION__FEATURING_CLASSIFIER);
 		if (featuringClassifier == null) {
-			eVirtualSet(UML2Package.OPERATION__FEATURING_CLASSIFIER, featuringClassifier = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__FEATURING_CLASSIFIER, new EStructuralFeature[] {UML2Package.eINSTANCE.getOperation_Class_(), UML2Package.eINSTANCE.getOperation_Datatype()}));
+			eVirtualSet(UML2Package.OPERATION__FEATURING_CLASSIFIER, featuringClassifier = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__FEATURING_CLASSIFIER, new int[] {UML2Package.OPERATION__CLASS_, UML2Package.OPERATION__DATATYPE}));
 		}
 		return featuringClassifier;
 	}
@@ -461,8 +460,8 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
-			|| eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
-			|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
+			|| eIsSet(UML2Package.OPERATION__CLASS_)
+			|| eIsSet(UML2Package.OPERATION__DATATYPE);
 	}
 
 	/**
@@ -851,7 +850,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
+			|| eIsSet(UML2Package.OPERATION__OWNING_PARAMETER);
 	}
 
 
@@ -1140,8 +1139,8 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
-			|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
+			|| eIsSet(UML2Package.OPERATION__CLASS_)
+			|| eIsSet(UML2Package.OPERATION__DATATYPE);
 	}
 
 
@@ -1175,9 +1174,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getOperation_Precondition())
-			|| eIsSet(UML2Package.eINSTANCE.getOperation_Postcondition())
-			|| eIsSet(UML2Package.eINSTANCE.getOperation_BodyCondition());
+			|| eIsSet(UML2Package.OPERATION__PRECONDITION)
+			|| eIsSet(UML2Package.OPERATION__POSTCONDITION)
+			|| eIsSet(UML2Package.OPERATION__BODY_CONDITION);
 	}
 
 
@@ -1204,7 +1203,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getOperation_RedefinedOperation());
+			|| eIsSet(UML2Package.OPERATION__REDEFINED_OPERATION);
 	}
 
 
@@ -1356,8 +1355,8 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.OPERATION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.OPERATION__OWNED_ELEMENT:
@@ -1450,7 +1449,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__BODY_CONDITION:
 				return getBodyCondition();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1458,8 +1457,8 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.OPERATION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -1578,7 +1577,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 				setBodyCondition((Constraint)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1586,8 +1585,8 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.OPERATION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -1691,7 +1690,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 				setBodyCondition((Constraint)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1699,8 +1698,8 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.OPERATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.OPERATION__OWNED_ELEMENT:
@@ -1802,7 +1801,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__BODY_CONDITION:
 				return eVirtualGet(UML2Package.OPERATION__BODY_CONDITION) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1946,8 +1945,8 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
-			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
+			|| eIsSet(UML2Package.OPERATION__UPPER_VALUE)
+			|| eIsSet(UML2Package.OPERATION__LOWER_VALUE);
 	}
 
 
@@ -1982,7 +1981,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public EList getParameters() {
 		EList parameter = (EList)eVirtualGet(UML2Package.OPERATION__PARAMETER);
 		if (parameter == null) {
-			eVirtualSet(UML2Package.OPERATION__PARAMETER, parameter = new DerivedUnionEObjectEList(Parameter.class, this, UML2Package.OPERATION__PARAMETER, new EStructuralFeature[] {UML2Package.eINSTANCE.getOperation_OwnedParameter(), UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult()}));
+			eVirtualSet(UML2Package.OPERATION__PARAMETER, parameter = new DerivedUnionEObjectEList(Parameter.class, this, UML2Package.OPERATION__PARAMETER, new int[] {UML2Package.OPERATION__OWNED_PARAMETER, UML2Package.OPERATION__RETURN_RESULT}));
 		}
 		return parameter;
 	}

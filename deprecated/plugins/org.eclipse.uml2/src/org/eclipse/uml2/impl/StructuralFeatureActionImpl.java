@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionImpl.java,v 1.20 2005/11/22 14:57:02 khussey Exp $
+ * $Id: StructuralFeatureActionImpl.java,v 1.21 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -89,7 +88,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 	public EList getInputs() {
 		EList input = (EList)eVirtualGet(UML2Package.STRUCTURAL_FEATURE_ACTION__INPUT);
 		if (input == null) {
-			eVirtualSet(UML2Package.STRUCTURAL_FEATURE_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.STRUCTURAL_FEATURE_ACTION__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuralFeatureAction_Object()}));
+			eVirtualSet(UML2Package.STRUCTURAL_FEATURE_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.STRUCTURAL_FEATURE_ACTION__INPUT, new int[] {UML2Package.STRUCTURAL_FEATURE_ACTION__OBJECT}));
 		}
 		return input;
 	}
@@ -102,7 +101,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UML2Package.eINSTANCE.getStructuralFeatureAction_Object());
+			|| eIsSet(UML2Package.STRUCTURAL_FEATURE_ACTION__OBJECT);
 	}
 
 	/**
@@ -273,8 +272,8 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__OWNED_ELEMENT:
@@ -338,7 +337,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__OBJECT:
 				return getObject();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -346,8 +345,8 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -427,7 +426,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 				setObject((InputPin)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -435,8 +434,8 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -504,7 +503,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 				setObject((InputPin)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -512,8 +511,8 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__OWNED_ELEMENT:
@@ -587,7 +586,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__OBJECT:
 				return eVirtualGet(UML2Package.STRUCTURAL_FEATURE_ACTION__OBJECT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

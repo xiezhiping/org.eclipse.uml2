@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.3 2005/11/22 15:32:38 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.4 2005/11/23 13:27:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -125,8 +124,7 @@ public class LoopNodeImpl
 			eVirtualSet(UMLPackage.LOOP_NODE__OUTPUT,
 				output = new DerivedUnionEObjectEList(OutputPin.class, this,
 					UMLPackage.LOOP_NODE__OUTPUT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getLoopNode_Result()}));
+					new int[]{UMLPackage.LOOP_NODE__RESULT}));
 		}
 		return output;
 	}
@@ -141,20 +139,19 @@ public class LoopNodeImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.LOOP_NODE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getExecutableNode_Handler(),
-						UMLPackage.eINSTANCE.getAction_Output(),
-						UMLPackage.eINSTANCE.getAction_Input(),
-						UMLPackage.eINSTANCE.getAction_LocalPrecondition(),
-						UMLPackage.eINSTANCE.getAction_LocalPostcondition(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE.getActivityGroup_Subgroup(),
-						UMLPackage.eINSTANCE.getLoopNode_LoopVariable()}));
+					this, UMLPackage.LOOP_NODE__OWNED_ELEMENT, new int[]{
+						UMLPackage.LOOP_NODE__OWNED_COMMENT,
+						UMLPackage.LOOP_NODE__NAME_EXPRESSION,
+						UMLPackage.LOOP_NODE__HANDLER,
+						UMLPackage.LOOP_NODE__OUTPUT,
+						UMLPackage.LOOP_NODE__INPUT,
+						UMLPackage.LOOP_NODE__LOCAL_PRECONDITION,
+						UMLPackage.LOOP_NODE__LOCAL_POSTCONDITION,
+						UMLPackage.LOOP_NODE__ELEMENT_IMPORT,
+						UMLPackage.LOOP_NODE__PACKAGE_IMPORT,
+						UMLPackage.LOOP_NODE__OWNED_MEMBER,
+						UMLPackage.LOOP_NODE__SUBGROUP,
+						UMLPackage.LOOP_NODE__LOOP_VARIABLE}));
 		}
 		return ownedElement;
 	}
@@ -170,8 +167,7 @@ public class LoopNodeImpl
 			eVirtualSet(UMLPackage.LOOP_NODE__INPUT,
 				input = new DerivedUnionEObjectEList(InputPin.class, this,
 					UMLPackage.LOOP_NODE__INPUT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getLoopNode_LoopVariableInput()}));
+					new int[]{UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT}));
 		}
 		return input;
 	}
@@ -625,8 +621,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.LOOP_NODE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.LOOP_NODE__OWNED_ELEMENT :
@@ -740,7 +736,7 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
 				return getLoopVariableInputs();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -748,8 +744,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.LOOP_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -877,7 +873,7 @@ public class LoopNodeImpl
 				getLoopVariableInputs().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -885,8 +881,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.LOOP_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -990,7 +986,7 @@ public class LoopNodeImpl
 				getLoopVariableInputs().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -998,8 +994,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.LOOP_NODE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.LOOP_NODE__OWNED_ELEMENT :
@@ -1137,7 +1133,7 @@ public class LoopNodeImpl
 				return loopVariableInput != null
 					&& !loopVariableInput.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1162,8 +1158,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public boolean isSetOutputs() {
-		return super.isSetOutputs()
-			|| eIsSet(UMLPackage.eINSTANCE.getLoopNode_Result());
+		return super.isSetOutputs() || eIsSet(UMLPackage.LOOP_NODE__RESULT);
 	}
 
 	/**
@@ -1173,7 +1168,7 @@ public class LoopNodeImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getLoopNode_LoopVariable());
+			|| eIsSet(UMLPackage.LOOP_NODE__LOOP_VARIABLE);
 	}
 
 	/**
@@ -1183,7 +1178,7 @@ public class LoopNodeImpl
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UMLPackage.eINSTANCE.getLoopNode_LoopVariableInput());
+			|| eIsSet(UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT);
 	}
 
 } //LoopNodeImpl

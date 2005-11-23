@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -92,8 +91,7 @@ public abstract class ActivityGroupImpl
 		if (subgroup == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__SUBGROUP,
 				subgroup = new DerivedUnionEObjectEList(ActivityGroup.class,
-					this, UMLPackage.ACTIVITY_GROUP__SUBGROUP,
-					new EStructuralFeature[]{}));
+					this, UMLPackage.ACTIVITY_GROUP__SUBGROUP, new int[]{}));
 		}
 		return subgroup;
 	}
@@ -108,10 +106,9 @@ public abstract class ActivityGroupImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getActivityGroup_Subgroup()}));
+					this, UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT, new int[]{
+						UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT,
+						UMLPackage.ACTIVITY_GROUP__SUBGROUP}));
 		}
 		return ownedElement;
 	}
@@ -127,8 +124,7 @@ public abstract class ActivityGroupImpl
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE,
 				containedNode = new DerivedUnionEObjectEList(
 					ActivityNode.class, this,
-					UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE,
-					new EStructuralFeature[]{}));
+					UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, new int[]{}));
 		}
 		return containedNode;
 	}
@@ -159,8 +155,7 @@ public abstract class ActivityGroupImpl
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE,
 				containedEdge = new DerivedUnionEObjectEList(
 					ActivityEdge.class, this,
-					UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE,
-					new EStructuralFeature[]{}));
+					UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, new int[]{}));
 		}
 		return containedEdge;
 	}
@@ -327,8 +322,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT :
@@ -348,7 +343,7 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
 				return getContainedEdges();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -356,8 +351,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -370,7 +365,7 @@ public abstract class ActivityGroupImpl
 				setInActivity((Activity) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -378,8 +373,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -390,7 +385,7 @@ public abstract class ActivityGroupImpl
 				setInActivity((Activity) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -398,8 +393,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT :
@@ -420,7 +415,7 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
 				return isSetContainedEdges();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -482,7 +477,7 @@ public abstract class ActivityGroupImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner() || isSetSuperGroup()
-			|| eIsSet(UMLPackage.eINSTANCE.getActivityGroup_InActivity());
+			|| eIsSet(UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY);
 	}
 
 	/**

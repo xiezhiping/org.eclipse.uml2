@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.25 2005/11/22 14:57:01 khussey Exp $
+ * $Id: SignalImpl.java,v 1.26 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -88,7 +87,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	public EList getAttributes() {
 		EList attribute = (EList)eVirtualGet(UML2Package.SIGNAL__ATTRIBUTE);
 		if (attribute == null) {
-			eVirtualSet(UML2Package.SIGNAL__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.SIGNAL__ATTRIBUTE, new EStructuralFeature[] {UML2Package.eINSTANCE.getSignal_OwnedAttribute()}));
+			eVirtualSet(UML2Package.SIGNAL__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.SIGNAL__ATTRIBUTE, new int[] {UML2Package.SIGNAL__OWNED_ATTRIBUTE}));
 		}
 		return attribute;
 	}
@@ -101,7 +100,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 */
 	public boolean isSetAttributes() {
 		return super.isSetAttributes()
-			|| eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute());
+			|| eIsSet(UML2Package.SIGNAL__OWNED_ATTRIBUTE);
 	}
 
 	/**
@@ -217,8 +216,8 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.SIGNAL__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.SIGNAL__OWNED_ELEMENT:
@@ -294,7 +293,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -302,8 +301,8 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.SIGNAL__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -395,7 +394,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 				getOwnedAttributes().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -403,8 +402,8 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.SIGNAL__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -481,7 +480,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 				getOwnedAttributes().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -489,8 +488,8 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.SIGNAL__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SIGNAL__OWNED_ELEMENT:
@@ -579,7 +578,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 				EList ownedAttribute = (EList)eVirtualGet(UML2Package.SIGNAL__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 
@@ -604,7 +603,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute());
+			|| eIsSet(UML2Package.SIGNAL__OWNED_ATTRIBUTE);
 	}
 
 

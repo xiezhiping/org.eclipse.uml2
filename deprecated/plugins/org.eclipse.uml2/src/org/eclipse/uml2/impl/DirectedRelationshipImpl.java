@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.13 2005/11/14 17:31:07 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.14 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.uml2.DirectedRelationship;
 import org.eclipse.uml2.Element;
@@ -72,7 +71,7 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	public EList getSources() {
 		EList source = (EList)eVirtualGet(UML2Package.DIRECTED_RELATIONSHIP__SOURCE);
 		if (source == null) {
-			eVirtualSet(UML2Package.DIRECTED_RELATIONSHIP__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__SOURCE, new EStructuralFeature[] {}));
+			eVirtualSet(UML2Package.DIRECTED_RELATIONSHIP__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__SOURCE, new int[] {}));
 		}
 		return source;
 	}
@@ -95,7 +94,7 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	public EList getRelatedElements() {
 		EList relatedElement = (EList)eVirtualGet(UML2Package.DIRECTED_RELATIONSHIP__RELATED_ELEMENT);
 		if (relatedElement == null) {
-			eVirtualSet(UML2Package.DIRECTED_RELATIONSHIP__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()}));
+			eVirtualSet(UML2Package.DIRECTED_RELATIONSHIP__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__RELATED_ELEMENT, new int[] {UML2Package.DIRECTED_RELATIONSHIP__SOURCE, UML2Package.DIRECTED_RELATIONSHIP__TARGET}));
 		}
 		return relatedElement;
 	}
@@ -120,7 +119,7 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	public EList getTargets() {
 		EList target = (EList)eVirtualGet(UML2Package.DIRECTED_RELATIONSHIP__TARGET);
 		if (target == null) {
-			eVirtualSet(UML2Package.DIRECTED_RELATIONSHIP__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__TARGET, new EStructuralFeature[] {}));
+			eVirtualSet(UML2Package.DIRECTED_RELATIONSHIP__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__TARGET, new int[] {}));
 		}
 		return target;
 	}
@@ -131,17 +130,8 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetTargets() {
-		return false;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.DIRECTED_RELATIONSHIP__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.DIRECTED_RELATIONSHIP__OWNED_ELEMENT:
@@ -158,7 +148,7 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 			case UML2Package.DIRECTED_RELATIONSHIP__TARGET:
 				return getTargets();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -166,8 +156,8 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.DIRECTED_RELATIONSHIP__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DIRECTED_RELATIONSHIP__OWNED_ELEMENT:
@@ -184,8 +174,17 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 			case UML2Package.DIRECTED_RELATIONSHIP__TARGET:
 				return isSetTargets();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return false;
+	}
 
 } //DirectedRelationshipImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.17 2005/11/22 14:57:02 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.18 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -159,7 +158,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	public EList getInGroups() {
 		EList inGroup = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__IN_GROUP);
 		if (inGroup == null) {
-			eVirtualSet(UML2Package.ACTIVITY_NODE__IN_GROUP, inGroup = new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_NODE__IN_GROUP, new EStructuralFeature[] {UML2Package.eINSTANCE.getActivityNode_InStructuredNode(), UML2Package.eINSTANCE.getActivityNode_InPartition(), UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion()}));
+			eVirtualSet(UML2Package.ACTIVITY_NODE__IN_GROUP, inGroup = new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_NODE__IN_GROUP, new int[] {UML2Package.ACTIVITY_NODE__IN_STRUCTURED_NODE, UML2Package.ACTIVITY_NODE__IN_PARTITION, UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION}));
 		}
 		return inGroup;
 	}
@@ -171,9 +170,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public boolean isSetInGroups() {
-		return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
-			|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
-			|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
+		return eIsSet(UML2Package.ACTIVITY_NODE__IN_STRUCTURED_NODE)
+			|| eIsSet(UML2Package.ACTIVITY_NODE__IN_PARTITION)
+			|| eIsSet(UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
 	}
 
 	/**
@@ -344,7 +343,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
+			|| eIsSet(UML2Package.ACTIVITY_NODE__ACTIVITY);
 	}
 
 
@@ -455,8 +454,8 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_NODE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.ACTIVITY_NODE__OWNED_ELEMENT:
@@ -501,7 +500,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION:
 				return getInInterruptibleRegions();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -509,8 +508,8 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_NODE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -569,7 +568,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 				getInInterruptibleRegions().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -577,8 +576,8 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_NODE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -628,7 +627,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 				getInInterruptibleRegions().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -636,8 +635,8 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.ACTIVITY_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_NODE__OWNED_ELEMENT:
@@ -689,7 +688,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

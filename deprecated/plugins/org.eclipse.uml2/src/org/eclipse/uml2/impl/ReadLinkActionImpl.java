@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionImpl.java,v 1.19 2005/11/22 14:57:03 khussey Exp $
+ * $Id: ReadLinkActionImpl.java,v 1.20 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -87,7 +86,7 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 	public EList getOutputs() {
 		EList output = (EList)eVirtualGet(UML2Package.READ_LINK_ACTION__OUTPUT);
 		if (output == null) {
-			eVirtualSet(UML2Package.READ_LINK_ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.READ_LINK_ACTION__OUTPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getReadLinkAction_Result()}));
+			eVirtualSet(UML2Package.READ_LINK_ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.READ_LINK_ACTION__OUTPUT, new int[] {UML2Package.READ_LINK_ACTION__RESULT}));
 		}
 		return output;
 	}
@@ -100,7 +99,7 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 	 */
 	public boolean isSetOutputs() {
 		return super.isSetOutputs()
-			|| eIsSet(UML2Package.eINSTANCE.getReadLinkAction_Result());
+			|| eIsSet(UML2Package.READ_LINK_ACTION__RESULT);
 	}
 
 	/**
@@ -232,8 +231,8 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.READ_LINK_ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.READ_LINK_ACTION__OWNED_ELEMENT:
@@ -296,7 +295,7 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 			case UML2Package.READ_LINK_ACTION__RESULT:
 				return getResult();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -304,8 +303,8 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.READ_LINK_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -386,7 +385,7 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 				setResult((OutputPin)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -394,8 +393,8 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.READ_LINK_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -463,7 +462,7 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 				setResult((OutputPin)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -471,8 +470,8 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.READ_LINK_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.READ_LINK_ACTION__OWNED_ELEMENT:
@@ -547,7 +546,7 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 			case UML2Package.READ_LINK_ACTION__RESULT:
 				return eVirtualGet(UML2Package.READ_LINK_ACTION__RESULT) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

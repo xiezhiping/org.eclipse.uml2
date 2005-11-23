@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.30 2005/11/22 14:57:01 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.31 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -109,7 +108,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	public EList getAttributes() {
 		EList attribute = (EList)eVirtualGet(UML2Package.INTERFACE__ATTRIBUTE);
 		if (attribute == null) {
-			eVirtualSet(UML2Package.INTERFACE__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.INTERFACE__ATTRIBUTE, new EStructuralFeature[] {UML2Package.eINSTANCE.getInterface_OwnedAttribute()}));
+			eVirtualSet(UML2Package.INTERFACE__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.INTERFACE__ATTRIBUTE, new int[] {UML2Package.INTERFACE__OWNED_ATTRIBUTE}));
 		}
 		return attribute;
 	}
@@ -122,7 +121,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 */
 	public boolean isSetAttributes() {
 		return super.isSetAttributes()
-			|| eIsSet(UML2Package.eINSTANCE.getInterface_OwnedAttribute());
+			|| eIsSet(UML2Package.INTERFACE__OWNED_ATTRIBUTE);
 	}
 
 	/**
@@ -133,7 +132,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	public EList getFeatures() {
 		EList feature = (EList)eVirtualGet(UML2Package.INTERFACE__FEATURE);
 		if (feature == null) {
-			eVirtualSet(UML2Package.INTERFACE__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.INTERFACE__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute(), UML2Package.eINSTANCE.getInterface_OwnedOperation(), UML2Package.eINSTANCE.getInterface_OwnedReception()}));
+			eVirtualSet(UML2Package.INTERFACE__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.INTERFACE__FEATURE, new int[] {UML2Package.INTERFACE__ATTRIBUTE, UML2Package.INTERFACE__OWNED_OPERATION, UML2Package.INTERFACE__OWNED_RECEPTION}));
 		}
 		return feature;
 	}
@@ -146,8 +145,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UML2Package.eINSTANCE.getInterface_OwnedOperation())
-			|| eIsSet(UML2Package.eINSTANCE.getInterface_OwnedReception());
+			|| eIsSet(UML2Package.INTERFACE__OWNED_OPERATION)
+			|| eIsSet(UML2Package.INTERFACE__OWNED_RECEPTION);
 	}
 
 	/**
@@ -534,8 +533,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.INTERFACE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.INTERFACE__OWNED_ELEMENT:
@@ -621,7 +620,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__PROTOCOL:
 				return getProtocol();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -629,8 +628,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.INTERFACE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -741,7 +740,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 				setProtocol((ProtocolStateMachine)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -749,8 +748,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.INTERFACE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -842,7 +841,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 				setProtocol((ProtocolStateMachine)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -850,8 +849,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.INTERFACE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERFACE__OWNED_ELEMENT:
@@ -954,7 +953,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__PROTOCOL:
 				return eVirtualGet(UML2Package.INTERFACE__PROTOCOL) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 
@@ -995,11 +994,11 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getInterface_OwnedAttribute())
-			|| eIsSet(UML2Package.eINSTANCE.getInterface_OwnedOperation())
-			|| eIsSet(UML2Package.eINSTANCE.getInterface_NestedClassifier())
-			|| eIsSet(UML2Package.eINSTANCE.getInterface_OwnedReception())
-			|| eIsSet(UML2Package.eINSTANCE.getInterface_Protocol());
+			|| eIsSet(UML2Package.INTERFACE__OWNED_ATTRIBUTE)
+			|| eIsSet(UML2Package.INTERFACE__OWNED_OPERATION)
+			|| eIsSet(UML2Package.INTERFACE__NESTED_CLASSIFIER)
+			|| eIsSet(UML2Package.INTERFACE__OWNED_RECEPTION)
+			|| eIsSet(UML2Package.INTERFACE__PROTOCOL);
 	}
 
 
@@ -1026,7 +1025,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getInterface_RedefinedInterface());
+			|| eIsSet(UML2Package.INTERFACE__REDEFINED_INTERFACE);
 	}
 
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -110,8 +109,7 @@ public class InterfaceImpl
 			eVirtualSet(UMLPackage.INTERFACE__ATTRIBUTE,
 				attribute = new DerivedUnionEObjectEList(Property.class, this,
 					UMLPackage.INTERFACE__ATTRIBUTE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getInterface_OwnedAttribute()}));
+					new int[]{UMLPackage.INTERFACE__OWNED_ATTRIBUTE}));
 		}
 		return attribute;
 	}
@@ -126,15 +124,14 @@ public class InterfaceImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.INTERFACE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.INTERFACE__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE.getInterface_OwnedAttribute(),
-						UMLPackage.eINSTANCE.getInterface_NestedClassifier(),
-						UMLPackage.eINSTANCE.getInterface_OwnedReception(),
-						UMLPackage.eINSTANCE.getInterface_Protocol(),
-						UMLPackage.eINSTANCE.getInterface_OwnedOperation()}));
+					this, UMLPackage.INTERFACE__OWNED_MEMBER, new int[]{
+						UMLPackage.INTERFACE__OWNED_RULE,
+						UMLPackage.INTERFACE__OWNED_USE_CASE,
+						UMLPackage.INTERFACE__OWNED_ATTRIBUTE,
+						UMLPackage.INTERFACE__NESTED_CLASSIFIER,
+						UMLPackage.INTERFACE__OWNED_RECEPTION,
+						UMLPackage.INTERFACE__PROTOCOL,
+						UMLPackage.INTERFACE__OWNED_OPERATION}));
 		}
 		return ownedMember;
 	}
@@ -147,15 +144,12 @@ public class InterfaceImpl
 	public List getRedefinedElements() {
 		List redefinedElement = (List) eVirtualGet(UMLPackage.INTERFACE__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
-			eVirtualSet(
-				UMLPackage.INTERFACE__REDEFINED_ELEMENT,
+			eVirtualSet(UMLPackage.INTERFACE__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
-					UMLPackage.INTERFACE__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE
-							.getClassifier_RedefinedClassifier(),
-						UMLPackage.eINSTANCE.getInterface_RedefinedInterface()}));
+					UMLPackage.INTERFACE__REDEFINED_ELEMENT, new int[]{
+						UMLPackage.INTERFACE__REDEFINED_CLASSIFIER,
+						UMLPackage.INTERFACE__REDEFINED_INTERFACE}));
 		}
 		return redefinedElement;
 	}
@@ -170,10 +164,10 @@ public class InterfaceImpl
 		if (feature == null) {
 			eVirtualSet(UMLPackage.INTERFACE__FEATURE,
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
-					UMLPackage.INTERFACE__FEATURE, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getClassifier_Attribute(),
-						UMLPackage.eINSTANCE.getInterface_OwnedReception(),
-						UMLPackage.eINSTANCE.getInterface_OwnedOperation()}));
+					UMLPackage.INTERFACE__FEATURE, new int[]{
+						UMLPackage.INTERFACE__ATTRIBUTE,
+						UMLPackage.INTERFACE__OWNED_RECEPTION,
+						UMLPackage.INTERFACE__OWNED_OPERATION}));
 		}
 		return feature;
 	}
@@ -642,8 +636,8 @@ public class InterfaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.INTERFACE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.INTERFACE__OWNED_ELEMENT :
@@ -743,7 +737,7 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__OWNED_OPERATION :
 				return getOwnedOperations();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -751,8 +745,8 @@ public class InterfaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.INTERFACE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -874,7 +868,7 @@ public class InterfaceImpl
 				getOwnedOperations().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -882,8 +876,8 @@ public class InterfaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INTERFACE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -984,7 +978,7 @@ public class InterfaceImpl
 				getOwnedOperations().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -992,8 +986,8 @@ public class InterfaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.INTERFACE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERFACE__OWNED_ELEMENT :
@@ -1109,7 +1103,7 @@ public class InterfaceImpl
 				List ownedOperation = (List) eVirtualGet(UMLPackage.INTERFACE__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1119,7 +1113,7 @@ public class InterfaceImpl
 	 */
 	public boolean isSetAttributes() {
 		return super.isSetAttributes()
-			|| eIsSet(UMLPackage.eINSTANCE.getInterface_OwnedAttribute());
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_ATTRIBUTE);
 	}
 
 	/**
@@ -1129,11 +1123,11 @@ public class InterfaceImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getInterface_OwnedAttribute())
-			|| eIsSet(UMLPackage.eINSTANCE.getInterface_NestedClassifier())
-			|| eIsSet(UMLPackage.eINSTANCE.getInterface_OwnedReception())
-			|| eIsSet(UMLPackage.eINSTANCE.getInterface_Protocol())
-			|| eIsSet(UMLPackage.eINSTANCE.getInterface_OwnedOperation());
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_ATTRIBUTE)
+			|| eIsSet(UMLPackage.INTERFACE__NESTED_CLASSIFIER)
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION)
+			|| eIsSet(UMLPackage.INTERFACE__PROTOCOL)
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION);
 	}
 
 	/**
@@ -1143,7 +1137,7 @@ public class InterfaceImpl
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getInterface_RedefinedInterface());
+			|| eIsSet(UMLPackage.INTERFACE__REDEFINED_INTERFACE);
 	}
 
 	/**
@@ -1153,8 +1147,8 @@ public class InterfaceImpl
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UMLPackage.eINSTANCE.getInterface_OwnedReception())
-			|| eIsSet(UMLPackage.eINSTANCE.getInterface_OwnedOperation());
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION)
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION);
 	}
 
 } //InterfaceImpl

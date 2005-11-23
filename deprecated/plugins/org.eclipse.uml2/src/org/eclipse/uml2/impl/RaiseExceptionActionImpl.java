@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.18 2005/11/22 14:57:02 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.19 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -83,7 +82,7 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 	public EList getInputs() {
 		EList input = (EList)eVirtualGet(UML2Package.RAISE_EXCEPTION_ACTION__INPUT);
 		if (input == null) {
-			eVirtualSet(UML2Package.RAISE_EXCEPTION_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.RAISE_EXCEPTION_ACTION__INPUT, new EStructuralFeature[] {UML2Package.eINSTANCE.getRaiseExceptionAction_Exception()}));
+			eVirtualSet(UML2Package.RAISE_EXCEPTION_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.RAISE_EXCEPTION_ACTION__INPUT, new int[] {UML2Package.RAISE_EXCEPTION_ACTION__EXCEPTION}));
 		}
 		return input;
 	}
@@ -96,7 +95,7 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UML2Package.eINSTANCE.getRaiseExceptionAction_Exception());
+			|| eIsSet(UML2Package.RAISE_EXCEPTION_ACTION__EXCEPTION);
 	}
 
 	/**
@@ -146,8 +145,8 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.RAISE_EXCEPTION_ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.RAISE_EXCEPTION_ACTION__OWNED_ELEMENT:
@@ -209,7 +208,7 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 				if (resolve) return getException();
 				return basicGetException();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -217,8 +216,8 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.RAISE_EXCEPTION_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -295,7 +294,7 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 				setException((InputPin)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -303,8 +302,8 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.RAISE_EXCEPTION_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -369,7 +368,7 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 				setException((InputPin)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -377,8 +376,8 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.RAISE_EXCEPTION_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.RAISE_EXCEPTION_ACTION__OWNED_ELEMENT:
@@ -450,7 +449,7 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 			case UML2Package.RAISE_EXCEPTION_ACTION__EXCEPTION:
 				return eVirtualGet(UML2Package.RAISE_EXCEPTION_ACTION__EXCEPTION) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

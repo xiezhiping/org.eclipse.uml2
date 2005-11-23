@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.LiteralBoolean;
@@ -135,8 +133,8 @@ public class LiteralBooleanImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.LITERAL_BOOLEAN__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.LITERAL_BOOLEAN__OWNED_ELEMENT :
@@ -176,7 +174,7 @@ public class LiteralBooleanImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -184,8 +182,8 @@ public class LiteralBooleanImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.LITERAL_BOOLEAN__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -220,7 +218,7 @@ public class LiteralBooleanImpl
 				setValue(((Boolean) newValue).booleanValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -228,8 +226,8 @@ public class LiteralBooleanImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.LITERAL_BOOLEAN__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -261,7 +259,7 @@ public class LiteralBooleanImpl
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -269,8 +267,8 @@ public class LiteralBooleanImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.LITERAL_BOOLEAN__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.LITERAL_BOOLEAN__OWNED_ELEMENT :
@@ -308,7 +306,7 @@ public class LiteralBooleanImpl
 			case UMLPackage.LITERAL_BOOLEAN__VALUE :
 				return ((eFlags & VALUE_EFLAG) != 0) != VALUE_EDEFAULT;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

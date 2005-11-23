@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -131,8 +130,7 @@ public class DestroyObjectActionImpl
 			eVirtualSet(UMLPackage.DESTROY_OBJECT_ACTION__INPUT,
 				input = new DerivedUnionEObjectEList(InputPin.class, this,
 					UMLPackage.DESTROY_OBJECT_ACTION__INPUT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getDestroyObjectAction_Target()}));
+					new int[]{UMLPackage.DESTROY_OBJECT_ACTION__TARGET}));
 		}
 		return input;
 	}
@@ -356,8 +354,8 @@ public class DestroyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.DESTROY_OBJECT_ACTION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.DESTROY_OBJECT_ACTION__OWNED_ELEMENT :
@@ -427,7 +425,7 @@ public class DestroyObjectActionImpl
 			case UMLPackage.DESTROY_OBJECT_ACTION__TARGET :
 				return getTarget();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -435,8 +433,8 @@ public class DestroyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.DESTROY_OBJECT_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -509,7 +507,7 @@ public class DestroyObjectActionImpl
 				setTarget((InputPin) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -517,8 +515,8 @@ public class DestroyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.DESTROY_OBJECT_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -580,7 +578,7 @@ public class DestroyObjectActionImpl
 				setTarget((InputPin) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -588,8 +586,8 @@ public class DestroyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.DESTROY_OBJECT_ACTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DESTROY_OBJECT_ACTION__OWNED_ELEMENT :
@@ -672,7 +670,7 @@ public class DestroyObjectActionImpl
 			case UMLPackage.DESTROY_OBJECT_ACTION__TARGET :
 				return eVirtualGet(UMLPackage.DESTROY_OBJECT_ACTION__TARGET) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -700,7 +698,7 @@ public class DestroyObjectActionImpl
 	 */
 	public boolean isSetInputs() {
 		return super.isSetInputs()
-			|| eIsSet(UMLPackage.eINSTANCE.getDestroyObjectAction_Target());
+			|| eIsSet(UMLPackage.DESTROY_OBJECT_ACTION__TARGET);
 	}
 
 } //DestroyObjectActionImpl

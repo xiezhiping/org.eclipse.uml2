@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.17 2005/11/22 14:57:03 khussey Exp $
+ * $Id: TypeImpl.java,v 1.18 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Namespace;
@@ -86,32 +85,8 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.Package package_ = getPackage();			
-		if (package_ != null) {
-			return package_;
-		}
-		return super.basicGetNamespace();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetNamespace() {
-		return super.isSetNamespace()
-			|| eIsSet(UML2Package.eINSTANCE.getType_Package());
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.TYPE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.TYPE__OWNED_ELEMENT:
@@ -145,7 +120,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 			case UML2Package.TYPE__PACKAGE:
 				return getPackage();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -153,8 +128,8 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.TYPE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TYPE__OWNED_ELEMENT:
@@ -190,7 +165,31 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 			case UML2Package.TYPE__PACKAGE:
 				return getPackage() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace basicGetNamespace() {
+		org.eclipse.uml2.Package package_ = getPackage();			
+		if (package_ != null) {
+			return package_;
+		}
+		return super.basicGetNamespace();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UML2Package.TYPE__PACKAGE);
 	}
 
 

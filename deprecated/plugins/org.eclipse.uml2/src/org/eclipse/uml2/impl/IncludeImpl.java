@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.19 2005/11/22 14:57:02 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.20 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -91,7 +90,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	public EList getRelatedElements() {
 		EList relatedElement = (EList)eVirtualGet(UML2Package.INCLUDE__RELATED_ELEMENT);
 		if (relatedElement == null) {
-			eVirtualSet(UML2Package.INCLUDE__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__RELATED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getDirectedRelationship_Source(), UML2Package.eINSTANCE.getDirectedRelationship_Target()}));
+			eVirtualSet(UML2Package.INCLUDE__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__RELATED_ELEMENT, new int[] {UML2Package.INCLUDE__SOURCE, UML2Package.INCLUDE__TARGET}));
 		}
 		return relatedElement;
 	}
@@ -190,7 +189,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	public EList getSources() {
 		EList source = (EList)eVirtualGet(UML2Package.INCLUDE__SOURCE);
 		if (source == null) {
-			eVirtualSet(UML2Package.INCLUDE__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getInclude_IncludingCase()}));
+			eVirtualSet(UML2Package.INCLUDE__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__SOURCE, new int[] {UML2Package.INCLUDE__INCLUDING_CASE}));
 		}
 		return source;
 	}
@@ -202,7 +201,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public boolean isSetSources() {
-		return eIsSet(UML2Package.eINSTANCE.getInclude_IncludingCase());
+		return eIsSet(UML2Package.INCLUDE__INCLUDING_CASE);
 	}
 
 	/**
@@ -213,7 +212,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	public EList getTargets() {
 		EList target = (EList)eVirtualGet(UML2Package.INCLUDE__TARGET);
 		if (target == null) {
-			eVirtualSet(UML2Package.INCLUDE__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getInclude_Addition()}));
+			eVirtualSet(UML2Package.INCLUDE__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__TARGET, new int[] {UML2Package.INCLUDE__ADDITION}));
 		}
 		return target;
 	}
@@ -225,7 +224,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public boolean isSetTargets() {
-		return eIsSet(UML2Package.eINSTANCE.getInclude_Addition());
+		return eIsSet(UML2Package.INCLUDE__ADDITION);
 	}
 
 	/**
@@ -311,8 +310,8 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.INCLUDE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.INCLUDE__OWNED_ELEMENT:
@@ -348,7 +347,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 				if (resolve) return getAddition();
 				return basicGetAddition();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -356,8 +355,8 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.INCLUDE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -393,7 +392,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 				setAddition((UseCase)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -401,8 +400,8 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.INCLUDE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -434,7 +433,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 				setAddition((UseCase)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -442,8 +441,8 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.INCLUDE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INCLUDE__OWNED_ELEMENT:
@@ -481,7 +480,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 			case UML2Package.INCLUDE__ADDITION:
 				return eVirtualGet(UML2Package.INCLUDE__ADDITION) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

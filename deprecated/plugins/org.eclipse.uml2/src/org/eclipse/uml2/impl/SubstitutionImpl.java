@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.20 2005/11/22 14:57:03 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.21 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -105,7 +104,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UML2Package.eINSTANCE.getSubstitution_Contract());
+			|| eIsSet(UML2Package.SUBSTITUTION__CONTRACT);
 	}
 
 	/**
@@ -125,7 +124,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 */
 	public boolean isSetSources() {
 		return super.isSetSources()
-			|| eIsSet(UML2Package.eINSTANCE.getSubstitution_SubstitutingClassifier());
+			|| eIsSet(UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER);
 	}
 
 	/**
@@ -349,8 +348,8 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.SUBSTITUTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.SUBSTITUTION__OWNED_ELEMENT:
@@ -404,7 +403,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			case UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER:
 				return getSubstitutingClassifier();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -412,8 +411,8 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.SUBSTITUTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -475,7 +474,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 				setSubstitutingClassifier((Classifier)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -483,8 +482,8 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.SUBSTITUTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -540,7 +539,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 				setSubstitutingClassifier((Classifier)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -548,8 +547,8 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.SUBSTITUTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SUBSTITUTION__OWNED_ELEMENT:
@@ -605,7 +604,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			case UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER:
 				return getSubstitutingClassifier() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
+ * $Id: MessageImpl.java,v 1.4 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -124,11 +123,10 @@ public class MessageImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.MESSAGE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.MESSAGE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getMessage_Argument()}));
+					this, UMLPackage.MESSAGE__OWNED_ELEMENT, new int[]{
+						UMLPackage.MESSAGE__OWNED_COMMENT,
+						UMLPackage.MESSAGE__NAME_EXPRESSION,
+						UMLPackage.MESSAGE__ARGUMENT}));
 		}
 		return ownedElement;
 	}
@@ -580,8 +578,8 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.MESSAGE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.MESSAGE__OWNED_ELEMENT :
@@ -629,7 +627,7 @@ public class MessageImpl
 					return getSignature();
 				return basicGetSignature();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -637,8 +635,8 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.MESSAGE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -680,7 +678,7 @@ public class MessageImpl
 				getArguments().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -688,8 +686,8 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.MESSAGE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -727,7 +725,7 @@ public class MessageImpl
 				getArguments().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -735,8 +733,8 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.MESSAGE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.MESSAGE__OWNED_ELEMENT :
@@ -785,7 +783,7 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__SIGNATURE :
 				return basicGetSignature() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -825,7 +823,7 @@ public class MessageImpl
 	 */
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.eINSTANCE.getMessage_Interaction());
+			|| eIsSet(UMLPackage.MESSAGE__INTERACTION);
 	}
 
 	/**
@@ -835,7 +833,7 @@ public class MessageImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getMessage_Argument());
+			|| eIsSet(UMLPackage.MESSAGE__ARGUMENT);
 	}
 
 } //MessageImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.3 2005/11/22 15:32:36 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -128,8 +127,7 @@ public class AssociationImpl
 			eVirtualSet(UMLPackage.ASSOCIATION__RELATED_ELEMENT,
 				relatedElement = new DerivedUnionEObjectEList(Element.class,
 					this, UMLPackage.ASSOCIATION__RELATED_ELEMENT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getAssociation_EndType()}));
+					new int[]{UMLPackage.ASSOCIATION__END_TYPE}));
 		}
 		return relatedElement;
 	}
@@ -144,12 +142,12 @@ public class AssociationImpl
 		if (member == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION__MEMBER,
 				member = new DerivedUnionEObjectEList(NamedElement.class, this,
-					UMLPackage.ASSOCIATION__MEMBER, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_ImportedMember(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE.getClassifier_Feature(),
-						UMLPackage.eINSTANCE.getClassifier_InheritedMember(),
-						UMLPackage.eINSTANCE.getAssociation_MemberEnd()}));
+					UMLPackage.ASSOCIATION__MEMBER, new int[]{
+						UMLPackage.ASSOCIATION__IMPORTED_MEMBER,
+						UMLPackage.ASSOCIATION__OWNED_MEMBER,
+						UMLPackage.ASSOCIATION__FEATURE,
+						UMLPackage.ASSOCIATION__INHERITED_MEMBER,
+						UMLPackage.ASSOCIATION__MEMBER_END}));
 		}
 		return member;
 	}
@@ -164,9 +162,9 @@ public class AssociationImpl
 		if (feature == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION__FEATURE,
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
-					UMLPackage.ASSOCIATION__FEATURE, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getClassifier_Attribute(),
-						UMLPackage.eINSTANCE.getAssociation_OwnedEnd()}));
+					UMLPackage.ASSOCIATION__FEATURE, new int[]{
+						UMLPackage.ASSOCIATION__ATTRIBUTE,
+						UMLPackage.ASSOCIATION__OWNED_END}));
 		}
 		return feature;
 	}
@@ -181,11 +179,10 @@ public class AssociationImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.ASSOCIATION__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE.getAssociation_OwnedEnd()}));
+					this, UMLPackage.ASSOCIATION__OWNED_MEMBER, new int[]{
+						UMLPackage.ASSOCIATION__OWNED_RULE,
+						UMLPackage.ASSOCIATION__OWNED_USE_CASE,
+						UMLPackage.ASSOCIATION__OWNED_END}));
 		}
 		return ownedMember;
 	}
@@ -580,8 +577,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.ASSOCIATION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.ASSOCIATION__OWNED_ELEMENT :
@@ -683,7 +680,7 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNED_END :
 				return getOwnedEnds();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -691,8 +688,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.ASSOCIATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -806,7 +803,7 @@ public class AssociationImpl
 				getOwnedEnds().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -814,8 +811,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ASSOCIATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -910,7 +907,7 @@ public class AssociationImpl
 				getOwnedEnds().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -918,8 +915,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ASSOCIATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ASSOCIATION__OWNED_ELEMENT :
@@ -1033,7 +1030,7 @@ public class AssociationImpl
 				List ownedEnd = (List) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_END);
 				return ownedEnd != null && !ownedEnd.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1092,7 +1089,7 @@ public class AssociationImpl
 	 * @generated
 	 */
 	public boolean isSetRelatedElements() {
-		return eIsSet(UMLPackage.eINSTANCE.getAssociation_EndType());
+		return eIsSet(UMLPackage.ASSOCIATION__END_TYPE);
 	}
 
 	/**
@@ -1102,7 +1099,7 @@ public class AssociationImpl
 	 */
 	public boolean isSetMembers() {
 		return super.isSetMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getAssociation_MemberEnd());
+			|| eIsSet(UMLPackage.ASSOCIATION__MEMBER_END);
 	}
 
 	/**
@@ -1112,7 +1109,7 @@ public class AssociationImpl
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UMLPackage.eINSTANCE.getAssociation_OwnedEnd());
+			|| eIsSet(UMLPackage.ASSOCIATION__OWNED_END);
 	}
 
 	/**
@@ -1122,7 +1119,7 @@ public class AssociationImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getAssociation_OwnedEnd());
+			|| eIsSet(UMLPackage.ASSOCIATION__OWNED_END);
 	}
 
 } //AssociationImpl

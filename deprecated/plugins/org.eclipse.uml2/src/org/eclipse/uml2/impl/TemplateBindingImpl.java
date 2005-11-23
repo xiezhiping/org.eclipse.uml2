@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.17 2005/11/21 21:48:00 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.18 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -91,7 +90,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	public EList getSources() {
 		EList source = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__SOURCE);
 		if (source == null) {
-			eVirtualSet(UML2Package.TEMPLATE_BINDING__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__SOURCE, new EStructuralFeature[] {UML2Package.eINSTANCE.getTemplateBinding_BoundElement()}));
+			eVirtualSet(UML2Package.TEMPLATE_BINDING__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__SOURCE, new int[] {UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT}));
 		}
 		return source;
 	}
@@ -104,7 +103,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 */
 	public boolean isSetSources() {
 		return super.isSetSources()
-			|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_BoundElement());
+			|| eIsSet(UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT);
 	}
 
 	/**
@@ -115,7 +114,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	public EList getTargets() {
 		EList target = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__TARGET);
 		if (target == null) {
-			eVirtualSet(UML2Package.TEMPLATE_BINDING__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__TARGET, new EStructuralFeature[] {UML2Package.eINSTANCE.getTemplateBinding_Signature()}));
+			eVirtualSet(UML2Package.TEMPLATE_BINDING__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__TARGET, new int[] {UML2Package.TEMPLATE_BINDING__SIGNATURE}));
 		}
 		return target;
 	}
@@ -128,7 +127,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 */
 	public boolean isSetTargets() {
 		return super.isSetTargets()
-			|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_Signature());
+			|| eIsSet(UML2Package.TEMPLATE_BINDING__SIGNATURE);
 	}
 
 	/**
@@ -139,7 +138,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution()}));
+			eVirtualSet(UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT, new int[] {UML2Package.TEMPLATE_BINDING__OWNED_COMMENT, UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION}));
 		}
 		return ownedElement;
 	}
@@ -152,7 +151,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution());
+			|| eIsSet(UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
 	}
 
 	/**
@@ -293,7 +292,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getTemplateBinding_BoundElement());
+			|| eIsSet(UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT);
 	}
 
 
@@ -367,8 +366,8 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_BINDING__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT:
@@ -392,7 +391,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 			case UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION:
 				return getParameterSubstitutions();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -400,8 +399,8 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_BINDING__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -421,7 +420,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 				getParameterSubstitutions().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -429,8 +428,8 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_BINDING__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -447,7 +446,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 				getParameterSubstitutions().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -455,8 +454,8 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.TEMPLATE_BINDING__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT:
@@ -480,7 +479,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 				EList parameterSubstitution = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
 				return parameterSubstitution != null && !parameterSubstitution.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.18 2005/11/22 14:57:02 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.19 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -109,7 +108,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.JOIN_NODE__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.JOIN_NODE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.JOIN_NODE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getJoinNode_JoinSpec()}));
+			eVirtualSet(UML2Package.JOIN_NODE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.JOIN_NODE__OWNED_ELEMENT, new int[] {UML2Package.JOIN_NODE__OWNED_COMMENT, UML2Package.JOIN_NODE__TEMPLATE_BINDING, UML2Package.JOIN_NODE__OWNED_TEMPLATE_SIGNATURE, UML2Package.JOIN_NODE__NAME_EXPRESSION, UML2Package.JOIN_NODE__JOIN_SPEC}));
 		}
 		return ownedElement;
 	}
@@ -122,7 +121,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getJoinNode_JoinSpec());
+			|| eIsSet(UML2Package.JOIN_NODE__JOIN_SPEC);
 	}
 
 	/**
@@ -254,8 +253,8 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.JOIN_NODE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.JOIN_NODE__OWNED_ELEMENT:
@@ -304,7 +303,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 			case UML2Package.JOIN_NODE__JOIN_SPEC:
 				return getJoinSpec();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -312,8 +311,8 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.JOIN_NODE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -378,7 +377,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 				setJoinSpec((ValueSpecification)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -386,8 +385,8 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.JOIN_NODE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -443,7 +442,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 				setJoinSpec((ValueSpecification)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -451,8 +450,8 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.JOIN_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.JOIN_NODE__OWNED_ELEMENT:
@@ -508,7 +507,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 			case UML2Package.JOIN_NODE__JOIN_SPEC:
 				return eVirtualGet(UML2Package.JOIN_NODE__JOIN_SPEC) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

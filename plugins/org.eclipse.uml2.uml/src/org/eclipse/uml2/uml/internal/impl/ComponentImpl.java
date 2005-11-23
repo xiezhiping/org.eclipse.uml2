@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -121,22 +120,17 @@ public class ComponentImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.COMPONENT__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.COMPONENT__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedAttribute(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedConnector(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedBehavior(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedTrigger(),
-						UMLPackage.eINSTANCE.getClass_OwnedOperation(),
-						UMLPackage.eINSTANCE.getClass_NestedClassifier(),
-						UMLPackage.eINSTANCE.getClass_OwnedReception(),
-						UMLPackage.eINSTANCE.getComponent_PackagedElement()}));
+					this, UMLPackage.COMPONENT__OWNED_MEMBER, new int[]{
+						UMLPackage.COMPONENT__OWNED_RULE,
+						UMLPackage.COMPONENT__OWNED_USE_CASE,
+						UMLPackage.COMPONENT__OWNED_ATTRIBUTE,
+						UMLPackage.COMPONENT__OWNED_CONNECTOR,
+						UMLPackage.COMPONENT__OWNED_BEHAVIOR,
+						UMLPackage.COMPONENT__OWNED_TRIGGER,
+						UMLPackage.COMPONENT__OWNED_OPERATION,
+						UMLPackage.COMPONENT__NESTED_CLASSIFIER,
+						UMLPackage.COMPONENT__OWNED_RECEPTION,
+						UMLPackage.COMPONENT__PACKAGED_ELEMENT}));
 		}
 		return ownedMember;
 	}
@@ -151,24 +145,20 @@ public class ComponentImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.COMPONENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.COMPONENT__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature(),
-						UMLPackage.eINSTANCE.getClassifier_Generalization(),
-						UMLPackage.eINSTANCE.getClassifier_Substitution(),
-						UMLPackage.eINSTANCE.getClassifier_CollaborationUse(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedSignature(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_InterfaceRealization(),
-						UMLPackage.eINSTANCE.getComponent_Realization()}));
+					this, UMLPackage.COMPONENT__OWNED_ELEMENT, new int[]{
+						UMLPackage.COMPONENT__OWNED_COMMENT,
+						UMLPackage.COMPONENT__NAME_EXPRESSION,
+						UMLPackage.COMPONENT__ELEMENT_IMPORT,
+						UMLPackage.COMPONENT__PACKAGE_IMPORT,
+						UMLPackage.COMPONENT__OWNED_MEMBER,
+						UMLPackage.COMPONENT__TEMPLATE_BINDING,
+						UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE,
+						UMLPackage.COMPONENT__GENERALIZATION,
+						UMLPackage.COMPONENT__SUBSTITUTION,
+						UMLPackage.COMPONENT__COLLABORATION_USE,
+						UMLPackage.COMPONENT__OWNED_SIGNATURE,
+						UMLPackage.COMPONENT__INTERFACE_REALIZATION,
+						UMLPackage.COMPONENT__REALIZATION}));
 		}
 		return ownedElement;
 	}
@@ -590,8 +580,8 @@ public class ComponentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.COMPONENT__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.COMPONENT__OWNED_ELEMENT :
@@ -723,7 +713,7 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__REALIZATION :
 				return getRealizations();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -731,8 +721,8 @@ public class ComponentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.COMPONENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -888,7 +878,7 @@ public class ComponentImpl
 				getRealizations().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -896,8 +886,8 @@ public class ComponentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.COMPONENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1025,7 +1015,7 @@ public class ComponentImpl
 				getRealizations().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1033,8 +1023,8 @@ public class ComponentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.COMPONENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_ELEMENT :
@@ -1183,7 +1173,7 @@ public class ComponentImpl
 				List realization = (List) eVirtualGet(UMLPackage.COMPONENT__REALIZATION);
 				return realization != null && !realization.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1209,7 +1199,7 @@ public class ComponentImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getComponent_PackagedElement());
+			|| eIsSet(UMLPackage.COMPONENT__PACKAGED_ELEMENT);
 	}
 
 	/**
@@ -1219,7 +1209,7 @@ public class ComponentImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getComponent_Realization());
+			|| eIsSet(UMLPackage.COMPONENT__REALIZATION);
 	}
 
 } //ComponentImpl

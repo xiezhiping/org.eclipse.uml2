@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.29 2005/11/22 14:57:03 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.30 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -17,7 +17,6 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -148,54 +147,10 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 * @deprecated Use #createOwnedEnd() instead.
-	 */
-	public Property createOwnedEnd(EClass eClass) {
-		ExtensionEnd newOwnedEnd = (ExtensionEnd) eClass.getEPackage().getEFactoryInstance().create(eClass);
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, 0, UML2Package.EXTENSION__OWNED_END, null, newOwnedEnd));
-		}
-		getOwnedEnds().add(newOwnedEnd);
-		return newOwnedEnd;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public Property createOwnedEnd() {
-		ExtensionEnd newOwnedEnd = UML2Factory.eINSTANCE.createExtensionEnd();
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, 0, UML2Package.EXTENSION__OWNED_END, null, newOwnedEnd));
-		}
-		getOwnedEnds().add(newOwnedEnd);
-		return newOwnedEnd;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Property getOwnedEnd(String name) {
-		for (Iterator i = getOwnedEnds().iterator(); i.hasNext(); ) {
-			ExtensionEnd ownedEnd = (ExtensionEnd) i.next();
-			if (name.equals(ownedEnd.getName())) {
-				return ownedEnd;
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.EXTENSION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.EXTENSION__OWNED_ELEMENT:
@@ -284,7 +239,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 				if (resolve) return getMetaclass();
 				return basicGetMetaclass();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -292,8 +247,8 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.EXTENSION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXTENSION__OWNED_ELEMENT:
@@ -394,8 +349,52 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__METACLASS:
 				return basicGetMetaclass() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOwnedEnd() instead.
+	 */
+	public Property createOwnedEnd(EClass eClass) {
+		ExtensionEnd newOwnedEnd = (ExtensionEnd) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.EXTENSION__OWNED_END, null, newOwnedEnd));
+		}
+		getOwnedEnds().add(newOwnedEnd);
+		return newOwnedEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Property createOwnedEnd() {
+		ExtensionEnd newOwnedEnd = UML2Factory.eINSTANCE.createExtensionEnd();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.EXTENSION__OWNED_END, null, newOwnedEnd));
+		}
+		getOwnedEnds().add(newOwnedEnd);
+		return newOwnedEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public Property getOwnedEnd(String name) {
+		for (Iterator i = getOwnedEnds().iterator(); i.hasNext(); ) {
+			ExtensionEnd ownedEnd = (ExtensionEnd) i.next();
+			if (name.equals(ownedEnd.getName())) {
+				return ownedEnd;
+			}
+		}
+		return null;
+	}
 
 } //ExtensionImpl

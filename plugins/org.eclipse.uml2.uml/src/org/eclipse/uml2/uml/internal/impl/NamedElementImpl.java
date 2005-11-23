@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.4 2005/11/22 15:32:36 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.5 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -125,10 +124,9 @@ public abstract class NamedElementImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression()}));
+					this, UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT, new int[]{
+						UMLPackage.NAMED_ELEMENT__OWNED_COMMENT,
+						UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION}));
 		}
 		return ownedElement;
 	}
@@ -435,8 +433,8 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT :
@@ -460,7 +458,7 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
 				return getNameExpression();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -468,8 +466,8 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -492,7 +490,7 @@ public abstract class NamedElementImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -500,8 +498,8 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -521,7 +519,7 @@ public abstract class NamedElementImpl
 				setNameExpression((StringExpression) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -529,8 +527,8 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT :
@@ -561,7 +559,7 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -642,7 +640,7 @@ public abstract class NamedElementImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getNamedElement_NameExpression());
+			|| eIsSet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION);
 	}
 
 } //NamedElementImpl

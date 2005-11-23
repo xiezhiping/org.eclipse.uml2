@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.16 2005/11/22 14:57:03 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.17 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -84,39 +83,10 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 * @deprecated Use #createEndData() instead.
-	 */
-	public LinkEndData createEndData(EClass eClass) {
-		LinkEndCreationData newEndData = (LinkEndCreationData) eClass.getEPackage().getEFactoryInstance().create(eClass);
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, 0, UML2Package.CREATE_LINK_ACTION__END_DATA, null, newEndData));
-		}
-		getEndData().add(newEndData);
-		return newEndData;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public LinkEndData createEndData() {
-		LinkEndCreationData newEndData = UML2Factory.eINSTANCE.createLinkEndCreationData();
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, 0, UML2Package.CREATE_LINK_ACTION__END_DATA, null, newEndData));
-		}
-		getEndData().add(newEndData);
-		return newEndData;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.CREATE_LINK_ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.CREATE_LINK_ACTION__OWNED_ELEMENT:
@@ -177,7 +147,7 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 			case UML2Package.CREATE_LINK_ACTION__END_DATA:
 				return getEndData();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -185,8 +155,8 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.CREATE_LINK_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__OWNED_ELEMENT:
@@ -258,8 +228,37 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 			case UML2Package.CREATE_LINK_ACTION__END_DATA:
 				return isSetEndData();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createEndData() instead.
+	 */
+	public LinkEndData createEndData(EClass eClass) {
+		LinkEndCreationData newEndData = (LinkEndCreationData) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CREATE_LINK_ACTION__END_DATA, null, newEndData));
+		}
+		getEndData().add(newEndData);
+		return newEndData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public LinkEndData createEndData() {
+		LinkEndCreationData newEndData = UML2Factory.eINSTANCE.createLinkEndCreationData();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CREATE_LINK_ACTION__END_DATA, null, newEndData));
+		}
+		getEndData().add(newEndData);
+		return newEndData;
+	}
 
 } //CreateLinkActionImpl

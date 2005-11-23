@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,7 +19,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -87,10 +86,9 @@ public class DependencyImpl
 		if (relatedElement == null) {
 			eVirtualSet(UMLPackage.DEPENDENCY__RELATED_ELEMENT,
 				relatedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.DEPENDENCY__RELATED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getDirectedRelationship_Source(),
-						UMLPackage.eINSTANCE.getDirectedRelationship_Target()}));
+					this, UMLPackage.DEPENDENCY__RELATED_ELEMENT, new int[]{
+						UMLPackage.DEPENDENCY__SOURCE,
+						UMLPackage.DEPENDENCY__TARGET}));
 		}
 		return relatedElement;
 	}
@@ -106,8 +104,7 @@ public class DependencyImpl
 			eVirtualSet(UMLPackage.DEPENDENCY__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.DEPENDENCY__SOURCE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getDependency_Client()}));
+					new int[]{UMLPackage.DEPENDENCY__CLIENT}));
 		}
 		return source;
 	}
@@ -123,8 +120,7 @@ public class DependencyImpl
 			eVirtualSet(UMLPackage.DEPENDENCY__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
 					UMLPackage.DEPENDENCY__TARGET,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getDependency_Supplier()}));
+					new int[]{UMLPackage.DEPENDENCY__SUPPLIER}));
 		}
 		return target;
 	}
@@ -274,8 +270,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.DEPENDENCY__OWNED_ELEMENT :
@@ -317,7 +313,7 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__CLIENT :
 				return getClients();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -325,8 +321,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -363,7 +359,7 @@ public class DependencyImpl
 				getClients().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -371,8 +367,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -404,7 +400,7 @@ public class DependencyImpl
 				getClients().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -412,8 +408,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DEPENDENCY__OWNED_ELEMENT :
@@ -459,7 +455,7 @@ public class DependencyImpl
 				List client = (List) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT);
 				return client != null && !client.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -531,7 +527,7 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public boolean isSetSources() {
-		return eIsSet(UMLPackage.eINSTANCE.getDependency_Client());
+		return eIsSet(UMLPackage.DEPENDENCY__CLIENT);
 	}
 
 	/**
@@ -540,7 +536,7 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public boolean isSetTargets() {
-		return eIsSet(UMLPackage.eINSTANCE.getDependency_Supplier());
+		return eIsSet(UMLPackage.DEPENDENCY__SUPPLIER);
 	}
 
 } //DependencyImpl

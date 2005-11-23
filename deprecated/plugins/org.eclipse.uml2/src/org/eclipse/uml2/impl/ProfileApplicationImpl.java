@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.14 2005/11/22 14:57:02 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.15 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,7 +18,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.uml2.Namespace;
@@ -145,25 +144,8 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImportedPackage(org.eclipse.uml2.Package newImportedPackage) {
-		org.eclipse.uml2.Package importedPackage = newImportedPackage;
-		Object oldImportedPackage = eVirtualSet(UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, importedPackage);
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, oldImportedPackage == EVIRTUAL_NO_VALUE ? null : oldImportedPackage, importedPackage));
-
-		if (eVirtualGet(UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE) != null && eVirtualGet(UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE) != newImportedPackage) {
-			setImportedProfile(null);
-		}
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.PROFILE_APPLICATION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.PROFILE_APPLICATION__OWNED_ELEMENT:
@@ -190,7 +172,7 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 				if (resolve) return getImportedProfile();
 				return basicGetImportedProfile();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -198,8 +180,8 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.PROFILE_APPLICATION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -221,7 +203,7 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 				setImportedProfile((Profile)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -229,8 +211,8 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.PROFILE_APPLICATION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -250,7 +232,7 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 				setImportedProfile((Profile)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -258,8 +240,8 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.PROFILE_APPLICATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROFILE_APPLICATION__OWNED_ELEMENT:
@@ -284,7 +266,24 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 			case UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE:
 				return eVirtualGet(UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE) != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImportedPackage(org.eclipse.uml2.Package newImportedPackage) {
+		org.eclipse.uml2.Package importedPackage = newImportedPackage;
+		Object oldImportedPackage = eVirtualSet(UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, importedPackage);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, oldImportedPackage == EVIRTUAL_NO_VALUE ? null : oldImportedPackage, importedPackage));
+
+		if (eVirtualGet(UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE) != null && eVirtualGet(UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE) != newImportedPackage) {
+			setImportedProfile(null);
+		}
 	}
 
 

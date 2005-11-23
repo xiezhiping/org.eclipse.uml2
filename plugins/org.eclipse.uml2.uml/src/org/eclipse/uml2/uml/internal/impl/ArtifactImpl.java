@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -113,13 +112,12 @@ public class ArtifactImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.ARTIFACT__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.ARTIFACT__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE.getArtifact_NestedArtifact(),
-						UMLPackage.eINSTANCE.getArtifact_OwnedOperation(),
-						UMLPackage.eINSTANCE.getArtifact_OwnedAttribute()}));
+					this, UMLPackage.ARTIFACT__OWNED_MEMBER, new int[]{
+						UMLPackage.ARTIFACT__OWNED_RULE,
+						UMLPackage.ARTIFACT__OWNED_USE_CASE,
+						UMLPackage.ARTIFACT__NESTED_ARTIFACT,
+						UMLPackage.ARTIFACT__OWNED_OPERATION,
+						UMLPackage.ARTIFACT__OWNED_ATTRIBUTE}));
 		}
 		return ownedMember;
 	}
@@ -134,22 +132,19 @@ public class ArtifactImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.ARTIFACT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.ARTIFACT__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature(),
-						UMLPackage.eINSTANCE.getClassifier_Generalization(),
-						UMLPackage.eINSTANCE.getClassifier_Substitution(),
-						UMLPackage.eINSTANCE.getClassifier_CollaborationUse(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedSignature(),
-						UMLPackage.eINSTANCE.getArtifact_Manifestation()}));
+					this, UMLPackage.ARTIFACT__OWNED_ELEMENT, new int[]{
+						UMLPackage.ARTIFACT__OWNED_COMMENT,
+						UMLPackage.ARTIFACT__NAME_EXPRESSION,
+						UMLPackage.ARTIFACT__ELEMENT_IMPORT,
+						UMLPackage.ARTIFACT__PACKAGE_IMPORT,
+						UMLPackage.ARTIFACT__OWNED_MEMBER,
+						UMLPackage.ARTIFACT__TEMPLATE_BINDING,
+						UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE,
+						UMLPackage.ARTIFACT__GENERALIZATION,
+						UMLPackage.ARTIFACT__SUBSTITUTION,
+						UMLPackage.ARTIFACT__COLLABORATION_USE,
+						UMLPackage.ARTIFACT__OWNED_SIGNATURE,
+						UMLPackage.ARTIFACT__MANIFESTATION}));
 		}
 		return ownedElement;
 	}
@@ -164,9 +159,9 @@ public class ArtifactImpl
 		if (feature == null) {
 			eVirtualSet(UMLPackage.ARTIFACT__FEATURE,
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
-					UMLPackage.ARTIFACT__FEATURE, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getClassifier_Attribute(),
-						UMLPackage.eINSTANCE.getArtifact_OwnedOperation()}));
+					UMLPackage.ARTIFACT__FEATURE, new int[]{
+						UMLPackage.ARTIFACT__ATTRIBUTE,
+						UMLPackage.ARTIFACT__OWNED_OPERATION}));
 		}
 		return feature;
 	}
@@ -182,8 +177,7 @@ public class ArtifactImpl
 			eVirtualSet(UMLPackage.ARTIFACT__ATTRIBUTE,
 				attribute = new DerivedUnionEObjectEList(Property.class, this,
 					UMLPackage.ARTIFACT__ATTRIBUTE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getArtifact_OwnedAttribute()}));
+					new int[]{UMLPackage.ARTIFACT__OWNED_ATTRIBUTE}));
 		}
 		return attribute;
 	}
@@ -598,8 +592,8 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.ARTIFACT__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.ARTIFACT__OWNED_ELEMENT :
@@ -697,7 +691,7 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -705,8 +699,8 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.ARTIFACT__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -824,7 +818,7 @@ public class ArtifactImpl
 				getOwnedAttributes().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -832,8 +826,8 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ARTIFACT__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -931,7 +925,7 @@ public class ArtifactImpl
 				getOwnedAttributes().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -939,8 +933,8 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.ARTIFACT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ARTIFACT__OWNED_ELEMENT :
@@ -1056,7 +1050,7 @@ public class ArtifactImpl
 				List ownedAttribute = (List) eVirtualGet(UMLPackage.ARTIFACT__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1083,9 +1077,9 @@ public class ArtifactImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getArtifact_NestedArtifact())
-			|| eIsSet(UMLPackage.eINSTANCE.getArtifact_OwnedOperation())
-			|| eIsSet(UMLPackage.eINSTANCE.getArtifact_OwnedAttribute());
+			|| eIsSet(UMLPackage.ARTIFACT__NESTED_ARTIFACT)
+			|| eIsSet(UMLPackage.ARTIFACT__OWNED_OPERATION)
+			|| eIsSet(UMLPackage.ARTIFACT__OWNED_ATTRIBUTE);
 	}
 
 	/**
@@ -1095,7 +1089,7 @@ public class ArtifactImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getArtifact_Manifestation());
+			|| eIsSet(UMLPackage.ARTIFACT__MANIFESTATION);
 	}
 
 	/**
@@ -1105,7 +1099,7 @@ public class ArtifactImpl
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UMLPackage.eINSTANCE.getArtifact_OwnedOperation());
+			|| eIsSet(UMLPackage.ARTIFACT__OWNED_OPERATION);
 	}
 
 	/**
@@ -1115,7 +1109,7 @@ public class ArtifactImpl
 	 */
 	public boolean isSetAttributes() {
 		return super.isSetAttributes()
-			|| eIsSet(UMLPackage.eINSTANCE.getArtifact_OwnedAttribute());
+			|| eIsSet(UMLPackage.ARTIFACT__OWNED_ATTRIBUTE);
 	}
 
 } //ArtifactImpl

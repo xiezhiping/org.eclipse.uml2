@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.2 2005/11/22 15:32:37 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,7 +19,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -93,8 +92,7 @@ public class DataTypeImpl
 			eVirtualSet(UMLPackage.DATA_TYPE__ATTRIBUTE,
 				attribute = new DerivedUnionEObjectEList(Property.class, this,
 					UMLPackage.DATA_TYPE__ATTRIBUTE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getDataType_OwnedAttribute()}));
+					new int[]{UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE}));
 		}
 		return attribute;
 	}
@@ -109,12 +107,11 @@ public class DataTypeImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.DATA_TYPE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.DATA_TYPE__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE.getDataType_OwnedAttribute(),
-						UMLPackage.eINSTANCE.getDataType_OwnedOperation()}));
+					this, UMLPackage.DATA_TYPE__OWNED_MEMBER, new int[]{
+						UMLPackage.DATA_TYPE__OWNED_RULE,
+						UMLPackage.DATA_TYPE__OWNED_USE_CASE,
+						UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE,
+						UMLPackage.DATA_TYPE__OWNED_OPERATION}));
 		}
 		return ownedMember;
 	}
@@ -129,9 +126,9 @@ public class DataTypeImpl
 		if (feature == null) {
 			eVirtualSet(UMLPackage.DATA_TYPE__FEATURE,
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
-					UMLPackage.DATA_TYPE__FEATURE, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getClassifier_Attribute(),
-						UMLPackage.eINSTANCE.getDataType_OwnedOperation()}));
+					UMLPackage.DATA_TYPE__FEATURE, new int[]{
+						UMLPackage.DATA_TYPE__ATTRIBUTE,
+						UMLPackage.DATA_TYPE__OWNED_OPERATION}));
 		}
 		return feature;
 	}
@@ -411,8 +408,8 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.DATA_TYPE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.DATA_TYPE__OWNED_ELEMENT :
@@ -504,7 +501,7 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__OWNED_OPERATION :
 				return getOwnedOperations();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -512,8 +509,8 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.DATA_TYPE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -620,7 +617,7 @@ public class DataTypeImpl
 				getOwnedOperations().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -628,8 +625,8 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.DATA_TYPE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -718,7 +715,7 @@ public class DataTypeImpl
 				getOwnedOperations().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -726,8 +723,8 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.DATA_TYPE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DATA_TYPE__OWNED_ELEMENT :
@@ -831,7 +828,7 @@ public class DataTypeImpl
 				List ownedOperation = (List) eVirtualGet(UMLPackage.DATA_TYPE__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -841,7 +838,7 @@ public class DataTypeImpl
 	 */
 	public boolean isSetAttributes() {
 		return super.isSetAttributes()
-			|| eIsSet(UMLPackage.eINSTANCE.getDataType_OwnedAttribute());
+			|| eIsSet(UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE);
 	}
 
 	/**
@@ -851,8 +848,8 @@ public class DataTypeImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getDataType_OwnedAttribute())
-			|| eIsSet(UMLPackage.eINSTANCE.getDataType_OwnedOperation());
+			|| eIsSet(UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE)
+			|| eIsSet(UMLPackage.DATA_TYPE__OWNED_OPERATION);
 	}
 
 	/**
@@ -862,7 +859,7 @@ public class DataTypeImpl
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UMLPackage.eINSTANCE.getDataType_OwnedOperation());
+			|| eIsSet(UMLPackage.DATA_TYPE__OWNED_OPERATION);
 	}
 
 } //DataTypeImpl

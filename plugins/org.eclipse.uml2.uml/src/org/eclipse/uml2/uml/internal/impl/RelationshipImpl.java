@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -66,10 +64,10 @@ public abstract class RelationshipImpl
 	public List getRelatedElements() {
 		List relatedElement = (List) eVirtualGet(UMLPackage.RELATIONSHIP__RELATED_ELEMENT);
 		if (relatedElement == null) {
-			eVirtualSet(UMLPackage.RELATIONSHIP__RELATED_ELEMENT,
+			eVirtualSet(
+				UMLPackage.RELATIONSHIP__RELATED_ELEMENT,
 				relatedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.RELATIONSHIP__RELATED_ELEMENT,
-					new EStructuralFeature[]{}));
+					this, UMLPackage.RELATIONSHIP__RELATED_ELEMENT, new int[]{}));
 		}
 		return relatedElement;
 	}
@@ -79,8 +77,8 @@ public abstract class RelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.RELATIONSHIP__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.RELATIONSHIP__OWNED_ELEMENT :
@@ -92,7 +90,7 @@ public abstract class RelationshipImpl
 			case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :
 				return getRelatedElements();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -100,8 +98,8 @@ public abstract class RelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.RELATIONSHIP__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.RELATIONSHIP__OWNED_ELEMENT :
@@ -114,7 +112,7 @@ public abstract class RelationshipImpl
 			case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :
 				return isSetRelatedElements();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

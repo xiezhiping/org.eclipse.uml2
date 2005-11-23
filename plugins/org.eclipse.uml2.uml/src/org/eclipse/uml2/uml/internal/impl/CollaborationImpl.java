@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.2 2005/11/22 15:32:36 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -103,12 +102,9 @@ public class CollaborationImpl
 		if (role == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__ROLE,
 				role = new DerivedUnionEObjectEList(ConnectableElement.class,
-					this, UMLPackage.COLLABORATION__ROLE,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedAttribute(),
-						UMLPackage.eINSTANCE
-							.getCollaboration_CollaborationRole()}));
+					this, UMLPackage.COLLABORATION__ROLE, new int[]{
+						UMLPackage.COLLABORATION__OWNED_ATTRIBUTE,
+						UMLPackage.COLLABORATION__COLLABORATION_ROLE}));
 		}
 		return role;
 	}
@@ -138,18 +134,13 @@ public class CollaborationImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.COLLABORATION__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedBehavior(),
-						UMLPackage.eINSTANCE
-							.getBehavioredClassifier_OwnedTrigger(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedAttribute(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedConnector()}));
+					this, UMLPackage.COLLABORATION__OWNED_MEMBER, new int[]{
+						UMLPackage.COLLABORATION__OWNED_RULE,
+						UMLPackage.COLLABORATION__OWNED_USE_CASE,
+						UMLPackage.COLLABORATION__OWNED_BEHAVIOR,
+						UMLPackage.COLLABORATION__OWNED_TRIGGER,
+						UMLPackage.COLLABORATION__OWNED_ATTRIBUTE,
+						UMLPackage.COLLABORATION__OWNED_CONNECTOR}));
 		}
 		return ownedMember;
 	}
@@ -165,8 +156,7 @@ public class CollaborationImpl
 			eVirtualSet(UMLPackage.COLLABORATION__ATTRIBUTE,
 				attribute = new DerivedUnionEObjectEList(Property.class, this,
 					UMLPackage.COLLABORATION__ATTRIBUTE,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getStructuredClassifier_OwnedAttribute()}));
+					new int[]{UMLPackage.COLLABORATION__OWNED_ATTRIBUTE}));
 		}
 		return attribute;
 	}
@@ -181,12 +171,12 @@ public class CollaborationImpl
 		if (member == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__MEMBER,
 				member = new DerivedUnionEObjectEList(NamedElement.class, this,
-					UMLPackage.COLLABORATION__MEMBER, new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_ImportedMember(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE.getClassifier_Feature(),
-						UMLPackage.eINSTANCE.getClassifier_InheritedMember(),
-						UMLPackage.eINSTANCE.getStructuredClassifier_Role()}));
+					UMLPackage.COLLABORATION__MEMBER, new int[]{
+						UMLPackage.COLLABORATION__IMPORTED_MEMBER,
+						UMLPackage.COLLABORATION__OWNED_MEMBER,
+						UMLPackage.COLLABORATION__FEATURE,
+						UMLPackage.COLLABORATION__INHERITED_MEMBER,
+						UMLPackage.COLLABORATION__ROLE}));
 		}
 		return member;
 	}
@@ -201,11 +191,9 @@ public class CollaborationImpl
 		if (feature == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__FEATURE,
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
-					UMLPackage.COLLABORATION__FEATURE,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getClassifier_Attribute(),
-						UMLPackage.eINSTANCE
-							.getStructuredClassifier_OwnedConnector()}));
+					UMLPackage.COLLABORATION__FEATURE, new int[]{
+						UMLPackage.COLLABORATION__ATTRIBUTE,
+						UMLPackage.COLLABORATION__OWNED_CONNECTOR}));
 		}
 		return feature;
 	}
@@ -461,8 +449,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.COLLABORATION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.COLLABORATION__OWNED_ELEMENT :
@@ -568,7 +556,7 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__COLLABORATION_ROLE :
 				return getCollaborationRoles();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -576,8 +564,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.COLLABORATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -703,7 +691,7 @@ public class CollaborationImpl
 				getCollaborationRoles().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -711,8 +699,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.COLLABORATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -816,7 +804,7 @@ public class CollaborationImpl
 				getCollaborationRoles().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -824,8 +812,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.COLLABORATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.COLLABORATION__OWNED_ELEMENT :
@@ -949,7 +937,7 @@ public class CollaborationImpl
 				return collaborationRole != null
 					&& !collaborationRole.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1004,9 +992,8 @@ public class CollaborationImpl
 	 * @generated
 	 */
 	public boolean isSetRoles() {
-		return eIsSet(UMLPackage.eINSTANCE
-			.getStructuredClassifier_OwnedAttribute())
-			|| eIsSet(UMLPackage.eINSTANCE.getCollaboration_CollaborationRole());
+		return eIsSet(UMLPackage.COLLABORATION__OWNED_ATTRIBUTE)
+			|| eIsSet(UMLPackage.COLLABORATION__COLLABORATION_ROLE);
 	}
 
 	/**
@@ -1016,10 +1003,8 @@ public class CollaborationImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedAttribute())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedConnector());
+			|| eIsSet(UMLPackage.COLLABORATION__OWNED_ATTRIBUTE)
+			|| eIsSet(UMLPackage.COLLABORATION__OWNED_CONNECTOR);
 	}
 
 	/**
@@ -1029,8 +1014,7 @@ public class CollaborationImpl
 	 */
 	public boolean isSetAttributes() {
 		return super.isSetAttributes()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedAttribute());
+			|| eIsSet(UMLPackage.COLLABORATION__OWNED_ATTRIBUTE);
 	}
 
 	/**
@@ -1049,8 +1033,7 @@ public class CollaborationImpl
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedConnector());
+			|| eIsSet(UMLPackage.COLLABORATION__OWNED_CONNECTOR);
 	}
 
 } //CollaborationImpl

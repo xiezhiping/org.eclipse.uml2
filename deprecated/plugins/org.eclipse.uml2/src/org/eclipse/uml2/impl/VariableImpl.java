@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.19 2005/11/22 14:57:02 khussey Exp $
+ * $Id: VariableImpl.java,v 1.20 2005/11/23 13:25:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -205,7 +204,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.VARIABLE__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.VARIABLE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.VARIABLE__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(), UML2Package.eINSTANCE.getMultiplicityElement_LowerValue()}));
+			eVirtualSet(UML2Package.VARIABLE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.VARIABLE__OWNED_ELEMENT, new int[] {UML2Package.VARIABLE__OWNED_COMMENT, UML2Package.VARIABLE__TEMPLATE_BINDING, UML2Package.VARIABLE__OWNED_TEMPLATE_SIGNATURE, UML2Package.VARIABLE__NAME_EXPRESSION, UML2Package.VARIABLE__UPPER_VALUE, UML2Package.VARIABLE__LOWER_VALUE}));
 		}
 		return ownedElement;
 	}
@@ -218,8 +217,8 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
-			|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
+			|| eIsSet(UML2Package.VARIABLE__UPPER_VALUE)
+			|| eIsSet(UML2Package.VARIABLE__LOWER_VALUE);
 	}
 
 	/**
@@ -567,7 +566,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UML2Package.eINSTANCE.getVariable_Scope());
+			|| eIsSet(UML2Package.VARIABLE__SCOPE);
 	}
 
 
@@ -677,8 +676,8 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.VARIABLE__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.VARIABLE__OWNED_ELEMENT:
@@ -727,7 +726,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 			case UML2Package.VARIABLE__SCOPE:
 				return getScope();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -735,8 +734,8 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.VARIABLE__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -794,7 +793,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 				setScope((StructuredActivityNode)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -802,8 +801,8 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.VARIABLE__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -856,7 +855,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 				setScope((StructuredActivityNode)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -864,8 +863,8 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.VARIABLE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.VARIABLE__OWNED_ELEMENT:
@@ -916,7 +915,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 			case UML2Package.VARIABLE__SCOPE:
 				return getScope() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

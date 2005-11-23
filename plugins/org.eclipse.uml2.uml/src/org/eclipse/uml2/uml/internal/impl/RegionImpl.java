@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.3 2005/11/22 15:32:34 khussey Exp $
+ * $Id: RegionImpl.java,v 1.4 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -127,8 +126,7 @@ public class RegionImpl
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
 					UMLPackage.REGION__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getRegion_ExtendedRegion()}));
+					new int[]{UMLPackage.REGION__EXTENDED_REGION}));
 		}
 		return redefinedElement;
 	}
@@ -219,11 +217,10 @@ public class RegionImpl
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.REGION__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.REGION__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE.getRegion_Subvertex(),
-						UMLPackage.eINSTANCE.getRegion_Transition()}));
+					this, UMLPackage.REGION__OWNED_MEMBER, new int[]{
+						UMLPackage.REGION__OWNED_RULE,
+						UMLPackage.REGION__SUBVERTEX,
+						UMLPackage.REGION__TRANSITION}));
 		}
 		return ownedMember;
 	}
@@ -686,8 +683,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.REGION__OWNED_ELEMENT :
@@ -743,7 +740,7 @@ public class RegionImpl
 			case UMLPackage.REGION__STATE_MACHINE :
 				return getStateMachine();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -751,8 +748,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -807,7 +804,7 @@ public class RegionImpl
 				setStateMachine((StateMachine) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -815,8 +812,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -863,7 +860,7 @@ public class RegionImpl
 				setStateMachine((StateMachine) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -871,8 +868,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.REGION__OWNED_ELEMENT :
@@ -936,7 +933,7 @@ public class RegionImpl
 			case UMLPackage.REGION__STATE_MACHINE :
 				return getStateMachine() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1003,7 +1000,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public boolean isSetRedefinedElements() {
-		return eIsSet(UMLPackage.eINSTANCE.getRegion_ExtendedRegion());
+		return eIsSet(UMLPackage.REGION__EXTENDED_REGION);
 	}
 
 	/**
@@ -1013,8 +1010,8 @@ public class RegionImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE.getRegion_Subvertex())
-			|| eIsSet(UMLPackage.eINSTANCE.getRegion_Transition());
+			|| eIsSet(UMLPackage.REGION__SUBVERTEX)
+			|| eIsSet(UMLPackage.REGION__TRANSITION);
 	}
 
 	/**
@@ -1040,9 +1037,8 @@ public class RegionImpl
 	 * @generated
 	 */
 	public boolean isSetNamespace() {
-		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.eINSTANCE.getRegion_State())
-			|| eIsSet(UMLPackage.eINSTANCE.getRegion_StateMachine());
+		return super.isSetNamespace() || eIsSet(UMLPackage.REGION__STATE)
+			|| eIsSet(UMLPackage.REGION__STATE_MACHINE);
 	}
 
 } //RegionImpl

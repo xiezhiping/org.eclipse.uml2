@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.15 2005/11/22 14:57:02 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.16 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -17,7 +17,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -166,8 +165,8 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.LINK_ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.LINK_ACTION__OWNED_ELEMENT:
@@ -228,7 +227,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 			case UML2Package.LINK_ACTION__END_DATA:
 				return getEndData();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -236,8 +235,8 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.LINK_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -315,7 +314,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 				getEndData().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -323,8 +322,8 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.LINK_ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -389,7 +388,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 				getEndData().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -397,8 +396,8 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.LINK_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.LINK_ACTION__OWNED_ELEMENT:
@@ -471,7 +470,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 				EList endData = (EList)eVirtualGet(UML2Package.LINK_ACTION__END_DATA);
 				return endData != null && !endData.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 

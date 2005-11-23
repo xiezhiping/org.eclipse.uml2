@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTemplateParameterImpl.java,v 1.2 2005/11/22 15:32:35 khussey Exp $
+ * $Id: OperationTemplateParameterImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,7 +18,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -164,8 +163,8 @@ public class OperationTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_ELEMENT :
@@ -189,7 +188,7 @@ public class OperationTemplateParameterImpl
 					return getParameteredElement();
 				return basicGetParameteredElement();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -197,8 +196,8 @@ public class OperationTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_ELEMENT :
@@ -219,7 +218,7 @@ public class OperationTemplateParameterImpl
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return isSetParameteredElement();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 } //OperationTemplateParameterImpl

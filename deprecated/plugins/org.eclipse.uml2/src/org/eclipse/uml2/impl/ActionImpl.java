@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.21 2005/11/22 14:57:03 khussey Exp $
+ * $Id: ActionImpl.java,v 1.22 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -130,7 +129,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public EList getOutputs() {
 		EList output = (EList)eVirtualGet(UML2Package.ACTION__OUTPUT);
 		if (output == null) {
-			eVirtualSet(UML2Package.ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACTION__OUTPUT, new EStructuralFeature[] {}));
+			eVirtualSet(UML2Package.ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACTION__OUTPUT, new int[] {}));
 		}
 		return output;
 	}
@@ -168,7 +167,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public EList getOwnedElements() {
 		EList ownedElement = (EList)eVirtualGet(UML2Package.ACTION__OWNED_ELEMENT);
 		if (ownedElement == null) {
-			eVirtualSet(UML2Package.ACTION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTION__OWNED_ELEMENT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_OwnedComment(), UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(), UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(), UML2Package.eINSTANCE.getNamedElement_NameExpression(), UML2Package.eINSTANCE.getExecutableNode_Handler(), UML2Package.eINSTANCE.getAction_Output(), UML2Package.eINSTANCE.getAction_Input(), UML2Package.eINSTANCE.getAction_LocalPrecondition(), UML2Package.eINSTANCE.getAction_LocalPostcondition()}));
+			eVirtualSet(UML2Package.ACTION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTION__OWNED_ELEMENT, new int[] {UML2Package.ACTION__OWNED_COMMENT, UML2Package.ACTION__TEMPLATE_BINDING, UML2Package.ACTION__OWNED_TEMPLATE_SIGNATURE, UML2Package.ACTION__NAME_EXPRESSION, UML2Package.ACTION__HANDLER, UML2Package.ACTION__OUTPUT, UML2Package.ACTION__INPUT, UML2Package.ACTION__LOCAL_PRECONDITION, UML2Package.ACTION__LOCAL_POSTCONDITION}));
 		}
 		return ownedElement;
 	}
@@ -183,8 +182,8 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		return super.isSetOwnedElements()
 			|| isSetOutputs()
 			|| isSetInputs()
-			|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
-			|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition());
+			|| eIsSet(UML2Package.ACTION__LOCAL_PRECONDITION)
+			|| eIsSet(UML2Package.ACTION__LOCAL_POSTCONDITION);
 	}
 
 	/**
@@ -195,7 +194,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public EList getInputs() {
 		EList input = (EList)eVirtualGet(UML2Package.ACTION__INPUT);
 		if (input == null) {
-			eVirtualSet(UML2Package.ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.ACTION__INPUT, new EStructuralFeature[] {}));
+			eVirtualSet(UML2Package.ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.ACTION__INPUT, new int[] {}));
 		}
 		return input;
 	}
@@ -398,8 +397,8 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.ACTION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.ACTION__OWNED_ELEMENT:
@@ -458,7 +457,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case UML2Package.ACTION__LOCAL_POSTCONDITION:
 				return getLocalPostconditions();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -466,8 +465,8 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -541,7 +540,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 				getLocalPostconditions().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -549,8 +548,8 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.ACTION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -612,7 +611,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 				getLocalPostconditions().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -620,8 +619,8 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTION__OWNED_ELEMENT:
@@ -691,7 +690,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 				EList localPostcondition = (EList)eVirtualGet(UML2Package.ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null && !localPostcondition.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
+ * $Id: OperationImpl.java,v 1.4 2005/11/23 13:27:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -357,17 +356,14 @@ public class OperationImpl
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.OPERATION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.OPERATION__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE.getNamespace_ElementImport(),
-						UMLPackage.eINSTANCE.getNamespace_PackageImport(),
-						UMLPackage.eINSTANCE.getNamespace_OwnedMember(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_TemplateBinding(),
-						UMLPackage.eINSTANCE
-							.getTemplateableElement_OwnedTemplateSignature()}));
+					this, UMLPackage.OPERATION__OWNED_ELEMENT, new int[]{
+						UMLPackage.OPERATION__OWNED_COMMENT,
+						UMLPackage.OPERATION__NAME_EXPRESSION,
+						UMLPackage.OPERATION__ELEMENT_IMPORT,
+						UMLPackage.OPERATION__PACKAGE_IMPORT,
+						UMLPackage.OPERATION__OWNED_MEMBER,
+						UMLPackage.OPERATION__TEMPLATE_BINDING,
+						UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE}));
 		}
 		return ownedElement;
 	}
@@ -501,11 +497,10 @@ public class OperationImpl
 			eVirtualSet(UMLPackage.OPERATION__REDEFINITION_CONTEXT,
 				redefinitionContext = new DerivedUnionEObjectEList(
 					Classifier.class, this,
-					UMLPackage.OPERATION__REDEFINITION_CONTEXT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getOperation_Class_(),
-						UMLPackage.eINSTANCE.getOperation_Datatype(),
-						UMLPackage.eINSTANCE.getOperation_Interface()}));
+					UMLPackage.OPERATION__REDEFINITION_CONTEXT, new int[]{
+						UMLPackage.OPERATION__CLASS_,
+						UMLPackage.OPERATION__DATATYPE,
+						UMLPackage.OPERATION__INTERFACE}));
 		}
 		return redefinitionContext;
 	}
@@ -521,10 +516,9 @@ public class OperationImpl
 			eVirtualSet(UMLPackage.OPERATION__FEATURING_CLASSIFIER,
 				featuringClassifier = new DerivedUnionEObjectEList(
 					Classifier.class, this,
-					UMLPackage.OPERATION__FEATURING_CLASSIFIER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getOperation_Class_(),
-						UMLPackage.eINSTANCE.getOperation_Datatype()}));
+					UMLPackage.OPERATION__FEATURING_CLASSIFIER, new int[]{
+						UMLPackage.OPERATION__CLASS_,
+						UMLPackage.OPERATION__DATATYPE}));
 		}
 		return featuringClassifier;
 	}
@@ -541,8 +535,7 @@ public class OperationImpl
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
 					UMLPackage.OPERATION__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getOperation_RedefinedOperation()}));
+					new int[]{UMLPackage.OPERATION__REDEFINED_OPERATION}));
 		}
 		return redefinedElement;
 	}
@@ -1330,8 +1323,8 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.OPERATION__OWNED_ELEMENT :
@@ -1441,7 +1434,7 @@ public class OperationImpl
 			case UMLPackage.OPERATION__INTERFACE :
 				return getInterface();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1449,8 +1442,8 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -1568,7 +1561,7 @@ public class OperationImpl
 				setInterface((Interface) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -1576,8 +1569,8 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -1681,7 +1674,7 @@ public class OperationImpl
 				setInterface((Interface) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -1689,8 +1682,8 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.OPERATION__OWNED_ELEMENT :
@@ -1801,7 +1794,7 @@ public class OperationImpl
 			case UMLPackage.OPERATION__INTERFACE :
 				return getInterface() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1932,8 +1925,7 @@ public class OperationImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getParameterableElement_OwningTemplateParameter());
+			|| eIsSet(UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER);
 	}
 
 	/**
@@ -1943,10 +1935,8 @@ public class OperationImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateableElement_TemplateBinding())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateableElement_OwnedTemplateSignature());
+			|| eIsSet(UMLPackage.OPERATION__TEMPLATE_BINDING)
+			|| eIsSet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -1956,9 +1946,9 @@ public class OperationImpl
 	 */
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
-			|| eIsSet(UMLPackage.eINSTANCE.getOperation_Class_())
-			|| eIsSet(UMLPackage.eINSTANCE.getOperation_Datatype())
-			|| eIsSet(UMLPackage.eINSTANCE.getOperation_Interface());
+			|| eIsSet(UMLPackage.OPERATION__CLASS_)
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
 	}
 
 	/**
@@ -1984,9 +1974,8 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetNamespace() {
-		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.eINSTANCE.getOperation_Class_())
-			|| eIsSet(UMLPackage.eINSTANCE.getOperation_Datatype());
+		return super.isSetNamespace() || eIsSet(UMLPackage.OPERATION__CLASS_)
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
 	}
 
 	/**
@@ -1996,8 +1985,8 @@ public class OperationImpl
 	 */
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
-			|| eIsSet(UMLPackage.eINSTANCE.getOperation_Class_())
-			|| eIsSet(UMLPackage.eINSTANCE.getOperation_Datatype());
+			|| eIsSet(UMLPackage.OPERATION__CLASS_)
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
 	}
 
 	/**
@@ -2007,7 +1996,7 @@ public class OperationImpl
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.eINSTANCE.getOperation_RedefinedOperation());
+			|| eIsSet(UMLPackage.OPERATION__REDEFINED_OPERATION);
 	}
 
 } //OperationImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.3 2005/11/22 15:32:35 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -182,7 +181,7 @@ public class BehavioralFeatureImpl
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
 					UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{}));
+					new int[]{}));
 		}
 		return redefinedElement;
 	}
@@ -214,7 +213,7 @@ public class BehavioralFeatureImpl
 				redefinitionContext = new DerivedUnionEObjectEList(
 					Classifier.class, this,
 					UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
-					new EStructuralFeature[]{}));
+					new int[]{}));
 		}
 		return redefinitionContext;
 	}
@@ -272,7 +271,7 @@ public class BehavioralFeatureImpl
 				featuringClassifier = new DerivedUnionEObjectEList(
 					Classifier.class, this,
 					UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
-					new EStructuralFeature[]{}));
+					new int[]{}));
 		}
 		return featuringClassifier;
 	}
@@ -330,12 +329,9 @@ public class BehavioralFeatureImpl
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
 					this, UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getNamespace_OwnedRule(),
-						UMLPackage.eINSTANCE
-							.getBehavioralFeature_OwnedParameter(),
-						UMLPackage.eINSTANCE
-							.getBehavioralFeature_OwnedParameterSet()}));
+					new int[]{UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE,
+						UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER,
+						UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET}));
 		}
 		return ownedMember;
 	}
@@ -680,8 +676,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_ELEMENT :
@@ -745,7 +741,7 @@ public class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -753,8 +749,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -817,7 +813,7 @@ public class BehavioralFeatureImpl
 				getOwnedParameterSets().addAll((Collection) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -825,8 +821,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -879,7 +875,7 @@ public class BehavioralFeatureImpl
 				getOwnedParameterSets().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -887,8 +883,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_ELEMENT :
@@ -962,7 +958,7 @@ public class BehavioralFeatureImpl
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -1084,10 +1080,8 @@ public class BehavioralFeatureImpl
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getBehavioralFeature_OwnedParameter())
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getBehavioralFeature_OwnedParameterSet());
+			|| eIsSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER)
+			|| eIsSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET);
 	}
 
 } //BehavioralFeatureImpl

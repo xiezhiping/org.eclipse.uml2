@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.20 2005/11/22 14:57:02 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.21 2005/11/23 13:25:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -26,8 +26,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.Classifier;
@@ -153,7 +151,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	public EList getRedefinitionContexts() {
 		EList redefinitionContext = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
-			eVirtualSet(UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, new EStructuralFeature[] {UML2Package.eINSTANCE.getElement_Owner()}));
+			eVirtualSet(UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, new int[] {UML2Package.REDEFINABLE_ELEMENT__OWNER}));
 		}
 		return redefinitionContext;
 	}
@@ -215,6 +213,165 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
+				return getEAnnotations();
+			case UML2Package.REDEFINABLE_ELEMENT__OWNED_ELEMENT:
+				return getOwnedElements();
+			case UML2Package.REDEFINABLE_ELEMENT__OWNER:
+				if (resolve) return getOwner();
+				return basicGetOwner();
+			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
+				return getOwnedComments();
+			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
+				return getTemplateBindings();
+			case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
+				return getOwnedTemplateSignature();
+			case UML2Package.REDEFINABLE_ELEMENT__NAME:
+				return getName();
+			case UML2Package.REDEFINABLE_ELEMENT__QUALIFIED_NAME:
+				return getQualifiedName();
+			case UML2Package.REDEFINABLE_ELEMENT__VISIBILITY:
+				return getVisibility();
+			case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
+				return getClientDependencies();
+			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
+				return getNameExpression();
+			case UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT:
+				return getRedefinitionContexts();
+			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
+				return isLeaf() ? Boolean.TRUE : Boolean.FALSE;
+		}
+		return eDynamicGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
+				getEAnnotations().clear();
+				getEAnnotations().addAll((Collection)newValue);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
+				getOwnedComments().clear();
+				getOwnedComments().addAll((Collection)newValue);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
+				getTemplateBindings().clear();
+				getTemplateBindings().addAll((Collection)newValue);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
+				setOwnedTemplateSignature((TemplateSignature)newValue);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__NAME:
+				setName((String)newValue);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__VISIBILITY:
+				setVisibility((VisibilityKind)newValue);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
+				getClientDependencies().clear();
+				getClientDependencies().addAll((Collection)newValue);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
+				setNameExpression((StringExpression)newValue);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
+				setIsLeaf(((Boolean)newValue).booleanValue());
+				return;
+		}
+		eDynamicSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
+				getEAnnotations().clear();
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
+				getOwnedComments().clear();
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
+				getTemplateBindings().clear();
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
+				setOwnedTemplateSignature((TemplateSignature)null);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__VISIBILITY:
+				setVisibility(VISIBILITY_EDEFAULT);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
+				getClientDependencies().clear();
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
+				setNameExpression((StringExpression)null);
+				return;
+			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
+				setIsLeaf(IS_LEAF_EDEFAULT);
+				return;
+		}
+		eDynamicUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UML2Package.REDEFINABLE_ELEMENT__OWNED_ELEMENT:
+				return isSetOwnedElements();
+			case UML2Package.REDEFINABLE_ELEMENT__OWNER:
+				return isSetOwner();
+			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
+				EList ownedComment = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT);
+				return ownedComment != null && !ownedComment.isEmpty();
+			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
+				EList templateBinding = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING);
+				return templateBinding != null && !templateBinding.isEmpty();
+			case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
+				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
+			case UML2Package.REDEFINABLE_ELEMENT__NAME:
+				String name = (String)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__NAME, NAME_EDEFAULT);
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case UML2Package.REDEFINABLE_ELEMENT__QUALIFIED_NAME:
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
+			case UML2Package.REDEFINABLE_ELEMENT__VISIBILITY:
+				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+			case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
+				EList clientDependency = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY);
+				return clientDependency != null && !clientDependency.isEmpty();
+			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
+				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION) != null;
+			case UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT:
+				return isSetRedefinitionContexts();
+			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
+		}
+		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getRedefinedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -257,165 +414,6 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
-				return getEAnnotations();
-			case UML2Package.REDEFINABLE_ELEMENT__OWNED_ELEMENT:
-				return getOwnedElements();
-			case UML2Package.REDEFINABLE_ELEMENT__OWNER:
-				if (resolve) return getOwner();
-				return basicGetOwner();
-			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
-				return getOwnedComments();
-			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
-				return getTemplateBindings();
-			case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				return getOwnedTemplateSignature();
-			case UML2Package.REDEFINABLE_ELEMENT__NAME:
-				return getName();
-			case UML2Package.REDEFINABLE_ELEMENT__QUALIFIED_NAME:
-				return getQualifiedName();
-			case UML2Package.REDEFINABLE_ELEMENT__VISIBILITY:
-				return getVisibility();
-			case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
-				return getClientDependencies();
-			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
-				return getNameExpression();
-			case UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT:
-				return getRedefinitionContexts();
-			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
-				return isLeaf() ? Boolean.TRUE : Boolean.FALSE;
-		}
-		return eDynamicGet(eFeature, resolve);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
-				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection)newValue);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
-				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection)newValue);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
-				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection)newValue);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				setOwnedTemplateSignature((TemplateSignature)newValue);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__NAME:
-				setName((String)newValue);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__VISIBILITY:
-				setVisibility((VisibilityKind)newValue);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
-				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection)newValue);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
-				setNameExpression((StringExpression)newValue);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
-				setIsLeaf(((Boolean)newValue).booleanValue());
-				return;
-		}
-		eDynamicSet(eFeature, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
-				getEAnnotations().clear();
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
-				getOwnedComments().clear();
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
-				getTemplateBindings().clear();
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				setOwnedTemplateSignature((TemplateSignature)null);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__VISIBILITY:
-				setVisibility(VISIBILITY_EDEFAULT);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
-				getClientDependencies().clear();
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
-				setNameExpression((StringExpression)null);
-				return;
-			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
-				setIsLeaf(IS_LEAF_EDEFAULT);
-				return;
-		}
-		eDynamicUnset(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
-				return eAnnotations != null && !eAnnotations.isEmpty();
-			case UML2Package.REDEFINABLE_ELEMENT__OWNED_ELEMENT:
-				return isSetOwnedElements();
-			case UML2Package.REDEFINABLE_ELEMENT__OWNER:
-				return isSetOwner();
-			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
-			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
-			case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
-			case UML2Package.REDEFINABLE_ELEMENT__NAME:
-				String name = (String)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case UML2Package.REDEFINABLE_ELEMENT__QUALIFIED_NAME:
-				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UML2Package.REDEFINABLE_ELEMENT__VISIBILITY:
-				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
-			case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
-			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION) != null;
-			case UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT:
-				return isSetRedefinitionContexts();
-			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
-				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
-		}
-		return eDynamicIsSet(eFeature);
 	}
 
 	/**

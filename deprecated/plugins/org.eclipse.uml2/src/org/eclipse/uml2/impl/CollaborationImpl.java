@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.29 2005/11/22 14:57:03 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.30 2005/11/23 13:25:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -220,7 +219,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	public EList getAttributes() {
 		EList attribute = (EList)eVirtualGet(UML2Package.COLLABORATION__ATTRIBUTE);
 		if (attribute == null) {
-			eVirtualSet(UML2Package.COLLABORATION__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.COLLABORATION__ATTRIBUTE, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute()}));
+			eVirtualSet(UML2Package.COLLABORATION__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.COLLABORATION__ATTRIBUTE, new int[] {UML2Package.COLLABORATION__OWNED_ATTRIBUTE}));
 		}
 		return attribute;
 	}
@@ -233,7 +232,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 */
 	public boolean isSetAttributes() {
 		return super.isSetAttributes()
-			|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
+			|| eIsSet(UML2Package.COLLABORATION__OWNED_ATTRIBUTE);
 	}
 
 	/**
@@ -244,7 +243,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	public EList getFeatures() {
 		EList feature = (EList)eVirtualGet(UML2Package.COLLABORATION__FEATURE);
 		if (feature == null) {
-			eVirtualSet(UML2Package.COLLABORATION__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.COLLABORATION__FEATURE, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Attribute(), UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector()}));
+			eVirtualSet(UML2Package.COLLABORATION__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.COLLABORATION__FEATURE, new int[] {UML2Package.COLLABORATION__ATTRIBUTE, UML2Package.COLLABORATION__OWNED_CONNECTOR}));
 		}
 		return feature;
 	}
@@ -257,7 +256,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
+			|| eIsSet(UML2Package.COLLABORATION__OWNED_CONNECTOR);
 	}
 
 	/**
@@ -285,8 +284,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 */
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-			|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
+			|| eIsSet(UML2Package.COLLABORATION__OWNED_ATTRIBUTE)
+			|| eIsSet(UML2Package.COLLABORATION__OWNED_CONNECTOR);
 	}
 
 
@@ -411,7 +410,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	public EList getRoles() {
 		EList role = (EList)eVirtualGet(UML2Package.COLLABORATION__ROLE);
 		if (role == null) {
-			eVirtualSet(UML2Package.COLLABORATION__ROLE, role = new DerivedUnionEObjectEList(ConnectableElement.class, this, UML2Package.COLLABORATION__ROLE, new EStructuralFeature[] {UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(), UML2Package.eINSTANCE.getCollaboration_CollaborationRole()}));
+			eVirtualSet(UML2Package.COLLABORATION__ROLE, role = new DerivedUnionEObjectEList(ConnectableElement.class, this, UML2Package.COLLABORATION__ROLE, new int[] {UML2Package.COLLABORATION__OWNED_ATTRIBUTE, UML2Package.COLLABORATION__COLLABORATION_ROLE}));
 		}
 		return role;
 	}
@@ -423,8 +422,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated
 	 */
 	public boolean isSetRoles() {
-		return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
-			|| eIsSet(UML2Package.eINSTANCE.getCollaboration_CollaborationRole());
+		return eIsSet(UML2Package.COLLABORATION__OWNED_ATTRIBUTE)
+			|| eIsSet(UML2Package.COLLABORATION__COLLABORATION_ROLE);
 	}
 
 	/**
@@ -493,8 +492,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UML2Package.COLLABORATION__EANNOTATIONS:
 				return getEAnnotations();
 			case UML2Package.COLLABORATION__OWNED_ELEMENT:
@@ -588,7 +587,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			case UML2Package.COLLABORATION__COLLABORATION_ROLE:
 				return getCollaborationRoles();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -596,8 +595,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UML2Package.COLLABORATION__EANNOTATIONS:
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection)newValue);
@@ -716,7 +715,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				getCollaborationRoles().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -724,8 +723,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UML2Package.COLLABORATION__EANNOTATIONS:
 				getEAnnotations().clear();
 				return;
@@ -823,7 +822,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				getCollaborationRoles().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -831,8 +830,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UML2Package.COLLABORATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_ELEMENT:
@@ -943,7 +942,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				EList collaborationRole = (EList)eVirtualGet(UML2Package.COLLABORATION__COLLABORATION_ROLE);
 				return collaborationRole != null && !collaborationRole.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.3 2005/11/22 15:32:37 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.4 2005/11/23 13:27:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -105,14 +104,14 @@ public class RedefinableTemplateSignatureImpl
 		if (ownedElement == null) {
 			eVirtualSet(
 				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
+				ownedElement = new DerivedUnionEObjectEList(
+					Element.class,
 					this,
 					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT,
-					new EStructuralFeature[]{
-						UMLPackage.eINSTANCE.getElement_OwnedComment(),
-						UMLPackage.eINSTANCE.getNamedElement_NameExpression(),
-						UMLPackage.eINSTANCE
-							.getTemplateSignature_OwnedParameter()}));
+					new int[]{
+						UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT,
+						UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION,
+						UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER}));
 		}
 		return ownedElement;
 	}
@@ -234,8 +233,7 @@ public class RedefinableTemplateSignatureImpl
 					RedefinableElement.class,
 					this,
 					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINED_ELEMENT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getRedefinableTemplateSignature_ExtendedSignature()}));
+					new int[]{UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE}));
 		}
 		return redefinedElement;
 	}
@@ -254,8 +252,7 @@ public class RedefinableTemplateSignatureImpl
 					Classifier.class,
 					this,
 					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT,
-					new EStructuralFeature[]{UMLPackage.eINSTANCE
-						.getRedefinableTemplateSignature_Classifier()}));
+					new int[]{UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER}));
 		}
 		return redefinitionContext;
 	}
@@ -485,8 +482,8 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS :
 				return getEAnnotations();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT :
@@ -530,7 +527,7 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
 				return getClassifier();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -538,8 +535,8 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS :
 				getEAnnotations().clear();
 				getEAnnotations().addAll((Collection) newValue);
@@ -583,7 +580,7 @@ public class RedefinableTemplateSignatureImpl
 				setClassifier((Classifier) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -591,8 +588,8 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS :
 				getEAnnotations().clear();
 				return;
@@ -630,7 +627,7 @@ public class RedefinableTemplateSignatureImpl
 				setClassifier((Classifier) null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -638,8 +635,8 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT :
@@ -694,7 +691,7 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
 				return getClassifier() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**
@@ -759,7 +756,7 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	public boolean isSetOwner() {
 		return super.isSetOwner()
-			|| eIsSet(UMLPackage.eINSTANCE.getTemplateSignature_Template());
+			|| eIsSet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE);
 	}
 
 	/**
@@ -769,8 +766,7 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getTemplateSignature_OwnedParameter());
+			|| eIsSet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 	}
 
 	/**
@@ -780,8 +776,7 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getRedefinableTemplateSignature_ExtendedSignature());
+			|| eIsSet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE);
 	}
 
 	/**
@@ -791,8 +786,7 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
-			|| eIsSet(UMLPackage.eINSTANCE
-				.getRedefinableTemplateSignature_Classifier());
+			|| eIsSet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER);
 	}
 
 } //RedefinableTemplateSignatureImpl
