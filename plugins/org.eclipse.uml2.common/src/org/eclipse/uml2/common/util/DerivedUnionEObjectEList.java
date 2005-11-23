@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedUnionEObjectEList.java,v 1.1 2005/10/26 20:58:43 khussey Exp $
+ * $Id: DerivedUnionEObjectEList.java,v 1.2 2005/11/23 13:23:06 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -19,8 +19,8 @@ public class DerivedUnionEObjectEList
 		extends DerivedEObjectEList {
 
 	public DerivedUnionEObjectEList(Class dataClass, InternalEObject owner,
-			int featureID, EStructuralFeature[] sourceFeatures) {
-		super(dataClass, owner, featureID, sourceFeatures);
+			int featureID, int[] sourceFeatureIDs) {
+		super(dataClass, owner, featureID, sourceFeatureIDs);
 	}
 
 	protected boolean isIncluded(EStructuralFeature feature) {

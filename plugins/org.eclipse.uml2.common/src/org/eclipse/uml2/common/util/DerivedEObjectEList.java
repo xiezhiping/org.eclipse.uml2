@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedEObjectEList.java,v 1.2 2005/11/04 21:53:33 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.3 2005/11/23 13:23:06 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -78,28 +79,31 @@ public class DerivedEObjectEList
 
 			if (values == null || !scanNext(preparedFeature, values)) {
 
-				while (featureIndex < sourceFeatures.length) {
-					EStructuralFeature feature = sourceFeatures[featureIndex++];
+				while (featureIndex < sourceFeatureIDs.length) {
+					int sourceFeatureID = sourceFeatureIDs[featureIndex++];
 
-					if (owner.eIsSet(feature)) {
-						Object value = owner.eGet(feature, resolve());
+					// TODO remove casts to BasicEObjectImpl
+					if (((BasicEObjectImpl) owner).eIsSet(sourceFeatureID)) {
+						EStructuralFeature sourceFeature = getEStructuralFeature(sourceFeatureID);
+						Object value = ((BasicEObjectImpl) owner).eGet(
+							sourceFeatureID, resolve(), true);
 
-						if (feature.isMany()
-							|| FeatureMapUtil.isFeatureMap(feature)) {
+						if (sourceFeature.isMany()
+							|| FeatureMapUtil.isFeatureMap(sourceFeature)) {
 
-							if (scanNext(feature, resolve()
+							if (scanNext(sourceFeature, resolve()
 								? ((List) value).listIterator()
 								: ((InternalEList) value).basicListIterator())) {
 
 								prepared = 3;
 								return true;
 							}
-						} else if (isIncluded(feature)
+						} else if (isIncluded(sourceFeature)
 							? value != null
 							: isIncluded(value)) {
 
 							values = null;
-							preparedFeature = feature;
+							preparedFeature = sourceFeature;
 							preparedValue = value;
 							prepared = 2;
 							return true;
@@ -174,27 +178,30 @@ public class DerivedEObjectEList
 			if (values == null || !scanPrevious(preparedFeature, values)) {
 
 				while (featureIndex > 0) {
-					EStructuralFeature feature = sourceFeatures[--featureIndex];
+					int sourceFeatureID = sourceFeatureIDs[--featureIndex];
 
-					if (owner.eIsSet(feature)) {
-						Object value = owner.eGet(feature, resolve());
+					// TODO remove casts to BasicEObjectImpl
+					if (((BasicEObjectImpl) owner).eIsSet(sourceFeatureID)) {
+						EStructuralFeature sourceFeature = getEStructuralFeature(sourceFeatureID);
+						Object value = ((BasicEObjectImpl) owner).eGet(
+							sourceFeatureID, resolve(), true);
 
-						if (feature.isMany()
-							|| FeatureMapUtil.isFeatureMap(feature)) {
+						if (sourceFeature.isMany()
+							|| FeatureMapUtil.isFeatureMap(sourceFeature)) {
 
-							if (scanPrevious(feature, resolve()
+							if (scanPrevious(sourceFeature, resolve()
 								? ((List) value).listIterator()
 								: ((InternalEList) value).basicListIterator())) {
 
 								prepared = -3;
 								return true;
 							}
-						} else if (isIncluded(feature)
+						} else if (isIncluded(sourceFeature)
 							? value != null
 							: isIncluded(value)) {
 
 							values = null;
-							preparedFeature = feature;
+							preparedFeature = sourceFeature;
 							preparedValue = value;
 							prepared = -2;
 							return true;
@@ -289,16 +296,16 @@ public class DerivedEObjectEList
 
 	protected final int featureID;
 
-	protected final EStructuralFeature[] sourceFeatures;
+	protected final int[] sourceFeatureIDs;
 
 	public DerivedEObjectEList(Class dataClass, InternalEObject owner,
-			int featureID, EStructuralFeature[] sourceFeatures) {
+			int featureID, int[] sourceFeatureIDs) {
 		super();
 
 		this.dataClass = dataClass;
 		this.owner = owner;
 		this.featureID = featureID;
-		this.sourceFeatures = sourceFeatures;
+		this.sourceFeatureIDs = sourceFeatureIDs;
 	}
 
 	public Object get(boolean resolve) {
@@ -310,6 +317,10 @@ public class DerivedEObjectEList
 	}
 
 	public EStructuralFeature getEStructuralFeature() {
+		return getEStructuralFeature(featureID);
+	}
+
+	public EStructuralFeature getEStructuralFeature(int featureID) {
 		return owner.eClass().getEStructuralFeature(featureID);
 	}
 
@@ -333,13 +344,16 @@ public class DerivedEObjectEList
 	public int size() {
 		int result = 0;
 
-		if (sourceFeatures != null) {
+		if (sourceFeatureIDs != null) {
 
-			for (int i = 0; i < sourceFeatures.length; i++) {
-				EStructuralFeature sourceFeature = sourceFeatures[i];
+			for (int i = 0; i < sourceFeatureIDs.length; i++) {
+				int sourceFeatureID = sourceFeatureIDs[i];
 
-				if (owner.eIsSet(sourceFeature)) {
-					Object value = owner.eGet(sourceFeature, false);
+				// TODO remove casts to BasicEObjectImpl
+				if (((BasicEObjectImpl) owner).eIsSet(sourceFeatureID)) {
+					EStructuralFeature sourceFeature = getEStructuralFeature(sourceFeatureID);
+					Object value = ((BasicEObjectImpl) owner).eGet(
+						sourceFeatureID, false, true);
 
 					if (FeatureMapUtil.isFeatureMap(sourceFeature)) {
 						FeatureMap featureMap = (FeatureMap) value;
@@ -384,13 +398,16 @@ public class DerivedEObjectEList
 
 	public boolean isEmpty() {
 
-		if (sourceFeatures != null) {
+		if (sourceFeatureIDs != null) {
 
-			for (int i = 0; i < sourceFeatures.length; i++) {
-				EStructuralFeature sourceFeature = sourceFeatures[i];
+			for (int i = 0; i < sourceFeatureIDs.length; i++) {
+				int sourceFeatureID = sourceFeatureIDs[i];
 
-				if (owner.eIsSet(sourceFeature)) {
-					Object value = owner.eGet(sourceFeature, false);
+				// TODO remove casts to BasicEObjectImpl
+				if (((BasicEObjectImpl) owner).eIsSet(sourceFeatureID)) {
+					EStructuralFeature sourceFeature = getEStructuralFeature(sourceFeatureID);
+					Object value = ((BasicEObjectImpl) owner).eGet(
+						sourceFeatureID, false, true);
 
 					if (FeatureMapUtil.isFeatureMap(sourceFeature)) {
 						FeatureMap featureMap = (FeatureMap) value;
@@ -440,7 +457,7 @@ public class DerivedEObjectEList
 
 	public List basicList() {
 		return new DerivedEObjectEList(dataClass, owner, featureID,
-			sourceFeatures) {
+			sourceFeatureIDs) {
 
 			public ListIterator listIterator(int index) {
 				return basicListIterator(index);
@@ -524,7 +541,7 @@ public class DerivedEObjectEList
 
 	protected ListIterator listIterator(int index, boolean resolve) {
 
-		if (sourceFeatures == null || sourceFeatures.length == 0) {
+		if (sourceFeatureIDs == null || sourceFeatureIDs.length == 0) {
 
 			if (index != 0) {
 				throw new IndexOutOfBoundsException("index = " + index //$NON-NLS-1$

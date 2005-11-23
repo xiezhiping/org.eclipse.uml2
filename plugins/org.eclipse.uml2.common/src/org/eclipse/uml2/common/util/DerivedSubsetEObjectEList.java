@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedSubsetEObjectEList.java,v 1.1 2005/10/26 20:58:43 khussey Exp $
+ * $Id: DerivedSubsetEObjectEList.java,v 1.2 2005/11/23 13:23:06 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -18,6 +18,7 @@ import java.util.ListIterator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -81,11 +82,14 @@ public class DerivedSubsetEObjectEList
 			checkModCount();
 
 			if (values == null) {
+				// TODO remove casts to BasicEObjectImpl
 				(resolve()
-					? ((List) owner.eGet(sourceFeatures[featureIndex],
-						resolve())).listIterator()
-					: ((InternalEList) owner.eGet(sourceFeatures[featureIndex],
-						resolve())).basicListIterator()).add(element);
+					? ((List) ((BasicEObjectImpl) owner).eGet(
+						sourceFeatureIDs[featureIndex], resolve(), true))
+						.listIterator()
+					: ((InternalEList) ((BasicEObjectImpl) owner).eGet(
+						sourceFeatureIDs[featureIndex], resolve(), true))
+						.basicListIterator()).add(element);
 			} else {
 
 				switch (prepared) {
@@ -143,16 +147,16 @@ public class DerivedSubsetEObjectEList
 	}
 
 	public DerivedSubsetEObjectEList(Class dataClass, InternalEObject owner,
-			int featureID, EStructuralFeature[] sourceFeatures) {
+			int featureID, int[] sourceFeatureIDs) {
 
-		super(dataClass, owner, featureID, sourceFeatures);
+		super(dataClass, owner, featureID, sourceFeatureIDs);
 
-		for (int i = 0; i < sourceFeatures.length; i++) {
-			EStructuralFeature feature = sourceFeatures[i];
+		for (int i = 0; i < sourceFeatureIDs.length; i++) {
+			EStructuralFeature feature = getEStructuralFeature(sourceFeatureIDs[i]);
 
 			if (!feature.isMany() || FeatureMapUtil.isFeatureMap(feature)) {
 				throw new IllegalArgumentException(String
-					.valueOf(sourceFeatures));
+					.valueOf(sourceFeatureIDs));
 			}
 		}
 
@@ -160,7 +164,7 @@ public class DerivedSubsetEObjectEList
 
 	public List basicList() {
 		return new DerivedSubsetEObjectEList(dataClass, owner, featureID,
-			sourceFeatures) {
+			sourceFeatureIDs) {
 
 			public ListIterator listIterator(int index) {
 				return basicListIterator(index);
