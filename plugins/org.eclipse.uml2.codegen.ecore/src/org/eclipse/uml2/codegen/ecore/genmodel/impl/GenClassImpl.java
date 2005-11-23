@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.16 2005/11/23 13:21:58 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.17 2005/11/23 17:25:01 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -990,8 +990,7 @@ public class GenClassImpl
 		while (subsetGenFeatures.hasNext()) {
 			GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();
 
-			sb.append(subsetGenFeature.getQualifiedFeatureAccessorName());
-			sb.append("()"); //$NON-NLS-1$
+			sb.append(subsetGenFeature.getQualifiedFeatureAccessor());
 
 			if (subsetGenFeatures.hasNext()) {
 				sb.append(", "); //$NON-NLS-1$
@@ -1084,8 +1083,7 @@ public class GenClassImpl
 			GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures
 				.next();
 
-			sb.append(supersetGenFeature.getQualifiedFeatureAccessorName());
-			sb.append("()"); //$NON-NLS-1$
+			sb.append(supersetGenFeature.getQualifiedFeatureAccessor());
 
 			if (supersetGenFeatures.hasNext()) {
 				sb.append(", "); //$NON-NLS-1$

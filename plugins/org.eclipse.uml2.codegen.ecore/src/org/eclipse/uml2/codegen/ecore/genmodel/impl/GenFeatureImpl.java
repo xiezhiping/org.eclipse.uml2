@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.9 2005/11/23 17:17:28 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.10 2005/11/23 17:25:01 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -467,6 +467,26 @@ public class GenFeatureImpl
 		}
 
 		return super.getQualifiedFeatureAccessorName();
+	}
+
+	public String getQualifiedFeatureAccessor() {
+
+		if (isDuplicate()) {
+
+			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
+				.iterator(); redefinedGenFeatures.hasNext();) {
+
+				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
+					.next();
+
+				if (getName().equals(redefinedGenFeature.getName())) {
+					return redefinedGenFeature
+						.getQualifiedFeatureAccessor();
+				}
+			}
+		}
+
+		return super.getQualifiedFeatureAccessor();
 	}
 
 	public org.eclipse.emf.codegen.ecore.genmodel.GenFeature getReverse() {

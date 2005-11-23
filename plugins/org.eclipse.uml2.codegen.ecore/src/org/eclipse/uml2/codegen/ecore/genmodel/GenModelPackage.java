@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.9 2005/11/23 17:17:28 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.10 2005/11/23 17:25:01 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 

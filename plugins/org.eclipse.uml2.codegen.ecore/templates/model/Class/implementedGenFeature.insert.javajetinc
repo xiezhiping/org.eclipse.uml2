@@ -133,7 +133,7 @@
   <%}%>
   <%} else {%>
     <%if (genModel.isReflectiveDelegation()) {%>
-		return eIsSet(<%=genFeature.getGenPackage().getImportedPackageInterfaceName()%>.eINSTANCE.get<%=genFeature.getFeatureAccessorName()%>());
+		return eIsSet(<%=genFeature.getQualifiedFeatureAccessor()%>);
     <%} else if (!genFeature.isVolatile()) {%>
       <%if (genFeature.isListType()) {%>
         <%if (genModel.isVirtualDelegation()) {%>
@@ -151,9 +151,9 @@
       <%}%>
     <%} else if (genFeature.hasDelegateFeature()) { GenFeature delegateFeature = genFeature.getDelegateFeature();%>
       <%if (delegateFeature.isWrappedFeatureMapType()) {%>
-		return !((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap")%>.Internal)((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap")%>.Internal.Wrapper)get<%=delegateFeature.getAccessorName()%>()).featureMap()).isEmpty(<%=genFeature.getQualifiedFeatureAccessorName()%>());
+		return !((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap")%>.Internal)((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap")%>.Internal.Wrapper)get<%=delegateFeature.getAccessorName()%>()).featureMap()).isEmpty(<%=genFeature.getQualifiedFeatureAccessor()%>);
       <%} else {%>
-		return !((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap")%>.Internal)get<%=delegateFeature.getAccessorName()%>()).isEmpty(<%=genFeature.getQualifiedFeatureAccessorName()%>());
+		return !((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap")%>.Internal)get<%=delegateFeature.getAccessorName()%>()).isEmpty(<%=genFeature.getQualifiedFeatureAccessor()%>);
       <%}%>
     <%} else {%>
 <%@ include file="isSetGenFeature.TODO.override.javajetinc" fail="alternative" %>
