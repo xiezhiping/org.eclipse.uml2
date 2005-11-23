@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.8 2005/11/14 16:54:12 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.9 2005/11/23 17:17:28 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -128,8 +128,8 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case GenModelPackage.GEN_FEATURE__PROPERTY :
 				return getProperty();
 			case GenModelPackage.GEN_FEATURE__NOTIFY :
@@ -161,7 +161,7 @@ public class GenFeatureImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -169,8 +169,8 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case GenModelPackage.GEN_FEATURE__PROPERTY :
 				setProperty((GenPropertyKind) newValue);
 				return;
@@ -203,7 +203,7 @@ public class GenFeatureImpl
 				setKey(((Boolean) newValue).booleanValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -211,8 +211,8 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case GenModelPackage.GEN_FEATURE__PROPERTY :
 				setProperty(PROPERTY_EDEFAULT);
 				return;
@@ -244,7 +244,7 @@ public class GenFeatureImpl
 				setKey(KEY_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -252,8 +252,8 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case GenModelPackage.GEN_FEATURE__PROPERTY :
 				return property != PROPERTY_EDEFAULT;
 			case GenModelPackage.GEN_FEATURE__NOTIFY :
@@ -281,7 +281,7 @@ public class GenFeatureImpl
 			case GenModelPackage.GEN_FEATURE__KEY :
 				return ((eFlags & KEY_EFLAG) != 0) != KEY_EDEFAULT;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

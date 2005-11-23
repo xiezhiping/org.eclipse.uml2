@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationImpl.java,v 1.6 2005/11/14 16:54:12 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.7 2005/11/23 17:17:28 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -130,8 +130,8 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case GenModelPackage.GEN_OPERATION__GEN_CLASS :
 				return getGenClass();
 			case GenModelPackage.GEN_OPERATION__ECORE_OPERATION :
@@ -143,7 +143,7 @@ public class GenOperationImpl
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
 				return getCacheAdapterScope();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -151,8 +151,8 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case GenModelPackage.GEN_OPERATION__GEN_CLASS :
 				setGenClass((GenClass) newValue);
 				return;
@@ -167,7 +167,7 @@ public class GenOperationImpl
 				setCacheAdapterScope((GenCacheAdapterScope) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -175,8 +175,8 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case GenModelPackage.GEN_OPERATION__GEN_CLASS :
 				setGenClass((GenClass) null);
 				return;
@@ -190,7 +190,7 @@ public class GenOperationImpl
 				setCacheAdapterScope(CACHE_ADAPTER_SCOPE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -198,8 +198,8 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case GenModelPackage.GEN_OPERATION__GEN_CLASS :
 				return getGenClass() != null;
 			case GenModelPackage.GEN_OPERATION__ECORE_OPERATION :
@@ -209,7 +209,7 @@ public class GenOperationImpl
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
 				return cacheAdapterScope != CACHE_ADAPTER_SCOPE_EDEFAULT;
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

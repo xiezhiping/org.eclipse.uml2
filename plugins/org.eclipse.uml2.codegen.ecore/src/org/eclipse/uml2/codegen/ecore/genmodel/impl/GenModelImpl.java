@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.6 2005/11/21 19:36:53 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.7 2005/11/23 17:17:28 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -323,8 +323,8 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case GenModelPackage.GEN_MODEL__COPYRIGHT_TEXT :
 				return getCopyrightText();
 			case GenModelPackage.GEN_MODEL__MODEL_DIRECTORY :
@@ -462,7 +462,7 @@ public class GenModelImpl
 			case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
 				return getInvariantPrefix();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -470,8 +470,8 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case GenModelPackage.GEN_MODEL__COPYRIGHT_TEXT :
 				setCopyrightText((String) newValue);
 				return;
@@ -625,7 +625,7 @@ public class GenModelImpl
 				setInvariantPrefix((String) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -633,8 +633,8 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case GenModelPackage.GEN_MODEL__COPYRIGHT_TEXT :
 				setCopyrightText(COPYRIGHT_TEXT_EDEFAULT);
 				return;
@@ -783,7 +783,7 @@ public class GenModelImpl
 				setInvariantPrefix(INVARIANT_PREFIX_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -791,8 +791,8 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case GenModelPackage.GEN_MODEL__COPYRIGHT_TEXT :
 				return COPYRIGHT_TEXT_EDEFAULT == null
 					? copyrightText != null
@@ -933,7 +933,7 @@ public class GenModelImpl
 					? invariantPrefix != null
 					: !INVARIANT_PREFIX_EDEFAULT.equals(invariantPrefix);
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

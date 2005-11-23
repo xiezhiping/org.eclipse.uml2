@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.7 2005/11/18 16:33:41 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.8 2005/11/23 17:17:28 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -171,8 +171,8 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case GenModelPackage.GEN_PACKAGE__PREFIX :
 				return getPrefix();
 			case GenModelPackage.GEN_PACKAGE__BASE_PACKAGE :
@@ -209,6 +209,10 @@ public class GenPackageImpl
 				return isGenerateExampleClass()
 					? Boolean.TRUE
 					: Boolean.FALSE;
+			case GenModelPackage.GEN_PACKAGE__LITERALS_INTERFACE :
+				return isLiteralsInterface()
+					? Boolean.TRUE
+					: Boolean.FALSE;
 			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
 				if (resolve)
 					return getEcorePackage();
@@ -232,7 +236,7 @@ public class GenPackageImpl
 			case GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE :
 				return getOperationsPackage();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return eDynamicGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -240,8 +244,8 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case GenModelPackage.GEN_PACKAGE__PREFIX :
 				setPrefix((String) newValue);
 				return;
@@ -285,6 +289,9 @@ public class GenPackageImpl
 			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
 				setGenerateExampleClass(((Boolean) newValue).booleanValue());
 				return;
+			case GenModelPackage.GEN_PACKAGE__LITERALS_INTERFACE :
+				setLiteralsInterface(((Boolean) newValue).booleanValue());
+				return;
 			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
 				setEcorePackage((EPackage) newValue);
 				return;
@@ -314,7 +321,7 @@ public class GenPackageImpl
 				setOperationsPackage((String) newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		eDynamicSet(featureID, newValue);
 	}
 
 	/**
@@ -322,8 +329,8 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case GenModelPackage.GEN_PACKAGE__PREFIX :
 				setPrefix(PREFIX_EDEFAULT);
 				return;
@@ -366,6 +373,9 @@ public class GenPackageImpl
 			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
 				setGenerateExampleClass(GENERATE_EXAMPLE_CLASS_EDEFAULT);
 				return;
+			case GenModelPackage.GEN_PACKAGE__LITERALS_INTERFACE :
+				setLiteralsInterface(LITERALS_INTERFACE_EDEFAULT);
+				return;
 			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
 				setEcorePackage((EPackage) null);
 				return;
@@ -391,7 +401,7 @@ public class GenPackageImpl
 				setOperationsPackage(OPERATIONS_PACKAGE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		eDynamicUnset(featureID);
 	}
 
 	/**
@@ -399,8 +409,8 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case GenModelPackage.GEN_PACKAGE__PREFIX :
 				return PREFIX_EDEFAULT == null
 					? prefix != null
@@ -452,6 +462,8 @@ public class GenPackageImpl
 					: !TESTS_PACKAGE_SUFFIX_EDEFAULT.equals(testsPackageSuffix);
 			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
 				return generateExampleClass != GENERATE_EXAMPLE_CLASS_EDEFAULT;
+			case GenModelPackage.GEN_PACKAGE__LITERALS_INTERFACE :
+				return literalsInterface != LITERALS_INTERFACE_EDEFAULT;
 			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
 				return ecorePackage != null;
 			case GenModelPackage.GEN_PACKAGE__GEN_MODEL :
@@ -474,7 +486,7 @@ public class GenPackageImpl
 					? operationsPackage != null
 					: !OPERATIONS_PACKAGE_EDEFAULT.equals(operationsPackage);
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

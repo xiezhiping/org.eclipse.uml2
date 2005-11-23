@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.8 2005/11/21 19:36:53 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.9 2005/11/23 17:17:28 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1092,6 +1092,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_PACKAGE__GENERATE_EXAMPLE_CLASS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Literals Interface</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__LITERALS_INTERFACE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__LITERALS_INTERFACE;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Package</b></em>' reference.
