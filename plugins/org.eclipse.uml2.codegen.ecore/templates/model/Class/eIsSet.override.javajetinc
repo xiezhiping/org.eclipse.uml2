@@ -15,7 +15,7 @@
   <%if (genFeature.isListType() && !genFeature.isUnsettable()) {%>
     <%if (genFeature.isWrappedFeatureMapType()) {%>
       <%if (genFeature.isVolatile()) {%>
-				return !((<%=genFeature.getImportedEffectiveFeatureMapWrapperInternalInterface()%>)<%=genFeature.getGetAccessor()%>()).featureMap().isEmpty();
+				return !((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap")%>.Internal.Wrapper)<%=genFeature.getGetAccessor()%>()).featureMap().isEmpty();
       <%} else {%>
 				return <%=genFeature.getSafeName()%> != null && !<%=genFeature.getSafeName()%>.featureMap().isEmpty();
       <%}%>
