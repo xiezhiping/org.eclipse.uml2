@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveTypeImpl.java,v 1.21 2005/11/09 22:53:09 khussey Exp $
+ * $Id: PrimitiveTypeImpl.java,v 1.22 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getPrimitiveType();
+		return UML2Package.Literals.PRIMITIVE_TYPE;
 	}
 
 

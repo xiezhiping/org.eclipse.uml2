@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -85,7 +85,7 @@ public class UseCaseImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getUseCase();
+		return UMLPackage.Literals.USE_CASE;
 	}
 
 	/**
@@ -320,11 +320,11 @@ public class UseCaseImpl
 	public List allIncludedUseCases() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getUseCase().getEOperations().get(4));
+			List result = (List) cache.get(this, UMLPackage.Literals.USE_CASE
+				.getEOperations().get(4));
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE.getUseCase()
-					.getEOperations().get(4), result = UseCaseOperations
+				cache.put(this, UMLPackage.Literals.USE_CASE.getEOperations()
+					.get(4), result = UseCaseOperations
 					.allIncludedUseCases(this));
 			}
 			return result;

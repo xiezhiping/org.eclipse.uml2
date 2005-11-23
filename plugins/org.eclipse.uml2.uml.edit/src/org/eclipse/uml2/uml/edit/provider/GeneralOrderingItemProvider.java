@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: GeneralOrderingItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -84,8 +84,8 @@ public class GeneralOrderingItemProvider
 				getString("_UI_GeneralOrdering_before_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GeneralOrdering_before_feature", "_UI_GeneralOrdering_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getGeneralOrdering_Before(), true, null,
-				null, null));
+				UMLPackage.Literals.GENERAL_ORDERING__BEFORE, true, null, null,
+				null));
 	}
 
 	/**
@@ -103,8 +103,8 @@ public class GeneralOrderingItemProvider
 				getString("_UI_GeneralOrdering_after_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GeneralOrdering_after_feature", "_UI_GeneralOrdering_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getGeneralOrdering_After(), true, null,
-				null, null));
+				UMLPackage.Literals.GENERAL_ORDERING__AFTER, true, null, null,
+				null));
 	}
 
 	/**

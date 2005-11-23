@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -99,7 +99,7 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getArtifact();
+		return UMLPackage.Literals.ARTIFACT;
 	}
 
 	/**

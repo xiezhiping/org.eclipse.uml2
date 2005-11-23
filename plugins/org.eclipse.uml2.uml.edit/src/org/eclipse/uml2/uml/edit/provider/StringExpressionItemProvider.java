@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: StringExpressionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -90,7 +90,7 @@ public class StringExpressionItemProvider
 				getString("_UI_TemplateableElement_templateBinding_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_templateBinding_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateableElement_TemplateBinding(),
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -111,9 +111,8 @@ public class StringExpressionItemProvider
 				getString("_UI_TemplateableElement_ownedTemplateSignature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_ownedTemplateSignature_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getTemplateableElement_OwnedTemplateSignature(), true,
-				null, null,
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -133,7 +132,7 @@ public class StringExpressionItemProvider
 				getString("_UI_StringExpression_subExpression_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StringExpression_subExpression_feature", "_UI_StringExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStringExpression_SubExpression(), true,
+				UMLPackage.Literals.STRING_EXPRESSION__SUB_EXPRESSION, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -154,8 +153,8 @@ public class StringExpressionItemProvider
 				getString("_UI_StringExpression_owningExpression_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StringExpression_owningExpression_feature", "_UI_StringExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStringExpression_OwningExpression(),
-				true, null, null,
+				UMLPackage.Literals.STRING_EXPRESSION__OWNING_EXPRESSION, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -171,12 +170,12 @@ public class StringExpressionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateableElement_TemplateBinding());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateableElement_OwnedTemplateSignature());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getStringExpression_SubExpression());
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
+			childrenFeatures
+				.add(UMLPackage.Literals.STRING_EXPRESSION__SUB_EXPRESSION);
 		}
 		return childrenFeatures;
 	}
@@ -248,21 +247,21 @@ public class StringExpressionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_TemplateBinding(), UMLFactory.eINSTANCE
-			.createTemplateBinding()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+			UMLFactory.eINSTANCE.createTemplateBinding()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createTemplateSignature()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStringExpression_SubExpression(), UMLFactory.eINSTANCE
-			.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRING_EXPRESSION__SUB_EXPRESSION,
+			UMLFactory.eINSTANCE.createStringExpression()));
 	}
 
 	/**
@@ -276,11 +275,9 @@ public class StringExpressionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE.getExpression_Operand()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getStringExpression_SubExpression();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.EXPRESSION__OPERAND
+			|| childFeature == UMLPackage.Literals.STRING_EXPRESSION__SUB_EXPRESSION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

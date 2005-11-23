@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.15 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.16 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -69,7 +69,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getConnectorEnd();
+		return UML2Package.Literals.CONNECTOR_END;
 	}
 
 	/**

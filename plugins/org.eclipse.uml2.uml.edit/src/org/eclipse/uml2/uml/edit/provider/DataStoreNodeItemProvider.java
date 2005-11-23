@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataStoreNodeItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: DataStoreNodeItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -124,9 +124,8 @@ public class DataStoreNodeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE.getObjectNode_UpperBound();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

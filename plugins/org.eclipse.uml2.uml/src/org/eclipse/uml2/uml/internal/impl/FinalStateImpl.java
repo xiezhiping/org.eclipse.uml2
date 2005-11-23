@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateImpl.java,v 1.1 2005/11/14 22:26:06 khussey Exp $
+ * $Id: FinalStateImpl.java,v 1.2 2005/11/23 20:01:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -51,7 +51,7 @@ public class FinalStateImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getFinalState();
+		return UMLPackage.Literals.FINAL_STATE;
 	}
 
 	/**

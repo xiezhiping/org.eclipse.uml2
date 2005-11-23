@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,7 +53,7 @@ public abstract class RelationshipImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getRelationship();
+		return UMLPackage.Literals.RELATIONSHIP;
 	}
 
 	/**

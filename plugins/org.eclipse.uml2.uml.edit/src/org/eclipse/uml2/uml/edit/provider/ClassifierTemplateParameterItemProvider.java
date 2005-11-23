@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: ClassifierTemplateParameterItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,9 +87,8 @@ public class ClassifierTemplateParameterItemProvider
 				getString("_UI_ClassifierTemplateParameter_allowSubstitutable_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ClassifierTemplateParameter_allowSubstitutable_feature", "_UI_ClassifierTemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getClassifierTemplateParameter_AllowSubstitutable(), true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE,
+				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -107,9 +106,8 @@ public class ClassifierTemplateParameterItemProvider
 				getString("_UI_ClassifierTemplateParameter_defaultClassifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ClassifierTemplateParameter_defaultClassifier_feature", "_UI_ClassifierTemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getClassifierTemplateParameter_DefaultClassifier(), true,
-				null, null, null));
+				UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER,
+				true, null, null, null));
 	}
 
 	/**
@@ -127,8 +125,7 @@ public class ClassifierTemplateParameterItemProvider
 				getString("_UI_ClassifierTemplateParameter_constrainingClassifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ClassifierTemplateParameter_constrainingClassifier_feature", "_UI_ClassifierTemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getClassifierTemplateParameter_ConstrainingClassifier(),
+				UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER,
 				true, null, null, null));
 	}
 
@@ -196,10 +193,8 @@ public class ClassifierTemplateParameterItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateParameter_OwnedParameteredElement()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getTemplateParameter_OwnedDefault();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT
+			|| childFeature == UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

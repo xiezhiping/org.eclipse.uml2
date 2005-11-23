@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportItemProvider.java,v 1.1 2005/11/14 22:11:37 khussey Exp $
+ * $Id: PackageImportItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,7 +88,7 @@ public class PackageImportItemProvider
 				getString("_UI_PackageImport_visibility_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_PackageImport_visibility_feature", "_UI_PackageImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPackageImport_Visibility(), true,
+				UMLPackage.Literals.PACKAGE_IMPORT__VISIBILITY, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -107,7 +107,7 @@ public class PackageImportItemProvider
 				getString("_UI_PackageImport_importedPackage_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_PackageImport_importedPackage_feature", "_UI_PackageImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPackageImport_ImportedPackage(), true,
+				UMLPackage.Literals.PACKAGE_IMPORT__IMPORTED_PACKAGE, true,
 				null, null, null));
 	}
 
@@ -126,8 +126,8 @@ public class PackageImportItemProvider
 				getString("_UI_PackageImport_importingNamespace_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_PackageImport_importingNamespace_feature", "_UI_PackageImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPackageImport_ImportingNamespace(),
-				true, null, null,
+				UMLPackage.Literals.PACKAGE_IMPORT__IMPORTING_NAMESPACE, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

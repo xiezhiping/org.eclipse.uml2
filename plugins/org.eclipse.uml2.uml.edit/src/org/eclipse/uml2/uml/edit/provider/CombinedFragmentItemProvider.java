@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: CombinedFragmentItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -90,7 +90,7 @@ public class CombinedFragmentItemProvider
 				getString("_UI_CombinedFragment_interactionOperator_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CombinedFragment_interactionOperator_feature", "_UI_CombinedFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCombinedFragment_InteractionOperator(),
+				UMLPackage.Literals.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
 				true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -109,7 +109,7 @@ public class CombinedFragmentItemProvider
 				getString("_UI_CombinedFragment_operand_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CombinedFragment_operand_feature", "_UI_CombinedFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCombinedFragment_Operand(), true, null,
+				UMLPackage.Literals.COMBINED_FRAGMENT__OPERAND, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -129,7 +129,7 @@ public class CombinedFragmentItemProvider
 				getString("_UI_CombinedFragment_cfragmentGate_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CombinedFragment_cfragmentGate_feature", "_UI_CombinedFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCombinedFragment_CfragmentGate(), true,
+				UMLPackage.Literals.COMBINED_FRAGMENT__CFRAGMENT_GATE, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -146,10 +146,10 @@ public class CombinedFragmentItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getCombinedFragment_Operand());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getCombinedFragment_CfragmentGate());
+			childrenFeatures
+				.add(UMLPackage.Literals.COMBINED_FRAGMENT__OPERAND);
+			childrenFeatures
+				.add(UMLPackage.Literals.COMBINED_FRAGMENT__CFRAGMENT_GATE);
 		}
 		return childrenFeatures;
 	}
@@ -224,13 +224,13 @@ public class CombinedFragmentItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCombinedFragment_Operand(), UMLFactory.eINSTANCE
-			.createInteractionOperand()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COMBINED_FRAGMENT__OPERAND,
+			UMLFactory.eINSTANCE.createInteractionOperand()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCombinedFragment_CfragmentGate(), UMLFactory.eINSTANCE
-			.createGate()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COMBINED_FRAGMENT__CFRAGMENT_GATE,
+			UMLFactory.eINSTANCE.createGate()));
 	}
 
 	/**

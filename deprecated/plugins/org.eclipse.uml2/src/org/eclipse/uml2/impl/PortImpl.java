@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.21 2005/11/23 13:25:33 khussey Exp $
+ * $Id: PortImpl.java,v 1.22 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -129,7 +129,7 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getPort();
+		return UML2Package.Literals.PORT;
 	}
 
 	/**
@@ -187,23 +187,24 @@ public class PortImpl extends PropertyImpl implements Port {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getPort_Required());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.PORT__REQUIRED);
 
 			if (result == null) {
 				EList requireds = PortOperations.getRequireds(this);
-				cache.put(this, UML2Package.eINSTANCE.getPort_Required(),
+				cache.put(this, UML2Package.Literals.PORT__REQUIRED,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getPort_Required(), requireds
-							.size(), requireds.toArray()));
+						UML2Package.Literals.PORT__REQUIRED, requireds.size(),
+						requireds.toArray()));
 			}
 
 			return result;
 		}
 
 		EList requireds = PortOperations.getRequireds(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getPort_Required(), requireds.size(), requireds.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.PORT__REQUIRED, requireds.size(), requireds
+				.toArray());
 	}
 
 	/**
@@ -257,25 +258,26 @@ public class PortImpl extends PropertyImpl implements Port {
 	 */
 	public EList getProvideds() {
 		CacheAdapter cache = getCacheAdapter();
-		
+
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getPort_Provided());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.PORT__PROVIDED);
 
 			if (result == null) {
 				EList provideds = PortOperations.getProvideds(this);
-				cache.put(this, UML2Package.eINSTANCE.getPort_Provided(),
+				cache.put(this, UML2Package.Literals.PORT__PROVIDED,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getPort_Provided(), provideds
-							.size(), provideds.toArray()));
+						UML2Package.Literals.PORT__PROVIDED, provideds.size(),
+						provideds.toArray()));
 			}
 
 			return result;
 		}
 
 		EList provideds = PortOperations.getProvideds(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getPort_Provided(), provideds.size(), provideds.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.PORT__PROVIDED, provideds.size(), provideds
+				.toArray());
 	}
 
 	/**

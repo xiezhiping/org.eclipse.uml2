@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrenceItemProvider.java,v 1.15 2005/09/23 20:14:53 khussey Exp $
+ * $Id: CollaborationOccurrenceItemProvider.java,v 1.16 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -90,7 +90,7 @@ public class CollaborationOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_CollaborationOccurrence_type_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CollaborationOccurrence_type_feature", "_UI_CollaborationOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getCollaborationOccurrence_Type(),
+				 UML2Package.Literals.COLLABORATION_OCCURRENCE__TYPE,
 				 true,
 				 null,
 				 null,
@@ -110,7 +110,7 @@ public class CollaborationOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_CollaborationOccurrence_roleBinding_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CollaborationOccurrence_roleBinding_feature", "_UI_CollaborationOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
+				 UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING,
 				 true,
 				 null,
 				 null,
@@ -130,7 +130,7 @@ public class CollaborationOccurrenceItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding());
+			childrenFeatures.add(UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING);
 		}
 		return childrenFeatures;
 	}
@@ -187,47 +187,47 @@ public class CollaborationOccurrenceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
+				(UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING,
 				 UML2Factory.eINSTANCE.createDependency()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
+				(UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING,
 				 UML2Factory.eINSTANCE.createPermission()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
+				(UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING,
 				 UML2Factory.eINSTANCE.createUsage()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
+				(UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING,
 				 UML2Factory.eINSTANCE.createAbstraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
+				(UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING,
 				 UML2Factory.eINSTANCE.createRealization()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
+				(UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING,
 				 UML2Factory.eINSTANCE.createSubstitution()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
+				(UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING,
 				 UML2Factory.eINSTANCE.createImplementation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
+				(UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING,
 				 UML2Factory.eINSTANCE.createManifestation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
+				(UML2Package.Literals.COLLABORATION_OCCURRENCE__ROLE_BINDING,
 				 UML2Factory.eINSTANCE.createDeployment()));
 	}
 

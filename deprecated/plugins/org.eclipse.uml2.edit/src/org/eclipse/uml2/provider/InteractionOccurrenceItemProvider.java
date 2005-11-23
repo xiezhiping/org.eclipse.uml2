@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrenceItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: InteractionOccurrenceItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class InteractionOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionOccurrence_refersTo_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionOccurrence_refersTo_feature", "_UI_InteractionOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionOccurrence_RefersTo(),
+				 UML2Package.Literals.INTERACTION_OCCURRENCE__REFERS_TO,
 				 true,
 				 null,
 				 null,
@@ -113,7 +113,7 @@ public class InteractionOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionOccurrence_actualGate_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionOccurrence_actualGate_feature", "_UI_InteractionOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionOccurrence_ActualGate(),
+				 UML2Package.Literals.INTERACTION_OCCURRENCE__ACTUAL_GATE,
 				 true,
 				 null,
 				 null,
@@ -135,7 +135,7 @@ public class InteractionOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionOccurrence_argument_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionOccurrence_argument_feature", "_UI_InteractionOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionOccurrence_Argument(),
+				 UML2Package.Literals.INTERACTION_OCCURRENCE__ARGUMENT,
 				 true,
 				 null,
 				 null,
@@ -155,8 +155,8 @@ public class InteractionOccurrenceItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getInteractionOccurrence_ActualGate());
-			childrenFeatures.add(UML2Package.eINSTANCE.getInteractionOccurrence_Argument());
+			childrenFeatures.add(UML2Package.Literals.INTERACTION_OCCURRENCE__ACTUAL_GATE);
+			childrenFeatures.add(UML2Package.Literals.INTERACTION_OCCURRENCE__ARGUMENT);
 		}
 		return childrenFeatures;
 	}
@@ -226,17 +226,17 @@ public class InteractionOccurrenceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionOccurrence_ActualGate(),
+				(UML2Package.Literals.INTERACTION_OCCURRENCE__ACTUAL_GATE,
 				 UML2Factory.eINSTANCE.createGate()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionOccurrence_Argument(),
+				(UML2Package.Literals.INTERACTION_OCCURRENCE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionOccurrence_Argument(),
+				(UML2Package.Literals.INTERACTION_OCCURRENCE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createValuePin()));
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: ExceptionHandlerItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,7 +85,7 @@ public class ExceptionHandlerItemProvider
 				getString("_UI_ExceptionHandler_handlerBody_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExceptionHandler_handlerBody_feature", "_UI_ExceptionHandler_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExceptionHandler_HandlerBody(), true,
+				UMLPackage.Literals.EXCEPTION_HANDLER__HANDLER_BODY, true,
 				null, null, null));
 	}
 
@@ -104,8 +104,8 @@ public class ExceptionHandlerItemProvider
 				getString("_UI_ExceptionHandler_exceptionInput_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExceptionHandler_exceptionInput_feature", "_UI_ExceptionHandler_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExceptionHandler_ExceptionInput(),
-				true, null, null, null));
+				UMLPackage.Literals.EXCEPTION_HANDLER__EXCEPTION_INPUT, true,
+				null, null, null));
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class ExceptionHandlerItemProvider
 				getString("_UI_ExceptionHandler_exceptionType_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExceptionHandler_exceptionType_feature", "_UI_ExceptionHandler_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExceptionHandler_ExceptionType(), true,
+				UMLPackage.Literals.EXCEPTION_HANDLER__EXCEPTION_TYPE, true,
 				null, null, null));
 	}
 
@@ -142,7 +142,7 @@ public class ExceptionHandlerItemProvider
 				getString("_UI_ExceptionHandler_protectedNode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExceptionHandler_protectedNode_feature", "_UI_ExceptionHandler_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExceptionHandler_ProtectedNode(), true,
+				UMLPackage.Literals.EXCEPTION_HANDLER__PROTECTED_NODE, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));

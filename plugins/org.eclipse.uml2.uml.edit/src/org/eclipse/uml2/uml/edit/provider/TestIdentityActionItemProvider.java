@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: TestIdentityActionItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -89,7 +89,7 @@ public class TestIdentityActionItemProvider
 				getString("_UI_TestIdentityAction_first_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TestIdentityAction_first_feature", "_UI_TestIdentityAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTestIdentityAction_First(), true, null,
+				UMLPackage.Literals.TEST_IDENTITY_ACTION__FIRST, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -109,9 +109,8 @@ public class TestIdentityActionItemProvider
 				getString("_UI_TestIdentityAction_second_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TestIdentityAction_second_feature", "_UI_TestIdentityAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTestIdentityAction_Second(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.TEST_IDENTITY_ACTION__SECOND, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -130,9 +129,8 @@ public class TestIdentityActionItemProvider
 				getString("_UI_TestIdentityAction_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TestIdentityAction_result_feature", "_UI_TestIdentityAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTestIdentityAction_Result(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.TEST_IDENTITY_ACTION__RESULT, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -147,12 +145,12 @@ public class TestIdentityActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTestIdentityAction_First());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTestIdentityAction_Second());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTestIdentityAction_Result());
+			childrenFeatures
+				.add(UMLPackage.Literals.TEST_IDENTITY_ACTION__FIRST);
+			childrenFeatures
+				.add(UMLPackage.Literals.TEST_IDENTITY_ACTION__SECOND);
+			childrenFeatures
+				.add(UMLPackage.Literals.TEST_IDENTITY_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -224,33 +222,33 @@ public class TestIdentityActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTestIdentityAction_First(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEST_IDENTITY_ACTION__FIRST,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTestIdentityAction_First(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEST_IDENTITY_ACTION__FIRST,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTestIdentityAction_First(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEST_IDENTITY_ACTION__FIRST,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTestIdentityAction_Second(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEST_IDENTITY_ACTION__SECOND,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTestIdentityAction_Second(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEST_IDENTITY_ACTION__SECOND,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTestIdentityAction_Second(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEST_IDENTITY_ACTION__SECOND,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTestIdentityAction_Result(), UMLFactory.eINSTANCE
-			.createOutputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEST_IDENTITY_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**
@@ -264,14 +262,10 @@ public class TestIdentityActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getTestIdentityAction_First()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getTestIdentityAction_Second();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.TEST_IDENTITY_ACTION__FIRST
+			|| childFeature == UMLPackage.Literals.TEST_IDENTITY_ACTION__SECOND;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

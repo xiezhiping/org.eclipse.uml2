@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalNodeImpl.java,v 1.9 2005/11/04 22:23:02 khussey Exp $
+ * $Id: FinalNodeImpl.java,v 1.10 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public abstract class FinalNodeImpl extends ControlNodeImpl implements FinalNode
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getFinalNode();
+		return UML2Package.Literals.FINAL_NODE;
 	}
 
 

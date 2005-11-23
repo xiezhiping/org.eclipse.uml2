@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateItemProvider.java,v 1.16 2005/09/23 20:14:53 khussey Exp $
+ * $Id: StateItemProvider.java,v 1.17 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -109,7 +109,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
+				 UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 				 false,
 				 null,
 				 null,
@@ -131,7 +131,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getRedefinableElement_IsLeaf(),
+				 UML2Package.Literals.REDEFINABLE_ELEMENT__IS_LEAF,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -151,7 +151,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Vertex_container_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Vertex_container_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getVertex_Container(),
+				 UML2Package.Literals.VERTEX__CONTAINER,
 				 true,
 				 null,
 				 null,
@@ -173,7 +173,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Vertex_outgoing_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Vertex_outgoing_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getVertex_Outgoing(),
+				 UML2Package.Literals.VERTEX__OUTGOING,
 				 true,
 				 null,
 				 null,
@@ -193,7 +193,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Vertex_incoming_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Vertex_incoming_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getVertex_Incoming(),
+				 UML2Package.Literals.VERTEX__INCOMING,
 				 true,
 				 null,
 				 null,
@@ -213,7 +213,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_isComposite_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_isComposite_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_IsComposite(),
+				 UML2Package.Literals.STATE__IS_COMPOSITE,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -235,7 +235,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_isOrthogonal_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_isOrthogonal_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_IsOrthogonal(),
+				 UML2Package.Literals.STATE__IS_ORTHOGONAL,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -257,7 +257,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_isSimple_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_isSimple_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_IsSimple(),
+				 UML2Package.Literals.STATE__IS_SIMPLE,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -279,7 +279,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_isSubmachineState_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_isSubmachineState_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_IsSubmachineState(),
+				 UML2Package.Literals.STATE__IS_SUBMACHINE_STATE,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -301,7 +301,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_submachine_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_submachine_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_Submachine(),
+				 UML2Package.Literals.STATE__SUBMACHINE,
 				 true,
 				 null,
 				 null,
@@ -321,7 +321,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_connection_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_connection_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_Connection(),
+				 UML2Package.Literals.STATE__CONNECTION,
 				 true,
 				 null,
 				 null,
@@ -343,7 +343,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_redefinedState_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_redefinedState_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_RedefinedState(),
+				 UML2Package.Literals.STATE__REDEFINED_STATE,
 				 true,
 				 null,
 				 null,
@@ -363,7 +363,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_deferrableTrigger_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_deferrableTrigger_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_DeferrableTrigger(),
+				 UML2Package.Literals.STATE__DEFERRABLE_TRIGGER,
 				 true,
 				 null,
 				 null,
@@ -383,7 +383,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_region_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_region_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_Region(),
+				 UML2Package.Literals.STATE__REGION,
 				 true,
 				 null,
 				 null,
@@ -405,7 +405,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_entry_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_entry_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_Entry(),
+				 UML2Package.Literals.STATE__ENTRY,
 				 true,
 				 null,
 				 null,
@@ -427,7 +427,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_exit_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_exit_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_Exit(),
+				 UML2Package.Literals.STATE__EXIT,
 				 true,
 				 null,
 				 null,
@@ -449,7 +449,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_doActivity_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_doActivity_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_DoActivity(),
+				 UML2Package.Literals.STATE__DO_ACTIVITY,
 				 true,
 				 null,
 				 null,
@@ -471,7 +471,7 @@ public class StateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_State_stateInvariant_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_State_stateInvariant_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getState_StateInvariant(),
+				 UML2Package.Literals.STATE__STATE_INVARIANT,
 				 true,
 				 null,
 				 null,
@@ -491,12 +491,12 @@ public class StateItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getState_Connection());
-			childrenFeatures.add(UML2Package.eINSTANCE.getState_Region());
-			childrenFeatures.add(UML2Package.eINSTANCE.getState_Entry());
-			childrenFeatures.add(UML2Package.eINSTANCE.getState_Exit());
-			childrenFeatures.add(UML2Package.eINSTANCE.getState_DoActivity());
-			childrenFeatures.add(UML2Package.eINSTANCE.getState_StateInvariant());
+			childrenFeatures.add(UML2Package.Literals.STATE__CONNECTION);
+			childrenFeatures.add(UML2Package.Literals.STATE__REGION);
+			childrenFeatures.add(UML2Package.Literals.STATE__ENTRY);
+			childrenFeatures.add(UML2Package.Literals.STATE__EXIT);
+			childrenFeatures.add(UML2Package.Literals.STATE__DO_ACTIVITY);
+			childrenFeatures.add(UML2Package.Literals.STATE__STATE_INVARIANT);
 		}
 		return childrenFeatures;
 	}
@@ -577,52 +577,52 @@ public class StateItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getState_Connection(),
+				(UML2Package.Literals.STATE__CONNECTION,
 				 UML2Factory.eINSTANCE.createConnectionPointReference()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getState_Region(),
+				(UML2Package.Literals.STATE__REGION,
 				 UML2Factory.eINSTANCE.createRegion()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getState_Entry(),
+				(UML2Package.Literals.STATE__ENTRY,
 				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getState_Exit(),
+				(UML2Package.Literals.STATE__EXIT,
 				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getState_DoActivity(),
+				(UML2Package.Literals.STATE__DO_ACTIVITY,
 				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getState_StateInvariant(),
+				(UML2Package.Literals.STATE__STATE_INVARIANT,
 				 UML2Factory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getState_StateInvariant(),
+				(UML2Package.Literals.STATE__STATE_INVARIANT,
 				 UML2Factory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getState_StateInvariant(),
+				(UML2Package.Literals.STATE__STATE_INVARIANT,
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getState_StateInvariant(),
+				(UML2Package.Literals.STATE__STATE_INVARIANT,
 				 UML2Factory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getState_StateInvariant(),
+				(UML2Package.Literals.STATE__STATE_INVARIANT,
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
 	}
 
@@ -637,11 +637,11 @@ public class StateItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			childFeature == UML2Package.eINSTANCE.getState_StateInvariant() ||
-			childFeature == UML2Package.eINSTANCE.getState_Entry() ||
-			childFeature == UML2Package.eINSTANCE.getState_Exit() ||
-			childFeature == UML2Package.eINSTANCE.getState_DoActivity();
+			childFeature == UML2Package.Literals.NAMESPACE__OWNED_RULE ||
+			childFeature == UML2Package.Literals.STATE__STATE_INVARIANT ||
+			childFeature == UML2Package.Literals.STATE__ENTRY ||
+			childFeature == UML2Package.Literals.STATE__EXIT ||
+			childFeature == UML2Package.Literals.STATE__DO_ACTIVITY;
 
 		if (qualify) {
 			return getString

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: ConstraintItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,7 +87,7 @@ public class ConstraintItemProvider
 				getString("_UI_Constraint_constrainedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Constraint_constrainedElement_feature", "_UI_Constraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConstraint_ConstrainedElement(), true,
+				UMLPackage.Literals.CONSTRAINT__CONSTRAINED_ELEMENT, true,
 				null, null, null));
 	}
 
@@ -106,7 +106,7 @@ public class ConstraintItemProvider
 				getString("_UI_Constraint_specification_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Constraint_specification_feature", "_UI_Constraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConstraint_Specification(), true, null,
+				UMLPackage.Literals.CONSTRAINT__SPECIFICATION, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -126,7 +126,7 @@ public class ConstraintItemProvider
 				getString("_UI_Constraint_context_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Constraint_context_feature", "_UI_Constraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConstraint_Context(), true, null, null,
+				UMLPackage.Literals.CONSTRAINT__CONTEXT, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -142,8 +142,7 @@ public class ConstraintItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getConstraint_Specification());
+			childrenFeatures.add(UMLPackage.Literals.CONSTRAINT__SPECIFICATION);
 		}
 		return childrenFeatures;
 	}
@@ -201,61 +200,61 @@ public class ConstraintItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createOpaqueExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createLiteralInteger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createLiteralString()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createLiteralBoolean()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createLiteralNull()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createInstanceValue()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createLiteralUnlimitedNatural()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createTimeExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createDuration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createDurationInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConstraint_Specification(), UMLFactory.eINSTANCE
-			.createTimeInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
+				.createTimeInterval()));
 	}
 
 	/**
@@ -269,10 +268,8 @@ public class ConstraintItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getConstraint_Specification();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.CONSTRAINT__SPECIFICATION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

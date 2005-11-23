@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: EnumerationLiteralItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,7 +83,7 @@ public class EnumerationLiteralItemProvider
 				getString("_UI_EnumerationLiteral_enumeration_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_EnumerationLiteral_enumeration_feature", "_UI_EnumerationLiteral_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getEnumerationLiteral_Enumeration(), true,
+				UMLPackage.Literals.ENUMERATION_LITERAL__ENUMERATION, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -147,10 +147,8 @@ public class EnumerationLiteralItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getInstanceSpecification_Specification();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

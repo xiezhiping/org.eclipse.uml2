@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ExpansionNodeItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -87,7 +87,7 @@ public class ExpansionNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExpansionNode_regionAsOutput_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExpansionNode_regionAsOutput_feature", "_UI_ExpansionNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExpansionNode_RegionAsOutput(),
+				 UML2Package.Literals.EXPANSION_NODE__REGION_AS_OUTPUT,
 				 true,
 				 null,
 				 null,
@@ -107,7 +107,7 @@ public class ExpansionNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExpansionNode_regionAsInput_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExpansionNode_regionAsInput_feature", "_UI_ExpansionNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExpansionNode_RegionAsInput(),
+				 UML2Package.Literals.EXPANSION_NODE__REGION_AS_INPUT,
 				 true,
 				 null,
 				 null,

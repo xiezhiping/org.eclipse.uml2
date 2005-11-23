@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: SignalItemProvider.java,v 1.15 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class SignalItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Signal_ownedAttribute_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Signal_ownedAttribute_feature", "_UI_Signal_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getSignal_OwnedAttribute(),
+				 UML2Package.Literals.SIGNAL__OWNED_ATTRIBUTE,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class SignalItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getSignal_OwnedAttribute());
+			childrenFeatures.add(UML2Package.Literals.SIGNAL__OWNED_ATTRIBUTE);
 		}
 		return childrenFeatures;
 	}
@@ -166,17 +166,17 @@ public class SignalItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSignal_OwnedAttribute(),
+				(UML2Package.Literals.SIGNAL__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSignal_OwnedAttribute(),
+				(UML2Package.Literals.SIGNAL__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSignal_OwnedAttribute(),
+				(UML2Package.Literals.SIGNAL__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createPort()));
 	}
 

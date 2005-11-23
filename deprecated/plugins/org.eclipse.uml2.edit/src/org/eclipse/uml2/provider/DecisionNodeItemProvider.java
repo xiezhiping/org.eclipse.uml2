@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: DecisionNodeItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class DecisionNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DecisionNode_decisionInput_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DecisionNode_decisionInput_feature", "_UI_DecisionNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDecisionNode_DecisionInput(),
+				 UML2Package.Literals.DECISION_NODE__DECISION_INPUT,
 				 true,
 				 null,
 				 null,

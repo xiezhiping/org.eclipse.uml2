@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearStructuralFeatureActionItemProvider.java,v 1.11 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ClearStructuralFeatureActionItemProvider.java,v 1.12 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -127,8 +127,8 @@ public class ClearStructuralFeatureActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

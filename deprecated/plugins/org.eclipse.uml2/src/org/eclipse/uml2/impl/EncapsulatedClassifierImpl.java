@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.26 2005/11/23 13:25:32 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.27 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,7 +77,7 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getEncapsulatedClassifier();
+		return UML2Package.Literals.ENCAPSULATED_CLASSIFIER;
 	}
 
 	/**

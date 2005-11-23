@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: StringExpressionItemProvider.java,v 1.14 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -90,7 +90,7 @@ public class StringExpressionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StringExpression_subExpression_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StringExpression_subExpression_feature", "_UI_StringExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStringExpression_SubExpression(),
+				 UML2Package.Literals.STRING_EXPRESSION__SUB_EXPRESSION,
 				 true,
 				 null,
 				 null,
@@ -112,7 +112,7 @@ public class StringExpressionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StringExpression_owningExpression_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StringExpression_owningExpression_feature", "_UI_StringExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStringExpression_OwningExpression(),
+				 UML2Package.Literals.STRING_EXPRESSION__OWNING_EXPRESSION,
 				 true,
 				 null,
 				 null,
@@ -132,7 +132,7 @@ public class StringExpressionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getStringExpression_SubExpression());
+			childrenFeatures.add(UML2Package.Literals.STRING_EXPRESSION__SUB_EXPRESSION);
 		}
 		return childrenFeatures;
 	}
@@ -189,7 +189,7 @@ public class StringExpressionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStringExpression_SubExpression(),
+				(UML2Package.Literals.STRING_EXPRESSION__SUB_EXPRESSION,
 				 UML2Factory.eINSTANCE.createStringExpression()));
 	}
 

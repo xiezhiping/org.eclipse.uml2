@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ActionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -91,7 +91,7 @@ public class ActionItemProvider
 				getString("_UI_Action_output_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Action_output_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAction_Output(), false, null, null,
+				UMLPackage.Literals.ACTION__OUTPUT, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -111,7 +111,7 @@ public class ActionItemProvider
 				getString("_UI_Action_input_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Action_input_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAction_Input(), false, null, null,
+				UMLPackage.Literals.ACTION__INPUT, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -131,7 +131,7 @@ public class ActionItemProvider
 				getString("_UI_Action_context_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Action_context_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAction_Context(), false, null, null,
+				UMLPackage.Literals.ACTION__CONTEXT, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -151,7 +151,7 @@ public class ActionItemProvider
 				getString("_UI_Action_localPrecondition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Action_localPrecondition_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAction_LocalPrecondition(), true, null,
+				UMLPackage.Literals.ACTION__LOCAL_PRECONDITION, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -171,9 +171,8 @@ public class ActionItemProvider
 				getString("_UI_Action_localPostcondition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Action_localPostcondition_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAction_LocalPostcondition(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -188,10 +187,10 @@ public class ActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getAction_LocalPrecondition());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition());
+			childrenFeatures
+				.add(UMLPackage.Literals.ACTION__LOCAL_PRECONDITION);
+			childrenFeatures
+				.add(UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -262,45 +261,45 @@ public class ActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition(), UMLFactory.eINSTANCE
-			.createConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition(), UMLFactory.eINSTANCE
-			.createInteractionConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition(), UMLFactory.eINSTANCE
-			.createIntervalConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition(), UMLFactory.eINSTANCE
-			.createTimeConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition(), UMLFactory.eINSTANCE
-			.createDurationConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAction_LocalPostcondition(), UMLFactory.eINSTANCE
-			.createConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAction_LocalPostcondition(), UMLFactory.eINSTANCE
-			.createInteractionConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAction_LocalPostcondition(), UMLFactory.eINSTANCE
-			.createIntervalConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAction_LocalPostcondition(), UMLFactory.eINSTANCE
-			.createTimeConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAction_LocalPostcondition(), UMLFactory.eINSTANCE
-			.createDurationConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 	}
 
 	/**
@@ -314,10 +313,8 @@ public class ActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

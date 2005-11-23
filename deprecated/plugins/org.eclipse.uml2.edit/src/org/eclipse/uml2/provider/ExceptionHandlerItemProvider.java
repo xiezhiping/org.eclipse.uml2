@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ExceptionHandlerItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -88,7 +88,7 @@ public class ExceptionHandlerItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExceptionHandler_protectedNode_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExceptionHandler_protectedNode_feature", "_UI_ExceptionHandler_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExceptionHandler_ProtectedNode(),
+				 UML2Package.Literals.EXCEPTION_HANDLER__PROTECTED_NODE,
 				 true,
 				 null,
 				 null,
@@ -110,7 +110,7 @@ public class ExceptionHandlerItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExceptionHandler_handlerBody_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExceptionHandler_handlerBody_feature", "_UI_ExceptionHandler_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExceptionHandler_HandlerBody(),
+				 UML2Package.Literals.EXCEPTION_HANDLER__HANDLER_BODY,
 				 true,
 				 null,
 				 null,
@@ -130,7 +130,7 @@ public class ExceptionHandlerItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExceptionHandler_exceptionInput_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExceptionHandler_exceptionInput_feature", "_UI_ExceptionHandler_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExceptionHandler_ExceptionInput(),
+				 UML2Package.Literals.EXCEPTION_HANDLER__EXCEPTION_INPUT,
 				 true,
 				 null,
 				 null,
@@ -150,7 +150,7 @@ public class ExceptionHandlerItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExceptionHandler_exceptionType_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExceptionHandler_exceptionType_feature", "_UI_ExceptionHandler_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExceptionHandler_ExceptionType(),
+				 UML2Package.Literals.EXCEPTION_HANDLER__EXCEPTION_TYPE,
 				 true,
 				 null,
 				 null,

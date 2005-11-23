@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.15 2005/11/23 13:25:34 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.16 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -63,7 +63,7 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getIntervalConstraint();
+		return UML2Package.Literals.INTERVAL_CONSTRAINT;
 	}
 
 	/**

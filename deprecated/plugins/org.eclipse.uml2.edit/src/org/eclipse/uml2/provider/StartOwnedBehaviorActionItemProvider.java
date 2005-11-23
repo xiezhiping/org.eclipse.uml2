@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StartOwnedBehaviorActionItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: StartOwnedBehaviorActionItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class StartOwnedBehaviorActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StartOwnedBehaviorAction_object_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StartOwnedBehaviorAction_object_feature", "_UI_StartOwnedBehaviorAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStartOwnedBehaviorAction_Object(),
+				 UML2Package.Literals.START_OWNED_BEHAVIOR_ACTION__OBJECT,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class StartOwnedBehaviorActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getStartOwnedBehaviorAction_Object());
+			childrenFeatures.add(UML2Package.Literals.START_OWNED_BEHAVIOR_ACTION__OBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -166,12 +166,12 @@ public class StartOwnedBehaviorActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStartOwnedBehaviorAction_Object(),
+				(UML2Package.Literals.START_OWNED_BEHAVIOR_ACTION__OBJECT,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStartOwnedBehaviorAction_Object(),
+				(UML2Package.Literals.START_OWNED_BEHAVIOR_ACTION__OBJECT,
 				 UML2Factory.eINSTANCE.createValuePin()));
 	}
 
@@ -186,8 +186,8 @@ public class StartOwnedBehaviorActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.21 2005/11/23 13:25:33 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.22 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -81,7 +81,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getStateInvariant();
+		return UML2Package.Literals.STATE_INVARIANT;
 	}
 
 	/**

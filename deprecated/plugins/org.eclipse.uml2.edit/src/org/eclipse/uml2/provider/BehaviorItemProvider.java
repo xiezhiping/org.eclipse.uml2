@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorItemProvider.java,v 1.21 2005/05/18 16:40:45 khussey Exp $
+ * $Id: BehaviorItemProvider.java,v 1.22 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -113,7 +113,7 @@ public class BehaviorItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Behavior_isReentrant_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_isReentrant_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavior_IsReentrant(),
+				 UML2Package.Literals.BEHAVIOR__IS_REENTRANT,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -133,7 +133,7 @@ public class BehaviorItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Behavior_context_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_context_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavior_Context(),
+				 UML2Package.Literals.BEHAVIOR__CONTEXT,
 				 true,
 				 null,
 				 null,
@@ -155,7 +155,7 @@ public class BehaviorItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Behavior_redefinedBehavior_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_redefinedBehavior_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavior_RedefinedBehavior(),
+				 UML2Package.Literals.BEHAVIOR__REDEFINED_BEHAVIOR,
 				 true,
 				 null,
 				 null,
@@ -175,7 +175,7 @@ public class BehaviorItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Behavior_specification_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_specification_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavior_Specification(),
+				 UML2Package.Literals.BEHAVIOR__SPECIFICATION,
 				 true,
 				 null,
 				 null,
@@ -195,7 +195,7 @@ public class BehaviorItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Behavior_parameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_parameter_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavior_Parameter(),
+				 UML2Package.Literals.BEHAVIOR__PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -217,7 +217,7 @@ public class BehaviorItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Behavior_formalParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_formalParameter_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavior_FormalParameter(),
+				 UML2Package.Literals.BEHAVIOR__FORMAL_PARAMETER,
 				 false,
 				 null,
 				 null,
@@ -239,7 +239,7 @@ public class BehaviorItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Behavior_returnResult_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_returnResult_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavior_ReturnResult(),
+				 UML2Package.Literals.BEHAVIOR__RETURN_RESULT,
 				 false,
 				 null,
 				 null,
@@ -261,7 +261,7 @@ public class BehaviorItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Behavior_precondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_precondition_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavior_Precondition(),
+				 UML2Package.Literals.BEHAVIOR__PRECONDITION,
 				 true,
 				 null,
 				 null,
@@ -281,7 +281,7 @@ public class BehaviorItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Behavior_postcondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_postcondition_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavior_Postcondition(),
+				 UML2Package.Literals.BEHAVIOR__POSTCONDITION,
 				 true,
 				 null,
 				 null,
@@ -301,7 +301,7 @@ public class BehaviorItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Behavior_ownedParameterSet_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_ownedParameterSet_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavior_OwnedParameterSet(),
+				 UML2Package.Literals.BEHAVIOR__OWNED_PARAMETER_SET,
 				 true,
 				 null,
 				 null,
@@ -321,8 +321,8 @@ public class BehaviorItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavior_Parameter());
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavior_OwnedParameterSet());
+			childrenFeatures.add(UML2Package.Literals.BEHAVIOR__PARAMETER);
+			childrenFeatures.add(UML2Package.Literals.BEHAVIOR__OWNED_PARAMETER_SET);
 		}
 		return childrenFeatures;
 	}
@@ -386,12 +386,12 @@ public class BehaviorItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavior_Parameter(),
+				(UML2Package.Literals.BEHAVIOR__PARAMETER,
 				 UML2Factory.eINSTANCE.createParameter()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavior_OwnedParameterSet(),
+				(UML2Package.Literals.BEHAVIOR__OWNED_PARAMETER_SET,
 				 UML2Factory.eINSTANCE.createParameterSet()));
 	}
 
@@ -406,12 +406,12 @@ public class BehaviorItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
-			childFeature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			childFeature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			childFeature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
+			childFeature == UML2Package.Literals.CLASSIFIER__OWNED_USE_CASE ||
+			childFeature == UML2Package.Literals.CLASS__NESTED_CLASSIFIER ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE ||
+			childFeature == UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE ||
+			childFeature == UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT;
 
 		if (qualify) {
 			return getString
@@ -439,11 +439,11 @@ public class BehaviorItemProvider
 	 * @generated
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getBehavior_Precondition()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, collection, index);
+		if (feature == UML2Package.Literals.BEHAVIOR__PRECONDITION) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, collection, index);
 		}
-		if (feature == UML2Package.eINSTANCE.getBehavior_Postcondition()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, collection, index);
+		if (feature == UML2Package.Literals.BEHAVIOR__POSTCONDITION) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, collection, index);
 		}
 		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
@@ -455,8 +455,8 @@ public class BehaviorItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getNamespace_OwnedRule()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavior_Precondition(), UML2Package.eINSTANCE.getBehavior_Postcondition()}, collection);
+		if (feature == UML2Package.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.BEHAVIOR__PRECONDITION, UML2Package.Literals.BEHAVIOR__POSTCONDITION}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -468,14 +468,14 @@ public class BehaviorItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getBehavior_Precondition()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, value, collection);
+		if (feature == UML2Package.Literals.BEHAVIOR__PRECONDITION) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getBehavior_Postcondition()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, value, collection);
+		if (feature == UML2Package.Literals.BEHAVIOR__POSTCONDITION) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getNamespace_OwnedRule()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavior_Precondition(), UML2Package.eINSTANCE.getBehavior_Postcondition()}, value, collection);
+		if (feature == UML2Package.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.BEHAVIOR__PRECONDITION, UML2Package.Literals.BEHAVIOR__POSTCONDITION}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}

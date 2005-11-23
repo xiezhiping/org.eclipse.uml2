@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -115,9 +115,8 @@ public class OperationItemProvider
 				getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getParameterableElement_TemplateParameter(), true, null,
-				null, null));
+				UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
+				true, null, null, null));
 	}
 
 	/**
@@ -135,9 +134,8 @@ public class OperationItemProvider
 				getString("_UI_ParameterableElement_owningTemplateParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningTemplateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getParameterableElement_OwningTemplateParameter(), true,
-				null, null,
+				UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -157,7 +155,7 @@ public class OperationItemProvider
 				getString("_UI_TemplateableElement_templateBinding_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_templateBinding_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateableElement_TemplateBinding(),
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -178,9 +176,8 @@ public class OperationItemProvider
 				getString("_UI_TemplateableElement_ownedTemplateSignature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_ownedTemplateSignature_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getTemplateableElement_OwnedTemplateSignature(), true,
-				null, null,
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -200,7 +197,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_isQuery_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_isQuery_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_IsQuery(), true,
+				UMLPackage.Literals.OPERATION__IS_QUERY, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -219,7 +216,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_isOrdered_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_isOrdered_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_IsOrdered(), true,
+				UMLPackage.Literals.OPERATION__IS_ORDERED, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -240,7 +237,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_isUnique_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_isUnique_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_IsUnique(), true,
+				UMLPackage.Literals.OPERATION__IS_UNIQUE, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -261,7 +258,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_lower_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_lower_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_Lower(), true,
+				UMLPackage.Literals.OPERATION__LOWER, true,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -282,7 +279,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_upper_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_upper_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_Upper(), true,
+				UMLPackage.Literals.OPERATION__UPPER, true,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -303,7 +300,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_class__feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_class__feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_Class_(), true, null, null,
+				UMLPackage.Literals.OPERATION__CLASS_, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -323,8 +320,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_precondition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_precondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_Precondition(), true, null,
-				null, null));
+				UMLPackage.Literals.OPERATION__PRECONDITION, true, null, null,
+				null));
 	}
 
 	/**
@@ -342,8 +339,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_postcondition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_postcondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_Postcondition(), true, null,
-				null, null));
+				UMLPackage.Literals.OPERATION__POSTCONDITION, true, null, null,
+				null));
 	}
 
 	/**
@@ -361,8 +358,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_redefinedOperation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_redefinedOperation_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_RedefinedOperation(), true,
-				null, null, null));
+				UMLPackage.Literals.OPERATION__REDEFINED_OPERATION, true, null,
+				null, null));
 	}
 
 	/**
@@ -380,7 +377,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_datatype_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_datatype_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_Datatype(), true, null, null,
+				UMLPackage.Literals.OPERATION__DATATYPE, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -400,7 +397,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_bodyCondition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_bodyCondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_BodyCondition(), true, null,
+				UMLPackage.Literals.OPERATION__BODY_CONDITION, true, null,
 				null, null));
 	}
 
@@ -419,7 +416,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_type_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_Type(), true, null, null,
+				UMLPackage.Literals.OPERATION__TYPE, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -439,8 +436,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_interface_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_interface_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOperation_Interface(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.OPERATION__INTERFACE, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -455,10 +452,10 @@ public class OperationItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateableElement_TemplateBinding());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateableElement_OwnedTemplateSignature());
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 		}
 		return childrenFeatures;
 	}
@@ -537,16 +534,16 @@ public class OperationItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_TemplateBinding(), UMLFactory.eINSTANCE
-			.createTemplateBinding()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+			UMLFactory.eINSTANCE.createTemplateBinding()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createTemplateSignature()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
 	}
 
@@ -568,15 +565,21 @@ public class OperationItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE.getOperation_Precondition()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamespace_OwnedRule()}, collection, index);
+		if (feature == UMLPackage.Literals.OPERATION__PRECONDITION) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				collection, index);
 		}
-		if (feature == UMLPackage.eINSTANCE.getOperation_Postcondition()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamespace_OwnedRule()}, collection, index);
+		if (feature == UMLPackage.Literals.OPERATION__POSTCONDITION) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -590,13 +593,12 @@ public class OperationItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getNamespace_OwnedRule()) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SupersetRemoveCommand(domain, owner, feature,
 				new EStructuralFeature[]{
-					UMLPackage.eINSTANCE.getOperation_Precondition(),
-					UMLPackage.eINSTANCE.getOperation_Postcondition(),
-					UMLPackage.eINSTANCE.getOperation_BodyCondition()},
-				collection);
+					UMLPackage.Literals.OPERATION__PRECONDITION,
+					UMLPackage.Literals.OPERATION__POSTCONDITION,
+					UMLPackage.Literals.OPERATION__BODY_CONDITION}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -609,22 +611,28 @@ public class OperationItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getOperation_Precondition()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamespace_OwnedRule()}, value, collection);
+		if (feature == UMLPackage.Literals.OPERATION__PRECONDITION) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getOperation_Postcondition()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamespace_OwnedRule()}, value, collection);
+		if (feature == UMLPackage.Literals.OPERATION__POSTCONDITION) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getNamespace_OwnedRule()) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SupersetReplaceCommand(domain, owner, feature,
 				new EStructuralFeature[]{
-					UMLPackage.eINSTANCE.getOperation_Precondition(),
-					UMLPackage.eINSTANCE.getOperation_Postcondition(),
-					UMLPackage.eINSTANCE.getOperation_BodyCondition()}, value,
+					UMLPackage.Literals.OPERATION__PRECONDITION,
+					UMLPackage.Literals.OPERATION__POSTCONDITION,
+					UMLPackage.Literals.OPERATION__BODY_CONDITION}, value,
 				collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -639,16 +647,21 @@ public class OperationItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.eINSTANCE
-			.getParameterableElement_OwningTemplateParameter()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getParameterableElement_TemplateParameter()}, value);
+		if (feature == UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER},
+				value);
 		}
-		if (feature == UMLPackage.eINSTANCE.getOperation_BodyCondition()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamespace_OwnedRule()}, value);
+		if (feature == UMLPackage.Literals.OPERATION__BODY_CONDITION) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

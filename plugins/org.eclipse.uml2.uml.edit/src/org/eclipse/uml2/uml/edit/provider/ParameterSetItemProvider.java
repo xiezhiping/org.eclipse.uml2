@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: ParameterSetItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,8 +86,8 @@ public class ParameterSetItemProvider
 				getString("_UI_ParameterSet_parameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterSet_parameter_feature", "_UI_ParameterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getParameterSet_Parameter(), true, null,
-				null, null));
+				UMLPackage.Literals.PARAMETER_SET__PARAMETER, true, null, null,
+				null));
 	}
 
 	/**
@@ -105,8 +105,8 @@ public class ParameterSetItemProvider
 				getString("_UI_ParameterSet_condition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterSet_condition_feature", "_UI_ParameterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getParameterSet_Condition(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.PARAMETER_SET__CONDITION, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -121,8 +121,7 @@ public class ParameterSetItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getParameterSet_Condition());
+			childrenFeatures.add(UMLPackage.Literals.PARAMETER_SET__CONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -180,25 +179,25 @@ public class ParameterSetItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getParameterSet_Condition(), UMLFactory.eINSTANCE
-			.createConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PARAMETER_SET__CONDITION, UMLFactory.eINSTANCE
+				.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getParameterSet_Condition(), UMLFactory.eINSTANCE
-			.createInteractionConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PARAMETER_SET__CONDITION, UMLFactory.eINSTANCE
+				.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getParameterSet_Condition(), UMLFactory.eINSTANCE
-			.createIntervalConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PARAMETER_SET__CONDITION, UMLFactory.eINSTANCE
+				.createIntervalConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getParameterSet_Condition(), UMLFactory.eINSTANCE
-			.createTimeConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PARAMETER_SET__CONDITION, UMLFactory.eINSTANCE
+				.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getParameterSet_Condition(), UMLFactory.eINSTANCE
-			.createDurationConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PARAMETER_SET__CONDITION, UMLFactory.eINSTANCE
+				.createDurationConstraint()));
 	}
 
 	/**

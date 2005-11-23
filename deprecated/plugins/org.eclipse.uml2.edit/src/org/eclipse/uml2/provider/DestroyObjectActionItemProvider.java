@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectActionItemProvider.java,v 1.15 2005/09/23 20:14:52 khussey Exp $
+ * $Id: DestroyObjectActionItemProvider.java,v 1.16 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class DestroyObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DestroyObjectAction_isDestroyLinks_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DestroyObjectAction_isDestroyLinks_feature", "_UI_DestroyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDestroyObjectAction_IsDestroyLinks(),
+				 UML2Package.Literals.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -113,7 +113,7 @@ public class DestroyObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DestroyObjectAction_isDestroyOwnedObjects_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DestroyObjectAction_isDestroyOwnedObjects_feature", "_UI_DestroyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDestroyObjectAction_IsDestroyOwnedObjects(),
+				 UML2Package.Literals.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -133,7 +133,7 @@ public class DestroyObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DestroyObjectAction_target_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DestroyObjectAction_target_feature", "_UI_DestroyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDestroyObjectAction_Target(),
+				 UML2Package.Literals.DESTROY_OBJECT_ACTION__TARGET,
 				 true,
 				 null,
 				 null,
@@ -153,7 +153,7 @@ public class DestroyObjectActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getDestroyObjectAction_Target());
+			childrenFeatures.add(UML2Package.Literals.DESTROY_OBJECT_ACTION__TARGET);
 		}
 		return childrenFeatures;
 	}
@@ -214,12 +214,12 @@ public class DestroyObjectActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDestroyObjectAction_Target(),
+				(UML2Package.Literals.DESTROY_OBJECT_ACTION__TARGET,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDestroyObjectAction_Target(),
+				(UML2Package.Literals.DESTROY_OBJECT_ACTION__TARGET,
 				 UML2Factory.eINSTANCE.createValuePin()));
 	}
 
@@ -234,8 +234,8 @@ public class DestroyObjectActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

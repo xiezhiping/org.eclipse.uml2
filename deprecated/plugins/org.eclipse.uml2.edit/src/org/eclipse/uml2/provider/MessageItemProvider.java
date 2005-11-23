@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: MessageItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -97,7 +97,7 @@ public class MessageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Message_messageKind_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Message_messageKind_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMessage_MessageKind(),
+				 UML2Package.Literals.MESSAGE__MESSAGE_KIND,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -119,7 +119,7 @@ public class MessageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Message_messageSort_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Message_messageSort_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMessage_MessageSort(),
+				 UML2Package.Literals.MESSAGE__MESSAGE_SORT,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -139,7 +139,7 @@ public class MessageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Message_receiveEvent_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Message_receiveEvent_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMessage_ReceiveEvent(),
+				 UML2Package.Literals.MESSAGE__RECEIVE_EVENT,
 				 true,
 				 null,
 				 null,
@@ -159,7 +159,7 @@ public class MessageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Message_sendEvent_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Message_sendEvent_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMessage_SendEvent(),
+				 UML2Package.Literals.MESSAGE__SEND_EVENT,
 				 true,
 				 null,
 				 null,
@@ -179,7 +179,7 @@ public class MessageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Message_connector_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Message_connector_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMessage_Connector(),
+				 UML2Package.Literals.MESSAGE__CONNECTOR,
 				 true,
 				 null,
 				 null,
@@ -199,7 +199,7 @@ public class MessageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Message_interaction_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Message_interaction_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMessage_Interaction(),
+				 UML2Package.Literals.MESSAGE__INTERACTION,
 				 true,
 				 null,
 				 null,
@@ -221,7 +221,7 @@ public class MessageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Message_signature_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Message_signature_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMessage_Signature(),
+				 UML2Package.Literals.MESSAGE__SIGNATURE,
 				 true,
 				 null,
 				 null,
@@ -241,7 +241,7 @@ public class MessageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Message_argument_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Message_argument_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMessage_Argument(),
+				 UML2Package.Literals.MESSAGE__ARGUMENT,
 				 true,
 				 null,
 				 null,
@@ -261,7 +261,7 @@ public class MessageItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getMessage_Argument());
+			childrenFeatures.add(UML2Package.Literals.MESSAGE__ARGUMENT);
 		}
 		return childrenFeatures;
 	}
@@ -322,67 +322,67 @@ public class MessageItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMessage_Argument(),
+				(UML2Package.Literals.MESSAGE__ARGUMENT,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 

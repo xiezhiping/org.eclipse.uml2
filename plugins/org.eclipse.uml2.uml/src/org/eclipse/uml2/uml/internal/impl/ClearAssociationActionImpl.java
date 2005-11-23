@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationActionImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
+ * $Id: ClearAssociationActionImpl.java,v 1.4 2005/11/23 20:01:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -76,7 +76,7 @@ public class ClearAssociationActionImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getClearAssociationAction();
+		return UMLPackage.Literals.CLEAR_ASSOCIATION_ACTION;
 	}
 
 	/**

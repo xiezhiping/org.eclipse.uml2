@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: ContinuationItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,7 +85,7 @@ public class ContinuationItemProvider
 				getString("_UI_Continuation_setting_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Continuation_setting_feature", "_UI_Continuation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getContinuation_Setting(), true,
+				UMLPackage.Literals.CONTINUATION__SETTING, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 

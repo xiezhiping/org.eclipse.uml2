@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: ExpansionNodeItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -84,7 +84,7 @@ public class ExpansionNodeItemProvider
 				getString("_UI_ExpansionNode_regionAsOutput_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExpansionNode_regionAsOutput_feature", "_UI_ExpansionNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExpansionNode_RegionAsOutput(), true,
+				UMLPackage.Literals.EXPANSION_NODE__REGION_AS_OUTPUT, true,
 				null, null, null));
 	}
 
@@ -103,7 +103,7 @@ public class ExpansionNodeItemProvider
 				getString("_UI_ExpansionNode_regionAsInput_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExpansionNode_regionAsInput_feature", "_UI_ExpansionNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExpansionNode_RegionAsInput(), true,
+				UMLPackage.Literals.EXPANSION_NODE__REGION_AS_INPUT, true,
 				null, null, null));
 	}
 
@@ -165,9 +165,8 @@ public class ExpansionNodeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE.getObjectNode_UpperBound();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfActionItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: ReadSelfActionItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,8 +85,8 @@ public class ReadSelfActionItemProvider
 				getString("_UI_ReadSelfAction_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadSelfAction_result_feature", "_UI_ReadSelfAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReadSelfAction_Result(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.READ_SELF_ACTION__RESULT, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -101,8 +101,7 @@ public class ReadSelfActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getReadSelfAction_Result());
+			childrenFeatures.add(UMLPackage.Literals.READ_SELF_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -160,9 +159,8 @@ public class ReadSelfActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getReadSelfAction_Result(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.READ_SELF_ACTION__RESULT, UMLFactory.eINSTANCE
 				.createOutputPin()));
 	}
 
@@ -177,10 +175,8 @@ public class ReadSelfActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

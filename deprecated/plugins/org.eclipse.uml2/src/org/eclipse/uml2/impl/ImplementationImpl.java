@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.22 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.23 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -86,7 +86,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getImplementation();
+		return UML2Package.Literals.IMPLEMENTATION;
 	}
 
 	/**

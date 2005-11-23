@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
+ * $Id: ReadStructuralFeatureActionImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -76,7 +76,7 @@ public class ReadStructuralFeatureActionImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getReadStructuralFeatureAction();
+		return UMLPackage.Literals.READ_STRUCTURAL_FEATURE_ACTION;
 	}
 
 	/**

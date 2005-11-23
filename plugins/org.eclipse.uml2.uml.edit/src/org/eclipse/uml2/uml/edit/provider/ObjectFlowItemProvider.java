@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: ObjectFlowItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,7 +88,7 @@ public class ObjectFlowItemProvider
 				getString("_UI_ObjectFlow_isMulticast_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectFlow_isMulticast_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getObjectFlow_IsMulticast(), true,
+				UMLPackage.Literals.OBJECT_FLOW__IS_MULTICAST, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -107,7 +107,7 @@ public class ObjectFlowItemProvider
 				getString("_UI_ObjectFlow_isMultireceive_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectFlow_isMultireceive_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getObjectFlow_IsMultireceive(), true,
+				UMLPackage.Literals.OBJECT_FLOW__IS_MULTIRECEIVE, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -126,8 +126,8 @@ public class ObjectFlowItemProvider
 				getString("_UI_ObjectFlow_transformation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectFlow_transformation_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getObjectFlow_Transformation(), true,
-				null, null, null));
+				UMLPackage.Literals.OBJECT_FLOW__TRANSFORMATION, true, null,
+				null, null));
 	}
 
 	/**
@@ -145,8 +145,8 @@ public class ObjectFlowItemProvider
 				getString("_UI_ObjectFlow_selection_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectFlow_selection_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getObjectFlow_Selection(), true, null,
-				null, null));
+				UMLPackage.Literals.OBJECT_FLOW__SELECTION, true, null, null,
+				null));
 	}
 
 	/**
@@ -215,10 +215,9 @@ public class ObjectFlowItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE.getActivityEdge_Guard()
-			|| childFeature == UMLPackage.eINSTANCE.getActivityEdge_Weight();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.ACTIVITY_EDGE__GUARD
+			|| childFeature == UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

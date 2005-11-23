@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeTriggerItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: TimeTriggerItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class TimeTriggerItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TimeTrigger_isRelative_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TimeTrigger_isRelative_feature", "_UI_TimeTrigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTimeTrigger_IsRelative(),
+				 UML2Package.Literals.TIME_TRIGGER__IS_RELATIVE,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -111,7 +111,7 @@ public class TimeTriggerItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TimeTrigger_when_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TimeTrigger_when_feature", "_UI_TimeTrigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTimeTrigger_When(),
+				 UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 true,
 				 null,
 				 null,
@@ -131,7 +131,7 @@ public class TimeTriggerItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getTimeTrigger_When());
+			childrenFeatures.add(UML2Package.Literals.TIME_TRIGGER__WHEN);
 		}
 		return childrenFeatures;
 	}
@@ -191,67 +191,67 @@ public class TimeTriggerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTimeTrigger_When(),
+				(UML2Package.Literals.TIME_TRIGGER__WHEN,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: TransitionItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -99,7 +99,7 @@ public class TransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Transition_kind_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_kind_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTransition_Kind(),
+				 UML2Package.Literals.TRANSITION__KIND,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -119,7 +119,7 @@ public class TransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Transition_container_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_container_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTransition_Container(),
+				 UML2Package.Literals.TRANSITION__CONTAINER,
 				 true,
 				 null,
 				 null,
@@ -141,7 +141,7 @@ public class TransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Transition_source_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_source_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTransition_Source(),
+				 UML2Package.Literals.TRANSITION__SOURCE,
 				 true,
 				 null,
 				 null,
@@ -161,7 +161,7 @@ public class TransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Transition_target_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_target_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTransition_Target(),
+				 UML2Package.Literals.TRANSITION__TARGET,
 				 true,
 				 null,
 				 null,
@@ -181,7 +181,7 @@ public class TransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Transition_redefinedTransition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_redefinedTransition_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTransition_RedefinedTransition(),
+				 UML2Package.Literals.TRANSITION__REDEFINED_TRANSITION,
 				 true,
 				 null,
 				 null,
@@ -201,7 +201,7 @@ public class TransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Transition_trigger_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_trigger_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTransition_Trigger(),
+				 UML2Package.Literals.TRANSITION__TRIGGER,
 				 true,
 				 null,
 				 null,
@@ -221,7 +221,7 @@ public class TransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Transition_guard_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_guard_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTransition_Guard(),
+				 UML2Package.Literals.TRANSITION__GUARD,
 				 true,
 				 null,
 				 null,
@@ -243,7 +243,7 @@ public class TransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Transition_effect_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_effect_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTransition_Effect(),
+				 UML2Package.Literals.TRANSITION__EFFECT,
 				 true,
 				 null,
 				 null,
@@ -263,8 +263,8 @@ public class TransitionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getTransition_Guard());
-			childrenFeatures.add(UML2Package.eINSTANCE.getTransition_Effect());
+			childrenFeatures.add(UML2Package.Literals.TRANSITION__GUARD);
+			childrenFeatures.add(UML2Package.Literals.TRANSITION__EFFECT);
 		}
 		return childrenFeatures;
 	}
@@ -337,32 +337,32 @@ public class TransitionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTransition_Guard(),
+				(UML2Package.Literals.TRANSITION__GUARD,
 				 UML2Factory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTransition_Guard(),
+				(UML2Package.Literals.TRANSITION__GUARD,
 				 UML2Factory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTransition_Guard(),
+				(UML2Package.Literals.TRANSITION__GUARD,
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTransition_Guard(),
+				(UML2Package.Literals.TRANSITION__GUARD,
 				 UML2Factory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTransition_Guard(),
+				(UML2Package.Literals.TRANSITION__GUARD,
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTransition_Effect(),
+				(UML2Package.Literals.TRANSITION__EFFECT,
 				 UML2Factory.eINSTANCE.createActivity()));
 	}
 

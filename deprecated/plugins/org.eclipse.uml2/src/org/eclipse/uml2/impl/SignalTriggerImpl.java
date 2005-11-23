@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalTriggerImpl.java,v 1.12 2005/11/23 13:25:34 khussey Exp $
+ * $Id: SignalTriggerImpl.java,v 1.13 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -63,7 +63,7 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getSignalTrigger();
+		return UML2Package.Literals.SIGNAL_TRIGGER;
 	}
 
 	/**

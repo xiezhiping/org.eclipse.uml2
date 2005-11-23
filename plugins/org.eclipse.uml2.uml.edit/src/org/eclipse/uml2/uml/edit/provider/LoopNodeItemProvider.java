@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: LoopNodeItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -96,7 +96,7 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_isTestedFirst_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_isTestedFirst_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLoopNode_IsTestedFirst(), true,
+				UMLPackage.Literals.LOOP_NODE__IS_TESTED_FIRST, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -115,7 +115,7 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_bodyPart_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_bodyPart_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLoopNode_BodyPart(), true, null, null,
+				UMLPackage.Literals.LOOP_NODE__BODY_PART, true, null, null,
 				null));
 	}
 
@@ -134,7 +134,7 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_setupPart_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_setupPart_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLoopNode_SetupPart(), true, null, null,
+				UMLPackage.Literals.LOOP_NODE__SETUP_PART, true, null, null,
 				null));
 	}
 
@@ -153,8 +153,7 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_decider_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_decider_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLoopNode_Decider(), true, null, null,
-				null));
+				UMLPackage.Literals.LOOP_NODE__DECIDER, true, null, null, null));
 	}
 
 	/**
@@ -172,7 +171,7 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_test_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_test_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLoopNode_Test(), true, null, null, null));
+				UMLPackage.Literals.LOOP_NODE__TEST, true, null, null, null));
 	}
 
 	/**
@@ -190,7 +189,7 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_result_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLoopNode_Result(), true, null, null,
+				UMLPackage.Literals.LOOP_NODE__RESULT, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -210,8 +209,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_loopVariable_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_loopVariable_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLoopNode_LoopVariable(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -230,8 +229,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_bodyOutput_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_bodyOutput_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLoopNode_BodyOutput(), true, null,
-				null, null));
+				UMLPackage.Literals.LOOP_NODE__BODY_OUTPUT, true, null, null,
+				null));
 	}
 
 	/**
@@ -249,9 +248,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_loopVariableInput_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_loopVariableInput_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLoopNode_LoopVariableInput(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -266,11 +264,10 @@ public class LoopNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getLoopNode_Result());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getLoopNode_LoopVariable());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getLoopNode_LoopVariableInput());
+			childrenFeatures.add(UMLPackage.Literals.LOOP_NODE__RESULT);
+			childrenFeatures.add(UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE);
+			childrenFeatures
+				.add(UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT);
 		}
 		return childrenFeatures;
 	}
@@ -346,25 +343,25 @@ public class LoopNodeItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLoopNode_Result(), UMLFactory.eINSTANCE.createOutputPin()));
-
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getLoopNode_LoopVariable(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LOOP_NODE__RESULT, UMLFactory.eINSTANCE
 				.createOutputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLoopNode_LoopVariableInput(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE, UMLFactory.eINSTANCE
+				.createOutputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLoopNode_LoopVariableInput(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLoopNode_LoopVariableInput(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT,
+			UMLFactory.eINSTANCE.createValuePin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -378,17 +375,13 @@ public class LoopNodeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE.getNamespace_OwnedRule()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getStructuredActivityNode_Node()
-			|| childFeature == UMLPackage.eINSTANCE.getLoopNode_Result()
-			|| childFeature == UMLPackage.eINSTANCE.getLoopNode_LoopVariable()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getLoopNode_LoopVariableInput();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE
+			|| childFeature == UMLPackage.Literals.LOOP_NODE__RESULT
+			|| childFeature == UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE
+			|| childFeature == UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

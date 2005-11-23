@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ProfileItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -97,7 +97,7 @@ public class ProfileItemProvider
 				getString("_UI_Profile_ownedStereotype_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Profile_ownedStereotype_feature", "_UI_Profile_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProfile_OwnedStereotype(), true, null,
+				UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE, true, null,
 				null, null));
 	}
 
@@ -116,8 +116,8 @@ public class ProfileItemProvider
 				getString("_UI_Profile_metaclassReference_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Profile_metaclassReference_feature", "_UI_Profile_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProfile_MetaclassReference(), true,
-				null, null, null));
+				UMLPackage.Literals.PROFILE__METACLASS_REFERENCE, true, null,
+				null, null));
 	}
 
 	/**
@@ -135,8 +135,8 @@ public class ProfileItemProvider
 				getString("_UI_Profile_metamodelReference_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Profile_metamodelReference_feature", "_UI_Profile_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProfile_MetamodelReference(), true,
-				null, null, null));
+				UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE, true, null,
+				null, null));
 	}
 
 	/**
@@ -197,11 +197,9 @@ public class ProfileItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getPackage_PackagedElement()
-			|| childFeature == UMLPackage.eINSTANCE.getNamespace_OwnedRule();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -229,20 +227,29 @@ public class ProfileItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE.getProfile_OwnedStereotype()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getPackage_PackagedElement()}, collection, index);
+		if (feature == UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT},
+				collection, index);
 		}
-		if (feature == UMLPackage.eINSTANCE.getProfile_MetaclassReference()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamespace_ElementImport()}, collection, index);
+		if (feature == UMLPackage.Literals.PROFILE__METACLASS_REFERENCE) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT},
+				collection, index);
 		}
-		if (feature == UMLPackage.eINSTANCE.getProfile_MetamodelReference()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamespace_PackageImport()}, collection, index);
+		if (feature == UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -256,21 +263,27 @@ public class ProfileItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getPackage_PackagedElement()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getProfile_OwnedStereotype()}, collection);
+		if (feature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE},
+				collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getNamespace_ElementImport()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getProfile_MetaclassReference()}, collection);
+		if (feature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PROFILE__METACLASS_REFERENCE},
+				collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getNamespace_PackageImport()) {
+		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
 			return new SupersetRemoveCommand(domain, owner, feature,
 				new EStructuralFeature[]{
-					UMLPackage.eINSTANCE.getPackage_AppliedProfile(),
-					UMLPackage.eINSTANCE.getProfile_MetamodelReference()},
+					UMLPackage.Literals.PACKAGE__APPLIED_PROFILE,
+					UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -284,37 +297,52 @@ public class ProfileItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getProfile_OwnedStereotype()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getPackage_PackagedElement()}, value, collection);
+		if (feature == UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getProfile_MetaclassReference()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamespace_ElementImport()}, value, collection);
+		if (feature == UMLPackage.Literals.PROFILE__METACLASS_REFERENCE) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getProfile_MetamodelReference()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamespace_PackageImport()}, value, collection);
+		if (feature == UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getPackage_PackagedElement()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getProfile_OwnedStereotype()}, value, collection);
+		if (feature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getNamespace_ElementImport()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getProfile_MetaclassReference()}, value, collection);
+		if (feature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PROFILE__METACLASS_REFERENCE},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getNamespace_PackageImport()) {
+		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
 			return new SupersetReplaceCommand(domain, owner, feature,
 				new EStructuralFeature[]{
-					UMLPackage.eINSTANCE.getPackage_AppliedProfile(),
-					UMLPackage.eINSTANCE.getProfile_MetamodelReference()},
-				value, collection);
+					UMLPackage.Literals.PACKAGE__APPLIED_PROFILE,
+					UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE}, value,
+				collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: TimeExpressionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,7 +86,7 @@ public class TimeExpressionItemProvider
 				getString("_UI_TimeExpression_firstTime_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TimeExpression_firstTime_feature", "_UI_TimeExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTimeExpression_FirstTime(), true,
+				UMLPackage.Literals.TIME_EXPRESSION__FIRST_TIME, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -105,8 +105,8 @@ public class TimeExpressionItemProvider
 				getString("_UI_TimeExpression_event_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TimeExpression_event_feature", "_UI_TimeExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTimeExpression_Event(), true, null,
-				null, null));
+				UMLPackage.Literals.TIME_EXPRESSION__EVENT, true, null, null,
+				null));
 	}
 
 	/**

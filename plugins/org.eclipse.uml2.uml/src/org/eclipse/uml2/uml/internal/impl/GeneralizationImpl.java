@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -99,7 +99,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getGeneralization();
+		return UMLPackage.Literals.GENERALIZATION;
 	}
 
 	/**

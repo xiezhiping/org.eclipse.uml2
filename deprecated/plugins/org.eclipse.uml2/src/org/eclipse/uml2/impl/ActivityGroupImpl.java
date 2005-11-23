@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.18 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.19 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -82,7 +82,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getActivityGroup();
+		return UML2Package.Literals.ACTIVITY_GROUP;
 	}
 
 	/**
@@ -213,15 +213,15 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	public EList getOwnedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement());
+			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElement == null) {
 				List union = getOwnedElementsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElement = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
 			}
 			return ownedElement;
 		}
 		List union = getOwnedElementsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
 	}
 
 	/**

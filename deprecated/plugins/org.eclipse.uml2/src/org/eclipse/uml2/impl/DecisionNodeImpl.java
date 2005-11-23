@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeImpl.java,v 1.14 2005/11/23 13:25:33 khussey Exp $
+ * $Id: DecisionNodeImpl.java,v 1.15 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -65,7 +65,7 @@ public class DecisionNodeImpl extends ControlNodeImpl implements DecisionNode {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getDecisionNode();
+		return UML2Package.Literals.DECISION_NODE;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.34 2005/11/23 13:25:32 khussey Exp $
+ * $Id: NodeImpl.java,v 1.35 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -86,7 +86,7 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getNode();
+		return UML2Package.Literals.NODE;
 	}
 
 	/**
@@ -156,18 +156,20 @@ public class NodeImpl extends ClassImpl implements Node {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getDeploymentTarget_DeployedElement());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 
 			if (result == null) {
 				EList deployedElements = DeploymentTargetOperations
 					.getDeployedElements(this);
-				cache.put(this, UML2Package.eINSTANCE
-					.getDeploymentTarget_DeployedElement(),
-					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE
-							.getDeploymentTarget_DeployedElement(),
-						deployedElements.size(), deployedElements.toArray()));
+				cache
+					.put(
+						this,
+						UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
+						result = new EcoreEList.UnmodifiableEList(
+							this,
+							UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
+							deployedElements.size(), deployedElements.toArray()));
 			}
 
 			return result;
@@ -175,9 +177,9 @@ public class NodeImpl extends ClassImpl implements Node {
 
 		EList deployedElements = DeploymentTargetOperations
 			.getDeployedElements(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getDeploymentTarget_DeployedElement(), deployedElements.size(),
-			deployedElements.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
+			deployedElements.size(), deployedElements.toArray());
 	}
 
 	/**
@@ -1026,7 +1028,7 @@ public class NodeImpl extends ClassImpl implements Node {
 
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (eIsSet(UML2Package.eINSTANCE.getNode_NestedNode())) {
+		if (eIsSet(UML2Package.Literals.NODE__NESTED_NODE)) {
 			ownedMember.addAll(getNestedNodes());
 		}
 		return ownedMember;

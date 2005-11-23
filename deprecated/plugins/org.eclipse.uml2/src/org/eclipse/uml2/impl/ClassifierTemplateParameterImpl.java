@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.12 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.13 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -81,7 +81,7 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getClassifierTemplateParameter();
+		return UML2Package.Literals.CLASSIFIER_TEMPLATE_PARAMETER;
 	}
 
 	/**

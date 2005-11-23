@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: TimeEventItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,7 +87,7 @@ public class TimeEventItemProvider
 				getString("_UI_TimeEvent_isRelative_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TimeEvent_isRelative_feature", "_UI_TimeEvent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTimeEvent_IsRelative(), true,
+				UMLPackage.Literals.TIME_EVENT__IS_RELATIVE, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -106,7 +106,7 @@ public class TimeEventItemProvider
 				getString("_UI_TimeEvent_when_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TimeEvent_when_feature", "_UI_TimeEvent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTimeEvent_When(), true, null, null,
+				UMLPackage.Literals.TIME_EVENT__WHEN, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -122,7 +122,7 @@ public class TimeEventItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getTimeEvent_When());
+			childrenFeatures.add(UMLPackage.Literals.TIME_EVENT__WHEN);
 		}
 		return childrenFeatures;
 	}
@@ -184,51 +184,61 @@ public class TimeEventItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE.getTimeEvent_When(),
-				UMLFactory.eINSTANCE.createOpaqueExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE.createExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createExpression()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE.getTimeEvent_When(),
-				UMLFactory.eINSTANCE.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE.createLiteralInteger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE.createLiteralString()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE.createLiteralBoolean()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE.createLiteralNull()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE.createInstanceValue()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE
-			.createLiteralUnlimitedNatural()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE.createTimeExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE.createDuration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE.createInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createInterval()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE.getTimeEvent_When(),
-				UMLFactory.eINSTANCE.createDurationInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTimeEvent_When(), UMLFactory.eINSTANCE.createTimeInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
+				.createTimeInterval()));
 	}
 
 	/**
@@ -242,9 +252,8 @@ public class TimeEventItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE.getTimeEvent_When();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.TIME_EVENT__WHEN;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

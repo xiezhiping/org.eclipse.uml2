@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: ParameterableElementItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -99,7 +99,7 @@ public class ParameterableElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterableElement_TemplateParameter(),
+				 UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -119,7 +119,7 @@ public class ParameterableElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_owningParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterableElement_OwningParameter(),
+				 UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -179,11 +179,11 @@ public class ParameterableElementItemProvider
 	 * @generated
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getParameterableElement_OwningParameter()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()}, value);
+		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_OwningParameter()}, value);
+		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) {
+			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallEventItemProvider.java,v 1.1 2005/11/14 22:11:37 khussey Exp $
+ * $Id: CallEventItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,8 +83,8 @@ public class CallEventItemProvider
 				getString("_UI_CallEvent_operation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CallEvent_operation_feature", "_UI_CallEvent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCallEvent_Operation(), true, null,
-				null, null));
+				UMLPackage.Literals.CALL_EVENT__OPERATION, true, null, null,
+				null));
 	}
 
 	/**

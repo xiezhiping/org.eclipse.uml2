@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.18 2005/11/23 13:25:32 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.19 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,7 +79,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getTemplateBinding();
+		return UML2Package.Literals.TEMPLATE_BINDING;
 	}
 
 	/**

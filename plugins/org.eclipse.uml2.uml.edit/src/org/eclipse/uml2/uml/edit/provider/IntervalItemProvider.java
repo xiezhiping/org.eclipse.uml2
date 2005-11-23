@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: IntervalItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -84,7 +84,7 @@ public class IntervalItemProvider
 				getString("_UI_Interval_min_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interval_min_feature", "_UI_Interval_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInterval_Min(), true, null, null, null));
+				UMLPackage.Literals.INTERVAL__MIN, true, null, null, null));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class IntervalItemProvider
 				getString("_UI_Interval_max_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interval_max_feature", "_UI_Interval_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInterval_Max(), true, null, null, null));
+				UMLPackage.Literals.INTERVAL__MAX, true, null, null, null));
 	}
 
 	/**

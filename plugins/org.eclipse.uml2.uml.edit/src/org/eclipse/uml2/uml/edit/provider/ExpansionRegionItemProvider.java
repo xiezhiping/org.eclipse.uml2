@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ExpansionRegionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,7 +87,7 @@ public class ExpansionRegionItemProvider
 				getString("_UI_ExpansionRegion_mode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_mode_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExpansionRegion_Mode(), true,
+				UMLPackage.Literals.EXPANSION_REGION__MODE, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -106,7 +106,7 @@ public class ExpansionRegionItemProvider
 				getString("_UI_ExpansionRegion_inputElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_inputElement_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExpansionRegion_InputElement(), true,
+				UMLPackage.Literals.EXPANSION_REGION__INPUT_ELEMENT, true,
 				null, null, null));
 	}
 
@@ -125,7 +125,7 @@ public class ExpansionRegionItemProvider
 				getString("_UI_ExpansionRegion_outputElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_outputElement_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExpansionRegion_OutputElement(), true,
+				UMLPackage.Literals.EXPANSION_REGION__OUTPUT_ELEMENT, true,
 				null, null, null));
 	}
 
@@ -194,11 +194,9 @@ public class ExpansionRegionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE.getNamespace_OwnedRule();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

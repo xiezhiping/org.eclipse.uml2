@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: DeploymentItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -100,8 +100,8 @@ public class DeploymentItemProvider
 				getString("_UI_Deployment_deployedArtifact_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Deployment_deployedArtifact_feature", "_UI_Deployment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDeployment_DeployedArtifact(), true,
-				null, null, null));
+				UMLPackage.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT, true, null,
+				null, null));
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class DeploymentItemProvider
 				getString("_UI_Deployment_configuration_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Deployment_configuration_feature", "_UI_Deployment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDeployment_Configuration(), true, null,
+				UMLPackage.Literals.DEPLOYMENT__CONFIGURATION, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -139,8 +139,8 @@ public class DeploymentItemProvider
 				getString("_UI_Deployment_location_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Deployment_location_feature", "_UI_Deployment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDeployment_Location(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DEPLOYMENT__LOCATION, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -155,8 +155,7 @@ public class DeploymentItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getDeployment_Configuration());
+			childrenFeatures.add(UMLPackage.Literals.DEPLOYMENT__CONFIGURATION);
 		}
 		return childrenFeatures;
 	}
@@ -214,9 +213,9 @@ public class DeploymentItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getDeployment_Configuration(), UMLFactory.eINSTANCE
-			.createDeploymentSpecification()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DEPLOYMENT__CONFIGURATION, UMLFactory.eINSTANCE
+				.createDeploymentSpecification()));
 	}
 
 	/**
@@ -237,10 +236,13 @@ public class DeploymentItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE.getDeployment_DeployedArtifact()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDependency_Supplier()}, collection, index);
+		if (feature == UMLPackage.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -254,15 +256,21 @@ public class DeploymentItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getDependency_Supplier()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDeployment_DeployedArtifact()}, collection);
+		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT},
+				collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getDependency_Client()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDeployment_Location()}, collection);
+		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPLOYMENT__LOCATION},
+				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -275,20 +283,29 @@ public class DeploymentItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getDeployment_DeployedArtifact()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDependency_Supplier()}, value, collection);
+		if (feature == UMLPackage.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getDependency_Supplier()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDeployment_DeployedArtifact()}, value, collection);
+		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getDependency_Client()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDeployment_Location()}, value, collection);
+		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPLOYMENT__LOCATION},
+				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);
@@ -302,10 +319,13 @@ public class DeploymentItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.eINSTANCE.getDeployment_Location()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDependency_Client()}, value);
+		if (feature == UMLPackage.Literals.DEPLOYMENT__LOCATION) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__CLIENT},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: ConnectorEndItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,9 +85,8 @@ public class ConnectorEndItemProvider
 				getString("_UI_ConnectorEnd_definingEnd_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectorEnd_definingEnd_feature", "_UI_ConnectorEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnectorEnd_DefiningEnd(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CONNECTOR_END__DEFINING_END, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -106,8 +105,8 @@ public class ConnectorEndItemProvider
 				getString("_UI_ConnectorEnd_partWithPort_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectorEnd_partWithPort_feature", "_UI_ConnectorEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnectorEnd_PartWithPort(), true,
-				null, null, null));
+				UMLPackage.Literals.CONNECTOR_END__PART_WITH_PORT, true, null,
+				null, null));
 	}
 
 	/**
@@ -125,8 +124,7 @@ public class ConnectorEndItemProvider
 				getString("_UI_ConnectorEnd_role_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectorEnd_role_feature", "_UI_ConnectorEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnectorEnd_Role(), true, null, null,
-				null));
+				UMLPackage.Literals.CONNECTOR_END__ROLE, true, null, null, null));
 	}
 
 	/**
@@ -185,10 +183,8 @@ public class ConnectorEndItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getMultiplicityElement_LowerValue();
+		boolean qualify = childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

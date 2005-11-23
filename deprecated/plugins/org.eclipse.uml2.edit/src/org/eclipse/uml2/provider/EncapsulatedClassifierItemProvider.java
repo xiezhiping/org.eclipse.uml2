@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: EncapsulatedClassifierItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class EncapsulatedClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_EncapsulatedClassifier_ownedPort_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EncapsulatedClassifier_ownedPort_feature", "_UI_EncapsulatedClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort(),
+				 UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class EncapsulatedClassifierItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort());
+			childrenFeatures.add(UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
 		}
 		return childrenFeatures;
 	}
@@ -157,7 +157,7 @@ public class EncapsulatedClassifierItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort(),
+				(UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
 				 UML2Factory.eINSTANCE.createPort()));
 	}
 
@@ -172,8 +172,8 @@ public class EncapsulatedClassifierItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			childFeature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
+			childFeature == UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE ||
+			childFeature == UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT;
 
 		if (qualify) {
 			return getString

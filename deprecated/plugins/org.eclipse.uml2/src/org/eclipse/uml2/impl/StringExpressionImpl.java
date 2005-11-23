@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.16 2005/11/23 13:25:33 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.17 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -74,7 +74,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getStringExpression();
+		return UML2Package.Literals.STRING_EXPRESSION;
 	}
 
 	/**

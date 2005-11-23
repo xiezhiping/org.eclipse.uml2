@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.5 2005/11/23 13:27:43 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.6 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -179,7 +179,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getClassifier();
+		return UMLPackage.Literals.CLASSIFIER;
 	}
 
 	/**
@@ -889,11 +889,11 @@ public abstract class ClassifierImpl
 	public List getInheritedMembers() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getClassifier_InheritedMember());
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.CLASSIFIER__INHERITED_MEMBER);
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE
-					.getClassifier_InheritedMember(),
+				cache.put(this,
+					UMLPackage.Literals.CLASSIFIER__INHERITED_MEMBER,
 					result = ClassifierOperations.getInheritedMembers(this));
 			}
 			return result;
@@ -956,11 +956,11 @@ public abstract class ClassifierImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getClassifier_General());
+				UMLPackage.Literals.CLASSIFIER__GENERAL);
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getClassifier_General(), result = ClassifierOperations
-					.getGenerals(this));
+				cache.put(eResource(), this,
+					UMLPackage.Literals.CLASSIFIER__GENERAL,
+					result = ClassifierOperations.getGenerals(this));
 			}
 			return result;
 		}
@@ -1271,12 +1271,12 @@ public abstract class ClassifierImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getTemplateableElement().getEOperations()
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getTemplateableElement().getEOperations().get(0),
-					result = TemplateableElementOperations
+				cache.put(eResource(), this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
+						.get(0), result = TemplateableElementOperations
 						.parameterableElements(this));
 			}
 			return result;
@@ -1354,12 +1354,11 @@ public abstract class ClassifierImpl
 	public List allFeatures() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getClassifier().getEOperations().get(6));
+			List result = (List) cache.get(this, UMLPackage.Literals.CLASSIFIER
+				.getEOperations().get(6));
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE.getClassifier()
-					.getEOperations().get(6), result = ClassifierOperations
-					.allFeatures(this));
+				cache.put(this, UMLPackage.Literals.CLASSIFIER.getEOperations()
+					.get(6), result = ClassifierOperations.allFeatures(this));
 			}
 			return result;
 		}
@@ -1375,11 +1374,11 @@ public abstract class ClassifierImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getClassifier().getEOperations().get(7));
+				UMLPackage.Literals.CLASSIFIER.getEOperations().get(7));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getClassifier().getEOperations().get(7),
-					result = ClassifierOperations.parents(this));
+				cache.put(eResource(), this, UMLPackage.Literals.CLASSIFIER
+					.getEOperations().get(7), result = ClassifierOperations
+					.parents(this));
 			}
 			return result;
 		}
@@ -1430,12 +1429,11 @@ public abstract class ClassifierImpl
 	public List allParents() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getClassifier().getEOperations().get(13));
+			List result = (List) cache.get(this, UMLPackage.Literals.CLASSIFIER
+				.getEOperations().get(13));
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE.getClassifier()
-					.getEOperations().get(13), result = ClassifierOperations
-					.allParents(this));
+				cache.put(this, UMLPackage.Literals.CLASSIFIER.getEOperations()
+					.get(13), result = ClassifierOperations.allParents(this));
 			}
 			return result;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: TypeItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class TypeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Type_package_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Type_package_feature", "_UI_Type_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getType_Package(),
+				 UML2Package.Literals.TYPE__PACKAGE,
 				 false,
 				 null,
 				 null,

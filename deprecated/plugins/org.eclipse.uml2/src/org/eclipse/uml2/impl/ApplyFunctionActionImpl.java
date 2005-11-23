@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionActionImpl.java,v 1.20 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ApplyFunctionActionImpl.java,v 1.21 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -82,7 +82,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getApplyFunctionAction();
+		return UML2Package.Literals.APPLY_FUNCTION_ACTION;
 	}
 
 	/**

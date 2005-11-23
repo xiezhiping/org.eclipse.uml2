@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: JoinNodeItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,7 +87,7 @@ public class JoinNodeItemProvider
 				getString("_UI_JoinNode_isCombineDuplicate_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_JoinNode_isCombineDuplicate_feature", "_UI_JoinNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getJoinNode_IsCombineDuplicate(), true,
+				UMLPackage.Literals.JOIN_NODE__IS_COMBINE_DUPLICATE, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -106,7 +106,7 @@ public class JoinNodeItemProvider
 				getString("_UI_JoinNode_joinSpec_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_JoinNode_joinSpec_feature", "_UI_JoinNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getJoinNode_JoinSpec(), true, null, null,
+				UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -122,7 +122,7 @@ public class JoinNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getJoinNode_JoinSpec());
+			childrenFeatures.add(UMLPackage.Literals.JOIN_NODE__JOIN_SPEC);
 		}
 		return childrenFeatures;
 	}
@@ -184,59 +184,60 @@ public class JoinNodeItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE
-			.createOpaqueExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE.createExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE
-			.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE
-			.createLiteralInteger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createLiteralInteger()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
 				.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE
-			.createLiteralBoolean()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE.createLiteralNull()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createLiteralNull()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
 				.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE
-			.createLiteralUnlimitedNatural()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE
-			.createTimeExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE.createDuration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE.createInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE
-			.createDurationInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
+				.createDurationInterval()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getJoinNode_JoinSpec(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, UMLFactory.eINSTANCE
 				.createTimeInterval()));
 	}
 
@@ -251,9 +252,8 @@ public class JoinNodeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE.getJoinNode_JoinSpec();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.JOIN_NODE__JOIN_SPEC;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: ConditionalNodeItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -91,7 +91,7 @@ public class ConditionalNodeItemProvider
 				getString("_UI_ConditionalNode_isDeterminate_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConditionalNode_isDeterminate_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConditionalNode_IsDeterminate(), true,
+				UMLPackage.Literals.CONDITIONAL_NODE__IS_DETERMINATE, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -110,7 +110,7 @@ public class ConditionalNodeItemProvider
 				getString("_UI_ConditionalNode_isAssured_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConditionalNode_isAssured_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConditionalNode_IsAssured(), true,
+				UMLPackage.Literals.CONDITIONAL_NODE__IS_ASSURED, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -129,8 +129,8 @@ public class ConditionalNodeItemProvider
 				getString("_UI_ConditionalNode_clause_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConditionalNode_clause_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConditionalNode_Clause(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CONDITIONAL_NODE__CLAUSE, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -149,8 +149,8 @@ public class ConditionalNodeItemProvider
 				getString("_UI_ConditionalNode_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConditionalNode_result_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConditionalNode_Result(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CONDITIONAL_NODE__RESULT, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -165,10 +165,8 @@ public class ConditionalNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getConditionalNode_Clause());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getConditionalNode_Result());
+			childrenFeatures.add(UMLPackage.Literals.CONDITIONAL_NODE__CLAUSE);
+			childrenFeatures.add(UMLPackage.Literals.CONDITIONAL_NODE__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -244,12 +242,13 @@ public class ConditionalNodeItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConditionalNode_Clause(), UMLFactory.eINSTANCE.createClause()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONDITIONAL_NODE__CLAUSE, UMLFactory.eINSTANCE
+				.createClause()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConditionalNode_Result(), UMLFactory.eINSTANCE
-			.createOutputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONDITIONAL_NODE__RESULT, UMLFactory.eINSTANCE
+				.createOutputPin()));
 	}
 
 	/**
@@ -263,14 +262,11 @@ public class ConditionalNodeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE.getNamespace_OwnedRule()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getStructuredActivityNode_Node()
-			|| childFeature == UMLPackage.eINSTANCE.getConditionalNode_Result();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE
+			|| childFeature == UMLPackage.Literals.CONDITIONAL_NODE__RESULT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

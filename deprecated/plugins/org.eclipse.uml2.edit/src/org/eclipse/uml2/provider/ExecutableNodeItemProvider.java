@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: ExecutableNodeItemProvider.java,v 1.14 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class ExecutableNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExecutableNode_handler_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExecutableNode_handler_feature", "_UI_ExecutableNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExecutableNode_Handler(),
+				 UML2Package.Literals.EXECUTABLE_NODE__HANDLER,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class ExecutableNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getExecutableNode_Handler());
+			childrenFeatures.add(UML2Package.Literals.EXECUTABLE_NODE__HANDLER);
 		}
 		return childrenFeatures;
 	}
@@ -157,7 +157,7 @@ public class ExecutableNodeItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExecutableNode_Handler(),
+				(UML2Package.Literals.EXECUTABLE_NODE__HANDLER,
 				 UML2Factory.eINSTANCE.createExceptionHandler()));
 	}
 

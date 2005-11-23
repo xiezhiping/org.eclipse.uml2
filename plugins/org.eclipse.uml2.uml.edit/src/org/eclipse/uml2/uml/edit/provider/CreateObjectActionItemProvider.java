@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectActionItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: CreateObjectActionItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,7 +86,7 @@ public class CreateObjectActionItemProvider
 				getString("_UI_CreateObjectAction_classifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CreateObjectAction_classifier_feature", "_UI_CreateObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCreateObjectAction_Classifier(), true,
+				UMLPackage.Literals.CREATE_OBJECT_ACTION__CLASSIFIER, true,
 				null, null, null));
 	}
 
@@ -105,9 +105,8 @@ public class CreateObjectActionItemProvider
 				getString("_UI_CreateObjectAction_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CreateObjectAction_result_feature", "_UI_CreateObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCreateObjectAction_Result(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CREATE_OBJECT_ACTION__RESULT, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -122,8 +121,8 @@ public class CreateObjectActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getCreateObjectAction_Result());
+			childrenFeatures
+				.add(UMLPackage.Literals.CREATE_OBJECT_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -181,9 +180,9 @@ public class CreateObjectActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCreateObjectAction_Result(), UMLFactory.eINSTANCE
-			.createOutputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CREATE_OBJECT_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**
@@ -197,10 +196,8 @@ public class CreateObjectActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.20 2005/11/23 13:25:33 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.21 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,7 +76,7 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getAbstraction();
+		return UML2Package.Literals.ABSTRACTION;
 	}
 
 	/**

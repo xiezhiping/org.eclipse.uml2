@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: InstanceSpecificationItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -107,7 +107,7 @@ public class InstanceSpecificationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployment_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDeploymentTarget_Deployment(),
+				 UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
 				 true,
 				 null,
 				 null,
@@ -129,7 +129,7 @@ public class InstanceSpecificationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployedElement_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
+				 UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
 				 false,
 				 null,
 				 null,
@@ -151,7 +151,7 @@ public class InstanceSpecificationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InstanceSpecification_slot_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InstanceSpecification_slot_feature", "_UI_InstanceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInstanceSpecification_Slot(),
+				 UML2Package.Literals.INSTANCE_SPECIFICATION__SLOT,
 				 true,
 				 null,
 				 null,
@@ -173,7 +173,7 @@ public class InstanceSpecificationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InstanceSpecification_classifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InstanceSpecification_classifier_feature", "_UI_InstanceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInstanceSpecification_Classifier(),
+				 UML2Package.Literals.INSTANCE_SPECIFICATION__CLASSIFIER,
 				 true,
 				 null,
 				 null,
@@ -193,7 +193,7 @@ public class InstanceSpecificationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InstanceSpecification_specification_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InstanceSpecification_specification_feature", "_UI_InstanceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				 UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 true,
 				 null,
 				 null,
@@ -213,9 +213,9 @@ public class InstanceSpecificationItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getDeploymentTarget_Deployment());
-			childrenFeatures.add(UML2Package.eINSTANCE.getInstanceSpecification_Slot());
-			childrenFeatures.add(UML2Package.eINSTANCE.getInstanceSpecification_Specification());
+			childrenFeatures.add(UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT);
+			childrenFeatures.add(UML2Package.Literals.INSTANCE_SPECIFICATION__SLOT);
+			childrenFeatures.add(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION);
 		}
 		return childrenFeatures;
 	}
@@ -286,77 +286,77 @@ public class InstanceSpecificationItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDeploymentTarget_Deployment(),
+				(UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
 				 UML2Factory.eINSTANCE.createDeployment()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Slot(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SLOT,
 				 UML2Factory.eINSTANCE.createSlot()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
+				(UML2Package.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 
@@ -378,8 +378,8 @@ public class InstanceSpecificationItemProvider
 	 * @generated
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getDeploymentTarget_Deployment()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, collection, index);
+		if (feature == UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY}, collection, index);
 		}
 		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
@@ -391,8 +391,8 @@ public class InstanceSpecificationItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDeploymentTarget_Deployment()}, collection);
+		if (feature == UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -404,11 +404,11 @@ public class InstanceSpecificationItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getDeploymentTarget_Deployment()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, value, collection);
+		if (feature == UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDeploymentTarget_Deployment()}, value, collection);
+		if (feature == UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}

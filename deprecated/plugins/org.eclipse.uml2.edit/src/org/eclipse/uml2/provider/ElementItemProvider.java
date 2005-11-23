@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.26 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.27 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -112,7 +112,7 @@ public class ElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Element_ownedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Element_ownedElement_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getElement_OwnedElement(),
+				 UML2Package.Literals.ELEMENT__OWNED_ELEMENT,
 				 false,
 				 null,
 				 null,
@@ -134,7 +134,7 @@ public class ElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Element_owner_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Element_owner_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getElement_Owner(),
+				 UML2Package.Literals.ELEMENT__OWNER,
 				 false,
 				 null,
 				 null,
@@ -156,7 +156,7 @@ public class ElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Element_ownedComment_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Element_ownedComment_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getElement_OwnedComment(),
+				 UML2Package.Literals.ELEMENT__OWNED_COMMENT,
 				 true,
 				 null,
 				 null,
@@ -176,7 +176,7 @@ public class ElementItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getElement_OwnedComment());
+			childrenFeatures.add(UML2Package.Literals.ELEMENT__OWNED_COMMENT);
 		}
 		return childrenFeatures;
 	}
@@ -221,7 +221,7 @@ public class ElementItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getElement_OwnedComment(),
+				(UML2Package.Literals.ELEMENT__OWNED_COMMENT,
 				 UML2Factory.eINSTANCE.createComment()));
 	}
 

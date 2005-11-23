@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.32 2005/11/23 13:25:32 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.33 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -205,7 +205,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getProperty();
+		return UML2Package.Literals.PROPERTY;
 	}
 
 	/**
@@ -420,18 +420,20 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getDeploymentTarget_DeployedElement());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 
 			if (result == null) {
 				EList deployedElements = DeploymentTargetOperations
 					.getDeployedElements(this);
-				cache.put(this, UML2Package.eINSTANCE
-					.getDeploymentTarget_DeployedElement(),
-					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE
-							.getDeploymentTarget_DeployedElement(),
-						deployedElements.size(), deployedElements.toArray()));
+				cache
+					.put(
+						this,
+						UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
+						result = new EcoreEList.UnmodifiableEList(
+							this,
+							UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
+							deployedElements.size(), deployedElements.toArray()));
 			}
 
 			return result;
@@ -439,9 +441,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 
 		EList deployedElements = DeploymentTargetOperations
 			.getDeployedElements(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getDeploymentTarget_DeployedElement(), deployedElements.size(),
-			deployedElements.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
+			deployedElements.size(), deployedElements.toArray());
 	}
 
 	/**
@@ -1040,9 +1042,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public Set subsettingContext() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getProperty().getEOperations().get(8));
+			Set result = (Set) cache.get(this, UML2Package.Literals.PROPERTY.getEOperations().get(8));
 			if (result == null) {
-				cache.put(this, UML2Package.eINSTANCE.getProperty().getEOperations().get(8), result = PropertyOperations.subsettingContext(this));
+				cache.put(this, UML2Package.Literals.PROPERTY.getEOperations().get(8), result = PropertyOperations.subsettingContext(this));
 			}
 			return result;
 		}

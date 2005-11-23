@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ProfileApplicationItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -103,7 +103,7 @@ public class ProfileApplicationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ProfileApplication_importedProfile_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProfileApplication_importedProfile_feature", "_UI_ProfileApplication_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProfileApplication_ImportedProfile(),
+				 UML2Package.Literals.PROFILE_APPLICATION__IMPORTED_PROFILE,
 				 true,
 				 null,
 				 null,
@@ -179,11 +179,11 @@ public class ProfileApplicationItemProvider
 	 * @generated
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getProfileApplication_ImportedProfile()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackageImport_ImportedPackage()}, value);
+		if (feature == UML2Package.Literals.PROFILE_APPLICATION__IMPORTED_PROFILE) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PACKAGE_IMPORT__IMPORTED_PACKAGE}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getPackageImport_ImportedPackage()) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getProfileApplication_ImportedProfile()}, value);
+		if (feature == UML2Package.Literals.PACKAGE_IMPORT__IMPORTED_PACKAGE) {
+			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PROFILE_APPLICATION__IMPORTED_PROFILE}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

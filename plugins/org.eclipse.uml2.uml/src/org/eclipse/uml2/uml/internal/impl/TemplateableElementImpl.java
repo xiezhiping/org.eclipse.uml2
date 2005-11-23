@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.4 2005/11/23 20:01:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -72,7 +72,7 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getTemplateableElement();
+		return UMLPackage.Literals.TEMPLATEABLE_ELEMENT;
 	}
 
 	/**
@@ -224,12 +224,12 @@ public abstract class TemplateableElementImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getTemplateableElement().getEOperations()
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getTemplateableElement().getEOperations().get(0),
-					result = TemplateableElementOperations
+				cache.put(eResource(), this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
+						.get(0), result = TemplateableElementOperations
 						.parameterableElements(this));
 			}
 			return result;

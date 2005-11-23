@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: RaiseExceptionActionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,7 +85,7 @@ public class RaiseExceptionActionItemProvider
 				getString("_UI_RaiseExceptionAction_exception_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RaiseExceptionAction_exception_feature", "_UI_RaiseExceptionAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRaiseExceptionAction_Exception(), true,
+				UMLPackage.Literals.RAISE_EXCEPTION_ACTION__EXCEPTION, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -102,8 +102,8 @@ public class RaiseExceptionActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getRaiseExceptionAction_Exception());
+			childrenFeatures
+				.add(UMLPackage.Literals.RAISE_EXCEPTION_ACTION__EXCEPTION);
 		}
 		return childrenFeatures;
 	}
@@ -161,17 +161,17 @@ public class RaiseExceptionActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRaiseExceptionAction_Exception(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.RAISE_EXCEPTION_ACTION__EXCEPTION,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRaiseExceptionAction_Exception(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.RAISE_EXCEPTION_ACTION__EXCEPTION,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRaiseExceptionAction_Exception(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.RAISE_EXCEPTION_ACTION__EXCEPTION,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -185,10 +185,8 @@ public class RaiseExceptionActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

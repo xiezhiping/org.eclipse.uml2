@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.13 2005/11/23 13:25:33 khussey Exp $
+ * $Id: DurationImpl.java,v 1.14 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -88,7 +88,7 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getDuration();
+		return UML2Package.Literals.DURATION;
 	}
 
 	/**

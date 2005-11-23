@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.23 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.24 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -100,7 +100,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_ownedAttribute_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedAttribute_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 true,
 				 null,
 				 null,
@@ -122,7 +122,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_part_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_part_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_Part(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__PART,
 				 false,
 				 null,
 				 null,
@@ -144,7 +144,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_role_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_role_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_Role(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__ROLE,
 				 false,
 				 null,
 				 null,
@@ -166,7 +166,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_ownedConnector_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedConnector_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
 				 true,
 				 null,
 				 null,
@@ -188,7 +188,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_EncapsulatedClassifier_ownedPort_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EncapsulatedClassifier_ownedPort_feature", "_UI_EncapsulatedClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort(),
+				 UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
 				 true,
 				 null,
 				 null,
@@ -210,7 +210,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Class_ownedOperation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Class_ownedOperation_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClass_OwnedOperation(),
+				 UML2Package.Literals.CLASS__OWNED_OPERATION,
 				 true,
 				 null,
 				 null,
@@ -232,7 +232,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Class_isActive_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Class_isActive_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClass_IsActive(),
+				 UML2Package.Literals.CLASS__IS_ACTIVE,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -252,7 +252,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Class_ownedReception_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Class_ownedReception_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClass_OwnedReception(),
+				 UML2Package.Literals.CLASS__OWNED_RECEPTION,
 				 true,
 				 null,
 				 null,
@@ -272,12 +272,12 @@ public class ClassItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
-			childrenFeatures.add(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
-			childrenFeatures.add(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort());
-			childrenFeatures.add(UML2Package.eINSTANCE.getClass_OwnedOperation());
-			childrenFeatures.add(UML2Package.eINSTANCE.getClass_NestedClassifier());
-			childrenFeatures.add(UML2Package.eINSTANCE.getClass_OwnedReception());
+			childrenFeatures.add(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
+			childrenFeatures.add(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
+			childrenFeatures.add(UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
+			childrenFeatures.add(UML2Package.Literals.CLASS__OWNED_OPERATION);
+			childrenFeatures.add(UML2Package.Literals.CLASS__NESTED_CLASSIFIER);
+			childrenFeatures.add(UML2Package.Literals.CLASS__OWNED_RECEPTION);
 		}
 		return childrenFeatures;
 	}
@@ -307,7 +307,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Class_superClass_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Class_superClass_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClass_SuperClass(),
+				 UML2Package.Literals.CLASS__SUPER_CLASS,
 				 false,
 				 null,
 				 null,
@@ -329,7 +329,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Class_extension_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Class_extension_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClass_Extension(),
+				 UML2Package.Literals.CLASS__EXTENSION,
 				 false,
 				 null,
 				 null,
@@ -351,7 +351,7 @@ public class ClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Class_nestedClassifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Class_nestedClassifier_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				 UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 true,
 				 null,
 				 null,
@@ -420,162 +420,162 @@ public class ClassItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
 				 UML2Factory.eINSTANCE.createConnector()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort(),
+				(UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
 				 UML2Factory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_OwnedOperation(),
+				(UML2Package.Literals.CLASS__OWNED_OPERATION,
 				 UML2Factory.eINSTANCE.createOperation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createDataType()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createEnumeration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createPrimitiveType()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createAssociation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createStereotype()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createExtension()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createAssociationClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createInterface()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createArtifact()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createActor()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createUseCase()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createSignal()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createComponent()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createNode()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createDevice()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createExecutionEnvironment()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createCommunicationPath()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				(UML2Package.Literals.CLASS__NESTED_CLASSIFIER,
 				 UML2Factory.eINSTANCE.createDeploymentSpecification()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_OwnedReception(),
+				(UML2Package.Literals.CLASS__OWNED_RECEPTION,
 				 UML2Factory.eINSTANCE.createReception()));
 	}
 
@@ -590,12 +590,12 @@ public class ClassItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
-			childFeature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			childFeature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			childFeature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
+			childFeature == UML2Package.Literals.CLASSIFIER__OWNED_USE_CASE ||
+			childFeature == UML2Package.Literals.CLASS__NESTED_CLASSIFIER ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE ||
+			childFeature == UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE ||
+			childFeature == UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT;
 
 		if (qualify) {
 			return getString

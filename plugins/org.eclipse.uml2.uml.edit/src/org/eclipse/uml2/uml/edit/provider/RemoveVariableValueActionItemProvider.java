@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveVariableValueActionItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: RemoveVariableValueActionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,9 +87,8 @@ public class RemoveVariableValueActionItemProvider
 				getString("_UI_RemoveVariableValueAction_isRemoveDuplicates_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RemoveVariableValueAction_isRemoveDuplicates_feature", "_UI_RemoveVariableValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getRemoveVariableValueAction_IsRemoveDuplicates(), true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.REMOVE_VARIABLE_VALUE_ACTION__IS_REMOVE_DUPLICATES,
+				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -107,7 +106,7 @@ public class RemoveVariableValueActionItemProvider
 				getString("_UI_RemoveVariableValueAction_removeAt_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RemoveVariableValueAction_removeAt_feature", "_UI_RemoveVariableValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRemoveVariableValueAction_RemoveAt(),
+				UMLPackage.Literals.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -124,8 +123,8 @@ public class RemoveVariableValueActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getRemoveVariableValueAction_RemoveAt());
+			childrenFeatures
+				.add(UMLPackage.Literals.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT);
 		}
 		return childrenFeatures;
 	}
@@ -188,17 +187,17 @@ public class RemoveVariableValueActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRemoveVariableValueAction_RemoveAt(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRemoveVariableValueAction_RemoveAt(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRemoveVariableValueAction_RemoveAt(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -212,14 +211,10 @@ public class RemoveVariableValueActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getWriteVariableAction_Value()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getRemoveVariableValueAction_RemoveAt();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.WRITE_VARIABLE_ACTION__VALUE
+			|| childFeature == UMLPackage.Literals.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

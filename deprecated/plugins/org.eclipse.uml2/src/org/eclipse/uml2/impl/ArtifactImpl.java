@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.30 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.31 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -104,7 +104,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getArtifact();
+		return UML2Package.Literals.ARTIFACT;
 	}
 
 	/**

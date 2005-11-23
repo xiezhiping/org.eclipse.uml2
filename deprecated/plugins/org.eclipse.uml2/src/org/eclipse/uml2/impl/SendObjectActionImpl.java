@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.21 2005/11/23 13:25:33 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.22 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -87,7 +87,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getSendObjectAction();
+		return UML2Package.Literals.SEND_OBJECT_ACTION;
 	}
 
 	/**
@@ -277,7 +277,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * @generated
 	 */
 	public EList getArguments() {
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getInvocationAction_Argument(), 0, Collections.EMPTY_LIST.toArray());
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.Literals.INVOCATION_ACTION__ARGUMENT, 0, Collections.EMPTY_LIST.toArray());
 	}
 
 

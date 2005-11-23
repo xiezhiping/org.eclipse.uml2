@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: InformationFlowItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -90,7 +90,7 @@ public class InformationFlowItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Relationship_relatedElement_feature", "_UI_Relationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getRelationship_RelatedElement(),
+				 UML2Package.Literals.RELATIONSHIP__RELATED_ELEMENT,
 				 false,
 				 null,
 				 null,
@@ -112,7 +112,7 @@ public class InformationFlowItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DirectedRelationship_source_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_source_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDirectedRelationship_Source(),
+				 UML2Package.Literals.DIRECTED_RELATIONSHIP__SOURCE,
 				 false,
 				 null,
 				 null,
@@ -134,7 +134,7 @@ public class InformationFlowItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DirectedRelationship_target_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_target_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDirectedRelationship_Target(),
+				 UML2Package.Literals.DIRECTED_RELATIONSHIP__TARGET,
 				 false,
 				 null,
 				 null,
@@ -156,7 +156,7 @@ public class InformationFlowItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InformationFlow_realization_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InformationFlow_realization_feature", "_UI_InformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInformationFlow_Realization(),
+				 UML2Package.Literals.INFORMATION_FLOW__REALIZATION,
 				 true,
 				 null,
 				 null,
@@ -176,7 +176,7 @@ public class InformationFlowItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InformationFlow_conveyed_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InformationFlow_conveyed_feature", "_UI_InformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInformationFlow_Conveyed(),
+				 UML2Package.Literals.INFORMATION_FLOW__CONVEYED,
 				 true,
 				 null,
 				 null,

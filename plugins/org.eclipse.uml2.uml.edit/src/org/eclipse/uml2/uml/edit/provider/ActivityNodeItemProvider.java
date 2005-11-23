@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ActivityNodeItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -90,8 +90,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_outgoing_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_outgoing_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityNode_Outgoing(), true, null,
-				null, null));
+				UMLPackage.Literals.ACTIVITY_NODE__OUTGOING, true, null, null,
+				null));
 	}
 
 	/**
@@ -109,8 +109,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_inGroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_inGroup_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityNode_InGroup(), false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACTIVITY_NODE__IN_GROUP, false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -129,7 +129,7 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_inPartition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_inPartition_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityNode_InPartition(), true, null,
+				UMLPackage.Literals.ACTIVITY_NODE__IN_PARTITION, true, null,
 				null, null));
 	}
 
@@ -148,7 +148,7 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_inStructuredNode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_inStructuredNode_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityNode_InStructuredNode(), true,
+				UMLPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -169,8 +169,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_activity_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_activity_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityNode_Activity(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACTIVITY_NODE__ACTIVITY, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -189,8 +189,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_incoming_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_incoming_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityNode_Incoming(), true, null,
-				null, null));
+				UMLPackage.Literals.ACTIVITY_NODE__INCOMING, true, null, null,
+				null));
 	}
 
 	/**
@@ -208,7 +208,7 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_inInterruptibleRegion_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_inInterruptibleRegion_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityNode_InInterruptibleRegion(),
+				UMLPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION,
 				true, null, null, null));
 	}
 
@@ -227,8 +227,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_redefinedNode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_redefinedNode_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityNode_RedefinedNode(), true,
-				null, null, null));
+				UMLPackage.Literals.ACTIVITY_NODE__REDEFINED_NODE, true, null,
+				null, null));
 	}
 
 	/**

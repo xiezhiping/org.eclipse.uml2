@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.21 2005/11/23 13:25:32 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.22 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -99,7 +99,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getRedefinableElement();
+		return UML2Package.Literals.REDEFINABLE_ELEMENT;
 	}
 
 	/**

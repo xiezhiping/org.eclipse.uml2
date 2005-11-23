@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: BroadcastSignalActionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,7 +83,7 @@ public class BroadcastSignalActionItemProvider
 				getString("_UI_BroadcastSignalAction_signal_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_BroadcastSignalAction_signal_feature", "_UI_BroadcastSignalAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getBroadcastSignalAction_Signal(), true,
+				UMLPackage.Literals.BROADCAST_SIGNAL_ACTION__SIGNAL, true,
 				null, null, null));
 	}
 
@@ -146,10 +146,8 @@ public class BroadcastSignalActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

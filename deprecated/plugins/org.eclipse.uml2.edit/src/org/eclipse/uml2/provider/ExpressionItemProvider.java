@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ExpressionItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class ExpressionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Expression_symbol_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Expression_symbol_feature", "_UI_Expression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExpression_Symbol(),
+				 UML2Package.Literals.EXPRESSION__SYMBOL,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -111,7 +111,7 @@ public class ExpressionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Expression_operand_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Expression_operand_feature", "_UI_Expression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExpression_Operand(),
+				 UML2Package.Literals.EXPRESSION__OPERAND,
 				 true,
 				 null,
 				 null,
@@ -131,7 +131,7 @@ public class ExpressionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getExpression_Operand());
+			childrenFeatures.add(UML2Package.Literals.EXPRESSION__OPERAND);
 		}
 		return childrenFeatures;
 	}
@@ -199,67 +199,67 @@ public class ExpressionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExpression_Operand(),
+				(UML2Package.Literals.EXPRESSION__OPERAND,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 

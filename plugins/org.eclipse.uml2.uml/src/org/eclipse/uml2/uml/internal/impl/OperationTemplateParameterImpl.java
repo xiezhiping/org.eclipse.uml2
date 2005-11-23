@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTemplateParameterImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
+ * $Id: OperationTemplateParameterImpl.java,v 1.4 2005/11/23 20:01:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,7 +59,7 @@ public class OperationTemplateParameterImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getOperationTemplateParameter();
+		return UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER;
 	}
 
 	/**

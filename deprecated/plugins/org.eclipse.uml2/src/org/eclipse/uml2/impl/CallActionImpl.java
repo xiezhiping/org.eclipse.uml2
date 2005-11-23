@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.19 2005/11/23 13:25:33 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.20 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -108,7 +108,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getCallAction();
+		return UML2Package.Literals.CALL_ACTION;
 	}
 
 	/**

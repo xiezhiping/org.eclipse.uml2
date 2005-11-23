@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.31 2005/11/23 13:25:32 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.32 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -89,7 +89,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getDataType();
+		return UML2Package.Literals.DATA_TYPE;
 	}
 
 	/**

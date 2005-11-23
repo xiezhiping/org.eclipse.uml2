@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfActionImpl.java,v 1.20 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ReadSelfActionImpl.java,v 1.21 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -75,7 +75,7 @@ public class ReadSelfActionImpl extends ActionImpl implements ReadSelfAction {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getReadSelfAction();
+		return UML2Package.Literals.READ_SELF_ACTION;
 	}
 
 	/**

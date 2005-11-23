@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: UMLValidator.java,v 1.3 2005/11/23 20:01:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -21551,7 +21551,7 @@ public class UMLValidator
 						0,
 						EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericConstraint_diagnostic", new Object[]{"state_is_local", getValueLabel(UMLPackage.eINSTANCE.getTransitionKind(), transitionKind, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericConstraint_diagnostic", new Object[]{"state_is_local", getValueLabel(UMLPackage.Literals.TRANSITION_KIND, transitionKind, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{transitionKind}));
 			}
 			return false;
@@ -21580,7 +21580,7 @@ public class UMLValidator
 						0,
 						EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericConstraint_diagnostic", new Object[]{"state_is_external", getValueLabel(UMLPackage.eINSTANCE.getTransitionKind(), transitionKind, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericConstraint_diagnostic", new Object[]{"state_is_external", getValueLabel(UMLPackage.Literals.TRANSITION_KIND, transitionKind, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{transitionKind}));
 			}
 			return false;

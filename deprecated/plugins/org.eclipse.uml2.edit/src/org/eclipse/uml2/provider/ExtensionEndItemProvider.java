@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndItemProvider.java,v 1.11 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ExtensionEndItemProvider.java,v 1.12 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -146,9 +146,9 @@ public class ExtensionEndItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
-			childFeature == UML2Package.eINSTANCE.getProperty_DefaultValue();
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE ||
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE ||
+			childFeature == UML2Package.Literals.PROPERTY__DEFAULT_VALUE;
 
 		if (qualify) {
 			return getString

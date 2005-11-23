@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionEnvironmentItemProvider.java,v 1.21 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ExecutionEnvironmentItemProvider.java,v 1.22 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -127,13 +127,13 @@ public class ExecutionEnvironmentItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
-			childFeature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			childFeature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			childFeature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
-			childFeature == UML2Package.eINSTANCE.getNode_NestedNode();
+			childFeature == UML2Package.Literals.CLASSIFIER__OWNED_USE_CASE ||
+			childFeature == UML2Package.Literals.CLASS__NESTED_CLASSIFIER ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE ||
+			childFeature == UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE ||
+			childFeature == UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT ||
+			childFeature == UML2Package.Literals.NODE__NESTED_NODE;
 
 		if (qualify) {
 			return getString

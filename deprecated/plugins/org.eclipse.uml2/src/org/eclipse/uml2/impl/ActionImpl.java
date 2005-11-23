@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.22 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ActionImpl.java,v 1.23 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -94,7 +94,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getAction();
+		return UML2Package.Literals.ACTION;
 	}
 
 	/**

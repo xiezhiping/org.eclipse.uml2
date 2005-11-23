@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearStructuralFeatureActionImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: ClearStructuralFeatureActionImpl.java,v 1.2 2005/11/23 20:01:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,7 @@ public class ClearStructuralFeatureActionImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getClearStructuralFeatureAction();
+		return UMLPackage.Literals.CLEAR_STRUCTURAL_FEATURE_ACTION;
 	}
 
 } //ClearStructuralFeatureActionImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
+ * $Id: ModelImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,7 +69,7 @@ public class ModelImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getModel();
+		return UMLPackage.Literals.MODEL;
 	}
 
 	/**

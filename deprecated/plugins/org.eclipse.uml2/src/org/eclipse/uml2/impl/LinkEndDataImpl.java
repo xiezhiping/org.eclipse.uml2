@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.13 2005/11/23 13:25:34 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.14 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -67,7 +67,7 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getLinkEndData();
+		return UML2Package.Literals.LINK_END_DATA;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: LinkActionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,7 +88,7 @@ public class LinkActionItemProvider
 				getString("_UI_LinkAction_endData_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LinkAction_endData_feature", "_UI_LinkAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLinkAction_EndData(), true, null, null,
+				UMLPackage.Literals.LINK_ACTION__END_DATA, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -108,8 +108,8 @@ public class LinkActionItemProvider
 				getString("_UI_LinkAction_inputValue_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LinkAction_inputValue_feature", "_UI_LinkAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLinkAction_InputValue(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.LINK_ACTION__INPUT_VALUE, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -124,9 +124,8 @@ public class LinkActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getLinkAction_EndData());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getLinkAction_InputValue());
+			childrenFeatures.add(UMLPackage.Literals.LINK_ACTION__END_DATA);
+			childrenFeatures.add(UMLPackage.Literals.LINK_ACTION__INPUT_VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -187,32 +186,29 @@ public class LinkActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getLinkAction_EndData(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LINK_ACTION__END_DATA, UMLFactory.eINSTANCE
 				.createLinkEndData()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLinkAction_EndData(), UMLFactory.eINSTANCE
-			.createLinkEndCreationData()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LINK_ACTION__END_DATA, UMLFactory.eINSTANCE
+				.createLinkEndCreationData()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLinkAction_EndData(), UMLFactory.eINSTANCE
-			.createLinkEndDestructionData()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LINK_ACTION__END_DATA, UMLFactory.eINSTANCE
+				.createLinkEndDestructionData()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getLinkAction_InputValue(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LINK_ACTION__INPUT_VALUE, UMLFactory.eINSTANCE
 				.createInputPin()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getLinkAction_InputValue(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LINK_ACTION__INPUT_VALUE, UMLFactory.eINSTANCE
 				.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLinkAction_InputValue(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LINK_ACTION__INPUT_VALUE, UMLFactory.eINSTANCE
+				.createActionInputPin()));
 	}
 
 	/**
@@ -226,10 +222,8 @@ public class LinkActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

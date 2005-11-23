@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ExecutionOccurrenceItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -88,7 +88,7 @@ public class ExecutionOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExecutionOccurrence_start_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExecutionOccurrence_start_feature", "_UI_ExecutionOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExecutionOccurrence_Start(),
+				 UML2Package.Literals.EXECUTION_OCCURRENCE__START,
 				 true,
 				 null,
 				 null,
@@ -108,7 +108,7 @@ public class ExecutionOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExecutionOccurrence_finish_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExecutionOccurrence_finish_feature", "_UI_ExecutionOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExecutionOccurrence_Finish(),
+				 UML2Package.Literals.EXECUTION_OCCURRENCE__FINISH,
 				 true,
 				 null,
 				 null,
@@ -128,7 +128,7 @@ public class ExecutionOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExecutionOccurrence_behavior_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExecutionOccurrence_behavior_feature", "_UI_ExecutionOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExecutionOccurrence_Behavior(),
+				 UML2Package.Literals.EXECUTION_OCCURRENCE__BEHAVIOR,
 				 true,
 				 null,
 				 null,

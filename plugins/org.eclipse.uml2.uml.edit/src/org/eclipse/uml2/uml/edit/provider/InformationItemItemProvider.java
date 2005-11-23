@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: InformationItemItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,8 +83,8 @@ public class InformationItemItemProvider
 				getString("_UI_InformationItem_represented_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InformationItem_represented_feature", "_UI_InformationItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInformationItem_Represented(), true,
-				null, null, null));
+				UMLPackage.Literals.INFORMATION_ITEM__REPRESENTED, true, null,
+				null, null));
 	}
 
 	/**
@@ -145,10 +145,8 @@ public class InformationItemItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

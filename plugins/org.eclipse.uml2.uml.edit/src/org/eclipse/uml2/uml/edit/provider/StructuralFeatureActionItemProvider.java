@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: StructuralFeatureActionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,9 +86,8 @@ public class StructuralFeatureActionItemProvider
 				getString("_UI_StructuralFeatureAction_structuralFeature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuralFeatureAction_structuralFeature_feature", "_UI_StructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getStructuralFeatureAction_StructuralFeature(), true,
-				null, null, null));
+				UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE,
+				true, null, null, null));
 	}
 
 	/**
@@ -106,7 +105,7 @@ public class StructuralFeatureActionItemProvider
 				getString("_UI_StructuralFeatureAction_object_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuralFeatureAction_object_feature", "_UI_StructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStructuralFeatureAction_Object(), true,
+				UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -123,8 +122,8 @@ public class StructuralFeatureActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getStructuralFeatureAction_Object());
+			childrenFeatures
+				.add(UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -172,17 +171,17 @@ public class StructuralFeatureActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuralFeatureAction_Object(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuralFeatureAction_Object(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuralFeatureAction_Object(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -196,10 +195,8 @@ public class StructuralFeatureActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

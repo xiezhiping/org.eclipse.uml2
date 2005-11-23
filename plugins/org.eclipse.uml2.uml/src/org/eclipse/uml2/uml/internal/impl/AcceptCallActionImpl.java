@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.4 2005/11/23 13:27:41 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.5 2005/11/23 20:01:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -70,7 +70,7 @@ public class AcceptCallActionImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getAcceptCallAction();
+		return UMLPackage.Literals.ACCEPT_CALL_ACTION;
 	}
 
 	/**

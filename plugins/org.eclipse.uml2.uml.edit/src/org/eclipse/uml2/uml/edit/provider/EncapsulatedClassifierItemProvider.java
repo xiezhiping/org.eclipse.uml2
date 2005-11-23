@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: EncapsulatedClassifierItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -95,8 +95,8 @@ public class EncapsulatedClassifierItemProvider
 				getString("_UI_EncapsulatedClassifier_ownedPort_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_EncapsulatedClassifier_ownedPort_feature", "_UI_EncapsulatedClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getEncapsulatedClassifier_OwnedPort(),
-				true, null, null, null));
+				UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT, true,
+				null, null, null));
 	}
 
 	/**
@@ -147,10 +147,8 @@ public class EncapsulatedClassifierItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -178,12 +176,13 @@ public class EncapsulatedClassifierItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE
-			.getEncapsulatedClassifier_OwnedPort()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getStructuredClassifier_OwnedAttribute()}, collection,
-				index);
+		if (feature == UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -197,11 +196,13 @@ public class EncapsulatedClassifierItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE
-			.getStructuredClassifier_OwnedAttribute()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getEncapsulatedClassifier_OwnedPort()}, collection);
+		if (feature == UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT},
+				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -214,18 +215,21 @@ public class EncapsulatedClassifierItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE
-			.getEncapsulatedClassifier_OwnedPort()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getStructuredClassifier_OwnedAttribute()}, value,
-				collection);
+		if (feature == UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE
-			.getStructuredClassifier_OwnedAttribute()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getEncapsulatedClassifier_OwnedPort()}, value, collection);
+		if (feature == UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT},
+				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: NamespaceItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -95,7 +95,7 @@ public class NamespaceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Namespace_member_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_member_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNamespace_Member(),
+				 UML2Package.Literals.NAMESPACE__MEMBER,
 				 false,
 				 null,
 				 null,
@@ -117,7 +117,7 @@ public class NamespaceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Namespace_ownedRule_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_ownedRule_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNamespace_OwnedRule(),
+				 UML2Package.Literals.NAMESPACE__OWNED_RULE,
 				 true,
 				 null,
 				 null,
@@ -139,7 +139,7 @@ public class NamespaceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Namespace_importedMember_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_importedMember_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNamespace_ImportedMember(),
+				 UML2Package.Literals.NAMESPACE__IMPORTED_MEMBER,
 				 false,
 				 null,
 				 null,
@@ -161,7 +161,7 @@ public class NamespaceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Namespace_elementImport_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_elementImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNamespace_ElementImport(),
+				 UML2Package.Literals.NAMESPACE__ELEMENT_IMPORT,
 				 true,
 				 null,
 				 null,
@@ -183,7 +183,7 @@ public class NamespaceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Namespace_packageImport_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_packageImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNamespace_PackageImport(),
+				 UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT,
 				 true,
 				 null,
 				 null,
@@ -203,9 +203,9 @@ public class NamespaceItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getNamespace_OwnedRule());
-			childrenFeatures.add(UML2Package.eINSTANCE.getNamespace_ElementImport());
-			childrenFeatures.add(UML2Package.eINSTANCE.getNamespace_PackageImport());
+			childrenFeatures.add(UML2Package.Literals.NAMESPACE__OWNED_RULE);
+			childrenFeatures.add(UML2Package.Literals.NAMESPACE__ELEMENT_IMPORT);
+			childrenFeatures.add(UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT);
 		}
 		return childrenFeatures;
 	}
@@ -267,42 +267,42 @@ public class NamespaceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNamespace_OwnedRule(),
+				(UML2Package.Literals.NAMESPACE__OWNED_RULE,
 				 UML2Factory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNamespace_OwnedRule(),
+				(UML2Package.Literals.NAMESPACE__OWNED_RULE,
 				 UML2Factory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNamespace_OwnedRule(),
+				(UML2Package.Literals.NAMESPACE__OWNED_RULE,
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNamespace_OwnedRule(),
+				(UML2Package.Literals.NAMESPACE__OWNED_RULE,
 				 UML2Factory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNamespace_OwnedRule(),
+				(UML2Package.Literals.NAMESPACE__OWNED_RULE,
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNamespace_ElementImport(),
+				(UML2Package.Literals.NAMESPACE__ELEMENT_IMPORT,
 				 UML2Factory.eINSTANCE.createElementImport()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNamespace_PackageImport(),
+				(UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT,
 				 UML2Factory.eINSTANCE.createPackageImport()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNamespace_PackageImport(),
+				(UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT,
 				 UML2Factory.eINSTANCE.createProfileApplication()));
 	}
 

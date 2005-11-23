@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ConstraintItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class ConstraintItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Constraint_context_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_context_feature", "_UI_Constraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConstraint_Context(),
+				 UML2Package.Literals.CONSTRAINT__CONTEXT,
 				 false,
 				 null,
 				 null,
@@ -114,7 +114,7 @@ public class ConstraintItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Constraint_namespace_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_namespace_feature", "_UI_Constraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConstraint_Namespace(),
+				 UML2Package.Literals.CONSTRAINT__NAMESPACE,
 				 true,
 				 null,
 				 null,
@@ -136,7 +136,7 @@ public class ConstraintItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Constraint_specification_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_specification_feature", "_UI_Constraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConstraint_Specification(),
+				 UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 true,
 				 null,
 				 null,
@@ -158,7 +158,7 @@ public class ConstraintItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Constraint_constrainedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_constrainedElement_feature", "_UI_Constraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConstraint_ConstrainedElement(),
+				 UML2Package.Literals.CONSTRAINT__CONSTRAINED_ELEMENT,
 				 true,
 				 null,
 				 null,
@@ -176,7 +176,7 @@ public class ConstraintItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getConstraint_Specification());
+			childrenFeatures.add(UML2Package.Literals.CONSTRAINT__SPECIFICATION);
 		}
 		return childrenFeatures;
 	}
@@ -233,67 +233,67 @@ public class ConstraintItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConstraint_Specification(),
+				(UML2Package.Literals.CONSTRAINT__SPECIFICATION,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 

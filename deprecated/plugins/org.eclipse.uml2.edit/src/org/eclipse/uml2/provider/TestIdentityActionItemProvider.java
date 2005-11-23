@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionItemProvider.java,v 1.17 2005/09/23 20:14:52 khussey Exp $
+ * $Id: TestIdentityActionItemProvider.java,v 1.18 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class TestIdentityActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TestIdentityAction_first_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TestIdentityAction_first_feature", "_UI_TestIdentityAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTestIdentityAction_First(),
+				 UML2Package.Literals.TEST_IDENTITY_ACTION__FIRST,
 				 true,
 				 null,
 				 null,
@@ -115,7 +115,7 @@ public class TestIdentityActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TestIdentityAction_second_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TestIdentityAction_second_feature", "_UI_TestIdentityAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTestIdentityAction_Second(),
+				 UML2Package.Literals.TEST_IDENTITY_ACTION__SECOND,
 				 true,
 				 null,
 				 null,
@@ -137,7 +137,7 @@ public class TestIdentityActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TestIdentityAction_result_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TestIdentityAction_result_feature", "_UI_TestIdentityAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTestIdentityAction_Result(),
+				 UML2Package.Literals.TEST_IDENTITY_ACTION__RESULT,
 				 true,
 				 null,
 				 null,
@@ -157,9 +157,9 @@ public class TestIdentityActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getTestIdentityAction_First());
-			childrenFeatures.add(UML2Package.eINSTANCE.getTestIdentityAction_Second());
-			childrenFeatures.add(UML2Package.eINSTANCE.getTestIdentityAction_Result());
+			childrenFeatures.add(UML2Package.Literals.TEST_IDENTITY_ACTION__FIRST);
+			childrenFeatures.add(UML2Package.Literals.TEST_IDENTITY_ACTION__SECOND);
+			childrenFeatures.add(UML2Package.Literals.TEST_IDENTITY_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -230,27 +230,27 @@ public class TestIdentityActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTestIdentityAction_First(),
+				(UML2Package.Literals.TEST_IDENTITY_ACTION__FIRST,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTestIdentityAction_First(),
+				(UML2Package.Literals.TEST_IDENTITY_ACTION__FIRST,
 				 UML2Factory.eINSTANCE.createValuePin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTestIdentityAction_Second(),
+				(UML2Package.Literals.TEST_IDENTITY_ACTION__SECOND,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTestIdentityAction_Second(),
+				(UML2Package.Literals.TEST_IDENTITY_ACTION__SECOND,
 				 UML2Factory.eINSTANCE.createValuePin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTestIdentityAction_Result(),
+				(UML2Package.Literals.TEST_IDENTITY_ACTION__RESULT,
 				 UML2Factory.eINSTANCE.createOutputPin()));
 	}
 
@@ -265,10 +265,10 @@ public class TestIdentityActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
-			childFeature == UML2Package.eINSTANCE.getTestIdentityAction_First() ||
-			childFeature == UML2Package.eINSTANCE.getTestIdentityAction_Second();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION ||
+			childFeature == UML2Package.Literals.TEST_IDENTITY_ACTION__FIRST ||
+			childFeature == UML2Package.Literals.TEST_IDENTITY_ACTION__SECOND;
 
 		if (qualify) {
 			return getString

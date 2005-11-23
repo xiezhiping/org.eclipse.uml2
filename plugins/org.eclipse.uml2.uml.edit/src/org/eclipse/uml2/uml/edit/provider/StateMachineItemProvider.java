@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: StateMachineItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -89,8 +89,8 @@ public class StateMachineItemProvider
 				getString("_UI_StateMachine_region_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StateMachine_region_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStateMachine_Region(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STATE_MACHINE__REGION, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -109,7 +109,7 @@ public class StateMachineItemProvider
 				getString("_UI_StateMachine_connectionPoint_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StateMachine_connectionPoint_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStateMachine_ConnectionPoint(), true,
+				UMLPackage.Literals.STATE_MACHINE__CONNECTION_POINT, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -130,7 +130,7 @@ public class StateMachineItemProvider
 				getString("_UI_StateMachine_extendedStateMachine_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StateMachine_extendedStateMachine_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStateMachine_ExtendedStateMachine(),
+				UMLPackage.Literals.STATE_MACHINE__EXTENDED_STATE_MACHINE,
 				true, null, null, null));
 	}
 
@@ -145,9 +145,9 @@ public class StateMachineItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getStateMachine_Region());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getStateMachine_ConnectionPoint());
+			childrenFeatures.add(UMLPackage.Literals.STATE_MACHINE__REGION);
+			childrenFeatures
+				.add(UMLPackage.Literals.STATE_MACHINE__CONNECTION_POINT);
 		}
 		return childrenFeatures;
 	}
@@ -218,12 +218,13 @@ public class StateMachineItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStateMachine_Region(), UMLFactory.eINSTANCE.createRegion()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE_MACHINE__REGION, UMLFactory.eINSTANCE
+				.createRegion()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStateMachine_ConnectionPoint(), UMLFactory.eINSTANCE
-			.createPseudostate()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE_MACHINE__CONNECTION_POINT,
+			UMLFactory.eINSTANCE.createPseudostate()));
 	}
 
 	/**
@@ -237,15 +238,11 @@ public class StateMachineItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedUseCase()
-			|| childFeature == UMLPackage.eINSTANCE.getClass_NestedClassifier()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedBehavior();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.29 2005/11/23 13:25:33 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.30 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -94,7 +94,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getBehavioredClassifier();
+		return UML2Package.Literals.BEHAVIORED_CLASSIFIER;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: InterfaceItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -92,7 +92,7 @@ public class InterfaceItemProvider
 				getString("_UI_Interface_ownedAttribute_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interface_ownedAttribute_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInterface_OwnedAttribute(), true, null,
+				UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -112,9 +112,8 @@ public class InterfaceItemProvider
 				getString("_UI_Interface_nestedClassifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interface_nestedClassifier_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInterface_NestedClassifier(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -133,8 +132,8 @@ public class InterfaceItemProvider
 				getString("_UI_Interface_redefinedInterface_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interface_redefinedInterface_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInterface_RedefinedInterface(), true,
-				null, null, null));
+				UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE, true, null,
+				null, null));
 	}
 
 	/**
@@ -152,7 +151,7 @@ public class InterfaceItemProvider
 				getString("_UI_Interface_ownedReception_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interface_ownedReception_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInterface_OwnedReception(), true, null,
+				UMLPackage.Literals.INTERFACE__OWNED_RECEPTION, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -172,7 +171,7 @@ public class InterfaceItemProvider
 				getString("_UI_Interface_protocol_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interface_protocol_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInterface_Protocol(), true, null, null,
+				UMLPackage.Literals.INTERFACE__PROTOCOL, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -192,7 +191,7 @@ public class InterfaceItemProvider
 				getString("_UI_Interface_ownedOperation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interface_ownedOperation_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInterface_OwnedOperation(), true, null,
+				UMLPackage.Literals.INTERFACE__OWNED_OPERATION, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -208,15 +207,15 @@ public class InterfaceItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getInterface_OwnedAttribute());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getInterface_NestedClassifier());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getInterface_OwnedReception());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getInterface_Protocol());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getInterface_OwnedOperation());
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE);
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER);
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERFACE__OWNED_RECEPTION);
+			childrenFeatures.add(UMLPackage.Literals.INTERFACE__PROTOCOL);
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERFACE__OWNED_OPERATION);
 		}
 		return childrenFeatures;
 	}
@@ -290,141 +289,141 @@ public class InterfaceItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_OwnedAttribute(), UMLFactory.eINSTANCE
-			.createProperty()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createProperty()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_OwnedAttribute(), UMLFactory.eINSTANCE.createPort()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createPort()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_OwnedAttribute(), UMLFactory.eINSTANCE
-			.createExtensionEnd()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createExtensionEnd()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createClass()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createClass()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createStereotype()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createStereotype()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createUseCase()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createUseCase()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createArtifact()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createArtifact()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createDeploymentSpecification()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createDeploymentSpecification()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createDataType()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createDataType()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createInterface()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createInterface()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createSignal()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createSignal()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createStateMachine()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createProtocolStateMachine()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createAssociation()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createAssociation()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createCollaboration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createCollaboration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createExtension()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createExtension()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createEnumeration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createEnumeration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createPrimitiveType()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createPrimitiveType()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createOpaqueBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createFunctionBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createFunctionBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createActor()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createActor()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createInteraction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createActivity()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createActivity()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createInformationItem()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createInformationItem()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createComponent()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createComponent()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-				.createNode()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createNode()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createDevice()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createDevice()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createExecutionEnvironment()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createExecutionEnvironment()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createCommunicationPath()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createCommunicationPath()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_NestedClassifier(), UMLFactory.eINSTANCE
-			.createAssociationClass()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createAssociationClass()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_OwnedReception(), UMLFactory.eINSTANCE
-			.createReception()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__OWNED_RECEPTION,
+			UMLFactory.eINSTANCE.createReception()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_Protocol(), UMLFactory.eINSTANCE
-			.createProtocolStateMachine()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__PROTOCOL, UMLFactory.eINSTANCE
+				.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInterface_OwnedOperation(), UMLFactory.eINSTANCE
-			.createOperation()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__OWNED_OPERATION,
+			UMLFactory.eINSTANCE.createOperation()));
 	}
 
 	/**
@@ -438,15 +437,11 @@ public class InterfaceItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedUseCase()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getInterface_NestedClassifier()
-			|| childFeature == UMLPackage.eINSTANCE.getInterface_Protocol();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+			|| childFeature == UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER
+			|| childFeature == UMLPackage.Literals.INTERFACE__PROTOCOL;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

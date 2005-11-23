@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ClassifierTemplateParameterItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class ClassifierTemplateParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ClassifierTemplateParameter_allowSubstitutable_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ClassifierTemplateParameter_allowSubstitutable_feature", "_UI_ClassifierTemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifierTemplateParameter_AllowSubstitutable(),
+				 UML2Package.Literals.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -158,8 +158,8 @@ public class ClassifierTemplateParameterItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement() ||
-			childFeature == UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault();
+			childFeature == UML2Package.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT ||
+			childFeature == UML2Package.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT;
 
 		if (qualify) {
 			return getString

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineItemProvider.java,v 1.22 2005/09/23 20:14:52 khussey Exp $
+ * $Id: StateMachineItemProvider.java,v 1.23 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class StateMachineItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StateMachine_region_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StateMachine_region_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStateMachine_Region(),
+				 UML2Package.Literals.STATE_MACHINE__REGION,
 				 true,
 				 null,
 				 null,
@@ -115,7 +115,7 @@ public class StateMachineItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StateMachine_connectionPoint_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StateMachine_connectionPoint_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStateMachine_ConnectionPoint(),
+				 UML2Package.Literals.STATE_MACHINE__CONNECTION_POINT,
 				 true,
 				 null,
 				 null,
@@ -137,7 +137,7 @@ public class StateMachineItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StateMachine_extendedStateMachine_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StateMachine_extendedStateMachine_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStateMachine_ExtendedStateMachine(),
+				 UML2Package.Literals.STATE_MACHINE__EXTENDED_STATE_MACHINE,
 				 true,
 				 null,
 				 null,
@@ -155,8 +155,8 @@ public class StateMachineItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getStateMachine_Region());
-			childrenFeatures.add(UML2Package.eINSTANCE.getStateMachine_ConnectionPoint());
+			childrenFeatures.add(UML2Package.Literals.STATE_MACHINE__REGION);
+			childrenFeatures.add(UML2Package.Literals.STATE_MACHINE__CONNECTION_POINT);
 		}
 		return childrenFeatures;
 	}
@@ -226,12 +226,12 @@ public class StateMachineItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStateMachine_Region(),
+				(UML2Package.Literals.STATE_MACHINE__REGION,
 				 UML2Factory.eINSTANCE.createRegion()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStateMachine_ConnectionPoint(),
+				(UML2Package.Literals.STATE_MACHINE__CONNECTION_POINT,
 				 UML2Factory.eINSTANCE.createPseudostate()));
 	}
 
@@ -246,12 +246,12 @@ public class StateMachineItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
-			childFeature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			childFeature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			childFeature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
+			childFeature == UML2Package.Literals.CLASSIFIER__OWNED_USE_CASE ||
+			childFeature == UML2Package.Literals.CLASS__NESTED_CLASSIFIER ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE ||
+			childFeature == UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE ||
+			childFeature == UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT;
 
 		if (qualify) {
 			return getString

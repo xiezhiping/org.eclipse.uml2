@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: StateInvariantItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,7 +85,7 @@ public class StateInvariantItemProvider
 				getString("_UI_StateInvariant_invariant_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StateInvariant_invariant_feature", "_UI_StateInvariant_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStateInvariant_Invariant(), true, null,
+				UMLPackage.Literals.STATE_INVARIANT__INVARIANT, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -101,8 +101,8 @@ public class StateInvariantItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getStateInvariant_Invariant());
+			childrenFeatures
+				.add(UMLPackage.Literals.STATE_INVARIANT__INVARIANT);
 		}
 		return childrenFeatures;
 	}
@@ -160,25 +160,25 @@ public class StateInvariantItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStateInvariant_Invariant(), UMLFactory.eINSTANCE
-			.createConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE_INVARIANT__INVARIANT,
+			UMLFactory.eINSTANCE.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStateInvariant_Invariant(), UMLFactory.eINSTANCE
-			.createInteractionConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE_INVARIANT__INVARIANT,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStateInvariant_Invariant(), UMLFactory.eINSTANCE
-			.createIntervalConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE_INVARIANT__INVARIANT,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStateInvariant_Invariant(), UMLFactory.eINSTANCE
-			.createTimeConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE_INVARIANT__INVARIANT,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStateInvariant_Invariant(), UMLFactory.eINSTANCE
-			.createDurationConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE_INVARIANT__INVARIANT,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 	}
 
 	/**

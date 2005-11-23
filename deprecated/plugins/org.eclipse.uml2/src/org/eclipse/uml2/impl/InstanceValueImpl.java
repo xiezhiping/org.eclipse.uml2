@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueImpl.java,v 1.14 2005/11/23 13:25:34 khussey Exp $
+ * $Id: InstanceValueImpl.java,v 1.15 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -67,7 +67,7 @@ public class InstanceValueImpl extends ValueSpecificationImpl implements Instanc
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getInstanceValue();
+		return UML2Package.Literals.INSTANCE_VALUE;
 	}
 
 	/**

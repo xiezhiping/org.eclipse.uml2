@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,8 +88,7 @@ public class RemoveStructuralFeatureValueActionItemProvider
 				getString("_UI_RemoveStructuralFeatureValueAction_isRemoveDuplicates_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RemoveStructuralFeatureValueAction_isRemoveDuplicates_feature", "_UI_RemoveStructuralFeatureValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getRemoveStructuralFeatureValueAction_IsRemoveDuplicates(),
+				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REMOVE_DUPLICATES,
 				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -108,9 +107,8 @@ public class RemoveStructuralFeatureValueActionItemProvider
 				getString("_UI_RemoveStructuralFeatureValueAction_removeAt_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RemoveStructuralFeatureValueAction_removeAt_feature", "_UI_RemoveStructuralFeatureValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getRemoveStructuralFeatureValueAction_RemoveAt(), true,
-				null, null,
+				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -126,8 +124,8 @@ public class RemoveStructuralFeatureValueActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getRemoveStructuralFeatureValueAction_RemoveAt());
+			childrenFeatures
+				.add(UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT);
 		}
 		return childrenFeatures;
 	}
@@ -191,17 +189,20 @@ public class RemoveStructuralFeatureValueActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRemoveStructuralFeatureValueAction_RemoveAt(),
-			UMLFactory.eINSTANCE.createInputPin()));
+		newChildDescriptors
+			.add(createChildParameter(
+				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
+				UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRemoveStructuralFeatureValueAction_RemoveAt(),
-			UMLFactory.eINSTANCE.createValuePin()));
+		newChildDescriptors
+			.add(createChildParameter(
+				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
+				UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRemoveStructuralFeatureValueAction_RemoveAt(),
-			UMLFactory.eINSTANCE.createActionInputPin()));
+		newChildDescriptors
+			.add(createChildParameter(
+				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
+				UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -215,16 +216,11 @@ public class RemoveStructuralFeatureValueActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getStructuralFeatureAction_Object()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getWriteStructuralFeatureAction_Value()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getRemoveStructuralFeatureValueAction_RemoveAt();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT
+			|| childFeature == UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE
+			|| childFeature == UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

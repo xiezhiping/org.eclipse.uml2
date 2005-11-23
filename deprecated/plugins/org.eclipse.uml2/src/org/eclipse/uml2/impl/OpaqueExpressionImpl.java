@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.16 2005/11/23 13:25:33 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.17 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -90,7 +90,7 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getOpaqueExpression();
+		return UML2Package.Literals.OPAQUE_EXPRESSION;
 	}
 
 	/**

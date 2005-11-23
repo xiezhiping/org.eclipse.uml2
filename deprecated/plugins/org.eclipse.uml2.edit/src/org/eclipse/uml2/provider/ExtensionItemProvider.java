@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ExtensionItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class ExtensionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Extension_isRequired_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Extension_isRequired_feature", "_UI_Extension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExtension_IsRequired(),
+				 UML2Package.Literals.EXTENSION__IS_REQUIRED,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -115,7 +115,7 @@ public class ExtensionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Extension_metaclass_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Extension_metaclass_feature", "_UI_Extension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExtension_Metaclass(),
+				 UML2Package.Literals.EXTENSION__METACLASS,
 				 false,
 				 null,
 				 null,

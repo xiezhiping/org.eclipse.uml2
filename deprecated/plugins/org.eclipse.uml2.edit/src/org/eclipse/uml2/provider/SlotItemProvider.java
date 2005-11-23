@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: SlotItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class SlotItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Slot_owningInstance_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Slot_owningInstance_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getSlot_OwningInstance(),
+				 UML2Package.Literals.SLOT__OWNING_INSTANCE,
 				 true,
 				 null,
 				 null,
@@ -113,7 +113,7 @@ public class SlotItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Slot_value_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Slot_value_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getSlot_Value(),
+				 UML2Package.Literals.SLOT__VALUE,
 				 true,
 				 null,
 				 null,
@@ -135,7 +135,7 @@ public class SlotItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Slot_definingFeature_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Slot_definingFeature_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getSlot_DefiningFeature(),
+				 UML2Package.Literals.SLOT__DEFINING_FEATURE,
 				 true,
 				 null,
 				 null,
@@ -153,7 +153,7 @@ public class SlotItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getSlot_Value());
+			childrenFeatures.add(UML2Package.Literals.SLOT__VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -213,67 +213,67 @@ public class SlotItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSlot_Value(),
+				(UML2Package.Literals.SLOT__VALUE,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: RedefinableTemplateSignatureItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -103,8 +103,8 @@ public class RedefinableTemplateSignatureItemProvider
 				getString("_UI_TemplateSignature_parameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateSignature_parameter_feature", "_UI_TemplateSignature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateSignature_Parameter(), true,
-				null, null, null));
+				UMLPackage.Literals.TEMPLATE_SIGNATURE__PARAMETER, true, null,
+				null, null));
 	}
 
 	/**
@@ -122,9 +122,8 @@ public class RedefinableTemplateSignatureItemProvider
 				getString("_UI_TemplateSignature_template_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateSignature_template_feature", "_UI_TemplateSignature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateSignature_Template(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.TEMPLATE_SIGNATURE__TEMPLATE, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -143,8 +142,8 @@ public class RedefinableTemplateSignatureItemProvider
 				getString("_UI_TemplateSignature_ownedParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateSignature_ownedParameter_feature", "_UI_TemplateSignature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateSignature_OwnedParameter(),
-				true, null, null,
+				UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -164,9 +163,8 @@ public class RedefinableTemplateSignatureItemProvider
 				getString("_UI_RedefinableTemplateSignature_extendedSignature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableTemplateSignature_extendedSignature_feature", "_UI_RedefinableTemplateSignature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getRedefinableTemplateSignature_ExtendedSignature(), true,
-				null, null, null));
+				UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE,
+				true, null, null, null));
 	}
 
 	/**
@@ -184,8 +182,7 @@ public class RedefinableTemplateSignatureItemProvider
 				getString("_UI_RedefinableTemplateSignature_inheritedParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableTemplateSignature_inheritedParameter_feature", "_UI_RedefinableTemplateSignature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getRedefinableTemplateSignature_InheritedParameter(),
+				UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER,
 				false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -206,9 +203,9 @@ public class RedefinableTemplateSignatureItemProvider
 				getString("_UI_RedefinableTemplateSignature_classifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableTemplateSignature_classifier_feature", "_UI_RedefinableTemplateSignature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getRedefinableTemplateSignature_Classifier(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -223,8 +220,8 @@ public class RedefinableTemplateSignatureItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateSignature_OwnedParameter());
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 		}
 		return childrenFeatures;
 	}
@@ -283,21 +280,21 @@ public class RedefinableTemplateSignatureItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateSignature_OwnedParameter(), UMLFactory.eINSTANCE
-			.createTemplateParameter()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
+			UMLFactory.eINSTANCE.createTemplateParameter()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateSignature_OwnedParameter(), UMLFactory.eINSTANCE
-			.createOperationTemplateParameter()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
+			UMLFactory.eINSTANCE.createOperationTemplateParameter()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateSignature_OwnedParameter(), UMLFactory.eINSTANCE
-			.createConnectableElementTemplateParameter()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
+			UMLFactory.eINSTANCE.createConnectableElementTemplateParameter()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateSignature_OwnedParameter(), UMLFactory.eINSTANCE
-			.createClassifierTemplateParameter()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
+			UMLFactory.eINSTANCE.createClassifierTemplateParameter()));
 	}
 
 	/**
@@ -318,11 +315,13 @@ public class RedefinableTemplateSignatureItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE
-			.getTemplateSignature_OwnedParameter()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getTemplateSignature_Parameter()}, collection, index);
+		if (feature == UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_SIGNATURE__PARAMETER},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -336,10 +335,13 @@ public class RedefinableTemplateSignatureItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getTemplateSignature_Parameter()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getTemplateSignature_OwnedParameter()}, collection);
+		if (feature == UMLPackage.Literals.TEMPLATE_SIGNATURE__PARAMETER) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER},
+				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -352,16 +354,21 @@ public class RedefinableTemplateSignatureItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE
-			.getTemplateSignature_OwnedParameter()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getTemplateSignature_Parameter()}, value, collection);
+		if (feature == UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_SIGNATURE__PARAMETER},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getTemplateSignature_Parameter()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getTemplateSignature_OwnedParameter()}, value, collection);
+		if (feature == UMLPackage.Literals.TEMPLATE_SIGNATURE__PARAMETER) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER},
+				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);

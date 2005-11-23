@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: ActivityEdgeItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -100,7 +100,7 @@ public class ActivityEdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityEdge_activity_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityEdge_activity_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityEdge_Activity(),
+				 UML2Package.Literals.ACTIVITY_EDGE__ACTIVITY,
 				 true,
 				 null,
 				 null,
@@ -122,7 +122,7 @@ public class ActivityEdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityEdge_source_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityEdge_source_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityEdge_Source(),
+				 UML2Package.Literals.ACTIVITY_EDGE__SOURCE,
 				 true,
 				 null,
 				 null,
@@ -142,7 +142,7 @@ public class ActivityEdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityEdge_target_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityEdge_target_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityEdge_Target(),
+				 UML2Package.Literals.ACTIVITY_EDGE__TARGET,
 				 true,
 				 null,
 				 null,
@@ -162,7 +162,7 @@ public class ActivityEdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityEdge_inGroup_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityEdge_inGroup_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityEdge_InGroup(),
+				 UML2Package.Literals.ACTIVITY_EDGE__IN_GROUP,
 				 false,
 				 null,
 				 null,
@@ -184,7 +184,7 @@ public class ActivityEdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityEdge_guard_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityEdge_guard_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				 UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 true,
 				 null,
 				 null,
@@ -206,7 +206,7 @@ public class ActivityEdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityEdge_redefinedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityEdge_redefinedElement_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityEdge_RedefinedElement(),
+				 UML2Package.Literals.ACTIVITY_EDGE__REDEFINED_ELEMENT,
 				 true,
 				 null,
 				 null,
@@ -226,7 +226,7 @@ public class ActivityEdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityEdge_inStructuredNode_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityEdge_inStructuredNode_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityEdge_InStructuredNode(),
+				 UML2Package.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE,
 				 true,
 				 null,
 				 null,
@@ -248,7 +248,7 @@ public class ActivityEdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityEdge_inPartition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityEdge_inPartition_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityEdge_InPartition(),
+				 UML2Package.Literals.ACTIVITY_EDGE__IN_PARTITION,
 				 true,
 				 null,
 				 null,
@@ -268,7 +268,7 @@ public class ActivityEdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityEdge_weight_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityEdge_weight_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				 UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 true,
 				 null,
 				 null,
@@ -290,7 +290,7 @@ public class ActivityEdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityEdge_interrupts_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityEdge_interrupts_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityEdge_Interrupts(),
+				 UML2Package.Literals.ACTIVITY_EDGE__INTERRUPTS,
 				 true,
 				 null,
 				 null,
@@ -308,8 +308,8 @@ public class ActivityEdgeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getActivityEdge_Guard());
-			childrenFeatures.add(UML2Package.eINSTANCE.getActivityEdge_Weight());
+			childrenFeatures.add(UML2Package.Literals.ACTIVITY_EDGE__GUARD);
+			childrenFeatures.add(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT);
 		}
 		return childrenFeatures;
 	}
@@ -370,132 +370,132 @@ public class ActivityEdgeItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Guard(),
+				(UML2Package.Literals.ACTIVITY_EDGE__GUARD,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getActivityEdge_Weight(),
+				(UML2Package.Literals.ACTIVITY_EDGE__WEIGHT,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 
@@ -510,8 +510,8 @@ public class ActivityEdgeItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getActivityEdge_Guard() ||
-			childFeature == UML2Package.eINSTANCE.getActivityEdge_Weight();
+			childFeature == UML2Package.Literals.ACTIVITY_EDGE__GUARD ||
+			childFeature == UML2Package.Literals.ACTIVITY_EDGE__WEIGHT;
 
 		if (qualify) {
 			return getString

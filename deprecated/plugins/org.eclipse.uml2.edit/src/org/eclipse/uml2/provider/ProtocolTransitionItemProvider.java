@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ProtocolTransitionItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -103,7 +103,7 @@ public class ProtocolTransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ProtocolTransition_postCondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_postCondition_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProtocolTransition_PostCondition(),
+				 UML2Package.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
 				 true,
 				 null,
 				 null,
@@ -125,7 +125,7 @@ public class ProtocolTransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ProtocolTransition_referred_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_referred_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProtocolTransition_Referred(),
+				 UML2Package.Literals.PROTOCOL_TRANSITION__REFERRED,
 				 false,
 				 null,
 				 null,
@@ -147,7 +147,7 @@ public class ProtocolTransitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ProtocolTransition_preCondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_preCondition_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProtocolTransition_PreCondition(),
+				 UML2Package.Literals.PROTOCOL_TRANSITION__PRE_CONDITION,
 				 true,
 				 null,
 				 null,
@@ -165,7 +165,7 @@ public class ProtocolTransitionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getProtocolTransition_PostCondition());
+			childrenFeatures.add(UML2Package.Literals.PROTOCOL_TRANSITION__POST_CONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -222,27 +222,27 @@ public class ProtocolTransitionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProtocolTransition_PostCondition(),
+				(UML2Package.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
 				 UML2Factory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProtocolTransition_PostCondition(),
+				(UML2Package.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
 				 UML2Factory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProtocolTransition_PostCondition(),
+				(UML2Package.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProtocolTransition_PostCondition(),
+				(UML2Package.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
 				 UML2Factory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProtocolTransition_PostCondition(),
+				(UML2Package.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
 	}
 
@@ -257,8 +257,8 @@ public class ProtocolTransitionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getTransition_Guard() ||
-			childFeature == UML2Package.eINSTANCE.getProtocolTransition_PostCondition();
+			childFeature == UML2Package.Literals.TRANSITION__GUARD ||
+			childFeature == UML2Package.Literals.PROTOCOL_TRANSITION__POST_CONDITION;
 
 		if (qualify) {
 			return getString
@@ -286,11 +286,11 @@ public class ProtocolTransitionItemProvider
 	 * @generated
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getProtocolTransition_PreCondition()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getTransition_Guard()}, value);
+		if (feature == UML2Package.Literals.PROTOCOL_TRANSITION__PRE_CONDITION) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TRANSITION__GUARD}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getTransition_Guard()) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getProtocolTransition_PreCondition()}, value);
+		if (feature == UML2Package.Literals.TRANSITION__GUARD) {
+			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PROTOCOL_TRANSITION__PRE_CONDITION}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

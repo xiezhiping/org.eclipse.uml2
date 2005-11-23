@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.4 2005/11/23 20:01:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,7 +98,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getElementImport();
+		return UMLPackage.Literals.ELEMENT_IMPORT;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.21 2005/11/23 13:25:32 khussey Exp $
+ * $Id: CreateLinkObjectActionImpl.java,v 1.22 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,7 +79,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getCreateLinkObjectAction();
+		return UML2Package.Literals.CREATE_LINK_OBJECT_ACTION;
 	}
 
 	/**

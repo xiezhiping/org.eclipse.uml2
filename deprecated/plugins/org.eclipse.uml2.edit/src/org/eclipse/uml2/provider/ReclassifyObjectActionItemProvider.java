@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ReclassifyObjectActionItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class ReclassifyObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReclassifyObjectAction_isReplaceAll_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_isReplaceAll_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReclassifyObjectAction_IsReplaceAll(),
+				 UML2Package.Literals.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -113,7 +113,7 @@ public class ReclassifyObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReclassifyObjectAction_oldClassifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_oldClassifier_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReclassifyObjectAction_OldClassifier(),
+				 UML2Package.Literals.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER,
 				 true,
 				 null,
 				 null,
@@ -133,7 +133,7 @@ public class ReclassifyObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReclassifyObjectAction_newClassifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_newClassifier_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReclassifyObjectAction_NewClassifier(),
+				 UML2Package.Literals.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER,
 				 true,
 				 null,
 				 null,
@@ -153,7 +153,7 @@ public class ReclassifyObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReclassifyObjectAction_object_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_object_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReclassifyObjectAction_Object(),
+				 UML2Package.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT,
 				 true,
 				 null,
 				 null,
@@ -173,7 +173,7 @@ public class ReclassifyObjectActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getReclassifyObjectAction_Object());
+			childrenFeatures.add(UML2Package.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -233,12 +233,12 @@ public class ReclassifyObjectActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getReclassifyObjectAction_Object(),
+				(UML2Package.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getReclassifyObjectAction_Object(),
+				(UML2Package.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT,
 				 UML2Factory.eINSTANCE.createValuePin()));
 	}
 
@@ -253,8 +253,8 @@ public class ReclassifyObjectActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

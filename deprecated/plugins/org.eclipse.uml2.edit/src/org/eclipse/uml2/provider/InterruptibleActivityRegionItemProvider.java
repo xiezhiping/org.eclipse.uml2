@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: InterruptibleActivityRegionItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class InterruptibleActivityRegionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InterruptibleActivityRegion_interruptingEdge_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InterruptibleActivityRegion_interruptingEdge_feature", "_UI_InterruptibleActivityRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInterruptibleActivityRegion_InterruptingEdge(),
+				 UML2Package.Literals.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
 				 true,
 				 null,
 				 null,
@@ -106,7 +106,7 @@ public class InterruptibleActivityRegionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InterruptibleActivityRegion_containedNode_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InterruptibleActivityRegion_containedNode_feature", "_UI_InterruptibleActivityRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInterruptibleActivityRegion_ContainedNode(),
+				 UML2Package.Literals.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
 				 true,
 				 null,
 				 null,

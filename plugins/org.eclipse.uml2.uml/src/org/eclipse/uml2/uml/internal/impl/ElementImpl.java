@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
+ * $Id: ElementImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -89,7 +89,7 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getElement();
+		return UMLPackage.Literals.ELEMENT;
 	}
 
 	/**
@@ -161,9 +161,9 @@ public abstract class ElementImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getElement().getEOperations().get(2));
+				UMLPackage.Literals.ELEMENT.getEOperations().get(2));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE.getElement()
+				cache.put(eResource(), this, UMLPackage.Literals.ELEMENT
 					.getEOperations().get(2), result = ElementOperations
 					.allOwnedElements(this));
 			}

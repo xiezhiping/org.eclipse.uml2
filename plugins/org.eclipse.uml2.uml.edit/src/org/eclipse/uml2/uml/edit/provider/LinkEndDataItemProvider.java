@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: LinkEndDataItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,7 +87,7 @@ public class LinkEndDataItemProvider
 				getString("_UI_LinkEndData_value_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LinkEndData_value_feature", "_UI_LinkEndData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLinkEndData_Value(), true, null, null,
+				UMLPackage.Literals.LINK_END_DATA__VALUE, true, null, null,
 				null));
 	}
 
@@ -106,8 +106,7 @@ public class LinkEndDataItemProvider
 				getString("_UI_LinkEndData_end_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LinkEndData_end_feature", "_UI_LinkEndData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLinkEndData_End(), true, null, null,
-				null));
+				UMLPackage.Literals.LINK_END_DATA__END, true, null, null, null));
 	}
 
 	/**
@@ -125,8 +124,8 @@ public class LinkEndDataItemProvider
 				getString("_UI_LinkEndData_qualifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LinkEndData_qualifier_feature", "_UI_LinkEndData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLinkEndData_Qualifier(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.LINK_END_DATA__QUALIFIER, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -141,8 +140,7 @@ public class LinkEndDataItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getLinkEndData_Qualifier());
+			childrenFeatures.add(UMLPackage.Literals.LINK_END_DATA__QUALIFIER);
 		}
 		return childrenFeatures;
 	}
@@ -197,9 +195,9 @@ public class LinkEndDataItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLinkEndData_Qualifier(), UMLFactory.eINSTANCE
-			.createQualifierValue()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LINK_END_DATA__QUALIFIER, UMLFactory.eINSTANCE
+				.createQualifierValue()));
 	}
 
 	/**

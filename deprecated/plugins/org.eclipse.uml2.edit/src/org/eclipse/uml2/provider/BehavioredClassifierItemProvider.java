@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierItemProvider.java,v 1.14 2005/05/18 16:40:46 khussey Exp $
+ * $Id: BehavioredClassifierItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -108,7 +108,7 @@ public class BehavioredClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_ownedBehavior_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_ownedBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
+				 UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
 				 true,
 				 null,
 				 null,
@@ -130,7 +130,7 @@ public class BehavioredClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_classifierBehavior_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_classifierBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior(),
+				 UML2Package.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
 				 true,
 				 null,
 				 null,
@@ -150,7 +150,7 @@ public class BehavioredClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_implementation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_implementation_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioredClassifier_Implementation(),
+				 UML2Package.Literals.BEHAVIORED_CLASSIFIER__IMPLEMENTATION,
 				 true,
 				 null,
 				 null,
@@ -172,7 +172,7 @@ public class BehavioredClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_ownedTrigger_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_ownedTrigger_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				 UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER,
 				 true,
 				 null,
 				 null,
@@ -194,7 +194,7 @@ public class BehavioredClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_ownedStateMachine_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_ownedStateMachine_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine(),
+				 UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE,
 				 true,
 				 null,
 				 null,
@@ -214,10 +214,10 @@ public class BehavioredClassifierItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior());
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation());
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger());
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine());
+			childrenFeatures.add(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR);
+			childrenFeatures.add(UML2Package.Literals.BEHAVIORED_CLASSIFIER__IMPLEMENTATION);
+			childrenFeatures.add(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER);
+			childrenFeatures.add(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE);
 		}
 		return childrenFeatures;
 	}
@@ -280,62 +280,62 @@ public class BehavioredClassifierItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
 				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
 				 UML2Factory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
 				 UML2Factory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
 				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__IMPLEMENTATION,
 				 UML2Factory.eINSTANCE.createImplementation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER,
 				 UML2Factory.eINSTANCE.createCallTrigger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER,
 				 UML2Factory.eINSTANCE.createChangeTrigger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER,
 				 UML2Factory.eINSTANCE.createSignalTrigger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER,
 				 UML2Factory.eINSTANCE.createTimeTrigger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER,
 				 UML2Factory.eINSTANCE.createAnyTrigger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE,
 				 UML2Factory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine(),
+				(UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE,
 				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
 	}
 
@@ -350,8 +350,8 @@ public class BehavioredClassifierItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE;
 
 		if (qualify) {
 			return getString
@@ -379,8 +379,8 @@ public class BehavioredClassifierItemProvider
 	 * @generated
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getBehavioredClassifier_Implementation()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, collection, index);
+		if (feature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__IMPLEMENTATION) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY}, collection, index);
 		}
 		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
@@ -392,11 +392,11 @@ public class BehavioredClassifierItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior()}, collection);
+		if (feature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR}, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Substitution(), UML2Package.eINSTANCE.getBehavioredClassifier_Implementation()}, collection);
+		if (feature == UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.CLASSIFIER__SUBSTITUTION, UML2Package.Literals.BEHAVIORED_CLASSIFIER__IMPLEMENTATION}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -408,14 +408,14 @@ public class BehavioredClassifierItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getBehavioredClassifier_Implementation()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, value, collection);
+		if (feature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__IMPLEMENTATION) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior()}, value, collection);
+		if (feature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Substitution(), UML2Package.eINSTANCE.getBehavioredClassifier_Implementation()}, value, collection);
+		if (feature == UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.CLASSIFIER__SUBSTITUTION, UML2Package.Literals.BEHAVIORED_CLASSIFIER__IMPLEMENTATION}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
@@ -427,8 +427,8 @@ public class BehavioredClassifierItemProvider
 	 * @generated
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior()}, value);
+		if (feature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

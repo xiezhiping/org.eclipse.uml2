@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,7 +85,7 @@ public class LiteralUnlimitedNaturalItemProvider
 				getString("_UI_LiteralUnlimitedNatural_value_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LiteralUnlimitedNatural_value_feature", "_UI_LiteralUnlimitedNatural_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLiteralUnlimitedNatural_Value(), true,
+				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL__VALUE, true,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 

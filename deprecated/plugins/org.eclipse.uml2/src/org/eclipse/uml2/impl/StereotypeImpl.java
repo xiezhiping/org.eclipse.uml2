@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.38 2005/11/14 17:31:08 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.39 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -59,7 +59,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getStereotype();
+		return UML2Package.Literals.STEREOTYPE;
 	}
 
 

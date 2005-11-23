@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: StructuredActivityNodeItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -102,7 +102,7 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_Namespace_elementImport_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Namespace_elementImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamespace_ElementImport(), true, null,
+				UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -122,7 +122,7 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_Namespace_packageImport_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Namespace_packageImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamespace_PackageImport(), true, null,
+				UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -142,8 +142,8 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_Namespace_ownedRule_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Namespace_ownedRule_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamespace_OwnedRule(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.NAMESPACE__OWNED_RULE, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -162,7 +162,7 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_Namespace_member_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Namespace_member_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamespace_Member(), false, null, null,
+				UMLPackage.Literals.NAMESPACE__MEMBER, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -182,9 +182,8 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_Namespace_importedMember_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Namespace_importedMember_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamespace_ImportedMember(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -203,8 +202,8 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_Namespace_ownedMember_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Namespace_ownedMember_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamespace_OwnedMember(), false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER, false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -223,7 +222,7 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_ActivityGroup_subgroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_subgroup_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_Subgroup(), false, null,
+				UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP, false, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -243,9 +242,8 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_ActivityGroup_superGroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_superGroup_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_SuperGroup(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACTIVITY_GROUP__SUPER_GROUP, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -264,7 +262,7 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_ActivityGroup_containedNode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_containedNode_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_ContainedNode(), false,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE, false,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -285,7 +283,7 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_ActivityGroup_inActivity_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_inActivity_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_InActivity(), true, null,
+				UMLPackage.Literals.ACTIVITY_GROUP__IN_ACTIVITY, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -305,7 +303,7 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_ActivityGroup_containedEdge_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_containedEdge_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_ContainedEdge(), false,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE, false,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -326,8 +324,8 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_StructuredActivityNode_variable_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredActivityNode_variable_feature", "_UI_StructuredActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStructuredActivityNode_Variable(),
-				true, null, null,
+				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__VARIABLE, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -347,9 +345,8 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_StructuredActivityNode_node_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredActivityNode_node_feature", "_UI_StructuredActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStructuredActivityNode_Node(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -368,7 +365,7 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_StructuredActivityNode_mustIsolate_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredActivityNode_mustIsolate_feature", "_UI_StructuredActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStructuredActivityNode_MustIsolate(),
+				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE,
 				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -387,9 +384,8 @@ public class StructuredActivityNodeItemProvider
 				getString("_UI_StructuredActivityNode_edge_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredActivityNode_edge_feature", "_UI_StructuredActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStructuredActivityNode_Edge(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -404,17 +400,15 @@ public class StructuredActivityNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getNamespace_ElementImport());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getNamespace_PackageImport());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getNamespace_OwnedRule());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getStructuredActivityNode_Variable());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getStructuredActivityNode_Node());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getStructuredActivityNode_Edge());
+			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT);
+			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT);
+			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__OWNED_RULE);
+			childrenFeatures
+				.add(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__VARIABLE);
+			childrenFeatures
+				.add(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE);
+			childrenFeatures
+				.add(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE);
 		}
 		return childrenFeatures;
 	}
@@ -494,291 +488,289 @@ public class StructuredActivityNodeItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNamespace_ElementImport(), UMLFactory.eINSTANCE
-			.createElementImport()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT, UMLFactory.eINSTANCE
+				.createElementImport()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNamespace_PackageImport(), UMLFactory.eINSTANCE
-			.createPackageImport()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, UMLFactory.eINSTANCE
+				.createPackageImport()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNamespace_PackageImport(), UMLFactory.eINSTANCE
-			.createProfileApplication()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, UMLFactory.eINSTANCE
+				.createProfileApplication()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getNamespace_OwnedRule(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
 				.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNamespace_OwnedRule(), UMLFactory.eINSTANCE
-			.createInteractionConstraint()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNamespace_OwnedRule(), UMLFactory.eINSTANCE
-			.createIntervalConstraint()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNamespace_OwnedRule(), UMLFactory.eINSTANCE
-			.createTimeConstraint()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNamespace_OwnedRule(), UMLFactory.eINSTANCE
-			.createDurationConstraint()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Variable(), UMLFactory.eINSTANCE
-			.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createStructuredActivityNode()));
-
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-				.createPin()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createOutputPin()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createInputPin()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createCreateObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createDestroyObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createTestIdentityAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createReadSelfAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createReadStructuralFeatureAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createClearStructuralFeatureAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createRemoveStructuralFeatureValueAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createAddStructuralFeatureValueAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createReadLinkAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createCreateLinkAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createDestroyLinkAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createClearAssociationAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createBroadcastSignalAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createSendObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createValueSpecificationAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createTimeObservationAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createValuePin()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createDurationObservationAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createOpaqueAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createSendSignalAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createCallOperationAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createCallBehaviorAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createReadVariableAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createClearVariableAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createAddVariableValueAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createRemoveVariableValueAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createRaiseExceptionAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createReadExtentAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createReclassifyObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createReadIsClassifiedObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createStartClassifierBehaviorAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createReadLinkObjectEndAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createReadLinkObjectEndQualifierAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createCreateLinkObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createAcceptEventAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createAcceptCallAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createReplyAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createUnmarshallAction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createInitialNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createActivityParameterNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createForkNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createFlowFinalNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createCentralBufferNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createMergeNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createDecisionNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createActivityFinalNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createJoinNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createDataStoreNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createSequenceNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createConditionalNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createLoopNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createExpansionNode()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Node(), UMLFactory.eINSTANCE
-			.createExpansionRegion()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Edge(), UMLFactory.eINSTANCE
-			.createActivityEdge()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Edge(), UMLFactory.eINSTANCE
-			.createControlFlow()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredActivityNode_Edge(), UMLFactory.eINSTANCE
-			.createObjectFlow()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
+				.createInteractionConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
+				.createIntervalConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
+				.createTimeConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
+				.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__VARIABLE,
+			UMLFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createStructuredActivityNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createOutputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createInputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createCreateObjectAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createDestroyObjectAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createTestIdentityAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createReadSelfAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createReadStructuralFeatureAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createClearStructuralFeatureAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createRemoveStructuralFeatureValueAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createAddStructuralFeatureValueAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createReadLinkAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createCreateLinkAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createDestroyLinkAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createClearAssociationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createBroadcastSignalAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createSendObjectAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createValueSpecificationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createTimeObservationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createValuePin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createDurationObservationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createOpaqueAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createSendSignalAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createCallOperationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createCallBehaviorAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createReadVariableAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createClearVariableAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createAddVariableValueAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createRemoveVariableValueAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createRaiseExceptionAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createActionInputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createReadExtentAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createReclassifyObjectAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createReadIsClassifiedObjectAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createStartClassifierBehaviorAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createReadLinkObjectEndAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createReadLinkObjectEndQualifierAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createCreateLinkObjectAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createAcceptEventAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createAcceptCallAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createReplyAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createUnmarshallAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createInitialNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createActivityParameterNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createForkNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createFlowFinalNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createCentralBufferNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createMergeNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createDecisionNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createActivityFinalNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createJoinNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createDataStoreNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createSequenceNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createConditionalNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createLoopNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createExpansionNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createExpansionRegion()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE,
+			UMLFactory.eINSTANCE.createActivityEdge()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE,
+			UMLFactory.eINSTANCE.createControlFlow()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE,
+			UMLFactory.eINSTANCE.createObjectFlow()));
 	}
 
 	/**
@@ -792,11 +784,9 @@ public class StructuredActivityNodeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE.getNamespace_OwnedRule();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

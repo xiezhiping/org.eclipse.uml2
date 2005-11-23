@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.10 2005/11/04 22:23:01 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.11 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class DestroyLinkActionImpl extends WriteLinkActionImpl implements Destro
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getDestroyLinkAction();
+		return UML2Package.Literals.DESTROY_LINK_ACTION;
 	}
 
 

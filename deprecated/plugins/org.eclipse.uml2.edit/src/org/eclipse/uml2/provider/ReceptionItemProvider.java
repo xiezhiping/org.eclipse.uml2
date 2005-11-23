@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ReceptionItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class ReceptionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Reception_signal_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Reception_signal_feature", "_UI_Reception_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReception_Signal(),
+				 UML2Package.Literals.RECEPTION__SIGNAL,
 				 true,
 				 null,
 				 null,
@@ -149,8 +149,8 @@ public class ReceptionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult();
+			childFeature == UML2Package.Literals.BEHAVIORAL_FEATURE__FORMAL_PARAMETER ||
+			childFeature == UML2Package.Literals.BEHAVIORAL_FEATURE__RETURN_RESULT;
 
 		if (qualify) {
 			return getString

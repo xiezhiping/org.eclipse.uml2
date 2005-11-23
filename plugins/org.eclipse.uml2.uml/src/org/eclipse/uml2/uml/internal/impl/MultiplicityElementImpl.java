@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.5 2005/11/23 20:01:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -136,7 +136,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getMultiplicityElement();
+		return UMLPackage.Literals.MULTIPLICITY_ELEMENT;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.4 2005/11/23 13:27:44 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.5 2005/11/23 20:01:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,7 +110,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getLoopNode();
+		return UMLPackage.Literals.LOOP_NODE;
 	}
 
 	/**

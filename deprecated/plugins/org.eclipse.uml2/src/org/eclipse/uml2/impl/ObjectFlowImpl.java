@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.14 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.15 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,7 +114,7 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getObjectFlow();
+		return UML2Package.Literals.OBJECT_FLOW;
 	}
 
 	/**

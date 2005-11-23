@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: AbstractionItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class AbstractionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Abstraction_mapping_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Abstraction_mapping_feature", "_UI_Abstraction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getAbstraction_Mapping(),
+				 UML2Package.Literals.ABSTRACTION__MAPPING,
 				 true,
 				 null,
 				 null,
@@ -111,7 +111,7 @@ public class AbstractionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getAbstraction_Mapping());
+			childrenFeatures.add(UML2Package.Literals.ABSTRACTION__MAPPING);
 		}
 		return childrenFeatures;
 	}
@@ -194,12 +194,12 @@ public class AbstractionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAbstraction_Mapping(),
+				(UML2Package.Literals.ABSTRACTION__MAPPING,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAbstraction_Mapping(),
+				(UML2Package.Literals.ABSTRACTION__MAPPING,
 				 UML2Factory.eINSTANCE.createExpression()));
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: InteractionConstraintItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class InteractionConstraintItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionConstraint_minint_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionConstraint_minint_feature", "_UI_InteractionConstraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				 UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 true,
 				 null,
 				 null,
@@ -114,7 +114,7 @@ public class InteractionConstraintItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionConstraint_maxint_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionConstraint_maxint_feature", "_UI_InteractionConstraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				 UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 true,
 				 null,
 				 null,
@@ -134,8 +134,8 @@ public class InteractionConstraintItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getInteractionConstraint_Minint());
-			childrenFeatures.add(UML2Package.eINSTANCE.getInteractionConstraint_Maxint());
+			childrenFeatures.add(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT);
+			childrenFeatures.add(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT);
 		}
 		return childrenFeatures;
 	}
@@ -205,132 +205,132 @@ public class InteractionConstraintItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MININT,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
+				(UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 
@@ -345,9 +345,9 @@ public class InteractionConstraintItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getConstraint_Specification() ||
-			childFeature == UML2Package.eINSTANCE.getInteractionConstraint_Minint() ||
-			childFeature == UML2Package.eINSTANCE.getInteractionConstraint_Maxint();
+			childFeature == UML2Package.Literals.CONSTRAINT__SPECIFICATION ||
+			childFeature == UML2Package.Literals.INTERACTION_CONSTRAINT__MININT ||
+			childFeature == UML2Package.Literals.INTERACTION_CONSTRAINT__MAXINT;
 
 		if (qualify) {
 			return getString

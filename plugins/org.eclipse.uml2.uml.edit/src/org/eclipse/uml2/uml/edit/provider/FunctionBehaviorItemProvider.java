@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FunctionBehaviorItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: FunctionBehaviorItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -124,15 +124,11 @@ public class FunctionBehaviorItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedUseCase()
-			|| childFeature == UMLPackage.eINSTANCE.getClass_NestedClassifier()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedBehavior();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

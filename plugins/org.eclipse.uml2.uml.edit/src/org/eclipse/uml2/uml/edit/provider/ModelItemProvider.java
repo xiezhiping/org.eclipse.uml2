@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ModelItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,7 +85,7 @@ public class ModelItemProvider
 				getString("_UI_Model_viewpoint_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Model_viewpoint_feature", "_UI_Model_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getModel_Viewpoint(), true,
+				UMLPackage.Literals.MODEL__VIEWPOINT, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -154,11 +154,9 @@ public class ModelItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getPackage_PackagedElement()
-			|| childFeature == UMLPackage.eINSTANCE.getNamespace_OwnedRule();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

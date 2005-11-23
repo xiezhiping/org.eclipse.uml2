@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: InteractionFragmentItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,8 +88,8 @@ public class InteractionFragmentItemProvider
 				getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_covered_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInteractionFragment_Covered(), true,
-				null, null, null));
+				UMLPackage.Literals.INTERACTION_FRAGMENT__COVERED, true, null,
+				null, null));
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class InteractionFragmentItemProvider
 				getString("_UI_InteractionFragment_generalOrdering_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_generalOrdering_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInteractionFragment_GeneralOrdering(),
+				UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -128,9 +128,9 @@ public class InteractionFragmentItemProvider
 				getString("_UI_InteractionFragment_enclosingInteraction_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingInteraction_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getInteractionFragment_EnclosingInteraction(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -149,7 +149,7 @@ public class InteractionFragmentItemProvider
 				getString("_UI_InteractionFragment_enclosingOperand_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingOperand_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInteractionFragment_EnclosingOperand(),
+				UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_OPERAND,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -166,8 +166,8 @@ public class InteractionFragmentItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getInteractionFragment_GeneralOrdering());
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING);
 		}
 		return childrenFeatures;
 	}
@@ -215,9 +215,9 @@ public class InteractionFragmentItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionFragment_GeneralOrdering(), UMLFactory.eINSTANCE
-			.createGeneralOrdering()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
+			UMLFactory.eINSTANCE.createGeneralOrdering()));
 	}
 
 	/**

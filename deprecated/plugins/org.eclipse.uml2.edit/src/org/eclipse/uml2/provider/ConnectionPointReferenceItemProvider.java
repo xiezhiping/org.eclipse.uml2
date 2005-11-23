@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ConnectionPointReferenceItemProvider.java,v 1.14 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -87,7 +87,7 @@ public class ConnectionPointReferenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ConnectionPointReference_entry_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionPointReference_entry_feature", "_UI_ConnectionPointReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConnectionPointReference_Entry(),
+				 UML2Package.Literals.CONNECTION_POINT_REFERENCE__ENTRY,
 				 true,
 				 null,
 				 null,
@@ -107,7 +107,7 @@ public class ConnectionPointReferenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ConnectionPointReference_exit_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionPointReference_exit_feature", "_UI_ConnectionPointReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConnectionPointReference_Exit(),
+				 UML2Package.Literals.CONNECTION_POINT_REFERENCE__EXIT,
 				 true,
 				 null,
 				 null,

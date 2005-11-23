@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,7 +82,7 @@ public class ProfileImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getProfile();
+		return UMLPackage.Literals.PROFILE;
 	}
 
 	/**
@@ -237,9 +237,9 @@ public class ProfileImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getProfile().getEOperations().get(2));
+				UMLPackage.Literals.PROFILE.getEOperations().get(2));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE.getProfile()
+				cache.put(eResource(), this, UMLPackage.Literals.PROFILE
 					.getEOperations().get(2), result = ProfileOperations
 					.allOwningPackages(this));
 			}

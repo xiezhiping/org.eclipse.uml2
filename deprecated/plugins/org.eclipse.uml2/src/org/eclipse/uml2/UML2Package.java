@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Package.java,v 1.20 2005/08/29 19:23:43 khussey Exp $
+ * $Id: UML2Package.java,v 1.21 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -63418,4 +63418,6699 @@ public interface UML2Package extends EPackage{
 	 */
 	UML2Factory getUML2Factory();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ElementImpl <em>Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ElementImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getElement()
+		 * @generated
+		 */
+		EClass ELEMENT = eINSTANCE.getElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Element</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT__OWNED_ELEMENT = eINSTANCE.getElement_OwnedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Owner</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT__OWNER = eINSTANCE.getElement_Owner();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Comment</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT__OWNED_COMMENT = eINSTANCE.getElement_OwnedComment();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.MultiplicityElementImpl <em>Multiplicity Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.MultiplicityElementImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMultiplicityElement()
+		 * @generated
+		 */
+		EClass MULTIPLICITY_ELEMENT = eINSTANCE.getMultiplicityElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Ordered</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTIPLICITY_ELEMENT__IS_ORDERED = eINSTANCE.getMultiplicityElement_IsOrdered();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Unique</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTIPLICITY_ELEMENT__IS_UNIQUE = eINSTANCE.getMultiplicityElement_IsUnique();
+
+		/**
+		 * The meta object literal for the '<em><b>Lower</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTIPLICITY_ELEMENT__LOWER = eINSTANCE.getMultiplicityElement_Lower();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTIPLICITY_ELEMENT__UPPER = eINSTANCE.getMultiplicityElement_Upper();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTIPLICITY_ELEMENT__UPPER_VALUE = eINSTANCE.getMultiplicityElement_UpperValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Lower Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTIPLICITY_ELEMENT__LOWER_VALUE = eINSTANCE.getMultiplicityElement_LowerValue();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.NamedElementImpl <em>Named Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.NamedElementImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getNamedElement()
+		 * @generated
+		 */
+		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Qualified Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAMED_ELEMENT__QUALIFIED_NAME = eINSTANCE.getNamedElement_QualifiedName();
+
+		/**
+		 * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAMED_ELEMENT__VISIBILITY = eINSTANCE.getNamedElement_Visibility();
+
+		/**
+		 * The meta object literal for the '<em><b>Client Dependency</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMED_ELEMENT__CLIENT_DEPENDENCY = eINSTANCE.getNamedElement_ClientDependency();
+
+		/**
+		 * The meta object literal for the '<em><b>Name Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMED_ELEMENT__NAME_EXPRESSION = eINSTANCE.getNamedElement_NameExpression();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.NamespaceImpl <em>Namespace</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.NamespaceImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getNamespace()
+		 * @generated
+		 */
+		EClass NAMESPACE = eINSTANCE.getNamespace();
+
+		/**
+		 * The meta object literal for the '<em><b>Member</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMESPACE__MEMBER = eINSTANCE.getNamespace_Member();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Rule</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMESPACE__OWNED_RULE = eINSTANCE.getNamespace_OwnedRule();
+
+		/**
+		 * The meta object literal for the '<em><b>Imported Member</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMESPACE__IMPORTED_MEMBER = eINSTANCE.getNamespace_ImportedMember();
+
+		/**
+		 * The meta object literal for the '<em><b>Element Import</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMESPACE__ELEMENT_IMPORT = eINSTANCE.getNamespace_ElementImport();
+
+		/**
+		 * The meta object literal for the '<em><b>Package Import</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMESPACE__PACKAGE_IMPORT = eINSTANCE.getNamespace_PackageImport();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.OpaqueExpressionImpl <em>Opaque Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.OpaqueExpressionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getOpaqueExpression()
+		 * @generated
+		 */
+		EClass OPAQUE_EXPRESSION = eINSTANCE.getOpaqueExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPAQUE_EXPRESSION__BODY = eINSTANCE.getOpaqueExpression_Body();
+
+		/**
+		 * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPAQUE_EXPRESSION__LANGUAGE = eINSTANCE.getOpaqueExpression_Language();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPAQUE_EXPRESSION__RESULT = eINSTANCE.getOpaqueExpression_Result();
+
+		/**
+		 * The meta object literal for the '<em><b>Behavior</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPAQUE_EXPRESSION__BEHAVIOR = eINSTANCE.getOpaqueExpression_Behavior();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ValueSpecificationImpl <em>Value Specification</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ValueSpecificationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getValueSpecification()
+		 * @generated
+		 */
+		EClass VALUE_SPECIFICATION = eINSTANCE.getValueSpecification();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExpressionImpl <em>Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExpressionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExpression()
+		 * @generated
+		 */
+		EClass EXPRESSION = eINSTANCE.getExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Symbol</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPRESSION__SYMBOL = eINSTANCE.getExpression_Symbol();
+
+		/**
+		 * The meta object literal for the '<em><b>Operand</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPRESSION__OPERAND = eINSTANCE.getExpression_Operand();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CommentImpl <em>Comment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CommentImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getComment()
+		 * @generated
+		 */
+		EClass COMMENT = eINSTANCE.getComment();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMMENT__BODY = eINSTANCE.getComment_Body();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotated Element</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMMENT__ANNOTATED_ELEMENT = eINSTANCE.getComment_AnnotatedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Body Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMMENT__BODY_EXPRESSION = eINSTANCE.getComment_BodyExpression();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DirectedRelationshipImpl <em>Directed Relationship</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DirectedRelationshipImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDirectedRelationship()
+		 * @generated
+		 */
+		EClass DIRECTED_RELATIONSHIP = eINSTANCE.getDirectedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DIRECTED_RELATIONSHIP__SOURCE = eINSTANCE.getDirectedRelationship_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DIRECTED_RELATIONSHIP__TARGET = eINSTANCE.getDirectedRelationship_Target();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.RelationshipImpl <em>Relationship</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.RelationshipImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRelationship()
+		 * @generated
+		 */
+		EClass RELATIONSHIP = eINSTANCE.getRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Related Element</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RELATIONSHIP__RELATED_ELEMENT = eINSTANCE.getRelationship_RelatedElement();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ClassImpl <em>Class</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ClassImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClass_()
+		 * @generated
+		 */
+		EClass CLASS = eINSTANCE.getClass_();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Operation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS__OWNED_OPERATION = eINSTANCE.getClass_OwnedOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Super Class</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS__SUPER_CLASS = eINSTANCE.getClass_SuperClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Extension</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS__EXTENSION = eINSTANCE.getClass_Extension();
+
+		/**
+		 * The meta object literal for the '<em><b>Nested Classifier</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS__NESTED_CLASSIFIER = eINSTANCE.getClass_NestedClassifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Active</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS__IS_ACTIVE = eINSTANCE.getClass_IsActive();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Reception</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS__OWNED_RECEPTION = eINSTANCE.getClass_OwnedReception();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TypeImpl <em>Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TypeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getType()
+		 * @generated
+		 */
+		EClass TYPE = eINSTANCE.getType();
+
+		/**
+		 * The meta object literal for the '<em><b>Package</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TYPE__PACKAGE = eINSTANCE.getType_Package();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PropertyImpl <em>Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PropertyImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getProperty()
+		 * @generated
+		 */
+		EClass PROPERTY = eINSTANCE.getProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Default</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY__DEFAULT = eINSTANCE.getProperty_Default();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Composite</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY__IS_COMPOSITE = eINSTANCE.getProperty_IsComposite();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Derived</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY__IS_DERIVED = eINSTANCE.getProperty_IsDerived();
+
+		/**
+		 * The meta object literal for the '<em><b>Class </b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__CLASS_ = eINSTANCE.getProperty_Class_();
+
+		/**
+		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__OPPOSITE = eINSTANCE.getProperty_Opposite();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Derived Union</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY__IS_DERIVED_UNION = eINSTANCE.getProperty_IsDerivedUnion();
+
+		/**
+		 * The meta object literal for the '<em><b>Owning Association</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__OWNING_ASSOCIATION = eINSTANCE.getProperty_OwningAssociation();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__REDEFINED_PROPERTY = eINSTANCE.getProperty_RedefinedProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Subsetted Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__SUBSETTED_PROPERTY = eINSTANCE.getProperty_SubsettedProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Datatype</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__DATATYPE = eINSTANCE.getProperty_Datatype();
+
+		/**
+		 * The meta object literal for the '<em><b>Association</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__ASSOCIATION = eINSTANCE.getProperty_Association();
+
+		/**
+		 * The meta object literal for the '<em><b>Aggregation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY__AGGREGATION = eINSTANCE.getProperty_Aggregation();
+
+		/**
+		 * The meta object literal for the '<em><b>Default Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__DEFAULT_VALUE = eINSTANCE.getProperty_DefaultValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Qualifier</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__QUALIFIER = eINSTANCE.getProperty_Qualifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Association End</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__ASSOCIATION_END = eINSTANCE.getProperty_AssociationEnd();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.OperationImpl <em>Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.OperationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getOperation()
+		 * @generated
+		 */
+		EClass OPERATION = eINSTANCE.getOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Parameter</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__OWNED_PARAMETER = eINSTANCE.getOperation_OwnedParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Class </b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__CLASS_ = eINSTANCE.getOperation_Class_();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Query</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATION__IS_QUERY = eINSTANCE.getOperation_IsQuery();
+
+		/**
+		 * The meta object literal for the '<em><b>Datatype</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__DATATYPE = eINSTANCE.getOperation_Datatype();
+
+		/**
+		 * The meta object literal for the '<em><b>Precondition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__PRECONDITION = eINSTANCE.getOperation_Precondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Postcondition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__POSTCONDITION = eINSTANCE.getOperation_Postcondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined Operation</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__REDEFINED_OPERATION = eINSTANCE.getOperation_RedefinedOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Body Condition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__BODY_CONDITION = eINSTANCE.getOperation_BodyCondition();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TypedElementImpl <em>Typed Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TypedElementImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTypedElement()
+		 * @generated
+		 */
+		EClass TYPED_ELEMENT = eINSTANCE.getTypedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TYPED_ELEMENT__TYPE = eINSTANCE.getTypedElement_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ParameterImpl <em>Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ParameterImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getParameter()
+		 * @generated
+		 */
+		EClass PARAMETER = eINSTANCE.getParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER__OPERATION = eINSTANCE.getParameter_Operation();
+
+		/**
+		 * The meta object literal for the '<em><b>Default</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__DEFAULT = eINSTANCE.getParameter_Default();
+
+		/**
+		 * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__DIRECTION = eINSTANCE.getParameter_Direction();
+
+		/**
+		 * The meta object literal for the '<em><b>Default Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER__DEFAULT_VALUE = eINSTANCE.getParameter_DefaultValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Exception</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__IS_EXCEPTION = eINSTANCE.getParameter_IsException();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Stream</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__IS_STREAM = eINSTANCE.getParameter_IsStream();
+
+		/**
+		 * The meta object literal for the '<em><b>Effect</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__EFFECT = eINSTANCE.getParameter_Effect();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter Set</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER__PARAMETER_SET = eINSTANCE.getParameter_ParameterSet();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PackageImpl <em>Package</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PackageImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPackage()
+		 * @generated
+		 */
+		EClass PACKAGE = eINSTANCE.getPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Nested Package</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE__NESTED_PACKAGE = eINSTANCE.getPackage_NestedPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Nesting Package</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE__NESTING_PACKAGE = eINSTANCE.getPackage_NestingPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Type</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE__OWNED_TYPE = eINSTANCE.getPackage_OwnedType();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Member</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE__OWNED_MEMBER = eINSTANCE.getPackage_OwnedMember();
+
+		/**
+		 * The meta object literal for the '<em><b>Package Merge</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE__PACKAGE_MERGE = eINSTANCE.getPackage_PackageMerge();
+
+		/**
+		 * The meta object literal for the '<em><b>Applied Profile</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE__APPLIED_PROFILE = eINSTANCE.getPackage_AppliedProfile();
+
+		/**
+		 * The meta object literal for the '<em><b>Package Extension</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE__PACKAGE_EXTENSION = eINSTANCE.getPackage_PackageExtension();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.EnumerationImpl <em>Enumeration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.EnumerationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getEnumeration()
+		 * @generated
+		 */
+		EClass ENUMERATION = eINSTANCE.getEnumeration();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Literal</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENUMERATION__OWNED_LITERAL = eINSTANCE.getEnumeration_OwnedLiteral();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DataTypeImpl <em>Data Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DataTypeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDataType()
+		 * @generated
+		 */
+		EClass DATA_TYPE = eINSTANCE.getDataType();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Attribute</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_TYPE__OWNED_ATTRIBUTE = eINSTANCE.getDataType_OwnedAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Operation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_TYPE__OWNED_OPERATION = eINSTANCE.getDataType_OwnedOperation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.EnumerationLiteralImpl <em>Enumeration Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.EnumerationLiteralImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getEnumerationLiteral()
+		 * @generated
+		 */
+		EClass ENUMERATION_LITERAL = eINSTANCE.getEnumerationLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Enumeration</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENUMERATION_LITERAL__ENUMERATION = eINSTANCE.getEnumerationLiteral_Enumeration();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PrimitiveTypeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPrimitiveType()
+		 * @generated
+		 */
+		EClass PRIMITIVE_TYPE = eINSTANCE.getPrimitiveType();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ClassifierImpl <em>Classifier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ClassifierImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClassifier()
+		 * @generated
+		 */
+		EClass CLASSIFIER = eINSTANCE.getClassifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Feature</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__FEATURE = eINSTANCE.getClassifier_Feature();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Abstract</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASSIFIER__IS_ABSTRACT = eINSTANCE.getClassifier_IsAbstract();
+
+		/**
+		 * The meta object literal for the '<em><b>Inherited Member</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__INHERITED_MEMBER = eINSTANCE.getClassifier_InheritedMember();
+
+		/**
+		 * The meta object literal for the '<em><b>General</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__GENERAL = eINSTANCE.getClassifier_General();
+
+		/**
+		 * The meta object literal for the '<em><b>Generalization</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__GENERALIZATION = eINSTANCE.getClassifier_Generalization();
+
+		/**
+		 * The meta object literal for the '<em><b>Attribute</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__ATTRIBUTE = eINSTANCE.getClassifier_Attribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined Classifier</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__REDEFINED_CLASSIFIER = eINSTANCE.getClassifier_RedefinedClassifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Substitution</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__SUBSTITUTION = eINSTANCE.getClassifier_Substitution();
+
+		/**
+		 * The meta object literal for the '<em><b>Powertype Extent</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__POWERTYPE_EXTENT = eINSTANCE.getClassifier_PowertypeExtent();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Use Case</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__OWNED_USE_CASE = eINSTANCE.getClassifier_OwnedUseCase();
+
+		/**
+		 * The meta object literal for the '<em><b>Use Case</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__USE_CASE = eINSTANCE.getClassifier_UseCase();
+
+		/**
+		 * The meta object literal for the '<em><b>Representation</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__REPRESENTATION = eINSTANCE.getClassifier_Representation();
+
+		/**
+		 * The meta object literal for the '<em><b>Occurrence</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFIER__OCCURRENCE = eINSTANCE.getClassifier_Occurrence();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.FeatureImpl <em>Feature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.FeatureImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getFeature()
+		 * @generated
+		 */
+		EClass FEATURE = eINSTANCE.getFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Featuring Classifier</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE__FEATURING_CLASSIFIER = eINSTANCE.getFeature_FeaturingClassifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Static</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE__IS_STATIC = eINSTANCE.getFeature_IsStatic();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ConstraintImpl <em>Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ConstraintImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConstraint()
+		 * @generated
+		 */
+		EClass CONSTRAINT = eINSTANCE.getConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Context</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONSTRAINT__CONTEXT = eINSTANCE.getConstraint_Context();
+
+		/**
+		 * The meta object literal for the '<em><b>Namespace</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONSTRAINT__NAMESPACE = eINSTANCE.getConstraint_Namespace();
+
+		/**
+		 * The meta object literal for the '<em><b>Specification</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONSTRAINT__SPECIFICATION = eINSTANCE.getConstraint_Specification();
+
+		/**
+		 * The meta object literal for the '<em><b>Constrained Element</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONSTRAINT__CONSTRAINED_ELEMENT = eINSTANCE.getConstraint_ConstrainedElement();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LiteralBooleanImpl <em>Literal Boolean</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LiteralBooleanImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralBoolean()
+		 * @generated
+		 */
+		EClass LITERAL_BOOLEAN = eINSTANCE.getLiteralBoolean();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_BOOLEAN__VALUE = eINSTANCE.getLiteralBoolean_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LiteralSpecificationImpl <em>Literal Specification</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LiteralSpecificationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralSpecification()
+		 * @generated
+		 */
+		EClass LITERAL_SPECIFICATION = eINSTANCE.getLiteralSpecification();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LiteralStringImpl <em>Literal String</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LiteralStringImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralString()
+		 * @generated
+		 */
+		EClass LITERAL_STRING = eINSTANCE.getLiteralString();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_STRING__VALUE = eINSTANCE.getLiteralString_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LiteralNullImpl <em>Literal Null</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LiteralNullImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralNull()
+		 * @generated
+		 */
+		EClass LITERAL_NULL = eINSTANCE.getLiteralNull();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LiteralIntegerImpl <em>Literal Integer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LiteralIntegerImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralInteger()
+		 * @generated
+		 */
+		EClass LITERAL_INTEGER = eINSTANCE.getLiteralInteger();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_INTEGER__VALUE = eINSTANCE.getLiteralInteger_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LiteralUnlimitedNaturalImpl <em>Literal Unlimited Natural</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LiteralUnlimitedNaturalImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralUnlimitedNatural()
+		 * @generated
+		 */
+		EClass LITERAL_UNLIMITED_NATURAL = eINSTANCE.getLiteralUnlimitedNatural();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_UNLIMITED_NATURAL__VALUE = eINSTANCE.getLiteralUnlimitedNatural_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl <em>Behavioral Feature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getBehavioralFeature()
+		 * @generated
+		 */
+		EClass BEHAVIORAL_FEATURE = eINSTANCE.getBehavioralFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIORAL_FEATURE__PARAMETER = eINSTANCE.getBehavioralFeature_Parameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Formal Parameter</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIORAL_FEATURE__FORMAL_PARAMETER = eINSTANCE.getBehavioralFeature_FormalParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Return Result</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIORAL_FEATURE__RETURN_RESULT = eINSTANCE.getBehavioralFeature_ReturnResult();
+
+		/**
+		 * The meta object literal for the '<em><b>Raised Exception</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIORAL_FEATURE__RAISED_EXCEPTION = eINSTANCE.getBehavioralFeature_RaisedException();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Abstract</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BEHAVIORAL_FEATURE__IS_ABSTRACT = eINSTANCE.getBehavioralFeature_IsAbstract();
+
+		/**
+		 * The meta object literal for the '<em><b>Method</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIORAL_FEATURE__METHOD = eINSTANCE.getBehavioralFeature_Method();
+
+		/**
+		 * The meta object literal for the '<em><b>Concurrency</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BEHAVIORAL_FEATURE__CONCURRENCY = eINSTANCE.getBehavioralFeature_Concurrency();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StructuralFeatureImpl <em>Structural Feature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StructuralFeatureImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStructuralFeature()
+		 * @generated
+		 */
+		EClass STRUCTURAL_FEATURE = eINSTANCE.getStructuralFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Read Only</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRUCTURAL_FEATURE__IS_READ_ONLY = eINSTANCE.getStructuralFeature_IsReadOnly();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InstanceSpecificationImpl <em>Instance Specification</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InstanceSpecificationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInstanceSpecification()
+		 * @generated
+		 */
+		EClass INSTANCE_SPECIFICATION = eINSTANCE.getInstanceSpecification();
+
+		/**
+		 * The meta object literal for the '<em><b>Slot</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_SPECIFICATION__SLOT = eINSTANCE.getInstanceSpecification_Slot();
+
+		/**
+		 * The meta object literal for the '<em><b>Classifier</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_SPECIFICATION__CLASSIFIER = eINSTANCE.getInstanceSpecification_Classifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Specification</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_SPECIFICATION__SPECIFICATION = eINSTANCE.getInstanceSpecification_Specification();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.SlotImpl <em>Slot</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.SlotImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSlot()
+		 * @generated
+		 */
+		EClass SLOT = eINSTANCE.getSlot();
+
+		/**
+		 * The meta object literal for the '<em><b>Owning Instance</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SLOT__OWNING_INSTANCE = eINSTANCE.getSlot_OwningInstance();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SLOT__VALUE = eINSTANCE.getSlot_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Defining Feature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SLOT__DEFINING_FEATURE = eINSTANCE.getSlot_DefiningFeature();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InstanceValueImpl <em>Instance Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InstanceValueImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInstanceValue()
+		 * @generated
+		 */
+		EClass INSTANCE_VALUE = eINSTANCE.getInstanceValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Instance</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_VALUE__INSTANCE = eINSTANCE.getInstanceValue_Instance();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.RedefinableElementImpl <em>Redefinable Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.RedefinableElementImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRedefinableElement()
+		 * @generated
+		 */
+		EClass REDEFINABLE_ELEMENT = eINSTANCE.getRedefinableElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefinition Context</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT = eINSTANCE.getRedefinableElement_RedefinitionContext();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Leaf</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REDEFINABLE_ELEMENT__IS_LEAF = eINSTANCE.getRedefinableElement_IsLeaf();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.GeneralizationImpl <em>Generalization</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.GeneralizationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getGeneralization()
+		 * @generated
+		 */
+		EClass GENERALIZATION = eINSTANCE.getGeneralization();
+
+		/**
+		 * The meta object literal for the '<em><b>Specific</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GENERALIZATION__SPECIFIC = eINSTANCE.getGeneralization_Specific();
+
+		/**
+		 * The meta object literal for the '<em><b>General</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GENERALIZATION__GENERAL = eINSTANCE.getGeneralization_General();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Substitutable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERALIZATION__IS_SUBSTITUTABLE = eINSTANCE.getGeneralization_IsSubstitutable();
+
+		/**
+		 * The meta object literal for the '<em><b>Generalization Set</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GENERALIZATION__GENERALIZATION_SET = eINSTANCE.getGeneralization_GeneralizationSet();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PackageableElementImpl <em>Packageable Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PackageableElementImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPackageableElement()
+		 * @generated
+		 */
+		EClass PACKAGEABLE_ELEMENT = eINSTANCE.getPackageableElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Packageable Element visibility</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY = eINSTANCE.getPackageableElement_PackageableElement_visibility();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ElementImportImpl <em>Element Import</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ElementImportImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getElementImport()
+		 * @generated
+		 */
+		EClass ELEMENT_IMPORT = eINSTANCE.getElementImport();
+
+		/**
+		 * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT_IMPORT__VISIBILITY = eINSTANCE.getElementImport_Visibility();
+
+		/**
+		 * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT_IMPORT__ALIAS = eINSTANCE.getElementImport_Alias();
+
+		/**
+		 * The meta object literal for the '<em><b>Imported Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT_IMPORT__IMPORTED_ELEMENT = eINSTANCE.getElementImport_ImportedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Importing Namespace</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT_IMPORT__IMPORTING_NAMESPACE = eINSTANCE.getElementImport_ImportingNamespace();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PackageImportImpl <em>Package Import</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PackageImportImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPackageImport()
+		 * @generated
+		 */
+		EClass PACKAGE_IMPORT = eINSTANCE.getPackageImport();
+
+		/**
+		 * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PACKAGE_IMPORT__VISIBILITY = eINSTANCE.getPackageImport_Visibility();
+
+		/**
+		 * The meta object literal for the '<em><b>Imported Package</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE_IMPORT__IMPORTED_PACKAGE = eINSTANCE.getPackageImport_ImportedPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Importing Namespace</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE_IMPORT__IMPORTING_NAMESPACE = eINSTANCE.getPackageImport_ImportingNamespace();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.AssociationImpl <em>Association</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.AssociationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAssociation()
+		 * @generated
+		 */
+		EClass ASSOCIATION = eINSTANCE.getAssociation();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Derived</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSOCIATION__IS_DERIVED = eINSTANCE.getAssociation_IsDerived();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned End</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSOCIATION__OWNED_END = eINSTANCE.getAssociation_OwnedEnd();
+
+		/**
+		 * The meta object literal for the '<em><b>End Type</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSOCIATION__END_TYPE = eINSTANCE.getAssociation_EndType();
+
+		/**
+		 * The meta object literal for the '<em><b>Member End</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSOCIATION__MEMBER_END = eINSTANCE.getAssociation_MemberEnd();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PackageMergeImpl <em>Package Merge</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PackageMergeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPackageMerge()
+		 * @generated
+		 */
+		EClass PACKAGE_MERGE = eINSTANCE.getPackageMerge();
+
+		/**
+		 * The meta object literal for the '<em><b>Merging Package</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE_MERGE__MERGING_PACKAGE = eINSTANCE.getPackageMerge_MergingPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Merged Package</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PACKAGE_MERGE__MERGED_PACKAGE = eINSTANCE.getPackageMerge_MergedPackage();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StereotypeImpl <em>Stereotype</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StereotypeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStereotype()
+		 * @generated
+		 */
+		EClass STEREOTYPE = eINSTANCE.getStereotype();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ProfileImpl <em>Profile</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ProfileImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getProfile()
+		 * @generated
+		 */
+		EClass PROFILE = eINSTANCE.getProfile();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Stereotype</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROFILE__OWNED_STEREOTYPE = eINSTANCE.getProfile_OwnedStereotype();
+
+		/**
+		 * The meta object literal for the '<em><b>Metaclass Reference</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROFILE__METACLASS_REFERENCE = eINSTANCE.getProfile_MetaclassReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Metamodel Reference</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROFILE__METAMODEL_REFERENCE = eINSTANCE.getProfile_MetamodelReference();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ProfileApplicationImpl <em>Profile Application</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ProfileApplicationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getProfileApplication()
+		 * @generated
+		 */
+		EClass PROFILE_APPLICATION = eINSTANCE.getProfileApplication();
+
+		/**
+		 * The meta object literal for the '<em><b>Imported Profile</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROFILE_APPLICATION__IMPORTED_PROFILE = eINSTANCE.getProfileApplication_ImportedProfile();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExtensionImpl <em>Extension</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExtensionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExtension()
+		 * @generated
+		 */
+		EClass EXTENSION = eINSTANCE.getExtension();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Required</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXTENSION__IS_REQUIRED = eINSTANCE.getExtension_IsRequired();
+
+		/**
+		 * The meta object literal for the '<em><b>Metaclass</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTENSION__METACLASS = eINSTANCE.getExtension_Metaclass();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExtensionEndImpl <em>Extension End</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExtensionEndImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExtensionEnd()
+		 * @generated
+		 */
+		EClass EXTENSION_END = eINSTANCE.getExtensionEnd();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.BehaviorImpl <em>Behavior</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.BehaviorImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getBehavior()
+		 * @generated
+		 */
+		EClass BEHAVIOR = eINSTANCE.getBehavior();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Reentrant</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BEHAVIOR__IS_REENTRANT = eINSTANCE.getBehavior_IsReentrant();
+
+		/**
+		 * The meta object literal for the '<em><b>Context</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__CONTEXT = eINSTANCE.getBehavior_Context();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined Behavior</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__REDEFINED_BEHAVIOR = eINSTANCE.getBehavior_RedefinedBehavior();
+
+		/**
+		 * The meta object literal for the '<em><b>Specification</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__SPECIFICATION = eINSTANCE.getBehavior_Specification();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__PARAMETER = eINSTANCE.getBehavior_Parameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Formal Parameter</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__FORMAL_PARAMETER = eINSTANCE.getBehavior_FormalParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Return Result</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__RETURN_RESULT = eINSTANCE.getBehavior_ReturnResult();
+
+		/**
+		 * The meta object literal for the '<em><b>Precondition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__PRECONDITION = eINSTANCE.getBehavior_Precondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Postcondition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__POSTCONDITION = eINSTANCE.getBehavior_Postcondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Parameter Set</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__OWNED_PARAMETER_SET = eINSTANCE.getBehavior_OwnedParameterSet();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.BehavioredClassifierImpl <em>Behaviored Classifier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.BehavioredClassifierImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getBehavioredClassifier()
+		 * @generated
+		 */
+		EClass BEHAVIORED_CLASSIFIER = eINSTANCE.getBehavioredClassifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Behavior</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR = eINSTANCE.getBehavioredClassifier_OwnedBehavior();
+
+		/**
+		 * The meta object literal for the '<em><b>Classifier Behavior</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR = eINSTANCE.getBehavioredClassifier_ClassifierBehavior();
+
+		/**
+		 * The meta object literal for the '<em><b>Implementation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIORED_CLASSIFIER__IMPLEMENTATION = eINSTANCE.getBehavioredClassifier_Implementation();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Trigger</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIORED_CLASSIFIER__OWNED_TRIGGER = eINSTANCE.getBehavioredClassifier_OwnedTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned State Machine</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE = eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ActivityImpl <em>Activity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ActivityImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivity()
+		 * @generated
+		 */
+		EClass ACTIVITY = eINSTANCE.getActivity();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTIVITY__BODY = eINSTANCE.getActivity_Body();
+
+		/**
+		 * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTIVITY__LANGUAGE = eINSTANCE.getActivity_Language();
+
+		/**
+		 * The meta object literal for the '<em><b>Edge</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__EDGE = eINSTANCE.getActivity_Edge();
+
+		/**
+		 * The meta object literal for the '<em><b>Group</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__GROUP = eINSTANCE.getActivity_Group();
+
+		/**
+		 * The meta object literal for the '<em><b>Node</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__NODE = eINSTANCE.getActivity_Node();
+
+		/**
+		 * The meta object literal for the '<em><b>Action</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__ACTION = eINSTANCE.getActivity_Action();
+
+		/**
+		 * The meta object literal for the '<em><b>Structured Node</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__STRUCTURED_NODE = eINSTANCE.getActivity_StructuredNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Single Execution</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTIVITY__IS_SINGLE_EXECUTION = eINSTANCE.getActivity_IsSingleExecution();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Read Only</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTIVITY__IS_READ_ONLY = eINSTANCE.getActivity_IsReadOnly();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PermissionImpl <em>Permission</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PermissionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPermission()
+		 * @generated
+		 */
+		EClass PERMISSION = eINSTANCE.getPermission();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DependencyImpl <em>Dependency</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DependencyImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDependency()
+		 * @generated
+		 */
+		EClass DEPENDENCY = eINSTANCE.getDependency();
+
+		/**
+		 * The meta object literal for the '<em><b>Client</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEPENDENCY__CLIENT = eINSTANCE.getDependency_Client();
+
+		/**
+		 * The meta object literal for the '<em><b>Supplier</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEPENDENCY__SUPPLIER = eINSTANCE.getDependency_Supplier();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.UsageImpl <em>Usage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.UsageImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getUsage()
+		 * @generated
+		 */
+		EClass USAGE = eINSTANCE.getUsage();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.AbstractionImpl <em>Abstraction</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.AbstractionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAbstraction()
+		 * @generated
+		 */
+		EClass ABSTRACTION = eINSTANCE.getAbstraction();
+
+		/**
+		 * The meta object literal for the '<em><b>Mapping</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACTION__MAPPING = eINSTANCE.getAbstraction_Mapping();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.RealizationImpl <em>Realization</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.RealizationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRealization()
+		 * @generated
+		 */
+		EClass REALIZATION = eINSTANCE.getRealization();
+
+		/**
+		 * The meta object literal for the '<em><b>Abstraction</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REALIZATION__ABSTRACTION = eINSTANCE.getRealization_Abstraction();
+
+		/**
+		 * The meta object literal for the '<em><b>Realizing Classifier</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REALIZATION__REALIZING_CLASSIFIER = eINSTANCE.getRealization_RealizingClassifier();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.SubstitutionImpl <em>Substitution</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.SubstitutionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSubstitution()
+		 * @generated
+		 */
+		EClass SUBSTITUTION = eINSTANCE.getSubstitution();
+
+		/**
+		 * The meta object literal for the '<em><b>Contract</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUBSTITUTION__CONTRACT = eINSTANCE.getSubstitution_Contract();
+
+		/**
+		 * The meta object literal for the '<em><b>Substituting Classifier</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUBSTITUTION__SUBSTITUTING_CLASSIFIER = eINSTANCE.getSubstitution_SubstitutingClassifier();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.GeneralizationSetImpl <em>Generalization Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.GeneralizationSetImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getGeneralizationSet()
+		 * @generated
+		 */
+		EClass GENERALIZATION_SET = eINSTANCE.getGeneralizationSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Covering</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERALIZATION_SET__IS_COVERING = eINSTANCE.getGeneralizationSet_IsCovering();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Disjoint</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERALIZATION_SET__IS_DISJOINT = eINSTANCE.getGeneralizationSet_IsDisjoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Powertype</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GENERALIZATION_SET__POWERTYPE = eINSTANCE.getGeneralizationSet_Powertype();
+
+		/**
+		 * The meta object literal for the '<em><b>Generalization</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GENERALIZATION_SET__GENERALIZATION = eINSTANCE.getGeneralizationSet_Generalization();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.AssociationClassImpl <em>Association Class</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.AssociationClassImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAssociationClass()
+		 * @generated
+		 */
+		EClass ASSOCIATION_CLASS = eINSTANCE.getAssociationClass();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InformationItemImpl <em>Information Item</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InformationItemImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInformationItem()
+		 * @generated
+		 */
+		EClass INFORMATION_ITEM = eINSTANCE.getInformationItem();
+
+		/**
+		 * The meta object literal for the '<em><b>Represented</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INFORMATION_ITEM__REPRESENTED = eINSTANCE.getInformationItem_Represented();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InformationFlowImpl <em>Information Flow</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InformationFlowImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInformationFlow()
+		 * @generated
+		 */
+		EClass INFORMATION_FLOW = eINSTANCE.getInformationFlow();
+
+		/**
+		 * The meta object literal for the '<em><b>Realization</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INFORMATION_FLOW__REALIZATION = eINSTANCE.getInformationFlow_Realization();
+
+		/**
+		 * The meta object literal for the '<em><b>Conveyed</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INFORMATION_FLOW__CONVEYED = eINSTANCE.getInformationFlow_Conveyed();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ModelImpl <em>Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ModelImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getModel()
+		 * @generated
+		 */
+		EClass MODEL = eINSTANCE.getModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Viewpoint</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL__VIEWPOINT = eINSTANCE.getModel_Viewpoint();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ConnectorEndImpl <em>Connector End</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ConnectorEndImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConnectorEnd()
+		 * @generated
+		 */
+		EClass CONNECTOR_END = eINSTANCE.getConnectorEnd();
+
+		/**
+		 * The meta object literal for the '<em><b>Defining End</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_END__DEFINING_END = eINSTANCE.getConnectorEnd_DefiningEnd();
+
+		/**
+		 * The meta object literal for the '<em><b>Role</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_END__ROLE = eINSTANCE.getConnectorEnd_Role();
+
+		/**
+		 * The meta object literal for the '<em><b>Part With Port</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_END__PART_WITH_PORT = eINSTANCE.getConnectorEnd_PartWithPort();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ConnectableElementImpl <em>Connectable Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ConnectableElementImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConnectableElement()
+		 * @generated
+		 */
+		EClass CONNECTABLE_ELEMENT = eINSTANCE.getConnectableElement();
+
+		/**
+		 * The meta object literal for the '<em><b>End</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTABLE_ELEMENT__END = eINSTANCE.getConnectableElement_End();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ConnectorImpl <em>Connector</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ConnectorImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConnector()
+		 * @generated
+		 */
+		EClass CONNECTOR = eINSTANCE.getConnector();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR__TYPE = eINSTANCE.getConnector_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined Connector</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR__REDEFINED_CONNECTOR = eINSTANCE.getConnector_RedefinedConnector();
+
+		/**
+		 * The meta object literal for the '<em><b>End</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR__END = eINSTANCE.getConnector_End();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONNECTOR__KIND = eINSTANCE.getConnector_Kind();
+
+		/**
+		 * The meta object literal for the '<em><b>Contract</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR__CONTRACT = eINSTANCE.getConnector_Contract();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StructuredClassifierImpl <em>Structured Classifier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StructuredClassifierImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStructuredClassifier()
+		 * @generated
+		 */
+		EClass STRUCTURED_CLASSIFIER = eINSTANCE.getStructuredClassifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Attribute</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE = eINSTANCE.getStructuredClassifier_OwnedAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Part</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCTURED_CLASSIFIER__PART = eINSTANCE.getStructuredClassifier_Part();
+
+		/**
+		 * The meta object literal for the '<em><b>Role</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCTURED_CLASSIFIER__ROLE = eINSTANCE.getStructuredClassifier_Role();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Connector</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCTURED_CLASSIFIER__OWNED_CONNECTOR = eINSTANCE.getStructuredClassifier_OwnedConnector();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ActivityEdgeImpl <em>Activity Edge</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ActivityEdgeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityEdge()
+		 * @generated
+		 */
+		EClass ACTIVITY_EDGE = eINSTANCE.getActivityEdge();
+
+		/**
+		 * The meta object literal for the '<em><b>Activity</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__ACTIVITY = eINSTANCE.getActivityEdge_Activity();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__SOURCE = eINSTANCE.getActivityEdge_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__TARGET = eINSTANCE.getActivityEdge_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>In Group</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__IN_GROUP = eINSTANCE.getActivityEdge_InGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Guard</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__GUARD = eINSTANCE.getActivityEdge_Guard();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined Element</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__REDEFINED_ELEMENT = eINSTANCE.getActivityEdge_RedefinedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>In Structured Node</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__IN_STRUCTURED_NODE = eINSTANCE.getActivityEdge_InStructuredNode();
+
+		/**
+		 * The meta object literal for the '<em><b>In Partition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__IN_PARTITION = eINSTANCE.getActivityEdge_InPartition();
+
+		/**
+		 * The meta object literal for the '<em><b>Weight</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__WEIGHT = eINSTANCE.getActivityEdge_Weight();
+
+		/**
+		 * The meta object literal for the '<em><b>Interrupts</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__INTERRUPTS = eINSTANCE.getActivityEdge_Interrupts();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ActivityGroupImpl <em>Activity Group</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ActivityGroupImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityGroup()
+		 * @generated
+		 */
+		EClass ACTIVITY_GROUP = eINSTANCE.getActivityGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Super Group</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_GROUP__SUPER_GROUP = eINSTANCE.getActivityGroup_SuperGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Activity Group activity</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY = eINSTANCE.getActivityGroup_ActivityGroup_activity();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ActivityNodeImpl <em>Activity Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ActivityNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityNode()
+		 * @generated
+		 */
+		EClass ACTIVITY_NODE = eINSTANCE.getActivityNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Outgoing</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_NODE__OUTGOING = eINSTANCE.getActivityNode_Outgoing();
+
+		/**
+		 * The meta object literal for the '<em><b>Incoming</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_NODE__INCOMING = eINSTANCE.getActivityNode_Incoming();
+
+		/**
+		 * The meta object literal for the '<em><b>In Group</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_NODE__IN_GROUP = eINSTANCE.getActivityNode_InGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Activity</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_NODE__ACTIVITY = eINSTANCE.getActivityNode_Activity();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined Element</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_NODE__REDEFINED_ELEMENT = eINSTANCE.getActivityNode_RedefinedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>In Structured Node</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_NODE__IN_STRUCTURED_NODE = eINSTANCE.getActivityNode_InStructuredNode();
+
+		/**
+		 * The meta object literal for the '<em><b>In Partition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_NODE__IN_PARTITION = eINSTANCE.getActivityNode_InPartition();
+
+		/**
+		 * The meta object literal for the '<em><b>In Interruptible Region</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION = eINSTANCE.getActivityNode_InInterruptibleRegion();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ActionImpl <em>Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAction()
+		 * @generated
+		 */
+		EClass ACTION = eINSTANCE.getAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Effect</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTION__EFFECT = eINSTANCE.getAction_Effect();
+
+		/**
+		 * The meta object literal for the '<em><b>Output</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION__OUTPUT = eINSTANCE.getAction_Output();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION__INPUT = eINSTANCE.getAction_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Context</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION__CONTEXT = eINSTANCE.getAction_Context();
+
+		/**
+		 * The meta object literal for the '<em><b>Local Precondition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION__LOCAL_PRECONDITION = eINSTANCE.getAction_LocalPrecondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Local Postcondition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION__LOCAL_POSTCONDITION = eINSTANCE.getAction_LocalPostcondition();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ObjectNodeImpl <em>Object Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ObjectNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getObjectNode()
+		 * @generated
+		 */
+		EClass OBJECT_NODE = eINSTANCE.getObjectNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Ordering</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OBJECT_NODE__ORDERING = eINSTANCE.getObjectNode_Ordering();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper Bound</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECT_NODE__UPPER_BOUND = eINSTANCE.getObjectNode_UpperBound();
+
+		/**
+		 * The meta object literal for the '<em><b>In State</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECT_NODE__IN_STATE = eINSTANCE.getObjectNode_InState();
+
+		/**
+		 * The meta object literal for the '<em><b>Selection</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECT_NODE__SELECTION = eINSTANCE.getObjectNode_Selection();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ControlNodeImpl <em>Control Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ControlNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getControlNode()
+		 * @generated
+		 */
+		EClass CONTROL_NODE = eINSTANCE.getControlNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ControlFlowImpl <em>Control Flow</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ControlFlowImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getControlFlow()
+		 * @generated
+		 */
+		EClass CONTROL_FLOW = eINSTANCE.getControlFlow();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ObjectFlowImpl <em>Object Flow</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ObjectFlowImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getObjectFlow()
+		 * @generated
+		 */
+		EClass OBJECT_FLOW = eINSTANCE.getObjectFlow();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Multicast</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OBJECT_FLOW__IS_MULTICAST = eINSTANCE.getObjectFlow_IsMulticast();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Multireceive</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OBJECT_FLOW__IS_MULTIRECEIVE = eINSTANCE.getObjectFlow_IsMultireceive();
+
+		/**
+		 * The meta object literal for the '<em><b>Transformation</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECT_FLOW__TRANSFORMATION = eINSTANCE.getObjectFlow_Transformation();
+
+		/**
+		 * The meta object literal for the '<em><b>Selection</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECT_FLOW__SELECTION = eINSTANCE.getObjectFlow_Selection();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InitialNodeImpl <em>Initial Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InitialNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInitialNode()
+		 * @generated
+		 */
+		EClass INITIAL_NODE = eINSTANCE.getInitialNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.FinalNodeImpl <em>Final Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.FinalNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getFinalNode()
+		 * @generated
+		 */
+		EClass FINAL_NODE = eINSTANCE.getFinalNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ActivityFinalNodeImpl <em>Activity Final Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ActivityFinalNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityFinalNode()
+		 * @generated
+		 */
+		EClass ACTIVITY_FINAL_NODE = eINSTANCE.getActivityFinalNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DecisionNodeImpl <em>Decision Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DecisionNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDecisionNode()
+		 * @generated
+		 */
+		EClass DECISION_NODE = eINSTANCE.getDecisionNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Decision Input</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DECISION_NODE__DECISION_INPUT = eINSTANCE.getDecisionNode_DecisionInput();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.MergeNodeImpl <em>Merge Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.MergeNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMergeNode()
+		 * @generated
+		 */
+		EClass MERGE_NODE = eINSTANCE.getMergeNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExecutableNodeImpl <em>Executable Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExecutableNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExecutableNode()
+		 * @generated
+		 */
+		EClass EXECUTABLE_NODE = eINSTANCE.getExecutableNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Handler</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXECUTABLE_NODE__HANDLER = eINSTANCE.getExecutableNode_Handler();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.OutputPinImpl <em>Output Pin</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.OutputPinImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getOutputPin()
+		 * @generated
+		 */
+		EClass OUTPUT_PIN = eINSTANCE.getOutputPin();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InputPinImpl <em>Input Pin</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InputPinImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInputPin()
+		 * @generated
+		 */
+		EClass INPUT_PIN = eINSTANCE.getInputPin();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PinImpl <em>Pin</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PinImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPin()
+		 * @generated
+		 */
+		EClass PIN = eINSTANCE.getPin();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ActivityParameterNodeImpl <em>Activity Parameter Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ActivityParameterNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityParameterNode()
+		 * @generated
+		 */
+		EClass ACTIVITY_PARAMETER_NODE = eINSTANCE.getActivityParameterNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_PARAMETER_NODE__PARAMETER = eINSTANCE.getActivityParameterNode_Parameter();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ValuePinImpl <em>Value Pin</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ValuePinImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getValuePin()
+		 * @generated
+		 */
+		EClass VALUE_PIN = eINSTANCE.getValuePin();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VALUE_PIN__VALUE = eINSTANCE.getValuePin_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InterfaceImpl <em>Interface</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InterfaceImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInterface()
+		 * @generated
+		 */
+		EClass INTERFACE = eINSTANCE.getInterface();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Attribute</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACE__OWNED_ATTRIBUTE = eINSTANCE.getInterface_OwnedAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Operation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACE__OWNED_OPERATION = eINSTANCE.getInterface_OwnedOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined Interface</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACE__REDEFINED_INTERFACE = eINSTANCE.getInterface_RedefinedInterface();
+
+		/**
+		 * The meta object literal for the '<em><b>Nested Classifier</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACE__NESTED_CLASSIFIER = eINSTANCE.getInterface_NestedClassifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Reception</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACE__OWNED_RECEPTION = eINSTANCE.getInterface_OwnedReception();
+
+		/**
+		 * The meta object literal for the '<em><b>Protocol</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACE__PROTOCOL = eINSTANCE.getInterface_Protocol();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ImplementationImpl <em>Implementation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ImplementationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getImplementation()
+		 * @generated
+		 */
+		EClass IMPLEMENTATION = eINSTANCE.getImplementation();
+
+		/**
+		 * The meta object literal for the '<em><b>Contract</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IMPLEMENTATION__CONTRACT = eINSTANCE.getImplementation_Contract();
+
+		/**
+		 * The meta object literal for the '<em><b>Implementing Classifier</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IMPLEMENTATION__IMPLEMENTING_CLASSIFIER = eINSTANCE.getImplementation_ImplementingClassifier();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ArtifactImpl <em>Artifact</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ArtifactImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getArtifact()
+		 * @generated
+		 */
+		EClass ARTIFACT = eINSTANCE.getArtifact();
+
+		/**
+		 * The meta object literal for the '<em><b>File Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ARTIFACT__FILE_NAME = eINSTANCE.getArtifact_FileName();
+
+		/**
+		 * The meta object literal for the '<em><b>Nested Artifact</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARTIFACT__NESTED_ARTIFACT = eINSTANCE.getArtifact_NestedArtifact();
+
+		/**
+		 * The meta object literal for the '<em><b>Manifestation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARTIFACT__MANIFESTATION = eINSTANCE.getArtifact_Manifestation();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Operation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARTIFACT__OWNED_OPERATION = eINSTANCE.getArtifact_OwnedOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Attribute</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARTIFACT__OWNED_ATTRIBUTE = eINSTANCE.getArtifact_OwnedAttribute();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ManifestationImpl <em>Manifestation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ManifestationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getManifestation()
+		 * @generated
+		 */
+		EClass MANIFESTATION = eINSTANCE.getManifestation();
+
+		/**
+		 * The meta object literal for the '<em><b>Utilized Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MANIFESTATION__UTILIZED_ELEMENT = eINSTANCE.getManifestation_UtilizedElement();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ActorImpl <em>Actor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ActorImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActor()
+		 * @generated
+		 */
+		EClass ACTOR = eINSTANCE.getActor();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExtendImpl <em>Extend</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExtendImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExtend()
+		 * @generated
+		 */
+		EClass EXTEND = eINSTANCE.getExtend();
+
+		/**
+		 * The meta object literal for the '<em><b>Extended Case</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTEND__EXTENDED_CASE = eINSTANCE.getExtend_ExtendedCase();
+
+		/**
+		 * The meta object literal for the '<em><b>Extension</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTEND__EXTENSION = eINSTANCE.getExtend_Extension();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTEND__CONDITION = eINSTANCE.getExtend_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Extension Location</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTEND__EXTENSION_LOCATION = eINSTANCE.getExtend_ExtensionLocation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.UseCaseImpl <em>Use Case</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.UseCaseImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getUseCase()
+		 * @generated
+		 */
+		EClass USE_CASE = eINSTANCE.getUseCase();
+
+		/**
+		 * The meta object literal for the '<em><b>Include</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference USE_CASE__INCLUDE = eINSTANCE.getUseCase_Include();
+
+		/**
+		 * The meta object literal for the '<em><b>Extend</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference USE_CASE__EXTEND = eINSTANCE.getUseCase_Extend();
+
+		/**
+		 * The meta object literal for the '<em><b>Extension Point</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference USE_CASE__EXTENSION_POINT = eINSTANCE.getUseCase_ExtensionPoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Subject</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference USE_CASE__SUBJECT = eINSTANCE.getUseCase_Subject();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExtensionPointImpl <em>Extension Point</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExtensionPointImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExtensionPoint()
+		 * @generated
+		 */
+		EClass EXTENSION_POINT = eINSTANCE.getExtensionPoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Use Case</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTENSION_POINT__USE_CASE = eINSTANCE.getExtensionPoint_UseCase();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.IncludeImpl <em>Include</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.IncludeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInclude()
+		 * @generated
+		 */
+		EClass INCLUDE = eINSTANCE.getInclude();
+
+		/**
+		 * The meta object literal for the '<em><b>Including Case</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INCLUDE__INCLUDING_CASE = eINSTANCE.getInclude_IncludingCase();
+
+		/**
+		 * The meta object literal for the '<em><b>Addition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INCLUDE__ADDITION = eINSTANCE.getInclude_Addition();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CollaborationOccurrenceImpl <em>Collaboration Occurrence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CollaborationOccurrenceImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCollaborationOccurrence()
+		 * @generated
+		 */
+		EClass COLLABORATION_OCCURRENCE = eINSTANCE.getCollaborationOccurrence();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COLLABORATION_OCCURRENCE__TYPE = eINSTANCE.getCollaborationOccurrence_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Role Binding</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COLLABORATION_OCCURRENCE__ROLE_BINDING = eINSTANCE.getCollaborationOccurrence_RoleBinding();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CollaborationImpl <em>Collaboration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CollaborationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCollaboration()
+		 * @generated
+		 */
+		EClass COLLABORATION = eINSTANCE.getCollaboration();
+
+		/**
+		 * The meta object literal for the '<em><b>Collaboration Role</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COLLABORATION__COLLABORATION_ROLE = eINSTANCE.getCollaboration_CollaborationRole();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PortImpl <em>Port</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PortImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPort()
+		 * @generated
+		 */
+		EClass PORT = eINSTANCE.getPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Behavior</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PORT__IS_BEHAVIOR = eINSTANCE.getPort_IsBehavior();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Service</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PORT__IS_SERVICE = eINSTANCE.getPort_IsService();
+
+		/**
+		 * The meta object literal for the '<em><b>Required</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PORT__REQUIRED = eINSTANCE.getPort_Required();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined Port</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PORT__REDEFINED_PORT = eINSTANCE.getPort_RedefinedPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Provided</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PORT__PROVIDED = eINSTANCE.getPort_Provided();
+
+		/**
+		 * The meta object literal for the '<em><b>Protocol</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PORT__PROTOCOL = eINSTANCE.getPort_Protocol();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.EncapsulatedClassifierImpl <em>Encapsulated Classifier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.EncapsulatedClassifierImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getEncapsulatedClassifier()
+		 * @generated
+		 */
+		EClass ENCAPSULATED_CLASSIFIER = eINSTANCE.getEncapsulatedClassifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Port</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENCAPSULATED_CLASSIFIER__OWNED_PORT = eINSTANCE.getEncapsulatedClassifier_OwnedPort();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CallTriggerImpl <em>Call Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CallTriggerImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCallTrigger()
+		 * @generated
+		 */
+		EClass CALL_TRIGGER = eINSTANCE.getCallTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CALL_TRIGGER__OPERATION = eINSTANCE.getCallTrigger_Operation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.MessageTriggerImpl <em>Message Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.MessageTriggerImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMessageTrigger()
+		 * @generated
+		 */
+		EClass MESSAGE_TRIGGER = eINSTANCE.getMessageTrigger();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ChangeTriggerImpl <em>Change Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ChangeTriggerImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getChangeTrigger()
+		 * @generated
+		 */
+		EClass CHANGE_TRIGGER = eINSTANCE.getChangeTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Change Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHANGE_TRIGGER__CHANGE_EXPRESSION = eINSTANCE.getChangeTrigger_ChangeExpression();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TriggerImpl <em>Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TriggerImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTrigger()
+		 * @generated
+		 */
+		EClass TRIGGER = eINSTANCE.getTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Port</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRIGGER__PORT = eINSTANCE.getTrigger_Port();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReceptionImpl <em>Reception</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReceptionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReception()
+		 * @generated
+		 */
+		EClass RECEPTION = eINSTANCE.getReception();
+
+		/**
+		 * The meta object literal for the '<em><b>Signal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECEPTION__SIGNAL = eINSTANCE.getReception_Signal();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.SignalImpl <em>Signal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.SignalImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSignal()
+		 * @generated
+		 */
+		EClass SIGNAL = eINSTANCE.getSignal();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Attribute</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIGNAL__OWNED_ATTRIBUTE = eINSTANCE.getSignal_OwnedAttribute();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.SignalTriggerImpl <em>Signal Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.SignalTriggerImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSignalTrigger()
+		 * @generated
+		 */
+		EClass SIGNAL_TRIGGER = eINSTANCE.getSignalTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Signal</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIGNAL_TRIGGER__SIGNAL = eINSTANCE.getSignalTrigger_Signal();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TimeTriggerImpl <em>Time Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TimeTriggerImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTimeTrigger()
+		 * @generated
+		 */
+		EClass TIME_TRIGGER = eINSTANCE.getTimeTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Relative</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME_TRIGGER__IS_RELATIVE = eINSTANCE.getTimeTrigger_IsRelative();
+
+		/**
+		 * The meta object literal for the '<em><b>When</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TIME_TRIGGER__WHEN = eINSTANCE.getTimeTrigger_When();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.AnyTriggerImpl <em>Any Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.AnyTriggerImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAnyTrigger()
+		 * @generated
+		 */
+		EClass ANY_TRIGGER = eINSTANCE.getAnyTrigger();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.VariableImpl <em>Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.VariableImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getVariable()
+		 * @generated
+		 */
+		EClass VARIABLE = eINSTANCE.getVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Scope</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VARIABLE__SCOPE = eINSTANCE.getVariable_Scope();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl <em>Structured Activity Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStructuredActivityNode()
+		 * @generated
+		 */
+		EClass STRUCTURED_ACTIVITY_NODE = eINSTANCE.getStructuredActivityNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCTURED_ACTIVITY_NODE__VARIABLE = eINSTANCE.getStructuredActivityNode_Variable();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Node</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE = eINSTANCE.getStructuredActivityNode_ContainedNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Edge</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE = eINSTANCE.getStructuredActivityNode_ContainedEdge();
+
+		/**
+		 * The meta object literal for the '<em><b>Must Isolate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE = eINSTANCE.getStructuredActivityNode_MustIsolate();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ConditionalNodeImpl <em>Conditional Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ConditionalNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConditionalNode()
+		 * @generated
+		 */
+		EClass CONDITIONAL_NODE = eINSTANCE.getConditionalNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Determinate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONDITIONAL_NODE__IS_DETERMINATE = eINSTANCE.getConditionalNode_IsDeterminate();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Assured</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONDITIONAL_NODE__IS_ASSURED = eINSTANCE.getConditionalNode_IsAssured();
+
+		/**
+		 * The meta object literal for the '<em><b>Clause</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_NODE__CLAUSE = eINSTANCE.getConditionalNode_Clause();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_NODE__RESULT = eINSTANCE.getConditionalNode_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ClauseImpl <em>Clause</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ClauseImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClause()
+		 * @generated
+		 */
+		EClass CLAUSE = eINSTANCE.getClause();
+
+		/**
+		 * The meta object literal for the '<em><b>Test</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLAUSE__TEST = eINSTANCE.getClause_Test();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLAUSE__BODY = eINSTANCE.getClause_Body();
+
+		/**
+		 * The meta object literal for the '<em><b>Predecessor Clause</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLAUSE__PREDECESSOR_CLAUSE = eINSTANCE.getClause_PredecessorClause();
+
+		/**
+		 * The meta object literal for the '<em><b>Successor Clause</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLAUSE__SUCCESSOR_CLAUSE = eINSTANCE.getClause_SuccessorClause();
+
+		/**
+		 * The meta object literal for the '<em><b>Decider</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLAUSE__DECIDER = eINSTANCE.getClause_Decider();
+
+		/**
+		 * The meta object literal for the '<em><b>Body Output</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLAUSE__BODY_OUTPUT = eINSTANCE.getClause_BodyOutput();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LoopNodeImpl <em>Loop Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LoopNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLoopNode()
+		 * @generated
+		 */
+		EClass LOOP_NODE = eINSTANCE.getLoopNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Tested First</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOOP_NODE__IS_TESTED_FIRST = eINSTANCE.getLoopNode_IsTestedFirst();
+
+		/**
+		 * The meta object literal for the '<em><b>Body Part</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP_NODE__BODY_PART = eINSTANCE.getLoopNode_BodyPart();
+
+		/**
+		 * The meta object literal for the '<em><b>Setup Part</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP_NODE__SETUP_PART = eINSTANCE.getLoopNode_SetupPart();
+
+		/**
+		 * The meta object literal for the '<em><b>Decider</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP_NODE__DECIDER = eINSTANCE.getLoopNode_Decider();
+
+		/**
+		 * The meta object literal for the '<em><b>Test</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP_NODE__TEST = eINSTANCE.getLoopNode_Test();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP_NODE__RESULT = eINSTANCE.getLoopNode_Result();
+
+		/**
+		 * The meta object literal for the '<em><b>Loop Variable</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP_NODE__LOOP_VARIABLE = eINSTANCE.getLoopNode_LoopVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Body Output</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP_NODE__BODY_OUTPUT = eINSTANCE.getLoopNode_BodyOutput();
+
+		/**
+		 * The meta object literal for the '<em><b>Loop Variable Input</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP_NODE__LOOP_VARIABLE_INPUT = eINSTANCE.getLoopNode_LoopVariableInput();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InteractionImpl <em>Interaction</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InteractionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteraction()
+		 * @generated
+		 */
+		EClass INTERACTION = eINSTANCE.getInteraction();
+
+		/**
+		 * The meta object literal for the '<em><b>Lifeline</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION__LIFELINE = eINSTANCE.getInteraction_Lifeline();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION__MESSAGE = eINSTANCE.getInteraction_Message();
+
+		/**
+		 * The meta object literal for the '<em><b>Fragment</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION__FRAGMENT = eINSTANCE.getInteraction_Fragment();
+
+		/**
+		 * The meta object literal for the '<em><b>Formal Gate</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION__FORMAL_GATE = eINSTANCE.getInteraction_FormalGate();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InteractionFragmentImpl <em>Interaction Fragment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InteractionFragmentImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteractionFragment()
+		 * @generated
+		 */
+		EClass INTERACTION_FRAGMENT = eINSTANCE.getInteractionFragment();
+
+		/**
+		 * The meta object literal for the '<em><b>Covered</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_FRAGMENT__COVERED = eINSTANCE.getInteractionFragment_Covered();
+
+		/**
+		 * The meta object literal for the '<em><b>General Ordering</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_FRAGMENT__GENERAL_ORDERING = eINSTANCE.getInteractionFragment_GeneralOrdering();
+
+		/**
+		 * The meta object literal for the '<em><b>Enclosing Interaction</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_FRAGMENT__ENCLOSING_INTERACTION = eINSTANCE.getInteractionFragment_EnclosingInteraction();
+
+		/**
+		 * The meta object literal for the '<em><b>Enclosing Operand</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_FRAGMENT__ENCLOSING_OPERAND = eINSTANCE.getInteractionFragment_EnclosingOperand();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LifelineImpl <em>Lifeline</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LifelineImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLifeline()
+		 * @generated
+		 */
+		EClass LIFELINE = eINSTANCE.getLifeline();
+
+		/**
+		 * The meta object literal for the '<em><b>Covered By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIFELINE__COVERED_BY = eINSTANCE.getLifeline_CoveredBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Represents</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIFELINE__REPRESENTS = eINSTANCE.getLifeline_Represents();
+
+		/**
+		 * The meta object literal for the '<em><b>Interaction</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIFELINE__INTERACTION = eINSTANCE.getLifeline_Interaction();
+
+		/**
+		 * The meta object literal for the '<em><b>Selector</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIFELINE__SELECTOR = eINSTANCE.getLifeline_Selector();
+
+		/**
+		 * The meta object literal for the '<em><b>Decomposed As</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIFELINE__DECOMPOSED_AS = eINSTANCE.getLifeline_DecomposedAs();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.MessageImpl <em>Message</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.MessageImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMessage()
+		 * @generated
+		 */
+		EClass MESSAGE = eINSTANCE.getMessage();
+
+		/**
+		 * The meta object literal for the '<em><b>Message Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE__MESSAGE_KIND = eINSTANCE.getMessage_MessageKind();
+
+		/**
+		 * The meta object literal for the '<em><b>Message Sort</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE__MESSAGE_SORT = eINSTANCE.getMessage_MessageSort();
+
+		/**
+		 * The meta object literal for the '<em><b>Receive Event</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE__RECEIVE_EVENT = eINSTANCE.getMessage_ReceiveEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Send Event</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE__SEND_EVENT = eINSTANCE.getMessage_SendEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Connector</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE__CONNECTOR = eINSTANCE.getMessage_Connector();
+
+		/**
+		 * The meta object literal for the '<em><b>Interaction</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE__INTERACTION = eINSTANCE.getMessage_Interaction();
+
+		/**
+		 * The meta object literal for the '<em><b>Signature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE__SIGNATURE = eINSTANCE.getMessage_Signature();
+
+		/**
+		 * The meta object literal for the '<em><b>Argument</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE__ARGUMENT = eINSTANCE.getMessage_Argument();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.GeneralOrderingImpl <em>General Ordering</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.GeneralOrderingImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getGeneralOrdering()
+		 * @generated
+		 */
+		EClass GENERAL_ORDERING = eINSTANCE.getGeneralOrdering();
+
+		/**
+		 * The meta object literal for the '<em><b>Before</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GENERAL_ORDERING__BEFORE = eINSTANCE.getGeneralOrdering_Before();
+
+		/**
+		 * The meta object literal for the '<em><b>After</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GENERAL_ORDERING__AFTER = eINSTANCE.getGeneralOrdering_After();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.MessageEndImpl <em>Message End</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.MessageEndImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMessageEnd()
+		 * @generated
+		 */
+		EClass MESSAGE_END = eINSTANCE.getMessageEnd();
+
+		/**
+		 * The meta object literal for the '<em><b>Receive Message</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE_END__RECEIVE_MESSAGE = eINSTANCE.getMessageEnd_ReceiveMessage();
+
+		/**
+		 * The meta object literal for the '<em><b>Send Message</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE_END__SEND_MESSAGE = eINSTANCE.getMessageEnd_SendMessage();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.EventOccurrenceImpl <em>Event Occurrence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.EventOccurrenceImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getEventOccurrence()
+		 * @generated
+		 */
+		EClass EVENT_OCCURRENCE = eINSTANCE.getEventOccurrence();
+
+		/**
+		 * The meta object literal for the '<em><b>Start Exec</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVENT_OCCURRENCE__START_EXEC = eINSTANCE.getEventOccurrence_StartExec();
+
+		/**
+		 * The meta object literal for the '<em><b>Finish Exec</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVENT_OCCURRENCE__FINISH_EXEC = eINSTANCE.getEventOccurrence_FinishExec();
+
+		/**
+		 * The meta object literal for the '<em><b>To After</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVENT_OCCURRENCE__TO_AFTER = eINSTANCE.getEventOccurrence_ToAfter();
+
+		/**
+		 * The meta object literal for the '<em><b>To Before</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVENT_OCCURRENCE__TO_BEFORE = eINSTANCE.getEventOccurrence_ToBefore();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExecutionOccurrenceImpl <em>Execution Occurrence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExecutionOccurrenceImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExecutionOccurrence()
+		 * @generated
+		 */
+		EClass EXECUTION_OCCURRENCE = eINSTANCE.getExecutionOccurrence();
+
+		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXECUTION_OCCURRENCE__START = eINSTANCE.getExecutionOccurrence_Start();
+
+		/**
+		 * The meta object literal for the '<em><b>Finish</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXECUTION_OCCURRENCE__FINISH = eINSTANCE.getExecutionOccurrence_Finish();
+
+		/**
+		 * The meta object literal for the '<em><b>Behavior</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXECUTION_OCCURRENCE__BEHAVIOR = eINSTANCE.getExecutionOccurrence_Behavior();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StateInvariantImpl <em>State Invariant</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StateInvariantImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStateInvariant()
+		 * @generated
+		 */
+		EClass STATE_INVARIANT = eINSTANCE.getStateInvariant();
+
+		/**
+		 * The meta object literal for the '<em><b>Invariant</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_INVARIANT__INVARIANT = eINSTANCE.getStateInvariant_Invariant();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StopImpl <em>Stop</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StopImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStop()
+		 * @generated
+		 */
+		EClass STOP = eINSTANCE.getStop();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TemplateSignatureImpl <em>Template Signature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TemplateSignatureImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateSignature()
+		 * @generated
+		 */
+		EClass TEMPLATE_SIGNATURE = eINSTANCE.getTemplateSignature();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_SIGNATURE__PARAMETER = eINSTANCE.getTemplateSignature_Parameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Parameter</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_SIGNATURE__OWNED_PARAMETER = eINSTANCE.getTemplateSignature_OwnedParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Nested Signature</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_SIGNATURE__NESTED_SIGNATURE = eINSTANCE.getTemplateSignature_NestedSignature();
+
+		/**
+		 * The meta object literal for the '<em><b>Nesting Signature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_SIGNATURE__NESTING_SIGNATURE = eINSTANCE.getTemplateSignature_NestingSignature();
+
+		/**
+		 * The meta object literal for the '<em><b>Template</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_SIGNATURE__TEMPLATE = eINSTANCE.getTemplateSignature_Template();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TemplateParameterImpl <em>Template Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TemplateParameterImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateParameter()
+		 * @generated
+		 */
+		EClass TEMPLATE_PARAMETER = eINSTANCE.getTemplateParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Signature</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_PARAMETER__SIGNATURE = eINSTANCE.getTemplateParameter_Signature();
+
+		/**
+		 * The meta object literal for the '<em><b>Parametered Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = eINSTANCE.getTemplateParameter_ParameteredElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Parametered Element</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = eINSTANCE.getTemplateParameter_OwnedParameteredElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Default</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_PARAMETER__DEFAULT = eINSTANCE.getTemplateParameter_Default();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Default</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_PARAMETER__OWNED_DEFAULT = eINSTANCE.getTemplateParameter_OwnedDefault();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TemplateableElementImpl <em>Templateable Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TemplateableElementImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateableElement()
+		 * @generated
+		 */
+		EClass TEMPLATEABLE_ELEMENT = eINSTANCE.getTemplateableElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Template Binding</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING = eINSTANCE.getTemplateableElement_TemplateBinding();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Template Signature</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE = eINSTANCE.getTemplateableElement_OwnedTemplateSignature();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StringExpressionImpl <em>String Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StringExpressionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStringExpression()
+		 * @generated
+		 */
+		EClass STRING_EXPRESSION = eINSTANCE.getStringExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Sub Expression</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRING_EXPRESSION__SUB_EXPRESSION = eINSTANCE.getStringExpression_SubExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Owning Expression</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRING_EXPRESSION__OWNING_EXPRESSION = eINSTANCE.getStringExpression_OwningExpression();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ParameterableElementImpl <em>Parameterable Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ParameterableElementImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getParameterableElement()
+		 * @generated
+		 */
+		EClass PARAMETERABLE_ELEMENT = eINSTANCE.getParameterableElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Template Parameter</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER = eINSTANCE.getParameterableElement_TemplateParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Owning Parameter</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETERABLE_ELEMENT__OWNING_PARAMETER = eINSTANCE.getParameterableElement_OwningParameter();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TemplateBindingImpl <em>Template Binding</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TemplateBindingImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateBinding()
+		 * @generated
+		 */
+		EClass TEMPLATE_BINDING = eINSTANCE.getTemplateBinding();
+
+		/**
+		 * The meta object literal for the '<em><b>Bound Element</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_BINDING__BOUND_ELEMENT = eINSTANCE.getTemplateBinding_BoundElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Signature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_BINDING__SIGNATURE = eINSTANCE.getTemplateBinding_Signature();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter Substitution</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_BINDING__PARAMETER_SUBSTITUTION = eINSTANCE.getTemplateBinding_ParameterSubstitution();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl <em>Template Parameter Substitution</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateParameterSubstitution()
+		 * @generated
+		 */
+		EClass TEMPLATE_PARAMETER_SUBSTITUTION = eINSTANCE.getTemplateParameterSubstitution();
+
+		/**
+		 * The meta object literal for the '<em><b>Formal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL = eINSTANCE.getTemplateParameterSubstitution_Formal();
+
+		/**
+		 * The meta object literal for the '<em><b>Template Binding</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING = eINSTANCE.getTemplateParameterSubstitution_TemplateBinding();
+
+		/**
+		 * The meta object literal for the '<em><b>Actual</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL = eINSTANCE.getTemplateParameterSubstitution_Actual();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Actual</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL = eINSTANCE.getTemplateParameterSubstitution_OwnedActual();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.OperationTemplateParameterImpl <em>Operation Template Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.OperationTemplateParameterImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getOperationTemplateParameter()
+		 * @generated
+		 */
+		EClass OPERATION_TEMPLATE_PARAMETER = eINSTANCE.getOperationTemplateParameter();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ClassifierTemplateParameterImpl <em>Classifier Template Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ClassifierTemplateParameterImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClassifierTemplateParameter()
+		 * @generated
+		 */
+		EClass CLASSIFIER_TEMPLATE_PARAMETER = eINSTANCE.getClassifierTemplateParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Allow Substitutable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE = eINSTANCE.getClassifierTemplateParameter_AllowSubstitutable();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ParameterableClassifierImpl <em>Parameterable Classifier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ParameterableClassifierImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getParameterableClassifier()
+		 * @generated
+		 */
+		EClass PARAMETERABLE_CLASSIFIER = eINSTANCE.getParameterableClassifier();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.RedefinableTemplateSignatureImpl <em>Redefinable Template Signature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.RedefinableTemplateSignatureImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRedefinableTemplateSignature()
+		 * @generated
+		 */
+		EClass REDEFINABLE_TEMPLATE_SIGNATURE = eINSTANCE.getRedefinableTemplateSignature();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TemplateableClassifierImpl <em>Templateable Classifier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TemplateableClassifierImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateableClassifier()
+		 * @generated
+		 */
+		EClass TEMPLATEABLE_CLASSIFIER = eINSTANCE.getTemplateableClassifier();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ConnectableElementTemplateParameterImpl <em>Connectable Element Template Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ConnectableElementTemplateParameterImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConnectableElementTemplateParameter()
+		 * @generated
+		 */
+		EClass CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER = eINSTANCE.getConnectableElementTemplateParameter();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ForkNodeImpl <em>Fork Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ForkNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getForkNode()
+		 * @generated
+		 */
+		EClass FORK_NODE = eINSTANCE.getForkNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.JoinNodeImpl <em>Join Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.JoinNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getJoinNode()
+		 * @generated
+		 */
+		EClass JOIN_NODE = eINSTANCE.getJoinNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Combine Duplicate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOIN_NODE__IS_COMBINE_DUPLICATE = eINSTANCE.getJoinNode_IsCombineDuplicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Join Spec</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOIN_NODE__JOIN_SPEC = eINSTANCE.getJoinNode_JoinSpec();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.FlowFinalNodeImpl <em>Flow Final Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.FlowFinalNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getFlowFinalNode()
+		 * @generated
+		 */
+		EClass FLOW_FINAL_NODE = eINSTANCE.getFlowFinalNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CentralBufferNodeImpl <em>Central Buffer Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CentralBufferNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCentralBufferNode()
+		 * @generated
+		 */
+		EClass CENTRAL_BUFFER_NODE = eINSTANCE.getCentralBufferNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl <em>Activity Partition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ActivityPartitionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityPartition()
+		 * @generated
+		 */
+		EClass ACTIVITY_PARTITION = eINSTANCE.getActivityPartition();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Dimension</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTIVITY_PARTITION__IS_DIMENSION = eINSTANCE.getActivityPartition_IsDimension();
+
+		/**
+		 * The meta object literal for the '<em><b>Is External</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTIVITY_PARTITION__IS_EXTERNAL = eINSTANCE.getActivityPartition_IsExternal();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Edge</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_PARTITION__CONTAINED_EDGE = eINSTANCE.getActivityPartition_ContainedEdge();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Node</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_PARTITION__CONTAINED_NODE = eINSTANCE.getActivityPartition_ContainedNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Subgroup</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_PARTITION__SUBGROUP = eINSTANCE.getActivityPartition_Subgroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Super Partition</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_PARTITION__SUPER_PARTITION = eINSTANCE.getActivityPartition_SuperPartition();
+
+		/**
+		 * The meta object literal for the '<em><b>Represents</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_PARTITION__REPRESENTS = eINSTANCE.getActivityPartition_Represents();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExpansionNodeImpl <em>Expansion Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExpansionNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExpansionNode()
+		 * @generated
+		 */
+		EClass EXPANSION_NODE = eINSTANCE.getExpansionNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Region As Output</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPANSION_NODE__REGION_AS_OUTPUT = eINSTANCE.getExpansionNode_RegionAsOutput();
+
+		/**
+		 * The meta object literal for the '<em><b>Region As Input</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPANSION_NODE__REGION_AS_INPUT = eINSTANCE.getExpansionNode_RegionAsInput();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExpansionRegionImpl <em>Expansion Region</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExpansionRegionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExpansionRegion()
+		 * @generated
+		 */
+		EClass EXPANSION_REGION = eINSTANCE.getExpansionRegion();
+
+		/**
+		 * The meta object literal for the '<em><b>Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPANSION_REGION__MODE = eINSTANCE.getExpansionRegion_Mode();
+
+		/**
+		 * The meta object literal for the '<em><b>Output Element</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPANSION_REGION__OUTPUT_ELEMENT = eINSTANCE.getExpansionRegion_OutputElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Input Element</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPANSION_REGION__INPUT_ELEMENT = eINSTANCE.getExpansionRegion_InputElement();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExceptionHandlerImpl <em>Exception Handler</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExceptionHandlerImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExceptionHandler()
+		 * @generated
+		 */
+		EClass EXCEPTION_HANDLER = eINSTANCE.getExceptionHandler();
+
+		/**
+		 * The meta object literal for the '<em><b>Protected Node</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXCEPTION_HANDLER__PROTECTED_NODE = eINSTANCE.getExceptionHandler_ProtectedNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Handler Body</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXCEPTION_HANDLER__HANDLER_BODY = eINSTANCE.getExceptionHandler_HandlerBody();
+
+		/**
+		 * The meta object literal for the '<em><b>Exception Input</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXCEPTION_HANDLER__EXCEPTION_INPUT = eINSTANCE.getExceptionHandler_ExceptionInput();
+
+		/**
+		 * The meta object literal for the '<em><b>Exception Type</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXCEPTION_HANDLER__EXCEPTION_TYPE = eINSTANCE.getExceptionHandler_ExceptionType();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InteractionOccurrenceImpl <em>Interaction Occurrence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InteractionOccurrenceImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteractionOccurrence()
+		 * @generated
+		 */
+		EClass INTERACTION_OCCURRENCE = eINSTANCE.getInteractionOccurrence();
+
+		/**
+		 * The meta object literal for the '<em><b>Refers To</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_OCCURRENCE__REFERS_TO = eINSTANCE.getInteractionOccurrence_RefersTo();
+
+		/**
+		 * The meta object literal for the '<em><b>Actual Gate</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_OCCURRENCE__ACTUAL_GATE = eINSTANCE.getInteractionOccurrence_ActualGate();
+
+		/**
+		 * The meta object literal for the '<em><b>Argument</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_OCCURRENCE__ARGUMENT = eINSTANCE.getInteractionOccurrence_Argument();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.GateImpl <em>Gate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.GateImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getGate()
+		 * @generated
+		 */
+		EClass GATE = eINSTANCE.getGate();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PartDecompositionImpl <em>Part Decomposition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PartDecompositionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPartDecomposition()
+		 * @generated
+		 */
+		EClass PART_DECOMPOSITION = eINSTANCE.getPartDecomposition();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InteractionOperandImpl <em>Interaction Operand</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InteractionOperandImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteractionOperand()
+		 * @generated
+		 */
+		EClass INTERACTION_OPERAND = eINSTANCE.getInteractionOperand();
+
+		/**
+		 * The meta object literal for the '<em><b>Guard</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_OPERAND__GUARD = eINSTANCE.getInteractionOperand_Guard();
+
+		/**
+		 * The meta object literal for the '<em><b>Fragment</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_OPERAND__FRAGMENT = eINSTANCE.getInteractionOperand_Fragment();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InteractionConstraintImpl <em>Interaction Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InteractionConstraintImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteractionConstraint()
+		 * @generated
+		 */
+		EClass INTERACTION_CONSTRAINT = eINSTANCE.getInteractionConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Minint</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_CONSTRAINT__MININT = eINSTANCE.getInteractionConstraint_Minint();
+
+		/**
+		 * The meta object literal for the '<em><b>Maxint</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERACTION_CONSTRAINT__MAXINT = eINSTANCE.getInteractionConstraint_Maxint();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CombinedFragmentImpl <em>Combined Fragment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CombinedFragmentImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCombinedFragment()
+		 * @generated
+		 */
+		EClass COMBINED_FRAGMENT = eINSTANCE.getCombinedFragment();
+
+		/**
+		 * The meta object literal for the '<em><b>Interaction Operator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMBINED_FRAGMENT__INTERACTION_OPERATOR = eINSTANCE.getCombinedFragment_InteractionOperator();
+
+		/**
+		 * The meta object literal for the '<em><b>Operand</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMBINED_FRAGMENT__OPERAND = eINSTANCE.getCombinedFragment_Operand();
+
+		/**
+		 * The meta object literal for the '<em><b>Cfragment Gate</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMBINED_FRAGMENT__CFRAGMENT_GATE = eINSTANCE.getCombinedFragment_CfragmentGate();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ContinuationImpl <em>Continuation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ContinuationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getContinuation()
+		 * @generated
+		 */
+		EClass CONTINUATION = eINSTANCE.getContinuation();
+
+		/**
+		 * The meta object literal for the '<em><b>Setting</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTINUATION__SETTING = eINSTANCE.getContinuation_Setting();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StateMachineImpl <em>State Machine</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StateMachineImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStateMachine()
+		 * @generated
+		 */
+		EClass STATE_MACHINE = eINSTANCE.getStateMachine();
+
+		/**
+		 * The meta object literal for the '<em><b>Region</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_MACHINE__REGION = eINSTANCE.getStateMachine_Region();
+
+		/**
+		 * The meta object literal for the '<em><b>Connection Point</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_MACHINE__CONNECTION_POINT = eINSTANCE.getStateMachine_ConnectionPoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Extended State Machine</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_MACHINE__EXTENDED_STATE_MACHINE = eINSTANCE.getStateMachine_ExtendedStateMachine();
+
+		/**
+		 * The meta object literal for the '<em><b>State Machine redefinition Context</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT = eINSTANCE.getStateMachine_StateMachine_redefinitionContext();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.RegionImpl <em>Region</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.RegionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRegion()
+		 * @generated
+		 */
+		EClass REGION = eINSTANCE.getRegion();
+
+		/**
+		 * The meta object literal for the '<em><b>Subvertex</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REGION__SUBVERTEX = eINSTANCE.getRegion_Subvertex();
+
+		/**
+		 * The meta object literal for the '<em><b>Transition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REGION__TRANSITION = eINSTANCE.getRegion_Transition();
+
+		/**
+		 * The meta object literal for the '<em><b>State Machine</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REGION__STATE_MACHINE = eINSTANCE.getRegion_StateMachine();
+
+		/**
+		 * The meta object literal for the '<em><b>State</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REGION__STATE = eINSTANCE.getRegion_State();
+
+		/**
+		 * The meta object literal for the '<em><b>Extended Region</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REGION__EXTENDED_REGION = eINSTANCE.getRegion_ExtendedRegion();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PseudostateImpl <em>Pseudostate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PseudostateImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPseudostate()
+		 * @generated
+		 */
+		EClass PSEUDOSTATE = eINSTANCE.getPseudostate();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PSEUDOSTATE__KIND = eINSTANCE.getPseudostate_Kind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StateImpl <em>State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StateImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getState()
+		 * @generated
+		 */
+		EClass STATE = eINSTANCE.getState();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Composite</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE__IS_COMPOSITE = eINSTANCE.getState_IsComposite();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Orthogonal</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE__IS_ORTHOGONAL = eINSTANCE.getState_IsOrthogonal();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Simple</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE__IS_SIMPLE = eINSTANCE.getState_IsSimple();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Submachine State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE__IS_SUBMACHINE_STATE = eINSTANCE.getState_IsSubmachineState();
+
+		/**
+		 * The meta object literal for the '<em><b>Submachine</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__SUBMACHINE = eINSTANCE.getState_Submachine();
+
+		/**
+		 * The meta object literal for the '<em><b>Connection</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__CONNECTION = eINSTANCE.getState_Connection();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined State</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__REDEFINED_STATE = eINSTANCE.getState_RedefinedState();
+
+		/**
+		 * The meta object literal for the '<em><b>Deferrable Trigger</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__DEFERRABLE_TRIGGER = eINSTANCE.getState_DeferrableTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Region</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__REGION = eINSTANCE.getState_Region();
+
+		/**
+		 * The meta object literal for the '<em><b>Entry</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__ENTRY = eINSTANCE.getState_Entry();
+
+		/**
+		 * The meta object literal for the '<em><b>Exit</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__EXIT = eINSTANCE.getState_Exit();
+
+		/**
+		 * The meta object literal for the '<em><b>Do Activity</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__DO_ACTIVITY = eINSTANCE.getState_DoActivity();
+
+		/**
+		 * The meta object literal for the '<em><b>State Invariant</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__STATE_INVARIANT = eINSTANCE.getState_StateInvariant();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.VertexImpl <em>Vertex</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.VertexImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getVertex()
+		 * @generated
+		 */
+		EClass VERTEX = eINSTANCE.getVertex();
+
+		/**
+		 * The meta object literal for the '<em><b>Container</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VERTEX__CONTAINER = eINSTANCE.getVertex_Container();
+
+		/**
+		 * The meta object literal for the '<em><b>Outgoing</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VERTEX__OUTGOING = eINSTANCE.getVertex_Outgoing();
+
+		/**
+		 * The meta object literal for the '<em><b>Incoming</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VERTEX__INCOMING = eINSTANCE.getVertex_Incoming();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ConnectionPointReferenceImpl <em>Connection Point Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ConnectionPointReferenceImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConnectionPointReference()
+		 * @generated
+		 */
+		EClass CONNECTION_POINT_REFERENCE = eINSTANCE.getConnectionPointReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Entry</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTION_POINT_REFERENCE__ENTRY = eINSTANCE.getConnectionPointReference_Entry();
+
+		/**
+		 * The meta object literal for the '<em><b>Exit</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTION_POINT_REFERENCE__EXIT = eINSTANCE.getConnectionPointReference_Exit();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TransitionImpl <em>Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TransitionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTransition()
+		 * @generated
+		 */
+		EClass TRANSITION = eINSTANCE.getTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION__KIND = eINSTANCE.getTransition_Kind();
+
+		/**
+		 * The meta object literal for the '<em><b>Container</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__CONTAINER = eINSTANCE.getTransition_Container();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__SOURCE = eINSTANCE.getTransition_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__TARGET = eINSTANCE.getTransition_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Redefined Transition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__REDEFINED_TRANSITION = eINSTANCE.getTransition_RedefinedTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Trigger</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__TRIGGER = eINSTANCE.getTransition_Trigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Guard</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__GUARD = eINSTANCE.getTransition_Guard();
+
+		/**
+		 * The meta object literal for the '<em><b>Effect</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__EFFECT = eINSTANCE.getTransition_Effect();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.FinalStateImpl <em>Final State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.FinalStateImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getFinalState()
+		 * @generated
+		 */
+		EClass FINAL_STATE = eINSTANCE.getFinalState();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CreateObjectActionImpl <em>Create Object Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CreateObjectActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCreateObjectAction()
+		 * @generated
+		 */
+		EClass CREATE_OBJECT_ACTION = eINSTANCE.getCreateObjectAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Classifier</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CREATE_OBJECT_ACTION__CLASSIFIER = eINSTANCE.getCreateObjectAction_Classifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CREATE_OBJECT_ACTION__RESULT = eINSTANCE.getCreateObjectAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DestroyObjectActionImpl <em>Destroy Object Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DestroyObjectActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDestroyObjectAction()
+		 * @generated
+		 */
+		EClass DESTROY_OBJECT_ACTION = eINSTANCE.getDestroyObjectAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Destroy Links</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS = eINSTANCE.getDestroyObjectAction_IsDestroyLinks();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Destroy Owned Objects</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS = eINSTANCE.getDestroyObjectAction_IsDestroyOwnedObjects();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DESTROY_OBJECT_ACTION__TARGET = eINSTANCE.getDestroyObjectAction_Target();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TestIdentityActionImpl <em>Test Identity Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TestIdentityActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTestIdentityAction()
+		 * @generated
+		 */
+		EClass TEST_IDENTITY_ACTION = eINSTANCE.getTestIdentityAction();
+
+		/**
+		 * The meta object literal for the '<em><b>First</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_IDENTITY_ACTION__FIRST = eINSTANCE.getTestIdentityAction_First();
+
+		/**
+		 * The meta object literal for the '<em><b>Second</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_IDENTITY_ACTION__SECOND = eINSTANCE.getTestIdentityAction_Second();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_IDENTITY_ACTION__RESULT = eINSTANCE.getTestIdentityAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReadSelfActionImpl <em>Read Self Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReadSelfActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadSelfAction()
+		 * @generated
+		 */
+		EClass READ_SELF_ACTION = eINSTANCE.getReadSelfAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_SELF_ACTION__RESULT = eINSTANCE.getReadSelfAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StructuralFeatureActionImpl <em>Structural Feature Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StructuralFeatureActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStructuralFeatureAction()
+		 * @generated
+		 */
+		EClass STRUCTURAL_FEATURE_ACTION = eINSTANCE.getStructuralFeatureAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Structural Feature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE = eINSTANCE.getStructuralFeatureAction_StructuralFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCTURAL_FEATURE_ACTION__OBJECT = eINSTANCE.getStructuralFeatureAction_Object();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReadStructuralFeatureActionImpl <em>Read Structural Feature Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReadStructuralFeatureActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadStructuralFeatureAction()
+		 * @generated
+		 */
+		EClass READ_STRUCTURAL_FEATURE_ACTION = eINSTANCE.getReadStructuralFeatureAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_STRUCTURAL_FEATURE_ACTION__RESULT = eINSTANCE.getReadStructuralFeatureAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.WriteStructuralFeatureActionImpl <em>Write Structural Feature Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.WriteStructuralFeatureActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getWriteStructuralFeatureAction()
+		 * @generated
+		 */
+		EClass WRITE_STRUCTURAL_FEATURE_ACTION = eINSTANCE.getWriteStructuralFeatureAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WRITE_STRUCTURAL_FEATURE_ACTION__VALUE = eINSTANCE.getWriteStructuralFeatureAction_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ClearStructuralFeatureActionImpl <em>Clear Structural Feature Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ClearStructuralFeatureActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClearStructuralFeatureAction()
+		 * @generated
+		 */
+		EClass CLEAR_STRUCTURAL_FEATURE_ACTION = eINSTANCE.getClearStructuralFeatureAction();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.RemoveStructuralFeatureValueActionImpl <em>Remove Structural Feature Value Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.RemoveStructuralFeatureValueActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRemoveStructuralFeatureValueAction()
+		 * @generated
+		 */
+		EClass REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION = eINSTANCE.getRemoveStructuralFeatureValueAction();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.AddStructuralFeatureValueActionImpl <em>Add Structural Feature Value Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.AddStructuralFeatureValueActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAddStructuralFeatureValueAction()
+		 * @generated
+		 */
+		EClass ADD_STRUCTURAL_FEATURE_VALUE_ACTION = eINSTANCE.getAddStructuralFeatureValueAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Replace All</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL = eINSTANCE.getAddStructuralFeatureValueAction_IsReplaceAll();
+
+		/**
+		 * The meta object literal for the '<em><b>Insert At</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT = eINSTANCE.getAddStructuralFeatureValueAction_InsertAt();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LinkActionImpl <em>Link Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LinkActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLinkAction()
+		 * @generated
+		 */
+		EClass LINK_ACTION = eINSTANCE.getLinkAction();
+
+		/**
+		 * The meta object literal for the '<em><b>End Data</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_ACTION__END_DATA = eINSTANCE.getLinkAction_EndData();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LinkEndDataImpl <em>Link End Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LinkEndDataImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLinkEndData()
+		 * @generated
+		 */
+		EClass LINK_END_DATA = eINSTANCE.getLinkEndData();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_END_DATA__VALUE = eINSTANCE.getLinkEndData_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>End</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_END_DATA__END = eINSTANCE.getLinkEndData_End();
+
+		/**
+		 * The meta object literal for the '<em><b>Qualifier</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_END_DATA__QUALIFIER = eINSTANCE.getLinkEndData_Qualifier();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReadLinkActionImpl <em>Read Link Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReadLinkActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadLinkAction()
+		 * @generated
+		 */
+		EClass READ_LINK_ACTION = eINSTANCE.getReadLinkAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_LINK_ACTION__RESULT = eINSTANCE.getReadLinkAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.LinkEndCreationDataImpl <em>Link End Creation Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.LinkEndCreationDataImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLinkEndCreationData()
+		 * @generated
+		 */
+		EClass LINK_END_CREATION_DATA = eINSTANCE.getLinkEndCreationData();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Replace All</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINK_END_CREATION_DATA__IS_REPLACE_ALL = eINSTANCE.getLinkEndCreationData_IsReplaceAll();
+
+		/**
+		 * The meta object literal for the '<em><b>Insert At</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_END_CREATION_DATA__INSERT_AT = eINSTANCE.getLinkEndCreationData_InsertAt();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CreateLinkActionImpl <em>Create Link Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CreateLinkActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCreateLinkAction()
+		 * @generated
+		 */
+		EClass CREATE_LINK_ACTION = eINSTANCE.getCreateLinkAction();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.WriteLinkActionImpl <em>Write Link Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.WriteLinkActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getWriteLinkAction()
+		 * @generated
+		 */
+		EClass WRITE_LINK_ACTION = eINSTANCE.getWriteLinkAction();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DestroyLinkActionImpl <em>Destroy Link Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DestroyLinkActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDestroyLinkAction()
+		 * @generated
+		 */
+		EClass DESTROY_LINK_ACTION = eINSTANCE.getDestroyLinkAction();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ClearAssociationActionImpl <em>Clear Association Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ClearAssociationActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClearAssociationAction()
+		 * @generated
+		 */
+		EClass CLEAR_ASSOCIATION_ACTION = eINSTANCE.getClearAssociationAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLEAR_ASSOCIATION_ACTION__OBJECT = eINSTANCE.getClearAssociationAction_Object();
+
+		/**
+		 * The meta object literal for the '<em><b>Association</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLEAR_ASSOCIATION_ACTION__ASSOCIATION = eINSTANCE.getClearAssociationAction_Association();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.VariableActionImpl <em>Variable Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.VariableActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getVariableAction()
+		 * @generated
+		 */
+		EClass VARIABLE_ACTION = eINSTANCE.getVariableAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VARIABLE_ACTION__VARIABLE = eINSTANCE.getVariableAction_Variable();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReadVariableActionImpl <em>Read Variable Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReadVariableActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadVariableAction()
+		 * @generated
+		 */
+		EClass READ_VARIABLE_ACTION = eINSTANCE.getReadVariableAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_VARIABLE_ACTION__RESULT = eINSTANCE.getReadVariableAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.WriteVariableActionImpl <em>Write Variable Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.WriteVariableActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getWriteVariableAction()
+		 * @generated
+		 */
+		EClass WRITE_VARIABLE_ACTION = eINSTANCE.getWriteVariableAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WRITE_VARIABLE_ACTION__VALUE = eINSTANCE.getWriteVariableAction_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ClearVariableActionImpl <em>Clear Variable Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ClearVariableActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClearVariableAction()
+		 * @generated
+		 */
+		EClass CLEAR_VARIABLE_ACTION = eINSTANCE.getClearVariableAction();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.AddVariableValueActionImpl <em>Add Variable Value Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.AddVariableValueActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAddVariableValueAction()
+		 * @generated
+		 */
+		EClass ADD_VARIABLE_VALUE_ACTION = eINSTANCE.getAddVariableValueAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Replace All</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADD_VARIABLE_VALUE_ACTION__IS_REPLACE_ALL = eINSTANCE.getAddVariableValueAction_IsReplaceAll();
+
+		/**
+		 * The meta object literal for the '<em><b>Insert At</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADD_VARIABLE_VALUE_ACTION__INSERT_AT = eINSTANCE.getAddVariableValueAction_InsertAt();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.RemoveVariableValueActionImpl <em>Remove Variable Value Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.RemoveVariableValueActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRemoveVariableValueAction()
+		 * @generated
+		 */
+		EClass REMOVE_VARIABLE_VALUE_ACTION = eINSTANCE.getRemoveVariableValueAction();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ApplyFunctionActionImpl <em>Apply Function Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ApplyFunctionActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getApplyFunctionAction()
+		 * @generated
+		 */
+		EClass APPLY_FUNCTION_ACTION = eINSTANCE.getApplyFunctionAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Function</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLY_FUNCTION_ACTION__FUNCTION = eINSTANCE.getApplyFunctionAction_Function();
+
+		/**
+		 * The meta object literal for the '<em><b>Argument</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLY_FUNCTION_ACTION__ARGUMENT = eINSTANCE.getApplyFunctionAction_Argument();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLY_FUNCTION_ACTION__RESULT = eINSTANCE.getApplyFunctionAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.PrimitiveFunctionImpl <em>Primitive Function</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.PrimitiveFunctionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPrimitiveFunction()
+		 * @generated
+		 */
+		EClass PRIMITIVE_FUNCTION = eINSTANCE.getPrimitiveFunction();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRIMITIVE_FUNCTION__BODY = eINSTANCE.getPrimitiveFunction_Body();
+
+		/**
+		 * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRIMITIVE_FUNCTION__LANGUAGE = eINSTANCE.getPrimitiveFunction_Language();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CallActionImpl <em>Call Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CallActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCallAction()
+		 * @generated
+		 */
+		EClass CALL_ACTION = eINSTANCE.getCallAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Synchronous</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CALL_ACTION__IS_SYNCHRONOUS = eINSTANCE.getCallAction_IsSynchronous();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CALL_ACTION__RESULT = eINSTANCE.getCallAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InvocationActionImpl <em>Invocation Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InvocationActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInvocationAction()
+		 * @generated
+		 */
+		EClass INVOCATION_ACTION = eINSTANCE.getInvocationAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Argument</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INVOCATION_ACTION__ARGUMENT = eINSTANCE.getInvocationAction_Argument();
+
+		/**
+		 * The meta object literal for the '<em><b>On Port</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INVOCATION_ACTION__ON_PORT = eINSTANCE.getInvocationAction_OnPort();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.SendSignalActionImpl <em>Send Signal Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.SendSignalActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSendSignalAction()
+		 * @generated
+		 */
+		EClass SEND_SIGNAL_ACTION = eINSTANCE.getSendSignalAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEND_SIGNAL_ACTION__TARGET = eINSTANCE.getSendSignalAction_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Signal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEND_SIGNAL_ACTION__SIGNAL = eINSTANCE.getSendSignalAction_Signal();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.BroadcastSignalActionImpl <em>Broadcast Signal Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.BroadcastSignalActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getBroadcastSignalAction()
+		 * @generated
+		 */
+		EClass BROADCAST_SIGNAL_ACTION = eINSTANCE.getBroadcastSignalAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Signal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BROADCAST_SIGNAL_ACTION__SIGNAL = eINSTANCE.getBroadcastSignalAction_Signal();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.SendObjectActionImpl <em>Send Object Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.SendObjectActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSendObjectAction()
+		 * @generated
+		 */
+		EClass SEND_OBJECT_ACTION = eINSTANCE.getSendObjectAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEND_OBJECT_ACTION__TARGET = eINSTANCE.getSendObjectAction_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Request</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEND_OBJECT_ACTION__REQUEST = eINSTANCE.getSendObjectAction_Request();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CallOperationActionImpl <em>Call Operation Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CallOperationActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCallOperationAction()
+		 * @generated
+		 */
+		EClass CALL_OPERATION_ACTION = eINSTANCE.getCallOperationAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CALL_OPERATION_ACTION__OPERATION = eINSTANCE.getCallOperationAction_Operation();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CALL_OPERATION_ACTION__TARGET = eINSTANCE.getCallOperationAction_Target();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CallBehaviorActionImpl <em>Call Behavior Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CallBehaviorActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCallBehaviorAction()
+		 * @generated
+		 */
+		EClass CALL_BEHAVIOR_ACTION = eINSTANCE.getCallBehaviorAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Behavior</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CALL_BEHAVIOR_ACTION__BEHAVIOR = eINSTANCE.getCallBehaviorAction_Behavior();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TimeExpressionImpl <em>Time Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TimeExpressionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTimeExpression()
+		 * @generated
+		 */
+		EClass TIME_EXPRESSION = eINSTANCE.getTimeExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>First Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME_EXPRESSION__FIRST_TIME = eINSTANCE.getTimeExpression_FirstTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Event</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TIME_EXPRESSION__EVENT = eINSTANCE.getTimeExpression_Event();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DurationImpl <em>Duration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DurationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDuration()
+		 * @generated
+		 */
+		EClass DURATION = eINSTANCE.getDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>First Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DURATION__FIRST_TIME = eINSTANCE.getDuration_FirstTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Event</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DURATION__EVENT = eINSTANCE.getDuration_Event();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TimeObservationActionImpl <em>Time Observation Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TimeObservationActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTimeObservationAction()
+		 * @generated
+		 */
+		EClass TIME_OBSERVATION_ACTION = eINSTANCE.getTimeObservationAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Now</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TIME_OBSERVATION_ACTION__NOW = eINSTANCE.getTimeObservationAction_Now();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DurationIntervalImpl <em>Duration Interval</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DurationIntervalImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDurationInterval()
+		 * @generated
+		 */
+		EClass DURATION_INTERVAL = eINSTANCE.getDurationInterval();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.IntervalImpl <em>Interval</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.IntervalImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInterval()
+		 * @generated
+		 */
+		EClass INTERVAL = eINSTANCE.getInterval();
+
+		/**
+		 * The meta object literal for the '<em><b>Min</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERVAL__MIN = eINSTANCE.getInterval_Min();
+
+		/**
+		 * The meta object literal for the '<em><b>Max</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERVAL__MAX = eINSTANCE.getInterval_Max();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TimeConstraintImpl <em>Time Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TimeConstraintImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTimeConstraint()
+		 * @generated
+		 */
+		EClass TIME_CONSTRAINT = eINSTANCE.getTimeConstraint();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.IntervalConstraintImpl <em>Interval Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.IntervalConstraintImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getIntervalConstraint()
+		 * @generated
+		 */
+		EClass INTERVAL_CONSTRAINT = eINSTANCE.getIntervalConstraint();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.TimeIntervalImpl <em>Time Interval</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.TimeIntervalImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTimeInterval()
+		 * @generated
+		 */
+		EClass TIME_INTERVAL = eINSTANCE.getTimeInterval();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DurationObservationActionImpl <em>Duration Observation Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DurationObservationActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDurationObservationAction()
+		 * @generated
+		 */
+		EClass DURATION_OBSERVATION_ACTION = eINSTANCE.getDurationObservationAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Duration</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DURATION_OBSERVATION_ACTION__DURATION = eINSTANCE.getDurationObservationAction_Duration();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DurationConstraintImpl <em>Duration Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DurationConstraintImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDurationConstraint()
+		 * @generated
+		 */
+		EClass DURATION_CONSTRAINT = eINSTANCE.getDurationConstraint();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DataStoreNodeImpl <em>Data Store Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DataStoreNodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDataStoreNode()
+		 * @generated
+		 */
+		EClass DATA_STORE_NODE = eINSTANCE.getDataStoreNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.InterruptibleActivityRegionImpl <em>Interruptible Activity Region</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.InterruptibleActivityRegionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInterruptibleActivityRegion()
+		 * @generated
+		 */
+		EClass INTERRUPTIBLE_ACTIVITY_REGION = eINSTANCE.getInterruptibleActivityRegion();
+
+		/**
+		 * The meta object literal for the '<em><b>Interrupting Edge</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE = eINSTANCE.getInterruptibleActivityRegion_InterruptingEdge();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Node</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE = eINSTANCE.getInterruptibleActivityRegion_ContainedNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ParameterSetImpl <em>Parameter Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ParameterSetImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getParameterSet()
+		 * @generated
+		 */
+		EClass PARAMETER_SET = eINSTANCE.getParameterSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER_SET__PARAMETER = eINSTANCE.getParameterSet_Parameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER_SET__CONDITION = eINSTANCE.getParameterSet_Condition();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ComponentImpl <em>Component</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ComponentImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getComponent()
+		 * @generated
+		 */
+		EClass COMPONENT = eINSTANCE.getComponent();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Indirectly Instantiated</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT__IS_INDIRECTLY_INSTANTIATED = eINSTANCE.getComponent_IsIndirectlyInstantiated();
+
+		/**
+		 * The meta object literal for the '<em><b>Required</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT__REQUIRED = eINSTANCE.getComponent_Required();
+
+		/**
+		 * The meta object literal for the '<em><b>Provided</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT__PROVIDED = eINSTANCE.getComponent_Provided();
+
+		/**
+		 * The meta object literal for the '<em><b>Realization</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT__REALIZATION = eINSTANCE.getComponent_Realization();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Member</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT__OWNED_MEMBER = eINSTANCE.getComponent_OwnedMember();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DeploymentImpl <em>Deployment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DeploymentImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDeployment()
+		 * @generated
+		 */
+		EClass DEPLOYMENT = eINSTANCE.getDeployment();
+
+		/**
+		 * The meta object literal for the '<em><b>Deployed Artifact</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEPLOYMENT__DEPLOYED_ARTIFACT = eINSTANCE.getDeployment_DeployedArtifact();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEPLOYMENT__LOCATION = eINSTANCE.getDeployment_Location();
+
+		/**
+		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEPLOYMENT__CONFIGURATION = eINSTANCE.getDeployment_Configuration();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DeployedArtifactImpl <em>Deployed Artifact</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DeployedArtifactImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDeployedArtifact()
+		 * @generated
+		 */
+		EClass DEPLOYED_ARTIFACT = eINSTANCE.getDeployedArtifact();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DeploymentTargetImpl <em>Deployment Target</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DeploymentTargetImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDeploymentTarget()
+		 * @generated
+		 */
+		EClass DEPLOYMENT_TARGET = eINSTANCE.getDeploymentTarget();
+
+		/**
+		 * The meta object literal for the '<em><b>Deployment</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEPLOYMENT_TARGET__DEPLOYMENT = eINSTANCE.getDeploymentTarget_Deployment();
+
+		/**
+		 * The meta object literal for the '<em><b>Deployed Element</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEPLOYMENT_TARGET__DEPLOYED_ELEMENT = eINSTANCE.getDeploymentTarget_DeployedElement();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.NodeImpl <em>Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.NodeImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getNode()
+		 * @generated
+		 */
+		EClass NODE = eINSTANCE.getNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Nested Node</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE__NESTED_NODE = eINSTANCE.getNode_NestedNode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DeviceImpl <em>Device</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DeviceImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDevice()
+		 * @generated
+		 */
+		EClass DEVICE = eINSTANCE.getDevice();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ExecutionEnvironmentImpl <em>Execution Environment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ExecutionEnvironmentImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExecutionEnvironment()
+		 * @generated
+		 */
+		EClass EXECUTION_ENVIRONMENT = eINSTANCE.getExecutionEnvironment();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CommunicationPathImpl <em>Communication Path</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CommunicationPathImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCommunicationPath()
+		 * @generated
+		 */
+		EClass COMMUNICATION_PATH = eINSTANCE.getCommunicationPath();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ProtocolConformanceImpl <em>Protocol Conformance</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ProtocolConformanceImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getProtocolConformance()
+		 * @generated
+		 */
+		EClass PROTOCOL_CONFORMANCE = eINSTANCE.getProtocolConformance();
+
+		/**
+		 * The meta object literal for the '<em><b>Specific Machine</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE = eINSTANCE.getProtocolConformance_SpecificMachine();
+
+		/**
+		 * The meta object literal for the '<em><b>General Machine</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROTOCOL_CONFORMANCE__GENERAL_MACHINE = eINSTANCE.getProtocolConformance_GeneralMachine();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ProtocolStateMachineImpl <em>Protocol State Machine</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ProtocolStateMachineImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getProtocolStateMachine()
+		 * @generated
+		 */
+		EClass PROTOCOL_STATE_MACHINE = eINSTANCE.getProtocolStateMachine();
+
+		/**
+		 * The meta object literal for the '<em><b>Conformance</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROTOCOL_STATE_MACHINE__CONFORMANCE = eINSTANCE.getProtocolStateMachine_Conformance();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ProtocolTransitionImpl <em>Protocol Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ProtocolTransitionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getProtocolTransition()
+		 * @generated
+		 */
+		EClass PROTOCOL_TRANSITION = eINSTANCE.getProtocolTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Post Condition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROTOCOL_TRANSITION__POST_CONDITION = eINSTANCE.getProtocolTransition_PostCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Referred</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROTOCOL_TRANSITION__REFERRED = eINSTANCE.getProtocolTransition_Referred();
+
+		/**
+		 * The meta object literal for the '<em><b>Pre Condition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROTOCOL_TRANSITION__PRE_CONDITION = eINSTANCE.getProtocolTransition_PreCondition();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReadExtentActionImpl <em>Read Extent Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReadExtentActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadExtentAction()
+		 * @generated
+		 */
+		EClass READ_EXTENT_ACTION = eINSTANCE.getReadExtentAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_EXTENT_ACTION__RESULT = eINSTANCE.getReadExtentAction_Result();
+
+		/**
+		 * The meta object literal for the '<em><b>Classifier</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_EXTENT_ACTION__CLASSIFIER = eINSTANCE.getReadExtentAction_Classifier();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReclassifyObjectActionImpl <em>Reclassify Object Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReclassifyObjectActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReclassifyObjectAction()
+		 * @generated
+		 */
+		EClass RECLASSIFY_OBJECT_ACTION = eINSTANCE.getReclassifyObjectAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Replace All</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL = eINSTANCE.getReclassifyObjectAction_IsReplaceAll();
+
+		/**
+		 * The meta object literal for the '<em><b>Old Classifier</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER = eINSTANCE.getReclassifyObjectAction_OldClassifier();
+
+		/**
+		 * The meta object literal for the '<em><b>New Classifier</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER = eINSTANCE.getReclassifyObjectAction_NewClassifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECLASSIFY_OBJECT_ACTION__OBJECT = eINSTANCE.getReclassifyObjectAction_Object();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReadIsClassifiedObjectActionImpl <em>Read Is Classified Object Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReadIsClassifiedObjectActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadIsClassifiedObjectAction()
+		 * @generated
+		 */
+		EClass READ_IS_CLASSIFIED_OBJECT_ACTION = eINSTANCE.getReadIsClassifiedObjectAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Direct</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute READ_IS_CLASSIFIED_OBJECT_ACTION__IS_DIRECT = eINSTANCE.getReadIsClassifiedObjectAction_IsDirect();
+
+		/**
+		 * The meta object literal for the '<em><b>Classifier</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_IS_CLASSIFIED_OBJECT_ACTION__CLASSIFIER = eINSTANCE.getReadIsClassifiedObjectAction_Classifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT = eINSTANCE.getReadIsClassifiedObjectAction_Result();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT = eINSTANCE.getReadIsClassifiedObjectAction_Object();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.StartOwnedBehaviorActionImpl <em>Start Owned Behavior Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.StartOwnedBehaviorActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStartOwnedBehaviorAction()
+		 * @generated
+		 */
+		EClass START_OWNED_BEHAVIOR_ACTION = eINSTANCE.getStartOwnedBehaviorAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference START_OWNED_BEHAVIOR_ACTION__OBJECT = eINSTANCE.getStartOwnedBehaviorAction_Object();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.QualifierValueImpl <em>Qualifier Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.QualifierValueImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getQualifierValue()
+		 * @generated
+		 */
+		EClass QUALIFIER_VALUE = eINSTANCE.getQualifierValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Qualifier</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QUALIFIER_VALUE__QUALIFIER = eINSTANCE.getQualifierValue_Qualifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QUALIFIER_VALUE__VALUE = eINSTANCE.getQualifierValue_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReadLinkObjectEndActionImpl <em>Read Link Object End Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReadLinkObjectEndActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadLinkObjectEndAction()
+		 * @generated
+		 */
+		EClass READ_LINK_OBJECT_END_ACTION = eINSTANCE.getReadLinkObjectEndAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_LINK_OBJECT_END_ACTION__OBJECT = eINSTANCE.getReadLinkObjectEndAction_Object();
+
+		/**
+		 * The meta object literal for the '<em><b>End</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_LINK_OBJECT_END_ACTION__END = eINSTANCE.getReadLinkObjectEndAction_End();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_LINK_OBJECT_END_ACTION__RESULT = eINSTANCE.getReadLinkObjectEndAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReadLinkObjectEndQualifierActionImpl <em>Read Link Object End Qualifier Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReadLinkObjectEndQualifierActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadLinkObjectEndQualifierAction()
+		 * @generated
+		 */
+		EClass READ_LINK_OBJECT_END_QUALIFIER_ACTION = eINSTANCE.getReadLinkObjectEndQualifierAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT = eINSTANCE.getReadLinkObjectEndQualifierAction_Object();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT = eINSTANCE.getReadLinkObjectEndQualifierAction_Result();
+
+		/**
+		 * The meta object literal for the '<em><b>Qualifier</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER = eINSTANCE.getReadLinkObjectEndQualifierAction_Qualifier();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.CreateLinkObjectActionImpl <em>Create Link Object Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.CreateLinkObjectActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCreateLinkObjectAction()
+		 * @generated
+		 */
+		EClass CREATE_LINK_OBJECT_ACTION = eINSTANCE.getCreateLinkObjectAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CREATE_LINK_OBJECT_ACTION__RESULT = eINSTANCE.getCreateLinkObjectAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.AcceptEventActionImpl <em>Accept Event Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.AcceptEventActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAcceptEventAction()
+		 * @generated
+		 */
+		EClass ACCEPT_EVENT_ACTION = eINSTANCE.getAcceptEventAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Trigger</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACCEPT_EVENT_ACTION__TRIGGER = eINSTANCE.getAcceptEventAction_Trigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACCEPT_EVENT_ACTION__RESULT = eINSTANCE.getAcceptEventAction_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.AcceptCallActionImpl <em>Accept Call Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.AcceptCallActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAcceptCallAction()
+		 * @generated
+		 */
+		EClass ACCEPT_CALL_ACTION = eINSTANCE.getAcceptCallAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Return Information</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACCEPT_CALL_ACTION__RETURN_INFORMATION = eINSTANCE.getAcceptCallAction_ReturnInformation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ReplyActionImpl <em>Reply Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.ReplyActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReplyAction()
+		 * @generated
+		 */
+		EClass REPLY_ACTION = eINSTANCE.getReplyAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Reply To Call</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPLY_ACTION__REPLY_TO_CALL = eINSTANCE.getReplyAction_ReplyToCall();
+
+		/**
+		 * The meta object literal for the '<em><b>Reply Value</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPLY_ACTION__REPLY_VALUE = eINSTANCE.getReplyAction_ReplyValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Return Information</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPLY_ACTION__RETURN_INFORMATION = eINSTANCE.getReplyAction_ReturnInformation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.RaiseExceptionActionImpl <em>Raise Exception Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.RaiseExceptionActionImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRaiseExceptionAction()
+		 * @generated
+		 */
+		EClass RAISE_EXCEPTION_ACTION = eINSTANCE.getRaiseExceptionAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Exception</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RAISE_EXCEPTION_ACTION__EXCEPTION = eINSTANCE.getRaiseExceptionAction_Exception();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.impl.DeploymentSpecificationImpl <em>Deployment Specification</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.DeploymentSpecificationImpl
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDeploymentSpecification()
+		 * @generated
+		 */
+		EClass DEPLOYMENT_SPECIFICATION = eINSTANCE.getDeploymentSpecification();
+
+		/**
+		 * The meta object literal for the '<em><b>Deployment Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION = eINSTANCE.getDeploymentSpecification_DeploymentLocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Execution Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION = eINSTANCE.getDeploymentSpecification_ExecutionLocation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.VisibilityKind <em>Visibility Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.VisibilityKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getVisibilityKind()
+		 * @generated
+		 */
+		EEnum VISIBILITY_KIND = eINSTANCE.getVisibilityKind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.ParameterDirectionKind <em>Parameter Direction Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.ParameterDirectionKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getParameterDirectionKind()
+		 * @generated
+		 */
+		EEnum PARAMETER_DIRECTION_KIND = eINSTANCE.getParameterDirectionKind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.AggregationKind <em>Aggregation Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.AggregationKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAggregationKind()
+		 * @generated
+		 */
+		EEnum AGGREGATION_KIND = eINSTANCE.getAggregationKind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.CallConcurrencyKind <em>Call Concurrency Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.CallConcurrencyKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCallConcurrencyKind()
+		 * @generated
+		 */
+		EEnum CALL_CONCURRENCY_KIND = eINSTANCE.getCallConcurrencyKind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.MessageKind <em>Message Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.MessageKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMessageKind()
+		 * @generated
+		 */
+		EEnum MESSAGE_KIND = eINSTANCE.getMessageKind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.MessageSort <em>Message Sort</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.MessageSort
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMessageSort()
+		 * @generated
+		 */
+		EEnum MESSAGE_SORT = eINSTANCE.getMessageSort();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.ExpansionKind <em>Expansion Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.ExpansionKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExpansionKind()
+		 * @generated
+		 */
+		EEnum EXPANSION_KIND = eINSTANCE.getExpansionKind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.InteractionOperator <em>Interaction Operator</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.InteractionOperator
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteractionOperator()
+		 * @generated
+		 */
+		EEnum INTERACTION_OPERATOR = eINSTANCE.getInteractionOperator();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.TransitionKind <em>Transition Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.TransitionKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTransitionKind()
+		 * @generated
+		 */
+		EEnum TRANSITION_KIND = eINSTANCE.getTransitionKind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.PseudostateKind <em>Pseudostate Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.PseudostateKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPseudostateKind()
+		 * @generated
+		 */
+		EEnum PSEUDOSTATE_KIND = eINSTANCE.getPseudostateKind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.ParameterEffectKind <em>Parameter Effect Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.ParameterEffectKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getParameterEffectKind()
+		 * @generated
+		 */
+		EEnum PARAMETER_EFFECT_KIND = eINSTANCE.getParameterEffectKind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.ObjectNodeOrderingKind <em>Object Node Ordering Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.ObjectNodeOrderingKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getObjectNodeOrderingKind()
+		 * @generated
+		 */
+		EEnum OBJECT_NODE_ORDERING_KIND = eINSTANCE.getObjectNodeOrderingKind();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.ConnectorKind <em>Connector Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.ConnectorKind
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConnectorKind()
+		 * @generated
+		 */
+		EEnum CONNECTOR_KIND = eINSTANCE.getConnectorKind();
+
+		/**
+		 * The meta object literal for the '<em>Integer</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteger()
+		 * @generated
+		 */
+		EDataType INTEGER = eINSTANCE.getInteger();
+
+		/**
+		 * The meta object literal for the '<em>Boolean</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getBoolean()
+		 * @generated
+		 */
+		EDataType BOOLEAN = eINSTANCE.getBoolean();
+
+		/**
+		 * The meta object literal for the '<em>String</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getString()
+		 * @generated
+		 */
+		EDataType STRING = eINSTANCE.getString();
+
+		/**
+		 * The meta object literal for the '<em>Unlimited Natural</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getUnlimitedNatural()
+		 * @generated
+		 */
+		EDataType UNLIMITED_NATURAL = eINSTANCE.getUnlimitedNatural();
+
+		/**
+		 * The meta object literal for the '<em>Sequence</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSequence()
+		 * @generated
+		 */
+		EDataType SEQUENCE = eINSTANCE.getSequence();
+
+		/**
+		 * The meta object literal for the '<em>Set</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.Set
+		 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSet()
+		 * @generated
+		 */
+		EDataType SET = eINSTANCE.getSet();
+
+	}
 } //UML2Package

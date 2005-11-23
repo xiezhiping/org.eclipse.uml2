@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: InvocationActionItemProvider.java,v 1.14 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -90,7 +90,7 @@ public class InvocationActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InvocationAction_argument_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InvocationAction_argument_feature", "_UI_InvocationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInvocationAction_Argument(),
+				 UML2Package.Literals.INVOCATION_ACTION__ARGUMENT,
 				 true,
 				 null,
 				 null,
@@ -112,7 +112,7 @@ public class InvocationActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InvocationAction_onPort_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InvocationAction_onPort_feature", "_UI_InvocationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInvocationAction_OnPort(),
+				 UML2Package.Literals.INVOCATION_ACTION__ON_PORT,
 				 true,
 				 null,
 				 null,
@@ -130,7 +130,7 @@ public class InvocationActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getInvocationAction_Argument());
+			childrenFeatures.add(UML2Package.Literals.INVOCATION_ACTION__ARGUMENT);
 		}
 		return childrenFeatures;
 	}
@@ -178,12 +178,12 @@ public class InvocationActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInvocationAction_Argument(),
+				(UML2Package.Literals.INVOCATION_ACTION__ARGUMENT,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInvocationAction_Argument(),
+				(UML2Package.Literals.INVOCATION_ACTION__ARGUMENT,
 				 UML2Factory.eINSTANCE.createValuePin()));
 	}
 
@@ -198,8 +198,8 @@ public class InvocationActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

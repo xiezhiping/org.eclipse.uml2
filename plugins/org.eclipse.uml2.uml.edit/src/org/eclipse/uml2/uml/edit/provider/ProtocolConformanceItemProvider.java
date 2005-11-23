@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: ProtocolConformanceItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,7 +83,7 @@ public class ProtocolConformanceItemProvider
 				getString("_UI_ProtocolConformance_generalMachine_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProtocolConformance_generalMachine_feature", "_UI_ProtocolConformance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProtocolConformance_GeneralMachine(),
+				UMLPackage.Literals.PROTOCOL_CONFORMANCE__GENERAL_MACHINE,
 				true, null, null, null));
 	}
 
@@ -102,7 +102,7 @@ public class ProtocolConformanceItemProvider
 				getString("_UI_ProtocolConformance_specificMachine_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProtocolConformance_specificMachine_feature", "_UI_ProtocolConformance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProtocolConformance_SpecificMachine(),
+				UMLPackage.Literals.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));

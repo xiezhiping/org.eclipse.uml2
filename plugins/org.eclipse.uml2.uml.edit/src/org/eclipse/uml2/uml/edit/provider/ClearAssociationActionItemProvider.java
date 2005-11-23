@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationActionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ClearAssociationActionItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,7 +86,7 @@ public class ClearAssociationActionItemProvider
 				getString("_UI_ClearAssociationAction_object_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ClearAssociationAction_object_feature", "_UI_ClearAssociationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClearAssociationAction_Object(), true,
+				UMLPackage.Literals.CLEAR_ASSOCIATION_ACTION__OBJECT, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -107,7 +107,7 @@ public class ClearAssociationActionItemProvider
 				getString("_UI_ClearAssociationAction_association_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ClearAssociationAction_association_feature", "_UI_ClearAssociationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClearAssociationAction_Association(),
+				UMLPackage.Literals.CLEAR_ASSOCIATION_ACTION__ASSOCIATION,
 				true, null, null, null));
 	}
 
@@ -122,8 +122,8 @@ public class ClearAssociationActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getClearAssociationAction_Object());
+			childrenFeatures
+				.add(UMLPackage.Literals.CLEAR_ASSOCIATION_ACTION__OBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -182,17 +182,17 @@ public class ClearAssociationActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClearAssociationAction_Object(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLEAR_ASSOCIATION_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClearAssociationAction_Object(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLEAR_ASSOCIATION_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClearAssociationAction_Object(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLEAR_ASSOCIATION_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -206,10 +206,8 @@ public class ClearAssociationActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

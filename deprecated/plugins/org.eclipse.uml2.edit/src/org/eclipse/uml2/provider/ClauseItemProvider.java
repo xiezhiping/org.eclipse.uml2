@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ClauseItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -90,7 +90,7 @@ public class ClauseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Clause_test_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Clause_test_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClause_Test(),
+				 UML2Package.Literals.CLAUSE__TEST,
 				 true,
 				 null,
 				 null,
@@ -110,7 +110,7 @@ public class ClauseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Clause_body_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Clause_body_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClause_Body(),
+				 UML2Package.Literals.CLAUSE__BODY,
 				 true,
 				 null,
 				 null,
@@ -130,7 +130,7 @@ public class ClauseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Clause_predecessorClause_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Clause_predecessorClause_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClause_PredecessorClause(),
+				 UML2Package.Literals.CLAUSE__PREDECESSOR_CLAUSE,
 				 true,
 				 null,
 				 null,
@@ -150,7 +150,7 @@ public class ClauseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Clause_successorClause_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Clause_successorClause_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClause_SuccessorClause(),
+				 UML2Package.Literals.CLAUSE__SUCCESSOR_CLAUSE,
 				 true,
 				 null,
 				 null,
@@ -170,7 +170,7 @@ public class ClauseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Clause_decider_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Clause_decider_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClause_Decider(),
+				 UML2Package.Literals.CLAUSE__DECIDER,
 				 true,
 				 null,
 				 null,
@@ -190,7 +190,7 @@ public class ClauseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Clause_bodyOutput_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Clause_bodyOutput_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClause_BodyOutput(),
+				 UML2Package.Literals.CLAUSE__BODY_OUTPUT,
 				 true,
 				 null,
 				 null,

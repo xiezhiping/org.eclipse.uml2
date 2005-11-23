@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.5 2005/11/23 13:27:41 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.6 2005/11/23 20:01:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -129,7 +129,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getStructuredActivityNode();
+		return UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE;
 	}
 
 	/**
@@ -359,11 +359,10 @@ public class StructuredActivityNodeImpl
 	public List getImportedMembers() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getNamespace_ImportedMember());
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER);
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE
-					.getNamespace_ImportedMember(),
+				cache.put(this, UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER,
 					result = NamespaceOperations.getImportedMembers(this));
 			}
 			return result;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterImpl.java,v 1.8 2005/11/04 22:22:59 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterImpl.java,v 1.9 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class ConnectableElementTemplateParameterImpl extends TemplateParameterIm
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getConnectableElementTemplateParameter();
+		return UML2Package.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER;
 	}
 
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralItemProvider.java,v 1.12 2005/09/23 20:14:52 khussey Exp $
+ * $Id: EnumerationLiteralItemProvider.java,v 1.13 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -87,7 +87,7 @@ public class EnumerationLiteralItemProvider
 				 getResourceLocator(),
 				 getString("_UI_EnumerationLiteral_enumeration_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EnumerationLiteral_enumeration_feature", "_UI_EnumerationLiteral_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getEnumerationLiteral_Enumeration(),
+				 UML2Package.Literals.ENUMERATION_LITERAL__ENUMERATION,
 				 true,
 				 null,
 				 null,

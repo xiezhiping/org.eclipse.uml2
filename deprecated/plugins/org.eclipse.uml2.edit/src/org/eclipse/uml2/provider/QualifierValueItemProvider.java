@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: QualifierValueItemProvider.java,v 1.14 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class QualifierValueItemProvider
 				 getResourceLocator(),
 				 getString("_UI_QualifierValue_qualifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_QualifierValue_qualifier_feature", "_UI_QualifierValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getQualifierValue_Qualifier(),
+				 UML2Package.Literals.QUALIFIER_VALUE__QUALIFIER,
 				 true,
 				 null,
 				 null,
@@ -106,7 +106,7 @@ public class QualifierValueItemProvider
 				 getResourceLocator(),
 				 getString("_UI_QualifierValue_value_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_QualifierValue_value_feature", "_UI_QualifierValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getQualifierValue_Value(),
+				 UML2Package.Literals.QUALIFIER_VALUE__VALUE,
 				 true,
 				 null,
 				 null,

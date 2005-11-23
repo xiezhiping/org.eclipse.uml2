@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.21 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.22 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -89,7 +89,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getProtocolTransition();
+		return UML2Package.Literals.PROTOCOL_TRANSITION;
 	}
 
 	/**
@@ -208,16 +208,16 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getProtocolTransition_Referred());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.PROTOCOL_TRANSITION__REFERRED);
 
 			if (result == null) {
 				EList referreds = ProtocolTransitionOperations
 					.getReferreds(this);
-				cache.put(this, UML2Package.eINSTANCE
-					.getProtocolTransition_Referred(),
+				cache.put(this,
+					UML2Package.Literals.PROTOCOL_TRANSITION__REFERRED,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getProtocolTransition_Referred(),
+						UML2Package.Literals.PROTOCOL_TRANSITION__REFERRED,
 						referreds.size(), referreds.toArray()));
 			}
 
@@ -225,9 +225,9 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 		}
 
 		EList referreds = ProtocolTransitionOperations.getReferreds(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getProtocolTransition_Referred(), referreds.size(), referreds
-			.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.PROTOCOL_TRANSITION__REFERRED, referreds
+				.size(), referreds.toArray());
 	}
 
 	/**

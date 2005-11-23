@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -95,7 +95,7 @@ public class ReadIsClassifiedObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReadIsClassifiedObjectAction_isDirect_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReadIsClassifiedObjectAction_isDirect_feature", "_UI_ReadIsClassifiedObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_IsDirect(),
+				 UML2Package.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_DIRECT,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -115,7 +115,7 @@ public class ReadIsClassifiedObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReadIsClassifiedObjectAction_classifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReadIsClassifiedObjectAction_classifier_feature", "_UI_ReadIsClassifiedObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Classifier(),
+				 UML2Package.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__CLASSIFIER,
 				 true,
 				 null,
 				 null,
@@ -135,7 +135,7 @@ public class ReadIsClassifiedObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReadIsClassifiedObjectAction_result_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReadIsClassifiedObjectAction_result_feature", "_UI_ReadIsClassifiedObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Result(),
+				 UML2Package.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT,
 				 true,
 				 null,
 				 null,
@@ -157,7 +157,7 @@ public class ReadIsClassifiedObjectActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReadIsClassifiedObjectAction_object_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReadIsClassifiedObjectAction_object_feature", "_UI_ReadIsClassifiedObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Object(),
+				 UML2Package.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT,
 				 true,
 				 null,
 				 null,
@@ -177,8 +177,8 @@ public class ReadIsClassifiedObjectActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Result());
-			childrenFeatures.add(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Object());
+			childrenFeatures.add(UML2Package.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT);
+			childrenFeatures.add(UML2Package.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -251,17 +251,17 @@ public class ReadIsClassifiedObjectActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Result(),
+				(UML2Package.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT,
 				 UML2Factory.eINSTANCE.createOutputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Object(),
+				(UML2Package.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Object(),
+				(UML2Package.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT,
 				 UML2Factory.eINSTANCE.createValuePin()));
 	}
 
@@ -276,8 +276,8 @@ public class ReadIsClassifiedObjectActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

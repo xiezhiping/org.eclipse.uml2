@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeployedArtifactImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: DeployedArtifactImpl.java,v 1.2 2005/11/23 20:01:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,7 @@ public abstract class DeployedArtifactImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getDeployedArtifact();
+		return UMLPackage.Literals.DEPLOYED_ARTIFACT;
 	}
 
 } //DeployedArtifactImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.43 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ClassImpl.java,v 1.44 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -132,7 +132,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getClass_();
+		return UML2Package.Literals.CLASS;
 	}
 
 	/**
@@ -212,23 +212,24 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getStructuredClassifier_Part());
+				UML2Package.Literals.STRUCTURED_CLASSIFIER__PART);
 
 			if (result == null) {
 				EList parts = StructuredClassifierOperations.getParts(this);
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getStructuredClassifier_Part(),
+				cache.put(eResource(), this,
+					UML2Package.Literals.STRUCTURED_CLASSIFIER__PART,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getStructuredClassifier_Part(),
-						parts.size(), parts.toArray()));
+						UML2Package.Literals.STRUCTURED_CLASSIFIER__PART, parts
+							.size(), parts.toArray()));
 			}
 
 			return result;
 		}
 
 		EList parts = StructuredClassifierOperations.getParts(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getStructuredClassifier_Part(), parts.size(), parts.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.STRUCTURED_CLASSIFIER__PART, parts.size(),
+			parts.toArray());
 	}
 
 	/**
@@ -617,23 +618,24 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getClass_SuperClass());
+				UML2Package.Literals.CLASS__SUPER_CLASS);
 
 			if (result == null) {
 				EList superClasses = ClassOperations.getSuperClasses(this);
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getClass_SuperClass(),
+				cache.put(eResource(), this,
+					UML2Package.Literals.CLASS__SUPER_CLASS,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getClass_SuperClass(),
-						superClasses.size(), superClasses.toArray()));
+						UML2Package.Literals.CLASS__SUPER_CLASS, superClasses
+							.size(), superClasses.toArray()));
 			}
 
 			return result;
 		}
 
 		EList superClasses = ClassOperations.getSuperClasses(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getClass_SuperClass(), superClasses.size(), superClasses.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.CLASS__SUPER_CLASS, superClasses.size(),
+			superClasses.toArray());
 	}
 	
 	/**
@@ -669,14 +671,14 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getClass_Extension());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.CLASS__EXTENSION);
 
 			if (result == null) {
 				Set extensions = ClassOperations.getExtensions(this);
-				cache.put(this, UML2Package.eINSTANCE.getClass_Extension(),
+				cache.put(this, UML2Package.Literals.CLASS__EXTENSION,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getClass_Extension(), extensions
+						UML2Package.Literals.CLASS__EXTENSION, extensions
 							.size(), extensions.toArray()));
 			}
 
@@ -684,8 +686,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		}
 
 		Set extensions = ClassOperations.getExtensions(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getClass_Extension(), extensions.size(), extensions.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.CLASS__EXTENSION, extensions.size(),
+			extensions.toArray());
 	}
 
 	/**

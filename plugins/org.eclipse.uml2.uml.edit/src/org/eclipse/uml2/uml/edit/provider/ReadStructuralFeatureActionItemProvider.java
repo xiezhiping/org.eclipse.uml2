@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: ReadStructuralFeatureActionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,7 +85,7 @@ public class ReadStructuralFeatureActionItemProvider
 				getString("_UI_ReadStructuralFeatureAction_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadStructuralFeatureAction_result_feature", "_UI_ReadStructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReadStructuralFeatureAction_Result(),
+				UMLPackage.Literals.READ_STRUCTURAL_FEATURE_ACTION__RESULT,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -102,8 +102,8 @@ public class ReadStructuralFeatureActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getReadStructuralFeatureAction_Result());
+			childrenFeatures
+				.add(UMLPackage.Literals.READ_STRUCTURAL_FEATURE_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -162,9 +162,9 @@ public class ReadStructuralFeatureActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReadStructuralFeatureAction_Result(), UMLFactory.eINSTANCE
-			.createOutputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.READ_STRUCTURAL_FEATURE_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**
@@ -178,10 +178,8 @@ public class ReadStructuralFeatureActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: ExtendItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -91,9 +91,8 @@ public class ExtendItemProvider
 				getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Relationship_relatedElement_feature", "_UI_Relationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRelationship_RelatedElement(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -112,9 +111,8 @@ public class ExtendItemProvider
 				getString("_UI_DirectedRelationship_source_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_source_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDirectedRelationship_Source(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -133,9 +131,8 @@ public class ExtendItemProvider
 				getString("_UI_DirectedRelationship_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_target_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDirectedRelationship_Target(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -154,8 +151,8 @@ public class ExtendItemProvider
 				getString("_UI_Extend_extendedCase_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Extend_extendedCase_feature", "_UI_Extend_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExtend_ExtendedCase(), true, null,
-				null, null));
+				UMLPackage.Literals.EXTEND__EXTENDED_CASE, true, null, null,
+				null));
 	}
 
 	/**
@@ -173,7 +170,7 @@ public class ExtendItemProvider
 				getString("_UI_Extend_condition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Extend_condition_feature", "_UI_Extend_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExtend_Condition(), true, null, null,
+				UMLPackage.Literals.EXTEND__CONDITION, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -193,7 +190,7 @@ public class ExtendItemProvider
 				getString("_UI_Extend_extensionLocation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Extend_extensionLocation_feature", "_UI_Extend_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExtend_ExtensionLocation(), true, null,
+				UMLPackage.Literals.EXTEND__EXTENSION_LOCATION, true, null,
 				null, null));
 	}
 
@@ -212,7 +209,7 @@ public class ExtendItemProvider
 				getString("_UI_Extend_extension_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Extend_extension_feature", "_UI_Extend_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExtend_Extension(), true, null, null,
+				UMLPackage.Literals.EXTEND__EXTENSION, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -228,7 +225,7 @@ public class ExtendItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getExtend_Condition());
+			childrenFeatures.add(UMLPackage.Literals.EXTEND__CONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -286,25 +283,25 @@ public class ExtendItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getExtend_Condition(), UMLFactory.eINSTANCE.createConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.EXTEND__CONDITION, UMLFactory.eINSTANCE
+				.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getExtend_Condition(), UMLFactory.eINSTANCE
-			.createInteractionConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.EXTEND__CONDITION, UMLFactory.eINSTANCE
+				.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getExtend_Condition(), UMLFactory.eINSTANCE
-			.createIntervalConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.EXTEND__CONDITION, UMLFactory.eINSTANCE
+				.createIntervalConstraint()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getExtend_Condition(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.EXTEND__CONDITION, UMLFactory.eINSTANCE
 				.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getExtend_Condition(), UMLFactory.eINSTANCE
-			.createDurationConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.EXTEND__CONDITION, UMLFactory.eINSTANCE
+				.createDurationConstraint()));
 	}
 
 	/**

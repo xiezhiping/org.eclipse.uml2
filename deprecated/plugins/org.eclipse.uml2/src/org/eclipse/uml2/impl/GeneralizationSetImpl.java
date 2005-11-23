@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.17 2005/11/23 13:25:33 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.18 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -110,7 +110,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getGeneralizationSet();
+		return UML2Package.Literals.GENERALIZATION_SET;
 	}
 
 	/**

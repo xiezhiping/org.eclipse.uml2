@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseItemProvider.java,v 1.1 2005/11/14 22:11:32 khussey Exp $
+ * $Id: ClauseItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,7 +87,7 @@ public class ClauseItemProvider
 				getString("_UI_Clause_test_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Clause_test_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClause_Test(), true, null, null, null));
+				UMLPackage.Literals.CLAUSE__TEST, true, null, null, null));
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class ClauseItemProvider
 				getString("_UI_Clause_body_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Clause_body_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClause_Body(), true, null, null, null));
+				UMLPackage.Literals.CLAUSE__BODY, true, null, null, null));
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class ClauseItemProvider
 				getString("_UI_Clause_predecessorClause_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Clause_predecessorClause_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClause_PredecessorClause(), true, null,
+				UMLPackage.Literals.CLAUSE__PREDECESSOR_CLAUSE, true, null,
 				null, null));
 	}
 
@@ -142,8 +142,8 @@ public class ClauseItemProvider
 				getString("_UI_Clause_successorClause_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Clause_successorClause_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClause_SuccessorClause(), true, null,
-				null, null));
+				UMLPackage.Literals.CLAUSE__SUCCESSOR_CLAUSE, true, null, null,
+				null));
 	}
 
 	/**
@@ -161,8 +161,7 @@ public class ClauseItemProvider
 				getString("_UI_Clause_decider_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Clause_decider_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClause_Decider(), true, null, null,
-				null));
+				UMLPackage.Literals.CLAUSE__DECIDER, true, null, null, null));
 	}
 
 	/**
@@ -180,8 +179,7 @@ public class ClauseItemProvider
 				getString("_UI_Clause_bodyOutput_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Clause_bodyOutput_feature", "_UI_Clause_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClause_BodyOutput(), true, null, null,
-				null));
+				UMLPackage.Literals.CLAUSE__BODY_OUTPUT, true, null, null, null));
 	}
 
 	/**

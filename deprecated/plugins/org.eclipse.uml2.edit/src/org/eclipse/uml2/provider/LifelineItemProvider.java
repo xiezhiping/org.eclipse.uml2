@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: LifelineItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class LifelineItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Lifeline_coveredBy_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Lifeline_coveredBy_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getLifeline_CoveredBy(),
+				 UML2Package.Literals.LIFELINE__COVERED_BY,
 				 true,
 				 null,
 				 null,
@@ -113,7 +113,7 @@ public class LifelineItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Lifeline_represents_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Lifeline_represents_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getLifeline_Represents(),
+				 UML2Package.Literals.LIFELINE__REPRESENTS,
 				 true,
 				 null,
 				 null,
@@ -133,7 +133,7 @@ public class LifelineItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Lifeline_interaction_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Lifeline_interaction_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getLifeline_Interaction(),
+				 UML2Package.Literals.LIFELINE__INTERACTION,
 				 true,
 				 null,
 				 null,
@@ -155,7 +155,7 @@ public class LifelineItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Lifeline_selector_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Lifeline_selector_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getLifeline_Selector(),
+				 UML2Package.Literals.LIFELINE__SELECTOR,
 				 true,
 				 null,
 				 null,
@@ -177,7 +177,7 @@ public class LifelineItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Lifeline_decomposedAs_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Lifeline_decomposedAs_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getLifeline_DecomposedAs(),
+				 UML2Package.Literals.LIFELINE__DECOMPOSED_AS,
 				 true,
 				 null,
 				 null,
@@ -195,7 +195,7 @@ public class LifelineItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getLifeline_Selector());
+			childrenFeatures.add(UML2Package.Literals.LIFELINE__SELECTOR);
 		}
 		return childrenFeatures;
 	}
@@ -252,12 +252,12 @@ public class LifelineItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getLifeline_Selector(),
+				(UML2Package.Literals.LIFELINE__SELECTOR,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getLifeline_Selector(),
+				(UML2Package.Literals.LIFELINE__SELECTOR,
 				 UML2Factory.eINSTANCE.createExpression()));
 	}
 

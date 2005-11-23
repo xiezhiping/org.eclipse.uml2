@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.20 2005/11/23 13:25:33 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionImpl.java,v 1.21 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -105,7 +105,7 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getAddStructuralFeatureValueAction();
+		return UML2Package.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION;
 	}
 
 	/**

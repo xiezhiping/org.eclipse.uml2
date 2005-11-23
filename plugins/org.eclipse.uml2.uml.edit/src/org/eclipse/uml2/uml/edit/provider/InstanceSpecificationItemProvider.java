@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: InstanceSpecificationItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -99,9 +99,8 @@ public class InstanceSpecificationItemProvider
 				getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getParameterableElement_TemplateParameter(), true, null,
-				null, null));
+				UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
+				true, null, null, null));
 	}
 
 	/**
@@ -119,9 +118,8 @@ public class InstanceSpecificationItemProvider
 				getString("_UI_ParameterableElement_owningTemplateParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningTemplateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getParameterableElement_OwningTemplateParameter(), true,
-				null, null,
+				UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -141,8 +139,8 @@ public class InstanceSpecificationItemProvider
 				getString("_UI_InstanceSpecification_classifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InstanceSpecification_classifier_feature", "_UI_InstanceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInstanceSpecification_Classifier(),
-				true, null, null, null));
+				UMLPackage.Literals.INSTANCE_SPECIFICATION__CLASSIFIER, true,
+				null, null, null));
 	}
 
 	/**
@@ -160,7 +158,7 @@ public class InstanceSpecificationItemProvider
 				getString("_UI_InstanceSpecification_specification_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InstanceSpecification_specification_feature", "_UI_InstanceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInstanceSpecification_Specification(),
+				UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -181,9 +179,8 @@ public class InstanceSpecificationItemProvider
 				getString("_UI_InstanceSpecification_slot_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InstanceSpecification_slot_feature", "_UI_InstanceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInstanceSpecification_Slot(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.INSTANCE_SPECIFICATION__SLOT, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -198,10 +195,10 @@ public class InstanceSpecificationItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getInstanceSpecification_Specification());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getInstanceSpecification_Slot());
+			childrenFeatures
+				.add(UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION);
+			childrenFeatures
+				.add(UMLPackage.Literals.INSTANCE_SPECIFICATION__SLOT);
 		}
 		return childrenFeatures;
 	}
@@ -273,66 +270,65 @@ public class InstanceSpecificationItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createOpaqueExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createLiteralInteger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createLiteralString()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createLiteralBoolean()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createLiteralNull()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createInstanceValue()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createLiteralUnlimitedNatural()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createTimeExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createDuration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createDurationInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInstanceSpecification_Specification(), UMLFactory.eINSTANCE
-			.createTimeInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getInstanceSpecification_Slot(), UMLFactory.eINSTANCE
-				.createSlot()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SLOT,
+			UMLFactory.eINSTANCE.createSlot()));
 	}
 
 	/**
@@ -346,10 +342,8 @@ public class InstanceSpecificationItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getInstanceSpecification_Specification();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -377,17 +371,21 @@ public class InstanceSpecificationItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.eINSTANCE
-			.getParameterableElement_OwningTemplateParameter()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getParameterableElement_TemplateParameter()}, value);
+		if (feature == UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER},
+				value);
 		}
-		if (feature == UMLPackage.eINSTANCE
-			.getParameterableElement_TemplateParameter()) {
-			return new SupersetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getParameterableElement_OwningTemplateParameter()}, value);
+		if (feature == UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) {
+			return new SupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: TimeObservationActionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,9 +83,8 @@ public class TimeObservationActionItemProvider
 				getString("_UI_TimeObservationAction_now_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TimeObservationAction_now_feature", "_UI_TimeObservationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTimeObservationAction_Now(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.TIME_OBSERVATION_ACTION__NOW, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -148,14 +147,10 @@ public class TimeObservationActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getStructuralFeatureAction_Object()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getWriteStructuralFeatureAction_Value();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT
+			|| childFeature == UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

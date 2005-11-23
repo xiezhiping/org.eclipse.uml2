@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: TemplateBindingItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,8 +87,8 @@ public class TemplateBindingItemProvider
 				getString("_UI_TemplateBinding_signature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateBinding_signature_feature", "_UI_TemplateBinding_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateBinding_Signature(), true,
-				null, null, null));
+				UMLPackage.Literals.TEMPLATE_BINDING__SIGNATURE, true, null,
+				null, null));
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class TemplateBindingItemProvider
 				getString("_UI_TemplateBinding_parameterSubstitution_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateBinding_parameterSubstitution_feature", "_UI_TemplateBinding_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateBinding_ParameterSubstitution(),
+				UMLPackage.Literals.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -127,7 +127,7 @@ public class TemplateBindingItemProvider
 				getString("_UI_TemplateBinding_boundElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateBinding_boundElement_feature", "_UI_TemplateBinding_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateBinding_BoundElement(), true,
+				UMLPackage.Literals.TEMPLATE_BINDING__BOUND_ELEMENT, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -144,8 +144,8 @@ public class TemplateBindingItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateBinding_ParameterSubstitution());
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
 		}
 		return childrenFeatures;
 	}
@@ -200,9 +200,9 @@ public class TemplateBindingItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateBinding_ParameterSubstitution(), UMLFactory.eINSTANCE
-			.createTemplateParameterSubstitution()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,
+			UMLFactory.eINSTANCE.createTemplateParameterSubstitution()));
 	}
 
 	/**

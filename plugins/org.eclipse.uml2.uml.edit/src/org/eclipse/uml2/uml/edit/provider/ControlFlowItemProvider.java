@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ControlFlowItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ControlFlowItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -124,10 +124,9 @@ public class ControlFlowItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE.getActivityEdge_Guard()
-			|| childFeature == UMLPackage.eINSTANCE.getActivityEdge_Weight();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.ACTIVITY_EDGE__GUARD
+			|| childFeature == UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

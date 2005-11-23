@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.19 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.20 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -75,7 +75,7 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getExecutableNode();
+		return UML2Package.Literals.EXECUTABLE_NODE;
 	}
 
 	/**

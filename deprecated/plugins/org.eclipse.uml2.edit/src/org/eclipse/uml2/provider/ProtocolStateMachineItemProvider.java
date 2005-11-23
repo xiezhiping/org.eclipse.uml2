@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineItemProvider.java,v 1.22 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ProtocolStateMachineItemProvider.java,v 1.23 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class ProtocolStateMachineItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ProtocolStateMachine_conformance_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProtocolStateMachine_conformance_feature", "_UI_ProtocolStateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProtocolStateMachine_Conformance(),
+				 UML2Package.Literals.PROTOCOL_STATE_MACHINE__CONFORMANCE,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class ProtocolStateMachineItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getProtocolStateMachine_Conformance());
+			childrenFeatures.add(UML2Package.Literals.PROTOCOL_STATE_MACHINE__CONFORMANCE);
 		}
 		return childrenFeatures;
 	}
@@ -166,7 +166,7 @@ public class ProtocolStateMachineItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProtocolStateMachine_Conformance(),
+				(UML2Package.Literals.PROTOCOL_STATE_MACHINE__CONFORMANCE,
 				 UML2Factory.eINSTANCE.createProtocolConformance()));
 	}
 
@@ -181,12 +181,12 @@ public class ProtocolStateMachineItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
-			childFeature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			childFeature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			childFeature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
+			childFeature == UML2Package.Literals.CLASSIFIER__OWNED_USE_CASE ||
+			childFeature == UML2Package.Literals.CLASS__NESTED_CLASSIFIER ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE ||
+			childFeature == UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE ||
+			childFeature == UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT;
 
 		if (qualify) {
 			return getString

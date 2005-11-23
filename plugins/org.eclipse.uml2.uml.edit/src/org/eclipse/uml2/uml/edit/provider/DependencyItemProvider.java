@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: DependencyItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,9 +87,8 @@ public class DependencyItemProvider
 				getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Relationship_relatedElement_feature", "_UI_Relationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRelationship_RelatedElement(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -108,9 +107,8 @@ public class DependencyItemProvider
 				getString("_UI_DirectedRelationship_source_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_source_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDirectedRelationship_Source(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -129,9 +127,8 @@ public class DependencyItemProvider
 				getString("_UI_DirectedRelationship_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_target_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDirectedRelationship_Target(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -150,8 +147,8 @@ public class DependencyItemProvider
 				getString("_UI_Dependency_supplier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Dependency_supplier_feature", "_UI_Dependency_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDependency_Supplier(), true, null,
-				null, null));
+				UMLPackage.Literals.DEPENDENCY__SUPPLIER, true, null, null,
+				null));
 	}
 
 	/**
@@ -169,8 +166,7 @@ public class DependencyItemProvider
 				getString("_UI_Dependency_client_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Dependency_client_feature", "_UI_Dependency_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDependency_Client(), true, null, null,
-				null));
+				UMLPackage.Literals.DEPENDENCY__CLIENT, true, null, null, null));
 	}
 
 	/**

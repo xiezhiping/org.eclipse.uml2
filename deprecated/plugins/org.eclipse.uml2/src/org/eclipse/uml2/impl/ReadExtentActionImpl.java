@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentActionImpl.java,v 1.21 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ReadExtentActionImpl.java,v 1.22 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,7 +77,7 @@ public class ReadExtentActionImpl extends ActionImpl implements ReadExtentAction
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getReadExtentAction();
+		return UML2Package.Literals.READ_EXTENT_ACTION;
 	}
 
 	/**

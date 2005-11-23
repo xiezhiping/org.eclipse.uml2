@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionImpl.java,v 1.15 2005/11/23 13:25:32 khussey Exp $
+ * $Id: CallBehaviorActionImpl.java,v 1.16 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,7 +66,7 @@ public class CallBehaviorActionImpl extends CallActionImpl implements CallBehavi
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getCallBehaviorAction();
+		return UML2Package.Literals.CALL_BEHAVIOR_ACTION;
 	}
 
 	/**

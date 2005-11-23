@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.4 2005/11/23 13:27:41 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.5 2005/11/23 20:01:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -75,7 +75,7 @@ public abstract class DeploymentTargetImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getDeploymentTarget();
+		return UMLPackage.Literals.DEPLOYMENT_TARGET;
 	}
 
 	/**
@@ -167,11 +167,11 @@ public abstract class DeploymentTargetImpl
 	public List getDeployedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getDeploymentTarget_DeployedElement());
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE
-					.getDeploymentTarget_DeployedElement(),
+				cache.put(this,
+					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
 					result = DeploymentTargetOperations
 						.getDeployedElements(this));
 			}

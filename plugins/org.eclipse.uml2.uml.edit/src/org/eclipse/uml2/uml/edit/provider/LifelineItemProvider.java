@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: LifelineItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -89,8 +89,8 @@ public class LifelineItemProvider
 				getString("_UI_Lifeline_represents_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Lifeline_represents_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLifeline_Represents(), true, null,
-				null, null));
+				UMLPackage.Literals.LIFELINE__REPRESENTS, true, null, null,
+				null));
 	}
 
 	/**
@@ -108,8 +108,8 @@ public class LifelineItemProvider
 				getString("_UI_Lifeline_interaction_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Lifeline_interaction_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLifeline_Interaction(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.LIFELINE__INTERACTION, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -128,7 +128,7 @@ public class LifelineItemProvider
 				getString("_UI_Lifeline_selector_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Lifeline_selector_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLifeline_Selector(), true, null, null,
+				UMLPackage.Literals.LIFELINE__SELECTOR, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -148,8 +148,8 @@ public class LifelineItemProvider
 				getString("_UI_Lifeline_decomposedAs_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Lifeline_decomposedAs_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLifeline_DecomposedAs(), true, null,
-				null, null));
+				UMLPackage.Literals.LIFELINE__DECOMPOSED_AS, true, null, null,
+				null));
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class LifelineItemProvider
 				getString("_UI_Lifeline_coveredBy_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Lifeline_coveredBy_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLifeline_CoveredBy(), true, null, null,
+				UMLPackage.Literals.LIFELINE__COVERED_BY, true, null, null,
 				null));
 	}
 
@@ -182,7 +182,7 @@ public class LifelineItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getLifeline_Selector());
+			childrenFeatures.add(UMLPackage.Literals.LIFELINE__SELECTOR);
 		}
 		return childrenFeatures;
 	}
@@ -240,59 +240,60 @@ public class LifelineItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE
-			.createOpaqueExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE.createExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE
-			.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE
-			.createLiteralInteger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createLiteralInteger()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getLifeline_Selector(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
 				.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE
-			.createLiteralBoolean()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE.createLiteralNull()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createLiteralNull()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getLifeline_Selector(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
 				.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE
-			.createLiteralUnlimitedNatural()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE
-			.createTimeExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE.createDuration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE.createInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getLifeline_Selector(), UMLFactory.eINSTANCE
-			.createDurationInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
+				.createDurationInterval()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getLifeline_Selector(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
 				.createTimeInterval()));
 	}
 
@@ -307,9 +308,8 @@ public class LifelineItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE.getLifeline_Selector();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.LIFELINE__SELECTOR;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

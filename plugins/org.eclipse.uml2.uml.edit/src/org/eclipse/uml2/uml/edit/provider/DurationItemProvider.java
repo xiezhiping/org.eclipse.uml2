@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: DurationItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,7 +86,7 @@ public class DurationItemProvider
 				getString("_UI_Duration_firstTime_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Duration_firstTime_feature", "_UI_Duration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDuration_FirstTime(), true,
+				UMLPackage.Literals.DURATION__FIRST_TIME, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -105,8 +105,7 @@ public class DurationItemProvider
 				getString("_UI_Duration_event_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Duration_event_feature", "_UI_Duration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDuration_Event(), true, null, null,
-				null));
+				UMLPackage.Literals.DURATION__EVENT, true, null, null, null));
 	}
 
 	/**

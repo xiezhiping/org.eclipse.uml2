@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: EventOccurrenceItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class EventOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MessageEnd_receiveMessage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_receiveMessage_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMessageEnd_ReceiveMessage(),
+				 UML2Package.Literals.MESSAGE_END__RECEIVE_MESSAGE,
 				 true,
 				 null,
 				 null,
@@ -111,7 +111,7 @@ public class EventOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MessageEnd_sendMessage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_sendMessage_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMessageEnd_SendMessage(),
+				 UML2Package.Literals.MESSAGE_END__SEND_MESSAGE,
 				 true,
 				 null,
 				 null,
@@ -131,7 +131,7 @@ public class EventOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_startExec_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EventOccurrence_startExec_feature", "_UI_EventOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getEventOccurrence_StartExec(),
+				 UML2Package.Literals.EVENT_OCCURRENCE__START_EXEC,
 				 true,
 				 null,
 				 null,
@@ -151,7 +151,7 @@ public class EventOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_finishExec_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EventOccurrence_finishExec_feature", "_UI_EventOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getEventOccurrence_FinishExec(),
+				 UML2Package.Literals.EVENT_OCCURRENCE__FINISH_EXEC,
 				 true,
 				 null,
 				 null,
@@ -171,7 +171,7 @@ public class EventOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_toAfter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EventOccurrence_toAfter_feature", "_UI_EventOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getEventOccurrence_ToAfter(),
+				 UML2Package.Literals.EVENT_OCCURRENCE__TO_AFTER,
 				 true,
 				 null,
 				 null,
@@ -191,7 +191,7 @@ public class EventOccurrenceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_toBefore_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EventOccurrence_toBefore_feature", "_UI_EventOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getEventOccurrence_ToBefore(),
+				 UML2Package.Literals.EVENT_OCCURRENCE__TO_BEFORE,
 				 true,
 				 null,
 				 null,

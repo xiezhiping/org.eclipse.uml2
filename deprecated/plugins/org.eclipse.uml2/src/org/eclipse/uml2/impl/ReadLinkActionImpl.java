@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionImpl.java,v 1.20 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ReadLinkActionImpl.java,v 1.21 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -75,7 +75,7 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getReadLinkAction();
+		return UML2Package.Literals.READ_LINK_ACTION;
 	}
 
 	/**

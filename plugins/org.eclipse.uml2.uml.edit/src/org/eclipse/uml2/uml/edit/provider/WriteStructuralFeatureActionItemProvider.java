@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: WriteStructuralFeatureActionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,7 +86,7 @@ public class WriteStructuralFeatureActionItemProvider
 				getString("_UI_WriteStructuralFeatureAction_value_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_WriteStructuralFeatureAction_value_feature", "_UI_WriteStructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getWriteStructuralFeatureAction_Value(),
+				UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -103,8 +103,8 @@ public class WriteStructuralFeatureActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getWriteStructuralFeatureAction_Value());
+			childrenFeatures
+				.add(UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -152,17 +152,17 @@ public class WriteStructuralFeatureActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getWriteStructuralFeatureAction_Value(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getWriteStructuralFeatureAction_Value(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getWriteStructuralFeatureAction_Value(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -176,14 +176,10 @@ public class WriteStructuralFeatureActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getStructuralFeatureAction_Object()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getWriteStructuralFeatureAction_Value();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT
+			|| childFeature == UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

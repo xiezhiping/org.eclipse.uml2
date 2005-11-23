@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.15 2005/11/23 13:25:33 khussey Exp $
+ * $Id: VertexImpl.java,v 1.16 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -72,7 +72,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getVertex();
+		return UML2Package.Literals.VERTEX;
 	}
 
 	/**

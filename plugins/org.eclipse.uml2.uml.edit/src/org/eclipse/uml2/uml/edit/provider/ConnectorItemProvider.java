@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: ConnectorItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -90,8 +90,7 @@ public class ConnectorItemProvider
 				getString("_UI_Connector_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Connector_type_feature", "_UI_Connector_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnector_Type(), true, null, null,
-				null));
+				UMLPackage.Literals.CONNECTOR__TYPE, true, null, null, null));
 	}
 
 	/**
@@ -109,8 +108,8 @@ public class ConnectorItemProvider
 				getString("_UI_Connector_redefinedConnector_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Connector_redefinedConnector_feature", "_UI_Connector_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnector_RedefinedConnector(), true,
-				null, null, null));
+				UMLPackage.Literals.CONNECTOR__REDEFINED_CONNECTOR, true, null,
+				null, null));
 	}
 
 	/**
@@ -128,7 +127,7 @@ public class ConnectorItemProvider
 				getString("_UI_Connector_end_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Connector_end_feature", "_UI_Connector_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnector_End(), true, null, null,
+				UMLPackage.Literals.CONNECTOR__END, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -148,7 +147,7 @@ public class ConnectorItemProvider
 				getString("_UI_Connector_kind_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Connector_kind_feature", "_UI_Connector_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnector_Kind(), true,
+				UMLPackage.Literals.CONNECTOR__KIND, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -167,8 +166,7 @@ public class ConnectorItemProvider
 				getString("_UI_Connector_contract_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Connector_contract_feature", "_UI_Connector_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnector_Contract(), true, null, null,
-				null));
+				UMLPackage.Literals.CONNECTOR__CONTRACT, true, null, null, null));
 	}
 
 	/**
@@ -182,7 +180,7 @@ public class ConnectorItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getConnector_End());
+			childrenFeatures.add(UMLPackage.Literals.CONNECTOR__END);
 		}
 		return childrenFeatures;
 	}
@@ -244,8 +242,9 @@ public class ConnectorItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getConnector_End(), UMLFactory.eINSTANCE.createConnectorEnd()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CONNECTOR__END, UMLFactory.eINSTANCE
+				.createConnectorEnd()));
 	}
 
 	/**

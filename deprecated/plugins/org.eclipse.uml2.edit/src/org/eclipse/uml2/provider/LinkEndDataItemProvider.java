@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: LinkEndDataItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class LinkEndDataItemProvider
 				 getResourceLocator(),
 				 getString("_UI_LinkEndData_value_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_LinkEndData_value_feature", "_UI_LinkEndData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getLinkEndData_Value(),
+				 UML2Package.Literals.LINK_END_DATA__VALUE,
 				 true,
 				 null,
 				 null,
@@ -111,7 +111,7 @@ public class LinkEndDataItemProvider
 				 getResourceLocator(),
 				 getString("_UI_LinkEndData_end_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_LinkEndData_end_feature", "_UI_LinkEndData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getLinkEndData_End(),
+				 UML2Package.Literals.LINK_END_DATA__END,
 				 true,
 				 null,
 				 null,
@@ -131,7 +131,7 @@ public class LinkEndDataItemProvider
 				 getResourceLocator(),
 				 getString("_UI_LinkEndData_qualifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_LinkEndData_qualifier_feature", "_UI_LinkEndData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getLinkEndData_Qualifier(),
+				 UML2Package.Literals.LINK_END_DATA__QUALIFIER,
 				 true,
 				 null,
 				 null,
@@ -151,7 +151,7 @@ public class LinkEndDataItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getLinkEndData_Qualifier());
+			childrenFeatures.add(UML2Package.Literals.LINK_END_DATA__QUALIFIER);
 		}
 		return childrenFeatures;
 	}
@@ -207,7 +207,7 @@ public class LinkEndDataItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getLinkEndData_Qualifier(),
+				(UML2Package.Literals.LINK_END_DATA__QUALIFIER,
 				 UML2Factory.eINSTANCE.createQualifierValue()));
 	}
 

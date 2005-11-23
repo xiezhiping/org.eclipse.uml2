@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.28 2005/11/23 13:25:32 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.29 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -75,7 +75,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getEnumeration();
+		return UML2Package.Literals.ENUMERATION;
 	}
 
 	/**

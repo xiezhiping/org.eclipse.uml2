@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionItemProvider.java,v 1.17 2005/09/23 20:14:53 khussey Exp $
+ * $Id: DurationObservationActionItemProvider.java,v 1.18 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class DurationObservationActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DurationObservationAction_duration_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DurationObservationAction_duration_feature", "_UI_DurationObservationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDurationObservationAction_Duration(),
+				 UML2Package.Literals.DURATION_OBSERVATION_ACTION__DURATION,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class DurationObservationActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getDurationObservationAction_Duration());
+			childrenFeatures.add(UML2Package.Literals.DURATION_OBSERVATION_ACTION__DURATION);
 		}
 		return childrenFeatures;
 	}
@@ -166,7 +166,7 @@ public class DurationObservationActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDurationObservationAction_Duration(),
+				(UML2Package.Literals.DURATION_OBSERVATION_ACTION__DURATION,
 				 UML2Factory.eINSTANCE.createDuration()));
 	}
 
@@ -181,10 +181,10 @@ public class DurationObservationActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
-			childFeature == UML2Package.eINSTANCE.getStructuralFeatureAction_Object() ||
-			childFeature == UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION ||
+			childFeature == UML2Package.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT ||
+			childFeature == UML2Package.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE;
 
 		if (qualify) {
 			return getString

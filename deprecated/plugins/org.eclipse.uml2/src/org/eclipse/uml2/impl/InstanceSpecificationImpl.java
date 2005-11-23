@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.27 2005/11/23 13:25:33 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.28 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -99,7 +99,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getInstanceSpecification();
+		return UML2Package.Literals.INSTANCE_SPECIFICATION;
 	}
 
 	/**
@@ -195,18 +195,20 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getDeploymentTarget_DeployedElement());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 
 			if (result == null) {
 				EList deployedElements = DeploymentTargetOperations
 					.getDeployedElements(this);
-				cache.put(this, UML2Package.eINSTANCE
-					.getDeploymentTarget_DeployedElement(),
-					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE
-							.getDeploymentTarget_DeployedElement(),
-						deployedElements.size(), deployedElements.toArray()));
+				cache
+					.put(
+						this,
+						UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
+						result = new EcoreEList.UnmodifiableEList(
+							this,
+							UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
+							deployedElements.size(), deployedElements.toArray()));
 			}
 
 			return result;
@@ -214,9 +216,9 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 
 		EList deployedElements = DeploymentTargetOperations
 			.getDeployedElements(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getDeploymentTarget_DeployedElement(), deployedElements.size(),
-			deployedElements.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
+			deployedElements.size(), deployedElements.toArray());
 	}
 
 	/**

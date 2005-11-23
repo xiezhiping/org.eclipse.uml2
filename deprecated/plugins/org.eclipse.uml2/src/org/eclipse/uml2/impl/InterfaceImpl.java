@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.31 2005/11/23 13:25:32 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.32 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -97,7 +97,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getInterface();
+		return UML2Package.Literals.INTERFACE;
 	}
 
 	/**

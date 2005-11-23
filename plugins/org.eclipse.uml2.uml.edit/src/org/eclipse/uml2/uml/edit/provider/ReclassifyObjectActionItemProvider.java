@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionItemProvider.java,v 1.1 2005/11/14 22:11:32 khussey Exp $
+ * $Id: ReclassifyObjectActionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -89,7 +89,7 @@ public class ReclassifyObjectActionItemProvider
 				getString("_UI_ReclassifyObjectAction_isReplaceAll_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_isReplaceAll_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReclassifyObjectAction_IsReplaceAll(),
+				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL,
 				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -108,7 +108,7 @@ public class ReclassifyObjectActionItemProvider
 				getString("_UI_ReclassifyObjectAction_oldClassifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_oldClassifier_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReclassifyObjectAction_OldClassifier(),
+				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER,
 				true, null, null, null));
 	}
 
@@ -127,7 +127,7 @@ public class ReclassifyObjectActionItemProvider
 				getString("_UI_ReclassifyObjectAction_newClassifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_newClassifier_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReclassifyObjectAction_NewClassifier(),
+				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER,
 				true, null, null, null));
 	}
 
@@ -146,7 +146,7 @@ public class ReclassifyObjectActionItemProvider
 				getString("_UI_ReclassifyObjectAction_object_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_object_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReclassifyObjectAction_Object(), true,
+				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -163,8 +163,8 @@ public class ReclassifyObjectActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getReclassifyObjectAction_Object());
+			childrenFeatures
+				.add(UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -227,17 +227,17 @@ public class ReclassifyObjectActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReclassifyObjectAction_Object(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReclassifyObjectAction_Object(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReclassifyObjectAction_Object(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -251,10 +251,8 @@ public class ReclassifyObjectActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

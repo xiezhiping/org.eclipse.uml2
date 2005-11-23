@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.22 2005/09/23 20:14:52 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.23 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -123,7 +123,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TypedElement_type_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TypedElement_type_feature", "_UI_TypedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTypedElement_Type(),
+				 UML2Package.Literals.TYPED_ELEMENT__TYPE,
 				 1 == ((Operation)object).getReturnResults().size(),
 				 null,
 				 null,
@@ -143,7 +143,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_isOrdered_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isOrdered_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_IsOrdered(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED,
 				 1 == ((Operation)object).getReturnResults().size(),
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -163,7 +163,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_isUnique_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isUnique_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_IsUnique(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE,
 				 1 == ((Operation)object).getReturnResults().size(),
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -183,7 +183,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_lower_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lower_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_Lower(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
@@ -205,7 +205,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_upper_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upper_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_Upper(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
@@ -227,7 +227,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_upperValue_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upperValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 true,
 				 null,
 				 null,
@@ -249,7 +249,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_lowerValue_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lowerValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 true,
 				 null,
 				 null,
@@ -271,7 +271,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterableElement_TemplateParameter(),
+				 UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -291,7 +291,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_owningParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterableElement_OwningParameter(),
+				 UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -313,7 +313,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Operation_ownedParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_ownedParameter_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getOperation_OwnedParameter(),
+				 UML2Package.Literals.OPERATION__OWNED_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -335,7 +335,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Operation_class__feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_class__feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getOperation_Class_(),
+				 UML2Package.Literals.OPERATION__CLASS_,
 				 true,
 				 null,
 				 null,
@@ -357,7 +357,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Operation_isQuery_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_isQuery_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getOperation_IsQuery(),
+				 UML2Package.Literals.OPERATION__IS_QUERY,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -377,7 +377,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Operation_datatype_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_datatype_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getOperation_Datatype(),
+				 UML2Package.Literals.OPERATION__DATATYPE,
 				 true,
 				 null,
 				 null,
@@ -399,7 +399,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Operation_precondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_precondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getOperation_Precondition(),
+				 UML2Package.Literals.OPERATION__PRECONDITION,
 				 true,
 				 null,
 				 null,
@@ -419,7 +419,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Operation_postcondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_postcondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getOperation_Postcondition(),
+				 UML2Package.Literals.OPERATION__POSTCONDITION,
 				 true,
 				 null,
 				 null,
@@ -439,7 +439,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Operation_redefinedOperation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_redefinedOperation_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getOperation_RedefinedOperation(),
+				 UML2Package.Literals.OPERATION__REDEFINED_OPERATION,
 				 true,
 				 null,
 				 null,
@@ -459,7 +459,7 @@ public class OperationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Operation_bodyCondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_bodyCondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getOperation_BodyCondition(),
+				 UML2Package.Literals.OPERATION__BODY_CONDITION,
 				 true,
 				 null,
 				 null,
@@ -477,9 +477,9 @@ public class OperationItemProvider
 	public Collection getChildrenFeaturesGen(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue());
-			childrenFeatures.add(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
-			childrenFeatures.add(UML2Package.eINSTANCE.getOperation_OwnedParameter());
+			childrenFeatures.add(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE);
+			childrenFeatures.add(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE);
+			childrenFeatures.add(UML2Package.Literals.OPERATION__OWNED_PARAMETER);
 		}
 		return childrenFeatures;
 	}
@@ -487,7 +487,7 @@ public class OperationItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (null == childrenFeatures) {
 			getChildrenFeaturesGen(object);
-			childrenFeatures.remove(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter());
+			childrenFeatures.remove(UML2Package.Literals.BEHAVIORAL_FEATURE__FORMAL_PARAMETER);
 		}
 		return childrenFeatures;
 	}
@@ -576,137 +576,137 @@ public class OperationItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_OwnedParameter(),
+				(UML2Package.Literals.OPERATION__OWNED_PARAMETER,
 				 UML2Factory.eINSTANCE.createParameter()));
 	}
 
@@ -721,11 +721,11 @@ public class OperationItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult() ||
-			childFeature == UML2Package.eINSTANCE.getOperation_OwnedParameter() ||
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue();
+			childFeature == UML2Package.Literals.BEHAVIORAL_FEATURE__FORMAL_PARAMETER ||
+			childFeature == UML2Package.Literals.BEHAVIORAL_FEATURE__RETURN_RESULT ||
+			childFeature == UML2Package.Literals.OPERATION__OWNED_PARAMETER ||
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE ||
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE;
 
 		if (qualify) {
 			return getString
@@ -753,11 +753,11 @@ public class OperationItemProvider
 	 * @generated
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getOperation_Precondition()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, collection, index);
+		if (feature == UML2Package.Literals.OPERATION__PRECONDITION) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, collection, index);
 		}
-		if (feature == UML2Package.eINSTANCE.getOperation_Postcondition()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, collection, index);
+		if (feature == UML2Package.Literals.OPERATION__POSTCONDITION) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, collection, index);
 		}
 		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
@@ -769,8 +769,8 @@ public class OperationItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getNamespace_OwnedRule()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getOperation_Precondition(), UML2Package.eINSTANCE.getOperation_Postcondition(), UML2Package.eINSTANCE.getOperation_BodyCondition()}, collection);
+		if (feature == UML2Package.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.OPERATION__PRECONDITION, UML2Package.Literals.OPERATION__POSTCONDITION, UML2Package.Literals.OPERATION__BODY_CONDITION}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -782,14 +782,14 @@ public class OperationItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getOperation_Precondition()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, value, collection);
+		if (feature == UML2Package.Literals.OPERATION__PRECONDITION) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getOperation_Postcondition()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, value, collection);
+		if (feature == UML2Package.Literals.OPERATION__POSTCONDITION) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getNamespace_OwnedRule()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getOperation_Precondition(), UML2Package.eINSTANCE.getOperation_Postcondition(), UML2Package.eINSTANCE.getOperation_BodyCondition()}, value, collection);
+		if (feature == UML2Package.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.OPERATION__PRECONDITION, UML2Package.Literals.OPERATION__POSTCONDITION, UML2Package.Literals.OPERATION__BODY_CONDITION}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
@@ -801,14 +801,14 @@ public class OperationItemProvider
 	 * @generated
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getParameterableElement_OwningParameter()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()}, value);
+		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getOperation_BodyCondition()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, value);
+		if (feature == UML2Package.Literals.OPERATION__BODY_CONDITION) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_OwningParameter()}, value);
+		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) {
+			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

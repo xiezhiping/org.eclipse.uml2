@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionEnvironmentImpl.java,v 1.27 2005/11/14 17:31:10 khussey Exp $
+ * $Id: ExecutionEnvironmentImpl.java,v 1.28 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getExecutionEnvironment();
+		return UML2Package.Literals.EXECUTION_ENVIRONMENT;
 	}
 
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: AbstractionItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,8 +85,8 @@ public class AbstractionItemProvider
 				getString("_UI_Abstraction_mapping_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Abstraction_mapping_feature", "_UI_Abstraction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAbstraction_Mapping(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ABSTRACTION__MAPPING, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -101,7 +101,7 @@ public class AbstractionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getAbstraction_Mapping());
+			childrenFeatures.add(UMLPackage.Literals.ABSTRACTION__MAPPING);
 		}
 		return childrenFeatures;
 	}
@@ -159,9 +159,9 @@ public class AbstractionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAbstraction_Mapping(), UMLFactory.eINSTANCE
-			.createOpaqueExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ABSTRACTION__MAPPING, UMLFactory.eINSTANCE
+				.createOpaqueExpression()));
 	}
 
 	/**

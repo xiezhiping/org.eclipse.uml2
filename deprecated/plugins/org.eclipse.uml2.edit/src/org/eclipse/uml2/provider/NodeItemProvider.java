@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeItemProvider.java,v 1.23 2005/09/23 20:14:53 khussey Exp $
+ * $Id: NodeItemProvider.java,v 1.24 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -105,7 +105,7 @@ public class NodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployment_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDeploymentTarget_Deployment(),
+				 UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
 				 true,
 				 null,
 				 null,
@@ -127,7 +127,7 @@ public class NodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployedElement_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
+				 UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
 				 false,
 				 null,
 				 null,
@@ -149,7 +149,7 @@ public class NodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Node_nestedNode_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Node_nestedNode_feature", "_UI_Node_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNode_NestedNode(),
+				 UML2Package.Literals.NODE__NESTED_NODE,
 				 true,
 				 null,
 				 null,
@@ -169,8 +169,8 @@ public class NodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getDeploymentTarget_Deployment());
-			childrenFeatures.add(UML2Package.eINSTANCE.getNode_NestedNode());
+			childrenFeatures.add(UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT);
+			childrenFeatures.add(UML2Package.Literals.NODE__NESTED_NODE);
 		}
 		return childrenFeatures;
 	}
@@ -240,22 +240,22 @@ public class NodeItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDeploymentTarget_Deployment(),
+				(UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
 				 UML2Factory.eINSTANCE.createDeployment()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNode_NestedNode(),
+				(UML2Package.Literals.NODE__NESTED_NODE,
 				 UML2Factory.eINSTANCE.createNode()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNode_NestedNode(),
+				(UML2Package.Literals.NODE__NESTED_NODE,
 				 UML2Factory.eINSTANCE.createDevice()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNode_NestedNode(),
+				(UML2Package.Literals.NODE__NESTED_NODE,
 				 UML2Factory.eINSTANCE.createExecutionEnvironment()));
 	}
 
@@ -270,13 +270,13 @@ public class NodeItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
-			childFeature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			childFeature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			childFeature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
-			childFeature == UML2Package.eINSTANCE.getNode_NestedNode();
+			childFeature == UML2Package.Literals.CLASSIFIER__OWNED_USE_CASE ||
+			childFeature == UML2Package.Literals.CLASS__NESTED_CLASSIFIER ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE ||
+			childFeature == UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE ||
+			childFeature == UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT ||
+			childFeature == UML2Package.Literals.NODE__NESTED_NODE;
 
 		if (qualify) {
 			return getString
@@ -304,8 +304,8 @@ public class NodeItemProvider
 	 * @generated
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getDeploymentTarget_Deployment()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, collection, index);
+		if (feature == UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY}, collection, index);
 		}
 		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
@@ -317,8 +317,8 @@ public class NodeItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Substitution(), UML2Package.eINSTANCE.getBehavioredClassifier_Implementation(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment()}, collection);
+		if (feature == UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.CLASSIFIER__SUBSTITUTION, UML2Package.Literals.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -330,11 +330,11 @@ public class NodeItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getDeploymentTarget_Deployment()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, value, collection);
+		if (feature == UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Substitution(), UML2Package.eINSTANCE.getBehavioredClassifier_Implementation(), UML2Package.eINSTANCE.getDeploymentTarget_Deployment()}, value, collection);
+		if (feature == UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.CLASSIFIER__SUBSTITUTION, UML2Package.Literals.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}

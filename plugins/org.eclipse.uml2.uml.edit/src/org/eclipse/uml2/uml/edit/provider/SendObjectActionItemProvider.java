@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: SendObjectActionItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,7 +88,7 @@ public class SendObjectActionItemProvider
 				getString("_UI_SendObjectAction_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_SendObjectAction_target_feature", "_UI_SendObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getSendObjectAction_Target(), true, null,
+				UMLPackage.Literals.SEND_OBJECT_ACTION__TARGET, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -108,7 +108,7 @@ public class SendObjectActionItemProvider
 				getString("_UI_SendObjectAction_request_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_SendObjectAction_request_feature", "_UI_SendObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getSendObjectAction_Request(), true, null,
+				UMLPackage.Literals.SEND_OBJECT_ACTION__REQUEST, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -124,10 +124,10 @@ public class SendObjectActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getSendObjectAction_Target());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getSendObjectAction_Request());
+			childrenFeatures
+				.add(UMLPackage.Literals.SEND_OBJECT_ACTION__TARGET);
+			childrenFeatures
+				.add(UMLPackage.Literals.SEND_OBJECT_ACTION__REQUEST);
 		}
 		return childrenFeatures;
 	}
@@ -198,29 +198,29 @@ public class SendObjectActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSendObjectAction_Target(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEND_OBJECT_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSendObjectAction_Target(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEND_OBJECT_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSendObjectAction_Target(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEND_OBJECT_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSendObjectAction_Request(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEND_OBJECT_ACTION__REQUEST,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSendObjectAction_Request(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEND_OBJECT_ACTION__REQUEST,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSendObjectAction_Request(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEND_OBJECT_ACTION__REQUEST,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -234,16 +234,11 @@ public class SendObjectActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getInvocationAction_Argument()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getSendObjectAction_Target()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getSendObjectAction_Request();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.INVOCATION_ACTION__ARGUMENT
+			|| childFeature == UMLPackage.Literals.SEND_OBJECT_ACTION__TARGET
+			|| childFeature == UMLPackage.Literals.SEND_OBJECT_ACTION__REQUEST;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

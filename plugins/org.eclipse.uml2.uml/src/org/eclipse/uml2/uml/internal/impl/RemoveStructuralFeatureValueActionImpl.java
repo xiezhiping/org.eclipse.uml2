@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -104,7 +104,7 @@ public class RemoveStructuralFeatureValueActionImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getRemoveStructuralFeatureValueAction();
+		return UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION;
 	}
 
 	/**

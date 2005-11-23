@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.35 2005/11/23 13:25:33 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.36 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -97,7 +97,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getStateMachine();
+		return UML2Package.Literals.STATE_MACHINE;
 	}
 
 	/**
@@ -334,7 +334,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), 0, Collections.EMPTY_LIST.toArray());
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, 0, Collections.EMPTY_LIST.toArray());
 	}
 
 

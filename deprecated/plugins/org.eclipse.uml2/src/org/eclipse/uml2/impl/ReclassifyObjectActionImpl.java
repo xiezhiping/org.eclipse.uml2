@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.20 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.21 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -109,7 +109,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getReclassifyObjectAction();
+		return UML2Package.Literals.RECLASSIFY_OBJECT_ACTION;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: VertexItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,8 +85,7 @@ public class VertexItemProvider
 				getString("_UI_Vertex_outgoing_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_outgoing_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getVertex_Outgoing(), true, null, null,
-				null));
+				UMLPackage.Literals.VERTEX__OUTGOING, true, null, null, null));
 	}
 
 	/**
@@ -104,8 +103,7 @@ public class VertexItemProvider
 				getString("_UI_Vertex_incoming_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_incoming_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getVertex_Incoming(), true, null, null,
-				null));
+				UMLPackage.Literals.VERTEX__INCOMING, true, null, null, null));
 	}
 
 	/**
@@ -123,7 +121,7 @@ public class VertexItemProvider
 				getString("_UI_Vertex_container_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_container_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getVertex_Container(), true, null, null,
+				UMLPackage.Literals.VERTEX__CONTAINER, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

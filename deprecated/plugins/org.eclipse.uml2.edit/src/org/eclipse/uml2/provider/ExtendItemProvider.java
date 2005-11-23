@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ExtendItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -95,7 +95,7 @@ public class ExtendItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Relationship_relatedElement_feature", "_UI_Relationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getRelationship_RelatedElement(),
+				 UML2Package.Literals.RELATIONSHIP__RELATED_ELEMENT,
 				 false,
 				 null,
 				 null,
@@ -117,7 +117,7 @@ public class ExtendItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DirectedRelationship_source_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_source_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDirectedRelationship_Source(),
+				 UML2Package.Literals.DIRECTED_RELATIONSHIP__SOURCE,
 				 false,
 				 null,
 				 null,
@@ -139,7 +139,7 @@ public class ExtendItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DirectedRelationship_target_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_target_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDirectedRelationship_Target(),
+				 UML2Package.Literals.DIRECTED_RELATIONSHIP__TARGET,
 				 false,
 				 null,
 				 null,
@@ -161,7 +161,7 @@ public class ExtendItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Extend_extendedCase_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Extend_extendedCase_feature", "_UI_Extend_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExtend_ExtendedCase(),
+				 UML2Package.Literals.EXTEND__EXTENDED_CASE,
 				 true,
 				 null,
 				 null,
@@ -181,7 +181,7 @@ public class ExtendItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Extend_extension_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Extend_extension_feature", "_UI_Extend_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExtend_Extension(),
+				 UML2Package.Literals.EXTEND__EXTENSION,
 				 true,
 				 null,
 				 null,
@@ -203,7 +203,7 @@ public class ExtendItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Extend_condition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Extend_condition_feature", "_UI_Extend_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExtend_Condition(),
+				 UML2Package.Literals.EXTEND__CONDITION,
 				 true,
 				 null,
 				 null,
@@ -225,7 +225,7 @@ public class ExtendItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Extend_extensionLocation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Extend_extensionLocation_feature", "_UI_Extend_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExtend_ExtensionLocation(),
+				 UML2Package.Literals.EXTEND__EXTENSION_LOCATION,
 				 true,
 				 null,
 				 null,
@@ -243,7 +243,7 @@ public class ExtendItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getExtend_Condition());
+			childrenFeatures.add(UML2Package.Literals.EXTEND__CONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -309,27 +309,27 @@ public class ExtendItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExtend_Condition(),
+				(UML2Package.Literals.EXTEND__CONDITION,
 				 UML2Factory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExtend_Condition(),
+				(UML2Package.Literals.EXTEND__CONDITION,
 				 UML2Factory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExtend_Condition(),
+				(UML2Package.Literals.EXTEND__CONDITION,
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExtend_Condition(),
+				(UML2Package.Literals.EXTEND__CONDITION,
 				 UML2Factory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getExtend_Condition(),
+				(UML2Package.Literals.EXTEND__CONDITION,
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
 	}
 

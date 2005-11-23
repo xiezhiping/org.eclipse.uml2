@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: ExecutableNodeItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,8 +85,8 @@ public class ExecutableNodeItemProvider
 				getString("_UI_ExecutableNode_handler_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExecutableNode_handler_feature", "_UI_ExecutableNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExecutableNode_Handler(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.EXECUTABLE_NODE__HANDLER, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -101,8 +101,7 @@ public class ExecutableNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getExecutableNode_Handler());
+			childrenFeatures.add(UMLPackage.Literals.EXECUTABLE_NODE__HANDLER);
 		}
 		return childrenFeatures;
 	}
@@ -150,9 +149,9 @@ public class ExecutableNodeItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getExecutableNode_Handler(), UMLFactory.eINSTANCE
-			.createExceptionHandler()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.EXECUTABLE_NODE__HANDLER, UMLFactory.eINSTANCE
+				.createExceptionHandler()));
 	}
 
 	/**

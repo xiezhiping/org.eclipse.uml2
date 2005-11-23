@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: StructuralFeatureActionItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -90,7 +90,7 @@ public class StructuralFeatureActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuralFeatureAction_structuralFeature_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuralFeatureAction_structuralFeature_feature", "_UI_StructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuralFeatureAction_StructuralFeature(),
+				 UML2Package.Literals.STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE,
 				 true,
 				 null,
 				 null,
@@ -110,7 +110,7 @@ public class StructuralFeatureActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuralFeatureAction_object_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuralFeatureAction_object_feature", "_UI_StructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuralFeatureAction_Object(),
+				 UML2Package.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT,
 				 true,
 				 null,
 				 null,
@@ -130,7 +130,7 @@ public class StructuralFeatureActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getStructuralFeatureAction_Object());
+			childrenFeatures.add(UML2Package.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -178,12 +178,12 @@ public class StructuralFeatureActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuralFeatureAction_Object(),
+				(UML2Package.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuralFeatureAction_Object(),
+				(UML2Package.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT,
 				 UML2Factory.eINSTANCE.createValuePin()));
 	}
 
@@ -198,8 +198,8 @@ public class StructuralFeatureActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

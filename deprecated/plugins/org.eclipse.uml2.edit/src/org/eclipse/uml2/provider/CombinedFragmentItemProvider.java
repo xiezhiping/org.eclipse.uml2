@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: CombinedFragmentItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -94,7 +94,7 @@ public class CombinedFragmentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_CombinedFragment_interactionOperator_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CombinedFragment_interactionOperator_feature", "_UI_CombinedFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getCombinedFragment_InteractionOperator(),
+				 UML2Package.Literals.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -114,7 +114,7 @@ public class CombinedFragmentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_CombinedFragment_operand_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CombinedFragment_operand_feature", "_UI_CombinedFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getCombinedFragment_Operand(),
+				 UML2Package.Literals.COMBINED_FRAGMENT__OPERAND,
 				 true,
 				 null,
 				 null,
@@ -136,7 +136,7 @@ public class CombinedFragmentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_CombinedFragment_cfragmentGate_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CombinedFragment_cfragmentGate_feature", "_UI_CombinedFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getCombinedFragment_CfragmentGate(),
+				 UML2Package.Literals.COMBINED_FRAGMENT__CFRAGMENT_GATE,
 				 true,
 				 null,
 				 null,
@@ -156,8 +156,8 @@ public class CombinedFragmentItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getCombinedFragment_Operand());
-			childrenFeatures.add(UML2Package.eINSTANCE.getCombinedFragment_CfragmentGate());
+			childrenFeatures.add(UML2Package.Literals.COMBINED_FRAGMENT__OPERAND);
+			childrenFeatures.add(UML2Package.Literals.COMBINED_FRAGMENT__CFRAGMENT_GATE);
 		}
 		return childrenFeatures;
 	}
@@ -230,12 +230,12 @@ public class CombinedFragmentItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCombinedFragment_Operand(),
+				(UML2Package.Literals.COMBINED_FRAGMENT__OPERAND,
 				 UML2Factory.eINSTANCE.createInteractionOperand()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCombinedFragment_CfragmentGate(),
+				(UML2Package.Literals.COMBINED_FRAGMENT__CFRAGMENT_GATE,
 				 UML2Factory.eINSTANCE.createGate()));
 	}
 

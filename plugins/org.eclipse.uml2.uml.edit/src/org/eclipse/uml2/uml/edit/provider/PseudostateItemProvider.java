@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: PseudostateItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,7 +87,7 @@ public class PseudostateItemProvider
 				getString("_UI_Pseudostate_kind_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Pseudostate_kind_feature", "_UI_Pseudostate_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPseudostate_Kind(), true,
+				UMLPackage.Literals.PSEUDOSTATE__KIND, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -106,7 +106,7 @@ public class PseudostateItemProvider
 				getString("_UI_Pseudostate_stateMachine_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Pseudostate_stateMachine_feature", "_UI_Pseudostate_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPseudostate_StateMachine(), true, null,
+				UMLPackage.Literals.PSEUDOSTATE__STATE_MACHINE, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -126,7 +126,7 @@ public class PseudostateItemProvider
 				getString("_UI_Pseudostate_state_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Pseudostate_state_feature", "_UI_Pseudostate_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPseudostate_State(), true, null, null,
+				UMLPackage.Literals.PSEUDOSTATE__STATE, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

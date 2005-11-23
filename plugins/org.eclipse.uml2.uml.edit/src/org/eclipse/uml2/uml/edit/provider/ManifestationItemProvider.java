@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ManifestationItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -94,7 +94,7 @@ public class ManifestationItemProvider
 				getString("_UI_Manifestation_utilizedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Manifestation_utilizedElement_feature", "_UI_Manifestation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getManifestation_UtilizedElement(), true,
+				UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT, true,
 				null, null, null));
 	}
 
@@ -163,10 +163,13 @@ public class ManifestationItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getDependency_Supplier()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getManifestation_UtilizedElement()}, collection);
+		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT},
+				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -179,10 +182,13 @@ public class ManifestationItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getDependency_Supplier()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getManifestation_UtilizedElement()}, value, collection);
+		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT},
+				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);
@@ -196,10 +202,13 @@ public class ManifestationItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.eINSTANCE.getManifestation_UtilizedElement()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDependency_Supplier()}, value);
+		if (feature == UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

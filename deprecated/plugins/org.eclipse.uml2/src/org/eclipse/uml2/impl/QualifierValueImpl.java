@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.11 2005/11/23 13:25:33 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.12 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -62,7 +62,7 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getQualifierValue();
+		return UML2Package.Literals.QUALIFIER_VALUE;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ProtocolConformanceItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class ProtocolConformanceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ProtocolConformance_specificMachine_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProtocolConformance_specificMachine_feature", "_UI_ProtocolConformance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine(),
+				 UML2Package.Literals.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE,
 				 true,
 				 null,
 				 null,
@@ -111,7 +111,7 @@ public class ProtocolConformanceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ProtocolConformance_generalMachine_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProtocolConformance_generalMachine_feature", "_UI_ProtocolConformance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine(),
+				 UML2Package.Literals.PROTOCOL_CONFORMANCE__GENERAL_MACHINE,
 				 true,
 				 null,
 				 null,

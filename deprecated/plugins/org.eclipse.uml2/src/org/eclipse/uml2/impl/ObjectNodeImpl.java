@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.21 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.22 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -96,7 +96,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getObjectNode();
+		return UML2Package.Literals.OBJECT_NODE;
 	}
 
 	/**

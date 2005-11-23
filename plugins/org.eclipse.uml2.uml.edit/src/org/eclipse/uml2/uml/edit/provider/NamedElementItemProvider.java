@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementItemProvider.java,v 1.1 2005/11/14 22:11:37 khussey Exp $
+ * $Id: NamedElementItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -91,7 +91,7 @@ public class NamedElementItemProvider
 				getString("_UI_NamedElement_name_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_name_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamedElement_Name(), true,
+				UMLPackage.Literals.NAMED_ELEMENT__NAME, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -110,7 +110,7 @@ public class NamedElementItemProvider
 				getString("_UI_NamedElement_visibility_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_visibility_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamedElement_Visibility(), true,
+				UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -129,7 +129,7 @@ public class NamedElementItemProvider
 				getString("_UI_NamedElement_qualifiedName_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_qualifiedName_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamedElement_QualifiedName(), false,
+				UMLPackage.Literals.NAMED_ELEMENT__QUALIFIED_NAME, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -150,7 +150,7 @@ public class NamedElementItemProvider
 				getString("_UI_NamedElement_clientDependency_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_clientDependency_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamedElement_ClientDependency(), true,
+				UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY, true,
 				null, null, null));
 	}
 
@@ -169,7 +169,7 @@ public class NamedElementItemProvider
 				getString("_UI_NamedElement_namespace_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_namespace_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamedElement_Namespace(), false, null,
+				UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE, false, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -189,9 +189,8 @@ public class NamedElementItemProvider
 				getString("_UI_NamedElement_nameExpression_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_nameExpression_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNamedElement_NameExpression(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -206,8 +205,8 @@ public class NamedElementItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getNamedElement_NameExpression());
+			childrenFeatures
+				.add(UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION);
 		}
 		return childrenFeatures;
 	}
@@ -261,9 +260,9 @@ public class NamedElementItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression(), UMLFactory.eINSTANCE
-			.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION,
+			UMLFactory.eINSTANCE.createStringExpression()));
 	}
 
 	/**

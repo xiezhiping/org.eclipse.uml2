@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: SequenceNodeItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,9 +85,8 @@ public class SequenceNodeItemProvider
 				getString("_UI_SequenceNode_executableNode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_SequenceNode_executableNode_feature", "_UI_SequenceNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getSequenceNode_ExecutableNode(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -102,8 +101,8 @@ public class SequenceNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getSequenceNode_ExecutableNode());
+			childrenFeatures
+				.add(UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE);
 		}
 		return childrenFeatures;
 	}
@@ -161,177 +160,177 @@ public class SequenceNodeItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createStructuredActivityNode()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createStructuredActivityNode()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createCreateObjectAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createCreateObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createDestroyObjectAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createDestroyObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createTestIdentityAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createTestIdentityAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createReadSelfAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createReadSelfAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createReadStructuralFeatureAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createReadStructuralFeatureAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createClearStructuralFeatureAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createClearStructuralFeatureAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createRemoveStructuralFeatureValueAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createRemoveStructuralFeatureValueAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createAddStructuralFeatureValueAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createAddStructuralFeatureValueAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createReadLinkAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createReadLinkAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createCreateLinkAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createCreateLinkAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createDestroyLinkAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createDestroyLinkAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createClearAssociationAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createClearAssociationAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createBroadcastSignalAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createBroadcastSignalAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createSendObjectAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createSendObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createValueSpecificationAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createValueSpecificationAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createTimeObservationAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createTimeObservationAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createDurationObservationAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createDurationObservationAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createOpaqueAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createOpaqueAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createSendSignalAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createSendSignalAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createCallOperationAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createCallOperationAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createCallBehaviorAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createCallBehaviorAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createReadVariableAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createReadVariableAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createClearVariableAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createClearVariableAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createAddVariableValueAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createAddVariableValueAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createRemoveVariableValueAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createRemoveVariableValueAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createRaiseExceptionAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createRaiseExceptionAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createReadExtentAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createReadExtentAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createReclassifyObjectAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createReclassifyObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createReadIsClassifiedObjectAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createReadIsClassifiedObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createStartClassifierBehaviorAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createStartClassifierBehaviorAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createReadLinkObjectEndAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createReadLinkObjectEndAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createReadLinkObjectEndQualifierAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createReadLinkObjectEndQualifierAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createCreateLinkObjectAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createCreateLinkObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createAcceptEventAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createAcceptEventAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createAcceptCallAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createAcceptCallAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createReplyAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createReplyAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createUnmarshallAction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createUnmarshallAction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createSequenceNode()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createSequenceNode()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createConditionalNode()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createConditionalNode()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createLoopNode()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createLoopNode()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSequenceNode_ExecutableNode(), UMLFactory.eINSTANCE
-			.createExpansionRegion()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
+			UMLFactory.eINSTANCE.createExpansionRegion()));
 	}
 
 	/**
@@ -345,15 +344,11 @@ public class SequenceNodeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE.getNamespace_OwnedRule()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getStructuredActivityNode_Node()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getSequenceNode_ExecutableNode();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE
+			|| childFeature == UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

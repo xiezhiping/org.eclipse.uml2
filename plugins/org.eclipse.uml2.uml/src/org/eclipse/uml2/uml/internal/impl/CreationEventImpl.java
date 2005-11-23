@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreationEventImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: CreationEventImpl.java,v 1.2 2005/11/23 20:01:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -51,7 +51,7 @@ public class CreationEventImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getCreationEvent();
+		return UMLPackage.Literals.CREATION_EVENT;
 	}
 
 	/**

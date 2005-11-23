@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: GeneralizationSetItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,7 +88,7 @@ public class GeneralizationSetItemProvider
 				getString("_UI_GeneralizationSet_isCovering_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GeneralizationSet_isCovering_feature", "_UI_GeneralizationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getGeneralizationSet_IsCovering(), true,
+				UMLPackage.Literals.GENERALIZATION_SET__IS_COVERING, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -107,7 +107,7 @@ public class GeneralizationSetItemProvider
 				getString("_UI_GeneralizationSet_isDisjoint_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GeneralizationSet_isDisjoint_feature", "_UI_GeneralizationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getGeneralizationSet_IsDisjoint(), true,
+				UMLPackage.Literals.GENERALIZATION_SET__IS_DISJOINT, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -126,8 +126,8 @@ public class GeneralizationSetItemProvider
 				getString("_UI_GeneralizationSet_powertype_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GeneralizationSet_powertype_feature", "_UI_GeneralizationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getGeneralizationSet_Powertype(), true,
-				null, null, null));
+				UMLPackage.Literals.GENERALIZATION_SET__POWERTYPE, true, null,
+				null, null));
 	}
 
 	/**
@@ -145,8 +145,8 @@ public class GeneralizationSetItemProvider
 				getString("_UI_GeneralizationSet_generalization_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GeneralizationSet_generalization_feature", "_UI_GeneralizationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getGeneralizationSet_Generalization(),
-				true, null, null, null));
+				UMLPackage.Literals.GENERALIZATION_SET__GENERALIZATION, true,
+				null, null, null));
 	}
 
 	/**

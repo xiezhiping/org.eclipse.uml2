@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: TransitionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -95,7 +95,7 @@ public class TransitionItemProvider
 				getString("_UI_Transition_kind_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_kind_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTransition_Kind(), true,
+				UMLPackage.Literals.TRANSITION__KIND, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -114,8 +114,8 @@ public class TransitionItemProvider
 				getString("_UI_Transition_container_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_container_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTransition_Container(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.TRANSITION__CONTAINER, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -134,8 +134,7 @@ public class TransitionItemProvider
 				getString("_UI_Transition_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_target_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTransition_Target(), true, null, null,
-				null));
+				UMLPackage.Literals.TRANSITION__TARGET, true, null, null, null));
 	}
 
 	/**
@@ -153,7 +152,7 @@ public class TransitionItemProvider
 				getString("_UI_Transition_redefinedTransition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_redefinedTransition_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTransition_RedefinedTransition(), true,
+				UMLPackage.Literals.TRANSITION__REDEFINED_TRANSITION, true,
 				null, null, null));
 	}
 
@@ -172,7 +171,7 @@ public class TransitionItemProvider
 				getString("_UI_Transition_guard_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_guard_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTransition_Guard(), true, null, null,
+				UMLPackage.Literals.TRANSITION__GUARD, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -192,7 +191,7 @@ public class TransitionItemProvider
 				getString("_UI_Transition_effect_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_effect_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTransition_Effect(), true, null, null,
+				UMLPackage.Literals.TRANSITION__EFFECT, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -212,7 +211,7 @@ public class TransitionItemProvider
 				getString("_UI_Transition_trigger_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_trigger_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTransition_Trigger(), true, null, null,
+				UMLPackage.Literals.TRANSITION__TRIGGER, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -232,8 +231,7 @@ public class TransitionItemProvider
 				getString("_UI_Transition_source_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_source_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTransition_Source(), true, null, null,
-				null));
+				UMLPackage.Literals.TRANSITION__SOURCE, true, null, null, null));
 	}
 
 	/**
@@ -247,9 +245,9 @@ public class TransitionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getTransition_Guard());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getTransition_Effect());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getTransition_Trigger());
+			childrenFeatures.add(UMLPackage.Literals.TRANSITION__GUARD);
+			childrenFeatures.add(UMLPackage.Literals.TRANSITION__EFFECT);
+			childrenFeatures.add(UMLPackage.Literals.TRANSITION__TRIGGER);
 		}
 		return childrenFeatures;
 	}
@@ -325,54 +323,57 @@ public class TransitionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Guard(), UMLFactory.eINSTANCE.createConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
+				.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Guard(), UMLFactory.eINSTANCE
-			.createInteractionConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
+				.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Guard(), UMLFactory.eINSTANCE
-			.createIntervalConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
+				.createIntervalConstraint()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getTransition_Guard(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
 				.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Guard(), UMLFactory.eINSTANCE
-			.createDurationConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
+				.createDurationConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Effect(), UMLFactory.eINSTANCE.createBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
+				.createBehavior()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getTransition_Effect(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
 				.createStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Effect(), UMLFactory.eINSTANCE
-			.createProtocolStateMachine()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
+				.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Effect(), UMLFactory.eINSTANCE
-			.createOpaqueBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
+				.createOpaqueBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Effect(), UMLFactory.eINSTANCE
-			.createFunctionBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
+				.createFunctionBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Effect(), UMLFactory.eINSTANCE.createInteraction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
+				.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Effect(), UMLFactory.eINSTANCE.createActivity()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
+				.createActivity()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTransition_Trigger(), UMLFactory.eINSTANCE.createTrigger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__TRIGGER, UMLFactory.eINSTANCE
+				.createTrigger()));
 	}
 
 	/**

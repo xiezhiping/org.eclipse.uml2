@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -85,7 +85,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getStringExpression();
+		return UMLPackage.Literals.STRING_EXPRESSION;
 	}
 
 	/**
@@ -320,12 +320,12 @@ public class StringExpressionImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getTemplateableElement().getEOperations()
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getTemplateableElement().getEOperations().get(0),
-					result = TemplateableElementOperations
+				cache.put(eResource(), this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
+						.get(0), result = TemplateableElementOperations
 						.parameterableElements(this));
 			}
 			return result;

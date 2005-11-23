@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: GeneralOrderingItemProvider.java,v 1.14 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -87,7 +87,7 @@ public class GeneralOrderingItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GeneralOrdering_before_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralOrdering_before_feature", "_UI_GeneralOrdering_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getGeneralOrdering_Before(),
+				 UML2Package.Literals.GENERAL_ORDERING__BEFORE,
 				 true,
 				 null,
 				 null,
@@ -107,7 +107,7 @@ public class GeneralOrderingItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GeneralOrdering_after_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralOrdering_after_feature", "_UI_GeneralOrdering_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getGeneralOrdering_After(),
+				 UML2Package.Literals.GENERAL_ORDERING__AFTER,
 				 true,
 				 null,
 				 null,

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.35 2005/11/23 13:25:33 khussey Exp $
+ * $Id: OperationImpl.java,v 1.36 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -186,7 +186,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getOperation();
+		return UML2Package.Literals.OPERATION;
 	}
 
 	/**
@@ -1095,7 +1095,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return null != returnResult
 			&& 1 == returnResult.size()
 			&& ((Parameter) returnResult.get(0))
-				.eIsSet(UML2Package.eINSTANCE.getTypedElement_Type());
+				.eIsSet(UML2Package.Literals.TYPED_ELEMENT__TYPE);
 	}
 
 	/**
@@ -1151,16 +1151,16 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (eIsSet(UML2Package.eINSTANCE.getOperation_Precondition())) {
+		if (eIsSet(UML2Package.Literals.OPERATION__PRECONDITION)) {
 			ownedMember.addAll(getPreconditions());
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getOperation_Postcondition())) {
+		if (eIsSet(UML2Package.Literals.OPERATION__POSTCONDITION)) {
 			ownedMember.addAll(getPostconditions());
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getOperation_BodyCondition())) {
+		if (eIsSet(UML2Package.Literals.OPERATION__BODY_CONDITION)) {
 			ownedMember.add(getBodyCondition());
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getOperation_OwnedParameter())) {
+		if (eIsSet(UML2Package.Literals.OPERATION__OWNED_PARAMETER)) {
 			ownedMember.addAll(getOwnedParameters());
 		}
 		return ownedMember;

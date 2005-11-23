@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.30 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.31 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,7 +79,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getExtension();
+		return UML2Package.Literals.EXTENSION;
 	}
 
 	/**

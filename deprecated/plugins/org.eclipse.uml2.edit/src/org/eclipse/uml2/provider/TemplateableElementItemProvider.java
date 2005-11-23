@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: TemplateableElementItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class TemplateableElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TemplateableElement_templateBinding_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateableElement_templateBinding_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(),
+				 UML2Package.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 				 true,
 				 null,
 				 null,
@@ -114,7 +114,7 @@ public class TemplateableElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TemplateableElement_ownedTemplateSignature_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateableElement_ownedTemplateSignature_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(),
+				 UML2Package.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 				 true,
 				 null,
 				 null,
@@ -134,8 +134,8 @@ public class TemplateableElementItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding());
-			childrenFeatures.add(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature());
+			childrenFeatures.add(UML2Package.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+			childrenFeatures.add(UML2Package.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 		}
 		return childrenFeatures;
 	}
@@ -193,17 +193,17 @@ public class TemplateableElementItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding(),
+				(UML2Package.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 				 UML2Factory.eINSTANCE.createTemplateBinding()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(),
+				(UML2Package.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 				 UML2Factory.eINSTANCE.createTemplateSignature()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature(),
+				(UML2Package.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 				 UML2Factory.eINSTANCE.createRedefinableTemplateSignature()));
 	}
 

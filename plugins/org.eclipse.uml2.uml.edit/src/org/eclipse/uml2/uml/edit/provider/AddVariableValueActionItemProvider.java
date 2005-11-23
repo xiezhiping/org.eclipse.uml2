@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: AddVariableValueActionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,7 +87,7 @@ public class AddVariableValueActionItemProvider
 				getString("_UI_AddVariableValueAction_isReplaceAll_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AddVariableValueAction_isReplaceAll_feature", "_UI_AddVariableValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAddVariableValueAction_IsReplaceAll(),
+				UMLPackage.Literals.ADD_VARIABLE_VALUE_ACTION__IS_REPLACE_ALL,
 				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -106,8 +106,8 @@ public class AddVariableValueActionItemProvider
 				getString("_UI_AddVariableValueAction_insertAt_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AddVariableValueAction_insertAt_feature", "_UI_AddVariableValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAddVariableValueAction_InsertAt(),
-				true, null, null,
+				UMLPackage.Literals.ADD_VARIABLE_VALUE_ACTION__INSERT_AT, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -123,8 +123,8 @@ public class AddVariableValueActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getAddVariableValueAction_InsertAt());
+			childrenFeatures
+				.add(UMLPackage.Literals.ADD_VARIABLE_VALUE_ACTION__INSERT_AT);
 		}
 		return childrenFeatures;
 	}
@@ -187,17 +187,17 @@ public class AddVariableValueActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAddVariableValueAction_InsertAt(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ADD_VARIABLE_VALUE_ACTION__INSERT_AT,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAddVariableValueAction_InsertAt(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ADD_VARIABLE_VALUE_ACTION__INSERT_AT,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAddVariableValueAction_InsertAt(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ADD_VARIABLE_VALUE_ACTION__INSERT_AT,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -211,14 +211,10 @@ public class AddVariableValueActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getWriteVariableAction_Value()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAddVariableValueAction_InsertAt();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.WRITE_VARIABLE_ACTION__VALUE
+			|| childFeature == UMLPackage.Literals.ADD_VARIABLE_VALUE_ACTION__INSERT_AT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

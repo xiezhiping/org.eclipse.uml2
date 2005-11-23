@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.33 2005/11/23 13:25:32 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.34 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -134,7 +134,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getStructuredActivityNode();
+		return UML2Package.Literals.STRUCTURED_ACTIVITY_NODE;
 	}
 
 	/**
@@ -145,15 +145,15 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public EList getMembers() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList member = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member());
+			EList member = (EList) cache.get(eResource(), this, UML2Package.Literals.NAMESPACE__MEMBER);
 			if (member == null) {
 				List union = getMembersHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member(), member = new UnionEObjectEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.Literals.NAMESPACE__MEMBER, member = new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray()));
 			}
 			return member;
 		}
 		List union = getMembersHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray());
 	}
 
 	/**
@@ -265,15 +265,15 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getNamespace_ImportedMember());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.NAMESPACE__IMPORTED_MEMBER);
 
 			if (result == null) {
 				Set importedMember = importedMember();
-				cache.put(this, UML2Package.eINSTANCE
-					.getNamespace_ImportedMember(),
+				cache.put(this,
+					UML2Package.Literals.NAMESPACE__IMPORTED_MEMBER,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getNamespace_ImportedMember(),
+						UML2Package.Literals.NAMESPACE__IMPORTED_MEMBER,
 						importedMember.size(), importedMember.toArray()));
 			}
 
@@ -281,9 +281,9 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		}
 
 		Set importedMember = importedMember();
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getNamespace_ImportedMember(), importedMember.size(),
-			importedMember.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.NAMESPACE__IMPORTED_MEMBER, importedMember
+				.size(), importedMember.toArray());
 	}
 
 	/**
@@ -646,9 +646,9 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public Set importedMember() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getNamespace().getEOperations().get(4));
+			Set result = (Set) cache.get(this, UML2Package.Literals.NAMESPACE.getEOperations().get(4));
 			if (result == null) {
-				cache.put(this, UML2Package.eINSTANCE.getNamespace().getEOperations().get(4), result = NamespaceOperations.importedMember(this));
+				cache.put(this, UML2Package.Literals.NAMESPACE.getEOperations().get(4), result = NamespaceOperations.importedMember(this));
 			}
 			return result;
 		}
@@ -880,15 +880,15 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public EList getOwnedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement());
+			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElement == null) {
 				List union = getOwnedElementsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElement = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
 			}
 			return ownedElement;
 		}
 		List union = getOwnedElementsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
 	}
 
 	/**

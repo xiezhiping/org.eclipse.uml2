@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.1 2005/11/14 22:11:37 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -107,7 +107,7 @@ public class ClassItemProvider
 				getString("_UI_BehavioredClassifier_ownedBehavior_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_ownedBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
+				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -128,9 +128,8 @@ public class ClassItemProvider
 				getString("_UI_BehavioredClassifier_classifierBehavior_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_classifierBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getBehavioredClassifier_ClassifierBehavior(), true, null,
-				null, null));
+				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
+				true, null, null, null));
 	}
 
 	/**
@@ -148,9 +147,8 @@ public class ClassItemProvider
 				getString("_UI_BehavioredClassifier_interfaceRealization_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_interfaceRealization_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getBehavioredClassifier_InterfaceRealization(), true,
-				null, null,
+				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -170,8 +168,8 @@ public class ClassItemProvider
 				getString("_UI_BehavioredClassifier_ownedTrigger_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_ownedTrigger_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
-				true, null, null,
+				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -191,8 +189,8 @@ public class ClassItemProvider
 				getString("_UI_Class_ownedOperation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Class_ownedOperation_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClass_OwnedOperation(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CLASS__OWNED_OPERATION, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -211,8 +209,8 @@ public class ClassItemProvider
 				getString("_UI_Class_nestedClassifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Class_nestedClassifier_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClass_NestedClassifier(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -231,7 +229,7 @@ public class ClassItemProvider
 				getString("_UI_Class_superClass_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Class_superClass_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClass_SuperClass(), true, null, null,
+				UMLPackage.Literals.CLASS__SUPER_CLASS, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -251,7 +249,7 @@ public class ClassItemProvider
 				getString("_UI_Class_isActive_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Class_isActive_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClass_IsActive(), true,
+				UMLPackage.Literals.CLASS__IS_ACTIVE, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -270,8 +268,8 @@ public class ClassItemProvider
 				getString("_UI_Class_ownedReception_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Class_ownedReception_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClass_OwnedReception(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CLASS__OWNED_RECEPTION, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -290,7 +288,7 @@ public class ClassItemProvider
 				getString("_UI_Class_extension_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Class_extension_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClass_Extension(), false, null, null,
+				UMLPackage.Literals.CLASS__EXTENSION, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -306,18 +304,15 @@ public class ClassItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedBehavior());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getBehavioredClassifier_InterfaceRealization());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedTrigger());
 			childrenFeatures
-				.add(UMLPackage.eINSTANCE.getClass_OwnedOperation());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getClass_NestedClassifier());
+				.add(UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR);
 			childrenFeatures
-				.add(UMLPackage.eINSTANCE.getClass_OwnedReception());
+				.add(UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION);
+			childrenFeatures
+				.add(UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER);
+			childrenFeatures.add(UMLPackage.Literals.CLASS__OWNED_OPERATION);
+			childrenFeatures.add(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER);
+			childrenFeatures.add(UMLPackage.Literals.CLASS__OWNED_RECEPTION);
 		}
 		return childrenFeatures;
 	}
@@ -396,162 +391,160 @@ public class ClassItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavioredClassifier_OwnedBehavior(), UMLFactory.eINSTANCE
-			.createBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
+			UMLFactory.eINSTANCE.createBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavioredClassifier_OwnedBehavior(), UMLFactory.eINSTANCE
-			.createStateMachine()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
+			UMLFactory.eINSTANCE.createStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavioredClassifier_OwnedBehavior(), UMLFactory.eINSTANCE
-			.createProtocolStateMachine()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
+			UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavioredClassifier_OwnedBehavior(), UMLFactory.eINSTANCE
-			.createOpaqueBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
+			UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavioredClassifier_OwnedBehavior(), UMLFactory.eINSTANCE
-			.createFunctionBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
+			UMLFactory.eINSTANCE.createFunctionBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavioredClassifier_OwnedBehavior(), UMLFactory.eINSTANCE
-			.createInteraction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
+			UMLFactory.eINSTANCE.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavioredClassifier_OwnedBehavior(), UMLFactory.eINSTANCE
-			.createActivity()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
+			UMLFactory.eINSTANCE.createActivity()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavioredClassifier_InterfaceRealization(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
 			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavioredClassifier_OwnedTrigger(), UMLFactory.eINSTANCE
-			.createTrigger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER,
+			UMLFactory.eINSTANCE.createTrigger()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getClass_OwnedOperation(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__OWNED_OPERATION, UMLFactory.eINSTANCE
 				.createOperation()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE.createClass()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createClass()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createStereotype()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createStereotype()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getClass_NestedClassifier(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createUseCase()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getClass_NestedClassifier(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createArtifact()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createDeploymentSpecification()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createDeploymentSpecification()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getClass_NestedClassifier(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createBehavior()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getClass_NestedClassifier(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createDataType()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createInterface()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createInterface()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE.createSignal()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createSignal()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createStateMachine()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createProtocolStateMachine()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createAssociation()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createAssociation()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createCollaboration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createCollaboration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createExtension()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createExtension()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createEnumeration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createEnumeration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createPrimitiveType()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createPrimitiveType()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createOpaqueBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createOpaqueBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createFunctionBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createFunctionBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE.createActor()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createActor()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createInteraction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createInteraction()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getClass_NestedClassifier(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createActivity()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createInformationItem()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createInformationItem()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createComponent()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createComponent()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE.createNode()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createNode()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE.createDevice()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createDevice()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createExecutionEnvironment()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createExecutionEnvironment()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createCommunicationPath()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createCommunicationPath()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClass_NestedClassifier(), UMLFactory.eINSTANCE
-			.createAssociationClass()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createAssociationClass()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getClass_OwnedReception(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__OWNED_RECEPTION, UMLFactory.eINSTANCE
 				.createReception()));
 	}
 
@@ -566,15 +559,11 @@ public class ClassItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedUseCase()
-			|| childFeature == UMLPackage.eINSTANCE.getClass_NestedClassifier()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedBehavior();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -602,11 +591,13 @@ public class ClassItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE
-			.getBehavioredClassifier_InterfaceRealization()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamedElement_ClientDependency()}, collection, index);
+		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -620,18 +611,22 @@ public class ClassItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE
-			.getBehavioredClassifier_OwnedBehavior()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getBehavioredClassifier_ClassifierBehavior()}, collection);
+		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
+				collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
 				new EStructuralFeature[]{
-					UMLPackage.eINSTANCE.getClassifier_Substitution(),
-					UMLPackage.eINSTANCE
-						.getBehavioredClassifier_InterfaceRealization()},
+					UMLPackage.Literals.CLASSIFIER__SUBSTITUTION,
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -645,25 +640,30 @@ public class ClassItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE
-			.getBehavioredClassifier_InterfaceRealization()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamedElement_ClientDependency()}, value, collection);
+		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE
-			.getBehavioredClassifier_OwnedBehavior()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getBehavioredClassifier_ClassifierBehavior()}, value,
-				collection);
+		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
 				new EStructuralFeature[]{
-					UMLPackage.eINSTANCE.getClassifier_Substitution(),
-					UMLPackage.eINSTANCE
-						.getBehavioredClassifier_InterfaceRealization()},
+					UMLPackage.Literals.CLASSIFIER__SUBSTITUTION,
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -678,11 +678,13 @@ public class ClassItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.eINSTANCE
-			.getBehavioredClassifier_ClassifierBehavior()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getBehavioredClassifier_OwnedBehavior()}, value);
+		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

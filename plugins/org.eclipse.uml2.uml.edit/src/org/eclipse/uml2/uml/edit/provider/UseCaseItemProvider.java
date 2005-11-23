@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: UseCaseItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -90,7 +90,7 @@ public class UseCaseItemProvider
 				getString("_UI_UseCase_include_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UseCase_include_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getUseCase_Include(), true, null, null,
+				UMLPackage.Literals.USE_CASE__INCLUDE, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -110,7 +110,7 @@ public class UseCaseItemProvider
 				getString("_UI_UseCase_extend_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UseCase_extend_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getUseCase_Extend(), true, null, null,
+				UMLPackage.Literals.USE_CASE__EXTEND, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -130,7 +130,7 @@ public class UseCaseItemProvider
 				getString("_UI_UseCase_extensionPoint_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UseCase_extensionPoint_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getUseCase_ExtensionPoint(), true, null,
+				UMLPackage.Literals.USE_CASE__EXTENSION_POINT, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -150,8 +150,7 @@ public class UseCaseItemProvider
 				getString("_UI_UseCase_subject_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UseCase_subject_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getUseCase_Subject(), true, null, null,
-				null));
+				UMLPackage.Literals.USE_CASE__SUBJECT, true, null, null, null));
 	}
 
 	/**
@@ -165,10 +164,9 @@ public class UseCaseItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getUseCase_Include());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getUseCase_Extend());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getUseCase_ExtensionPoint());
+			childrenFeatures.add(UMLPackage.Literals.USE_CASE__INCLUDE);
+			childrenFeatures.add(UMLPackage.Literals.USE_CASE__EXTEND);
+			childrenFeatures.add(UMLPackage.Literals.USE_CASE__EXTENSION_POINT);
 		}
 		return childrenFeatures;
 	}
@@ -240,15 +238,17 @@ public class UseCaseItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getUseCase_Include(), UMLFactory.eINSTANCE.createInclude()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.USE_CASE__INCLUDE, UMLFactory.eINSTANCE
+				.createInclude()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getUseCase_Extend(), UMLFactory.eINSTANCE.createExtend()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.USE_CASE__EXTEND, UMLFactory.eINSTANCE
+				.createExtend()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getUseCase_ExtensionPoint(), UMLFactory.eINSTANCE
-			.createExtensionPoint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.USE_CASE__EXTENSION_POINT, UMLFactory.eINSTANCE
+				.createExtensionPoint()));
 	}
 
 	/**
@@ -262,10 +262,8 @@ public class UseCaseItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

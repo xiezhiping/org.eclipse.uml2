@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: InteractionOperandItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -92,8 +92,8 @@ public class InteractionOperandItemProvider
 				getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_covered_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInteractionFragment_Covered(), true,
-				null, null, null));
+				UMLPackage.Literals.INTERACTION_FRAGMENT__COVERED, true, null,
+				null, null));
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class InteractionOperandItemProvider
 				getString("_UI_InteractionFragment_generalOrdering_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_generalOrdering_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInteractionFragment_GeneralOrdering(),
+				UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -132,9 +132,9 @@ public class InteractionOperandItemProvider
 				getString("_UI_InteractionFragment_enclosingInteraction_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingInteraction_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getInteractionFragment_EnclosingInteraction(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -153,7 +153,7 @@ public class InteractionOperandItemProvider
 				getString("_UI_InteractionFragment_enclosingOperand_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingOperand_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInteractionFragment_EnclosingOperand(),
+				UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_OPERAND,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -174,7 +174,7 @@ public class InteractionOperandItemProvider
 				getString("_UI_InteractionOperand_guard_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionOperand_guard_feature", "_UI_InteractionOperand_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInteractionOperand_Guard(), true, null,
+				UMLPackage.Literals.INTERACTION_OPERAND__GUARD, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -194,9 +194,8 @@ public class InteractionOperandItemProvider
 				getString("_UI_InteractionOperand_fragment_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionOperand_fragment_feature", "_UI_InteractionOperand_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInteractionOperand_Fragment(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -211,12 +210,12 @@ public class InteractionOperandItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getInteractionFragment_GeneralOrdering());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getInteractionOperand_Guard());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getInteractionOperand_Fragment());
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING);
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERACTION_OPERAND__GUARD);
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT);
 		}
 		return childrenFeatures;
 	}
@@ -288,61 +287,61 @@ public class InteractionOperandItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionFragment_GeneralOrdering(), UMLFactory.eINSTANCE
-			.createGeneralOrdering()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
+			UMLFactory.eINSTANCE.createGeneralOrdering()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Guard(), UMLFactory.eINSTANCE
-			.createInteractionConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__GUARD,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createInteraction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createInteractionUse()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createInteractionUse()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createPartDecomposition()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createPartDecomposition()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createInteractionOperand()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createInteractionOperand()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createExecutionOccurrenceSpecification()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createExecutionOccurrenceSpecification()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createStateInvariant()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createStateInvariant()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createActionExecutionSpecification()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createActionExecutionSpecification()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createBehaviorExecutionSpecification()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createBehaviorExecutionSpecification()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createMessageOccurrenceSpecification()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createMessageOccurrenceSpecification()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createCombinedFragment()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createCombinedFragment()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createContinuation()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createContinuation()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getInteractionOperand_Fragment(), UMLFactory.eINSTANCE
-			.createConsiderIgnoreFragment()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createConsiderIgnoreFragment()));
 	}
 
 	/**
@@ -356,10 +355,8 @@ public class InteractionOperandItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamespace_OwnedRule()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getInteractionOperand_Guard();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.INTERACTION_OPERAND__GUARD;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

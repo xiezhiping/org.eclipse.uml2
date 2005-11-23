@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: DataTypeItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class DataTypeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DataType_ownedAttribute_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DataType_ownedAttribute_feature", "_UI_DataType_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDataType_OwnedAttribute(),
+				 UML2Package.Literals.DATA_TYPE__OWNED_ATTRIBUTE,
 				 true,
 				 null,
 				 null,
@@ -114,7 +114,7 @@ public class DataTypeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DataType_ownedOperation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DataType_ownedOperation_feature", "_UI_DataType_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDataType_OwnedOperation(),
+				 UML2Package.Literals.DATA_TYPE__OWNED_OPERATION,
 				 true,
 				 null,
 				 null,
@@ -134,8 +134,8 @@ public class DataTypeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getDataType_OwnedAttribute());
-			childrenFeatures.add(UML2Package.eINSTANCE.getDataType_OwnedOperation());
+			childrenFeatures.add(UML2Package.Literals.DATA_TYPE__OWNED_ATTRIBUTE);
+			childrenFeatures.add(UML2Package.Literals.DATA_TYPE__OWNED_OPERATION);
 		}
 		return childrenFeatures;
 	}
@@ -205,22 +205,22 @@ public class DataTypeItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDataType_OwnedAttribute(),
+				(UML2Package.Literals.DATA_TYPE__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDataType_OwnedAttribute(),
+				(UML2Package.Literals.DATA_TYPE__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDataType_OwnedAttribute(),
+				(UML2Package.Literals.DATA_TYPE__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDataType_OwnedOperation(),
+				(UML2Package.Literals.DATA_TYPE__OWNED_OPERATION,
 				 UML2Factory.eINSTANCE.createOperation()));
 	}
 

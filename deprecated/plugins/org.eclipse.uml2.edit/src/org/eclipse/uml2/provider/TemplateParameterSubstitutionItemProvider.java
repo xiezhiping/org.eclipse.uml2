@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.21 2005/09/23 20:14:53 khussey Exp $
+ * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.22 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -106,7 +106,7 @@ public class TemplateParameterSubstitutionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TemplateParameterSubstitution_formal_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameterSubstitution_formal_feature", "_UI_TemplateParameterSubstitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTemplateParameterSubstitution_Formal(),
+				 UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL,
 				 true,
 				 null,
 				 null,
@@ -126,7 +126,7 @@ public class TemplateParameterSubstitutionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TemplateParameterSubstitution_templateBinding_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameterSubstitution_templateBinding_feature", "_UI_TemplateParameterSubstitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTemplateParameterSubstitution_TemplateBinding(),
+				 UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING,
 				 true,
 				 null,
 				 null,
@@ -148,7 +148,7 @@ public class TemplateParameterSubstitutionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TemplateParameterSubstitution_actual_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameterSubstitution_actual_feature", "_UI_TemplateParameterSubstitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTemplateParameterSubstitution_Actual(),
+				 UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL,
 				 true,
 				 null,
 				 null,
@@ -168,7 +168,7 @@ public class TemplateParameterSubstitutionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TemplateParameterSubstitution_ownedActual_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameterSubstitution_ownedActual_feature", "_UI_TemplateParameterSubstitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				 UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 true,
 				 null,
 				 null,
@@ -188,7 +188,7 @@ public class TemplateParameterSubstitutionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual());
+			childrenFeatures.add(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
 		}
 		return childrenFeatures;
 	}
@@ -245,332 +245,332 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createOperation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createParameter()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createPackage()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createDataType()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createEnumeration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createInstanceSpecification()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createEnumerationLiteral()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createPrimitiveType()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createAssociation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createStereotype()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createProfile()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createExtension()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createDependency()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createPermission()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createUsage()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createAbstraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createRealization()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createSubstitution()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createGeneralizationSet()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createAssociationClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createInformationFlow()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createModel()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createInterface()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createImplementation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createArtifact()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createManifestation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createActor()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createUseCase()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createSignal()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createPrimitiveFunction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createComponent()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createDeployment()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createNode()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createDevice()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createExecutionEnvironment()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createCommunicationPath()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+				(UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 				 UML2Factory.eINSTANCE.createDeploymentSpecification()));
 	}
 
@@ -592,8 +592,8 @@ public class TemplateParameterSubstitutionItemProvider
 	 * @generated
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getTemplateParameterSubstitution_Actual()}, collection, index);
+		if (feature == UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL}, collection, index);
 		}
 		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
@@ -605,8 +605,8 @@ public class TemplateParameterSubstitutionItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getTemplateParameterSubstitution_Actual()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual()}, collection);
+		if (feature == UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -618,11 +618,11 @@ public class TemplateParameterSubstitutionItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getTemplateParameterSubstitution_Actual()}, value, collection);
+		if (feature == UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getTemplateParameterSubstitution_Actual()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual()}, value, collection);
+		if (feature == UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}

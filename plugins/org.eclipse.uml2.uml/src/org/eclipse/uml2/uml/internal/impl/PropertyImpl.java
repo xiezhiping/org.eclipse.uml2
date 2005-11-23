@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.5 2005/11/23 13:27:41 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.6 2005/11/23 20:01:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -207,7 +207,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getProperty();
+		return UMLPackage.Literals.PROPERTY;
 	}
 
 	/**
@@ -476,11 +476,11 @@ public class PropertyImpl
 	public List getDeployedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getDeploymentTarget_DeployedElement());
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE
-					.getDeploymentTarget_DeployedElement(),
+				cache.put(this,
+					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
 					result = DeploymentTargetOperations
 						.getDeployedElements(this));
 			}
@@ -1289,12 +1289,12 @@ public class PropertyImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getTemplateableElement().getEOperations()
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getTemplateableElement().getEOperations().get(0),
-					result = TemplateableElementOperations
+				cache.put(eResource(), this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
+						.get(0), result = TemplateableElementOperations
 						.parameterableElements(this));
 			}
 			return result;
@@ -1427,11 +1427,11 @@ public class PropertyImpl
 	public List subsettingContext() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getProperty().getEOperations().get(12));
+			List result = (List) cache.get(this, UMLPackage.Literals.PROPERTY
+				.getEOperations().get(12));
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE.getProperty()
-					.getEOperations().get(12), result = PropertyOperations
+				cache.put(this, UMLPackage.Literals.PROPERTY.getEOperations()
+					.get(12), result = PropertyOperations
 					.subsettingContext(this));
 			}
 			return result;

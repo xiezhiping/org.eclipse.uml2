@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.19 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.20 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -101,7 +101,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getElementImport();
+		return UML2Package.Literals.ELEMENT_IMPORT;
 	}
 
 	/**

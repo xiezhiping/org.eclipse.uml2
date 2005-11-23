@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: EventImpl.java,v 1.2 2005/11/23 20:01:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,7 @@ public abstract class EventImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getEvent();
+		return UMLPackage.Literals.EVENT;
 	}
 
 } //EventImpl

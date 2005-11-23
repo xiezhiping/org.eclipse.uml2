@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.20 2005/11/23 13:25:34 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.21 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -85,7 +85,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getInteractionOperand();
+		return UML2Package.Literals.INTERACTION_OPERAND;
 	}
 
 	/**

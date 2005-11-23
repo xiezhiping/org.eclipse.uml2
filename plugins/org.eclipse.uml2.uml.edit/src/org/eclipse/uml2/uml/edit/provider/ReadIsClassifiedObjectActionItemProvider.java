@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -92,7 +92,7 @@ public class ReadIsClassifiedObjectActionItemProvider
 				getString("_UI_ReadIsClassifiedObjectAction_isDirect_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadIsClassifiedObjectAction_isDirect_feature", "_UI_ReadIsClassifiedObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReadIsClassifiedObjectAction_IsDirect(),
+				UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_DIRECT,
 				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -111,9 +111,8 @@ public class ReadIsClassifiedObjectActionItemProvider
 				getString("_UI_ReadIsClassifiedObjectAction_classifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadIsClassifiedObjectAction_classifier_feature", "_UI_ReadIsClassifiedObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getReadIsClassifiedObjectAction_Classifier(), true, null,
-				null, null));
+				UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__CLASSIFIER,
+				true, null, null, null));
 	}
 
 	/**
@@ -131,7 +130,7 @@ public class ReadIsClassifiedObjectActionItemProvider
 				getString("_UI_ReadIsClassifiedObjectAction_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadIsClassifiedObjectAction_result_feature", "_UI_ReadIsClassifiedObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReadIsClassifiedObjectAction_Result(),
+				UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -152,7 +151,7 @@ public class ReadIsClassifiedObjectActionItemProvider
 				getString("_UI_ReadIsClassifiedObjectAction_object_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadIsClassifiedObjectAction_object_feature", "_UI_ReadIsClassifiedObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReadIsClassifiedObjectAction_Object(),
+				UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -169,10 +168,10 @@ public class ReadIsClassifiedObjectActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getReadIsClassifiedObjectAction_Result());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getReadIsClassifiedObjectAction_Object());
+			childrenFeatures
+				.add(UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT);
+			childrenFeatures
+				.add(UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -248,21 +247,21 @@ public class ReadIsClassifiedObjectActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReadIsClassifiedObjectAction_Result(), UMLFactory.eINSTANCE
-			.createOutputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReadIsClassifiedObjectAction_Object(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReadIsClassifiedObjectAction_Object(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReadIsClassifiedObjectAction_Object(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -276,10 +275,8 @@ public class ReadIsClassifiedObjectActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

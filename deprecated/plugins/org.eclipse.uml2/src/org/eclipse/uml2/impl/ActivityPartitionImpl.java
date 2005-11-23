@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.19 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.20 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -124,7 +124,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getActivityPartition();
+		return UML2Package.Literals.ACTIVITY_PARTITION;
 	}
 
 	/**

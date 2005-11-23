@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageItemProvider.java,v 1.21 2005/09/23 20:14:53 khussey Exp $
+ * $Id: PackageItemProvider.java,v 1.22 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -114,7 +114,7 @@ public class PackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterableElement_TemplateParameter(),
+				 UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -134,7 +134,7 @@ public class PackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_owningParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterableElement_OwningParameter(),
+				 UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -156,7 +156,7 @@ public class PackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_PackageableElement_packageableElement_visibility_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PackageableElement_packageableElement_visibility_feature", "_UI_PackageableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackageableElement_PackageableElement_visibility(),
+				 UML2Package.Literals.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -176,7 +176,7 @@ public class PackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Package_nestedPackage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Package_nestedPackage_feature", "_UI_Package_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackage_NestedPackage(),
+				 UML2Package.Literals.PACKAGE__NESTED_PACKAGE,
 				 false,
 				 null,
 				 null,
@@ -198,7 +198,7 @@ public class PackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Package_nestingPackage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Package_nestingPackage_feature", "_UI_Package_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackage_NestingPackage(),
+				 UML2Package.Literals.PACKAGE__NESTING_PACKAGE,
 				 false,
 				 null,
 				 null,
@@ -220,7 +220,7 @@ public class PackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Package_ownedType_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Package_ownedType_feature", "_UI_Package_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackage_OwnedType(),
+				 UML2Package.Literals.PACKAGE__OWNED_TYPE,
 				 false,
 				 null,
 				 null,
@@ -242,7 +242,7 @@ public class PackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Package_ownedMember_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Package_ownedMember_feature", "_UI_Package_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 true,
 				 null,
 				 null,
@@ -264,7 +264,7 @@ public class PackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Package_packageMerge_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Package_packageMerge_feature", "_UI_Package_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackage_PackageMerge(),
+				 UML2Package.Literals.PACKAGE__PACKAGE_MERGE,
 				 true,
 				 null,
 				 null,
@@ -286,7 +286,7 @@ public class PackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Package_appliedProfile_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Package_appliedProfile_feature", "_UI_Package_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackage_AppliedProfile(),
+				 UML2Package.Literals.PACKAGE__APPLIED_PROFILE,
 				 true,
 				 null,
 				 null,
@@ -306,7 +306,7 @@ public class PackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Package_packageExtension_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Package_packageExtension_feature", "_UI_Package_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackage_PackageExtension(),
+				 UML2Package.Literals.PACKAGE__PACKAGE_EXTENSION,
 				 true,
 				 null,
 				 null,
@@ -326,9 +326,9 @@ public class PackageItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getPackage_OwnedMember());
-			childrenFeatures.add(UML2Package.eINSTANCE.getPackage_PackageMerge());
-			childrenFeatures.add(UML2Package.eINSTANCE.getPackage_PackageExtension());
+			childrenFeatures.add(UML2Package.Literals.PACKAGE__OWNED_MEMBER);
+			childrenFeatures.add(UML2Package.Literals.PACKAGE__PACKAGE_MERGE);
+			childrenFeatures.add(UML2Package.Literals.PACKAGE__PACKAGE_EXTENSION);
 		}
 		return childrenFeatures;
 	}
@@ -402,247 +402,247 @@ public class PackageItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createPackage()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createDataType()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createEnumeration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createInstanceSpecification()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createEnumerationLiteral()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createPrimitiveType()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createAssociation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createStereotype()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createProfile()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createExtension()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createDependency()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createPermission()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createUsage()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createAbstraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createRealization()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createSubstitution()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createGeneralizationSet()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createAssociationClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createInformationFlow()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createModel()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createInterface()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createImplementation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createArtifact()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createManifestation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createActor()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createUseCase()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createSignal()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createPrimitiveFunction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createComponent()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createDeployment()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createNode()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createDevice()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createExecutionEnvironment()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createCommunicationPath()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				(UML2Package.Literals.PACKAGE__OWNED_MEMBER,
 				 UML2Factory.eINSTANCE.createDeploymentSpecification()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_PackageMerge(),
+				(UML2Package.Literals.PACKAGE__PACKAGE_MERGE,
 				 UML2Factory.eINSTANCE.createPackageMerge()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_PackageExtension(),
+				(UML2Package.Literals.PACKAGE__PACKAGE_EXTENSION,
 				 UML2Factory.eINSTANCE.createPackageMerge()));
 	}
 
@@ -657,10 +657,10 @@ public class PackageItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			childFeature == UML2Package.eINSTANCE.getPackage_OwnedMember() ||
-			childFeature == UML2Package.eINSTANCE.getPackage_PackageMerge() ||
-			childFeature == UML2Package.eINSTANCE.getPackage_PackageExtension();
+			childFeature == UML2Package.Literals.NAMESPACE__OWNED_RULE ||
+			childFeature == UML2Package.Literals.PACKAGE__OWNED_MEMBER ||
+			childFeature == UML2Package.Literals.PACKAGE__PACKAGE_MERGE ||
+			childFeature == UML2Package.Literals.PACKAGE__PACKAGE_EXTENSION;
 
 		if (qualify) {
 			return getString
@@ -688,8 +688,8 @@ public class PackageItemProvider
 	 * @generated
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getPackage_AppliedProfile()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_PackageImport()}, collection, index);
+		if (feature == UML2Package.Literals.PACKAGE__APPLIED_PROFILE) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT}, collection, index);
 		}
 		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
@@ -701,8 +701,8 @@ public class PackageItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getNamespace_PackageImport()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackage_AppliedProfile()}, collection);
+		if (feature == UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PACKAGE__APPLIED_PROFILE}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -714,11 +714,11 @@ public class PackageItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getPackage_AppliedProfile()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_PackageImport()}, value, collection);
+		if (feature == UML2Package.Literals.PACKAGE__APPLIED_PROFILE) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getNamespace_PackageImport()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackage_AppliedProfile()}, value, collection);
+		if (feature == UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PACKAGE__APPLIED_PROFILE}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
@@ -730,11 +730,11 @@ public class PackageItemProvider
 	 * @generated
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getParameterableElement_OwningParameter()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()}, value);
+		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_OwningParameter()}, value);
+		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) {
+			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

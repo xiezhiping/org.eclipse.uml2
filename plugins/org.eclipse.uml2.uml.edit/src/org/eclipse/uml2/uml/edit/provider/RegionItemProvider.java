@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: RegionItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -95,7 +95,7 @@ public class RegionItemProvider
 				getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(), true,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -114,7 +114,7 @@ public class RegionItemProvider
 				getString("_UI_RedefinableElement_redefinedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinedElement_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRedefinableElement_RedefinedElement(),
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
 				false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -135,9 +135,9 @@ public class RegionItemProvider
 				getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getRedefinableElement_RedefinitionContext(), false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -156,7 +156,7 @@ public class RegionItemProvider
 				getString("_UI_Region_subvertex_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Region_subvertex_feature", "_UI_Region_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRegion_Subvertex(), true, null, null,
+				UMLPackage.Literals.REGION__SUBVERTEX, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -176,7 +176,7 @@ public class RegionItemProvider
 				getString("_UI_Region_transition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Region_transition_feature", "_UI_Region_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRegion_Transition(), true, null, null,
+				UMLPackage.Literals.REGION__TRANSITION, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -196,7 +196,7 @@ public class RegionItemProvider
 				getString("_UI_Region_state_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Region_state_feature", "_UI_Region_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRegion_State(), true, null, null,
+				UMLPackage.Literals.REGION__STATE, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -216,8 +216,8 @@ public class RegionItemProvider
 				getString("_UI_Region_extendedRegion_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Region_extendedRegion_feature", "_UI_Region_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRegion_ExtendedRegion(), true, null,
-				null, null));
+				UMLPackage.Literals.REGION__EXTENDED_REGION, true, null, null,
+				null));
 	}
 
 	/**
@@ -235,8 +235,8 @@ public class RegionItemProvider
 				getString("_UI_Region_stateMachine_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Region_stateMachine_feature", "_UI_Region_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRegion_StateMachine(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.REGION__STATE_MACHINE, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -251,8 +251,8 @@ public class RegionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getRegion_Subvertex());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getRegion_Transition());
+			childrenFeatures.add(UMLPackage.Literals.REGION__SUBVERTEX);
+			childrenFeatures.add(UMLPackage.Literals.REGION__TRANSITION);
 		}
 		return childrenFeatures;
 	}
@@ -327,25 +327,29 @@ public class RegionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRegion_Subvertex(), UMLFactory.eINSTANCE.createState()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REGION__SUBVERTEX, UMLFactory.eINSTANCE
+				.createState()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRegion_Subvertex(), UMLFactory.eINSTANCE
-			.createConnectionPointReference()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REGION__SUBVERTEX, UMLFactory.eINSTANCE
+				.createConnectionPointReference()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRegion_Subvertex(), UMLFactory.eINSTANCE.createPseudostate()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REGION__SUBVERTEX, UMLFactory.eINSTANCE
+				.createPseudostate()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRegion_Subvertex(), UMLFactory.eINSTANCE.createFinalState()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REGION__SUBVERTEX, UMLFactory.eINSTANCE
+				.createFinalState()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRegion_Transition(), UMLFactory.eINSTANCE.createTransition()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REGION__TRANSITION, UMLFactory.eINSTANCE
+				.createTransition()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getRegion_Transition(), UMLFactory.eINSTANCE
-			.createProtocolTransition()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REGION__TRANSITION, UMLFactory.eINSTANCE
+				.createProtocolTransition()));
 	}
 
 	/**

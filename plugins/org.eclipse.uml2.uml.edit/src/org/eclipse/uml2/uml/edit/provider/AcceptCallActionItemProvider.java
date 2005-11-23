@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: AcceptCallActionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,7 +83,7 @@ public class AcceptCallActionItemProvider
 				getString("_UI_AcceptCallAction_returnInformation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AcceptCallAction_returnInformation_feature", "_UI_AcceptCallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAcceptCallAction_ReturnInformation(),
+				UMLPackage.Literals.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
 				true, null, null, null));
 	}
 
@@ -145,10 +145,8 @@ public class AcceptCallActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

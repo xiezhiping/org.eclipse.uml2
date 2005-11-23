@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ActionItemProvider.java,v 1.15 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -97,7 +97,7 @@ public class ActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Action_effect_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Action_effect_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getAction_Effect(),
+				 UML2Package.Literals.ACTION__EFFECT,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -117,7 +117,7 @@ public class ActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Action_output_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Action_output_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getAction_Output(),
+				 UML2Package.Literals.ACTION__OUTPUT,
 				 false,
 				 null,
 				 null,
@@ -139,7 +139,7 @@ public class ActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Action_input_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Action_input_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getAction_Input(),
+				 UML2Package.Literals.ACTION__INPUT,
 				 false,
 				 null,
 				 null,
@@ -161,7 +161,7 @@ public class ActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Action_context_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Action_context_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getAction_Context(),
+				 UML2Package.Literals.ACTION__CONTEXT,
 				 false,
 				 null,
 				 null,
@@ -183,7 +183,7 @@ public class ActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Action_localPrecondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Action_localPrecondition_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getAction_LocalPrecondition(),
+				 UML2Package.Literals.ACTION__LOCAL_PRECONDITION,
 				 true,
 				 null,
 				 null,
@@ -205,7 +205,7 @@ public class ActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Action_localPostcondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Action_localPostcondition_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getAction_LocalPostcondition(),
+				 UML2Package.Literals.ACTION__LOCAL_POSTCONDITION,
 				 true,
 				 null,
 				 null,
@@ -225,8 +225,8 @@ public class ActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getAction_LocalPrecondition());
-			childrenFeatures.add(UML2Package.eINSTANCE.getAction_LocalPostcondition());
+			childrenFeatures.add(UML2Package.Literals.ACTION__LOCAL_PRECONDITION);
+			childrenFeatures.add(UML2Package.Literals.ACTION__LOCAL_POSTCONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -299,52 +299,52 @@ public class ActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAction_LocalPrecondition(),
+				(UML2Package.Literals.ACTION__LOCAL_PRECONDITION,
 				 UML2Factory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAction_LocalPrecondition(),
+				(UML2Package.Literals.ACTION__LOCAL_PRECONDITION,
 				 UML2Factory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAction_LocalPrecondition(),
+				(UML2Package.Literals.ACTION__LOCAL_PRECONDITION,
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAction_LocalPrecondition(),
+				(UML2Package.Literals.ACTION__LOCAL_PRECONDITION,
 				 UML2Factory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAction_LocalPrecondition(),
+				(UML2Package.Literals.ACTION__LOCAL_PRECONDITION,
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAction_LocalPostcondition(),
+				(UML2Package.Literals.ACTION__LOCAL_POSTCONDITION,
 				 UML2Factory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAction_LocalPostcondition(),
+				(UML2Package.Literals.ACTION__LOCAL_POSTCONDITION,
 				 UML2Factory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAction_LocalPostcondition(),
+				(UML2Package.Literals.ACTION__LOCAL_POSTCONDITION,
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAction_LocalPostcondition(),
+				(UML2Package.Literals.ACTION__LOCAL_POSTCONDITION,
 				 UML2Factory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAction_LocalPostcondition(),
+				(UML2Package.Literals.ACTION__LOCAL_POSTCONDITION,
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
 	}
 
@@ -359,8 +359,8 @@ public class ActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: TemplateableElementItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,7 +88,7 @@ public class TemplateableElementItemProvider
 				getString("_UI_TemplateableElement_templateBinding_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_templateBinding_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateableElement_TemplateBinding(),
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -109,9 +109,8 @@ public class TemplateableElementItemProvider
 				getString("_UI_TemplateableElement_ownedTemplateSignature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_ownedTemplateSignature_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getTemplateableElement_OwnedTemplateSignature(), true,
-				null, null,
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -127,10 +126,10 @@ public class TemplateableElementItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateableElement_TemplateBinding());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateableElement_OwnedTemplateSignature());
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 		}
 		return childrenFeatures;
 	}
@@ -188,16 +187,16 @@ public class TemplateableElementItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_TemplateBinding(), UMLFactory.eINSTANCE
-			.createTemplateBinding()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+			UMLFactory.eINSTANCE.createTemplateBinding()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createTemplateSignature()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
 	}
 

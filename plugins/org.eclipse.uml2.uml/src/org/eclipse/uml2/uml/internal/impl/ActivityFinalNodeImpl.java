@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityFinalNodeImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: ActivityFinalNodeImpl.java,v 1.2 2005/11/23 20:01:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,7 @@ public class ActivityFinalNodeImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getActivityFinalNode();
+		return UMLPackage.Literals.ACTIVITY_FINAL_NODE;
 	}
 
 } //ActivityFinalNodeImpl

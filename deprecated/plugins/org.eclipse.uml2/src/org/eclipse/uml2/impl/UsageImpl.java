@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UsageImpl.java,v 1.11 2005/11/09 22:53:08 khussey Exp $
+ * $Id: UsageImpl.java,v 1.12 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class UsageImpl extends DependencyImpl implements Usage {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getUsage();
+		return UML2Package.Literals.USAGE;
 	}
 
 

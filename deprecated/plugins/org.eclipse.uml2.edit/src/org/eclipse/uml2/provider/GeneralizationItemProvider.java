@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: GeneralizationItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class GeneralizationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Generalization_specific_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Generalization_specific_feature", "_UI_Generalization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getGeneralization_Specific(),
+				 UML2Package.Literals.GENERALIZATION__SPECIFIC,
 				 true,
 				 null,
 				 null,
@@ -114,7 +114,7 @@ public class GeneralizationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Generalization_isSubstitutable_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Generalization_isSubstitutable_feature", "_UI_Generalization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getGeneralization_IsSubstitutable(),
+				 UML2Package.Literals.GENERALIZATION__IS_SUBSTITUTABLE,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -134,7 +134,7 @@ public class GeneralizationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Generalization_general_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Generalization_general_feature", "_UI_Generalization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getGeneralization_General(),
+				 UML2Package.Literals.GENERALIZATION__GENERAL,
 				 true,
 				 null,
 				 null,
@@ -154,7 +154,7 @@ public class GeneralizationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Generalization_generalizationSet_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Generalization_generalizationSet_feature", "_UI_Generalization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getGeneralization_GeneralizationSet(),
+				 UML2Package.Literals.GENERALIZATION__GENERALIZATION_SET,
 				 true,
 				 null,
 				 null,

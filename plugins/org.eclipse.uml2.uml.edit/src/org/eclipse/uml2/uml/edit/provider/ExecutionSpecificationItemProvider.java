@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionSpecificationItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ExecutionSpecificationItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -84,8 +84,8 @@ public class ExecutionSpecificationItemProvider
 				getString("_UI_ExecutionSpecification_start_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExecutionSpecification_start_feature", "_UI_ExecutionSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExecutionSpecification_Start(), true,
-				null, null, null));
+				UMLPackage.Literals.EXECUTION_SPECIFICATION__START, true, null,
+				null, null));
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class ExecutionSpecificationItemProvider
 				getString("_UI_ExecutionSpecification_finish_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExecutionSpecification_finish_feature", "_UI_ExecutionSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getExecutionSpecification_Finish(), true,
+				UMLPackage.Literals.EXECUTION_SPECIFICATION__FINISH, true,
 				null, null, null));
 	}
 

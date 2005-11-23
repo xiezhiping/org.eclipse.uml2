@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: AcceptCallActionItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class AcceptCallActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_AcceptCallAction_returnInformation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AcceptCallAction_returnInformation_feature", "_UI_AcceptCallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation(),
+				 UML2Package.Literals.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
 				 true,
 				 null,
 				 null,
@@ -149,8 +149,8 @@ public class AcceptCallActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

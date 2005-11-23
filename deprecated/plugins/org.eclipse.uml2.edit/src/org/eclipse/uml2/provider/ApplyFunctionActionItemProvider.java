@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionActionItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ApplyFunctionActionItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class ApplyFunctionActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ApplyFunctionAction_function_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ApplyFunctionAction_function_feature", "_UI_ApplyFunctionAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getApplyFunctionAction_Function(),
+				 UML2Package.Literals.APPLY_FUNCTION_ACTION__FUNCTION,
 				 true,
 				 null,
 				 null,
@@ -113,7 +113,7 @@ public class ApplyFunctionActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ApplyFunctionAction_argument_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ApplyFunctionAction_argument_feature", "_UI_ApplyFunctionAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getApplyFunctionAction_Argument(),
+				 UML2Package.Literals.APPLY_FUNCTION_ACTION__ARGUMENT,
 				 true,
 				 null,
 				 null,
@@ -135,7 +135,7 @@ public class ApplyFunctionActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ApplyFunctionAction_result_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ApplyFunctionAction_result_feature", "_UI_ApplyFunctionAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getApplyFunctionAction_Result(),
+				 UML2Package.Literals.APPLY_FUNCTION_ACTION__RESULT,
 				 true,
 				 null,
 				 null,
@@ -155,8 +155,8 @@ public class ApplyFunctionActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getApplyFunctionAction_Argument());
-			childrenFeatures.add(UML2Package.eINSTANCE.getApplyFunctionAction_Result());
+			childrenFeatures.add(UML2Package.Literals.APPLY_FUNCTION_ACTION__ARGUMENT);
+			childrenFeatures.add(UML2Package.Literals.APPLY_FUNCTION_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -226,17 +226,17 @@ public class ApplyFunctionActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getApplyFunctionAction_Argument(),
+				(UML2Package.Literals.APPLY_FUNCTION_ACTION__ARGUMENT,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getApplyFunctionAction_Argument(),
+				(UML2Package.Literals.APPLY_FUNCTION_ACTION__ARGUMENT,
 				 UML2Factory.eINSTANCE.createValuePin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getApplyFunctionAction_Result(),
+				(UML2Package.Literals.APPLY_FUNCTION_ACTION__RESULT,
 				 UML2Factory.eINSTANCE.createOutputPin()));
 	}
 
@@ -251,8 +251,8 @@ public class ApplyFunctionActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteLinkActionImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: WriteLinkActionImpl.java,v 1.2 2005/11/23 20:01:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -51,7 +51,7 @@ public abstract class WriteLinkActionImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getWriteLinkAction();
+		return UMLPackage.Literals.WRITE_LINK_ACTION;
 	}
 
 	/**

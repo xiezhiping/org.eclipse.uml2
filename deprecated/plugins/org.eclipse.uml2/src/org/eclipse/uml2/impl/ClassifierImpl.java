@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.39 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.40 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -192,7 +192,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getClassifier();
+		return UML2Package.Literals.CLASSIFIER;
 	}
 
 	/**
@@ -553,15 +553,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getClassifier_InheritedMember());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.CLASSIFIER__INHERITED_MEMBER);
 
 			if (result == null) {
 				Set inheritedMember = inheritedMember();
-				cache.put(this, UML2Package.eINSTANCE
-					.getClassifier_InheritedMember(),
+				cache.put(this,
+					UML2Package.Literals.CLASSIFIER__INHERITED_MEMBER,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getClassifier_InheritedMember(),
+						UML2Package.Literals.CLASSIFIER__INHERITED_MEMBER,
 						inheritedMember.size(), inheritedMember.toArray()));
 			}
 
@@ -569,9 +569,9 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		}
 
 		Set inheritedMember = inheritedMember();
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getClassifier_InheritedMember(), inheritedMember.size(),
-			inheritedMember.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.CLASSIFIER__INHERITED_MEMBER, inheritedMember
+				.size(), inheritedMember.toArray());
 	}
 
 	/**
@@ -599,14 +599,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getClassifier_General());
+				UML2Package.Literals.CLASSIFIER__GENERAL);
 
 			if (result == null) {
 				Set general = general();
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getClassifier_General(),
+				cache.put(eResource(), this,
+					UML2Package.Literals.CLASSIFIER__GENERAL,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getClassifier_General(), general
+						UML2Package.Literals.CLASSIFIER__GENERAL, general
 							.size(), general.toArray()));
 			}
 
@@ -614,8 +614,9 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		}
 
 		Set general = general();
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getClassifier_General(), general.size(), general.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.CLASSIFIER__GENERAL, general.size(), general
+				.toArray());
 	}
 
 	/**
@@ -1155,9 +1156,9 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set allFeatures() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(0));
+			Set result = (Set) cache.get(this, UML2Package.Literals.CLASSIFIER.getEOperations().get(0));
 			if (result == null) {
-				cache.put(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(0), result = ClassifierOperations.allFeatures(this));
+				cache.put(this, UML2Package.Literals.CLASSIFIER.getEOperations().get(0), result = ClassifierOperations.allFeatures(this));
 			}
 			return result;
 		}
@@ -1199,9 +1200,9 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set inheritedMember() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(4));
+			Set result = (Set) cache.get(this, UML2Package.Literals.CLASSIFIER.getEOperations().get(4));
 			if (result == null) {
-				cache.put(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(4), result = ClassifierOperations.inheritedMember(this));
+				cache.put(this, UML2Package.Literals.CLASSIFIER.getEOperations().get(4), result = ClassifierOperations.inheritedMember(this));
 			}
 			return result;
 		}
@@ -1216,9 +1217,9 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set parents() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			Set result = (Set) cache.get(eResource(), this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(5));
+			Set result = (Set) cache.get(eResource(), this, UML2Package.Literals.CLASSIFIER.getEOperations().get(5));
 			if (result == null) {
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(5), result = ClassifierOperations.parents(this));
+				cache.put(eResource(), this, UML2Package.Literals.CLASSIFIER.getEOperations().get(5), result = ClassifierOperations.parents(this));
 			}
 			return result;
 		}
@@ -1233,9 +1234,9 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set allParents() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(6));
+			Set result = (Set) cache.get(this, UML2Package.Literals.CLASSIFIER.getEOperations().get(6));
 			if (result == null) {
-				cache.put(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(6), result = ClassifierOperations.allParents(this));
+				cache.put(this, UML2Package.Literals.CLASSIFIER.getEOperations().get(6), result = ClassifierOperations.allParents(this));
 			}
 			return result;
 		}
@@ -1286,9 +1287,9 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set general() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			Set result = (Set) cache.get(eResource(), this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(11));
+			Set result = (Set) cache.get(eResource(), this, UML2Package.Literals.CLASSIFIER.getEOperations().get(11));
 			if (result == null) {
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(11), result = ClassifierOperations.general(this));
+				cache.put(eResource(), this, UML2Package.Literals.CLASSIFIER.getEOperations().get(11), result = ClassifierOperations.general(this));
 			}
 			return result;
 		}

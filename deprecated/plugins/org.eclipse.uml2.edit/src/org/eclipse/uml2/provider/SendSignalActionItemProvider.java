@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionItemProvider.java,v 1.17 2005/09/23 20:14:53 khussey Exp $
+ * $Id: SendSignalActionItemProvider.java,v 1.18 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -90,7 +90,7 @@ public class SendSignalActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_SendSignalAction_target_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_SendSignalAction_target_feature", "_UI_SendSignalAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getSendSignalAction_Target(),
+				 UML2Package.Literals.SEND_SIGNAL_ACTION__TARGET,
 				 true,
 				 null,
 				 null,
@@ -112,7 +112,7 @@ public class SendSignalActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_SendSignalAction_signal_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_SendSignalAction_signal_feature", "_UI_SendSignalAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getSendSignalAction_Signal(),
+				 UML2Package.Literals.SEND_SIGNAL_ACTION__SIGNAL,
 				 true,
 				 null,
 				 null,
@@ -130,7 +130,7 @@ public class SendSignalActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getSendSignalAction_Target());
+			childrenFeatures.add(UML2Package.Literals.SEND_SIGNAL_ACTION__TARGET);
 		}
 		return childrenFeatures;
 	}
@@ -187,12 +187,12 @@ public class SendSignalActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSendSignalAction_Target(),
+				(UML2Package.Literals.SEND_SIGNAL_ACTION__TARGET,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getSendSignalAction_Target(),
+				(UML2Package.Literals.SEND_SIGNAL_ACTION__TARGET,
 				 UML2Factory.eINSTANCE.createValuePin()));
 	}
 
@@ -207,10 +207,10 @@ public class SendSignalActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
-			childFeature == UML2Package.eINSTANCE.getInvocationAction_Argument() ||
-			childFeature == UML2Package.eINSTANCE.getSendSignalAction_Target();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION ||
+			childFeature == UML2Package.Literals.INVOCATION_ACTION__ARGUMENT ||
+			childFeature == UML2Package.Literals.SEND_SIGNAL_ACTION__TARGET;
 
 		if (qualify) {
 			return getString

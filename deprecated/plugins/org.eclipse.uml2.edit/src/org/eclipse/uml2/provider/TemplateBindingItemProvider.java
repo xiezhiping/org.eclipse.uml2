@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: TemplateBindingItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class TemplateBindingItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TemplateBinding_boundElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateBinding_boundElement_feature", "_UI_TemplateBinding_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTemplateBinding_BoundElement(),
+				 UML2Package.Literals.TEMPLATE_BINDING__BOUND_ELEMENT,
 				 true,
 				 null,
 				 null,
@@ -113,7 +113,7 @@ public class TemplateBindingItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TemplateBinding_signature_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateBinding_signature_feature", "_UI_TemplateBinding_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTemplateBinding_Signature(),
+				 UML2Package.Literals.TEMPLATE_BINDING__SIGNATURE,
 				 true,
 				 null,
 				 null,
@@ -133,7 +133,7 @@ public class TemplateBindingItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TemplateBinding_parameterSubstitution_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateBinding_parameterSubstitution_feature", "_UI_TemplateBinding_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution(),
+				 UML2Package.Literals.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,
 				 true,
 				 null,
 				 null,
@@ -153,7 +153,7 @@ public class TemplateBindingItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution());
+			childrenFeatures.add(UML2Package.Literals.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
 		}
 		return childrenFeatures;
 	}
@@ -213,7 +213,7 @@ public class TemplateBindingItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution(),
+				(UML2Package.Literals.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,
 				 UML2Factory.eINSTANCE.createTemplateParameterSubstitution()));
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -127,10 +127,10 @@ public class RemoveStructuralFeatureValueActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
-			childFeature == UML2Package.eINSTANCE.getStructuralFeatureAction_Object() ||
-			childFeature == UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION ||
+			childFeature == UML2Package.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT ||
+			childFeature == UML2Package.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE;
 
 		if (qualify) {
 			return getString

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: SubstitutionItemProvider.java,v 1.14 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -103,7 +103,7 @@ public class SubstitutionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Substitution_contract_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Substitution_contract_feature", "_UI_Substitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getSubstitution_Contract(),
+				 UML2Package.Literals.SUBSTITUTION__CONTRACT,
 				 true,
 				 null,
 				 null,
@@ -123,7 +123,7 @@ public class SubstitutionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Substitution_substitutingClassifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Substitution_substitutingClassifier_feature", "_UI_Substitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getSubstitution_SubstitutingClassifier(),
+				 UML2Package.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER,
 				 true,
 				 null,
 				 null,
@@ -207,11 +207,11 @@ public class SubstitutionItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getDependency_Supplier()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getRealization_RealizingClassifier(), UML2Package.eINSTANCE.getSubstitution_Contract()}, collection);
+		if (feature == UML2Package.Literals.DEPENDENCY__SUPPLIER) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.REALIZATION__REALIZING_CLASSIFIER, UML2Package.Literals.SUBSTITUTION__CONTRACT}, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getDependency_Client()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getRealization_Abstraction(), UML2Package.eINSTANCE.getSubstitution_SubstitutingClassifier()}, collection);
+		if (feature == UML2Package.Literals.DEPENDENCY__CLIENT) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.REALIZATION__ABSTRACTION, UML2Package.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -223,11 +223,11 @@ public class SubstitutionItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getDependency_Supplier()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getRealization_RealizingClassifier(), UML2Package.eINSTANCE.getSubstitution_Contract()}, value, collection);
+		if (feature == UML2Package.Literals.DEPENDENCY__SUPPLIER) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.REALIZATION__REALIZING_CLASSIFIER, UML2Package.Literals.SUBSTITUTION__CONTRACT}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getDependency_Client()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getRealization_Abstraction(), UML2Package.eINSTANCE.getSubstitution_SubstitutingClassifier()}, value, collection);
+		if (feature == UML2Package.Literals.DEPENDENCY__CLIENT) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.REALIZATION__ABSTRACTION, UML2Package.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
@@ -239,11 +239,11 @@ public class SubstitutionItemProvider
 	 * @generated
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getSubstitution_Contract()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Supplier()}, value);
+		if (feature == UML2Package.Literals.SUBSTITUTION__CONTRACT) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPENDENCY__SUPPLIER}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getSubstitution_SubstitutingClassifier()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Client()}, value);
+		if (feature == UML2Package.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPENDENCY__CLIENT}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

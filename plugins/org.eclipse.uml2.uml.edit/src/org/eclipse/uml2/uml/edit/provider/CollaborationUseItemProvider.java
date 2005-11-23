@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: CollaborationUseItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,8 +86,8 @@ public class CollaborationUseItemProvider
 				getString("_UI_CollaborationUse_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CollaborationUse_type_feature", "_UI_CollaborationUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCollaborationUse_Type(), true, null,
-				null, null));
+				UMLPackage.Literals.COLLABORATION_USE__TYPE, true, null, null,
+				null));
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class CollaborationUseItemProvider
 				getString("_UI_CollaborationUse_roleBinding_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CollaborationUse_roleBinding_feature", "_UI_CollaborationUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCollaborationUse_RoleBinding(), true,
+				UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -122,8 +122,8 @@ public class CollaborationUseItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getCollaborationUse_RoleBinding());
+			childrenFeatures
+				.add(UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING);
 		}
 		return childrenFeatures;
 	}
@@ -181,41 +181,41 @@ public class CollaborationUseItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCollaborationUse_RoleBinding(), UMLFactory.eINSTANCE
-			.createDependency()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createDependency()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCollaborationUse_RoleBinding(), UMLFactory.eINSTANCE
-			.createAbstraction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createAbstraction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCollaborationUse_RoleBinding(), UMLFactory.eINSTANCE
-			.createRealization()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createRealization()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCollaborationUse_RoleBinding(), UMLFactory.eINSTANCE
-			.createSubstitution()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createSubstitution()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCollaborationUse_RoleBinding(), UMLFactory.eINSTANCE
-			.createDeployment()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createDeployment()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCollaborationUse_RoleBinding(), UMLFactory.eINSTANCE
-			.createManifestation()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createManifestation()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCollaborationUse_RoleBinding(), UMLFactory.eINSTANCE
-			.createInterfaceRealization()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCollaborationUse_RoleBinding(), UMLFactory.eINSTANCE
-			.createUsage()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createUsage()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCollaborationUse_RoleBinding(), UMLFactory.eINSTANCE
-			.createComponentRealization()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createComponentRealization()));
 	}
 
 	/**

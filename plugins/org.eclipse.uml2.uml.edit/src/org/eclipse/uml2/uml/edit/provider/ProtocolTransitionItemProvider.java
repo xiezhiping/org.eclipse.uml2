@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: ProtocolTransitionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -97,8 +97,8 @@ public class ProtocolTransitionItemProvider
 				getString("_UI_ProtocolTransition_postCondition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_postCondition_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProtocolTransition_PostCondition(),
-				true, null, null,
+				UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -118,9 +118,8 @@ public class ProtocolTransitionItemProvider
 				getString("_UI_ProtocolTransition_referred_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_referred_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProtocolTransition_Referred(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.PROTOCOL_TRANSITION__REFERRED, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -139,8 +138,8 @@ public class ProtocolTransitionItemProvider
 				getString("_UI_ProtocolTransition_preCondition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_preCondition_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProtocolTransition_PreCondition(),
-				true, null, null, null));
+				UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION, true,
+				null, null, null));
 	}
 
 	/**
@@ -154,8 +153,8 @@ public class ProtocolTransitionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getProtocolTransition_PostCondition());
+			childrenFeatures
+				.add(UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -213,25 +212,25 @@ public class ProtocolTransitionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProtocolTransition_PostCondition(), UMLFactory.eINSTANCE
-			.createConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProtocolTransition_PostCondition(), UMLFactory.eINSTANCE
-			.createInteractionConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProtocolTransition_PostCondition(), UMLFactory.eINSTANCE
-			.createIntervalConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProtocolTransition_PostCondition(), UMLFactory.eINSTANCE
-			.createTimeConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProtocolTransition_PostCondition(), UMLFactory.eINSTANCE
-			.createDurationConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 	}
 
 	/**
@@ -245,10 +244,8 @@ public class ProtocolTransitionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTransition_Guard()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getProtocolTransition_PostCondition();
+		boolean qualify = childFeature == UMLPackage.Literals.TRANSITION__GUARD
+			|| childFeature == UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -276,16 +273,21 @@ public class ProtocolTransitionItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.eINSTANCE
-			.getProtocolTransition_PreCondition()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getTransition_Guard()}, value);
+		if (feature == UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD},
+				value);
 		}
-		if (feature == UMLPackage.eINSTANCE.getTransition_Guard()) {
-			return new SupersetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getProtocolTransition_PreCondition()}, value);
+		if (feature == UMLPackage.Literals.TRANSITION__GUARD) {
+			return new SupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

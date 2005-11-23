@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -90,9 +90,9 @@ public class ReadLinkObjectEndQualifierActionItemProvider
 				getString("_UI_ReadLinkObjectEndQualifierAction_object_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadLinkObjectEndQualifierAction_object_feature", "_UI_ReadLinkObjectEndQualifierAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getReadLinkObjectEndQualifierAction_Object(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -111,9 +111,9 @@ public class ReadLinkObjectEndQualifierActionItemProvider
 				getString("_UI_ReadLinkObjectEndQualifierAction_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadLinkObjectEndQualifierAction_result_feature", "_UI_ReadLinkObjectEndQualifierAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getReadLinkObjectEndQualifierAction_Result(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -132,9 +132,8 @@ public class ReadLinkObjectEndQualifierActionItemProvider
 				getString("_UI_ReadLinkObjectEndQualifierAction_qualifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadLinkObjectEndQualifierAction_qualifier_feature", "_UI_ReadLinkObjectEndQualifierAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getReadLinkObjectEndQualifierAction_Qualifier(), true,
-				null, null, null));
+				UMLPackage.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER,
+				true, null, null, null));
 	}
 
 	/**
@@ -148,10 +147,10 @@ public class ReadLinkObjectEndQualifierActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getReadLinkObjectEndQualifierAction_Object());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getReadLinkObjectEndQualifierAction_Result());
+			childrenFeatures
+				.add(UMLPackage.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT);
+			childrenFeatures
+				.add(UMLPackage.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -224,21 +223,21 @@ public class ReadLinkObjectEndQualifierActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReadLinkObjectEndQualifierAction_Object(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReadLinkObjectEndQualifierAction_Object(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReadLinkObjectEndQualifierAction_Object(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReadLinkObjectEndQualifierAction_Result(), UMLFactory.eINSTANCE
-			.createOutputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**
@@ -252,10 +251,8 @@ public class ReadLinkObjectEndQualifierActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

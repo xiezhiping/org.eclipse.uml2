@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.4 2005/11/23 13:27:41 khussey Exp $
+ * $Id: OperationImpl.java,v 1.5 2005/11/23 20:01:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -187,7 +187,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getOperation();
+		return UMLPackage.Literals.OPERATION;
 	}
 
 	/**
@@ -1047,12 +1047,12 @@ public class OperationImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getTemplateableElement().getEOperations()
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getTemplateableElement().getEOperations().get(0),
-					result = TemplateableElementOperations
+				cache.put(eResource(), this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
+						.get(0), result = TemplateableElementOperations
 						.parameterableElements(this));
 			}
 			return result;
@@ -1118,11 +1118,11 @@ public class OperationImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getOperation().getEOperations().get(7));
+				UMLPackage.Literals.OPERATION.getEOperations().get(7));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getOperation().getEOperations().get(7),
-					result = OperationOperations.returnResult(this));
+				cache.put(eResource(), this, UMLPackage.Literals.OPERATION
+					.getEOperations().get(7), result = OperationOperations
+					.returnResult(this));
 			}
 			return result;
 		}

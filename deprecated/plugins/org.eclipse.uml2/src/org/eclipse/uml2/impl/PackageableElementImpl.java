@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.18 2005/11/23 13:25:34 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.19 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -81,7 +81,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getPackageableElement();
+		return UML2Package.Literals.PACKAGEABLE_ELEMENT;
 	}
 
 	/**

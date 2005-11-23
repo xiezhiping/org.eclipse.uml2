@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.5 2005/11/23 20:01:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -107,7 +107,7 @@ public class ComponentImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getComponent();
+		return UMLPackage.Literals.COMPONENT;
 	}
 
 	/**
@@ -198,10 +198,10 @@ public class ComponentImpl
 	public List getRequireds() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getComponent_Required());
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.COMPONENT__REQUIRED);
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE.getComponent_Required(),
+				cache.put(this, UMLPackage.Literals.COMPONENT__REQUIRED,
 					result = ComponentOperations.getRequireds(this));
 			}
 			return result;
@@ -232,10 +232,10 @@ public class ComponentImpl
 	public List getProvideds() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getComponent_Provided());
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.COMPONENT__PROVIDED);
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE.getComponent_Provided(),
+				cache.put(this, UMLPackage.Literals.COMPONENT__PROVIDED,
 					result = ComponentOperations.getProvideds(this));
 			}
 			return result;
@@ -354,11 +354,11 @@ public class ComponentImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getComponent().getEOperations().get(0));
+				UMLPackage.Literals.COMPONENT.getEOperations().get(0));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getComponent().getEOperations().get(0),
-					result = ComponentOperations.realizedInterfaces(this));
+				cache.put(eResource(), this, UMLPackage.Literals.COMPONENT
+					.getEOperations().get(0), result = ComponentOperations
+					.realizedInterfaces(this));
 			}
 			return result;
 		}
@@ -374,11 +374,11 @@ public class ComponentImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getComponent().getEOperations().get(1));
+				UMLPackage.Literals.COMPONENT.getEOperations().get(1));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getComponent().getEOperations().get(1),
-					result = ComponentOperations.usedInterfaces(this));
+				cache.put(eResource(), this, UMLPackage.Literals.COMPONENT
+					.getEOperations().get(1), result = ComponentOperations
+					.usedInterfaces(this));
 			}
 			return result;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ParameterItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -106,7 +106,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TypedElement_type_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TypedElement_type_feature", "_UI_TypedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTypedElement_Type(),
+				 UML2Package.Literals.TYPED_ELEMENT__TYPE,
 				 true,
 				 null,
 				 null,
@@ -126,7 +126,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_isOrdered_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isOrdered_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_IsOrdered(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -146,7 +146,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_isUnique_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isUnique_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_IsUnique(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -166,7 +166,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_lower_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lower_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_Lower(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
@@ -188,7 +188,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_upper_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upper_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_Upper(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
@@ -210,7 +210,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_upperValue_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upperValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 true,
 				 null,
 				 null,
@@ -232,7 +232,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_lowerValue_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lowerValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				 UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 true,
 				 null,
 				 null,
@@ -254,7 +254,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Parameter_operation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_operation_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameter_Operation(),
+				 UML2Package.Literals.PARAMETER__OPERATION,
 				 true,
 				 null,
 				 null,
@@ -276,7 +276,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Parameter_default_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_default_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameter_Default(),
+				 UML2Package.Literals.PARAMETER__DEFAULT,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -298,7 +298,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Parameter_direction_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_direction_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameter_Direction(),
+				 UML2Package.Literals.PARAMETER__DIRECTION,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -318,7 +318,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Parameter_defaultValue_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_defaultValue_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				 UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 true,
 				 null,
 				 null,
@@ -340,7 +340,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Parameter_isException_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_isException_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameter_IsException(),
+				 UML2Package.Literals.PARAMETER__IS_EXCEPTION,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -360,7 +360,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Parameter_isStream_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_isStream_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameter_IsStream(),
+				 UML2Package.Literals.PARAMETER__IS_STREAM,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -380,7 +380,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Parameter_effect_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_effect_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameter_Effect(),
+				 UML2Package.Literals.PARAMETER__EFFECT,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -400,7 +400,7 @@ public class ParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Parameter_parameterSet_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_parameterSet_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameter_ParameterSet(),
+				 UML2Package.Literals.PARAMETER__PARAMETER_SET,
 				 true,
 				 null,
 				 null,
@@ -418,9 +418,9 @@ public class ParameterItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue());
-			childrenFeatures.add(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
-			childrenFeatures.add(UML2Package.eINSTANCE.getParameter_DefaultValue());
+			childrenFeatures.add(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE);
+			childrenFeatures.add(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE);
+			childrenFeatures.add(UML2Package.Literals.PARAMETER__DEFAULT_VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -503,197 +503,197 @@ public class ParameterItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				(UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameter_DefaultValue(),
+				(UML2Package.Literals.PARAMETER__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 
@@ -708,9 +708,9 @@ public class ParameterItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
-			childFeature == UML2Package.eINSTANCE.getParameter_DefaultValue();
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE ||
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE ||
+			childFeature == UML2Package.Literals.PARAMETER__DEFAULT_VALUE;
 
 		if (qualify) {
 			return getString

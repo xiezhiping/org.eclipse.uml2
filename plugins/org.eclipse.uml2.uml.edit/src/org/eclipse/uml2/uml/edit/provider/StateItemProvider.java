@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: StateItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -107,7 +107,7 @@ public class StateItemProvider
 				getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(), true,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -126,7 +126,7 @@ public class StateItemProvider
 				getString("_UI_RedefinableElement_redefinedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinedElement_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRedefinableElement_RedefinedElement(),
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
 				false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -147,9 +147,9 @@ public class StateItemProvider
 				getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getRedefinableElement_RedefinitionContext(), false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -168,8 +168,7 @@ public class StateItemProvider
 				getString("_UI_Vertex_outgoing_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_outgoing_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getVertex_Outgoing(), true, null, null,
-				null));
+				UMLPackage.Literals.VERTEX__OUTGOING, true, null, null, null));
 	}
 
 	/**
@@ -187,8 +186,7 @@ public class StateItemProvider
 				getString("_UI_Vertex_incoming_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_incoming_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getVertex_Incoming(), true, null, null,
-				null));
+				UMLPackage.Literals.VERTEX__INCOMING, true, null, null, null));
 	}
 
 	/**
@@ -206,7 +204,7 @@ public class StateItemProvider
 				getString("_UI_Vertex_container_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_container_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getVertex_Container(), true, null, null,
+				UMLPackage.Literals.VERTEX__CONTAINER, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -226,7 +224,7 @@ public class StateItemProvider
 				getString("_UI_State_isComposite_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_isComposite_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_IsComposite(), false,
+				UMLPackage.Literals.STATE__IS_COMPOSITE, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -247,7 +245,7 @@ public class StateItemProvider
 				getString("_UI_State_isOrthogonal_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_isOrthogonal_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_IsOrthogonal(), false,
+				UMLPackage.Literals.STATE__IS_ORTHOGONAL, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -268,7 +266,7 @@ public class StateItemProvider
 				getString("_UI_State_isSimple_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_isSimple_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_IsSimple(), false,
+				UMLPackage.Literals.STATE__IS_SIMPLE, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -289,7 +287,7 @@ public class StateItemProvider
 				getString("_UI_State_isSubmachineState_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_isSubmachineState_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_IsSubmachineState(), false,
+				UMLPackage.Literals.STATE__IS_SUBMACHINE_STATE, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -310,8 +308,7 @@ public class StateItemProvider
 				getString("_UI_State_submachine_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_submachine_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_Submachine(), true, null, null,
-				null));
+				UMLPackage.Literals.STATE__SUBMACHINE, true, null, null, null));
 	}
 
 	/**
@@ -329,7 +326,7 @@ public class StateItemProvider
 				getString("_UI_State_connection_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_connection_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_Connection(), true, null, null,
+				UMLPackage.Literals.STATE__CONNECTION, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -349,8 +346,8 @@ public class StateItemProvider
 				getString("_UI_State_connectionPoint_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_connectionPoint_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_ConnectionPoint(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STATE__CONNECTION_POINT, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -369,8 +366,8 @@ public class StateItemProvider
 				getString("_UI_State_redefinedState_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_redefinedState_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_RedefinedState(), true, null,
-				null, null));
+				UMLPackage.Literals.STATE__REDEFINED_STATE, true, null, null,
+				null));
 	}
 
 	/**
@@ -388,8 +385,8 @@ public class StateItemProvider
 				getString("_UI_State_stateInvariant_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_stateInvariant_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_StateInvariant(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STATE__STATE_INVARIANT, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -408,7 +405,7 @@ public class StateItemProvider
 				getString("_UI_State_entry_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_entry_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_Entry(), true, null, null,
+				UMLPackage.Literals.STATE__ENTRY, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -428,7 +425,7 @@ public class StateItemProvider
 				getString("_UI_State_exit_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_exit_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_Exit(), true, null, null,
+				UMLPackage.Literals.STATE__EXIT, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -448,7 +445,7 @@ public class StateItemProvider
 				getString("_UI_State_doActivity_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_doActivity_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_DoActivity(), true, null, null,
+				UMLPackage.Literals.STATE__DO_ACTIVITY, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -468,7 +465,7 @@ public class StateItemProvider
 				getString("_UI_State_deferrableTrigger_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_deferrableTrigger_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_DeferrableTrigger(), true, null,
+				UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -488,7 +485,7 @@ public class StateItemProvider
 				getString("_UI_State_region_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_region_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getState_Region(), true, null, null,
+				UMLPackage.Literals.STATE__REGION, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -504,17 +501,14 @@ public class StateItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE.getState_Connection());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getState_ConnectionPoint());
-			childrenFeatures
-				.add(UMLPackage.eINSTANCE.getState_StateInvariant());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getState_Entry());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getState_Exit());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getState_DoActivity());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getState_DeferrableTrigger());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getState_Region());
+			childrenFeatures.add(UMLPackage.Literals.STATE__CONNECTION);
+			childrenFeatures.add(UMLPackage.Literals.STATE__CONNECTION_POINT);
+			childrenFeatures.add(UMLPackage.Literals.STATE__STATE_INVARIANT);
+			childrenFeatures.add(UMLPackage.Literals.STATE__ENTRY);
+			childrenFeatures.add(UMLPackage.Literals.STATE__EXIT);
+			childrenFeatures.add(UMLPackage.Literals.STATE__DO_ACTIVITY);
+			childrenFeatures.add(UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER);
+			childrenFeatures.add(UMLPackage.Literals.STATE__REGION);
 		}
 		return childrenFeatures;
 	}
@@ -599,111 +593,125 @@ public class StateItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Connection(), UMLFactory.eINSTANCE
-			.createConnectionPointReference()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__CONNECTION, UMLFactory.eINSTANCE
+				.createConnectionPointReference()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_ConnectionPoint(), UMLFactory.eINSTANCE
-			.createPseudostate()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__CONNECTION_POINT, UMLFactory.eINSTANCE
+				.createPseudostate()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getState_StateInvariant(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__STATE_INVARIANT, UMLFactory.eINSTANCE
 				.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_StateInvariant(), UMLFactory.eINSTANCE
-			.createInteractionConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__STATE_INVARIANT, UMLFactory.eINSTANCE
+				.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_StateInvariant(), UMLFactory.eINSTANCE
-			.createIntervalConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__STATE_INVARIANT, UMLFactory.eINSTANCE
+				.createIntervalConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_StateInvariant(), UMLFactory.eINSTANCE
-			.createTimeConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__STATE_INVARIANT, UMLFactory.eINSTANCE
+				.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_StateInvariant(), UMLFactory.eINSTANCE
-			.createDurationConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__STATE_INVARIANT, UMLFactory.eINSTANCE
+				.createDurationConstraint()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Entry(), UMLFactory.eINSTANCE.createBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
+				.createBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Entry(), UMLFactory.eINSTANCE.createStateMachine()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
+				.createStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Entry(), UMLFactory.eINSTANCE
-			.createProtocolStateMachine()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
+				.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Entry(), UMLFactory.eINSTANCE.createOpaqueBehavior()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Entry(), UMLFactory.eINSTANCE.createFunctionBehavior()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Entry(), UMLFactory.eINSTANCE.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Entry(), UMLFactory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Exit(), UMLFactory.eINSTANCE.createBehavior()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Exit(), UMLFactory.eINSTANCE.createStateMachine()));
-
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE.getState_Exit(),
-				UMLFactory.eINSTANCE.createProtocolStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Exit(), UMLFactory.eINSTANCE.createOpaqueBehavior()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Exit(), UMLFactory.eINSTANCE.createFunctionBehavior()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Exit(), UMLFactory.eINSTANCE.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Exit(), UMLFactory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_DoActivity(), UMLFactory.eINSTANCE.createBehavior()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_DoActivity(), UMLFactory.eINSTANCE.createStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_DoActivity(), UMLFactory.eINSTANCE
-			.createProtocolStateMachine()));
-
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getState_DoActivity(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
 				.createOpaqueBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_DoActivity(), UMLFactory.eINSTANCE
-			.createFunctionBehavior()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
+				.createFunctionBehavior()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_DoActivity(), UMLFactory.eINSTANCE.createInteraction()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
+				.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_DoActivity(), UMLFactory.eINSTANCE.createActivity()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
+				.createActivity()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getState_DeferrableTrigger(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
+				.createBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
+				.createStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
+				.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
+				.createOpaqueBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
+				.createFunctionBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
+				.createInteraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
+				.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
+				.createBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
+				.createStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
+				.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
+				.createOpaqueBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
+				.createFunctionBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
+				.createInteraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
+				.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER, UMLFactory.eINSTANCE
 				.createTrigger()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getState_Region(), UMLFactory.eINSTANCE.createRegion()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__REGION, UMLFactory.eINSTANCE
+				.createRegion()));
 	}
 
 	/**
@@ -717,12 +725,11 @@ public class StateItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamespace_OwnedRule()
-			|| childFeature == UMLPackage.eINSTANCE.getState_StateInvariant()
-			|| childFeature == UMLPackage.eINSTANCE.getState_Entry()
-			|| childFeature == UMLPackage.eINSTANCE.getState_Exit()
-			|| childFeature == UMLPackage.eINSTANCE.getState_DoActivity();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.STATE__STATE_INVARIANT
+			|| childFeature == UMLPackage.Literals.STATE__ENTRY
+			|| childFeature == UMLPackage.Literals.STATE__EXIT
+			|| childFeature == UMLPackage.Literals.STATE__DO_ACTIVITY;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

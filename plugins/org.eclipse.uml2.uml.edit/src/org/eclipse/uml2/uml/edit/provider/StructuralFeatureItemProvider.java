@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: StructuralFeatureItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -95,8 +95,7 @@ public class StructuralFeatureItemProvider
 				getString("_UI_TypedElement_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TypedElement_type_feature", "_UI_TypedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTypedElement_Type(), true, null, null,
-				null));
+				UMLPackage.Literals.TYPED_ELEMENT__TYPE, true, null, null, null));
 	}
 
 	/**
@@ -114,7 +113,7 @@ public class StructuralFeatureItemProvider
 				getString("_UI_MultiplicityElement_isOrdered_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isOrdered_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered(), true,
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -133,7 +132,7 @@ public class StructuralFeatureItemProvider
 				getString("_UI_MultiplicityElement_isUnique_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isUnique_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique(), true,
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -152,7 +151,7 @@ public class StructuralFeatureItemProvider
 				getString("_UI_MultiplicityElement_upper_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upper_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getMultiplicityElement_Upper(), true,
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER, true,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -173,7 +172,7 @@ public class StructuralFeatureItemProvider
 				getString("_UI_MultiplicityElement_lower_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lower_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getMultiplicityElement_Lower(), true,
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER, true,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -194,7 +193,7 @@ public class StructuralFeatureItemProvider
 				getString("_UI_MultiplicityElement_upperValue_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upperValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue(), true,
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -215,7 +214,7 @@ public class StructuralFeatureItemProvider
 				getString("_UI_MultiplicityElement_lowerValue_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lowerValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getMultiplicityElement_LowerValue(), true,
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -236,7 +235,7 @@ public class StructuralFeatureItemProvider
 				getString("_UI_StructuralFeature_isReadOnly_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuralFeature_isReadOnly_feature", "_UI_StructuralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStructuralFeature_IsReadOnly(), true,
+				UMLPackage.Literals.STRUCTURAL_FEATURE__IS_READ_ONLY, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -251,10 +250,10 @@ public class StructuralFeatureItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getMultiplicityElement_UpperValue());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getMultiplicityElement_LowerValue());
+			childrenFeatures
+				.add(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE);
+			childrenFeatures
+				.add(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -323,117 +322,117 @@ public class StructuralFeatureItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createOpaqueExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createLiteralInteger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createLiteralString()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createLiteralBoolean()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createLiteralNull()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createInstanceValue()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createLiteralUnlimitedNatural()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createTimeExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createDuration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createDurationInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_UpperValue(), UMLFactory.eINSTANCE
-			.createTimeInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createOpaqueExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createLiteralInteger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createLiteralString()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createLiteralBoolean()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createLiteralNull()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createInstanceValue()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createLiteralUnlimitedNatural()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createTimeExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createDuration()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createDurationInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getMultiplicityElement_LowerValue(), UMLFactory.eINSTANCE
-			.createTimeInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	/**
@@ -447,12 +446,9 @@ public class StructuralFeatureItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getMultiplicityElement_UpperValue()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getMultiplicityElement_LowerValue();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

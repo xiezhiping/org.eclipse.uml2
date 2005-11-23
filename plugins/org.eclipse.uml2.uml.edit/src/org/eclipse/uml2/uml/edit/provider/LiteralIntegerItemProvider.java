@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: LiteralIntegerItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,7 +85,7 @@ public class LiteralIntegerItemProvider
 				getString("_UI_LiteralInteger_value_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LiteralInteger_value_feature", "_UI_LiteralInteger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getLiteralInteger_Value(), true,
+				UMLPackage.Literals.LITERAL_INTEGER__VALUE, true,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 

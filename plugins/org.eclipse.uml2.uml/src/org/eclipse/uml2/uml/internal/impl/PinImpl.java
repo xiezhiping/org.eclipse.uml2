@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
+ * $Id: PinImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -88,7 +88,7 @@ public class PinImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getPin();
+		return UMLPackage.Literals.PIN;
 	}
 
 	/**

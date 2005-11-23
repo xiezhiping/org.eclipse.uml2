@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ControlNodeImpl.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: ControlNodeImpl.java,v 1.2 2005/11/23 20:01:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,7 @@ public abstract class ControlNodeImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getControlNode();
+		return UMLPackage.Literals.CONTROL_NODE;
 	}
 
 } //ControlNodeImpl

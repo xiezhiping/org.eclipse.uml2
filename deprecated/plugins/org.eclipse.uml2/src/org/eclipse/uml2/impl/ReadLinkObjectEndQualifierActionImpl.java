@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.21 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.22 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -80,7 +80,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getReadLinkObjectEndQualifierAction();
+		return UML2Package.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION;
 	}
 
 	/**

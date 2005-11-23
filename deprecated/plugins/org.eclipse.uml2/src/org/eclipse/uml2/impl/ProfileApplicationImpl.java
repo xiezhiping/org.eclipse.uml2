@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.15 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.16 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -63,7 +63,7 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getProfileApplication();
+		return UML2Package.Literals.PROFILE_APPLICATION;
 	}
 
 	/**

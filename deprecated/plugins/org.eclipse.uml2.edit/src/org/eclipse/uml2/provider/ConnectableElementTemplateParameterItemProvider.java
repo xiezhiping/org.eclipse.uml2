@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterItemProvider.java,v 1.11 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterItemProvider.java,v 1.12 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -127,8 +127,8 @@ public class ConnectableElementTemplateParameterItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement() ||
-			childFeature == UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault();
+			childFeature == UML2Package.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT ||
+			childFeature == UML2Package.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT;
 
 		if (qualify) {
 			return getString

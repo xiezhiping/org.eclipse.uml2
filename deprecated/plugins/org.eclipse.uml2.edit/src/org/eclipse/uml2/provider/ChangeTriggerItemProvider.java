@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeTriggerItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ChangeTriggerItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class ChangeTriggerItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ChangeTrigger_changeExpression_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ChangeTrigger_changeExpression_feature", "_UI_ChangeTrigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				 UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class ChangeTriggerItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression());
+			childrenFeatures.add(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION);
 		}
 		return childrenFeatures;
 	}
@@ -166,67 +166,67 @@ public class ChangeTriggerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
+				(UML2Package.Literals.CHANGE_TRIGGER__CHANGE_EXPRESSION,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 

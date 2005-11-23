@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: PortItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -90,7 +90,7 @@ public class PortItemProvider
 				getString("_UI_Port_isBehavior_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Port_isBehavior_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPort_IsBehavior(), true,
+				UMLPackage.Literals.PORT__IS_BEHAVIOR, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -109,7 +109,7 @@ public class PortItemProvider
 				getString("_UI_Port_isService_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Port_isService_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPort_IsService(), true,
+				UMLPackage.Literals.PORT__IS_SERVICE, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -128,7 +128,7 @@ public class PortItemProvider
 				getString("_UI_Port_required_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Port_required_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPort_Required(), false, null, null,
+				UMLPackage.Literals.PORT__REQUIRED, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -148,7 +148,7 @@ public class PortItemProvider
 				getString("_UI_Port_redefinedPort_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Port_redefinedPort_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPort_RedefinedPort(), true, null, null,
+				UMLPackage.Literals.PORT__REDEFINED_PORT, true, null, null,
 				null));
 	}
 
@@ -167,7 +167,7 @@ public class PortItemProvider
 				getString("_UI_Port_provided_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Port_provided_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPort_Provided(), false, null, null,
+				UMLPackage.Literals.PORT__PROVIDED, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -187,7 +187,7 @@ public class PortItemProvider
 				getString("_UI_Port_protocol_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Port_protocol_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPort_Protocol(), true, null, null, null));
+				UMLPackage.Literals.PORT__PROTOCOL, true, null, null, null));
 	}
 
 	/**
@@ -256,13 +256,10 @@ public class PortItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getMultiplicityElement_UpperValue()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getMultiplicityElement_LowerValue()
-			|| childFeature == UMLPackage.eINSTANCE.getProperty_DefaultValue();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE
+			|| childFeature == UMLPackage.Literals.PROPERTY__DEFAULT_VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

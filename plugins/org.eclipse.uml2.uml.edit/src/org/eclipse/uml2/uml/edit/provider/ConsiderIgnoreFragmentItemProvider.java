@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,7 +83,7 @@ public class ConsiderIgnoreFragmentItemProvider
 				getString("_UI_ConsiderIgnoreFragment_message_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConsiderIgnoreFragment_message_feature", "_UI_ConsiderIgnoreFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConsiderIgnoreFragment_Message(), true,
+				UMLPackage.Literals.CONSIDER_IGNORE_FRAGMENT__MESSAGE, true,
 				null, null, null));
 	}
 

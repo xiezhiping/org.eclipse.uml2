@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.3 2005/11/23 13:27:44 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -55,7 +55,7 @@ public abstract class DirectedRelationshipImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getDirectedRelationship();
+		return UMLPackage.Literals.DIRECTED_RELATIONSHIP;
 	}
 
 	/**

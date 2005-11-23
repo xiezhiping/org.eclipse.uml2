@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.21 2005/11/23 13:25:33 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.22 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,7 +79,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getDependency();
+		return UML2Package.Literals.DEPENDENCY;
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated NOT
 	 */
 	public boolean isSetSources() {
-		return eIsSet(UML2Package.eINSTANCE.getDependency_Client());
+		return eIsSet(UML2Package.Literals.DEPENDENCY__CLIENT);
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated NOT
 	 */
 	public boolean isSetTargets() {
-		return eIsSet(UML2Package.eINSTANCE.getDependency_Supplier());
+		return eIsSet(UML2Package.Literals.DEPENDENCY__SUPPLIER);
 	}
 
 	/**

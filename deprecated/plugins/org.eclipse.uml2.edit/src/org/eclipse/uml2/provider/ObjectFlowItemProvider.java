@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ObjectFlowItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class ObjectFlowItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ObjectFlow_isMulticast_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectFlow_isMulticast_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getObjectFlow_IsMulticast(),
+				 UML2Package.Literals.OBJECT_FLOW__IS_MULTICAST,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -112,7 +112,7 @@ public class ObjectFlowItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ObjectFlow_isMultireceive_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectFlow_isMultireceive_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getObjectFlow_IsMultireceive(),
+				 UML2Package.Literals.OBJECT_FLOW__IS_MULTIRECEIVE,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -132,7 +132,7 @@ public class ObjectFlowItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ObjectFlow_transformation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectFlow_transformation_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getObjectFlow_Transformation(),
+				 UML2Package.Literals.OBJECT_FLOW__TRANSFORMATION,
 				 true,
 				 null,
 				 null,
@@ -152,7 +152,7 @@ public class ObjectFlowItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ObjectFlow_selection_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectFlow_selection_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getObjectFlow_Selection(),
+				 UML2Package.Literals.OBJECT_FLOW__SELECTION,
 				 true,
 				 null,
 				 null,
@@ -222,8 +222,8 @@ public class ObjectFlowItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getActivityEdge_Guard() ||
-			childFeature == UML2Package.eINSTANCE.getActivityEdge_Weight();
+			childFeature == UML2Package.Literals.ACTIVITY_EDGE__GUARD ||
+			childFeature == UML2Package.Literals.ACTIVITY_EDGE__WEIGHT;
 
 		if (qualify) {
 			return getString

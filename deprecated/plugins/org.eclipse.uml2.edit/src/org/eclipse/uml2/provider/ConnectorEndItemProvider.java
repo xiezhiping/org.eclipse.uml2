@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ConnectorEndItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -88,7 +88,7 @@ public class ConnectorEndItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ConnectorEnd_definingEnd_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectorEnd_definingEnd_feature", "_UI_ConnectorEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConnectorEnd_DefiningEnd(),
+				 UML2Package.Literals.CONNECTOR_END__DEFINING_END,
 				 false,
 				 null,
 				 null,
@@ -110,7 +110,7 @@ public class ConnectorEndItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ConnectorEnd_role_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectorEnd_role_feature", "_UI_ConnectorEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConnectorEnd_Role(),
+				 UML2Package.Literals.CONNECTOR_END__ROLE,
 				 true,
 				 null,
 				 null,
@@ -130,7 +130,7 @@ public class ConnectorEndItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ConnectorEnd_partWithPort_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectorEnd_partWithPort_feature", "_UI_ConnectorEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConnectorEnd_PartWithPort(),
+				 UML2Package.Literals.CONNECTOR_END__PART_WITH_PORT,
 				 true,
 				 null,
 				 null,
@@ -192,8 +192,8 @@ public class ConnectorEndItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue();
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE ||
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE;
 
 		if (qualify) {
 			return getString

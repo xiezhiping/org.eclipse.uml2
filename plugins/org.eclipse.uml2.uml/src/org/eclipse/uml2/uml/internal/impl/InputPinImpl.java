@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InputPinImpl.java,v 1.1 2005/11/14 22:26:04 khussey Exp $
+ * $Id: InputPinImpl.java,v 1.2 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,7 @@ public class InputPinImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getInputPin();
+		return UMLPackage.Literals.INPUT_PIN;
 	}
 
 } //InputPinImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.32 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.33 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,7 +76,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getProtocolStateMachine();
+		return UML2Package.Literals.PROTOCOL_STATE_MACHINE;
 	}
 
 	/**

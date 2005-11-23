@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallEventImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
+ * $Id: CallEventImpl.java,v 1.4 2005/11/23 20:01:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -61,7 +61,7 @@ public class CallEventImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getCallEvent();
+		return UMLPackage.Literals.CALL_EVENT;
 	}
 
 	/**

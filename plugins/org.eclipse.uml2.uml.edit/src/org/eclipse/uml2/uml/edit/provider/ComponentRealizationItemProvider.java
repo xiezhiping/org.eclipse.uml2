@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ComponentRealizationItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -95,8 +95,8 @@ public class ComponentRealizationItemProvider
 				getString("_UI_ComponentRealization_abstraction_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ComponentRealization_abstraction_feature", "_UI_ComponentRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getComponentRealization_Abstraction(),
-				true, null, null,
+				UMLPackage.Literals.COMPONENT_REALIZATION__ABSTRACTION, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -116,9 +116,8 @@ public class ComponentRealizationItemProvider
 				getString("_UI_ComponentRealization_realizingClassifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ComponentRealization_realizingClassifier_feature", "_UI_ComponentRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getComponentRealization_RealizingClassifier(), true, null,
-				null, null));
+				UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
+				true, null, null, null));
 	}
 
 	/**
@@ -186,15 +185,21 @@ public class ComponentRealizationItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getDependency_Client()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getComponentRealization_Abstraction()}, collection);
+		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__ABSTRACTION},
+				collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getDependency_Supplier()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getComponentRealization_RealizingClassifier()}, collection);
+		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER},
+				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -207,16 +212,21 @@ public class ComponentRealizationItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getDependency_Client()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getComponentRealization_Abstraction()}, value, collection);
+		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__ABSTRACTION},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getDependency_Supplier()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getComponentRealization_RealizingClassifier()}, value,
-				collection);
+		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER},
+				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);
@@ -230,17 +240,21 @@ public class ComponentRealizationItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.eINSTANCE
-			.getComponentRealization_Abstraction()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDependency_Client()}, value);
+		if (feature == UMLPackage.Literals.COMPONENT_REALIZATION__ABSTRACTION) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__CLIENT},
+				value);
 		}
-		if (feature == UMLPackage.eINSTANCE
-			.getComponentRealization_RealizingClassifier()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDependency_Supplier()}, value);
+		if (feature == UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

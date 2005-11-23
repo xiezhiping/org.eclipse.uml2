@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ObjectNodeItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -94,7 +94,7 @@ public class ObjectNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_TypedElement_type_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TypedElement_type_feature", "_UI_TypedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getTypedElement_Type(),
+				 UML2Package.Literals.TYPED_ELEMENT__TYPE,
 				 true,
 				 null,
 				 null,
@@ -114,7 +114,7 @@ public class ObjectNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ObjectNode_ordering_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_ordering_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getObjectNode_Ordering(),
+				 UML2Package.Literals.OBJECT_NODE__ORDERING,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -134,7 +134,7 @@ public class ObjectNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ObjectNode_upperBound_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_upperBound_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				 UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 true,
 				 null,
 				 null,
@@ -156,7 +156,7 @@ public class ObjectNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ObjectNode_inState_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_inState_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getObjectNode_InState(),
+				 UML2Package.Literals.OBJECT_NODE__IN_STATE,
 				 true,
 				 null,
 				 null,
@@ -176,7 +176,7 @@ public class ObjectNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ObjectNode_selection_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_selection_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getObjectNode_Selection(),
+				 UML2Package.Literals.OBJECT_NODE__SELECTION,
 				 true,
 				 null,
 				 null,
@@ -194,7 +194,7 @@ public class ObjectNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getObjectNode_UpperBound());
+			childrenFeatures.add(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND);
 		}
 		return childrenFeatures;
 	}
@@ -246,67 +246,67 @@ public class ObjectNodeItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getObjectNode_UpperBound(),
+				(UML2Package.Literals.OBJECT_NODE__UPPER_BOUND,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 

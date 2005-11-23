@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.29 2005/11/23 13:25:33 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.30 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -88,7 +88,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getStructuredClassifier();
+		return UML2Package.Literals.STRUCTURED_CLASSIFIER;
 	}
 
 	/**
@@ -158,23 +158,24 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getStructuredClassifier_Part());
+				UML2Package.Literals.STRUCTURED_CLASSIFIER__PART);
 
 			if (result == null) {
 				EList parts = StructuredClassifierOperations.getParts(this);
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getStructuredClassifier_Part(),
+				cache.put(eResource(), this,
+					UML2Package.Literals.STRUCTURED_CLASSIFIER__PART,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getStructuredClassifier_Part(),
-						parts.size(), parts.toArray()));
+						UML2Package.Literals.STRUCTURED_CLASSIFIER__PART, parts
+							.size(), parts.toArray()));
 			}
 
 			return result;
 		}
 
 		EList parts = StructuredClassifierOperations.getParts(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getStructuredClassifier_Part(), parts.size(), parts.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.STRUCTURED_CLASSIFIER__PART, parts.size(),
+			parts.toArray());
 	}
 
 	/**

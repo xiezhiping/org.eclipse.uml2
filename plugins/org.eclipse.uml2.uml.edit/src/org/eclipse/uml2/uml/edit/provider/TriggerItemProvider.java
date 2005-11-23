@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: TriggerItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -84,7 +84,7 @@ public class TriggerItemProvider
 				getString("_UI_Trigger_event_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Trigger_event_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTrigger_Event(), true, null, null, null));
+				UMLPackage.Literals.TRIGGER__EVENT, true, null, null, null));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class TriggerItemProvider
 				getString("_UI_Trigger_port_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Trigger_port_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTrigger_Port(), true, null, null, null));
+				UMLPackage.Literals.TRIGGER__PORT, true, null, null, null));
 	}
 
 	/**

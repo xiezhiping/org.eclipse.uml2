@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: ActivityGroupItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class ActivityGroupItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityGroup_superGroup_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityGroup_superGroup_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityGroup_SuperGroup(),
+				 UML2Package.Literals.ACTIVITY_GROUP__SUPER_GROUP,
 				 false,
 				 null,
 				 null,
@@ -108,7 +108,7 @@ public class ActivityGroupItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityGroup_activityGroup_activity_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityGroup_activityGroup_activity_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity(),
+				 UML2Package.Literals.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY,
 				 true,
 				 null,
 				 null,

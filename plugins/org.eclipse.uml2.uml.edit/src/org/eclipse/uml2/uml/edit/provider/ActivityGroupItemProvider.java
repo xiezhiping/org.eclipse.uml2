@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: ActivityGroupItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,7 +86,7 @@ public class ActivityGroupItemProvider
 				getString("_UI_ActivityGroup_subgroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_subgroup_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_Subgroup(), false, null,
+				UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP, false, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -106,9 +106,8 @@ public class ActivityGroupItemProvider
 				getString("_UI_ActivityGroup_superGroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_superGroup_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_SuperGroup(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACTIVITY_GROUP__SUPER_GROUP, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -127,7 +126,7 @@ public class ActivityGroupItemProvider
 				getString("_UI_ActivityGroup_containedNode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_containedNode_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_ContainedNode(), false,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE, false,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -148,7 +147,7 @@ public class ActivityGroupItemProvider
 				getString("_UI_ActivityGroup_inActivity_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_inActivity_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_InActivity(), true, null,
+				UMLPackage.Literals.ACTIVITY_GROUP__IN_ACTIVITY, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -168,7 +167,7 @@ public class ActivityGroupItemProvider
 				getString("_UI_ActivityGroup_containedEdge_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_containedEdge_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_ContainedEdge(), false,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE, false,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));

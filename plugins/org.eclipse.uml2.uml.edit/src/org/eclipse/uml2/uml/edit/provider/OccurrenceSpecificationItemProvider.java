@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: OccurrenceSpecificationItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,8 +85,8 @@ public class OccurrenceSpecificationItemProvider
 				getString("_UI_OccurrenceSpecification_toBefore_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OccurrenceSpecification_toBefore_feature", "_UI_OccurrenceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOccurrenceSpecification_ToBefore(),
-				true, null, null, null));
+				UMLPackage.Literals.OCCURRENCE_SPECIFICATION__TO_BEFORE, true,
+				null, null, null));
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class OccurrenceSpecificationItemProvider
 				getString("_UI_OccurrenceSpecification_event_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OccurrenceSpecification_event_feature", "_UI_OccurrenceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOccurrenceSpecification_Event(), true,
+				UMLPackage.Literals.OCCURRENCE_SPECIFICATION__EVENT, true,
 				null, null, null));
 	}
 
@@ -123,8 +123,8 @@ public class OccurrenceSpecificationItemProvider
 				getString("_UI_OccurrenceSpecification_toAfter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OccurrenceSpecification_toAfter_feature", "_UI_OccurrenceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOccurrenceSpecification_ToAfter(),
-				true, null, null, null));
+				UMLPackage.Literals.OCCURRENCE_SPECIFICATION__TO_AFTER, true,
+				null, null, null));
 	}
 
 	/**

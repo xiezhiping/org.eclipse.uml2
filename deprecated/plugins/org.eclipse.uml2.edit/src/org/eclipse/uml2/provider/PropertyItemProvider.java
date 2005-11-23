@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -126,7 +126,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterableElement_TemplateParameter(),
+				 UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -146,7 +146,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_owningParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterableElement_OwningParameter(),
+				 UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -168,7 +168,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ConnectableElement_end_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectableElement_end_feature", "_UI_ConnectableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConnectableElement_End(),
+				 UML2Package.Literals.CONNECTABLE_ELEMENT__END,
 				 true,
 				 null,
 				 null,
@@ -188,7 +188,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployment_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDeploymentTarget_Deployment(),
+				 UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
 				 true,
 				 null,
 				 null,
@@ -210,7 +210,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployedElement_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
+				 UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
 				 false,
 				 null,
 				 null,
@@ -232,7 +232,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_default_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_default_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_Default(),
+				 UML2Package.Literals.PROPERTY__DEFAULT,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -254,7 +254,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_isComposite_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_isComposite_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_IsComposite(),
+				 UML2Package.Literals.PROPERTY__IS_COMPOSITE,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -276,7 +276,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_isDerived_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_isDerived_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_IsDerived(),
+				 UML2Package.Literals.PROPERTY__IS_DERIVED,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -296,7 +296,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_isDerivedUnion_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_isDerivedUnion_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_IsDerivedUnion(),
+				 UML2Package.Literals.PROPERTY__IS_DERIVED_UNION,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -316,7 +316,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_owningAssociation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_owningAssociation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_OwningAssociation(),
+				 UML2Package.Literals.PROPERTY__OWNING_ASSOCIATION,
 				 true,
 				 null,
 				 null,
@@ -338,7 +338,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_aggregation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_aggregation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_Aggregation(),
+				 UML2Package.Literals.PROPERTY__AGGREGATION,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -358,7 +358,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_defaultValue_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_defaultValue_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				 UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 true,
 				 null,
 				 null,
@@ -380,7 +380,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_qualifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_qualifier_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_Qualifier(),
+				 UML2Package.Literals.PROPERTY__QUALIFIER,
 				 true,
 				 null,
 				 null,
@@ -402,7 +402,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_associationEnd_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_associationEnd_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_AssociationEnd(),
+				 UML2Package.Literals.PROPERTY__ASSOCIATION_END,
 				 true,
 				 null,
 				 null,
@@ -422,9 +422,9 @@ public class PropertyItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getDeploymentTarget_Deployment());
-			childrenFeatures.add(UML2Package.eINSTANCE.getProperty_DefaultValue());
-			childrenFeatures.add(UML2Package.eINSTANCE.getProperty_Qualifier());
+			childrenFeatures.add(UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT);
+			childrenFeatures.add(UML2Package.Literals.PROPERTY__DEFAULT_VALUE);
+			childrenFeatures.add(UML2Package.Literals.PROPERTY__QUALIFIER);
 		}
 		return childrenFeatures;
 	}
@@ -454,7 +454,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_class__feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_class__feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_Class_(),
+				 UML2Package.Literals.PROPERTY__CLASS_,
 				 false,
 				 null,
 				 null,
@@ -474,7 +474,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_opposite_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_opposite_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_Opposite(),
+				 UML2Package.Literals.PROPERTY__OPPOSITE,
 				 false,
 				 null,
 				 null,
@@ -496,7 +496,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_redefinedProperty_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_redefinedProperty_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_RedefinedProperty(),
+				 UML2Package.Literals.PROPERTY__REDEFINED_PROPERTY,
 				 true,
 				 null,
 				 null,
@@ -516,7 +516,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_subsettedProperty_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_subsettedProperty_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_SubsettedProperty(),
+				 UML2Package.Literals.PROPERTY__SUBSETTED_PROPERTY,
 				 true,
 				 null,
 				 null,
@@ -536,7 +536,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_datatype_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_datatype_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_Datatype(),
+				 UML2Package.Literals.PROPERTY__DATATYPE,
 				 true,
 				 null,
 				 null,
@@ -558,7 +558,7 @@ public class PropertyItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Property_association_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_association_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getProperty_Association(),
+				 UML2Package.Literals.PROPERTY__ASSOCIATION,
 				 true,
 				 null,
 				 null,
@@ -646,87 +646,87 @@ public class PropertyItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDeploymentTarget_Deployment(),
+				(UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
 				 UML2Factory.eINSTANCE.createDeployment()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_DefaultValue(),
+				(UML2Package.Literals.PROPERTY__DEFAULT_VALUE,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_Qualifier(),
+				(UML2Package.Literals.PROPERTY__QUALIFIER,
 				 UML2Factory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_Qualifier(),
+				(UML2Package.Literals.PROPERTY__QUALIFIER,
 				 UML2Factory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getProperty_Qualifier(),
+				(UML2Package.Literals.PROPERTY__QUALIFIER,
 				 UML2Factory.eINSTANCE.createPort()));
 	}
 
@@ -741,9 +741,9 @@ public class PropertyItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
-			childFeature == UML2Package.eINSTANCE.getProperty_DefaultValue();
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE ||
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE ||
+			childFeature == UML2Package.Literals.PROPERTY__DEFAULT_VALUE;
 
 		if (qualify) {
 			return getString
@@ -771,8 +771,8 @@ public class PropertyItemProvider
 	 * @generated
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getDeploymentTarget_Deployment()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, collection, index);
+		if (feature == UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY}, collection, index);
 		}
 		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
@@ -784,8 +784,8 @@ public class PropertyItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDeploymentTarget_Deployment()}, collection);
+		if (feature == UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -797,11 +797,11 @@ public class PropertyItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getDeploymentTarget_Deployment()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, value, collection);
+		if (feature == UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDeploymentTarget_Deployment()}, value, collection);
+		if (feature == UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT_TARGET__DEPLOYMENT}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
@@ -813,17 +813,17 @@ public class PropertyItemProvider
 	 * @generated
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getParameterableElement_OwningParameter()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()}, value);
+		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getProperty_OwningAssociation()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getProperty_Association()}, value);
+		if (feature == UML2Package.Literals.PROPERTY__OWNING_ASSOCIATION) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PROPERTY__ASSOCIATION}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_OwningParameter()}, value);
+		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) {
+			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getProperty_Association()) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getProperty_OwningAssociation()}, value);
+		if (feature == UML2Package.Literals.PROPERTY__ASSOCIATION) {
+			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PROPERTY__OWNING_ASSOCIATION}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

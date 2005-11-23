@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: CallActionItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class CallActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_CallAction_isSynchronous_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CallAction_isSynchronous_feature", "_UI_CallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getCallAction_IsSynchronous(),
+				 UML2Package.Literals.CALL_ACTION__IS_SYNCHRONOUS,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -111,7 +111,7 @@ public class CallActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_CallAction_result_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CallAction_result_feature", "_UI_CallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getCallAction_Result(),
+				 UML2Package.Literals.CALL_ACTION__RESULT,
 				 true,
 				 null,
 				 null,
@@ -131,7 +131,7 @@ public class CallActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getCallAction_Result());
+			childrenFeatures.add(UML2Package.Literals.CALL_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -182,7 +182,7 @@ public class CallActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getCallAction_Result(),
+				(UML2Package.Literals.CALL_ACTION__RESULT,
 				 UML2Factory.eINSTANCE.createOutputPin()));
 	}
 
@@ -197,8 +197,8 @@ public class CallActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

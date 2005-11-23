@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeItemProvider.java,v 1.17 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ConditionalNodeItemProvider.java,v 1.18 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -95,7 +95,7 @@ public class ConditionalNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ConditionalNode_isDeterminate_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConditionalNode_isDeterminate_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConditionalNode_IsDeterminate(),
+				 UML2Package.Literals.CONDITIONAL_NODE__IS_DETERMINATE,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -115,7 +115,7 @@ public class ConditionalNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ConditionalNode_isAssured_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConditionalNode_isAssured_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConditionalNode_IsAssured(),
+				 UML2Package.Literals.CONDITIONAL_NODE__IS_ASSURED,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -135,7 +135,7 @@ public class ConditionalNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ConditionalNode_clause_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConditionalNode_clause_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConditionalNode_Clause(),
+				 UML2Package.Literals.CONDITIONAL_NODE__CLAUSE,
 				 true,
 				 null,
 				 null,
@@ -157,7 +157,7 @@ public class ConditionalNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ConditionalNode_result_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConditionalNode_result_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getConditionalNode_Result(),
+				 UML2Package.Literals.CONDITIONAL_NODE__RESULT,
 				 true,
 				 null,
 				 null,
@@ -177,8 +177,8 @@ public class ConditionalNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getConditionalNode_Clause());
-			childrenFeatures.add(UML2Package.eINSTANCE.getConditionalNode_Result());
+			childrenFeatures.add(UML2Package.Literals.CONDITIONAL_NODE__CLAUSE);
+			childrenFeatures.add(UML2Package.Literals.CONDITIONAL_NODE__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -252,12 +252,12 @@ public class ConditionalNodeItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConditionalNode_Clause(),
+				(UML2Package.Literals.CONDITIONAL_NODE__CLAUSE,
 				 UML2Factory.eINSTANCE.createClause()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getConditionalNode_Result(),
+				(UML2Package.Literals.CONDITIONAL_NODE__RESULT,
 				 UML2Factory.eINSTANCE.createOutputPin()));
 	}
 
@@ -272,11 +272,11 @@ public class ConditionalNodeItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
-			childFeature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			childFeature == UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode() ||
-			childFeature == UML2Package.eINSTANCE.getConditionalNode_Result();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION ||
+			childFeature == UML2Package.Literals.NAMESPACE__OWNED_RULE ||
+			childFeature == UML2Package.Literals.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE ||
+			childFeature == UML2Package.Literals.CONDITIONAL_NODE__RESULT;
 
 		if (qualify) {
 			return getString

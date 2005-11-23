@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalTriggerItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: SignalTriggerItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class SignalTriggerItemProvider
 				 getResourceLocator(),
 				 getString("_UI_SignalTrigger_signal_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_SignalTrigger_signal_feature", "_UI_SignalTrigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getSignalTrigger_Signal(),
+				 UML2Package.Literals.SIGNAL_TRIGGER__SIGNAL,
 				 true,
 				 null,
 				 null,

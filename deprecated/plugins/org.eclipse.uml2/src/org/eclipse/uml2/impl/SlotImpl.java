@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.16 2005/11/23 13:25:33 khussey Exp $
+ * $Id: SlotImpl.java,v 1.17 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,7 +77,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getSlot();
+		return UML2Package.Literals.SLOT;
 	}
 
 	/**

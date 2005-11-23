@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: UseCaseItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -94,7 +94,7 @@ public class UseCaseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_UseCase_include_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_UseCase_include_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getUseCase_Include(),
+				 UML2Package.Literals.USE_CASE__INCLUDE,
 				 true,
 				 null,
 				 null,
@@ -116,7 +116,7 @@ public class UseCaseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_UseCase_extend_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_UseCase_extend_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getUseCase_Extend(),
+				 UML2Package.Literals.USE_CASE__EXTEND,
 				 true,
 				 null,
 				 null,
@@ -138,7 +138,7 @@ public class UseCaseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_UseCase_extensionPoint_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_UseCase_extensionPoint_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getUseCase_ExtensionPoint(),
+				 UML2Package.Literals.USE_CASE__EXTENSION_POINT,
 				 true,
 				 null,
 				 null,
@@ -160,7 +160,7 @@ public class UseCaseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_UseCase_subject_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_UseCase_subject_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getUseCase_Subject(),
+				 UML2Package.Literals.USE_CASE__SUBJECT,
 				 true,
 				 null,
 				 null,
@@ -178,9 +178,9 @@ public class UseCaseItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getUseCase_Include());
-			childrenFeatures.add(UML2Package.eINSTANCE.getUseCase_Extend());
-			childrenFeatures.add(UML2Package.eINSTANCE.getUseCase_ExtensionPoint());
+			childrenFeatures.add(UML2Package.Literals.USE_CASE__INCLUDE);
+			childrenFeatures.add(UML2Package.Literals.USE_CASE__EXTEND);
+			childrenFeatures.add(UML2Package.Literals.USE_CASE__EXTENSION_POINT);
 		}
 		return childrenFeatures;
 	}
@@ -251,17 +251,17 @@ public class UseCaseItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getUseCase_Include(),
+				(UML2Package.Literals.USE_CASE__INCLUDE,
 				 UML2Factory.eINSTANCE.createInclude()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getUseCase_Extend(),
+				(UML2Package.Literals.USE_CASE__EXTEND,
 				 UML2Factory.eINSTANCE.createExtend()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getUseCase_ExtensionPoint(),
+				(UML2Package.Literals.USE_CASE__EXTENSION_POINT,
 				 UML2Factory.eINSTANCE.createExtensionPoint()));
 	}
 
@@ -276,8 +276,8 @@ public class UseCaseItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE;
 
 		if (qualify) {
 			return getString

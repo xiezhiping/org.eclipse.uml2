@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.11 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.12 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,7 +71,7 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getClause();
+		return UML2Package.Literals.CLAUSE;
 	}
 
 	/**

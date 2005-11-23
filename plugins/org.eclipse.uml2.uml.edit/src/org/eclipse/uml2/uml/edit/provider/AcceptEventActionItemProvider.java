@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: AcceptEventActionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,7 +88,7 @@ public class AcceptEventActionItemProvider
 				getString("_UI_AcceptEventAction_isUnmarshall_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AcceptEventAction_isUnmarshall_feature", "_UI_AcceptEventAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAcceptEventAction_IsUnmarshall(), true,
+				UMLPackage.Literals.ACCEPT_EVENT_ACTION__IS_UNMARSHALL, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -107,7 +107,7 @@ public class AcceptEventActionItemProvider
 				getString("_UI_AcceptEventAction_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AcceptEventAction_result_feature", "_UI_AcceptEventAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAcceptEventAction_Result(), true, null,
+				UMLPackage.Literals.ACCEPT_EVENT_ACTION__RESULT, true, null,
 				null, null));
 	}
 
@@ -126,9 +126,8 @@ public class AcceptEventActionItemProvider
 				getString("_UI_AcceptEventAction_trigger_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AcceptEventAction_trigger_feature", "_UI_AcceptEventAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAcceptEventAction_Trigger(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACCEPT_EVENT_ACTION__TRIGGER, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -143,8 +142,8 @@ public class AcceptEventActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getAcceptEventAction_Trigger());
+			childrenFeatures
+				.add(UMLPackage.Literals.ACCEPT_EVENT_ACTION__TRIGGER);
 		}
 		return childrenFeatures;
 	}
@@ -206,9 +205,9 @@ public class AcceptEventActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAcceptEventAction_Trigger(), UMLFactory.eINSTANCE
-			.createTrigger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACCEPT_EVENT_ACTION__TRIGGER,
+			UMLFactory.eINSTANCE.createTrigger()));
 	}
 
 	/**
@@ -222,10 +221,8 @@ public class AcceptEventActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

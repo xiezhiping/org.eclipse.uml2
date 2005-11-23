@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: InteractionFragmentItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class InteractionFragmentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_covered_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionFragment_Covered(),
+				 UML2Package.Literals.INTERACTION_FRAGMENT__COVERED,
 				 true,
 				 null,
 				 null,
@@ -112,7 +112,7 @@ public class InteractionFragmentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_generalOrdering_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_generalOrdering_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering(),
+				 UML2Package.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
 				 true,
 				 null,
 				 null,
@@ -134,7 +134,7 @@ public class InteractionFragmentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_enclosingInteraction_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingInteraction_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionFragment_EnclosingInteraction(),
+				 UML2Package.Literals.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
 				 true,
 				 null,
 				 null,
@@ -156,7 +156,7 @@ public class InteractionFragmentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_enclosingOperand_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingOperand_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand(),
+				 UML2Package.Literals.INTERACTION_FRAGMENT__ENCLOSING_OPERAND,
 				 true,
 				 null,
 				 null,
@@ -176,7 +176,7 @@ public class InteractionFragmentItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
+			childrenFeatures.add(UML2Package.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING);
 		}
 		return childrenFeatures;
 	}
@@ -224,7 +224,7 @@ public class InteractionFragmentItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering(),
+				(UML2Package.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
 				 UML2Factory.eINSTANCE.createGeneralOrdering()));
 	}
 

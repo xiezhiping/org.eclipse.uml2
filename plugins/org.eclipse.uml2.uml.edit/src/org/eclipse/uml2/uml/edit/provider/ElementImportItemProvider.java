@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ElementImportItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -89,7 +89,7 @@ public class ElementImportItemProvider
 				getString("_UI_ElementImport_visibility_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ElementImport_visibility_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getElementImport_Visibility(), true,
+				UMLPackage.Literals.ELEMENT_IMPORT__VISIBILITY, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -108,7 +108,7 @@ public class ElementImportItemProvider
 				getString("_UI_ElementImport_alias_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ElementImport_alias_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getElementImport_Alias(), true,
+				UMLPackage.Literals.ELEMENT_IMPORT__ALIAS, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -127,7 +127,7 @@ public class ElementImportItemProvider
 				getString("_UI_ElementImport_importedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ElementImport_importedElement_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getElementImport_ImportedElement(), true,
+				UMLPackage.Literals.ELEMENT_IMPORT__IMPORTED_ELEMENT, true,
 				null, null, null));
 	}
 
@@ -146,8 +146,8 @@ public class ElementImportItemProvider
 				getString("_UI_ElementImport_importingNamespace_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ElementImport_importingNamespace_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getElementImport_ImportingNamespace(),
-				true, null, null,
+				UMLPackage.Literals.ELEMENT_IMPORT__IMPORTING_NAMESPACE, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

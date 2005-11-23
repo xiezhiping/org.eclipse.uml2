@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: DeploymentItemProvider.java,v 1.14 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -108,7 +108,7 @@ public class DeploymentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Deployment_deployedArtifact_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Deployment_deployedArtifact_feature", "_UI_Deployment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDeployment_DeployedArtifact(),
+				 UML2Package.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT,
 				 true,
 				 null,
 				 null,
@@ -128,7 +128,7 @@ public class DeploymentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Deployment_location_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Deployment_location_feature", "_UI_Deployment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDeployment_Location(),
+				 UML2Package.Literals.DEPLOYMENT__LOCATION,
 				 true,
 				 null,
 				 null,
@@ -150,7 +150,7 @@ public class DeploymentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Deployment_configuration_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Deployment_configuration_feature", "_UI_Deployment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDeployment_Configuration(),
+				 UML2Package.Literals.DEPLOYMENT__CONFIGURATION,
 				 true,
 				 null,
 				 null,
@@ -170,7 +170,7 @@ public class DeploymentItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getDeployment_Configuration());
+			childrenFeatures.add(UML2Package.Literals.DEPLOYMENT__CONFIGURATION);
 		}
 		return childrenFeatures;
 	}
@@ -257,7 +257,7 @@ public class DeploymentItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getDeployment_Configuration(),
+				(UML2Package.Literals.DEPLOYMENT__CONFIGURATION,
 				 UML2Factory.eINSTANCE.createDeploymentSpecification()));
 	}
 
@@ -279,8 +279,8 @@ public class DeploymentItemProvider
 	 * @generated
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getDeployment_DeployedArtifact()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Supplier()}, collection, index);
+		if (feature == UML2Package.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPENDENCY__SUPPLIER}, collection, index);
 		}
 		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
@@ -292,11 +292,11 @@ public class DeploymentItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getDependency_Supplier()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDeployment_DeployedArtifact()}, collection);
+		if (feature == UML2Package.Literals.DEPENDENCY__SUPPLIER) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT}, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getDependency_Client()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDeployment_Location()}, collection);
+		if (feature == UML2Package.Literals.DEPENDENCY__CLIENT) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT__LOCATION}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -308,14 +308,14 @@ public class DeploymentItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getDeployment_DeployedArtifact()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Supplier()}, value, collection);
+		if (feature == UML2Package.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPENDENCY__SUPPLIER}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getDependency_Supplier()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDeployment_DeployedArtifact()}, value, collection);
+		if (feature == UML2Package.Literals.DEPENDENCY__SUPPLIER) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getDependency_Client()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDeployment_Location()}, value, collection);
+		if (feature == UML2Package.Literals.DEPENDENCY__CLIENT) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT__LOCATION}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
@@ -327,8 +327,8 @@ public class DeploymentItemProvider
 	 * @generated
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getDeployment_Location()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getDependency_Client()}, value);
+		if (feature == UML2Package.Literals.DEPLOYMENT__LOCATION) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPENDENCY__CLIENT}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

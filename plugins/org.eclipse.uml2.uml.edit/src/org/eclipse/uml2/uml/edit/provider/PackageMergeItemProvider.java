@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: PackageMergeItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,8 +83,8 @@ public class PackageMergeItemProvider
 				getString("_UI_PackageMerge_mergedPackage_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_PackageMerge_mergedPackage_feature", "_UI_PackageMerge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPackageMerge_MergedPackage(), true,
-				null, null, null));
+				UMLPackage.Literals.PACKAGE_MERGE__MERGED_PACKAGE, true, null,
+				null, null));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class PackageMergeItemProvider
 				getString("_UI_PackageMerge_receivingPackage_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_PackageMerge_receivingPackage_feature", "_UI_PackageMerge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getPackageMerge_ReceivingPackage(), true,
+				UMLPackage.Literals.PACKAGE_MERGE__RECEIVING_PACKAGE, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));

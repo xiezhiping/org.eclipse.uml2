@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointItemProvider.java,v 1.12 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ExtensionPointItemProvider.java,v 1.13 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -87,7 +87,7 @@ public class ExtensionPointItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExtensionPoint_useCase_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExtensionPoint_useCase_feature", "_UI_ExtensionPoint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExtensionPoint_UseCase(),
+				 UML2Package.Literals.EXTENSION_POINT__USE_CASE,
 				 true,
 				 null,
 				 null,

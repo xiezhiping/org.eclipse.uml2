@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.20 2005/11/23 13:25:34 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.21 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,7 +79,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getTestIdentityAction();
+		return UML2Package.Literals.TEST_IDENTITY_ACTION;
 	}
 
 	/**

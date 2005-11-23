@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: CallOperationActionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,7 +86,7 @@ public class CallOperationActionItemProvider
 				getString("_UI_CallOperationAction_operation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CallOperationAction_operation_feature", "_UI_CallOperationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCallOperationAction_Operation(), true,
+				UMLPackage.Literals.CALL_OPERATION_ACTION__OPERATION, true,
 				null, null, null));
 	}
 
@@ -105,9 +105,8 @@ public class CallOperationActionItemProvider
 				getString("_UI_CallOperationAction_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CallOperationAction_target_feature", "_UI_CallOperationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCallOperationAction_Target(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CALL_OPERATION_ACTION__TARGET, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -122,8 +121,8 @@ public class CallOperationActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getCallOperationAction_Target());
+			childrenFeatures
+				.add(UMLPackage.Literals.CALL_OPERATION_ACTION__TARGET);
 		}
 		return childrenFeatures;
 	}
@@ -181,17 +180,17 @@ public class CallOperationActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCallOperationAction_Target(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CALL_OPERATION_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCallOperationAction_Target(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CALL_OPERATION_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getCallOperationAction_Target(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CALL_OPERATION_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -205,14 +204,10 @@ public class CallOperationActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getInvocationAction_Argument()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getCallOperationAction_Target();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.INVOCATION_ACTION__ARGUMENT
+			|| childFeature == UMLPackage.Literals.CALL_OPERATION_ACTION__TARGET;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

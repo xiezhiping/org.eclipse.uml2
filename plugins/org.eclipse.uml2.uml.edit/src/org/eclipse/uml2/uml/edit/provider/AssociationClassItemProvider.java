@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: AssociationClassItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -103,9 +103,8 @@ public class AssociationClassItemProvider
 				getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Relationship_relatedElement_feature", "_UI_Relationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRelationship_RelatedElement(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -124,7 +123,7 @@ public class AssociationClassItemProvider
 				getString("_UI_Association_isDerived_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Association_isDerived_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAssociation_IsDerived(), true,
+				UMLPackage.Literals.ASSOCIATION__IS_DERIVED, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -143,8 +142,8 @@ public class AssociationClassItemProvider
 				getString("_UI_Association_endType_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Association_endType_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAssociation_EndType(), false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ASSOCIATION__END_TYPE, false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -163,8 +162,8 @@ public class AssociationClassItemProvider
 				getString("_UI_Association_memberEnd_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Association_memberEnd_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAssociation_MemberEnd(), true, null,
-				null, null));
+				UMLPackage.Literals.ASSOCIATION__MEMBER_END, true, null, null,
+				null));
 	}
 
 	/**
@@ -182,7 +181,7 @@ public class AssociationClassItemProvider
 				getString("_UI_Association_navigableOwnedEnd_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Association_navigableOwnedEnd_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAssociation_NavigableOwnedEnd(), true,
+				UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END, true,
 				null, null, null));
 	}
 
@@ -201,8 +200,8 @@ public class AssociationClassItemProvider
 				getString("_UI_Association_ownedEnd_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Association_ownedEnd_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getAssociation_OwnedEnd(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ASSOCIATION__OWNED_END, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -217,8 +216,7 @@ public class AssociationClassItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(UMLPackage.eINSTANCE.getAssociation_OwnedEnd());
+			childrenFeatures.add(UMLPackage.Literals.ASSOCIATION__OWNED_END);
 		}
 		return childrenFeatures;
 	}
@@ -280,15 +278,17 @@ public class AssociationClassItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAssociation_OwnedEnd(), UMLFactory.eINSTANCE.createProperty()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ASSOCIATION__OWNED_END, UMLFactory.eINSTANCE
+				.createProperty()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAssociation_OwnedEnd(), UMLFactory.eINSTANCE.createPort()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ASSOCIATION__OWNED_END, UMLFactory.eINSTANCE
+				.createPort()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getAssociation_OwnedEnd(), UMLFactory.eINSTANCE
-			.createExtensionEnd()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ASSOCIATION__OWNED_END, UMLFactory.eINSTANCE
+				.createExtensionEnd()));
 	}
 
 	/**
@@ -302,18 +302,13 @@ public class AssociationClassItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedUseCase()
-			|| childFeature == UMLPackage.eINSTANCE.getClass_NestedClassifier()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedAttribute()
-			|| childFeature == UMLPackage.eINSTANCE.getAssociation_OwnedEnd()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedBehavior();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
+			|| childFeature == UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE
+			|| childFeature == UMLPackage.Literals.ASSOCIATION__OWNED_END
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -341,15 +336,21 @@ public class AssociationClassItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE.getAssociation_OwnedEnd()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getAssociation_MemberEnd()}, collection, index);
+		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__MEMBER_END},
+				collection, index);
 		}
-		if (feature == UMLPackage.eINSTANCE.getAssociation_NavigableOwnedEnd()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getAssociation_OwnedEnd()}, collection, index);
+		if (feature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -363,15 +364,21 @@ public class AssociationClassItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getAssociation_MemberEnd()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getAssociation_OwnedEnd()}, collection);
+		if (feature == UMLPackage.Literals.ASSOCIATION__MEMBER_END) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+				collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getAssociation_OwnedEnd()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getAssociation_NavigableOwnedEnd()}, collection);
+		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
+				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -384,25 +391,37 @@ public class AssociationClassItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getAssociation_OwnedEnd()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getAssociation_MemberEnd()}, value, collection);
+		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__MEMBER_END},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getAssociation_NavigableOwnedEnd()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getAssociation_OwnedEnd()}, value, collection);
+		if (feature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getAssociation_MemberEnd()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getAssociation_OwnedEnd()}, value, collection);
+		if (feature == UMLPackage.Literals.ASSOCIATION__MEMBER_END) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getAssociation_OwnedEnd()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getAssociation_NavigableOwnedEnd()}, value, collection);
+		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
+				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);

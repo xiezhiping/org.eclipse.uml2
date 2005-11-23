@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeTriggerImpl.java,v 1.19 2005/11/23 13:25:32 khussey Exp $
+ * $Id: TimeTriggerImpl.java,v 1.20 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -95,7 +95,7 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getTimeTrigger();
+		return UML2Package.Literals.TIME_TRIGGER;
 	}
 
 	/**

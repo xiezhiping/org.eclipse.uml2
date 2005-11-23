@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeItemProvider.java,v 1.1 2005/11/14 22:11:37 khussey Exp $
+ * $Id: NodeItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -99,9 +99,8 @@ public class NodeItemProvider
 				getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployment_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDeploymentTarget_Deployment(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -120,8 +119,8 @@ public class NodeItemProvider
 				getString("_UI_DeploymentTarget_deployedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployedElement_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDeploymentTarget_DeployedElement(),
-				false, null, null,
+				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT, false,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -141,7 +140,7 @@ public class NodeItemProvider
 				getString("_UI_Node_nestedNode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Node_nestedNode_feature", "_UI_Node_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getNode_NestedNode(), true, null, null,
+				UMLPackage.Literals.NODE__NESTED_NODE, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -157,9 +156,9 @@ public class NodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getDeploymentTarget_Deployment());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getNode_NestedNode());
+			childrenFeatures
+				.add(UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT);
+			childrenFeatures.add(UMLPackage.Literals.NODE__NESTED_NODE);
 		}
 		return childrenFeatures;
 	}
@@ -230,19 +229,21 @@ public class NodeItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getDeploymentTarget_Deployment(), UMLFactory.eINSTANCE
-			.createDeployment()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
+			UMLFactory.eINSTANCE.createDeployment()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNode_NestedNode(), UMLFactory.eINSTANCE.createNode()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NODE__NESTED_NODE, UMLFactory.eINSTANCE
+				.createNode()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNode_NestedNode(), UMLFactory.eINSTANCE.createDevice()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NODE__NESTED_NODE, UMLFactory.eINSTANCE
+				.createDevice()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getNode_NestedNode(), UMLFactory.eINSTANCE
-			.createExecutionEnvironment()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NODE__NESTED_NODE, UMLFactory.eINSTANCE
+				.createExecutionEnvironment()));
 	}
 
 	/**
@@ -256,16 +257,12 @@ public class NodeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedUseCase()
-			|| childFeature == UMLPackage.eINSTANCE.getClass_NestedClassifier()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedBehavior()
-			|| childFeature == UMLPackage.eINSTANCE.getNode_NestedNode();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR
+			|| childFeature == UMLPackage.Literals.NODE__NESTED_NODE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -293,10 +290,13 @@ public class NodeItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE.getDeploymentTarget_Deployment()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamedElement_ClientDependency()}, collection, index);
+		if (feature == UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -310,13 +310,15 @@ public class NodeItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
 				new EStructuralFeature[]{
-					UMLPackage.eINSTANCE.getClassifier_Substitution(),
-					UMLPackage.eINSTANCE
-						.getBehavioredClassifier_InterfaceRealization(),
-					UMLPackage.eINSTANCE.getDeploymentTarget_Deployment()},
+					UMLPackage.Literals.CLASSIFIER__SUBSTITUTION,
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
+					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -330,19 +332,24 @@ public class NodeItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getDeploymentTarget_Deployment()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamedElement_ClientDependency()}, value, collection);
-		}
-		if (feature == UMLPackage.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{
-					UMLPackage.eINSTANCE.getClassifier_Substitution(),
-					UMLPackage.eINSTANCE
-						.getBehavioredClassifier_InterfaceRealization(),
-					UMLPackage.eINSTANCE.getDeploymentTarget_Deployment()},
+		if (feature == UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
 				value, collection);
+		}
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.CLASSIFIER__SUBSTITUTION,
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
+					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT}, value,
+				collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);

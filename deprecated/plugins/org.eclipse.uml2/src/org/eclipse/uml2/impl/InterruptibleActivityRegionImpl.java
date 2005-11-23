@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.13 2005/11/23 13:25:34 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.14 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -65,7 +65,7 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getInterruptibleActivityRegion();
+		return UML2Package.Literals.INTERRUPTIBLE_ACTIVITY_REGION;
 	}
 
 	/**

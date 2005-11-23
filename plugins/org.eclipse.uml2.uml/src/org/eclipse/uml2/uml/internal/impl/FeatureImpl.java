@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,7 +82,7 @@ public abstract class FeatureImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getFeature();
+		return UMLPackage.Literals.FEATURE;
 	}
 
 	/**

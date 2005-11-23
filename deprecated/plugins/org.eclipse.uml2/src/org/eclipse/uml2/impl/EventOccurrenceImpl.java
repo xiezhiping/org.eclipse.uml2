@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.17 2005/11/23 13:25:32 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.18 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -85,7 +85,7 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getEventOccurrence();
+		return UML2Package.Literals.EVENT_OCCURRENCE;
 	}
 
 	/**

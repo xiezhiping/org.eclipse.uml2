@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ControlFlowImpl.java,v 1.9 2005/11/04 22:23:01 khussey Exp $
+ * $Id: ControlFlowImpl.java,v 1.10 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getControlFlow();
+		return UML2Package.Literals.CONTROL_FLOW;
 	}
 
 

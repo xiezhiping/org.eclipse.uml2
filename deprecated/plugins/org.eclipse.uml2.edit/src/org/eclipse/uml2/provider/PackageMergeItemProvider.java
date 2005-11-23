@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: PackageMergeItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class PackageMergeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_PackageMerge_mergingPackage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PackageMerge_mergingPackage_feature", "_UI_PackageMerge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackageMerge_MergingPackage(),
+				 UML2Package.Literals.PACKAGE_MERGE__MERGING_PACKAGE,
 				 true,
 				 null,
 				 null,
@@ -111,7 +111,7 @@ public class PackageMergeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_PackageMerge_mergedPackage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PackageMerge_mergedPackage_feature", "_UI_PackageMerge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackageMerge_MergedPackage(),
+				 UML2Package.Literals.PACKAGE_MERGE__MERGED_PACKAGE,
 				 true,
 				 null,
 				 null,

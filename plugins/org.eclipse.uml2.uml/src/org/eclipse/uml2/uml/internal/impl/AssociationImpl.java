@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.5 2005/11/23 20:01:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -113,7 +113,7 @@ public class AssociationImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getAssociation();
+		return UMLPackage.Literals.ASSOCIATION;
 	}
 
 	/**
@@ -308,10 +308,10 @@ public class AssociationImpl
 	public List getEndTypes() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getAssociation_EndType());
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.ASSOCIATION__END_TYPE);
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE.getAssociation_EndType(),
+				cache.put(this, UMLPackage.Literals.ASSOCIATION__END_TYPE,
 					result = AssociationOperations.getEndTypes(this));
 			}
 			return result;

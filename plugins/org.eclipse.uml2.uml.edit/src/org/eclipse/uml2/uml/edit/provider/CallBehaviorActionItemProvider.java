@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: CallBehaviorActionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,8 +83,8 @@ public class CallBehaviorActionItemProvider
 				getString("_UI_CallBehaviorAction_behavior_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CallBehaviorAction_behavior_feature", "_UI_CallBehaviorAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCallBehaviorAction_Behavior(), true,
-				null, null, null));
+				UMLPackage.Literals.CALL_BEHAVIOR_ACTION__BEHAVIOR, true, null,
+				null, null));
 	}
 
 	/**
@@ -145,10 +145,8 @@ public class CallBehaviorActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

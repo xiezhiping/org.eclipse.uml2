@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.24 2005/11/23 13:25:32 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.25 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -176,7 +176,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getBehavioralFeature();
+		return UML2Package.Literals.BEHAVIORAL_FEATURE;
 	}
 
 	/**

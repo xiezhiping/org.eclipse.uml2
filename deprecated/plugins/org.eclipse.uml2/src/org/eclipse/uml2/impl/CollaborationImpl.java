@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.30 2005/11/23 13:25:34 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.31 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -92,7 +92,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getCollaboration();
+		return UML2Package.Literals.COLLABORATION;
 	}
 
 	/**
@@ -162,23 +162,24 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getStructuredClassifier_Part());
+				UML2Package.Literals.STRUCTURED_CLASSIFIER__PART);
 
 			if (result == null) {
 				EList parts = StructuredClassifierOperations.getParts(this);
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getStructuredClassifier_Part(),
+				cache.put(eResource(), this,
+					UML2Package.Literals.STRUCTURED_CLASSIFIER__PART,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getStructuredClassifier_Part(),
-						parts.size(), parts.toArray()));
+						UML2Package.Literals.STRUCTURED_CLASSIFIER__PART, parts
+							.size(), parts.toArray()));
 			}
 
 			return result;
 		}
 
 		EList parts = StructuredClassifierOperations.getParts(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getStructuredClassifier_Part(), parts.size(), parts.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.STRUCTURED_CLASSIFIER__PART, parts.size(),
+			parts.toArray());
 	}
 
 	/**

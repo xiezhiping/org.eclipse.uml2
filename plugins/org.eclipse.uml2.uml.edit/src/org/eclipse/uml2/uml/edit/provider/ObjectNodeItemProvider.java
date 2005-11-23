@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: ObjectNodeItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -91,8 +91,7 @@ public class ObjectNodeItemProvider
 				getString("_UI_TypedElement_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TypedElement_type_feature", "_UI_TypedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTypedElement_Type(), true, null, null,
-				null));
+				UMLPackage.Literals.TYPED_ELEMENT__TYPE, true, null, null, null));
 	}
 
 	/**
@@ -110,7 +109,7 @@ public class ObjectNodeItemProvider
 				getString("_UI_ObjectNode_ordering_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectNode_ordering_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getObjectNode_Ordering(), true,
+				UMLPackage.Literals.OBJECT_NODE__ORDERING, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -129,7 +128,7 @@ public class ObjectNodeItemProvider
 				getString("_UI_ObjectNode_isControlType_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectNode_isControlType_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getObjectNode_IsControlType(), true,
+				UMLPackage.Literals.OBJECT_NODE__IS_CONTROL_TYPE, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -148,8 +147,8 @@ public class ObjectNodeItemProvider
 				getString("_UI_ObjectNode_upperBound_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectNode_upperBound_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getObjectNode_UpperBound(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -168,7 +167,7 @@ public class ObjectNodeItemProvider
 				getString("_UI_ObjectNode_inState_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectNode_inState_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getObjectNode_InState(), true, null, null,
+				UMLPackage.Literals.OBJECT_NODE__IN_STATE, true, null, null,
 				null));
 	}
 
@@ -187,8 +186,8 @@ public class ObjectNodeItemProvider
 				getString("_UI_ObjectNode_selection_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectNode_selection_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getObjectNode_Selection(), true, null,
-				null, null));
+				UMLPackage.Literals.OBJECT_NODE__SELECTION, true, null, null,
+				null));
 	}
 
 	/**
@@ -202,8 +201,7 @@ public class ObjectNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getObjectNode_UpperBound());
+			childrenFeatures.add(UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND);
 		}
 		return childrenFeatures;
 	}
@@ -256,63 +254,61 @@ public class ObjectNodeItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createOpaqueExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createLiteralInteger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createLiteralString()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createLiteralBoolean()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createLiteralNull()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createInstanceValue()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createLiteralUnlimitedNatural()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createTimeExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createTimeExpression()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
 				.createDuration()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
 				.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createDurationInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getObjectNode_UpperBound(), UMLFactory.eINSTANCE
-			.createTimeInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
+				.createTimeInterval()));
 	}
 
 	/**
@@ -326,9 +322,8 @@ public class ObjectNodeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE.getObjectNode_UpperBound();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

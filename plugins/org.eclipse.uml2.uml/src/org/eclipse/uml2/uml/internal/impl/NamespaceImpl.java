@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.5 2005/11/23 13:27:44 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.6 2005/11/23 20:01:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,7 +82,7 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getNamespace();
+		return UMLPackage.Literals.NAMESPACE;
 	}
 
 	/**
@@ -300,11 +300,10 @@ public abstract class NamespaceImpl
 	public List getImportedMembers() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getNamespace_ImportedMember());
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER);
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE
-					.getNamespace_ImportedMember(),
+				cache.put(this, UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER,
 					result = NamespaceOperations.getImportedMembers(this));
 			}
 			return result;

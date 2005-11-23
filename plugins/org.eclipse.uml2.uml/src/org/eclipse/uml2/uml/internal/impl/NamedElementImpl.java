@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.5 2005/11/23 13:27:42 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.6 2005/11/23 20:01:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -111,7 +111,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getNamedElement();
+		return UMLPackage.Literals.NAMED_ELEMENT;
 	}
 
 	/**
@@ -345,10 +345,10 @@ public abstract class NamedElementImpl
 	public List allNamespaces() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getNamedElement().getEOperations().get(4));
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.NAMED_ELEMENT.getEOperations().get(4));
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE.getNamedElement()
+				cache.put(this, UMLPackage.Literals.NAMED_ELEMENT
 					.getEOperations().get(4), result = NamedElementOperations
 					.allNamespaces(this));
 			}

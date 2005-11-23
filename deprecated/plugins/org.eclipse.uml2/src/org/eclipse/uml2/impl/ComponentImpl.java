@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.37 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.38 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,7 +114,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getComponent();
+		return UML2Package.Literals.COMPONENT;
 	}
 
 	/**
@@ -149,23 +149,24 @@ public class ComponentImpl extends ClassImpl implements Component {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getComponent_Required());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.COMPONENT__REQUIRED);
 
 			if (result == null) {
 				EList requireds = ComponentOperations.getRequireds(this);
-				cache.put(this, UML2Package.eINSTANCE.getComponent_Required(),
+				cache.put(this, UML2Package.Literals.COMPONENT__REQUIRED,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getComponent_Required(),
-						requireds.size(), requireds.toArray()));
+						UML2Package.Literals.COMPONENT__REQUIRED, requireds
+							.size(), requireds.toArray()));
 			}
 
 			return result;
 		}
 
 		EList requireds = ComponentOperations.getRequireds(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getComponent_Required(), requireds.size(), requireds.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.COMPONENT__REQUIRED, requireds.size(),
+			requireds.toArray());
 	}
 
 	/**
@@ -192,23 +193,24 @@ public class ComponentImpl extends ClassImpl implements Component {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getComponent_Provided());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.COMPONENT__PROVIDED);
 
 			if (result == null) {
 				EList provideds = ComponentOperations.getProvideds(this);
-				cache.put(this, UML2Package.eINSTANCE.getComponent_Provided(),
+				cache.put(this, UML2Package.Literals.COMPONENT__PROVIDED,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getComponent_Provided(),
-						provideds.size(), provideds.toArray()));
+						UML2Package.Literals.COMPONENT__PROVIDED, provideds
+							.size(), provideds.toArray()));
 			}
 
 			return result;
 		}
 
 		EList provideds = ComponentOperations.getProvideds(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getComponent_Provided(), provideds.size(), provideds.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.COMPONENT__PROVIDED, provideds.size(),
+			provideds.toArray());
 	}
 
 	/**
@@ -1059,7 +1061,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getComponent_Realization())) {
+		if (eIsSet(UML2Package.Literals.COMPONENT__REALIZATION)) {
 			ownedElement.addAll(getRealizations());
 		}
 		EList ownedMember = super.getOwnedMembers();
@@ -1078,7 +1080,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getComponent_Realization())
+			|| eIsSet(UML2Package.Literals.COMPONENT__REALIZATION)
 			|| super.isSetOwnedMembers();
 	}
 

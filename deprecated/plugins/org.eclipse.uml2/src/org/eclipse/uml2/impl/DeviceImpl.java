@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeviceImpl.java,v 1.27 2005/11/14 17:31:07 khussey Exp $
+ * $Id: DeviceImpl.java,v 1.28 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getDevice();
+		return UML2Package.Literals.DEVICE;
 	}
 
 

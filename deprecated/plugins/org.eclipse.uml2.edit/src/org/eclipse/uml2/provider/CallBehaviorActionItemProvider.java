@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: CallBehaviorActionItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class CallBehaviorActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_CallBehaviorAction_behavior_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CallBehaviorAction_behavior_feature", "_UI_CallBehaviorAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getCallBehaviorAction_Behavior(),
+				 UML2Package.Literals.CALL_BEHAVIOR_ACTION__BEHAVIOR,
 				 true,
 				 null,
 				 null,
@@ -149,8 +149,8 @@ public class CallBehaviorActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

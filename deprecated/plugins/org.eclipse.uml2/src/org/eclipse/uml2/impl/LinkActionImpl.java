@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.16 2005/11/23 13:25:32 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.17 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,7 +68,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getLinkAction();
+		return UML2Package.Literals.LINK_ACTION;
 	}
 
 	/**

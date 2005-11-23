@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionDataImpl.java,v 1.3 2005/11/23 13:27:41 khussey Exp $
+ * $Id: LinkEndDestructionDataImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -85,7 +85,7 @@ public class LinkEndDestructionDataImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getLinkEndDestructionData();
+		return UMLPackage.Literals.LINK_END_DESTRUCTION_DATA;
 	}
 
 	/**

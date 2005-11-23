@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.16 2005/11/23 13:25:34 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.17 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -72,7 +72,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getConnectableElement();
+		return UML2Package.Literals.CONNECTABLE_ELEMENT;
 	}
 
 	/**

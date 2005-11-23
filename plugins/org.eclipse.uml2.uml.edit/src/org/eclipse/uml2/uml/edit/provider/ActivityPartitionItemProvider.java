@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: ActivityPartitionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -97,7 +97,7 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityGroup_subgroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_subgroup_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_Subgroup(), false, null,
+				UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP, false, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -117,9 +117,8 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityGroup_superGroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_superGroup_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_SuperGroup(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACTIVITY_GROUP__SUPER_GROUP, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -138,7 +137,7 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityGroup_containedNode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_containedNode_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_ContainedNode(), false,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE, false,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -159,7 +158,7 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityGroup_inActivity_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_inActivity_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_InActivity(), true, null,
+				UMLPackage.Literals.ACTIVITY_GROUP__IN_ACTIVITY, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -179,7 +178,7 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityGroup_containedEdge_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_containedEdge_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityGroup_ContainedEdge(), false,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE, false,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -200,7 +199,7 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityPartition_isDimension_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_isDimension_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityPartition_IsDimension(), true,
+				UMLPackage.Literals.ACTIVITY_PARTITION__IS_DIMENSION, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -219,7 +218,7 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityPartition_isExternal_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_isExternal_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityPartition_IsExternal(), true,
+				UMLPackage.Literals.ACTIVITY_PARTITION__IS_EXTERNAL, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -238,8 +237,8 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityPartition_edge_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_edge_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityPartition_Edge(), true, null,
-				null, null));
+				UMLPackage.Literals.ACTIVITY_PARTITION__EDGE, true, null, null,
+				null));
 	}
 
 	/**
@@ -257,8 +256,8 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityPartition_node_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_node_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityPartition_Node(), true, null,
-				null, null));
+				UMLPackage.Literals.ACTIVITY_PARTITION__NODE, true, null, null,
+				null));
 	}
 
 	/**
@@ -276,7 +275,7 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityPartition_subpartition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_subpartition_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityPartition_Subpartition(), true,
+				UMLPackage.Literals.ACTIVITY_PARTITION__SUBPARTITION, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -297,8 +296,8 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityPartition_superPartition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_superPartition_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityPartition_SuperPartition(),
-				true, null, null,
+				UMLPackage.Literals.ACTIVITY_PARTITION__SUPER_PARTITION, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -318,8 +317,8 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityPartition_represents_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_represents_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getActivityPartition_Represents(), true,
-				null, null, null));
+				UMLPackage.Literals.ACTIVITY_PARTITION__REPRESENTS, true, null,
+				null, null));
 	}
 
 	/**
@@ -333,8 +332,8 @@ public class ActivityPartitionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getActivityPartition_Subpartition());
+			childrenFeatures
+				.add(UMLPackage.Literals.ACTIVITY_PARTITION__SUBPARTITION);
 		}
 		return childrenFeatures;
 	}
@@ -397,9 +396,9 @@ public class ActivityPartitionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getActivityPartition_Subpartition(), UMLFactory.eINSTANCE
-			.createActivityPartition()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY_PARTITION__SUBPARTITION,
+			UMLFactory.eINSTANCE.createActivityPartition()));
 	}
 
 	/**

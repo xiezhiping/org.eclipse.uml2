@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.3 2005/11/23 13:27:44 khussey Exp $
+ * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -64,7 +64,7 @@ public class ExecutionOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getExecutionOccurrenceSpecification();
+		return UMLPackage.Literals.EXECUTION_OCCURRENCE_SPECIFICATION;
 	}
 
 	/**

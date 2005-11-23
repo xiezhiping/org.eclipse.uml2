@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ExpansionRegionItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class ExpansionRegionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExpansionRegion_mode_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_mode_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExpansionRegion_Mode(),
+				 UML2Package.Literals.EXPANSION_REGION__MODE,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -111,7 +111,7 @@ public class ExpansionRegionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExpansionRegion_outputElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_outputElement_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExpansionRegion_OutputElement(),
+				 UML2Package.Literals.EXPANSION_REGION__OUTPUT_ELEMENT,
 				 true,
 				 null,
 				 null,
@@ -131,7 +131,7 @@ public class ExpansionRegionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ExpansionRegion_inputElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_inputElement_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getExpansionRegion_InputElement(),
+				 UML2Package.Literals.EXPANSION_REGION__INPUT_ELEMENT,
 				 true,
 				 null,
 				 null,
@@ -200,9 +200,9 @@ public class ExpansionRegionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
-			childFeature == UML2Package.eINSTANCE.getNamespace_OwnedRule();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION ||
+			childFeature == UML2Package.Literals.NAMESPACE__OWNED_RULE;
 
 		if (qualify) {
 			return getString

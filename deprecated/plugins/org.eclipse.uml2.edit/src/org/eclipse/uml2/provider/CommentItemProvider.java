@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: CommentItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class CommentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Comment_body_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Comment_body_feature", "_UI_Comment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getComment_Body(),
+				 UML2Package.Literals.COMMENT__BODY,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -112,7 +112,7 @@ public class CommentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Comment_annotatedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Comment_annotatedElement_feature", "_UI_Comment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getComment_AnnotatedElement(),
+				 UML2Package.Literals.COMMENT__ANNOTATED_ELEMENT,
 				 true,
 				 null,
 				 null,
@@ -132,7 +132,7 @@ public class CommentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Comment_bodyExpression_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Comment_bodyExpression_feature", "_UI_Comment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getComment_BodyExpression(),
+				 UML2Package.Literals.COMMENT__BODY_EXPRESSION,
 				 true,
 				 null,
 				 null,
@@ -152,7 +152,7 @@ public class CommentItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getComment_BodyExpression());
+			childrenFeatures.add(UML2Package.Literals.COMMENT__BODY_EXPRESSION);
 		}
 		return childrenFeatures;
 	}
@@ -212,7 +212,7 @@ public class CommentItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getComment_BodyExpression(),
+				(UML2Package.Literals.COMMENT__BODY_EXPRESSION,
 				 UML2Factory.eINSTANCE.createStringExpression()));
 	}
 

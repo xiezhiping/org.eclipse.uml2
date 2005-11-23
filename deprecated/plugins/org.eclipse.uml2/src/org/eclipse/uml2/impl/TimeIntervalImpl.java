@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.14 2005/11/23 13:25:32 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.15 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -59,7 +59,7 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getTimeInterval();
+		return UML2Package.Literals.TIME_INTERVAL;
 	}
 
 	/**

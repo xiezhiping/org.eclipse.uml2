@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: DurationObservationActionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,7 +83,7 @@ public class DurationObservationActionItemProvider
 				getString("_UI_DurationObservationAction_duration_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DurationObservationAction_duration_feature", "_UI_DurationObservationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDurationObservationAction_Duration(),
+				UMLPackage.Literals.DURATION_OBSERVATION_ACTION__DURATION,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -148,14 +148,10 @@ public class DurationObservationActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getStructuralFeatureAction_Object()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getWriteStructuralFeatureAction_Value();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT
+			|| childFeature == UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

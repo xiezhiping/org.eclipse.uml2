@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceItemProvider.java,v 1.1 2005/11/14 22:11:32 khussey Exp $
+ * $Id: ConnectionPointReferenceItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,7 +85,7 @@ public class ConnectionPointReferenceItemProvider
 				getString("_UI_ConnectionPointReference_entry_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectionPointReference_entry_feature", "_UI_ConnectionPointReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnectionPointReference_Entry(), true,
+				UMLPackage.Literals.CONNECTION_POINT_REFERENCE__ENTRY, true,
 				null, null, null));
 	}
 
@@ -104,7 +104,7 @@ public class ConnectionPointReferenceItemProvider
 				getString("_UI_ConnectionPointReference_exit_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectionPointReference_exit_feature", "_UI_ConnectionPointReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnectionPointReference_Exit(), true,
+				UMLPackage.Literals.CONNECTION_POINT_REFERENCE__EXIT, true,
 				null, null, null));
 	}
 
@@ -123,7 +123,7 @@ public class ConnectionPointReferenceItemProvider
 				getString("_UI_ConnectionPointReference_state_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectionPointReference_state_feature", "_UI_ConnectionPointReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnectionPointReference_State(), true,
+				UMLPackage.Literals.CONNECTION_POINT_REFERENCE__STATE, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));

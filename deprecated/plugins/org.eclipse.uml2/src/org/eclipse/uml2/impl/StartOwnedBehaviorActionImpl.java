@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StartOwnedBehaviorActionImpl.java,v 1.20 2005/11/23 13:25:33 khussey Exp $
+ * $Id: StartOwnedBehaviorActionImpl.java,v 1.21 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -75,7 +75,7 @@ public class StartOwnedBehaviorActionImpl extends ActionImpl implements StartOwn
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getStartOwnedBehaviorAction();
+		return UML2Package.Literals.START_OWNED_BEHAVIOR_ACTION;
 	}
 
 	/**

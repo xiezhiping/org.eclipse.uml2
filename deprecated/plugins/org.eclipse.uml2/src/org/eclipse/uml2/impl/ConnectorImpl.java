@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.19 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.20 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -94,7 +94,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getConnector();
+		return UML2Package.Literals.CONNECTOR;
 	}
 
 	/**

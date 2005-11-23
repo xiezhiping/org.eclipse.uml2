@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerImpl.java,v 1.12 2005/11/23 13:25:33 khussey Exp $
+ * $Id: LiteralIntegerImpl.java,v 1.13 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -85,7 +85,7 @@ public class LiteralIntegerImpl extends LiteralSpecificationImpl implements Lite
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getLiteralInteger();
+		return UML2Package.Literals.LITERAL_INTEGER;
 	}
 
 	/**

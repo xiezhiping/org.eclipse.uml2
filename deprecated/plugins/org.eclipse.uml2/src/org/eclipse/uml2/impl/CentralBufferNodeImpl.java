@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CentralBufferNodeImpl.java,v 1.9 2005/11/04 22:23:00 khussey Exp $
+ * $Id: CentralBufferNodeImpl.java,v 1.10 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class CentralBufferNodeImpl extends ObjectNodeImpl implements CentralBuff
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getCentralBufferNode();
+		return UML2Package.Literals.CENTRAL_BUFFER_NODE;
 	}
 
 

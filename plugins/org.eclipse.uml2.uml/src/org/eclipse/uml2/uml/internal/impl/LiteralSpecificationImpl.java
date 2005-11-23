@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralSpecificationImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: LiteralSpecificationImpl.java,v 1.2 2005/11/23 20:01:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,7 @@ public abstract class LiteralSpecificationImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getLiteralSpecification();
+		return UMLPackage.Literals.LITERAL_SPECIFICATION;
 	}
 
 } //LiteralSpecificationImpl

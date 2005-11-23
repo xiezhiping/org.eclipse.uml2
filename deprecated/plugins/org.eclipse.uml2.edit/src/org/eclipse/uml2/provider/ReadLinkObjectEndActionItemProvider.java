@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndActionItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ReadLinkObjectEndActionItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class ReadLinkObjectEndActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReadLinkObjectEndAction_object_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReadLinkObjectEndAction_object_feature", "_UI_ReadLinkObjectEndAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReadLinkObjectEndAction_Object(),
+				 UML2Package.Literals.READ_LINK_OBJECT_END_ACTION__OBJECT,
 				 true,
 				 null,
 				 null,
@@ -115,7 +115,7 @@ public class ReadLinkObjectEndActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReadLinkObjectEndAction_end_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReadLinkObjectEndAction_end_feature", "_UI_ReadLinkObjectEndAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReadLinkObjectEndAction_End(),
+				 UML2Package.Literals.READ_LINK_OBJECT_END_ACTION__END,
 				 true,
 				 null,
 				 null,
@@ -135,7 +135,7 @@ public class ReadLinkObjectEndActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReadLinkObjectEndAction_result_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReadLinkObjectEndAction_result_feature", "_UI_ReadLinkObjectEndAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReadLinkObjectEndAction_Result(),
+				 UML2Package.Literals.READ_LINK_OBJECT_END_ACTION__RESULT,
 				 true,
 				 null,
 				 null,
@@ -155,8 +155,8 @@ public class ReadLinkObjectEndActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getReadLinkObjectEndAction_Object());
-			childrenFeatures.add(UML2Package.eINSTANCE.getReadLinkObjectEndAction_Result());
+			childrenFeatures.add(UML2Package.Literals.READ_LINK_OBJECT_END_ACTION__OBJECT);
+			childrenFeatures.add(UML2Package.Literals.READ_LINK_OBJECT_END_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -226,17 +226,17 @@ public class ReadLinkObjectEndActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getReadLinkObjectEndAction_Object(),
+				(UML2Package.Literals.READ_LINK_OBJECT_END_ACTION__OBJECT,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getReadLinkObjectEndAction_Object(),
+				(UML2Package.Literals.READ_LINK_OBJECT_END_ACTION__OBJECT,
 				 UML2Factory.eINSTANCE.createValuePin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getReadLinkObjectEndAction_Result(),
+				(UML2Package.Literals.READ_LINK_OBJECT_END_ACTION__RESULT,
 				 UML2Factory.eINSTANCE.createOutputPin()));
 	}
 
@@ -251,8 +251,8 @@ public class ReadLinkObjectEndActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

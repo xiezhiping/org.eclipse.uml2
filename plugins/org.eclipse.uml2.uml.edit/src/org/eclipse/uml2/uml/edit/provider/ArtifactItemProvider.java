@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: ArtifactItemProvider.java,v 1.2 2005/11/23 20:06:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -102,7 +102,7 @@ public class ArtifactItemProvider
 				getString("_UI_Artifact_fileName_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Artifact_fileName_feature", "_UI_Artifact_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getArtifact_FileName(), true,
+				UMLPackage.Literals.ARTIFACT__FILE_NAME, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -121,7 +121,7 @@ public class ArtifactItemProvider
 				getString("_UI_Artifact_nestedArtifact_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Artifact_nestedArtifact_feature", "_UI_Artifact_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getArtifact_NestedArtifact(), true, null,
+				UMLPackage.Literals.ARTIFACT__NESTED_ARTIFACT, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -141,8 +141,8 @@ public class ArtifactItemProvider
 				getString("_UI_Artifact_manifestation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Artifact_manifestation_feature", "_UI_Artifact_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getArtifact_Manifestation(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ARTIFACT__MANIFESTATION, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -161,7 +161,7 @@ public class ArtifactItemProvider
 				getString("_UI_Artifact_ownedOperation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Artifact_ownedOperation_feature", "_UI_Artifact_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getArtifact_OwnedOperation(), true, null,
+				UMLPackage.Literals.ARTIFACT__OWNED_OPERATION, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -181,7 +181,7 @@ public class ArtifactItemProvider
 				getString("_UI_Artifact_ownedAttribute_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Artifact_ownedAttribute_feature", "_UI_Artifact_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getArtifact_OwnedAttribute(), true, null,
+				UMLPackage.Literals.ARTIFACT__OWNED_ATTRIBUTE, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -197,14 +197,10 @@ public class ArtifactItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getArtifact_NestedArtifact());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getArtifact_Manifestation());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getArtifact_OwnedOperation());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getArtifact_OwnedAttribute());
+			childrenFeatures.add(UMLPackage.Literals.ARTIFACT__NESTED_ARTIFACT);
+			childrenFeatures.add(UMLPackage.Literals.ARTIFACT__MANIFESTATION);
+			childrenFeatures.add(UMLPackage.Literals.ARTIFACT__OWNED_OPERATION);
+			childrenFeatures.add(UMLPackage.Literals.ARTIFACT__OWNED_ATTRIBUTE);
 		}
 		return childrenFeatures;
 	}
@@ -281,32 +277,33 @@ public class ArtifactItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getArtifact_NestedArtifact(), UMLFactory.eINSTANCE
-			.createArtifact()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ARTIFACT__NESTED_ARTIFACT, UMLFactory.eINSTANCE
+				.createArtifact()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getArtifact_NestedArtifact(), UMLFactory.eINSTANCE
-			.createDeploymentSpecification()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ARTIFACT__NESTED_ARTIFACT, UMLFactory.eINSTANCE
+				.createDeploymentSpecification()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getArtifact_Manifestation(), UMLFactory.eINSTANCE
-			.createManifestation()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ARTIFACT__MANIFESTATION, UMLFactory.eINSTANCE
+				.createManifestation()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getArtifact_OwnedOperation(), UMLFactory.eINSTANCE
-			.createOperation()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ARTIFACT__OWNED_OPERATION, UMLFactory.eINSTANCE
+				.createOperation()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getArtifact_OwnedAttribute(), UMLFactory.eINSTANCE
-			.createProperty()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ARTIFACT__OWNED_ATTRIBUTE, UMLFactory.eINSTANCE
+				.createProperty()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getArtifact_OwnedAttribute(), UMLFactory.eINSTANCE.createPort()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ARTIFACT__OWNED_ATTRIBUTE, UMLFactory.eINSTANCE
+				.createPort()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getArtifact_OwnedAttribute(), UMLFactory.eINSTANCE
-			.createExtensionEnd()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ARTIFACT__OWNED_ATTRIBUTE, UMLFactory.eINSTANCE
+				.createExtensionEnd()));
 	}
 
 	/**
@@ -320,10 +317,8 @@ public class ArtifactItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -351,10 +346,13 @@ public class ArtifactItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE.getArtifact_Manifestation()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamedElement_ClientDependency()}, collection, index);
+		if (feature == UMLPackage.Literals.ARTIFACT__MANIFESTATION) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -368,12 +366,11 @@ public class ArtifactItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getNamedElement_ClientDependency()) {
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
 			return new SupersetRemoveCommand(domain, owner, feature,
 				new EStructuralFeature[]{
-					UMLPackage.eINSTANCE.getClassifier_Substitution(),
-					UMLPackage.eINSTANCE.getArtifact_Manifestation()},
-				collection);
+					UMLPackage.Literals.CLASSIFIER__SUBSTITUTION,
+					UMLPackage.Literals.ARTIFACT__MANIFESTATION}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -386,16 +383,19 @@ public class ArtifactItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getArtifact_Manifestation()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamedElement_ClientDependency()}, value, collection);
+		if (feature == UMLPackage.Literals.ARTIFACT__MANIFESTATION) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getNamedElement_ClientDependency()) {
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
 			return new SupersetReplaceCommand(domain, owner, feature,
 				new EStructuralFeature[]{
-					UMLPackage.eINSTANCE.getClassifier_Substitution(),
-					UMLPackage.eINSTANCE.getArtifact_Manifestation()}, value,
+					UMLPackage.Literals.CLASSIFIER__SUBSTITUTION,
+					UMLPackage.Literals.ARTIFACT__MANIFESTATION}, value,
 				collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,

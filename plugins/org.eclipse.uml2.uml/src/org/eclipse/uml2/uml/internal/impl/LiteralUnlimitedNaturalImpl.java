@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalImpl.java,v 1.3 2005/11/23 13:27:42 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalImpl.java,v 1.4 2005/11/23 20:01:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -81,7 +81,7 @@ public class LiteralUnlimitedNaturalImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getLiteralUnlimitedNatural();
+		return UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL;
 	}
 
 	/**

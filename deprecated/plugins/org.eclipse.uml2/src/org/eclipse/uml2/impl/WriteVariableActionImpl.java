@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableActionImpl.java,v 1.20 2005/11/23 13:25:32 khussey Exp $
+ * $Id: WriteVariableActionImpl.java,v 1.21 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,7 +76,7 @@ public abstract class WriteVariableActionImpl extends VariableActionImpl impleme
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getWriteVariableAction();
+		return UML2Package.Literals.WRITE_VARIABLE_ACTION;
 	}
 
 	/**

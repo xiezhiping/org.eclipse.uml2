@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.25 2005/11/23 13:25:33 khussey Exp $
+ * $Id: StateImpl.java,v 1.26 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -180,7 +180,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getState();
+		return UML2Package.Literals.STATE;
 	}
 
 	/**
@@ -971,19 +971,21 @@ public class StateImpl extends NamespaceImpl implements State {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getRedefinableElement_RedefinitionContext());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 
 			if (result == null) {
 				EList redefinitionContexts = StateMachineOperations
 					.getRedefinitionContexts(this);
-				cache.put(this, UML2Package.eINSTANCE
-					.getRedefinableElement_RedefinitionContext(),
-					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE
-							.getRedefinableElement_RedefinitionContext(),
-						redefinitionContexts.size(), redefinitionContexts
-							.toArray()));
+				cache
+					.put(
+						this,
+						UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+						result = new EcoreEList.UnmodifiableEList(
+							this,
+							UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+							redefinitionContexts.size(), redefinitionContexts
+								.toArray()));
 			}
 
 			return result;
@@ -991,9 +993,9 @@ public class StateImpl extends NamespaceImpl implements State {
 
 		EList redefinitionContexts = StateMachineOperations
 			.getRedefinitionContexts(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getRedefinableElement_RedefinitionContext(), redefinitionContexts
-			.size(), redefinitionContexts.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+			redefinitionContexts.size(), redefinitionContexts.toArray());
 	}
 
 	/**

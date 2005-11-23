@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.1 2005/11/14 22:11:37 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -121,9 +121,8 @@ public class PropertyItemProvider
 				getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getParameterableElement_TemplateParameter(), true, null,
-				null, null));
+				UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
+				true, null, null, null));
 	}
 
 	/**
@@ -141,9 +140,8 @@ public class PropertyItemProvider
 				getString("_UI_ParameterableElement_owningTemplateParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningTemplateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getParameterableElement_OwningTemplateParameter(), true,
-				null, null,
+				UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -163,8 +161,8 @@ public class PropertyItemProvider
 				getString("_UI_ConnectableElement_end_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectableElement_end_feature", "_UI_ConnectableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getConnectableElement_End(), true, null,
-				null, null));
+				UMLPackage.Literals.CONNECTABLE_ELEMENT__END, true, null, null,
+				null));
 	}
 
 	/**
@@ -182,9 +180,8 @@ public class PropertyItemProvider
 				getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployment_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDeploymentTarget_Deployment(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -203,8 +200,8 @@ public class PropertyItemProvider
 				getString("_UI_DeploymentTarget_deployedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployedElement_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDeploymentTarget_DeployedElement(),
-				false, null, null,
+				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT, false,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -224,7 +221,7 @@ public class PropertyItemProvider
 				getString("_UI_TemplateableElement_templateBinding_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_templateBinding_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateableElement_TemplateBinding(),
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -245,9 +242,8 @@ public class PropertyItemProvider
 				getString("_UI_TemplateableElement_ownedTemplateSignature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_ownedTemplateSignature_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getTemplateableElement_OwnedTemplateSignature(), true,
-				null, null,
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -267,7 +263,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_datatype_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_datatype_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_Datatype(), true, null, null,
+				UMLPackage.Literals.PROPERTY__DATATYPE, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -287,7 +283,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_isDerived_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_isDerived_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_IsDerived(), true,
+				UMLPackage.Literals.PROPERTY__IS_DERIVED, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -306,7 +302,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_isDerivedUnion_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_isDerivedUnion_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_IsDerivedUnion(), true,
+				UMLPackage.Literals.PROPERTY__IS_DERIVED_UNION, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -325,7 +321,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_default_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_default_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_Default(), true,
+				UMLPackage.Literals.PROPERTY__DEFAULT, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -346,7 +342,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_aggregation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_aggregation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_Aggregation(), true,
+				UMLPackage.Literals.PROPERTY__AGGREGATION, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -365,7 +361,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_isComposite_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_isComposite_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_IsComposite(), true,
+				UMLPackage.Literals.PROPERTY__IS_COMPOSITE, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -386,8 +382,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_class__feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_class__feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_Class_(), false, null, null,
-				null));
+				UMLPackage.Literals.PROPERTY__CLASS_, false, null, null, null));
 	}
 
 	/**
@@ -405,8 +400,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_redefinedProperty_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_redefinedProperty_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_RedefinedProperty(), true,
-				null, null, null));
+				UMLPackage.Literals.PROPERTY__REDEFINED_PROPERTY, true, null,
+				null, null));
 	}
 
 	/**
@@ -424,9 +419,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_owningAssociation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_owningAssociation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_OwningAssociation(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.PROPERTY__OWNING_ASSOCIATION, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -445,8 +439,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_association_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_association_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_Association(), true, null,
-				null, null));
+				UMLPackage.Literals.PROPERTY__ASSOCIATION, true, null, null,
+				null));
 	}
 
 	/**
@@ -464,8 +458,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_defaultValue_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_defaultValue_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_DefaultValue(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -484,7 +478,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_opposite_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_opposite_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_Opposite(), true, null, null,
+				UMLPackage.Literals.PROPERTY__OPPOSITE, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -504,8 +498,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_subsettedProperty_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_subsettedProperty_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_SubsettedProperty(), true,
-				null, null, null));
+				UMLPackage.Literals.PROPERTY__SUBSETTED_PROPERTY, true, null,
+				null, null));
 	}
 
 	/**
@@ -523,7 +517,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_qualifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_qualifier_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_Qualifier(), true, null, null,
+				UMLPackage.Literals.PROPERTY__QUALIFIER, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -543,7 +537,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_associationEnd_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_associationEnd_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProperty_AssociationEnd(), true, null,
+				UMLPackage.Literals.PROPERTY__ASSOCIATION_END, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -559,15 +553,14 @@ public class PropertyItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getDeploymentTarget_Deployment());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateableElement_TemplateBinding());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateableElement_OwnedTemplateSignature());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getProperty_DefaultValue());
-			childrenFeatures.add(UMLPackage.eINSTANCE.getProperty_Qualifier());
+			childrenFeatures
+				.add(UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT);
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
+			childrenFeatures.add(UMLPackage.Literals.PROPERTY__DEFAULT_VALUE);
+			childrenFeatures.add(UMLPackage.Literals.PROPERTY__QUALIFIER);
 		}
 		return childrenFeatures;
 	}
@@ -649,89 +642,88 @@ public class PropertyItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getDeploymentTarget_Deployment(), UMLFactory.eINSTANCE
-			.createDeployment()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
+			UMLFactory.eINSTANCE.createDeployment()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_TemplateBinding(), UMLFactory.eINSTANCE
-			.createTemplateBinding()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+			UMLFactory.eINSTANCE.createTemplateBinding()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createTemplateSignature()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createOpaqueExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createStringExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createLiteralInteger()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createLiteralString()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createLiteralBoolean()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createLiteralNull()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createInstanceValue()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createLiteralUnlimitedNatural()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createTimeExpression()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createTimeExpression()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getProperty_DefaultValue(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
 				.createDuration()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getProperty_DefaultValue(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
 				.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createDurationInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_DefaultValue(), UMLFactory.eINSTANCE
-			.createTimeInterval()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
+				.createTimeInterval()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_Qualifier(), UMLFactory.eINSTANCE.createProperty()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__QUALIFIER, UMLFactory.eINSTANCE
+				.createProperty()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProperty_Qualifier(), UMLFactory.eINSTANCE.createPort()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__QUALIFIER, UMLFactory.eINSTANCE
+				.createPort()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getProperty_Qualifier(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__QUALIFIER, UMLFactory.eINSTANCE
 				.createExtensionEnd()));
 	}
 
@@ -746,13 +738,10 @@ public class PropertyItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamedElement_NameExpression()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getMultiplicityElement_UpperValue()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getMultiplicityElement_LowerValue()
-			|| childFeature == UMLPackage.eINSTANCE.getProperty_DefaultValue();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE
+			|| childFeature == UMLPackage.Literals.PROPERTY__DEFAULT_VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -780,10 +769,13 @@ public class PropertyItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE.getDeploymentTarget_Deployment()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamedElement_ClientDependency()}, collection, index);
+		if (feature == UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -797,10 +789,13 @@ public class PropertyItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDeploymentTarget_Deployment()}, collection);
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT},
+				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -813,15 +808,21 @@ public class PropertyItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getDeploymentTarget_Deployment()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamedElement_ClientDependency()}, value, collection);
+		if (feature == UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getDeploymentTarget_Deployment()}, value, collection);
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT},
+				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);
@@ -835,21 +836,29 @@ public class PropertyItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.eINSTANCE
-			.getParameterableElement_OwningTemplateParameter()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getParameterableElement_TemplateParameter()}, value);
+		if (feature == UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER},
+				value);
 		}
-		if (feature == UMLPackage.eINSTANCE.getProperty_OwningAssociation()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getProperty_Association()}, value);
+		if (feature == UMLPackage.Literals.PROPERTY__OWNING_ASSOCIATION) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PROPERTY__ASSOCIATION},
+				value);
 		}
-		if (feature == UMLPackage.eINSTANCE.getProperty_Association()) {
-			return new SupersetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getProperty_OwningAssociation()}, value);
+		if (feature == UMLPackage.Literals.PROPERTY__ASSOCIATION) {
+			return new SupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PROPERTY__OWNING_ASSOCIATION},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

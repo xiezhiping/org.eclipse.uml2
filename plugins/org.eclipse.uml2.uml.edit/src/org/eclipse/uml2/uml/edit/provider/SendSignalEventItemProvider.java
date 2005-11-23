@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalEventItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: SendSignalEventItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,7 +83,7 @@ public class SendSignalEventItemProvider
 				getString("_UI_SendSignalEvent_signal_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_SendSignalEvent_signal_feature", "_UI_SendSignalEvent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getSendSignalEvent_Signal(), true, null,
+				UMLPackage.Literals.SEND_SIGNAL_EVENT__SIGNAL, true, null,
 				null, null));
 	}
 

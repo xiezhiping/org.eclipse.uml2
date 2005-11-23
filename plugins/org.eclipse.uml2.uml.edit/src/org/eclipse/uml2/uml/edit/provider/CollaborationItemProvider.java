@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: CollaborationItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -91,7 +91,7 @@ public class CollaborationItemProvider
 				getString("_UI_StructuredClassifier_ownedAttribute_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedAttribute_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -112,9 +112,8 @@ public class CollaborationItemProvider
 				getString("_UI_StructuredClassifier_part_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_part_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStructuredClassifier_Part(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STRUCTURED_CLASSIFIER__PART, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -133,9 +132,8 @@ public class CollaborationItemProvider
 				getString("_UI_StructuredClassifier_role_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_role_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStructuredClassifier_Role(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STRUCTURED_CLASSIFIER__ROLE, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -154,7 +152,7 @@ public class CollaborationItemProvider
 				getString("_UI_StructuredClassifier_ownedConnector_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedConnector_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getStructuredClassifier_OwnedConnector(),
+				UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -175,8 +173,8 @@ public class CollaborationItemProvider
 				getString("_UI_Collaboration_collaborationRole_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Collaboration_collaborationRole_feature", "_UI_Collaboration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getCollaboration_CollaborationRole(),
-				true, null, null, null));
+				UMLPackage.Literals.COLLABORATION__COLLABORATION_ROLE, true,
+				null, null, null));
 	}
 
 	/**
@@ -190,10 +188,10 @@ public class CollaborationItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedAttribute());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getStructuredClassifier_OwnedConnector());
+			childrenFeatures
+				.add(UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
+			childrenFeatures
+				.add(UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 		}
 		return childrenFeatures;
 	}
@@ -264,21 +262,21 @@ public class CollaborationItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredClassifier_OwnedAttribute(), UMLFactory.eINSTANCE
-			.createProperty()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createProperty()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredClassifier_OwnedAttribute(), UMLFactory.eINSTANCE
-			.createPort()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createPort()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredClassifier_OwnedAttribute(), UMLFactory.eINSTANCE
-			.createExtensionEnd()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createExtensionEnd()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getStructuredClassifier_OwnedConnector(), UMLFactory.eINSTANCE
-			.createConnector()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
+			UMLFactory.eINSTANCE.createConnector()));
 	}
 
 	/**
@@ -292,10 +290,8 @@ public class CollaborationItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

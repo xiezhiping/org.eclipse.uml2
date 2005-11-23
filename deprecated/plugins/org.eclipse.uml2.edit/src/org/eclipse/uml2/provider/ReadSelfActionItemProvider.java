@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfActionItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ReadSelfActionItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class ReadSelfActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ReadSelfAction_result_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReadSelfAction_result_feature", "_UI_ReadSelfAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getReadSelfAction_Result(),
+				 UML2Package.Literals.READ_SELF_ACTION__RESULT,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class ReadSelfActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getReadSelfAction_Result());
+			childrenFeatures.add(UML2Package.Literals.READ_SELF_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -166,7 +166,7 @@ public class ReadSelfActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getReadSelfAction_Result(),
+				(UML2Package.Literals.READ_SELF_ACTION__RESULT,
 				 UML2Factory.eINSTANCE.createOutputPin()));
 	}
 
@@ -181,8 +181,8 @@ public class ReadSelfActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

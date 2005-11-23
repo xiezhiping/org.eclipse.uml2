@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveFunctionItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: PrimitiveFunctionItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -90,7 +90,7 @@ public class PrimitiveFunctionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_PrimitiveFunction_body_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PrimitiveFunction_body_feature", "_UI_PrimitiveFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPrimitiveFunction_Body(),
+				 UML2Package.Literals.PRIMITIVE_FUNCTION__BODY,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -110,7 +110,7 @@ public class PrimitiveFunctionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_PrimitiveFunction_language_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PrimitiveFunction_language_feature", "_UI_PrimitiveFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPrimitiveFunction_Language(),
+				 UML2Package.Literals.PRIMITIVE_FUNCTION__LANGUAGE,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

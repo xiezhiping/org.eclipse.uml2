@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: ReplyActionItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -89,7 +89,7 @@ public class ReplyActionItemProvider
 				getString("_UI_ReplyAction_replyToCall_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReplyAction_replyToCall_feature", "_UI_ReplyAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReplyAction_ReplyToCall(), true, null,
+				UMLPackage.Literals.REPLY_ACTION__REPLY_TO_CALL, true, null,
 				null, null));
 	}
 
@@ -108,7 +108,7 @@ public class ReplyActionItemProvider
 				getString("_UI_ReplyAction_returnInformation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReplyAction_returnInformation_feature", "_UI_ReplyAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReplyAction_ReturnInformation(), true,
+				UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -129,7 +129,7 @@ public class ReplyActionItemProvider
 				getString("_UI_ReplyAction_replyValue_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReplyAction_replyValue_feature", "_UI_ReplyAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getReplyAction_ReplyValue(), true, null,
+				UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -145,10 +145,9 @@ public class ReplyActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getReplyAction_ReturnInformation());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getReplyAction_ReplyValue());
+			childrenFeatures
+				.add(UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION);
+			childrenFeatures.add(UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -219,31 +218,29 @@ public class ReplyActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReplyAction_ReturnInformation(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReplyAction_ReturnInformation(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReplyAction_ReturnInformation(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getReplyAction_ReplyValue(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE, UMLFactory.eINSTANCE
 				.createInputPin()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getReplyAction_ReplyValue(), UMLFactory.eINSTANCE
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE, UMLFactory.eINSTANCE
 				.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getReplyAction_ReplyValue(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE, UMLFactory.eINSTANCE
+				.createActionInputPin()));
 	}
 
 	/**
@@ -257,13 +254,10 @@ public class ReplyActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getReplyAction_ReturnInformation()
-			|| childFeature == UMLPackage.eINSTANCE.getReplyAction_ReplyValue();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION
+			|| childFeature == UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

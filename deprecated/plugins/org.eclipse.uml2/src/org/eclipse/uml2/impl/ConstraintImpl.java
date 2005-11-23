@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.23 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.24 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -83,7 +83,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getConstraint();
+		return UML2Package.Literals.CONSTRAINT;
 	}
 
 	/**

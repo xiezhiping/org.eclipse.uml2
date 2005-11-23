@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
+ * $Id: PackageImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -105,7 +105,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getPackage();
+		return UMLPackage.Literals.PACKAGE;
 	}
 
 	/**
@@ -673,12 +673,12 @@ public class PackageImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
-				UMLPackage.eINSTANCE.getTemplateableElement().getEOperations()
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.eINSTANCE
-					.getTemplateableElement().getEOperations().get(0),
-					result = TemplateableElementOperations
+				cache.put(eResource(), this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
+						.get(0), result = TemplateableElementOperations
 						.parameterableElements(this));
 			}
 			return result;
@@ -714,12 +714,11 @@ public class PackageImpl
 	public List visibleMembers() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getPackage().getEOperations().get(1));
+			List result = (List) cache.get(this, UMLPackage.Literals.PACKAGE
+				.getEOperations().get(1));
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE.getPackage()
-					.getEOperations().get(1), result = PackageOperations
-					.visibleMembers(this));
+				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
+					.get(1), result = PackageOperations.visibleMembers(this));
 			}
 			return result;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AnyReceiveEventImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: AnyReceiveEventImpl.java,v 1.2 2005/11/23 20:01:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,7 @@ public class AnyReceiveEventImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getAnyReceiveEvent();
+		return UMLPackage.Literals.ANY_RECEIVE_EVENT;
 	}
 
 } //AnyReceiveEventImpl

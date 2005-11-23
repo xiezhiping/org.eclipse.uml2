@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.24 2005/11/23 13:25:32 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.25 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -64,7 +64,7 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getInformationItem();
+		return UML2Package.Literals.INFORMATION_ITEM;
 	}
 
 	/**

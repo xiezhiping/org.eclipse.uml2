@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ForkNodeImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: ForkNodeImpl.java,v 1.2 2005/11/23 20:01:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -51,7 +51,7 @@ public class ForkNodeImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getForkNode();
+		return UMLPackage.Literals.FORK_NODE;
 	}
 
 	/**

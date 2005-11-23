@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: InformationFlowItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -92,9 +92,8 @@ public class InformationFlowItemProvider
 				getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Relationship_relatedElement_feature", "_UI_Relationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRelationship_RelatedElement(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -113,9 +112,8 @@ public class InformationFlowItemProvider
 				getString("_UI_DirectedRelationship_source_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_source_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDirectedRelationship_Source(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -134,9 +132,8 @@ public class InformationFlowItemProvider
 				getString("_UI_DirectedRelationship_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_target_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDirectedRelationship_Target(), false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -155,8 +152,8 @@ public class InformationFlowItemProvider
 				getString("_UI_InformationFlow_realization_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InformationFlow_realization_feature", "_UI_InformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInformationFlow_Realization(), true,
-				null, null, null));
+				UMLPackage.Literals.INFORMATION_FLOW__REALIZATION, true, null,
+				null, null));
 	}
 
 	/**
@@ -174,7 +171,7 @@ public class InformationFlowItemProvider
 				getString("_UI_InformationFlow_conveyed_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InformationFlow_conveyed_feature", "_UI_InformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInformationFlow_Conveyed(), true, null,
+				UMLPackage.Literals.INFORMATION_FLOW__CONVEYED, true, null,
 				null, null));
 	}
 
@@ -193,8 +190,8 @@ public class InformationFlowItemProvider
 				getString("_UI_InformationFlow_informationSource_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InformationFlow_informationSource_feature", "_UI_InformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInformationFlow_InformationSource(),
-				true, null, null, null));
+				UMLPackage.Literals.INFORMATION_FLOW__INFORMATION_SOURCE, true,
+				null, null, null));
 	}
 
 	/**
@@ -212,8 +209,8 @@ public class InformationFlowItemProvider
 				getString("_UI_InformationFlow_informationTarget_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InformationFlow_informationTarget_feature", "_UI_InformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInformationFlow_InformationTarget(),
-				true, null, null, null));
+				UMLPackage.Literals.INFORMATION_FLOW__INFORMATION_TARGET, true,
+				null, null, null));
 	}
 
 	/**
@@ -231,7 +228,7 @@ public class InformationFlowItemProvider
 				getString("_UI_InformationFlow_realizingActivityEdge_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InformationFlow_realizingActivityEdge_feature", "_UI_InformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInformationFlow_RealizingActivityEdge(),
+				UMLPackage.Literals.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE,
 				true, null, null, null));
 	}
 
@@ -250,7 +247,7 @@ public class InformationFlowItemProvider
 				getString("_UI_InformationFlow_realizingConnector_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InformationFlow_realizingConnector_feature", "_UI_InformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInformationFlow_RealizingConnector(),
+				UMLPackage.Literals.INFORMATION_FLOW__REALIZING_CONNECTOR,
 				true, null, null, null));
 	}
 
@@ -269,8 +266,8 @@ public class InformationFlowItemProvider
 				getString("_UI_InformationFlow_realizingMessage_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InformationFlow_realizingMessage_feature", "_UI_InformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getInformationFlow_RealizingMessage(),
-				true, null, null, null));
+				UMLPackage.Literals.INFORMATION_FLOW__REALIZING_MESSAGE, true,
+				null, null, null));
 	}
 
 	/**

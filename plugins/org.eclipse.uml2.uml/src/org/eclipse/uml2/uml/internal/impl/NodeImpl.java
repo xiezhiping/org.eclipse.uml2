@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.4 2005/11/23 13:27:43 khussey Exp $
+ * $Id: NodeImpl.java,v 1.5 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -89,7 +89,7 @@ public class NodeImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getNode();
+		return UMLPackage.Literals.NODE;
 	}
 
 	/**
@@ -191,11 +191,11 @@ public class NodeImpl
 	public List getDeployedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.eINSTANCE
-				.getDeploymentTarget_DeployedElement());
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 			if (result == null) {
-				cache.put(this, UMLPackage.eINSTANCE
-					.getDeploymentTarget_DeployedElement(),
+				cache.put(this,
+					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
 					result = DeploymentTargetOperations
 						.getDeployedElements(this));
 			}

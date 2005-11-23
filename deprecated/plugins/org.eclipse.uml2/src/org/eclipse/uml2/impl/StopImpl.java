@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StopImpl.java,v 1.9 2005/11/04 22:23:02 khussey Exp $
+ * $Id: StopImpl.java,v 1.10 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class StopImpl extends EventOccurrenceImpl implements Stop {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getStop();
+		return UML2Package.Literals.STOP;
 	}
 
 

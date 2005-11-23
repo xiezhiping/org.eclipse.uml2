@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: IncludeItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class IncludeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Relationship_relatedElement_feature", "_UI_Relationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getRelationship_RelatedElement(),
+				 UML2Package.Literals.RELATIONSHIP__RELATED_ELEMENT,
 				 false,
 				 null,
 				 null,
@@ -114,7 +114,7 @@ public class IncludeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DirectedRelationship_source_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_source_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDirectedRelationship_Source(),
+				 UML2Package.Literals.DIRECTED_RELATIONSHIP__SOURCE,
 				 false,
 				 null,
 				 null,
@@ -136,7 +136,7 @@ public class IncludeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_DirectedRelationship_target_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_target_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getDirectedRelationship_Target(),
+				 UML2Package.Literals.DIRECTED_RELATIONSHIP__TARGET,
 				 false,
 				 null,
 				 null,
@@ -158,7 +158,7 @@ public class IncludeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Include_includingCase_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Include_includingCase_feature", "_UI_Include_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInclude_IncludingCase(),
+				 UML2Package.Literals.INCLUDE__INCLUDING_CASE,
 				 true,
 				 null,
 				 null,
@@ -180,7 +180,7 @@ public class IncludeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Include_addition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Include_addition_feature", "_UI_Include_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInclude_Addition(),
+				 UML2Package.Literals.INCLUDE__ADDITION,
 				 true,
 				 null,
 				 null,

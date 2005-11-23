@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: EnumerationItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,7 +85,7 @@ public class EnumerationItemProvider
 				getString("_UI_Enumeration_ownedLiteral_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Enumeration_ownedLiteral_feature", "_UI_Enumeration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral(), true, null,
+				UMLPackage.Literals.ENUMERATION__OWNED_LITERAL, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -101,8 +101,8 @@ public class EnumerationItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getEnumeration_OwnedLiteral());
+			childrenFeatures
+				.add(UMLPackage.Literals.ENUMERATION__OWNED_LITERAL);
 		}
 		return childrenFeatures;
 	}
@@ -160,9 +160,9 @@ public class EnumerationItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getEnumeration_OwnedLiteral(), UMLFactory.eINSTANCE
-			.createEnumerationLiteral()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ENUMERATION__OWNED_LITERAL,
+			UMLFactory.eINSTANCE.createEnumerationLiteral()));
 	}
 
 	/**
@@ -176,10 +176,8 @@ public class EnumerationItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

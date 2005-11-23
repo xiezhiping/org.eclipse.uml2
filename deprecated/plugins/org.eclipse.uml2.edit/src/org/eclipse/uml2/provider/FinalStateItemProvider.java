@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: FinalStateItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -127,11 +127,11 @@ public class FinalStateItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			childFeature == UML2Package.eINSTANCE.getState_StateInvariant() ||
-			childFeature == UML2Package.eINSTANCE.getState_Entry() ||
-			childFeature == UML2Package.eINSTANCE.getState_Exit() ||
-			childFeature == UML2Package.eINSTANCE.getState_DoActivity();
+			childFeature == UML2Package.Literals.NAMESPACE__OWNED_RULE ||
+			childFeature == UML2Package.Literals.STATE__STATE_INVARIANT ||
+			childFeature == UML2Package.Literals.STATE__ENTRY ||
+			childFeature == UML2Package.Literals.STATE__EXIT ||
+			childFeature == UML2Package.Literals.STATE__DO_ACTIVITY;
 
 		if (qualify) {
 			return getString

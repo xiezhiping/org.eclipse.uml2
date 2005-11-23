@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.32 2005/11/23 13:25:34 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.33 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -112,7 +112,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getAssociation();
+		return UML2Package.Literals.ASSOCIATION;
 	}
 
 	/**
@@ -204,14 +204,14 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
-				.getAssociation_EndType());
+			EList result = (EList) cache.get(this,
+				UML2Package.Literals.ASSOCIATION__END_TYPE);
 
 			if (result == null) {
 				Set endType = AssociationOperations.endType(this);
-				cache.put(this, UML2Package.eINSTANCE.getAssociation_EndType(),
+				cache.put(this, UML2Package.Literals.ASSOCIATION__END_TYPE,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getAssociation_EndType(), endType
+						UML2Package.Literals.ASSOCIATION__END_TYPE, endType
 							.size(), endType.toArray()));
 			}
 
@@ -219,8 +219,9 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 		}
 
 		Set endType = AssociationOperations.endType(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getAssociation_EndType(), endType.size(), endType.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.ASSOCIATION__END_TYPE, endType.size(), endType
+				.toArray());
 	}
 
 	/**

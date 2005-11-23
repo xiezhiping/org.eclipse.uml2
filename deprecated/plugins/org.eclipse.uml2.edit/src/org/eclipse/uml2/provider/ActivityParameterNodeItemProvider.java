@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ActivityParameterNodeItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class ActivityParameterNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ActivityParameterNode_parameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityParameterNode_parameter_feature", "_UI_ActivityParameterNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getActivityParameterNode_Parameter(),
+				 UML2Package.Literals.ACTIVITY_PARAMETER_NODE__PARAMETER,
 				 true,
 				 null,
 				 null,

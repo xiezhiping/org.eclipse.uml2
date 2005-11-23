@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
+ * $Id: CollaborationItemProvider.java,v 1.15 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -95,7 +95,7 @@ public class CollaborationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_ownedAttribute_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedAttribute_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 true,
 				 null,
 				 null,
@@ -117,7 +117,7 @@ public class CollaborationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_part_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_part_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_Part(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__PART,
 				 false,
 				 null,
 				 null,
@@ -139,7 +139,7 @@ public class CollaborationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_role_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_role_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_Role(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__ROLE,
 				 false,
 				 null,
 				 null,
@@ -161,7 +161,7 @@ public class CollaborationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_ownedConnector_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedConnector_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
 				 true,
 				 null,
 				 null,
@@ -183,7 +183,7 @@ public class CollaborationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Collaboration_collaborationRole_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Collaboration_collaborationRole_feature", "_UI_Collaboration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getCollaboration_CollaborationRole(),
+				 UML2Package.Literals.COLLABORATION__COLLABORATION_ROLE,
 				 true,
 				 null,
 				 null,
@@ -201,8 +201,8 @@ public class CollaborationItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
-			childrenFeatures.add(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
+			childrenFeatures.add(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
+			childrenFeatures.add(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 		}
 		return childrenFeatures;
 	}
@@ -272,22 +272,22 @@ public class CollaborationItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
 				 UML2Factory.eINSTANCE.createConnector()));
 	}
 
@@ -302,8 +302,8 @@ public class CollaborationItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE;
 
 		if (qualify) {
 			return getString

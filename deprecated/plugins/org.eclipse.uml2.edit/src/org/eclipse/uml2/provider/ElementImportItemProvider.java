@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ElementImportItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -94,7 +94,7 @@ public class ElementImportItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ElementImport_visibility_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ElementImport_visibility_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getElementImport_Visibility(),
+				 UML2Package.Literals.ELEMENT_IMPORT__VISIBILITY,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -114,7 +114,7 @@ public class ElementImportItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ElementImport_alias_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ElementImport_alias_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getElementImport_Alias(),
+				 UML2Package.Literals.ELEMENT_IMPORT__ALIAS,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -134,7 +134,7 @@ public class ElementImportItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ElementImport_importedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ElementImport_importedElement_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getElementImport_ImportedElement(),
+				 UML2Package.Literals.ELEMENT_IMPORT__IMPORTED_ELEMENT,
 				 true,
 				 null,
 				 null,
@@ -154,7 +154,7 @@ public class ElementImportItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ElementImport_importingNamespace_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ElementImport_importingNamespace_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getElementImport_ImportingNamespace(),
+				 UML2Package.Literals.ELEMENT_IMPORT__IMPORTING_NAMESPACE,
 				 true,
 				 null,
 				 null,

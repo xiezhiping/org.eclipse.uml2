@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: SendSignalActionItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,7 +86,7 @@ public class SendSignalActionItemProvider
 				getString("_UI_SendSignalAction_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_SendSignalAction_target_feature", "_UI_SendSignalAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getSendSignalAction_Target(), true, null,
+				UMLPackage.Literals.SEND_SIGNAL_ACTION__TARGET, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -106,7 +106,7 @@ public class SendSignalActionItemProvider
 				getString("_UI_SendSignalAction_signal_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_SendSignalAction_signal_feature", "_UI_SendSignalAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getSendSignalAction_Signal(), true, null,
+				UMLPackage.Literals.SEND_SIGNAL_ACTION__SIGNAL, true, null,
 				null, null));
 	}
 
@@ -121,8 +121,8 @@ public class SendSignalActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getSendSignalAction_Target());
+			childrenFeatures
+				.add(UMLPackage.Literals.SEND_SIGNAL_ACTION__TARGET);
 		}
 		return childrenFeatures;
 	}
@@ -180,17 +180,17 @@ public class SendSignalActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSendSignalAction_Target(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEND_SIGNAL_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSendSignalAction_Target(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEND_SIGNAL_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getSendSignalAction_Target(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.SEND_SIGNAL_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -204,14 +204,10 @@ public class SendSignalActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getInvocationAction_Argument()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getSendSignalAction_Target();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.INVOCATION_ACTION__ARGUMENT
+			|| childFeature == UMLPackage.Literals.SEND_SIGNAL_ACTION__TARGET;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

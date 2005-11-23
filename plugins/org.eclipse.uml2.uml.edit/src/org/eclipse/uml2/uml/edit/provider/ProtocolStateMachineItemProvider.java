@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: ProtocolStateMachineItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -85,8 +85,8 @@ public class ProtocolStateMachineItemProvider
 				getString("_UI_ProtocolStateMachine_conformance_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProtocolStateMachine_conformance_feature", "_UI_ProtocolStateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProtocolStateMachine_Conformance(),
-				true, null, null,
+				UMLPackage.Literals.PROTOCOL_STATE_MACHINE__CONFORMANCE, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -102,8 +102,8 @@ public class ProtocolStateMachineItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getProtocolStateMachine_Conformance());
+			childrenFeatures
+				.add(UMLPackage.Literals.PROTOCOL_STATE_MACHINE__CONFORMANCE);
 		}
 		return childrenFeatures;
 	}
@@ -161,9 +161,9 @@ public class ProtocolStateMachineItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getProtocolStateMachine_Conformance(), UMLFactory.eINSTANCE
-			.createProtocolConformance()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_STATE_MACHINE__CONFORMANCE,
+			UMLFactory.eINSTANCE.createProtocolConformance()));
 	}
 
 	/**
@@ -177,15 +177,11 @@ public class ProtocolStateMachineItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedUseCase()
-			|| childFeature == UMLPackage.eINSTANCE.getClass_NestedClassifier()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedBehavior();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

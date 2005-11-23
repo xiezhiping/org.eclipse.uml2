@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.18 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.19 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -78,7 +78,7 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getParameterSet();
+		return UML2Package.Literals.PARAMETER_SET;
 	}
 
 	/**

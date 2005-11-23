@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableClassifierImpl.java,v 1.21 2005/11/09 22:53:07 khussey Exp $
+ * $Id: TemplateableClassifierImpl.java,v 1.22 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getTemplateableClassifier();
+		return UML2Package.Literals.TEMPLATEABLE_CLASSIFIER;
 	}
 
 

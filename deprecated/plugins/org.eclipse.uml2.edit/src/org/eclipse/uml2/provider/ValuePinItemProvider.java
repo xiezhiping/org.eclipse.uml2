@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinItemProvider.java,v 1.15 2005/09/23 20:14:52 khussey Exp $
+ * $Id: ValuePinItemProvider.java,v 1.16 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class ValuePinItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ValuePin_value_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ValuePin_value_feature", "_UI_ValuePin_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getValuePin_Value(),
+				 UML2Package.Literals.VALUE_PIN__VALUE,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class ValuePinItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getValuePin_Value());
+			childrenFeatures.add(UML2Package.Literals.VALUE_PIN__VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -166,67 +166,67 @@ public class ValuePinItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getValuePin_Value(),
+				(UML2Package.Literals.VALUE_PIN__VALUE,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 
@@ -241,10 +241,10 @@ public class ValuePinItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getObjectNode_UpperBound() ||
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
-			childFeature == UML2Package.eINSTANCE.getValuePin_Value();
+			childFeature == UML2Package.Literals.OBJECT_NODE__UPPER_BOUND ||
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE ||
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE ||
+			childFeature == UML2Package.Literals.VALUE_PIN__VALUE;
 
 		if (qualify) {
 			return getString

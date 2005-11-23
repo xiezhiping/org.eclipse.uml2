@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
+ * $Id: PortItemProvider.java,v 1.15 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -95,7 +95,7 @@ public class PortItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Port_isBehavior_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Port_isBehavior_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPort_IsBehavior(),
+				 UML2Package.Literals.PORT__IS_BEHAVIOR,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -115,7 +115,7 @@ public class PortItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Port_isService_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Port_isService_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPort_IsService(),
+				 UML2Package.Literals.PORT__IS_SERVICE,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -135,7 +135,7 @@ public class PortItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Port_required_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Port_required_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPort_Required(),
+				 UML2Package.Literals.PORT__REQUIRED,
 				 false,
 				 null,
 				 null,
@@ -157,7 +157,7 @@ public class PortItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Port_redefinedPort_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Port_redefinedPort_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPort_RedefinedPort(),
+				 UML2Package.Literals.PORT__REDEFINED_PORT,
 				 true,
 				 null,
 				 null,
@@ -177,7 +177,7 @@ public class PortItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Port_provided_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Port_provided_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPort_Provided(),
+				 UML2Package.Literals.PORT__PROVIDED,
 				 false,
 				 null,
 				 null,
@@ -199,7 +199,7 @@ public class PortItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Port_protocol_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Port_protocol_feature", "_UI_Port_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPort_Protocol(),
+				 UML2Package.Literals.PORT__PROTOCOL,
 				 true,
 				 null,
 				 null,
@@ -289,9 +289,9 @@ public class PortItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
-			childFeature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
-			childFeature == UML2Package.eINSTANCE.getProperty_DefaultValue();
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE ||
+			childFeature == UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE ||
+			childFeature == UML2Package.Literals.PROPERTY__DEFAULT_VALUE;
 
 		if (qualify) {
 			return getString

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.19 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.20 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,7 +77,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getReplyAction();
+		return UML2Package.Literals.REPLY_ACTION;
 	}
 
 	/**

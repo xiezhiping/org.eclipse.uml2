@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.27 2005/11/23 13:25:32 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.28 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -118,7 +118,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getNamedElement();
+		return UML2Package.Literals.NAMED_ELEMENT;
 	}
 
 	/**
@@ -176,19 +176,20 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 */
 	public String getQualifiedName() {
 		CacheAdapter cache = getCacheAdapter();
-		
+
 		if (cache != null) {
 			String result = (String) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getNamedElement_QualifiedName());
+				UML2Package.Literals.NAMED_ELEMENT__QUALIFIED_NAME);
 
 			if (result == null) {
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getNamedElement_QualifiedName(), result = qualifiedName());
+				cache.put(eResource(), this,
+					UML2Package.Literals.NAMED_ELEMENT__QUALIFIED_NAME,
+					result = qualifiedName());
 			}
 
 			return result;
 		}
-		
+
 		return qualifiedName();
 	}
 
@@ -345,9 +346,9 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	public List allNamespaces() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UML2Package.eINSTANCE.getNamedElement().getEOperations().get(2));
+			List result = (List) cache.get(this, UML2Package.Literals.NAMED_ELEMENT.getEOperations().get(2));
 			if (result == null) {
-				cache.put(this, UML2Package.eINSTANCE.getNamedElement().getEOperations().get(2), result = NamedElementOperations.allNamespaces(this));
+				cache.put(this, UML2Package.Literals.NAMED_ELEMENT.getEOperations().get(2), result = NamedElementOperations.allNamespaces(this));
 			}
 			return result;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.21 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.22 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -93,7 +93,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getActivityEdge();
+		return UML2Package.Literals.ACTIVITY_EDGE;
 	}
 
 	/**

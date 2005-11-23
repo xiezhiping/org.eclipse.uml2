@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.14 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.15 2005/11/23 20:05:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,7 +66,7 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getExtensionPoint();
+		return UML2Package.Literals.EXTENSION_POINT;
 	}
 
 	/**

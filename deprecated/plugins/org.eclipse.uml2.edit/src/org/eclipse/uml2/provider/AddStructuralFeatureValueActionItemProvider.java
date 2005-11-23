@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionItemProvider.java,v 1.17 2005/09/23 20:14:52 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionItemProvider.java,v 1.18 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class AddStructuralFeatureValueActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_AddStructuralFeatureValueAction_isReplaceAll_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AddStructuralFeatureValueAction_isReplaceAll_feature", "_UI_AddStructuralFeatureValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getAddStructuralFeatureValueAction_IsReplaceAll(),
+				 UML2Package.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -111,7 +111,7 @@ public class AddStructuralFeatureValueActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_AddStructuralFeatureValueAction_insertAt_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AddStructuralFeatureValueAction_insertAt_feature", "_UI_AddStructuralFeatureValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getAddStructuralFeatureValueAction_InsertAt(),
+				 UML2Package.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
 				 true,
 				 null,
 				 null,
@@ -131,7 +131,7 @@ public class AddStructuralFeatureValueActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getAddStructuralFeatureValueAction_InsertAt());
+			childrenFeatures.add(UML2Package.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT);
 		}
 		return childrenFeatures;
 	}
@@ -191,12 +191,12 @@ public class AddStructuralFeatureValueActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAddStructuralFeatureValueAction_InsertAt(),
+				(UML2Package.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getAddStructuralFeatureValueAction_InsertAt(),
+				(UML2Package.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
 				 UML2Factory.eINSTANCE.createValuePin()));
 	}
 
@@ -211,11 +211,11 @@ public class AddStructuralFeatureValueActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
-			childFeature == UML2Package.eINSTANCE.getStructuralFeatureAction_Object() ||
-			childFeature == UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value() ||
-			childFeature == UML2Package.eINSTANCE.getAddStructuralFeatureValueAction_InsertAt();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION ||
+			childFeature == UML2Package.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT ||
+			childFeature == UML2Package.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE ||
+			childFeature == UML2Package.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT;
 
 		if (qualify) {
 			return getString

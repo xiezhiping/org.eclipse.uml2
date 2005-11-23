@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableActionImpl.java,v 1.15 2005/11/23 13:25:32 khussey Exp $
+ * $Id: VariableActionImpl.java,v 1.16 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -65,7 +65,7 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getVariableAction();
+		return UML2Package.Literals.VARIABLE_ACTION;
 	}
 
 	/**

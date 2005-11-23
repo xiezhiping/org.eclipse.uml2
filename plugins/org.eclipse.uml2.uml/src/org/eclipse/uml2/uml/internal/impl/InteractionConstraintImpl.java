@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.4 2005/11/23 13:27:42 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.5 2005/11/23 20:01:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -75,7 +75,7 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getInteractionConstraint();
+		return UMLPackage.Literals.INTERACTION_CONSTRAINT;
 	}
 
 	/**

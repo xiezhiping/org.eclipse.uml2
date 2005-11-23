@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: JoinNodeItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class JoinNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_JoinNode_isCombineDuplicate_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_JoinNode_isCombineDuplicate_feature", "_UI_JoinNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getJoinNode_IsCombineDuplicate(),
+				 UML2Package.Literals.JOIN_NODE__IS_COMBINE_DUPLICATE,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -112,7 +112,7 @@ public class JoinNodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_JoinNode_joinSpec_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_JoinNode_joinSpec_feature", "_UI_JoinNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				 UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 true,
 				 null,
 				 null,
@@ -132,7 +132,7 @@ public class JoinNodeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getJoinNode_JoinSpec());
+			childrenFeatures.add(UML2Package.Literals.JOIN_NODE__JOIN_SPEC);
 		}
 		return childrenFeatures;
 	}
@@ -192,67 +192,67 @@ public class JoinNodeItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getJoinNode_JoinSpec(),
+				(UML2Package.Literals.JOIN_NODE__JOIN_SPEC,
 				 UML2Factory.eINSTANCE.createTimeInterval()));
 	}
 

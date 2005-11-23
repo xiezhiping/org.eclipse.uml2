@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectActionItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: DestroyObjectActionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,7 +88,7 @@ public class DestroyObjectActionItemProvider
 				getString("_UI_DestroyObjectAction_isDestroyLinks_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DestroyObjectAction_isDestroyLinks_feature", "_UI_DestroyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDestroyObjectAction_IsDestroyLinks(),
+				UMLPackage.Literals.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS,
 				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -107,9 +107,8 @@ public class DestroyObjectActionItemProvider
 				getString("_UI_DestroyObjectAction_isDestroyOwnedObjects_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DestroyObjectAction_isDestroyOwnedObjects_feature", "_UI_DestroyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getDestroyObjectAction_IsDestroyOwnedObjects(), true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS,
+				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -127,9 +126,8 @@ public class DestroyObjectActionItemProvider
 				getString("_UI_DestroyObjectAction_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DestroyObjectAction_target_feature", "_UI_DestroyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDestroyObjectAction_Target(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DESTROY_OBJECT_ACTION__TARGET, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -144,8 +142,8 @@ public class DestroyObjectActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getDestroyObjectAction_Target());
+			childrenFeatures
+				.add(UMLPackage.Literals.DESTROY_OBJECT_ACTION__TARGET);
 		}
 		return childrenFeatures;
 	}
@@ -208,17 +206,17 @@ public class DestroyObjectActionItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getDestroyObjectAction_Target(), UMLFactory.eINSTANCE
-			.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DESTROY_OBJECT_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getDestroyObjectAction_Target(), UMLFactory.eINSTANCE
-			.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DESTROY_OBJECT_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getDestroyObjectAction_Target(), UMLFactory.eINSTANCE
-			.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DESTROY_OBJECT_ACTION__TARGET,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -232,10 +230,8 @@ public class DestroyObjectActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getAction_LocalPrecondition()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getAction_LocalPostcondition();
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

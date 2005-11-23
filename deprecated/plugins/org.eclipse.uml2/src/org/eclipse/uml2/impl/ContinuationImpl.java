@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.13 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.14 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,7 +84,7 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getContinuation();
+		return UML2Package.Literals.CONTINUATION;
 	}
 
 	/**

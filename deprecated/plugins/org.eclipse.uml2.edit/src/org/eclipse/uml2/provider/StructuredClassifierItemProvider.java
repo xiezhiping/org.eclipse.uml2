@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: StructuredClassifierItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -94,7 +94,7 @@ public class StructuredClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_ownedAttribute_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedAttribute_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 true,
 				 null,
 				 null,
@@ -116,7 +116,7 @@ public class StructuredClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_part_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_part_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_Part(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__PART,
 				 false,
 				 null,
 				 null,
@@ -138,7 +138,7 @@ public class StructuredClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_role_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_role_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_Role(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__ROLE,
 				 false,
 				 null,
 				 null,
@@ -160,7 +160,7 @@ public class StructuredClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StructuredClassifier_ownedConnector_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedConnector_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(),
+				 UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
 				 true,
 				 null,
 				 null,
@@ -180,8 +180,8 @@ public class StructuredClassifierItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
-			childrenFeatures.add(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
+			childrenFeatures.add(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
+			childrenFeatures.add(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 		}
 		return childrenFeatures;
 	}
@@ -242,22 +242,22 @@ public class StructuredClassifierItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 				 UML2Factory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(),
+				(UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
 				 UML2Factory.eINSTANCE.createConnector()));
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: DataTypeItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,7 +88,7 @@ public class DataTypeItemProvider
 				getString("_UI_DataType_ownedAttribute_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DataType_ownedAttribute_feature", "_UI_DataType_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDataType_OwnedAttribute(), true, null,
+				UMLPackage.Literals.DATA_TYPE__OWNED_ATTRIBUTE, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -108,7 +108,7 @@ public class DataTypeItemProvider
 				getString("_UI_DataType_ownedOperation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DataType_ownedOperation_feature", "_UI_DataType_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDataType_OwnedOperation(), true, null,
+				UMLPackage.Literals.DATA_TYPE__OWNED_OPERATION, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -124,10 +124,10 @@ public class DataTypeItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getDataType_OwnedAttribute());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getDataType_OwnedOperation());
+			childrenFeatures
+				.add(UMLPackage.Literals.DATA_TYPE__OWNED_ATTRIBUTE);
+			childrenFeatures
+				.add(UMLPackage.Literals.DATA_TYPE__OWNED_OPERATION);
 		}
 		return childrenFeatures;
 	}
@@ -198,20 +198,21 @@ public class DataTypeItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getDataType_OwnedAttribute(), UMLFactory.eINSTANCE
-			.createProperty()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DATA_TYPE__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createProperty()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getDataType_OwnedAttribute(), UMLFactory.eINSTANCE.createPort()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DATA_TYPE__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createPort()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getDataType_OwnedAttribute(), UMLFactory.eINSTANCE
-			.createExtensionEnd()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DATA_TYPE__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createExtensionEnd()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getDataType_OwnedOperation(), UMLFactory.eINSTANCE
-			.createOperation()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DATA_TYPE__OWNED_OPERATION,
+			UMLFactory.eINSTANCE.createOperation()));
 	}
 
 	/**
@@ -225,10 +226,8 @@ public class DataTypeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

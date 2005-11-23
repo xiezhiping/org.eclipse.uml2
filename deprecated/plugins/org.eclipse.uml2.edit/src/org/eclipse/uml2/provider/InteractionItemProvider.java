@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionItemProvider.java,v 1.22 2005/09/23 20:14:53 khussey Exp $
+ * $Id: InteractionItemProvider.java,v 1.23 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -98,7 +98,7 @@ public class InteractionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_covered_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionFragment_Covered(),
+				 UML2Package.Literals.INTERACTION_FRAGMENT__COVERED,
 				 true,
 				 null,
 				 null,
@@ -118,7 +118,7 @@ public class InteractionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_generalOrdering_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_generalOrdering_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering(),
+				 UML2Package.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
 				 true,
 				 null,
 				 null,
@@ -140,7 +140,7 @@ public class InteractionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_enclosingInteraction_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingInteraction_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionFragment_EnclosingInteraction(),
+				 UML2Package.Literals.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
 				 true,
 				 null,
 				 null,
@@ -162,7 +162,7 @@ public class InteractionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_enclosingOperand_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingOperand_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand(),
+				 UML2Package.Literals.INTERACTION_FRAGMENT__ENCLOSING_OPERAND,
 				 true,
 				 null,
 				 null,
@@ -184,7 +184,7 @@ public class InteractionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Interaction_lifeline_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Interaction_lifeline_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteraction_Lifeline(),
+				 UML2Package.Literals.INTERACTION__LIFELINE,
 				 true,
 				 null,
 				 null,
@@ -206,7 +206,7 @@ public class InteractionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Interaction_message_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Interaction_message_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteraction_Message(),
+				 UML2Package.Literals.INTERACTION__MESSAGE,
 				 true,
 				 null,
 				 null,
@@ -228,7 +228,7 @@ public class InteractionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Interaction_fragment_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Interaction_fragment_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteraction_Fragment(),
+				 UML2Package.Literals.INTERACTION__FRAGMENT,
 				 true,
 				 null,
 				 null,
@@ -250,7 +250,7 @@ public class InteractionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Interaction_formalGate_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Interaction_formalGate_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getInteraction_FormalGate(),
+				 UML2Package.Literals.INTERACTION__FORMAL_GATE,
 				 true,
 				 null,
 				 null,
@@ -270,11 +270,11 @@ public class InteractionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
-			childrenFeatures.add(UML2Package.eINSTANCE.getInteraction_Lifeline());
-			childrenFeatures.add(UML2Package.eINSTANCE.getInteraction_Message());
-			childrenFeatures.add(UML2Package.eINSTANCE.getInteraction_Fragment());
-			childrenFeatures.add(UML2Package.eINSTANCE.getInteraction_FormalGate());
+			childrenFeatures.add(UML2Package.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING);
+			childrenFeatures.add(UML2Package.Literals.INTERACTION__LIFELINE);
+			childrenFeatures.add(UML2Package.Literals.INTERACTION__MESSAGE);
+			childrenFeatures.add(UML2Package.Literals.INTERACTION__FRAGMENT);
+			childrenFeatures.add(UML2Package.Literals.INTERACTION__FORMAL_GATE);
 		}
 		return childrenFeatures;
 	}
@@ -347,72 +347,72 @@ public class InteractionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering(),
+				(UML2Package.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
 				 UML2Factory.eINSTANCE.createGeneralOrdering()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Lifeline(),
+				(UML2Package.Literals.INTERACTION__LIFELINE,
 				 UML2Factory.eINSTANCE.createLifeline()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Message(),
+				(UML2Package.Literals.INTERACTION__MESSAGE,
 				 UML2Factory.eINSTANCE.createMessage()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Fragment(),
+				(UML2Package.Literals.INTERACTION__FRAGMENT,
 				 UML2Factory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Fragment(),
+				(UML2Package.Literals.INTERACTION__FRAGMENT,
 				 UML2Factory.eINSTANCE.createEventOccurrence()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Fragment(),
+				(UML2Package.Literals.INTERACTION__FRAGMENT,
 				 UML2Factory.eINSTANCE.createExecutionOccurrence()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Fragment(),
+				(UML2Package.Literals.INTERACTION__FRAGMENT,
 				 UML2Factory.eINSTANCE.createStateInvariant()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Fragment(),
+				(UML2Package.Literals.INTERACTION__FRAGMENT,
 				 UML2Factory.eINSTANCE.createStop()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Fragment(),
+				(UML2Package.Literals.INTERACTION__FRAGMENT,
 				 UML2Factory.eINSTANCE.createInteractionOccurrence()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Fragment(),
+				(UML2Package.Literals.INTERACTION__FRAGMENT,
 				 UML2Factory.eINSTANCE.createPartDecomposition()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Fragment(),
+				(UML2Package.Literals.INTERACTION__FRAGMENT,
 				 UML2Factory.eINSTANCE.createInteractionOperand()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Fragment(),
+				(UML2Package.Literals.INTERACTION__FRAGMENT,
 				 UML2Factory.eINSTANCE.createCombinedFragment()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_Fragment(),
+				(UML2Package.Literals.INTERACTION__FRAGMENT,
 				 UML2Factory.eINSTANCE.createContinuation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getInteraction_FormalGate(),
+				(UML2Package.Literals.INTERACTION__FORMAL_GATE,
 				 UML2Factory.eINSTANCE.createGate()));
 	}
 
@@ -427,13 +427,13 @@ public class InteractionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
-			childFeature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			childFeature == UML2Package.eINSTANCE.getInteraction_Fragment() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			childFeature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			childFeature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
+			childFeature == UML2Package.Literals.CLASSIFIER__OWNED_USE_CASE ||
+			childFeature == UML2Package.Literals.CLASS__NESTED_CLASSIFIER ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR ||
+			childFeature == UML2Package.Literals.INTERACTION__FRAGMENT ||
+			childFeature == UML2Package.Literals.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE ||
+			childFeature == UML2Package.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE ||
+			childFeature == UML2Package.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT;
 
 		if (qualify) {
 			return getString

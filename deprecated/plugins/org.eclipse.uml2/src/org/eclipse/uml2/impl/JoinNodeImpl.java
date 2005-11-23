@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.19 2005/11/23 13:25:33 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.20 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -97,7 +97,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getJoinNode();
+		return UML2Package.Literals.JOIN_NODE;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.17 2005/11/23 13:25:32 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.18 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -61,7 +61,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getExtensionEnd();
+		return UML2Package.Literals.EXTENSION_END;
 	}
 
 	/**

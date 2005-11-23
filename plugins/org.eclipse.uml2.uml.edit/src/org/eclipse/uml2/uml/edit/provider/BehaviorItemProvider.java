@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: BehaviorItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -93,7 +93,7 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_isReentrant_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_isReentrant_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getBehavior_IsReentrant(), true,
+				UMLPackage.Literals.BEHAVIOR__IS_REENTRANT, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -112,8 +112,8 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_redefinedBehavior_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_redefinedBehavior_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getBehavior_RedefinedBehavior(), true,
-				null, null, null));
+				UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR, true, null,
+				null, null));
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_ownedParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_ownedParameter_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getBehavior_OwnedParameter(), true, null,
+				UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -151,7 +151,7 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_context_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_context_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getBehavior_Context(), true, null, null,
+				UMLPackage.Literals.BEHAVIOR__CONTEXT, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -171,9 +171,8 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_ownedParameterSet_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_ownedParameterSet_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getBehavior_OwnedParameterSet(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -192,8 +191,8 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_specification_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_specification_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getBehavior_Specification(), true, null,
-				null, null));
+				UMLPackage.Literals.BEHAVIOR__SPECIFICATION, true, null, null,
+				null));
 	}
 
 	/**
@@ -207,10 +206,9 @@ public class BehaviorItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getBehavior_OwnedParameter());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getBehavior_OwnedParameterSet());
+			childrenFeatures.add(UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER);
+			childrenFeatures
+				.add(UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET);
 		}
 		return childrenFeatures;
 	}
@@ -285,13 +283,13 @@ public class BehaviorItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavior_OwnedParameter(), UMLFactory.eINSTANCE
-			.createParameter()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER, UMLFactory.eINSTANCE
+				.createParameter()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getBehavior_OwnedParameterSet(), UMLFactory.eINSTANCE
-			.createParameterSet()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET,
+			UMLFactory.eINSTANCE.createParameterSet()));
 	}
 
 	/**
@@ -305,15 +303,11 @@ public class BehaviorItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedUseCase()
-			|| childFeature == UMLPackage.eINSTANCE.getClass_NestedClassifier()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getBehavioredClassifier_OwnedBehavior();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

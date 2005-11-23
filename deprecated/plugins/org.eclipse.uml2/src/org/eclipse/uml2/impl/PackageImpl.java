@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.40 2005/11/23 13:25:32 khussey Exp $
+ * $Id: PackageImpl.java,v 1.41 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -120,7 +120,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getPackage();
+		return UML2Package.Literals.PACKAGE;
 	}
 
 	/**
@@ -567,9 +567,9 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	public Set visibleMembers() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getPackage().getEOperations().get(1));
+			Set result = (Set) cache.get(this, UML2Package.Literals.PACKAGE.getEOperations().get(1));
 			if (result == null) {
-				cache.put(this, UML2Package.eINSTANCE.getPackage().getEOperations().get(1), result = PackageOperations.visibleMembers(this));
+				cache.put(this, UML2Package.Literals.PACKAGE.getEOperations().get(1), result = PackageOperations.visibleMembers(this));
 			}
 			return result;
 		}
@@ -616,10 +616,10 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getPackage_PackageMerge())) {
+		if (eIsSet(UML2Package.Literals.PACKAGE__PACKAGE_MERGE)) {
 			ownedElement.addAll(getPackageMerges());
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getPackage_PackageExtension())) {
+		if (eIsSet(UML2Package.Literals.PACKAGE__PACKAGE_EXTENSION)) {
 			ownedElement.addAll(getPackageExtensions());
 		}
 		EList ownedMember = super.getOwnedMembers();
@@ -638,8 +638,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageMerge())
-			|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageExtension())
+			|| eIsSet(UML2Package.Literals.PACKAGE__PACKAGE_MERGE)
+			|| eIsSet(UML2Package.Literals.PACKAGE__PACKAGE_EXTENSION)
 			|| super.isSetOwnedMembers();
 	}
 

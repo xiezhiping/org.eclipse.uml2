@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.32 2005/11/23 13:25:34 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.33 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -101,7 +101,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getInteraction();
+		return UML2Package.Literals.INTERACTION;
 	}
 
 	/**

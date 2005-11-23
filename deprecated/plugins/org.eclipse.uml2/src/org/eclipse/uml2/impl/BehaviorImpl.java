@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.35 2005/11/23 13:25:33 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.36 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -116,7 +116,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getBehavior();
+		return UML2Package.Literals.BEHAVIOR;
 	}
 
 	/**
@@ -337,15 +337,15 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getBehavior_FormalParameter());
+				UML2Package.Literals.BEHAVIOR__FORMAL_PARAMETER);
 
 			if (result == null) {
 				EList formalParameters = BehaviorOperations
 					.getFormalParameters(this);
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getBehavior_FormalParameter(),
+				cache.put(eResource(), this,
+					UML2Package.Literals.BEHAVIOR__FORMAL_PARAMETER,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getBehavior_FormalParameter(),
+						UML2Package.Literals.BEHAVIOR__FORMAL_PARAMETER,
 						formalParameters.size(), formalParameters.toArray()));
 			}
 
@@ -353,9 +353,9 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 		}
 
 		EList formalParameters = BehaviorOperations.getFormalParameters(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getBehavior_FormalParameter(), formalParameters.size(),
-			formalParameters.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.BEHAVIOR__FORMAL_PARAMETER, formalParameters
+				.size(), formalParameters.toArray());
 	}
 
 	/**
@@ -383,14 +383,14 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getBehavior_ReturnResult());
+				UML2Package.Literals.BEHAVIOR__RETURN_RESULT);
 
 			if (result == null) {
 				EList returnResults = BehaviorOperations.getReturnResults(this);
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getBehavior_ReturnResult(),
+				cache.put(eResource(), this,
+					UML2Package.Literals.BEHAVIOR__RETURN_RESULT,
 					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getBehavior_ReturnResult(),
+						UML2Package.Literals.BEHAVIOR__RETURN_RESULT,
 						returnResults.size(), returnResults.toArray()));
 			}
 
@@ -398,9 +398,9 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 		}
 
 		EList returnResults = BehaviorOperations.getReturnResults(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getBehavior_ReturnResult(), returnResults.size(), returnResults
-			.toArray());
+		return new EcoreEList.UnmodifiableEList(this,
+			UML2Package.Literals.BEHAVIOR__RETURN_RESULT, returnResults.size(),
+			returnResults.toArray());
 	}
 
 	/**

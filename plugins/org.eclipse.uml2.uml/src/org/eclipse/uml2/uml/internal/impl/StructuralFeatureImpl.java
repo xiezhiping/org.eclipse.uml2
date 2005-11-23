@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.4 2005/11/23 13:27:43 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.5 2005/11/23 20:01:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -163,7 +163,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getStructuralFeature();
+		return UMLPackage.Literals.STRUCTURAL_FEATURE;
 	}
 
 	/**

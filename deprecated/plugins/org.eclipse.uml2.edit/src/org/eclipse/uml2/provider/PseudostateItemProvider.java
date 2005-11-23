@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: PseudostateItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class PseudostateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Pseudostate_kind_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Pseudostate_kind_feature", "_UI_Pseudostate_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPseudostate_Kind(),
+				 UML2Package.Literals.PSEUDOSTATE__KIND,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

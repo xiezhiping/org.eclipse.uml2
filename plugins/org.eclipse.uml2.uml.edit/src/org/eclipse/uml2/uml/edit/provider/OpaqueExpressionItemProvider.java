@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: OpaqueExpressionItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -88,7 +88,7 @@ public class OpaqueExpressionItemProvider
 				getString("_UI_OpaqueExpression_body_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueExpression_body_feature", "_UI_OpaqueExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOpaqueExpression_Body(), true,
+				UMLPackage.Literals.OPAQUE_EXPRESSION__BODY, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -107,7 +107,7 @@ public class OpaqueExpressionItemProvider
 				getString("_UI_OpaqueExpression_language_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueExpression_language_feature", "_UI_OpaqueExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOpaqueExpression_Language(), true,
+				UMLPackage.Literals.OPAQUE_EXPRESSION__LANGUAGE, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -126,7 +126,7 @@ public class OpaqueExpressionItemProvider
 				getString("_UI_OpaqueExpression_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueExpression_result_feature", "_UI_OpaqueExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOpaqueExpression_Result(), false, null,
+				UMLPackage.Literals.OPAQUE_EXPRESSION__RESULT, false, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -146,8 +146,8 @@ public class OpaqueExpressionItemProvider
 				getString("_UI_OpaqueExpression_behavior_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueExpression_behavior_feature", "_UI_OpaqueExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getOpaqueExpression_Behavior(), true,
-				null, null, null));
+				UMLPackage.Literals.OPAQUE_EXPRESSION__BEHAVIOR, true, null,
+				null, null));
 	}
 
 	/**

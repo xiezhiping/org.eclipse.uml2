@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommunicationPathImpl.java,v 1.21 2005/11/09 22:53:07 khussey Exp $
+ * $Id: CommunicationPathImpl.java,v 1.22 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getCommunicationPath();
+		return UML2Package.Literals.COMMUNICATION_PATH;
 	}
 
 

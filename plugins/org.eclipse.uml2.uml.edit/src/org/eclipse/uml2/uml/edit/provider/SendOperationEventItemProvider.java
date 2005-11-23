@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendOperationEventItemProvider.java,v 1.1 2005/11/14 22:11:34 khussey Exp $
+ * $Id: SendOperationEventItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -83,7 +83,7 @@ public class SendOperationEventItemProvider
 				getString("_UI_SendOperationEvent_operation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_SendOperationEvent_operation_feature", "_UI_SendOperationEvent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getSendOperationEvent_Operation(), true,
+				UMLPackage.Literals.SEND_OPERATION_EVENT__OPERATION, true,
 				null, null, null));
 	}
 

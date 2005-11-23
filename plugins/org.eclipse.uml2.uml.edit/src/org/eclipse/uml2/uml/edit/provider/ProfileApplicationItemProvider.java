@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ProfileApplicationItemProvider.java,v 1.2 2005/11/23 20:07:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -97,7 +97,7 @@ public class ProfileApplicationItemProvider
 				getString("_UI_ProfileApplication_importedProfile_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProfileApplication_importedProfile_feature", "_UI_ProfileApplication_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProfileApplication_ImportedProfile(),
+				UMLPackage.Literals.PROFILE_APPLICATION__IMPORTED_PROFILE,
 				true, null, null, null));
 	}
 
@@ -116,7 +116,7 @@ public class ProfileApplicationItemProvider
 				getString("_UI_ProfileApplication_isStrict_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProfileApplication_isStrict_feature", "_UI_ProfileApplication_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getProfileApplication_IsStrict(), true,
+				UMLPackage.Literals.PROFILE_APPLICATION__IS_STRICT, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -196,16 +196,21 @@ public class ProfileApplicationItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.eINSTANCE
-			.getProfileApplication_ImportedProfile()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getPackageImport_ImportedPackage()}, value);
+		if (feature == UMLPackage.Literals.PROFILE_APPLICATION__IMPORTED_PROFILE) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PACKAGE_IMPORT__IMPORTED_PACKAGE},
+				value);
 		}
-		if (feature == UMLPackage.eINSTANCE.getPackageImport_ImportedPackage()) {
-			return new SupersetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getProfileApplication_ImportedProfile()}, value);
+		if (feature == UMLPackage.Literals.PACKAGE_IMPORT__IMPORTED_PACKAGE) {
+			return new SupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PROFILE_APPLICATION__IMPORTED_PROFILE},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

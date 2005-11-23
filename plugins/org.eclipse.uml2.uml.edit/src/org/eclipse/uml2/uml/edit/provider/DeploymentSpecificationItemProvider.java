@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationItemProvider.java,v 1.1 2005/11/14 22:11:32 khussey Exp $
+ * $Id: DeploymentSpecificationItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -87,9 +87,8 @@ public class DeploymentSpecificationItemProvider
 				getString("_UI_DeploymentSpecification_deploymentLocation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentSpecification_deploymentLocation_feature", "_UI_DeploymentSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getDeploymentSpecification_DeploymentLocation(), true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
+				true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -107,9 +106,8 @@ public class DeploymentSpecificationItemProvider
 				getString("_UI_DeploymentSpecification_executionLocation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentSpecification_executionLocation_feature", "_UI_DeploymentSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getDeploymentSpecification_ExecutionLocation(), true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
+				true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -127,8 +125,8 @@ public class DeploymentSpecificationItemProvider
 				getString("_UI_DeploymentSpecification_deployment_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentSpecification_deployment_feature", "_UI_DeploymentSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getDeploymentSpecification_Deployment(),
-				true, null, null,
+				UMLPackage.Literals.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -200,10 +198,8 @@ public class DeploymentSpecificationItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.3 2005/11/23 13:27:43 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,7 +90,7 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getCombinedFragment();
+		return UMLPackage.Literals.COMBINED_FRAGMENT;
 	}
 
 	/**

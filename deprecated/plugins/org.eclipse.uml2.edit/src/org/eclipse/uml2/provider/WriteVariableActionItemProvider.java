@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableActionItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: WriteVariableActionItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class WriteVariableActionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_WriteVariableAction_value_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_WriteVariableAction_value_feature", "_UI_WriteVariableAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getWriteVariableAction_Value(),
+				 UML2Package.Literals.WRITE_VARIABLE_ACTION__VALUE,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class WriteVariableActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getWriteVariableAction_Value());
+			childrenFeatures.add(UML2Package.Literals.WRITE_VARIABLE_ACTION__VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -157,12 +157,12 @@ public class WriteVariableActionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getWriteVariableAction_Value(),
+				(UML2Package.Literals.WRITE_VARIABLE_ACTION__VALUE,
 				 UML2Factory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getWriteVariableAction_Value(),
+				(UML2Package.Literals.WRITE_VARIABLE_ACTION__VALUE,
 				 UML2Factory.eINSTANCE.createValuePin()));
 	}
 
@@ -177,8 +177,8 @@ public class WriteVariableActionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			childFeature == UML2Package.Literals.ACTION__LOCAL_PRECONDITION ||
+			childFeature == UML2Package.Literals.ACTION__LOCAL_POSTCONDITION;
 
 		if (qualify) {
 			return getString

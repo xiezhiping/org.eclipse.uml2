@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: PackageImportItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class PackageImportItemProvider
 				 getResourceLocator(),
 				 getString("_UI_PackageImport_visibility_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PackageImport_visibility_feature", "_UI_PackageImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackageImport_Visibility(),
+				 UML2Package.Literals.PACKAGE_IMPORT__VISIBILITY,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -113,7 +113,7 @@ public class PackageImportItemProvider
 				 getResourceLocator(),
 				 getString("_UI_PackageImport_importedPackage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PackageImport_importedPackage_feature", "_UI_PackageImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackageImport_ImportedPackage(),
+				 UML2Package.Literals.PACKAGE_IMPORT__IMPORTED_PACKAGE,
 				 true,
 				 null,
 				 null,
@@ -133,7 +133,7 @@ public class PackageImportItemProvider
 				 getResourceLocator(),
 				 getString("_UI_PackageImport_importingNamespace_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PackageImport_importingNamespace_feature", "_UI_PackageImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackageImport_ImportingNamespace(),
+				 UML2Package.Literals.PACKAGE_IMPORT__IMPORTING_NAMESPACE,
 				 true,
 				 null,
 				 null,

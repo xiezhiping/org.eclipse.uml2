@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: BehavioralFeatureItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -102,7 +102,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getRedefinableElement_IsLeaf(),
+				 UML2Package.Literals.REDEFINABLE_ELEMENT__IS_LEAF,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -122,7 +122,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
+				 UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 				 false,
 				 null,
 				 null,
@@ -144,7 +144,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Feature_isStatic_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Feature_isStatic_feature", "_UI_Feature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getFeature_IsStatic(),
+				 UML2Package.Literals.FEATURE__IS_STATIC,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -164,7 +164,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Feature_featuringClassifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Feature_featuringClassifier_feature", "_UI_Feature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getFeature_FeaturingClassifier(),
+				 UML2Package.Literals.FEATURE__FEATURING_CLASSIFIER,
 				 false,
 				 null,
 				 null,
@@ -186,7 +186,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_isAbstract_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_isAbstract_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioralFeature_IsAbstract(),
+				 UML2Package.Literals.BEHAVIORAL_FEATURE__IS_ABSTRACT,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -206,7 +206,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_concurrency_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_concurrency_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioralFeature_Concurrency(),
+				 UML2Package.Literals.BEHAVIORAL_FEATURE__CONCURRENCY,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -224,8 +224,8 @@ public class BehavioralFeatureItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter());
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
+			childrenFeatures.add(UML2Package.Literals.BEHAVIORAL_FEATURE__FORMAL_PARAMETER);
+			childrenFeatures.add(UML2Package.Literals.BEHAVIORAL_FEATURE__RETURN_RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -255,7 +255,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_parameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_parameter_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioralFeature_Parameter(),
+				 UML2Package.Literals.BEHAVIORAL_FEATURE__PARAMETER,
 				 false,
 				 null,
 				 null,
@@ -277,7 +277,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_formalParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_formalParameter_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter(),
+				 UML2Package.Literals.BEHAVIORAL_FEATURE__FORMAL_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -299,7 +299,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_returnResult_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_returnResult_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult(),
+				 UML2Package.Literals.BEHAVIORAL_FEATURE__RETURN_RESULT,
 				 true,
 				 null,
 				 null,
@@ -321,7 +321,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_raisedException_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_raisedException_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioralFeature_RaisedException(),
+				 UML2Package.Literals.BEHAVIORAL_FEATURE__RAISED_EXCEPTION,
 				 true,
 				 null,
 				 null,
@@ -341,7 +341,7 @@ public class BehavioralFeatureItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_method_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_method_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioralFeature_Method(),
+				 UML2Package.Literals.BEHAVIORAL_FEATURE__METHOD,
 				 true,
 				 null,
 				 null,
@@ -398,12 +398,12 @@ public class BehavioralFeatureItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter(),
+				(UML2Package.Literals.BEHAVIORAL_FEATURE__FORMAL_PARAMETER,
 				 UML2Factory.eINSTANCE.createParameter()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult(),
+				(UML2Package.Literals.BEHAVIORAL_FEATURE__RETURN_RESULT,
 				 UML2Factory.eINSTANCE.createParameter()));
 	}
 
@@ -418,8 +418,8 @@ public class BehavioralFeatureItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter() ||
-			childFeature == UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult();
+			childFeature == UML2Package.Literals.BEHAVIORAL_FEATURE__FORMAL_PARAMETER ||
+			childFeature == UML2Package.Literals.BEHAVIORAL_FEATURE__RETURN_RESULT;
 
 		if (qualify) {
 			return getString

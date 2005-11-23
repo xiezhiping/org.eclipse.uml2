@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrenceImpl.java,v 1.18 2005/11/23 13:25:34 khussey Exp $
+ * $Id: InteractionOccurrenceImpl.java,v 1.19 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -80,7 +80,7 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getInteractionOccurrence();
+		return UML2Package.Literals.INTERACTION_OCCURRENCE;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GateImpl.java,v 1.8 2005/11/04 22:23:00 khussey Exp $
+ * $Id: GateImpl.java,v 1.9 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class GateImpl extends MessageEndImpl implements Gate {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getGate();
+		return UML2Package.Literals.GATE;
 	}
 
 

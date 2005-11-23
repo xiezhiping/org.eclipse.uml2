@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierItemProvider.java,v 1.1 2005/11/14 22:11:37 khussey Exp $
+ * $Id: ClassifierItemProvider.java,v 1.2 2005/11/23 20:07:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -120,7 +120,7 @@ public class ClassifierItemProvider
 				getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(), true,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -139,7 +139,7 @@ public class ClassifierItemProvider
 				getString("_UI_RedefinableElement_redefinedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinedElement_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getRedefinableElement_RedefinedElement(),
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
 				false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -160,9 +160,9 @@ public class ClassifierItemProvider
 				getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getRedefinableElement_RedefinitionContext(), false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -181,9 +181,8 @@ public class ClassifierItemProvider
 				getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getParameterableElement_TemplateParameter(), true, null,
-				null, null));
+				UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
+				true, null, null, null));
 	}
 
 	/**
@@ -201,9 +200,8 @@ public class ClassifierItemProvider
 				getString("_UI_ParameterableElement_owningTemplateParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningTemplateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getParameterableElement_OwningTemplateParameter(), true,
-				null, null,
+				UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -223,7 +221,7 @@ public class ClassifierItemProvider
 				getString("_UI_Type_package_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Type_package_feature", "_UI_Type_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getType_Package(), true, null, null,
+				UMLPackage.Literals.TYPE__PACKAGE, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -243,7 +241,7 @@ public class ClassifierItemProvider
 				getString("_UI_TemplateableElement_templateBinding_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_templateBinding_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getTemplateableElement_TemplateBinding(),
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -264,9 +262,8 @@ public class ClassifierItemProvider
 				getString("_UI_TemplateableElement_ownedTemplateSignature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_ownedTemplateSignature_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE
-					.getTemplateableElement_OwnedTemplateSignature(), true,
-				null, null,
+				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -286,7 +283,7 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_isAbstract_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_isAbstract_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_IsAbstract(), true,
+				UMLPackage.Literals.CLASSIFIER__IS_ABSTRACT, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -305,9 +302,8 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_generalization_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_generalization_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_Generalization(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CLASSIFIER__GENERALIZATION, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -326,8 +322,8 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_powertypeExtent_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_powertypeExtent_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_PowertypeExtent(), true,
-				null, null, null));
+				UMLPackage.Literals.CLASSIFIER__POWERTYPE_EXTENT, true, null,
+				null, null));
 	}
 
 	/**
@@ -345,8 +341,8 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_feature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_feature_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_Feature(), false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CLASSIFIER__FEATURE, false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -365,9 +361,8 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_inheritedMember_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_inheritedMember_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_InheritedMember(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CLASSIFIER__INHERITED_MEMBER, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -386,7 +381,7 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_redefinedClassifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_redefinedClassifier_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_RedefinedClassifier(), true,
+				UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER, true,
 				null, null, null));
 	}
 
@@ -405,7 +400,7 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_general_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_general_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_General(), true, null, null,
+				UMLPackage.Literals.CLASSIFIER__GENERAL, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -425,7 +420,7 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_ownedUseCase_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_ownedUseCase_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_OwnedUseCase(), true, null,
+				UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE, true, null,
 				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -445,7 +440,7 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_useCase_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_useCase_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_UseCase(), true, null, null,
+				UMLPackage.Literals.CLASSIFIER__USE_CASE, true, null, null,
 				null));
 	}
 
@@ -464,8 +459,8 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_substitution_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_substitution_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_Substitution(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CLASSIFIER__SUBSTITUTION, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -484,8 +479,8 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_attribute_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_attribute_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_Attribute(), false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CLASSIFIER__ATTRIBUTE, false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -504,8 +499,8 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_representation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_representation_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_Representation(), true,
-				null, null, null));
+				UMLPackage.Literals.CLASSIFIER__REPRESENTATION, true, null,
+				null, null));
 	}
 
 	/**
@@ -523,9 +518,8 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_collaborationUse_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_collaborationUse_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_CollaborationUse(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -544,9 +538,8 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_ownedSignature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_ownedSignature_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getClassifier_OwnedSignature(), true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -561,20 +554,19 @@ public class ClassifierItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateableElement_TemplateBinding());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getTemplateableElement_OwnedTemplateSignature());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getClassifier_Generalization());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getClassifier_OwnedUseCase());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getClassifier_Substitution());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getClassifier_CollaborationUse());
-			childrenFeatures.add(UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature());
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
+			childrenFeatures
+				.add(UMLPackage.Literals.CLASSIFIER__GENERALIZATION);
+			childrenFeatures
+				.add(UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE);
+			childrenFeatures.add(UMLPackage.Literals.CLASSIFIER__SUBSTITUTION);
+			childrenFeatures
+				.add(UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE);
+			childrenFeatures
+				.add(UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE);
 		}
 		return childrenFeatures;
 	}
@@ -645,38 +637,37 @@ public class ClassifierItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_TemplateBinding(), UMLFactory.eINSTANCE
-			.createTemplateBinding()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+			UMLFactory.eINSTANCE.createTemplateBinding()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createTemplateSignature()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature(),
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClassifier_Generalization(), UMLFactory.eINSTANCE
-			.createGeneralization()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASSIFIER__GENERALIZATION,
+			UMLFactory.eINSTANCE.createGeneralization()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.eINSTANCE
-				.getClassifier_OwnedUseCase(), UMLFactory.eINSTANCE
-				.createUseCase()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE,
+			UMLFactory.eINSTANCE.createUseCase()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClassifier_Substitution(), UMLFactory.eINSTANCE
-			.createSubstitution()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASSIFIER__SUBSTITUTION, UMLFactory.eINSTANCE
+				.createSubstitution()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClassifier_CollaborationUse(), UMLFactory.eINSTANCE
-			.createCollaborationUse()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE,
+			UMLFactory.eINSTANCE.createCollaborationUse()));
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getClassifier_OwnedSignature(), UMLFactory.eINSTANCE
-			.createRedefinableTemplateSignature()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE,
+			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
 	}
 
 	/**
@@ -690,10 +681,8 @@ public class ClassifierItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getTemplateableElement_OwnedTemplateSignature()
-			|| childFeature == UMLPackage.eINSTANCE
-				.getClassifier_OwnedSignature();
+		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -721,10 +710,13 @@ public class ClassifierItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.eINSTANCE.getClassifier_Substitution()) {
-			return new SubsetAddCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamedElement_ClientDependency()}, collection, index);
+		if (feature == UMLPackage.Literals.CLASSIFIER__SUBSTITUTION) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
+				collection, index);
 		}
 		return super
 			.createAddCommand(domain, owner, feature, collection, index);
@@ -738,15 +730,21 @@ public class ClassifierItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getClassifier_Substitution()}, collection);
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__SUBSTITUTION},
+				collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getClassifier_CollaborationUse()) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getClassifier_Representation()}, collection);
+		if (feature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REPRESENTATION},
+				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -759,20 +757,29 @@ public class ClassifierItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.eINSTANCE.getClassifier_Substitution()) {
-			return new SubsetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getNamedElement_ClientDependency()}, value, collection);
+		if (feature == UMLPackage.Literals.CLASSIFIER__SUBSTITUTION) {
+			return new SubsetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getClassifier_Substitution()}, value, collection);
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__SUBSTITUTION},
+				value, collection);
 		}
-		if (feature == UMLPackage.eINSTANCE.getClassifier_CollaborationUse()) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getClassifier_Representation()}, value, collection);
+		if (feature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REPRESENTATION},
+				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);
@@ -786,16 +793,21 @@ public class ClassifierItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.eINSTANCE
-			.getParameterableElement_OwningTemplateParameter()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getParameterableElement_TemplateParameter()}, value);
+		if (feature == UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER},
+				value);
 		}
-		if (feature == UMLPackage.eINSTANCE.getClassifier_Representation()) {
-			return new SubsetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.eINSTANCE
-					.getClassifier_CollaborationUse()}, value);
+		if (feature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

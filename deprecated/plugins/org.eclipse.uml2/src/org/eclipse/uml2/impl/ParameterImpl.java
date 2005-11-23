@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.24 2005/11/23 13:25:33 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.25 2005/11/23 20:05:07 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -235,7 +235,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getParameter();
+		return UML2Package.Literals.PARAMETER;
 	}
 
 	/**

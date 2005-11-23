@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
+ * $Id: EnumerationItemProvider.java,v 1.14 2005/11/23 20:02:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class EnumerationItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Enumeration_ownedLiteral_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Enumeration_ownedLiteral_feature", "_UI_Enumeration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getEnumeration_OwnedLiteral(),
+				 UML2Package.Literals.ENUMERATION__OWNED_LITERAL,
 				 true,
 				 null,
 				 null,
@@ -109,7 +109,7 @@ public class EnumerationItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getEnumeration_OwnedLiteral());
+			childrenFeatures.add(UML2Package.Literals.ENUMERATION__OWNED_LITERAL);
 		}
 		return childrenFeatures;
 	}
@@ -166,7 +166,7 @@ public class EnumerationItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getEnumeration_OwnedLiteral(),
+				(UML2Package.Literals.ENUMERATION__OWNED_LITERAL,
 				 UML2Factory.eINSTANCE.createEnumerationLiteral()));
 	}
 

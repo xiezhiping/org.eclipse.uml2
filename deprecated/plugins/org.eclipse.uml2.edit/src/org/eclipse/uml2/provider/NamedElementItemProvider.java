@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementItemProvider.java,v 1.14 2005/05/18 16:40:46 khussey Exp $
+ * $Id: NamedElementItemProvider.java,v 1.15 2005/11/23 20:02:55 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -94,7 +94,7 @@ public class NamedElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_NamedElement_name_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_name_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNamedElement_Name(),
+				 UML2Package.Literals.NAMED_ELEMENT__NAME,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -114,7 +114,7 @@ public class NamedElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_NamedElement_qualifiedName_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_qualifiedName_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNamedElement_QualifiedName(),
+				 UML2Package.Literals.NAMED_ELEMENT__QUALIFIED_NAME,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -136,7 +136,7 @@ public class NamedElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_NamedElement_visibility_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_visibility_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNamedElement_Visibility(),
+				 UML2Package.Literals.NAMED_ELEMENT__VISIBILITY,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -156,7 +156,7 @@ public class NamedElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_NamedElement_clientDependency_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_clientDependency_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNamedElement_ClientDependency(),
+				 UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY,
 				 true,
 				 null,
 				 null,
@@ -176,7 +176,7 @@ public class NamedElementItemProvider
 				 getResourceLocator(),
 				 getString("_UI_NamedElement_nameExpression_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_nameExpression_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getNamedElement_NameExpression(),
+				 UML2Package.Literals.NAMED_ELEMENT__NAME_EXPRESSION,
 				 true,
 				 null,
 				 null,
@@ -196,7 +196,7 @@ public class NamedElementItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getNamedElement_NameExpression());
+			childrenFeatures.add(UML2Package.Literals.NAMED_ELEMENT__NAME_EXPRESSION);
 		}
 		return childrenFeatures;
 	}
@@ -249,7 +249,7 @@ public class NamedElementItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getNamedElement_NameExpression(),
+				(UML2Package.Literals.NAMED_ELEMENT__NAME_EXPRESSION,
 				 UML2Factory.eINSTANCE.createStringExpression()));
 	}
 

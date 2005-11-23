@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentItemProvider.java,v 1.1 2005/11/14 22:11:36 khussey Exp $
+ * $Id: CommentItemProvider.java,v 1.2 2005/11/23 20:07:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -86,7 +86,7 @@ public class CommentItemProvider
 				getString("_UI_Comment_body_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Comment_body_feature", "_UI_Comment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getComment_Body(), true,
+				UMLPackage.Literals.COMMENT__BODY, true,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -105,7 +105,7 @@ public class CommentItemProvider
 				getString("_UI_Comment_annotatedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Comment_annotatedElement_feature", "_UI_Comment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getComment_AnnotatedElement(), true, null,
+				UMLPackage.Literals.COMMENT__ANNOTATED_ELEMENT, true, null,
 				null, null));
 	}
 

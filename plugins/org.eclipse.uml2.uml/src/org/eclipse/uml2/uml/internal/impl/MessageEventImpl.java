@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageEventImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: MessageEventImpl.java,v 1.2 2005/11/23 20:01:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,7 @@ public abstract class MessageEventImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UMLPackage.eINSTANCE.getMessageEvent();
+		return UMLPackage.Literals.MESSAGE_EVENT;
 	}
 
 } //MessageEventImpl

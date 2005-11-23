@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierItemProvider.java,v 1.18 2005/05/18 16:40:46 khussey Exp $
+ * $Id: ClassifierItemProvider.java,v 1.19 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -124,7 +124,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterableElement_TemplateParameter(),
+				 UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -144,7 +144,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_owningParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterableElement_OwningParameter(),
+				 UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -166,7 +166,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_PackageableElement_packageableElement_visibility_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PackageableElement_packageableElement_visibility_feature", "_UI_PackageableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getPackageableElement_PackageableElement_visibility(),
+				 UML2Package.Literals.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -186,7 +186,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Type_package_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Type_package_feature", "_UI_Type_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getType_Package(),
+				 UML2Package.Literals.TYPE__PACKAGE,
 				 false,
 				 null,
 				 null,
@@ -208,7 +208,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getRedefinableElement_IsLeaf(),
+				 UML2Package.Literals.REDEFINABLE_ELEMENT__IS_LEAF,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -228,7 +228,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
+				 UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 				 false,
 				 null,
 				 null,
@@ -250,7 +250,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_isAbstract_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_isAbstract_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_IsAbstract(),
+				 UML2Package.Literals.CLASSIFIER__IS_ABSTRACT,
 				 true,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
@@ -270,7 +270,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_feature_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_feature_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_Feature(),
+				 UML2Package.Literals.CLASSIFIER__FEATURE,
 				 false,
 				 null,
 				 null,
@@ -292,7 +292,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_inheritedMember_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_inheritedMember_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_InheritedMember(),
+				 UML2Package.Literals.CLASSIFIER__INHERITED_MEMBER,
 				 false,
 				 null,
 				 null,
@@ -314,7 +314,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_general_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_general_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_General(),
+				 UML2Package.Literals.CLASSIFIER__GENERAL,
 				 false,
 				 null,
 				 null,
@@ -336,7 +336,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_generalization_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_generalization_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_Generalization(),
+				 UML2Package.Literals.CLASSIFIER__GENERALIZATION,
 				 true,
 				 null,
 				 null,
@@ -358,7 +358,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_attribute_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_attribute_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_Attribute(),
+				 UML2Package.Literals.CLASSIFIER__ATTRIBUTE,
 				 false,
 				 null,
 				 null,
@@ -380,7 +380,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_redefinedClassifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_redefinedClassifier_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_RedefinedClassifier(),
+				 UML2Package.Literals.CLASSIFIER__REDEFINED_CLASSIFIER,
 				 true,
 				 null,
 				 null,
@@ -400,7 +400,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_substitution_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_substitution_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_Substitution(),
+				 UML2Package.Literals.CLASSIFIER__SUBSTITUTION,
 				 true,
 				 null,
 				 null,
@@ -422,7 +422,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_powertypeExtent_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_powertypeExtent_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_PowertypeExtent(),
+				 UML2Package.Literals.CLASSIFIER__POWERTYPE_EXTENT,
 				 true,
 				 null,
 				 null,
@@ -442,7 +442,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_ownedUseCase_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_ownedUseCase_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_OwnedUseCase(),
+				 UML2Package.Literals.CLASSIFIER__OWNED_USE_CASE,
 				 true,
 				 null,
 				 null,
@@ -464,7 +464,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_useCase_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_useCase_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_UseCase(),
+				 UML2Package.Literals.CLASSIFIER__USE_CASE,
 				 true,
 				 null,
 				 null,
@@ -484,7 +484,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_representation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_representation_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_Representation(),
+				 UML2Package.Literals.CLASSIFIER__REPRESENTATION,
 				 true,
 				 null,
 				 null,
@@ -504,7 +504,7 @@ public class ClassifierItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Classifier_occurrence_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_occurrence_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getClassifier_Occurrence(),
+				 UML2Package.Literals.CLASSIFIER__OCCURRENCE,
 				 true,
 				 null,
 				 null,
@@ -524,10 +524,10 @@ public class ClassifierItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getClassifier_Generalization());
-			childrenFeatures.add(UML2Package.eINSTANCE.getClassifier_Substitution());
-			childrenFeatures.add(UML2Package.eINSTANCE.getClassifier_OwnedUseCase());
-			childrenFeatures.add(UML2Package.eINSTANCE.getClassifier_Occurrence());
+			childrenFeatures.add(UML2Package.Literals.CLASSIFIER__GENERALIZATION);
+			childrenFeatures.add(UML2Package.Literals.CLASSIFIER__SUBSTITUTION);
+			childrenFeatures.add(UML2Package.Literals.CLASSIFIER__OWNED_USE_CASE);
+			childrenFeatures.add(UML2Package.Literals.CLASSIFIER__OCCURRENCE);
 		}
 		return childrenFeatures;
 	}
@@ -595,22 +595,22 @@ public class ClassifierItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClassifier_Generalization(),
+				(UML2Package.Literals.CLASSIFIER__GENERALIZATION,
 				 UML2Factory.eINSTANCE.createGeneralization()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClassifier_Substitution(),
+				(UML2Package.Literals.CLASSIFIER__SUBSTITUTION,
 				 UML2Factory.eINSTANCE.createSubstitution()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClassifier_OwnedUseCase(),
+				(UML2Package.Literals.CLASSIFIER__OWNED_USE_CASE,
 				 UML2Factory.eINSTANCE.createUseCase()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getClassifier_Occurrence(),
+				(UML2Package.Literals.CLASSIFIER__OCCURRENCE,
 				 UML2Factory.eINSTANCE.createCollaborationOccurrence()));
 	}
 
@@ -632,8 +632,8 @@ public class ClassifierItemProvider
 	 * @generated
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getClassifier_Substitution()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, collection, index);
+		if (feature == UML2Package.Literals.CLASSIFIER__SUBSTITUTION) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY}, collection, index);
 		}
 		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
@@ -645,11 +645,11 @@ public class ClassifierItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Substitution()}, collection);
+		if (feature == UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.CLASSIFIER__SUBSTITUTION}, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getClassifier_Occurrence()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Representation()}, collection);
+		if (feature == UML2Package.Literals.CLASSIFIER__OCCURRENCE) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.CLASSIFIER__REPRESENTATION}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -661,14 +661,14 @@ public class ClassifierItemProvider
 	 * @generated
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getClassifier_Substitution()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, value, collection);
+		if (feature == UML2Package.Literals.CLASSIFIER__SUBSTITUTION) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Substitution()}, value, collection);
+		if (feature == UML2Package.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.CLASSIFIER__SUBSTITUTION}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getClassifier_Occurrence()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Representation()}, value, collection);
+		if (feature == UML2Package.Literals.CLASSIFIER__OCCURRENCE) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.CLASSIFIER__REPRESENTATION}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
@@ -680,14 +680,14 @@ public class ClassifierItemProvider
 	 * @generated
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getParameterableElement_OwningParameter()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()}, value);
+		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getClassifier_Representation()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Occurrence()}, value);
+		if (feature == UML2Package.Literals.CLASSIFIER__REPRESENTATION) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.CLASSIFIER__OCCURRENCE}, value);
 		}
-		if (feature == UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_OwningParameter()}, value);
+		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) {
+			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

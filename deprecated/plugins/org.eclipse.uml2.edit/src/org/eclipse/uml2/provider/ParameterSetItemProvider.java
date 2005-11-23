@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetItemProvider.java,v 1.14 2005/09/29 14:54:23 khussey Exp $
+ * $Id: ParameterSetItemProvider.java,v 1.15 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,7 @@ public class ParameterSetItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterSet_parameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterSet_parameter_feature", "_UI_ParameterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterSet_Parameter(),
+				 UML2Package.Literals.PARAMETER_SET__PARAMETER,
 				 true,
 				 null,
 				 null,
@@ -112,7 +112,7 @@ public class ParameterSetItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ParameterSet_condition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterSet_condition_feature", "_UI_ParameterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getParameterSet_Condition(),
+				 UML2Package.Literals.PARAMETER_SET__CONDITION,
 				 true,
 				 null,
 				 null,
@@ -132,7 +132,7 @@ public class ParameterSetItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getParameterSet_Condition());
+			childrenFeatures.add(UML2Package.Literals.PARAMETER_SET__CONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -215,27 +215,27 @@ public class ParameterSetItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameterSet_Condition(),
+				(UML2Package.Literals.PARAMETER_SET__CONDITION,
 				 UML2Factory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameterSet_Condition(),
+				(UML2Package.Literals.PARAMETER_SET__CONDITION,
 				 UML2Factory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameterSet_Condition(),
+				(UML2Package.Literals.PARAMETER_SET__CONDITION,
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameterSet_Condition(),
+				(UML2Package.Literals.PARAMETER_SET__CONDITION,
 				 UML2Factory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getParameterSet_Condition(),
+				(UML2Package.Literals.PARAMETER_SET__CONDITION,
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
 	}
 

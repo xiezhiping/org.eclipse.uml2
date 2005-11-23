@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateItemProvider.java,v 1.1 2005/11/14 22:11:35 khussey Exp $
+ * $Id: FinalStateItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -124,12 +124,11 @@ public class FinalStateItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.eINSTANCE
-			.getNamespace_OwnedRule()
-			|| childFeature == UMLPackage.eINSTANCE.getState_StateInvariant()
-			|| childFeature == UMLPackage.eINSTANCE.getState_Entry()
-			|| childFeature == UMLPackage.eINSTANCE.getState_Exit()
-			|| childFeature == UMLPackage.eINSTANCE.getState_DoActivity();
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.STATE__STATE_INVARIANT
+			|| childFeature == UMLPackage.Literals.STATE__ENTRY
+			|| childFeature == UMLPackage.Literals.STATE__EXIT
+			|| childFeature == UMLPackage.Literals.STATE__DO_ACTIVITY;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

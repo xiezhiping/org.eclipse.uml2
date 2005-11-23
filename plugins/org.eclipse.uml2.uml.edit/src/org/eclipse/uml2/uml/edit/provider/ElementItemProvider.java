@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.1 2005/11/14 22:11:33 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.2 2005/11/23 20:07:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.provider;
 
@@ -96,8 +96,8 @@ public class ElementItemProvider
 				getString("_UI_Element_ownedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Element_ownedElement_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getElement_OwnedElement(), false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT, false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -116,7 +116,7 @@ public class ElementItemProvider
 				getString("_UI_Element_owner_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Element_owner_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getElement_Owner(), false, null, null,
+				UMLPackage.Literals.ELEMENT__OWNER, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -136,8 +136,8 @@ public class ElementItemProvider
 				getString("_UI_Element_ownedComment_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Element_ownedComment_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.eINSTANCE.getElement_OwnedComment(), true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ELEMENT__OWNED_COMMENT, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -152,10 +152,9 @@ public class ElementItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EcorePackage.eINSTANCE
-				.getEModelElement_EAnnotations());
 			childrenFeatures
-				.add(UMLPackage.eINSTANCE.getElement_OwnedComment());
+				.add(EcorePackage.Literals.EMODEL_ELEMENT__EANNOTATIONS);
+			childrenFeatures.add(UMLPackage.Literals.ELEMENT__OWNED_COMMENT);
 		}
 		return childrenFeatures;
 	}
@@ -213,8 +212,9 @@ public class ElementItemProvider
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UMLPackage.eINSTANCE
-			.getElement_OwnedComment(), UMLFactory.eINSTANCE.createComment()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ELEMENT__OWNED_COMMENT, UMLFactory.eINSTANCE
+				.createComment()));
 	}
 
 	/**

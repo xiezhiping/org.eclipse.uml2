@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.21 2005/11/23 13:25:33 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.22 2005/11/23 20:05:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -90,7 +90,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return UML2Package.eINSTANCE.getDeployment();
+		return UML2Package.Literals.DEPLOYMENT;
 	}
 
 	/**

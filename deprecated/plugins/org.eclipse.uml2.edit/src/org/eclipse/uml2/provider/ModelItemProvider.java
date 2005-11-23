@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelItemProvider.java,v 1.20 2005/09/23 20:14:53 khussey Exp $
+ * $Id: ModelItemProvider.java,v 1.21 2005/11/23 20:02:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class ModelItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Model_viewpoint_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Model_viewpoint_feature", "_UI_Model_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getModel_Viewpoint(),
+				 UML2Package.Literals.MODEL__VIEWPOINT,
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -158,10 +158,10 @@ public class ModelItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			childFeature == UML2Package.eINSTANCE.getPackage_OwnedMember() ||
-			childFeature == UML2Package.eINSTANCE.getPackage_PackageMerge() ||
-			childFeature == UML2Package.eINSTANCE.getPackage_PackageExtension();
+			childFeature == UML2Package.Literals.NAMESPACE__OWNED_RULE ||
+			childFeature == UML2Package.Literals.PACKAGE__OWNED_MEMBER ||
+			childFeature == UML2Package.Literals.PACKAGE__PACKAGE_MERGE ||
+			childFeature == UML2Package.Literals.PACKAGE__PACKAGE_EXTENSION;
 
 		if (qualify) {
 			return getString
