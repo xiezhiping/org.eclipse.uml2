@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.10 2005/11/23 17:25:01 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.11 2005/11/23 17:34:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1495,5 +1495,231 @@ public interface GenModelPackage
 	 * @generated
 	 */
 	GenModelFactory getGenModelFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenBaseImpl <em>Gen Base</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenBaseImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenBase()
+		 * @generated
+		 */
+		EClass GEN_BASE = eINSTANCE.getGenBase();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenClassImpl <em>Gen Class</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenClassImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenClass()
+		 * @generated
+		 */
+		EClass GEN_CLASS = eINSTANCE.getGenClass();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenClassifierImpl <em>Gen Classifier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenClassifierImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenClassifier()
+		 * @generated
+		 */
+		EClass GEN_CLASSIFIER = eINSTANCE.getGenClassifier();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenDataTypeImpl <em>Gen Data Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenDataTypeImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenDataType()
+		 * @generated
+		 */
+		EClass GEN_DATA_TYPE = eINSTANCE.getGenDataType();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenEnumImpl <em>Gen Enum</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenEnumImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenEnum()
+		 * @generated
+		 */
+		EClass GEN_ENUM = eINSTANCE.getGenEnum();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenEnumLiteralImpl <em>Gen Enum Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenEnumLiteralImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenEnumLiteral()
+		 * @generated
+		 */
+		EClass GEN_ENUM_LITERAL = eINSTANCE.getGenEnumLiteral();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenFeatureImpl <em>Gen Feature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenFeatureImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenFeature()
+		 * @generated
+		 */
+		EClass GEN_FEATURE = eINSTANCE.getGenFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_FEATURE__KEY = eINSTANCE.getGenFeature_Key();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl <em>Gen Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenModel()
+		 * @generated
+		 */
+		EClass GEN_MODEL = eINSTANCE.getGenModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Factory Methods</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_MODEL__FACTORY_METHODS = eINSTANCE
+			.getGenModel_FactoryMethods();
+
+		/**
+		 * The meta object literal for the '<em><b>Pluralized Getters</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_MODEL__PLURALIZED_GETTERS = eINSTANCE
+			.getGenModel_PluralizedGetters();
+
+		/**
+		 * The meta object literal for the '<em><b>Cache Adapter Support</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_MODEL__CACHE_ADAPTER_SUPPORT = eINSTANCE
+			.getGenModel_CacheAdapterSupport();
+
+		/**
+		 * The meta object literal for the '<em><b>Safe Strings</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_MODEL__SAFE_STRINGS = eINSTANCE
+			.getGenModel_SafeStrings();
+
+		/**
+		 * The meta object literal for the '<em><b>Invariant Prefix</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_MODEL__INVARIANT_PREFIX = eINSTANCE
+			.getGenModel_InvariantPrefix();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenOperationImpl <em>Gen Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenOperationImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenOperation()
+		 * @generated
+		 */
+		EClass GEN_OPERATION = eINSTANCE.getGenOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Cache Adapter Scope</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_OPERATION__CACHE_ADAPTER_SCOPE = eINSTANCE
+			.getGenOperation_CacheAdapterScope();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenPackageImpl <em>Gen Package</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenPackageImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenPackage()
+		 * @generated
+		 */
+		EClass GEN_PACKAGE = eINSTANCE.getGenPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource Interfaces</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_PACKAGE__RESOURCE_INTERFACES = eINSTANCE
+			.getGenPackage_ResourceInterfaces();
+
+		/**
+		 * The meta object literal for the '<em><b>Operations Package</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_PACKAGE__OPERATIONS_PACKAGE = eINSTANCE
+			.getGenPackage_OperationsPackage();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenParameterImpl <em>Gen Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenParameterImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenParameter()
+		 * @generated
+		 */
+		EClass GEN_PARAMETER = eINSTANCE.getGenParameter();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenTypedElementImpl <em>Gen Typed Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenTypedElementImpl
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenTypedElement()
+		 * @generated
+		 */
+		EClass GEN_TYPED_ELEMENT = eINSTANCE.getGenTypedElement();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope <em>Gen Cache Adapter Scope</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope
+		 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenCacheAdapterScope()
+		 * @generated
+		 */
+		EEnum GEN_CACHE_ADAPTER_SCOPE = eINSTANCE.getGenCacheAdapterScope();
+
+	}
 
 } //GenModelPackage

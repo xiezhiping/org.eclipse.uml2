@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.10 2005/11/23 17:25:01 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.11 2005/11/23 17:34:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -95,7 +95,7 @@ public class GenFeatureImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return GenModelPackage.eINSTANCE.getGenFeature();
+		return GenModelPackage.Literals.GEN_FEATURE;
 	}
 
 	/**
@@ -480,8 +480,7 @@ public class GenFeatureImpl
 					.next();
 
 				if (getName().equals(redefinedGenFeature.getName())) {
-					return redefinedGenFeature
-						.getQualifiedFeatureAccessor();
+					return redefinedGenFeature.getQualifiedFeatureAccessor();
 				}
 			}
 		}

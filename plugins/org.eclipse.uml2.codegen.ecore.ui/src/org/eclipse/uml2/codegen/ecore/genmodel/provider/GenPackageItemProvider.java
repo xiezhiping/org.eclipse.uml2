@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageItemProvider.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
+ * $Id: GenPackageItemProvider.java,v 1.3 2005/11/23 17:34:08 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -94,7 +94,7 @@ public class GenPackageItemProvider
 				getString("_UI_GenPackage_resourceInterfaces_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenPackage_resourceInterfaces_feature", "_UI_GenPackage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.eINSTANCE.getGenPackage_ResourceInterfaces(),
+				GenModelPackage.Literals.GEN_PACKAGE__RESOURCE_INTERFACES,
 				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
@@ -115,8 +115,8 @@ public class GenPackageItemProvider
 				getString("_UI_GenPackage_operationsPackage_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenPackage_operationsPackage_feature", "_UI_GenPackage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.eINSTANCE.getGenPackage_OperationsPackage(),
-				true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				GenModelPackage.Literals.GEN_PACKAGE__OPERATIONS_PACKAGE, true,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
 	}

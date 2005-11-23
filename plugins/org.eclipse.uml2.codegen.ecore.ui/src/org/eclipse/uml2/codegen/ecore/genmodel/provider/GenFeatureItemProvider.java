@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureItemProvider.java,v 1.4 2005/06/09 02:29:08 khussey Exp $
+ * $Id: GenFeatureItemProvider.java,v 1.5 2005/11/23 17:34:08 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -96,7 +96,7 @@ public class GenFeatureItemProvider
 				getString("_UI_GenFeature_key_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenFeature_key_feature", "_UI_GenFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.eINSTANCE.getGenFeature_Key(), true,
+				GenModelPackage.Literals.GEN_FEATURE__KEY, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));

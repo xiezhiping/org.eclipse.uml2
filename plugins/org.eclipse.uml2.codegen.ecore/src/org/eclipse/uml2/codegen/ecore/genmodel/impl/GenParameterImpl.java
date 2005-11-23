@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenParameterImpl.java,v 1.3 2005/11/14 16:54:12 khussey Exp $
+ * $Id: GenParameterImpl.java,v 1.4 2005/11/23 17:34:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -59,7 +59,7 @@ public class GenParameterImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return GenModelPackage.eINSTANCE.getGenParameter();
+		return GenModelPackage.Literals.GEN_PARAMETER;
 	}
 
 } //GenParameterImpl

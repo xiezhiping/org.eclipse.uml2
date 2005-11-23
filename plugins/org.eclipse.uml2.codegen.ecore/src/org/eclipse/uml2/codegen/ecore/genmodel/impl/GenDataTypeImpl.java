@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenDataTypeImpl.java,v 1.3 2005/11/14 16:54:12 khussey Exp $
+ * $Id: GenDataTypeImpl.java,v 1.4 2005/11/23 17:34:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -54,7 +54,7 @@ public class GenDataTypeImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return GenModelPackage.eINSTANCE.getGenDataType();
+		return GenModelPackage.Literals.GEN_DATA_TYPE;
 	}
 
 } //GenDataTypeImpl

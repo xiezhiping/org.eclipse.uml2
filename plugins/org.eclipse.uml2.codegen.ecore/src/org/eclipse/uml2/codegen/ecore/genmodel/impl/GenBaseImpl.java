@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenBaseImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenBaseImpl.java,v 1.3 2005/11/23 17:34:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -52,7 +52,7 @@ public abstract class GenBaseImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return GenModelPackage.eINSTANCE.getGenBase();
+		return GenModelPackage.Literals.GEN_BASE;
 	}
 
 }

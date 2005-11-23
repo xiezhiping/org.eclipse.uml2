@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.17 2005/11/23 17:25:01 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.18 2005/11/23 17:34:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -68,7 +68,7 @@ public class GenClassImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return GenModelPackage.eINSTANCE.getGenClass();
+		return GenModelPackage.Literals.GEN_CLASS;
 	}
 
 	public void generate(Monitor progressMonitor) {

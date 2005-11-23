@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenTypedElementImpl.java,v 1.1 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenTypedElementImpl.java,v 1.2 2005/11/23 17:34:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -52,7 +52,7 @@ public abstract class GenTypedElementImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return GenModelPackage.eINSTANCE.getGenTypedElement();
+		return GenModelPackage.Literals.GEN_TYPED_ELEMENT;
 	}
 
 } //GenTypedElementImpl
