@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnapplyProfileAction.java,v 1.4 2005/06/02 14:29:46 khussey Exp $
+ * $Id: UnapplyProfileAction.java,v 1.5 2005/11/23 20:09:08 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -99,7 +99,7 @@ public class UnapplyProfileAction
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
 				workbenchPart.getSite().getShell(), getLabelProvider(),
-				package_, UML2Package.eINSTANCE.getProfile(),
+				package_, UML2Package.Literals.PROFILE,
 				Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 

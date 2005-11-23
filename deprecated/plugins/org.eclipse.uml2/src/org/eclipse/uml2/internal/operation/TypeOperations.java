@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.8 2005/06/07 17:31:26 khussey Exp $
+ * $Id: TypeOperations.java,v 1.9 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -147,7 +147,7 @@ public final class TypeOperations extends UML2Operations {
 		}
 
 		Association association = (Association) package_
-			.createOwnedMember(UML2Package.eINSTANCE.getAssociation());
+			.createOwnedMember(UML2Package.Literals.ASSOCIATION);
 
 		createAssociationEnd(association, type1, end1IsNavigable,
 			end1Aggregation, end1Name, end1LowerBound, end1UpperBound, type2);
@@ -197,39 +197,39 @@ public final class TypeOperations extends UML2Operations {
 		Property ownedProperty = (Property) new UML2Switch() {
 
 			public Object caseArtifact(Artifact artifact) {
-				return artifact.createOwnedAttribute(UML2Package.eINSTANCE
-					.getProperty());
+				return artifact
+					.createOwnedAttribute(UML2Package.Literals.PROPERTY);
 			}
 
 			public Object caseAssociation(Association association) {
-				return association.createOwnedEnd(UML2Package.eINSTANCE
-					.getProperty());
+				return association
+					.createOwnedEnd(UML2Package.Literals.PROPERTY);
 			}
 
 			public Object caseAssociationClass(AssociationClass associationClass) {
 				return associationClass
-					.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
+					.createOwnedAttribute(UML2Package.Literals.PROPERTY);
 			}
 
 			public Object caseDataType(DataType dataType) {
-				return dataType.createOwnedAttribute(UML2Package.eINSTANCE
-					.getProperty());
+				return dataType
+					.createOwnedAttribute(UML2Package.Literals.PROPERTY);
 			}
 
 			public Object caseInterface(Interface interface_) {
-				return interface_.createOwnedAttribute(UML2Package.eINSTANCE
-					.getProperty());
+				return interface_
+					.createOwnedAttribute(UML2Package.Literals.PROPERTY);
 			}
 
 			public Object caseSignal(Signal signal) {
-				return signal.createOwnedAttribute(UML2Package.eINSTANCE
-					.getProperty());
+				return signal
+					.createOwnedAttribute(UML2Package.Literals.PROPERTY);
 			}
 
 			public Object caseStructuredClassifier(
 					StructuredClassifier structuredClassifier) {
 				return structuredClassifier
-					.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
+					.createOwnedAttribute(UML2Package.Literals.PROPERTY);
 			}
 		}.doSwitch(type);
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.15 2005/10/26 20:59:34 khussey Exp $
+ * $Id: PackageOperations.java,v 1.16 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -311,7 +311,7 @@ public final class PackageOperations extends UML2Operations {
 		}
 
 		org.eclipse.uml2.Package nestedPackage = (org.eclipse.uml2.Package) package_
-			.createOwnedMember(UML2Package.eINSTANCE.getPackage());
+			.createOwnedMember(UML2Package.Literals.PACKAGE);
 		nestedPackage.setName(name);
 		return nestedPackage;
 	}
@@ -342,7 +342,7 @@ public final class PackageOperations extends UML2Operations {
 		}
 
 		org.eclipse.uml2.Class ownedClass = (org.eclipse.uml2.Class) package_
-			.createOwnedMember(UML2Package.eINSTANCE.getClass_());
+			.createOwnedMember(UML2Package.Literals.CLASS);
 		ownedClass.setName(name);
 		ownedClass.setIsAbstract(isAbstract);
 		return ownedClass;
@@ -372,7 +372,7 @@ public final class PackageOperations extends UML2Operations {
 		}
 
 		Enumeration ownedEnumeration = (Enumeration) package_
-			.createOwnedMember(UML2Package.eINSTANCE.getEnumeration());
+			.createOwnedMember(UML2Package.Literals.ENUMERATION);
 		ownedEnumeration.setName(name);
 		return ownedEnumeration;
 	}
@@ -401,7 +401,7 @@ public final class PackageOperations extends UML2Operations {
 		}
 
 		PrimitiveType ownedPrimitiveType = (PrimitiveType) package_
-			.createOwnedMember(UML2Package.eINSTANCE.getPrimitiveType());
+			.createOwnedMember(UML2Package.Literals.PRIMITIVE_TYPE);
 		ownedPrimitiveType.setName(name);
 		return ownedPrimitiveType;
 	}

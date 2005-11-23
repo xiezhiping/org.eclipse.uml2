@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateIntermediateStereotypesAction.java,v 1.3 2005/06/02 14:29:46 khussey Exp $
+ * $Id: GenerateIntermediateStereotypesAction.java,v 1.4 2005/11/23 20:09:07 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -49,14 +49,14 @@ public class GenerateIntermediateStereotypesAction
 					Stereotype documentStereotype = generateOwnedStereotype(
 						profile, "Document", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class artifactMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getArtifact());
+						profile, UML2Package.Literals.ARTIFACT);
 					generateExtension(documentStereotype, artifactMetaclass,
 						false);
 
 					Stereotype entityStereotype = generateOwnedStereotype(
 						profile, "Entity", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class componentMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getComponent());
+						profile, UML2Package.Literals.COMPONENT);
 					generateExtension(entityStereotype, componentMetaclass,
 						false);
 
@@ -82,7 +82,7 @@ public class GenerateIntermediateStereotypesAction
 					Stereotype realizationStereotype = generateOwnedStereotype(
 						profile, "Realization", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class classifierMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getClassifier());
+						profile, UML2Package.Literals.CLASSIFIER);
 					generateExtension(realizationStereotype,
 						classifierMetaclass, false);
 

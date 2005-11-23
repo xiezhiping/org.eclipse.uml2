@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnapplyStereotypeAction.java,v 1.4 2005/06/02 14:29:45 khussey Exp $
+ * $Id: UnapplyStereotypeAction.java,v 1.5 2005/11/23 20:09:07 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -94,7 +94,7 @@ public class UnapplyStereotypeAction
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
 				workbenchPart.getSite().getShell(), getLabelProvider(),
-				element, UML2Package.eINSTANCE.getElement(),
+				element, UML2Package.Literals.ELEMENT,
 				Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 

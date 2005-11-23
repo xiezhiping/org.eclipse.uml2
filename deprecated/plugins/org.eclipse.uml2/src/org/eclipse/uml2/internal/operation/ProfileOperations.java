@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.31 2005/10/26 20:59:34 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.32 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -781,8 +781,7 @@ public final class ProfileOperations
 
 		if (null == profileApplication) {
 			profileApplication = (ProfileApplication) package_
-				.createPackageImport(UML2Package.eINSTANCE
-					.getProfileApplication());
+				.createPackageImport(UML2Package.Literals.PROFILE_APPLICATION);
 			profileApplication.setImportedProfile(profile);
 
 			package_.getAppliedProfiles().add(profileApplication);
@@ -1393,7 +1392,7 @@ public final class ProfileOperations
 		}
 
 		PackageImport packageImport = profile
-			.createPackageImport(UML2Package.eINSTANCE.getPackageImport());
+			.createPackageImport(UML2Package.Literals.PACKAGE_IMPORT);
 
 		packageImport.setVisibility(VisibilityKind.PRIVATE_LITERAL);
 		packageImport.setImportedPackage(model);
@@ -1478,7 +1477,7 @@ public final class ProfileOperations
 		}
 
 		Stereotype ownedStereotype = (Stereotype) profile
-			.createOwnedMember(UML2Package.eINSTANCE.getStereotype());
+			.createOwnedMember(UML2Package.Literals.STEREOTYPE);
 		ownedStereotype.setName(name);
 		ownedStereotype.setIsAbstract(isAbstract);
 		return ownedStereotype;

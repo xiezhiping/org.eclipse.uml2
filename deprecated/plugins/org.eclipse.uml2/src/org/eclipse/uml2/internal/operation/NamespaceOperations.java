@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.13 2005/11/09 22:48:00 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.14 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -492,7 +492,7 @@ public final class NamespaceOperations extends UML2Operations {
 		}
 
 		PackageImport packageImport = namespace
-			.createPackageImport(UML2Package.eINSTANCE.getPackageImport());
+			.createPackageImport(UML2Package.Literals.PACKAGE_IMPORT);
 
 		packageImport.setVisibility(visibility);
 		packageImport.setImportedPackage(package_);

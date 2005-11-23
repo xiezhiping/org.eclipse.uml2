@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImportPrimitiveTypeAction.java,v 1.5 2005/06/02 14:29:46 khussey Exp $
+ * $Id: ImportPrimitiveTypeAction.java,v 1.6 2005/11/23 20:09:08 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -161,7 +161,7 @@ public class ImportPrimitiveTypeAction
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
 				workbenchPart.getSite().getShell(), getLabelProvider(),
-				package_, UML2Package.eINSTANCE.getPackageableElement(),
+				package_, UML2Package.Literals.PACKAGEABLE_ELEMENT,
 				Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 

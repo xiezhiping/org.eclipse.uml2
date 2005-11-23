@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReferenceMetaclassAction.java,v 1.6 2005/06/02 14:29:45 khussey Exp $
+ * $Id: ReferenceMetaclassAction.java,v 1.7 2005/11/23 20:09:08 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -108,7 +108,7 @@ public class ReferenceMetaclassAction
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
 				workbenchPart.getSite().getShell(), getLabelProvider(),
-				profile, UML2Package.eINSTANCE.getClass_(),
+				profile, UML2Package.Literals.CLASS,
 				Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 

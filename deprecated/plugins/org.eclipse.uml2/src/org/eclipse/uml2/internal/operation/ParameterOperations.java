@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.5 2005/06/15 17:18:21 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.6 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -52,8 +52,9 @@ public final class ParameterOperations
 
 		((LiteralBoolean) (LiteralBoolean.class.isInstance(defaultValue)
 			? defaultValue
-			: parameter.createDefaultValue(UML2Package.eINSTANCE
-				.getLiteralBoolean()))).setValue(value);
+			: parameter
+				.createDefaultValue(UML2Package.Literals.LITERAL_BOOLEAN)))
+			.setValue(value);
 	}
 
 	/**
@@ -75,8 +76,9 @@ public final class ParameterOperations
 
 		((LiteralInteger) (LiteralInteger.class.isInstance(defaultValue)
 			? defaultValue
-			: parameter.createDefaultValue(UML2Package.eINSTANCE
-				.getLiteralInteger()))).setValue(value);
+			: parameter
+				.createDefaultValue(UML2Package.Literals.LITERAL_INTEGER)))
+			.setValue(value);
 	}
 
 	/**
@@ -98,8 +100,8 @@ public final class ParameterOperations
 
 		((LiteralString) (LiteralString.class.isInstance(defaultValue)
 			? defaultValue
-			: parameter.createDefaultValue(UML2Package.eINSTANCE
-				.getLiteralString()))).setValue(value);
+			: parameter.createDefaultValue(UML2Package.Literals.LITERAL_STRING)))
+			.setValue(value);
 	}
 
 	/**
@@ -122,8 +124,9 @@ public final class ParameterOperations
 		((LiteralUnlimitedNatural) (LiteralUnlimitedNatural.class
 			.isInstance(defaultValue)
 			? defaultValue
-			: parameter.createDefaultValue(UML2Package.eINSTANCE
-				.getLiteralUnlimitedNatural()))).setValue(value);
+			: parameter
+				.createDefaultValue(UML2Package.Literals.LITERAL_UNLIMITED_NATURAL)))
+			.setValue(value);
 	}
 
 	public static String getDefault(Parameter parameter) {

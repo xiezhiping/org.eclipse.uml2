@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.47 2005/11/21 22:01:47 khussey Exp $
+ * $Id: UML2Util.java,v 1.48 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -463,7 +463,7 @@ public class UML2Util
 			org.eclipse.uml2.Package package_ = (org.eclipse.uml2.Package) doSwitch(end1EContainingClass
 				.getEPackage());
 			Association association = (Association) package_
-				.createOwnedMember(UML2Package.eINSTANCE.getAssociation());
+				.createOwnedMember(UML2Package.Literals.ASSOCIATION);
 
 			end1Property.setName(end1.getName());
 			end1Property.setAggregation(end1.isContainment()
@@ -478,7 +478,7 @@ public class UML2Util
 			caseETypedElement(end1);
 
 			if (null == end2) {
-				association.createOwnedEnd(UML2Package.eINSTANCE.getProperty())
+				association.createOwnedEnd(UML2Package.Literals.PROPERTY)
 					.setType(end1Classifier);
 			} else {
 				Property end2Property = UML2Factory.eINSTANCE.createProperty();
@@ -1302,8 +1302,8 @@ public class UML2Util
 			}
 
 			return getRootContainers(EcoreUtil.getObjectsByType(
-				eModelElementToElementMap.values(), UML2Package.eINSTANCE
-					.getPackage()));
+				eModelElementToElementMap.values(),
+				UML2Package.Literals.PACKAGE));
 		}
 	}
 
@@ -3950,7 +3950,7 @@ public class UML2Util
 				DiagnosticChain diagnostics, Map context) {
 
 			packages = EcoreUtil.getObjectsByType(eObjects,
-				UML2Package.eINSTANCE.getPackage());
+				UML2Package.Literals.PACKAGE);
 
 			for (Iterator i = packages.iterator(); i.hasNext();) {
 				doSwitch((org.eclipse.uml2.Package) i.next());
@@ -4310,59 +4310,50 @@ public class UML2Util
 					return;
 				} else if (resultingToMergedEObjectMap.containsKey(copyEObject)) {
 
-					if (UML2Package.eINSTANCE.getAssociation_IsDerived() == eAttribute) {
+					if (UML2Package.Literals.ASSOCIATION__IS_DERIVED == eAttribute) {
 						mergeAssociation_IsDerived((Association) copyEObject,
 							(Association) eObject);
-					} else if (UML2Package.eINSTANCE.getClassifier_IsAbstract() == eAttribute) {
+					} else if (UML2Package.Literals.CLASSIFIER__IS_ABSTRACT == eAttribute) {
 						mergeClassifier_IsAbstract((Classifier) copyEObject,
 							(Classifier) eObject);
-					} else if (UML2Package.eINSTANCE.getLiteralInteger_Value() == eAttribute
-						&& UML2Package.eINSTANCE
-							.getMultiplicityElement_LowerValue() == copyEObject
+					} else if (UML2Package.Literals.LITERAL_INTEGER__VALUE == eAttribute
+						&& UML2Package.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE == copyEObject
 							.eContainingFeature()) {
 
 						mergeLiteralInteger_Value((LiteralInteger) copyEObject,
 							(LiteralInteger) eObject);
-					} else if (UML2Package.eINSTANCE
-						.getLiteralUnlimitedNatural_Value() == eAttribute
-						&& UML2Package.eINSTANCE
-							.getMultiplicityElement_UpperValue() == copyEObject
+					} else if (UML2Package.Literals.LITERAL_UNLIMITED_NATURAL__VALUE == eAttribute
+						&& UML2Package.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE == copyEObject
 							.eContainingFeature()) {
 
 						mergeLiteralUnlimitedNatural_Value(
 							(LiteralUnlimitedNatural) copyEObject,
 							(LiteralUnlimitedNatural) eObject);
-					} else if (UML2Package.eINSTANCE
-						.getMultiplicityElement_IsOrdered() == eAttribute) {
+					} else if (UML2Package.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED == eAttribute) {
 
 						mergeMultiplicityElement_IsOrdered(
 							(MultiplicityElement) copyEObject,
 							(MultiplicityElement) eObject);
-					} else if (UML2Package.eINSTANCE
-						.getMultiplicityElement_IsUnique() == eAttribute) {
+					} else if (UML2Package.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE == eAttribute) {
 
 						mergeMultiplicityElement_IsUnique(
 							(MultiplicityElement) copyEObject,
 							(MultiplicityElement) eObject);
-					} else if (UML2Package.eINSTANCE
-						.getNamedElement_Visibility() == eAttribute) {
+					} else if (UML2Package.Literals.NAMED_ELEMENT__VISIBILITY == eAttribute) {
 						mergeNamedElement_Visibility(
 							(NamedElement) copyEObject, (NamedElement) eObject);
-					} else if (UML2Package.eINSTANCE
-						.getPackageableElement_PackageableElement_visibility() == eAttribute) {
+					} else if (UML2Package.Literals.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY == eAttribute) {
 
 						mergePackageableElement_PackageableElement_visibility(
 							(PackageableElement) copyEObject,
 							(PackageableElement) eObject);
-					} else if (UML2Package.eINSTANCE.getProperty_IsDerived() == eAttribute) {
+					} else if (UML2Package.Literals.PROPERTY__IS_DERIVED == eAttribute) {
 						mergeProperty_IsDerived((Property) copyEObject,
 							(Property) eObject);
-					} else if (UML2Package.eINSTANCE
-						.getProperty_IsDerivedUnion() == eAttribute) {
+					} else if (UML2Package.Literals.PROPERTY__IS_DERIVED_UNION == eAttribute) {
 						mergeProperty_IsDerivedUnion((Property) copyEObject,
 							(Property) eObject);
-					} else if (UML2Package.eINSTANCE
-						.getStructuralFeature_IsReadOnly() == eAttribute) {
+					} else if (UML2Package.Literals.STRUCTURAL_FEATURE__IS_READ_ONLY == eAttribute) {
 
 						mergeStructuralFeature_IsReadOnly(
 							(StructuralFeature) copyEObject,
@@ -4446,7 +4437,7 @@ public class UML2Util
 
 			if (eObject != copyEObject && eObject.eIsSet(eReference)) {
 
-				if (UML2Package.eINSTANCE.getTypedElement_Type() == eReference) {
+				if (UML2Package.Literals.TYPED_ELEMENT__TYPE == eReference) {
 					mergeTypedElement_Type((TypedElement) copyEObject,
 						(TypedElement) eObject);
 				} else if (eReference.isMany()) {
@@ -5914,8 +5905,8 @@ public class UML2Util
 			.hasNext();) {
 
 			findNamedElements(((Resource) resources.next()).getContents(),
-				qualifiedName, ignoreCase, UML2Package.eINSTANCE
-					.getNamedElement(), namedElements);
+				qualifiedName, ignoreCase, UML2Package.Literals.NAMED_ELEMENT,
+				namedElements);
 		}
 
 		return namedElements;
@@ -5925,7 +5916,7 @@ public class UML2Util
 			String qualifiedName, boolean ignoreCase, EClass eClass) {
 		List namedElements = new UniqueEList();
 
-		if (UML2Package.eINSTANCE.getNamedElement().isSuperTypeOf(eClass)) {
+		if (UML2Package.Literals.NAMED_ELEMENT.isSuperTypeOf(eClass)) {
 
 			for (Iterator resources = resourceSet.getResources().iterator(); resources
 				.hasNext();) {
@@ -5946,15 +5937,14 @@ public class UML2Util
 	public static Collection findNamedElements(Resource resource,
 			String qualifiedName, boolean ignoreCase) {
 		return findNamedElements(resource.getContents(), qualifiedName,
-			ignoreCase, UML2Package.eINSTANCE.getNamedElement(),
-			new UniqueEList());
+			ignoreCase, UML2Package.Literals.NAMED_ELEMENT, new UniqueEList());
 	}
 
 	public static Collection findNamedElements(Resource resource,
 			String qualifiedName, boolean ignoreCase, EClass eClass) {
 		List namedElements = new UniqueEList();
 
-		if (UML2Package.eINSTANCE.getNamedElement().isSuperTypeOf(eClass)) {
+		if (UML2Package.Literals.NAMED_ELEMENT.isSuperTypeOf(eClass)) {
 			findNamedElements(resource.getContents(), qualifiedName,
 				ignoreCase, eClass, namedElements);
 		}
@@ -5988,7 +5978,7 @@ public class UML2Util
 				+ NamedElement.SEPARATOR.length());
 
 			for (Iterator namespaces = EcoreUtil.getObjectsByType(eObjects,
-				UML2Package.eINSTANCE.getNamespace()).iterator(); namespaces
+				UML2Package.Literals.NAMESPACE).iterator(); namespaces
 				.hasNext();) {
 
 				Namespace namespace = (Namespace) namespaces.next();
@@ -6099,7 +6089,7 @@ public class UML2Util
 		try {
 			package_ = (org.eclipse.uml2.Package) EcoreUtil.getObjectByType(
 				resourceSet.getResource(uri, true).getContents(),
-				UML2Package.eINSTANCE.getPackage());
+				UML2Package.Literals.PACKAGE);
 		} catch (WrappedException we) {
 			// do nothing
 		}

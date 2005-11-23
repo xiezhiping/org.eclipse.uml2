@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateCompleteStereotypesAction.java,v 1.3 2005/06/02 14:29:45 khussey Exp $
+ * $Id: GenerateCompleteStereotypesAction.java,v 1.4 2005/11/23 20:09:07 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -49,7 +49,7 @@ public class GenerateCompleteStereotypesAction
 					Stereotype metamodelStereotype = generateOwnedStereotype(
 						profile, "Metamodel", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class modelMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getModel());
+						profile, UML2Package.Literals.MODEL);
 					generateExtension(metamodelStereotype, modelMetaclass,
 						false);
 

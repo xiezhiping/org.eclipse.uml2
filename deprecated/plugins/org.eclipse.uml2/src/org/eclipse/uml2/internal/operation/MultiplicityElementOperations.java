@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.9 2005/06/15 17:18:21 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.10 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -438,8 +438,9 @@ public final class MultiplicityElementOperations extends UML2Operations {
 		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
 		((LiteralInteger) (LiteralInteger.class.isInstance(lowerValue)
 			? lowerValue
-			: multiplicityElement.createLowerValue(UML2Package.eINSTANCE
-				.getLiteralInteger()))).setValue(value);
+			: multiplicityElement
+				.createLowerValue(UML2Package.Literals.LITERAL_INTEGER)))
+			.setValue(value);
 	}
 
 	/**
@@ -471,8 +472,9 @@ public final class MultiplicityElementOperations extends UML2Operations {
 		((LiteralUnlimitedNatural) (LiteralUnlimitedNatural.class
 			.isInstance(upperValue)
 			? upperValue
-			: multiplicityElement.createUpperValue(UML2Package.eINSTANCE
-				.getLiteralUnlimitedNatural()))).setValue(value);
+			: multiplicityElement
+				.createUpperValue(UML2Package.Literals.LITERAL_UNLIMITED_NATURAL)))
+			.setValue(value);
 	}
 
 	// <!-- end-custom-operations -->

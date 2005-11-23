@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateExtensionAction.java,v 1.7 2005/06/02 14:29:46 khussey Exp $
+ * $Id: CreateExtensionAction.java,v 1.8 2005/11/23 20:09:08 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -95,7 +95,7 @@ public class CreateExtensionAction
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
 				workbenchPart.getSite().getShell(), getLabelProvider(),
-				stereotype, UML2Package.eINSTANCE.getStereotype(),
+				stereotype, UML2Package.Literals.STEREOTYPE,
 				Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 

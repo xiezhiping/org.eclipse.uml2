@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.4 2005/06/02 14:29:45 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.5 2005/11/23 20:09:08 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -51,7 +51,7 @@ public class GenerateEcoreStereotypesAction
 					Stereotype ePackageStereotype = generateOwnedStereotype(
 						profile, "EPackage", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class packageMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getPackage());
+						profile, UML2Package.Literals.PACKAGE);
 					generateExtension(ePackageStereotype, packageMetaclass,
 						false);
 					PrimitiveType stringPrimitiveType = getImportedUML2PrimitiveType(
@@ -90,9 +90,9 @@ public class GenerateEcoreStereotypesAction
 					Stereotype eClassStereotype = generateOwnedStereotype(
 						profile, "EClass", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class classMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getClass_());
+						profile, UML2Package.Literals.CLASS);
 					org.eclipse.uml2.Class interfaceMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getInterface());
+						profile, UML2Package.Literals.INTERFACE);
 					generateExtension(eClassStereotype, classMetaclass, false);
 					generateExtension(eClassStereotype, interfaceMetaclass,
 						false);
@@ -106,7 +106,7 @@ public class GenerateEcoreStereotypesAction
 					Stereotype eDataTypeStereotype = generateOwnedStereotype(
 						profile, "EDataType", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class primitiveTypeMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getPrimitiveType());
+						profile, UML2Package.Literals.PRIMITIVE_TYPE);
 					generateExtension(eDataTypeStereotype,
 						primitiveTypeMetaclass, false);
 					generateGeneralization(eDataTypeStereotype,
@@ -117,7 +117,7 @@ public class GenerateEcoreStereotypesAction
 					Stereotype eEnumStereotype = generateOwnedStereotype(
 						profile, "EEnum", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class enumerationMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getEnumeration());
+						profile, UML2Package.Literals.ENUMERATION);
 					generateExtension(eEnumStereotype, enumerationMetaclass,
 						false);
 					generateGeneralization(eEnumStereotype,
@@ -128,7 +128,7 @@ public class GenerateEcoreStereotypesAction
 					Stereotype eEnumLiteralStereotype = generateOwnedStereotype(
 						profile, "EEnumLiteral", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class enumerationLiteralMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getEnumerationLiteral());
+						profile, UML2Package.Literals.ENUMERATION_LITERAL);
 					generateExtension(eEnumLiteralStereotype,
 						enumerationLiteralMetaclass, false);
 					generateGeneralization(eEnumLiteralStereotype,
@@ -139,7 +139,7 @@ public class GenerateEcoreStereotypesAction
 					Stereotype eOperationStereotype = generateOwnedStereotype(
 						profile, "EOperation", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class operationMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getOperation());
+						profile, UML2Package.Literals.OPERATION);
 					generateExtension(eOperationStereotype, operationMetaclass,
 						false);
 					generateOwnedAttribute(eOperationStereotype,
@@ -148,7 +148,7 @@ public class GenerateEcoreStereotypesAction
 					Stereotype eParameterStereotype = generateOwnedStereotype(
 						profile, "EParameter", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class parameterMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getParameter());
+						profile, UML2Package.Literals.PARAMETER);
 					generateExtension(eParameterStereotype, parameterMetaclass,
 						false);
 					generateOwnedAttribute(eParameterStereotype,
@@ -200,7 +200,7 @@ public class GenerateEcoreStereotypesAction
 					Stereotype eAttributeStereotype = generateOwnedStereotype(
 						profile, "EAttribute", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class propertyMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getProperty());
+						profile, UML2Package.Literals.PROPERTY);
 					generateExtension(eAttributeStereotype, propertyMetaclass,
 						false);
 					generateGeneralization(eAttributeStereotype,

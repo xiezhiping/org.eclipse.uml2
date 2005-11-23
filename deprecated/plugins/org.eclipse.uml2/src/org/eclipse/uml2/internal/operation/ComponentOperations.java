@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.6 2005/10/19 19:42:10 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.7 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -70,7 +70,7 @@ public final class ComponentOperations
 		}
 
 		org.eclipse.uml2.Class ownedClass = (org.eclipse.uml2.Class) component
-			.createOwnedMember(UML2Package.eINSTANCE.getClass_());
+			.createOwnedMember(UML2Package.Literals.CLASS);
 		ownedClass.setName(name);
 		ownedClass.setIsAbstract(isAbstract);
 		return ownedClass;
@@ -100,7 +100,7 @@ public final class ComponentOperations
 		}
 
 		Enumeration ownedEnumeration = (Enumeration) component
-			.createOwnedMember(UML2Package.eINSTANCE.getEnumeration());
+			.createOwnedMember(UML2Package.Literals.ENUMERATION);
 		ownedEnumeration.setName(name);
 		return ownedEnumeration;
 	}
@@ -129,7 +129,7 @@ public final class ComponentOperations
 		}
 
 		org.eclipse.uml2.Package ownedPackage = (org.eclipse.uml2.Package) component
-			.createOwnedMember(UML2Package.eINSTANCE.getPackage());
+			.createOwnedMember(UML2Package.Literals.PACKAGE);
 		ownedPackage.setName(name);
 		return ownedPackage;
 	}
@@ -158,7 +158,7 @@ public final class ComponentOperations
 		}
 
 		PrimitiveType ownedPrimitiveType = (PrimitiveType) component
-			.createOwnedMember(UML2Package.eINSTANCE.getPrimitiveType());
+			.createOwnedMember(UML2Package.Literals.PRIMITIVE_TYPE);
 		ownedPrimitiveType.setName(name);
 		return ownedPrimitiveType;
 	}

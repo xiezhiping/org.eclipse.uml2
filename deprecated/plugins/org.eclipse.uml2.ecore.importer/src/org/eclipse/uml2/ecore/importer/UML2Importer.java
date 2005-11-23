@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.16 2005/11/23 19:42:37 khussey Exp $
+ * $Id: UML2Importer.java,v 1.17 2005/11/23 20:09:24 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -119,7 +119,7 @@ public class UML2Importer
 			for (Iterator i = locationURIs.iterator(); i.hasNext();) {
 				packages.addAll(EcoreUtil.getObjectsByType(uml2ResourceSet
 					.getResource((URI) i.next(), true).getContents(),
-					UML2Package.eINSTANCE.getPackage()));
+					UML2Package.Literals.PACKAGE));
 			}
 
 			EcoreUtil.resolveAll(uml2ResourceSet);

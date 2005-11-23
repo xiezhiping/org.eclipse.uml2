@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Ecore2UML2.java,v 1.6 2005/04/06 19:59:31 khussey Exp $
+ * $Id: Ecore2UML2.java,v 1.7 2005/11/23 20:09:05 khussey Exp $
  */
 package org.eclipse.uml2.examples.ecore2uml2;
 
@@ -68,8 +68,8 @@ import org.eclipse.uml2.util.UML2Switch;
  * @deprecated Use UML2Util.Ecore2UML2Converter instead.
  */
 public class Ecore2UML2
-	extends EcoreSwitch
-	implements Converter {
+		extends EcoreSwitch
+		implements Converter {
 
 	protected static final String ANNOTATION_SOURCE__REDEFINES = "redefines"; //$NON-NLS-1$
 
@@ -98,8 +98,7 @@ public class Ecore2UML2
 							.getResource(
 								URI
 									.createURI(UML2Resource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI),
-								true).getContents(), UML2Package.eINSTANCE
-							.getModel());
+								true).getContents(), UML2Package.Literals.MODEL);
 			} catch (Exception e) {
 				e.printStackTrace(System.err);
 
@@ -452,9 +451,10 @@ public class Ecore2UML2
 		for (Iterator eSuperClasses = object.getESuperTypes().iterator(); eSuperClasses
 			.hasNext();) {
 
-			classifier.createGeneralization(
-				UML2Package.eINSTANCE.getGeneralization()).setGeneral(
-				(Classifier) doSwitch((EClass) eSuperClasses.next()));
+			classifier
+				.createGeneralization(UML2Package.Literals.GENERALIZATION)
+				.setGeneral(
+					(Classifier) doSwitch((EClass) eSuperClasses.next()));
 		}
 
 		defaultCase(object);
@@ -557,7 +557,7 @@ public class Ecore2UML2
 
 		if (null != object.getEType()) {
 			Parameter parameter = operation
-				.createReturnResult(UML2Package.eINSTANCE.getParameter());
+				.createReturnResult(UML2Package.Literals.PARAMETER);
 
 			parameter.setDirection(ParameterDirectionKind.RETURN_LITERAL);
 			parameter.setType(getType(object));
@@ -645,7 +645,7 @@ public class Ecore2UML2
 		getOwnedAttributes(end1Classifier).add(end1Property);
 
 		Association association = (Association) end1Classifier.getPackage()
-			.createOwnedMember(UML2Package.eINSTANCE.getAssociation());
+			.createOwnedMember(UML2Package.Literals.ASSOCIATION);
 
 		end1Property.setName(end1.getName());
 		end1Property.setAggregation(end1.isContainment()
@@ -672,8 +672,8 @@ public class Ecore2UML2
 
 		if (null == end2) {
 			end2Classifier = (Classifier) doSwitch(end1.getEType());
-			association.createOwnedEnd(UML2Package.eINSTANCE.getProperty())
-				.setType(end1Classifier);
+			association.createOwnedEnd(UML2Package.Literals.PROPERTY).setType(
+				end1Classifier);
 		} else {
 			Property end2Property = UML2Factory.eINSTANCE.createProperty();
 			elementMap.put(end2, end2Property);

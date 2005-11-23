@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateBasicStereotypesAction.java,v 1.3 2005/06/02 14:29:45 khussey Exp $
+ * $Id: GenerateBasicStereotypesAction.java,v 1.4 2005/11/23 20:09:08 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -49,23 +49,23 @@ public class GenerateBasicStereotypesAction
 					Stereotype auxiliaryStereotype = generateOwnedStereotype(
 						profile, "Auxiliary", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class classMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getClass_());
+						profile, UML2Package.Literals.CLASS);
 					generateExtension(auxiliaryStereotype, classMetaclass,
 						false);
 
 					Stereotype buildComponentStereotype = generateOwnedStereotype(
 						profile, "BuildComponent", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class componentMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getComponent());
+						profile, UML2Package.Literals.COMPONENT);
 					generateExtension(buildComponentStereotype,
 						componentMetaclass, false);
 
 					Stereotype createStereotype = generateOwnedStereotype(
 						profile, "Create", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class behavioralFeatureMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getBehavioralFeature());
+						profile, UML2Package.Literals.BEHAVIORAL_FEATURE);
 					org.eclipse.uml2.Class usageMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getUsage());
+						profile, UML2Package.Literals.USAGE);
 					generateExtension(createStereotype,
 						behavioralFeatureMetaclass, false);
 					generateExtension(createStereotype, usageMetaclass, false);
@@ -77,7 +77,7 @@ public class GenerateBasicStereotypesAction
 					Stereotype deriveStereotype = generateOwnedStereotype(
 						profile, "Derive", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class abstractionMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getAbstraction());
+						profile, UML2Package.Literals.ABSTRACTION);
 					generateExtension(deriveStereotype, abstractionMetaclass,
 						false);
 
@@ -93,7 +93,7 @@ public class GenerateBasicStereotypesAction
 					Stereotype frameworkStereotype = generateOwnedStereotype(
 						profile, "Framework", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class packageMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getPackage());
+						profile, UML2Package.Literals.PACKAGE);
 					generateExtension(frameworkStereotype, packageMetaclass,
 						false);
 
@@ -135,7 +135,7 @@ public class GenerateBasicStereotypesAction
 					Stereotype scriptStereotype = generateOwnedStereotype(
 						profile, "Script", false); //$NON-NLS-1$
 					org.eclipse.uml2.Class artifactMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getArtifact());
+						profile, UML2Package.Literals.ARTIFACT);
 					generateExtension(scriptStereotype, artifactMetaclass,
 						false);
 

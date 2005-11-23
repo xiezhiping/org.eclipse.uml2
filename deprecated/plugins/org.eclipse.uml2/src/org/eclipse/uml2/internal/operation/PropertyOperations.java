@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.19 2005/10/26 20:59:34 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.20 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -621,8 +621,8 @@ public final class PropertyOperations extends UML2Operations {
 
 		((LiteralBoolean) (LiteralBoolean.class.isInstance(defaultValue)
 			? defaultValue
-			: property.createDefaultValue(UML2Package.eINSTANCE
-				.getLiteralBoolean()))).setValue(value);
+			: property.createDefaultValue(UML2Package.Literals.LITERAL_BOOLEAN)))
+			.setValue(value);
 	}
 
 	/**
@@ -644,8 +644,8 @@ public final class PropertyOperations extends UML2Operations {
 
 		((LiteralInteger) (LiteralInteger.class.isInstance(defaultValue)
 			? defaultValue
-			: property.createDefaultValue(UML2Package.eINSTANCE
-				.getLiteralInteger()))).setValue(value);
+			: property.createDefaultValue(UML2Package.Literals.LITERAL_INTEGER)))
+			.setValue(value);
 	}
 
 	/**
@@ -666,8 +666,8 @@ public final class PropertyOperations extends UML2Operations {
 
 		((LiteralString) (LiteralString.class.isInstance(defaultValue)
 			? defaultValue
-			: property.createDefaultValue(UML2Package.eINSTANCE
-				.getLiteralString()))).setValue(value);
+			: property.createDefaultValue(UML2Package.Literals.LITERAL_STRING)))
+			.setValue(value);
 	}
 
 	/**
@@ -690,8 +690,9 @@ public final class PropertyOperations extends UML2Operations {
 		((LiteralUnlimitedNatural) (LiteralUnlimitedNatural.class
 			.isInstance(defaultValue)
 			? defaultValue
-			: property.createDefaultValue(UML2Package.eINSTANCE
-				.getLiteralUnlimitedNatural()))).setValue(value);
+			: property
+				.createDefaultValue(UML2Package.Literals.LITERAL_UNLIMITED_NATURAL)))
+			.setValue(value);
 	}
 
 	public static String getDefault(Property property) {

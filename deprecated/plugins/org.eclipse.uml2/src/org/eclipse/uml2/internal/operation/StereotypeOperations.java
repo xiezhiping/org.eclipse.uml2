@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.27 2005/09/27 18:49:04 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.28 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -376,24 +376,23 @@ public final class StereotypeOperations
 
 		String className = class_.getName();
 		Extension extension = (Extension) profile
-			.createOwnedMember(UML2Package.eINSTANCE.getExtension());
+			.createOwnedMember(UML2Package.Literals.EXTENSION);
 
 		extension.setName(className + '_' + name);
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension
-			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
+			.createOwnedEnd(UML2Package.Literals.EXTENSION_END);
 
 		extensionEnd.setName(STEREOTYPE_EXTENSION_ROLE_PREFIX + name);
 		extensionEnd.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 		extensionEnd.setType(stereotype);
 
 		if (!required) {
-			extensionEnd.createLowerValue(UML2Package.eINSTANCE
-				.getLiteralInteger());
+			extensionEnd.createLowerValue(UML2Package.Literals.LITERAL_INTEGER);
 		}
 
 		Property property = stereotype
-			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
+			.createOwnedAttribute(UML2Package.Literals.PROPERTY);
 
 		property.setName(METACLASS_EXTENSION_ROLE_PREFIX + className);
 		property.setType(class_);
@@ -1327,24 +1326,23 @@ public final class StereotypeOperations
 
 		String metaclassName = metaclass.getName();
 		Extension extension = (Extension) profile
-			.createOwnedMember(UML2Package.eINSTANCE.getExtension());
+			.createOwnedMember(UML2Package.Literals.EXTENSION);
 
 		extension.setName(metaclassName + '_' + name);
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension
-			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
+			.createOwnedEnd(UML2Package.Literals.EXTENSION_END);
 
 		extensionEnd.setName(STEREOTYPE_EXTENSION_ROLE_PREFIX + name);
 		extensionEnd.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 		extensionEnd.setType(stereotype);
 
 		if (!required) {
-			extensionEnd.createLowerValue(UML2Package.eINSTANCE
-				.getLiteralInteger());
+			extensionEnd.createLowerValue(UML2Package.Literals.LITERAL_INTEGER);
 		}
 
 		Property property = stereotype
-			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
+			.createOwnedAttribute(UML2Package.Literals.PROPERTY);
 
 		property.setName(METACLASS_EXTENSION_ROLE_PREFIX + metaclassName);
 		property.setType(metaclass);

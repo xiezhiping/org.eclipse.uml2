@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.13 2005/10/19 19:37:57 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.14 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -308,8 +308,8 @@ public final class NamedElementOperations extends UML2Operations {
 		boolean result = true;
 
 		if (null == namedElement.getNamespace()
-			&& namedElement.eIsSet(UML2Package.eINSTANCE
-				.getNamedElement_Visibility())) {
+			&& namedElement
+				.eIsSet(UML2Package.Literals.NAMED_ELEMENT__VISIBILITY)) {
 
 			result = false;
 
@@ -395,7 +395,7 @@ public final class NamedElementOperations extends UML2Operations {
 		}
 
 		Dependency dependency = (Dependency) package_
-			.createOwnedMember(UML2Package.eINSTANCE.getDependency());
+			.createOwnedMember(UML2Package.Literals.DEPENDENCY);
 
 		dependency.getClients().add(client);
 		dependency.getSuppliers().add(supplier);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.8 2005/11/22 22:04:53 khussey Exp $
+ * $Id: ClassOperations.java,v 1.9 2005/11/23 20:09:17 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -123,7 +123,7 @@ public final class ClassOperations extends UML2Operations {
 				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
 					.next();
 
-				if (UML2Package.eINSTANCE.getTypedElement_Type() == setting
+				if (UML2Package.Literals.TYPED_ELEMENT__TYPE == setting
 					.getEStructuralFeature()) {
 
 					EObject eObject = setting.getEObject();
