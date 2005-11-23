@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperationsTest.java,v 1.5 2005/11/23 21:52:34 khussey Exp $
+ * $Id: ElementOperationsTest.java,v 1.6 2005/11/23 21:52:58 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
