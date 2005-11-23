@@ -34,7 +34,7 @@
 		}
         <%} else {%>
           <%if (genClass.isField(subsetGenFeature)) {%>
-		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+		if (eIsSet(<%=genClass.getQualifiedFeatureID(subsetGenFeature)%>)) {
 			return <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();
 		}
           <%} else {%>
@@ -91,7 +91,7 @@
 		}
                 <%} else {%>
                   <%if (genClass.isField(subsetGenFeature)) {%>
-		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+		if (eIsSet(<%=genClass.getQualifiedFeatureID(subsetGenFeature)%>)) {
 			for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); ) {
 				<%=genFeature.getSafeName()%>.add(i.next());
 			}
@@ -112,7 +112,7 @@
 		}
                 <%} else {%>
                   <%if (genClass.isField(subsetGenFeature)) {%>
-		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+		if (eIsSet(<%=genClass.getQualifiedFeatureID(subsetGenFeature)%>)) {
 			<%=genFeature.getSafeName()%>.addAll(<%=subsetGenFeature.getGetAccessor()%>());
 		}
                   <%} else {%>
@@ -195,7 +195,7 @@
 		}
           <%} else {%>
             <%if (genClass.isField(subsetGenFeature) && !subsetGenFeature.isBasicGet()) {%>
-		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+		if (eIsSet(<%=genClass.getQualifiedFeatureID(subsetGenFeature)%>)) {
 			return <%=subsetGenFeature.getGetAccessor()%>();
 		}
             <%} else {%>
@@ -234,7 +234,7 @@
 		return <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>() != null<%if (!j.hasNext()) {%>;<%}%>
           <%}%>
         <%} else {%>
-		return eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())<%if (!j.hasNext()) {%>;<%}%>
+		return eIsSet(<%=genClass.getQualifiedFeatureID(subsetGenFeature)%>)<%if (!j.hasNext()) {%>;<%}%>
         <%}%>
       <%} else {%>
         <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
@@ -246,7 +246,7 @@
 			|| <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>() != null<%if (!j.hasNext()) {%>;<%}%>
           <%}%>
         <%} else {%>
-			|| eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())<%if (!j.hasNext()) {%>;<%}%>
+			|| eIsSet(<%=genClass.getQualifiedFeatureID(subsetGenFeature)%>)<%if (!j.hasNext()) {%>;<%}%>
         <%}%>
       <%}%>
     <%}%>

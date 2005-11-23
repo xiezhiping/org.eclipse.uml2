@@ -133,7 +133,7 @@
   <%}%>
   <%} else {%>
     <%if (genModel.isReflectiveDelegation()) {%>
-		return eIsSet(<%=genFeature.getGenPackage().getImportedPackageInterfaceName()%>.eINSTANCE.get<%=genFeature.getFeatureAccessorName()%>());
+	return eIsSet(<%=genClass.getQualifiedFeatureID(genFeature)%>);
     <%} else if (!genFeature.isVolatile()) {%>
       <%if (genFeature.isListType()) {%>
         <%if (genModel.isVirtualDelegation()) {%>

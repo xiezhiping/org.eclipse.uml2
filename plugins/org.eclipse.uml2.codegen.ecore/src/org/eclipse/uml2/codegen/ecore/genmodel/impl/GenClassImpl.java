@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.15 2005/11/21 19:36:53 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.16 2005/11/23 13:21:58 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -715,7 +715,7 @@ public class GenClassImpl
 			sb.append(".class, this, "); //$NON-NLS-1$
 			sb.append(getQualifiedFeatureID(genFeature));
 			sb.append(", "); //$NON-NLS-1$
-			sb.append(getSubsetFeatureAccessorArray(genFeature, true));
+			sb.append(getSubsetFeatureIDArray(genFeature, true));
 			sb.append(")"); //$NON-NLS-1$
 		} else if (genFeature.isFeatureMapType()) {
 			return super.getListConstructor(genFeature);

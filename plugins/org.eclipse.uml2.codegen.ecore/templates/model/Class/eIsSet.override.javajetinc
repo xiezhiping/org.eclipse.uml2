@@ -3,9 +3,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(<%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> eFeature)
+	public boolean eIsSet(int featureID)
 	{
-		switch (eDerivedStructuralFeatureID(eFeature))
+		switch (featureID)
 		{
 <%for (Iterator i=genClass.getAllGenFeatures().iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
 			case <%=genClass.getQualifiedFeatureID(genFeature)%>:
@@ -82,6 +82,6 @@
 <%}%>
 <%}%>
 		}
-		return eDynamicIsSet(eFeature);
+		return eDynamicIsSet(featureID);
 	}
 
