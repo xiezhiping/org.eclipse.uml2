@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseImporterWizard.java,v 1.3 2005/06/10 14:39:13 khussey Exp $
+ * $Id: RoseImporterWizard.java,v 1.4 2005/11/23 19:42:36 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.ui;
 
-import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.emf.importer.rose.ui.RoseDetailPage;
 import org.eclipse.emf.importer.ui.contribution.base.ModelPackagePage;
@@ -30,7 +30,7 @@ public class RoseImporterWizard
 		RoseDetailPage detailPage = new RoseDetailPage(getModelImporter(),
 			"RoseModel") { //$NON-NLS-1$
 
-			protected ImporterUtil.DecodedAction decodeAction(IStatus status) {
+			protected ImporterUtil.DecodedAction decodeAction(Diagnostic diagnostic) {
 				return ImporterUtil
 					.decodeAction(ImporterUtil.ACTION_MESSAGE_SET);
 			}

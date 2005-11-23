@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.15 2005/10/07 20:43:09 khussey Exp $
+ * $Id: UML2Importer.java,v 1.16 2005/11/23 19:42:37 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -20,10 +20,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
@@ -31,6 +27,8 @@ import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.DiagnosticException;
+import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -38,6 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.importer.ImporterPlugin;
 import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.emf.importer.util.ImporterUtil;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.UML2Package;
@@ -99,18 +98,18 @@ public class UML2Importer
 		return genModel;
 	}
 
-	protected IStatus doComputeEPackages(IProgressMonitor progressMonitor)
+	protected Diagnostic doComputeEPackages(Monitor monitor)
 			throws Exception {
-		IStatus status = Status.OK_STATUS;
+		Diagnostic diagnostic = Diagnostic.OK_INSTANCE;
 		List locationURIs = getModelLocationURIs();
 
 		if (locationURIs.isEmpty()) {
-			status = new Status(IStatus.ERROR, ImporterPlugin.ID,
+			diagnostic = new BasicDiagnostic(Diagnostic.ERROR, ImporterPlugin.ID,
 				ImporterUtil.ACTION_DEFAULT, UML2ImporterPlugin.INSTANCE
 					.getString("_UI_SpecifyAValidUML2Model_message"), null); //$NON-NLS-1$
 		} else {
-			progressMonitor.beginTask("", 2); //$NON-NLS-1$
-			progressMonitor.subTask(UML2ImporterPlugin.INSTANCE.getString(
+            monitor.beginTask("", 2); //$NON-NLS-1$
+			monitor.subTask(UML2ImporterPlugin.INSTANCE.getString(
 				"_UI_Loading_message", new Object[]{locationURIs})); //$NON-NLS-1$
 
 			Collection packages = new ArrayList();
@@ -125,7 +124,7 @@ public class UML2Importer
 
 			EcoreUtil.resolveAll(uml2ResourceSet);
 
-			progressMonitor.worked(1);
+			monitor.worked(1);
 
 			BasicDiagnostic diagnostics = new BasicDiagnostic(
 				ImporterPlugin.ID, ImporterUtil.ACTION_DEFAULT,
@@ -185,17 +184,17 @@ public class UML2Importer
 
 			}.convert(packages, options, diagnostics, context));
 
-			progressMonitor.done();
+			monitor.done();
 
 			if (Diagnostic.INFO < diagnostics.getSeverity()) {
-				status = BasicDiagnostic.toIStatus(diagnostics);
+				diagnostic = diagnostics;
 			}
 		}
 
-		return status;
+		return diagnostic;
 	}
 
-	public void adjustEPackage(IProgressMonitor progressMonitor,
+	public void adjustEPackage(Monitor monitor,
 			EPackage ePackage) {
 		EPackageInfo ePackageInfo = getEPackageInfo(ePackage);
 		String name = ePackage.getName();
@@ -221,8 +220,8 @@ public class UML2Importer
 		ePackageInfo.setEcoreFileName(ecoreFileName);
 	}
 
-	protected void adjustGenModel(IProgressMonitor progressMonitor) {
-		super.adjustGenModel(progressMonitor);
+	protected void adjustGenModel(Monitor monitor) {
+		super.adjustGenModel(monitor);
 
 		URI genModelURI = createFileURI(getGenModelPath().toString());
 
@@ -233,7 +232,7 @@ public class UML2Importer
 	}
 
 	protected void loadOriginalGenModel(URI genModelURI)
-			throws CoreException {
+			throws DiagnosticException {
 		super.loadOriginalGenModel(genModelURI);
 
 		StringBuffer text = new StringBuffer();
