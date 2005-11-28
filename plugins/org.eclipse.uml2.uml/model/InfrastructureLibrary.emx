@@ -14643,7 +14643,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_roAiiRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_roAiihTaEdqZu-3Jy1-uYg" body="in"/>
+          <defaultValue xmi:type="uml:InstanceValue" xmi:id="_roAiihTaEdqZu-3Jy1-uYg" instance="_3ADC7B74022D4161A93C01BC"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D4161AA27013C" name="operation" type="_3ADC7B74022D3DE6D56F031A" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_3ADC7B74022D4161AA250298">
           <eAnnotations xmi:id="_xBVkAFqpEdqTMeoDATTRUw" source="appliedStereotypes">
