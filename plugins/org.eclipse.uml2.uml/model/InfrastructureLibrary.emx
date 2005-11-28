@@ -16425,16 +16425,13 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ruaFbRTaEdqZu-3Jy1-uYg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruaFbBTaEdqZu-3Jy1-uYg" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_7409kDdgEdqq1tCaRkgBQQ" name="isStrict">
+      <ownedAttribute xmi:id="_7409kDdgEdqq1tCaRkgBQQ" name="isStrict" type="_3ADC7B74022D3CA010AC0090">
         <ownedComment xmi:id="_JwfQ8DdhEdqq1tCaRkgBQQ" body="Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied." annotatedElement="_7409kDdgEdqq1tCaRkgBQQ">
           <eAnnotations xmi:id="_JwfQ8TdhEdqq1tCaRkgBQQ" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_JwfQ8jdhEdqq1tCaRkgBQQ"/>
           </eAnnotations>
         </ownedComment>
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXfBUK86EdieaYgxtVWN8Q"/>
-        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_l1JQAF0oEdq3-fC14hmVtA">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXfBUK86EdieaYgxtVWN8Q"/>
-        </defaultValue>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_l1JQAF0oEdq3-fC14hmVtA"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CBDA5E903C7" name="Extension">
@@ -16460,7 +16457,7 @@
         <specification xmi:type="uml:OpaqueExpression" xmi:id="_vJ8MATajEdqq1tCaRkgBQQ" body="memberEnd->size() = 2" language="OCL"/>
       </ownedRule>
       <generalization xmi:id="_3ADC7B74022D3DEE788500D3" general="_3ADC7B74022D3DE6E15D033A"/>
-      <ownedAttribute xmi:id="_3ADC7B74022D3CBDA7B50011" name="isRequired" isReadOnly="true" isDerived="true">
+      <ownedAttribute xmi:id="_3ADC7B74022D3CBDA7B50011" name="isRequired" isReadOnly="true" isDerived="true" type="_3ADC7B74022D3CA010AC0090">
         <eAnnotations xmi:id="_ruHKhhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_ruHKhxTaEdqZu-3Jy1-uYg" isTransient="true"/>
         </eAnnotations>
@@ -16469,10 +16466,7 @@
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruHKhRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
         </ownedComment>
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXfBUK86EdieaYgxtVWN8Q"/>
-        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_EFEnwF0oEdq3-fC14hmVtA">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXfBUK86EdieaYgxtVWN8Q"/>
-        </defaultValue>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_EFEnwF0oEdq3-fC14hmVtA"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_3ADC7B74022D3CBDA7FB03E7" name="metaclass" type="_3ADC7B74022D3CA22B8803DA" isReadOnly="true" isDerived="true" association="_3ADC7B74022D3CBDA7FA0395">
         <eAnnotations xmi:id="_ruj2YBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
@@ -16575,9 +16569,7 @@
         </ownedComment>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dAT0gTagEdqq1tCaRkgBQQ" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dAT0gDagEdqq1tCaRkgBQQ"/>
-        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_hSCvcDagEdqq1tCaRkgBQQ">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXlH8K86EdieaYgxtVWN8Q"/>
-        </defaultValue>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_hSCvcDagEdqq1tCaRkgBQQ"/>
       </ownedAttribute>
       <ownedOperation xmi:id="_InW3ADajEdqq1tCaRkgBQQ" name="lowerBound" type="_3ADC7B74022D3CA010A4007B" isQuery="true" redefinedOperation="_3ADC7B74022D42EE305C00C6" bodyCondition="_ZWJvkDajEdqq1tCaRkgBQQ">
         <ownedComment xmi:id="_YkFZcDajEdqq1tCaRkgBQQ" body="The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default&#xD;&#xA;lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty." annotatedElement="_InW3ADajEdqq1tCaRkgBQQ">
