@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.8 2005/11/23 17:34:13 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.9 2005/11/28 16:58:16 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -325,124 +325,6 @@ public class GenModelImpl
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GenModelPackage.GEN_MODEL__COPYRIGHT_TEXT :
-				return getCopyrightText();
-			case GenModelPackage.GEN_MODEL__MODEL_DIRECTORY :
-				return getModelDirectory();
-			case GenModelPackage.GEN_MODEL__CREATION_COMMANDS :
-				return isCreationCommands()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__CREATION_ICONS :
-				return isCreationIcons()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__EDIT_DIRECTORY :
-				return getEditDirectory();
-			case GenModelPackage.GEN_MODEL__EDITOR_DIRECTORY :
-				return getEditorDirectory();
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_ID :
-				return getModelPluginID();
-			case GenModelPackage.GEN_MODEL__TEMPLATE_DIRECTORY :
-				return getTemplateDirectory();
-			case GenModelPackage.GEN_MODEL__RUNTIME_JAR :
-				return isRuntimeJar()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__FOREIGN_MODEL :
-				return getForeignModel();
-			case GenModelPackage.GEN_MODEL__DYNAMIC_TEMPLATES :
-				return isDynamicTemplates()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__REDIRECTION :
-				return getRedirection();
-			case GenModelPackage.GEN_MODEL__FORCE_OVERWRITE :
-				return isForceOverwrite()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__NON_EXTERNALIZED_STRING_TAG :
-				return getNonExternalizedStringTag();
-			case GenModelPackage.GEN_MODEL__MODEL_NAME :
-				return getModelName();
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_CLASS :
-				return getModelPluginClass();
-			case GenModelPackage.GEN_MODEL__EDIT_PLUGIN_CLASS :
-				return getEditPluginClass();
-			case GenModelPackage.GEN_MODEL__EDITOR_PLUGIN_CLASS :
-				return getEditorPluginClass();
-			case GenModelPackage.GEN_MODEL__UPDATE_CLASSPATH :
-				return isUpdateClasspath()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__GENERATE_SCHEMA :
-				return isGenerateSchema()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__NON_NLS_MARKERS :
-				return isNonNLSMarkers()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__STATIC_PACKAGES :
-				return getStaticPackages();
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_VARIABLES :
-				return getModelPluginVariables();
-			case GenModelPackage.GEN_MODEL__ROOT_EXTENDS_INTERFACE :
-				return getRootExtendsInterface();
-			case GenModelPackage.GEN_MODEL__ROOT_EXTENDS_CLASS :
-				return getRootExtendsClass();
-			case GenModelPackage.GEN_MODEL__ROOT_IMPLEMENTS_INTERFACE :
-				return getRootImplementsInterface();
-			case GenModelPackage.GEN_MODEL__SUPPRESS_EMF_TYPES :
-				return isSuppressEMFTypes()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_INTERFACE :
-				return getFeatureMapWrapperInterface();
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_INTERNAL_INTERFACE :
-				return getFeatureMapWrapperInternalInterface();
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_CLASS :
-				return getFeatureMapWrapperClass();
-			case GenModelPackage.GEN_MODEL__RUNTIME_COMPATIBILITY :
-				return isRuntimeCompatibility()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__RICH_CLIENT_PLATFORM :
-				return isRichClientPlatform()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__REFLECTIVE_DELEGATION :
-				return isReflectiveDelegation()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__CODE_FORMATTING :
-				return isCodeFormatting()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__TESTS_DIRECTORY :
-				return getTestsDirectory();
-			case GenModelPackage.GEN_MODEL__TEST_SUITE_CLASS :
-				return getTestSuiteClass();
-			case GenModelPackage.GEN_MODEL__BOOLEAN_FLAGS_FIELD :
-				return getBooleanFlagsField();
-			case GenModelPackage.GEN_MODEL__BOOLEAN_FLAGS_RESERVED_BITS :
-				return new Integer(getBooleanFlagsReservedBits());
-			case GenModelPackage.GEN_MODEL__IMPORTER_ID :
-				return getImporterID();
-			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
-				return isBundleManifest()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
-				return getFeatureDelegation();
-			case GenModelPackage.GEN_MODEL__CONTAINMENT_PROXIES :
-				return isContainmentProxies()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
-				return getGenPackages();
-			case GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES :
-				return getUsedGenPackages();
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
 				return isFactoryMethods()
 					? Boolean.TRUE
@@ -462,7 +344,7 @@ public class GenModelImpl
 			case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
 				return getInvariantPrefix();
 		}
-		return eDynamicGet(featureID, resolve, coreType);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -472,143 +354,6 @@ public class GenModelImpl
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GenModelPackage.GEN_MODEL__COPYRIGHT_TEXT :
-				setCopyrightText((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__MODEL_DIRECTORY :
-				setModelDirectory((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__CREATION_COMMANDS :
-				setCreationCommands(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__CREATION_ICONS :
-				setCreationIcons(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__EDIT_DIRECTORY :
-				setEditDirectory((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__EDITOR_DIRECTORY :
-				setEditorDirectory((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_ID :
-				setModelPluginID((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__TEMPLATE_DIRECTORY :
-				setTemplateDirectory((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__RUNTIME_JAR :
-				setRuntimeJar(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__FOREIGN_MODEL :
-				getForeignModel().clear();
-				getForeignModel().addAll((Collection) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__DYNAMIC_TEMPLATES :
-				setDynamicTemplates(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__REDIRECTION :
-				setRedirection((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__FORCE_OVERWRITE :
-				setForceOverwrite(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__NON_EXTERNALIZED_STRING_TAG :
-				setNonExternalizedStringTag((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__MODEL_NAME :
-				setModelName((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_CLASS :
-				setModelPluginClass((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__EDIT_PLUGIN_CLASS :
-				setEditPluginClass((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__EDITOR_PLUGIN_CLASS :
-				setEditorPluginClass((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__UPDATE_CLASSPATH :
-				setUpdateClasspath(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__GENERATE_SCHEMA :
-				setGenerateSchema(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__NON_NLS_MARKERS :
-				setNonNLSMarkers(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__STATIC_PACKAGES :
-				getStaticPackages().clear();
-				getStaticPackages().addAll((Collection) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_VARIABLES :
-				getModelPluginVariables().clear();
-				getModelPluginVariables().addAll((Collection) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__ROOT_EXTENDS_INTERFACE :
-				setRootExtendsInterface((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__ROOT_EXTENDS_CLASS :
-				setRootExtendsClass((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__ROOT_IMPLEMENTS_INTERFACE :
-				setRootImplementsInterface((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__SUPPRESS_EMF_TYPES :
-				setSuppressEMFTypes(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_INTERFACE :
-				setFeatureMapWrapperInterface((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_INTERNAL_INTERFACE :
-				setFeatureMapWrapperInternalInterface((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_CLASS :
-				setFeatureMapWrapperClass((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__RUNTIME_COMPATIBILITY :
-				setRuntimeCompatibility(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__RICH_CLIENT_PLATFORM :
-				setRichClientPlatform(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__REFLECTIVE_DELEGATION :
-				setReflectiveDelegation(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__CODE_FORMATTING :
-				setCodeFormatting(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__TESTS_DIRECTORY :
-				setTestsDirectory((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__TEST_SUITE_CLASS :
-				setTestSuiteClass((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__BOOLEAN_FLAGS_FIELD :
-				setBooleanFlagsField((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__BOOLEAN_FLAGS_RESERVED_BITS :
-				setBooleanFlagsReservedBits(((Integer) newValue).intValue());
-				return;
-			case GenModelPackage.GEN_MODEL__IMPORTER_ID :
-				setImporterID((String) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
-				setBundleManifest(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
-				setFeatureDelegation((GenDelegationKind) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__CONTAINMENT_PROXIES :
-				setContainmentProxies(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
-				getGenPackages().clear();
-				getGenPackages().addAll((Collection) newValue);
-				return;
-			case GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES :
-				getUsedGenPackages().clear();
-				getUsedGenPackages().addAll((Collection) newValue);
-				return;
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
 				setFactoryMethods(((Boolean) newValue).booleanValue());
 				return;
@@ -625,7 +370,7 @@ public class GenModelImpl
 				setInvariantPrefix((String) newValue);
 				return;
 		}
-		eDynamicSet(featureID, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -635,138 +380,6 @@ public class GenModelImpl
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GenModelPackage.GEN_MODEL__COPYRIGHT_TEXT :
-				setCopyrightText(COPYRIGHT_TEXT_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__MODEL_DIRECTORY :
-				setModelDirectory(MODEL_DIRECTORY_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__CREATION_COMMANDS :
-				setCreationCommands(CREATION_COMMANDS_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__CREATION_ICONS :
-				setCreationIcons(CREATION_ICONS_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__EDIT_DIRECTORY :
-				unsetEditDirectory();
-				return;
-			case GenModelPackage.GEN_MODEL__EDITOR_DIRECTORY :
-				unsetEditorDirectory();
-				return;
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_ID :
-				setModelPluginID(MODEL_PLUGIN_ID_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__TEMPLATE_DIRECTORY :
-				setTemplateDirectory(TEMPLATE_DIRECTORY_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__RUNTIME_JAR :
-				setRuntimeJar(RUNTIME_JAR_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__FOREIGN_MODEL :
-				getForeignModel().clear();
-				return;
-			case GenModelPackage.GEN_MODEL__DYNAMIC_TEMPLATES :
-				setDynamicTemplates(DYNAMIC_TEMPLATES_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__REDIRECTION :
-				setRedirection(REDIRECTION_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__FORCE_OVERWRITE :
-				setForceOverwrite(FORCE_OVERWRITE_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__NON_EXTERNALIZED_STRING_TAG :
-				setNonExternalizedStringTag(NON_EXTERNALIZED_STRING_TAG_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__MODEL_NAME :
-				setModelName(MODEL_NAME_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_CLASS :
-				setModelPluginClass(MODEL_PLUGIN_CLASS_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__EDIT_PLUGIN_CLASS :
-				unsetEditPluginClass();
-				return;
-			case GenModelPackage.GEN_MODEL__EDITOR_PLUGIN_CLASS :
-				unsetEditorPluginClass();
-				return;
-			case GenModelPackage.GEN_MODEL__UPDATE_CLASSPATH :
-				setUpdateClasspath(UPDATE_CLASSPATH_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__GENERATE_SCHEMA :
-				setGenerateSchema(GENERATE_SCHEMA_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__NON_NLS_MARKERS :
-				setNonNLSMarkers(NON_NLS_MARKERS_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__STATIC_PACKAGES :
-				getStaticPackages().clear();
-				return;
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_VARIABLES :
-				getModelPluginVariables().clear();
-				return;
-			case GenModelPackage.GEN_MODEL__ROOT_EXTENDS_INTERFACE :
-				setRootExtendsInterface(ROOT_EXTENDS_INTERFACE_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__ROOT_EXTENDS_CLASS :
-				setRootExtendsClass(ROOT_EXTENDS_CLASS_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__ROOT_IMPLEMENTS_INTERFACE :
-				setRootImplementsInterface(ROOT_IMPLEMENTS_INTERFACE_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__SUPPRESS_EMF_TYPES :
-				setSuppressEMFTypes(SUPPRESS_EMF_TYPES_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_INTERFACE :
-				setFeatureMapWrapperInterface(FEATURE_MAP_WRAPPER_INTERFACE_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_INTERNAL_INTERFACE :
-				setFeatureMapWrapperInternalInterface(FEATURE_MAP_WRAPPER_INTERNAL_INTERFACE_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_CLASS :
-				setFeatureMapWrapperClass(FEATURE_MAP_WRAPPER_CLASS_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__RUNTIME_COMPATIBILITY :
-				setRuntimeCompatibility(RUNTIME_COMPATIBILITY_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__RICH_CLIENT_PLATFORM :
-				setRichClientPlatform(RICH_CLIENT_PLATFORM_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__REFLECTIVE_DELEGATION :
-				setReflectiveDelegation(REFLECTIVE_DELEGATION_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__CODE_FORMATTING :
-				setCodeFormatting(CODE_FORMATTING_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__TESTS_DIRECTORY :
-				unsetTestsDirectory();
-				return;
-			case GenModelPackage.GEN_MODEL__TEST_SUITE_CLASS :
-				unsetTestSuiteClass();
-				return;
-			case GenModelPackage.GEN_MODEL__BOOLEAN_FLAGS_FIELD :
-				setBooleanFlagsField(BOOLEAN_FLAGS_FIELD_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__BOOLEAN_FLAGS_RESERVED_BITS :
-				setBooleanFlagsReservedBits(BOOLEAN_FLAGS_RESERVED_BITS_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__IMPORTER_ID :
-				setImporterID(IMPORTER_ID_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
-				setBundleManifest(BUNDLE_MANIFEST_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
-				setFeatureDelegation(FEATURE_DELEGATION_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__CONTAINMENT_PROXIES :
-				setContainmentProxies(CONTAINMENT_PROXIES_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
-				getGenPackages().clear();
-				return;
-			case GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES :
-				getUsedGenPackages().clear();
-				return;
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
 				setFactoryMethods(FACTORY_METHODS_EDEFAULT);
 				return;
@@ -783,7 +396,7 @@ public class GenModelImpl
 				setInvariantPrefix(INVARIANT_PREFIX_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(featureID);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -793,133 +406,6 @@ public class GenModelImpl
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GenModelPackage.GEN_MODEL__COPYRIGHT_TEXT :
-				return COPYRIGHT_TEXT_EDEFAULT == null
-					? copyrightText != null
-					: !COPYRIGHT_TEXT_EDEFAULT.equals(copyrightText);
-			case GenModelPackage.GEN_MODEL__MODEL_DIRECTORY :
-				return MODEL_DIRECTORY_EDEFAULT == null
-					? modelDirectory != null
-					: !MODEL_DIRECTORY_EDEFAULT.equals(modelDirectory);
-			case GenModelPackage.GEN_MODEL__CREATION_COMMANDS :
-				return creationCommands != CREATION_COMMANDS_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__CREATION_ICONS :
-				return creationIcons != CREATION_ICONS_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__EDIT_DIRECTORY :
-				return isSetEditDirectory();
-			case GenModelPackage.GEN_MODEL__EDITOR_DIRECTORY :
-				return isSetEditorDirectory();
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_ID :
-				return MODEL_PLUGIN_ID_EDEFAULT == null
-					? modelPluginID != null
-					: !MODEL_PLUGIN_ID_EDEFAULT.equals(modelPluginID);
-			case GenModelPackage.GEN_MODEL__TEMPLATE_DIRECTORY :
-				return TEMPLATE_DIRECTORY_EDEFAULT == null
-					? templateDirectory != null
-					: !TEMPLATE_DIRECTORY_EDEFAULT.equals(templateDirectory);
-			case GenModelPackage.GEN_MODEL__RUNTIME_JAR :
-				return runtimeJar != RUNTIME_JAR_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__FOREIGN_MODEL :
-				return foreignModel != null && !foreignModel.isEmpty();
-			case GenModelPackage.GEN_MODEL__DYNAMIC_TEMPLATES :
-				return dynamicTemplates != DYNAMIC_TEMPLATES_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__REDIRECTION :
-				return REDIRECTION_EDEFAULT == null
-					? redirection != null
-					: !REDIRECTION_EDEFAULT.equals(redirection);
-			case GenModelPackage.GEN_MODEL__FORCE_OVERWRITE :
-				return forceOverwrite != FORCE_OVERWRITE_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__NON_EXTERNALIZED_STRING_TAG :
-				return NON_EXTERNALIZED_STRING_TAG_EDEFAULT == null
-					? nonExternalizedStringTag != null
-					: !NON_EXTERNALIZED_STRING_TAG_EDEFAULT
-						.equals(nonExternalizedStringTag);
-			case GenModelPackage.GEN_MODEL__MODEL_NAME :
-				return MODEL_NAME_EDEFAULT == null
-					? modelName != null
-					: !MODEL_NAME_EDEFAULT.equals(modelName);
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_CLASS :
-				return MODEL_PLUGIN_CLASS_EDEFAULT == null
-					? modelPluginClass != null
-					: !MODEL_PLUGIN_CLASS_EDEFAULT.equals(modelPluginClass);
-			case GenModelPackage.GEN_MODEL__EDIT_PLUGIN_CLASS :
-				return isSetEditPluginClass();
-			case GenModelPackage.GEN_MODEL__EDITOR_PLUGIN_CLASS :
-				return isSetEditorPluginClass();
-			case GenModelPackage.GEN_MODEL__UPDATE_CLASSPATH :
-				return updateClasspath != UPDATE_CLASSPATH_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__GENERATE_SCHEMA :
-				return generateSchema != GENERATE_SCHEMA_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__NON_NLS_MARKERS :
-				return nonNLSMarkers != NON_NLS_MARKERS_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__STATIC_PACKAGES :
-				return staticPackages != null && !staticPackages.isEmpty();
-			case GenModelPackage.GEN_MODEL__MODEL_PLUGIN_VARIABLES :
-				return modelPluginVariables != null
-					&& !modelPluginVariables.isEmpty();
-			case GenModelPackage.GEN_MODEL__ROOT_EXTENDS_INTERFACE :
-				return ROOT_EXTENDS_INTERFACE_EDEFAULT == null
-					? rootExtendsInterface != null
-					: !ROOT_EXTENDS_INTERFACE_EDEFAULT
-						.equals(rootExtendsInterface);
-			case GenModelPackage.GEN_MODEL__ROOT_EXTENDS_CLASS :
-				return ROOT_EXTENDS_CLASS_EDEFAULT == null
-					? rootExtendsClass != null
-					: !ROOT_EXTENDS_CLASS_EDEFAULT.equals(rootExtendsClass);
-			case GenModelPackage.GEN_MODEL__ROOT_IMPLEMENTS_INTERFACE :
-				return ROOT_IMPLEMENTS_INTERFACE_EDEFAULT == null
-					? rootImplementsInterface != null
-					: !ROOT_IMPLEMENTS_INTERFACE_EDEFAULT
-						.equals(rootImplementsInterface);
-			case GenModelPackage.GEN_MODEL__SUPPRESS_EMF_TYPES :
-				return suppressEMFTypes != SUPPRESS_EMF_TYPES_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_INTERFACE :
-				return FEATURE_MAP_WRAPPER_INTERFACE_EDEFAULT == null
-					? featureMapWrapperInterface != null
-					: !FEATURE_MAP_WRAPPER_INTERFACE_EDEFAULT
-						.equals(featureMapWrapperInterface);
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_INTERNAL_INTERFACE :
-				return FEATURE_MAP_WRAPPER_INTERNAL_INTERFACE_EDEFAULT == null
-					? featureMapWrapperInternalInterface != null
-					: !FEATURE_MAP_WRAPPER_INTERNAL_INTERFACE_EDEFAULT
-						.equals(featureMapWrapperInternalInterface);
-			case GenModelPackage.GEN_MODEL__FEATURE_MAP_WRAPPER_CLASS :
-				return FEATURE_MAP_WRAPPER_CLASS_EDEFAULT == null
-					? featureMapWrapperClass != null
-					: !FEATURE_MAP_WRAPPER_CLASS_EDEFAULT
-						.equals(featureMapWrapperClass);
-			case GenModelPackage.GEN_MODEL__RUNTIME_COMPATIBILITY :
-				return runtimeCompatibility != RUNTIME_COMPATIBILITY_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__RICH_CLIENT_PLATFORM :
-				return richClientPlatform != RICH_CLIENT_PLATFORM_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__REFLECTIVE_DELEGATION :
-				return isReflectiveDelegation() != REFLECTIVE_DELEGATION_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__CODE_FORMATTING :
-				return codeFormatting != CODE_FORMATTING_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__TESTS_DIRECTORY :
-				return isSetTestsDirectory();
-			case GenModelPackage.GEN_MODEL__TEST_SUITE_CLASS :
-				return isSetTestSuiteClass();
-			case GenModelPackage.GEN_MODEL__BOOLEAN_FLAGS_FIELD :
-				return BOOLEAN_FLAGS_FIELD_EDEFAULT == null
-					? booleanFlagsField != null
-					: !BOOLEAN_FLAGS_FIELD_EDEFAULT.equals(booleanFlagsField);
-			case GenModelPackage.GEN_MODEL__BOOLEAN_FLAGS_RESERVED_BITS :
-				return booleanFlagsReservedBits != BOOLEAN_FLAGS_RESERVED_BITS_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__IMPORTER_ID :
-				return IMPORTER_ID_EDEFAULT == null
-					? importerID != null
-					: !IMPORTER_ID_EDEFAULT.equals(importerID);
-			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
-				return bundleManifest != BUNDLE_MANIFEST_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__FEATURE_DELEGATION :
-				return featureDelegation != FEATURE_DELEGATION_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__CONTAINMENT_PROXIES :
-				return containmentProxies != CONTAINMENT_PROXIES_EDEFAULT;
-			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
-				return genPackages != null && !genPackages.isEmpty();
-			case GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES :
-				return usedGenPackages != null && !usedGenPackages.isEmpty();
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
 				return ((eFlags & FACTORY_METHODS_EFLAG) != 0) != FACTORY_METHODS_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS :
@@ -933,7 +419,7 @@ public class GenModelImpl
 					? invariantPrefix != null
 					: !INVARIANT_PREFIX_EDEFAULT.equals(invariantPrefix);
 		}
-		return eDynamicIsSet(featureID);
+		return super.eIsSet(featureID);
 	}
 
 	/**

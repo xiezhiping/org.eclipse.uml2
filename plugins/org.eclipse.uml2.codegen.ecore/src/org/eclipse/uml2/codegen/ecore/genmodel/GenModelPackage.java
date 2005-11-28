@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.11 2005/11/23 17:34:13 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.12 2005/11/28 16:58:16 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -130,6 +130,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_CLASS__IMAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Dynamic</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_CLASS__DYNAMIC = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__DYNAMIC;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Class</b></em>' reference.
@@ -829,6 +838,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__CONTAINMENT_PROXIES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__CONTAINMENT_PROXIES;
+
+	/**
+	 * The feature id for the '<em><b>Minimal Reflective Methods</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__MINIMAL_REFLECTIVE_METHODS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__MINIMAL_REFLECTIVE_METHODS;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.

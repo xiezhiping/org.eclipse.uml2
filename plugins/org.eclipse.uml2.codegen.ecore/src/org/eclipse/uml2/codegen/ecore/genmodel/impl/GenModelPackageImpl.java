@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackageImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenModelPackageImpl.java,v 1.3 2005/11/28 16:58:16 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -210,8 +210,9 @@ public class GenModelPackageImpl
 		isInited = true;
 
 		// Initialize simple dependencies
-		org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelPackageImpl.init();
-		EcorePackageImpl.init();
+		org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE
+			.eClass();
+		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theGenModelPackage.createPackageContents();
@@ -514,9 +515,9 @@ public class GenModelPackageImpl
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelPackageImpl theGenModelPackage_1 = (org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelPackageImpl) EPackage.Registry.INSTANCE
+		org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage theGenModelPackage_1 = (org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage) EPackage.Registry.INSTANCE
 			.getEPackage(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eNS_URI);
-		EcorePackageImpl theEcorePackage = (EcorePackageImpl) EPackage.Registry.INSTANCE
+		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
 			.getEPackage(EcorePackage.eNS_URI);
 
 		// Add supertypes to classes

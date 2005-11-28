@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.9 2005/11/23 17:34:13 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.10 2005/11/28 16:58:16 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -173,62 +173,6 @@ public class GenPackageImpl
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GenModelPackage.GEN_PACKAGE__PREFIX :
-				return getPrefix();
-			case GenModelPackage.GEN_PACKAGE__BASE_PACKAGE :
-				return getBasePackage();
-			case GenModelPackage.GEN_PACKAGE__RESOURCE :
-				return getResource();
-			case GenModelPackage.GEN_PACKAGE__DISPOSABLE_PROVIDER_FACTORY :
-				return isDisposableProviderFactory()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_PACKAGE__ADAPTER_FACTORY :
-				return isAdapterFactory()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_PACKAGE__LOAD_INITIALIZATION :
-				return isLoadInitialization()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
-				return getInterfacePackageSuffix();
-			case GenModelPackage.GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX :
-				return getReflectionPackageSuffix();
-			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
-				return getClassPackageSuffix();
-			case GenModelPackage.GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX :
-				return getUtilityPackageSuffix();
-			case GenModelPackage.GEN_PACKAGE__PROVIDER_PACKAGE_SUFFIX :
-				return getProviderPackageSuffix();
-			case GenModelPackage.GEN_PACKAGE__PRESENTATION_PACKAGE_SUFFIX :
-				return getPresentationPackageSuffix();
-			case GenModelPackage.GEN_PACKAGE__TESTS_PACKAGE_SUFFIX :
-				return getTestsPackageSuffix();
-			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
-				return isGenerateExampleClass()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_PACKAGE__LITERALS_INTERFACE :
-				return isLiteralsInterface()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
-				if (resolve)
-					return getEcorePackage();
-				return basicGetEcorePackage();
-			case GenModelPackage.GEN_PACKAGE__GEN_MODEL :
-				return getGenModel();
-			case GenModelPackage.GEN_PACKAGE__GEN_ENUMS :
-				return getGenEnums();
-			case GenModelPackage.GEN_PACKAGE__GEN_DATA_TYPES :
-				return getGenDataTypes();
-			case GenModelPackage.GEN_PACKAGE__GEN_CLASSES :
-				return getGenClasses();
-			case GenModelPackage.GEN_PACKAGE__NESTED_GEN_PACKAGES :
-				return getNestedGenPackages();
-			case GenModelPackage.GEN_PACKAGE__GEN_CLASSIFIERS :
-				return getGenClassifiers();
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
 				return isResourceInterfaces()
 					? Boolean.TRUE
@@ -236,7 +180,7 @@ public class GenPackageImpl
 			case GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE :
 				return getOperationsPackage();
 		}
-		return eDynamicGet(featureID, resolve, coreType);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -246,74 +190,6 @@ public class GenPackageImpl
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GenModelPackage.GEN_PACKAGE__PREFIX :
-				setPrefix((String) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__BASE_PACKAGE :
-				setBasePackage((String) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__RESOURCE :
-				setResource((GenResourceKind) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__DISPOSABLE_PROVIDER_FACTORY :
-				setDisposableProviderFactory(((Boolean) newValue)
-					.booleanValue());
-				return;
-			case GenModelPackage.GEN_PACKAGE__ADAPTER_FACTORY :
-				setAdapterFactory(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_PACKAGE__LOAD_INITIALIZATION :
-				setLoadInitialization(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
-				setInterfacePackageSuffix((String) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX :
-				setReflectionPackageSuffix((String) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
-				setClassPackageSuffix((String) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX :
-				setUtilityPackageSuffix((String) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__PROVIDER_PACKAGE_SUFFIX :
-				setProviderPackageSuffix((String) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__PRESENTATION_PACKAGE_SUFFIX :
-				setPresentationPackageSuffix((String) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__TESTS_PACKAGE_SUFFIX :
-				setTestsPackageSuffix((String) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
-				setGenerateExampleClass(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_PACKAGE__LITERALS_INTERFACE :
-				setLiteralsInterface(((Boolean) newValue).booleanValue());
-				return;
-			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
-				setEcorePackage((EPackage) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__GEN_MODEL :
-				setGenModel((GenModel) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__GEN_ENUMS :
-				getGenEnums().clear();
-				getGenEnums().addAll((Collection) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__GEN_DATA_TYPES :
-				getGenDataTypes().clear();
-				getGenDataTypes().addAll((Collection) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__GEN_CLASSES :
-				getGenClasses().clear();
-				getGenClasses().addAll((Collection) newValue);
-				return;
-			case GenModelPackage.GEN_PACKAGE__NESTED_GEN_PACKAGES :
-				getNestedGenPackages().clear();
-				getNestedGenPackages().addAll((Collection) newValue);
-				return;
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
 				setResourceInterfaces(((Boolean) newValue).booleanValue());
 				return;
@@ -321,7 +197,7 @@ public class GenPackageImpl
 				setOperationsPackage((String) newValue);
 				return;
 		}
-		eDynamicSet(featureID, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -331,69 +207,6 @@ public class GenPackageImpl
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GenModelPackage.GEN_PACKAGE__PREFIX :
-				setPrefix(PREFIX_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__BASE_PACKAGE :
-				setBasePackage(BASE_PACKAGE_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__RESOURCE :
-				setResource(RESOURCE_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__DISPOSABLE_PROVIDER_FACTORY :
-				setDisposableProviderFactory(DISPOSABLE_PROVIDER_FACTORY_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__ADAPTER_FACTORY :
-				setAdapterFactory(ADAPTER_FACTORY_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__LOAD_INITIALIZATION :
-				setLoadInitialization(LOAD_INITIALIZATION_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
-				setInterfacePackageSuffix(INTERFACE_PACKAGE_SUFFIX_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX :
-				setReflectionPackageSuffix(REFLECTION_PACKAGE_SUFFIX_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
-				setClassPackageSuffix(CLASS_PACKAGE_SUFFIX_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX :
-				setUtilityPackageSuffix(UTILITY_PACKAGE_SUFFIX_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__PROVIDER_PACKAGE_SUFFIX :
-				setProviderPackageSuffix(PROVIDER_PACKAGE_SUFFIX_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__PRESENTATION_PACKAGE_SUFFIX :
-				setPresentationPackageSuffix(PRESENTATION_PACKAGE_SUFFIX_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__TESTS_PACKAGE_SUFFIX :
-				setTestsPackageSuffix(TESTS_PACKAGE_SUFFIX_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
-				setGenerateExampleClass(GENERATE_EXAMPLE_CLASS_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__LITERALS_INTERFACE :
-				setLiteralsInterface(LITERALS_INTERFACE_EDEFAULT);
-				return;
-			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
-				setEcorePackage((EPackage) null);
-				return;
-			case GenModelPackage.GEN_PACKAGE__GEN_MODEL :
-				setGenModel((GenModel) null);
-				return;
-			case GenModelPackage.GEN_PACKAGE__GEN_ENUMS :
-				getGenEnums().clear();
-				return;
-			case GenModelPackage.GEN_PACKAGE__GEN_DATA_TYPES :
-				getGenDataTypes().clear();
-				return;
-			case GenModelPackage.GEN_PACKAGE__GEN_CLASSES :
-				getGenClasses().clear();
-				return;
-			case GenModelPackage.GEN_PACKAGE__NESTED_GEN_PACKAGES :
-				getNestedGenPackages().clear();
-				return;
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
 				setResourceInterfaces(RESOURCE_INTERFACES_EDEFAULT);
 				return;
@@ -401,7 +214,7 @@ public class GenPackageImpl
 				setOperationsPackage(OPERATIONS_PACKAGE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(featureID);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -411,74 +224,6 @@ public class GenPackageImpl
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GenModelPackage.GEN_PACKAGE__PREFIX :
-				return PREFIX_EDEFAULT == null
-					? prefix != null
-					: !PREFIX_EDEFAULT.equals(prefix);
-			case GenModelPackage.GEN_PACKAGE__BASE_PACKAGE :
-				return BASE_PACKAGE_EDEFAULT == null
-					? basePackage != null
-					: !BASE_PACKAGE_EDEFAULT.equals(basePackage);
-			case GenModelPackage.GEN_PACKAGE__RESOURCE :
-				return resource != RESOURCE_EDEFAULT;
-			case GenModelPackage.GEN_PACKAGE__DISPOSABLE_PROVIDER_FACTORY :
-				return disposableProviderFactory != DISPOSABLE_PROVIDER_FACTORY_EDEFAULT;
-			case GenModelPackage.GEN_PACKAGE__ADAPTER_FACTORY :
-				return adapterFactory != ADAPTER_FACTORY_EDEFAULT;
-			case GenModelPackage.GEN_PACKAGE__LOAD_INITIALIZATION :
-				return loadInitialization != LOAD_INITIALIZATION_EDEFAULT;
-			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
-				return INTERFACE_PACKAGE_SUFFIX_EDEFAULT == null
-					? interfacePackageSuffix != null
-					: !INTERFACE_PACKAGE_SUFFIX_EDEFAULT
-						.equals(interfacePackageSuffix);
-			case GenModelPackage.GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX :
-				return REFLECTION_PACKAGE_SUFFIX_EDEFAULT == null
-					? reflectionPackageSuffix != null
-					: !REFLECTION_PACKAGE_SUFFIX_EDEFAULT
-						.equals(reflectionPackageSuffix);
-			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
-				return CLASS_PACKAGE_SUFFIX_EDEFAULT == null
-					? classPackageSuffix != null
-					: !CLASS_PACKAGE_SUFFIX_EDEFAULT.equals(classPackageSuffix);
-			case GenModelPackage.GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX :
-				return UTILITY_PACKAGE_SUFFIX_EDEFAULT == null
-					? utilityPackageSuffix != null
-					: !UTILITY_PACKAGE_SUFFIX_EDEFAULT
-						.equals(utilityPackageSuffix);
-			case GenModelPackage.GEN_PACKAGE__PROVIDER_PACKAGE_SUFFIX :
-				return PROVIDER_PACKAGE_SUFFIX_EDEFAULT == null
-					? providerPackageSuffix != null
-					: !PROVIDER_PACKAGE_SUFFIX_EDEFAULT
-						.equals(providerPackageSuffix);
-			case GenModelPackage.GEN_PACKAGE__PRESENTATION_PACKAGE_SUFFIX :
-				return PRESENTATION_PACKAGE_SUFFIX_EDEFAULT == null
-					? presentationPackageSuffix != null
-					: !PRESENTATION_PACKAGE_SUFFIX_EDEFAULT
-						.equals(presentationPackageSuffix);
-			case GenModelPackage.GEN_PACKAGE__TESTS_PACKAGE_SUFFIX :
-				return TESTS_PACKAGE_SUFFIX_EDEFAULT == null
-					? testsPackageSuffix != null
-					: !TESTS_PACKAGE_SUFFIX_EDEFAULT.equals(testsPackageSuffix);
-			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
-				return generateExampleClass != GENERATE_EXAMPLE_CLASS_EDEFAULT;
-			case GenModelPackage.GEN_PACKAGE__LITERALS_INTERFACE :
-				return literalsInterface != LITERALS_INTERFACE_EDEFAULT;
-			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
-				return ecorePackage != null;
-			case GenModelPackage.GEN_PACKAGE__GEN_MODEL :
-				return getGenModel() != null;
-			case GenModelPackage.GEN_PACKAGE__GEN_ENUMS :
-				return genEnums != null && !genEnums.isEmpty();
-			case GenModelPackage.GEN_PACKAGE__GEN_DATA_TYPES :
-				return genDataTypes != null && !genDataTypes.isEmpty();
-			case GenModelPackage.GEN_PACKAGE__GEN_CLASSES :
-				return genClasses != null && !genClasses.isEmpty();
-			case GenModelPackage.GEN_PACKAGE__NESTED_GEN_PACKAGES :
-				return nestedGenPackages != null
-					&& !nestedGenPackages.isEmpty();
-			case GenModelPackage.GEN_PACKAGE__GEN_CLASSIFIERS :
-				return !getGenClassifiers().isEmpty();
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
 				return ((eFlags & RESOURCE_INTERFACES_EFLAG) != 0) != RESOURCE_INTERFACES_EDEFAULT;
 			case GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE :
@@ -486,7 +231,7 @@ public class GenPackageImpl
 					? operationsPackage != null
 					: !OPERATIONS_PACKAGE_EDEFAULT.equals(operationsPackage);
 		}
-		return eDynamicIsSet(featureID);
+		return super.eIsSet(featureID);
 	}
 
 	/**
