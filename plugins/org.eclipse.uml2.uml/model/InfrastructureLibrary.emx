@@ -16457,7 +16457,7 @@
         <specification xmi:type="uml:OpaqueExpression" xmi:id="_vJ8MATajEdqq1tCaRkgBQQ" body="memberEnd->size() = 2" language="OCL"/>
       </ownedRule>
       <generalization xmi:id="_3ADC7B74022D3DEE788500D3" general="_3ADC7B74022D3DE6E15D033A"/>
-      <ownedAttribute xmi:id="_3ADC7B74022D3CBDA7B50011" name="isRequired" isReadOnly="true" isDerived="true" type="_3ADC7B74022D3CA010AC0090">
+      <ownedAttribute xmi:id="_3ADC7B74022D3CBDA7B50011" name="isRequired" type="_3ADC7B74022D3CA010AC0090" isReadOnly="true" isDerived="true">
         <eAnnotations xmi:id="_ruHKhhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_ruHKhxTaEdqZu-3Jy1-uYg" isTransient="true"/>
         </eAnnotations>
