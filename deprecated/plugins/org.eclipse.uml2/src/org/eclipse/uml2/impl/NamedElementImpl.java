@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.28 2005/11/23 20:05:08 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.29 2005/11/28 17:18:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -396,6 +396,51 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.NAMED_ELEMENT__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+			case UML2Package.NAMED_ELEMENT__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
+			case UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
+				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
+				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
+			case UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.NAMED_ELEMENT__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.NAMED_ELEMENT__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.NAMED_ELEMENT__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.NAMED_ELEMENT__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Namespace getNamespace() {
 		Namespace namespace = basicGetNamespace();
 		return namespace == null ? null : (Namespace)eResolveProxy((InternalEObject)namespace);
@@ -440,61 +485,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 */
 	public Namespace basicGetNamespace() {
 		return eContainer instanceof Namespace ? (Namespace) eContainer : null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.NAMED_ELEMENT__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.NAMED_ELEMENT__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.NAMED_ELEMENT__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.NAMED_ELEMENT__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.NAMED_ELEMENT__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.NAMED_ELEMENT__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**

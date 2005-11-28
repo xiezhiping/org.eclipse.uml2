@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.22 2005/11/23 20:05:09 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.23 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -276,6 +276,41 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.PROTOCOL_TRANSITION__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__CONTAINER:
+				return eBasicSetContainer(null, UML2Package.PROTOCOL_TRANSITION__CONTAINER, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__SOURCE:
+				return basicSetSource(null, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__TARGET:
+				return basicSetTarget(null, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__GUARD:
+				return basicSetGuard(null, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__EFFECT:
+				return basicSetEffect(null, msgs);
+			case UML2Package.PROTOCOL_TRANSITION__POST_CONDITION:
+				return basicSetPostCondition(null, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetGuard(Constraint newGuard, NotificationChain msgs) {
 		Object oldGuard = eVirtualSet(UML2Package.PROTOCOL_TRANSITION__GUARD, newGuard);
 		if (eNotificationRequired()) {
@@ -310,45 +345,6 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.PROTOCOL_TRANSITION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__CONTAINER:
-					return eBasicSetContainer(null, UML2Package.PROTOCOL_TRANSITION__CONTAINER, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__SOURCE:
-					return basicSetSource(null, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__TARGET:
-					return basicSetTarget(null, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__GUARD:
-					return basicSetGuard(null, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__EFFECT:
-					return basicSetEffect(null, msgs);
-				case UML2Package.PROTOCOL_TRANSITION__POST_CONDITION:
-					return basicSetPostCondition(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.14 2005/11/23 20:05:07 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.15 2005/11/28 17:18:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -204,37 +204,31 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.GENERAL_ORDERING__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.GENERAL_ORDERING__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE:
-					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.GENERAL_ORDERING__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.GENERAL_ORDERING__BEFORE:
-					EventOccurrence before = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__BEFORE);
-					if (before != null)
-						msgs = ((InternalEObject)before).eInverseRemove(this, UML2Package.EVENT_OCCURRENCE__TO_AFTER, EventOccurrence.class, msgs);
-					return basicSetBefore((EventOccurrence)otherEnd, msgs);
-				case UML2Package.GENERAL_ORDERING__AFTER:
-					EventOccurrence after = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__AFTER);
-					if (after != null)
-						msgs = ((InternalEObject)after).eInverseRemove(this, UML2Package.EVENT_OCCURRENCE__TO_BEFORE, EventOccurrence.class, msgs);
-					return basicSetAfter((EventOccurrence)otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.GENERAL_ORDERING__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+			case UML2Package.GENERAL_ORDERING__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
+			case UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE:
+				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE, null, msgs);
+				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
+			case UML2Package.GENERAL_ORDERING__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+			case UML2Package.GENERAL_ORDERING__BEFORE:
+				EventOccurrence before = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__BEFORE);
+				if (before != null)
+					msgs = ((InternalEObject)before).eInverseRemove(this, UML2Package.EVENT_OCCURRENCE__TO_AFTER, EventOccurrence.class, msgs);
+				return basicSetBefore((EventOccurrence)otherEnd, msgs);
+			case UML2Package.GENERAL_ORDERING__AFTER:
+				EventOccurrence after = (EventOccurrence)eVirtualGet(UML2Package.GENERAL_ORDERING__AFTER);
+				if (after != null)
+					msgs = ((InternalEObject)after).eInverseRemove(this, UML2Package.EVENT_OCCURRENCE__TO_BEFORE, EventOccurrence.class, msgs);
+				return basicSetAfter((EventOccurrence)otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -242,30 +236,26 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.GENERAL_ORDERING__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.GENERAL_ORDERING__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.GENERAL_ORDERING__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.GENERAL_ORDERING__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.GENERAL_ORDERING__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.GENERAL_ORDERING__BEFORE:
-					return basicSetBefore(null, msgs);
-				case UML2Package.GENERAL_ORDERING__AFTER:
-					return basicSetAfter(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.GENERAL_ORDERING__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.GENERAL_ORDERING__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.GENERAL_ORDERING__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.GENERAL_ORDERING__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.GENERAL_ORDERING__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.GENERAL_ORDERING__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.GENERAL_ORDERING__BEFORE:
+				return basicSetBefore(null, msgs);
+			case UML2Package.GENERAL_ORDERING__AFTER:
+				return basicSetAfter(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

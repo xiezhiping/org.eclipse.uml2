@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionImpl.java,v 1.20 2005/11/23 20:05:09 khussey Exp $
+ * $Id: TimeObservationActionImpl.java,v 1.21 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -116,6 +116,53 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.TIME_OBSERVATION_ACTION__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__OUTGOING:
+				return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__INCOMING:
+				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.TIME_OBSERVATION_ACTION__ACTIVITY, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__IN_STRUCTURED_NODE:
+				return eBasicSetContainer(null, UML2Package.TIME_OBSERVATION_ACTION__IN_STRUCTURED_NODE, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__IN_PARTITION:
+				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__IN_INTERRUPTIBLE_REGION:
+				return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__HANDLER:
+				return ((InternalEList)getHandlers()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__LOCAL_PRECONDITION:
+				return ((InternalEList)getLocalPreconditions()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__LOCAL_POSTCONDITION:
+				return ((InternalEList)getLocalPostconditions()).basicRemove(otherEnd, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__OBJECT:
+				return basicSetObject(null, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__VALUE:
+				return basicSetValue(null, msgs);
+			case UML2Package.TIME_OBSERVATION_ACTION__NOW:
+				return ((InternalEList)getNows()).basicRemove(otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
     public TimeExpression getNow(String name) {
 		for (Iterator i = getNows().iterator(); i.hasNext(); ) {
 			TimeExpression now = (TimeExpression) i.next();
@@ -190,57 +237,6 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 	 */
 	public boolean isSetValue() {
   		return false;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.TIME_OBSERVATION_ACTION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__INCOMING:
-					return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.TIME_OBSERVATION_ACTION__ACTIVITY, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__IN_STRUCTURED_NODE:
-					return eBasicSetContainer(null, UML2Package.TIME_OBSERVATION_ACTION__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__HANDLER:
-					return ((InternalEList)getHandlers()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__LOCAL_PRECONDITION:
-					return ((InternalEList)getLocalPreconditions()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__LOCAL_POSTCONDITION:
-					return ((InternalEList)getLocalPostconditions()).basicRemove(otherEnd, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__OBJECT:
-					return basicSetObject(null, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__VALUE:
-					return basicSetValue(null, msgs);
-				case UML2Package.TIME_OBSERVATION_ACTION__NOW:
-					return ((InternalEList)getNows()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**

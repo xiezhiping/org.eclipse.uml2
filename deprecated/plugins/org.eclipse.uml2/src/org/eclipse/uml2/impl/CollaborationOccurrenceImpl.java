@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrenceImpl.java,v 1.19 2005/11/23 20:05:07 khussey Exp $
+ * $Id: CollaborationOccurrenceImpl.java,v 1.20 2005/11/28 17:18:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -179,6 +179,31 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.COLLABORATION_OCCURRENCE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION_OCCURRENCE__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION_OCCURRENCE__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.COLLABORATION_OCCURRENCE__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION_OCCURRENCE__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.COLLABORATION_OCCURRENCE__ROLE_BINDING:
+				return ((InternalEList)getRoleBindings()).basicRemove(otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public Dependency createRoleBinding(EClass eClass) {
@@ -202,35 +227,6 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 		}
 		getRoleBindings().add(newRoleBinding);
 		return newRoleBinding;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.COLLABORATION_OCCURRENCE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION_OCCURRENCE__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION_OCCURRENCE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.COLLABORATION_OCCURRENCE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION_OCCURRENCE__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.COLLABORATION_OCCURRENCE__ROLE_BINDING:
-					return ((InternalEList)getRoleBindings()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**

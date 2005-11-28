@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.18 2005/11/23 20:05:08 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.19 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -171,65 +171,59 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.EXPANSION_REGION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE:
-					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__INCOMING:
-					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__ACTIVITY:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_REGION__ACTIVITY, msgs);
-				case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.EXPANSION_REGION__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__HANDLER:
-					return ((InternalEList)getHandlers()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
-				case UML2Package.EXPANSION_REGION__VARIABLE:
-					return ((InternalEList)getVariables()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__CONTAINED_NODE:
-					return ((InternalEList)getContainedNodes()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__CONTAINED_EDGE:
-					return ((InternalEList)getContainedEdges()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT:
-					return ((InternalEList)getOutputElements()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__INPUT_ELEMENT:
-					return ((InternalEList)getInputElements()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.EXPANSION_REGION__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE:
+				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
+				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__OUTGOING:
+				return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__INCOMING:
+				return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__ACTIVITY:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_REGION__ACTIVITY, msgs);
+			case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE, msgs);
+			case UML2Package.EXPANSION_REGION__IN_PARTITION:
+				return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION:
+				return ((InternalEList)getInInterruptibleRegions()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__HANDLER:
+				return ((InternalEList)getHandlers()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__OWNED_RULE:
+				return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__ELEMENT_IMPORT:
+				return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__PACKAGE_IMPORT:
+				return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
+			case UML2Package.EXPANSION_REGION__VARIABLE:
+				return ((InternalEList)getVariables()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__CONTAINED_NODE:
+				return ((InternalEList)getContainedNodes()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__CONTAINED_EDGE:
+				return ((InternalEList)getContainedEdges()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT:
+				return ((InternalEList)getOutputElements()).basicAdd(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__INPUT_ELEMENT:
+				return ((InternalEList)getInputElements()).basicAdd(otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -237,62 +231,58 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.EXPANSION_REGION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.EXPANSION_REGION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.EXPANSION_REGION__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__INCOMING:
-					return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.EXPANSION_REGION__ACTIVITY, msgs);
-				case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
-					return eBasicSetContainer(null, UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.EXPANSION_REGION__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__HANDLER:
-					return ((InternalEList)getHandlers()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__LOCAL_PRECONDITION:
-					return ((InternalEList)getLocalPreconditions()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__LOCAL_POSTCONDITION:
-					return ((InternalEList)getLocalPostconditions()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
-				case UML2Package.EXPANSION_REGION__VARIABLE:
-					return ((InternalEList)getVariables()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__CONTAINED_NODE:
-					return ((InternalEList)getContainedNodes()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__CONTAINED_EDGE:
-					return ((InternalEList)getContainedEdges()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT:
-					return ((InternalEList)getOutputElements()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__INPUT_ELEMENT:
-					return ((InternalEList)getInputElements()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.EXPANSION_REGION__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.EXPANSION_REGION__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.EXPANSION_REGION__OUTGOING:
+				return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__INCOMING:
+				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.EXPANSION_REGION__ACTIVITY, msgs);
+			case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
+				return eBasicSetContainer(null, UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE, msgs);
+			case UML2Package.EXPANSION_REGION__IN_PARTITION:
+				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION:
+				return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__HANDLER:
+				return ((InternalEList)getHandlers()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__LOCAL_PRECONDITION:
+				return ((InternalEList)getLocalPreconditions()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__LOCAL_POSTCONDITION:
+				return ((InternalEList)getLocalPostconditions()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__OWNED_RULE:
+				return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__ELEMENT_IMPORT:
+				return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__PACKAGE_IMPORT:
+				return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
+			case UML2Package.EXPANSION_REGION__VARIABLE:
+				return ((InternalEList)getVariables()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__CONTAINED_NODE:
+				return ((InternalEList)getContainedNodes()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__CONTAINED_EDGE:
+				return ((InternalEList)getContainedEdges()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT:
+				return ((InternalEList)getOutputElements()).basicRemove(otherEnd, msgs);
+			case UML2Package.EXPANSION_REGION__INPUT_ELEMENT:
+				return ((InternalEList)getInputElements()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

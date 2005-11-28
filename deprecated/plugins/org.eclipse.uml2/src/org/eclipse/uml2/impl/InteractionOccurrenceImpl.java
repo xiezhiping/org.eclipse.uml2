@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrenceImpl.java,v 1.19 2005/11/23 20:05:08 khussey Exp $
+ * $Id: InteractionOccurrenceImpl.java,v 1.20 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -239,6 +239,41 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.INTERACTION_OCCURRENCE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__COVERED:
+				return ((InternalEList)getCovereds()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__GENERAL_ORDERING:
+				return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION:
+				return eBasicSetContainer(null, UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_OPERAND:
+				return eBasicSetContainer(null, UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_OPERAND, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE:
+				return ((InternalEList)getActualGates()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_OCCURRENCE__ARGUMENT:
+				return ((InternalEList)getArguments()).basicRemove(otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public InputPin createArgument(EClass eClass) {
@@ -262,45 +297,6 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 		}
 		getArguments().add(newArgument);
 		return newArgument;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.INTERACTION_OCCURRENCE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__COVERED:
-					return ((InternalEList)getCovereds()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__GENERAL_ORDERING:
-					return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION:
-					return eBasicSetContainer(null, UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_OPERAND:
-					return eBasicSetContainer(null, UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_OPERAND, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE:
-					return ((InternalEList)getActualGates()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_OCCURRENCE__ARGUMENT:
-					return ((InternalEList)getArguments()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**

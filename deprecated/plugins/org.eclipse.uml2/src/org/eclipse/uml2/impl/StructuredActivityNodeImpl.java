@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.34 2005/11/23 20:05:07 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.35 2005/11/28 17:18:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -678,6 +678,117 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE:
+				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
+				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__OUTGOING:
+				return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__INCOMING:
+				return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_PARTITION:
+				return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION:
+				return ((InternalEList)getInInterruptibleRegions()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__HANDLER:
+				return ((InternalEList)getHandlers()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_RULE:
+				return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT:
+				return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT:
+				return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE:
+				return ((InternalEList)getVariables()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE:
+				return ((InternalEList)getContainedNodes()).basicAdd(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE:
+				return ((InternalEList)getContainedEdges()).basicAdd(otherEnd, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__OUTGOING:
+				return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__INCOMING:
+				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE:
+				return eBasicSetContainer(null, UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_PARTITION:
+				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION:
+				return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__HANDLER:
+				return ((InternalEList)getHandlers()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION:
+				return ((InternalEList)getLocalPreconditions()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION:
+				return ((InternalEList)getLocalPostconditions()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_RULE:
+				return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT:
+				return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT:
+				return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE:
+				return ((InternalEList)getVariables()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE:
+				return ((InternalEList)getContainedNodes()).basicRemove(otherEnd, msgs);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE:
+				return ((InternalEList)getContainedEdges()).basicRemove(otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getSubgroups() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -904,127 +1015,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			|| isSetSubgroups();
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE:
-					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__INCOMING:
-					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__HANDLER:
-					return ((InternalEList)getHandlers()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE:
-					return ((InternalEList)getVariables()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE:
-					return ((InternalEList)getContainedNodes()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE:
-					return ((InternalEList)getContainedEdges()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__INCOMING:
-					return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE:
-					return eBasicSetContainer(null, UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__HANDLER:
-					return ((InternalEList)getHandlers()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION:
-					return ((InternalEList)getLocalPreconditions()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION:
-					return ((InternalEList)getLocalPostconditions()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE:
-					return ((InternalEList)getVariables()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE:
-					return ((InternalEList)getContainedNodes()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE:
-					return ((InternalEList)getContainedEdges()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

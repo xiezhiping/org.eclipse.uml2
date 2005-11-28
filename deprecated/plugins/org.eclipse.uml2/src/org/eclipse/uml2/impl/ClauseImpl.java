@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.12 2005/11/23 20:05:07 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.13 2005/11/28 17:18:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -236,22 +236,16 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CLAUSE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CLAUSE__PREDECESSOR_CLAUSE:
-					return ((InternalEList)getPredecessorClauses()).basicAdd(otherEnd, msgs);
-				case UML2Package.CLAUSE__SUCCESSOR_CLAUSE:
-					return ((InternalEList)getSuccessorClauses()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.CLAUSE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+			case UML2Package.CLAUSE__PREDECESSOR_CLAUSE:
+				return ((InternalEList)getPredecessorClauses()).basicAdd(otherEnd, msgs);
+			case UML2Package.CLAUSE__SUCCESSOR_CLAUSE:
+				return ((InternalEList)getSuccessorClauses()).basicAdd(otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -259,22 +253,18 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CLAUSE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLAUSE__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLAUSE__PREDECESSOR_CLAUSE:
-					return ((InternalEList)getPredecessorClauses()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLAUSE__SUCCESSOR_CLAUSE:
-					return ((InternalEList)getSuccessorClauses()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.CLAUSE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.CLAUSE__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.CLAUSE__PREDECESSOR_CLAUSE:
+				return ((InternalEList)getPredecessorClauses()).basicRemove(otherEnd, msgs);
+			case UML2Package.CLAUSE__SUCCESSOR_CLAUSE:
+				return ((InternalEList)getSuccessorClauses()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

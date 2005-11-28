@@ -8,7 +8,8 @@
     editPluginClass="org.eclipse.uml2.provider.UML2EditPlugin" editorPluginClass="org.eclipse.uml2.presentation.UML2EditorPlugin"
     nonNLSMarkers="true" testsDirectory="/org.eclipse.uml2.tests/src" testSuiteClass="org.eclipse.uml2.tests.UML2AllTests"
     booleanFlagsField="eFlags" booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.importer.rose"
-    featureDelegation="Virtual" containmentProxies="true" usedGenPackages="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    featureDelegation="Virtual" containmentProxies="true" minimalReflectiveMethods="false"
+    usedGenPackages="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     factoryMethods="true" pluralizedGetters="true" cacheAdapterSupport="true" safeStrings="true"
     invariantPrefix="validate">
   <foreignModel>UML2.mdl</foreignModel>

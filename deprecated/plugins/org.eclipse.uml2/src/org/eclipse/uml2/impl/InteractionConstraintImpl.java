@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.21 2005/11/23 20:05:09 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.22 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -229,38 +229,34 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.INTERACTION_CONSTRAINT__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER:
-					return basicSetTemplateParameter(null, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__OWNING_PARAMETER:
-					return eBasicSetContainer(null, UML2Package.INTERACTION_CONSTRAINT__OWNING_PARAMETER, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__NAMESPACE:
-					return eBasicSetContainer(null, UML2Package.INTERACTION_CONSTRAINT__NAMESPACE, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__SPECIFICATION:
-					return basicSetSpecification(null, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__MININT:
-					return basicSetMinint(null, msgs);
-				case UML2Package.INTERACTION_CONSTRAINT__MAXINT:
-					return basicSetMaxint(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.INTERACTION_CONSTRAINT__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER:
+				return basicSetTemplateParameter(null, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__OWNING_PARAMETER:
+				return eBasicSetContainer(null, UML2Package.INTERACTION_CONSTRAINT__OWNING_PARAMETER, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__NAMESPACE:
+				return eBasicSetContainer(null, UML2Package.INTERACTION_CONSTRAINT__NAMESPACE, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__SPECIFICATION:
+				return basicSetSpecification(null, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__MININT:
+				return basicSetMinint(null, msgs);
+			case UML2Package.INTERACTION_CONSTRAINT__MAXINT:
+				return basicSetMaxint(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

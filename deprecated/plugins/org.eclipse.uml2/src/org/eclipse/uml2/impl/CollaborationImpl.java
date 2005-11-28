@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.31 2005/11/23 20:05:09 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.32 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -408,6 +408,63 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.COLLABORATION__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.COLLABORATION__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.COLLABORATION__OWNED_RULE:
+				return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__ELEMENT_IMPORT:
+				return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__PACKAGE_IMPORT:
+				return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__TEMPLATE_PARAMETER:
+				return basicSetTemplateParameter(null, msgs);
+			case UML2Package.COLLABORATION__OWNING_PARAMETER:
+				return eBasicSetContainer(null, UML2Package.COLLABORATION__OWNING_PARAMETER, msgs);
+			case UML2Package.COLLABORATION__GENERALIZATION:
+				return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__SUBSTITUTION:
+				return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
+				return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__OWNED_USE_CASE:
+				return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__USE_CASE:
+				return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__OCCURRENCE:
+				return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__OWNED_BEHAVIOR:
+				return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__IMPLEMENTATION:
+				return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__OWNED_TRIGGER:
+				return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__OWNED_STATE_MACHINE:
+				return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__OWNED_ATTRIBUTE:
+				return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
+			case UML2Package.COLLABORATION__OWNED_CONNECTOR:
+				return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getRoles() {
 		EList role = (EList)eVirtualGet(UML2Package.COLLABORATION__ROLE);
 		if (role == null) {
@@ -425,67 +482,6 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	public boolean isSetRoles() {
 		return eIsSet(UML2Package.COLLABORATION__OWNED_ATTRIBUTE)
 			|| eIsSet(UML2Package.COLLABORATION__COLLABORATION_ROLE);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.COLLABORATION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.COLLABORATION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.COLLABORATION__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__TEMPLATE_PARAMETER:
-					return basicSetTemplateParameter(null, msgs);
-				case UML2Package.COLLABORATION__OWNING_PARAMETER:
-					return eBasicSetContainer(null, UML2Package.COLLABORATION__OWNING_PARAMETER, msgs);
-				case UML2Package.COLLABORATION__GENERALIZATION:
-					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__OWNED_USE_CASE:
-					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__USE_CASE:
-					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__OCCURRENCE:
-					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__OWNED_TRIGGER:
-					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__OWNED_ATTRIBUTE:
-					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__OWNED_CONNECTOR:
-					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**

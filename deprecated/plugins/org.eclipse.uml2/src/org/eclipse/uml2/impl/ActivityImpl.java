@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.36 2005/11/23 20:05:07 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.37 2005/11/28 17:18:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -239,6 +239,153 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.ACTIVITY__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE:
+				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE, null, msgs);
+				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
+			case UML2Package.ACTIVITY__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_RULE:
+				return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__ELEMENT_IMPORT:
+				return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__PACKAGE_IMPORT:
+				return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__TEMPLATE_PARAMETER:
+				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.ACTIVITY__TEMPLATE_PARAMETER);
+				if (templateParameter != null)
+					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNING_PARAMETER:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY__OWNING_PARAMETER, msgs);
+			case UML2Package.ACTIVITY__GENERALIZATION:
+				return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__SUBSTITUTION:
+				return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+				return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__USE_CASE:
+				return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
+				return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__IMPLEMENTATION:
+				return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
+				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_OPERATION:
+				return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__CONTEXT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY__CONTEXT, msgs);
+			case UML2Package.ACTIVITY__SPECIFICATION:
+				BehavioralFeature specification = (BehavioralFeature)eVirtualGet(UML2Package.ACTIVITY__SPECIFICATION);
+				if (specification != null)
+					msgs = ((InternalEObject)specification).eInverseRemove(this, UML2Package.BEHAVIORAL_FEATURE__METHOD, BehavioralFeature.class, msgs);
+				return basicSetSpecification((BehavioralFeature)otherEnd, msgs);
+			case UML2Package.ACTIVITY__EDGE:
+				return ((InternalEList)getEdges()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__GROUP:
+				return ((InternalEList)getGroups()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__NODE:
+				return ((InternalEList)getNodes()).basicAdd(otherEnd, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.ACTIVITY__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.ACTIVITY__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.ACTIVITY__OWNED_RULE:
+				return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__ELEMENT_IMPORT:
+				return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__PACKAGE_IMPORT:
+				return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__TEMPLATE_PARAMETER:
+				return basicSetTemplateParameter(null, msgs);
+			case UML2Package.ACTIVITY__OWNING_PARAMETER:
+				return eBasicSetContainer(null, UML2Package.ACTIVITY__OWNING_PARAMETER, msgs);
+			case UML2Package.ACTIVITY__GENERALIZATION:
+				return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__SUBSTITUTION:
+				return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+				return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_USE_CASE:
+				return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__USE_CASE:
+				return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OCCURRENCE:
+				return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
+				return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__IMPLEMENTATION:
+				return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_TRIGGER:
+				return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
+				return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
+				return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_CONNECTOR:
+				return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_PORT:
+				return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_OPERATION:
+				return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__NESTED_CLASSIFIER:
+				return ((InternalEList)getNestedClassifiers()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_RECEPTION:
+				return ((InternalEList)getOwnedReceptions()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__CONTEXT:
+				return eBasicSetContainer(null, UML2Package.ACTIVITY__CONTEXT, msgs);
+			case UML2Package.ACTIVITY__SPECIFICATION:
+				return basicSetSpecification(null, msgs);
+			case UML2Package.ACTIVITY__PARAMETER:
+				return ((InternalEList)getParameters()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_PARAMETER_SET:
+				return ((InternalEList)getOwnedParameterSets()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__EDGE:
+				return ((InternalEList)getEdges()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__GROUP:
+				return ((InternalEList)getGroups()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTIVITY__NODE:
+				return ((InternalEList)getNodes()).basicRemove(otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isSingleExecution() {
 		return (eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0;
 	}
@@ -426,163 +573,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.ACTIVITY__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE:
-					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.ACTIVITY__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__TEMPLATE_PARAMETER:
-					TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.ACTIVITY__TEMPLATE_PARAMETER);
-					if (templateParameter != null)
-						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNING_PARAMETER:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY__OWNING_PARAMETER, msgs);
-				case UML2Package.ACTIVITY__GENERALIZATION:
-					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__USE_CASE:
-					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_OPERATION:
-					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__CONTEXT:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY__CONTEXT, msgs);
-				case UML2Package.ACTIVITY__SPECIFICATION:
-					BehavioralFeature specification = (BehavioralFeature)eVirtualGet(UML2Package.ACTIVITY__SPECIFICATION);
-					if (specification != null)
-						msgs = ((InternalEObject)specification).eInverseRemove(this, UML2Package.BEHAVIORAL_FEATURE__METHOD, BehavioralFeature.class, msgs);
-					return basicSetSpecification((BehavioralFeature)otherEnd, msgs);
-				case UML2Package.ACTIVITY__EDGE:
-					return ((InternalEList)getEdges()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__GROUP:
-					return ((InternalEList)getGroups()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__NODE:
-					return ((InternalEList)getNodes()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.ACTIVITY__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.ACTIVITY__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.ACTIVITY__OWNED_RULE:
-					return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__ELEMENT_IMPORT:
-					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__PACKAGE_IMPORT:
-					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__TEMPLATE_PARAMETER:
-					return basicSetTemplateParameter(null, msgs);
-				case UML2Package.ACTIVITY__OWNING_PARAMETER:
-					return eBasicSetContainer(null, UML2Package.ACTIVITY__OWNING_PARAMETER, msgs);
-				case UML2Package.ACTIVITY__GENERALIZATION:
-					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_USE_CASE:
-					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__USE_CASE:
-					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OCCURRENCE:
-					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_TRIGGER:
-					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
-					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_CONNECTOR:
-					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_PORT:
-					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_OPERATION:
-					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__NESTED_CLASSIFIER:
-					return ((InternalEList)getNestedClassifiers()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_RECEPTION:
-					return ((InternalEList)getOwnedReceptions()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__CONTEXT:
-					return eBasicSetContainer(null, UML2Package.ACTIVITY__CONTEXT, msgs);
-				case UML2Package.ACTIVITY__SPECIFICATION:
-					return basicSetSpecification(null, msgs);
-				case UML2Package.ACTIVITY__PARAMETER:
-					return ((InternalEList)getParameters()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_PARAMETER_SET:
-					return ((InternalEList)getOwnedParameterSets()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__EDGE:
-					return ((InternalEList)getEdges()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__GROUP:
-					return ((InternalEList)getGroups()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__NODE:
-					return ((InternalEList)getNodes()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**

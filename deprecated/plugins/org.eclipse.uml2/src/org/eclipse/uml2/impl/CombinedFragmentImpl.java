@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.18 2005/11/23 20:05:08 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.19 2005/11/28 17:18:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -232,6 +232,41 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.COMBINED_FRAGMENT__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.COMBINED_FRAGMENT__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.COMBINED_FRAGMENT__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.COMBINED_FRAGMENT__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.COMBINED_FRAGMENT__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.COMBINED_FRAGMENT__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.COMBINED_FRAGMENT__COVERED:
+				return ((InternalEList)getCovereds()).basicRemove(otherEnd, msgs);
+			case UML2Package.COMBINED_FRAGMENT__GENERAL_ORDERING:
+				return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
+			case UML2Package.COMBINED_FRAGMENT__ENCLOSING_INTERACTION:
+				return eBasicSetContainer(null, UML2Package.COMBINED_FRAGMENT__ENCLOSING_INTERACTION, msgs);
+			case UML2Package.COMBINED_FRAGMENT__ENCLOSING_OPERAND:
+				return eBasicSetContainer(null, UML2Package.COMBINED_FRAGMENT__ENCLOSING_OPERAND, msgs);
+			case UML2Package.COMBINED_FRAGMENT__OPERAND:
+				return ((InternalEList)getOperands()).basicRemove(otherEnd, msgs);
+			case UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE:
+				return ((InternalEList)getCfragmentGates()).basicRemove(otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 * @deprecated Use #createCfragmentGate() instead.
 	 */
@@ -256,45 +291,6 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 		}
 		getCfragmentGates().add(newCfragmentGate);
 		return newCfragmentGate;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.COMBINED_FRAGMENT__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMBINED_FRAGMENT__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMBINED_FRAGMENT__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMBINED_FRAGMENT__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.COMBINED_FRAGMENT__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMBINED_FRAGMENT__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.COMBINED_FRAGMENT__COVERED:
-					return ((InternalEList)getCovereds()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMBINED_FRAGMENT__GENERAL_ORDERING:
-					return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMBINED_FRAGMENT__ENCLOSING_INTERACTION:
-					return eBasicSetContainer(null, UML2Package.COMBINED_FRAGMENT__ENCLOSING_INTERACTION, msgs);
-				case UML2Package.COMBINED_FRAGMENT__ENCLOSING_OPERAND:
-					return eBasicSetContainer(null, UML2Package.COMBINED_FRAGMENT__ENCLOSING_OPERAND, msgs);
-				case UML2Package.COMBINED_FRAGMENT__OPERAND:
-					return ((InternalEList)getOperands()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE:
-					return ((InternalEList)getCfragmentGates()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**

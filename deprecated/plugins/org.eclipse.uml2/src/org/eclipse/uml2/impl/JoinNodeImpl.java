@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.20 2005/11/23 20:05:08 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.21 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -212,40 +212,36 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.JOIN_NODE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.JOIN_NODE__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.JOIN_NODE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.JOIN_NODE__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.JOIN_NODE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.JOIN_NODE__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.JOIN_NODE__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
-				case UML2Package.JOIN_NODE__INCOMING:
-					return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
-				case UML2Package.JOIN_NODE__ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.JOIN_NODE__ACTIVITY, msgs);
-				case UML2Package.JOIN_NODE__IN_STRUCTURED_NODE:
-					return eBasicSetContainer(null, UML2Package.JOIN_NODE__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.JOIN_NODE__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
-				case UML2Package.JOIN_NODE__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
-				case UML2Package.JOIN_NODE__JOIN_SPEC:
-					return basicSetJoinSpec(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.JOIN_NODE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.JOIN_NODE__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.JOIN_NODE__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.JOIN_NODE__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.JOIN_NODE__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.JOIN_NODE__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.JOIN_NODE__OUTGOING:
+				return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
+			case UML2Package.JOIN_NODE__INCOMING:
+				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
+			case UML2Package.JOIN_NODE__ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.JOIN_NODE__ACTIVITY, msgs);
+			case UML2Package.JOIN_NODE__IN_STRUCTURED_NODE:
+				return eBasicSetContainer(null, UML2Package.JOIN_NODE__IN_STRUCTURED_NODE, msgs);
+			case UML2Package.JOIN_NODE__IN_PARTITION:
+				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
+			case UML2Package.JOIN_NODE__IN_INTERRUPTIBLE_REGION:
+				return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
+			case UML2Package.JOIN_NODE__JOIN_SPEC:
+				return basicSetJoinSpec(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

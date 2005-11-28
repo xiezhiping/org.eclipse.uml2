@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.18 2005/11/23 20:05:08 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.19 2005/11/28 17:18:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -363,6 +363,99 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.EVENT_OCCURRENCE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
+				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
+				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__COVERED:
+				return ((InternalEList)getCovereds()).basicAdd(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
+			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND, msgs);
+			case UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE:
+				Message receiveMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE);
+				if (receiveMessage != null)
+					msgs = ((InternalEObject)receiveMessage).eInverseRemove(this, UML2Package.MESSAGE__RECEIVE_EVENT, Message.class, msgs);
+				return basicSetReceiveMessage((Message)otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE:
+				Message sendMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE);
+				if (sendMessage != null)
+					msgs = ((InternalEObject)sendMessage).eInverseRemove(this, UML2Package.MESSAGE__SEND_EVENT, Message.class, msgs);
+				return basicSetSendMessage((Message)otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__START_EXEC:
+				return ((InternalEList)getStartExecs()).basicAdd(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__FINISH_EXEC:
+				return ((InternalEList)getFinishExecs()).basicAdd(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__TO_AFTER:
+				return ((InternalEList)getToAfters()).basicAdd(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__TO_BEFORE:
+				return ((InternalEList)getToBefores()).basicAdd(otherEnd, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.EVENT_OCCURRENCE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.EVENT_OCCURRENCE__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.EVENT_OCCURRENCE__COVERED:
+				return ((InternalEList)getCovereds()).basicRemove(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__GENERAL_ORDERING:
+				return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:
+				return eBasicSetContainer(null, UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
+			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND:
+				return eBasicSetContainer(null, UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND, msgs);
+			case UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE:
+				return basicSetReceiveMessage(null, msgs);
+			case UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE:
+				return basicSetSendMessage(null, msgs);
+			case UML2Package.EVENT_OCCURRENCE__START_EXEC:
+				return ((InternalEList)getStartExecs()).basicRemove(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__FINISH_EXEC:
+				return ((InternalEList)getFinishExecs()).basicRemove(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__TO_AFTER:
+				return ((InternalEList)getToAfters()).basicRemove(otherEnd, msgs);
+			case UML2Package.EVENT_OCCURRENCE__TO_BEFORE:
+				return ((InternalEList)getToBefores()).basicRemove(otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
     public Lifeline getCovered(String name) {
 		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
 			Lifeline covered = (Lifeline) i.next();
@@ -371,109 +464,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.EVENT_OCCURRENCE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
-					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__COVERED:
-					return ((InternalEList)getCovereds()).basicAdd(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
-				case UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND, msgs);
-				case UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE:
-					Message receiveMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE);
-					if (receiveMessage != null)
-						msgs = ((InternalEObject)receiveMessage).eInverseRemove(this, UML2Package.MESSAGE__RECEIVE_EVENT, Message.class, msgs);
-					return basicSetReceiveMessage((Message)otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE:
-					Message sendMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE);
-					if (sendMessage != null)
-						msgs = ((InternalEObject)sendMessage).eInverseRemove(this, UML2Package.MESSAGE__SEND_EVENT, Message.class, msgs);
-					return basicSetSendMessage((Message)otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__START_EXEC:
-					return ((InternalEList)getStartExecs()).basicAdd(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__FINISH_EXEC:
-					return ((InternalEList)getFinishExecs()).basicAdd(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__TO_AFTER:
-					return ((InternalEList)getToAfters()).basicAdd(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__TO_BEFORE:
-					return ((InternalEList)getToBefores()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.EVENT_OCCURRENCE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.EVENT_OCCURRENCE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.EVENT_OCCURRENCE__COVERED:
-					return ((InternalEList)getCovereds()).basicRemove(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__GENERAL_ORDERING:
-					return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:
-					return eBasicSetContainer(null, UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
-				case UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND:
-					return eBasicSetContainer(null, UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND, msgs);
-				case UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE:
-					return basicSetReceiveMessage(null, msgs);
-				case UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE:
-					return basicSetSendMessage(null, msgs);
-				case UML2Package.EVENT_OCCURRENCE__START_EXEC:
-					return ((InternalEList)getStartExecs()).basicRemove(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__FINISH_EXEC:
-					return ((InternalEList)getFinishExecs()).basicRemove(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__TO_AFTER:
-					return ((InternalEList)getToAfters()).basicRemove(otherEnd, msgs);
-				case UML2Package.EVENT_OCCURRENCE__TO_BEFORE:
-					return ((InternalEList)getToBefores()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**

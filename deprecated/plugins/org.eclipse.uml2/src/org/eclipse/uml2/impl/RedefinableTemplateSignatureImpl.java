@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.20 2005/11/23 20:05:09 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.21 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -283,6 +283,85 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE:
+				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
+				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER:
+				return ((InternalEList)getOwnedParameters()).basicAdd(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTED_SIGNATURE:
+				return ((InternalEList)getNestedSignatures()).basicAdd(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTING_SIGNATURE:
+				TemplateSignature nestingSignature = (TemplateSignature)eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
+				if (nestingSignature != null)
+					msgs = ((InternalEObject)nestingSignature).eInverseRemove(this, UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE, TemplateSignature.class, msgs);
+				return basicSetNestingSignature((TemplateSignature)otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER:
+				return ((InternalEList)getOwnedParameters()).basicRemove(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTED_SIGNATURE:
+				return ((InternalEList)getNestedSignatures()).basicRemove(otherEnd, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTING_SIGNATURE:
+				return basicSetNestingSignature(null, msgs);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE:
+				return eBasicSetContainer(null, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE:
+				return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, TemplateableElement.class, msgs);
+		}
+		return eDynamicBasicRemoveFromContainer(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Element basicGetOwner() {
 		TemplateableElement template = getTemplate();			
 		if (template != null) {
@@ -301,99 +380,6 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 			|| eIsSet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE);
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE:
-					TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
-					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER:
-					return ((InternalEList)getOwnedParameters()).basicAdd(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTED_SIGNATURE:
-					return ((InternalEList)getNestedSignatures()).basicAdd(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTING_SIGNATURE:
-					TemplateSignature nestingSignature = (TemplateSignature)eVirtualGet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
-					if (nestingSignature != null)
-						msgs = ((InternalEObject)nestingSignature).eInverseRemove(this, UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE, TemplateSignature.class, msgs);
-					return basicSetNestingSignature((TemplateSignature)otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE:
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER:
-					return ((InternalEList)getOwnedParameters()).basicRemove(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTED_SIGNATURE:
-					return ((InternalEList)getNestedSignatures()).basicRemove(otherEnd, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NESTING_SIGNATURE:
-					return basicSetNestingSignature(null, msgs);
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE:
-					return eBasicSetContainer(null, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE:
-					return eInternalContainer().eInverseRemove(this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, TemplateableElement.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eInternalContainer().eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

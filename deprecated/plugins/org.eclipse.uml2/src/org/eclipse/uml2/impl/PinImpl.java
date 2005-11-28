@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.19 2005/11/23 20:05:09 khussey Exp $
+ * $Id: PinImpl.java,v 1.20 2005/11/28 17:18:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -482,44 +482,40 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.PIN__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.PIN__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.PIN__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.PIN__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.PIN__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.PIN__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.PIN__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
-				case UML2Package.PIN__INCOMING:
-					return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
-				case UML2Package.PIN__ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.PIN__ACTIVITY, msgs);
-				case UML2Package.PIN__IN_STRUCTURED_NODE:
-					return eBasicSetContainer(null, UML2Package.PIN__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.PIN__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
-				case UML2Package.PIN__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
-				case UML2Package.PIN__UPPER_BOUND:
-					return basicSetUpperBound(null, msgs);
-				case UML2Package.PIN__UPPER_VALUE:
-					return basicSetUpperValue(null, msgs);
-				case UML2Package.PIN__LOWER_VALUE:
-					return basicSetLowerValue(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.PIN__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.PIN__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.PIN__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.PIN__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.PIN__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.PIN__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.PIN__OUTGOING:
+				return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
+			case UML2Package.PIN__INCOMING:
+				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
+			case UML2Package.PIN__ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.PIN__ACTIVITY, msgs);
+			case UML2Package.PIN__IN_STRUCTURED_NODE:
+				return eBasicSetContainer(null, UML2Package.PIN__IN_STRUCTURED_NODE, msgs);
+			case UML2Package.PIN__IN_PARTITION:
+				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
+			case UML2Package.PIN__IN_INTERRUPTIBLE_REGION:
+				return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
+			case UML2Package.PIN__UPPER_BOUND:
+				return basicSetUpperBound(null, msgs);
+			case UML2Package.PIN__UPPER_VALUE:
+				return basicSetUpperValue(null, msgs);
+			case UML2Package.PIN__LOWER_VALUE:
+				return basicSetLowerValue(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

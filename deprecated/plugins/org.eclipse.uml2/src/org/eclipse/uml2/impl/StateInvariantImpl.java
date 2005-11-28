@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.22 2005/11/23 20:05:07 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.23 2005/11/28 17:18:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -210,6 +210,39 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.STATE_INVARIANT__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.STATE_INVARIANT__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.STATE_INVARIANT__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.STATE_INVARIANT__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.STATE_INVARIANT__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.STATE_INVARIANT__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.STATE_INVARIANT__COVERED:
+				return ((InternalEList)getCovereds()).basicRemove(otherEnd, msgs);
+			case UML2Package.STATE_INVARIANT__GENERAL_ORDERING:
+				return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
+			case UML2Package.STATE_INVARIANT__ENCLOSING_INTERACTION:
+				return eBasicSetContainer(null, UML2Package.STATE_INVARIANT__ENCLOSING_INTERACTION, msgs);
+			case UML2Package.STATE_INVARIANT__ENCLOSING_OPERAND:
+				return eBasicSetContainer(null, UML2Package.STATE_INVARIANT__ENCLOSING_OPERAND, msgs);
+			case UML2Package.STATE_INVARIANT__INVARIANT:
+				return basicSetInvariant(null, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
     public Lifeline getCovered(String name) {
 		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
 			Lifeline covered = (Lifeline) i.next();
@@ -218,43 +251,6 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.STATE_INVARIANT__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.STATE_INVARIANT__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.STATE_INVARIANT__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.STATE_INVARIANT__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.STATE_INVARIANT__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.STATE_INVARIANT__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.STATE_INVARIANT__COVERED:
-					return ((InternalEList)getCovereds()).basicRemove(otherEnd, msgs);
-				case UML2Package.STATE_INVARIANT__GENERAL_ORDERING:
-					return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
-				case UML2Package.STATE_INVARIANT__ENCLOSING_INTERACTION:
-					return eBasicSetContainer(null, UML2Package.STATE_INVARIANT__ENCLOSING_INTERACTION, msgs);
-				case UML2Package.STATE_INVARIANT__ENCLOSING_OPERAND:
-					return eBasicSetContainer(null, UML2Package.STATE_INVARIANT__ENCLOSING_OPERAND, msgs);
-				case UML2Package.STATE_INVARIANT__INVARIANT:
-					return basicSetInvariant(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**

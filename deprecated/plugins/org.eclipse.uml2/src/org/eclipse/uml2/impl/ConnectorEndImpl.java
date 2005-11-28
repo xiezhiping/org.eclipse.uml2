@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.16 2005/11/23 20:05:09 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.17 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -218,23 +218,17 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CONNECTOR_END__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CONNECTOR_END__ROLE:
-					ConnectableElement role = (ConnectableElement)eVirtualGet(UML2Package.CONNECTOR_END__ROLE);
-					if (role != null)
-						msgs = ((InternalEObject)role).eInverseRemove(this, UML2Package.CONNECTABLE_ELEMENT__END, ConnectableElement.class, msgs);
-					return basicSetRole((ConnectableElement)otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.CONNECTOR_END__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+			case UML2Package.CONNECTOR_END__ROLE:
+				ConnectableElement role = (ConnectableElement)eVirtualGet(UML2Package.CONNECTOR_END__ROLE);
+				if (role != null)
+					msgs = ((InternalEObject)role).eInverseRemove(this, UML2Package.CONNECTABLE_ELEMENT__END, ConnectableElement.class, msgs);
+				return basicSetRole((ConnectableElement)otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -242,24 +236,20 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.CONNECTOR_END__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.CONNECTOR_END__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.CONNECTOR_END__UPPER_VALUE:
-					return basicSetUpperValue(null, msgs);
-				case UML2Package.CONNECTOR_END__LOWER_VALUE:
-					return basicSetLowerValue(null, msgs);
-				case UML2Package.CONNECTOR_END__ROLE:
-					return basicSetRole(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.CONNECTOR_END__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.CONNECTOR_END__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.CONNECTOR_END__UPPER_VALUE:
+				return basicSetUpperValue(null, msgs);
+			case UML2Package.CONNECTOR_END__LOWER_VALUE:
+				return basicSetLowerValue(null, msgs);
+			case UML2Package.CONNECTOR_END__ROLE:
+				return basicSetRole(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

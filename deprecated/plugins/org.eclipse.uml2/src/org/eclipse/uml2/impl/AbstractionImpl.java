@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.21 2005/11/23 20:05:09 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.22 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -182,34 +182,30 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.ABSTRACTION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ABSTRACTION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.ABSTRACTION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.ABSTRACTION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.ABSTRACTION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.ABSTRACTION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.ABSTRACTION__TEMPLATE_PARAMETER:
-					return basicSetTemplateParameter(null, msgs);
-				case UML2Package.ABSTRACTION__OWNING_PARAMETER:
-					return eBasicSetContainer(null, UML2Package.ABSTRACTION__OWNING_PARAMETER, msgs);
-				case UML2Package.ABSTRACTION__CLIENT:
-					return ((InternalEList)getClients()).basicRemove(otherEnd, msgs);
-				case UML2Package.ABSTRACTION__MAPPING:
-					return basicSetMapping(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.ABSTRACTION__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.ABSTRACTION__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.ABSTRACTION__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.ABSTRACTION__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.ABSTRACTION__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.ABSTRACTION__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.ABSTRACTION__TEMPLATE_PARAMETER:
+				return basicSetTemplateParameter(null, msgs);
+			case UML2Package.ABSTRACTION__OWNING_PARAMETER:
+				return eBasicSetContainer(null, UML2Package.ABSTRACTION__OWNING_PARAMETER, msgs);
+			case UML2Package.ABSTRACTION__CLIENT:
+				return ((InternalEList)getClients()).basicRemove(otherEnd, msgs);
+			case UML2Package.ABSTRACTION__MAPPING:
+				return basicSetMapping(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

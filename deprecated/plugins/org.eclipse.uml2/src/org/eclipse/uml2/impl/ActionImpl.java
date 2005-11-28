@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.23 2005/11/23 20:05:08 khussey Exp $
+ * $Id: ActionImpl.java,v 1.24 2005/11/28 17:18:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -322,6 +322,47 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.ACTION__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTION__OWNED_COMMENT:
+				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTION__TEMPLATE_BINDING:
+				return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTION__OWNED_TEMPLATE_SIGNATURE:
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UML2Package.ACTION__CLIENT_DEPENDENCY:
+				return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTION__NAME_EXPRESSION:
+				return basicSetNameExpression(null, msgs);
+			case UML2Package.ACTION__OUTGOING:
+				return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTION__INCOMING:
+				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTION__ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.ACTION__ACTIVITY, msgs);
+			case UML2Package.ACTION__IN_STRUCTURED_NODE:
+				return eBasicSetContainer(null, UML2Package.ACTION__IN_STRUCTURED_NODE, msgs);
+			case UML2Package.ACTION__IN_PARTITION:
+				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTION__IN_INTERRUPTIBLE_REGION:
+				return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTION__HANDLER:
+				return ((InternalEList)getHandlers()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTION__LOCAL_PRECONDITION:
+				return ((InternalEList)getLocalPreconditions()).basicRemove(otherEnd, msgs);
+			case UML2Package.ACTION__LOCAL_POSTCONDITION:
+				return ((InternalEList)getLocalPostconditions()).basicRemove(otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public Constraint createLocalPostcondition(EClass eClass) {
@@ -345,51 +386,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		}
 		getLocalPostconditions().add(newLocalPostcondition);
 		return newLocalPostcondition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UML2Package.ACTION__EANNOTATIONS:
-					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTION__OWNED_COMMENT:
-					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTION__TEMPLATE_BINDING:
-					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTION__OWNED_TEMPLATE_SIGNATURE:
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UML2Package.ACTION__CLIENT_DEPENDENCY:
-					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTION__NAME_EXPRESSION:
-					return basicSetNameExpression(null, msgs);
-				case UML2Package.ACTION__OUTGOING:
-					return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTION__INCOMING:
-					return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTION__ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.ACTION__ACTIVITY, msgs);
-				case UML2Package.ACTION__IN_STRUCTURED_NODE:
-					return eBasicSetContainer(null, UML2Package.ACTION__IN_STRUCTURED_NODE, msgs);
-				case UML2Package.ACTION__IN_PARTITION:
-					return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTION__IN_INTERRUPTIBLE_REGION:
-					return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTION__HANDLER:
-					return ((InternalEList)getHandlers()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTION__LOCAL_PRECONDITION:
-					return ((InternalEList)getLocalPreconditions()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTION__LOCAL_POSTCONDITION:
-					return ((InternalEList)getLocalPostconditions()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
 	}
 
 	/**
