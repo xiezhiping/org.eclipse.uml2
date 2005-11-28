@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -94,9 +94,11 @@ public interface BehavioralFeature
 	 * If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
+	 * @see #isSetIsAbstract()
+	 * @see #unsetIsAbstract()
 	 * @see #setIsAbstract(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_IsAbstract()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isAbstract();
@@ -106,10 +108,35 @@ public interface BehavioralFeature
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Abstract</em>' attribute.
+	 * @see #isSetIsAbstract()
+	 * @see #unsetIsAbstract()
 	 * @see #isAbstract()
 	 * @generated
 	 */
 	void setIsAbstract(boolean value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.BehavioralFeature#isAbstract <em>Is Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetIsAbstract()
+	 * @see #isAbstract()
+	 * @see #setIsAbstract(boolean)
+	 * @generated
+	 */
+	void unsetIsAbstract();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.BehavioralFeature#isAbstract <em>Is Abstract</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Is Abstract</em>' attribute is set.
+	 * @see #unsetIsAbstract()
+	 * @see #isAbstract()
+	 * @see #setIsAbstract(boolean)
+	 * @generated
+	 */
+	boolean isSetIsAbstract();
 
 	/**
 	 * Returns the value of the '<em><b>Method</b></em>' reference list.
@@ -149,9 +176,11 @@ public interface BehavioralFeature
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Concurrency</em>' attribute.
 	 * @see org.eclipse.uml2.uml.CallConcurrencyKind
+	 * @see #isSetConcurrency()
+	 * @see #unsetConcurrency()
 	 * @see #setConcurrency(CallConcurrencyKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_Concurrency()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	CallConcurrencyKind getConcurrency();
@@ -162,10 +191,35 @@ public interface BehavioralFeature
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Concurrency</em>' attribute.
 	 * @see org.eclipse.uml2.uml.CallConcurrencyKind
+	 * @see #isSetConcurrency()
+	 * @see #unsetConcurrency()
 	 * @see #getConcurrency()
 	 * @generated
 	 */
 	void setConcurrency(CallConcurrencyKind value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.BehavioralFeature#getConcurrency <em>Concurrency</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetConcurrency()
+	 * @see #getConcurrency()
+	 * @see #setConcurrency(CallConcurrencyKind)
+	 * @generated
+	 */
+	void unsetConcurrency();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.BehavioralFeature#getConcurrency <em>Concurrency</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Concurrency</em>' attribute is set.
+	 * @see #unsetConcurrency()
+	 * @see #getConcurrency()
+	 * @see #setConcurrency(CallConcurrencyKind)
+	 * @generated
+	 */
+	boolean isSetConcurrency();
 
 	/**
 	 * Returns the value of the '<em><b>Raised Exception</b></em>' reference list.

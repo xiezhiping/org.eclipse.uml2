@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecification.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: DeploymentSpecification.java,v 1.3 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,9 +49,11 @@ public interface DeploymentSpecification
 	 * The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deployment Location</em>' attribute.
+	 * @see #isSetDeploymentLocation()
+	 * @see #unsetDeploymentLocation()
 	 * @see #setDeploymentLocation(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentSpecification_DeploymentLocation()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	String getDeploymentLocation();
@@ -61,10 +63,35 @@ public interface DeploymentSpecification
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Deployment Location</em>' attribute.
+	 * @see #isSetDeploymentLocation()
+	 * @see #unsetDeploymentLocation()
 	 * @see #getDeploymentLocation()
 	 * @generated
 	 */
 	void setDeploymentLocation(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.DeploymentSpecification#getDeploymentLocation <em>Deployment Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetDeploymentLocation()
+	 * @see #getDeploymentLocation()
+	 * @see #setDeploymentLocation(String)
+	 * @generated
+	 */
+	void unsetDeploymentLocation();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.DeploymentSpecification#getDeploymentLocation <em>Deployment Location</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Deployment Location</em>' attribute is set.
+	 * @see #unsetDeploymentLocation()
+	 * @see #getDeploymentLocation()
+	 * @see #setDeploymentLocation(String)
+	 * @generated
+	 */
+	boolean isSetDeploymentLocation();
 
 	/**
 	 * Returns the value of the '<em><b>Execution Location</b></em>' attribute.
@@ -74,9 +101,11 @@ public interface DeploymentSpecification
 	 * The location where a component Artifact executes. This may be a local or remote location.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Execution Location</em>' attribute.
+	 * @see #isSetExecutionLocation()
+	 * @see #unsetExecutionLocation()
 	 * @see #setExecutionLocation(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentSpecification_ExecutionLocation()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	String getExecutionLocation();
@@ -86,10 +115,35 @@ public interface DeploymentSpecification
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Execution Location</em>' attribute.
+	 * @see #isSetExecutionLocation()
+	 * @see #unsetExecutionLocation()
 	 * @see #getExecutionLocation()
 	 * @generated
 	 */
 	void setExecutionLocation(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.DeploymentSpecification#getExecutionLocation <em>Execution Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetExecutionLocation()
+	 * @see #getExecutionLocation()
+	 * @see #setExecutionLocation(String)
+	 * @generated
+	 */
+	void unsetExecutionLocation();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.DeploymentSpecification#getExecutionLocation <em>Execution Location</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Execution Location</em>' attribute is set.
+	 * @see #unsetExecutionLocation()
+	 * @see #getExecutionLocation()
+	 * @see #setExecutionLocation(String)
+	 * @generated
+	 */
+	boolean isSetExecutionLocation();
 
 	/**
 	 * Returns the value of the '<em><b>Deployment</b></em>' container reference.

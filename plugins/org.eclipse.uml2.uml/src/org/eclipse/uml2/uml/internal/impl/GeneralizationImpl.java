@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -297,28 +297,21 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.GENERALIZATION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.GENERALIZATION__GENERALIZATION_SET :
-					return ((InternalEList) getGeneralizationSets()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.GENERALIZATION__SPECIFIC :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.GENERALIZATION__SPECIFIC, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.GENERALIZATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.GENERALIZATION__GENERALIZATION_SET :
+				return ((InternalEList) getGeneralizationSets()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.GENERALIZATION__SPECIFIC :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.GENERALIZATION__SPECIFIC, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -327,27 +320,22 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.GENERALIZATION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.GENERALIZATION__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.GENERALIZATION__GENERALIZATION_SET :
-					return ((InternalEList) getGeneralizationSets())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.GENERALIZATION__SPECIFIC :
-					return eBasicSetContainer(null,
-						UMLPackage.GENERALIZATION__SPECIFIC, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.GENERALIZATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.GENERALIZATION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.GENERALIZATION__GENERALIZATION_SET :
+				return ((InternalEList) getGeneralizationSets()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.GENERALIZATION__SPECIFIC :
+				return eBasicSetContainer(null,
+					UMLPackage.GENERALIZATION__SPECIFIC, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -355,19 +343,15 @@ public class GeneralizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.GENERALIZATION__SPECIFIC :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.CLASSIFIER__GENERALIZATION,
-						Classifier.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.GENERALIZATION__SPECIFIC :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.CLASSIFIER__GENERALIZATION, Classifier.class,
+					msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

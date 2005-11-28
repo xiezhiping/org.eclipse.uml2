@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.5 2005/11/23 20:01:20 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.6 2005/11/28 20:26:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -359,42 +359,37 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
-					return eBasicSetContainer(null,
-						UMLPackage.PROTOCOL_TRANSITION__CONTAINER, msgs);
-				case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-					return basicSetTarget(null, msgs);
-				case UMLPackage.PROTOCOL_TRANSITION__GUARD :
-					return basicSetGuard(null, msgs);
-				case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
-					return basicSetEffect(null, msgs);
-				case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
-					return ((InternalEList) getTriggers()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
-					return basicSetSource(null, msgs);
-				case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
-					return basicSetPostCondition(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
+				return eBasicSetContainer(null,
+					UMLPackage.PROTOCOL_TRANSITION__CONTAINER, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
+				return basicSetTarget(null, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
+				return basicSetGuard(null, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
+				return basicSetEffect(null, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
+				return ((InternalEList) getTriggers()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
+				return basicSetSource(null, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
+				return basicSetPostCondition(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -561,7 +556,7 @@ public class ProtocolTransitionImpl
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
-				setKind(KIND_EDEFAULT);
+				unsetKind();
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				setContainer((Region) null);
@@ -637,8 +632,7 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
-				return eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__KIND,
-					KIND_EDEFAULT) != KIND_EDEFAULT;
+				return isSetKind();
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				return getContainer() != null;
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :

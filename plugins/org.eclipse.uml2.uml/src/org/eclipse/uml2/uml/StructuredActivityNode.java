@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -147,9 +147,11 @@ public interface StructuredActivityNode
 	 * If true, then the actions in the node execute in isolation from actions outside the node.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Must Isolate</em>' attribute.
+	 * @see #isSetMustIsolate()
+	 * @see #unsetMustIsolate()
 	 * @see #setMustIsolate(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_MustIsolate()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isMustIsolate();
@@ -159,10 +161,35 @@ public interface StructuredActivityNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Must Isolate</em>' attribute.
+	 * @see #isSetMustIsolate()
+	 * @see #unsetMustIsolate()
 	 * @see #isMustIsolate()
 	 * @generated
 	 */
 	void setMustIsolate(boolean value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.StructuredActivityNode#isMustIsolate <em>Must Isolate</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetMustIsolate()
+	 * @see #isMustIsolate()
+	 * @see #setMustIsolate(boolean)
+	 * @generated
+	 */
+	void unsetMustIsolate();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.StructuredActivityNode#isMustIsolate <em>Must Isolate</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Must Isolate</em>' attribute is set.
+	 * @see #unsetMustIsolate()
+	 * @see #isMustIsolate()
+	 * @see #setMustIsolate(boolean)
+	 * @generated
+	 */
+	boolean isSetMustIsolate();
 
 	/**
 	 * Returns the value of the '<em><b>Edge</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -126,77 +126,70 @@ public class SequenceNodeImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.SEQUENCE_NODE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
-					return ((InternalEList) getInPartitions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
-					return eBasicSetContainer(null,
-						UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE, msgs);
-				case UMLPackage.SEQUENCE_NODE__ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.SEQUENCE_NODE__ACTIVITY, msgs);
-				case UMLPackage.SEQUENCE_NODE__INCOMING :
-					return ((InternalEList) getIncomings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__IN_INTERRUPTIBLE_REGION :
-					return ((InternalEList) getInInterruptibleRegions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__HANDLER :
-					return ((InternalEList) getHandlers()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION :
-					return ((InternalEList) getLocalPreconditions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__LOCAL_POSTCONDITION :
-					return ((InternalEList) getLocalPostconditions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.SEQUENCE_NODE__IN_ACTIVITY, msgs);
-				case UMLPackage.SEQUENCE_NODE__VARIABLE :
-					return ((InternalEList) getVariables()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SEQUENCE_NODE__NODE :
-					return ((InternalEList) getNodes()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.SEQUENCE_NODE__EDGE :
-					return ((InternalEList) getEdges()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE :
-					return ((InternalEList) getExecutableNodes()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.SEQUENCE_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
+				return eBasicSetContainer(null,
+					UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.SEQUENCE_NODE__ACTIVITY :
+				return eBasicSetContainer(null,
+					UMLPackage.SEQUENCE_NODE__ACTIVITY, msgs);
+			case UMLPackage.SEQUENCE_NODE__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.SEQUENCE_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__HANDLER :
+				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION :
+				return ((InternalEList) getLocalPreconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__LOCAL_POSTCONDITION :
+				return ((InternalEList) getLocalPostconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
+				return eBasicSetContainer(null,
+					UMLPackage.SEQUENCE_NODE__IN_ACTIVITY, msgs);
+			case UMLPackage.SEQUENCE_NODE__VARIABLE :
+				return ((InternalEList) getVariables()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.SEQUENCE_NODE__NODE :
+				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__EDGE :
+				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE :
+				return ((InternalEList) getExecutableNodes()).basicRemove(
+					otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -486,7 +479,7 @@ public class SequenceNodeImpl
 				getNodes().clear();
 				return;
 			case UMLPackage.SEQUENCE_NODE__MUST_ISOLATE :
-				setMustIsolate(MUST_ISOLATE_EDEFAULT);
+				unsetMustIsolate();
 				return;
 			case UMLPackage.SEQUENCE_NODE__EDGE :
 				getEdges().clear();
@@ -610,7 +603,7 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__NODE :
 				return isSetNodes();
 			case UMLPackage.SEQUENCE_NODE__MUST_ISOLATE :
-				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
+				return isSetMustIsolate();
 			case UMLPackage.SEQUENCE_NODE__EDGE :
 				List edge = (List) eVirtualGet(UMLPackage.SEQUENCE_NODE__EDGE);
 				return edge != null && !edge.isEmpty();

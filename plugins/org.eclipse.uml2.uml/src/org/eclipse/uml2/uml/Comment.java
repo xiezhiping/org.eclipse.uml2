@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Comment.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: Comment.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,9 +47,11 @@ public interface Comment
 	 * Specifies a string that is the comment.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute.
+	 * @see #isSetBody()
+	 * @see #unsetBody()
 	 * @see #setBody(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComment_Body()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
@@ -60,10 +62,35 @@ public interface Comment
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Body</em>' attribute.
+	 * @see #isSetBody()
+	 * @see #unsetBody()
 	 * @see #getBody()
 	 * @generated
 	 */
 	void setBody(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Comment#getBody <em>Body</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetBody()
+	 * @see #getBody()
+	 * @see #setBody(String)
+	 * @generated
+	 */
+	void unsetBody();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Comment#getBody <em>Body</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Body</em>' attribute is set.
+	 * @see #unsetBody()
+	 * @see #getBody()
+	 * @see #setBody(String)
+	 * @generated
+	 */
+	boolean isSetBody();
 
 	/**
 	 * Returns the value of the '<em><b>Annotated Element</b></em>' reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -175,32 +175,23 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY,
-						msgs);
-				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
-					return ((InternalEList) getNodes())
-						.basicAdd(otherEnd, msgs);
-				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
-					return ((InternalEList) getInterruptingEdges()).basicAdd(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY, msgs);
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
+				return ((InternalEList) getInterruptingEdges()).basicAdd(
+					otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -209,31 +200,24 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY,
-						msgs);
-				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
-					return ((InternalEList) getNodes()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
-					return ((InternalEList) getInterruptingEdges())
-						.basicRemove(otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
+				return eBasicSetContainer(null,
+					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY, msgs);
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
+				return ((InternalEList) getInterruptingEdges()).basicRemove(
+					otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
+ * $Id: PackageImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -276,12 +276,12 @@ public class PackageImpl
 			: newVisibility;
 		Object oldVisibility = eVirtualSet(UMLPackage.PACKAGE__VISIBILITY,
 			visibility);
+		boolean isSetChange = oldVisibility == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PACKAGE__VISIBILITY,
-				oldVisibility == EVIRTUAL_NO_VALUE
+				UMLPackage.PACKAGE__VISIBILITY, isSetChange
 					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility));
+					: oldVisibility, visibility, isSetChange));
 
 	}
 
@@ -290,8 +290,23 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void unsetVisibility() {
+		Object oldVisibility = eVirtualUnset(UMLPackage.PACKAGE__VISIBILITY);
+		boolean isSetChange = oldVisibility != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.PACKAGE__VISIBILITY, isSetChange
+					? oldVisibility
+					: VISIBILITY_EDEFAULT, VISIBILITY_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isSetVisibility() {
-		return eVirtualGet(UMLPackage.PACKAGE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+		return eVirtualIsSet(UMLPackage.PACKAGE__VISIBILITY);
 	}
 
 	/**
@@ -749,62 +764,54 @@ public class PackageImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.PACKAGE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.PACKAGE__TEMPLATE_PARAMETER :
-					TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER);
-					if (templateParameter != null)
-						msgs = ((InternalEObject) templateParameter)
-							.eInverseRemove(
-								this,
-								UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-								TemplateParameter.class, msgs);
-					return basicSetTemplateParameter(
-						(TemplateParameter) otherEnd, msgs);
-				case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.PACKAGE__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
-					TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject) ownedTemplateSignature)
-							.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-								- UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
-								null, msgs);
-					return basicSetOwnedTemplateSignature(
-						(TemplateSignature) otherEnd, msgs);
-				case UMLPackage.PACKAGE__PACKAGE_MERGE :
-					return ((InternalEList) getPackageMerges()).basicAdd(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PACKAGE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PACKAGE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PACKAGE__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PACKAGE__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PACKAGE__TEMPLATE_PARAMETER :
+				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER);
+				if (templateParameter != null)
+					msgs = ((InternalEObject) templateParameter)
+						.eInverseRemove(this,
+							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+							TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter) otherEnd,
+					msgs);
+			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
+				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject) ownedTemplateSignature)
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
+							null, msgs);
+				return basicSetOwnedTemplateSignature(
+					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.PACKAGE__PACKAGE_MERGE :
+				return ((InternalEList) getPackageMerges()).basicAdd(otherEnd,
+					msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -813,51 +820,46 @@ public class PackageImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.PACKAGE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.PACKAGE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.PACKAGE__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(null,
-						UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.PACKAGE__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UMLPackage.PACKAGE__PACKAGE_MERGE :
-					return ((InternalEList) getPackageMerges()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE__PACKAGED_ELEMENT :
-					return ((InternalEList) getPackagedElements()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PACKAGE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.PACKAGE__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.PACKAGE__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.PACKAGE__PACKAGE_MERGE :
+				return ((InternalEList) getPackageMerges()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE__PACKAGED_ELEMENT :
+				return ((InternalEList) getPackagedElements()).basicRemove(
+					otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -865,21 +867,15 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
-					return eInternalContainer()
-						.eInverseRemove(
-							this,
-							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**
@@ -1260,8 +1256,10 @@ public class PackageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.PACKAGE__VISIBILITY,
-			VISIBILITY_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.PACKAGE__VISIBILITY))
+			result.append(eVirtualGet(UMLPackage.PACKAGE__VISIBILITY));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

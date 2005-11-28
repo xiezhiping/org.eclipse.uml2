@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -199,12 +199,37 @@ public class TransitionImpl
 			? KIND_EDEFAULT
 			: newKind;
 		Object oldKind = eVirtualSet(UMLPackage.TRANSITION__KIND, kind);
+		boolean isSetChange = oldKind == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TRANSITION__KIND, oldKind == EVIRTUAL_NO_VALUE
+				UMLPackage.TRANSITION__KIND, isSetChange
 					? KIND_EDEFAULT
-					: oldKind, kind));
+					: oldKind, kind, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetKind() {
+		Object oldKind = eVirtualUnset(UMLPackage.TRANSITION__KIND);
+		boolean isSetChange = oldKind != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.TRANSITION__KIND, isSetChange
+					? oldKind
+					: KIND_EDEFAULT, KIND_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetKind() {
+		return eVirtualIsSet(UMLPackage.TRANSITION__KIND);
 	}
 
 	/**
@@ -759,40 +784,33 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.TRANSITION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.TRANSITION__CONTAINER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.TRANSITION__CONTAINER, msgs);
-				case UMLPackage.TRANSITION__TARGET :
-					Vertex target = (Vertex) eVirtualGet(UMLPackage.TRANSITION__TARGET);
-					if (target != null)
-						msgs = ((InternalEObject) target).eInverseRemove(this,
-							UMLPackage.VERTEX__INCOMING, Vertex.class, msgs);
-					return basicSetTarget((Vertex) otherEnd, msgs);
-				case UMLPackage.TRANSITION__SOURCE :
-					Vertex source = (Vertex) eVirtualGet(UMLPackage.TRANSITION__SOURCE);
-					if (source != null)
-						msgs = ((InternalEObject) source).eInverseRemove(this,
-							UMLPackage.VERTEX__OUTGOING, Vertex.class, msgs);
-					return basicSetSource((Vertex) otherEnd, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.TRANSITION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.TRANSITION__CONTAINER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.TRANSITION__CONTAINER, msgs);
+			case UMLPackage.TRANSITION__TARGET :
+				Vertex target = (Vertex) eVirtualGet(UMLPackage.TRANSITION__TARGET);
+				if (target != null)
+					msgs = ((InternalEObject) target).eInverseRemove(this,
+						UMLPackage.VERTEX__INCOMING, Vertex.class, msgs);
+				return basicSetTarget((Vertex) otherEnd, msgs);
+			case UMLPackage.TRANSITION__SOURCE :
+				Vertex source = (Vertex) eVirtualGet(UMLPackage.TRANSITION__SOURCE);
+				if (source != null)
+					msgs = ((InternalEObject) source).eInverseRemove(this,
+						UMLPackage.VERTEX__OUTGOING, Vertex.class, msgs);
+				return basicSetSource((Vertex) otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -801,40 +819,35 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.TRANSITION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.TRANSITION__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.TRANSITION__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.TRANSITION__CONTAINER :
-					return eBasicSetContainer(null,
-						UMLPackage.TRANSITION__CONTAINER, msgs);
-				case UMLPackage.TRANSITION__TARGET :
-					return basicSetTarget(null, msgs);
-				case UMLPackage.TRANSITION__GUARD :
-					return basicSetGuard(null, msgs);
-				case UMLPackage.TRANSITION__EFFECT :
-					return basicSetEffect(null, msgs);
-				case UMLPackage.TRANSITION__TRIGGER :
-					return ((InternalEList) getTriggers()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.TRANSITION__SOURCE :
-					return basicSetSource(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.TRANSITION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TRANSITION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TRANSITION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.TRANSITION__CONTAINER :
+				return eBasicSetContainer(null,
+					UMLPackage.TRANSITION__CONTAINER, msgs);
+			case UMLPackage.TRANSITION__TARGET :
+				return basicSetTarget(null, msgs);
+			case UMLPackage.TRANSITION__GUARD :
+				return basicSetGuard(null, msgs);
+			case UMLPackage.TRANSITION__EFFECT :
+				return basicSetEffect(null, msgs);
+			case UMLPackage.TRANSITION__TRIGGER :
+				return ((InternalEList) getTriggers()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.TRANSITION__SOURCE :
+				return basicSetSource(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -842,18 +855,14 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.TRANSITION__CONTAINER :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.REGION__TRANSITION, Region.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.TRANSITION__CONTAINER :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.REGION__TRANSITION, Region.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**
@@ -1008,7 +1017,7 @@ public class TransitionImpl
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UMLPackage.TRANSITION__KIND :
-				setKind(KIND_EDEFAULT);
+				unsetKind();
 				return;
 			case UMLPackage.TRANSITION__CONTAINER :
 				setContainer((Region) null);
@@ -1078,7 +1087,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.TRANSITION__KIND :
-				return eVirtualGet(UMLPackage.TRANSITION__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
+				return isSetKind();
 			case UMLPackage.TRANSITION__CONTAINER :
 				return getContainer() != null;
 			case UMLPackage.TRANSITION__TARGET :
@@ -1109,7 +1118,10 @@ public class TransitionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.TRANSITION__KIND, KIND_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.TRANSITION__KIND))
+			result.append(eVirtualGet(UMLPackage.TRANSITION__KIND));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

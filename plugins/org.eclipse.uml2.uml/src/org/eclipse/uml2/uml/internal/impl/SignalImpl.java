@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
+ * $Id: SignalImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -168,68 +168,63 @@ public class SignalImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.SIGNAL__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.SIGNAL__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.SIGNAL__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(null,
-						UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.SIGNAL__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UMLPackage.SIGNAL__GENERALIZATION :
-					return ((InternalEList) getGeneralizations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__POWERTYPE_EXTENT :
-					return ((InternalEList) getPowertypeExtents()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__OWNED_USE_CASE :
-					return ((InternalEList) getOwnedUseCases()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__USE_CASE :
-					return ((InternalEList) getUseCases()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__SUBSTITUTION :
-					return ((InternalEList) getSubstitutions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.SIGNAL__COLLABORATION_USE :
-					return ((InternalEList) getCollaborationUses())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.SIGNAL__OWNED_SIGNATURE :
-					return basicSetOwnedSignature(null, msgs);
-				case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
-					return ((InternalEList) getOwnedAttributes()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.SIGNAL__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.SIGNAL__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.SIGNAL__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.SIGNAL__GENERALIZATION :
+				return ((InternalEList) getGeneralizations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__POWERTYPE_EXTENT :
+				return ((InternalEList) getPowertypeExtents()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.SIGNAL__SUBSTITUTION :
+				return ((InternalEList) getSubstitutions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__COLLABORATION_USE :
+				return ((InternalEList) getCollaborationUses()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
+				return basicSetOwnedSignature(null, msgs);
+			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
+				return ((InternalEList) getOwnedAttributes()).basicRemove(
+					otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

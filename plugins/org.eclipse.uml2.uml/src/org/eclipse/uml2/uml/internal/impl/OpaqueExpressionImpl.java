@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.5 2005/11/23 20:01:17 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -85,10 +87,29 @@ public class OpaqueExpressionImpl
 		List body = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY);
 		if (body == null) {
 			eVirtualSet(UMLPackage.OPAQUE_EXPRESSION__BODY,
-				body = new EDataTypeUniqueEList(String.class, this,
+				body = new EDataTypeUniqueEList.Unsettable(String.class, this,
 					UMLPackage.OPAQUE_EXPRESSION__BODY));
 		}
 		return body;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetBodies() {
+		((InternalEList.Unsettable) getBodies()).unset();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetBodies() {
+		List body = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY);
+		return body != null && ((InternalEList.Unsettable) body).isSet();
 	}
 
 	/**
@@ -399,7 +420,7 @@ public class OpaqueExpressionImpl
 				setType((Type) null);
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :
-				getBodies().clear();
+				unsetBodies();
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__LANGUAGE :
 				getLanguages().clear();
@@ -453,8 +474,7 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
 				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__TYPE) != null;
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :
-				List body = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY);
-				return body != null && !body.isEmpty();
+				return isSetBodies();
 			case UMLPackage.OPAQUE_EXPRESSION__LANGUAGE :
 				List language = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
 				return language != null && !language.isEmpty();

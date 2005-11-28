@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,6 +80,15 @@ public class GeneralizationSetImpl
 	protected static final int IS_COVERING_EFLAG = 1 << 8;
 
 	/**
+	 * The flag representing whether the Is Covering attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_COVERING_ESETFLAG = 1 << 9;
+
+	/**
 	 * The default value of the '{@link #isDisjoint() <em>Is Disjoint</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -97,7 +106,16 @@ public class GeneralizationSetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DISJOINT_EFLAG = 1 << 9;
+	protected static final int IS_DISJOINT_EFLAG = 1 << 10;
+
+	/**
+	 * The flag representing whether the Is Disjoint attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_DISJOINT_ESETFLAG = 1 << 11;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,11 +155,41 @@ public class GeneralizationSetImpl
 			eFlags |= IS_COVERING_EFLAG;
 		else
 			eFlags &= ~IS_COVERING_EFLAG;
+		boolean oldIsCoveringESet = (eFlags & IS_COVERING_ESETFLAG) != 0;
+		eFlags |= IS_COVERING_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION_SET__IS_COVERING, oldIsCovering,
-				newIsCovering));
+				newIsCovering, !oldIsCoveringESet));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetIsCovering() {
+		boolean oldIsCovering = (eFlags & IS_COVERING_EFLAG) != 0;
+		boolean oldIsCoveringESet = (eFlags & IS_COVERING_ESETFLAG) != 0;
+		if (IS_COVERING_EDEFAULT)
+			eFlags |= IS_COVERING_EFLAG;
+		else
+			eFlags &= ~IS_COVERING_EFLAG;
+		eFlags &= ~IS_COVERING_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.GENERALIZATION_SET__IS_COVERING, oldIsCovering,
+				IS_COVERING_EDEFAULT, oldIsCoveringESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsCovering() {
+		return (eFlags & IS_COVERING_ESETFLAG) != 0;
 	}
 
 	/**
@@ -164,11 +212,41 @@ public class GeneralizationSetImpl
 			eFlags |= IS_DISJOINT_EFLAG;
 		else
 			eFlags &= ~IS_DISJOINT_EFLAG;
+		boolean oldIsDisjointESet = (eFlags & IS_DISJOINT_ESETFLAG) != 0;
+		eFlags |= IS_DISJOINT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION_SET__IS_DISJOINT, oldIsDisjoint,
-				newIsDisjoint));
+				newIsDisjoint, !oldIsDisjointESet));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetIsDisjoint() {
+		boolean oldIsDisjoint = (eFlags & IS_DISJOINT_EFLAG) != 0;
+		boolean oldIsDisjointESet = (eFlags & IS_DISJOINT_ESETFLAG) != 0;
+		if (IS_DISJOINT_EDEFAULT)
+			eFlags |= IS_DISJOINT_EFLAG;
+		else
+			eFlags &= ~IS_DISJOINT_EFLAG;
+		eFlags &= ~IS_DISJOINT_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.GENERALIZATION_SET__IS_DISJOINT, oldIsDisjoint,
+				IS_DISJOINT_EDEFAULT, oldIsDisjointESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsDisjoint() {
+		return (eFlags & IS_DISJOINT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -298,50 +376,41 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
-					TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER);
-					if (templateParameter != null)
-						msgs = ((InternalEObject) templateParameter)
-							.eInverseRemove(
-								this,
-								UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-								TemplateParameter.class, msgs);
-					return basicSetTemplateParameter(
-						(TemplateParameter) otherEnd, msgs);
-				case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(
-						otherEnd,
-						UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER,
-						msgs);
-				case UMLPackage.GENERALIZATION_SET__POWERTYPE :
-					Classifier powertype = (Classifier) eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE);
-					if (powertype != null)
-						msgs = ((InternalEObject) powertype).eInverseRemove(
-							this, UMLPackage.CLASSIFIER__POWERTYPE_EXTENT,
-							Classifier.class, msgs);
-					return basicSetPowertype((Classifier) otherEnd, msgs);
-				case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
-					return ((InternalEList) getGeneralizations()).basicAdd(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
+				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER);
+				if (templateParameter != null)
+					msgs = ((InternalEObject) templateParameter)
+						.eInverseRemove(this,
+							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+							TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter) otherEnd,
+					msgs);
+			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER,
+					msgs);
+			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
+				Classifier powertype = (Classifier) eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE);
+				if (powertype != null)
+					msgs = ((InternalEObject) powertype).eInverseRemove(this,
+						UMLPackage.CLASSIFIER__POWERTYPE_EXTENT,
+						Classifier.class, msgs);
+				return basicSetPowertype((Classifier) otherEnd, msgs);
+			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
+				return ((InternalEList) getGeneralizations()).basicAdd(
+					otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -350,38 +419,32 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(
-						null,
-						UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER,
-						msgs);
-				case UMLPackage.GENERALIZATION_SET__POWERTYPE :
-					return basicSetPowertype(null, msgs);
-				case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
-					return ((InternalEList) getGeneralizations()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER,
+					msgs);
+			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
+				return basicSetPowertype(null, msgs);
+			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
+				return ((InternalEList) getGeneralizations()).basicRemove(
+					otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -522,10 +585,10 @@ public class GeneralizationSetImpl
 				setOwningTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
-				setIsCovering(IS_COVERING_EDEFAULT);
+				unsetIsCovering();
 				return;
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :
-				setIsDisjoint(IS_DISJOINT_EDEFAULT);
+				unsetIsDisjoint();
 				return;
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				setPowertype((Classifier) null);
@@ -577,9 +640,9 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
-				return ((eFlags & IS_COVERING_EFLAG) != 0) != IS_COVERING_EDEFAULT;
+				return isSetIsCovering();
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :
-				return ((eFlags & IS_DISJOINT_EFLAG) != 0) != IS_DISJOINT_EDEFAULT;
+				return isSetIsDisjoint();
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				return eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE) != null;
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
@@ -600,9 +663,15 @@ public class GeneralizationSetImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isCovering: "); //$NON-NLS-1$
-		result.append((eFlags & IS_COVERING_EFLAG) != 0);
+		if ((eFlags & IS_COVERING_ESETFLAG) != 0)
+			result.append((eFlags & IS_COVERING_EFLAG) != 0);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", isDisjoint: "); //$NON-NLS-1$
-		result.append((eFlags & IS_DISJOINT_EFLAG) != 0);
+		if ((eFlags & IS_DISJOINT_ESETFLAG) != 0)
+			result.append((eFlags & IS_DISJOINT_EFLAG) != 0);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

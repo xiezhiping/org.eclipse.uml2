@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Transition.java,v 1.3 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -59,9 +59,11 @@ public interface Transition
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.TransitionKind
+	 * @see #isSetKind()
+	 * @see #unsetKind()
 	 * @see #setKind(TransitionKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Kind()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	TransitionKind getKind();
@@ -72,10 +74,35 @@ public interface Transition
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.TransitionKind
+	 * @see #isSetKind()
+	 * @see #unsetKind()
 	 * @see #getKind()
 	 * @generated
 	 */
 	void setKind(TransitionKind value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Transition#getKind <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetKind()
+	 * @see #getKind()
+	 * @see #setKind(TransitionKind)
+	 * @generated
+	 */
+	void unsetKind();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Transition#getKind <em>Kind</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Kind</em>' attribute is set.
+	 * @see #unsetKind()
+	 * @see #getKind()
+	 * @see #setKind(TransitionKind)
+	 * @generated
+	 */
+	boolean isSetKind();
 
 	/**
 	 * Returns the value of the '<em><b>Container</b></em>' container reference.

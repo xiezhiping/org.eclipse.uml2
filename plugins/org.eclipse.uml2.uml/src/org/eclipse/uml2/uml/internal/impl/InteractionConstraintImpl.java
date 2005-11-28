@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.5 2005/11/23 20:01:15 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -310,42 +310,37 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(
-						null,
-						UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER,
-						msgs);
-				case UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION :
-					return basicSetSpecification(null, msgs);
-				case UMLPackage.INTERACTION_CONSTRAINT__CONTEXT :
-					return eBasicSetContainer(null,
-						UMLPackage.INTERACTION_CONSTRAINT__CONTEXT, msgs);
-				case UMLPackage.INTERACTION_CONSTRAINT__MININT :
-					return basicSetMinint(null, msgs);
-				case UMLPackage.INTERACTION_CONSTRAINT__MAXINT :
-					return basicSetMaxint(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(
+					null,
+					UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER,
+					msgs);
+			case UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
+			case UMLPackage.INTERACTION_CONSTRAINT__CONTEXT :
+				return eBasicSetContainer(null,
+					UMLPackage.INTERACTION_CONSTRAINT__CONTEXT, msgs);
+			case UMLPackage.INTERACTION_CONSTRAINT__MININT :
+				return basicSetMinint(null, msgs);
+			case UMLPackage.INTERACTION_CONSTRAINT__MAXINT :
+				return basicSetMaxint(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

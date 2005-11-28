@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -462,46 +462,39 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, msgs);
-				case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-					ParameterableElement ownedParameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
-					if (ownedParameteredElement != null)
-						msgs = ((InternalEObject) ownedParameteredElement)
-							.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-									- UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-								null, msgs);
-					return basicSetOwnedParameteredElement(
-						(ParameterableElement) otherEnd, msgs);
-				case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-					ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
-					if (parameteredElement != null)
-						msgs = ((InternalEObject) parameteredElement)
-							.eInverseRemove(
-								this,
-								UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
-								ParameterableElement.class, msgs);
-					return basicSetParameteredElement(
-						(ParameterableElement) otherEnd, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				ParameterableElement ownedParameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
+				if (ownedParameteredElement != null)
+					msgs = ((InternalEObject) ownedParameteredElement)
+						.eInverseRemove(
+							this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+							null, msgs);
+				return basicSetOwnedParameteredElement(
+					(ParameterableElement) otherEnd, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
+				if (parameteredElement != null)
+					msgs = ((InternalEObject) parameteredElement)
+						.eInverseRemove(
+							this,
+							UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
+							ParameterableElement.class, msgs);
+				return basicSetParameteredElement(
+					(ParameterableElement) otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -510,30 +503,25 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-					return eBasicSetContainer(null,
-						UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, msgs);
-				case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-					return basicSetOwnedParameteredElement(null, msgs);
-				case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
-					return basicSetOwnedDefault(null, msgs);
-				case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-					return basicSetParameteredElement(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
+				return eBasicSetContainer(null,
+					UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				return basicSetOwnedParameteredElement(null, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				return basicSetOwnedDefault(null, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				return basicSetParameteredElement(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -541,19 +529,15 @@ public class TemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-						TemplateSignature.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
+					TemplateSignature.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

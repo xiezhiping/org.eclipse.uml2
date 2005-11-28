@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralInteger.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: LiteralInteger.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,9 +43,11 @@ public interface LiteralInteger
 	 * The specified Integer value.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
+	 * @see #isSetValue()
+	 * @see #unsetValue()
 	 * @see #setValue(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLiteralInteger_Value()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	int getValue();
@@ -55,9 +57,34 @@ public interface LiteralInteger
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
+	 * @see #isSetValue()
+	 * @see #unsetValue()
 	 * @see #getValue()
 	 * @generated
 	 */
 	void setValue(int value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.LiteralInteger#getValue <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetValue()
+	 * @see #getValue()
+	 * @see #setValue(int)
+	 * @generated
+	 */
+	void unsetValue();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.LiteralInteger#getValue <em>Value</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Value</em>' attribute is set.
+	 * @see #unsetValue()
+	 * @see #getValue()
+	 * @see #setValue(int)
+	 * @generated
+	 */
+	boolean isSetValue();
 
 } // LiteralInteger

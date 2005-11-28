@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -269,48 +269,39 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
-					TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER);
-					if (templateParameter != null)
-						msgs = ((InternalEObject) templateParameter)
-							.eInverseRemove(
-								this,
-								UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-								TemplateParameter.class, msgs);
-					return basicSetTemplateParameter(
-						(TemplateParameter) otherEnd, msgs);
-				case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(
-						otherEnd,
-						UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER,
-						msgs);
-				case UMLPackage.COMPONENT_REALIZATION__CLIENT :
-					return ((InternalEList) getClients()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
+				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER);
+				if (templateParameter != null)
+					msgs = ((InternalEObject) templateParameter)
+						.eInverseRemove(this,
+							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+							TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter) otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(
+					otherEnd,
+					UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER,
+					msgs);
+			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
+				return ((InternalEList) getClients()).basicAdd(otherEnd, msgs);
+			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -319,41 +310,36 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(
-						null,
-						UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER,
-						msgs);
-				case UMLPackage.COMPONENT_REALIZATION__CLIENT :
-					return ((InternalEList) getClients()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.COMPONENT_REALIZATION__MAPPING :
-					return basicSetMapping(null, msgs);
-				case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-					return eBasicSetContainer(null,
-						UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(
+					null,
+					UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER,
+					msgs);
+			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
+				return ((InternalEList) getClients()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
+				return basicSetMapping(null, msgs);
+			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
+				return eBasicSetContainer(null,
+					UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -361,25 +347,18 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-					return eInternalContainer()
-						.eInverseRemove(
-							this,
-							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
-				case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.COMPONENT__REALIZATION, Component.class,
-						msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
+			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.COMPONENT__REALIZATION, Component.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

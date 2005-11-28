@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -243,63 +243,52 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-					return ((InternalEList) getInPartitions()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE, msgs);
-				case UMLPackage.EXPANSION_NODE__ACTIVITY :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.EXPANSION_NODE__ACTIVITY, msgs);
-				case UMLPackage.EXPANSION_NODE__INCOMING :
-					return ((InternalEList) getIncomings()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
-					return ((InternalEList) getInInterruptibleRegions())
-						.basicAdd(otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT :
-					ExpansionRegion regionAsOutput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT);
-					if (regionAsOutput != null)
-						msgs = ((InternalEObject) regionAsOutput)
-							.eInverseRemove(this,
-								UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT,
-								ExpansionRegion.class, msgs);
-					return basicSetRegionAsOutput((ExpansionRegion) otherEnd,
-						msgs);
-				case UMLPackage.EXPANSION_NODE__REGION_AS_INPUT :
-					ExpansionRegion regionAsInput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_INPUT);
-					if (regionAsInput != null)
-						msgs = ((InternalEObject) regionAsInput)
-							.eInverseRemove(this,
-								UMLPackage.EXPANSION_REGION__INPUT_ELEMENT,
-								ExpansionRegion.class, msgs);
-					return basicSetRegionAsInput((ExpansionRegion) otherEnd,
-						msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.EXPANSION_NODE__ACTIVITY :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.EXPANSION_NODE__ACTIVITY, msgs);
+			case UMLPackage.EXPANSION_NODE__INCOMING :
+				return ((InternalEList) getIncomings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList) getInInterruptibleRegions()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT :
+				ExpansionRegion regionAsOutput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT);
+				if (regionAsOutput != null)
+					msgs = ((InternalEObject) regionAsOutput).eInverseRemove(
+						this, UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT,
+						ExpansionRegion.class, msgs);
+				return basicSetRegionAsOutput((ExpansionRegion) otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__REGION_AS_INPUT :
+				ExpansionRegion regionAsInput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_INPUT);
+				if (regionAsInput != null)
+					msgs = ((InternalEObject) regionAsInput).eInverseRemove(
+						this, UMLPackage.EXPANSION_REGION__INPUT_ELEMENT,
+						ExpansionRegion.class, msgs);
+				return basicSetRegionAsInput((ExpansionRegion) otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -308,50 +297,45 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.EXPANSION_NODE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-					return ((InternalEList) getInPartitions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
-					return eBasicSetContainer(null,
-						UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE, msgs);
-				case UMLPackage.EXPANSION_NODE__ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.EXPANSION_NODE__ACTIVITY, msgs);
-				case UMLPackage.EXPANSION_NODE__INCOMING :
-					return ((InternalEList) getIncomings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
-					return ((InternalEList) getInInterruptibleRegions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.EXPANSION_NODE__UPPER_BOUND :
-					return basicSetUpperBound(null, msgs);
-				case UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT :
-					return basicSetRegionAsOutput(null, msgs);
-				case UMLPackage.EXPANSION_NODE__REGION_AS_INPUT :
-					return basicSetRegionAsInput(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.EXPANSION_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
+				return eBasicSetContainer(null,
+					UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.EXPANSION_NODE__ACTIVITY :
+				return eBasicSetContainer(null,
+					UMLPackage.EXPANSION_NODE__ACTIVITY, msgs);
+			case UMLPackage.EXPANSION_NODE__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__UPPER_BOUND :
+				return basicSetUpperBound(null, msgs);
+			case UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT :
+				return basicSetRegionAsOutput(null, msgs);
+			case UMLPackage.EXPANSION_NODE__REGION_AS_INPUT :
+				return basicSetRegionAsInput(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

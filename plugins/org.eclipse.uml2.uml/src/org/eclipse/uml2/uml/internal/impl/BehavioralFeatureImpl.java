@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.5 2005/11/23 20:01:17 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -140,6 +140,15 @@ public class BehavioralFeatureImpl
 	 * @ordered
 	 */
 	protected static final int IS_ABSTRACT_EFLAG = 1 << 10;
+
+	/**
+	 * The flag representing whether the Is Abstract attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_ABSTRACT_ESETFLAG = 1 << 11;
 
 	/**
 	 * The default value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
@@ -397,11 +406,41 @@ public class BehavioralFeatureImpl
 			eFlags |= IS_ABSTRACT_EFLAG;
 		else
 			eFlags &= ~IS_ABSTRACT_EFLAG;
+		boolean oldIsAbstractESet = (eFlags & IS_ABSTRACT_ESETFLAG) != 0;
+		eFlags |= IS_ABSTRACT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT, oldIsAbstract,
-				newIsAbstract));
+				newIsAbstract, !oldIsAbstractESet));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetIsAbstract() {
+		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
+		boolean oldIsAbstractESet = (eFlags & IS_ABSTRACT_ESETFLAG) != 0;
+		if (IS_ABSTRACT_EDEFAULT)
+			eFlags |= IS_ABSTRACT_EFLAG;
+		else
+			eFlags &= ~IS_ABSTRACT_EFLAG;
+		eFlags &= ~IS_ABSTRACT_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT, oldIsAbstract,
+				IS_ABSTRACT_EDEFAULT, oldIsAbstractESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsAbstract() {
+		return (eFlags & IS_ABSTRACT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -456,13 +495,37 @@ public class BehavioralFeatureImpl
 			: newConcurrency;
 		Object oldConcurrency = eVirtualSet(
 			UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, concurrency);
+		boolean isSetChange = oldConcurrency == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY,
-				oldConcurrency == EVIRTUAL_NO_VALUE
+				UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, isSetChange
 					? CONCURRENCY_EDEFAULT
-					: oldConcurrency, concurrency));
+					: oldConcurrency, concurrency, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetConcurrency() {
+		Object oldConcurrency = eVirtualUnset(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY);
+		boolean isSetChange = oldConcurrency != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, isSetChange
+					? oldConcurrency
+					: CONCURRENCY_EDEFAULT, CONCURRENCY_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetConcurrency() {
+		return eVirtualIsSet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY);
 	}
 
 	/**
@@ -594,35 +657,27 @@ public class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
-					return ((InternalEList) getMethods()).basicAdd(otherEnd,
-						msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
+				return ((InternalEList) getMethods()).basicAdd(otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -631,44 +686,39 @@ public class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER :
-					return ((InternalEList) getOwnedParameters()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
-					return ((InternalEList) getMethods()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET :
-					return ((InternalEList) getOwnedParameterSets())
-						.basicRemove(otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER :
+				return ((InternalEList) getOwnedParameters()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
+				return ((InternalEList) getMethods()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET :
+				return ((InternalEList) getOwnedParameterSets()).basicRemove(
+					otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -860,13 +910,13 @@ public class BehavioralFeatureImpl
 				getOwnedParameters().clear();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+				unsetIsAbstract();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				getMethods().clear();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY :
-				setConcurrency(CONCURRENCY_EDEFAULT);
+				unsetConcurrency();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION :
 				getRaisedExceptions().clear();
@@ -943,13 +993,12 @@ public class BehavioralFeatureImpl
 				List ownedParameter = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
-				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				List method = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__METHOD);
 				return method != null && !method.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY :
-				return eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY,
-					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
+				return isSetConcurrency();
 			case UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION :
 				List raisedException = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
 				return raisedException != null && !raisedException.isEmpty();
@@ -1038,10 +1087,16 @@ public class BehavioralFeatureImpl
 		result.append(", isStatic: "); //$NON-NLS-1$
 		result.append((eFlags & IS_STATIC_EFLAG) != 0);
 		result.append(", isAbstract: "); //$NON-NLS-1$
-		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
+		if ((eFlags & IS_ABSTRACT_ESETFLAG) != 0)
+			result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", concurrency: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY,
-			CONCURRENCY_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY))
+			result
+				.append(eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

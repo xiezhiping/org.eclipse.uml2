@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.5 2005/11/23 20:01:20 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.6 2005/11/28 20:26:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -93,7 +93,16 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_TESTED_FIRST_EFLAG = 1 << 10;
+	protected static final int IS_TESTED_FIRST_EFLAG = 1 << 11;
+
+	/**
+	 * The flag representing whether the Is Tested First attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_TESTED_FIRST_ESETFLAG = 1 << 12;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,11 +201,41 @@ public class LoopNodeImpl
 			eFlags |= IS_TESTED_FIRST_EFLAG;
 		else
 			eFlags &= ~IS_TESTED_FIRST_EFLAG;
+		boolean oldIsTestedFirstESet = (eFlags & IS_TESTED_FIRST_ESETFLAG) != 0;
+		eFlags |= IS_TESTED_FIRST_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LOOP_NODE__IS_TESTED_FIRST, oldIsTestedFirst,
-				newIsTestedFirst));
+				newIsTestedFirst, !oldIsTestedFirstESet));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetIsTestedFirst() {
+		boolean oldIsTestedFirst = (eFlags & IS_TESTED_FIRST_EFLAG) != 0;
+		boolean oldIsTestedFirstESet = (eFlags & IS_TESTED_FIRST_ESETFLAG) != 0;
+		if (IS_TESTED_FIRST_EDEFAULT)
+			eFlags |= IS_TESTED_FIRST_EFLAG;
+		else
+			eFlags &= ~IS_TESTED_FIRST_EFLAG;
+		eFlags &= ~IS_TESTED_FIRST_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.LOOP_NODE__IS_TESTED_FIRST, oldIsTestedFirst,
+				IS_TESTED_FIRST_EDEFAULT, oldIsTestedFirstESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsTestedFirst() {
+		return (eFlags & IS_TESTED_FIRST_ESETFLAG) != 0;
 	}
 
 	/**
@@ -537,83 +576,76 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.LOOP_NODE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.LOOP_NODE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__IN_PARTITION :
-					return ((InternalEList) getInPartitions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE :
-					return eBasicSetContainer(null,
-						UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE, msgs);
-				case UMLPackage.LOOP_NODE__ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.LOOP_NODE__ACTIVITY, msgs);
-				case UMLPackage.LOOP_NODE__INCOMING :
-					return ((InternalEList) getIncomings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__IN_INTERRUPTIBLE_REGION :
-					return ((InternalEList) getInInterruptibleRegions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__HANDLER :
-					return ((InternalEList) getHandlers()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__LOCAL_PRECONDITION :
-					return ((InternalEList) getLocalPreconditions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__LOCAL_POSTCONDITION :
-					return ((InternalEList) getLocalPostconditions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__IN_ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.LOOP_NODE__IN_ACTIVITY, msgs);
-				case UMLPackage.LOOP_NODE__VARIABLE :
-					return ((InternalEList) getVariables()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__NODE :
-					return ((InternalEList) getNodes()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.LOOP_NODE__EDGE :
-					return ((InternalEList) getEdges()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.LOOP_NODE__RESULT :
-					return ((InternalEList) getResults()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.LOOP_NODE__LOOP_VARIABLE :
-					return ((InternalEList) getLoopVariables()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
-					return ((InternalEList) getLoopVariableInputs())
-						.basicRemove(otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.LOOP_NODE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.LOOP_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.LOOP_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE :
+				return eBasicSetContainer(null,
+					UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.LOOP_NODE__ACTIVITY :
+				return eBasicSetContainer(null, UMLPackage.LOOP_NODE__ACTIVITY,
+					msgs);
+			case UMLPackage.LOOP_NODE__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.LOOP_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__HANDLER :
+				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.LOOP_NODE__LOCAL_PRECONDITION :
+				return ((InternalEList) getLocalPreconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__LOCAL_POSTCONDITION :
+				return ((InternalEList) getLocalPostconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
+				return eBasicSetContainer(null,
+					UMLPackage.LOOP_NODE__IN_ACTIVITY, msgs);
+			case UMLPackage.LOOP_NODE__VARIABLE :
+				return ((InternalEList) getVariables()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.LOOP_NODE__NODE :
+				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__EDGE :
+				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__RESULT :
+				return ((InternalEList) getResults()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.LOOP_NODE__LOOP_VARIABLE :
+				return ((InternalEList) getLoopVariables()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
+				return ((InternalEList) getLoopVariableInputs()).basicRemove(
+					otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -953,13 +985,13 @@ public class LoopNodeImpl
 				getNodes().clear();
 				return;
 			case UMLPackage.LOOP_NODE__MUST_ISOLATE :
-				setMustIsolate(MUST_ISOLATE_EDEFAULT);
+				unsetMustIsolate();
 				return;
 			case UMLPackage.LOOP_NODE__EDGE :
 				getEdges().clear();
 				return;
 			case UMLPackage.LOOP_NODE__IS_TESTED_FIRST :
-				setIsTestedFirst(IS_TESTED_FIRST_EDEFAULT);
+				unsetIsTestedFirst();
 				return;
 			case UMLPackage.LOOP_NODE__BODY_PART :
 				getBodyParts().clear();
@@ -1102,12 +1134,12 @@ public class LoopNodeImpl
 				List node = (List) eVirtualGet(UMLPackage.LOOP_NODE__NODE);
 				return node != null && !node.isEmpty();
 			case UMLPackage.LOOP_NODE__MUST_ISOLATE :
-				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
+				return isSetMustIsolate();
 			case UMLPackage.LOOP_NODE__EDGE :
 				List edge = (List) eVirtualGet(UMLPackage.LOOP_NODE__EDGE);
 				return edge != null && !edge.isEmpty();
 			case UMLPackage.LOOP_NODE__IS_TESTED_FIRST :
-				return ((eFlags & IS_TESTED_FIRST_EFLAG) != 0) != IS_TESTED_FIRST_EDEFAULT;
+				return isSetIsTestedFirst();
 			case UMLPackage.LOOP_NODE__BODY_PART :
 				List bodyPart = (List) eVirtualGet(UMLPackage.LOOP_NODE__BODY_PART);
 				return bodyPart != null && !bodyPart.isEmpty();
@@ -1147,7 +1179,10 @@ public class LoopNodeImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isTestedFirst: "); //$NON-NLS-1$
-		result.append((eFlags & IS_TESTED_FIRST_EFLAG) != 0);
+		if ((eFlags & IS_TESTED_FIRST_ESETFLAG) != 0)
+			result.append((eFlags & IS_TESTED_FIRST_EFLAG) != 0);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

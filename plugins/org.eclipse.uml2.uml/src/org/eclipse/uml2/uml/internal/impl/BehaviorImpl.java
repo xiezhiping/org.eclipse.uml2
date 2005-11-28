@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.6 2005/11/23 20:01:18 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.7 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -95,7 +95,16 @@ public class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_REENTRANT_EFLAG = 1 << 11;
+	protected static final int IS_REENTRANT_EFLAG = 1 << 12;
+
+	/**
+	 * The flag representing whether the Is Reentrant attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_REENTRANT_ESETFLAG = 1 << 13;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -196,11 +205,41 @@ public class BehaviorImpl
 			eFlags |= IS_REENTRANT_EFLAG;
 		else
 			eFlags &= ~IS_REENTRANT_EFLAG;
+		boolean oldIsReentrantESet = (eFlags & IS_REENTRANT_ESETFLAG) != 0;
+		eFlags |= IS_REENTRANT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIOR__IS_REENTRANT, oldIsReentrant,
-				newIsReentrant));
+				newIsReentrant, !oldIsReentrantESet));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetIsReentrant() {
+		boolean oldIsReentrant = (eFlags & IS_REENTRANT_EFLAG) != 0;
+		boolean oldIsReentrantESet = (eFlags & IS_REENTRANT_ESETFLAG) != 0;
+		if (IS_REENTRANT_EDEFAULT)
+			eFlags |= IS_REENTRANT_EFLAG;
+		else
+			eFlags &= ~IS_REENTRANT_EFLAG;
+		eFlags &= ~IS_REENTRANT_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.BEHAVIOR__IS_REENTRANT, oldIsReentrant,
+				IS_REENTRANT_EDEFAULT, oldIsReentrantESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsReentrant() {
+		return (eFlags & IS_REENTRANT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -477,97 +516,83 @@ public class BehaviorImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.BEHAVIOR__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
-					TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER);
-					if (templateParameter != null)
-						msgs = ((InternalEObject) templateParameter)
-							.eInverseRemove(
-								this,
-								UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-								TemplateParameter.class, msgs);
-					return basicSetTemplateParameter(
-						(TemplateParameter) otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
-					TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject) ownedTemplateSignature)
-							.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-									- UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE,
-								null, msgs);
-					return basicSetOwnedTemplateSignature(
-						(TemplateSignature) otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__GENERALIZATION :
-					return ((InternalEList) getGeneralizations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
-					return ((InternalEList) getPowertypeExtents()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__USE_CASE :
-					return ((InternalEList) getUseCases()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.BEHAVIOR__SUBSTITUTION :
-					return ((InternalEList) getSubstitutions()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
-					RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_SIGNATURE);
-					if (ownedSignature != null)
-						msgs = ((InternalEObject) ownedSignature)
-							.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-								- UMLPackage.BEHAVIOR__OWNED_SIGNATURE, null,
-								msgs);
-					return basicSetOwnedSignature(
-						(RedefinableTemplateSignature) otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__INTERFACE_REALIZATION :
-					return ((InternalEList) getInterfaceRealizations())
-						.basicAdd(otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_OPERATION :
-					return ((InternalEList) getOwnedOperations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__SPECIFICATION :
-					BehavioralFeature specification = (BehavioralFeature) eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION);
-					if (specification != null)
-						msgs = ((InternalEObject) specification)
-							.eInverseRemove(this,
-								UMLPackage.BEHAVIORAL_FEATURE__METHOD,
-								BehavioralFeature.class, msgs);
-					return basicSetSpecification((BehavioralFeature) otherEnd,
-						msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.BEHAVIOR__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIOR__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIOR__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
+				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER);
+				if (templateParameter != null)
+					msgs = ((InternalEObject) templateParameter)
+						.eInverseRemove(this,
+							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+							TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter) otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
+				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject) ownedTemplateSignature)
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE,
+							null, msgs);
+				return basicSetOwnedTemplateSignature(
+					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__GENERALIZATION :
+				return ((InternalEList) getGeneralizations()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
+				return ((InternalEList) getPowertypeExtents()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__SUBSTITUTION :
+				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
+				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_SIGNATURE);
+				if (ownedSignature != null)
+					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
+						this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.BEHAVIOR__OWNED_SIGNATURE, null, msgs);
+				return basicSetOwnedSignature(
+					(RedefinableTemplateSignature) otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__INTERFACE_REALIZATION :
+				return ((InternalEList) getInterfaceRealizations()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				BehavioralFeature specification = (BehavioralFeature) eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION);
+				if (specification != null)
+					msgs = ((InternalEObject) specification).eInverseRemove(
+						this, UMLPackage.BEHAVIORAL_FEATURE__METHOD,
+						BehavioralFeature.class, msgs);
+				return basicSetSpecification((BehavioralFeature) otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -576,97 +601,92 @@ public class BehaviorImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.BEHAVIOR__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(null,
-						UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UMLPackage.BEHAVIOR__GENERALIZATION :
-					return ((InternalEList) getGeneralizations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
-					return ((InternalEList) getPowertypeExtents()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
-					return ((InternalEList) getOwnedUseCases()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__USE_CASE :
-					return ((InternalEList) getUseCases()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__SUBSTITUTION :
-					return ((InternalEList) getSubstitutions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__COLLABORATION_USE :
-					return ((InternalEList) getCollaborationUses())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
-					return basicSetOwnedSignature(null, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
-					return ((InternalEList) getOwnedAttributes()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_CONNECTOR :
-					return ((InternalEList) getOwnedConnectors()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_BEHAVIOR :
-					return ((InternalEList) getOwnedBehaviors()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__INTERFACE_REALIZATION :
-					return ((InternalEList) getInterfaceRealizations())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_TRIGGER :
-					return ((InternalEList) getOwnedTriggers()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_OPERATION :
-					return ((InternalEList) getOwnedOperations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
-					return ((InternalEList) getNestedClassifiers())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
-					return ((InternalEList) getOwnedReceptions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
-					return ((InternalEList) getOwnedParameters()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
-					return ((InternalEList) getOwnedParameterSets())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.BEHAVIOR__SPECIFICATION :
-					return basicSetSpecification(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.BEHAVIOR__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.BEHAVIOR__GENERALIZATION :
+				return ((InternalEList) getGeneralizations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
+				return ((InternalEList) getPowertypeExtents()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.BEHAVIOR__SUBSTITUTION :
+				return ((InternalEList) getSubstitutions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
+				return ((InternalEList) getCollaborationUses()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
+				return basicSetOwnedSignature(null, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
+				return ((InternalEList) getOwnedAttributes()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_CONNECTOR :
+				return ((InternalEList) getOwnedConnectors()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_BEHAVIOR :
+				return ((InternalEList) getOwnedBehaviors()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__INTERFACE_REALIZATION :
+				return ((InternalEList) getInterfaceRealizations())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_TRIGGER :
+				return ((InternalEList) getOwnedTriggers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
+				return ((InternalEList) getNestedClassifiers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
+				return ((InternalEList) getOwnedReceptions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
+				return ((InternalEList) getOwnedParameters()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
+				return ((InternalEList) getOwnedParameterSets()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -1110,13 +1130,13 @@ public class BehaviorImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
-				setIsActive(IS_ACTIVE_EDEFAULT);
+				unsetIsActive();
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
-				setIsReentrant(IS_REENTRANT_EDEFAULT);
+				unsetIsReentrant();
 				return;
 			case UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
@@ -1273,14 +1293,14 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
-				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
+				return isSetIsActive();
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.BEHAVIOR__EXTENSION :
 				return !getExtensions().isEmpty();
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
-				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
+				return isSetIsReentrant();
 			case UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR :
 				List redefinedBehavior = (List) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null
@@ -1311,7 +1331,10 @@ public class BehaviorImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isReentrant: "); //$NON-NLS-1$
-		result.append((eFlags & IS_REENTRANT_EFLAG) != 0);
+		if ((eFlags & IS_REENTRANT_ESETFLAG) != 0)
+			result.append((eFlags & IS_REENTRANT_EFLAG) != 0);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

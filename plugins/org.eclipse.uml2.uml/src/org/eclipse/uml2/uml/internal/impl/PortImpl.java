@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.5 2005/11/23 20:01:14 khussey Exp $
+ * $Id: PortImpl.java,v 1.6 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -743,7 +743,7 @@ public class PortImpl
 				setAggregation(AGGREGATION_EDEFAULT);
 				return;
 			case UMLPackage.PORT__IS_COMPOSITE :
-				setIsComposite(IS_COMPOSITE_EDEFAULT);
+				unsetIsComposite();
 				return;
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
 				getRedefinedProperties().clear();
@@ -878,7 +878,7 @@ public class PortImpl
 				return eVirtualGet(UMLPackage.PORT__AGGREGATION,
 					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UMLPackage.PORT__IS_COMPOSITE :
-				return isComposite() != IS_COMPOSITE_EDEFAULT;
+				return isSetIsComposite();
 			case UMLPackage.PORT__CLASS_ :
 				return getClass_() != null;
 			case UMLPackage.PORT__REDEFINED_PROPERTY :

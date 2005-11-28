@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
+ * $Id: LiteralStringImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -95,12 +95,37 @@ public class LiteralStringImpl
 			: newValue;
 		String value = newValue;
 		Object oldValue = eVirtualSet(UMLPackage.LITERAL_STRING__VALUE, value);
+		boolean isSetChange = oldValue == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LITERAL_STRING__VALUE, oldValue == EVIRTUAL_NO_VALUE
+				UMLPackage.LITERAL_STRING__VALUE, isSetChange
 					? VALUE_EDEFAULT
-					: oldValue, value));
+					: oldValue, value, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetValue() {
+		Object oldValue = eVirtualUnset(UMLPackage.LITERAL_STRING__VALUE);
+		boolean isSetChange = oldValue != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.LITERAL_STRING__VALUE, isSetChange
+					? oldValue
+					: VALUE_EDEFAULT, VALUE_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetValue() {
+		return eVirtualIsSet(UMLPackage.LITERAL_STRING__VALUE);
 	}
 
 	/**
@@ -247,7 +272,7 @@ public class LiteralStringImpl
 				setType((Type) null);
 				return;
 			case UMLPackage.LITERAL_STRING__VALUE :
-				setValue(VALUE_EDEFAULT);
+				unsetValue();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -295,11 +320,7 @@ public class LiteralStringImpl
 			case UMLPackage.LITERAL_STRING__TYPE :
 				return eVirtualGet(UMLPackage.LITERAL_STRING__TYPE) != null;
 			case UMLPackage.LITERAL_STRING__VALUE :
-				String value = (String) eVirtualGet(
-					UMLPackage.LITERAL_STRING__VALUE, VALUE_EDEFAULT);
-				return VALUE_EDEFAULT == null
-					? value != null
-					: !VALUE_EDEFAULT.equals(value);
+				return isSetValue();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -315,8 +336,10 @@ public class LiteralStringImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.LITERAL_STRING__VALUE,
-			VALUE_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.LITERAL_STRING__VALUE))
+			result.append(eVirtualGet(UMLPackage.LITERAL_STRING__VALUE));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

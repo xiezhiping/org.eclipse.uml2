@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.5 2005/11/23 20:01:17 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -498,25 +498,20 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
-					return basicSetUpperValue(null, msgs);
-				case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
-					return basicSetLowerValue(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
+				return basicSetUpperValue(null, msgs);
+			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
+				return basicSetLowerValue(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

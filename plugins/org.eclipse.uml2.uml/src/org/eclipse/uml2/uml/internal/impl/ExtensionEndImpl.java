@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.5 2005/11/23 20:01:19 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -400,7 +400,7 @@ public class ExtensionEndImpl
 				return eVirtualGet(UMLPackage.EXTENSION_END__AGGREGATION,
 					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UMLPackage.EXTENSION_END__IS_COMPOSITE :
-				return isComposite() != IS_COMPOSITE_EDEFAULT;
+				return isSetIsComposite();
 			case UMLPackage.EXTENSION_END__CLASS_ :
 				return getClass_() != null;
 			case UMLPackage.EXTENSION_END__REDEFINED_PROPERTY :

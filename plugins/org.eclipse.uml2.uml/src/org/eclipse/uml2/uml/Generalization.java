@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Generalization.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Generalization.java,v 1.3 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -62,7 +62,7 @@ public interface Generalization
 	 * @return the value of the '<em>Is Substitutable</em>' attribute.
 	 * @see #setIsSubstitutable(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getGeneralization_IsSubstitutable()
-	 * @model required="true" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	boolean isSubstitutable();

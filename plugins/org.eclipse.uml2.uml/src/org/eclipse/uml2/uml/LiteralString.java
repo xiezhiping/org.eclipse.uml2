@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralString.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: LiteralString.java,v 1.2 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,9 +43,11 @@ public interface LiteralString
 	 * The specified String value.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
+	 * @see #isSetValue()
+	 * @see #unsetValue()
 	 * @see #setValue(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLiteralString_Value()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	String getValue();
@@ -55,9 +57,34 @@ public interface LiteralString
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
+	 * @see #isSetValue()
+	 * @see #unsetValue()
 	 * @see #getValue()
 	 * @generated
 	 */
 	void setValue(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.LiteralString#getValue <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetValue()
+	 * @see #getValue()
+	 * @see #setValue(String)
+	 * @generated
+	 */
+	void unsetValue();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.LiteralString#getValue <em>Value</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Value</em>' attribute is set.
+	 * @see #unsetValue()
+	 * @see #getValue()
+	 * @see #setValue(String)
+	 * @generated
+	 */
+	boolean isSetValue();
 
 } // LiteralString

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragment.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: CombinedFragment.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,9 +52,11 @@ public interface CombinedFragment
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interaction Operator</em>' attribute.
 	 * @see org.eclipse.uml2.uml.InteractionOperatorKind
+	 * @see #isSetInteractionOperator()
+	 * @see #unsetInteractionOperator()
 	 * @see #setInteractionOperator(InteractionOperatorKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getCombinedFragment_InteractionOperator()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InteractionOperatorKind getInteractionOperator();
@@ -65,10 +67,35 @@ public interface CombinedFragment
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Interaction Operator</em>' attribute.
 	 * @see org.eclipse.uml2.uml.InteractionOperatorKind
+	 * @see #isSetInteractionOperator()
+	 * @see #unsetInteractionOperator()
 	 * @see #getInteractionOperator()
 	 * @generated
 	 */
 	void setInteractionOperator(InteractionOperatorKind value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.CombinedFragment#getInteractionOperator <em>Interaction Operator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetInteractionOperator()
+	 * @see #getInteractionOperator()
+	 * @see #setInteractionOperator(InteractionOperatorKind)
+	 * @generated
+	 */
+	void unsetInteractionOperator();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.CombinedFragment#getInteractionOperator <em>Interaction Operator</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Interaction Operator</em>' attribute is set.
+	 * @see #unsetInteractionOperator()
+	 * @see #getInteractionOperator()
+	 * @see #setInteractionOperator(InteractionOperatorKind)
+	 * @generated
+	 */
+	boolean isSetInteractionOperator();
 
 	/**
 	 * Returns the value of the '<em><b>Operand</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.5 2005/11/23 20:01:18 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -614,42 +614,33 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__EDGE :
-					return ((InternalEList) getEdges())
-						.basicAdd(otherEnd, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__NODE :
-					return ((InternalEList) getNodes())
-						.basicAdd(otherEnd, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
-					return ((InternalEList) getSubpartitions()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__EDGE :
+				return ((InternalEList) getEdges()).basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__NODE :
+				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
+				return ((InternalEList) getSubpartitions()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -658,41 +649,34 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__EDGE :
-					return ((InternalEList) getEdges()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.ACTIVITY_PARTITION__NODE :
-					return ((InternalEList) getNodes()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
-					return ((InternalEList) getSubpartitions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
-					return eBasicSetContainer(null,
-						UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
+				return eBasicSetContainer(null,
+					UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__EDGE :
+				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__NODE :
+				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
+				return ((InternalEList) getSubpartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
+				return eBasicSetContainer(null,
+					UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -700,22 +684,18 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);
-				case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.ACTIVITY_PARTITION__SUBPARTITION,
-						ActivityPartition.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.ACTIVITY_PARTITION__SUBPARTITION,
+					ActivityPartition.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

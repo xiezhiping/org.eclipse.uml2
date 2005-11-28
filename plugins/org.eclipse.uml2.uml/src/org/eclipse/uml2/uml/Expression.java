@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Expression.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: Expression.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,9 +49,11 @@ public interface Expression
 	 * The symbol associated with the node in the expression tree.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Symbol</em>' attribute.
+	 * @see #isSetSymbol()
+	 * @see #unsetSymbol()
 	 * @see #setSymbol(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExpression_Symbol()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	String getSymbol();
@@ -61,10 +63,35 @@ public interface Expression
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Symbol</em>' attribute.
+	 * @see #isSetSymbol()
+	 * @see #unsetSymbol()
 	 * @see #getSymbol()
 	 * @generated
 	 */
 	void setSymbol(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Expression#getSymbol <em>Symbol</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetSymbol()
+	 * @see #getSymbol()
+	 * @see #setSymbol(String)
+	 * @generated
+	 */
+	void unsetSymbol();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Expression#getSymbol <em>Symbol</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Symbol</em>' attribute is set.
+	 * @see #unsetSymbol()
+	 * @see #getSymbol()
+	 * @see #setSymbol(String)
+	 * @generated
+	 */
+	boolean isSetSymbol();
 
 	/**
 	 * Returns the value of the '<em><b>Operand</b></em>' containment reference list.

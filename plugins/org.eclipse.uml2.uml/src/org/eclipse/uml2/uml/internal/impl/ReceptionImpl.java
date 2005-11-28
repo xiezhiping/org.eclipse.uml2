@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -319,13 +319,13 @@ public class ReceptionImpl
 				getOwnedParameters().clear();
 				return;
 			case UMLPackage.RECEPTION__IS_ABSTRACT :
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+				unsetIsAbstract();
 				return;
 			case UMLPackage.RECEPTION__METHOD :
 				getMethods().clear();
 				return;
 			case UMLPackage.RECEPTION__CONCURRENCY :
-				setConcurrency(CONCURRENCY_EDEFAULT);
+				unsetConcurrency();
 				return;
 			case UMLPackage.RECEPTION__RAISED_EXCEPTION :
 				getRaisedExceptions().clear();
@@ -405,13 +405,12 @@ public class ReceptionImpl
 				List ownedParameter = (List) eVirtualGet(UMLPackage.RECEPTION__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.RECEPTION__IS_ABSTRACT :
-				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.RECEPTION__METHOD :
 				List method = (List) eVirtualGet(UMLPackage.RECEPTION__METHOD);
 				return method != null && !method.isEmpty();
 			case UMLPackage.RECEPTION__CONCURRENCY :
-				return eVirtualGet(UMLPackage.RECEPTION__CONCURRENCY,
-					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
+				return isSetConcurrency();
 			case UMLPackage.RECEPTION__RAISED_EXCEPTION :
 				List raisedException = (List) eVirtualGet(UMLPackage.RECEPTION__RAISED_EXCEPTION);
 				return raisedException != null && !raisedException.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Component.java,v 1.3 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,6 +51,7 @@ public interface Component
 
 	/**
 	 * Returns the value of the '<em><b>Is Indirectly Instantiated</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -59,7 +60,7 @@ public interface Component
 	 * @return the value of the '<em>Is Indirectly Instantiated</em>' attribute.
 	 * @see #setIsIndirectlyInstantiated(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponent_IsIndirectlyInstantiated()
-	 * @model required="true" ordered="false"
+	 * @model default="true" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isIndirectlyInstantiated();

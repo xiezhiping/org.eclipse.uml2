@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -243,46 +243,41 @@ public class JoinNodeImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.JOIN_NODE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.JOIN_NODE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.JOIN_NODE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.JOIN_NODE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.JOIN_NODE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.JOIN_NODE__IN_PARTITION :
-					return ((InternalEList) getInPartitions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
-					return eBasicSetContainer(null,
-						UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE, msgs);
-				case UMLPackage.JOIN_NODE__ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.JOIN_NODE__ACTIVITY, msgs);
-				case UMLPackage.JOIN_NODE__INCOMING :
-					return ((InternalEList) getIncomings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
-					return ((InternalEList) getInInterruptibleRegions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.JOIN_NODE__JOIN_SPEC :
-					return basicSetJoinSpec(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.JOIN_NODE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.JOIN_NODE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.JOIN_NODE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.JOIN_NODE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.JOIN_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
+				return eBasicSetContainer(null,
+					UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.JOIN_NODE__ACTIVITY :
+				return eBasicSetContainer(null, UMLPackage.JOIN_NODE__ACTIVITY,
+					msgs);
+			case UMLPackage.JOIN_NODE__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.JOIN_NODE__JOIN_SPEC :
+				return basicSetJoinSpec(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

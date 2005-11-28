@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -267,7 +267,7 @@ public class ConsiderIgnoreFragmentImpl
 				setEnclosingOperand((InteractionOperand) null);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR :
-				setInteractionOperator(INTERACTION_OPERATOR_EDEFAULT);
+				unsetInteractionOperator();
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND :
 				getOperands().clear();
@@ -330,9 +330,7 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_OPERAND :
 				return getEnclosingOperand() != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR :
-				return eVirtualGet(
-					UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR,
-					INTERACTION_OPERATOR_EDEFAULT) != INTERACTION_OPERATOR_EDEFAULT;
+				return isSetInteractionOperator();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND :
 				List operand = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND);
 				return operand != null && !operand.isEmpty();

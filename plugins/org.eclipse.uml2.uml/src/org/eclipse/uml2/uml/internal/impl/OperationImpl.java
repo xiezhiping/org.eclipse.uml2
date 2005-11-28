@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.5 2005/11/23 20:01:15 khussey Exp $
+ * $Id: OperationImpl.java,v 1.6 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -130,7 +130,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_QUERY_EFLAG = 1 << 11;
+	protected static final int IS_QUERY_EFLAG = 1 << 12;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -1144,79 +1144,68 @@ public class OperationImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.OPERATION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.OPERATION__METHOD :
-					return ((InternalEList) getMethods()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
-					TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER);
-					if (templateParameter != null)
-						msgs = ((InternalEObject) templateParameter)
-							.eInverseRemove(
-								this,
-								UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-								TemplateParameter.class, msgs);
-					return basicSetTemplateParameter(
-						(TemplateParameter) otherEnd, msgs);
-				case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.OPERATION__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-					TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject) ownedTemplateSignature)
-							.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-									- UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE,
-								null, msgs);
-					return basicSetOwnedTemplateSignature(
-						(TemplateSignature) otherEnd, msgs);
-				case UMLPackage.OPERATION__CLASS_ :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.OPERATION__CLASS_, msgs);
-				case UMLPackage.OPERATION__DATATYPE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.OPERATION__DATATYPE, msgs);
-				case UMLPackage.OPERATION__INTERFACE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.OPERATION__INTERFACE, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.OPERATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.OPERATION__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.OPERATION__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.OPERATION__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.OPERATION__METHOD :
+				return ((InternalEList) getMethods()).basicAdd(otherEnd, msgs);
+			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
+				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER);
+				if (templateParameter != null)
+					msgs = ((InternalEObject) templateParameter)
+						.eInverseRemove(this,
+							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+							TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter) otherEnd,
+					msgs);
+			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.OPERATION__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
+				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject) ownedTemplateSignature)
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE,
+							null, msgs);
+				return basicSetOwnedTemplateSignature(
+					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.OPERATION__CLASS_ :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.OPERATION__CLASS_, msgs);
+			case UMLPackage.OPERATION__DATATYPE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.OPERATION__DATATYPE, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.OPERATION__INTERFACE, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -1225,63 +1214,58 @@ public class OperationImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.OPERATION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.OPERATION__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.OPERATION__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__OWNED_PARAMETER :
-					return ((InternalEList) getOwnedParameters()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__METHOD :
-					return ((InternalEList) getMethods()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
-					return ((InternalEList) getOwnedParameterSets())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(null,
-						UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.OPERATION__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UMLPackage.OPERATION__CLASS_ :
-					return eBasicSetContainer(null,
-						UMLPackage.OPERATION__CLASS_, msgs);
-				case UMLPackage.OPERATION__DATATYPE :
-					return eBasicSetContainer(null,
-						UMLPackage.OPERATION__DATATYPE, msgs);
-				case UMLPackage.OPERATION__INTERFACE :
-					return eBasicSetContainer(null,
-						UMLPackage.OPERATION__INTERFACE, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.OPERATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPERATION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPERATION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.OPERATION__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPERATION__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPERATION__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.OPERATION__OWNED_PARAMETER :
+				return ((InternalEList) getOwnedParameters()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPERATION__METHOD :
+				return ((InternalEList) getMethods()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
+				return ((InternalEList) getOwnedParameterSets()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.OPERATION__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.OPERATION__CLASS_ :
+				return eBasicSetContainer(null, UMLPackage.OPERATION__CLASS_,
+					msgs);
+			case UMLPackage.OPERATION__DATATYPE :
+				return eBasicSetContainer(null, UMLPackage.OPERATION__DATATYPE,
+					msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				return eBasicSetContainer(null,
+					UMLPackage.OPERATION__INTERFACE, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -1289,33 +1273,28 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
-					return eInternalContainer()
-						.eInverseRemove(
-							this,
-							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
-				case UMLPackage.OPERATION__CLASS_ :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.CLASS__OWNED_OPERATION,
-						org.eclipse.uml2.uml.Class.class, msgs);
-				case UMLPackage.OPERATION__DATATYPE :
-					return eInternalContainer().eInverseRemove(this,
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
+			case UMLPackage.OPERATION__CLASS_ :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.CLASS__OWNED_OPERATION,
+					org.eclipse.uml2.uml.Class.class, msgs);
+			case UMLPackage.OPERATION__DATATYPE :
+				return eInternalContainer()
+					.eInverseRemove(this,
 						UMLPackage.DATA_TYPE__OWNED_OPERATION, DataType.class,
 						msgs);
-				case UMLPackage.OPERATION__INTERFACE :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
-						msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+			case UMLPackage.OPERATION__INTERFACE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
+					msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**
@@ -1608,13 +1587,13 @@ public class OperationImpl
 				getOwnedParameters().clear();
 				return;
 			case UMLPackage.OPERATION__IS_ABSTRACT :
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+				unsetIsAbstract();
 				return;
 			case UMLPackage.OPERATION__METHOD :
 				getMethods().clear();
 				return;
 			case UMLPackage.OPERATION__CONCURRENCY :
-				setConcurrency(CONCURRENCY_EDEFAULT);
+				unsetConcurrency();
 				return;
 			case UMLPackage.OPERATION__RAISED_EXCEPTION :
 				getRaisedExceptions().clear();
@@ -1741,13 +1720,12 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_PARAMETER :
 				return isSetOwnedParameters();
 			case UMLPackage.OPERATION__IS_ABSTRACT :
-				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
+				return isSetIsAbstract();
 			case UMLPackage.OPERATION__METHOD :
 				List method = (List) eVirtualGet(UMLPackage.OPERATION__METHOD);
 				return method != null && !method.isEmpty();
 			case UMLPackage.OPERATION__CONCURRENCY :
-				return eVirtualGet(UMLPackage.OPERATION__CONCURRENCY,
-					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
+				return isSetConcurrency();
 			case UMLPackage.OPERATION__RAISED_EXCEPTION :
 				return isSetRaisedExceptions();
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :

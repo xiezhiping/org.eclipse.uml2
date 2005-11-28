@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.4 2005/11/23 20:01:18 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -225,40 +225,35 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.STATE_INVARIANT__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.STATE_INVARIANT__COVERED :
-					return ((InternalEList) getCovereds()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
-					return ((InternalEList) getGeneralOrderings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
-					return eBasicSetContainer(null,
-						UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION, msgs);
-				case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
-					return eBasicSetContainer(null,
-						UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND, msgs);
-				case UMLPackage.STATE_INVARIANT__INVARIANT :
-					return basicSetInvariant(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE_INVARIANT__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.STATE_INVARIANT__COVERED :
+				return ((InternalEList) getCovereds()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
+				return ((InternalEList) getGeneralOrderings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
+				return eBasicSetContainer(null,
+					UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION, msgs);
+			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
+				return eBasicSetContainer(null,
+					UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND, msgs);
+			case UMLPackage.STATE_INVARIANT__INVARIANT :
+				return basicSetInvariant(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

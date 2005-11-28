@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -137,13 +137,38 @@ public class CombinedFragmentImpl
 		Object oldInteractionOperator = eVirtualSet(
 			UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
 			interactionOperator);
+		boolean isSetChange = oldInteractionOperator == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
-				oldInteractionOperator == EVIRTUAL_NO_VALUE
+				UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR, isSetChange
 					? INTERACTION_OPERATOR_EDEFAULT
-					: oldInteractionOperator, interactionOperator));
+					: oldInteractionOperator, interactionOperator, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetInteractionOperator() {
+		Object oldInteractionOperator = eVirtualUnset(UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR);
+		boolean isSetChange = oldInteractionOperator != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR, isSetChange
+					? oldInteractionOperator
+					: INTERACTION_OPERATOR_EDEFAULT,
+				INTERACTION_OPERATOR_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetInteractionOperator() {
+		return eVirtualIsSet(UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR);
 	}
 
 	/**
@@ -278,45 +303,39 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.COMBINED_FRAGMENT__COVERED :
-					return ((InternalEList) getCovereds()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
-					return ((InternalEList) getGeneralOrderings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
-					return eBasicSetContainer(null,
-						UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION,
-						msgs);
-				case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
-					return eBasicSetContainer(null,
-						UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND, msgs);
-				case UMLPackage.COMBINED_FRAGMENT__OPERAND :
-					return ((InternalEList) getOperands()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
-					return ((InternalEList) getCfragmentGates()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.COMBINED_FRAGMENT__COVERED :
+				return ((InternalEList) getCovereds()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
+				return ((InternalEList) getGeneralOrderings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
+				return eBasicSetContainer(null,
+					UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION, msgs);
+			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
+				return eBasicSetContainer(null,
+					UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND, msgs);
+			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
+				return ((InternalEList) getOperands()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
+				return ((InternalEList) getCfragmentGates()).basicRemove(
+					otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -461,7 +480,7 @@ public class CombinedFragmentImpl
 				setEnclosingOperand((InteractionOperand) null);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR :
-				setInteractionOperator(INTERACTION_OPERATOR_EDEFAULT);
+				unsetInteractionOperator();
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
 				getOperands().clear();
@@ -520,9 +539,7 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
 				return getEnclosingOperand() != null;
 			case UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR :
-				return eVirtualGet(
-					UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
-					INTERACTION_OPERATOR_EDEFAULT) != INTERACTION_OPERATOR_EDEFAULT;
+				return isSetInteractionOperator();
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
 				List operand = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OPERAND);
 				return operand != null && !operand.isEmpty();
@@ -544,9 +561,11 @@ public class CombinedFragmentImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (interactionOperator: "); //$NON-NLS-1$
-		result.append(eVirtualGet(
-			UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
-			INTERACTION_OPERATOR_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR))
+			result
+				.append(eVirtualGet(UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

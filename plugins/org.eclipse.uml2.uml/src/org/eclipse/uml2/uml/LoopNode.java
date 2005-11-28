@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNode.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: LoopNode.java,v 1.3 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,9 +60,11 @@ public interface LoopNode
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Tested First</em>' attribute.
+	 * @see #isSetIsTestedFirst()
+	 * @see #unsetIsTestedFirst()
 	 * @see #setIsTestedFirst(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_IsTestedFirst()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isTestedFirst();
@@ -72,10 +74,35 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Tested First</em>' attribute.
+	 * @see #isSetIsTestedFirst()
+	 * @see #unsetIsTestedFirst()
 	 * @see #isTestedFirst()
 	 * @generated
 	 */
 	void setIsTestedFirst(boolean value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.LoopNode#isTestedFirst <em>Is Tested First</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetIsTestedFirst()
+	 * @see #isTestedFirst()
+	 * @see #setIsTestedFirst(boolean)
+	 * @generated
+	 */
+	void unsetIsTestedFirst();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.LoopNode#isTestedFirst <em>Is Tested First</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Is Tested First</em>' attribute is set.
+	 * @see #unsetIsTestedFirst()
+	 * @see #isTestedFirst()
+	 * @see #setIsTestedFirst(boolean)
+	 * @generated
+	 */
+	boolean isSetIsTestedFirst();
 
 	/**
 	 * Returns the value of the '<em><b>Body Part</b></em>' reference list.

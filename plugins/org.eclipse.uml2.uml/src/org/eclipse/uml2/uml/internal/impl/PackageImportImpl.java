@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.4 2005/11/23 20:01:18 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -142,13 +142,37 @@ public class PackageImportImpl
 			: newVisibility;
 		Object oldVisibility = eVirtualSet(
 			UMLPackage.PACKAGE_IMPORT__VISIBILITY, visibility);
+		boolean isSetChange = oldVisibility == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PACKAGE_IMPORT__VISIBILITY,
-				oldVisibility == EVIRTUAL_NO_VALUE
+				UMLPackage.PACKAGE_IMPORT__VISIBILITY, isSetChange
 					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility));
+					: oldVisibility, visibility, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetVisibility() {
+		Object oldVisibility = eVirtualUnset(UMLPackage.PACKAGE_IMPORT__VISIBILITY);
+		boolean isSetChange = oldVisibility != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.PACKAGE_IMPORT__VISIBILITY, isSetChange
+					? oldVisibility
+					: VISIBILITY_EDEFAULT, VISIBILITY_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetVisibility() {
+		return eVirtualIsSet(UMLPackage.PACKAGE_IMPORT__VISIBILITY);
 	}
 
 	/**
@@ -258,25 +282,18 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.PACKAGE_IMPORT__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PACKAGE_IMPORT__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -285,24 +302,19 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.PACKAGE_IMPORT__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
-					return eBasicSetContainer(null,
-						UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PACKAGE_IMPORT__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
+				return eBasicSetContainer(null,
+					UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -310,19 +322,15 @@ public class PackageImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.NAMESPACE__PACKAGE_IMPORT, Namespace.class,
-						msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
+				return eInternalContainer()
+					.eInverseRemove(this, UMLPackage.NAMESPACE__PACKAGE_IMPORT,
+						Namespace.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**
@@ -400,7 +408,7 @@ public class PackageImportImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				setImportedPackage((org.eclipse.uml2.uml.Package) null);
@@ -435,8 +443,7 @@ public class PackageImportImpl
 			case UMLPackage.PACKAGE_IMPORT__TARGET :
 				return isSetTargets();
 			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				return eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				return eVirtualGet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE) != null;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
@@ -456,8 +463,10 @@ public class PackageImportImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY,
-			VISIBILITY_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.PACKAGE_IMPORT__VISIBILITY))
+			result.append(eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

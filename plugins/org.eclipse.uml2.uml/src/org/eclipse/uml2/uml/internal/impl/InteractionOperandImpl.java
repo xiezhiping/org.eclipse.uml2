@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -432,49 +432,40 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.INTERACTION_OPERAND__COVERED :
-					return ((InternalEList) getCovereds()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION,
-						msgs);
-				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND, msgs);
-				case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
-					return ((InternalEList) getFragments()).basicAdd(otherEnd,
-						msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.INTERACTION_OPERAND__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.INTERACTION_OPERAND__COVERED :
+				return ((InternalEList) getCovereds()).basicAdd(otherEnd, msgs);
+			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION, msgs);
+			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND, msgs);
+			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
+				return ((InternalEList) getFragments())
+					.basicAdd(otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -483,53 +474,47 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__COVERED :
-					return ((InternalEList) getCovereds()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
-					return ((InternalEList) getGeneralOrderings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
-					return eBasicSetContainer(null,
-						UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION,
-						msgs);
-				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
-					return eBasicSetContainer(null,
-						UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND, msgs);
-				case UMLPackage.INTERACTION_OPERAND__GUARD :
-					return basicSetGuard(null, msgs);
-				case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
-					return ((InternalEList) getFragments()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION_OPERAND__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.INTERACTION_OPERAND__COVERED :
+				return ((InternalEList) getCovereds()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
+				return ((InternalEList) getGeneralOrderings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
+				return eBasicSetContainer(null,
+					UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION, msgs);
+			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
+				return eBasicSetContainer(null,
+					UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND, msgs);
+			case UMLPackage.INTERACTION_OPERAND__GUARD :
+				return basicSetGuard(null, msgs);
+			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
+				return ((InternalEList) getFragments()).basicRemove(otherEnd,
+					msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -537,23 +522,18 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.INTERACTION__FRAGMENT, Interaction.class,
-						msgs);
-				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.INTERACTION_OPERAND__FRAGMENT,
-						InteractionOperand.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.INTERACTION__FRAGMENT, Interaction.class, msgs);
+			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.INTERACTION_OPERAND__FRAGMENT,
+					InteractionOperand.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

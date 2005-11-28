@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.6 2005/11/23 20:01:20 khussey Exp $
+ * $Id: StateImpl.java,v 1.7 2005/11/28 20:26:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -432,8 +432,30 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetIsComposite() {
+		// TODO: implement this method to return whether the 'Is Composite' attribute is set
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isOrthogonal() {
 		return StateOperations.isOrthogonal(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsOrthogonal() {
+		// TODO: implement this method to return whether the 'Is Orthogonal' attribute is set
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -450,8 +472,30 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetIsSimple() {
+		// TODO: implement this method to return whether the 'Is Simple' attribute is set
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isSubmachineState() {
 		return StateOperations.isSubmachineState(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsSubmachineState() {
+		// TODO: implement this method to return whether the 'Is Submachine State' attribute is set
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -1182,52 +1226,44 @@ public class StateImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.STATE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.STATE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.STATE__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.STATE__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.STATE__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.STATE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.STATE__INCOMING :
-					return ((InternalEList) getIncomings()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.STATE__CONTAINER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.STATE__CONTAINER, msgs);
-				case UMLPackage.STATE__CONNECTION :
-					return ((InternalEList) getConnections()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.STATE__CONNECTION_POINT :
-					return ((InternalEList) getConnectionPoints()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.STATE__REGION :
-					return ((InternalEList) getRegions()).basicAdd(otherEnd,
-						msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.STATE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.STATE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.STATE__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.STATE__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.STATE__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.STATE__OUTGOING :
+				return ((InternalEList) getOutgoings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.STATE__INCOMING :
+				return ((InternalEList) getIncomings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.STATE__CONTAINER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.STATE__CONTAINER, msgs);
+			case UMLPackage.STATE__CONNECTION :
+				return ((InternalEList) getConnections()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.STATE__CONNECTION_POINT :
+				return ((InternalEList) getConnectionPoints()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.STATE__REGION :
+				return ((InternalEList) getRegions()).basicAdd(otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -1236,64 +1272,59 @@ public class StateImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.STATE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.STATE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.STATE__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE__INCOMING :
-					return ((InternalEList) getIncomings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE__CONTAINER :
-					return eBasicSetContainer(null,
-						UMLPackage.STATE__CONTAINER, msgs);
-				case UMLPackage.STATE__CONNECTION :
-					return ((InternalEList) getConnections()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE__CONNECTION_POINT :
-					return ((InternalEList) getConnectionPoints()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.STATE__STATE_INVARIANT :
-					return basicSetStateInvariant(null, msgs);
-				case UMLPackage.STATE__ENTRY :
-					return basicSetEntry(null, msgs);
-				case UMLPackage.STATE__EXIT :
-					return basicSetExit(null, msgs);
-				case UMLPackage.STATE__DO_ACTIVITY :
-					return basicSetDoActivity(null, msgs);
-				case UMLPackage.STATE__DEFERRABLE_TRIGGER :
-					return ((InternalEList) getDeferrableTriggers())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.STATE__REGION :
-					return ((InternalEList) getRegions()).basicRemove(otherEnd,
-						msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.STATE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.STATE__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.STATE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.STATE__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.STATE__CONTAINER :
+				return eBasicSetContainer(null, UMLPackage.STATE__CONTAINER,
+					msgs);
+			case UMLPackage.STATE__CONNECTION :
+				return ((InternalEList) getConnections()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.STATE__CONNECTION_POINT :
+				return ((InternalEList) getConnectionPoints()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE__STATE_INVARIANT :
+				return basicSetStateInvariant(null, msgs);
+			case UMLPackage.STATE__ENTRY :
+				return basicSetEntry(null, msgs);
+			case UMLPackage.STATE__EXIT :
+				return basicSetExit(null, msgs);
+			case UMLPackage.STATE__DO_ACTIVITY :
+				return basicSetDoActivity(null, msgs);
+			case UMLPackage.STATE__DEFERRABLE_TRIGGER :
+				return ((InternalEList) getDeferrableTriggers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE__REGION :
+				return ((InternalEList) getRegions()).basicRemove(otherEnd,
+					msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -1301,18 +1332,14 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.STATE__CONTAINER :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.STATE__CONTAINER :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**
@@ -1652,13 +1679,13 @@ public class StateImpl
 			case UMLPackage.STATE__CONTAINER :
 				return getContainer() != null;
 			case UMLPackage.STATE__IS_COMPOSITE :
-				return isComposite() != IS_COMPOSITE_EDEFAULT;
+				return isSetIsComposite();
 			case UMLPackage.STATE__IS_ORTHOGONAL :
-				return isOrthogonal() != IS_ORTHOGONAL_EDEFAULT;
+				return isSetIsOrthogonal();
 			case UMLPackage.STATE__IS_SIMPLE :
-				return isSimple() != IS_SIMPLE_EDEFAULT;
+				return isSetIsSimple();
 			case UMLPackage.STATE__IS_SUBMACHINE_STATE :
-				return isSubmachineState() != IS_SUBMACHINE_STATE_EDEFAULT;
+				return isSetIsSubmachineState();
 			case UMLPackage.STATE__SUBMACHINE :
 				return eVirtualGet(UMLPackage.STATE__SUBMACHINE) != null;
 			case UMLPackage.STATE__CONNECTION :

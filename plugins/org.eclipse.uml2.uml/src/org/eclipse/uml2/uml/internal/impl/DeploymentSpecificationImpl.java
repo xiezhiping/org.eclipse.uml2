@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,13 +123,40 @@ public class DeploymentSpecificationImpl
 		Object oldDeploymentLocation = eVirtualSet(
 			UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
 			deploymentLocation);
+		boolean isSetChange = oldDeploymentLocation == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
-				oldDeploymentLocation == EVIRTUAL_NO_VALUE
+				isSetChange
 					? DEPLOYMENT_LOCATION_EDEFAULT
-					: oldDeploymentLocation, deploymentLocation));
+					: oldDeploymentLocation, deploymentLocation, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetDeploymentLocation() {
+		Object oldDeploymentLocation = eVirtualUnset(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION);
+		boolean isSetChange = oldDeploymentLocation != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
+				isSetChange
+					? oldDeploymentLocation
+					: DEPLOYMENT_LOCATION_EDEFAULT,
+				DEPLOYMENT_LOCATION_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetDeploymentLocation() {
+		return eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION);
 	}
 
 	/**
@@ -156,13 +183,40 @@ public class DeploymentSpecificationImpl
 		Object oldExecutionLocation = eVirtualSet(
 			UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
 			executionLocation);
+		boolean isSetChange = oldExecutionLocation == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
-				oldExecutionLocation == EVIRTUAL_NO_VALUE
+				isSetChange
 					? EXECUTION_LOCATION_EDEFAULT
-					: oldExecutionLocation, executionLocation));
+					: oldExecutionLocation, executionLocation, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetExecutionLocation() {
+		Object oldExecutionLocation = eVirtualUnset(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION);
+		boolean isSetChange = oldExecutionLocation != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
+				isSetChange
+					? oldExecutionLocation
+					: EXECUTION_LOCATION_EDEFAULT, EXECUTION_LOCATION_EDEFAULT,
+				isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetExecutionLocation() {
+		return eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION);
 	}
 
 	/**
@@ -233,91 +287,82 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
-					TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER);
-					if (templateParameter != null)
-						msgs = ((InternalEObject) templateParameter)
-							.eInverseRemove(
-								this,
-								UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-								TemplateParameter.class, msgs);
-					return basicSetTemplateParameter(
-						(TemplateParameter) otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(
-						otherEnd,
-						UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
-						msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
-					TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject) ownedTemplateSignature)
-							.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-									- UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE,
-								null, msgs);
-					return basicSetOwnedTemplateSignature(
-						(TemplateSignature) otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
-					return ((InternalEList) getGeneralizations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
-					return ((InternalEList) getPowertypeExtents()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
-					return ((InternalEList) getUseCases()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
-					return ((InternalEList) getSubstitutions()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
-					RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE);
-					if (ownedSignature != null)
-						msgs = ((InternalEObject) ownedSignature)
-							.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-									- UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE,
-								null, msgs);
-					return basicSetOwnedSignature(
-						(RedefinableTemplateSignature) otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
+				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER);
+				if (templateParameter != null)
+					msgs = ((InternalEObject) templateParameter)
+						.eInverseRemove(this,
+							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+							TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter) otherEnd,
+					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(
+					otherEnd,
+					UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
+					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
+				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject) ownedTemplateSignature)
+						.eInverseRemove(
+							this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE,
+							null, msgs);
+				return basicSetOwnedTemplateSignature(
+					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
+				return ((InternalEList) getGeneralizations()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
+				return ((InternalEList) getPowertypeExtents()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
+				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
+				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE);
+				if (ownedSignature != null)
+					msgs = ((InternalEObject) ownedSignature)
+						.eInverseRemove(
+							this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE,
+							null, msgs);
+				return basicSetOwnedSignature(
+					(RedefinableTemplateSignature) otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -326,82 +371,77 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(
-						null,
-						UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
-						msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
-					return ((InternalEList) getGeneralizations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
-					return ((InternalEList) getPowertypeExtents()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
-					return ((InternalEList) getOwnedUseCases()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
-					return ((InternalEList) getUseCases()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
-					return ((InternalEList) getSubstitutions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
-					return ((InternalEList) getCollaborationUses())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
-					return basicSetOwnedSignature(null, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
-					return ((InternalEList) getNestedArtifacts()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__MANIFESTATION :
-					return ((InternalEList) getManifestations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_OPERATION :
-					return ((InternalEList) getOwnedOperations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE :
-					return ((InternalEList) getOwnedAttributes()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
-					return eBasicSetContainer(null,
-						UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(
+					null,
+					UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
+					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
+				return ((InternalEList) getGeneralizations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
+				return ((InternalEList) getPowertypeExtents()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
+				return ((InternalEList) getSubstitutions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
+				return ((InternalEList) getCollaborationUses()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
+				return basicSetOwnedSignature(null, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
+				return ((InternalEList) getNestedArtifacts()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__MANIFESTATION :
+				return ((InternalEList) getManifestations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE :
+				return ((InternalEList) getOwnedAttributes()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
+				return eBasicSetContainer(null,
+					UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -409,25 +449,19 @@ public class DeploymentSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-					return eInternalContainer()
-						.eInverseRemove(
-							this,
-							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
-				case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.DEPLOYMENT__CONFIGURATION, Deployment.class,
-						msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.DEPLOYMENT__CONFIGURATION, Deployment.class,
+					msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**
@@ -768,7 +802,7 @@ public class DeploymentSpecificationImpl
 				setOwnedSignature((RedefinableTemplateSignature) null);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
-				setFileName(FILE_NAME_EDEFAULT);
+				unsetFileName();
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
 				getNestedArtifacts().clear();
@@ -783,10 +817,10 @@ public class DeploymentSpecificationImpl
 				getOwnedAttributes().clear();
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION :
-				setDeploymentLocation(DEPLOYMENT_LOCATION_EDEFAULT);
+				unsetDeploymentLocation();
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION :
-				setExecutionLocation(EXECUTION_LOCATION_EDEFAULT);
+				unsetExecutionLocation();
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
 				setDeployment((Deployment) null);
@@ -899,12 +933,7 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
-				String fileName = (String) eVirtualGet(
-					UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME,
-					FILE_NAME_EDEFAULT);
-				return FILE_NAME_EDEFAULT == null
-					? fileName != null
-					: !FILE_NAME_EDEFAULT.equals(fileName);
+				return isSetFileName();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
 				List nestedArtifact = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT);
 				return nestedArtifact != null && !nestedArtifact.isEmpty();
@@ -918,19 +947,9 @@ public class DeploymentSpecificationImpl
 				List ownedAttribute = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION :
-				String deploymentLocation = (String) eVirtualGet(
-					UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
-					DEPLOYMENT_LOCATION_EDEFAULT);
-				return DEPLOYMENT_LOCATION_EDEFAULT == null
-					? deploymentLocation != null
-					: !DEPLOYMENT_LOCATION_EDEFAULT.equals(deploymentLocation);
+				return isSetDeploymentLocation();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION :
-				String executionLocation = (String) eVirtualGet(
-					UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
-					EXECUTION_LOCATION_EDEFAULT);
-				return EXECUTION_LOCATION_EDEFAULT == null
-					? executionLocation != null
-					: !EXECUTION_LOCATION_EDEFAULT.equals(executionLocation);
+				return isSetExecutionLocation();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
 				return getDeployment() != null;
 		}
@@ -948,13 +967,17 @@ public class DeploymentSpecificationImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (deploymentLocation: "); //$NON-NLS-1$
-		result.append(eVirtualGet(
-			UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
-			DEPLOYMENT_LOCATION_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION))
+			result
+				.append(eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", executionLocation: "); //$NON-NLS-1$
-		result.append(eVirtualGet(
-			UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
-			EXECUTION_LOCATION_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION))
+			result
+				.append(eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

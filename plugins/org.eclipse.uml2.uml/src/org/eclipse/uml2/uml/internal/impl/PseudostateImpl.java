@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,12 +110,37 @@ public class PseudostateImpl
 			? KIND_EDEFAULT
 			: newKind;
 		Object oldKind = eVirtualSet(UMLPackage.PSEUDOSTATE__KIND, kind);
+		boolean isSetChange = oldKind == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PSEUDOSTATE__KIND, oldKind == EVIRTUAL_NO_VALUE
+				UMLPackage.PSEUDOSTATE__KIND, isSetChange
 					? KIND_EDEFAULT
-					: oldKind, kind));
+					: oldKind, kind, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetKind() {
+		Object oldKind = eVirtualUnset(UMLPackage.PSEUDOSTATE__KIND);
+		boolean isSetChange = oldKind != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.PSEUDOSTATE__KIND, isSetChange
+					? oldKind
+					: KIND_EDEFAULT, KIND_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetKind() {
+		return eVirtualIsSet(UMLPackage.PSEUDOSTATE__KIND);
 	}
 
 	/**
@@ -298,44 +323,37 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PSEUDOSTATE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.PSEUDOSTATE__INCOMING :
-					return ((InternalEList) getIncomings()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.PSEUDOSTATE__CONTAINER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.PSEUDOSTATE__CONTAINER, msgs);
-				case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.PSEUDOSTATE__STATE_MACHINE, msgs);
-				case UMLPackage.PSEUDOSTATE__STATE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.PSEUDOSTATE__STATE, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.PSEUDOSTATE__OUTGOING :
+				return ((InternalEList) getOutgoings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.PSEUDOSTATE__INCOMING :
+				return ((InternalEList) getIncomings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.PSEUDOSTATE__CONTAINER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PSEUDOSTATE__CONTAINER, msgs);
+			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PSEUDOSTATE__STATE_MACHINE, msgs);
+			case UMLPackage.PSEUDOSTATE__STATE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PSEUDOSTATE__STATE, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -344,41 +362,36 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.PSEUDOSTATE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PSEUDOSTATE__INCOMING :
-					return ((InternalEList) getIncomings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PSEUDOSTATE__CONTAINER :
-					return eBasicSetContainer(null,
-						UMLPackage.PSEUDOSTATE__CONTAINER, msgs);
-				case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
-					return eBasicSetContainer(null,
-						UMLPackage.PSEUDOSTATE__STATE_MACHINE, msgs);
-				case UMLPackage.PSEUDOSTATE__STATE :
-					return eBasicSetContainer(null,
-						UMLPackage.PSEUDOSTATE__STATE, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.PSEUDOSTATE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.PSEUDOSTATE__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.PSEUDOSTATE__CONTAINER :
+				return eBasicSetContainer(null,
+					UMLPackage.PSEUDOSTATE__CONTAINER, msgs);
+			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
+				return eBasicSetContainer(null,
+					UMLPackage.PSEUDOSTATE__STATE_MACHINE, msgs);
+			case UMLPackage.PSEUDOSTATE__STATE :
+				return eBasicSetContainer(null, UMLPackage.PSEUDOSTATE__STATE,
+					msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -386,25 +399,21 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.PSEUDOSTATE__CONTAINER :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
-				case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.STATE_MACHINE__CONNECTION_POINT,
-						StateMachine.class, msgs);
-				case UMLPackage.PSEUDOSTATE__STATE :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.STATE__CONNECTION_POINT, State.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.PSEUDOSTATE__CONTAINER :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
+			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.STATE_MACHINE__CONNECTION_POINT,
+					StateMachine.class, msgs);
+			case UMLPackage.PSEUDOSTATE__STATE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.STATE__CONNECTION_POINT, State.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**
@@ -539,7 +548,7 @@ public class PseudostateImpl
 				setContainer((Region) null);
 				return;
 			case UMLPackage.PSEUDOSTATE__KIND :
-				setKind(KIND_EDEFAULT);
+				unsetKind();
 				return;
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				setStateMachine((StateMachine) null);
@@ -596,7 +605,7 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return getContainer() != null;
 			case UMLPackage.PSEUDOSTATE__KIND :
-				return eVirtualGet(UMLPackage.PSEUDOSTATE__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
+				return isSetKind();
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				return getStateMachine() != null;
 			case UMLPackage.PSEUDOSTATE__STATE :
@@ -616,7 +625,10 @@ public class PseudostateImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.PSEUDOSTATE__KIND, KIND_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.PSEUDOSTATE__KIND))
+			result.append(eVirtualGet(UMLPackage.PSEUDOSTATE__KIND));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

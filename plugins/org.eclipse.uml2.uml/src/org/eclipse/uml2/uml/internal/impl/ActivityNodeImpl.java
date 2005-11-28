@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -376,45 +376,38 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_NODE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-					return ((InternalEList) getInPartitions()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
-				case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
-				case UMLPackage.ACTIVITY_NODE__INCOMING :
-					return ((InternalEList) getIncomings()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-					return ((InternalEList) getInInterruptibleRegions())
-						.basicAdd(otherEnd, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
+			case UMLPackage.ACTIVITY_NODE__INCOMING :
+				return ((InternalEList) getIncomings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList) getInInterruptibleRegions()).basicAdd(
+					otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -423,44 +416,39 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.ACTIVITY_NODE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-					return ((InternalEList) getInPartitions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-					return eBasicSetContainer(null,
-						UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
-				case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
-				case UMLPackage.ACTIVITY_NODE__INCOMING :
-					return ((InternalEList) getIncomings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-					return ((InternalEList) getInInterruptibleRegions())
-						.basicRemove(otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
+				return eBasicSetContainer(null,
+					UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
+				return eBasicSetContainer(null,
+					UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
+			case UMLPackage.ACTIVITY_NODE__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -468,22 +456,18 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
-						StructuredActivityNode.class, msgs);
-				case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.ACTIVITY__NODE, Activity.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
+					StructuredActivityNode.class, msgs);
+			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.ACTIVITY__NODE, Activity.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

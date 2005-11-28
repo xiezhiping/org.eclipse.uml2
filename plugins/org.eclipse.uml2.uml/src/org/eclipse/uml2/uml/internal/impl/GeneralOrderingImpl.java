@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.4 2005/11/23 20:01:18 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -231,39 +231,30 @@ public class GeneralOrderingImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.GENERAL_ORDERING__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.GENERAL_ORDERING__BEFORE :
-					OccurrenceSpecification before = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__BEFORE);
-					if (before != null)
-						msgs = ((InternalEObject) before).eInverseRemove(this,
-							UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER,
-							OccurrenceSpecification.class, msgs);
-					return basicSetBefore((OccurrenceSpecification) otherEnd,
-						msgs);
-				case UMLPackage.GENERAL_ORDERING__AFTER :
-					OccurrenceSpecification after = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__AFTER);
-					if (after != null)
-						msgs = ((InternalEObject) after).eInverseRemove(this,
-							UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE,
-							OccurrenceSpecification.class, msgs);
-					return basicSetAfter((OccurrenceSpecification) otherEnd,
-						msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.GENERAL_ORDERING__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.GENERAL_ORDERING__BEFORE :
+				OccurrenceSpecification before = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__BEFORE);
+				if (before != null)
+					msgs = ((InternalEObject) before).eInverseRemove(this,
+						UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER,
+						OccurrenceSpecification.class, msgs);
+				return basicSetBefore((OccurrenceSpecification) otherEnd, msgs);
+			case UMLPackage.GENERAL_ORDERING__AFTER :
+				OccurrenceSpecification after = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__AFTER);
+				if (after != null)
+					msgs = ((InternalEObject) after).eInverseRemove(this,
+						UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE,
+						OccurrenceSpecification.class, msgs);
+				return basicSetAfter((OccurrenceSpecification) otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -272,30 +263,25 @@ public class GeneralOrderingImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.GENERAL_ORDERING__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.GENERAL_ORDERING__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.GENERAL_ORDERING__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.GENERAL_ORDERING__BEFORE :
-					return basicSetBefore(null, msgs);
-				case UMLPackage.GENERAL_ORDERING__AFTER :
-					return basicSetAfter(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.GENERAL_ORDERING__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.GENERAL_ORDERING__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.GENERAL_ORDERING__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.GENERAL_ORDERING__BEFORE :
+				return basicSetBefore(null, msgs);
+			case UMLPackage.GENERAL_ORDERING__AFTER :
+				return basicSetAfter(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

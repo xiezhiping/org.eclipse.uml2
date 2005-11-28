@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.5 2005/11/23 20:01:19 khussey Exp $
+ * $Id: MessageImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -145,6 +145,17 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetMessageKind() {
+		// TODO: implement this method to return whether the 'Message Kind' attribute is set
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public MessageSort getMessageSort() {
 		return (MessageSort) eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
 			MESSAGE_SORT_EDEFAULT);
@@ -161,13 +172,37 @@ public class MessageImpl
 			: newMessageSort;
 		Object oldMessageSort = eVirtualSet(UMLPackage.MESSAGE__MESSAGE_SORT,
 			messageSort);
+		boolean isSetChange = oldMessageSort == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MESSAGE__MESSAGE_SORT,
-				oldMessageSort == EVIRTUAL_NO_VALUE
+				UMLPackage.MESSAGE__MESSAGE_SORT, isSetChange
 					? MESSAGE_SORT_EDEFAULT
-					: oldMessageSort, messageSort));
+					: oldMessageSort, messageSort, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetMessageSort() {
+		Object oldMessageSort = eVirtualUnset(UMLPackage.MESSAGE__MESSAGE_SORT);
+		boolean isSetChange = oldMessageSort != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.MESSAGE__MESSAGE_SORT, isSetChange
+					? oldMessageSort
+					: MESSAGE_SORT_EDEFAULT, MESSAGE_SORT_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetMessageSort() {
+		return eVirtualIsSet(UMLPackage.MESSAGE__MESSAGE_SORT);
 	}
 
 	/**
@@ -495,28 +530,21 @@ public class MessageImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.MESSAGE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.MESSAGE__INTERACTION :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.MESSAGE__INTERACTION, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.MESSAGE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.MESSAGE__INTERACTION :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.MESSAGE__INTERACTION, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -525,32 +553,27 @@ public class MessageImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.MESSAGE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.MESSAGE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.MESSAGE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.MESSAGE__INTERACTION :
-					return eBasicSetContainer(null,
-						UMLPackage.MESSAGE__INTERACTION, msgs);
-				case UMLPackage.MESSAGE__ARGUMENT :
-					return ((InternalEList) getArguments()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.MESSAGE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.MESSAGE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.MESSAGE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.MESSAGE__INTERACTION :
+				return eBasicSetContainer(null,
+					UMLPackage.MESSAGE__INTERACTION, msgs);
+			case UMLPackage.MESSAGE__ARGUMENT :
+				return ((InternalEList) getArguments()).basicRemove(otherEnd,
+					msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -558,19 +581,14 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.MESSAGE__INTERACTION :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.INTERACTION__MESSAGE, Interaction.class,
-						msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.MESSAGE__INTERACTION :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.INTERACTION__MESSAGE, Interaction.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**
@@ -707,7 +725,7 @@ public class MessageImpl
 				setNameExpression((StringExpression) null);
 				return;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
-				setMessageSort(MESSAGE_SORT_EDEFAULT);
+				unsetMessageSort();
 				return;
 			case UMLPackage.MESSAGE__RECEIVE_EVENT :
 				setReceiveEvent((MessageEnd) null);
@@ -765,10 +783,9 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.MESSAGE__NAME_EXPRESSION) != null;
 			case UMLPackage.MESSAGE__MESSAGE_KIND :
-				return getMessageKind() != MESSAGE_KIND_EDEFAULT;
+				return isSetMessageKind();
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
-				return eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
-					MESSAGE_SORT_EDEFAULT) != MESSAGE_SORT_EDEFAULT;
+				return isSetMessageSort();
 			case UMLPackage.MESSAGE__RECEIVE_EVENT :
 				return eVirtualGet(UMLPackage.MESSAGE__RECEIVE_EVENT) != null;
 			case UMLPackage.MESSAGE__SEND_EVENT :
@@ -797,8 +814,10 @@ public class MessageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (messageSort: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
-			MESSAGE_SORT_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.MESSAGE__MESSAGE_SORT))
+			result.append(eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

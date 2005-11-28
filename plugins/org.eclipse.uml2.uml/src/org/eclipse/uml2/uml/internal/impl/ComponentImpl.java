@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.5 2005/11/23 20:01:17 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,7 +80,7 @@ public class ComponentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_INDIRECTLY_INSTANTIATED_EDEFAULT = false;
+	protected static final boolean IS_INDIRECTLY_INSTANTIATED_EDEFAULT = true;
 
 	/**
 	 * The flag representing the value of the '{@link #isIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}' attribute.
@@ -90,7 +90,7 @@ public class ComponentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = 1 << 11;
+	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = 1 << 12;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -99,6 +99,7 @@ public class ComponentImpl
 	 */
 	protected ComponentImpl() {
 		super();
+		eFlags |= IS_INDIRECTLY_INSTANTIATED_EFLAG;
 	}
 
 	/**
@@ -391,91 +392,79 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.COMPONENT__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.COMPONENT__TEMPLATE_PARAMETER :
-					TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.COMPONENT__TEMPLATE_PARAMETER);
-					if (templateParameter != null)
-						msgs = ((InternalEObject) templateParameter)
-							.eInverseRemove(
-								this,
-								UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-								TemplateParameter.class, msgs);
-					return basicSetTemplateParameter(
-						(TemplateParameter) otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.COMPONENT__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
-					TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject) ownedTemplateSignature)
-							.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-									- UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE,
-								null, msgs);
-					return basicSetOwnedTemplateSignature(
-						(TemplateSignature) otherEnd, msgs);
-				case UMLPackage.COMPONENT__GENERALIZATION :
-					return ((InternalEList) getGeneralizations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__POWERTYPE_EXTENT :
-					return ((InternalEList) getPowertypeExtents()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__USE_CASE :
-					return ((InternalEList) getUseCases()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.COMPONENT__SUBSTITUTION :
-					return ((InternalEList) getSubstitutions()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_SIGNATURE :
-					RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.COMPONENT__OWNED_SIGNATURE);
-					if (ownedSignature != null)
-						msgs = ((InternalEObject) ownedSignature)
-							.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-								- UMLPackage.COMPONENT__OWNED_SIGNATURE, null,
-								msgs);
-					return basicSetOwnedSignature(
-						(RedefinableTemplateSignature) otherEnd, msgs);
-				case UMLPackage.COMPONENT__INTERFACE_REALIZATION :
-					return ((InternalEList) getInterfaceRealizations())
-						.basicAdd(otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_OPERATION :
-					return ((InternalEList) getOwnedOperations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__REALIZATION :
-					return ((InternalEList) getRealizations()).basicAdd(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.COMPONENT__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT__TEMPLATE_PARAMETER :
+				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.COMPONENT__TEMPLATE_PARAMETER);
+				if (templateParameter != null)
+					msgs = ((InternalEObject) templateParameter)
+						.eInverseRemove(this,
+							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+							TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter) otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
+				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject) ownedTemplateSignature)
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE,
+							null, msgs);
+				return basicSetOwnedTemplateSignature(
+					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.COMPONENT__GENERALIZATION :
+				return ((InternalEList) getGeneralizations()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__POWERTYPE_EXTENT :
+				return ((InternalEList) getPowertypeExtents()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
+			case UMLPackage.COMPONENT__SUBSTITUTION :
+				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
+				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.COMPONENT__OWNED_SIGNATURE);
+				if (ownedSignature != null)
+					msgs = ((InternalEObject) ownedSignature)
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.COMPONENT__OWNED_SIGNATURE, null, msgs);
+				return basicSetOwnedSignature(
+					(RedefinableTemplateSignature) otherEnd, msgs);
+			case UMLPackage.COMPONENT__INTERFACE_REALIZATION :
+				return ((InternalEList) getInterfaceRealizations()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__REALIZATION :
+				return ((InternalEList) getRealizations()).basicAdd(otherEnd,
+					msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -484,95 +473,90 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.COMPONENT__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.COMPONENT__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.COMPONENT__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(null,
-						UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.COMPONENT__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UMLPackage.COMPONENT__GENERALIZATION :
-					return ((InternalEList) getGeneralizations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__POWERTYPE_EXTENT :
-					return ((InternalEList) getPowertypeExtents()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_USE_CASE :
-					return ((InternalEList) getOwnedUseCases()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__USE_CASE :
-					return ((InternalEList) getUseCases()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__SUBSTITUTION :
-					return ((InternalEList) getSubstitutions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__COLLABORATION_USE :
-					return ((InternalEList) getCollaborationUses())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_SIGNATURE :
-					return basicSetOwnedSignature(null, msgs);
-				case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
-					return ((InternalEList) getOwnedAttributes()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_CONNECTOR :
-					return ((InternalEList) getOwnedConnectors()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_BEHAVIOR :
-					return ((InternalEList) getOwnedBehaviors()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__INTERFACE_REALIZATION :
-					return ((InternalEList) getInterfaceRealizations())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_TRIGGER :
-					return ((InternalEList) getOwnedTriggers()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_OPERATION :
-					return ((InternalEList) getOwnedOperations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__NESTED_CLASSIFIER :
-					return ((InternalEList) getNestedClassifiers())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.COMPONENT__OWNED_RECEPTION :
-					return ((InternalEList) getOwnedReceptions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__PACKAGED_ELEMENT :
-					return ((InternalEList) getPackagedElements()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.COMPONENT__REALIZATION :
-					return ((InternalEList) getRealizations()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.COMPONENT__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.COMPONENT__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.COMPONENT__GENERALIZATION :
+				return ((InternalEList) getGeneralizations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__POWERTYPE_EXTENT :
+				return ((InternalEList) getPowertypeExtents()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.COMPONENT__SUBSTITUTION :
+				return ((InternalEList) getSubstitutions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__COLLABORATION_USE :
+				return ((InternalEList) getCollaborationUses()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
+				return basicSetOwnedSignature(null, msgs);
+			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
+				return ((InternalEList) getOwnedAttributes()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_CONNECTOR :
+				return ((InternalEList) getOwnedConnectors()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_BEHAVIOR :
+				return ((InternalEList) getOwnedBehaviors()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__INTERFACE_REALIZATION :
+				return ((InternalEList) getInterfaceRealizations())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_TRIGGER :
+				return ((InternalEList) getOwnedTriggers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__NESTED_CLASSIFIER :
+				return ((InternalEList) getNestedClassifiers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_RECEPTION :
+				return ((InternalEList) getOwnedReceptions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__PACKAGED_ELEMENT :
+				return ((InternalEList) getPackagedElements()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__REALIZATION :
+				return ((InternalEList) getRealizations()).basicRemove(
+					otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -1000,7 +984,7 @@ public class ComponentImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.COMPONENT__IS_ACTIVE :
-				setIsActive(IS_ACTIVE_EDEFAULT);
+				unsetIsActive();
 				return;
 			case UMLPackage.COMPONENT__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -1154,7 +1138,7 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.COMPONENT__IS_ACTIVE :
-				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
+				return isSetIsActive();
 			case UMLPackage.COMPONENT__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.COMPONENT__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();

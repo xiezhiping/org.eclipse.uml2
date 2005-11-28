@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,6 +80,15 @@ public class TimeEventImpl
 	protected static final int IS_RELATIVE_EFLAG = 1 << 8;
 
 	/**
+	 * The flag representing whether the Is Relative attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_RELATIVE_ESETFLAG = 1 << 9;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -135,11 +144,41 @@ public class TimeEventImpl
 			eFlags |= IS_RELATIVE_EFLAG;
 		else
 			eFlags &= ~IS_RELATIVE_EFLAG;
+		boolean oldIsRelativeESet = (eFlags & IS_RELATIVE_ESETFLAG) != 0;
+		eFlags |= IS_RELATIVE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TIME_EVENT__IS_RELATIVE, oldIsRelative,
-				newIsRelative));
+				newIsRelative, !oldIsRelativeESet));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetIsRelative() {
+		boolean oldIsRelative = (eFlags & IS_RELATIVE_EFLAG) != 0;
+		boolean oldIsRelativeESet = (eFlags & IS_RELATIVE_ESETFLAG) != 0;
+		if (IS_RELATIVE_EDEFAULT)
+			eFlags |= IS_RELATIVE_EFLAG;
+		else
+			eFlags &= ~IS_RELATIVE_EFLAG;
+		eFlags &= ~IS_RELATIVE_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.TIME_EVENT__IS_RELATIVE, oldIsRelative,
+				IS_RELATIVE_EDEFAULT, oldIsRelativeESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsRelative() {
+		return (eFlags & IS_RELATIVE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -228,33 +267,28 @@ public class TimeEventImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.TIME_EVENT__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.TIME_EVENT__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(null,
-						UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.TIME_EVENT__WHEN :
-					return basicSetWhen(null, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.TIME_EVENT__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TIME_EVENT__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.TIME_EVENT__WHEN :
+				return basicSetWhen(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -380,7 +414,7 @@ public class TimeEventImpl
 				setOwningTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
-				setIsRelative(IS_RELATIVE_EDEFAULT);
+				unsetIsRelative();
 				return;
 			case UMLPackage.TIME_EVENT__WHEN :
 				setWhen((ValueSpecification) null);
@@ -429,7 +463,7 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
-				return ((eFlags & IS_RELATIVE_EFLAG) != 0) != IS_RELATIVE_EDEFAULT;
+				return isSetIsRelative();
 			case UMLPackage.TIME_EVENT__WHEN :
 				return eVirtualGet(UMLPackage.TIME_EVENT__WHEN) != null;
 		}
@@ -447,7 +481,10 @@ public class TimeEventImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isRelative: "); //$NON-NLS-1$
-		result.append((eFlags & IS_RELATIVE_EFLAG) != 0);
+		if ((eFlags & IS_RELATIVE_ESETFLAG) != 0)
+			result.append((eFlags & IS_RELATIVE_EFLAG) != 0);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: Behavior.java,v 1.3 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -70,9 +70,11 @@ public interface Behavior
 	 * Tells whether the behavior can be invoked while it is still executing from a previous invocation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Reentrant</em>' attribute.
+	 * @see #isSetIsReentrant()
+	 * @see #unsetIsReentrant()
 	 * @see #setIsReentrant(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_IsReentrant()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isReentrant();
@@ -82,10 +84,35 @@ public interface Behavior
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Reentrant</em>' attribute.
+	 * @see #isSetIsReentrant()
+	 * @see #unsetIsReentrant()
 	 * @see #isReentrant()
 	 * @generated
 	 */
 	void setIsReentrant(boolean value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Behavior#isReentrant <em>Is Reentrant</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetIsReentrant()
+	 * @see #isReentrant()
+	 * @see #setIsReentrant(boolean)
+	 * @generated
+	 */
+	void unsetIsReentrant();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Behavior#isReentrant <em>Is Reentrant</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Is Reentrant</em>' attribute is set.
+	 * @see #unsetIsReentrant()
+	 * @see #isReentrant()
+	 * @see #setIsReentrant(boolean)
+	 * @generated
+	 */
+	boolean isSetIsReentrant();
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Behavior</b></em>' reference list.

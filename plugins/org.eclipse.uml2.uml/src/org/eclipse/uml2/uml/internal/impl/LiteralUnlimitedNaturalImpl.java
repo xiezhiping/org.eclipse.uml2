@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalImpl.java,v 1.4 2005/11/23 20:01:17 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,6 +67,15 @@ public class LiteralUnlimitedNaturalImpl
 	protected int value = VALUE_EDEFAULT;
 
 	/**
+	 * The flag representing whether the Value attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int VALUE_ESETFLAG = 1 << 8;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -101,10 +110,38 @@ public class LiteralUnlimitedNaturalImpl
 	public void setValue(int newValue) {
 		int oldValue = value;
 		value = newValue;
+		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;
+		eFlags |= VALUE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LITERAL_UNLIMITED_NATURAL__VALUE, oldValue, value));
+				UMLPackage.LITERAL_UNLIMITED_NATURAL__VALUE, oldValue, value,
+				!oldValueESet));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetValue() {
+		int oldValue = value;
+		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;
+		value = VALUE_EDEFAULT;
+		eFlags &= ~VALUE_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.LITERAL_UNLIMITED_NATURAL__VALUE, oldValue,
+				VALUE_EDEFAULT, oldValueESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetValue() {
+		return (eFlags & VALUE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -251,7 +288,7 @@ public class LiteralUnlimitedNaturalImpl
 				setType((Type) null);
 				return;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__VALUE :
-				setValue(VALUE_EDEFAULT);
+				unsetValue();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -299,7 +336,7 @@ public class LiteralUnlimitedNaturalImpl
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TYPE :
 				return eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__TYPE) != null;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__VALUE :
-				return value != VALUE_EDEFAULT;
+				return isSetValue();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -315,7 +352,10 @@ public class LiteralUnlimitedNaturalImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
-		result.append(value);
+		if ((eFlags & VALUE_ESETFLAG) != 0)
+			result.append(value);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

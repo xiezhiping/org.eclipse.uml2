@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -124,12 +124,37 @@ public class ExpressionImpl
 			: newSymbol;
 		String symbol = newSymbol;
 		Object oldSymbol = eVirtualSet(UMLPackage.EXPRESSION__SYMBOL, symbol);
+		boolean isSetChange = oldSymbol == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.EXPRESSION__SYMBOL, oldSymbol == EVIRTUAL_NO_VALUE
+				UMLPackage.EXPRESSION__SYMBOL, isSetChange
 					? SYMBOL_EDEFAULT
-					: oldSymbol, symbol));
+					: oldSymbol, symbol, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetSymbol() {
+		Object oldSymbol = eVirtualUnset(UMLPackage.EXPRESSION__SYMBOL);
+		boolean isSetChange = oldSymbol != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.EXPRESSION__SYMBOL, isSetChange
+					? oldSymbol
+					: SYMBOL_EDEFAULT, SYMBOL_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSymbol() {
+		return eVirtualIsSet(UMLPackage.EXPRESSION__SYMBOL);
 	}
 
 	/**
@@ -180,34 +205,29 @@ public class ExpressionImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.EXPRESSION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.EXPRESSION__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.EXPRESSION__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(null,
-						UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.EXPRESSION__OPERAND :
-					return ((InternalEList) getOperands()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.EXPRESSION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXPRESSION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.EXPRESSION__OPERAND :
+				return ((InternalEList) getOperands()).basicRemove(otherEnd,
+					msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -342,7 +362,7 @@ public class ExpressionImpl
 				setType((Type) null);
 				return;
 			case UMLPackage.EXPRESSION__SYMBOL :
-				setSymbol(SYMBOL_EDEFAULT);
+				unsetSymbol();
 				return;
 			case UMLPackage.EXPRESSION__OPERAND :
 				getOperands().clear();
@@ -393,11 +413,7 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__TYPE :
 				return eVirtualGet(UMLPackage.EXPRESSION__TYPE) != null;
 			case UMLPackage.EXPRESSION__SYMBOL :
-				String symbol = (String) eVirtualGet(
-					UMLPackage.EXPRESSION__SYMBOL, SYMBOL_EDEFAULT);
-				return SYMBOL_EDEFAULT == null
-					? symbol != null
-					: !SYMBOL_EDEFAULT.equals(symbol);
+				return isSetSymbol();
 			case UMLPackage.EXPRESSION__OPERAND :
 				List operand = (List) eVirtualGet(UMLPackage.EXPRESSION__OPERAND);
 				return operand != null && !operand.isEmpty();
@@ -416,8 +432,10 @@ public class ExpressionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (symbol: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.EXPRESSION__SYMBOL,
-			SYMBOL_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.EXPRESSION__SYMBOL))
+			result.append(eVirtualGet(UMLPackage.EXPRESSION__SYMBOL));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

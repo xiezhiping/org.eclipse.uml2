@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: State.java,v 1.3 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -118,11 +118,22 @@ public interface State
 	 * A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Composite</em>' attribute.
+	 * @see #isSetIsComposite()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsComposite()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isComposite();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.State#isComposite <em>Is Composite</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Is Composite</em>' attribute is set.
+	 * @see #isComposite()
+	 * @generated
+	 */
+	boolean isSetIsComposite();
 
 	/**
 	 * Returns the value of the '<em><b>Is Orthogonal</b></em>' attribute.
@@ -132,11 +143,22 @@ public interface State
 	 * A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Orthogonal</em>' attribute.
+	 * @see #isSetIsOrthogonal()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsOrthogonal()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isOrthogonal();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.State#isOrthogonal <em>Is Orthogonal</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Is Orthogonal</em>' attribute is set.
+	 * @see #isOrthogonal()
+	 * @generated
+	 */
+	boolean isSetIsOrthogonal();
 
 	/**
 	 * Returns the value of the '<em><b>Is Simple</b></em>' attribute.
@@ -146,11 +168,22 @@ public interface State
 	 * A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Simple</em>' attribute.
+	 * @see #isSetIsSimple()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsSimple()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSimple();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.State#isSimple <em>Is Simple</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Is Simple</em>' attribute is set.
+	 * @see #isSimple()
+	 * @generated
+	 */
+	boolean isSetIsSimple();
 
 	/**
 	 * Returns the value of the '<em><b>Is Submachine State</b></em>' attribute.
@@ -160,11 +193,22 @@ public interface State
 	 * A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Submachine State</em>' attribute.
+	 * @see #isSetIsSubmachineState()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsSubmachineState()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSubmachineState();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.State#isSubmachineState <em>Is Submachine State</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Is Submachine State</em>' attribute is set.
+	 * @see #isSubmachineState()
+	 * @generated
+	 */
+	boolean isSetIsSubmachineState();
 
 	/**
 	 * Returns the value of the '<em><b>Submachine</b></em>' reference.

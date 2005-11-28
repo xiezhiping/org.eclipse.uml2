@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Parameter.java,v 1.3 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -249,7 +249,7 @@ public interface Parameter
 	 * @see org.eclipse.uml2.uml.ParameterEffectKind
 	 * @see #setEffect(ParameterEffectKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_Effect()
-	 * @model required="true" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	ParameterEffectKind getEffect();

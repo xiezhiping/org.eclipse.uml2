@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
+ * $Id: ModelImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -94,12 +94,37 @@ public class ModelImpl
 		String viewpoint = newViewpoint;
 		Object oldViewpoint = eVirtualSet(UMLPackage.MODEL__VIEWPOINT,
 			viewpoint);
+		boolean isSetChange = oldViewpoint == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MODEL__VIEWPOINT, oldViewpoint == EVIRTUAL_NO_VALUE
+				UMLPackage.MODEL__VIEWPOINT, isSetChange
 					? VIEWPOINT_EDEFAULT
-					: oldViewpoint, viewpoint));
+					: oldViewpoint, viewpoint, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetViewpoint() {
+		Object oldViewpoint = eVirtualUnset(UMLPackage.MODEL__VIEWPOINT);
+		boolean isSetChange = oldViewpoint != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.MODEL__VIEWPOINT, isSetChange
+					? oldViewpoint
+					: VIEWPOINT_EDEFAULT, VIEWPOINT_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetViewpoint() {
+		return eVirtualIsSet(UMLPackage.MODEL__VIEWPOINT);
 	}
 
 	/**
@@ -323,7 +348,7 @@ public class ModelImpl
 				getAppliedProfiles().clear();
 				return;
 			case UMLPackage.MODEL__VIEWPOINT :
-				setViewpoint(VIEWPOINT_EDEFAULT);
+				unsetViewpoint();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -404,11 +429,7 @@ public class ModelImpl
 				List appliedProfile = (List) eVirtualGet(UMLPackage.MODEL__APPLIED_PROFILE);
 				return appliedProfile != null && !appliedProfile.isEmpty();
 			case UMLPackage.MODEL__VIEWPOINT :
-				String viewpoint = (String) eVirtualGet(
-					UMLPackage.MODEL__VIEWPOINT, VIEWPOINT_EDEFAULT);
-				return VIEWPOINT_EDEFAULT == null
-					? viewpoint != null
-					: !VIEWPOINT_EDEFAULT.equals(viewpoint);
+				return isSetViewpoint();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -424,8 +445,10 @@ public class ModelImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (viewpoint: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.MODEL__VIEWPOINT,
-			VIEWPOINT_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.MODEL__VIEWPOINT))
+			result.append(eVirtualGet(UMLPackage.MODEL__VIEWPOINT));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

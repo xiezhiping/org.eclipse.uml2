@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.5 2005/11/23 20:01:16 khussey Exp $
+ * $Id: VariableImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -599,33 +599,26 @@ public class VariableImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.VARIABLE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
-				case UMLPackage.VARIABLE__SCOPE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.VARIABLE__SCOPE, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.VARIABLE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
+			case UMLPackage.VARIABLE__SCOPE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UMLPackage.VARIABLE__SCOPE,
+					msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -634,36 +627,31 @@ public class VariableImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.VARIABLE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.VARIABLE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.VARIABLE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.VARIABLE__UPPER_VALUE :
-					return basicSetUpperValue(null, msgs);
-				case UMLPackage.VARIABLE__LOWER_VALUE :
-					return basicSetLowerValue(null, msgs);
-				case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-					return eBasicSetContainer(null,
-						UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
-				case UMLPackage.VARIABLE__SCOPE :
-					return eBasicSetContainer(null, UMLPackage.VARIABLE__SCOPE,
-						msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.VARIABLE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.VARIABLE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.VARIABLE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.VARIABLE__UPPER_VALUE :
+				return basicSetUpperValue(null, msgs);
+			case UMLPackage.VARIABLE__LOWER_VALUE :
+				return basicSetLowerValue(null, msgs);
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				return eBasicSetContainer(null,
+					UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
+			case UMLPackage.VARIABLE__SCOPE :
+				return eBasicSetContainer(null, UMLPackage.VARIABLE__SCOPE,
+					msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -671,22 +659,18 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.ACTIVITY__VARIABLE, Activity.class, msgs);
-				case UMLPackage.VARIABLE__SCOPE :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
-						StructuredActivityNode.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.ACTIVITY__VARIABLE, Activity.class, msgs);
+			case UMLPackage.VARIABLE__SCOPE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
+					StructuredActivityNode.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

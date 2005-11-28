@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.4 2005/11/23 20:01:16 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,6 +67,15 @@ public class LiteralBooleanImpl
 	protected static final int VALUE_EFLAG = 1 << 8;
 
 	/**
+	 * The flag representing whether the Value attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int VALUE_ESETFLAG = 1 << 9;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -104,10 +113,41 @@ public class LiteralBooleanImpl
 			eFlags |= VALUE_EFLAG;
 		else
 			eFlags &= ~VALUE_EFLAG;
+		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;
+		eFlags |= VALUE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LITERAL_BOOLEAN__VALUE, oldValue, newValue));
+				UMLPackage.LITERAL_BOOLEAN__VALUE, oldValue, newValue,
+				!oldValueESet));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetValue() {
+		boolean oldValue = (eFlags & VALUE_EFLAG) != 0;
+		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;
+		if (VALUE_EDEFAULT)
+			eFlags |= VALUE_EFLAG;
+		else
+			eFlags &= ~VALUE_EFLAG;
+		eFlags &= ~VALUE_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.LITERAL_BOOLEAN__VALUE, oldValue, VALUE_EDEFAULT,
+				oldValueESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetValue() {
+		return (eFlags & VALUE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -256,7 +296,7 @@ public class LiteralBooleanImpl
 				setType((Type) null);
 				return;
 			case UMLPackage.LITERAL_BOOLEAN__VALUE :
-				setValue(VALUE_EDEFAULT);
+				unsetValue();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -304,7 +344,7 @@ public class LiteralBooleanImpl
 			case UMLPackage.LITERAL_BOOLEAN__TYPE :
 				return eVirtualGet(UMLPackage.LITERAL_BOOLEAN__TYPE) != null;
 			case UMLPackage.LITERAL_BOOLEAN__VALUE :
-				return ((eFlags & VALUE_EFLAG) != 0) != VALUE_EDEFAULT;
+				return isSetValue();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -320,7 +360,10 @@ public class LiteralBooleanImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
-		result.append((eFlags & VALUE_EFLAG) != 0);
+		if ((eFlags & VALUE_ESETFLAG) != 0)
+			result.append((eFlags & VALUE_EFLAG) != 0);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

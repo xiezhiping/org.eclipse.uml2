@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -234,45 +234,35 @@ public abstract class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
-					return ((InternalEList) getCovereds()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(
-						otherEnd,
-						UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION,
-						msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND,
-						msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
-					return ((InternalEList) getToBefores()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
-					return ((InternalEList) getToAfters()).basicAdd(otherEnd,
-						msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
+				return ((InternalEList) getCovereds()).basicAdd(otherEnd, msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION,
+					msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND,
+					msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
+				return ((InternalEList) getToBefores())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
+				return ((InternalEList) getToAfters()).basicAdd(otherEnd, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -281,47 +271,41 @@ public abstract class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
-					return ((InternalEList) getCovereds()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-					return ((InternalEList) getGeneralOrderings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-					return eBasicSetContainer(
-						null,
-						UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION,
-						msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
-					return eBasicSetContainer(null,
-						UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND,
-						msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
-					return ((InternalEList) getToBefores()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
-					return ((InternalEList) getToAfters()).basicRemove(
-						otherEnd, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
+				return ((InternalEList) getCovereds()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
+				return ((InternalEList) getGeneralOrderings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
+				return eBasicSetContainer(null,
+					UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION,
+					msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
+				return eBasicSetContainer(null,
+					UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND,
+					msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
+				return ((InternalEList) getToBefores()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
+				return ((InternalEList) getToAfters()).basicRemove(otherEnd,
+					msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

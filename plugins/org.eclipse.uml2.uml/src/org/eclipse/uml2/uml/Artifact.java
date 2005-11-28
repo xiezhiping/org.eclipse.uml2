@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.1 2005/11/14 22:25:57 khussey Exp $
+ * $Id: Artifact.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,9 +52,11 @@ public interface Artifact
 	 * A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>File Name</em>' attribute.
+	 * @see #isSetFileName()
+	 * @see #unsetFileName()
 	 * @see #setFileName(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_FileName()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	String getFileName();
@@ -64,10 +66,35 @@ public interface Artifact
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>File Name</em>' attribute.
+	 * @see #isSetFileName()
+	 * @see #unsetFileName()
 	 * @see #getFileName()
 	 * @generated
 	 */
 	void setFileName(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Artifact#getFileName <em>File Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetFileName()
+	 * @see #getFileName()
+	 * @see #setFileName(String)
+	 * @generated
+	 */
+	void unsetFileName();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Artifact#getFileName <em>File Name</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>File Name</em>' attribute is set.
+	 * @see #unsetFileName()
+	 * @see #getFileName()
+	 * @see #setFileName(String)
+	 * @generated
+	 */
+	boolean isSetFileName();
 
 	/**
 	 * Returns the value of the '<em><b>Nested Artifact</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -308,7 +308,7 @@ public class ProfileApplicationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PROFILE_APPLICATION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE :
 				setImportedPackage((org.eclipse.uml2.uml.Package) null);
@@ -349,8 +349,7 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION__TARGET :
 				return isSetTargets();
 			case UMLPackage.PROFILE_APPLICATION__VISIBILITY :
-				return eVirtualGet(UMLPackage.PROFILE_APPLICATION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE :
 				return eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE) != null;
 			case UMLPackage.PROFILE_APPLICATION__IMPORTING_NAMESPACE :

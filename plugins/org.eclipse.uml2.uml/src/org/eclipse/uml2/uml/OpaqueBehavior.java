@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehavior.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: OpaqueBehavior.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,11 +47,34 @@ public interface OpaqueBehavior
 	 * Specifies the behavior in one or more languages.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute list.
+	 * @see #isSetBodies()
+	 * @see #unsetBodies()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueBehavior_Body()
-	 * @model type="java.lang.String" required="true"
+	 * @model type="java.lang.String" unsettable="true" required="true"
 	 * @generated
 	 */
 	List getBodies();
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueBehavior#getBodies <em>Body</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetBodies()
+	 * @see #getBodies()
+	 * @generated
+	 */
+	void unsetBodies();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.OpaqueBehavior#getBodies <em>Body</em>}' attribute list is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Body</em>' attribute list is set.
+	 * @see #unsetBodies()
+	 * @see #getBodies()
+	 * @generated
+	 */
+	boolean isSetBodies();
 
 	/**
 	 * Returns the value of the '<em><b>Language</b></em>' attribute list.

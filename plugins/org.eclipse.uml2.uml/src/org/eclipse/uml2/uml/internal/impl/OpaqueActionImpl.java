@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,6 +19,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
@@ -112,10 +114,29 @@ public class OpaqueActionImpl
 		List body = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__BODY);
 		if (body == null) {
 			eVirtualSet(UMLPackage.OPAQUE_ACTION__BODY,
-				body = new EDataTypeUniqueEList(String.class, this,
+				body = new EDataTypeUniqueEList.Unsettable(String.class, this,
 					UMLPackage.OPAQUE_ACTION__BODY));
 		}
 		return body;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetBodies() {
+		((InternalEList.Unsettable) getBodies()).unset();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetBodies() {
+		List body = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__BODY);
+		return body != null && ((InternalEList.Unsettable) body).isSet();
 	}
 
 	/**
@@ -418,7 +439,7 @@ public class OpaqueActionImpl
 				getLocalPostconditions().clear();
 				return;
 			case UMLPackage.OPAQUE_ACTION__BODY :
-				getBodies().clear();
+				unsetBodies();
 				return;
 			case UMLPackage.OPAQUE_ACTION__LANGUAGE :
 				getLanguages().clear();
@@ -515,8 +536,7 @@ public class OpaqueActionImpl
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__BODY :
-				List body = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__BODY);
-				return body != null && !body.isEmpty();
+				return isSetBodies();
 			case UMLPackage.OPAQUE_ACTION__LANGUAGE :
 				List language = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__LANGUAGE);
 				return language != null && !language.isEmpty();

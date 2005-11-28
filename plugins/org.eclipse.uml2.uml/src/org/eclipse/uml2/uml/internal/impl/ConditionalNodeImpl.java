@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.4 2005/11/23 20:01:19 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -85,7 +85,16 @@ public class ConditionalNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DETERMINATE_EFLAG = 1 << 10;
+	protected static final int IS_DETERMINATE_EFLAG = 1 << 11;
+
+	/**
+	 * The flag representing whether the Is Determinate attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_DETERMINATE_ESETFLAG = 1 << 12;
 
 	/**
 	 * The default value of the '{@link #isAssured() <em>Is Assured</em>}' attribute.
@@ -105,7 +114,16 @@ public class ConditionalNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ASSURED_EFLAG = 1 << 11;
+	protected static final int IS_ASSURED_EFLAG = 1 << 13;
+
+	/**
+	 * The flag representing whether the Is Assured attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_ASSURED_ESETFLAG = 1 << 14;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -188,11 +206,41 @@ public class ConditionalNodeImpl
 			eFlags |= IS_DETERMINATE_EFLAG;
 		else
 			eFlags &= ~IS_DETERMINATE_EFLAG;
+		boolean oldIsDeterminateESet = (eFlags & IS_DETERMINATE_ESETFLAG) != 0;
+		eFlags |= IS_DETERMINATE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE, oldIsDeterminate,
-				newIsDeterminate));
+				newIsDeterminate, !oldIsDeterminateESet));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetIsDeterminate() {
+		boolean oldIsDeterminate = (eFlags & IS_DETERMINATE_EFLAG) != 0;
+		boolean oldIsDeterminateESet = (eFlags & IS_DETERMINATE_ESETFLAG) != 0;
+		if (IS_DETERMINATE_EDEFAULT)
+			eFlags |= IS_DETERMINATE_EFLAG;
+		else
+			eFlags &= ~IS_DETERMINATE_EFLAG;
+		eFlags &= ~IS_DETERMINATE_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE, oldIsDeterminate,
+				IS_DETERMINATE_EDEFAULT, oldIsDeterminateESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsDeterminate() {
+		return (eFlags & IS_DETERMINATE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -215,11 +263,41 @@ public class ConditionalNodeImpl
 			eFlags |= IS_ASSURED_EFLAG;
 		else
 			eFlags &= ~IS_ASSURED_EFLAG;
+		boolean oldIsAssuredESet = (eFlags & IS_ASSURED_ESETFLAG) != 0;
+		eFlags |= IS_ASSURED_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONDITIONAL_NODE__IS_ASSURED, oldIsAssured,
-				newIsAssured));
+				newIsAssured, !oldIsAssuredESet));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetIsAssured() {
+		boolean oldIsAssured = (eFlags & IS_ASSURED_EFLAG) != 0;
+		boolean oldIsAssuredESet = (eFlags & IS_ASSURED_ESETFLAG) != 0;
+		if (IS_ASSURED_EDEFAULT)
+			eFlags |= IS_ASSURED_EFLAG;
+		else
+			eFlags &= ~IS_ASSURED_EFLAG;
+		eFlags &= ~IS_ASSURED_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.CONDITIONAL_NODE__IS_ASSURED, oldIsAssured,
+				IS_ASSURED_EDEFAULT, oldIsAssuredESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsAssured() {
+		return (eFlags & IS_ASSURED_ESETFLAG) != 0;
 	}
 
 	/**
@@ -306,80 +384,73 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.CONDITIONAL_NODE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.CONDITIONAL_NODE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
-					return ((InternalEList) getInPartitions()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
-					return eBasicSetContainer(null,
-						UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE, msgs);
-				case UMLPackage.CONDITIONAL_NODE__ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.CONDITIONAL_NODE__ACTIVITY, msgs);
-				case UMLPackage.CONDITIONAL_NODE__INCOMING :
-					return ((InternalEList) getIncomings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION :
-					return ((InternalEList) getInInterruptibleRegions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__HANDLER :
-					return ((InternalEList) getHandlers()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__LOCAL_PRECONDITION :
-					return ((InternalEList) getLocalPreconditions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__LOCAL_POSTCONDITION :
-					return ((InternalEList) getLocalPostconditions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT :
-					return ((InternalEList) getElementImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT :
-					return ((InternalEList) getPackageImports()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
-					return ((InternalEList) getOwnedRules()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__IN_ACTIVITY :
-					return eBasicSetContainer(null,
-						UMLPackage.CONDITIONAL_NODE__IN_ACTIVITY, msgs);
-				case UMLPackage.CONDITIONAL_NODE__VARIABLE :
-					return ((InternalEList) getVariables()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONDITIONAL_NODE__NODE :
-					return ((InternalEList) getNodes()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.CONDITIONAL_NODE__EDGE :
-					return ((InternalEList) getEdges()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.CONDITIONAL_NODE__CLAUSE :
-					return ((InternalEList) getClauses()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.CONDITIONAL_NODE__RESULT :
-					return ((InternalEList) getResults()).basicRemove(otherEnd,
-						msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.CONDITIONAL_NODE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
+				return eBasicSetContainer(null,
+					UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.CONDITIONAL_NODE__ACTIVITY :
+				return eBasicSetContainer(null,
+					UMLPackage.CONDITIONAL_NODE__ACTIVITY, msgs);
+			case UMLPackage.CONDITIONAL_NODE__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__HANDLER :
+				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.CONDITIONAL_NODE__LOCAL_PRECONDITION :
+				return ((InternalEList) getLocalPreconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__LOCAL_POSTCONDITION :
+				return ((InternalEList) getLocalPostconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.CONDITIONAL_NODE__IN_ACTIVITY :
+				return eBasicSetContainer(null,
+					UMLPackage.CONDITIONAL_NODE__IN_ACTIVITY, msgs);
+			case UMLPackage.CONDITIONAL_NODE__VARIABLE :
+				return ((InternalEList) getVariables()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.CONDITIONAL_NODE__NODE :
+				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__EDGE :
+				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
+				return ((InternalEList) getClauses()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.CONDITIONAL_NODE__RESULT :
+				return ((InternalEList) getResults()).basicRemove(otherEnd,
+					msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -689,16 +760,16 @@ public class ConditionalNodeImpl
 				getNodes().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
-				setMustIsolate(MUST_ISOLATE_EDEFAULT);
+				unsetMustIsolate();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__EDGE :
 				getEdges().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE :
-				setIsDeterminate(IS_DETERMINATE_EDEFAULT);
+				unsetIsDeterminate();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__IS_ASSURED :
-				setIsAssured(IS_ASSURED_EDEFAULT);
+				unsetIsAssured();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				getClauses().clear();
@@ -823,14 +894,14 @@ public class ConditionalNodeImpl
 				List node = (List) eVirtualGet(UMLPackage.CONDITIONAL_NODE__NODE);
 				return node != null && !node.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
-				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
+				return isSetMustIsolate();
 			case UMLPackage.CONDITIONAL_NODE__EDGE :
 				List edge = (List) eVirtualGet(UMLPackage.CONDITIONAL_NODE__EDGE);
 				return edge != null && !edge.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE :
-				return ((eFlags & IS_DETERMINATE_EFLAG) != 0) != IS_DETERMINATE_EDEFAULT;
+				return isSetIsDeterminate();
 			case UMLPackage.CONDITIONAL_NODE__IS_ASSURED :
-				return ((eFlags & IS_ASSURED_EFLAG) != 0) != IS_ASSURED_EDEFAULT;
+				return isSetIsAssured();
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				List clause = (List) eVirtualGet(UMLPackage.CONDITIONAL_NODE__CLAUSE);
 				return clause != null && !clause.isEmpty();
@@ -852,9 +923,15 @@ public class ConditionalNodeImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isDeterminate: "); //$NON-NLS-1$
-		result.append((eFlags & IS_DETERMINATE_EFLAG) != 0);
+		if ((eFlags & IS_DETERMINATE_ESETFLAG) != 0)
+			result.append((eFlags & IS_DETERMINATE_EFLAG) != 0);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", isAssured: "); //$NON-NLS-1$
-		result.append((eFlags & IS_ASSURED_EFLAG) != 0);
+		if ((eFlags & IS_ASSURED_ESETFLAG) != 0)
+			result.append((eFlags & IS_ASSURED_EFLAG) != 0);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

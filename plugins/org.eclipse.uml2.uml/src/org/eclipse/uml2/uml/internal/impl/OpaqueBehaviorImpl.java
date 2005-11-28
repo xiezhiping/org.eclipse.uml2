@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -17,6 +17,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
@@ -75,10 +77,29 @@ public class OpaqueBehaviorImpl
 		List body = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__BODY);
 		if (body == null) {
 			eVirtualSet(UMLPackage.OPAQUE_BEHAVIOR__BODY,
-				body = new EDataTypeUniqueEList(String.class, this,
+				body = new EDataTypeUniqueEList.Unsettable(String.class, this,
 					UMLPackage.OPAQUE_BEHAVIOR__BODY));
 		}
 		return body;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetBodies() {
+		((InternalEList.Unsettable) getBodies()).unset();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetBodies() {
+		List body = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__BODY);
+		return body != null && ((InternalEList.Unsettable) body).isSet();
 	}
 
 	/**
@@ -549,13 +570,13 @@ public class OpaqueBehaviorImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ACTIVE :
-				setIsActive(IS_ACTIVE_EDEFAULT);
+				unsetIsActive();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
-				setIsReentrant(IS_REENTRANT_EDEFAULT);
+				unsetIsReentrant();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
@@ -573,7 +594,7 @@ public class OpaqueBehaviorImpl
 				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
-				getBodies().clear();
+				unsetBodies();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE :
 				getLanguages().clear();
@@ -718,14 +739,14 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ACTIVE :
-				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
+				return isSetIsActive();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__EXTENSION :
 				return !getExtensions().isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
-				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
+				return isSetIsReentrant();
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
 				List redefinedBehavior = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null
@@ -742,8 +763,7 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
 				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
-				List body = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__BODY);
-				return body != null && !body.isEmpty();
+				return isSetBodies();
 			case UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE :
 				List language = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE);
 				return language != null && !language.isEmpty();

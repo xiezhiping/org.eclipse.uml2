@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.5 2005/11/23 20:01:14 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.6 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -279,28 +279,21 @@ public class TemplateBindingImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.TEMPLATE_BINDING__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
-					return ((InternalEList) getParameterSubstitutions())
-						.basicAdd(otherEnd, msgs);
-				case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.TEMPLATE_BINDING__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
+				return ((InternalEList) getParameterSubstitutions()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -309,27 +302,22 @@ public class TemplateBindingImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.TEMPLATE_BINDING__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
-					return ((InternalEList) getParameterSubstitutions())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
-					return eBasicSetContainer(null,
-						UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.TEMPLATE_BINDING__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
+				return ((InternalEList) getParameterSubstitutions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
+				return eBasicSetContainer(null,
+					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -337,19 +325,15 @@ public class TemplateBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
-						TemplateableElement.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+					TemplateableElement.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

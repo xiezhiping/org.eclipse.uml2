@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.6 2005/11/23 20:01:14 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.7 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -910,6 +910,28 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void unsetIsComposite() {
+		// TODO: implement this method to unset the 'Is Composite' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsComposite() {
+		// TODO: implement this method to return whether the 'Is Composite' attribute is set
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public org.eclipse.uml2.uml.Class getClass_() {
 		// TODO: implement this method to return the 'Class ' reference
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -1463,82 +1485,72 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.PROPERTY__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
-					TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER);
-					if (templateParameter != null)
-						msgs = ((InternalEObject) templateParameter)
-							.eInverseRemove(
-								this,
-								UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-								TemplateParameter.class, msgs);
-					return basicSetTemplateParameter(
-						(TemplateParameter) otherEnd, msgs);
-				case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.PROPERTY__END :
-					return ((InternalEList) getEnds()).basicAdd(otherEnd, msgs);
-				case UMLPackage.PROPERTY__DEPLOYMENT :
-					return ((InternalEList) getDeployments()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-					TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE);
-					if (ownedTemplateSignature != null)
-						msgs = ((InternalEObject) ownedTemplateSignature)
-							.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-									- UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
-								null, msgs);
-					return basicSetOwnedTemplateSignature(
-						(TemplateSignature) otherEnd, msgs);
-				case UMLPackage.PROPERTY__DATATYPE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.PROPERTY__DATATYPE, msgs);
-				case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.PROPERTY__OWNING_ASSOCIATION, msgs);
-				case UMLPackage.PROPERTY__ASSOCIATION :
-					Association association = (Association) eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION);
-					if (association != null)
-						msgs = ((InternalEObject) association).eInverseRemove(
-							this, UMLPackage.ASSOCIATION__MEMBER_END,
-							Association.class, msgs);
-					return basicSetAssociation((Association) otherEnd, msgs);
-				case UMLPackage.PROPERTY__QUALIFIER :
-					return ((InternalEList) getQualifiers()).basicAdd(otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PROPERTY__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
+				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER);
+				if (templateParameter != null)
+					msgs = ((InternalEObject) templateParameter)
+						.eInverseRemove(this,
+							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+							TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter) otherEnd,
+					msgs);
+			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.PROPERTY__END :
+				return ((InternalEList) getEnds()).basicAdd(otherEnd, msgs);
+			case UMLPackage.PROPERTY__DEPLOYMENT :
+				return ((InternalEList) getDeployments()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
+				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE);
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject) ownedTemplateSignature)
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
+							null, msgs);
+				return basicSetOwnedTemplateSignature(
+					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.PROPERTY__DATATYPE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PROPERTY__DATATYPE, msgs);
+			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PROPERTY__OWNING_ASSOCIATION, msgs);
+			case UMLPackage.PROPERTY__ASSOCIATION :
+				Association association = (Association) eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION);
+				if (association != null)
+					msgs = ((InternalEObject) association).eInverseRemove(this,
+						UMLPackage.ASSOCIATION__MEMBER_END, Association.class,
 						msgs);
-				case UMLPackage.PROPERTY__ASSOCIATION_END :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.PROPERTY__ASSOCIATION_END, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+				return basicSetAssociation((Association) otherEnd, msgs);
+			case UMLPackage.PROPERTY__QUALIFIER :
+				return ((InternalEList) getQualifiers()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PROPERTY__ASSOCIATION_END :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PROPERTY__ASSOCIATION_END, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -1547,62 +1559,56 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.PROPERTY__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PROPERTY__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.PROPERTY__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.PROPERTY__UPPER_VALUE :
-					return basicSetUpperValue(null, msgs);
-				case UMLPackage.PROPERTY__LOWER_VALUE :
-					return basicSetLowerValue(null, msgs);
-				case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
-					return basicSetTemplateParameter(null, msgs);
-				case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
-					return eBasicSetContainer(null,
-						UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
-				case UMLPackage.PROPERTY__END :
-					return ((InternalEList) getEnds()).basicRemove(otherEnd,
-						msgs);
-				case UMLPackage.PROPERTY__DEPLOYMENT :
-					return ((InternalEList) getDeployments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-					return ((InternalEList) getTemplateBindings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-					return basicSetOwnedTemplateSignature(null, msgs);
-				case UMLPackage.PROPERTY__DATATYPE :
-					return eBasicSetContainer(null,
-						UMLPackage.PROPERTY__DATATYPE, msgs);
-				case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
-					return eBasicSetContainer(null,
-						UMLPackage.PROPERTY__OWNING_ASSOCIATION, msgs);
-				case UMLPackage.PROPERTY__ASSOCIATION :
-					return basicSetAssociation(null, msgs);
-				case UMLPackage.PROPERTY__DEFAULT_VALUE :
-					return basicSetDefaultValue(null, msgs);
-				case UMLPackage.PROPERTY__QUALIFIER :
-					return ((InternalEList) getQualifiers()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.PROPERTY__ASSOCIATION_END :
-					return eBasicSetContainer(null,
-						UMLPackage.PROPERTY__ASSOCIATION_END, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PROPERTY__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROPERTY__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROPERTY__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.PROPERTY__UPPER_VALUE :
+				return basicSetUpperValue(null, msgs);
+			case UMLPackage.PROPERTY__LOWER_VALUE :
+				return basicSetLowerValue(null, msgs);
+			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.PROPERTY__END :
+				return ((InternalEList) getEnds()).basicRemove(otherEnd, msgs);
+			case UMLPackage.PROPERTY__DEPLOYMENT :
+				return ((InternalEList) getDeployments()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.PROPERTY__DATATYPE :
+				return eBasicSetContainer(null, UMLPackage.PROPERTY__DATATYPE,
+					msgs);
+			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
+				return eBasicSetContainer(null,
+					UMLPackage.PROPERTY__OWNING_ASSOCIATION, msgs);
+			case UMLPackage.PROPERTY__ASSOCIATION :
+				return basicSetAssociation(null, msgs);
+			case UMLPackage.PROPERTY__DEFAULT_VALUE :
+				return basicSetDefaultValue(null, msgs);
+			case UMLPackage.PROPERTY__QUALIFIER :
+				return ((InternalEList) getQualifiers()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.PROPERTY__ASSOCIATION_END :
+				return eBasicSetContainer(null,
+					UMLPackage.PROPERTY__ASSOCIATION_END, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -1610,32 +1616,26 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
-					return eInternalContainer()
-						.eInverseRemove(
-							this,
-							UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
-				case UMLPackage.PROPERTY__DATATYPE :
-					return eInternalContainer().eInverseRemove(this,
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
+			case UMLPackage.PROPERTY__DATATYPE :
+				return eInternalContainer()
+					.eInverseRemove(this,
 						UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE, DataType.class,
 						msgs);
-				case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.ASSOCIATION__OWNED_END, Association.class,
-						msgs);
-				case UMLPackage.PROPERTY__ASSOCIATION_END :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.PROPERTY__QUALIFIER, Property.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.ASSOCIATION__OWNED_END, Association.class, msgs);
+			case UMLPackage.PROPERTY__ASSOCIATION_END :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.PROPERTY__QUALIFIER, Property.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**
@@ -1986,7 +1986,7 @@ public class PropertyImpl
 				setAggregation(AGGREGATION_EDEFAULT);
 				return;
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
-				setIsComposite(IS_COMPOSITE_EDEFAULT);
+				unsetIsComposite();
 				return;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
 				getRedefinedProperties().clear();
@@ -2109,7 +2109,7 @@ public class PropertyImpl
 				return eVirtualGet(UMLPackage.PROPERTY__AGGREGATION,
 					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
-				return isComposite() != IS_COMPOSITE_EDEFAULT;
+				return isSetIsComposite();
 			case UMLPackage.PROPERTY__CLASS_ :
 				return getClass_() != null;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :

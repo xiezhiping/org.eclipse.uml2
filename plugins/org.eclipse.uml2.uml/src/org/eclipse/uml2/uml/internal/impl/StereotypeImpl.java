@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -512,7 +512,7 @@ public class StereotypeImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.STEREOTYPE__IS_ACTIVE :
-				setIsActive(IS_ACTIVE_EDEFAULT);
+				unsetIsActive();
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -660,7 +660,7 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.STEREOTYPE__IS_ACTIVE :
-				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
+				return isSetIsActive();
 			case UMLPackage.STEREOTYPE__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();

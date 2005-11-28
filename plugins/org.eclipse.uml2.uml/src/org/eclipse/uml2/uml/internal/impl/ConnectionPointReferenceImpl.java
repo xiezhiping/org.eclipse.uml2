@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.4 2005/11/23 20:01:13 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -207,39 +207,32 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies()).basicAdd(
-						otherEnd, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-					return ((InternalEList) getIncomings()).basicAdd(otherEnd,
-						msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
-					if (eInternalContainer() != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd,
-						UMLPackage.CONNECTION_POINT_REFERENCE__STATE, msgs);
-				default :
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
+				return ((InternalEList) getOutgoings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
+				return ((InternalEList) getIncomings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER, msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.CONNECTION_POINT_REFERENCE__STATE, msgs);
 		}
-		if (eInternalContainer() != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -248,38 +241,33 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
-					return ((InternalEList) getEAnnotations()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
-					return ((InternalEList) getOwnedComments()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-					return ((InternalEList) getClientDependencies())
-						.basicRemove(otherEnd, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
-					return basicSetNameExpression(null, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-					return ((InternalEList) getOutgoings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-					return ((InternalEList) getIncomings()).basicRemove(
-						otherEnd, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
-					return eBasicSetContainer(null,
-						UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
-					return eBasicSetContainer(null,
-						UMLPackage.CONNECTION_POINT_REFERENCE__STATE, msgs);
-				default :
-					return eDynamicInverseRemove(otherEnd, featureID,
-						baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
+				return eBasicSetContainer(null,
+					UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER, msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
+				return eBasicSetContainer(null,
+					UMLPackage.CONNECTION_POINT_REFERENCE__STATE, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -287,21 +275,17 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
-				case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
-					return eInternalContainer().eInverseRemove(this,
-						UMLPackage.STATE__CONNECTION, State.class, msgs);
-				default :
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.STATE__CONNECTION, State.class, msgs);
 		}
-		return eInternalContainer().eInverseRemove(this,
-			EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

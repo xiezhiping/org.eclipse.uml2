@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: Class.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -159,9 +159,11 @@ public interface Class
 	 * Determines whether an object specified by this class is active or not. If true, then the owning class is referred to as an active class. If false, then such a class is referred to as a passive class.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Active</em>' attribute.
+	 * @see #isSetIsActive()
+	 * @see #unsetIsActive()
 	 * @see #setIsActive(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClass_IsActive()
-	 * @model required="true" ordered="false"
+	 * @model unsettable="true" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isActive();
@@ -171,10 +173,35 @@ public interface Class
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Active</em>' attribute.
+	 * @see #isSetIsActive()
+	 * @see #unsetIsActive()
 	 * @see #isActive()
 	 * @generated
 	 */
 	void setIsActive(boolean value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Class#isActive <em>Is Active</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetIsActive()
+	 * @see #isActive()
+	 * @see #setIsActive(boolean)
+	 * @generated
+	 */
+	void unsetIsActive();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Class#isActive <em>Is Active</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Is Active</em>' attribute is set.
+	 * @see #unsetIsActive()
+	 * @see #isActive()
+	 * @see #setIsActive(boolean)
+	 * @generated
+	 */
+	boolean isSetIsActive();
 
 	/**
 	 * Returns the value of the '<em><b>Owned Reception</b></em>' containment reference list.
