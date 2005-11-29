@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: ElementImpl.java,v 1.6 2005/11/29 22:45:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -352,8 +352,14 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element getOwnerGen() {
 		return null;
+	}
+
+	public Element getOwner() {
+		return eInternalContainer() instanceof Element
+			? (Element) eContainer()
+			: getOwnerGen();
 	}
 
 	/**

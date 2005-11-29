@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.7 2005/11/28 20:26:03 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.8 2005/11/29 22:45:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -575,8 +575,15 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace basicGetNamespace() {
+	public Namespace basicGetNamespaceGen() {
 		return null;
+	}
+
+	public Namespace basicGetNamespace() {
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof Namespace
+			? (Namespace) eInternalContainer
+			: basicGetNamespaceGen();
 	}
 
 	/**

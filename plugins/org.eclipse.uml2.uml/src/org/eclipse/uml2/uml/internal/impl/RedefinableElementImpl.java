@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.5 2005/11/23 20:01:16 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.6 2005/11/29 22:45:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -126,16 +127,15 @@ public abstract class RedefinableElementImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getRedefinitionContexts() {
 		List redefinitionContext = (List) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
 			eVirtualSet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-				redefinitionContext = new DerivedUnionEObjectEList(
-					Classifier.class, this,
-					UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-					new int[]{}));
+				redefinitionContext = new DerivedEObjectEList(Classifier.class,
+					this, UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					new int[]{UMLPackage.REDEFINABLE_ELEMENT__OWNER}));
 		}
 		return redefinitionContext;
 	}
@@ -404,10 +404,10 @@ public abstract class RedefinableElementImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetRedefinitionContexts() {
-		return false;
+		return getOwner() instanceof Classifier;
 	}
 
 } //RedefinableElementImpl

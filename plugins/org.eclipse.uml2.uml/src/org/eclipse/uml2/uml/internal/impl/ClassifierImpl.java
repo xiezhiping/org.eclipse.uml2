@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.9 2005/11/29 19:51:15 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.10 2005/11/29 22:45:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentEList;
@@ -217,15 +218,16 @@ public abstract class ClassifierImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getRedefinitionContexts() {
 		List redefinitionContext = (List) eVirtualGet(UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
 			eVirtualSet(UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
-				redefinitionContext = new DerivedUnionEObjectEList(
+				redefinitionContext = new DerivedEObjectEList(
 					Classifier.class, this,
-					UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT, new int[]{}));
+					UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
+					new int[]{UMLPackage.CLASSIFIER__NAMESPACE}));
 		}
 		return redefinitionContext;
 	}
@@ -2203,10 +2205,10 @@ public abstract class ClassifierImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetRedefinitionContexts() {
-		return false;
+		return basicGetNamespace() instanceof Classifier;
 	}
 
 	/**
