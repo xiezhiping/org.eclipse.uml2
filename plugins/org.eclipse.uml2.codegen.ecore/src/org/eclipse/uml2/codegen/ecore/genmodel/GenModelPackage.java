@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.12 2005/11/28 16:58:16 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.13 2005/11/29 20:08:37 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -705,6 +705,33 @@ public interface GenModelPackage
 	int GEN_MODEL__SUPPRESS_EMF_TYPES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__SUPPRESS_EMF_TYPES;
 
 	/**
+	 * The feature id for the '<em><b>Suppress EMF Meta Data</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__SUPPRESS_EMF_META_DATA = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__SUPPRESS_EMF_META_DATA;
+
+	/**
+	 * The feature id for the '<em><b>Suppress EMF Model Tags</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__SUPPRESS_EMF_MODEL_TAGS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__SUPPRESS_EMF_MODEL_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Suppress Interfaces</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__SUPPRESS_INTERFACES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__SUPPRESS_INTERFACES;
+
+	/**
 	 * The feature id for the '<em><b>Feature Map Wrapper Interface</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1049,13 +1076,13 @@ public interface GenModelPackage
 	int GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX;
 
 	/**
-	 * The feature id for the '<em><b>Reflection Package Suffix</b></em>' attribute.
+	 * The feature id for the '<em><b>Meta Data Package Suffix</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__REFLECTION_PACKAGE_SUFFIX;
+	int GEN_PACKAGE__META_DATA_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__META_DATA_PACKAGE_SUFFIX;
 
 	/**
 	 * The feature id for the '<em><b>Class Package Suffix</b></em>' attribute.

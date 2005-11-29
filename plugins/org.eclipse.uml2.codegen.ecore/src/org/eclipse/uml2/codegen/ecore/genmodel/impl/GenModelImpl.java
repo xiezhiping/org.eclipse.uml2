@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.9 2005/11/28 16:58:16 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.10 2005/11/29 20:08:37 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -527,15 +527,6 @@ public class GenModelImpl
 				"org.eclipse.uml2.codegen.ecore.templates.model.Class"); //$NON-NLS-1$
 		}
 		return classEmitter;
-	}
-
-	public JETEmitter getInterfaceEmitter() {
-		if (interfaceEmitter == null) {
-			interfaceEmitter = createJETEmitter(interfaceTemplateName);
-			setMethod(interfaceEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.Interface"); //$NON-NLS-1$
-		}
-		return interfaceEmitter;
 	}
 
 	public JETEmitter getResourceFactoryClassEmitter() {

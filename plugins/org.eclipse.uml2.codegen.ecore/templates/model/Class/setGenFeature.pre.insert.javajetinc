@@ -5,7 +5,8 @@
   <%for (Iterator supersetGenFeatures = UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature).iterator(); supersetGenFeatures.hasNext(); ) { GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures.next();%>
     <%if (!UML2GenModelUtil.isUnion(supersetGenFeature)) {%>
       <%if (supersetGenFeature.isListType()) {%>
-		if (new<%=genFeature.getCapName()%> != null && !<%=supersetGenFeature.getGetAccessor()%>().contains(new<%=genFeature.getCapName()%>)) {
+		if (new<%=genFeature.getCapName()%> != null && !<%=supersetGenFeature.getGetAccessor()%>().contains(new<%=genFeature.getCapName()%>))
+		{
 			<%=supersetGenFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
 		}
       <%} else {%>
