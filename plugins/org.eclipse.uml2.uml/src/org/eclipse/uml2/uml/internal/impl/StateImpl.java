@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.8 2005/11/29 17:55:39 khussey Exp $
+ * $Id: StateImpl.java,v 1.9 2005/11/29 19:53:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -465,30 +465,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetIsComposite() {
-		// TODO: implement this method to return whether the 'Is Composite' attribute is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isOrthogonal() {
 		return StateOperations.isOrthogonal(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsOrthogonal() {
-		// TODO: implement this method to return whether the 'Is Orthogonal' attribute is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -505,30 +483,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetIsSimple() {
-		// TODO: implement this method to return whether the 'Is Simple' attribute is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isSubmachineState() {
 		return StateOperations.isSubmachineState(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsSubmachineState() {
-		// TODO: implement this method to return whether the 'Is Submachine State' attribute is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -1712,13 +1668,13 @@ public class StateImpl
 			case UMLPackage.STATE__CONTAINER :
 				return getContainer() != null;
 			case UMLPackage.STATE__IS_COMPOSITE :
-				return isSetIsComposite();
+				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.STATE__IS_ORTHOGONAL :
-				return isSetIsOrthogonal();
+				return isOrthogonal() != IS_ORTHOGONAL_EDEFAULT;
 			case UMLPackage.STATE__IS_SIMPLE :
-				return isSetIsSimple();
+				return isSimple() != IS_SIMPLE_EDEFAULT;
 			case UMLPackage.STATE__IS_SUBMACHINE_STATE :
-				return isSetIsSubmachineState();
+				return isSubmachineState() != IS_SUBMACHINE_STATE_EDEFAULT;
 			case UMLPackage.STATE__SUBMACHINE :
 				return eVirtualGet(UMLPackage.STATE__SUBMACHINE) != null;
 			case UMLPackage.STATE__CONNECTION :

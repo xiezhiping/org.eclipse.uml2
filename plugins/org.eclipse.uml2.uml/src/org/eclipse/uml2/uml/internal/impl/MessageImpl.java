@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
+ * $Id: MessageImpl.java,v 1.7 2005/11/29 19:53:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -138,17 +138,6 @@ public class MessageImpl
 	 */
 	public MessageKind getMessageKind() {
 		return MessageOperations.getMessageKind(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetMessageKind() {
-		// TODO: implement this method to return whether the 'Message Kind' attribute is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -783,7 +772,7 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.MESSAGE__NAME_EXPRESSION) != null;
 			case UMLPackage.MESSAGE__MESSAGE_KIND :
-				return isSetMessageKind();
+				return getMessageKind() != MESSAGE_KIND_EDEFAULT;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
 				return isSetMessageSort();
 			case UMLPackage.MESSAGE__RECEIVE_EVENT :

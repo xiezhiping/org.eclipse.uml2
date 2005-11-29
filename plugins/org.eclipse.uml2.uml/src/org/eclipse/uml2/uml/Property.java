@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.4 2005/11/28 20:26:01 khussey Exp $
+ * $Id: Property.java,v 1.5 2005/11/29 19:53:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -222,11 +222,9 @@ public interface Property
 	 * This is a derived value, indicating whether the aggregation of the Property is composite or not.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Composite</em>' attribute.
-	 * @see #isSetIsComposite()
-	 * @see #unsetIsComposite()
 	 * @see #setIsComposite(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsComposite()
-	 * @model default="false" unsettable="true" required="true" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="false" required="true" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isComposite();
@@ -236,35 +234,10 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Composite</em>' attribute.
-	 * @see #isSetIsComposite()
-	 * @see #unsetIsComposite()
 	 * @see #isComposite()
 	 * @generated
 	 */
 	void setIsComposite(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Property#isComposite <em>Is Composite</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetIsComposite()
-	 * @see #isComposite()
-	 * @see #setIsComposite(boolean)
-	 * @generated
-	 */
-	void unsetIsComposite();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Property#isComposite <em>Is Composite</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Is Composite</em>' attribute is set.
-	 * @see #unsetIsComposite()
-	 * @see #isComposite()
-	 * @see #setIsComposite(boolean)
-	 * @generated
-	 */
-	boolean isSetIsComposite();
 
 	/**
 	 * Returns the value of the '<em><b>Class </b></em>' reference.

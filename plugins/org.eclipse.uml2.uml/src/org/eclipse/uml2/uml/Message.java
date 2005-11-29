@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Message.java,v 1.3 2005/11/28 20:26:01 khussey Exp $
+ * $Id: Message.java,v 1.4 2005/11/29 19:53:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -61,22 +61,11 @@ public interface Message
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.MessageKind
-	 * @see #isSetMessageKind()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMessage_MessageKind()
-	 * @model unsettable="true" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	MessageKind getMessageKind();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Message#getMessageKind <em>Message Kind</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Message Kind</em>' attribute is set.
-	 * @see #getMessageKind()
-	 * @generated
-	 */
-	boolean isSetMessageKind();
 
 	/**
 	 * Returns the value of the '<em><b>Message Sort</b></em>' attribute.

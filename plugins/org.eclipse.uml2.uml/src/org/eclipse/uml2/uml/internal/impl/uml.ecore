@@ -2367,8 +2367,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isComposite" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        volatile="true" transient="true" defaultValueLiteral="false" unsettable="true"
-        derived="true">
+        volatile="true" transient="true" defaultValueLiteral="false" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute.&#xD;&#xA;This is a derived value, indicating whether the aggregation of the Property is composite or not."/>
       </eAnnotations>
@@ -3799,28 +3798,28 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isComposite" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" volatile="true" transient="true" unsettable="true" derived="true">
+        changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrthogonal" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" volatile="true" transient="true" unsettable="true" derived="true">
+        changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSimple" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" volatile="true" transient="true" unsettable="true" derived="true">
+        changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSubmachineState" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" volatile="true" transient="true" unsettable="true" derived="true">
+        changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine)."/>
       </eAnnotations>
@@ -5176,7 +5175,7 @@
     <eOperations name="getSignature" ordered="false" eType="#//NamedElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageKind" ordered="false"
         lowerBound="1" eType="#//MessageKind" changeable="false" volatile="true" transient="true"
-        unsettable="true" derived="true">
+        derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The derived kind of the Message (complete, lost, found or unknown)"/>
       </eAnnotations>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.8 2005/11/29 17:55:39 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.9 2005/11/29 19:53:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -903,28 +903,6 @@ public class PropertyImpl
 	 */
 	public void setIsComposite(boolean newIsComposite) {
 		PropertyOperations.setIsComposite(this, newIsComposite);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsComposite() {
-		// TODO: implement this method to unset the 'Is Composite' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsComposite() {
-		// TODO: implement this method to return whether the 'Is Composite' attribute is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -1986,7 +1964,7 @@ public class PropertyImpl
 				setAggregation(AGGREGATION_EDEFAULT);
 				return;
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
-				unsetIsComposite();
+				setIsComposite(IS_COMPOSITE_EDEFAULT);
 				return;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
 				getRedefinedProperties().clear();
@@ -2109,7 +2087,7 @@ public class PropertyImpl
 				return eVirtualGet(UMLPackage.PROPERTY__AGGREGATION,
 					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
-				return isSetIsComposite();
+				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.PROPERTY__CLASS_ :
 				return getClass_() != null;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :

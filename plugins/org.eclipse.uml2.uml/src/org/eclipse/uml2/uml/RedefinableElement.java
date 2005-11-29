@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.3 2005/11/29 19:53:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -158,7 +158,7 @@ public interface RedefinableElement
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	boolean isRedefinitionContextValid(RedefinableElement redefinable);
+	boolean isRedefinitionContextValid(RedefinableElement redefined);
 
 	/**
 	 * <!-- begin-user-doc -->

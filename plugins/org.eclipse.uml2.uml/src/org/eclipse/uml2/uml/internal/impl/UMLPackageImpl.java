@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.1 2005/11/14 22:26:03 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.2 2005/11/29 19:53:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -10615,4 +10615,5 @@ public class UMLPackageImpl
 		isFixed = true;
 		fixEClassifiers();
 	}
+
 } //UMLPackageImpl
