@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.42 2005/11/28 17:18:05 khussey Exp $
+ * $Id: PackageImpl.java,v 1.43 2005/11/29 17:42:57 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -57,7 +57,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
@@ -258,16 +258,15 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return eVirtualGet(UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY, PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT) != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 	}
 
-	protected EList nestedPackage = null;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList getNestedPackages() {
+		EList nestedPackage = (EList) eVirtualGet(UML2Package.PACKAGE__NESTED_PACKAGE);
 		if (nestedPackage == null) {
-			nestedPackage = new DerivedSubsetEObjectEList(org.eclipse.uml2.Package.class, this, UML2Package.PACKAGE__NESTED_PACKAGE, new int[] {UML2Package.PACKAGE__OWNED_MEMBER});
+			eVirtualSet(UML2Package.PACKAGE__NESTED_PACKAGE, nestedPackage = new DerivedEObjectEList(org.eclipse.uml2.Package.class, this, UML2Package.PACKAGE__NESTED_PACKAGE, new int[] {UML2Package.PACKAGE__OWNED_MEMBER}));
 		}
 		return nestedPackage;
 	}
@@ -303,11 +302,10 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated NOT
 	 */
 	public org.eclipse.uml2.Package basicGetNestingPackage() {
-		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer : null;
+		EObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eInternalContainer : null;
 	}
 
-
-	protected EList ownedType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -315,8 +313,9 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated NOT
 	 */
 	public EList getOwnedTypes() {
+		EList ownedType = (EList) eVirtualGet(UML2Package.PACKAGE__OWNED_TYPE);
 		if (ownedType == null) {
-			ownedType = new DerivedSubsetEObjectEList(Type.class, this, UML2Package.PACKAGE__OWNED_TYPE, new int[] {UML2Package.PACKAGE__OWNED_MEMBER});
+			eVirtualSet(UML2Package.PACKAGE__OWNED_TYPE, ownedType = new DerivedEObjectEList(Type.class, this, UML2Package.PACKAGE__OWNED_TYPE, new int[] {UML2Package.PACKAGE__OWNED_MEMBER}));
 		}
 		return ownedType;
 	}

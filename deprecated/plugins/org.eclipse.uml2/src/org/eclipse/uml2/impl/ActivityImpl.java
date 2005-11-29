@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.37 2005/11/28 17:18:05 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.38 2005/11/29 17:41:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -44,7 +44,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
@@ -555,7 +555,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	public EList getStructuredNodes() {
 		EList structuredNode = (EList)eVirtualGet(UML2Package.ACTIVITY__STRUCTURED_NODE);
 		if (structuredNode == null) {
-			eVirtualSet(UML2Package.ACTIVITY__STRUCTURED_NODE, structuredNode = new DerivedSubsetEObjectEList(StructuredActivityNode.class, this, UML2Package.ACTIVITY__STRUCTURED_NODE, new int[] {UML2Package.ACTIVITY__NODE, UML2Package.ACTIVITY__GROUP}));
+			eVirtualSet(UML2Package.ACTIVITY__STRUCTURED_NODE, structuredNode = new DerivedEObjectEList(StructuredActivityNode.class, this, UML2Package.ACTIVITY__STRUCTURED_NODE, new int[] {UML2Package.ACTIVITY__NODE, UML2Package.ACTIVITY__GROUP}));
 		}
 		return structuredNode;
 	}

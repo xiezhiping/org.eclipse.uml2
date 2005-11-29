@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.31 2005/11/28 17:18:05 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.32 2005/11/29 17:43:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -42,7 +42,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
@@ -117,16 +117,15 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		return ownedMember != null && !ownedMember.isEmpty();
 	}
 
-	protected EList ownedStereotype = null;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList getOwnedStereotypes() {
+		EList ownedStereotype = (EList) eVirtualGet(UML2Package.PROFILE__OWNED_STEREOTYPE);
 		if (ownedStereotype == null) {
-			ownedStereotype = new DerivedSubsetEObjectEList(Stereotype.class, this, UML2Package.PROFILE__OWNED_STEREOTYPE, new int[] {UML2Package.PACKAGE__OWNED_MEMBER});
+			eVirtualSet(UML2Package.PROFILE__OWNED_STEREOTYPE, ownedStereotype = new DerivedEObjectEList(Stereotype.class, this, UML2Package.PROFILE__OWNED_STEREOTYPE, new int[] {UML2Package.PACKAGE__OWNED_MEMBER}));
 		}
 		return ownedStereotype;
 	}
