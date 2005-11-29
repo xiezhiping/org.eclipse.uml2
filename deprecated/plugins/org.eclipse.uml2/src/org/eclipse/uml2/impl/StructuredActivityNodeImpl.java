@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.35 2005/11/28 17:18:05 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.36 2005/11/29 17:44:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -861,7 +861,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 */
 	public Activity getActivity() {
 		if (eContainerFeatureID != UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY && eContainerFeatureID != UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY) return null;
-		return (Activity) eContainer;
+		return (Activity) eContainer();
 	}
 
 	/**

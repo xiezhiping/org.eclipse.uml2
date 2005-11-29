@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.29 2005/11/28 17:18:05 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.30 2005/11/29 17:42:23 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -484,7 +484,8 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated NOT
 	 */
 	public Namespace basicGetNamespace() {
-		return eContainer instanceof Namespace ? (Namespace) eContainer : null;
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof Namespace ? (Namespace) eInternalContainer : null;
 	}
 
 	/**

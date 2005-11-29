@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.34 2005/11/28 17:18:05 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.35 2005/11/29 17:43:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -487,7 +487,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			|| eIsSet(UML2Package.PROPERTY__DATATYPE);
 	}
 
-		/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -574,13 +574,13 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	}
 
 
-		/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public org.eclipse.uml2.Class getClass_() {
-		return eContainer instanceof org.eclipse.uml2.Class	? (org.eclipse.uml2.Class) eContainer() : null;
+		return eInternalContainer() instanceof org.eclipse.uml2.Class	? (org.eclipse.uml2.Class) eContainer() : null;
 	}
 
 	/**
@@ -593,7 +593,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return opposite != null && opposite.eIsProxy() ? (Property)eResolveProxy((InternalEObject)opposite) : opposite;
 	}
 
-		/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT

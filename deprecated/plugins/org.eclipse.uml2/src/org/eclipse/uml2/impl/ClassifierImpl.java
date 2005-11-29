@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.41 2005/11/28 17:18:05 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.42 2005/11/29 17:41:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -337,7 +337,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated NOT
 	 */
 	public org.eclipse.uml2.Package getPackage() {
-		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer() : null;
+		return eInternalContainer() instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer() : null;
 	}
 
 	/**

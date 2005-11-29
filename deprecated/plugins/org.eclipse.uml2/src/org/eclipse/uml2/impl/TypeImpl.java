@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.19 2005/11/23 20:05:08 khussey Exp $
+ * $Id: TypeImpl.java,v 1.20 2005/11/29 17:44:06 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,7 +68,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 * @generated NOT
 	 */
 	public org.eclipse.uml2.Package getPackage() {
-		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer() : null;
+		return eInternalContainer() instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer() : null;
 	}
 
 	/**
