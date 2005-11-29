@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecification.java,v 1.9 2005/06/22 20:59:18 khussey Exp $
+ * $Id: ValueSpecification.java,v 1.10 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,6 +49,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 */
 	boolean isComputable();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,6 +63,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * @generated
 	 */
 	int integerValue();
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,6 +79,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 */
 	boolean booleanValue();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -90,6 +93,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * @generated
 	 */
 	String stringValue();
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,6 +109,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 */
 	int unlimitedValue();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -118,5 +123,6 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * @generated
 	 */
 	boolean isNull();
+
 
 } // ValueSpecification

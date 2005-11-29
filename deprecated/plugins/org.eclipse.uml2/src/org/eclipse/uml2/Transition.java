@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.11 2005/11/21 21:48:02 khussey Exp $
+ * $Id: Transition.java,v 1.12 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -334,6 +334,7 @@ public interface Transition extends RedefinableElement{
 	 */
     Activity createEffect();
 
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
@@ -349,16 +350,5 @@ public interface Transition extends RedefinableElement{
 	 */
 	EList getRedefinedElements();
 
-
-	/**
-	 * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getRedefinedElements()
-	 * @generated
-	 */
-    RedefinableElement getRedefinedElement(String name);
 
 } // Transition

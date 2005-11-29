@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionAction.java,v 1.9 2005/11/21 21:48:03 khussey Exp $
+ * $Id: ApplyFunctionAction.java,v 1.10 2005/11/29 20:09:40 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -158,6 +158,7 @@ public interface ApplyFunctionAction extends Action{
 	 * @generated
 	 */
     OutputPin getResult(String name);
+
 
     /**
      * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Result</b></em>' containment reference list.

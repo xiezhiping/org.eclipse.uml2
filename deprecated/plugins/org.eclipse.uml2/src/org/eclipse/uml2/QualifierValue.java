@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValue.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: QualifierValue.java,v 1.7 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -97,6 +97,7 @@ public interface QualifierValue extends Element{
 	 * @generated
 	 */
 	void setValue(InputPin value);
+
 
 
 } // QualifierValue

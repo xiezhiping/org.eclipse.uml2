@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.15 2005/11/21 21:48:02 khussey Exp $
+ * $Id: Association.java,v 1.16 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -195,6 +195,7 @@ public interface Association extends Classifier, Relationship{
 	 * @generated
 	 */
     Property getMemberEnd(String name);
+
 
 	// <!-- begin-custom-operations -->
 

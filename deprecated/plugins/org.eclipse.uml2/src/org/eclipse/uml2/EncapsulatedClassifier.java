@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifier.java,v 1.10 2005/11/21 21:48:02 khussey Exp $
+ * $Id: EncapsulatedClassifier.java,v 1.11 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -74,6 +74,7 @@ public interface EncapsulatedClassifier extends StructuredClassifier{
 	 * @generated
 	 */
     Port getOwnedPort(String name);
+
 
     /**
      * Creates a {@link org.eclipse.uml2.Port} and appends it to the '<em><b>Owned Port</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Node.java,v 1.11 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Node.java,v 1.12 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -71,6 +71,7 @@ public interface Node extends org.eclipse.uml2.Class, DeploymentTarget{
 	 * @generated
 	 */
     Node getNestedNode(String name);
+
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.Node} and appends it to the '<em><b>Nested Node</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.22 2005/11/23 20:05:08 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.23 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -125,6 +125,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	}
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -134,6 +135,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		return RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -142,6 +144,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
 		return RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -198,6 +201,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	public boolean isConsistentWith(RedefinableElement redefinee) {
 		return RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -383,7 +387,8 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return redefinedElement;
-			} catch (NoSuchMethodException nsme) {
+			}
+			catch (NoSuchMethodException nsme) {
 				// ignore
 			}
 		}

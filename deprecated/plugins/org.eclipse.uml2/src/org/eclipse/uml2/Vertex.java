@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Vertex.java,v 1.11 2005/11/21 21:48:02 khussey Exp $
+ * $Id: Vertex.java,v 1.12 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -137,5 +137,6 @@ public interface Vertex extends NamedElement{
 	 * @generated
 	 */
     Transition getIncoming(String name);
+
 
 } // Vertex

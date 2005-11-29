@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.15 2005/11/21 21:48:02 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.16 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -247,6 +247,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @generated
 	 */
     StateMachine getOwnedStateMachine(String name);
+
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.StateMachine} and appends it to the '<em><b>Owned State Machine</b></em>' containment reference list.

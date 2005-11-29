@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.15 2005/11/21 21:48:02 khussey Exp $
+ * $Id: Property.java,v 1.16 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -497,6 +497,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	void setAssociationEnd(Property value);
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -516,6 +517,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -534,6 +536,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	Property opposite();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -547,6 +550,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
 	 */
 	boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -564,6 +568,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
 	 */
 	boolean validateSubsettingContext(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -583,6 +588,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -600,6 +606,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	boolean validateSubsettingRules(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -614,6 +621,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -627,6 +635,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
 	 */
 	boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -644,6 +653,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
 	 */
 	Set subsettingContext();
+
 
 	// <!-- begin-custom-operations -->
 

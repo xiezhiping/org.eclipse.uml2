@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Trigger.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Trigger.java,v 1.11 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -72,5 +72,6 @@ public interface Trigger extends NamedElement{
 	 * @generated
 	 */
     Port getPort(String name);
+
 
 } // Trigger

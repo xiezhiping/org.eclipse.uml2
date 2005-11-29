@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentAction.java,v 1.8 2005/11/21 21:48:02 khussey Exp $
+ * $Id: ReadExtentAction.java,v 1.9 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -123,6 +123,7 @@ public interface ReadExtentAction extends Action{
 	 * @generated
 	 */
 	void setClassifier(Classifier value);
+
 
 
 } // ReadExtentAction

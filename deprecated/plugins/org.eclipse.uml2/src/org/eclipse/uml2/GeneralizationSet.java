@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSet.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
+ * $Id: GeneralizationSet.java,v 1.10 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -151,6 +151,7 @@ public interface GeneralizationSet extends PackageableElement{
 	 * @generated
 	 */
 	EList getGeneralizations();
+
 
 
 } // GeneralizationSet

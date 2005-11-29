@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.21 2005/11/28 17:18:05 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.22 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -274,6 +274,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	}
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -283,6 +284,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		return ElementImportOperations.validateVisibilityPublicOrPrivate(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -291,6 +293,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	public boolean validateImportedElementIsPublic(DiagnosticChain diagnostics, Map context) {
 		return ElementImportOperations.validateImportedElementIsPublic(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

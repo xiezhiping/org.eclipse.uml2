@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.27 2005/11/28 17:18:05 khussey Exp $
+ * $Id: StateImpl.java,v 1.28 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -903,6 +903,7 @@ public class StateImpl extends NamespaceImpl implements State {
 		return RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -912,6 +913,7 @@ public class StateImpl extends NamespaceImpl implements State {
 		return RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -920,6 +922,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	public boolean isConsistentWith(RedefinableElement redefinee) {
 		return RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

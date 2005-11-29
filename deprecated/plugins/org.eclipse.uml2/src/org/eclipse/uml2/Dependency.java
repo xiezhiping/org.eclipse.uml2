@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Dependency.java,v 1.9 2005/06/15 20:06:02 khussey Exp $
+ * $Id: Dependency.java,v 1.10 2005/11/29 20:09:40 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -106,5 +106,6 @@ public interface Dependency extends PackageableElement, DirectedRelationship{
 	 * @generated
 	 */
     NamedElement getSupplier(String name);
+
 
 } // Dependency

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypedElement.java,v 1.8 2005/05/18 21:13:19 khussey Exp $
+ * $Id: TypedElement.java,v 1.9 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -69,6 +69,7 @@ public interface TypedElement extends NamedElement{
 	 * @generated
 	 */
 	void setType(Type value);
+
 
 
 } // TypedElement

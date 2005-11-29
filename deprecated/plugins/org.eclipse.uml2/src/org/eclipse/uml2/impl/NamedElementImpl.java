@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.30 2005/11/29 17:42:23 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.31 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -329,6 +329,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		return NamedElementOperations.validateNoName(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -337,6 +338,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	public boolean validateQualifiedName(DiagnosticChain diagnostics, Map context) {
 		return NamedElementOperations.validateQualifiedName(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -355,6 +357,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		return NamedElementOperations.allNamespaces(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -363,6 +366,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	public boolean isDistinguishableFrom(NamedElement n, Namespace ns) {
 		return NamedElementOperations.isDistinguishableFrom(this, n, ns);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -373,6 +377,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		return NamedElementOperations.separator(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -381,6 +386,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	public String qualifiedName() {
 		return NamedElementOperations.qualifiedName(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

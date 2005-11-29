@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValue.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: InstanceValue.java,v 1.8 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -69,6 +69,7 @@ public interface InstanceValue extends ValueSpecification{
 	 * @generated
 	 */
 	void setInstance(InstanceSpecification value);
+
 
 
 } // InstanceValue

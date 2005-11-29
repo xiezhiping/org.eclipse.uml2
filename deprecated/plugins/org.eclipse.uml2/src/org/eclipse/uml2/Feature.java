@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Feature.java,v 1.12 2005/11/09 22:53:10 khussey Exp $
+ * $Id: Feature.java,v 1.13 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -72,6 +72,7 @@ public interface Feature extends RedefinableElement{
 	 * @generated
 	 */
 	void setIsStatic(boolean value);
+
 
 
 	/**

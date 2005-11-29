@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.13 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Constraint.java,v 1.14 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -159,6 +159,7 @@ public interface Constraint extends PackageableElement{
 	EList getConstrainedElements();
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -172,5 +173,6 @@ public interface Constraint extends PackageableElement{
 	 * @generated
 	 */
 	boolean validateNotApplyToSelf(DiagnosticChain diagnostics, Map context);
+
 
 } // Constraint

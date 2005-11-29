@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegion.java,v 1.10 2005/11/09 22:53:09 khussey Exp $
+ * $Id: InterruptibleActivityRegion.java,v 1.11 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -105,5 +105,6 @@ public interface InterruptibleActivityRegion extends ActivityGroup{
 	 * @generated
 	 */
     ActivityNode getContainedNode(String name);
+
 
 } // InterruptibleActivityRegion

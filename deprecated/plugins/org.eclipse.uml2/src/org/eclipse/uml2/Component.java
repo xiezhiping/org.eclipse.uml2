@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.13 2005/11/21 21:48:02 khussey Exp $
+ * $Id: Component.java,v 1.14 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -208,6 +208,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * @generated
 	 */
     NamedElement getOwnedMember(String name);
+
 
     /**
      * Creates a {@link org.eclipse.uml2.PackageableElement} and appends it to the '<em><b>Owned Member</b></em>' containment reference list.

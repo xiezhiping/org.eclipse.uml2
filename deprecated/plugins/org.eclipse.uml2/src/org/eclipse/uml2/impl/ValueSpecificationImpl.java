@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationImpl.java,v 1.18 2005/11/28 17:18:05 khussey Exp $
+ * $Id: ValueSpecificationImpl.java,v 1.19 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -181,6 +181,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	}
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -214,6 +215,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 		return ValueSpecificationOperations.isComputable(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,6 +224,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	public int integerValue() {
 		return ValueSpecificationOperations.integerValue(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -232,6 +235,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 		return ValueSpecificationOperations.booleanValue(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -241,6 +245,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 		return ValueSpecificationOperations.stringValue(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,6 +254,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	public int unlimitedValue() {
 		return ValueSpecificationOperations.unlimitedValue(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

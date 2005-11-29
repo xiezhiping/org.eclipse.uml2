@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCase.java,v 1.11 2005/11/21 21:48:02 khussey Exp $
+ * $Id: UseCase.java,v 1.12 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -232,5 +232,6 @@ public interface UseCase extends BehavioredClassifier{
 	 * @generated
 	 */
     Classifier getSubject(String name);
+
 
 } // UseCase

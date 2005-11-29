@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.22 2005/11/28 17:18:06 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.23 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -236,6 +236,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE, newImportingNamespace, newImportingNamespace));
 
 	}
+
 
 
 	/**

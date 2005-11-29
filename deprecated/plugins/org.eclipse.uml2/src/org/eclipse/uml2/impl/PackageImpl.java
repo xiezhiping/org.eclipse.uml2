@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.43 2005/11/29 17:42:57 khussey Exp $
+ * $Id: PackageImpl.java,v 1.44 2005/11/29 20:09:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -497,6 +497,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return PackageOperations.validateElementsPublicOrPrivate(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -666,6 +667,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return PackageOperations.visibleMembers(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -674,6 +676,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	public boolean makesVisible(NamedElement el) {
 		return PackageOperations.makesVisible(this, el);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

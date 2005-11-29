@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.25 2005/11/28 17:18:06 khussey Exp $
+ * $Id: RegionImpl.java,v 1.26 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -372,6 +372,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		return eVirtualGet(UML2Package.REGION__EXTENDED_REGION) != null;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -380,6 +381,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context) {
 		return RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -390,6 +392,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		return RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -398,6 +401,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	public boolean isConsistentWith(RedefinableElement redefinee) {
 		return RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

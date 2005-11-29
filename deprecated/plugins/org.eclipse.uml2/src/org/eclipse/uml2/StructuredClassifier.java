@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.12 2005/11/21 21:48:02 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.13 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -191,6 +191,7 @@ public interface StructuredClassifier extends Classifier{
 	 * @generated
 	 */
     Connector getOwnedConnector(String name);
+
 
     /**
      * Creates a {@link org.eclipse.uml2.Connector} and appends it to the '<em><b>Owned Connector</b></em>' containment reference list.

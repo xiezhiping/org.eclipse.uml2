@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.23 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Class.java,v 1.24 2005/11/29 20:09:40 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -269,6 +269,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @generated
 	 */
     Reception getOwnedReception(String name);
+
 
     /**
      * Creates a {@link org.eclipse.uml2.Reception} and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.

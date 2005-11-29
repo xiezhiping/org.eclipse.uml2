@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.25 2005/11/28 17:18:05 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.26 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -256,6 +256,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 		}
 		return constrainedElement;
 	}
+
 
 
 	/**

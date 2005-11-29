@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.26 2005/11/28 17:18:05 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.27 2005/11/29 20:09:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -356,6 +356,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	}
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -365,6 +366,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		return RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -373,6 +375,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
 		return RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -652,6 +655,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		return RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -660,6 +664,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
 		return RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -677,7 +682,8 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return redefinedElement;
-			} catch (NoSuchMethodException nsme) {
+			}
+			catch (NoSuchMethodException nsme) {
 				// ignore
 			}
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNode.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: ExpansionNode.java,v 1.7 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -104,6 +104,7 @@ public interface ExpansionNode extends ObjectNode{
 	 * @generated
 	 */
 	void setRegionAsInput(ExpansionRegion value);
+
 
 
 } // ExpansionNode

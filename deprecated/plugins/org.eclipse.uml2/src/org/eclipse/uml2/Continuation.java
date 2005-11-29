@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Continuation.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Continuation.java,v 1.8 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -70,6 +70,7 @@ public interface Continuation extends InteractionFragment{
 	 * @generated
 	 */
 	void setSetting(boolean value);
+
 
 
 } // Continuation

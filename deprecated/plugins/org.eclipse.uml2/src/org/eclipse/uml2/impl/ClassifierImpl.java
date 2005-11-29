@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.42 2005/11/29 17:41:53 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.43 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -969,6 +969,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	}
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1097,6 +1098,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1105,6 +1107,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
 		return RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1139,6 +1142,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1147,6 +1151,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
 		return RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1165,6 +1170,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return ClassifierOperations.allFeatures(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1173,6 +1179,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics, Map context) {
 		return ClassifierOperations.validateNoCyclesInGeneralization(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1183,6 +1190,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return ClassifierOperations.validateSpecializeType(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1191,6 +1199,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean validateInheritedMember(DiagnosticChain diagnostics, Map context) {
 		return ClassifierOperations.validateInheritedMember(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1209,6 +1218,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return ClassifierOperations.inheritedMember(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1225,6 +1235,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		}
 		return ClassifierOperations.parents(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1243,6 +1254,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return ClassifierOperations.allParents(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1251,6 +1263,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set inheritableMembers(Classifier c) {
 		return ClassifierOperations.inheritableMembers(this, c);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1261,6 +1274,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return ClassifierOperations.hasVisibilityOf(this, n);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1270,6 +1284,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return ClassifierOperations.inherit(this, inhs);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1278,6 +1293,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean maySpecializeType(Classifier c) {
 		return ClassifierOperations.maySpecializeType(this, c);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1296,6 +1312,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return ClassifierOperations.general(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1304,6 +1321,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean validateGeneralEqualsParents(DiagnosticChain diagnostics, Map context) {
 		return ClassifierOperations.validateGeneralEqualsParents(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1433,7 +1451,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return redefinedElement;
-			} catch (NoSuchMethodException nsme) {
+			}
+			catch (NoSuchMethodException nsme) {
 				// ignore
 			}
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.10 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Region.java,v 1.11 2005/11/29 20:09:40 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -219,6 +219,7 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @generated
 	 */
 	void setExtendedRegion(Region value);
+
 
 
 	/**

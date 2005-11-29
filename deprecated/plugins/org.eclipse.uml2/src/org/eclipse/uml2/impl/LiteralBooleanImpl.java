@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.14 2005/11/23 20:05:07 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.15 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -109,6 +109,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LITERAL_BOOLEAN__VALUE, oldValue, newValue));
 
 	}
+
 
 
 	/**
@@ -315,6 +316,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	public boolean booleanValue() {
 		return LiteralBooleanOperations.booleanValue(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

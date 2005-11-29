@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformance.java,v 1.7 2005/11/21 21:48:02 khussey Exp $
+ * $Id: ProtocolConformance.java,v 1.8 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -97,6 +97,7 @@ public interface ProtocolConformance extends DirectedRelationship{
 	 * @generated
 	 */
 	void setGeneralMachine(ProtocolStateMachine value);
+
 
 
 } // ProtocolConformance

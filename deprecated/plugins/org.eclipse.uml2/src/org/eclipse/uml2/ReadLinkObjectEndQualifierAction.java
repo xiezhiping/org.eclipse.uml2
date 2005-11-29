@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierAction.java,v 1.8 2005/11/21 21:48:02 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierAction.java,v 1.9 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -175,6 +175,7 @@ public interface ReadLinkObjectEndQualifierAction extends Action{
 	 * @generated
 	 */
 	void setQualifier(Property value);
+
 
 
 } // ReadLinkObjectEndQualifierAction

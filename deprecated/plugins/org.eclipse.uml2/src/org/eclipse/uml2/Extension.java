@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extension.java,v 1.5 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Extension.java,v 1.6 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -69,6 +69,7 @@ public interface Extension extends Association{
 	 * @generated
 	 */
 	org.eclipse.uml2.Class getMetaclass();
+
 
 
 } // Extension

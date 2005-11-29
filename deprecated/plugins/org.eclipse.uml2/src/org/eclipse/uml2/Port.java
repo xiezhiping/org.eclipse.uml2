@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Port.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Port.java,v 1.11 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -230,6 +230,7 @@ public interface Port extends Property{
 	 * @generated
 	 */
 	void setProtocol(ProtocolStateMachine value);
+
 
 
 } // Port

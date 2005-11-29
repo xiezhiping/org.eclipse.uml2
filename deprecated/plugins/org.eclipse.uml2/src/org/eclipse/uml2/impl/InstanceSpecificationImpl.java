@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.29 2005/11/28 17:18:06 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.30 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -376,6 +376,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	public boolean validateSlotsAreDefined(DiagnosticChain diagnostics, Map context) {
 		return InstanceSpecificationOperations.validateSlotsAreDefined(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

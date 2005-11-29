@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.36 2005/11/29 17:44:06 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.37 2005/11/29 20:09:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -438,6 +438,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	}
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -446,6 +447,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public boolean validateMembersAreDistinguishable(DiagnosticChain diagnostics, Map context) {
 		return NamespaceOperations.validateMembersAreDistinguishable(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -620,6 +622,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return NamespaceOperations.getNamesOfMember(this, element);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -629,6 +632,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return NamespaceOperations.membersAreDistinguishable(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -637,6 +641,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public boolean validateImportedMemberDerived(DiagnosticChain diagnostics, Map context) {
 		return NamespaceOperations.validateImportedMemberDerived(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -655,6 +660,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return NamespaceOperations.importedMember(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -663,6 +669,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public Set importMembers(Set imps) {
 		return NamespaceOperations.importMembers(this, imps);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -800,7 +807,8 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 					cache.put(eResource(), this, method, subgroup = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return subgroup;
-			} catch (NoSuchMethodException nsme) {
+			}
+			catch (NoSuchMethodException nsme) {
 				// ignore
 			}
 		}
@@ -921,7 +929,8 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 					cache.put(eResource(), this, method, ownedMember = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return ownedMember;
-			} catch (NoSuchMethodException nsme) {
+			}
+			catch (NoSuchMethodException nsme) {
 				// ignore
 			}
 		}

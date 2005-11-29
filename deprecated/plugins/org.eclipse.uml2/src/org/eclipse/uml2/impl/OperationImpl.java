@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.37 2005/11/28 17:18:05 khussey Exp $
+ * $Id: OperationImpl.java,v 1.38 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -767,6 +767,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return MultiplicityElementOperations.isMultivalued(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -775,6 +776,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public boolean includesCardinality(int C) {
 		return MultiplicityElementOperations.includesCardinality(this, C);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -785,6 +787,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return MultiplicityElementOperations.includesMultiplicity(this, M);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -793,6 +796,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -803,6 +807,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -811,6 +816,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -821,6 +827,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -829,6 +836,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -915,6 +923,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return OperationOperations.lower(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -923,6 +932,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public int upper() {
 		return OperationOperations.upper(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -933,6 +943,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return OperationOperations.validateTypeOfResult(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -942,6 +953,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		return OperationOperations.type(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -950,6 +962,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public boolean validateOnlyBodyForQuery(DiagnosticChain diagnostics, Map context) {
 		return OperationOperations.validateOnlyBodyForQuery(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1133,6 +1146,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		EList raisedException = (EList)eVirtualGet(UML2Package.OPERATION__RAISED_EXCEPTION);
 		return raisedException != null && !raisedException.isEmpty();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

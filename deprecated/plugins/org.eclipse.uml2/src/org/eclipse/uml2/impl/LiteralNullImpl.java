@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralNullImpl.java,v 1.10 2005/11/23 20:05:09 khussey Exp $
+ * $Id: LiteralNullImpl.java,v 1.11 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -53,6 +53,7 @@ public class LiteralNullImpl extends LiteralSpecificationImpl implements Literal
 		return UML2Package.Literals.LITERAL_NULL;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,6 +62,7 @@ public class LiteralNullImpl extends LiteralSpecificationImpl implements Literal
 	public boolean isComputable() {
 		return LiteralNullOperations.isComputable(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

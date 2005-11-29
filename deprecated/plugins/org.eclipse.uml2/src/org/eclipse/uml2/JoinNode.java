@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNode.java,v 1.9 2005/11/21 21:48:02 khussey Exp $
+ * $Id: JoinNode.java,v 1.10 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -110,5 +110,6 @@ public interface JoinNode extends ControlNode{
 	 * @generated
 	 */
     ValueSpecification createJoinSpec(EClass eClass);
+
 
 } // JoinNode

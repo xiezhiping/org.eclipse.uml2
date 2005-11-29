@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.17 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Operation.java,v 1.18 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -318,6 +318,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	void setBodyCondition(Constraint value);
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -337,6 +338,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 */
 	boolean validateTypeOfResult(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -351,6 +353,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 */
 	Classifier type();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -364,5 +367,6 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @generated
 	 */
 	boolean validateOnlyBodyForQuery(DiagnosticChain diagnostics, Map context);
+
 
 } // Operation

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.13 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Action.java,v 1.14 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -227,6 +227,7 @@ public interface Action extends ExecutableNode{
 	 * @generated
 	 */
     Constraint getLocalPostcondition(String name);
+
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Local Postcondition</b></em>' containment reference list.

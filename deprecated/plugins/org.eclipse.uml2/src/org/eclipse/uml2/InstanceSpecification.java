@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.12 2005/11/21 21:48:03 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.13 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -165,6 +165,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 */
     ValueSpecification createSpecification(EClass eClass);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -179,6 +180,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @generated
 	 */
 	boolean validateSlotsAreDefined(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,5 +197,6 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @generated
 	 */
 	boolean validateNoDuplicateSlots(DiagnosticChain diagnostics, Map context);
+
 
 } // InstanceSpecification

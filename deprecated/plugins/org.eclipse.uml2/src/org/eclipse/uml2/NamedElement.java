@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.17 2005/11/21 21:48:03 khussey Exp $
+ * $Id: NamedElement.java,v 1.18 2005/11/29 20:09:40 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -235,6 +235,7 @@ public interface NamedElement extends TemplateableElement{
 	 */
 	List allNamespaces();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -252,6 +253,7 @@ public interface NamedElement extends TemplateableElement{
 	 */
 	boolean isDistinguishableFrom(NamedElement n, Namespace ns);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -265,6 +267,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @generated
 	 */
 	String separator();
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -285,6 +288,7 @@ public interface NamedElement extends TemplateableElement{
 	 */
 	String qualifiedName();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -298,6 +302,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @generated
 	 */
 	boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * Returns the value of the '<em><b>Namespace</b></em>' reference.
@@ -316,6 +321,7 @@ public interface NamedElement extends TemplateableElement{
 	Namespace getNamespace();
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -330,6 +336,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @generated
 	 */
 	boolean validateNoName(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -347,6 +354,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @generated
 	 */
 	boolean validateQualifiedName(DiagnosticChain diagnostics, Map context);
+
 
 	// <!-- begin-custom-operations -->
 

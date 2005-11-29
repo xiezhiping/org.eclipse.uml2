@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveFunction.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: PrimitiveFunction.java,v 1.8 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -102,6 +102,7 @@ public interface PrimitiveFunction extends PackageableElement{
 	 * @generated
 	 */
 	void setLanguage(String value);
+
 
 
 } // PrimitiveFunction

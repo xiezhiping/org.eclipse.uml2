@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerImpl.java,v 1.13 2005/11/23 20:05:07 khussey Exp $
+ * $Id: LiteralIntegerImpl.java,v 1.14 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -109,6 +109,7 @@ public class LiteralIntegerImpl extends LiteralSpecificationImpl implements Lite
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LITERAL_INTEGER__VALUE, oldValue, value));
 
 	}
+
 
 
 	/**
@@ -315,6 +316,7 @@ public class LiteralIntegerImpl extends LiteralSpecificationImpl implements Lite
 	public int integerValue() {
 		return LiteralIntegerOperations.integerValue(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

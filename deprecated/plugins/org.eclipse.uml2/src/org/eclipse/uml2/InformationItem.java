@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItem.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: InformationItem.java,v 1.9 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -72,5 +72,6 @@ public interface InformationItem extends Classifier{
 	 * @generated
 	 */
     Classifier getRepresented(String name);
+
 
 } // InformationItem

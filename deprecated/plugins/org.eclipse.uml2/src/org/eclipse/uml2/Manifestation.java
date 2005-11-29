@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Manifestation.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Manifestation.java,v 1.7 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -68,6 +68,7 @@ public interface Manifestation extends Abstraction{
 	 * @generated
 	 */
 	void setUtilizedElement(PackageableElement value);
+
 
 
 } // Manifestation

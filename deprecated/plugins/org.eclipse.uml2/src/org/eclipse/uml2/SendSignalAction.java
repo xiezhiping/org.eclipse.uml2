@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalAction.java,v 1.8 2005/11/21 21:48:02 khussey Exp $
+ * $Id: SendSignalAction.java,v 1.9 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -122,6 +122,7 @@ public interface SendSignalAction extends InvocationAction{
 	 * @generated
 	 */
 	void setSignal(Signal value);
+
 
 
 } // SendSignalAction

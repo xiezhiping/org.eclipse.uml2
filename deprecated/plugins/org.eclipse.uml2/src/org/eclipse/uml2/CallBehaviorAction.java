@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorAction.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: CallBehaviorAction.java,v 1.7 2005/11/29 20:09:40 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -69,6 +69,7 @@ public interface CallBehaviorAction extends CallAction{
 	 * @generated
 	 */
 	void setBehavior(Behavior value);
+
 
 
 } // CallBehaviorAction

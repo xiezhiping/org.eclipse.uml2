@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.31 2005/11/28 17:18:05 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.32 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -348,6 +348,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		return NamespaceOperations.validateMembersAreDistinguishable(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -356,6 +357,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	public Set getNamesOfMember(NamedElement element) {
 		return NamespaceOperations.getNamesOfMember(this, element);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -366,6 +368,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		return NamespaceOperations.membersAreDistinguishable(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -374,6 +377,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	public boolean validateImportedMemberDerived(DiagnosticChain diagnostics, Map context) {
 		return NamespaceOperations.validateImportedMemberDerived(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -392,6 +396,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		return NamespaceOperations.importedMember(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -400,6 +405,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	public Set importMembers(Set imps) {
 		return NamespaceOperations.importMembers(this, imps);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -483,7 +489,8 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 					cache.put(eResource(), this, method, ownedMember = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return ownedMember;
-			} catch (NoSuchMethodException nsme) {
+			}
+			catch (NoSuchMethodException nsme) {
 				// ignore
 			}
 		}

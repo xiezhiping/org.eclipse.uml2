@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.12 2005/11/21 21:48:02 khussey Exp $
+ * $Id: Behavior.java,v 1.13 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -367,6 +367,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @generated
 	 */
     ParameterSet getOwnedParameterSet(String name);
+
 
     /**
      * Creates a {@link org.eclipse.uml2.ParameterSet} and appends it to the '<em><b>Owned Parameter Set</b></em>' containment reference list.

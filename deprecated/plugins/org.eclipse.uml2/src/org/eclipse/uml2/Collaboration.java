@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Collaboration.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Collaboration.java,v 1.10 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -69,5 +69,6 @@ public interface Collaboration extends BehavioredClassifier, StructuredClassifie
 	 * @generated
 	 */
     ConnectableElement getCollaborationRole(String name);
+
 
 } // Collaboration

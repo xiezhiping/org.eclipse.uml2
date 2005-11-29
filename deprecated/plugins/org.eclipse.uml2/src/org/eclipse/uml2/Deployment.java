@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.8 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Deployment.java,v 1.9 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -126,6 +126,7 @@ public interface Deployment extends Dependency{
 	 * @generated
 	 */
     DeploymentSpecification getConfiguration(String name);
+
 
     /**
      * Creates a {@link org.eclipse.uml2.DeploymentSpecification} and appends it to the '<em><b>Configuration</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.10 2005/11/21 21:48:03 khussey Exp $
+ * $Id: StateMachine.java,v 1.11 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -201,6 +201,7 @@ public interface StateMachine extends Behavior{
 	void setStateMachine_redefinitionContext(BehavioredClassifier value);
 
 
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
@@ -216,16 +217,5 @@ public interface StateMachine extends Behavior{
 	 */
 	EList getRedefinedElements();
 
-
-	/**
-	 * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getRedefinedElements()
-	 * @generated
-	 */
-    RedefinableElement getRedefinedElement(String name);
 
 } // StateMachine

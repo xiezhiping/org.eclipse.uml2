@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.21 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Package.java,v 1.22 2005/11/29 20:09:40 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -278,6 +278,7 @@ public interface Package extends Namespace, PackageableElement{
 	 */
     PackageMerge createPackageExtension();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -291,6 +292,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @generated
 	 */
 	boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -306,6 +308,7 @@ public interface Package extends Namespace, PackageableElement{
 	 */
 	Set visibleMembers();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -319,6 +322,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @generated
 	 */
 	boolean makesVisible(NamedElement el);
+
 
 	// <!-- begin-custom-operations -->
 

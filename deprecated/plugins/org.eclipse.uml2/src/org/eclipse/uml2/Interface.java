@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.13 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Interface.java,v 1.14 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -330,6 +330,7 @@ public interface Interface extends Classifier{
 	 * @generated
 	 */
     ProtocolStateMachine createProtocol();
+
 
 	// <!-- begin-custom-operations -->
 

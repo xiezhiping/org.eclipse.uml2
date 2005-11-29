@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.20 2005/11/28 17:18:05 khussey Exp $
+ * $Id: PinImpl.java,v 1.21 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -378,6 +378,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		return MultiplicityElementOperations.lowerBound(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -386,6 +387,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	public int upperBound() {
 		return MultiplicityElementOperations.upperBound(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -396,6 +398,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		return MultiplicityElementOperations.isMultivalued(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -404,6 +407,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	public boolean includesCardinality(int C) {
 		return MultiplicityElementOperations.includesCardinality(this, C);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -414,6 +418,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		return MultiplicityElementOperations.includesMultiplicity(this, M);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -422,6 +427,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -432,6 +438,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		return MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -440,6 +447,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -450,6 +458,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		return MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -459,6 +468,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		return MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -467,6 +477,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	public int lower() {
 		return MultiplicityElementOperations.lower(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

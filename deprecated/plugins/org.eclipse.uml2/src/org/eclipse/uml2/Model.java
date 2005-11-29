@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Model.java,v 1.9 2005/06/07 17:31:26 khussey Exp $
+ * $Id: Model.java,v 1.10 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -70,6 +70,7 @@ public interface Model extends org.eclipse.uml2.Package{
 	 * @generated
 	 */
 	void setViewpoint(String value);
+
 
 
 	// <!-- begin-custom-operations -->

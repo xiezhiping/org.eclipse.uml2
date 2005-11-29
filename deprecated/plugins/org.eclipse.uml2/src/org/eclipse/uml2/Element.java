@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.19 2005/11/21 21:48:02 khussey Exp $
+ * $Id: Element.java,v 1.20 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -136,6 +136,7 @@ public interface Element extends EModelElement{
 	 */
     Comment createOwnedComment();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,6 +150,7 @@ public interface Element extends EModelElement{
 	 * @generated
 	 */
 	boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,6 +166,7 @@ public interface Element extends EModelElement{
 	 */
 	boolean validateHasOwner(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -178,6 +181,7 @@ public interface Element extends EModelElement{
 	 */
 	Set allOwnedElements();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -191,6 +195,7 @@ public interface Element extends EModelElement{
 	 * @generated
 	 */
 	boolean mustBeOwned();
+
 
 	// <!-- begin-custom-operations -->
 

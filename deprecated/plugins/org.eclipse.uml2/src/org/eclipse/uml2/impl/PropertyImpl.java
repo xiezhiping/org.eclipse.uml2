@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.35 2005/11/29 17:43:35 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.36 2005/11/29 20:09:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -971,6 +971,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return PropertyOperations.opposite(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -979,6 +980,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map context) {
 		return PropertyOperations.validateMultiplicityOfComposite(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -989,6 +991,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return PropertyOperations.validateSubsettingContext(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -997,6 +1000,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map context) {
 		return PropertyOperations.validateNavigablePropertyRedefinition(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1007,6 +1011,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return PropertyOperations.validateSubsettingRules(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1016,6 +1021,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return PropertyOperations.validateNavigableReadonly(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1024,6 +1030,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map context) {
 		return PropertyOperations.validateDerivedUnionIsDerived(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1171,6 +1178,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return PropertyOperations.subsettingContext(this);
 	}
 
+
 		/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1198,6 +1206,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1206,6 +1215,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map context) {
 		return PropertyOperations.validateOppositeIsOtherEnd(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

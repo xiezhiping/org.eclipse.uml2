@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.9 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -154,6 +154,7 @@ public interface OpaqueExpression extends ValueSpecification{
 	 * @generated
 	 */
 	void setBehavior(Behavior value);
+
 
 
 } // OpaqueExpression

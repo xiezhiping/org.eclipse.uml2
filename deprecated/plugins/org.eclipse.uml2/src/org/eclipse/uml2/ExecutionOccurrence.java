@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrence.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ExecutionOccurrence.java,v 1.8 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -138,5 +138,6 @@ public interface ExecutionOccurrence extends InteractionFragment{
 	 * @generated
 	 */
     Behavior getBehavior(String name);
+
 
 } // ExecutionOccurrence

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.10 2005/11/21 21:48:02 khussey Exp $
+ * $Id: Profile.java,v 1.11 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -103,6 +103,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * @generated
 	 */
 	EList getMetamodelReferences();
+
 
 
 	// <!-- begin-custom-operations -->

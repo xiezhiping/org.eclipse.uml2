@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.23 2005/11/21 21:48:02 khussey Exp $
+ * $Id: Classifier.java,v 1.24 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -497,6 +497,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 */
     CollaborationOccurrence getOccurrence(String name);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.CollaborationOccurrence} and appends it to the '<em><b>Occurrence</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -533,6 +534,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 */
 	Set allFeatures();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -546,6 +548,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @generated
 	 */
 	boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -561,6 +564,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 */
 	boolean validateSpecializeType(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -574,6 +578,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @generated
 	 */
 	boolean validateInheritedMember(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -589,6 +594,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 */
 	Set inheritedMember();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -602,6 +608,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @generated
 	 */
 	Set parents();
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -617,6 +624,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 */
 	Set allParents();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -630,6 +638,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @generated
 	 */
 	Set inheritableMembers(Classifier c);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -645,6 +654,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 */
 	boolean hasVisibilityOf(NamedElement n);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -658,6 +668,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @generated
 	 */
 	Set inherit(Set inhs);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -673,6 +684,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 */
 	boolean maySpecializeType(Classifier c);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -686,6 +698,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @generated
 	 */
 	Set general();
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -701,6 +714,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 */
 	boolean validateGeneralEqualsParents(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -714,6 +728,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @generated
 	 */
 	boolean conformsTo(Classifier other);
+
 
 	// <!-- begin-custom-operations -->
 	

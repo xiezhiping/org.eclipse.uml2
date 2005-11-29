@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationship.java,v 1.10 2005/11/09 22:53:10 khussey Exp $
+ * $Id: DirectedRelationship.java,v 1.11 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -81,6 +81,7 @@ public interface DirectedRelationship extends Relationship{
 	 * @generated
 	 */
 	EList getTargets();
+
 
 
 } // DirectedRelationship

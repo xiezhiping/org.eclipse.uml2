@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationAction.java,v 1.11 2005/11/21 21:48:02 khussey Exp $
+ * $Id: TimeObservationAction.java,v 1.12 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -74,6 +74,7 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	 * @generated
 	 */
     TimeExpression getNow(String name);
+
 
     /**
      * Creates a {@link org.eclipse.uml2.TimeExpression} and appends it to the '<em><b>Now</b></em>' containment reference list.

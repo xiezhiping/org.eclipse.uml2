@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.23 2005/11/28 17:18:05 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.24 2005/11/29 20:09:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -361,6 +361,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 		return MultiplicityElementOperations.lowerBound(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -369,6 +370,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	public int upperBound() {
 		return MultiplicityElementOperations.upperBound(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -379,6 +381,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 		return MultiplicityElementOperations.isMultivalued(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -387,6 +390,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	public boolean includesCardinality(int C) {
 		return MultiplicityElementOperations.includesCardinality(this, C);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -397,6 +401,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 		return MultiplicityElementOperations.includesMultiplicity(this, M);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -405,6 +410,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -415,6 +421,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 		return MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -423,6 +430,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -433,6 +441,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 		return MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -442,6 +451,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 		return MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -450,6 +460,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	public int lower() {
 		return MultiplicityElementOperations.lower(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

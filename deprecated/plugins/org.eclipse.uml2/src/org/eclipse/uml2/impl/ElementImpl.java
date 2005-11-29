@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.36 2005/11/29 17:42:07 khussey Exp $
+ * $Id: ElementImpl.java,v 1.37 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -265,6 +265,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		return ElementOperations.validateNotOwnSelf(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -273,6 +274,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	public boolean validateHasOwner(DiagnosticChain diagnostics, Map context) {
 		return ElementOperations.validateHasOwner(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -290,6 +292,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		}
 		return ElementOperations.allOwnedElements(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

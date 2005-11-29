@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachine.java,v 1.9 2005/11/21 21:48:03 khussey Exp $
+ * $Id: ProtocolStateMachine.java,v 1.10 2005/11/29 20:09:40 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -83,5 +83,6 @@ public interface ProtocolStateMachine extends StateMachine{
 	 * @generated
 	 */
     ProtocolConformance createConformance();
+
 
 } // ProtocolStateMachine

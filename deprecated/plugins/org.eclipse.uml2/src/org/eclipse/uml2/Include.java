@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Include.java,v 1.7 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Include.java,v 1.8 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -101,6 +101,7 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * @generated
 	 */
 	void setAddition(UseCase value);
+
 
 
 } // Include

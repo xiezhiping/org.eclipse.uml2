@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.20 2005/11/28 17:18:06 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.21 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -172,7 +172,8 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 					cache.put(eResource(), this, method, subgroup = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return subgroup;
-			} catch (NoSuchMethodException nsme) {
+			}
+			catch (NoSuchMethodException nsme) {
 				// ignore
 			}
 		}

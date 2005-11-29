@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.15 2005/11/09 22:53:09 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.16 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -122,6 +122,7 @@ public interface RedefinableElement extends NamedElement{
 	 */
 	boolean isConsistentWith(RedefinableElement redefinee);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -135,6 +136,7 @@ public interface RedefinableElement extends NamedElement{
 	 * @generated
 	 */
 	boolean isRedefinitionContextValid(RedefinableElement redefinable);
+
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
@@ -163,6 +165,7 @@ public interface RedefinableElement extends NamedElement{
 	 */
     RedefinableElement getRedefinedElement(String name);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -177,6 +180,7 @@ public interface RedefinableElement extends NamedElement{
 	 */
 	boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -190,5 +194,6 @@ public interface RedefinableElement extends NamedElement{
 	 * @generated
 	 */
 	boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context);
+
 
 } // RedefinableElement

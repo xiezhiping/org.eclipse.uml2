@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndAction.java,v 1.8 2005/11/21 21:48:03 khussey Exp $
+ * $Id: ReadLinkObjectEndAction.java,v 1.9 2005/11/29 20:09:40 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -170,5 +170,6 @@ public interface ReadLinkObjectEndAction extends Action{
 	 * @generated
 	 */
     OutputPin createResult();
+
 
 } // ReadLinkObjectEndAction

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.14 2005/11/21 21:48:02 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.15 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -235,6 +235,7 @@ public interface MultiplicityElement extends Element{
 	 */
     ValueSpecification createLowerValue(EClass eClass);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -248,6 +249,7 @@ public interface MultiplicityElement extends Element{
 	 * @generated
 	 */
 	int lowerBound();
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,6 +265,7 @@ public interface MultiplicityElement extends Element{
 	 */
 	int upperBound();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -276,6 +279,7 @@ public interface MultiplicityElement extends Element{
 	 * @generated
 	 */
 	boolean isMultivalued();
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -292,6 +296,7 @@ public interface MultiplicityElement extends Element{
 	 */
 	boolean includesCardinality(int C);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -305,6 +310,7 @@ public interface MultiplicityElement extends Element{
 	 * @generated
 	 */
 	boolean includesMultiplicity(MultiplicityElement M);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -320,6 +326,7 @@ public interface MultiplicityElement extends Element{
 	 */
 	boolean validateUpperGt0(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -333,6 +340,7 @@ public interface MultiplicityElement extends Element{
 	 * @generated
 	 */
 	boolean validateLowerGe0(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -348,6 +356,7 @@ public interface MultiplicityElement extends Element{
 	 */
 	boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -361,6 +370,7 @@ public interface MultiplicityElement extends Element{
 	 * @generated
 	 */
 	boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -376,6 +386,7 @@ public interface MultiplicityElement extends Element{
 	 */
 	boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -390,6 +401,7 @@ public interface MultiplicityElement extends Element{
 	 */
 	int lower();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -403,6 +415,7 @@ public interface MultiplicityElement extends Element{
 	 * @generated
 	 */
 	int upper();
+
 
 	// <!-- begin-custom-operations -->
 

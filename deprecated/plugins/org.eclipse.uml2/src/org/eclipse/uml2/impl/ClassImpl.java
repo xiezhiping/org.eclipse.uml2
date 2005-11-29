@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.45 2005/11/28 17:18:06 khussey Exp $
+ * $Id: ClassImpl.java,v 1.46 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -965,6 +965,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	public boolean isSetIsAbstract() {
 		return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

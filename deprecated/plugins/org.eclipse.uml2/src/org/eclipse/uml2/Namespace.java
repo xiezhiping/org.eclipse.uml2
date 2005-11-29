@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.15 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Namespace.java,v 1.16 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -277,6 +277,7 @@ public interface Namespace extends NamedElement{
 	 */
 	Set getNamesOfMember(NamedElement element);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -293,6 +294,7 @@ public interface Namespace extends NamedElement{
 	 */
 	boolean membersAreDistinguishable();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -306,6 +308,7 @@ public interface Namespace extends NamedElement{
 	 * @generated
 	 */
 	boolean validateImportedMemberDerived(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -321,6 +324,7 @@ public interface Namespace extends NamedElement{
 	 */
 	Set importedMember();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -335,6 +339,7 @@ public interface Namespace extends NamedElement{
 	 */
 	Set importMembers(Set imps);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -348,6 +353,7 @@ public interface Namespace extends NamedElement{
 	 * @generated
 	 */
 	Set excludeCollisions(Set imps);
+
 
 	/**
 	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list.
@@ -378,6 +384,7 @@ public interface Namespace extends NamedElement{
 	 */
     NamedElement getOwnedMember(String name);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -391,6 +398,7 @@ public interface Namespace extends NamedElement{
 	 * @generated
 	 */
 	boolean validateMembersAreDistinguishable(DiagnosticChain diagnostics, Map context);
+
 
 	// <!-- begin-custom-operations -->
 

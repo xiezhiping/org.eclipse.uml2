@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interaction.java,v 1.9 2005/11/21 21:48:02 khussey Exp $
+ * $Id: Interaction.java,v 1.10 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -222,6 +222,7 @@ public interface Interaction extends Behavior, InteractionFragment{
 	 * @generated
 	 */
     Gate getFormalGate(String name);
+
 
     /**
      * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Formal Gate</b></em>' containment reference list.

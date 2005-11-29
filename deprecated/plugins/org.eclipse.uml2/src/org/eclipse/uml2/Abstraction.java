@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Abstraction.java,v 1.9 2005/11/21 21:48:03 khussey Exp $
+ * $Id: Abstraction.java,v 1.10 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -92,5 +92,6 @@ public interface Abstraction extends Dependency{
 	 * @generated
 	 */
     OpaqueExpression createMapping();
+
 
 } // Abstraction

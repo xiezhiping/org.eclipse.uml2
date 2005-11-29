@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationAction.java,v 1.11 2005/11/21 21:48:03 khussey Exp $
+ * $Id: DurationObservationAction.java,v 1.12 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -74,6 +74,7 @@ public interface DurationObservationAction extends WriteStructuralFeatureAction{
 	 * @generated
 	 */
     Duration getDuration(String name);
+
 
     /**
      * Creates a {@link org.eclipse.uml2.Duration} and appends it to the '<em><b>Duration</b></em>' containment reference list.

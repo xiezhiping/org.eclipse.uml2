@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImport.java,v 1.12 2005/11/21 21:48:02 khussey Exp $
+ * $Id: ElementImport.java,v 1.13 2005/11/29 20:09:39 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -173,6 +173,7 @@ public interface ElementImport extends DirectedRelationship{
 	void setImportingNamespace(Namespace value);
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -187,6 +188,7 @@ public interface ElementImport extends DirectedRelationship{
 	 */
 	boolean validateVisibilityPublicOrPrivate(DiagnosticChain diagnostics, Map context);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -200,6 +202,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * @generated
 	 */
 	boolean validateImportedElementIsPublic(DiagnosticChain diagnostics, Map context);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -218,5 +221,6 @@ public interface ElementImport extends DirectedRelationship{
 	 * @generated
 	 */
 	String getName();
+
 
 } // ElementImport

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalImpl.java,v 1.13 2005/11/23 20:05:07 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalImpl.java,v 1.14 2005/11/29 20:09:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -109,6 +109,7 @@ public class LiteralUnlimitedNaturalImpl extends LiteralSpecificationImpl implem
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LITERAL_UNLIMITED_NATURAL__VALUE, oldValue, value));
 
 	}
+
 
 
 	/**
@@ -315,6 +316,7 @@ public class LiteralUnlimitedNaturalImpl extends LiteralSpecificationImpl implem
 	public int unlimitedValue() {
 		return LiteralUnlimitedNaturalOperations.unlimitedValue(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.22 2005/11/28 17:18:05 khussey Exp $
+ * $Id: VariableImpl.java,v 1.23 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -438,6 +438,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	}
 
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -446,6 +447,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	public int lowerBound() {
 		return MultiplicityElementOperations.lowerBound(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -456,6 +458,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		return MultiplicityElementOperations.upperBound(this);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -464,6 +467,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	public boolean isMultivalued() {
 		return MultiplicityElementOperations.isMultivalued(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -474,6 +478,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		return MultiplicityElementOperations.includesCardinality(this, C);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -482,6 +487,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	public boolean includesMultiplicity(MultiplicityElement M) {
 		return MultiplicityElementOperations.includesMultiplicity(this, M);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -492,6 +498,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		return MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -500,6 +507,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -510,6 +518,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		return MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -518,6 +527,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	public boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -528,6 +538,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		return MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -536,6 +547,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	public int lower() {
 		return MultiplicityElementOperations.lower(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

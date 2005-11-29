@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.13 2005/11/21 21:48:02 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.14 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -281,6 +281,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @generated
 	 */
 	void setRepresents(Element value);
+
 
 
 } // ActivityPartition

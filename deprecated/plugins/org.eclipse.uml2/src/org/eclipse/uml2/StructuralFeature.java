@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeature.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: StructuralFeature.java,v 1.8 2005/11/29 20:09:38 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -70,6 +70,7 @@ public interface StructuralFeature extends Feature, TypedElement, MultiplicityEl
 	 * @generated
 	 */
 	void setIsReadOnly(boolean value);
+
 
 
 } // StructuralFeature
