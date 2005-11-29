@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseEcoreBuilder.java,v 1.5 2005/09/08 18:03:13 khussey Exp $
+ * $Id: RoseEcoreBuilder.java,v 1.6 2005/11/29 13:31:27 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.builder;
 
@@ -41,12 +41,15 @@ import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.importer.rose.builder.RoseStrings;
 import org.eclipse.emf.importer.rose.builder.TableObject;
 import org.eclipse.emf.importer.rose.parser.RoseNode;
+
 import org.eclipse.uml2.codegen.ecore.Generator;
 
 public class RoseEcoreBuilder
@@ -677,7 +680,7 @@ public class RoseEcoreBuilder
 		}
 
 		if (null == collapsingClass) {
-			collapsingClass = ecoreFactory.createEClass();
+			collapsingClass = EcoreFactory.eINSTANCE.createEClass();
 
 			collapsingClass.setAbstract(collapsedClass.isAbstract());
 			collapsingClass.setInterface(collapsedClass.isInterface());
@@ -713,7 +716,7 @@ public class RoseEcoreBuilder
 		}
 
 		if (null == collapsingEnum) {
-			collapsingEnum = ecoreFactory.createEEnum();
+			collapsingEnum = EcoreFactory.eINSTANCE.createEEnum();
 
 			collapsingEnum.setName(collapsedEnum.getName());
 
@@ -743,7 +746,7 @@ public class RoseEcoreBuilder
 			}
 
 			if (null == collapsingLiteral) {
-				collapsingLiteral = ecoreFactory.createEEnumLiteral();
+				collapsingLiteral = EcoreFactory.eINSTANCE.createEEnumLiteral();
 
 				collapsingLiteral.setName(collapsedLiteral.getName());
 				collapsingLiteral.setValue(collapsedLiteral.getValue());
@@ -775,7 +778,7 @@ public class RoseEcoreBuilder
 		}
 
 		if (null == collapsingDataType) {
-			collapsingDataType = ecoreFactory.createEDataType();
+			collapsingDataType = EcoreFactory.eINSTANCE.createEDataType();
 
 			collapsingDataType.setInstanceClass(collapsedDataType
 				.getInstanceClass());
@@ -980,7 +983,7 @@ public class RoseEcoreBuilder
 					}
 
 					if (null == collapsingAttribute) {
-						collapsingAttribute = ecoreFactory.createEAttribute();
+						collapsingAttribute = EcoreFactory.eINSTANCE.createEAttribute();
 
 						if (bounded.contains(collapsedAttribute)) {
 							bounded.add(collapsingAttribute);
@@ -1144,7 +1147,7 @@ public class RoseEcoreBuilder
 					}
 
 					if (null == collapsingOperation) {
-						collapsingOperation = ecoreFactory.createEOperation();
+						collapsingOperation = EcoreFactory.eINSTANCE.createEOperation();
 
 						collapsingOperation.setName(collapsedOperation
 							.getName());
@@ -1162,7 +1165,7 @@ public class RoseEcoreBuilder
 
 							EParameter collapsedParameter = (EParameter) collapsedParameters
 								.next();
-							EParameter collapsingParameter = ecoreFactory
+							EParameter collapsingParameter = EcoreFactory.eINSTANCE
 								.createEParameter();
 
 							collapsingParameter.setName(collapsedParameter
@@ -1274,7 +1277,7 @@ public class RoseEcoreBuilder
 					}
 
 					if (null == collapsingReference) {
-						collapsingReference = ecoreFactory.createEReference();
+						collapsingReference = EcoreFactory.eINSTANCE.createEReference();
 
 						if (bounded.contains(collapsedReference)) {
 							bounded.add(collapsingReference);
@@ -1545,7 +1548,7 @@ public class RoseEcoreBuilder
 
 	protected EAnnotation createAnnotation(String source,
 			EModelElement eModelElement) {
-		EAnnotation eAnnotation = ecoreFactory.createEAnnotation();
+		EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 
 		eAnnotation.setSource(source);
 		eAnnotation.setEModelElement(eModelElement);
@@ -2445,10 +2448,10 @@ public class RoseEcoreBuilder
 		if (redefiningTypedElement.getEType() instanceof EEnum) {
 
 			if (redefinedTypedElement.getEType() instanceof EEnum) {
-				return ecorePackage.getEEnumerator();
+				return EcorePackage.Literals.EENUMERATOR;
 			}
 
-			return ecorePackage.getEJavaObject();
+			return EcorePackage.Literals.EJAVA_OBJECT;
 		}
 
 		if (redefiningTypedElement.getEType() instanceof EDataType) {
@@ -2466,7 +2469,7 @@ public class RoseEcoreBuilder
 				}
 			}
 
-			return ecorePackage.getEJavaObject();
+			return EcorePackage.Literals.EJAVA_OBJECT;
 		}
 
 		if (redefiningTypedElement.getEType() instanceof EClass) {
@@ -2510,7 +2513,7 @@ public class RoseEcoreBuilder
 			}
 		}
 
-		return ecorePackage.getEObject();
+		return EcorePackage.Literals.EOBJECT;
 	}
 
 	protected int getGreaterCommonUpperBound(ETypedElement eTypedElement,
