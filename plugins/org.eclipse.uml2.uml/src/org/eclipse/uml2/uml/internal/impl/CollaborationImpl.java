@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.6 2005/11/29 17:55:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -254,12 +254,17 @@ public class CollaborationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getParts() {
-		// TODO: implement this method to return the 'Part' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List part = (List) eVirtualGet(UMLPackage.COLLABORATION__PART);
+		if (part == null) {
+			eVirtualSet(UMLPackage.COLLABORATION__PART,
+				part = new StructuredClassifierImpl.PartEList(Property.class,
+					this, UMLPackage.COLLABORATION__PART,
+					new int[]{UMLPackage.COLLABORATION__OWNED_ATTRIBUTE}));
+		}
+		return part;
 	}
 
 	/**

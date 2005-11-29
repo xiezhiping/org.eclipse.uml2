@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.6 2005/11/28 20:26:04 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.7 2005/11/29 17:55:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -29,22 +30,27 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.ProtocolTransition;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
+import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import org.eclipse.uml2.uml.internal.impl.StructuredClassifierImpl.PartEList;
 import org.eclipse.uml2.uml.internal.operations.ProtocolTransitionOperations;
 
 /**
@@ -255,15 +261,77 @@ public class ProtocolTransitionImpl
 		return newPostCondition;
 	}
 
+	protected static class ReferredEList
+			extends DerivedEObjectEList {
+
+		protected class ReferredListIterator
+				extends DerivedListIterator {
+
+			public Object next() {
+				return ((CallEvent) ((Trigger) super.next()).getEvent())
+					.getOperation();
+			}
+
+			public Object previous() {
+				return ((CallEvent) ((Trigger) super.previous()).getEvent())
+					.getOperation();
+			}
+
+		}
+
+		protected class ResolvingReferredListIterator
+				extends ReferredListIterator {
+
+			protected boolean resolve() {
+				return true;
+			}
+
+		}
+
+		protected ReferredEList(Class dataClass, InternalEObject owner,
+				int featureID, int[] sourceFeatureIDs) {
+			super(dataClass, owner, featureID, sourceFeatureIDs);
+		}
+
+		public List basicList() {
+			return new ReferredEList(dataClass, owner, featureID,
+				sourceFeatureIDs) {
+
+				public ListIterator listIterator(int index) {
+					return basicListIterator(index);
+				}
+			};
+		}
+
+		protected ListIterator newListIterator() {
+			return new ReferredListIterator();
+		}
+
+		protected ListIterator newResolvingListIterator() {
+			return new ResolvingReferredListIterator();
+		}
+
+		protected boolean isIncluded(Object object) {
+			Event event = ((Trigger) object).getEvent();
+			return event instanceof CallEvent
+				&& super.isIncluded(((CallEvent) event).getOperation());
+		}
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getReferreds() {
-		// TODO: implement this method to return the 'Referred' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List referred = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__REFERRED);
+		if (referred == null) {
+			eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__REFERRED,
+				referred = new PartEList(Operation.class, this,
+					UMLPackage.PROTOCOL_TRANSITION__REFERRED,
+					new int[]{UMLPackage.PROTOCOL_TRANSITION__TRIGGER}));
+		}
+		return referred;
 	}
 
 	/**

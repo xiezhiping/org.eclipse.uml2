@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: PackageImpl.java,v 1.6 2005/11/29 17:55:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
@@ -559,12 +560,17 @@ public class PackageImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getOwnedTypes() {
-		// TODO: implement this method to return the 'Owned Type' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List ownedType = (List) eVirtualGet(UMLPackage.PACKAGE__OWNED_TYPE);
+		if (ownedType == null) {
+			eVirtualSet(UMLPackage.PACKAGE__OWNED_TYPE,
+				ownedType = new DerivedSubsetEObjectEList(Type.class, this,
+					UMLPackage.PACKAGE__OWNED_TYPE,
+					new int[]{UMLPackage.PACKAGE__OWNED_MEMBER}));
+		}
+		return ownedType;
 	}
 
 	/**
@@ -585,12 +591,18 @@ public class PackageImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getNestedPackages() {
-		// TODO: implement this method to return the 'Nested Package' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List nestedPackage = (List) eVirtualGet(UMLPackage.PACKAGE__NESTED_PACKAGE);
+		if (nestedPackage == null) {
+			eVirtualSet(UMLPackage.PACKAGE__NESTED_PACKAGE,
+				nestedPackage = new DerivedSubsetEObjectEList(
+					org.eclipse.uml2.uml.Package.class, this,
+					UMLPackage.PACKAGE__NESTED_PACKAGE,
+					new int[]{UMLPackage.PACKAGE__OWNED_MEMBER}));
+		}
+		return nestedPackage;
 	}
 
 	/**
@@ -624,13 +636,13 @@ public class PackageImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public org.eclipse.uml2.uml.Package basicGetNestingPackage() {
-		// TODO: implement this method to return the 'Nesting Package' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof org.eclipse.uml2.uml.Package
+			? (org.eclipse.uml2.uml.Package) eInternalContainer
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.4 2005/11/23 20:01:18 khussey Exp $
+ * $Id: TypeImpl.java,v 1.5 2005/11/29 17:55:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -63,12 +63,12 @@ public abstract class TypeImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public org.eclipse.uml2.uml.Package getPackage() {
-		// TODO: implement this method to return the 'Package' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return eInternalContainer() instanceof org.eclipse.uml2.uml.Package
+			? (org.eclipse.uml2.uml.Package) eContainer()
+			: null;
 	}
 
 	/**

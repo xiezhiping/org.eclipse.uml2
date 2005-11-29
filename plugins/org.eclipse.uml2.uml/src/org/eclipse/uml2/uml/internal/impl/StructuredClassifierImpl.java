@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.6 2005/11/29 17:55:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -22,11 +23,13 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.CollaborationUse;
@@ -250,15 +253,50 @@ public abstract class StructuredClassifierImpl
 		return null;
 	}
 
+	protected static class PartEList
+			extends DerivedEObjectEList {
+
+		protected PartEList(Class dataClass, InternalEObject owner,
+				int featureID, int[] sourceFeatureIDs) {
+			super(dataClass, owner, featureID, sourceFeatureIDs);
+		}
+
+		public List basicList() {
+			return new PartEList(dataClass, owner, featureID, sourceFeatureIDs) {
+
+				public ListIterator listIterator(int index) {
+					return basicListIterator(index);
+				}
+			};
+		}
+
+		protected boolean isIncluded(EStructuralFeature feature) {
+			return false;
+		}
+
+		protected boolean isIncluded(Object object) {
+			return super.isIncluded(object)
+				&& ((Property) object).isComposite();
+		}
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getParts() {
-		// TODO: implement this method to return the 'Part' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List part = (List) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__PART);
+		if (part == null) {
+			eVirtualSet(
+				UMLPackage.STRUCTURED_CLASSIFIER__PART,
+				part = new PartEList(
+					Property.class,
+					this,
+					UMLPackage.STRUCTURED_CLASSIFIER__PART,
+					new int[]{UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE}));
+		}
+		return part;
 	}
 
 	/**

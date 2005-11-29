@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.7 2005/11/29 17:55:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -516,12 +516,12 @@ public class ParameterImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Operation getOperation() {
-		// TODO: implement this method to return the 'Operation' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if (eContainerFeatureID != UMLPackage.PARAMETER__OPERATION)
+			return null;
+		return (Operation) eContainer();
 	}
 
 	/**

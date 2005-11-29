@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.6 2005/11/29 17:55:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
@@ -362,12 +363,18 @@ public class ActivityImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getStructuredNodes() {
-		// TODO: implement this method to return the 'Structured Node' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List structuredNode = (List) eVirtualGet(UMLPackage.ACTIVITY__STRUCTURED_NODE);
+		if (structuredNode == null) {
+			eVirtualSet(UMLPackage.ACTIVITY__STRUCTURED_NODE,
+				structuredNode = new DerivedEObjectEList(
+					StructuredActivityNode.class, this,
+					UMLPackage.ACTIVITY__STRUCTURED_NODE, new int[]{
+						UMLPackage.ACTIVITY__NODE, UMLPackage.ACTIVITY__GROUP}));
+		}
+		return structuredNode;
 	}
 
 	/**

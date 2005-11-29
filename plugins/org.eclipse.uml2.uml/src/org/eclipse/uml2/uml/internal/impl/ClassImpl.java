@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.6 2005/11/28 20:26:02 khussey Exp $
+ * $Id: ClassImpl.java,v 1.7 2005/11/29 17:55:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentEList;
@@ -44,6 +46,7 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Feature;
+import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
@@ -505,15 +508,87 @@ public class ClassImpl
 		return null;
 	}
 
+	protected static class SuperClassEList
+			extends DerivedSubsetEObjectEList {
+
+		protected class SuperClassListIterator
+				extends DerivedSubsetListIterator {
+
+			public Object next() {
+				return ((Generalization) super.next()).getGeneral();
+			}
+
+			public Object previous() {
+				return ((Generalization) super.previous()).getGeneral();
+			}
+
+			public void set(Object element) {
+				Generalization generalization = UMLFactory.eINSTANCE
+					.createGeneralization();
+				generalization.setGeneral((org.eclipse.uml2.uml.Class) element);
+				super.set(generalization);
+			}
+
+			public void add(Object element) {
+				Generalization generalization = UMLFactory.eINSTANCE
+					.createGeneralization();
+				generalization.setGeneral((org.eclipse.uml2.uml.Class) element);
+				super.add(generalization);
+			}
+		}
+
+		protected class ResolvingSuperClassListIterator
+				extends SuperClassListIterator {
+
+			protected boolean resolve() {
+				return true;
+			}
+
+		}
+
+		protected SuperClassEList(Class dataClass, InternalEObject owner,
+				int featureID, int[] sourceFeatureIDs) {
+			super(dataClass, owner, featureID, sourceFeatureIDs);
+		}
+
+		public List basicList() {
+			return new SuperClassEList(dataClass, owner, featureID,
+				sourceFeatureIDs) {
+
+				public ListIterator listIterator(int index) {
+					return basicListIterator(index);
+				}
+			};
+		}
+
+		protected ListIterator newListIterator() {
+			return new SuperClassListIterator();
+		}
+
+		protected ListIterator newResolvingListIterator() {
+			return new ResolvingSuperClassListIterator();
+		}
+
+		protected boolean isIncluded(Object object) {
+			return super.isIncluded(((Generalization) object).getGeneral());
+		}
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getSuperClasses() {
-		// TODO: implement this method to return the 'Super Class' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List superClass = (List) eVirtualGet(UMLPackage.CLASS__SUPER_CLASS);
+		if (superClass == null) {
+			eVirtualSet(UMLPackage.CLASS__SUPER_CLASS,
+				superClass = new SuperClassEList(
+					org.eclipse.uml2.uml.Class.class, this,
+					UMLPackage.CLASS__SUPER_CLASS,
+					new int[]{UMLPackage.CLASS__GENERALIZATION}));
+		}
+		return superClass;
 	}
 
 	/**

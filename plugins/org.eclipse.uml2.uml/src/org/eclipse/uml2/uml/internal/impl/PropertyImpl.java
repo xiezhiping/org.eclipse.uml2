@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.7 2005/11/28 20:26:02 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.8 2005/11/29 17:55:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -930,12 +930,12 @@ public class PropertyImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public org.eclipse.uml2.uml.Class getClass_() {
-		// TODO: implement this method to return the 'Class ' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return eInternalContainer() instanceof org.eclipse.uml2.uml.Class
+			? (org.eclipse.uml2.uml.Class) eContainer()
+			: null;
 	}
 
 	/**

@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.6 2005/11/28 20:26:02 khussey Exp $
+ * $Id: RegionImpl.java,v 1.7 2005/11/29 17:55:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -29,9 +31,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -149,12 +153,41 @@ public class RegionImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getRedefinitionContexts() {
-		// TODO: implement this method to return the 'Redefinition Context' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		CacheAdapter cache = getCacheAdapter();
+
+		if (cache != null) {
+			EList result = (EList) cache.get(this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+
+			if (result == null) {
+				Classifier redefinitionContext = redefinitionContext();
+				List redefinitionContexts = redefinitionContext == null
+					? Collections.EMPTY_LIST
+					: Collections.singletonList(redefinitionContext);
+				cache
+					.put(
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+						result = new EcoreEList.UnmodifiableEList(
+							this,
+							UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+							redefinitionContexts.size(), redefinitionContexts
+								.toArray()));
+			}
+
+			return result;
+		}
+
+		Classifier redefinitionContext = redefinitionContext();
+		List redefinitionContexts = redefinitionContext == null
+			? Collections.EMPTY_LIST
+			: Collections.singletonList(redefinitionContext);
+		return new EcoreEList.UnmodifiableEList(this,
+			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+			redefinitionContexts.size(), redefinitionContexts.toArray());
 	}
 
 	/**
