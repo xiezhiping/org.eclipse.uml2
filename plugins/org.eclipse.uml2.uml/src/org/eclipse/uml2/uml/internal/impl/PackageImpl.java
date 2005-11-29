@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.6 2005/11/29 17:55:39 khussey Exp $
+ * $Id: PackageImpl.java,v 1.7 2005/11/29 19:51:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -648,12 +648,28 @@ public class PackageImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setNestingPackage(org.eclipse.uml2.uml.Package newNestingPackage) {
-		// TODO: implement this method to set the 'Nesting Package' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if (newNestingPackage != eInternalContainer()
+			|| (eContainerFeatureID != UMLPackage.PACKAGE__NESTING_PACKAGE && newNestingPackage != null)) {
+			if (EcoreUtil.isAncestor(this, (EObject) newNestingPackage))
+				throw new IllegalArgumentException(
+					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newNestingPackage != null)
+				msgs = ((InternalEList) newNestingPackage.getNestedPackages())
+					.basicAdd(this, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newNestingPackage,
+				UMLPackage.PACKAGE__NESTING_PACKAGE, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.PACKAGE__NESTING_PACKAGE, newNestingPackage,
+				newNestingPackage));
 	}
 
 	/**

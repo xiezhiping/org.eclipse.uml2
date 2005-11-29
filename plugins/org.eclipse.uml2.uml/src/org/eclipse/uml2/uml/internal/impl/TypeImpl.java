@@ -8,14 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.5 2005/11/29 17:55:39 khussey Exp $
+ * $Id: TypeImpl.java,v 1.6 2005/11/29 19:51:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -74,12 +81,27 @@ public abstract class TypeImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setPackage(org.eclipse.uml2.uml.Package newPackage) {
-		// TODO: implement this method to set the 'Package' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if (newPackage != eInternalContainer()
+			|| (eContainerFeatureID != UMLPackage.TYPE__PACKAGE && newPackage != null)) {
+			if (EcoreUtil.isAncestor(this, (EObject) newPackage))
+				throw new IllegalArgumentException(
+					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newPackage != null)
+				msgs = ((InternalEList) newPackage.getOwnedTypes()).basicAdd(
+					this, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newPackage,
+				UMLPackage.TYPE__PACKAGE, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.TYPE__PACKAGE, newPackage, newPackage));
 	}
 
 	/**

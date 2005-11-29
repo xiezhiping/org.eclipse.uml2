@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.8 2005/11/29 17:55:39 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.9 2005/11/29 19:51:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -495,12 +495,27 @@ public abstract class ClassifierImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setPackage(org.eclipse.uml2.uml.Package newPackage) {
-		// TODO: implement this method to set the 'Package' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if (newPackage != eInternalContainer()
+			|| (eContainerFeatureID != UMLPackage.CLASSIFIER__PACKAGE && newPackage != null)) {
+			if (EcoreUtil.isAncestor(this, (EObject) newPackage))
+				throw new IllegalArgumentException(
+					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newPackage != null)
+				msgs = ((InternalEList) newPackage.getOwnedTypes()).basicAdd(
+					this, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newPackage,
+				UMLPackage.CLASSIFIER__PACKAGE, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.CLASSIFIER__PACKAGE, newPackage, newPackage));
 	}
 
 	/**
