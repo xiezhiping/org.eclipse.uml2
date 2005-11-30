@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.48 2005/11/23 20:09:17 khussey Exp $
+ * $Id: UML2Util.java,v 1.49 2005/11/30 21:37:48 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -1480,8 +1480,6 @@ public class UML2Util
 				if (null == eType) {
 					eType = (EClassifier) doSwitch(type);
 				}
-			} else {
-				eType = EcorePackage.eINSTANCE.getEObject();
 			}
 
 			return eType;
@@ -3037,7 +3035,6 @@ public class UML2Util
 									.setContainment(false);
 							}
 
-							eStructuralFeature.setTransient(true);
 							eStructuralFeature.setVolatile(true);
 						} else if (OPTION__REPORT.equals(options
 							.get(OPTION__DERIVED_FEATURES))
