@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
+ * $Id: ExtensionOperations.java,v 1.4 2005/11/30 21:43:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -44,7 +44,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class ExtensionOperations extends UMLOperations {
+public final class ExtensionOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,7 +132,8 @@ public final class ExtensionOperations extends UMLOperations {
 	public static Property metaclassEnd(Extension extension) {
 		List ownedEnds = extension.getOwnedEnds();
 
-		for (Iterator memberEnds = extension.getMemberEnds().iterator(); memberEnds.hasNext();) {
+		for (Iterator memberEnds = extension.getMemberEnds().iterator(); memberEnds
+			.hasNext();) {
 			Property memberEnd = (Property) memberEnds.next();
 
 			if (!ownedEnds.contains(memberEnd)) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintOperations.java,v 1.3 2005/11/30 21:21:17 khussey Exp $
+ * $Id: InteractionConstraintOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -41,7 +41,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class InteractionConstraintOperations extends UMLOperations {
+public final class InteractionConstraintOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

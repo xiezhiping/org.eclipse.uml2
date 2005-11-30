@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -54,7 +54,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class MultiplicityElementOperations extends UMLOperations {
+public final class MultiplicityElementOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -384,7 +385,7 @@ public final class MultiplicityElementOperations extends UMLOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setLower(MultiplicityElement multiplicityElement,
+	public static void setLower(MultiplicityElement multiplicityElement,
 			int newLower) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -396,7 +397,7 @@ public final class MultiplicityElementOperations extends UMLOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setUpper(MultiplicityElement multiplicityElement,
+	public static void setUpper(MultiplicityElement multiplicityElement,
 			int newUpper) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT

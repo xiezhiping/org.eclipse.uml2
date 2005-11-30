@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
+ * $Id: ExtensionEndOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -44,7 +44,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class ExtensionEndOperations extends UMLOperations {
+public final class ExtensionEndOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,7 +160,7 @@ public final class ExtensionEndOperations extends UMLOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setLower(ExtensionEnd extensionEnd, int newLower) {
+	public static void setLower(ExtensionEnd extensionEnd, int newLower) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

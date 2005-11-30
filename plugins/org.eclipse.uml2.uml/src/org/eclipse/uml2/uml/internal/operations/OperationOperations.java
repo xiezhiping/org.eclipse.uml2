@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: OperationOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -255,7 +255,7 @@ public final class OperationOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setIsOrdered(Operation operation, boolean newIsOrdered) {
+	public static void setIsOrdered(Operation operation, boolean newIsOrdered) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -266,7 +266,7 @@ public final class OperationOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setIsUnique(Operation operation, boolean newIsUnique) {
+	public static void setIsUnique(Operation operation, boolean newIsUnique) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -277,7 +277,7 @@ public final class OperationOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setLower(Operation operation, int newLower) {
+	public static void setLower(Operation operation, int newLower) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -288,7 +288,7 @@ public final class OperationOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setUpper(Operation operation, int newUpper) {
+	public static void setUpper(Operation operation, int newUpper) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -299,7 +299,7 @@ public final class OperationOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setType(Operation operation, Type newType) {
+	public static void setType(Operation operation, Type newType) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

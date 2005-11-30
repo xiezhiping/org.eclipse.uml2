@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -465,7 +465,7 @@ public final class PropertyOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setDefault(Property property, String newDefault) {
+	public static void setDefault(Property property, String newDefault) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -476,8 +476,7 @@ public final class PropertyOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setIsComposite(Property property,
-			boolean newIsComposite) {
+	public static void setIsComposite(Property property, boolean newIsComposite) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -488,7 +487,7 @@ public final class PropertyOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setOpposite(Property property, Property newOpposite) {
+	public static void setOpposite(Property property, Property newOpposite) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

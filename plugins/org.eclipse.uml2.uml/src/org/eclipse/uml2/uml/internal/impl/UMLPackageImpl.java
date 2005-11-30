@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.3 2005/11/30 21:21:17 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -10620,7 +10620,8 @@ public class UMLPackageImpl
 	protected void fixInstanceClass(EClassifier eClassifier) {
 		if (eClassifier.getInstanceClassName() == null) {
 			String className = getClass().getName();
-			int i = className.lastIndexOf('.', className.lastIndexOf('.', className.lastIndexOf('.') - 1) - 1);
+			int i = className.lastIndexOf('.', className.lastIndexOf('.',
+				className.lastIndexOf('.') - 1) - 1);
 			className = i == -1
 				? eClassifier.getName()
 				: className.substring(0, i + 1) + eClassifier.getName();

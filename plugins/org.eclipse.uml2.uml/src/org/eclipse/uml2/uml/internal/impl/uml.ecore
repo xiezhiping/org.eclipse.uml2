@@ -1915,7 +1915,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="getDefault" ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="setDefault" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setDefault" ordered="false" lowerBound="1">
       <eParameters name="newDefault" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameterSet" ordered="false"
@@ -2070,10 +2070,10 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="setLower" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setLower" ordered="false" lowerBound="1">
       <eParameters name="newLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
-    <eOperations name="setUpper" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setUpper" ordered="false" lowerBound="1">
       <eParameters name="newUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" ordered="false"
@@ -2092,14 +2092,14 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" ordered="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
-        transient="true" defaultValueLiteral="1" derived="true">
+        defaultValueLiteral="1" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the upper bound of the multiplicity interval.&#xD;&#xA;Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" ordered="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
-        transient="true" defaultValueLiteral="1" derived="true">
+        defaultValueLiteral="1" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the lower bound of the multiplicity interval.&#xD;&#xA;Specifies the lower bound of the multiplicity interval, if it is expressed as an integer."/>
       </eAnnotations>
@@ -2322,13 +2322,13 @@
       </eAnnotations>
     </eOperations>
     <eOperations name="getDefault" ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="setDefault" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setDefault" ordered="false" lowerBound="1">
       <eParameters name="newDefault" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="setIsComposite" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setIsComposite" ordered="false" lowerBound="1">
       <eParameters name="newIsComposite" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
-    <eOperations name="setOpposite" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setOpposite" ordered="false" lowerBound="1">
       <eParameters name="newOpposite" ordered="false" lowerBound="1" eType="#//Property"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" ordered="false"
@@ -2683,19 +2683,19 @@
     </eOperations>
     <eOperations name="getLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="getUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eOperations name="setIsOrdered" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setIsOrdered" ordered="false" lowerBound="1">
       <eParameters name="newIsOrdered" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
-    <eOperations name="setIsUnique" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setIsUnique" ordered="false" lowerBound="1">
       <eParameters name="newIsUnique" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
-    <eOperations name="setLower" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setLower" ordered="false" lowerBound="1">
       <eParameters name="newLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
-    <eOperations name="setUpper" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setUpper" ordered="false" lowerBound="1">
       <eParameters name="newUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
-    <eOperations name="setType" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setType" ordered="false" lowerBound="1">
       <eParameters name="newType" ordered="false" lowerBound="1" eType="#//Type"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isQuery" ordered="false"
@@ -2766,7 +2766,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint" resolveProxies="false">
@@ -2880,7 +2880,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="getContext" ordered="false" eType="#//BehavioredClassifier"/>
-    <eOperations name="setContext" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setContext" ordered="false" lowerBound="1">
       <eParameters name="newContext" ordered="false" lowerBound="1" eType="#//BehavioredClassifier"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReentrant" ordered="false"
@@ -4672,8 +4672,7 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
         <eAnnotations source="redefines" references="#//MultiplicityElement/getLower"/>
       </contents>
-      <contents xsi:type="ecore:EOperation" name="setLower" ordered="false" lowerBound="1"
-          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+      <contents xsi:type="ecore:EOperation" name="setLower" ordered="false" lowerBound="1">
         <eAnnotations source="redefines" references="#//MultiplicityElement/setLower"/>
         <eParameters name="newLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </contents>
@@ -4684,7 +4683,7 @@
         <eAnnotations source="redefines" references="#//TypedElement/type"/>
       </contents>
       <contents xsi:type="ecore:EAttribute" name="lower" ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-          volatile="true" transient="true" defaultValueLiteral="0" derived="true">
+          volatile="true" defaultValueLiteral="0" derived="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype."/>
         </eAnnotations>
@@ -7614,7 +7613,7 @@
         <details key="documentation" value="self.value.value.oclAsType(TimeExpression)"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="setNow" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setNow" ordered="false" lowerBound="1">
       <eParameters name="newNow" ordered="false" lowerBound="1" eType="#//TimeExpression"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="now" ordered="false" lowerBound="1"
@@ -7758,7 +7757,7 @@
         <details key="documentation" value="result = self.value.value.oclAsType(Duration)"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="setDuration" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+    <eOperations name="setDuration" ordered="false" lowerBound="1">
       <eParameters name="newDuration" ordered="false" lowerBound="1" eType="#//Duration"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="duration" ordered="false"
@@ -9400,6 +9399,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="spec"/>
       </eAnnotations>
+      <eParameters name="classifier" ordered="false" lowerBound="1" eType="#//Classifier"/>
     </eOperations>
     <eOperations name="usedInterfaces" ordered="false" upperBound="-1" eType="#//Interface">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -9408,6 +9408,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="spec"/>
       </eAnnotations>
+      <eParameters name="classifier" ordered="false" lowerBound="1" eType="#//Classifier"/>
     </eOperations>
     <eOperations name="getRequireds" ordered="false" upperBound="-1" eType="#//Interface">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">

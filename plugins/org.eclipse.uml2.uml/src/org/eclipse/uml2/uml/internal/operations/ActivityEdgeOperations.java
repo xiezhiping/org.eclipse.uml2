@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeOperations.java,v 1.2 2005/11/30 21:21:16 khussey Exp $
+ * $Id: ActivityEdgeOperations.java,v 1.3 2005/11/30 21:43:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -38,7 +38,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class ActivityEdgeOperations extends UMLOperations {
+public final class ActivityEdgeOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.10 2005/11/29 22:45:34 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.11 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -224,9 +224,8 @@ public abstract class ClassifierImpl
 		List redefinitionContext = (List) eVirtualGet(UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
 			eVirtualSet(UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
-				redefinitionContext = new DerivedEObjectEList(
-					Classifier.class, this,
-					UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
+				redefinitionContext = new DerivedEObjectEList(Classifier.class,
+					this, UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
 					new int[]{UMLPackage.CLASSIFIER__NAMESPACE}));
 		}
 		return redefinitionContext;

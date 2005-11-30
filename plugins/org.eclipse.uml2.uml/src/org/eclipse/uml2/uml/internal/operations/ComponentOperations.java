@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.2 2005/11/30 21:21:16 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.3 2005/11/30 21:43:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.List;
 
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
 
 /**
@@ -33,7 +34,8 @@ import org.eclipse.uml2.uml.Component;
  *
  * @generated not
  */
-public final class ComponentOperations extends UMLOperations {
+public final class ComponentOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,7 +57,8 @@ public final class ComponentOperations extends UMLOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static List realizedInterfaces(Component component) {
+	public static List realizedInterfaces(Component component,
+			Classifier classifier) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -72,7 +75,7 @@ public final class ComponentOperations extends UMLOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static List usedInterfaces(Component component) {
+	public static List usedInterfaces(Component component, Classifier classifier) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.7 2005/11/29 17:55:39 khussey Exp $
+ * $Id: ClassImpl.java,v 1.8 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
@@ -720,6 +721,16 @@ public class ClassImpl
 	 * @generated
 	 */
 	public List getExtensions() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.CLASS__EXTENSION);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.CLASS__EXTENSION,
+					result = ClassOperations.getExtensions(this));
+			}
+			return result;
+		}
 		return ClassOperations.getExtensions(this);
 	}
 

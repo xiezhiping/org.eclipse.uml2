@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: TimeObservationActionOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -103,7 +103,7 @@ public final class TimeObservationActionOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setNow(TimeObservationAction timeObservationAction,
+	public static void setNow(TimeObservationAction timeObservationAction,
 			TimeExpression newNow) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT

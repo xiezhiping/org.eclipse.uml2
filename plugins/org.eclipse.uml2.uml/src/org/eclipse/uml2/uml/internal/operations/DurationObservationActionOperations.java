@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionOperations.java,v 1.3 2005/11/30 21:21:17 khussey Exp $
+ * $Id: DurationObservationActionOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -42,7 +42,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class DurationObservationActionOperations extends UMLOperations {
+public final class DurationObservationActionOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,7 +116,7 @@ public final class DurationObservationActionOperations extends UMLOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setDuration(
+	public static void setDuration(
 			DurationObservationAction durationObservationAction,
 			Duration newDuration) {
 		// TODO: implement this method

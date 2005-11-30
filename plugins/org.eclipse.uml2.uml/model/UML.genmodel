@@ -495,7 +495,8 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Class/passive_class/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Class/passive_class/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Class/getExtensions"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Class/getExtensions"
+          cacheAdapterScope="Global"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//BehavioredClassifier">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
@@ -3860,9 +3861,13 @@
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Component/realizedInterfaces"
-          cacheAdapterScope="Resource"/>
+          cacheAdapterScope="Resource">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Component/realizedInterfaces/classifier"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Component/usedInterfaces"
-          cacheAdapterScope="Resource"/>
+          cacheAdapterScope="Resource">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Component/usedInterfaces/classifier"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Component/getRequireds"
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Component/getProvideds"

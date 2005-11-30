@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.3 2005/11/28 20:26:02 khussey Exp $
+ * $Id: Component.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -211,11 +211,11 @@ public interface Component
 	 * select(dependency|dependency.oclIsKindOf(Realization) and dependency.supplier.oclIsKindOf(Interface)))->
 	 * collect(dependency|dependency.client)
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false" classifierRequired="true" classifierOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List realizedInterfaces();
+	List realizedInterfaces(Classifier classifier);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -226,10 +226,10 @@ public interface Component
 	 * select(dependency|dependency.oclIsKindOf(Usage) and dependency.supplier.oclIsKindOf(interface)))->
 	 * collect(dependency|dependency.supplier)
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false" classifierRequired="true" classifierOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List usedInterfaces();
+	List usedInterfaces(Classifier classifier);
 
 } // Component

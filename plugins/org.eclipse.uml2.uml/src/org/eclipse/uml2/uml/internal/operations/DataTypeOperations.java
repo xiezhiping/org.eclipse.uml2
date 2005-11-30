@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeOperations.java,v 1.2 2005/11/30 21:21:16 khussey Exp $
+ * $Id: DataTypeOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -34,7 +34,8 @@ import org.eclipse.uml2.uml.RedefinableElement;
  *
  * @generated not
  */
-public final class DataTypeOperations extends UMLOperations {
+public final class DataTypeOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

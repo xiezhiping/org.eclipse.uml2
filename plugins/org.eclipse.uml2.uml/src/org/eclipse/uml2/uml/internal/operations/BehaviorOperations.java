@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorOperations.java,v 1.4 2005/11/30 21:21:16 khussey Exp $
+ * $Id: BehaviorOperations.java,v 1.5 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -44,7 +44,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class BehaviorOperations extends UMLOperations {
+public final class BehaviorOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,7 +204,7 @@ public final class BehaviorOperations extends UMLOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setContext(Behavior behavior,
+	public static void setContext(Behavior behavior,
 			BehavioredClassifier newContext) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.7 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,6 +32,7 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ComponentRealization;
@@ -351,7 +352,7 @@ public class ComponentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List realizedInterfaces() {
+	public List realizedInterfaces(Classifier classifier) {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
@@ -359,11 +360,11 @@ public class ComponentImpl
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.COMPONENT
 					.getEOperations().get(0), result = ComponentOperations
-					.realizedInterfaces(this));
+					.realizedInterfaces(this, classifier));
 			}
 			return result;
 		}
-		return ComponentOperations.realizedInterfaces(this);
+		return ComponentOperations.realizedInterfaces(this, classifier);
 	}
 
 	/**
@@ -371,7 +372,7 @@ public class ComponentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List usedInterfaces() {
+	public List usedInterfaces(Classifier classifier) {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(eResource(), this,
@@ -379,11 +380,11 @@ public class ComponentImpl
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.COMPONENT
 					.getEOperations().get(1), result = ComponentOperations
-					.usedInterfaces(this));
+					.usedInterfaces(this, classifier));
 			}
 			return result;
 		}
-		return ComponentOperations.usedInterfaces(this);
+		return ComponentOperations.usedInterfaces(this, classifier);
 	}
 
 	/**

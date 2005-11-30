@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.2 2005/11/30 21:21:17 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -111,7 +111,7 @@ public interface MultiplicityElement
 	 * @return the value of the '<em>Upper</em>' attribute.
 	 * @see #setUpper(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_Upper()
-	 * @model default="1" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="1" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getUpper();
@@ -138,7 +138,7 @@ public interface MultiplicityElement
 	 * @return the value of the '<em>Lower</em>' attribute.
 	 * @see #setLower(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_Lower()
-	 * @model default="1" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="1" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getLower();

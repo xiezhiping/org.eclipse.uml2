@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -229,7 +229,7 @@ public final class ParameterOperations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setDefault(Parameter parameter, String newDefault) {
+	public static void setDefault(Parameter parameter, String newDefault) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

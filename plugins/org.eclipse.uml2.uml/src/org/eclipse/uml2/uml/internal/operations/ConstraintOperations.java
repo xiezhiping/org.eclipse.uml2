@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintOperations.java,v 1.2 2005/11/30 21:21:16 khussey Exp $
+ * $Id: ConstraintOperations.java,v 1.3 2005/11/30 21:43:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -40,7 +40,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class ConstraintOperations extends UMLOperations {
+public final class ConstraintOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
