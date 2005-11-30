@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: ExtensionEndOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,7 +19,11 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.ExtensionEnd;
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValueSpecification;
 
+import org.eclipse.uml2.uml.internal.impl.ExtensionEndImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -38,9 +42,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ExtensionEndOperations {
+public final class ExtensionEndOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,23 +128,30 @@ public final class ExtensionEndOperations {
 	 * lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.
 	 * result = lowerBound = if lowerValue->isEmpty() then 0 else lowerValue->IntegerValue() endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int lowerBound(ExtensionEnd extensionEnd) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ValueSpecification lowerValue = extensionEnd.getLowerValue();
+
+		if (lowerValue instanceof LiteralInteger) {
+			return lowerValue.integerValue();
+		} else {
+			ExtensionEndImpl extensionEndImpl = (ExtensionEndImpl) extensionEnd;
+			return ((Integer) extensionEndImpl
+				.eVirtualGet(
+					extensionEndImpl
+						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
+					new Integer(0))).intValue();
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int getLower(ExtensionEnd extensionEnd) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return extensionEnd.lowerBound();
 	}
 
 	/**

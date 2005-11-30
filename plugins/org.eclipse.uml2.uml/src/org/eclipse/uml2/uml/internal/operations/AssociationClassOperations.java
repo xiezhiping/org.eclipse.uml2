@@ -8,16 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: AssociationClassOperations.java,v 1.2 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.AssociationClass;
 
@@ -36,9 +39,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class AssociationClassOperations {
+public final class AssociationClassOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,12 +92,23 @@ public final class AssociationClassOperations {
 	 * The operation allConnections results in the set of all AssociationEnds of the Association.
 	 * result = memberEnd->union ( self.parents ()->collect (p | p.allConnections () )
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List allConnections(AssociationClass associationClass) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List allConnections = new UniqueEList(associationClass.getMemberEnds());
+
+		for (Iterator allParents = associationClass.allParents().iterator(); allParents
+			.hasNext();) {
+
+			Object parent = allParents.next();
+
+			if (parent instanceof AssociationClass) {
+				allConnections.addAll(((AssociationClass) parent)
+					.getMemberEnds());
+			}
+		}
+
+		return Collections.unmodifiableList(allConnections);
 	}
 
 } // AssociationClassOperations

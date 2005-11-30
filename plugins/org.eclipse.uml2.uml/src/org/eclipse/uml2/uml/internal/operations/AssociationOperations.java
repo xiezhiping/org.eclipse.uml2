@@ -8,19 +8,26 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: AssociationOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPackage;
 
+import org.eclipse.uml2.uml.internal.impl.PropertyImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -39,9 +46,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class AssociationOperations {
+public final class AssociationOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -187,12 +194,24 @@ public final class AssociationOperations {
 	 * endType is derived from the types of the member ends.
 	 * result = self.memberEnd->collect(e | e.type)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List getEndTypes(Association association) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List endTypes = new UniqueEList();
+
+		for (Iterator memberEnds = association.getMemberEnds().iterator(); memberEnds
+			.hasNext();) {
+
+			Type endType = ((PropertyImpl) memberEnds.next()).basicGetType();
+
+			if (null != endType) {
+				endTypes.add(endType);
+			}
+		}
+
+		return new UnionEObjectEList((InternalEObject) association,
+			UMLPackage.Literals.ASSOCIATION__END_TYPE, endTypes.size(),
+			endTypes.toArray());
 	}
 
 } // AssociationOperations

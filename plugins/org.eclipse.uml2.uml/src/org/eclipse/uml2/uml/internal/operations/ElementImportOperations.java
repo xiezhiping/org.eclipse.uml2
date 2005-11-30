@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: ElementImportOperations.java,v 1.2 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.PackageableElement;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -37,9 +38,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ElementImportOperations {
+public final class ElementImportOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,12 +161,20 @@ public final class ElementImportOperations {
 	 *   self.importedElement.name
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String getName(ElementImport elementImport) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		String alias = elementImport.getAlias();
+
+		if (isEmpty(alias)) {
+			PackageableElement importedElement = elementImport
+				.getImportedElement();
+			return importedElement == null
+				? EMPTY_STRING
+				: importedElement.getName();
+		}
+
+		return alias;
 	}
 
 } // ElementImportOperations

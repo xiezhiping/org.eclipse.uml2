@@ -8,13 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: DeploymentTargetOperations.java,v 1.2 2005/11/30 21:21:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+import org.eclipse.uml2.uml.Artifact;
+import org.eclipse.uml2.uml.DeployedArtifact;
+import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.DeploymentTarget;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.internal.impl.ManifestationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,9 +38,9 @@ import org.eclipse.uml2.uml.DeploymentTarget;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class DeploymentTargetOperations {
+public final class DeploymentTargetOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -47,12 +57,40 @@ public final class DeploymentTargetOperations {
 	 * <!-- begin-model-doc -->
 	 * result = ((self.deployment->collect(deployedArtifact))->collect(manifestation))->collect(utilizedElement)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List getDeployedElements(DeploymentTarget deploymentTarget) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List deployedElements = new UniqueEList();
+
+		for (Iterator deployments = deploymentTarget.getDeployments()
+			.iterator(); deployments.hasNext();) {
+
+			for (Iterator deployedArtifacts = ((Deployment) deployments.next())
+				.getDeployedArtifacts().iterator(); deployedArtifacts.hasNext();) {
+
+				DeployedArtifact deployedArtifact = (DeployedArtifact) deployedArtifacts
+					.next();
+
+				if (deployedArtifact instanceof Artifact) {
+
+					for (Iterator manifestations = ((Artifact) deployedArtifact)
+						.getManifestations().iterator(); manifestations
+						.hasNext();) {
+
+						PackageableElement utilizedElement = ((ManifestationImpl) manifestations
+							.next()).basicGetUtilizedElement();
+
+						if (utilizedElement != null) {
+							deployedElements.add(utilizedElement);
+						}
+					}
+				}
+			}
+		}
+
+		return new UnionEObjectEList((InternalEObject) deploymentTarget,
+			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
+			deployedElements.size(), deployedElements.toArray());
 	}
 
 } // DeploymentTargetOperations

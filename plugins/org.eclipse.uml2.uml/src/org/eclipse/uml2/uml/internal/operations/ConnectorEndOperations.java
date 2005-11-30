@@ -8,17 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: ConnectorEndOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
+import org.eclipse.uml2.uml.Element;
 
 import org.eclipse.uml2.uml.Property;
 
@@ -40,9 +44,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ConnectorEndOperations {
+public final class ConnectorEndOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,12 +188,24 @@ public final class ConnectorEndOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Property getDefiningEnd(ConnectorEnd connectorEnd) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Element owner = connectorEnd.getOwner();
+
+		if (owner instanceof Connector) {
+			Connector connector = (Connector) owner;
+			Association type = connector.getType();
+
+			List ends = connector.getEnds();
+			List memberEnds = type.getMemberEnds();
+
+			if (ends.size() == memberEnds.size()) {
+				return (Property) memberEnds.get(ends.indexOf(connectorEnd));
+			}
+		}
+
+		return null;
 	}
 
 } // ConnectorEndOperations

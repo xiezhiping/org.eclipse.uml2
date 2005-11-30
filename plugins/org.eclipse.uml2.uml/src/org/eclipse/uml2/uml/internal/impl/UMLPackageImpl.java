@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.2 2005/11/29 19:53:45 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.3 2005/11/30 21:21:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.WrappedException;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -10614,6 +10615,18 @@ public class UMLPackageImpl
 			return;
 		isFixed = true;
 		fixEClassifiers();
+	}
+
+	protected void fixInstanceClass(EClassifier eClassifier) {
+		if (eClassifier.getInstanceClassName() == null) {
+			String className = getClass().getName();
+			int i = className.lastIndexOf('.', className.lastIndexOf('.', className.lastIndexOf('.') - 1) - 1);
+			className = i == -1
+				? eClassifier.getName()
+				: className.substring(0, i + 1) + eClassifier.getName();
+			eClassifier.setInstanceClassName(className);
+			setGeneratedClassName(eClassifier);
+		}
 	}
 
 } //UMLPackageImpl

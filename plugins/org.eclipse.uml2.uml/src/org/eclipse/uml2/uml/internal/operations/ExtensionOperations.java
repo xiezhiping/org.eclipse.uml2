@@ -8,10 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: ExtensionOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -19,6 +21,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Property;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -39,9 +42,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ExtensionOperations {
+public final class ExtensionOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,12 +126,20 @@ public final class ExtensionOperations {
 	 * The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).
 	 * result = memberEnd->reject(ownedEnd)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Property metaclassEnd(Extension extension) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List ownedEnds = extension.getOwnedEnds();
+
+		for (Iterator memberEnds = extension.getMemberEnds().iterator(); memberEnds.hasNext();) {
+			Property memberEnd = (Property) memberEnds.next();
+
+			if (!ownedEnds.contains(memberEnd)) {
+				return memberEnd;
+			}
+		}
+
+		return null;
 	}
 
 	/**
@@ -138,12 +149,13 @@ public final class ExtensionOperations {
 	 * The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).
 	 * result = metaclassEnd().type
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static org.eclipse.uml2.uml.Class getMetaclass(Extension extension) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Property metaclassEnd = extension.metaclassEnd();
+		return metaclassEnd == null
+			? null
+			: (org.eclipse.uml2.uml.Class) metaclassEnd.getType();
 	}
 
 	/**
@@ -153,12 +165,12 @@ public final class ExtensionOperations {
 	 * The query isRequired() is true if the owned end has a multiplicity with the lower bound of 1.
 	 * result = (ownedEnd->lowerBound() = 1)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isRequired(Extension extension) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List ownedEnds = extension.getOwnedEnds();
+		return ownedEnds.size() > 0
+			&& ((ExtensionEnd) ownedEnds.get(0)).lowerBound() == 1;
 	}
 
 } // ExtensionOperations

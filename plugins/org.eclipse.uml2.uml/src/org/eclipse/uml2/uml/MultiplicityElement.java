@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.2 2005/11/30 21:21:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -356,5 +356,7 @@ public interface MultiplicityElement
 	 * @generated
 	 */
 	int upperBound();
+
+	static final int UNLIMITED_UPPER_BOUND = -1;
 
 } // MultiplicityElement

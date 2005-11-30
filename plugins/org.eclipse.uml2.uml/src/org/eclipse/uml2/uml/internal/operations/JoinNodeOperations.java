@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeOperations.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: JoinNodeOperations.java,v 1.2 2005/11/30 21:21:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -35,9 +35,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class JoinNodeOperations {
+public final class JoinNodeOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

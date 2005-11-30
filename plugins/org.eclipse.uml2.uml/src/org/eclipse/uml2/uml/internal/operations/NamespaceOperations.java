@@ -8,19 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -95,12 +103,36 @@ public final class NamespaceOperations {
 	 * result = self.importMembers(self.elementImport.importedElement.asSet()-
 	 * >union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List getImportedMembers(Namespace namespace) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List importedMembers = new UniqueEList();
+
+		for (Iterator elementImports = namespace.getElementImports().iterator(); elementImports
+			.hasNext();) {
+
+			PackageableElement importedElement = ((ElementImport) elementImports
+				.next()).getImportedElement();
+
+			if (null != importedElement) {
+				importedMembers.add(importedElement);
+			}
+		}
+
+		for (Iterator packageImports = namespace.getPackageImports().iterator(); packageImports
+			.hasNext();) {
+
+			org.eclipse.uml2.uml.Package importedPackage = ((PackageImport) packageImports
+				.next()).getImportedPackage();
+
+			if (null != importedPackage) {
+				importedMembers.addAll(importedPackage.visibleMembers());
+			}
+		}
+
+		return new UnionEObjectEList((InternalEObject) namespace,
+			UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER, importedMembers
+				.size(), importedMembers.toArray());
 	}
 
 	/**

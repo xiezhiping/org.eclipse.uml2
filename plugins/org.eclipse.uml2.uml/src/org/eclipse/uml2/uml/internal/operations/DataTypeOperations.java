@@ -8,13 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: DataTypeOperations.java,v 1.2 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.RedefinableElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,9 +32,9 @@ import org.eclipse.uml2.uml.DataType;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class DataTypeOperations {
+public final class DataTypeOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -48,12 +52,33 @@ public final class DataTypeOperations {
 	 * The inherit operation is overridden to exclude redefined properties.
 	 * result = inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List inherit(DataType dataType, List inhs) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List inherit = new UniqueEList();
+
+		List redefinedElements = new UniqueEList();
+
+		for (Iterator ownedMembers = dataType.getOwnedMembers().iterator(); ownedMembers
+			.hasNext();) {
+
+			Object ownedMember = ownedMembers.next();
+
+			if (ownedMember instanceof RedefinableElement) {
+				redefinedElements.addAll(((RedefinableElement) ownedMember)
+					.getRedefinedElements());
+			}
+		}
+
+		for (Iterator i = inhs.iterator(); i.hasNext();) {
+			Object inh = i.next();
+
+			if (!redefinedElements.contains(inh)) {
+				inherit.add(inh);
+			}
+		}
+
+		return Collections.unmodifiableList(inherit);
 	}
 
 } // DataTypeOperations

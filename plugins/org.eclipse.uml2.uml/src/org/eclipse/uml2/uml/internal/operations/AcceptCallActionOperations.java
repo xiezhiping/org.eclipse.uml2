@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionOperations.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: AcceptCallActionOperations.java,v 1.3 2005/11/30 21:21:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -36,9 +36,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class AcceptCallActionOperations {
+public final class AcceptCallActionOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,17 +8,29 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: ClassOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -35,9 +47,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ClassOperations {
+public final class ClassOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,12 +96,35 @@ public final class ClassOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List getExtensions(org.eclipse.uml2.uml.Class class_) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List extensions = new UniqueEList();
+
+		for (Iterator nonNavigableInverseReferences = CROSS_REFERENCE_ADAPTER
+			.getNonNavigableInverseReferences(class_).iterator(); nonNavigableInverseReferences
+			.hasNext();) {
+
+			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
+				.next();
+
+			if (setting.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
+				EObject eObject = setting.getEObject();
+
+				if (eObject instanceof Property) {
+					Association association = ((Property) eObject)
+						.getAssociation();
+
+					if (association instanceof Extension) {
+						extensions.add(association);
+					}
+				}
+			}
+		}
+
+		return new UnionEObjectEList((InternalEObject) class_,
+			UMLPackage.Literals.CLASS__EXTENSION, extensions.size(), extensions
+				.toArray());
 	}
 
 	/**
@@ -99,12 +134,33 @@ public final class ClassOperations {
 	 * The inherit operation is overridden to exclude redefined properties.
 	 * result = inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List inherit(org.eclipse.uml2.uml.Class class_, List inhs) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List inherit = new UniqueEList();
+
+		List redefinedElements = new UniqueEList();
+
+		for (Iterator ownedMembers = class_.getOwnedMembers().iterator(); ownedMembers
+			.hasNext();) {
+
+			Object ownedMember = ownedMembers.next();
+
+			if (ownedMember instanceof RedefinableElement) {
+				redefinedElements.addAll(((RedefinableElement) ownedMember)
+					.getRedefinedElements());
+			}
+		}
+
+		for (Iterator i = inhs.iterator(); i.hasNext();) {
+			Object inh = i.next();
+
+			if (!redefinedElements.contains(inh)) {
+				inherit.add(inh);
+			}
+		}
+
+		return Collections.unmodifiableList(inherit);
 	}
 
 } // ClassOperations

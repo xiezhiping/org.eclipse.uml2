@@ -8,19 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Feature;
+import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -50,9 +56,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ClassifierOperations {
+public final class ClassifierOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -198,12 +204,10 @@ public final class ClassifierOperations {
 	 * The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
 	 * result = self.oclIsKindOf(c.oclType)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean maySpecializeType(Classifier classifier, Classifier c) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return c.eClass().isSuperTypeOf(classifier.eClass());
 	}
 
 	/**
@@ -213,12 +217,10 @@ public final class ClassifierOperations {
 	 * The general classifiers are the classifiers referenced by the generalization relationships.
 	 * result = self.parents()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List getGenerals(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return classifier.parents();
 	}
 
 	/**
@@ -228,12 +230,19 @@ public final class ClassifierOperations {
 	 * The inheritedMember association is derived by inheriting the inheritable members of the parents.
 	 * result = self.inherit(self.parents()->collect(p | p.inheritableMembers(self))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List getInheritedMembers(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List inheritedMembers = new UniqueEList();
+
+		for (Iterator parents = classifier.parents().iterator(); parents
+			.hasNext();) {
+
+			inheritedMembers.addAll(((Classifier) parents.next())
+				.inheritableMembers(classifier));
+		}
+
+		return classifier.inherit(inheritedMembers);
 	}
 
 	/**
@@ -243,12 +252,22 @@ public final class ClassifierOperations {
 	 * The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
 	 * result = member->select(oclIsKindOf(Feature))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List allFeatures(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List allFeatures = new UniqueEList();
+
+		for (Iterator members = classifier.getMembers().iterator(); members
+			.hasNext();) {
+
+			NamedElement member = (NamedElement) members.next();
+
+			if (member instanceof Feature) {
+				allFeatures.add(member);
+			}
+		}
+
+		return Collections.unmodifiableList(allFeatures);
 	}
 
 	/**
@@ -258,12 +277,23 @@ public final class ClassifierOperations {
 	 * The query parents() gives all of the immediate ancestors of a generalized Classifier.
 	 * result = generalization.general
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List parents(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List parents = new UniqueEList();
+
+		for (Iterator generalizations = classifier.getGeneralizations()
+			.iterator(); generalizations.hasNext();) {
+
+			Classifier general = ((Generalization) generalizations.next())
+				.getGeneral();
+
+			if (null != general) {
+				parents.add(general);
+			}
+		}
+
+		return Collections.unmodifiableList(parents);
 	}
 
 	/**
@@ -274,12 +304,28 @@ public final class ClassifierOperations {
 	 * c.allParents()->includes(self)
 	 * result = member->select(m | c.hasVisibilityOf(m))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List inheritableMembers(Classifier classifier, Classifier c) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List inheritableMembers = new UniqueEList();
+
+		if (c == classifier || !c.allParents().contains(classifier)
+			|| classifier.allParents().contains(c)) {
+
+			return inheritableMembers;
+		}
+
+		for (Iterator members = classifier.getMembers().iterator(); members
+			.hasNext();) {
+
+			NamedElement member = (NamedElement) members.next();
+
+			if (c.hasVisibilityOf(member)) {
+				inheritableMembers.add(member);
+			}
+		}
+
+		return Collections.unmodifiableList(inheritableMembers);
 	}
 
 	/**
@@ -290,12 +336,21 @@ public final class ClassifierOperations {
 	 * self.allParents()->collect(c | c.member)->includes(n)
 	 * result = if (self.inheritedMember->includes(n)) then (n.visibility <> #private) else true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean hasVisibilityOf(Classifier classifier, NamedElement n) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		for (Iterator allParents = classifier.allParents().iterator(); allParents
+			.hasNext();) {
+
+			Classifier parent = (Classifier) allParents.next();
+
+			if (parent != classifier && parent.getMembers().contains(n)) {
+				return n.getVisibility() != VisibilityKind.PRIVATE_LITERAL;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -305,12 +360,10 @@ public final class ClassifierOperations {
 	 * The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.
 	 * result = (self=other) or (self.allParents()->includes(other))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean conformsTo(Classifier classifier, Classifier other) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return classifier == other || classifier.allParents().contains(other);
 	}
 
 	/**
@@ -321,12 +374,25 @@ public final class ClassifierOperations {
 	 * The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.
 	 * result = inhs
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List inherit(Classifier classifier, List inhs) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return Collections.unmodifiableList(inhs);
+	}
+
+	protected static List allParents(Classifier classifier, List allParents) {
+
+		for (Iterator parents = classifier.parents().iterator(); parents
+			.hasNext();) {
+
+			Classifier parent = (Classifier) parents.next();
+
+			if (allParents.add(parent)) {
+				allParents(parent, allParents);
+			}
+		}
+
+		return allParents;
 	}
 
 	/**
@@ -336,12 +402,11 @@ public final class ClassifierOperations {
 	 * The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.
 	 * result = self.parents()->union(self.parents()->collect(p | p.allParents())
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List allParents(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return Collections.unmodifiableList(allParents(classifier,
+			new UniqueEList()));
 	}
 
 	/**
@@ -351,12 +416,24 @@ public final class ClassifierOperations {
 	 * The query isTemplate() returns whether this templateable element is actually a template.
 	 * result = oclAsType(TemplatableElement).isTemplate() or general->exists(g | g.isTemplate())
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isTemplate(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (classifier.getOwnedSignature() == null) {
+
+			for (Iterator allParents = classifier.allParents().iterator(); allParents
+				.hasNext();) {
+
+				if (((Classifier) allParents.next()).getOwnedSignature() != null) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		return true;
 	}
 
 } // ClassifierOperations

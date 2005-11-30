@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: DurationObservationActionOperations.java,v 1.3 2005/11/30 21:21:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,6 +20,9 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationObservationAction;
+import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.ValuePin;
+import org.eclipse.uml2.uml.ValueSpecification;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -37,9 +40,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class DurationObservationActionOperations {
+public final class DurationObservationActionOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,13 +92,22 @@ public final class DurationObservationActionOperations {
 	 * <!-- begin-model-doc -->
 	 * result = self.value.value.oclAsType(Duration)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Duration getDuration(
 			DurationObservationAction durationObservationAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		InputPin value = durationObservationAction.getValue();
+
+		if (value instanceof ValuePin) {
+			ValueSpecification duration = ((ValuePin) value).getValue();
+
+			if (duration instanceof Duration) {
+				return (Duration) duration;
+			}
+		}
+
+		return null;
 	}
 
 	/**

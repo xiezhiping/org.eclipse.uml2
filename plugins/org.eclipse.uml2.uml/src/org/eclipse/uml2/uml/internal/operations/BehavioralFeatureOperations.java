@@ -8,13 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: BehavioralFeatureOperations.java,v 1.2 2005/11/30 21:21:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
+
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.Parameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,9 +32,9 @@ import org.eclipse.uml2.uml.Namespace;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class BehavioralFeatureOperations {
+public final class BehavioralFeatureOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,13 +59,39 @@ public final class BehavioralFeatureOperations {
 	 * else true
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isDistinguishableFrom(
 			BehavioralFeature behavioralFeature, NamedElement n, Namespace ns) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (n instanceof BehavioralFeature) {
+			List namesOfMemberN = ns.getNamesOfMember(n);
+
+			for (Iterator namesOfMemberBF = ns.getNamesOfMember(
+				behavioralFeature).iterator(); namesOfMemberBF.hasNext();) {
+
+				if (namesOfMemberN.contains(namesOfMemberBF.next())) {
+					Iterator bfParameters = behavioralFeature
+						.getOwnedParameters().iterator();
+					Iterator nParameters = ((BehavioralFeature) n)
+						.getOwnedParameters().iterator();
+
+					while (bfParameters.hasNext() && nParameters.hasNext()) {
+
+						if (!safeEquals(((Parameter) bfParameters.next())
+							.getType(), ((Parameter) nParameters.next())
+							.getType())) {
+
+							return true;
+						}
+					}
+
+					return bfParameters.hasNext() || nParameters.hasNext();
+				}
+			}
+		}
+
+		return true;
 	}
 
 } // BehavioralFeatureOperations

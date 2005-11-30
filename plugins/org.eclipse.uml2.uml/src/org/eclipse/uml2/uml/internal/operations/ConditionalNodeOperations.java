@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: ConditionalNodeOperations.java,v 1.2 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -34,9 +34,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ConditionalNodeOperations {
+public final class ConditionalNodeOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

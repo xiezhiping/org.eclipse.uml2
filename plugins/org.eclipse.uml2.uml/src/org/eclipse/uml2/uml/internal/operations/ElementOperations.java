@@ -8,16 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: ElementOperations.java,v 1.2 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Element;
 
@@ -38,9 +41,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ElementOperations {
+public final class ElementOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,12 +125,17 @@ public final class ElementOperations {
 	 * The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
 	 * result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List allOwnedElements(Element element) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List ownedElements = element.getOwnedElements();
+		List allOwnedElements = new UniqueEList(ownedElements);
+
+		for (Iterator i = ownedElements.iterator(); i.hasNext();) {
+			allOwnedElements.addAll(((Element) i.next()).allOwnedElements());
+		}
+
+		return Collections.unmodifiableList(allOwnedElements);
 	}
 
 	/**
@@ -137,12 +145,10 @@ public final class ElementOperations {
 	 * The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean mustBeOwned(Element element) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 } // ElementOperations

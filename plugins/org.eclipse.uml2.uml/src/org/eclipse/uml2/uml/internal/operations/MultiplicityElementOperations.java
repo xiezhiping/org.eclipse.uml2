@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,8 +18,13 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.MultiplicityElement;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValueSpecification;
 
+import org.eclipse.uml2.uml.internal.impl.MultiplicityElementImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -47,9 +52,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class MultiplicityElementOperations {
+public final class MultiplicityElementOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -232,12 +237,10 @@ public final class MultiplicityElementOperations {
 	 * The derived lower attribute must equal the lowerBound.
 	 * result = lowerBound()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int getLower(MultiplicityElement multiplicityElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return multiplicityElement.lowerBound();
 	}
 
 	/**
@@ -247,12 +250,10 @@ public final class MultiplicityElementOperations {
 	 * The derived upper attribute must equal the upperBound.
 	 * result = upperBound()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int getUpper(MultiplicityElement multiplicityElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return multiplicityElement.upperBound();
 	}
 
 	/**
@@ -263,12 +264,12 @@ public final class MultiplicityElementOperations {
 	 * upperBound()->notEmpty()
 	 * result = upperBound() > 1
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isMultivalued(MultiplicityElement multiplicityElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		int upperBound = multiplicityElement.upperBound();
+		return upperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND
+			|| upperBound > 1;
 	}
 
 	/**
@@ -279,13 +280,24 @@ public final class MultiplicityElementOperations {
 	 * upperBound()->notEmpty() and lowerBound()->notEmpty()
 	 * result = (lowerBound() <= C) and (upperBound() >= C)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean includesCardinality(
 			MultiplicityElement multiplicityElement, int C) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (C == MultiplicityElement.UNLIMITED_UPPER_BOUND) {
+			return multiplicityElement.upperBound() == MultiplicityElement.UNLIMITED_UPPER_BOUND;
+		} else {
+
+			if (multiplicityElement.lowerBound() <= C) {
+				int upperBound = multiplicityElement.upperBound();
+				return upperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND
+					? true
+					: upperBound >= C;
+			} else {
+				return false;
+			}
+		}
 	}
 
 	/**
@@ -298,13 +310,25 @@ public final class MultiplicityElementOperations {
 	 * 
 	 * result = (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean includesMultiplicity(
 			MultiplicityElement multiplicityElement, MultiplicityElement M) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (multiplicityElement.lowerBound() <= M.lowerBound()) {
+			int upperBound = multiplicityElement.upperBound();
+
+			if (upperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND) {
+				return true;
+			} else {
+				int mUpperBound = M.upperBound();
+				return mUpperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND
+					? false
+					: upperBound >= mUpperBound;
+			}
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -314,12 +338,21 @@ public final class MultiplicityElementOperations {
 	 * The query lowerBound() returns the lower bound of the multiplicity as an integer.
 	 * result = if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int lowerBound(MultiplicityElement multiplicityElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
+
+		if (lowerValue instanceof LiteralInteger) {
+			return lowerValue.integerValue();
+		} else {
+			MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
+			return ((Integer) multiplicityElementImpl
+				.eVirtualGet(
+					multiplicityElementImpl
+						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
+					new Integer(1))).intValue();
+		}
 	}
 
 	/**
@@ -329,12 +362,21 @@ public final class MultiplicityElementOperations {
 	 * The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
 	 * result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int upperBound(MultiplicityElement multiplicityElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ValueSpecification upperValue = multiplicityElement.getUpperValue();
+
+		if (upperValue instanceof LiteralUnlimitedNatural) {
+			return upperValue.unlimitedValue();
+		} else {
+			MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
+			return ((Integer) multiplicityElementImpl
+				.eVirtualGet(
+					multiplicityElementImpl
+						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER),
+					new Integer(1))).intValue();
+		}
 	}
 
 	/**
