@@ -13005,6 +13005,9 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rseLyhTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D4304A13201D9" name="inheritedMember" type="_3ADC7B74022D3DE6BC6B01BD" isDerived="true" subsettedProperty="_3ADC7B74022D3DFCB82F00DA" association="_3ADC7B74022D4304A1300282">
+          <eAnnotations xmi:id="_N4yBgWHeEdqc5chuNfO-RQ" source="appliedStereotypes">
+            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_N4yBgmHeEdqc5chuNfO-RQ" isTransient="true"/>
+          </eAnnotations>
           <ownedComment xmi:id="_hBVxYBVsEdqDjccWl3Bw0Q" body="Specifies all elements inherited by this classifier from the general classifiers." annotatedElement="_3ADC7B74022D4304A13201D9">
             <eAnnotations xmi:id="_hBVxYRVsEdqDjccWl3Bw0Q" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_hBVxYhVsEdqDjccWl3Bw0Q"/>
