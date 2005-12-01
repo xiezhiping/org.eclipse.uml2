@@ -13236,7 +13236,7 @@
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCA80700BE" name="owner" type="_3ADC7B74022D3DE6BAB70076" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3DFCA805021A">
           <eAnnotations xmi:id="_rruk5xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rruk6BTaEdqZu-3Jy1-uYg" isTransient="true" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rruk6BTaEdqZu-3Jy1-uYg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rruk4hTaEdqZu-3Jy1-uYg" body="The Element that owns this element." annotatedElement="_3ADC7B74022D3DFCA80700BE">
             <eAnnotations xmi:id="_rruk4xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
