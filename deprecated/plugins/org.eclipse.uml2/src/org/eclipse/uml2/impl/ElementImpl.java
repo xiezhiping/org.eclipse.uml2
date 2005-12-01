@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.38 2005/12/01 17:12:29 khussey Exp $
+ * $Id: ElementImpl.java,v 1.39 2005/12/01 19:09:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -38,7 +38,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Comment;
@@ -404,14 +403,6 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 */
 	protected CacheAdapter getCacheAdapter() {
 		return CacheAdapter.INSTANCE;
-	}
-
-	public EList getEAnnotations() {
-		EList eAnnotations = (EList)eVirtualGet(UML2Package.ELEMENT__EANNOTATIONS);
-		if (eAnnotations == null) {
-			eVirtualSet(UML2Package.ELEMENT__EANNOTATIONS, eAnnotations = new EObjectContainmentWithInverseEList(EAnnotation.class, this, UML2Package.ELEMENT__EANNOTATIONS, EcorePackage.EANNOTATION__EMODEL_ELEMENT));
-		}
-		return eAnnotations;
 	}
 
 	// <!-- begin-custom-operations -->

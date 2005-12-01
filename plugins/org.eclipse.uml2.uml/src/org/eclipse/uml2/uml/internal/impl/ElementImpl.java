@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.7 2005/12/01 17:12:30 khussey Exp $
+ * $Id: ElementImpl.java,v 1.8 2005/12/01 19:09:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,17 +21,13 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.EModelElementImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -373,17 +369,6 @@ public abstract class ElementImpl
 	 */
 	public boolean isSetOwner() {
 		return false;
-	}
-
-	public EList getEAnnotations() {
-		EList eAnnotations = (EList) eVirtualGet(UMLPackage.ELEMENT__EANNOTATIONS);
-		if (eAnnotations == null) {
-			eVirtualSet(UMLPackage.ELEMENT__EANNOTATIONS,
-				eAnnotations = new EObjectContainmentWithInverseEList(
-					EAnnotation.class, this, UMLPackage.ELEMENT__EANNOTATIONS,
-					EcorePackage.EANNOTATION__EMODEL_ELEMENT));
-		}
-		return eAnnotations;
 	}
 
 } //ElementImpl
