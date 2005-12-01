@@ -14982,7 +14982,7 @@
         <generalization xmi:id="_3ADC7B74022D3E5558D50178" general="_3ADC7B74022D3DE6C1F002C3"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE344701FE" name="package" type="_3ADC7B74022D3DE6D5DA0183" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_3ADC7B74022D3DEE344602C4">
           <eAnnotations xmi:id="_Nsmv4DWuEdqst7wr5_7CAQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_Nsmv4TWuEdqst7wr5_7CAQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_Nsmv4TWuEdqst7wr5_7CAQ"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrR4-BTaEdqZu-3Jy1-uYg" body="References the owning package of a package." annotatedElement="_3ADC7B74022D3DEE344701FE">
             <eAnnotations xmi:id="_rrR4-RTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
