@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.12 2005/12/01 20:04:38 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.13 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -496,11 +496,24 @@ public abstract class ClassifierImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package getPackage() {
-		return eInternalContainer() instanceof org.eclipse.uml2.uml.Package
-			? (org.eclipse.uml2.uml.Package) eContainer()
+		org.eclipse.uml2.uml.Package package_ = basicGetPackage();
+		return package_ != null && package_.eIsProxy()
+			? (org.eclipse.uml2.uml.Package) eResolveProxy((InternalEObject) package_)
+			: package_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public org.eclipse.uml2.uml.Package basicGetPackage() {
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof org.eclipse.uml2.uml.Package
+			? (org.eclipse.uml2.uml.Package) eInternalContainer
 			: null;
 	}
 
@@ -1692,7 +1705,9 @@ public abstract class ClassifierImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.CLASSIFIER__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
@@ -1992,7 +2007,7 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CLASSIFIER__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.CLASSIFIER__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
@@ -2256,7 +2271,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.uml.Package package_ = getPackage();
+		org.eclipse.uml2.uml.Package package_ = basicGetPackage();
 		if (package_ != null) {
 			return package_;
 		}

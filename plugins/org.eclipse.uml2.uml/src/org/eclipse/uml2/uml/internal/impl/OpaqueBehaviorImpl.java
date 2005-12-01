@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.7 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -177,7 +177,9 @@ public class OpaqueBehaviorImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
@@ -666,7 +668,7 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();

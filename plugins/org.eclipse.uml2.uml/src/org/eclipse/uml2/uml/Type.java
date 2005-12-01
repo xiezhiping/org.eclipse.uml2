@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: Type.java,v 1.2 2005/12/01 21:57:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -48,7 +48,7 @@ public interface Type
 	 * @see #setPackage(org.eclipse.uml2.uml.Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getType_Package()
 	 * @see org.eclipse.uml2.uml.Package#getOwnedTypes
-	 * @model opposite="ownedType" resolveProxies="false" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model opposite="ownedType" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Package getPackage();

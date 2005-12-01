@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.6 2005/12/01 20:04:37 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.7 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -351,7 +351,9 @@ public class EnumerationImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.ENUMERATION__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
@@ -678,7 +680,7 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.ENUMERATION__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.ENUMERATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();

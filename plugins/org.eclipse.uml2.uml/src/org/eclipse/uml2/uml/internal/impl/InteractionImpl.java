@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.7 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -855,7 +855,9 @@ public class InteractionImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.INTERACTION__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.INTERACTION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.INTERACTION__OWNED_TEMPLATE_SIGNATURE :
@@ -1405,7 +1407,7 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INTERACTION__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.INTERACTION__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.INTERACTION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();

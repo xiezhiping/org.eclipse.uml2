@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.9 2005/12/01 20:04:36 khussey Exp $
+ * $Id: ClassImpl.java,v 1.10 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1101,7 +1101,9 @@ public class ClassImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.CLASS__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.CLASS__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE :
@@ -1515,7 +1517,7 @@ public class ClassImpl
 			case UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CLASS__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.CLASS__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.CLASS__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();

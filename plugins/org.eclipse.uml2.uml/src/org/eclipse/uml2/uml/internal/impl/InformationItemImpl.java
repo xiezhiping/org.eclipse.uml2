@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.5 2005/12/01 20:04:37 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.6 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -191,7 +191,9 @@ public class InformationItemImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.INFORMATION_ITEM__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.INFORMATION_ITEM__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.INFORMATION_ITEM__OWNED_TEMPLATE_SIGNATURE :
@@ -500,7 +502,7 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INFORMATION_ITEM__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.INFORMATION_ITEM__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.INFORMATION_ITEM__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();

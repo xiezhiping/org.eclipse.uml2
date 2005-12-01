@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.7 2005/12/01 20:04:37 khussey Exp $
+ * $Id: TypeImpl.java,v 1.8 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -70,11 +70,24 @@ public abstract class TypeImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package getPackage() {
-		return eInternalContainer() instanceof org.eclipse.uml2.uml.Package
-			? (org.eclipse.uml2.uml.Package) eContainer()
+		org.eclipse.uml2.uml.Package package_ = basicGetPackage();
+		return package_ != null && package_.eIsProxy()
+			? (org.eclipse.uml2.uml.Package) eResolveProxy((InternalEObject) package_)
+			: package_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public org.eclipse.uml2.uml.Package basicGetPackage() {
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof org.eclipse.uml2.uml.Package
+			? (org.eclipse.uml2.uml.Package) eInternalContainer
 			: null;
 	}
 
@@ -153,7 +166,9 @@ public abstract class TypeImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.TYPE__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -277,7 +292,7 @@ public abstract class TypeImpl
 			case UMLPackage.TYPE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TYPE__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -288,7 +303,7 @@ public abstract class TypeImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.uml.Package package_ = getPackage();
+		org.eclipse.uml2.uml.Package package_ = basicGetPackage();
 		if (package_ != null) {
 			return package_;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.7 2005/12/01 20:04:38 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.8 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -503,7 +503,9 @@ public class CollaborationImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.COLLABORATION__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.COLLABORATION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.COLLABORATION__OWNED_TEMPLATE_SIGNATURE :
@@ -869,7 +871,7 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.COLLABORATION__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.COLLABORATION__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.COLLABORATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();

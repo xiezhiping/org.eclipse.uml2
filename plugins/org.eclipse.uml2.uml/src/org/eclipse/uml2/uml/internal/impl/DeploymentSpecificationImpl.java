@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.7 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -524,7 +524,9 @@ public class DeploymentSpecificationImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
@@ -892,7 +894,7 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();

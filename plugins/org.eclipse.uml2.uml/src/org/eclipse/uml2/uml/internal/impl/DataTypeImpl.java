@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.7 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -446,7 +446,9 @@ public class DataTypeImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.DATA_TYPE__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.DATA_TYPE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
@@ -764,7 +766,7 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DATA_TYPE__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.DATA_TYPE__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.DATA_TYPE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();

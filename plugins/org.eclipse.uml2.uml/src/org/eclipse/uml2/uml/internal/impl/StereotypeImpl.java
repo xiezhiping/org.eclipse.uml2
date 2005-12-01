@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.7 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -164,7 +164,9 @@ public class StereotypeImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.STEREOTYPE__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.STEREOTYPE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.STEREOTYPE__OWNED_TEMPLATE_SIGNATURE :
@@ -587,7 +589,7 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.STEREOTYPE__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.STEREOTYPE__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.STEREOTYPE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();

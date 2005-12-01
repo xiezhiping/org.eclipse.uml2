@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.7 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -654,7 +654,9 @@ public class ArtifactImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.ARTIFACT__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
@@ -998,7 +1000,7 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.ARTIFACT__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.ARTIFACT__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();

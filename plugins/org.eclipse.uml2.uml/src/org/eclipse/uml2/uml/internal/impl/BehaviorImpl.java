@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.8 2005/12/01 20:04:37 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.9 2005/12/01 21:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -749,7 +749,9 @@ public class BehaviorImpl
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
 			case UMLPackage.BEHAVIOR__PACKAGE :
-				return getPackage();
+				if (resolve)
+					return getPackage();
+				return basicGetPackage();
 			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
@@ -1220,7 +1222,7 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.BEHAVIOR__PACKAGE :
-				return getPackage() != null;
+				return basicGetPackage() != null;
 			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
 				List templateBinding = (List) eVirtualGet(UMLPackage.BEHAVIOR__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
