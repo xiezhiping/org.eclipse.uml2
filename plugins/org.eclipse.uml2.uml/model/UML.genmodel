@@ -912,6 +912,10 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/setUpper">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//MultiplicityElement/setUpper/newUpper"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/isSetLower"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/unsetLower"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/isSetUpper"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/unsetUpper"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//ConnectableElement">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"

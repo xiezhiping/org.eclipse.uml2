@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.7 2005/12/01 16:00:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -420,10 +420,10 @@ public class ConnectorEndImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.CONNECTOR_END__UPPER :
-				setUpper(UPPER_EDEFAULT);
+				unsetUpper();
 				return;
 			case UMLPackage.CONNECTOR_END__LOWER :
-				setLower(LOWER_EDEFAULT);
+				unsetLower();
 				return;
 			case UMLPackage.CONNECTOR_END__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -462,9 +462,9 @@ public class ConnectorEndImpl
 			case UMLPackage.CONNECTOR_END__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.CONNECTOR_END__UPPER :
-				return getUpper() != UPPER_EDEFAULT;
+				return isSetUpper();
 			case UMLPackage.CONNECTOR_END__LOWER :
-				return getLower() != LOWER_EDEFAULT;
+				return isSetLower();
 			case UMLPackage.CONNECTOR_END__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.CONNECTOR_END__UPPER_VALUE) != null;
 			case UMLPackage.CONNECTOR_END__LOWER_VALUE :

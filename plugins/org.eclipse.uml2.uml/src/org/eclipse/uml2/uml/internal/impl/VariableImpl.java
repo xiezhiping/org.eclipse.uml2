@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
+ * $Id: VariableImpl.java,v 1.7 2005/12/01 16:00:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -245,6 +245,24 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void unsetUpper() {
+		MultiplicityElementOperations.unsetUpper(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetUpper() {
+		return MultiplicityElementOperations.isSetUpper(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getLower() {
 		return MultiplicityElementOperations.getLower(this);
 	}
@@ -256,6 +274,24 @@ public class VariableImpl
 	 */
 	public void setLower(int newLower) {
 		MultiplicityElementOperations.setLower(this, newLower);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetLower() {
+		MultiplicityElementOperations.unsetLower(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetLower() {
+		return MultiplicityElementOperations.isSetLower(this);
 	}
 
 	/**
@@ -824,10 +860,10 @@ public class VariableImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.VARIABLE__UPPER :
-				setUpper(UPPER_EDEFAULT);
+				unsetUpper();
 				return;
 			case UMLPackage.VARIABLE__LOWER :
-				setLower(LOWER_EDEFAULT);
+				unsetLower();
 				return;
 			case UMLPackage.VARIABLE__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -888,9 +924,9 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.VARIABLE__UPPER :
-				return getUpper() != UPPER_EDEFAULT;
+				return isSetUpper();
 			case UMLPackage.VARIABLE__LOWER :
-				return getLower() != LOWER_EDEFAULT;
+				return isSetLower();
 			case UMLPackage.VARIABLE__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.VARIABLE__UPPER_VALUE) != null;
 			case UMLPackage.VARIABLE__LOWER_VALUE :

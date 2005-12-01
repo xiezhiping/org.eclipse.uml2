@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.7 2005/11/29 17:55:39 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.8 2005/12/01 16:00:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -325,6 +325,24 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void unsetUpper() {
+		MultiplicityElementOperations.unsetUpper(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetUpper() {
+		return MultiplicityElementOperations.isSetUpper(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getLower() {
 		return MultiplicityElementOperations.getLower(this);
 	}
@@ -336,6 +354,24 @@ public class ParameterImpl
 	 */
 	public void setLower(int newLower) {
 		MultiplicityElementOperations.setLower(this, newLower);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetLower() {
+		MultiplicityElementOperations.unsetLower(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetLower() {
+		return MultiplicityElementOperations.isSetLower(this);
 	}
 
 	/**
@@ -1165,10 +1201,10 @@ public class ParameterImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.PARAMETER__UPPER :
-				setUpper(UPPER_EDEFAULT);
+				unsetUpper();
 				return;
 			case UMLPackage.PARAMETER__LOWER :
-				setLower(LOWER_EDEFAULT);
+				unsetLower();
 				return;
 			case UMLPackage.PARAMETER__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -1251,9 +1287,9 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.PARAMETER__UPPER :
-				return getUpper() != UPPER_EDEFAULT;
+				return isSetUpper();
 			case UMLPackage.PARAMETER__LOWER :
-				return getLower() != LOWER_EDEFAULT;
+				return isSetLower();
 			case UMLPackage.PARAMETER__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE) != null;
 			case UMLPackage.PARAMETER__LOWER_VALUE :

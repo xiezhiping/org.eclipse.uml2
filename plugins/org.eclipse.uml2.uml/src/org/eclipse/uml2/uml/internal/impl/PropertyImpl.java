@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.9 2005/11/29 19:53:45 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.10 2005/12/01 16:00:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1916,10 +1916,10 @@ public class PropertyImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.PROPERTY__UPPER :
-				setUpper(UPPER_EDEFAULT);
+				unsetUpper();
 				return;
 			case UMLPackage.PROPERTY__LOWER :
-				setLower(LOWER_EDEFAULT);
+				unsetLower();
 				return;
 			case UMLPackage.PROPERTY__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -2047,9 +2047,9 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.PROPERTY__UPPER :
-				return getUpper() != UPPER_EDEFAULT;
+				return isSetUpper();
 			case UMLPackage.PROPERTY__LOWER :
-				return getLower() != LOWER_EDEFAULT;
+				return isSetLower();
 			case UMLPackage.PROPERTY__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.PROPERTY__UPPER_VALUE) != null;
 			case UMLPackage.PROPERTY__LOWER_VALUE :

@@ -2076,6 +2076,10 @@
     <eOperations name="setUpper" ordered="false" lowerBound="1">
       <eParameters name="newUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
+    <eOperations name="isSetLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="unsetLower" ordered="false" lowerBound="1"/>
+    <eOperations name="isSetUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="unsetUpper" ordered="false" lowerBound="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false">
@@ -2092,14 +2096,14 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" ordered="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
-        defaultValueLiteral="1" derived="true">
+        defaultValueLiteral="1" unsettable="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the upper bound of the multiplicity interval.&#xD;&#xA;Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" ordered="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
-        defaultValueLiteral="1" derived="true">
+        defaultValueLiteral="1" unsettable="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the lower bound of the multiplicity interval.&#xD;&#xA;Specifies the lower bound of the multiplicity interval, if it is expressed as an integer."/>
       </eAnnotations>
@@ -2766,7 +2770,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint" resolveProxies="false">
@@ -4676,6 +4680,13 @@
         <eAnnotations source="redefines" references="#//MultiplicityElement/setLower"/>
         <eParameters name="newLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </contents>
+      <contents xsi:type="ecore:EOperation" name="isSetLower" ordered="false" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        <eAnnotations source="redefines" references="#//MultiplicityElement/isSetLower"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="unsetLower" ordered="false" lowerBound="1">
+        <eAnnotations source="redefines" references="#//MultiplicityElement/unsetLower"/>
+      </contents>
       <contents xsi:type="ecore:EReference" name="type" ordered="false" eType="#//Type">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes."/>
@@ -4683,7 +4694,7 @@
         <eAnnotations source="redefines" references="#//TypedElement/type"/>
       </contents>
       <contents xsi:type="ecore:EAttribute" name="lower" ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-          volatile="true" defaultValueLiteral="0" derived="true">
+          volatile="true" defaultValueLiteral="0" unsettable="true" derived="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype."/>
         </eAnnotations>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.7 2005/12/01 16:00:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -234,6 +234,24 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void unsetUpper() {
+		MultiplicityElementOperations.unsetUpper(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetUpper() {
+		return MultiplicityElementOperations.isSetUpper(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getLower() {
 		return MultiplicityElementOperations.getLower(this);
 	}
@@ -245,6 +263,24 @@ public abstract class MultiplicityElementImpl
 	 */
 	public void setLower(int newLower) {
 		MultiplicityElementOperations.setLower(this, newLower);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetLower() {
+		MultiplicityElementOperations.unsetLower(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetLower() {
+		return MultiplicityElementOperations.isSetLower(this);
 	}
 
 	/**
@@ -606,10 +642,10 @@ public abstract class MultiplicityElementImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
-				setUpper(UPPER_EDEFAULT);
+				unsetUpper();
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
-				setLower(LOWER_EDEFAULT);
+				unsetLower();
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -642,9 +678,9 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
-				return getUpper() != UPPER_EDEFAULT;
+				return isSetUpper();
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
-				return getLower() != LOWER_EDEFAULT;
+				return isSetLower();
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE) != null;
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :

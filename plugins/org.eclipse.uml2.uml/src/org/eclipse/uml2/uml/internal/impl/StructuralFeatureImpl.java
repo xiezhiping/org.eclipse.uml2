@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.7 2005/12/01 16:00:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -308,6 +308,24 @@ public abstract class StructuralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void unsetUpper() {
+		MultiplicityElementOperations.unsetUpper(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetUpper() {
+		return MultiplicityElementOperations.isSetUpper(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getLower() {
 		return MultiplicityElementOperations.getLower(this);
 	}
@@ -319,6 +337,24 @@ public abstract class StructuralFeatureImpl
 	 */
 	public void setLower(int newLower) {
 		MultiplicityElementOperations.setLower(this, newLower);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetLower() {
+		MultiplicityElementOperations.unsetLower(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetLower() {
+		return MultiplicityElementOperations.isSetLower(this);
 	}
 
 	/**
@@ -794,10 +830,10 @@ public abstract class StructuralFeatureImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
-				setUpper(UPPER_EDEFAULT);
+				unsetUpper();
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER :
-				setLower(LOWER_EDEFAULT);
+				unsetLower();
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -865,9 +901,9 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
-				return getUpper() != UPPER_EDEFAULT;
+				return isSetUpper();
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER :
-				return getLower() != LOWER_EDEFAULT;
+				return isSetLower();
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE) != null;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
