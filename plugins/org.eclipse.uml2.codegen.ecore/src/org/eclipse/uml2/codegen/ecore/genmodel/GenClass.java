@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.7 2005/11/16 18:53:44 khussey Exp $
+ * $Id: GenClass.java,v 1.8 2005/12/01 16:16:26 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -106,5 +106,9 @@ public interface GenClass
 	GenOperation getImplementedCollidingGetGenOperation(GenFeature genFeature);
 
 	GenOperation getImplementedCollidingSetGenOperation(GenFeature genFeature);
+
+	GenOperation getImplementedCollidingIsSetGenOperation(GenFeature genFeature);
+
+	GenOperation getImplementedCollidingUnsetGenOperation(GenFeature genFeature);
 
 } // GenClass
