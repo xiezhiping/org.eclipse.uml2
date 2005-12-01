@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.19 2005/12/01 16:16:26 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.20 2005/12/01 18:15:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -1328,27 +1328,6 @@ public class GenClassImpl
 			super();
 
 			allGenFeatures = getAllDuplicateGenFeatures();
-		}
-
-		public boolean accept(GenOperation genOperation) {
-
-			if (genOperation.getName().startsWith("isSet") //$NON-NLS-1$
-				&& genOperation.getGenParameters().isEmpty()) {
-
-				for (Iterator i = allGenFeatures.iterator(); i.hasNext();) {
-					GenFeature genFeature = (GenFeature) i.next();
-
-					if (genFeature.isChangeable()
-						&& genFeature.isUnsettable()
-						&& genOperation.getName().equals(
-							"isSet" + genFeature.getAccessorName())) { //$NON-NLS-1$
-
-						return false;
-					}
-				}
-			}
-
-			return super.accept(genOperation);
 		}
 
 	}
