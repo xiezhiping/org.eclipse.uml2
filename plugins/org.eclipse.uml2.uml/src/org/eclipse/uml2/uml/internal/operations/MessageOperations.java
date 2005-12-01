@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: MessageOperations.java,v 1.3 2005/12/01 18:48:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,9 +20,11 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.Message;
 
+import org.eclipse.uml2.uml.MessageEnd;
 import org.eclipse.uml2.uml.MessageKind;
 import org.eclipse.uml2.uml.NamedElement;
 
+import org.eclipse.uml2.uml.internal.impl.MessageImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -45,9 +47,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class MessageOperations {
+public final class MessageOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -291,23 +293,30 @@ public final class MessageOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static MessageKind getMessageKind(Message message) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		MessageImpl messageImpl = (MessageImpl) message;
+		return messageImpl.basicGetSendEvent() == null
+			? (messageImpl.basicGetReceiveEvent() == null
+				? MessageKind.UNKNOWN_LITERAL
+				: MessageKind.FOUND_LITERAL)
+			: (messageImpl.basicGetReceiveEvent() == null
+				? MessageKind.LOST_LITERAL
+				: MessageKind.COMPLETE_LITERAL);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static NamedElement getSignature(Message message) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		MessageImpl messageImpl = (MessageImpl) message;
+		MessageEnd sendEvent = messageImpl.basicGetSendEvent();
+		return sendEvent == null
+			? messageImpl.basicGetReceiveEvent()
+			: sendEvent;
 	}
 
 } // MessageOperations

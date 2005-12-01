@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MergeNodeOperations.java,v 1.1 2005/11/14 22:25:52 khussey Exp $
+ * $Id: MergeNodeOperations.java,v 1.2 2005/12/01 18:48:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -35,9 +35,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class MergeNodeOperations {
+public final class MergeNodeOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
