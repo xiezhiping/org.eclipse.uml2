@@ -8,10 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: VertexOperations.java,v 1.2 2005/12/01 22:16:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import org.eclipse.uml2.uml.ConnectionPointReference;
+import org.eclipse.uml2.uml.Pseudostate;
+import org.eclipse.uml2.uml.PseudostateKind;
+import org.eclipse.uml2.uml.Region;
+import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Vertex;
 
@@ -27,9 +32,9 @@ import org.eclipse.uml2.uml.Vertex;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class VertexOperations {
+public final class VertexOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -58,12 +63,31 @@ public final class VertexOperations {
 	 * endif
 	 * 
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static StateMachine containingStatemachine(Vertex vertex) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Region container = vertex.getContainer();
+
+		if (container != null) {
+			return container.containingStateMachine();
+		} else if (vertex instanceof Pseudostate) {
+			Pseudostate pseudostate = (Pseudostate) vertex;
+			PseudostateKind kind = pseudostate.getKind();
+
+			if (kind == PseudostateKind.ENTRY_POINT_LITERAL
+				|| kind == PseudostateKind.EXIT_POINT_LITERAL) {
+
+				return pseudostate.getStateMachine();
+			}
+		} else if (vertex instanceof ConnectionPointReference) {
+			State state = ((ConnectionPointReference) vertex).getState();
+
+			if (state != null) {
+				return state.containingStatemachine();
+			}
+		}
+
+		return null;
 	}
 
 } // VertexOperations

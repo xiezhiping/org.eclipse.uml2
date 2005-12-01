@@ -8,16 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.3 2005/11/17 21:23:32 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.4 2005/12/01 22:16:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -42,9 +46,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class NamedElementOperations {
+public final class NamedElementOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,6 +158,32 @@ public final class NamedElementOperations {
 		return true;
 	}
 
+	protected static String getQualifiedName(NamedElement namedElement,
+			String separator) {
+		String name = namedElement.getName();
+
+		if (isEmpty(name)) {
+			return EMPTY_STRING;
+		}
+
+		StringBuffer qualifiedName = new StringBuffer(name);
+
+		for (Iterator allNamespaces = namedElement.allNamespaces().iterator(); allNamespaces
+			.hasNext();) {
+
+			String namespaceName = ((Namespace) allNamespaces.next()).getName();
+
+			if (isEmpty(namespaceName)) {
+				return EMPTY_STRING;
+			} else {
+				qualifiedName.insert(0, separator);
+				qualifiedName.insert(0, namespaceName);
+			}
+		}
+
+		return qualifiedName.toString();
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -166,12 +196,10 @@ public final class NamedElementOperations {
 	 *     Set{}
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String getQualifiedName(NamedElement namedElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getQualifiedName(namedElement, namedElement.separator());
 	}
 
 	/**
@@ -184,12 +212,19 @@ public final class NamedElementOperations {
 	 * else self.namespace.allNamespaces()->prepend(self.namespace)
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List allNamespaces(NamedElement namedElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List allNamespaces = new ArrayList();
+
+		Namespace namespace = namedElement.getNamespace();
+
+		if (namespace != null) {
+			allNamespaces.add(namespace);
+			allNamespaces.addAll(namespace.allNamespaces());
+		}
+
+		return Collections.unmodifiableList(allNamespaces);
 	}
 
 	/**
@@ -202,13 +237,26 @@ public final class NamedElementOperations {
 	 * else true
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isDistinguishableFrom(NamedElement namedElement,
 			NamedElement n, Namespace ns) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EClass eClass = namedElement.eClass();
+		EClass nEClass = n.eClass();
+
+		if (nEClass.isSuperTypeOf(eClass) || eClass.isSuperTypeOf(nEClass)) {
+			List namesOfN = ns.getNamesOfMember(n);
+
+			for (Iterator namesOfMember = ns.getNamesOfMember(namedElement)
+				.iterator(); namesOfMember.hasNext();) {
+
+				if (namesOfN.contains(namesOfMember.next())) {
+					return false;
+				}
+			}
+		}
+
+		return true;
 	}
 
 	/**
@@ -218,12 +266,10 @@ public final class NamedElementOperations {
 	 * The query separator() gives the string that is used to separate names when constructing a qualified name.
 	 * result = '::'
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String separator(NamedElement namedElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return NamedElement.SEPARATOR;
 	}
 
 } // NamedElementOperations

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.3 2005/11/17 21:23:33 khussey Exp $
+ * $Id: NamedElement.java,v 1.4 2005/12/01 22:16:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -277,5 +277,7 @@ public interface NamedElement
 	 * @generated
 	 */
 	String separator();
+
+	static final String SEPARATOR = "::"; //$NON-NLS-1$
 
 } // NamedElement

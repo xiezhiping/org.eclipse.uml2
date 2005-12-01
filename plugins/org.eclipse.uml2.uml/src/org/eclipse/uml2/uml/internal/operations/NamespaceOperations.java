@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.3 2005/11/30 21:21:16 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.4 2005/12/01 22:16:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -49,9 +50,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class NamespaceOperations {
+public final class NamespaceOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,7 +115,7 @@ public final class NamespaceOperations {
 			PackageableElement importedElement = ((ElementImport) elementImports
 				.next()).getImportedElement();
 
-			if (null != importedElement) {
+			if (importedElement != null) {
 				importedMembers.add(importedElement);
 			}
 		}
@@ -125,7 +126,7 @@ public final class NamespaceOperations {
 			org.eclipse.uml2.uml.Package importedPackage = ((PackageImport) packageImports
 				.next()).getImportedPackage();
 
-			if (null != importedPackage) {
+			if (importedPackage != null) {
 				importedMembers.addAll(importedPackage.visibleMembers());
 			}
 		}
@@ -133,6 +134,60 @@ public final class NamespaceOperations {
 		return new UnionEObjectEList((InternalEObject) namespace,
 			UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER, importedMembers
 				.size(), importedMembers.toArray());
+	}
+
+	protected static List getNamesOfMember(Namespace namespace,
+			NamedElement element, List namespaces, List namesOfMember) {
+
+		if (!namespaces.contains(namespace)) {
+			namespaces.add(namespace);
+
+			if (namespace.getOwnedMembers().contains(element)) {
+				String name = element.getName();
+
+				if (!isEmpty(name)) {
+					namesOfMember.add(name);
+				}
+			} else {
+				List elementImportNames = new UniqueEList();
+
+				for (Iterator elementImports = namespace.getElementImports()
+					.iterator(); elementImports.hasNext();) {
+
+					ElementImport elementImport = (ElementImport) elementImports
+						.next();
+
+					if (elementImport.getImportedElement() == element) {
+						String name = elementImport.getName();
+
+						if (!isEmpty(name)) {
+							elementImportNames.add(name);
+						}
+					}
+				}
+
+				if (elementImportNames.isEmpty()) {
+
+					for (Iterator packageImports = namespace
+						.getPackageImports().iterator(); packageImports
+						.hasNext();) {
+
+						org.eclipse.uml2.uml.Package importedPackage = ((PackageImport) packageImports
+							.next()).getImportedPackage();
+
+						if (importedPackage != null
+							&& importedPackage.visibleMembers().contains(
+								element)) {
+
+							getNamesOfMember(importedPackage, element,
+								namespaces, namesOfMember);
+						}
+					}
+				}
+			}
+		}
+
+		return namesOfMember;
 	}
 
 	/**
@@ -150,13 +205,12 @@ public final class NamespaceOperations {
 	 *   endif
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List getNamesOfMember(Namespace namespace,
 			NamedElement element) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return Collections.unmodifiableList(getNamesOfMember(namespace,
+			element, new UniqueEList(), new UniqueEList()));
 	}
 
 	/**
@@ -168,12 +222,28 @@ public final class NamespaceOperations {
 	 * self.member->excluding(memb)->forAll(other |
 	 * memb.isDistinguishableFrom(other, self)))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean membersAreDistinguishable(Namespace namespace) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List namespaceMembers = namespace.getMembers();
+
+		for (Iterator members = namespaceMembers.iterator(); members.hasNext();) {
+			NamedElement member = (NamedElement) members.next();
+
+			for (Iterator otherMembers = namespaceMembers.iterator(); otherMembers
+				.hasNext();) {
+
+				NamedElement otherMember = (NamedElement) otherMembers.next();
+
+				if (member != otherMember
+					&& !member.isDistinguishableFrom(otherMember, namespace)) {
+
+					return false;
+				}
+			}
+		}
+
+		return true;
 	}
 
 	/**
@@ -184,12 +254,32 @@ public final class NamespaceOperations {
 	 * result = self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem |
 	 * mem.imp.isDistinguishableFrom(mem, self)))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List importMembers(Namespace namespace, List imps) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List importMembers = new UniqueEList();
+
+		List ownedMembers = namespace.getOwnedMembers();
+
+		excludeCollisionsLoop : for (Iterator excludeCollisions = namespace
+			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {
+
+			PackageableElement excludeCollision = (PackageableElement) excludeCollisions
+				.next();
+
+			for (Iterator i = ownedMembers.iterator(); i.hasNext();) {
+
+				if (!excludeCollision.isDistinguishableFrom(
+					(PackageableElement) i.next(), namespace)) {
+
+					continue excludeCollisionsLoop;
+				}
+			}
+
+			importMembers.add(excludeCollision);
+		}
+
+		return Collections.unmodifiableList(importMembers);
 	}
 
 	/**
@@ -199,12 +289,28 @@ public final class NamespaceOperations {
 	 * The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.
 	 * result = imps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List excludeCollisions(Namespace namespace, List imps) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List excludeCollisions = new UniqueEList();
+
+		imps1Loop : for (Iterator imps1 = imps.iterator(); imps1.hasNext();) {
+			PackageableElement imp1 = (PackageableElement) imps1.next();
+
+			for (Iterator imps2 = imps.iterator(); imps2.hasNext();) {
+				PackageableElement imp2 = (PackageableElement) imps2.next();
+
+				if (imp1 != imp2
+					&& !imp1.isDistinguishableFrom(imp2, namespace)) {
+
+					continue imps1Loop;
+				}
+			}
+
+			excludeCollisions.add(imp1);
+		}
+
+		return Collections.unmodifiableList(excludeCollisions);
 	}
 
 } // NamespaceOperations

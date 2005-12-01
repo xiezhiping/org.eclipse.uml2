@@ -8,17 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.3 2005/12/01 22:16:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
+import org.eclipse.uml2.uml.ParameterDirectionKind;
 
 import org.eclipse.uml2.uml.Parameter;
 
@@ -44,9 +47,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class OpaqueExpressionOperations {
+public final class OpaqueExpressionOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,11 +205,19 @@ public final class OpaqueExpressionOperations {
 	 * self.isIntegral()
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int value(OpaqueExpression opaqueExpression) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		try {
+			for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
+				.hasNext();) {
+
+				return Integer.parseInt((String) bodies.next());
+			}
+		} catch (NumberFormatException nfe) {
+			// do nothing
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -217,12 +228,21 @@ public final class OpaqueExpressionOperations {
 	 * The query isIntegral() tells whether an expression is intended to produce an integer.
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isIntegral(OpaqueExpression opaqueExpression) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		try {
+			for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
+				.hasNext();) {
+
+				Integer.parseInt((String) bodies.next());
+				return true;
+			}
+		} catch (NumberFormatException nfe) {
+			// do nothing
+		}
+
+		return false;
 	}
 
 	/**
@@ -233,11 +253,19 @@ public final class OpaqueExpressionOperations {
 	 * self.isIntegral()
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isPositive(OpaqueExpression opaqueExpression) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		try {
+			for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
+				.hasNext();) {
+
+				return Integer.parseInt((String) bodies.next()) > 0;
+			}
+		} catch (NumberFormatException nfe) {
+			// do nothing
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -249,23 +277,44 @@ public final class OpaqueExpressionOperations {
 	 * self.isIntegral()
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isNonNegative(OpaqueExpression opaqueExpression) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		try {
+			for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
+				.hasNext();) {
+
+				return Integer.parseInt((String) bodies.next()) >= 0;
+			}
+		} catch (NumberFormatException nfe) {
+			// do nothing
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Parameter getResult(OpaqueExpression opaqueExpression) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Behavior behavior = opaqueExpression.getBehavior();
+
+		if (behavior != null) {
+
+			for (Iterator ownedParameters = behavior.getOwnedParameters()
+				.iterator(); ownedParameters.hasNext();) {
+
+				Parameter ownedParameter = (Parameter) ownedParameters.next();
+
+				if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+					return ownedParameter;
+				}
+			}
+		}
+
+		return null;
 	}
 
 } // OpaqueExpressionOperations
