@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
+ * $Id: AssociationOperations.java,v 1.5 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -205,7 +205,7 @@ public final class AssociationOperations
 
 			Type endType = ((PropertyImpl) memberEnds.next()).basicGetType();
 
-			if (null != endType) {
+			if (endType != null) {
 				endTypes.add(endType);
 			}
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: LiteralIntegerOperations.java,v 1.2 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,9 +27,9 @@ import org.eclipse.uml2.uml.LiteralInteger;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class LiteralIntegerOperations {
+public final class LiteralIntegerOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -47,12 +47,10 @@ public final class LiteralIntegerOperations {
 	 * The query isComputable() is redefined to be true.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isComputable(LiteralInteger literalInteger) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 	/**
@@ -62,12 +60,10 @@ public final class LiteralIntegerOperations {
 	 * The query integerValue() gives the value.
 	 * result = value
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int integerValue(LiteralInteger literalInteger) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return literalInteger.getValue();
 	}
 
 } // LiteralIntegerOperations

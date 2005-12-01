@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalOperations.java,v 1.1 2005/11/14 22:25:53 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalOperations.java,v 1.2 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,9 +27,9 @@ import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class LiteralUnlimitedNaturalOperations {
+public final class LiteralUnlimitedNaturalOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -47,13 +47,11 @@ public final class LiteralUnlimitedNaturalOperations {
 	 * The query isComputable() is redefined to be true.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isComputable(
 			LiteralUnlimitedNatural literalUnlimitedNatural) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 	/**
@@ -63,13 +61,11 @@ public final class LiteralUnlimitedNaturalOperations {
 	 * The query unlimitedValue() gives the value.
 	 * result = value
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int unlimitedValue(
 			LiteralUnlimitedNatural literalUnlimitedNatural) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return literalUnlimitedNatural.getValue();
 	}
 
 } // LiteralUnlimitedNaturalOperations

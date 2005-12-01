@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.5 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -289,7 +289,7 @@ public final class ClassifierOperations
 			Classifier general = ((Generalization) generalizations.next())
 				.getGeneral();
 
-			if (null != general) {
+			if (general != null) {
 				parents.add(general);
 			}
 		}

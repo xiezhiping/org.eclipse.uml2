@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: LiteralStringOperations.java,v 1.2 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,9 +27,9 @@ import org.eclipse.uml2.uml.LiteralString;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class LiteralStringOperations {
+public final class LiteralStringOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -47,12 +47,10 @@ public final class LiteralStringOperations {
 	 * The query isComputable() is redefined to be true.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isComputable(LiteralString literalString) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 	/**
@@ -62,12 +60,10 @@ public final class LiteralStringOperations {
 	 * The query stringValue() gives the value.
 	 * result = value
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String stringValue(LiteralString literalString) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return literalString.getValue();
 	}
 
 } // LiteralStringOperations

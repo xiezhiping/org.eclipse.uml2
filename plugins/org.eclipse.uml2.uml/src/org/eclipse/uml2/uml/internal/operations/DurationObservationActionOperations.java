@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
+ * $Id: DurationObservationActionOperations.java,v 1.5 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -97,7 +97,6 @@ public final class DurationObservationActionOperations
 	 */
 	public static Duration getDuration(
 			DurationObservationAction durationObservationAction) {
-
 		InputPin value = durationObservationAction.getValue();
 
 		if (value instanceof ValuePin) {
@@ -114,14 +113,16 @@ public final class DurationObservationActionOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setDuration(
 			DurationObservationAction durationObservationAction,
 			Duration newDuration) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		InputPin value = durationObservationAction.getValue();
+
+		if (value instanceof ValuePin) {
+			((ValuePin) value).setValue(newDuration);
+		}
 	}
 
 } // DurationObservationActionOperations

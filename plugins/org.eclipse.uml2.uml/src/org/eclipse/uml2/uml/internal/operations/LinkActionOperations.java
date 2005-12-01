@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionOperations.java,v 1.1 2005/11/14 22:25:53 khussey Exp $
+ * $Id: LinkActionOperations.java,v 1.2 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -20,6 +21,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.LinkAction;
+import org.eclipse.uml2.uml.LinkEndData;
+import org.eclipse.uml2.uml.Property;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -38,9 +41,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class LinkActionOperations {
+public final class LinkActionOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,12 +162,20 @@ public final class LinkActionOperations {
 	 * The association operates on LinkAction. It returns the association of the action.
 	 * result = self.endData->asSequence().first().end.association
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Association association(LinkAction linkAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List endData = linkAction.getEndData();
+
+		if (endData.size() > 0) {
+			Property end = ((LinkEndData) endData.get(0)).getEnd();
+
+			if (end != null) {
+				return end.getAssociation();
+			}
+		}
+
+		return null;
 	}
 
 } // LinkActionOperations

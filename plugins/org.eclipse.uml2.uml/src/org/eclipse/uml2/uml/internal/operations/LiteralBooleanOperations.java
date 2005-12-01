@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: LiteralBooleanOperations.java,v 1.2 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,9 +27,9 @@ import org.eclipse.uml2.uml.LiteralBoolean;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated NOT
  */
-public final class LiteralBooleanOperations {
+public final class LiteralBooleanOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -47,12 +47,10 @@ public final class LiteralBooleanOperations {
 	 * The query isComputable() is redefined to be true.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isComputable(LiteralBoolean literalBoolean) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 	/**
@@ -62,12 +60,10 @@ public final class LiteralBooleanOperations {
 	 * The query booleanValue() gives the value.
 	 * result = value
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean booleanValue(LiteralBoolean literalBoolean) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return literalBoolean.isValue();
 	}
 
 } // LiteralBooleanOperations

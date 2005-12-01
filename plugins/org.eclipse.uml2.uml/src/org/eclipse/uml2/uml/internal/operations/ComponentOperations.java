@@ -8,14 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.3 2005/11/30 21:43:10 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.4 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.ComponentRealization;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.Port;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.Usage;
+import org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,13 +68,33 @@ public final class ComponentOperations
 	 * select(dependency|dependency.oclIsKindOf(Realization) and dependency.supplier.oclIsKindOf(Interface)))->
 	 * collect(dependency|dependency.client)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List realizedInterfaces(Component component,
 			Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		List realizedInterfaces = new UniqueEList();
+
+		for (Iterator clientDependencies = classifier.getClientDependencies()
+			.iterator(); clientDependencies.hasNext();) {
+
+			Dependency dependency = (Dependency) clientDependencies.next();
+
+			if (dependency instanceof ComponentRealization) {
+
+				for (Iterator suppliers = ((InternalEList) dependency
+					.getSuppliers()).basicIterator(); suppliers.hasNext();) {
+
+					Object supplier = suppliers.next();
+
+					if (supplier instanceof Interface) {
+						realizedInterfaces.add(supplier);
+					}
+				}
+			}
+		}
+
+		return Collections.unmodifiableList(realizedInterfaces);
 	}
 
 	/**
@@ -73,12 +106,32 @@ public final class ComponentOperations
 	 * select(dependency|dependency.oclIsKindOf(Usage) and dependency.supplier.oclIsKindOf(interface)))->
 	 * collect(dependency|dependency.supplier)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List usedInterfaces(Component component, Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		List usedInterfaces = new UniqueEList();
+
+		for (Iterator clientDependencies = classifier.getClientDependencies()
+			.iterator(); clientDependencies.hasNext();) {
+
+			Dependency dependency = (Dependency) clientDependencies.next();
+
+			if (dependency instanceof Usage) {
+
+				for (Iterator suppliers = ((InternalEList) dependency
+					.getSuppliers()).basicIterator(); suppliers.hasNext();) {
+
+					Object supplier = suppliers.next();
+
+					if (supplier instanceof Interface) {
+						usedInterfaces.add(supplier);
+					}
+				}
+			}
+		}
+
+		return Collections.unmodifiableList(usedInterfaces);
 	}
 
 	/**
@@ -95,12 +148,32 @@ public final class ComponentOperations
 	 * 
 	 *       union(typesOfUsedPorts))->asSet()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List getRequireds(Component component) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List requireds = new UniqueEList(component.usedInterfaces(component));
+
+		for (Iterator realizations = component.getRealizations().iterator(); realizations
+			.hasNext();) {
+
+			Classifier realizingClassifier = ((ComponentRealization) realizations
+				.next()).getRealizingClassifier();
+
+			if (realizingClassifier != null) {
+				requireds.addAll(component.usedInterfaces(realizingClassifier));
+			}
+		}
+
+		for (Iterator ownedPorts = component.getOwnedPorts().iterator(); ownedPorts
+			.hasNext();) {
+
+			requireds.addAll(((InternalEList) ((Port) ownedPorts.next())
+				.getRequireds()).basicList());
+		}
+
+		return new UnionEObjectEList((InternalEObject) component,
+			UMLPackage.Literals.COMPONENT__REQUIRED, requireds.size(),
+			requireds.toArray());
 	}
 
 	/**
@@ -119,12 +192,47 @@ public final class ComponentOperations
 	 * 
 	 *       union(typesOfRequiredPorts))->asSet()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List getProvideds(Component component) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List provideds = new UniqueEList();
+
+		for (Iterator interfaceRealizations = component
+			.getInterfaceRealizations().iterator(); interfaceRealizations
+			.hasNext();) {
+
+			Interface contract = ((InterfaceRealizationImpl) interfaceRealizations
+				.next()).basicGetContract();
+
+			if (contract != null) {
+				provideds.add(contract);
+			}
+		}
+
+		provideds.addAll(component.realizedInterfaces(component));
+
+		for (Iterator realizations = component.getRealizations().iterator(); realizations
+			.hasNext();) {
+
+			Classifier realizingClassifier = ((ComponentRealization) realizations
+				.next()).getRealizingClassifier();
+
+			if (realizingClassifier != null) {
+				provideds.addAll(component
+					.realizedInterfaces(realizingClassifier));
+			}
+		}
+
+		for (Iterator ownedPorts = component.getOwnedPorts().iterator(); ownedPorts
+			.hasNext();) {
+
+			provideds.addAll(((InternalEList) ((Port) ownedPorts.next())
+				.getProvideds()).basicList());
+		}
+
+		return new UnionEObjectEList((InternalEObject) component,
+			UMLPackage.Literals.COMPONENT__PROVIDED, provideds.size(),
+			provideds.toArray());
 	}
 
 } // ComponentOperations

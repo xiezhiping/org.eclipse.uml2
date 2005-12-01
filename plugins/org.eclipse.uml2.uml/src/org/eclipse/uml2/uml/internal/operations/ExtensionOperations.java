@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionOperations.java,v 1.4 2005/11/30 21:43:10 khussey Exp $
+ * $Id: ExtensionOperations.java,v 1.5 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -134,6 +134,7 @@ public final class ExtensionOperations
 
 		for (Iterator memberEnds = extension.getMemberEnds().iterator(); memberEnds
 			.hasNext();) {
+
 			Property memberEnd = (Property) memberEnds.next();
 
 			if (!ownedEnds.contains(memberEnd)) {

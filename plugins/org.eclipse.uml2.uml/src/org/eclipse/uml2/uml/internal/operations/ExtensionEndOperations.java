@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndOperations.java,v 1.5 2005/12/01 16:00:43 khussey Exp $
+ * $Id: ExtensionEndOperations.java,v 1.6 2005/12/01 18:15:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -158,34 +158,45 @@ public final class ExtensionEndOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setLower(ExtensionEnd extensionEnd, int newLower) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ValueSpecification lowerValue = extensionEnd.getLowerValue();
+
+		if (lowerValue instanceof LiteralInteger) {
+			((LiteralInteger) lowerValue).setValue(newLower);
+		} else {
+			ExtensionEndImpl extensionEndImpl = (ExtensionEndImpl) extensionEnd;
+			extensionEndImpl
+				.eVirtualSet(
+					extensionEndImpl
+						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
+					new Integer(newLower));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isSetLower(ExtensionEnd extensionEnd) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ExtensionEndImpl extensionEndImpl = (ExtensionEndImpl) extensionEnd;
+		return extensionEndImpl
+			.eVirtualIsSet(extensionEndImpl
+				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void unsetLower(ExtensionEnd extensionEnd) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ExtensionEndImpl extensionEndImpl = (ExtensionEndImpl) extensionEnd;
+		extensionEndImpl
+			.eVirtualUnset(extensionEndImpl
+				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
 	}
 
 } // ExtensionEndOperations
