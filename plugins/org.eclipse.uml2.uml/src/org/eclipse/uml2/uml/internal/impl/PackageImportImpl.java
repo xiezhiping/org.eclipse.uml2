@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.6 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -345,7 +345,9 @@ public class PackageImportImpl
 			case UMLPackage.PACKAGE_IMPORT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PACKAGE_IMPORT__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PACKAGE_IMPORT__RELATED_ELEMENT :
@@ -496,12 +498,12 @@ public class PackageImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		Namespace importingNamespace = getImportingNamespace();
 		if (importingNamespace != null) {
 			return importingNamespace;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

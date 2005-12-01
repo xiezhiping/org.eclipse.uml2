@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: VertexImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -274,7 +274,9 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.VERTEX__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.VERTEX__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.VERTEX__NAME :

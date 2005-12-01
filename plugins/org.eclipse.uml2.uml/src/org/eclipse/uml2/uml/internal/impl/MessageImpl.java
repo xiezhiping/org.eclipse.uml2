@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.7 2005/11/29 19:53:45 khussey Exp $
+ * $Id: MessageImpl.java,v 1.8 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -592,7 +592,9 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MESSAGE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.MESSAGE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.MESSAGE__NAME :

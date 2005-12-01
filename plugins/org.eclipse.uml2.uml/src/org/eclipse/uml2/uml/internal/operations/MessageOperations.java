@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOperations.java,v 1.3 2005/12/01 18:48:21 khussey Exp $
+ * $Id: MessageOperations.java,v 1.4 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -49,7 +49,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class MessageOperations extends UMLOperations {
+public final class MessageOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

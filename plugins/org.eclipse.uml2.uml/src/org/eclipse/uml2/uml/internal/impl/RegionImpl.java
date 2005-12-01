@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.7 2005/11/29 17:55:39 khussey Exp $
+ * $Id: RegionImpl.java,v 1.8 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -705,7 +705,9 @@ public class RegionImpl
 			case UMLPackage.REGION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.REGION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.REGION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.REGION__NAME :

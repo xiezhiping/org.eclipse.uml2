@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.6 2005/11/29 17:55:39 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.7 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -731,7 +731,9 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.ACTIVITY__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTIVITY__NAME :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.8 2005/12/01 16:00:43 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.9 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -197,7 +197,9 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXTENSION_END__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.EXTENSION_END__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXTENSION_END__NAME :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.7 2005/12/01 16:00:42 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.8 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -322,7 +322,9 @@ public class ConnectorEndImpl
 			case UMLPackage.CONNECTOR_END__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONNECTOR_END__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.CONNECTOR_END__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONNECTOR_END__IS_ORDERED :

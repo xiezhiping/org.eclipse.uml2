@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.6 2005/11/28 20:26:02 khussey Exp $
+ * $Id: OperationImpl.java,v 1.7 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1309,7 +1309,9 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OPERATION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.OPERATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.OPERATION__NAME :
@@ -1888,12 +1890,12 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
-		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
+	public Element basicGetOwner() {
+		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

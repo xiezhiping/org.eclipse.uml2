@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.8 2005/11/30 21:43:11 khussey Exp $
+ * $Id: ClassImpl.java,v 1.9 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1053,7 +1053,9 @@ public class ClassImpl
 			case UMLPackage.CLASS__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CLASS__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.CLASS__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CLASS__NAME :

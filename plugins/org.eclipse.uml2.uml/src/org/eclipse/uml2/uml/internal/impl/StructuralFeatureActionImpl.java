@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
+ * $Id: StructuralFeatureActionImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -349,7 +349,9 @@ public abstract class StructuralFeatureActionImpl
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__NAME :

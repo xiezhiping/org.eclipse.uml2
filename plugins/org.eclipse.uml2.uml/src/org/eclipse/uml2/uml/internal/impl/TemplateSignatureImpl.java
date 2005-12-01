@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -282,7 +282,9 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
@@ -384,12 +386,12 @@ public class TemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		TemplateableElement template = getTemplate();
 		if (template != null) {
 			return template;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: CollaborationUseImpl.java,v 1.6 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -266,7 +266,9 @@ public class CollaborationUseImpl
 			case UMLPackage.COLLABORATION_USE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.COLLABORATION_USE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.COLLABORATION_USE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.COLLABORATION_USE__NAME :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -616,7 +616,9 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME :
@@ -898,12 +900,12 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
-		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
+	public Element basicGetOwner() {
+		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

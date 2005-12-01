@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.11 2005/11/30 21:43:11 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.12 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -218,8 +218,19 @@ public abstract class ClassifierImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
+	public List getRedefinitionContextsGen() {
+		List redefinitionContext = (List) eVirtualGet(UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT);
+		if (redefinitionContext == null) {
+			eVirtualSet(UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
+				redefinitionContext = new DerivedUnionEObjectEList(
+					Classifier.class, this,
+					UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT, new int[]{}));
+		}
+		return redefinitionContext;
+	}
+
 	public List getRedefinitionContexts() {
 		List redefinitionContext = (List) eVirtualGet(UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
@@ -1633,7 +1644,9 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CLASSIFIER__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.CLASSIFIER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CLASSIFIER__NAME :
@@ -2204,8 +2217,12 @@ public abstract class ClassifierImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
+	public boolean isSetRedefinitionContextsGen() {
+		return false;
+	}
+
 	public boolean isSetRedefinitionContexts() {
 		return basicGetNamespace() instanceof Classifier;
 	}
@@ -2215,12 +2232,12 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
-		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
+	public Element basicGetOwner() {
+		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

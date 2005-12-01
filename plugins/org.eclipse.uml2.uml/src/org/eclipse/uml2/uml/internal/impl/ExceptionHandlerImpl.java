@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.6 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -358,7 +358,9 @@ public class ExceptionHandlerImpl
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXCEPTION_HANDLER__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
@@ -472,12 +474,12 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		ExecutableNode protectedNode = getProtectedNode();
 		if (protectedNode != null) {
 			return protectedNode;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

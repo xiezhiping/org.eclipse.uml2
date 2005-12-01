@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.8 2005/11/29 17:55:39 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.9 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -937,7 +937,9 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME :
@@ -1540,14 +1542,14 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		if (isSetSuperGroup()) {
 			return getSuperGroup();
 		}
 		if (isSetInActivity()) {
 			return getInActivity();
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

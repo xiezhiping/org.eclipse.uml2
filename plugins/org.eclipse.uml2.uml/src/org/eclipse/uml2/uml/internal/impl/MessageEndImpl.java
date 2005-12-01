@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageEndImpl.java,v 1.4 2005/11/23 20:01:13 khussey Exp $
+ * $Id: MessageEndImpl.java,v 1.5 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,7 +122,9 @@ public abstract class MessageEndImpl
 			case UMLPackage.MESSAGE_END__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MESSAGE_END__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.MESSAGE_END__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.MESSAGE_END__NAME :

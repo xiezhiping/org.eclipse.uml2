@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionOperations.java,v 1.2 2005/12/01 18:15:37 khussey Exp $
+ * $Id: LinkActionOperations.java,v 1.3 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -43,7 +43,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class LinkActionOperations extends UMLOperations {
+public final class LinkActionOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

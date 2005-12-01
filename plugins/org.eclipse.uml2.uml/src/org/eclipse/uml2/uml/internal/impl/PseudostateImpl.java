@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -428,7 +428,9 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PSEUDOSTATE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PSEUDOSTATE__NAME :
@@ -661,12 +663,12 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		State state = getState();
 		if (state != null) {
 			return state;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

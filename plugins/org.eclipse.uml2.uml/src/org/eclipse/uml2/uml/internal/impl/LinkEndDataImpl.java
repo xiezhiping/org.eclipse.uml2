@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -277,7 +277,9 @@ public class LinkEndDataImpl
 			case UMLPackage.LINK_END_DATA__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LINK_END_DATA__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LINK_END_DATA__VALUE :

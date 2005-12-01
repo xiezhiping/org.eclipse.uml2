@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionDataImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
+ * $Id: LinkEndDestructionDataImpl.java,v 1.5 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -198,7 +198,9 @@ public class LinkEndDestructionDataImpl
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
+ * $Id: DurationImpl.java,v 1.5 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,7 +156,9 @@ public class DurationImpl
 			case UMLPackage.DURATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DURATION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.DURATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DURATION__NAME :

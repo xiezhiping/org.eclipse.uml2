@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -521,7 +521,9 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__NAME :

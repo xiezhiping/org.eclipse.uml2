@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.6 2005/11/28 20:26:02 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.7 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -326,7 +326,9 @@ public class ClauseImpl
 			case UMLPackage.CLAUSE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CLAUSE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.CLAUSE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CLAUSE__TEST :

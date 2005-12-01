@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.7 2005/12/01 16:00:43 khussey Exp $
+ * $Id: VariableImpl.java,v 1.8 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -721,7 +721,9 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.VARIABLE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.VARIABLE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.VARIABLE__NAME :
@@ -1027,7 +1029,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		Activity activityScope = getActivityScope();
 		if (activityScope != null) {
 			return activityScope;
@@ -1036,7 +1038,7 @@ public class VariableImpl
 		if (scope != null) {
 			return scope;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

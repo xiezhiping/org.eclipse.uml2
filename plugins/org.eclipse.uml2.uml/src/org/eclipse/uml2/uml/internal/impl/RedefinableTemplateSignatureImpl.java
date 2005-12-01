@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.6 2005/11/28 20:26:04 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.7 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -467,7 +467,9 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME :
@@ -719,12 +721,12 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		TemplateableElement template = getTemplate();
 		if (template != null) {
 			return template;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

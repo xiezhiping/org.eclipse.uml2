@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -320,7 +320,9 @@ public abstract class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME :

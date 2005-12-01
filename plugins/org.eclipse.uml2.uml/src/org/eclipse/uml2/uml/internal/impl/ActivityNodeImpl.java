@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -482,7 +482,9 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY_NODE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTIVITY_NODE__NAME :
@@ -725,12 +727,12 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		Activity activity = getActivity();
 		if (activity != null) {
 			return activity;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

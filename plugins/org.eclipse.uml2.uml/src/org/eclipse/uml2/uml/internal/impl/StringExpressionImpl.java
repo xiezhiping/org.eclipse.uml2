@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -502,7 +502,9 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STRING_EXPRESSION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STRING_EXPRESSION__NAME :
@@ -780,12 +782,12 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		StringExpression owningExpression = getOwningExpression();
 		if (owningExpression != null) {
 			return owningExpression;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

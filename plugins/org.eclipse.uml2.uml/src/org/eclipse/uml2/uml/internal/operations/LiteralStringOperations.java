@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringOperations.java,v 1.2 2005/12/01 18:15:37 khussey Exp $
+ * $Id: LiteralStringOperations.java,v 1.3 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -29,7 +29,8 @@ import org.eclipse.uml2.uml.LiteralString;
  *
  * @generated not
  */
-public final class LiteralStringOperations extends UMLOperations {
+public final class LiteralStringOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

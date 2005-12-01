@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -833,7 +833,9 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY_EDGE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.ACTIVITY_EDGE__NAME :
@@ -1084,12 +1086,12 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		Activity activity = getActivity();
 		if (activity != null) {
 			return activity;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

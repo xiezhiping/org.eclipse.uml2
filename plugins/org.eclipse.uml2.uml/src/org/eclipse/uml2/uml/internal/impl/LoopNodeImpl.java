@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.6 2005/11/28 20:26:04 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.7 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -660,7 +660,9 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LOOP_NODE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.LOOP_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.LOOP_NODE__NAME :

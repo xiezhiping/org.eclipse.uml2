@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.7 2005/12/01 16:00:43 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.8 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -562,7 +562,9 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :

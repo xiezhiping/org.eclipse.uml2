@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.6 2005/11/29 17:55:39 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.7 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -910,7 +910,9 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TRANSITION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.TRANSITION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TRANSITION__NAME :

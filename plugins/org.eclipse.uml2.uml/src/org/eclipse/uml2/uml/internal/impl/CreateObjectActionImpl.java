@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectActionImpl.java,v 1.5 2005/11/28 20:26:02 khussey Exp $
+ * $Id: CreateObjectActionImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -320,7 +320,9 @@ public class CreateObjectActionImpl
 			case UMLPackage.CREATE_OBJECT_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CREATE_OBJECT_ACTION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.CREATE_OBJECT_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CREATE_OBJECT_ACTION__NAME :

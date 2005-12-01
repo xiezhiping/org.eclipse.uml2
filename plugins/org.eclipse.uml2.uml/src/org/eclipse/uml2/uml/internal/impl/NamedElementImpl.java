@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.8 2005/11/29 22:45:34 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.9 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -428,7 +428,9 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.NAMED_ELEMENT__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.NAMED_ELEMENT__NAME :
@@ -603,8 +605,12 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetNamespace() {
+	public boolean isSetNamespaceGen() {
 		return false;
+	}
+
+	public boolean isSetNamespace() {
+		return basicGetNamespace() != null;
 	}
 
 	/**
@@ -612,11 +618,11 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		if (isSetNamespace()) {
-			return getNamespace();
+			return basicGetNamespace();
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

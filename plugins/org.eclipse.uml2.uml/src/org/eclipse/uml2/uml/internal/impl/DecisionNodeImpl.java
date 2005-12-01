@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
+ * $Id: DecisionNodeImpl.java,v 1.5 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -162,7 +162,9 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DECISION_NODE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.DECISION_NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DECISION_NODE__NAME :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.5 2005/11/23 20:01:19 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.6 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -347,7 +347,9 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :

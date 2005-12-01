@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerOperations.java,v 1.2 2005/12/01 18:15:37 khussey Exp $
+ * $Id: LiteralIntegerOperations.java,v 1.3 2005/12/01 20:04:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -29,7 +29,8 @@ import org.eclipse.uml2.uml.LiteralInteger;
  *
  * @generated not
  */
-public final class LiteralIntegerOperations extends UMLOperations {
+public final class LiteralIntegerOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

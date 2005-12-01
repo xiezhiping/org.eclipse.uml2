@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.4 2005/11/23 20:01:18 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.5 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -181,7 +181,9 @@ public class TimeIntervalImpl
 			case UMLPackage.TIME_INTERVAL__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TIME_INTERVAL__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.TIME_INTERVAL__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TIME_INTERVAL__NAME :

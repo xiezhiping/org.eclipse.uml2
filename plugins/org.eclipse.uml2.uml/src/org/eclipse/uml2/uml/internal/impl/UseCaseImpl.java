@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -511,7 +511,9 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.USE_CASE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.USE_CASE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.USE_CASE__NAME :

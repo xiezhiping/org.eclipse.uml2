@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.4 2005/11/23 20:01:20 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.5 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -108,7 +108,9 @@ public class DestroyLinkActionImpl
 			case UMLPackage.DESTROY_LINK_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DESTROY_LINK_ACTION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.DESTROY_LINK_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.DESTROY_LINK_ACTION__NAME :

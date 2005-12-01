@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -366,7 +366,9 @@ public class GeneralizationImpl
 			case UMLPackage.GENERALIZATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.GENERALIZATION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.GENERALIZATION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.GENERALIZATION__RELATED_ELEMENT :
@@ -529,12 +531,12 @@ public class GeneralizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		Classifier specific = getSpecific();
 		if (specific != null) {
 			return specific;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

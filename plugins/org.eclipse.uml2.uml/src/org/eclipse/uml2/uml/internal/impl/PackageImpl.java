@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.7 2005/11/29 19:51:15 khussey Exp $
+ * $Id: PackageImpl.java,v 1.8 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -918,7 +918,9 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PACKAGE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.PACKAGE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.PACKAGE__NAME :
@@ -1297,12 +1299,12 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
-		TemplateParameter owningTemplateParameter = getOwningTemplateParameter();
+	public Element basicGetOwner() {
+		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

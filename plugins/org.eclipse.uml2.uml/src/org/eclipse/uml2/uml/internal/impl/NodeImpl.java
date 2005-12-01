@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
+ * $Id: NodeImpl.java,v 1.7 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -493,7 +493,9 @@ public class NodeImpl
 			case UMLPackage.NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.NODE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.NODE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.NODE__NAME :

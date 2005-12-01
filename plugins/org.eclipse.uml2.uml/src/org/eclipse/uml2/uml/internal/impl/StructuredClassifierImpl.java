@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.6 2005/11/29 17:55:39 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.7 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -448,7 +448,9 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STRUCTURED_CLASSIFIER__NAME :

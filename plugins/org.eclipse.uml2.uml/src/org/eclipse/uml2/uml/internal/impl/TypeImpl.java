@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.6 2005/11/29 19:51:14 khussey Exp $
+ * $Id: TypeImpl.java,v 1.7 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -125,7 +125,9 @@ public abstract class TypeImpl
 			case UMLPackage.TYPE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TYPE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.TYPE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TYPE__NAME :

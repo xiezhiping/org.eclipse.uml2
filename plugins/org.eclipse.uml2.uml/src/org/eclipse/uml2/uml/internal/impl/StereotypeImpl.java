@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,7 +116,9 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STEREOTYPE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.STEREOTYPE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STEREOTYPE__NAME :

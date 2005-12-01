@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeOperations.java,v 1.3 2005/12/01 18:15:37 khussey Exp $
+ * $Id: LoopNodeOperations.java,v 1.4 2005/12/01 20:04:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -38,7 +38,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class LoopNodeOperations extends UMLOperations {
+public final class LoopNodeOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

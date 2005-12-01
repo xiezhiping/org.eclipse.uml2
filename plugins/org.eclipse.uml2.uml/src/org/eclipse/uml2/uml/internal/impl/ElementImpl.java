@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.8 2005/12/01 19:09:02 khussey Exp $
+ * $Id: ElementImpl.java,v 1.9 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -211,7 +211,9 @@ public abstract class ElementImpl
 			case UMLPackage.ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ELEMENT__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 		}
@@ -352,14 +354,15 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwnerGen() {
+	public Element basicGetOwnerGen() {
 		return null;
 	}
-
-	public Element getOwner() {
-		return eInternalContainer() instanceof Element
-			? (Element) eContainer()
-			: getOwnerGen();
+	
+	public Element basicGetOwner() {
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof Element
+			? (Element) eInternalContainer
+			: basicGetOwnerGen();		
 	}
 
 	/**
@@ -367,8 +370,24 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetOwner() {
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner == null
+			? null
+			: (Element) eResolveProxy((InternalEObject) owner);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwnerGen() {
 		return false;
+	}
+
+	public boolean isSetOwner() {
+		return basicGetOwner() != null;
 	}
 
 } //ElementImpl

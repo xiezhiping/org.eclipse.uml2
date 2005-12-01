@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.6 2005/11/29 22:45:34 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.7 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -127,8 +127,20 @@ public abstract class RedefinableElementImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
+	public List getRedefinitionContextsGen() {
+		List redefinitionContext = (List) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+		if (redefinitionContext == null) {
+			eVirtualSet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+				redefinitionContext = new DerivedUnionEObjectEList(
+					Classifier.class, this,
+					UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					new int[]{}));
+		}
+		return redefinitionContext;
+	}
+
 	public List getRedefinitionContexts() {
 		List redefinitionContext = (List) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
@@ -225,7 +237,9 @@ public abstract class RedefinableElementImpl
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME :
@@ -404,8 +418,12 @@ public abstract class RedefinableElementImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
+	public boolean isSetRedefinitionContextsGen() {
+		return false;
+	}
+
 	public boolean isSetRedefinitionContexts() {
 		return getOwner() instanceof Classifier;
 	}

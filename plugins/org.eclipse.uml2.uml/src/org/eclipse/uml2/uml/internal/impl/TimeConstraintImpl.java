@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.4 2005/11/23 20:01:14 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.5 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -154,7 +154,9 @@ public class TimeConstraintImpl
 			case UMLPackage.TIME_CONSTRAINT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TIME_CONSTRAINT__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TIME_CONSTRAINT__NAME :

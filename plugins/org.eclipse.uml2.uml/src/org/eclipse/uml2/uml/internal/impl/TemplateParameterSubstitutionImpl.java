@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -330,7 +330,9 @@ public class TemplateParameterSubstitutionImpl
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL :
@@ -454,12 +456,12 @@ public class TemplateParameterSubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		TemplateBinding templateBinding = getTemplateBinding();
 		if (templateBinding != null) {
 			return templateBinding;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

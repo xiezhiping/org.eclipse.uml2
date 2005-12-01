@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.9 2005/11/29 19:53:45 khussey Exp $
+ * $Id: StateImpl.java,v 1.10 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1343,7 +1343,9 @@ public class StateImpl
 			case UMLPackage.STATE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STATE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.STATE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.STATE__NAME :

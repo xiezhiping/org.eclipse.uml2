@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.4 2005/11/23 20:01:16 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.5 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -153,7 +153,9 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__NAME :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.5 2005/11/28 20:26:04 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -131,7 +131,9 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :

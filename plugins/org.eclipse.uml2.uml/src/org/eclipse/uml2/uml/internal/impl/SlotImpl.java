@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.5 2005/11/28 20:26:03 khussey Exp $
+ * $Id: SlotImpl.java,v 1.6 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -295,7 +295,9 @@ public class SlotImpl
 			case UMLPackage.SLOT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.SLOT__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.SLOT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.SLOT__OWNING_INSTANCE :
@@ -397,12 +399,12 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getOwner() {
+	public Element basicGetOwner() {
 		InstanceSpecification owningInstance = getOwningInstance();
 		if (owningInstance != null) {
 			return owningInstance;
 		}
-		return super.getOwner();
+		return super.basicGetOwner();
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.6 2005/11/28 20:26:03 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.7 2005/12/01 20:04:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -733,7 +733,9 @@ public class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME :

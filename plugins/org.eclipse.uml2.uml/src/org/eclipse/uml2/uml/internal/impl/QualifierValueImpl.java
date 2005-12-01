@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.4 2005/11/23 20:01:15 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.5 2005/12/01 20:04:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -207,7 +207,9 @@ public class QualifierValueImpl
 			case UMLPackage.QUALIFIER_VALUE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.QUALIFIER_VALUE__OWNER :
-				return getOwner();
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
 			case UMLPackage.QUALIFIER_VALUE__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.QUALIFIER_VALUE__QUALIFIER :
