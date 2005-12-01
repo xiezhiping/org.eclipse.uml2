@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorOperations.java,v 1.5 2005/11/30 21:43:11 khussey Exp $
+ * $Id: BehaviorOperations.java,v 1.6 2005/12/01 20:58:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -23,6 +23,7 @@ import org.eclipse.uml2.uml.Element;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
 
+import org.eclipse.uml2.uml.internal.impl.ElementImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -190,13 +191,16 @@ public final class BehaviorOperations
 	 * @generated NOT
 	 */
 	public static BehavioredClassifier getContext(Behavior behavior) {
-		Element owner = behavior.getOwner();
+		Element context = null;
 
-		while (owner != null && !(owner instanceof BehavioredClassifier)) {
+		for (Element owner = behavior; (context = ((ElementImpl) owner)
+			.basicGetOwner()) != null
+			&& !(context instanceof BehavioredClassifier);) {
+
 			owner = owner.getOwner();
 		}
 
-		return (BehavioredClassifier) owner;
+		return (BehavioredClassifier) context;
 	}
 
 	/**

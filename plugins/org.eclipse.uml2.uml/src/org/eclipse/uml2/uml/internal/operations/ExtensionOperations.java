@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionOperations.java,v 1.5 2005/12/01 18:15:37 khussey Exp $
+ * $Id: ExtensionOperations.java,v 1.6 2005/12/01 20:58:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -24,6 +24,7 @@ import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Property;
 
+import org.eclipse.uml2.uml.internal.impl.PropertyImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -158,7 +159,8 @@ public final class ExtensionOperations
 		Property metaclassEnd = extension.metaclassEnd();
 		return metaclassEnd == null
 			? null
-			: (org.eclipse.uml2.uml.Class) metaclassEnd.getType();
+			: (org.eclipse.uml2.uml.Class) ((PropertyImpl) metaclassEnd)
+				.basicGetType();
 	}
 
 	/**

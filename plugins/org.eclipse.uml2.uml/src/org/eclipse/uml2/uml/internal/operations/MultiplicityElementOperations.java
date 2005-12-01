@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.5 2005/12/01 16:00:43 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.6 2005/12/01 20:58:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -383,69 +383,91 @@ public final class MultiplicityElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setLower(MultiplicityElement multiplicityElement,
 			int newLower) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
+
+		if (lowerValue instanceof LiteralInteger) {
+			((LiteralInteger) lowerValue).setValue(newLower);
+		} else {
+			MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
+			multiplicityElementImpl
+				.eVirtualSet(
+					multiplicityElementImpl
+						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
+					new Integer(newLower));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setUpper(MultiplicityElement multiplicityElement,
 			int newUpper) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ValueSpecification upperValue = multiplicityElement.getUpperValue();
+
+		if (upperValue instanceof LiteralUnlimitedNatural) {
+			((LiteralUnlimitedNatural) upperValue).setValue(newUpper);
+		} else {
+			MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
+			multiplicityElementImpl
+				.eVirtualSet(
+					multiplicityElementImpl
+						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER),
+					new Integer(newUpper));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isSetLower(MultiplicityElement multiplicityElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
+		return multiplicityElementImpl
+			.eVirtualIsSet(multiplicityElementImpl
+				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void unsetLower(MultiplicityElement multiplicityElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
+		multiplicityElementImpl
+			.eVirtualUnset(multiplicityElementImpl
+				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isSetUpper(MultiplicityElement multiplicityElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
+		return multiplicityElementImpl
+			.eVirtualIsSet(multiplicityElementImpl
+				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void unsetUpper(MultiplicityElement multiplicityElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
+		multiplicityElementImpl
+			.eVirtualUnset(multiplicityElementImpl
+				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER));
 	}
 
 } // MultiplicityElementOperations
