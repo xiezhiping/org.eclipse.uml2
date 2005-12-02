@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: ParameterableElementOperations.java,v 1.2 2005/12/02 04:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import org.eclipse.uml2.uml.ParameterableElement;
+import org.eclipse.uml2.uml.internal.impl.ParameterableElementImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,9 +28,9 @@ import org.eclipse.uml2.uml.ParameterableElement;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ParameterableElementOperations {
+public final class ParameterableElementOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -47,13 +48,11 @@ public final class ParameterableElementOperations {
 	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
 	 * result = p->oclIsKindOf(self.oclType)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isCompatibleWith(
 			ParameterableElement parameterableElement, ParameterableElement p) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return parameterableElement.eClass().isInstance(p);
 	}
 
 	/**
@@ -63,13 +62,12 @@ public final class ParameterableElementOperations {
 	 * The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
 	 * result = templateParameter->notEmpty()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isTemplateParameter(
 			ParameterableElement parameterableElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ((ParameterableElementImpl) parameterableElement)
+			.basicGetTemplateParameter() != null;
 	}
 
 } // ParameterableElementOperations

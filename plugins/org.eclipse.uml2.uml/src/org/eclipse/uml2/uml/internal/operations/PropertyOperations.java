@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.5 2005/12/02 04:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,10 +18,19 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.uml2.uml.LiteralBoolean;
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralString;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValueSpecification;
 
+import org.eclipse.uml2.uml.internal.impl.PropertyImpl;
+import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -54,9 +63,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class PropertyOperations {
+public final class PropertyOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -452,23 +461,60 @@ public final class PropertyOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String getDefault(Property property) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ValueSpecification defaultValue = property.getDefaultValue();
+		return defaultValue == null
+			? EMPTY_STRING
+			: defaultValue.stringValue();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public static void setDefault(Property property, String newDefault) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public static void setDefault(Property property, final String newDefault) {
+		ValueSpecification defaultValue = property.getDefaultValue();
+
+		if (defaultValue != null) {
+			new UMLSwitch() {
+
+				public Object caseLiteralBoolean(LiteralBoolean literalBoolean) {
+					literalBoolean.setValue(Boolean.getBoolean(newDefault));
+					return literalBoolean;
+				}
+
+				public Object caseLiteralInteger(LiteralInteger literalInteger) {
+					literalInteger.setValue(Integer.parseInt(newDefault));
+					return literalInteger;
+				}
+
+				public Object caseLiteralString(LiteralString literalString) {
+					literalString.setValue(newDefault);
+					return literalString;
+				}
+
+				public Object caseLiteralUnlimitedNatural(
+						LiteralUnlimitedNatural literalUnlimitedNatural) {
+					literalUnlimitedNatural.setValue(Integer
+						.parseInt(newDefault));
+					return literalUnlimitedNatural;
+				}
+
+				public Object defaultCase(EObject eObject) {
+					throw new IllegalArgumentException(newDefault);
+				}
+			}.doSwitch(defaultValue);
+		} else {
+			PropertyImpl propertyImpl = (PropertyImpl) property;
+			propertyImpl
+				.eVirtualSet(
+					propertyImpl
+						.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT),
+					newDefault);
+		}
 	}
 
 	/**

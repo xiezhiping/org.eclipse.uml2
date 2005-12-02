@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndOperations.java,v 1.6 2005/12/01 18:15:37 khussey Exp $
+ * $Id: ExtensionEndOperations.java,v 1.7 2005/12/02 04:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -163,8 +163,13 @@ public final class ExtensionEndOperations
 	public static void setLower(ExtensionEnd extensionEnd, int newLower) {
 		ValueSpecification lowerValue = extensionEnd.getLowerValue();
 
-		if (lowerValue instanceof LiteralInteger) {
-			((LiteralInteger) lowerValue).setValue(newLower);
+		if (lowerValue != null) {
+
+			if (lowerValue instanceof LiteralInteger) {
+				((LiteralInteger) lowerValue).setValue(newLower);
+			} else {
+				throw new IllegalArgumentException(String.valueOf(newLower));
+			}
 		} else {
 			ExtensionEndImpl extensionEndImpl = (ExtensionEndImpl) extensionEnd;
 			extensionEndImpl

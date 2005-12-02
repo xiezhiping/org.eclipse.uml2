@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.3 2005/12/01 22:16:35 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.4 2005/12/02 04:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -208,14 +208,15 @@ public final class OpaqueExpressionOperations extends UMLOperations {
 	 * @generated NOT
 	 */
 	public static int value(OpaqueExpression opaqueExpression) {
-		try {
-			for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
-				.hasNext();) {
 
+		for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
+			.hasNext();) {
+
+			try {
 				return Integer.parseInt((String) bodies.next());
+			} catch (NumberFormatException nfe) {
+				// ignore
 			}
-		} catch (NumberFormatException nfe) {
-			// do nothing
 		}
 
 		throw new UnsupportedOperationException();
@@ -231,15 +232,16 @@ public final class OpaqueExpressionOperations extends UMLOperations {
 	 * @generated NOT
 	 */
 	public static boolean isIntegral(OpaqueExpression opaqueExpression) {
-		try {
-			for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
-				.hasNext();) {
 
+		for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
+			.hasNext();) {
+
+			try {
 				Integer.parseInt((String) bodies.next());
 				return true;
+			} catch (NumberFormatException nfe) {
+				// ignore
 			}
-		} catch (NumberFormatException nfe) {
-			// do nothing
 		}
 
 		return false;
@@ -256,14 +258,15 @@ public final class OpaqueExpressionOperations extends UMLOperations {
 	 * @generated NOT
 	 */
 	public static boolean isPositive(OpaqueExpression opaqueExpression) {
-		try {
-			for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
-				.hasNext();) {
 
+		for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
+			.hasNext();) {
+
+			try {
 				return Integer.parseInt((String) bodies.next()) > 0;
+			} catch (NumberFormatException nfe) {
+				// ignore
 			}
-		} catch (NumberFormatException nfe) {
-			// do nothing
 		}
 
 		throw new UnsupportedOperationException();
@@ -280,14 +283,15 @@ public final class OpaqueExpressionOperations extends UMLOperations {
 	 * @generated NOT
 	 */
 	public static boolean isNonNegative(OpaqueExpression opaqueExpression) {
-		try {
-			for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
-				.hasNext();) {
 
+		for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
+			.hasNext();) {
+
+			try {
 				return Integer.parseInt((String) bodies.next()) >= 0;
+			} catch (NumberFormatException nfe) {
+				// do nothing
 			}
-		} catch (NumberFormatException nfe) {
-			// do nothing
 		}
 
 		throw new UnsupportedOperationException();

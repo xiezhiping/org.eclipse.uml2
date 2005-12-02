@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.4 2005/12/02 04:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -17,9 +17,18 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.uml2.uml.LiteralBoolean;
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralString;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValueSpecification;
 
+import org.eclipse.uml2.uml.internal.impl.ParameterImpl;
+import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -40,9 +49,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ParameterOperations {
+public final class ParameterOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -216,23 +225,60 @@ public final class ParameterOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String getDefault(Parameter parameter) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+		return defaultValue == null
+			? EMPTY_STRING
+			: defaultValue.stringValue();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public static void setDefault(Parameter parameter, String newDefault) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public static void setDefault(Parameter parameter, final String newDefault) {
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+
+		if (defaultValue != null) {
+			new UMLSwitch() {
+
+				public Object caseLiteralBoolean(LiteralBoolean literalBoolean) {
+					literalBoolean.setValue(Boolean.getBoolean(newDefault));
+					return literalBoolean;
+				}
+
+				public Object caseLiteralInteger(LiteralInteger literalInteger) {
+					literalInteger.setValue(Integer.parseInt(newDefault));
+					return literalInteger;
+				}
+
+				public Object caseLiteralString(LiteralString literalString) {
+					literalString.setValue(newDefault);
+					return literalString;
+				}
+
+				public Object caseLiteralUnlimitedNatural(
+						LiteralUnlimitedNatural literalUnlimitedNatural) {
+					literalUnlimitedNatural.setValue(Integer
+						.parseInt(newDefault));
+					return literalUnlimitedNatural;
+				}
+
+				public Object defaultCase(EObject eObject) {
+					throw new IllegalArgumentException(newDefault);
+				}
+			}.doSwitch(defaultValue);
+		} else {
+			ParameterImpl parameterImpl = (ParameterImpl) parameter;
+			parameterImpl
+				.eVirtualSet(
+					parameterImpl
+						.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT),
+					newDefault);
+		}
 	}
 
 } // ParameterOperations

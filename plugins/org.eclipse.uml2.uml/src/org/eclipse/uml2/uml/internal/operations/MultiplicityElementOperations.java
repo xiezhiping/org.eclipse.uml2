@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.6 2005/12/01 20:58:58 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.7 2005/12/02 04:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -389,8 +389,13 @@ public final class MultiplicityElementOperations
 			int newLower) {
 		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
 
-		if (lowerValue instanceof LiteralInteger) {
-			((LiteralInteger) lowerValue).setValue(newLower);
+		if (lowerValue != null) {
+
+			if (lowerValue instanceof LiteralInteger) {
+				((LiteralInteger) lowerValue).setValue(newLower);
+			} else {
+				throw new IllegalArgumentException(String.valueOf(newLower));
+			}
 		} else {
 			MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
 			multiplicityElementImpl
@@ -410,8 +415,13 @@ public final class MultiplicityElementOperations
 			int newUpper) {
 		ValueSpecification upperValue = multiplicityElement.getUpperValue();
 
-		if (upperValue instanceof LiteralUnlimitedNatural) {
-			((LiteralUnlimitedNatural) upperValue).setValue(newUpper);
+		if (upperValue != null) {
+
+			if (upperValue instanceof LiteralUnlimitedNatural) {
+				((LiteralUnlimitedNatural) upperValue).setValue(newUpper);
+			} else {
+				throw new IllegalArgumentException(String.valueOf(newUpper));
+			}
 		} else {
 			MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
 			multiplicityElementImpl

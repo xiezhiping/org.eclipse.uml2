@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportOperations.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: PackageImportOperations.java,v 1.2 2005/12/02 04:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -34,9 +34,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class PackageImportOperations {
+public final class PackageImportOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

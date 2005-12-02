@@ -8,18 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: PackageOperations.java,v 1.2 2005/12/02 04:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
 
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -38,9 +45,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class PackageOperations {
+public final class PackageOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,6 +91,62 @@ public final class PackageOperations {
 		return true;
 	}
 
+	protected static List allImportedPackages(
+			org.eclipse.uml2.uml.Package package_, List allImportedPackages) {
+
+		for (Iterator packageImports = package_.getPackageImports().iterator(); packageImports
+			.hasNext();) {
+
+			PackageImport packageImport = (PackageImport) packageImports.next();
+
+			if (packageImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
+				org.eclipse.uml2.uml.Package importedPackage = packageImport
+					.getImportedPackage();
+
+				if (importedPackage != null
+					&& allImportedPackages.add(importedPackage)) {
+
+					allImportedPackages(importedPackage, allImportedPackages);
+				}
+			}
+		}
+
+		return allImportedPackages;
+	}
+
+	protected static List visibleMembers(org.eclipse.uml2.uml.Package package_,
+			List visibleMembers) {
+
+		for (Iterator ownedMembers = package_.getOwnedMembers().iterator(); ownedMembers
+			.hasNext();) {
+
+			PackageableElement ownedMember = (PackageableElement) ownedMembers
+				.next();
+
+			if (ownedMember.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
+				visibleMembers.add(ownedMember);
+			}
+		}
+
+		for (Iterator elementImports = package_.getElementImports().iterator(); elementImports
+			.hasNext();) {
+
+			ElementImport elementImport = (ElementImport) elementImports.next();
+
+			if (elementImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
+				PackageableElement importedElement = elementImport
+					.getImportedElement();
+
+				if (importedElement != null) {
+					visibleMembers.add(importedElement);
+				}
+			}
+		}
+
+		return visibleMembers;
+
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,12 +154,19 @@ public final class PackageOperations {
 	 * The query visibleMembers() defines which members of a Package can be accessed outside it.
 	 * result = member->select( m | self.makesVisible(m))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List visibleMembers(org.eclipse.uml2.uml.Package package_) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List visibleMembers = visibleMembers(package_, new UniqueEList());
+
+		for (Iterator allImportedPackages = allImportedPackages(package_,
+			new UniqueEList()).iterator(); allImportedPackages.hasNext();) {
+
+			visibleMembers((org.eclipse.uml2.uml.Package) allImportedPackages
+				.next(), visibleMembers);
+		}
+
+		return Collections.unmodifiableList(visibleMembers);
 	}
 
 	/**
@@ -109,13 +179,40 @@ public final class PackageOperations {
 	 * (elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or
 	 * (packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean makesVisible(org.eclipse.uml2.uml.Package package_,
 			NamedElement el) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (package_.getOwnedMembers().contains(el)) {
+			return el.getVisibility() == VisibilityKind.PUBLIC_LITERAL;
+		}
+
+		for (Iterator elementImports = package_.getElementImports().iterator(); elementImports
+			.hasNext();) {
+
+			ElementImport elementImport = (ElementImport) elementImports.next();
+
+			if (safeEquals(elementImport.getImportedElement(), el)) {
+				return elementImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL;
+			}
+		}
+
+		for (Iterator packageImports = package_.getPackageImports().iterator(); packageImports
+			.hasNext();) {
+
+			PackageImport packageImport = (PackageImport) packageImports.next();
+
+			if (packageImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
+				org.eclipse.uml2.uml.Package importedPackage = packageImport
+					.getImportedPackage();
+
+				return importedPackage != null
+					&& importedPackage.visibleMembers().contains(el);
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -125,12 +222,10 @@ public final class PackageOperations {
 	 * The query mustBeOwned() indicates whether elements of this type must have an owner.
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean mustBeOwned(org.eclipse.uml2.uml.Package package_) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return false;
 	}
 
 } // PackageOperations

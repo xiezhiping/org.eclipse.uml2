@@ -8,21 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: OperationOperations.java,v 1.4 2005/12/02 04:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Type;
 
+import org.eclipse.uml2.uml.internal.impl.ParameterImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -136,12 +142,13 @@ public final class OperationOperations {
 	 * If this operation has a return parameter, isOrdered equals the value of isOrdered for that parameter. Otherwise isOrdered is false.
 	 * result = if returnResult()->notEmpty() then returnResult()->any().isOrdered else false endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isOrdered(Operation operation) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = operation.returnResult();
+		return returnResult.size() == 1
+			? ((Parameter) returnResult.get(0)).isOrdered()
+			: false;
 	}
 
 	/**
@@ -154,12 +161,13 @@ public final class OperationOperations {
 	 * 
 	 * result = if returnResult()->notEmpty() then returnResult()->any().isUnique else true endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isUnique(Operation operation) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = operation.returnResult();
+		return returnResult.size() == 1
+			? ((Parameter) returnResult.get(0)).isUnique()
+			: true;
 	}
 
 	/**
@@ -172,12 +180,13 @@ public final class OperationOperations {
 	 * 
 	 * result = if returnResult()->notEmpty() then returnResult()->any().lower else Set{} endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int lowerBound(Operation operation) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = operation.returnResult();
+		return returnResult.size() == 1
+			? ((Parameter) returnResult.get(0)).lowerBound()
+			: 1;
 	}
 
 	/**
@@ -190,12 +199,13 @@ public final class OperationOperations {
 	 * 
 	 * result = if returnResult()->notEmpty() then returnResult()->any().upper else Set{} endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int upperBound(Operation operation) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = operation.returnResult();
+		return returnResult.size() == 1
+			? ((Parameter) returnResult.get(0)).upperBound()
+			: 1;
 	}
 
 	/**
@@ -205,12 +215,13 @@ public final class OperationOperations {
 	 * If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.
 	 * result = if returnResult()->notEmpty() then returnResult()->any().type else Set{} endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Type getType(Operation operation) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = operation.returnResult();
+		return returnResult.size() == 1
+			? ((ParameterImpl) returnResult.get(0)).basicGetType()
+			: null;
 	}
 
 	/**
@@ -220,89 +231,105 @@ public final class OperationOperations {
 	 * The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
 	 * result = ownedParameter->select (par | par.direction = #return)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List returnResult(Operation operation) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = new UniqueEList();
+
+		for (Iterator ownedParameters = operation.getOwnedParameters()
+			.iterator(); ownedParameters.hasNext();) {
+
+			Parameter ownedParameter = (Parameter) ownedParameters.next();
+
+			if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+				returnResult.add(ownedParameter);
+			}
+		}
+
+		return Collections.unmodifiableList(returnResult);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int getLower(Operation operation) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return operation.lowerBound();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int getUpper(Operation operation) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return operation.upperBound();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setIsOrdered(Operation operation, boolean newIsOrdered) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = operation.returnResult();
+
+		if (returnResult.size() == 1) {
+			((Parameter) returnResult.get(0)).setIsOrdered(newIsOrdered);
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setIsUnique(Operation operation, boolean newIsUnique) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = operation.returnResult();
+
+		if (returnResult.size() == 1) {
+			((Parameter) returnResult.get(0)).setIsUnique(newIsUnique);
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setLower(Operation operation, int newLower) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = operation.returnResult();
+
+		if (returnResult.size() == 1) {
+			((Parameter) returnResult.get(0)).setLower(newLower);
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setUpper(Operation operation, int newUpper) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = operation.returnResult();
+
+		if (returnResult.size() == 1) {
+			((Parameter) returnResult.get(0)).setUpper(newUpper);
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setType(Operation operation, Type newType) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List returnResult = operation.returnResult();
+
+		if (returnResult.size() == 1) {
+			((Parameter) returnResult.get(0)).setType(newType);
+		}
 	}
 
 	/**
@@ -318,13 +345,60 @@ public final class OperationOperations {
 	 * forAll(i | op.ownedParameter[i].type.conformsTo(self.ownedParameter[i].type))
 	 * )
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(Operation operation,
 			RedefinableElement redefinee) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (redefinee.isRedefinitionContextValid(operation)
+			&& redefinee instanceof Operation) {
+
+			Operation op = (Operation) redefinee;
+
+			List ownedParameters = operation.getOwnedParameters();
+			int ownedParametersSize = ownedParameters.size();
+			List opOwnedParameters = op.getOwnedParameters();
+
+			List returnResult = operation.returnResult();
+			int returnResultSize = returnResult.size();
+			List opReturnResult = op.returnResult();
+
+			if (ownedParametersSize == opOwnedParameters.size()
+				&& returnResultSize == opReturnResult.size()) {
+
+				for (int i = 0; i < ownedParametersSize; i++) {
+					Type opOwnedParameterType = ((Parameter) opOwnedParameters
+						.get(i)).getType();
+					Type ownedParameterType = ((Parameter) ownedParameters
+						.get(i)).getType();
+
+					if (opOwnedParameterType == null
+						? ownedParameterType != null
+						: !opOwnedParameterType.conformsTo(ownedParameterType)) {
+
+						return false;
+					}
+				}
+
+				for (int i = 0; i < returnResultSize; i++) {
+					Type opReturnResultType = ((Parameter) opReturnResult
+						.get(i)).getType();
+					Type returnResultType = ((Parameter) returnResult.get(i))
+						.getType();
+
+					if (opReturnResultType == null
+						? returnResultType != null
+						: !opReturnResultType.conformsTo(returnResultType)) {
+
+						return false;
+					}
+				}
+
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 } // OperationOperations
