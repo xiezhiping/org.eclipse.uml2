@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.3 2005/11/28 20:26:01 khussey Exp $
+ * $Id: Parameter.java,v 1.4 2005/12/05 18:00:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -132,9 +132,11 @@ public interface Parameter
 	 * Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default</em>' attribute.
+	 * @see #isSetDefault()
+	 * @see #unsetDefault()
 	 * @see #setDefault(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_Default()
-	 * @model transient="true" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	String getDefault();
@@ -144,10 +146,35 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Default</em>' attribute.
+	 * @see #isSetDefault()
+	 * @see #unsetDefault()
 	 * @see #getDefault()
 	 * @generated
 	 */
 	void setDefault(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Parameter#getDefault <em>Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetDefault()
+	 * @see #getDefault()
+	 * @see #setDefault(String)
+	 * @generated
+	 */
+	void unsetDefault();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Parameter#getDefault <em>Default</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Default</em>' attribute is set.
+	 * @see #unsetDefault()
+	 * @see #getDefault()
+	 * @see #setDefault(String)
+	 * @generated
+	 */
+	boolean isSetDefault();
 
 	/**
 	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.

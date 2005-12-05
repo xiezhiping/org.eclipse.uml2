@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
+ * $Id: LiteralIntegerImpl.java,v 1.7 2005/12/05 18:00:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -160,6 +160,15 @@ public class LiteralIntegerImpl
 	 */
 	public int integerValue() {
 		return LiteralIntegerOperations.integerValue(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String stringValue() {
+		return LiteralIntegerOperations.stringValue(this);
 	}
 
 	/**

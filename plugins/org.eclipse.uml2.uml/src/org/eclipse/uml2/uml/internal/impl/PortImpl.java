@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.9 2005/12/01 20:04:36 khussey Exp $
+ * $Id: PortImpl.java,v 1.10 2005/12/05 18:00:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.AggregationKind;
@@ -206,6 +207,16 @@ public class PortImpl
 	 * @generated
 	 */
 	public List getRequireds() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.PORT__REQUIRED);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.PORT__REQUIRED,
+					result = PortOperations.getRequireds(this));
+			}
+			return result;
+		}
 		return PortOperations.getRequireds(this);
 	}
 
@@ -260,6 +271,16 @@ public class PortImpl
 	 * @generated
 	 */
 	public List getProvideds() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this,
+				UMLPackage.Literals.PORT__PROVIDED);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.PORT__PROVIDED,
+					result = PortOperations.getProvideds(this));
+			}
+			return result;
+		}
 		return PortOperations.getProvideds(this);
 	}
 
@@ -739,7 +760,7 @@ public class PortImpl
 				setIsDerivedUnion(IS_DERIVED_UNION_EDEFAULT);
 				return;
 			case UMLPackage.PORT__DEFAULT :
-				setDefault(DEFAULT_EDEFAULT);
+				unsetDefault();
 				return;
 			case UMLPackage.PORT__AGGREGATION :
 				setAggregation(AGGREGATION_EDEFAULT);
@@ -873,9 +894,7 @@ public class PortImpl
 			case UMLPackage.PORT__IS_DERIVED_UNION :
 				return ((eFlags & IS_DERIVED_UNION_EFLAG) != 0) != IS_DERIVED_UNION_EDEFAULT;
 			case UMLPackage.PORT__DEFAULT :
-				return DEFAULT_EDEFAULT == null
-					? getDefault() != null
-					: !DEFAULT_EDEFAULT.equals(getDefault());
+				return isSetDefault();
 			case UMLPackage.PORT__AGGREGATION :
 				return eVirtualGet(UMLPackage.PORT__AGGREGATION,
 					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;

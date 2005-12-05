@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.9 2005/12/01 20:04:38 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.10 2005/12/05 18:00:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -404,9 +404,7 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__IS_DERIVED_UNION :
 				return ((eFlags & IS_DERIVED_UNION_EFLAG) != 0) != IS_DERIVED_UNION_EDEFAULT;
 			case UMLPackage.EXTENSION_END__DEFAULT :
-				return DEFAULT_EDEFAULT == null
-					? getDefault() != null
-					: !DEFAULT_EDEFAULT.equals(getDefault());
+				return isSetDefault();
 			case UMLPackage.EXTENSION_END__AGGREGATION :
 				return eVirtualGet(UMLPackage.EXTENSION_END__AGGREGATION,
 					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeOperations.java,v 1.2 2005/12/01 22:16:35 khussey Exp $
+ * $Id: ObjectNodeOperations.java,v 1.3 2005/12/05 18:00:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -39,7 +39,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class ObjectNodeOperations extends UMLOperations {
+public final class ObjectNodeOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

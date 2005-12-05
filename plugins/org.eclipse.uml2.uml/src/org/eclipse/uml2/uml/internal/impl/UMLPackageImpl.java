@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.5 2005/12/05 18:00:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -10617,15 +10617,16 @@ public class UMLPackageImpl
 		fixEClassifiers();
 	}
 
+	/**
+	 * Sets the instance class on the given classifier.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	protected void fixInstanceClass(EClassifier eClassifier) {
 		if (eClassifier.getInstanceClassName() == null) {
-			String className = getClass().getName();
-			int i = className.lastIndexOf('.', className.lastIndexOf('.',
-				className.lastIndexOf('.') - 1) - 1);
-			className = i == -1
-				? eClassifier.getName()
-				: className.substring(0, i + 1) + eClassifier.getName();
-			eClassifier.setInstanceClassName(className);
+			eClassifier
+				.setInstanceClassName("org.eclipse.uml2.uml." + eClassifier.getName()); //$NON-NLS-1$
 			setGeneratedClassName(eClassifier);
 		}
 	}

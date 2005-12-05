@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanOperations.java,v 1.3 2005/12/01 20:04:39 khussey Exp $
+ * $Id: LiteralBooleanOperations.java,v 1.4 2005/12/05 18:00:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,7 +27,7 @@ import org.eclipse.uml2.uml.LiteralBoolean;
  * </ul>
  * </p>
  *
- * @generated NOT
+ * @generated not
  */
 public final class LiteralBooleanOperations
 		extends UMLOperations {
@@ -65,6 +65,17 @@ public final class LiteralBooleanOperations
 	 */
 	public static boolean booleanValue(LiteralBoolean literalBoolean) {
 		return literalBoolean.isValue();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static String stringValue(LiteralBoolean literalBoolean) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // LiteralBooleanOperations

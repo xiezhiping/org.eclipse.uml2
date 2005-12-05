@@ -1784,6 +1784,12 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages.&#xD;&#xA;An expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages.&#xA;&#xA;One predefined language for specifying expressions is OCL. Natural language or programming languages may also be used.&#xA;&#xA;&#xD;&#xA;Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result."/>
     </eAnnotations>
+    <eAnnotations source="duplicates">
+      <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
+      </contents>
+    </eAnnotations>
     <eOperations name="language_body_size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If the language attribute is not empty, then the size of the body and language arrays must be the same.&#xD;&#xA;language->notEmpty() implies (body->size() = language->size())"/>
@@ -1937,7 +1943,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" ordered="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" volatile="true"
-        transient="true" derived="true">
+        unsettable="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies a String that represents a value to be used when no argument is supplied for the Parameter."/>
       </eAnnotations>
@@ -2356,7 +2362,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" ordered="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" volatile="true"
-        transient="true" derived="true">
+        unsettable="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies a String that represents a value to be used when no argument is supplied for the Property.&#xD;&#xA;A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated."/>
       </eAnnotations>
@@ -2768,7 +2774,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint" resolveProxies="false">
@@ -4809,6 +4815,10 @@
         </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/integerValue"/>
       </contents>
+      <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
+      </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -4876,6 +4886,10 @@
           <details key="constraints" value="spec"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/booleanValue"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
@@ -5025,6 +5039,12 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An instance value specifies the value modeled by an instance specification."/>
     </eAnnotations>
+    <eAnnotations source="duplicates">
+      <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
+      </contents>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="instance" ordered="false"
         lowerBound="1" eType="#//InstanceSpecification">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5056,6 +5076,10 @@
           <details key="constraints" value="spec"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/unlimitedValue"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"

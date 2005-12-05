@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.4 2005/12/02 04:55:51 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.5 2005/12/05 18:00:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -49,7 +49,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class OpaqueExpressionOperations extends UMLOperations {
+public final class OpaqueExpressionOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -319,6 +320,17 @@ public final class OpaqueExpressionOperations extends UMLOperations {
 		}
 
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static String stringValue(OpaqueExpression opaqueExpression) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // OpaqueExpressionOperations

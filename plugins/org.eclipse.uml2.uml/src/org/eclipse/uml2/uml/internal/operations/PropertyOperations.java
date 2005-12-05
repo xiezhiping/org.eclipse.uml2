@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.5 2005/12/02 04:55:51 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.6 2005/12/05 18:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -65,7 +65,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class PropertyOperations extends UMLOperations {
+public final class PropertyOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

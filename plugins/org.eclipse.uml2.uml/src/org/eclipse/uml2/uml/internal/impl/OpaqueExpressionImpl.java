@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.7 2005/12/01 20:04:37 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.8 2005/12/05 18:00:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -274,6 +274,15 @@ public class OpaqueExpressionImpl
 	 */
 	public boolean isNonNegative() {
 		return OpaqueExpressionOperations.isNonNegative(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String stringValue() {
+		return OpaqueExpressionOperations.stringValue(this);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueImpl.java,v 1.5 2005/12/01 20:04:38 khussey Exp $
+ * $Id: InstanceValueImpl.java,v 1.6 2005/12/05 18:00:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,8 @@ import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
+
+import org.eclipse.uml2.uml.internal.operations.InstanceValueOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -111,6 +113,15 @@ public class InstanceValueImpl
 					? null
 					: oldInstance, instance));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String stringValue() {
+		return InstanceValueOperations.stringValue(this);
 	}
 
 	/**

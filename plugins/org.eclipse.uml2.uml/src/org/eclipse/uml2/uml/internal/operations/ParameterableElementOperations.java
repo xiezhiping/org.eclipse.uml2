@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementOperations.java,v 1.2 2005/12/02 04:55:51 khussey Exp $
+ * $Id: ParameterableElementOperations.java,v 1.3 2005/12/05 18:00:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,7 +30,8 @@ import org.eclipse.uml2.uml.internal.impl.ParameterableElementImpl;
  *
  * @generated not
  */
-public final class ParameterableElementOperations extends UMLOperations {
+public final class ParameterableElementOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

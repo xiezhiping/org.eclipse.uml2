@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.5 2005/11/29 19:53:45 khussey Exp $
+ * $Id: Property.java,v 1.6 2005/12/05 18:00:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -166,9 +166,11 @@ public interface Property
 	 * A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default</em>' attribute.
+	 * @see #isSetDefault()
+	 * @see #unsetDefault()
 	 * @see #setDefault(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Default()
-	 * @model transient="true" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	String getDefault();
@@ -178,10 +180,35 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Default</em>' attribute.
+	 * @see #isSetDefault()
+	 * @see #unsetDefault()
 	 * @see #getDefault()
 	 * @generated
 	 */
 	void setDefault(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Property#getDefault <em>Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetDefault()
+	 * @see #getDefault()
+	 * @see #setDefault(String)
+	 * @generated
+	 */
+	void unsetDefault();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Property#getDefault <em>Default</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Default</em>' attribute is set.
+	 * @see #unsetDefault()
+	 * @see #getDefault()
+	 * @see #setDefault(String)
+	 * @generated
+	 */
+	boolean isSetDefault();
 
 	/**
 	 * Returns the value of the '<em><b>Aggregation</b></em>' attribute.

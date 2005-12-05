@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.9 2005/12/01 20:04:37 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.10 2005/12/05 18:00:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -610,6 +610,28 @@ public class ParameterImpl
 			: newDefault;
 
 		ParameterOperations.setDefault(this, newDefault);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetDefault() {
+		// TODO: implement this method to unset the 'Default' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetDefault() {
+		// TODO: implement this method to return whether the 'Default' attribute is set
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -1221,7 +1243,7 @@ public class ParameterImpl
 				setDirection(DIRECTION_EDEFAULT);
 				return;
 			case UMLPackage.PARAMETER__DEFAULT :
-				setDefault(DEFAULT_EDEFAULT);
+				unsetDefault();
 				return;
 			case UMLPackage.PARAMETER__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) null);
@@ -1305,9 +1327,7 @@ public class ParameterImpl
 				return eVirtualGet(UMLPackage.PARAMETER__DIRECTION,
 					DIRECTION_EDEFAULT) != DIRECTION_EDEFAULT;
 			case UMLPackage.PARAMETER__DEFAULT :
-				return DEFAULT_EDEFAULT == null
-					? getDefault() != null
-					: !DEFAULT_EDEFAULT.equals(getDefault());
+				return isSetDefault();
 			case UMLPackage.PARAMETER__DEFAULT_VALUE :
 				return eVirtualGet(UMLPackage.PARAMETER__DEFAULT_VALUE) != null;
 			case UMLPackage.PARAMETER__IS_EXCEPTION :

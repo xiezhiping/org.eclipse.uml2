@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableActionOperations.java,v 1.2 2005/12/01 22:16:35 khussey Exp $
+ * $Id: WriteVariableActionOperations.java,v 1.3 2005/12/05 18:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -37,7 +37,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class WriteVariableActionOperations extends UMLOperations {
+public final class WriteVariableActionOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

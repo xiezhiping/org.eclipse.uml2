@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.4 2005/12/01 22:16:35 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.5 2005/12/05 18:00:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -52,7 +52,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class NamespaceOperations extends UMLOperations {
+public final class NamespaceOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

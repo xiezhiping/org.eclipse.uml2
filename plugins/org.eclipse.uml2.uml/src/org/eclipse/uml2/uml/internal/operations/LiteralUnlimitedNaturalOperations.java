@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalOperations.java,v 1.3 2005/12/01 20:04:38 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalOperations.java,v 1.4 2005/12/05 18:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -67,6 +67,18 @@ public final class LiteralUnlimitedNaturalOperations
 	public static int unlimitedValue(
 			LiteralUnlimitedNatural literalUnlimitedNatural) {
 		return literalUnlimitedNatural.getValue();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static String stringValue(
+			LiteralUnlimitedNatural literalUnlimitedNatural) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // LiteralUnlimitedNaturalOperations

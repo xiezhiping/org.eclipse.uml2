@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.11 2005/12/01 20:04:36 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.12 2005/12/05 18:00:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -855,6 +855,28 @@ public class PropertyImpl
 			: newDefault;
 
 		PropertyOperations.setDefault(this, newDefault);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetDefault() {
+		// TODO: implement this method to unset the 'Default' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetDefault() {
+		// TODO: implement this method to return whether the 'Default' attribute is set
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -1960,7 +1982,7 @@ public class PropertyImpl
 				setIsDerivedUnion(IS_DERIVED_UNION_EDEFAULT);
 				return;
 			case UMLPackage.PROPERTY__DEFAULT :
-				setDefault(DEFAULT_EDEFAULT);
+				unsetDefault();
 				return;
 			case UMLPackage.PROPERTY__AGGREGATION :
 				setAggregation(AGGREGATION_EDEFAULT);
@@ -2082,9 +2104,7 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__IS_DERIVED_UNION :
 				return ((eFlags & IS_DERIVED_UNION_EFLAG) != 0) != IS_DERIVED_UNION_EDEFAULT;
 			case UMLPackage.PROPERTY__DEFAULT :
-				return DEFAULT_EDEFAULT == null
-					? getDefault() != null
-					: !DEFAULT_EDEFAULT.equals(getDefault());
+				return isSetDefault();
 			case UMLPackage.PROPERTY__AGGREGATION :
 				return eVirtualGet(UMLPackage.PROPERTY__AGGREGATION,
 					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
