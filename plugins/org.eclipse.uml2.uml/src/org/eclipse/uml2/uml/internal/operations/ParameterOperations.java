@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.6 2005/12/05 20:18:59 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.7 2005/12/05 20:47:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -333,6 +333,28 @@ public final class ParameterOperations
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT),
 					newDefault);
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static boolean isSetDefault(Parameter parameter) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static void unsetDefault(Parameter parameter) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // ParameterOperations

@@ -857,6 +857,8 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Parameter/setDefault">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Parameter/setDefault/newDefault"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Parameter/isSetDefault"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Parameter/unsetDefault"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//MultiplicityElement">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//MultiplicityElement/isOrdered"/>
@@ -1044,6 +1046,8 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Property/setOpposite">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Property/setOpposite/newOpposite"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Property/isSetDefault"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Property/unsetDefault"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//DeploymentTarget">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"

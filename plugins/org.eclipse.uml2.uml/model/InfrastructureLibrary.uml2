@@ -34,7 +34,7 @@
           </ownedRule>
           <ownedAttribute xmi:id="_3ADC7B74022D3CADCD85009B" name="ownedElement" type="_3ADC7B74022D3CADCAEE0250" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3CADCD8300C0" aggregation="composite">
             <eAnnotations xmi:id="_rN7OgBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JKzDYGWXEdqX5rc_gMqPOQ" isTransient="true" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S4GXHEdqZJYx_cH0Gsg" isTransient="true" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rNLnqRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CADCD85009B">
               <body>The Elements owned by this element.</body>
@@ -44,7 +44,7 @@
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CADCD8500A5" name="owner" type="_3ADC7B74022D3CADCAEE0250" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3CADCD8300C0">
             <eAnnotations xmi:id="_rO0mYBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JKzDYWWXEdqX5rc_gMqPOQ" isTransient="true" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S4WXHEdqZJYx_cH0Gsg" isTransient="true" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rOE_gRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CADCD8500A5">
               <body>The Element that owns this element.</body>
@@ -54,7 +54,7 @@
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CB1D63A01EB" name="ownedComment" type="_3ADC7B74022D3CAC070A03AB" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3CB1D639015E" aggregation="composite">
             <eAnnotations xmi:id="_nx_5YDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JKzDYmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S4mXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rXxHCxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CB1D63A01EB">
               <body>The Comments owned by this element.</body>
@@ -124,7 +124,7 @@
           <generalization xmi:id="_3ADC7B74022D3CADD38B00D4" general="_3ADC7B74022D3CADCAEE0250"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0080E03C3" name="name" type="_3ADC7B74022D3CA010B103C3">
             <eAnnotations xmi:id="_MfBDcCrOEdqvsvjq9GOA3Q" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JKzDY2WXEdqX5rc_gMqPOQ" isID="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pb0S42XHEdqZJYx_cH0Gsg" isID="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rR8y5BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0080E03C3">
               <body>The name of the NamedElement.</body>
@@ -134,7 +134,7 @@
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA008400375" name="qualifiedName" type="_3ADC7B74022D3CA010B103C3" isReadOnly="true" isDerived="true">
             <eAnnotations xmi:id="_rSPt1BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JKzDZGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pb0S5GXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rSGj5RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA008400375">
               <body>A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.</body>
@@ -144,7 +144,7 @@
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA008A2036C" name="namespace" type="_3ADC7B74022D3CA0072700FA" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3CADCD8500A5" association="_3ADC7B74022D3CA008A20037">
             <eAnnotations xmi:id="_rS2KwxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JKzDZWWXEdqX5rc_gMqPOQ" isTransient="true" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S5WXHEdqZJYx_cH0Gsg" isTransient="true" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rSsZxxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA008A2036C">
               <body>Specifies the namespace that owns the NamedElement.</body>
@@ -198,7 +198,7 @@ endif</body>
           </ownedOperation>
           <ownedOperation xmi:id="_3ADC7B74022D3E1065EF023E" name="qualifiedName" type="_3ADC7B74022D3CA010B103C3" isQuery="true" bodyCondition="_rRzB7BTaEdqZu-3Jy1-uYg">
             <eAnnotations xmi:id="_OGZFcFYGEdqrn7iZ0eqieg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JKzDZmWXEdqX5rc_gMqPOQ" operationName="getQualifiedName"/>
+              <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pb0S5mXHEdqZJYx_cH0Gsg" operationName="getQualifiedName"/>
             </eAnnotations>
             <ownedComment xmi:id="_rRzB6BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1065EF023E">
               <body>When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.</body>
@@ -231,7 +231,7 @@ endif</body>
           <generalization xmi:id="_3ADC7B74022D3CA00777024A" general="_3ADC7B74022D3CA0071C02FD"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA008A20358" name="ownedMember" type="_3ADC7B74022D3CA0071C02FD" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3CADCD85009B _3ADC7B74022D3CA0098401B9" association="_3ADC7B74022D3CA008A20037" aggregation="composite">
             <eAnnotations xmi:id="_rSsZxBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JKzDZ2WXEdqX5rc_gMqPOQ" isTransient="true" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S52XHEdqZJYx_cH0Gsg" isTransient="true" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rSjP2hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA008A20358">
               <body>A collection of NamedElements owned by the Namespace.</body>
@@ -241,7 +241,7 @@ endif</body>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0098401B9" name="member" type="_3ADC7B74022D3CA0071C02FD" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3CA009830275">
             <eAnnotations xmi:id="_rS2KzBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JKzDaGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S6GXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rS2KxxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0098401B9">
               <body>A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.</body>
@@ -296,7 +296,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           <generalization xmi:id="_3ADC7B74022D3CA00B0C03CF" general="_3ADC7B74022D3CA0072700FA"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA00B92018D" name="feature" type="_3ADC7B74022D3CA00A3900A0" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3CA0098401B9" association="_3ADC7B74022D3CA00B91036C">
             <eAnnotations xmi:id="_rTcApBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JKzDaWWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S6WXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rTS2vRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA00B92018D">
               <body>Specifies each feature defined in the classifier.</body>
@@ -326,7 +326,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           <generalization xmi:id="_3ADC7B74022D3CADD687034A" general="_3ADC7B74022D3CA0071C02FD"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA00B920183" name="featuringClassifier" type="_3ADC7B74022D3CA00A2A018F" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3CA00B91036C">
             <eAnnotations xmi:id="_rTS2uhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JK80YGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S6mXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rTS2tRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA00B920183">
               <body>The Classifiers that have this Feature as a feature.</body>
@@ -348,8 +348,8 @@ memb.isDistinguishableFrom(other, self)))</body>
           <generalization xmi:id="_3ADC7B74022D3CADD243035D" general="_3ADC7B74022D3CA00F020323"/>
           <ownedAttribute xmi:id="_3ADC7B74022D41AE11E501C8" name="body" type="_3ADC7B74022D3CA010B103C3" isOrdered="true" association="_3ADC7B74022D41AE11E4020D" aggregation="composite">
             <eAnnotations xmi:id="_p5f9sCkcEdqtk_gpPUW4NQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JK80YWWXEdqX5rc_gMqPOQ" isUnsettable="true" xmlFeatureKind="Element"/>
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JK80YmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pb0S7GXHEdqZJYx_cH0Gsg" isUnsettable="true" xmlFeatureKind="Element"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S62XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rULnkxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41AE11E501C8">
               <body>The text of the expression, possibly in multiple languages.</body>
@@ -359,7 +359,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D41AE120C0319" name="language" type="_3ADC7B74022D3CA010B103C3" isOrdered="true" association="_3ADC7B74022D41AE120B032B" aggregation="composite">
             <eAnnotations xmi:id="_nyTbYTwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JK80Y2WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S7WXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rUVYgRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41AE120C0319">
               <body>Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the language. If languages are unspecified, it might be implicit from the expression body or the context. Languages are matched to body strings by order.</body>
@@ -447,7 +447,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           <generalization xmi:id="_3ADC7B74022D3E555CF0029C" general="_3ADC7B74022D3CA00F020323"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3E555C7702E8" name="symbol" type="_3ADC7B74022D3CA010B103C3">
             <eAnnotations xmi:id="_stFk8F04Edq_LIww8XP1gg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JK80ZGWXEdqX5rc_gMqPOQ" isUnsettable="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pb0S7mXHEdqZJYx_cH0Gsg" isUnsettable="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rULnhBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E555C7702E8">
               <body>The symbol associated with the node in the expression tree.</body>
@@ -455,7 +455,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3E555CFE0288" name="operand" type="_3ADC7B74022D3CA00F020323" isOrdered="true" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3E555CFC002C" aggregation="composite">
             <eAnnotations xmi:id="_nyTbYzwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JK80ZWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S72XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rULniRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E555CFE0288">
               <body>Specifies a sequence of operands.</body>
@@ -494,7 +494,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           <generalization xmi:id="_3ADC7B74022D3DF78EA20170" general="_3ADC7B74022D3CADCAEE0250"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3DF78F1C034C" name="lower" type="_3ADC7B74022D3CA010A4007B" isDerived="true">
             <eAnnotations xmi:id="_rU71hhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JK80ZmWXEdqX5rc_gMqPOQ" isUnsettable="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pb0S8GXHEdqZJYx_cH0Gsg" isUnsettable="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rU71gRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF78F1C034C">
               <body>Specifies the lower bound of the multiplicity interval, if it is expressed as an integer. This is a redefinition of the corresponding property from Multiplicities.</body>
@@ -505,7 +505,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3DF78F2B0290" name="upper" type="_3ADC7B74022D3DE6A93C0003" isDerived="true">
             <eAnnotations xmi:id="_rVE_YBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JK80Z2WXEdqX5rc_gMqPOQ" isUnsettable="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pb0S8WXHEdqZJYx_cH0Gsg" isUnsettable="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rU71iRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF78F2B0290">
               <body>Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural. This is a redefinition of the corresponding property from Multiplicities.</body>
@@ -516,7 +516,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3D5391BE0239" name="upperValue" type="_3ADC7B74022D3CA00F020323" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3D5391BE00B3" aggregation="composite">
             <eAnnotations xmi:id="_nyclUDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JK80aGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb0S8mXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rVE_ZBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D5391BE0239">
               <body>The specification of the upper bound for this multiplicity.</body>
@@ -526,7 +526,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3D5391E6031D" name="lowerValue" type="_3ADC7B74022D3CA00F020323" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3D5391E6015B" aggregation="composite">
             <eAnnotations xmi:id="_nyclUjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JK80aWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb9c0GXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_qAlgIBVzEdqDjccWl3Bw0Q" annotatedElement="_3ADC7B74022D3D5391E6031D">
               <body>The specification of the lower bound for this multiplicity.</body>
@@ -536,7 +536,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </ownedAttribute>
           <ownedOperation xmi:id="_3ADC7B74022D3E140A3102FA" name="lower" type="_3ADC7B74022D3CA010A4007B" isQuery="true" bodyCondition="_rUyEehTaEdqZu-3Jy1-uYg">
             <eAnnotations xmi:id="_rUyEeBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JK80amWXEdqX5rc_gMqPOQ" operationName="getLower"/>
+              <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pb9c0WXHEdqZJYx_cH0Gsg" operationName="getLower"/>
             </eAnnotations>
             <ownedComment xmi:id="_rUyEdBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E140A3102FA">
               <body>The derived lower attribute must equal the lowerBound.</body>
@@ -550,7 +550,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </ownedOperation>
           <ownedOperation xmi:id="_3ADC7B74022D3E140A6C013C" name="upper" type="_3ADC7B74022D3DE6A93C0003" isQuery="true" bodyCondition="_rUyEhRTaEdqZu-3Jy1-uYg">
             <eAnnotations xmi:id="_rUyEgxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JK80a2WXEdqX5rc_gMqPOQ" operationName="getUpper"/>
+              <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pb9c0mXHEdqZJYx_cH0Gsg" operationName="getUpper"/>
             </eAnnotations>
             <ownedComment xmi:id="_rUyEfxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E140A6C013C">
               <body>The derived upper attribute must equal the upperBound.</body>
@@ -611,7 +611,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           <generalization xmi:id="_3ADC7B74022D3CB1519A0173" general="_3ADC7B74022D3CA0072700FA"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA02BDB0015" name="parameter" type="_3ADC7B74022D3CA02702036E" isOrdered="true" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3CA0098401B9" association="_3ADC7B74022D3CA02BDA01C2">
             <eAnnotations xmi:id="_rVhrZhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JLGlYGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pb9c02XHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rVhrYRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA02BDB0015">
               <body>Specifies the parameters of the BehavioralFeature.</body>
@@ -691,7 +691,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           <generalization xmi:id="_3ADC7B74022D3CB5A10A02FF" general="_3ADC7B74022D3CA0071C02FD"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0333B03B3" name="slot" type="_3ADC7B74022D3CA032120334" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3CA0333B0178" aggregation="composite">
             <eAnnotations xmi:id="_nymWUDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JLsbQGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcQXwGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rV-XTRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0333B03B3">
               <body>A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.</body>
@@ -708,7 +708,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3D11161F0240" name="specification" type="_3ADC7B74022D3CA00F020323" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3D11161E02D5" aggregation="composite">
             <eAnnotations xmi:id="_nymWUjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JLsbQWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcQXwWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rWIIUhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D11161F0240">
               <body>A specification of how to compute, derive, or construct the instance.</body>
@@ -724,7 +724,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           <generalization xmi:id="_3ADC7B74022D3CADD59B02E6" general="_3ADC7B74022D3CADCAEE0250"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0333B03BD" name="owningInstance" type="_3ADC7B74022D3CA0320C02DB" subsettedProperty="_3ADC7B74022D3CADCD8500A5" association="_3ADC7B74022D3CA0333B0178">
             <eAnnotations xmi:id="_woAeAFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JLsbQmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcQXwmXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rV-XUxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0333B03BD">
               <body>The instance specification that owns this slot.</body>
@@ -734,7 +734,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CDA7CBE0189" name="value" type="_3ADC7B74022D3CA00F020323" isOrdered="true" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3CDA7CBD025A" aggregation="composite">
             <eAnnotations xmi:id="_nymWVDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JLsbQ2WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcQXw2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rWIISBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CDA7CBE0189">
               <body>The value or values corresponding to the defining feature for the owning instance specification. This is an ordered association.</body>
@@ -815,7 +815,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           <generalization xmi:id="_3ADC7B74022D3CA01AB203CF" general="_3ADC7B74022D3CA0071C02FD"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA01B20019D" name="redefinedElement" type="_3ADC7B74022D3CA019640144" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3CA01B1E012C">
             <eAnnotations xmi:id="_rWkNPhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JLsbRGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIwGXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rWkNORTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA01B20019D">
               <body>The redefinable element that is being redefined by this element.</body>
@@ -825,7 +825,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CADABFE01E3" name="redefinitionContext" type="_3ADC7B74022D3DF659AC02FF" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3CADABFD03A5">
             <eAnnotations xmi:id="_rWt-KRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JLsbRWWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIwWXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rWt-JBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CADABFE01E3">
               <body>References the contexts that this element may be redefined from.</body>
@@ -878,7 +878,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           <generalization xmi:id="_3ADC7B74022D3CA01274037B" general="_3ADC7B74022D3D51445B01FA"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0127D01D9" name="specific" type="_3ADC7B74022D3CA011BE01AD" subsettedProperty="_3ADC7B74022D3DE6A15F02E3 _3ADC7B74022D3CADCD8500A5" association="_3ADC7B74022D3CA0127C032D">
             <eAnnotations xmi:id="_wo514FqpEdqTMeoDATTRUw" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JLsbRmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIwmXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rXUbIBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0127D01D9">
               <body>References the specializing classifier in the Generalization relationship. </body>
@@ -901,7 +901,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           <generalization xmi:id="_3ADC7B74022D3E554FB4033A" general="_3ADC7B74022D3E554AF2005E"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0127D01CF" name="generalization" type="_3ADC7B74022D3CA011B1028A" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3CA0127C032D" aggregation="composite">
             <eAnnotations xmi:id="_nyvgQDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JLsbR2WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIw2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rXUbGhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0127D01CF">
               <body>Specifies the Generalization relationships for this Classifier. These Generalizations navigate to more general classifiers in the generalization hierarchy.</body>
@@ -911,7 +911,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3DF65B8D0134" name="general" type="_3ADC7B74022D3CA011BE01AD" isDerived="true" association="_3ADC7B74022D3DF65B8A03C5">
             <eAnnotations xmi:id="_rXdlDxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JLsbSGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIxGXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rXdlChTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF65B8D0134">
               <body>Specifies the general Classifiers for this Classifier.</body>
@@ -921,7 +921,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           </ownedAttribute>
           <ownedOperation xmi:id="_3ADC7B74022D3E105DC8003E" name="general" type="_3ADC7B74022D3CA011BE01AD" isQuery="true" bodyCondition="_rXKqExTaEdqZu-3Jy1-uYg">
             <eAnnotations xmi:id="_rXKqERTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JL2MQGWXEdqX5rc_gMqPOQ" operationName="getGenerals"/>
+              <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pcaIxWXHEdqZJYx_cH0Gsg" operationName="getGenerals"/>
             </eAnnotations>
             <ownedComment xmi:id="_rXA5EhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E105DC8003E">
               <body>The general classifiers are the classifiers referenced by the generalization relationships.</body>
@@ -984,7 +984,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           <generalization xmi:id="_3ADC7B74022D41B0D73B026C" general="_3ADC7B74022D3CADCAEE0250"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CAC072502E2" name="body" type="_3ADC7B74022D3CA010B103C3">
             <eAnnotations xmi:id="_hcJW4CkcEdqtk_gpPUW4NQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JL2MQWWXEdqX5rc_gMqPOQ" isUnsettable="true" xmlFeatureKind="Element"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pcaIxmXHEdqZJYx_cH0Gsg" isUnsettable="true" xmlFeatureKind="Element"/>
             </eAnnotations>
             <ownedComment xmi:id="_rXxHBhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAC072502E2">
               <body>Specifies a string that is the comment</body>
@@ -1011,7 +1011,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           <generalization xmi:id="_3ADC7B74022D3D5144E80329" general="_3ADC7B74022D3CA004180181"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3DE6A15F02E3" name="source" type="_3ADC7B74022D3CADCAEE0250" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3D7A3113026A" association="_3ADC7B74022D3DE6A15E0179">
             <eAnnotations xmi:id="_rYNL5BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JL2MQmWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIx2XHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rYECBhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6A15F02E3">
               <body>Specifies the sources of the DirectedRelationship.</body>
@@ -1021,7 +1021,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3DE6A1830227" name="target" type="_3ADC7B74022D3CADCAEE0250" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3D7A3113026A" association="_3ADC7B74022D3DE6A1820366">
             <eAnnotations xmi:id="_rYNL7hTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JL2MQ2WXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIyGXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rYNL6RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6A1830227">
               <body>Specifies the targets of the DirectedRelationship.</body>
@@ -1037,7 +1037,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
           <generalization xmi:id="_3ADC7B74022D3CADCD40027C" general="_3ADC7B74022D3CADCAEE0250"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3D7A3113026A" name="relatedElement" type="_3ADC7B74022D3CADCAEE0250" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3D7A311203C7">
             <eAnnotations xmi:id="_rYECARTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JL2MRGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIyWXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rYEB_BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D7A3113026A">
               <body>Specifies the elements related by the Relationship.</body>
@@ -1111,7 +1111,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           <generalization xmi:id="_3ADC7B74022D3DEE22390033" general="_3ADC7B74022D41B9EDB10307"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0A17602EB" name="context" type="_3ADC7B74022D3CA0A069009F" subsettedProperty="_3ADC7B74022D41B9C1A000FD" association="_3ADC7B74022D3CA0A17600A6">
             <eAnnotations xmi:id="_wpfrwFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JL2MRWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIymXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rZZetRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0A17602EB">
               <body>The Namespace that owns this NamedElement.</body>
@@ -1121,7 +1121,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0A4F60158" name="specification" type="_3ADC7B74022D3CA00F020323" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3CA0A4F5008F" aggregation="composite">
             <eAnnotations xmi:id="_ny5RQDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JL2MRmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIy2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rZjPthTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0A4F60158">
               <body>A condition that must be true when evaluated in order for the constraint to be satisfied.</body>
@@ -1144,7 +1144,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           <generalization xmi:id="_3ADC7B74022D41B085CF035A" general="_3ADC7B74022D41B9EDB10307"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0A17602E1" name="ownedRule" type="_3ADC7B74022D3CA099F902D0" subsettedProperty="_3ADC7B74022D41B9C1A000D5" association="_3ADC7B74022D3CA0A17600A6" aggregation="composite">
             <eAnnotations xmi:id="_nzDCQDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JL2MR2WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIzGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rZQUwhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0A17602E1">
               <body>Specifies a set of Constraints owned by this Namespace.</body>
@@ -1154,7 +1154,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D41B9C1A000D5" name="ownedMember" type="_3ADC7B74022D41B9EDB10307" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3CADCD85009B _3ADC7B74022D41B9EF3300FA" association="_3ADC7B74022D41B9C19E0263" aggregation="composite">
             <eAnnotations xmi:id="_rZtAtxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JL2MSGWXEdqX5rc_gMqPOQ" isTransient="true" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIzWXHEdqZJYx_cH0Gsg" isTransient="true" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rZtAshTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41B9C1A000D5">
               <body>A collection of NamedElements owned by the Namespace.</body>
@@ -1164,7 +1164,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D41B9EF3300FA" name="member" type="_3ADC7B74022D41B9EDB10307" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D41B9EF2F0270">
             <eAnnotations xmi:id="_rZ_7oBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JL2MSWWXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIzmXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rZ2KqBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41B9EF3300FA">
               <body>A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.</body>
@@ -1180,7 +1180,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           <generalization xmi:id="_3ADC7B74022D41B9EE51018B" general="_3ADC7B74022D3CADCAEE0250"/>
           <ownedAttribute xmi:id="_3ADC7B74022D41B9C1A000FD" name="namespace" type="_3ADC7B74022D3CA0A069009F" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3CADCD8500A5" association="_3ADC7B74022D41B9C19E0263">
             <eAnnotations xmi:id="_rZ2KpBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JL2MSmWXEdqX5rc_gMqPOQ" isTransient="true" isResolveProxies="false"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaIz2XHEdqZJYx_cH0Gsg" isTransient="true" isResolveProxies="false"/>
             </eAnnotations>
             <ownedComment xmi:id="_rZtAuhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41B9C1A000FD">
               <body>Specifies the namespace that owns the NamedElement.</body>
@@ -1308,7 +1308,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3DF65A9D02E0" name="inheritedMember" type="_3ADC7B74022D3CA0071C02FD" isReadOnly="true" isDerived="true" subsettedProperty="_3ADC7B74022D3CA0098401B9" association="_3ADC7B74022D3DF65A9D02DE">
             <eAnnotations xmi:id="_rbCdexTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JL2MS2WXEdqX5rc_gMqPOQ" isTransient="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcaI0GXHEdqZJYx_cH0Gsg" isTransient="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rbCddhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF65A9D02E0">
               <body>Specifies all elements inherited by this classifier from the general classifiers.</body>
@@ -1325,7 +1325,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           </ownedAttribute>
           <ownedOperation xmi:id="_3ADC7B74022D3E10722C00E4" name="inheritedMember" type="_3ADC7B74022D3CA0071C02FD" isQuery="true" bodyCondition="_raviiRTaEdqZu-3Jy1-uYg">
             <eAnnotations xmi:id="_ravihxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JL_9QGWXEdqX5rc_gMqPOQ" operationName="getInheritedMembers"/>
+              <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pcaI0WXHEdqZJYx_cH0Gsg" operationName="getInheritedMembers"/>
             </eAnnotations>
             <ownedComment xmi:id="_ravigxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E10722C00E4">
               <body>The inheritedMember association is derived by inheriting the inheritable members of the parents.</body>
@@ -1453,7 +1453,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           <generalization xmi:id="_3ADC7B74022D3CB5A32B0118" general="_3ADC7B74022D3CB5A2060370"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CB5A3110161" name="value" type="_3ADC7B74022D3CA010AC0090">
             <eAnnotations xmi:id="_svLPoF04Edq_LIww8XP1gg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JL_9QWWXEdqX5rc_gMqPOQ" isUnsettable="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pcaI0mXHEdqZJYx_cH0Gsg" isUnsettable="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rbo6chTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CB5A3110161">
               <body>The specified Boolean value.</body>
@@ -1489,7 +1489,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           <generalization xmi:id="_3ADC7B74022D3CB5A2D101E1" general="_3ADC7B74022D3CB5A2060370"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CB5A28802FF" name="value" type="_3ADC7B74022D3CA010B103C3">
             <eAnnotations xmi:id="_svUZkF04Edq_LIww8XP1gg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JL_9QmWXEdqX5rc_gMqPOQ" isUnsettable="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pcaI02XHEdqZJYx_cH0Gsg" isUnsettable="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rbyEWhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CB5A28802FF">
               <body>The specified String value.</body>
@@ -1559,7 +1559,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           <generalization xmi:id="_3ADC7B74022D3CB5A2CC0144" general="_3ADC7B74022D3CB5A2060370"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CB5A2640253" name="value" type="_3ADC7B74022D3CA010A4007B">
             <eAnnotations xmi:id="_sveKkF04Edq_LIww8XP1gg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JL_9Q2WXEdqX5rc_gMqPOQ" isUnsettable="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pcaI1GXHEdqZJYx_cH0Gsg" isUnsettable="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rb71eBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CB5A2640253">
               <body>The specified Integer value.</body>
@@ -1595,7 +1595,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           <generalization xmi:id="_3ADC7B74022D3DF664D30228" general="_3ADC7B74022D3CB5A2060370"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3DF664DB022A" name="value" type="_3ADC7B74022D3DE6A93C0003">
             <eAnnotations xmi:id="_sveKkl04Edq_LIww8XP1gg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JL_9RGWXEdqX5rc_gMqPOQ" isUnsettable="true"/>
+              <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pcaI1WXHEdqZJYx_cH0Gsg" isUnsettable="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rcFmahTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF664DB022A">
               <body>The specified UnlimitedNatural value.</body>
@@ -1808,7 +1808,7 @@ includesCardinality = (lowerBound() &lt;= C) and (upperBound() >= C)
     <ownedMember xmi:type="uml:Package" xmi:id="_3ADC7B74022D3C9FFCC70354" name="PrimitiveTypes">
       <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3CA010A4007B" name="Integer">
         <eAnnotations xmi:id="_rdk0GxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_JL_9RWWXEdqX5rc_gMqPOQ" instanceClassName="int"/>
+          <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_pcj5wGXHEdqZJYx_cH0Gsg" instanceClassName="int"/>
         </eAnnotations>
         <ownedComment xmi:id="_rdk0FBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA010A4007B">
           <body>An instance of Integer is an element in the (infinite) set of integers (...-2, -1, 0, 1, 2...). It is used for integer attributes and integer expressions in the metamodel.</body>
@@ -1816,7 +1816,7 @@ includesCardinality = (lowerBound() &lt;= C) and (upperBound() >= C)
       </ownedMember>
       <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3CA010AC0090" name="Boolean">
         <eAnnotations xmi:id="_reBgABTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_JL_9RmWXEdqX5rc_gMqPOQ" instanceClassName="boolean"/>
+          <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_pcj5wWXHEdqZJYx_cH0Gsg" instanceClassName="boolean"/>
         </eAnnotations>
         <ownedComment xmi:id="_rd3vARTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA010AC0090">
           <body>Boolean is an instance of PrimitiveType. In the metamodel, Boolean defines an enumeration that denotes a logical condition. Its enumeration literals are:
@@ -1828,7 +1828,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
       </ownedMember>
       <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3CA010B103C3" name="String">
         <eAnnotations xmi:id="_reBgChTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_JL_9R2WXEdqX5rc_gMqPOQ" instanceClassName="java.lang.String"/>
+          <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_pcj5wmXHEdqZJYx_cH0Gsg" instanceClassName="java.lang.String"/>
         </eAnnotations>
         <ownedComment xmi:id="_reBgAxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA010B103C3">
           <body>An instance of String defines a piece of text. The semantics of the string itself depends on its purpose, it can be a comment, computational language expression, OCL expression, etc. It is used for String attributes and String expressions in the metamodel.</body>
@@ -1836,7 +1836,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
       </ownedMember>
       <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3DE6A93C0003" name="UnlimitedNatural">
         <eAnnotations xmi:id="_reKp8BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_JL_9SGWXEdqX5rc_gMqPOQ" instanceClassName="int"/>
+          <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_pcj5w2XHEdqZJYx_cH0Gsg" instanceClassName="int"/>
         </eAnnotations>
         <ownedComment xmi:id="_reBgDRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6A93C0003">
           <body>An instance of UnlimitedNatural is an element in the (infinite) set of naturals (0, 1, 2...). The value of infinity is shown using an asterisk ('*').</body>
@@ -1858,7 +1858,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6ACA0001F" name="ownedAttribute" type="_3ADC7B74022D3DE6AB4B0001" isOrdered="true" association="_3ADC7B74022D3DE6AC9F015E" aggregation="composite">
           <eAnnotations xmi:id="_nzfuMDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHMGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5xGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rfgt1RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6ACA0001F">
             <body>The attributes owned by a class. These do not include the inherited attributes. Attributes are represented by instances of Property.</body>
@@ -1868,7 +1868,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6ADE30041" name="ownedOperation" type="_3ADC7B74022D3DE6AB440191" isOrdered="true" association="_3ADC7B74022D3DE6ADE20180" aggregation="composite">
           <eAnnotations xmi:id="_nzfuMjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHMWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5xWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rfzothTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6ADE30041">
             <body>The operations owned by a class. These do not include the inherited operations.</body>
@@ -1899,7 +1899,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6AD8F022B" name="ownedParameter" type="_3ADC7B74022D3DE6AB5E035B" isOrdered="true" association="_3ADC7B74022D3DE6AD8E03A7" aggregation="composite">
           <eAnnotations xmi:id="_nzo4IDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHMmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5xmXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rfqe0BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6AD8F022B">
             <body>The parameters to the operation.</body>
@@ -1909,7 +1909,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6ADE30056" name="class" type="_3ADC7B74022D3DE6AB400163" association="_3ADC7B74022D3DE6ADE20180">
           <eAnnotations xmi:id="_rfzowRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHM2WXEdqX5rc_gMqPOQ" referenceName="class_" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5x2XHEdqZJYx_cH0Gsg" referenceName="class_" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rfzovBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6ADE30056">
             <body>The class that owns the operation.</body>
@@ -1926,7 +1926,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D3E56125D02B9" general="_3ADC7B74022D416D57E502DA"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6AD8F023F" name="operation" type="_3ADC7B74022D3DE6AB440191" association="_3ADC7B74022D3DE6AD8E03A7">
           <eAnnotations xmi:id="_wq1vkFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHNGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5yGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rfqe1hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6AD8F023F">
             <body>The operation that owns the parameter.</body>
@@ -1968,7 +1968,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6ACA00029" name="class" type="_3ADC7B74022D3DE6AB400163" association="_3ADC7B74022D3DE6AC9F015E">
           <eAnnotations xmi:id="_rfqexBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHNWWXEdqX5rc_gMqPOQ" referenceName="class_" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5yWXHEdqZJYx_cH0Gsg" referenceName="class_" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rfgt2xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6ACA00029">
             <body>The class that owns the property, and of which the property is an attribute.</body>
@@ -1991,7 +1991,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D3DE6AA6E01C5" general="_3ADC7B74022D3DE6A6B90257"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6B0040398" name="package" type="_3ADC7B74022D3DE6AF3E02D5" association="_3ADC7B74022D3DE6B0040154">
           <eAnnotations xmi:id="_L4YZMDWuEdqst7wr5_7CAQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHNmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5ymXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rgGjtRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6B0040398">
             <body>Specifies the owning package of this classifier, if any.</body>
@@ -2007,7 +2007,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D3DF78D3B035F" general="_3ADC7B74022D416D58F70035"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6A6EE0069" name="name" type="_3ADC7B74022D3CA010B103C3">
           <eAnnotations xmi:id="_PmGJICrOEdqvsvjq9GOA3Q" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JMJHN2WXEdqX5rc_gMqPOQ" isID="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pcj5y2XHEdqZJYx_cH0Gsg" isID="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rexG7xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6A6EE0069">
             <body>The name of the NamedElement.</body>
@@ -2036,7 +2036,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D3DE6AEE30176" general="_3ADC7B74022D3DEE7F610363"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6AF0702A4" name="ownedLiteral" type="_3ADC7B74022D3DE6AE90034D" isOrdered="true" association="_3ADC7B74022D3DE6AF070037" aggregation="composite">
           <eAnnotations xmi:id="_nzo4IjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHOGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5zGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rf9ZuhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6AF0702A4">
             <body>The ordered set of literals for this Enumeration.</body>
@@ -2052,7 +2052,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D3DE6AF02012A" general="_3ADC7B74022D3DE6A6B90257"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6AF0702A6" name="enumeration" type="_3ADC7B74022D3DE6AE8B01AC" association="_3ADC7B74022D3DE6AF070037">
           <eAnnotations xmi:id="_wq-5gFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHOWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5zWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rf9ZwBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6AF0702A6">
             <body>The Enumeration that this EnumerationLiteral is a member of.</body>
@@ -2074,7 +2074,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D3DE6AF9101B2" general="_3ADC7B74022D3DE6A6B90257"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6AFB7015D" name="nestedPackage" type="_3ADC7B74022D3DE6AF3E02D5" association="_3ADC7B74022D3DE6AFB5015A" aggregation="composite">
           <eAnnotations xmi:id="_nzo4JDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHOmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5zmXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rgGjohTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6AFB7015D">
             <body>The set of contained packages.</body>
@@ -2084,7 +2084,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6AFB70171" name="nestingPackage" type="_3ADC7B74022D3DE6AF3E02D5" association="_3ADC7B74022D3DE6AFB5015A">
           <eAnnotations xmi:id="_ENpXkDWtEdqst7wr5_7CAQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHO2WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj5z2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rgGjqBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6AFB70171">
             <body>The containing package.</body>
@@ -2094,7 +2094,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6B0040384" name="ownedType" type="_3ADC7B74022D3DE6A6CC00B0" association="_3ADC7B74022D3DE6B0040154" aggregation="composite">
           <eAnnotations xmi:id="_nzo4JjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHPGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj50GXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rgGjrxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6B0040384">
             <body>The set of contained types.</body>
@@ -2245,7 +2245,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedComment>
         <ownedAttribute xmi:id="_3ADC7B74022D41937577010A" name="ownedComment" type="_3ADC7B74022D3DFCA934027A" association="_3ADC7B74022D4193757202CF" aggregation="composite">
           <eAnnotations xmi:id="_nzypIDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMJHPWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pcj50WXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rgQUrhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41937577010A">
             <body>The Comments owned by this element.</body>
@@ -2261,7 +2261,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D41781B9F03B5" general="_3ADC7B74022D416D58F70035"/>
         <ownedAttribute xmi:id="_3ADC7B74022D417820CB0110" name="body" type="_3ADC7B74022D3CA010B103C3">
           <eAnnotations xmi:id="_Y0zGkCkcEdqtk_gpPUW4NQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JMJHPmWXEdqX5rc_gMqPOQ" isUnsettable="true" xmlFeatureKind="Element"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pcj50mXHEdqZJYx_cH0Gsg" isUnsettable="true" xmlFeatureKind="Element"/>
           </eAnnotations>
           <ownedComment xmi:id="_rfgtyBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D417820CB0110">
             <body>Specifies a string that is the comment.</body>
@@ -2329,7 +2329,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D3E55541701A4" general="_3ADC7B74022D3E555229003B"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E42E034A" name="attribute" type="_3ADC7B74022D3DE6D57500AC" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3DFCBE7F0246" association="_3ADC7B74022D3DE6E42D0385">
           <eAnnotations xmi:id="_rqFmFBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMS4MGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pctDsGXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rp8cNxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E42E034A">
             <body>Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.</body>
@@ -2339,7 +2339,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCBE7F0246" name="feature" type="_3ADC7B74022D3DE6C7BD0034" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3DFCB82F00DA" association="_3ADC7B74022D3DFCBE7F0137">
           <eAnnotations xmi:id="_rsLQ1BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMS4MWWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pctDsWXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsLQzxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCBE7F0246">
             <body>Redefines the corresponding association in Abstractions.  Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.</body>
@@ -2356,7 +2356,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D4304A13201D9" name="inheritedMember" type="_3ADC7B74022D3DE6BC6B01BD" isDerived="true" subsettedProperty="_3ADC7B74022D3DFCB82F00DA" association="_3ADC7B74022D4304A1300282">
           <eAnnotations xmi:id="_N4yBgWHeEdqc5chuNfO-RQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMS4MmWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pctDsmXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_hBVxYBVsEdqDjccWl3Bw0Q" annotatedElement="_3ADC7B74022D4304A13201D9">
             <body>Specifies all elements inherited by this classifier from the general classifiers.</body>
@@ -2392,7 +2392,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedOperation>
         <ownedOperation xmi:id="_3ADC7B74022D42EE305C00D9" name="general" type="_3ADC7B74022D3DE6C8630317" isQuery="true" bodyCondition="_rg_7jhTaEdqZu-3Jy1-uYg">
           <eAnnotations xmi:id="_rg_7jBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JMS4M2WXEdqX5rc_gMqPOQ" operationName="getGenerals"/>
+            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pctDs2XHEdqZJYx_cH0Gsg" operationName="getGenerals"/>
           </eAnnotations>
           <ownedComment xmi:id="_rg_7iBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00D9">
             <body>The general classifiers are the classifiers referenced by the generalization relationships.</body>
@@ -2423,7 +2423,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedOperation>
         <ownedOperation xmi:id="_3ADC7B74022D42EE305C00F1" name="inheritedMember" type="_3ADC7B74022D3DE6BC6B01BD" isQuery="true" bodyCondition="_rhJsjhTaEdqZu-3Jy1-uYg">
           <eAnnotations xmi:id="_rhJsjBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JMS4NGWXEdqX5rc_gMqPOQ" operationName="getInheritedMembers"/>
+            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pctDtGXHEdqZJYx_cH0Gsg" operationName="getInheritedMembers"/>
           </eAnnotations>
           <ownedComment xmi:id="_rhJsiBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00F1">
             <body>The inheritedMember association is derived by inheriting the inheritable members of the parents.</body>
@@ -2527,7 +2527,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D3DE6D02402A4" general="_3ADC7B74022D3DE6C8270177"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCAC7900D9" name="source" type="_3ADC7B74022D3DE6BAB70076" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3DFCAC2F019B" association="_3ADC7B74022D3DFCAC780308">
           <eAnnotations xmi:id="_rsBfwhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMS4NWWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pctDtWXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rr4V5BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCAC7900D9">
             <body>Specifies the sources of the DirectedRelationship.</body>
@@ -2537,7 +2537,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCACAF0090" name="target" type="_3ADC7B74022D3DE6BAB70076" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3DFCAC2F019B" association="_3ADC7B74022D3DFCACAE01F7">
           <eAnnotations xmi:id="_rsBfzBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMS4NmWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pctDtmXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsBfxxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCACAF0090">
             <body>Specifies the targets of the DirectedRelationship.</body>
@@ -2568,7 +2568,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedRule>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCA80700B4" name="ownedElement" type="_3ADC7B74022D3DE6BAB70076" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3DFCA805021A" aggregation="composite">
           <eAnnotations xmi:id="_rruk3xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCIGWXEdqX5rc_gMqPOQ" isTransient="true" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pctDt2XHEdqZJYx_cH0Gsg" isTransient="true" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rruk2hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCA80700B4">
             <body>The Elements owned by this element.</body>
@@ -2578,7 +2578,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCA80700BE" name="owner" type="_3ADC7B74022D3DE6BAB70076" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3DFCA805021A">
           <eAnnotations xmi:id="_rruk5xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCIWWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pctDuGXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rruk4hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCA80700BE">
             <body>The Element that owns this element.</body>
@@ -2588,7 +2588,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D41781AB80146" name="ownedComment" type="_3ADC7B74022D41781AA6038F" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D41781AB701BD" aggregation="composite">
           <eAnnotations xmi:id="_n0PVEDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCImWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pctDuWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rs63rBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41781AB80146">
             <body>The Comments owned by this element.</body>
@@ -2629,7 +2629,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D3DE6CEB001C2" general="_3ADC7B74022D3DE6C81D0244"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCBE7F025A" name="featuringClassifier" type="_3ADC7B74022D3DE6C8630317" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3DFCBE7F0137">
           <eAnnotations xmi:id="_rsVBxBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCI2WXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pctDumXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsLQ1xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCBE7F025A">
             <body>Redefines the corresponding association in Abstractions.</body>
@@ -2783,7 +2783,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         <generalization xmi:id="_3ADC7B74022D3DE6C04E0326" general="_3ADC7B74022D3DE6BC6B01BD"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE234B0163" name="importedMember" type="_3ADC7B74022D3DE6C1F002C3" isReadOnly="true" isDerived="true" subsettedProperty="_3ADC7B74022D3DFCB82F00DA" association="_3ADC7B74022D3DEE234A0342">
           <eAnnotations xmi:id="_rq-9-hTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCJGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pctDu2XHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rq-99RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE234B0163">
             <body>References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.</body>
@@ -2793,7 +2793,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E0040315" name="elementImport" type="_3ADC7B74022D3DE6D5E7016E" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DE6E0040076" aggregation="composite">
           <eAnnotations xmi:id="_n0YfADwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCJWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20sGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrIu9xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E0040315">
             <body>References the ElementImports owned by the Namespace.</body>
@@ -2803,7 +2803,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E00902C3" name="packageImport" type="_3ADC7B74022D3DE6D5E002D7" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DE6E00900B0" aggregation="composite">
           <eAnnotations xmi:id="_n0YfAjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCJmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20sWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrIvBBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E00902C3">
             <body>References the PackageImports owned by the Namespace.</body>
@@ -2813,7 +2813,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCB8650177" name="ownedMember" type="_3ADC7B74022D3DE6BC6B01BD" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3DFCB82F00DA _3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DFCB86303CD" aggregation="composite">
           <eAnnotations xmi:id="_rsn8txTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCJ2WXEdqX5rc_gMqPOQ" isTransient="true" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20smXHEdqZJYx_cH0Gsg" isTransient="true" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsn8shTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCB8650177">
             <body>Redefines the corresponding property of Abstractions::Namespaces::Namespace.</body>
@@ -2823,7 +2823,7 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCB82F00DA" name="member" type="_3ADC7B74022D3DE6BC6B01BD" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3DFCB82E022D">
           <eAnnotations xmi:id="_rsxttBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCKGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20s2XHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsn8wxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCB82F00DA">
             <body>Redefines the corresponding property of Abstractions::Namespaces::Namespace.</body>
@@ -2833,14 +2833,14 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
         </ownedAttribute>
         <ownedAttribute xmi:id="_s_9I8R-zEdqIE6mxof-rZA" name="ownedRule" type="_3ADC7B74022D3DE766450007" subsettedProperty="_3ADC7B74022D3DFCB8650177" association="_s_9I8B-zEdqIE6mxof-rZA" aggregation="composite">
           <eAnnotations xmi:id="_n0YfBDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCKWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20tGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_s_9I9B-zEdqIE6mxof-rZA" value="-1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_s_9I8x-zEdqIE6mxof-rZA"/>
         </ownedAttribute>
         <ownedOperation xmi:id="_3ADC7B74022D3E142ABF004B" name="importedMember" type="_3ADC7B74022D3DE6C1F002C3" isQuery="true" bodyCondition="_rln82hTaEdqZu-3Jy1-uYg">
           <eAnnotations xmi:id="_rln82BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JMcCKmWXEdqX5rc_gMqPOQ" operationName="getImportedMembers"/>
+            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pc20tWXHEdqZJYx_cH0Gsg" operationName="getImportedMembers"/>
           </eAnnotations>
           <ownedComment xmi:id="_rln81BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142ABF004B">
             <body>The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.</body>
@@ -2956,7 +2956,7 @@ endif</body>
         <generalization xmi:id="_3ADC7B74022D3DE6CE6B037C" general="_3ADC7B74022D3DE6BC6B01BD"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCBDBD028D" name="redefinitionContext" type="_3ADC7B74022D3DE6C8630317" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3DFCBDBD0034">
           <eAnnotations xmi:id="_rsLQwBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCK2WXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20tmXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsBf0RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCBDBD028D">
             <body>References the contexts that this element may be redefined from.</body>
@@ -2966,7 +2966,7 @@ endif</body>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCBE1F00FD" name="redefinedElement" type="_3ADC7B74022D3DE6C81D0244" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3DFCBE1D0317">
           <eAnnotations xmi:id="_rsLQyhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCLGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20t2XHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsLQxRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCBE1F00FD">
             <body>The redefinable element that is being redefined by this element.</body>
@@ -3006,7 +3006,7 @@ endif</body>
         <generalization xmi:id="_3ADC7B74022D3DE6CFE2015E" general="_3ADC7B74022D3DE6BAB70076"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCAC2F019B" name="relatedElement" type="_3ADC7B74022D3DE6BAB70076" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D3DFCAC2E0366">
           <eAnnotations xmi:id="_rr4V3xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCLWWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20uGXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rr4V2hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCAC2F019B">
             <body>Specifies the elements related by the Relationship.</body>
@@ -3133,7 +3133,7 @@ An end property of an association that is owned by an end class or that is a nav
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E409010C" name="ownedEnd" type="_3ADC7B74022D3DE6D57500AC" isOrdered="true" subsettedProperty="_3ADC7B74022D3DE6E3EF0097 _3ADC7B74022D3DFCBE7F0246 _3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E40802BA" aggregation="composite">
           <eAnnotations xmi:id="_n0iQADwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCLmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20uWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rp8cKhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E409010C">
             <body>The ends that are owned by the association itself. This is an ordered association.</body>
@@ -3143,7 +3143,7 @@ An end property of an association that is owned by an end class or that is a nav
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE75D87003B" name="endType" type="_3ADC7B74022D3E555229003B" isReadOnly="true" isDerived="true" subsettedProperty="_3ADC7B74022D3DFCAC2F019B" association="_3ADC7B74022D3DE75D86027E">
           <eAnnotations xmi:id="_rqZIIhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCL2WXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20umXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rqZIHRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE75D87003B">
             <body>References the classifiers that are used as types of the ends of the association.</body>
@@ -3179,7 +3179,7 @@ An end property of an association that is owned by an end class or that is a nav
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E2E2028F" name="ownedAttribute" type="_3ADC7B74022D3DE6D57500AC" isOrdered="true" subsettedProperty="_3ADC7B74022D3DE6E42E034A _3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E2E1037E" aggregation="composite">
           <eAnnotations xmi:id="_n0sBADwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMcCMGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20u2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rpo6OBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E2E2028F">
             <body>The attributes (i.e. the properties) owned by the class.</body>
@@ -3189,7 +3189,7 @@ An end property of an association that is owned by an end class or that is a nav
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E30F008B" name="ownedOperation" type="_3ADC7B74022D3DE6D56F031A" isOrdered="true" subsettedProperty="_3ADC7B74022D3DFCBE7F0246 _3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E30E0260" aggregation="composite">
           <eAnnotations xmi:id="_n01K8DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMlzIGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc20vGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rpyrKxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E30F008B">
             <body>The operations owned by the class.</body>
@@ -3318,14 +3318,14 @@ Property is indirectly a subclass of Constructs::TypedElement. The range of vali
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E2E20299" name="class" type="_3ADC7B74022D3DE6D5AD039B" subsettedProperty="_3ADC7B74022D3DFCB86501A0 _3ADC7B74022D3DFCBE7F025A _3ADC7B74022D3DE6E42E035E" association="_3ADC7B74022D3DE6E2E1037E">
           <eAnnotations xmi:id="_rpyrJxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMlzIWWXEdqX5rc_gMqPOQ" referenceName="class_" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc_-oGXHEdqZJYx_cH0Gsg" referenceName="class_" isResolveProxies="false"/>
           </eAnnotations>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rpyrJhTaEdqZu-3Jy1-uYg" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rpyrJRTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E4090120" name="owningAssociation" type="_3ADC7B74022D3DE6E15D033A" subsettedProperty="_3ADC7B74022D3DE6E3EF00AB _3ADC7B74022D3DFCB86501A0 _3ADC7B74022D3DFCBE7F025A" association="_3ADC7B74022D3DE6E40802BA">
           <eAnnotations xmi:id="_w_GvYFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMlzImWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc_-oWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rp8cMBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E4090120">
             <body>References the owning association of this property, if any.</body>
@@ -3349,7 +3349,7 @@ Property is indirectly a subclass of Constructs::TypedElement. The range of vali
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E76603BD" name="opposite" type="_3ADC7B74022D3DE6D57500AC" isDerived="true" association="_3ADC7B74022D3DE6E7650159">
           <eAnnotations xmi:id="_rqZIEBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMlzI2WXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc_-omXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rqPXIhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E76603BD">
             <body>In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.</body>
@@ -3359,7 +3359,7 @@ Property is indirectly a subclass of Constructs::TypedElement. The range of vali
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E2290166" name="datatype" type="_3ADC7B74022D3DE6D25202A6" subsettedProperty="_3ADC7B74022D3DFCB86501A0 _3ADC7B74022D3DFCBE7F025A _3ADC7B74022D3DE6E42E035E" association="_3ADC7B74022D3DE6E2280287">
           <eAnnotations xmi:id="_w_ZqUFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMlzJGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pc_-o2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rqiSExTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E2290166">
             <body>The DataType that owns this Operation.</body>
@@ -3376,7 +3376,7 @@ Property is indirectly a subclass of Constructs::TypedElement. The range of vali
         </ownedAttribute>
         <ownedOperation xmi:id="_3ADC7B74022D3E14246901E3" name="opposite" type="_3ADC7B74022D3DE6D57500AC" isQuery="true" bodyCondition="_rmgtvBTaEdqZu-3Jy1-uYg">
           <eAnnotations xmi:id="_nSqEoB8TEdqZ_KzuBfefCA" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JMlzJWWXEdqX5rc_gMqPOQ" operationName="getOpposite"/>
+            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pc_-pGXHEdqZJYx_cH0Gsg" operationName="getOpposite"/>
           </eAnnotations>
           <ownedComment xmi:id="_rmgtuBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E14246901E3">
             <body>If this property is owned by a class, associated with a binary association, and the other end of the association is also owned by a class, then opposite gives the other end.</body>
@@ -3467,7 +3467,7 @@ A typical use of data types would be to represent programming language primitive
         <generalization xmi:id="_3ADC7B74022D3DEE7FF2011D" general="_3ADC7B74022D3DE6C8630317"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E2290152" name="ownedAttribute" type="_3ADC7B74022D3DE6D57500AC" isOrdered="true" subsettedProperty="_3ADC7B74022D3DE6E42E034A _3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E2280287" aggregation="composite">
           <eAnnotations xmi:id="_n1R24DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMlzJmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvoGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rqiSDRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E2290152">
             <body>The Attributes owned by the DataType.</body>
@@ -3477,7 +3477,7 @@ A typical use of data types would be to represent programming language primitive
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E23E008A" name="ownedOperation" type="_3ADC7B74022D3DE6D56F031A" isOrdered="true" subsettedProperty="_3ADC7B74022D3DFCBE7F0246 _3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E23D0179" aggregation="composite">
           <eAnnotations xmi:id="_n1R24jwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMlzJ2WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvoWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rqiSGhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E23E008A">
             <body>The Operations owned by the DataType.</body>
@@ -3513,7 +3513,7 @@ It is possible to extend the set of applicable enumeration literals in other pac
         <generalization xmi:id="_3ADC7B74022D3DE6D2D7038E" general="_3ADC7B74022D3DE6D25202A6"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6D38600DC" name="ownedLiteral" type="_3ADC7B74022D3DE6D2910397" isOrdered="true" subsettedProperty="_3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6D3850275" aggregation="composite">
           <eAnnotations xmi:id="_n1bn4DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMvkIGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvomXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rqiSABTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6D38600DC">
             <body>The ordered collection of literals for the enumeration.</body>
@@ -3529,7 +3529,7 @@ It is possible to extend the set of applicable enumeration literals in other pac
         <generalization xmi:id="_3ADC7B74022D3DF67B060099" general="_3ADC7B74022D3DE6BC6B01BD"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6D38600E6" name="enumeration" type="_3ADC7B74022D3DE6D2750152" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_3ADC7B74022D3DE6D3850275">
           <eAnnotations xmi:id="_w_2WQFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMvkIWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvo2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rqiSBhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6D38600E6">
             <body>The enumeration that this literal belongs to.</body>
@@ -3575,7 +3575,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCC88D0337" name="specification" type="_3ADC7B74022D3DE6C7F30294" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DFCC88D0157" aggregation="composite">
           <eAnnotations xmi:id="_n1bn4jwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JMvkImWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvpGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rseLsxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCC88D0337">
             <body>A condition that must be true when evaluated in order for the constraint to be satisfied.
@@ -3586,7 +3586,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_s_9I8h-zEdqIE6mxof-rZA" name="context" type="_3ADC7B74022D3DE6C03E0388" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_s_9I8B-zEdqIE6mxof-rZA">
           <eAnnotations xmi:id="_xAAHQFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JM4uEGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvpWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zja18R-zEdqIE6mxof-rZA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zja18B-zEdqIE6mxof-rZA"/>
@@ -3615,8 +3615,8 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         <generalization xmi:id="_3ADC7B74022D3DE6D7A30004" general="_3ADC7B74022D3DE6C7F30294"/>
         <ownedAttribute xmi:id="_3ADC7B74022D41FC52E503B5" name="body" type="_3ADC7B74022D3CA010B103C3" isOrdered="true" association="_3ADC7B74022D41FC52E500D0" aggregation="composite">
           <eAnnotations xmi:id="_yANmICkcEdqtk_gpPUW4NQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JM4uEmWXEdqX5rc_gMqPOQ" isUnsettable="true" xmlFeatureKind="Element"/>
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JM4uEWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pdJvpmXHEdqZJYx_cH0Gsg" isUnsettable="true" xmlFeatureKind="Element"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvp2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rs63thTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41FC52E503B5">
             <body>The text of the expression, possibly in multiple languages.</body>
@@ -3626,7 +3626,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D41FC52EF0215" name="language" type="_3ADC7B74022D3CA010B103C3" isOrdered="true" association="_3ADC7B74022D41FC52EE02D2" aggregation="composite">
           <eAnnotations xmi:id="_n1kx0DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JM4uE2WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvqGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rtEooBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41FC52EF0215">
             <body>Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the language. If languages are unspecified, it might be implicit from the expression body or the context. Languages are matched to body strings by order.</body>
@@ -3664,7 +3664,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3E03284C0289" name="isOrdered" type="_3ADC7B74022D3CA010AC0090" isDerived="true">
           <eAnnotations xmi:id="_rn2xdxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JM4uFGWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pdJvqWXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rn2xdBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E03284C0289">
             <body>Redefines the corresponding property from Basic to derive this information from the return result for this Operation.</body>
@@ -3673,7 +3673,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3E032859015B" name="isUnique" type="_3ADC7B74022D3CA010AC0090" isDerived="true">
           <eAnnotations xmi:id="_rn2xfRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JM4uFWWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pdJvqmXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rn2xehTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E032859015B">
             <body>Redefines the corresponding property from Basic to derive this information from the return result for this Operation.</body>
@@ -3682,7 +3682,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3E0328B001D9" name="lower" type="_3ADC7B74022D3CA010A4007B" isDerived="true">
           <eAnnotations xmi:id="_roAicBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JM4uFmWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pdJvq2XHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rn2xgBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E0328B001D9">
             <body>Redefines the corresponding property from Basic to derive this information from the return result for this Operation.</body>
@@ -3693,7 +3693,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3E0328710341" name="upper" type="_3ADC7B74022D3DE6A93C0003" isDerived="true">
           <eAnnotations xmi:id="_roAieBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JM4uF2WXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pdJvrGXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_roAicxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E0328710341">
             <body>Redefines the corresponding property from Basic to derive this information from the return result for this Operation.</body>
@@ -3704,7 +3704,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E30F0095" name="class" type="_3ADC7B74022D3DE6D5AD039B" subsettedProperty="_3ADC7B74022D3DFCBDBD028D _3ADC7B74022D3DFCB86501A0 _3ADC7B74022D3DFCBE7F025A" association="_3ADC7B74022D3DE6E30E0260">
           <eAnnotations xmi:id="_rp8cJhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JM4uGGWXEdqX5rc_gMqPOQ" referenceName="class_" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvrWXHEdqZJYx_cH0Gsg" referenceName="class_" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rp8cIRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E30F0095">
             <body>The class that owns the operation.</body>
@@ -3714,7 +3714,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E23E0094" name="datatype" type="_3ADC7B74022D3DE6D25202A6" subsettedProperty="_3ADC7B74022D3DFCBDBD028D _3ADC7B74022D3DFCB86501A0 _3ADC7B74022D3DFCBE7F025A" association="_3ADC7B74022D3DE6E23D0179">
           <eAnnotations xmi:id="_xATCMFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JM4uGWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvrmXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rqsDBRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E23E0094">
             <body>The DataType that owns this Operation.</body>
@@ -3738,7 +3738,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE7BDA017A" name="type" type="_3ADC7B74022D3E555229003B" isDerived="true" association="_3ADC7B74022D3DEE7BD90219">
           <eAnnotations xmi:id="_rrla6xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JM4uGmWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvr2XHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrla5hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE7BDA017A">
             <body>Redefines the corresponding property from Basic to derive this information from the return result for this Operation.</body>
@@ -3748,7 +3748,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D4161AA270132" name="ownedParameter" type="_3ADC7B74022D3DE6D57D00A3" redefinedProperty="_3ADC7B74022D3DE7637803DB" association="_3ADC7B74022D4161AA250298" aggregation="composite">
           <eAnnotations xmi:id="_n1ui0DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JM4uG2WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdJvsGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsxtyxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4161AA270132">
             <body>Specifies the ordered set of formal parameters of this BehavioralFeature.</body>
@@ -3758,21 +3758,21 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_nWbKER-yEdqIE6mxof-rZA" name="precondition" type="_3ADC7B74022D3DE766450007" subsettedProperty="_s_9I8R-zEdqIE6mxof-rZA" association="_nWbKEB-yEdqIE6mxof-rZA" aggregation="composite">
           <eAnnotations xmi:id="_n14T0DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNCfEGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgoGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nWbKFB-yEdqIE6mxof-rZA" value="-1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nWbKEx-yEdqIE6mxof-rZA"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_s0ANER-yEdqIE6mxof-rZA" name="postcondition" type="_3ADC7B74022D3DE766450007" subsettedProperty="_s_9I8R-zEdqIE6mxof-rZA" association="_s0ANEB-yEdqIE6mxof-rZA" aggregation="composite">
           <eAnnotations xmi:id="_n14T0jwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNCfEWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgoWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_s0ANFB-yEdqIE6mxof-rZA" value="-1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_s0ANEx-yEdqIE6mxof-rZA"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_uPMYsR-yEdqIE6mxof-rZA" name="bodyCondition" type="_3ADC7B74022D3DE766450007" subsettedProperty="_s_9I8R-zEdqIE6mxof-rZA" association="_uPMYsB-yEdqIE6mxof-rZA" aggregation="composite">
           <eAnnotations xmi:id="_n14T1DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNCfEmWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgomXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uPMYtB-yEdqIE6mxof-rZA" value="-1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uPMYsx-yEdqIE6mxof-rZA"/>
@@ -3801,7 +3801,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedOperation>
         <ownedOperation xmi:id="_3ADC7B74022D3E142F3E03CB" name="lower" type="_3ADC7B74022D3CA010A4007B" isQuery="true" bodyCondition="_rnj2hhTaEdqZu-3Jy1-uYg">
           <eAnnotations xmi:id="_rnj2hBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JNCfE2WXEdqX5rc_gMqPOQ" operationName="lowerBound"/>
+            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pdTgo2XHEdqZJYx_cH0Gsg" operationName="lowerBound"/>
           </eAnnotations>
           <ownedComment xmi:id="_rnj2gBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142F3E03CB">
             <body>If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.</body>
@@ -3815,7 +3815,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedOperation>
         <ownedOperation xmi:id="_3ADC7B74022D3E142F7500B3" name="upper" type="_3ADC7B74022D3DE6A93C0003" isQuery="true" bodyCondition="_rnj2kRTaEdqZu-3Jy1-uYg">
           <eAnnotations xmi:id="_rnj2jxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JNCfFGWXEdqX5rc_gMqPOQ" operationName="upperBound"/>
+            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pdTgpGXHEdqZJYx_cH0Gsg" operationName="upperBound"/>
           </eAnnotations>
           <ownedComment xmi:id="_rnj2ixTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142F7500B3">
             <body>If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.</body>
@@ -3829,7 +3829,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedOperation>
         <ownedOperation xmi:id="_3ADC7B74022D3E142FBB01EA" name="type" type="_3ADC7B74022D3E555229003B" isQuery="true" bodyCondition="_rntAchTaEdqZu-3Jy1-uYg">
           <eAnnotations xmi:id="_rntAcBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JNCfFWWXEdqX5rc_gMqPOQ" operationName="getType"/>
+            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pdTgpWXHEdqZJYx_cH0Gsg" operationName="getType"/>
           </eAnnotations>
           <ownedComment xmi:id="_rnj2lhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142FBB01EA">
             <body>If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.</body>
@@ -3897,7 +3897,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D4161AA27013C" name="operation" type="_3ADC7B74022D3DE6D56F031A" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_3ADC7B74022D4161AA250298">
           <eAnnotations xmi:id="_xBVkAFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNLpAGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgpmXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rs63pRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4161AA27013C">
             <body>References the Operation for which this is a formal parameter.</body>
@@ -3914,7 +3914,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         <generalization xmi:id="_3ADC7B74022D3DEE21650100" general="_3ADC7B74022D3DE6C03E0388"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE7637803DB" name="ownedParameter" type="_3ADC7B74022D3DE6D57D00A3" isOrdered="true" subsettedProperty="_3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE76378015A" aggregation="composite">
           <eAnnotations xmi:id="_n2LOwDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNLpAWWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgp2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rq10ERTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE7637803DB">
             <body>Specifies the ordered set of formal parameters of this BehavioralFeature.</body>
@@ -3973,7 +3973,7 @@ endif</body>
         <generalization xmi:id="_3ADC7B74022D3DE6DFF400E2" general="_3ADC7B74022D3DE6C82E03E4"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE87110345" name="visibility" type="_3ADC7B74022D41C2D6020188">
           <eAnnotations xmi:id="_tBWkwF04Edq_LIww8XP1gg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JNLpAmWXEdqX5rc_gMqPOQ" isUnsettable="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pdTgqGXHEdqZJYx_cH0Gsg" isUnsettable="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rodOehTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE87110345">
             <body>Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.</body>
@@ -3995,7 +3995,7 @@ endif</body>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E0040317" name="importingNamespace" type="_3ADC7B74022D3DE6C03E0388" subsettedProperty="_3ADC7B74022D3DFCAC7900D9 _3ADC7B74022D3DFCA80700BE" association="_3ADC7B74022D3DE6E0040076">
           <eAnnotations xmi:id="_xBpGAFqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNLpA2WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgqWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrIu_RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E0040317">
             <body>Specifies the Namespace that imports a PackageableElement from another Package.</body>
@@ -4035,7 +4035,7 @@ endif</body>
         <generalization xmi:id="_3ADC7B74022D3DE6DFA30185" general="_3ADC7B74022D3DE6C03E0388"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E0F500FF" name="packagedElement" type="_3ADC7B74022D3DE6C1F002C3" subsettedProperty="_3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E0F402CA" aggregation="composite">
           <eAnnotations xmi:id="_n2LOwjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNLpBGWXEdqX5rc_gMqPOQ"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgqmXHEdqZJYx_cH0Gsg"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrR45hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E0F500FF">
             <body>Specifies the packageable elements that are owned by this Package.</body>
@@ -4045,7 +4045,7 @@ endif</body>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE344701CC" name="ownedType" type="_3ADC7B74022D3E555229003B" isDerived="true" subsettedProperty="_3ADC7B74022D3DE6E0F500FF" association="_3ADC7B74022D3DEE344602C4" aggregation="composite">
           <eAnnotations xmi:id="_rrR49RTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNLpBWWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgq2XHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrR48BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE344701CC">
             <body>References the packaged elements that are Types.</body>
@@ -4055,7 +4055,7 @@ endif</body>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE6FD3029F" name="nestedPackage" type="_3ADC7B74022D3DE6D5DA0183" isDerived="true" subsettedProperty="_3ADC7B74022D3DE6E0F500FF" association="_3ADC7B74022D3DEE6FD102CF" aggregation="composite">
           <eAnnotations xmi:id="_rrbp9BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNLpBmWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgrGXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrbp7xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE6FD3029F">
             <body>References the packaged elements that are Packages.</body>
@@ -4065,7 +4065,7 @@ endif</body>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE6FD302F9" name="nestingPackage" type="_3ADC7B74022D3DE6D5DA0183" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_3ADC7B74022D3DEE6FD102CF">
           <eAnnotations xmi:id="_H9HS8DWtEdqst7wr5_7CAQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNLpB2WXEdqX5rc_gMqPOQ"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgrWXHEdqZJYx_cH0Gsg"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrbp9xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE6FD302F9">
             <body>References the owning package of a package.</body>
@@ -4075,7 +4075,7 @@ endif</body>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DF68066000E" name="packageMerge" type="_3ADC7B74022D3DEE8DFE0290" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DF68066000C" aggregation="composite">
           <eAnnotations xmi:id="_n2U_wDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNLpCGWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdTgrmXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrla9hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF68066000E">
             <body>References the PackageMerges that are owned by this Package.</body>
@@ -4148,7 +4148,7 @@ endif</body>
         <generalization xmi:id="_3ADC7B74022D3DE6DFFC022E" general="_3ADC7B74022D3DE6C82E03E4"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE878403C3" name="visibility" type="_3ADC7B74022D41C2D6020188">
           <eAnnotations xmi:id="_tBzQsF04Edq_LIww8XP1gg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JNLpCWWXEdqX5rc_gMqPOQ" isUnsettable="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pdTgr2XHEdqZJYx_cH0Gsg" isUnsettable="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rowJaRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE878403C3">
             <body>Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.</body>
@@ -4163,7 +4163,7 @@ endif</body>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E00902D7" name="importingNamespace" type="_3ADC7B74022D3DE6C03E0388" subsettedProperty="_3ADC7B74022D3DFCAC7900D9 _3ADC7B74022D3DFCA80700BE" association="_3ADC7B74022D3DE6E00900B0">
           <eAnnotations xmi:id="_xCFK4FqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNyF8GWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMkGXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrIvChTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E00902D7">
             <body>Specifies the Namespace that imports the members from a Package.</body>
@@ -4183,7 +4183,7 @@ Conceptually, a package merge can be viewed as an operation that takes the conte
         <generalization xmi:id="_3ADC7B74022D3DEE8EAA032E" general="_3ADC7B74022D3DE6C82E03E4"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DF68066000D" name="receivingPackage" type="_3ADC7B74022D3DE6D5DA0183" subsettedProperty="_3ADC7B74022D3DFCAC7900D9 _3ADC7B74022D3DFCA80700BE" association="_3ADC7B74022D3DF68066000C">
           <eAnnotations xmi:id="_xCO74FqpEdqTMeoDATTRUw" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNyF8WWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMkWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrla8BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF68066000D">
             <body>References the Package that is being extended with the contents of the merged package of the PackageMerge.</body>
@@ -4207,7 +4207,7 @@ Conceptually, a package merge can be viewed as an operation that takes the conte
         <generalization xmi:id="_3ADC7B74022D3E5558D50178" general="_3ADC7B74022D3DE6C1F002C3"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE344701FE" name="package" type="_3ADC7B74022D3DE6D5DA0183" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_3ADC7B74022D3DEE344602C4">
           <eAnnotations xmi:id="_Nsmv4DWuEdqst7wr5_7CAQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNyF8mWXEdqX5rc_gMqPOQ"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMkmXHEdqZJYx_cH0Gsg"/>
           </eAnnotations>
           <ownedComment xmi:id="_rrR4-BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE344701FE">
             <body>References the owning package of a package.</body>
@@ -4261,7 +4261,7 @@ Conceptually, a package merge can be viewed as an operation that takes the conte
         <generalization xmi:id="_3ADC7B74022D3DE6BC7D03AE" general="_3ADC7B74022D3DE6BAB70076"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6BF540255" name="name" type="_3ADC7B74022D3CA010B103C3">
           <eAnnotations xmi:id="_TAsnwCrOEdqvsvjq9GOA3Q" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JNyF82WXEdqX5rc_gMqPOQ" isID="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pdwMk2XHEdqZJYx_cH0Gsg" isID="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rpM1TBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6BF540255">
             <body>The name of the NamedElement.</body>
@@ -4278,7 +4278,7 @@ Conceptually, a package merge can be viewed as an operation that takes the conte
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCB86501A0" name="namespace" type="_3ADC7B74022D3DE6C03E0388" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_3ADC7B74022D3DFCA80700BE" association="_3ADC7B74022D3DFCB86303CD">
           <eAnnotations xmi:id="_rsn8vxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNyF9GWXEdqX5rc_gMqPOQ" isTransient="true"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMlGXHEdqZJYx_cH0Gsg" isTransient="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsn8uhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCB86501A0">
             <body>Specifies the namespace that owns the NamedElement.</body>
@@ -4332,7 +4332,7 @@ endif</body>
         </ownedOperation>
         <ownedOperation xmi:id="_3ADC7B74022D42EE305C00A6" name="qualifiedName" type="_3ADC7B74022D3CA010B103C3" isQuery="true" bodyCondition="_rpDEaRTaEdqZu-3Jy1-uYg">
           <eAnnotations xmi:id="_RAzoIFYGEdqrn7iZ0eqieg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JNyF9WWXEdqX5rc_gMqPOQ" operationName="getQualifiedName"/>
+            <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pdwMlWXHEdqZJYx_cH0Gsg" operationName="getQualifiedName"/>
           </eAnnotations>
           <ownedComment xmi:id="_rpDEZRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00A6">
             <body>When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.</body>
@@ -4357,7 +4357,7 @@ endif</body>
         <generalization xmi:id="_3ADC7B74022D3E555F33038E" general="_3ADC7B74022D3DE6C7F30294"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3E55630701F3" name="operand" type="_3ADC7B74022D3DE6C7F30294" isOrdered="true" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3E5563050088" aggregation="composite">
           <eAnnotations xmi:id="_n2eJsDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JNyF9mWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMlmXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
           </eAnnotations>
           <ownedComment xmi:id="_rsxtuRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E55630701F3">
             <body>Specifies a sequence of operands.</body>
@@ -4403,7 +4403,7 @@ endif</body>
         <generalization xmi:id="_3ADC7B74022D3DFCA9FD02FB" general="_3ADC7B74022D3DE6BAB70076"/>
         <ownedAttribute xmi:id="_3ADC7B74022D41BDD0260325" name="body" type="_3ADC7B74022D3CA010B103C3">
           <eAnnotations xmi:id="_vEmwoCkcEdqtk_gpPUW4NQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JNyF92WXEdqX5rc_gMqPOQ" isUnsettable="true" xmlFeatureKind="Element"/>
+            <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pdwMl2XHEdqZJYx_cH0Gsg" isUnsettable="true" xmlFeatureKind="Element"/>
           </eAnnotations>
           <ownedComment xmi:id="_rpfwOBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41BDD0260325">
             <body>Specifies a string that is the comment.</body>
@@ -4745,7 +4745,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
       <generalization xmi:id="_bC_LMEfCEdq0rbStTpEubg" general="_3ADC7B74022D3DE6D5DA0183"/>
       <ownedAttribute xmi:id="_3ADC7B74022D3CB24B21030C" name="ownedStereotype" type="_3ADC7B74022D3CA186DB0022" subsettedProperty="_3ADC7B74022D3DE6E0F500FF" association="_3ADC7B74022D3CB24B21012C" aggregation="composite">
         <eAnnotations xmi:id="_n55RIDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JN728GWXEdqX5rc_gMqPOQ"/>
+          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMmGXHEdqZJYx_cH0Gsg"/>
         </eAnnotations>
         <ownedComment xmi:id="_ruQ7iRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CB24B21030C">
           <body>References the Stereotypes that are owned by the Profile.</body>
@@ -4755,7 +4755,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
       </ownedAttribute>
       <ownedAttribute xmi:id="_3ADC7B74022D3DEE705703B8" name="metaclassReference" type="_3ADC7B74022D3DE6D5E7016E" subsettedProperty="_3ADC7B74022D3DE6E0040315" association="_3ADC7B74022D3DEE705700FB" aggregation="composite">
         <eAnnotations xmi:id="_n55RIjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JN728WWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMmWXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
         </eAnnotations>
         <ownedComment xmi:id="_ruj2eBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE705703B8">
           <body>References a metaclass that may be extended.</body>
@@ -4765,7 +4765,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
       </ownedAttribute>
       <ownedAttribute xmi:id="_3ADC7B74022D3DEE70D10178" name="metamodelReference" type="_3ADC7B74022D3DE6D5E002D7" subsettedProperty="_3ADC7B74022D3DE6E00902C3" association="_3ADC7B74022D3DEE70D002B7" aggregation="composite">
         <eAnnotations xmi:id="_n55RJDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JN728mWXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMmmXHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
         </eAnnotations>
         <ownedComment xmi:id="_rutnYhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE70D10178">
           <body>References a package containing (directly or indirectly) metaclasses that may be extended.</body>
@@ -4795,7 +4795,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
       <generalization xmi:id="_3ADC7B74022D416D69D00339" general="_3ADC7B74022D3DE6C03E0388"/>
       <ownedAttribute xmi:id="_3ADC7B74022D3CA1877301CF" name="appliedProfile" type="_3ADC7B74022D3CBDA36602FA" subsettedProperty="_3ADC7B74022D3DE6E00902C3" association="_3ADC7B74022D3CA187710277" aggregation="composite">
         <eAnnotations xmi:id="_n6DCIDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JN7282WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMm2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
         </eAnnotations>
         <ownedComment xmi:id="_ruQ7fxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA1877301CF">
           <body>References the ProfileApplications that indicate which profiles have been applied to the Package.</body>
@@ -4810,7 +4810,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
       </ownedComment>
       <ownedAttribute xmi:id="_3ADC7B74022D3CBDA7FB03DD" name="extension" type="_3ADC7B74022D3CBDA5E903C7" isReadOnly="true" isDerived="true" association="_3ADC7B74022D3CBDA7FA0395">
         <eAnnotations xmi:id="_ruaFeBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JN729GWXEdqX5rc_gMqPOQ" isTransient="true"/>
+          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMnGXHEdqZJYx_cH0Gsg" isTransient="true"/>
         </eAnnotations>
         <ownedComment xmi:id="_ruaFcxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CBDA7FB03DD">
           <body>References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.</body>
@@ -4867,7 +4867,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
       <generalization xmi:id="_3ADC7B74022D3DEE788500D3" general="_3ADC7B74022D3DE6E15D033A"/>
       <ownedAttribute xmi:id="_3ADC7B74022D3CBDA7B50011" name="isRequired" type="_3ADC7B74022D3CA010AC0090" isReadOnly="true" isDerived="true">
         <eAnnotations xmi:id="_ruHKhhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_JN729WWXEdqX5rc_gMqPOQ" isTransient="true"/>
+          <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_pdwMnWXHEdqZJYx_cH0Gsg" isTransient="true"/>
         </eAnnotations>
         <ownedComment xmi:id="_ruHKgxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CBDA7B50011">
           <body>Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the multiplicity of the Property referenced by Extension::ownedEnd; a multiplicity of 1 means that isRequired is true, but otherwise it is false. Since the default multiplicity of an ExtensionEnd is 0..1, the default value of isRequired is false.</body>
@@ -4876,7 +4876,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
       </ownedAttribute>
       <ownedAttribute xmi:id="_3ADC7B74022D3CBDA7FB03E7" name="metaclass" type="_3ADC7B74022D3CA22B8803DA" isReadOnly="true" isDerived="true" association="_3ADC7B74022D3CBDA7FA0395">
         <eAnnotations xmi:id="_ruj2YBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JN729mWXEdqX5rc_gMqPOQ" isTransient="true"/>
+          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMnmXHEdqZJYx_cH0Gsg" isTransient="true"/>
         </eAnnotations>
         <ownedComment xmi:id="_ruaFexTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CBDA7FB03E7">
           <body>References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.</body>
@@ -4886,7 +4886,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
       </ownedAttribute>
       <ownedAttribute xmi:id="_3ADC7B74022D3CBDA88400D7" name="ownedEnd" type="_3ADC7B74022D3CBDA5F701B4" redefinedProperty="_3ADC7B74022D3DE6E409010C" subsettedProperty="_3ADC7B74022D3DE6E409010C" association="_3ADC7B74022D3CBDA88302E8" aggregation="composite">
         <eAnnotations xmi:id="_n6DCIjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_JN7292WXEdqX5rc_gMqPOQ" isResolveProxies="false"/>
+          <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_pdwMn2XHEdqZJYx_cH0Gsg" isResolveProxies="false"/>
         </eAnnotations>
         <ownedComment xmi:id="_ruj2ZBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CBDA88400D7">
           <body>References the end of the extension that is typed by a Stereotype.</body>
@@ -4907,7 +4907,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
       </ownedOperation>
       <ownedOperation xmi:id="_Ccgo4DakEdqq1tCaRkgBQQ" name="metaclass" type="_3ADC7B74022D3CA22B8803DA" isQuery="true" bodyCondition="_IyQqADakEdqq1tCaRkgBQQ">
         <eAnnotations xmi:id="_I7cDgFYGEdqrn7iZ0eqieg" source="appliedStereotypes">
-          <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_JN72-GWXEdqX5rc_gMqPOQ" operationName="getMetaclass"/>
+          <contents xmi:type="Ecore_2:Ecore__EOperation" xmi:id="_pdwMoGXHEdqZJYx_cH0Gsg" operationName="getMetaclass"/>
         </eAnnotations>
         <ownedComment xmi:id="_O8Em8DqAEdq16aujGBCOZg" annotatedElement="_Ccgo4DakEdqq1tCaRkgBQQ">
           <body>The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).</body>

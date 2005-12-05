@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.7 2005/12/05 20:18:58 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.8 2005/12/05 20:47:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -489,7 +489,8 @@ public final class PropertyOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static void setDefault(final Property property, final String newDefault) {
+	public static void setDefault(final Property property,
+			final String newDefault) {
 		ValueSpecification defaultValue = property.getDefaultValue();
 
 		if (defaultValue != null) {
@@ -586,6 +587,28 @@ public final class PropertyOperations
 	 * @generated
 	 */
 	public static void setOpposite(Property property, Property newOpposite) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static boolean isSetDefault(Property property) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static void unsetDefault(Property property) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.10 2005/12/05 18:00:16 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.11 2005/12/05 20:47:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -618,9 +618,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void unsetDefault() {
-		// TODO: implement this method to unset the 'Default' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ParameterOperations.unsetDefault(this);
 	}
 
 	/**
@@ -629,9 +627,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public boolean isSetDefault() {
-		// TODO: implement this method to return whether the 'Default' attribute is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ParameterOperations.isSetDefault(this);
 	}
 
 	/**

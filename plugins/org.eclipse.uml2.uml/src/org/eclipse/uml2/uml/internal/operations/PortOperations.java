@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.3 2005/12/05 20:18:58 khussey Exp $
+ * $Id: PortOperations.java,v 1.4 2005/12/05 20:47:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -56,7 +56,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class PortOperations extends UMLOperations {
+public final class PortOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -227,7 +228,8 @@ public final class PortOperations extends UMLOperations {
 		if (type instanceof Interface) {
 			provideds.add(type);
 		} else if (type instanceof BehavioredClassifier) {
-			BehavioredClassifier behavioredClassifier = (BehavioredClassifier) port.getType();
+			BehavioredClassifier behavioredClassifier = (BehavioredClassifier) port
+				.getType();
 
 			getImplementedInterfaces(behavioredClassifier, provideds);
 
