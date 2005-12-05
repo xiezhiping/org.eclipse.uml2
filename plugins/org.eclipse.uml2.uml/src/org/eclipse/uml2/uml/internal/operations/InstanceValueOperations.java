@@ -8,11 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueOperations.java,v 1.1 2005/12/05 18:00:18 khussey Exp $
+ * $Id: InstanceValueOperations.java,v 1.2 2005/12/05 20:18:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import org.eclipse.uml2.uml.EnumerationLiteral;
+import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
+import org.eclipse.uml2.uml.ValueSpecification;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,9 +29,9 @@ import org.eclipse.uml2.uml.InstanceValue;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class InstanceValueOperations {
+public final class InstanceValueOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -42,12 +45,22 @@ public final class InstanceValueOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String stringValue(InstanceValue instanceValue) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		InstanceSpecification instance = instanceValue.getInstance();
+
+		if (instance instanceof EnumerationLiteral) {
+			return ((EnumerationLiteral) instance).getName();
+		} else if (instance != null) {
+			ValueSpecification specification = instance.getSpecification();
+
+			if (specification != null) {
+				return specification.stringValue();
+			}
+		}
+
+		return ValueSpecificationOperations.stringValue(instanceValue);
 	}
 
 } // InstanceValueOperations

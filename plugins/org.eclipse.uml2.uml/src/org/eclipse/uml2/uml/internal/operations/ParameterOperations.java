@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.5 2005/12/05 18:00:18 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.6 2005/12/05 20:18:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -19,11 +20,16 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.InstanceSpecification;
+import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.LiteralBoolean;
 import org.eclipse.uml2.uml.LiteralInteger;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
+import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
@@ -230,9 +236,17 @@ public final class ParameterOperations
 	 */
 	public static String getDefault(Parameter parameter) {
 		ValueSpecification defaultValue = parameter.getDefaultValue();
-		return defaultValue == null
-			? EMPTY_STRING
-			: defaultValue.stringValue();
+
+		if (defaultValue != null) {
+			return defaultValue.stringValue();
+		} else {
+			ParameterImpl parameterImpl = (ParameterImpl) parameter;
+			return (String) parameterImpl
+				.eVirtualGet(
+					parameterImpl
+						.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT),
+					EMPTY_STRING);
+		}
 	}
 
 	/**
@@ -240,11 +254,37 @@ public final class ParameterOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static void setDefault(Parameter parameter, final String newDefault) {
+	public static void setDefault(final Parameter parameter,
+			final String newDefault) {
 		ValueSpecification defaultValue = parameter.getDefaultValue();
 
 		if (defaultValue != null) {
 			new UMLSwitch() {
+
+				public Object caseInstanceValue(InstanceValue instanceValue) {
+					Type type = parameter.getType();
+
+					if (type instanceof Enumeration) {
+						instanceValue.setInstance(((Enumeration) type)
+							.getOwnedLiteral(newDefault));
+					} else {
+						InstanceSpecification instance = instanceValue
+							.getInstance();
+
+						if (instance != null) {
+							ValueSpecification specification = instance
+								.getSpecification();
+
+							if (specification != null) {
+								return doSwitch(specification);
+							}
+						}
+
+						throw new IllegalArgumentException(newDefault);
+					}
+
+					return instanceValue;
+				}
 
 				public Object caseLiteralBoolean(LiteralBoolean literalBoolean) {
 					literalBoolean.setValue(Boolean.getBoolean(newDefault));
@@ -266,6 +306,19 @@ public final class ParameterOperations
 					literalUnlimitedNatural.setValue(Integer
 						.parseInt(newDefault));
 					return literalUnlimitedNatural;
+				}
+
+				public Object caseOpaqueExpression(
+						OpaqueExpression opaqueExpression) {
+					List bodies = opaqueExpression.getBodies();
+
+					if (bodies.isEmpty()) {
+						bodies.add(newDefault);
+					} else {
+						bodies.set(0, newDefault);
+					}
+
+					return opaqueExpression;
 				}
 
 				public Object defaultCase(EObject eObject) {

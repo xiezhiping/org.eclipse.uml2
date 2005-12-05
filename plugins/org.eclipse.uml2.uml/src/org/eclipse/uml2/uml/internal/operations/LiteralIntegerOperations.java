@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerOperations.java,v 1.4 2005/12/05 18:00:17 khussey Exp $
+ * $Id: LiteralIntegerOperations.java,v 1.5 2005/12/05 20:18:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -70,12 +70,10 @@ public final class LiteralIntegerOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String stringValue(LiteralInteger literalInteger) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return String.valueOf(literalInteger.getValue());
 	}
 
 } // LiteralIntegerOperations

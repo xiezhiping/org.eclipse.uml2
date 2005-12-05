@@ -8,19 +8,33 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: PortOperations.java,v 1.3 2005/12/05 20:18:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+import org.eclipse.uml2.uml.BehavioredClassifier;
+import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Port;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.Usage;
 
+import org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl;
+import org.eclipse.uml2.uml.internal.impl.PortImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -40,9 +54,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class PortOperations {
+public final class PortOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -181,26 +195,109 @@ public final class PortOperations {
 		return true;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static List getProvideds(Port port) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	protected static List getImplementedInterfaces(
+			BehavioredClassifier behavioredClassifier,
+			List implementedInterfaces) {
+
+		for (Iterator interfaceRealizations = behavioredClassifier
+			.getInterfaceRealizations().iterator(); interfaceRealizations
+			.hasNext();) {
+
+			Interface contract = ((InterfaceRealizationImpl) interfaceRealizations
+				.next()).basicGetContract();
+
+			if (contract != null) {
+				implementedInterfaces.add(contract);
+			}
+		}
+		return implementedInterfaces;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 */
+	public static List getProvideds(Port port) {
+		List provideds = new UniqueEList();
+
+		PortImpl portImpl = (PortImpl) port;
+		Type type = portImpl.basicGetType();
+
+		if (type instanceof Interface) {
+			provideds.add(type);
+		} else if (type instanceof BehavioredClassifier) {
+			BehavioredClassifier behavioredClassifier = (BehavioredClassifier) port.getType();
+
+			getImplementedInterfaces(behavioredClassifier, provideds);
+
+			for (Iterator allParents = behavioredClassifier.allParents()
+				.iterator(); allParents.hasNext();) {
+
+				Classifier parent = (Classifier) allParents.next();
+
+				if (parent instanceof BehavioredClassifier) {
+					getImplementedInterfaces((BehavioredClassifier) parent,
+						provideds);
+				}
+			}
+		}
+
+		return new UnionEObjectEList(portImpl,
+			UMLPackage.Literals.PORT__PROVIDED, provideds.size(), provideds
+				.toArray());
+	}
+
+	protected static List getUsedInterfaces(Classifier classifier,
+			List usedInterfaces) {
+
+		for (Iterator clientDependencies = classifier.getClientDependencies()
+			.iterator(); clientDependencies.hasNext();) {
+
+			Dependency dependency = (Dependency) clientDependencies.next();
+
+			if (dependency instanceof Usage) {
+
+				for (Iterator suppliers = ((InternalEList) dependency
+					.getSuppliers()).basicIterator(); suppliers.hasNext();) {
+
+					Object supplier = suppliers.next();
+
+					if (supplier instanceof Interface) {
+						usedInterfaces.add(supplier);
+					}
+				}
+			}
+		}
+
+		return usedInterfaces;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
 	 */
 	public static List getRequireds(Port port) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List requireds = new UniqueEList();
+
+		Type type = port.getType();
+
+		if (type instanceof Classifier && !(type instanceof Interface)) {
+			Classifier classifier = (Classifier) type;
+
+			getUsedInterfaces(classifier, requireds);
+
+			for (Iterator allParents = classifier.allParents().iterator(); allParents
+				.hasNext();) {
+
+				getUsedInterfaces((Classifier) allParents.next(), requireds);
+			}
+		}
+
+		return new UnionEObjectEList((InternalEObject) port,
+			UMLPackage.Literals.PORT__REQUIRED, requireds.size(), requireds
+				.toArray());
 	}
 
 } // PortOperations

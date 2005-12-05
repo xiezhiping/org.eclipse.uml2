@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.4 2005/12/01 18:15:37 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.5 2005/12/05 20:18:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -109,7 +109,6 @@ public final class ComponentOperations
 	 * @generated NOT
 	 */
 	public static List usedInterfaces(Component component, Classifier classifier) {
-
 		List usedInterfaces = new UniqueEList();
 
 		for (Iterator clientDependencies = classifier.getClientDependencies()

@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.5 2005/12/05 18:00:17 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.6 2005/12/05 20:18:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -291,7 +292,7 @@ public final class OpaqueExpressionOperations
 			try {
 				return Integer.parseInt((String) bodies.next()) >= 0;
 			} catch (NumberFormatException nfe) {
-				// do nothing
+				// ignore
 			}
 		}
 
@@ -325,12 +326,14 @@ public final class OpaqueExpressionOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String stringValue(OpaqueExpression opaqueExpression) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List bodies = opaqueExpression.getBodies();
+
+		return bodies.size() > 0
+			? (String) bodies.get(0)
+			: ValueSpecificationOperations.stringValue(opaqueExpression);
 	}
 
 } // OpaqueExpressionOperations
