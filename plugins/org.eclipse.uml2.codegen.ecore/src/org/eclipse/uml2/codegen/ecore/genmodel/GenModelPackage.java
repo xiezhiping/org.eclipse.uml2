@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.13 2005/11/29 20:08:37 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.14 2005/12/05 21:03:02 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -86,6 +86,15 @@ public interface GenModelPackage
 	int GEN_BASE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_BASE__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_BASE__GEN_ANNOTATIONS;
+
+	/**
 	 * The number of structural features of the '<em>Gen Base</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,6 +112,15 @@ public interface GenModelPackage
 	 * @generated
 	 */
 	int GEN_CLASS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_CLASS__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__GEN_ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Gen Package</b></em>' reference.
@@ -196,6 +214,15 @@ public interface GenModelPackage
 	int GEN_CLASSIFIER = 2;
 
 	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_CLASSIFIER__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER__GEN_ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Gen Package</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,6 +249,15 @@ public interface GenModelPackage
 	 * @generated
 	 */
 	int GEN_DATA_TYPE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DATA_TYPE__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__GEN_ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Gen Package</b></em>' reference.
@@ -259,6 +295,15 @@ public interface GenModelPackage
 	 * @generated
 	 */
 	int GEN_ENUM = 4;
+
+	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_ENUM__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__GEN_ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Gen Package</b></em>' reference.
@@ -316,6 +361,15 @@ public interface GenModelPackage
 	int GEN_ENUM_LITERAL = 5;
 
 	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_ENUM_LITERAL__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM_LITERAL__GEN_ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Gen Enum</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -351,6 +405,15 @@ public interface GenModelPackage
 	 * @generated
 	 */
 	int GEN_FEATURE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__GEN_ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Property</b></em>' attribute.
@@ -460,6 +523,15 @@ public interface GenModelPackage
 	 * @generated
 	 */
 	int GEN_MODEL = 7;
+
+	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__GEN_ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Copyright Text</b></em>' attribute.
@@ -958,6 +1030,15 @@ public interface GenModelPackage
 	int GEN_OPERATION = 8;
 
 	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_OPERATION__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION__GEN_ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Gen Class</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1011,6 +1092,15 @@ public interface GenModelPackage
 	 * @generated
 	 */
 	int GEN_PACKAGE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__GEN_ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Prefix</b></em>' attribute.
@@ -1248,6 +1338,15 @@ public interface GenModelPackage
 	int GEN_PARAMETER = 10;
 
 	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PARAMETER__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PARAMETER__GEN_ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Gen Operation</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1283,6 +1382,15 @@ public interface GenModelPackage
 	 * @generated
 	 */
 	int GEN_TYPED_ELEMENT = 11;
+
+	/**
+	 * The feature id for the '<em><b>Gen Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_TYPED_ELEMENT__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_TYPED_ELEMENT__GEN_ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Gen Typed Element</em>' class.

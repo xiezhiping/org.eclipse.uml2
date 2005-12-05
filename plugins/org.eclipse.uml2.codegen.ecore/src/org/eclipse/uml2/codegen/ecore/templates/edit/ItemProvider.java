@@ -165,7 +165,7 @@ public class ItemProvider
   protected final String TEXT_147 = ",";
   protected final String TEXT_148 = NL + "\t\t\t\t ";
   protected final String TEXT_149 = ".create(";
-  protected final String TEXT_150 = "())));";
+  protected final String TEXT_150 = ")));";
   protected final String TEXT_151 = NL + "\t\t\t\t ";
   protected final String TEXT_152 = ".create";
   protected final String TEXT_153 = "()));";
