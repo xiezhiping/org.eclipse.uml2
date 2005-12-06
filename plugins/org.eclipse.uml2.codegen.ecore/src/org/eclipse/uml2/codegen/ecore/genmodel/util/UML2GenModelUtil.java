@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.8 2005/12/01 16:16:26 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.9 2005/12/06 19:06:43 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -456,7 +456,7 @@ public class UML2GenModelUtil {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
 				.getRedefinedListItemType()
-			: null;
+			: genFeature.getListItemType();
 	}
 
 	// GenOperation utilities
@@ -478,7 +478,7 @@ public class UML2GenModelUtil {
 		return genOperation instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenOperation
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenOperation) genOperation)
 				.getCacheAdapterScope()
-			: null;
+			: GenCacheAdapterScope.NONE_LITERAL;
 	}
 
 	public static boolean isDuplicate(GenOperation genOperation) {
