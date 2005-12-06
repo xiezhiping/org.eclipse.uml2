@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.20 2005/11/29 20:09:39 khussey Exp $
+ * $Id: Element.java,v 1.21 2005/12/06 23:18:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +45,7 @@ import org.eclipse.emf.ecore.EModelElement;
  * @model abstract="true"
  * @generated
  */
-public interface Element extends EModelElement{
+public interface Element extends EObject, EModelElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

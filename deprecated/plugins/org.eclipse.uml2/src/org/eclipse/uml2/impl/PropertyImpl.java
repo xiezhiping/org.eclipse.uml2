@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.36 2005/11/29 20:09:37 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.37 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1634,6 +1634,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.PROPERTY__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.PROPERTY__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROPERTY__OWNED_ELEMENT:
 				return isSetOwnedElements();

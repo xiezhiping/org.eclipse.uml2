@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,8 +22,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -194,7 +195,7 @@ public abstract class ActivityGroupImpl
 	public void setInActivity(Activity newInActivity) {
 		if (newInActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY && newInActivity != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newInActivity))
+			if (EcoreUtil.isAncestor(this, newInActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -382,6 +383,7 @@ public abstract class ActivityGroupImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT :
 				return isSetOwnedElements();

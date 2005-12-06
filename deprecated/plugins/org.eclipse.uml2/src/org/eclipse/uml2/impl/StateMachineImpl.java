@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.37 2005/11/28 17:18:05 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.38 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1005,6 +1005,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.STATE_MACHINE__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.STATE_MACHINE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STATE_MACHINE__OWNED_ELEMENT:
 				return isSetOwnedElements();

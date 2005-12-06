@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.8 2005/12/01 21:57:18 khussey Exp $
+ * $Id: TypeImpl.java,v 1.9 2005/12/06 23:21:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.List;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -260,6 +262,7 @@ public abstract class TypeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TYPE__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TYPE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TYPE__OWNED_ELEMENT :
 				return isSetOwnedElements();

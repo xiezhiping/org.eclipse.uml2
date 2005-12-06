@@ -23,7 +23,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true" eSuperTypes="http://www.eclipse.org/emf/2002/Ecore#//EModelElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true" eSuperTypes="http://www.eclipse.org/emf/2002/Ecore#//EObject http://www.eclipse.org/emf/2002/Ecore#//EModelElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An element can own comments.&#xD;&#xA;Element is an abstract metaclass with no superclass. It is used as the common superclass for all metaclasses in the infrastructure library. Element has a derived composition association to itself to support the general capability for elements to own other elements.&#xD;&#xA; An element is a constituent of a model. An element can own comments."/>
     </eAnnotations>
@@ -4724,7 +4724,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Image" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Image" abstract="true" eSuperTypes="http://www.eclipse.org/emf/2002/Ecore#//EObject">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The Image class provides the necessary information to display an Image in a diagram. Icons are typically handled through the Image class."/>
     </eAnnotations>

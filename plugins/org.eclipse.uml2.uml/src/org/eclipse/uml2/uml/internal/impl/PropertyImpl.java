@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.13 2005/12/05 20:47:30 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.14 2005/12/06 23:21:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -337,8 +339,7 @@ public class PropertyImpl
 		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
-			if (EcoreUtil
-				.isAncestor(this, (EObject) newOwningTemplateParameter))
+			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -762,7 +763,7 @@ public class PropertyImpl
 	public void setDatatype(DataType newDatatype) {
 		if (newDatatype != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__DATATYPE && newDatatype != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newDatatype))
+			if (EcoreUtil.isAncestor(this, newDatatype))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -850,10 +851,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setDefault(String newDefault) {
-		newDefault = newDefault == null
-			? DEFAULT_EDEFAULT
-			: newDefault;
-
 		PropertyOperations.setDefault(this, newDefault);
 	}
 
@@ -995,7 +992,7 @@ public class PropertyImpl
 		EObject oldOwningAssociation = eContainer();
 		if (newOwningAssociation != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_ASSOCIATION && newOwningAssociation != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newOwningAssociation))
+			if (EcoreUtil.isAncestor(this, newOwningAssociation))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -1225,7 +1222,7 @@ public class PropertyImpl
 	public void setAssociationEnd(Property newAssociationEnd) {
 		if (newAssociationEnd != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__ASSOCIATION_END && newAssociationEnd != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newAssociationEnd))
+			if (EcoreUtil.isAncestor(this, newAssociationEnd))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -2022,6 +2019,7 @@ public class PropertyImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PROPERTY__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PROPERTY__OWNED_ELEMENT :
 				return isSetOwnedElements();

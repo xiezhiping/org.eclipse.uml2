@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.7 2005/12/01 20:04:36 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.8 2005/12/06 23:21:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,8 +21,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -230,7 +231,7 @@ public class TemplateBindingImpl
 	public void setBoundElement(TemplateableElement newBoundElement) {
 		if (newBoundElement != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT && newBoundElement != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newBoundElement))
+			if (EcoreUtil.isAncestor(this, newBoundElement))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -434,6 +435,7 @@ public class TemplateBindingImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_BINDING__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TEMPLATE_BINDING__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TEMPLATE_BINDING__OWNED_ELEMENT :
 				return isSetOwnedElements();

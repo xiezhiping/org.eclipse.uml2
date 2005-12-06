@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.17 2005/11/23 20:05:08 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.18 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -382,6 +382,7 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.OPAQUE_EXPRESSION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.OPAQUE_EXPRESSION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.OPAQUE_EXPRESSION__OWNED_ELEMENT:
 				return isSetOwnedElements();

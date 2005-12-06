@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.10 2005/12/01 21:57:18 khussey Exp $
+ * $Id: ClassImpl.java,v 1.11 2005/12/06 23:21:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -1464,6 +1466,7 @@ public class ClassImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CLASS__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CLASS__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CLASS__OWNED_ELEMENT :
 				return isSetOwnedElements();

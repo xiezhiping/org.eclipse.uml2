@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueImpl.java,v 1.15 2005/11/23 20:05:09 khussey Exp $
+ * $Id: InstanceValueImpl.java,v 1.16 2005/12/06 23:18:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -263,6 +263,7 @@ public class InstanceValueImpl extends ValueSpecificationImpl implements Instanc
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INSTANCE_VALUE__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.INSTANCE_VALUE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INSTANCE_VALUE__OWNED_ELEMENT:
 				return isSetOwnedElements();

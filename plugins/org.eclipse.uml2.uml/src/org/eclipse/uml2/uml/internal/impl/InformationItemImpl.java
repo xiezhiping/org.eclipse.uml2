@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.6 2005/12/01 21:57:18 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -449,6 +451,7 @@ public class InformationItemImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INFORMATION_ITEM__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INFORMATION_ITEM__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INFORMATION_ITEM__OWNED_ELEMENT :
 				return isSetOwnedElements();

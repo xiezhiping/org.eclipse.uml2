@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.23 2005/11/28 17:18:05 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.24 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -601,6 +601,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.SEND_OBJECT_ACTION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.SEND_OBJECT_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();

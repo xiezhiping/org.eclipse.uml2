@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.5 2005/12/01 20:04:38 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.6 2005/12/06 23:21:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.List;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -179,6 +181,7 @@ public class DestroyLinkActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DESTROY_LINK_ACTION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();

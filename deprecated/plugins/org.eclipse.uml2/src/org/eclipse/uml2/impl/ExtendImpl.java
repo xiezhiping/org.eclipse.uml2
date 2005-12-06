@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.24 2005/11/28 17:18:06 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.25 2005/12/06 23:18:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -585,6 +585,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.EXTEND__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.EXTEND__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXTEND__OWNED_ELEMENT:
 				return isSetOwnedElements();

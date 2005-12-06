@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.6 2005/12/01 20:04:37 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -17,6 +17,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -191,8 +193,7 @@ public abstract class ParameterableElementImpl
 		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
-			if (EcoreUtil
-				.isAncestor(this, (EObject) newOwningTemplateParameter))
+			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -396,6 +397,7 @@ public abstract class ParameterableElementImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PARAMETERABLE_ELEMENT__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();

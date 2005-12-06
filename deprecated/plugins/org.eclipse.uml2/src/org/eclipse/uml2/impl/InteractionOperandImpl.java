@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.22 2005/11/28 17:18:06 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.23 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -677,6 +677,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INTERACTION_OPERAND__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.INTERACTION_OPERAND__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION_OPERAND__OWNED_ELEMENT:
 				return isSetOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.21 2005/11/28 17:18:05 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.22 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -503,6 +503,7 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.DURATION_OBSERVATION_ACTION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();

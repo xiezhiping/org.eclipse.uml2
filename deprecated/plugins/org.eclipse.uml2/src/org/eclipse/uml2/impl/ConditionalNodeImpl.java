@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.22 2005/11/28 17:18:06 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.23 2005/12/06 23:18:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -695,6 +695,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CONDITIONAL_NODE__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.CONDITIONAL_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__OWNED_ELEMENT:
 				return isSetOwnedElements();

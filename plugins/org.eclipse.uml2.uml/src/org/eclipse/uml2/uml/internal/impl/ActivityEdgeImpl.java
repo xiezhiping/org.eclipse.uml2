@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,8 +22,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -169,7 +170,7 @@ public class ActivityEdgeImpl
 	public void setActivity(Activity newActivity) {
 		if (newActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__ACTIVITY && newActivity != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newActivity))
+			if (EcoreUtil.isAncestor(this, newActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -239,7 +240,7 @@ public class ActivityEdgeImpl
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
 		if (newInStructuredNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newInStructuredNode))
+			if (EcoreUtil.isAncestor(this, newInStructuredNode))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -1021,6 +1022,7 @@ public class ActivityEdgeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT :
 				return isSetOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.13 2005/12/01 21:57:18 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.14 2005/12/06 23:21:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -410,8 +412,7 @@ public abstract class ClassifierImpl
 		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
-			if (EcoreUtil
-				.isAncestor(this, (EObject) newOwningTemplateParameter))
+			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -1954,6 +1955,7 @@ public abstract class ClassifierImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CLASSIFIER__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CLASSIFIER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CLASSIFIER__OWNED_ELEMENT :
 				return isSetOwnedElements();

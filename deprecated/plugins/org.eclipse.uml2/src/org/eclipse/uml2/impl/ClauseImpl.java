@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.13 2005/11/28 17:18:05 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.14 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -385,6 +385,7 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CLAUSE__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.CLAUSE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CLAUSE__OWNED_ELEMENT:
 				return isSetOwnedElements();

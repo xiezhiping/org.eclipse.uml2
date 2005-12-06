@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.10 2005/12/01 21:57:18 khussey Exp $
+ * $Id: ElementImpl.java,v 1.11 2005/12/06 23:21:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,16 +22,23 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.EModelElementImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
@@ -47,6 +54,7 @@ import org.eclipse.uml2.uml.internal.operations.ElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImpl#getEAnnotations <em>EAnnotations</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImpl#getOwnedComments <em>Owned Comment</em>}</li>
  * </ul>
@@ -55,7 +63,7 @@ import org.eclipse.uml2.uml.internal.operations.ElementOperations;
  * @generated
  */
 public abstract class ElementImpl
-		extends EModelElementImpl
+		extends EObjectImpl
 		implements Element {
 
 	/**
@@ -90,6 +98,22 @@ public abstract class ElementImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ELEMENT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getEAnnotations() {
+		EList eAnnotations = (EList) eVirtualGet(UMLPackage.ELEMENT__EANNOTATIONS);
+		if (eAnnotations == null) {
+			eVirtualSet(UMLPackage.ELEMENT__EANNOTATIONS,
+				eAnnotations = new EObjectContainmentWithInverseEList(
+					EAnnotation.class, this, UMLPackage.ELEMENT__EANNOTATIONS,
+					EcorePackage.EANNOTATION__EMODEL_ELEMENT));
+		}
+		return eAnnotations;
 	}
 
 	/**
@@ -137,6 +161,26 @@ public abstract class ElementImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EAnnotation getEAnnotation(String source) {
+
+		for (Iterator eAnnotations = getEAnnotations().iterator(); eAnnotations
+			.hasNext();) {
+
+			EAnnotation eAnnotation = (EAnnotation) eAnnotations.next();
+
+			if (UML2Util.safeEquals(eAnnotation.getSource(), source)) {
+				return eAnnotation;
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map context) {
@@ -179,6 +223,21 @@ public abstract class ElementImpl
 	 */
 	public boolean mustBeOwned() {
 		return ElementOperations.mustBeOwned(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.ELEMENT__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -264,6 +323,7 @@ public abstract class ElementImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ELEMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
@@ -274,6 +334,40 @@ public abstract class ElementImpl
 				return ownedComment != null && !ownedComment.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+		if (baseClass == EModelElement.class) {
+			switch (derivedFeatureID) {
+				case UMLPackage.ELEMENT__EANNOTATIONS :
+					return EcorePackage.EMODEL_ELEMENT__EANNOTATIONS;
+				default :
+					return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+		if (baseClass == EModelElement.class) {
+			switch (baseFeatureID) {
+				case EcorePackage.EMODEL_ELEMENT__EANNOTATIONS :
+					return UMLPackage.ELEMENT__EANNOTATIONS;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

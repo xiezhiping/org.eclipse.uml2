@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.7 2005/12/01 20:04:38 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.8 2005/12/06 23:21:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,8 +22,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -154,7 +155,7 @@ public class RedefinableTemplateSignatureImpl
 	public void setTemplate(TemplateableElement newTemplate) {
 		if (newTemplate != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newTemplate))
+			if (EcoreUtil.isAncestor(this, newTemplate))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -320,7 +321,7 @@ public class RedefinableTemplateSignatureImpl
 	public void setClassifier(Classifier newClassifier) {
 		if (newClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER && newClassifier != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newClassifier))
+			if (EcoreUtil.isAncestor(this, newClassifier))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -618,6 +619,7 @@ public class RedefinableTemplateSignatureImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT :
 				return isSetOwnedElements();

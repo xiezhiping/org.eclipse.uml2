@@ -5,10 +5,10 @@
     creationIcons="false" modelPluginID="org.eclipse.uml2.uml" templateDirectory="/org.eclipse.uml2.uml/templates"
     runtimeJar="true" dynamicTemplates="true" modelName="UML" modelPluginClass="org.eclipse.uml2.uml.UMLPlugin"
     editPluginClass="org.eclipse.uml2.uml.edit.UMLEditPlugin" editorPluginClass="org.eclipse.uml2.uml.editor.UMLEditorPlugin"
-    nonNLSMarkers="true" suppressEMFTypes="true" codeFormatting="true" booleanFlagsField="eFlags"
-    booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.ecore.importer" featureDelegation="Virtual"
-    containmentProxies="true" minimalReflectiveMethods="false" factoryMethods="true"
-    pluralizedGetters="true" cacheAdapterSupport="true" safeStrings="true" invariantPrefix="validate">
+    nonNLSMarkers="true" rootExtendsInterface="" suppressEMFTypes="true" codeFormatting="true"
+    booleanFlagsField="eFlags" booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.ecore.importer"
+    featureDelegation="Virtual" containmentProxies="true" minimalReflectiveMethods="false"
+    factoryMethods="true" pluralizedGetters="true" cacheAdapterSupport="true" invariantPrefix="validate">
   <foreignModel>L3.merged.uml2</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="UML" basePackage="org.eclipse.uml2"
       disposableProviderFactory="true" loadInitialization="true" classPackageSuffix="internal.impl"

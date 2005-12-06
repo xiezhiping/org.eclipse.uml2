@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.18 2005/11/23 20:05:08 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.19 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -252,6 +252,7 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.FEATURE__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.FEATURE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.FEATURE__OWNED_ELEMENT:
 				return isSetOwnedElements();

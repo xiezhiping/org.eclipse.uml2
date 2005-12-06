@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2PackageImpl.java,v 1.27 2005/11/28 17:18:06 khussey Exp $
+ * $Id: UML2PackageImpl.java,v 1.28 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 
 import org.eclipse.uml2.Abstraction;
 import org.eclipse.uml2.AcceptCallAction;
@@ -10117,6 +10116,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Add supertypes to classes
+		elementEClass.getESuperTypes().add(ecorePackage.getEObject());
 		elementEClass.getESuperTypes().add(theEcorePackage.getEModelElement());
 		multiplicityElementEClass.getESuperTypes().add(this.getElement());
 		namedElementEClass.getESuperTypes().add(this.getTemplateableElement());
@@ -10393,17 +10393,17 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getElement_Owner(), this.getElement(), this.getElement_OwnedElement(), "owner", null, 0, 1, Element.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getElement_OwnedComment(), this.getComment(), null, "ownedComment", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
-		EOperation op = addEOperation(elementEClass, this.getBoolean(), "validateNotOwnSelf"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		EOperation op = addEOperation(elementEClass, this.getBoolean(), "validateNotOwnSelf", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(elementEClass, this.getBoolean(), "validateHasOwner"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(elementEClass, this.getBoolean(), "validateHasOwner", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		addEOperation(elementEClass, this.getSet(), "allOwnedElements"); //$NON-NLS-1$
+		addEOperation(elementEClass, this.getSet(), "allOwnedElements", 0, 1); //$NON-NLS-1$
 
-		addEOperation(elementEClass, this.getBoolean(), "mustBeOwned"); //$NON-NLS-1$
+		addEOperation(elementEClass, this.getBoolean(), "mustBeOwned", 0, 1); //$NON-NLS-1$
 
 		initEClass(multiplicityElementEClass, MultiplicityElement.class, "MultiplicityElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getMultiplicityElement_IsOrdered(), this.getBoolean(), "isOrdered", "false", 0, 1, MultiplicityElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
@@ -10413,41 +10413,41 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getMultiplicityElement_UpperValue(), this.getValueSpecification(), null, "upperValue", null, 0, 1, MultiplicityElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getMultiplicityElement_LowerValue(), this.getValueSpecification(), null, "lowerValue", null, 0, 1, MultiplicityElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(multiplicityElementEClass, this.getInteger(), "lowerBound"); //$NON-NLS-1$
+		addEOperation(multiplicityElementEClass, this.getInteger(), "lowerBound", 0, 1); //$NON-NLS-1$
 
-		addEOperation(multiplicityElementEClass, this.getUnlimitedNatural(), "upperBound"); //$NON-NLS-1$
+		addEOperation(multiplicityElementEClass, this.getUnlimitedNatural(), "upperBound", 0, 1); //$NON-NLS-1$
 
-		addEOperation(multiplicityElementEClass, this.getBoolean(), "isMultivalued"); //$NON-NLS-1$
+		addEOperation(multiplicityElementEClass, this.getBoolean(), "isMultivalued", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "includesCardinality"); //$NON-NLS-1$
-		addEParameter(op, this.getInteger(), "C"); //$NON-NLS-1$
+		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "includesCardinality", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getInteger(), "C", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "includesMultiplicity"); //$NON-NLS-1$
-		addEParameter(op, this.getMultiplicityElement(), "M"); //$NON-NLS-1$
+		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "includesMultiplicity", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getMultiplicityElement(), "M", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "validateUpperGt0"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "validateUpperGt0", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "validateLowerGe0"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "validateLowerGe0", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "validateUpperGeLower"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "validateUpperGeLower", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "validateLowerEqLowerbound"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "validateLowerEqLowerbound", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "validateUpperEqUpperbound"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(multiplicityElementEClass, this.getBoolean(), "validateUpperEqUpperbound", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		addEOperation(multiplicityElementEClass, this.getInteger(), "lower"); //$NON-NLS-1$
+		addEOperation(multiplicityElementEClass, this.getInteger(), "lower", 0, 1); //$NON-NLS-1$
 
-		addEOperation(multiplicityElementEClass, this.getUnlimitedNatural(), "upper"); //$NON-NLS-1$
+		addEOperation(multiplicityElementEClass, this.getUnlimitedNatural(), "upper", 0, 1); //$NON-NLS-1$
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getNamedElement_Name(), this.getString(), "name", "", 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
@@ -10456,27 +10456,27 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getNamedElement_ClientDependency(), this.getDependency(), this.getDependency_Client(), "clientDependency", null, 0, -1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getNamedElement_NameExpression(), this.getStringExpression(), null, "nameExpression", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(namedElementEClass, this.getBoolean(), "validateNoName"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(namedElementEClass, this.getBoolean(), "validateNoName", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(namedElementEClass, this.getBoolean(), "validateQualifiedName"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(namedElementEClass, this.getBoolean(), "validateQualifiedName", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		addEOperation(namedElementEClass, this.getSequence(), "allNamespaces"); //$NON-NLS-1$
+		addEOperation(namedElementEClass, this.getSequence(), "allNamespaces", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(namedElementEClass, this.getBoolean(), "isDistinguishableFrom"); //$NON-NLS-1$
-		addEParameter(op, this.getNamedElement(), "n"); //$NON-NLS-1$
-		addEParameter(op, this.getNamespace(), "ns"); //$NON-NLS-1$
+		op = addEOperation(namedElementEClass, this.getBoolean(), "isDistinguishableFrom", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getNamedElement(), "n", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getNamespace(), "ns", 0, 1); //$NON-NLS-1$
 
-		addEOperation(namedElementEClass, this.getString(), "separator"); //$NON-NLS-1$
+		addEOperation(namedElementEClass, this.getString(), "separator", 0, 1); //$NON-NLS-1$
 
-		addEOperation(namedElementEClass, this.getString(), "qualifiedName"); //$NON-NLS-1$
+		addEOperation(namedElementEClass, this.getString(), "qualifiedName", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(namedElementEClass, this.getBoolean(), "validateVisibilityNeedsOwnership"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(namedElementEClass, this.getBoolean(), "validateVisibilityNeedsOwnership", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
 		initEClass(namespaceEClass, Namespace.class, "Namespace", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getNamespace_Member(), this.getNamedElement(), null, "member", null, 0, -1, Namespace.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
@@ -10485,26 +10485,26 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getNamespace_ElementImport(), this.getElementImport(), this.getElementImport_ImportingNamespace(), "elementImport", null, 0, -1, Namespace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getNamespace_PackageImport(), this.getPackageImport(), this.getPackageImport_ImportingNamespace(), "packageImport", null, 0, -1, Namespace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(namespaceEClass, this.getBoolean(), "validateMembersAreDistinguishable"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(namespaceEClass, this.getBoolean(), "validateMembersAreDistinguishable", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(namespaceEClass, this.getSet(), "getNamesOfMember"); //$NON-NLS-1$
-		addEParameter(op, this.getNamedElement(), "element"); //$NON-NLS-1$
+		op = addEOperation(namespaceEClass, this.getSet(), "getNamesOfMember", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getNamedElement(), "element", 0, 1); //$NON-NLS-1$
 
-		addEOperation(namespaceEClass, this.getBoolean(), "membersAreDistinguishable"); //$NON-NLS-1$
+		addEOperation(namespaceEClass, this.getBoolean(), "membersAreDistinguishable", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(namespaceEClass, this.getBoolean(), "validateImportedMemberDerived"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(namespaceEClass, this.getBoolean(), "validateImportedMemberDerived", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		addEOperation(namespaceEClass, this.getSet(), "importedMember"); //$NON-NLS-1$
+		addEOperation(namespaceEClass, this.getSet(), "importedMember", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(namespaceEClass, this.getSet(), "importMembers"); //$NON-NLS-1$
-		addEParameter(op, this.getSet(), "imps"); //$NON-NLS-1$
+		op = addEOperation(namespaceEClass, this.getSet(), "importMembers", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getSet(), "imps", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(namespaceEClass, this.getSet(), "excludeCollisions"); //$NON-NLS-1$
-		addEParameter(op, this.getSet(), "imps"); //$NON-NLS-1$
+		op = addEOperation(namespaceEClass, this.getSet(), "excludeCollisions", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getSet(), "imps", 0, 1); //$NON-NLS-1$
 
 		initEClass(opaqueExpressionEClass, OpaqueExpression.class, "OpaqueExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getOpaqueExpression_Body(), this.getString(), "body", "", 0, 1, OpaqueExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
@@ -10514,17 +10514,17 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		initEClass(valueSpecificationEClass, ValueSpecification.class, "ValueSpecification", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		addEOperation(valueSpecificationEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
+		addEOperation(valueSpecificationEClass, this.getBoolean(), "isComputable", 0, 1); //$NON-NLS-1$
 
-		addEOperation(valueSpecificationEClass, this.getInteger(), "integerValue"); //$NON-NLS-1$
+		addEOperation(valueSpecificationEClass, this.getInteger(), "integerValue", 0, 1); //$NON-NLS-1$
 
-		addEOperation(valueSpecificationEClass, this.getBoolean(), "booleanValue"); //$NON-NLS-1$
+		addEOperation(valueSpecificationEClass, this.getBoolean(), "booleanValue", 0, 1); //$NON-NLS-1$
 
-		addEOperation(valueSpecificationEClass, this.getString(), "stringValue"); //$NON-NLS-1$
+		addEOperation(valueSpecificationEClass, this.getString(), "stringValue", 0, 1); //$NON-NLS-1$
 
-		addEOperation(valueSpecificationEClass, this.getUnlimitedNatural(), "unlimitedValue"); //$NON-NLS-1$
+		addEOperation(valueSpecificationEClass, this.getUnlimitedNatural(), "unlimitedValue", 0, 1); //$NON-NLS-1$
 
-		addEOperation(valueSpecificationEClass, this.getBoolean(), "isNull"); //$NON-NLS-1$
+		addEOperation(valueSpecificationEClass, this.getBoolean(), "isNull", 0, 1); //$NON-NLS-1$
 
 		initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getExpression_Symbol(), this.getString(), "symbol", "", 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
@@ -10553,8 +10553,8 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEClass(typeEClass, Type.class, "Type", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getType_Package(), this.getPackage(), this.getPackage_OwnedType(), "package", null, 0, 1, Type.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(typeEClass, this.getBoolean(), "conformsTo"); //$NON-NLS-1$
-		addEParameter(op, this.getType(), "other"); //$NON-NLS-1$
+		op = addEOperation(typeEClass, this.getBoolean(), "conformsTo", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getType(), "other", 0, 1); //$NON-NLS-1$
 
 		initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getProperty_Default(), this.getString(), "default", "", 0, 1, Property.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
@@ -10573,37 +10573,37 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getProperty_Qualifier(), this.getProperty(), this.getProperty_AssociationEnd(), "qualifier", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getProperty_AssociationEnd(), this.getProperty(), this.getProperty_Qualifier(), "associationEnd", null, 0, 1, Property.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(propertyEClass, this.getBoolean(), "validateOppositeIsOtherEnd"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(propertyEClass, this.getBoolean(), "validateOppositeIsOtherEnd", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		addEOperation(propertyEClass, this.getProperty(), "opposite"); //$NON-NLS-1$
+		addEOperation(propertyEClass, this.getProperty(), "opposite", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(propertyEClass, this.getBoolean(), "validateMultiplicityOfComposite"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(propertyEClass, this.getBoolean(), "validateMultiplicityOfComposite", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(propertyEClass, this.getBoolean(), "validateSubsettingContext"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(propertyEClass, this.getBoolean(), "validateSubsettingContext", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(propertyEClass, this.getBoolean(), "validateNavigablePropertyRedefinition"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(propertyEClass, this.getBoolean(), "validateNavigablePropertyRedefinition", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(propertyEClass, this.getBoolean(), "validateSubsettingRules"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(propertyEClass, this.getBoolean(), "validateSubsettingRules", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(propertyEClass, this.getBoolean(), "validateNavigableReadonly"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(propertyEClass, this.getBoolean(), "validateNavigableReadonly", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(propertyEClass, this.getBoolean(), "validateDerivedUnionIsDerived"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(propertyEClass, this.getBoolean(), "validateDerivedUnionIsDerived", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		addEOperation(propertyEClass, this.getSet(), "subsettingContext"); //$NON-NLS-1$
+		addEOperation(propertyEClass, this.getSet(), "subsettingContext", 0, 1); //$NON-NLS-1$
 
 		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getOperation_OwnedParameter(), this.getParameter(), this.getParameter_Operation(), "ownedParameter", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -10615,19 +10615,19 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getOperation_RedefinedOperation(), this.getOperation(), null, "redefinedOperation", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getOperation_BodyCondition(), this.getConstraint(), null, "bodyCondition", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(operationEClass, this.getBoolean(), "validateTypeOfResult"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(operationEClass, this.getBoolean(), "validateTypeOfResult", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		addEOperation(operationEClass, this.getBoolean(), "isOrdered"); //$NON-NLS-1$
+		addEOperation(operationEClass, this.getBoolean(), "isOrdered", 0, 1); //$NON-NLS-1$
 
-		addEOperation(operationEClass, this.getBoolean(), "isUnique"); //$NON-NLS-1$
+		addEOperation(operationEClass, this.getBoolean(), "isUnique", 0, 1); //$NON-NLS-1$
 
-		addEOperation(operationEClass, this.getClassifier(), "type"); //$NON-NLS-1$
+		addEOperation(operationEClass, this.getClassifier(), "type", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(operationEClass, this.getBoolean(), "validateOnlyBodyForQuery"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(operationEClass, this.getBoolean(), "validateOnlyBodyForQuery", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
 		initEClass(typedElementEClass, TypedElement.class, "TypedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getTypedElement_Type(), this.getType(), null, "type", null, 0, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -10651,14 +10651,14 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getPackage_AppliedProfile(), this.getProfileApplication(), null, "appliedProfile", null, 0, -1, org.eclipse.uml2.Package.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPackage_PackageExtension(), this.getPackageMerge(), null, "packageExtension", null, 0, -1, org.eclipse.uml2.Package.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(packageEClass, this.getBoolean(), "validateElementsPublicOrPrivate"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(packageEClass, this.getBoolean(), "validateElementsPublicOrPrivate", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		addEOperation(packageEClass, this.getSet(), "visibleMembers"); //$NON-NLS-1$
+		addEOperation(packageEClass, this.getSet(), "visibleMembers", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(packageEClass, this.getBoolean(), "makesVisible"); //$NON-NLS-1$
-		addEParameter(op, this.getNamedElement(), "el"); //$NON-NLS-1$
+		op = addEOperation(packageEClass, this.getBoolean(), "makesVisible", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getNamedElement(), "el", 0, 1); //$NON-NLS-1$
 
 		initEClass(enumerationEClass, Enumeration.class, "Enumeration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getEnumeration_OwnedLiteral(), this.getEnumerationLiteral(), this.getEnumerationLiteral_Enumeration(), "ownedLiteral", null, 0, -1, Enumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -10687,46 +10687,46 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getClassifier_Representation(), this.getCollaborationOccurrence(), null, "representation", null, 0, 1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getClassifier_Occurrence(), this.getCollaborationOccurrence(), null, "occurrence", null, 0, -1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(classifierEClass, this.getSet(), "allFeatures"); //$NON-NLS-1$
+		addEOperation(classifierEClass, this.getSet(), "allFeatures", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(classifierEClass, this.getBoolean(), "validateNoCyclesInGeneralization"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(classifierEClass, this.getBoolean(), "validateNoCyclesInGeneralization", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(classifierEClass, this.getBoolean(), "validateSpecializeType"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(classifierEClass, this.getBoolean(), "validateSpecializeType", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(classifierEClass, this.getBoolean(), "validateInheritedMember"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(classifierEClass, this.getBoolean(), "validateInheritedMember", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		addEOperation(classifierEClass, this.getSet(), "inheritedMember"); //$NON-NLS-1$
+		addEOperation(classifierEClass, this.getSet(), "inheritedMember", 0, 1); //$NON-NLS-1$
 
-		addEOperation(classifierEClass, this.getSet(), "parents"); //$NON-NLS-1$
+		addEOperation(classifierEClass, this.getSet(), "parents", 0, 1); //$NON-NLS-1$
 
-		addEOperation(classifierEClass, this.getSet(), "allParents"); //$NON-NLS-1$
+		addEOperation(classifierEClass, this.getSet(), "allParents", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(classifierEClass, this.getSet(), "inheritableMembers"); //$NON-NLS-1$
-		addEParameter(op, this.getClassifier(), "c"); //$NON-NLS-1$
+		op = addEOperation(classifierEClass, this.getSet(), "inheritableMembers", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getClassifier(), "c", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(classifierEClass, this.getBoolean(), "hasVisibilityOf"); //$NON-NLS-1$
-		addEParameter(op, this.getNamedElement(), "n"); //$NON-NLS-1$
+		op = addEOperation(classifierEClass, this.getBoolean(), "hasVisibilityOf", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getNamedElement(), "n", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(classifierEClass, this.getSet(), "inherit"); //$NON-NLS-1$
-		addEParameter(op, this.getSet(), "inhs"); //$NON-NLS-1$
+		op = addEOperation(classifierEClass, this.getSet(), "inherit", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getSet(), "inhs", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(classifierEClass, this.getBoolean(), "maySpecializeType"); //$NON-NLS-1$
-		addEParameter(op, this.getClassifier(), "c"); //$NON-NLS-1$
+		op = addEOperation(classifierEClass, this.getBoolean(), "maySpecializeType", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getClassifier(), "c", 0, 1); //$NON-NLS-1$
 
-		addEOperation(classifierEClass, this.getSet(), "general"); //$NON-NLS-1$
+		addEOperation(classifierEClass, this.getSet(), "general", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(classifierEClass, this.getBoolean(), "validateGeneralEqualsParents"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(classifierEClass, this.getBoolean(), "validateGeneralEqualsParents", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(classifierEClass, this.getBoolean(), "conformsTo"); //$NON-NLS-1$
-		addEParameter(op, this.getClassifier(), "other"); //$NON-NLS-1$
+		op = addEOperation(classifierEClass, this.getBoolean(), "conformsTo", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getClassifier(), "other", 0, 1); //$NON-NLS-1$
 
 		initEClass(featureEClass, Feature.class, "Feature", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getFeature_FeaturingClassifier(), this.getClassifier(), this.getClassifier_Feature(), "featuringClassifier", null, 0, -1, Feature.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
@@ -10738,9 +10738,9 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getConstraint_Specification(), this.getValueSpecification(), null, "specification", null, 1, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getConstraint_ConstrainedElement(), this.getElement(), null, "constrainedElement", null, 0, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(constraintEClass, this.getBoolean(), "validateNotApplyToSelf"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(constraintEClass, this.getBoolean(), "validateNotApplyToSelf", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
 		initEClass(literalBooleanEClass, LiteralBoolean.class, "LiteralBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getLiteralBoolean_Value(), this.getBoolean(), "value", null, 0, 1, LiteralBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -10775,13 +10775,13 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getInstanceSpecification_Classifier(), this.getClassifier(), null, "classifier", null, 0, -1, InstanceSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getInstanceSpecification_Specification(), this.getValueSpecification(), null, "specification", null, 0, 1, InstanceSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(instanceSpecificationEClass, this.getBoolean(), "validateSlotsAreDefined"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(instanceSpecificationEClass, this.getBoolean(), "validateSlotsAreDefined", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(instanceSpecificationEClass, this.getBoolean(), "validateNoDuplicateSlots"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(instanceSpecificationEClass, this.getBoolean(), "validateNoDuplicateSlots", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
 		initEClass(slotEClass, Slot.class, "Slot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getSlot_OwningInstance(), this.getInstanceSpecification(), this.getInstanceSpecification_Slot(), "owningInstance", null, 1, 1, Slot.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -10795,19 +10795,19 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getRedefinableElement_RedefinitionContext(), this.getClassifier(), null, "redefinitionContext", null, 0, -1, RedefinableElement.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getRedefinableElement_IsLeaf(), this.getBoolean(), "isLeaf", "false", 0, 1, RedefinableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
-		op = addEOperation(redefinableElementEClass, this.getBoolean(), "validateRedefinitionContextValid"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(redefinableElementEClass, this.getBoolean(), "validateRedefinitionContextValid", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(redefinableElementEClass, this.getBoolean(), "validateRedefinitionConsistent"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(redefinableElementEClass, this.getBoolean(), "validateRedefinitionConsistent", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(redefinableElementEClass, this.getBoolean(), "isConsistentWith"); //$NON-NLS-1$
-		addEParameter(op, this.getRedefinableElement(), "redefinee"); //$NON-NLS-1$
+		op = addEOperation(redefinableElementEClass, this.getBoolean(), "isConsistentWith", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getRedefinableElement(), "redefinee", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(redefinableElementEClass, this.getBoolean(), "isRedefinitionContextValid"); //$NON-NLS-1$
-		addEParameter(op, this.getRedefinableElement(), "redefinable"); //$NON-NLS-1$
+		op = addEOperation(redefinableElementEClass, this.getBoolean(), "isRedefinitionContextValid", 0, 1); //$NON-NLS-1$
+		addEParameter(op, this.getRedefinableElement(), "redefinable", 0, 1); //$NON-NLS-1$
 
 		initEClass(generalizationEClass, Generalization.class, "Generalization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getGeneralization_Specific(), this.getClassifier(), this.getClassifier_Generalization(), "specific", null, 1, 1, Generalization.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -10824,24 +10824,24 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getElementImport_ImportedElement(), this.getPackageableElement(), null, "importedElement", null, 1, 1, ElementImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getElementImport_ImportingNamespace(), this.getNamespace(), this.getNamespace_ElementImport(), "importingNamespace", null, 1, 1, ElementImport.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(elementImportEClass, this.getBoolean(), "validateVisibilityPublicOrPrivate"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(elementImportEClass, this.getBoolean(), "validateVisibilityPublicOrPrivate", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		op = addEOperation(elementImportEClass, this.getBoolean(), "validateImportedElementIsPublic"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(elementImportEClass, this.getBoolean(), "validateImportedElementIsPublic", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
-		addEOperation(elementImportEClass, this.getString(), "getName"); //$NON-NLS-1$
+		addEOperation(elementImportEClass, this.getString(), "getName", 0, 1); //$NON-NLS-1$
 
 		initEClass(packageImportEClass, PackageImport.class, "PackageImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getPackageImport_Visibility(), this.getVisibilityKind(), "visibility", null, 0, 1, PackageImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPackageImport_ImportedPackage(), this.getPackage(), null, "importedPackage", null, 1, 1, PackageImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPackageImport_ImportingNamespace(), this.getNamespace(), this.getNamespace_PackageImport(), "importingNamespace", null, 1, 1, PackageImport.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(packageImportEClass, this.getBoolean(), "validatePublicOrPrivate"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		op = addEOperation(packageImportEClass, this.getBoolean(), "validatePublicOrPrivate", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context", 0, 1); //$NON-NLS-1$
 
 		initEClass(associationEClass, Association.class, "Association", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getAssociation_IsDerived(), this.getBoolean(), "isDerived", "false", 0, 1, Association.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
@@ -11225,7 +11225,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getTemplateableElement_TemplateBinding(), this.getTemplateBinding(), this.getTemplateBinding_BoundElement(), "templateBinding", null, 0, -1, TemplateableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getTemplateableElement_OwnedTemplateSignature(), this.getTemplateSignature(), this.getTemplateSignature_Template(), "ownedTemplateSignature", null, 0, 1, TemplateableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(templateableElementEClass, this.getSet(), "parameterableElements"); //$NON-NLS-1$
+		addEOperation(templateableElementEClass, this.getSet(), "parameterableElements", 0, 1); //$NON-NLS-1$
 
 		initEClass(stringExpressionEClass, StringExpression.class, "StringExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getStringExpression_SubExpression(), this.getStringExpression(), this.getStringExpression_OwningExpression(), "subExpression", null, 0, -1, StringExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$

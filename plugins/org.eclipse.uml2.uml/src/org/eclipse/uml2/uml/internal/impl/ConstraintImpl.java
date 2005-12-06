@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,8 +21,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -206,7 +207,7 @@ public class ConstraintImpl
 	public void setContext(Namespace newContext) {
 		if (newContext != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CONSTRAINT__CONTEXT && newContext != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newContext))
+			if (EcoreUtil.isAncestor(this, newContext))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -517,6 +518,7 @@ public class ConstraintImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CONSTRAINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CONSTRAINT__OWNED_ELEMENT :
 				return isSetOwnedElements();

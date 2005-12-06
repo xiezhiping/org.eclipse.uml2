@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.8 2005/12/01 20:04:36 khussey Exp $
+ * $Id: RegionImpl.java,v 1.9 2005/12/06 23:21:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,7 +25,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -374,7 +373,7 @@ public class RegionImpl
 	public void setState(State newState) {
 		if (newState != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REGION__STATE && newState != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newState))
+			if (EcoreUtil.isAncestor(this, newState))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -460,7 +459,7 @@ public class RegionImpl
 	public void setStateMachine(StateMachine newStateMachine) {
 		if (newStateMachine != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REGION__STATE_MACHINE && newStateMachine != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newStateMachine))
+			if (EcoreUtil.isAncestor(this, newStateMachine))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -888,6 +887,7 @@ public class RegionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.REGION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.REGION__OWNED_ELEMENT :
 				return isSetOwnedElements();

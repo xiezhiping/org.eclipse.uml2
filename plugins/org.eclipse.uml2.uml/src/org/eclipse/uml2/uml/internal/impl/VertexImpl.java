@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
+ * $Id: VertexImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,8 +19,9 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -158,7 +159,7 @@ public abstract class VertexImpl
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VERTEX__CONTAINER && newContainer != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newContainer))
+			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -392,6 +393,7 @@ public abstract class VertexImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.VERTEX__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.VERTEX__OWNED_ELEMENT :
 				return isSetOwnedElements();

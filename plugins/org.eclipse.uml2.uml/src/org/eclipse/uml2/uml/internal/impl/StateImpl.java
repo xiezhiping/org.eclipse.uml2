@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.10 2005/12/01 20:04:38 khussey Exp $
+ * $Id: StateImpl.java,v 1.11 2005/12/06 23:21:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,7 +25,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -390,7 +389,7 @@ public class StateImpl
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.STATE__CONTAINER && newContainer != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newContainer))
+			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -1612,6 +1611,7 @@ public class StateImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STATE__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.STATE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STATE__OWNED_ELEMENT :
 				return isSetOwnedElements();

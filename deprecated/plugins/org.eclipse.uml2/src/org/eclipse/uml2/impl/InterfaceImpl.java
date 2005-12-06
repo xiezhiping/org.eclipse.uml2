@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.33 2005/11/28 17:18:05 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.34 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -848,6 +848,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INTERFACE__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.INTERFACE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERFACE__OWNED_ELEMENT:
 				return isSetOwnedElements();

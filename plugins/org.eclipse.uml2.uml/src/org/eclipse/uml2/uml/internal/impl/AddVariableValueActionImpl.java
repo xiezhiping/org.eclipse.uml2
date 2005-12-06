@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionImpl.java,v 1.6 2005/12/01 20:04:37 khussey Exp $
+ * $Id: AddVariableValueActionImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,6 +20,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -545,6 +547,7 @@ public class AddVariableValueActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ADD_VARIABLE_VALUE_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();

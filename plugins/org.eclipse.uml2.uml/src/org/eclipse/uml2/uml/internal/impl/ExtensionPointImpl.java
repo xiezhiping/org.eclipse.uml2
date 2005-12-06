@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.7 2005/12/06 23:21:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,8 +21,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -92,7 +93,7 @@ public class ExtensionPointImpl
 	public void setUseCase(UseCase newUseCase) {
 		if (newUseCase != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXTENSION_POINT__USE_CASE && newUseCase != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newUseCase))
+			if (EcoreUtil.isAncestor(this, newUseCase))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -311,6 +312,7 @@ public class ExtensionPointImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXTENSION_POINT__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.EXTENSION_POINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXTENSION_POINT__OWNED_ELEMENT :
 				return isSetOwnedElements();

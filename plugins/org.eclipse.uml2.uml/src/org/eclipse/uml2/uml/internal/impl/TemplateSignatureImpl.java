@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,8 +21,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -134,7 +135,7 @@ public class TemplateSignatureImpl
 	public void setTemplate(TemplateableElement newTemplate) {
 		if (newTemplate != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newTemplate))
+			if (EcoreUtil.isAncestor(this, newTemplate))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -361,6 +362,7 @@ public class TemplateSignatureImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_SIGNATURE__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT :
 				return isSetOwnedElements();

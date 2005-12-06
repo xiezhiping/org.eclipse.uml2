@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.16 2005/11/23 20:05:08 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.17 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -368,6 +368,7 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.BROADCAST_SIGNAL_ACTION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();

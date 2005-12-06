@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.32 2005/11/28 17:18:06 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.33 2005/12/06 23:18:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -830,6 +830,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.COLLABORATION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.COLLABORATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_ELEMENT:
 				return isSetOwnedElements();

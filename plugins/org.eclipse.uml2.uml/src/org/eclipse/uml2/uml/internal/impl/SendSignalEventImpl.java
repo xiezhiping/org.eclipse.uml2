@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalEventImpl.java,v 1.5 2005/12/01 20:04:37 khussey Exp $
+ * $Id: SendSignalEventImpl.java,v 1.6 2005/12/06 23:21:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,6 +16,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -245,6 +247,7 @@ public class SendSignalEventImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.SEND_SIGNAL_EVENT__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_EVENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.SEND_SIGNAL_EVENT__OWNED_ELEMENT :
 				return isSetOwnedElements();

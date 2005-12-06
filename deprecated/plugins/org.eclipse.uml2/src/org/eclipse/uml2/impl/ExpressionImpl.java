@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.19 2005/11/28 17:18:06 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.20 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -399,6 +399,7 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.EXPRESSION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.EXPRESSION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXPRESSION__OWNED_ELEMENT:
 				return isSetOwnedElements();

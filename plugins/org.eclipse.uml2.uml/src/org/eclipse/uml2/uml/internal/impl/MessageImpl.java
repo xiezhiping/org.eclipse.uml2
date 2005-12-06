@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.8 2005/12/01 20:04:38 khussey Exp $
+ * $Id: MessageImpl.java,v 1.9 2005/12/06 23:21:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,8 +22,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -355,7 +356,7 @@ public class MessageImpl
 	public void setInteraction(Interaction newInteraction) {
 		if (newInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.MESSAGE__INTERACTION && newInteraction != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newInteraction))
+			if (EcoreUtil.isAncestor(this, newInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -745,6 +746,7 @@ public class MessageImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MESSAGE__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.MESSAGE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.MESSAGE__OWNED_ELEMENT :
 				return isSetOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalTriggerImpl.java,v 1.13 2005/11/23 20:05:08 khussey Exp $
+ * $Id: SignalTriggerImpl.java,v 1.14 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -229,6 +229,7 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.SIGNAL_TRIGGER__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.SIGNAL_TRIGGER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SIGNAL_TRIGGER__OWNED_ELEMENT:
 				return isSetOwnedElements();

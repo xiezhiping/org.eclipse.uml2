@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.15 2005/11/28 17:18:05 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.16 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -392,6 +392,7 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.GENERAL_ORDERING__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.GENERAL_ORDERING__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.GENERAL_ORDERING__OWNED_ELEMENT:
 				return isSetOwnedElements();

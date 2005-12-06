@@ -9,7 +9,7 @@
   <eClassifiers xsi:type="ecore:EDataType" name="UnlimitedNatural" instanceClassName="int"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Sequence" instanceClassName="java.util.List"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Set" instanceClassName="java.util.Set"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true" eSuperTypes="../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true" eSuperTypes="http://www.eclipse.org/emf/2002/Ecore#//EObject ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Element is an abstract metaclass with no superclass. It is used as the common superclass for all metaclasses in the infrastructure library. Element has a derived composition association to itself to support the general capability for elements to own other elements. "/>
     </eAnnotations>

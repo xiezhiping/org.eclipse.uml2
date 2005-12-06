@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringImpl.java,v 1.14 2005/11/29 20:09:38 khussey Exp $
+ * $Id: LiteralStringImpl.java,v 1.15 2005/12/06 23:18:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -272,6 +272,7 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.LITERAL_STRING__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.LITERAL_STRING__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.LITERAL_STRING__OWNED_ELEMENT:
 				return isSetOwnedElements();

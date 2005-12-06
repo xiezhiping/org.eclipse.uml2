@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.6 2005/12/01 20:04:37 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,8 +21,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -203,9 +204,6 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public void setAlias(String newAlias) {
-		newAlias = newAlias == null
-			? ALIAS_EDEFAULT
-			: newAlias;
 		String alias = newAlias;
 		Object oldAlias = eVirtualSet(UMLPackage.ELEMENT_IMPORT__ALIAS, alias);
 		if (eNotificationRequired())
@@ -284,7 +282,7 @@ public class ElementImportImpl
 	public void setImportingNamespace(Namespace newImportingNamespace) {
 		if (newImportingNamespace != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE && newImportingNamespace != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newImportingNamespace))
+			if (EcoreUtil.isAncestor(this, newImportingNamespace))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -509,6 +507,7 @@ public class ElementImportImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ELEMENT_IMPORT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ELEMENT_IMPORT__OWNED_ELEMENT :
 				return isSetOwnedElements();

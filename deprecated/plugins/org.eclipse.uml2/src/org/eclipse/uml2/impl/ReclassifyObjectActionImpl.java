@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.22 2005/11/28 17:18:05 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.23 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -598,6 +598,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();

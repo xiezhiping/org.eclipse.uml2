@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Package.java,v 1.21 2005/11/23 20:05:09 khussey Exp $
+ * $Id: UML2Package.java,v 1.22 2005/12/06 23:18:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EcorePackage;
  * @model kind="package"
  * @generated
  */
-public interface UML2Package extends EPackage{
+public interface UML2Package extends EPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,7 +92,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__EANNOTATIONS = EcorePackage.EMODEL_ELEMENT__EANNOTATIONS;
+	int ELEMENT__EANNOTATIONS = EcorePackage.EOBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -101,7 +101,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__OWNED_ELEMENT = EcorePackage.EMODEL_ELEMENT_FEATURE_COUNT + 0;
+	int ELEMENT__OWNED_ELEMENT = EcorePackage.EOBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -110,7 +110,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__OWNER = EcorePackage.EMODEL_ELEMENT_FEATURE_COUNT + 1;
+	int ELEMENT__OWNER = EcorePackage.EOBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -119,7 +119,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__OWNED_COMMENT = EcorePackage.EMODEL_ELEMENT_FEATURE_COUNT + 2;
+	int ELEMENT__OWNED_COMMENT = EcorePackage.EOBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Element</em>' class.
@@ -128,7 +128,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = EcorePackage.EMODEL_ELEMENT_FEATURE_COUNT + 3;
+	int ELEMENT_FEATURE_COUNT = EcorePackage.EOBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.MultiplicityElementImpl <em>Multiplicity Element</em>}' class.
@@ -63430,7 +63430,7 @@ public interface UML2Package extends EPackage{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.impl.ElementImpl <em>Element</em>}' class.
 		 * <!-- begin-user-doc -->

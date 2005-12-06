@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.18 2005/11/23 20:05:08 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.19 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -158,6 +158,7 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CREATE_LINK_ACTION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.CREATE_LINK_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();

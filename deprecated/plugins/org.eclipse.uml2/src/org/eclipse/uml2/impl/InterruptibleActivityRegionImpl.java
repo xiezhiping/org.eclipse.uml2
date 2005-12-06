@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.15 2005/11/28 17:18:06 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.16 2005/12/06 23:18:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -271,6 +271,7 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT:
 				return isSetOwnedElements();

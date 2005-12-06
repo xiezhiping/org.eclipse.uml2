@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationImpl.java,v 1.5 2005/12/01 20:04:36 khussey Exp $
+ * $Id: ValueSpecificationImpl.java,v 1.6 2005/12/06 23:21:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,6 +16,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -311,6 +313,7 @@ public abstract class ValueSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VALUE_SPECIFICATION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.VALUE_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.VALUE_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();

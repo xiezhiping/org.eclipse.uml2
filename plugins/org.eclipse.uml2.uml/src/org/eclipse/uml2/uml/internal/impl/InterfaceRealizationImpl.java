@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationImpl.java,v 1.6 2005/12/01 20:04:37 khussey Exp $
+ * $Id: InterfaceRealizationImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,9 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -244,7 +245,7 @@ public class InterfaceRealizationImpl
 		}
 		if (newImplementingClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER && newImplementingClassifier != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newImplementingClassifier))
+			if (EcoreUtil.isAncestor(this, newImplementingClassifier))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -545,6 +546,7 @@ public class InterfaceRealizationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_ELEMENT :
 				return isSetOwnedElements();

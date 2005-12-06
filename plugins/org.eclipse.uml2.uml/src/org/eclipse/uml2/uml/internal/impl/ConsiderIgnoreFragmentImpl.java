@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -292,6 +294,7 @@ public class ConsiderIgnoreFragmentImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeTriggerImpl.java,v 1.20 2005/11/28 17:18:06 khussey Exp $
+ * $Id: ChangeTriggerImpl.java,v 1.21 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -318,6 +318,7 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CHANGE_TRIGGER__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.CHANGE_TRIGGER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CHANGE_TRIGGER__OWNED_ELEMENT:
 				return isSetOwnedElements();

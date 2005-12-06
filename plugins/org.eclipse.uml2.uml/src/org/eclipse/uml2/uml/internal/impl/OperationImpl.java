@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.7 2005/12/01 20:04:36 khussey Exp $
+ * $Id: OperationImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -317,8 +319,7 @@ public class OperationImpl
 		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
-			if (EcoreUtil
-				.isAncestor(this, (EObject) newOwningTemplateParameter))
+			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -676,7 +677,7 @@ public class OperationImpl
 	public void setClass_(org.eclipse.uml2.uml.Class newClass_) {
 		if (newClass_ != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__CLASS_ && newClass_ != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newClass_))
+			if (EcoreUtil.isAncestor(this, newClass_))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -807,7 +808,7 @@ public class OperationImpl
 	public void setDatatype(DataType newDatatype) {
 		if (newDatatype != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__DATATYPE && newDatatype != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newDatatype))
+			if (EcoreUtil.isAncestor(this, newDatatype))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -907,7 +908,7 @@ public class OperationImpl
 	public void setInterface(Interface newInterface) {
 		if (newInterface != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE && newInterface != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newInterface))
+			if (EcoreUtil.isAncestor(this, newInterface))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -1666,6 +1667,7 @@ public class OperationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.OPERATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.OPERATION__OWNED_ELEMENT :
 				return isSetOwnedElements();

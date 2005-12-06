@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.7 2005/12/01 20:04:36 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.8 2005/12/06 23:21:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -434,6 +436,7 @@ public class ClauseImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CLAUSE__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CLAUSE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CLAUSE__OWNED_ELEMENT :
 				return isSetOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.6 2005/12/01 20:04:36 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,8 +22,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -211,7 +212,7 @@ public abstract class ActivityNodeImpl
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
 		if (newInStructuredNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newInStructuredNode))
+			if (EcoreUtil.isAncestor(this, newInStructuredNode))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -251,7 +252,7 @@ public abstract class ActivityNodeImpl
 	public void setActivity(Activity newActivity) {
 		if (newActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__ACTIVITY && newActivity != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newActivity))
+			if (EcoreUtil.isAncestor(this, newActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -651,6 +652,7 @@ public abstract class ActivityNodeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();

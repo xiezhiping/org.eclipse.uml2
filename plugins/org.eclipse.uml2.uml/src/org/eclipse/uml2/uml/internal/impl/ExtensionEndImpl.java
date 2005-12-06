@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.10 2005/12/05 18:00:16 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.11 2005/12/06 23:21:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,6 +18,8 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -326,6 +328,7 @@ public class ExtensionEndImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXTENSION_END__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.EXTENSION_END__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXTENSION_END__OWNED_ELEMENT :
 				return isSetOwnedElements();

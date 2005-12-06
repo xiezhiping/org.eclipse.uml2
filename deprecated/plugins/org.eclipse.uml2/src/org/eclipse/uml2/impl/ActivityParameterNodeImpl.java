@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.15 2005/11/23 20:05:07 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.16 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -359,6 +359,7 @@ public class ActivityParameterNodeImpl extends ObjectNodeImpl implements Activit
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ACTIVITY_PARAMETER_NODE__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.ACTIVITY_PARAMETER_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_PARAMETER_NODE__OWNED_ELEMENT:
 				return isSetOwnedElements();

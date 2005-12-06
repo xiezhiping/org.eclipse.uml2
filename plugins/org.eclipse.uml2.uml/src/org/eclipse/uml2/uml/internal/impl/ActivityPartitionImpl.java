@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.7 2005/12/01 20:04:37 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.8 2005/12/06 23:21:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,8 +22,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -252,7 +253,7 @@ public class ActivityPartitionImpl
 	public void setInActivity(Activity newInActivity) {
 		if (newInActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY && newInActivity != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newInActivity))
+			if (EcoreUtil.isAncestor(this, newInActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -453,7 +454,7 @@ public class ActivityPartitionImpl
 	public void setSuperPartition(ActivityPartition newSuperPartition) {
 		if (newSuperPartition != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION && newSuperPartition != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newSuperPartition))
+			if (EcoreUtil.isAncestor(this, newSuperPartition))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -883,6 +884,7 @@ public class ActivityPartitionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT :
 				return isSetOwnedElements();

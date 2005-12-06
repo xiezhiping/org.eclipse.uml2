@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.38 2005/11/29 17:41:34 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.39 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1104,6 +1104,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ACTIVITY__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.ACTIVITY__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_ELEMENT:
 				return isSetOwnedElements();

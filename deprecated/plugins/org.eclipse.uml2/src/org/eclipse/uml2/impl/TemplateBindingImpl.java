@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.20 2005/11/28 17:18:05 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.21 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -443,6 +443,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.TEMPLATE_BINDING__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT:
 				return isSetOwnedElements();

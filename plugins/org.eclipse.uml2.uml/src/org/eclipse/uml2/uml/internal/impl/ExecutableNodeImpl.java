@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,6 +16,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -394,6 +396,7 @@ public abstract class ExecutableNodeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXECUTABLE_NODE__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();

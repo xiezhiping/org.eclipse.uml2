@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.23 2005/11/28 17:18:06 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.24 2005/12/06 23:18:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -558,6 +558,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.PROTOCOL_TRANSITION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.PROTOCOL_TRANSITION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__OWNED_ELEMENT:
 				return isSetOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.7 2005/12/01 21:57:18 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,8 +21,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -116,9 +117,6 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setDeploymentLocation(String newDeploymentLocation) {
-		newDeploymentLocation = newDeploymentLocation == null
-			? DEPLOYMENT_LOCATION_EDEFAULT
-			: newDeploymentLocation;
 		String deploymentLocation = newDeploymentLocation;
 		Object oldDeploymentLocation = eVirtualSet(
 			UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
@@ -176,9 +174,6 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setExecutionLocation(String newExecutionLocation) {
-		newExecutionLocation = newExecutionLocation == null
-			? EXECUTION_LOCATION_EDEFAULT
-			: newExecutionLocation;
 		String executionLocation = newExecutionLocation;
 		Object oldExecutionLocation = eVirtualSet(
 			UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
@@ -238,7 +233,7 @@ public class DeploymentSpecificationImpl
 	public void setDeployment(Deployment newDeployment) {
 		if (newDeployment != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT && newDeployment != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newDeployment))
+			if (EcoreUtil.isAncestor(this, newDeployment))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -841,6 +836,7 @@ public class DeploymentSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();

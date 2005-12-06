@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.24 2005/11/28 17:18:05 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.25 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -569,6 +569,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.TEMPLATE_PARAMETER__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.TEMPLATE_PARAMETER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATE_PARAMETER__OWNED_ELEMENT:
 				return isSetOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,8 +22,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -260,7 +261,7 @@ public class GeneralizationImpl
 	public void setSpecific(Classifier newSpecific) {
 		if (newSpecific != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.GENERALIZATION__SPECIFIC && newSpecific != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newSpecific))
+			if (EcoreUtil.isAncestor(this, newSpecific))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -462,6 +463,7 @@ public class GeneralizationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.GENERALIZATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.GENERALIZATION__OWNED_ELEMENT :
 				return isSetOwnedElements();

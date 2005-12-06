@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallTriggerImpl.java,v 1.14 2005/11/23 20:05:07 khussey Exp $
+ * $Id: CallTriggerImpl.java,v 1.15 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -243,6 +243,7 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CALL_TRIGGER__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.CALL_TRIGGER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CALL_TRIGGER__OWNED_ELEMENT:
 				return isSetOwnedElements();

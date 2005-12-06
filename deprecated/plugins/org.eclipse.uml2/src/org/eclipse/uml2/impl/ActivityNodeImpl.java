@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.20 2005/11/28 17:18:06 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.21 2005/12/06 23:18:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -624,6 +624,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ACTIVITY_NODE__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.ACTIVITY_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_NODE__OWNED_ELEMENT:
 				return isSetOwnedElements();

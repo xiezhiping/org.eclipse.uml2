@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.24 2005/11/29 20:09:37 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.25 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -590,6 +590,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.MULTIPLICITY_ELEMENT__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.MULTIPLICITY_ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.MULTIPLICITY_ELEMENT__OWNED_ELEMENT:
 				return isSetOwnedElements();

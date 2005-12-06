@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.7 2005/12/01 21:57:18 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,8 +19,9 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -231,7 +232,7 @@ public class InteractionImpl
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
 		if (newEnclosingInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newEnclosingInteraction))
+			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -272,7 +273,7 @@ public class InteractionImpl
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
 		if (newEnclosingOperand != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newEnclosingOperand))
+			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -1354,6 +1355,7 @@ public class InteractionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INTERACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableActionImpl.java,v 1.22 2005/11/28 17:18:05 khussey Exp $
+ * $Id: WriteVariableActionImpl.java,v 1.23 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -467,6 +467,7 @@ public abstract class WriteVariableActionImpl extends VariableActionImpl impleme
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.WRITE_VARIABLE_ACTION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.WRITE_VARIABLE_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.WRITE_VARIABLE_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();

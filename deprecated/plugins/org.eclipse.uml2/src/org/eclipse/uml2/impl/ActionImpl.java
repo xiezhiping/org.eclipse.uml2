@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.25 2005/11/29 17:39:35 khussey Exp $
+ * $Id: ActionImpl.java,v 1.26 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -618,6 +618,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ACTION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();

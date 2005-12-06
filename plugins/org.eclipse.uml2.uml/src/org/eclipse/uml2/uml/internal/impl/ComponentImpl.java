@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.9 2005/12/01 21:57:18 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.10 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,6 +18,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -1015,6 +1017,7 @@ public class ComponentImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COMPONENT__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.COMPONENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_ELEMENT :
 				return isSetOwnedElements();

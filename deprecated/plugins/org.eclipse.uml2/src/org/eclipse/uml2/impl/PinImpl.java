@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.21 2005/11/29 20:09:38 khussey Exp $
+ * $Id: PinImpl.java,v 1.22 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -797,6 +797,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.PIN__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.PIN__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PIN__OWNED_ELEMENT:
 				return isSetOwnedElements();

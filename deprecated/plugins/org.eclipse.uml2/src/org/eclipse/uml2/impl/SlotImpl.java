@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.18 2005/11/28 17:18:05 khussey Exp $
+ * $Id: SlotImpl.java,v 1.19 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -385,6 +385,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.SLOT__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.SLOT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SLOT__OWNED_ELEMENT:
 				return isSetOwnedElements();

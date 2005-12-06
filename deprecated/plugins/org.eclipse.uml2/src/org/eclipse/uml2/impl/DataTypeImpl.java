@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.34 2005/11/29 20:09:38 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.35 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -652,6 +652,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.DATA_TYPE__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.DATA_TYPE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DATA_TYPE__OWNED_ELEMENT:
 				return isSetOwnedElements();

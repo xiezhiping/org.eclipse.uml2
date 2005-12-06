@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.23 2005/11/28 17:18:05 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.24 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -622,6 +622,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();

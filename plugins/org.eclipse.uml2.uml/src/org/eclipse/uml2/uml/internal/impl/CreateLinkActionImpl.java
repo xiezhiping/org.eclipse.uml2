@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.5 2005/12/01 20:04:36 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.6 2005/12/06 23:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -195,6 +197,7 @@ public class CreateLinkActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CREATE_LINK_ACTION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();

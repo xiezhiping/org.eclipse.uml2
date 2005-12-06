@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.39 2005/12/01 19:09:01 khussey Exp $
+ * $Id: ElementImpl.java,v 1.40 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -17,6 +17,7 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 //import java.util.Iterator;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -28,16 +29,20 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.EModelElementImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Comment;
@@ -47,6 +52,7 @@ import org.eclipse.uml2.UML2Package;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.Stereotype;
@@ -61,6 +67,7 @@ import org.eclipse.uml2.internal.operation.StereotypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getEAnnotations <em>EAnnotations</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getOwnedComments <em>Owned Comment</em>}</li>
  * </ul>
@@ -68,7 +75,7 @@ import org.eclipse.uml2.internal.operation.StereotypeOperations;
  *
  * @generated
  */
-public abstract class ElementImpl extends EModelElementImpl implements Element {
+public abstract class ElementImpl extends EObjectImpl implements Element {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,6 +166,31 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.ELEMENT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getEAnnotations() {
+		EList eAnnotations = (EList)eVirtualGet(UML2Package.ELEMENT__EANNOTATIONS);
+		if (eAnnotations == null) {
+			eVirtualSet(UML2Package.ELEMENT__EANNOTATIONS, eAnnotations = new EObjectContainmentWithInverseEList(EAnnotation.class, this, UML2Package.ELEMENT__EANNOTATIONS, EcorePackage.EANNOTATION__EMODEL_ELEMENT));
+		}
+		return eAnnotations;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAnnotation createEAnnotations() {
+		EAnnotation newEAnnotations = EcoreFactory.eINSTANCE.createEAnnotation();
+		getEAnnotations().add(newEAnnotations);
+		return newEAnnotations;
 	}
 
 	/**
@@ -259,6 +291,27 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EAnnotation getEAnnotation(String source) {
+
+		for (Iterator eAnnotations = getEAnnotations().iterator(); eAnnotations
+			.hasNext();) {
+
+			EAnnotation eAnnotation = (EAnnotation) eAnnotations.next();
+
+			if (UML2Util.safeEquals(eAnnotation.getSource(), source)) {
+				return eAnnotation;
+			}
+		}
+
+		return null;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map context) {
@@ -301,6 +354,19 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 */
 	public boolean mustBeOwned() {
 		return ElementOperations.mustBeOwned(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UML2Package.ELEMENT__EANNOTATIONS:
+				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -382,6 +448,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ELEMENT__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ELEMENT__OWNED_ELEMENT:
 				return isSetOwnedElements();
@@ -392,6 +459,46 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 				return ownedComment != null && !ownedComment.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+		if (baseClass == EObject.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == EModelElement.class) {
+			switch (derivedFeatureID) {
+				case UML2Package.ELEMENT__EANNOTATIONS: return EcorePackage.EMODEL_ELEMENT__EANNOTATIONS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+		if (baseClass == EObject.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == EModelElement.class) {
+			switch (baseFeatureID) {
+				case EcorePackage.EMODEL_ELEMENT__EANNOTATIONS: return UML2Package.ELEMENT__EANNOTATIONS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

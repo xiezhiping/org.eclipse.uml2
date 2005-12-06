@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.6 2005/12/01 20:04:38 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -214,8 +216,7 @@ public class InstanceSpecificationImpl
 		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
-			if (EcoreUtil
-				.isAncestor(this, (EObject) newOwningTemplateParameter))
+			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
@@ -765,6 +766,7 @@ public class InstanceSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
+				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();

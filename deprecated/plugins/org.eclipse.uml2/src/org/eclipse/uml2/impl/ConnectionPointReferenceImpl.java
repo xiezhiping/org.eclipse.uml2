@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.13 2005/11/23 20:05:08 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.14 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -285,6 +285,7 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CONNECTION_POINT_REFERENCE__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONNECTION_POINT_REFERENCE__OWNED_ELEMENT:
 				return isSetOwnedElements();

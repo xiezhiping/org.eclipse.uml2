@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StartOwnedBehaviorActionImpl.java,v 1.22 2005/11/28 17:18:06 khussey Exp $
+ * $Id: StartOwnedBehaviorActionImpl.java,v 1.23 2005/12/06 23:18:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -457,6 +457,7 @@ public class StartOwnedBehaviorActionImpl extends ActionImpl implements StartOwn
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.START_OWNED_BEHAVIOR_ACTION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.START_OWNED_BEHAVIOR_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.START_OWNED_BEHAVIOR_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();

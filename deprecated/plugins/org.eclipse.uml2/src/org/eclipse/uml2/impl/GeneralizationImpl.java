@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.18 2005/11/28 17:18:05 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.19 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -455,6 +455,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.GENERALIZATION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.GENERALIZATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.GENERALIZATION__OWNED_ELEMENT:
 				return isSetOwnedElements();

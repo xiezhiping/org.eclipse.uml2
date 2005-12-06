@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.18 2005/11/23 20:05:09 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.19 2005/12/06 23:18:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -403,6 +403,7 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ACCEPT_EVENT_ACTION__EANNOTATIONS:
+				EList eAnnotations = (EList)eVirtualGet(UML2Package.ACCEPT_EVENT_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();
