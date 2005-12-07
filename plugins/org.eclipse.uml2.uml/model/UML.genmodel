@@ -12,7 +12,7 @@
   <foreignModel>L3.merged.uml2</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="UML" basePackage="org.eclipse.uml2"
       disposableProviderFactory="true" loadInitialization="true" classPackageSuffix="internal.impl"
-      providerPackageSuffix="edit.provider" presentationPackageSuffix="editor.presentation"
+      providerPackageSuffix="edit.providers" presentationPackageSuffix="editor.presentation"
       generateExampleClass="false" ecorePackage="UML.ecore#/" resourceInterfaces="true"
       operationsPackage="org.eclipse.uml2.uml.internal.operations">
     <genEnums xsi:type="genmodel:GenEnum" ecoreEnum="UML.ecore#//VisibilityKind">
