@@ -3116,7 +3116,7 @@
               </eAnnotations>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rWIIRBTaEdqZu-3Jy1-uYg" value="-1"/>
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rWIIQxTaEdqZu-3Jy1-uYg" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rWIIQxTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3D11161F0240" name="specification" type="_3ADC7B74022D3CA00F020323" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3D11161E02D5" aggregation="composite">
             <eAnnotations xmi:id="_nymWUjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
