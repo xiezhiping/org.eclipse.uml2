@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.1 2005/11/14 22:15:02 khussey Exp $
+ * $Id: UMLEditor.java,v 1.2 2005/12/07 14:21:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -143,7 +143,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-import org.eclipse.uml2.uml.edit.provider.UMLItemProviderAdapterFactory;
+import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
 
 import java.util.HashMap;
 
