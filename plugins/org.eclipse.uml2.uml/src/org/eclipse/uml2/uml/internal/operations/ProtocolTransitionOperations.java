@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionOperations.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: ProtocolTransitionOperations.java,v 1.3 2005/12/07 14:01:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,10 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ProtocolTransition#validateBelongsPsm(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Belongs Psm</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ProtocolTransition#validateBelongsToPsm(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Belongs To Psm</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ProtocolTransition#validateAssociatedActions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Associated Actions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ProtocolTransition#validateRefersToOperation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Refers To Operation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ProtocolTransition#belongsToPSM() <em>Belongs To PSM</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,7 +58,7 @@ public final class ProtocolTransitionOperations {
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateBelongsPsm(
+	public static boolean validateBelongsToPsm(
 			ProtocolTransition protocolTransition, DiagnosticChain diagnostics,
 			Map context) {
 		// TODO: implement this method
@@ -72,10 +71,10 @@ public final class ProtocolTransitionOperations {
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROTOCOL_TRANSITION__BELONGS_PSM,
+						UMLValidator.PROTOCOL_TRANSITION__BELONGS_TO_PSM,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBelongsPsm", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(protocolTransition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBelongsToPsm", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(protocolTransition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{protocolTransition}));
 			}
 			return false;
@@ -147,25 +146,6 @@ public final class ProtocolTransitionOperations {
 			return false;
 		}
 		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The operation belongsToPSM () checks if the region belongs to a protocol state machine
-	 * result = if not stateMachine->isEmpty() then
-	 * oclIsTypeOf(ProtocolStateMachine)
-	 * else if not state->isEmpty() then
-	 * state.container.belongsToPSM ()
-	 * else false
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean belongsToPSM(ProtocolTransition protocolTransition) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 } // ProtocolTransitionOperations

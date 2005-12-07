@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.3 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Region.java,v 1.4 2005/12/07 14:01:41 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -316,5 +316,22 @@ public interface Region
 	 * @generated
 	 */
 	StateMachine containingStateMachine();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The operation belongsToPSM () checks if the region belongs to a protocol state machine
+	 * result = if not stateMachine->isEmpty() then
+	 * oclIsTypeOf(ProtocolStateMachine)
+	 * else if not state->isEmpty() then
+	 * state.container.belongsToPSM ()
+	 * else false
+	 * <!-- end-model-doc -->
+	 * @model required="true" ordered="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
+	 * @generated
+	 */
+	boolean belongsToPSM();
 
 } // Region

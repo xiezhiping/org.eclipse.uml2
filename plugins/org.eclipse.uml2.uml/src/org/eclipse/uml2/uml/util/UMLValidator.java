@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.3 2005/11/23 20:01:13 khussey Exp $
+ * $Id: UMLValidator.java,v 1.4 2005/12/07 14:01:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3447,12 +3447,12 @@ public class UMLValidator
 	public static final int TIME_EVENT__STARTING_TIME = 394;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Belongs Psm' of 'Protocol Transition'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Belongs To Psm' of 'Protocol Transition'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_TRANSITION__BELONGS_PSM = 395;
+	public static final int PROTOCOL_TRANSITION__BELONGS_TO_PSM = 395;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Associated Actions' of 'Protocol Transition'.
@@ -21353,7 +21353,7 @@ public class UMLValidator
 			result &= validateTransition_validateSignaturesCompatible(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProtocolTransition_validateBelongsPsm(
+			result &= validateProtocolTransition_validateBelongsToPsm(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateProtocolTransition_validateAssociatedActions(
@@ -21365,15 +21365,15 @@ public class UMLValidator
 	}
 
 	/**
-	 * Validates the validateBelongsPsm constraint of '<em>Protocol Transition</em>'.
+	 * Validates the validateBelongsToPsm constraint of '<em>Protocol Transition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateProtocolTransition_validateBelongsPsm(
+	public boolean validateProtocolTransition_validateBelongsToPsm(
 			ProtocolTransition protocolTransition, DiagnosticChain diagnostics,
 			Map context) {
-		return protocolTransition.validateBelongsPsm(diagnostics, context);
+		return protocolTransition.validateBelongsToPsm(diagnostics, context);
 	}
 
 	/**

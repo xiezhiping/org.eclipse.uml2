@@ -3344,6 +3344,14 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="belongsToPSM" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The operation belongsToPSM () checks if the region belongs to a protocol state machine&#xD;&#xA;result = if not stateMachine->isEmpty() then&#xA;oclIsTypeOf(ProtocolStateMachine)&#xA;else if not state->isEmpty() then&#xA;state.container.belongsToPSM ()&#xA;else false"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="spec"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subvertex" ordered="false"
         upperBound="-1" eType="#//Vertex" containment="true" resolveProxies="false"
         eOpposite="#//Vertex/container">
@@ -9621,7 +9629,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A protocol transition (transition as specialized in the ProtocolStateMachines package) specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.&#xA;&#xA;&#xA;&#xA;The protocol transition specifies that the associated (referred) operation can be called for an instance in the origin state under the initial condition (guard), and that at the end of the transition, the destination state will be reached under the final condition (post).&#xA;&#xA;"/>
     </eAnnotations>
-    <eOperations name="belongs_psm" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="belongs_to_psm" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A protocol transition always belongs to a protocol state machine.&#xD;&#xA;container.belongsToPSM()"/>
       </eAnnotations>
@@ -9641,14 +9649,6 @@
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
-    </eOperations>
-    <eOperations name="belongsToPSM" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The operation belongsToPSM () checks if the region belongs to a protocol state machine&#xD;&#xA;result = if not stateMachine->isEmpty() then&#xA;oclIsTypeOf(ProtocolStateMachine)&#xA;else if not state->isEmpty() then&#xA;state.container.belongsToPSM ()&#xA;else false"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-        <details key="constraints" value="spec"/>
-      </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postCondition" ordered="false"
         eType="#//Constraint" containment="true" resolveProxies="false">

@@ -1412,6 +1412,7 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Region/isRedefinitionContextValid/redefined"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Region/containingStateMachine"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Region/belongsToPSM"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Vertex">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -3944,9 +3945,9 @@
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//ProtocolTransition/preCondition"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ProtocolTransition/belongs_psm">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ProtocolTransition/belongs_psm/diagnostics"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ProtocolTransition/belongs_psm/context"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ProtocolTransition/belongs_to_psm">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ProtocolTransition/belongs_to_psm/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ProtocolTransition/belongs_to_psm/context"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ProtocolTransition/associated_actions">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ProtocolTransition/associated_actions/diagnostics"/>
@@ -3956,7 +3957,6 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ProtocolTransition/refers_to_operation/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ProtocolTransition/refers_to_operation/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ProtocolTransition/belongsToPSM"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//AssociationClass">
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//AssociationClass/cannot_be_defined">

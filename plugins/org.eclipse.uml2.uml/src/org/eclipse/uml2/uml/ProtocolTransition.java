@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.3 2005/12/07 14:01:41 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -159,7 +159,7 @@ public interface ProtocolTransition
 	 * @model
 	 * @generated
 	 */
-	boolean validateBelongsPsm(DiagnosticChain diagnostics, Map context);
+	boolean validateBelongsToPsm(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,22 +184,5 @@ public interface ProtocolTransition
 	 * @generated
 	 */
 	boolean validateRefersToOperation(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The operation belongsToPSM () checks if the region belongs to a protocol state machine
-	 * result = if not stateMachine->isEmpty() then
-	 * oclIsTypeOf(ProtocolStateMachine)
-	 * else if not state->isEmpty() then
-	 * state.container.belongsToPSM ()
-	 * else false
-	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
-	 * @generated
-	 */
-	boolean belongsToPSM();
 
 } // ProtocolTransition

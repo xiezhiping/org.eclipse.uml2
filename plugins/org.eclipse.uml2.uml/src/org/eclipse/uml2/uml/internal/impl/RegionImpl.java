@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.9 2005/12/06 23:21:48 khussey Exp $
+ * $Id: RegionImpl.java,v 1.10 2005/12/07 14:01:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -586,6 +586,15 @@ public class RegionImpl
 	 */
 	public StateMachine containingStateMachine() {
 		return RegionOperations.containingStateMachine(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean belongsToPSM() {
+		return RegionOperations.belongsToPSM(this);
 	}
 
 	/**
