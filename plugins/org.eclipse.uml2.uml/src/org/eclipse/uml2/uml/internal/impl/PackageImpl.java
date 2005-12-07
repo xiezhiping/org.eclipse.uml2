@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.9 2005/12/06 23:21:50 khussey Exp $
+ * $Id: PackageImpl.java,v 1.10 2005/12/07 14:18:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -654,7 +654,7 @@ public class PackageImpl
 	public void setNestingPackage(org.eclipse.uml2.uml.Package newNestingPackage) {
 		if (newNestingPackage != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGE__NESTING_PACKAGE && newNestingPackage != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newNestingPackage))
+			if (EcoreUtil.isAncestor(this, newNestingPackage))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;

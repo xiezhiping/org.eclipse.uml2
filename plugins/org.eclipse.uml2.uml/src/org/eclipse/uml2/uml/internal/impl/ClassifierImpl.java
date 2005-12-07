@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.14 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.15 2005/12/07 14:18:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -526,7 +526,7 @@ public abstract class ClassifierImpl
 	public void setPackage(org.eclipse.uml2.uml.Package newPackage) {
 		if (newPackage != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CLASSIFIER__PACKAGE && newPackage != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newPackage))
+			if (EcoreUtil.isAncestor(this, newPackage))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
