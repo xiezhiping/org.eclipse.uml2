@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLModelWizard.java,v 1.1 2005/11/14 22:15:02 khussey Exp $
+ * $Id: UMLModelWizard.java,v 1.2 2005/12/07 16:17:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -551,7 +551,7 @@ public class UMLModelWizard
 		protected String getLabel(String typeName) {
 			try {
 				return UMLEditPlugin.INSTANCE
-					.getString("_UI_" + typeName + "_type"); //$NON-NLS-1$
+					.getString("_UI_" + typeName + "_type"); //$NON-NLS-1$ //$NON-NLS-2$
 			} catch (MissingResourceException mre) {
 				UMLEditorPlugin.INSTANCE.log(mre);
 			}
