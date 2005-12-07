@@ -13004,7 +13004,7 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rseLyxTaEdqZu-3Jy1-uYg" value="-1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rseLyhTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:id="_3ADC7B74022D4304A13201D9" name="inheritedMember" type="_3ADC7B74022D3DE6BC6B01BD" isDerived="true" subsettedProperty="_3ADC7B74022D3DFCB82F00DA" association="_3ADC7B74022D4304A1300282">
+        <ownedAttribute xmi:id="_3ADC7B74022D4304A13201D9" name="inheritedMember" type="_3ADC7B74022D3DE6BC6B01BD" isReadOnly="true" isDerived="true" subsettedProperty="_3ADC7B74022D3DFCB82F00DA" association="_3ADC7B74022D4304A1300282">
           <eAnnotations xmi:id="_N4yBgWHeEdqc5chuNfO-RQ" source="appliedStereotypes">
             <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_N4yBgmHeEdqc5chuNfO-RQ" isTransient="true"/>
           </eAnnotations>
