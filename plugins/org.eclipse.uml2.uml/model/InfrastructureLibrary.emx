@@ -14036,6 +14036,11 @@
           <eAnnotations xmi:id="_rpyrJxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rpyrKBTaEdqZu-3Jy1-uYg" referenceName="class_" isResolveProxies="false"/>
           </eAnnotations>
+          <ownedComment xmi:id="_vBHVQGd5EdqCCpdUvbQY5w" body="References the Class that owns the Property." annotatedElement="_3ADC7B74022D3DE6E2E20299">
+            <eAnnotations xmi:id="_vBHVQWd5EdqCCpdUvbQY5w" source="appliedStereotypes">
+              <contents xmi:type="Default_0:Default__Documentation" xmi:id="_vBHVQmd5EdqCCpdUvbQY5w"/>
+            </eAnnotations>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rpyrJhTaEdqZu-3Jy1-uYg" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rpyrJRTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
