@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: ElementOperations.java,v 1.4 2005/12/07 14:18:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -21,9 +21,11 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.Element;
 
+import org.eclipse.uml2.uml.internal.impl.ElementImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -150,6 +152,21 @@ public final class ElementOperations
 	 */
 	public static boolean mustBeOwned(Element element) {
 		return true;
+	}
+
+	protected static Element getOwningElement(Element element, EClass eClass,
+			boolean resolve) {
+		Element owningElement = null;
+
+		for (Element owner = element; (owningElement = resolve
+			? owner.getOwner()
+			: ((ElementImpl) owner).basicGetOwner()) != null
+			&& !(eClass.isInstance(owningElement));) {
+
+			owner = owner.getOwner();
+		}
+
+		return owningElement;
 	}
 
 } // ElementOperations

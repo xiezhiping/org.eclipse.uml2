@@ -8,18 +8,26 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.8 2005/12/05 20:47:30 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.9 2005/12/07 14:18:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.uml.AggregationKind;
+import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
@@ -27,10 +35,13 @@ import org.eclipse.uml2.uml.LiteralBoolean;
 import org.eclipse.uml2.uml.LiteralInteger;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
+import org.eclipse.uml2.uml.MultiplicityElement;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
@@ -387,12 +398,40 @@ public final class PropertyOperations
 	 * The query isAttribute() is true if the Property is defined as an attribute of some classifier.
 	 * result = Classifier.allInstances->exists(c | c.attribute->includes(p))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isAttribute(Property property, Property p) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		for (Iterator nonNavigableInverseReferences = CROSS_REFERENCE_ADAPTER
+			.getNonNavigableInverseReferences(p).iterator(); nonNavigableInverseReferences
+			.hasNext();) {
+
+			EObject eObject = ((EStructuralFeature.Setting) nonNavigableInverseReferences
+				.next()).getEObject();
+
+			if (eObject instanceof Classifier
+				&& ((Classifier) eObject).getAttributes().contains(p)) {
+
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	protected static Property getOtherEnd(Property property) {
+		Association association = property.getAssociation();
+
+		if (association != null) {
+			List memberEnds = ((InternalEList)association.getMemberEnds()).basicList();
+			
+			if (memberEnds.size() == 2) {
+				return (Property) memberEnds.get(Math.abs(memberEnds
+					.indexOf(property) - 1));				
+			}
+		}
+
+		return null;
 	}
 
 	/**
@@ -407,12 +446,19 @@ public final class PropertyOperations
 	 *     else Set {}
 	 *     endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Property getOpposite(Property property) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (property.getOwningAssociation() == null) {
+			Property otherEnd = getOtherEnd(property);
+
+			if (otherEnd != null && otherEnd.getOwningAssociation() == null) {
+				return otherEnd;
+			}
+		}
+
+		return null;
 	}
 
 	/**
@@ -422,12 +468,10 @@ public final class PropertyOperations
 	 * The value of isComposite is true only if aggregation is composite.
 	 * result = (self.aggregation = #composite)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isComposite(Property property) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return property.getAggregation() == AggregationKind.COMPOSITE_LITERAL;
 	}
 
 	/**
@@ -440,12 +484,37 @@ public final class PropertyOperations
 	 * else if classifier->notEmpty() then Set{classifier} else Set{} endif
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List subsettingContext(Property property) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List subsettingContext = new UniqueEList();
+
+		Association association = property.getAssociation();
+
+		if (association == null) {
+			Namespace namespace = property.getNamespace();
+
+			if (namespace instanceof Classifier) {
+				subsettingContext.add(namespace);
+			}
+		} else {
+
+			for (Iterator memberEnds = association.getMemberEnds().iterator(); memberEnds
+				.hasNext();) {
+
+				Property memberEnd = (Property) memberEnds.next();
+
+				if (memberEnd != property) {
+					Type memberEndType = memberEnd.getType();
+
+					if (memberEndType instanceof Classifier) {
+						subsettingContext.add(memberEndType);
+					}
+				}
+			}
+		}
+
+		return Collections.unmodifiableList(subsettingContext);
 	}
 
 	/**
@@ -456,12 +525,12 @@ public final class PropertyOperations
 	 * The query isNavigable() indicates whether it is possible to navigate across the property.
 	 * result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isNavigable(Property property) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Association owningAssociation = property.getOwningAssociation();
+		return owningAssociation == null
+			|| owningAssociation.getNavigableOwnedEnds().contains(property);
 	}
 
 	/**
@@ -480,7 +549,7 @@ public final class PropertyOperations
 				.eVirtualGet(
 					propertyImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT),
-					EMPTY_STRING);
+					null);
 		}
 	}
 
@@ -573,45 +642,88 @@ public final class PropertyOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setIsComposite(Property property, boolean newIsComposite) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		property.setAggregation(newIsComposite
+			? AggregationKind.COMPOSITE_LITERAL
+			: AggregationKind.NONE_LITERAL);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setOpposite(Property property, Property newOpposite) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (property.getOwningAssociation() == null
+			&& newOpposite.getOwningAssociation() == null) {
+
+			Association association = property.getAssociation();
+
+			if (association == null) {
+				association = UMLFactory.eINSTANCE.createAssociation();
+
+				org.eclipse.uml2.uml.Package owningPackage = (org.eclipse.uml2.uml.Package) ElementOperations
+					.getOwningElement(property, UMLPackage.Literals.PACKAGE,
+						true);
+
+				if (owningPackage != null) {
+					owningPackage.getPackagedElements().add(association);
+				}
+			}
+
+			List memberEnds = association.getMemberEnds();
+
+			switch (memberEnds.size()) {
+				case 0 :
+					memberEnds.add(property);
+				case 1 :
+					if (newOpposite != null) {
+						memberEnds.add(newOpposite);
+					}
+					break;
+				case 2 :
+					if (newOpposite == null) {
+						memberEnds.remove(Math
+							.abs(memberEnds.indexOf(property) - 1));
+					} else {
+						memberEnds
+							.set(Math.abs(memberEnds.indexOf(property) - 1),
+								newOpposite);
+					}
+					break;
+				default :
+					throw new IllegalStateException();
+			}
+		} else {
+			throw new IllegalStateException();
+		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
 	public static boolean isSetDefault(Property property) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		PropertyImpl propertyImpl = (PropertyImpl) property;
+		return propertyImpl
+			.eVirtualIsSet(propertyImpl
+				.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void unsetDefault(Property property) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		PropertyImpl propertyImpl = (PropertyImpl) property;
+		propertyImpl
+			.eVirtualUnset(propertyImpl
+				.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT));
 	}
 
 	/**
@@ -629,13 +741,35 @@ public final class PropertyOperations
 	 *   (self.isDerived implies prop.isDerived) and
 	 *   (self.isComposite implies prop.isComposite))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(Property property,
 			RedefinableElement redefinee) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (redefinee.isRedefinitionContextValid(property)
+			&& redefinee instanceof Property) {
+
+			Property prop = (Property) redefinee;
+
+			Type type = property.getType();
+			int upperBound = property.upperBound();
+
+			Type propType = prop.getType();
+			int propUpperBound = prop.upperBound();
+
+			return (type == null
+				? propType == null
+				: propType.conformsTo(type))
+				&& prop.lowerBound() >= property.lowerBound()
+				&& (upperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND || (propUpperBound != MultiplicityElement.UNLIMITED_UPPER_BOUND && propUpperBound <= upperBound))
+				&& (property.isDerived()
+					? prop.isDerived()
+					: true) && (property.isComposite()
+					? prop.isComposite()
+					: true);
+		}
+
+		return false;
 	}
 
 } // PropertyOperations

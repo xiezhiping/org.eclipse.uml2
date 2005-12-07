@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationOperations.java,v 1.1 2005/11/14 22:25:53 khussey Exp $
+ * $Id: ValueSpecificationOperations.java,v 1.2 2005/12/07 14:18:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -98,12 +98,10 @@ public final class ValueSpecificationOperations {
 	 * The query stringValue() gives a single String value when one can be computed.
 	 * result = Set{}
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String stringValue(ValueSpecification valueSpecification) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return null;
 	}
 
 	/**

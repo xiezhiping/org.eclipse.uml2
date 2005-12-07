@@ -8,17 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.1 2005/11/14 22:25:53 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.2 2005/12/07 14:18:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
 
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Profile;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -129,12 +132,20 @@ public final class ProfileOperations {
 	 * The query allOwningPackages() returns all the directly or indirectly owning packages.
 	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List allOwningPackages(Profile profile) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List allOwningPackages = new UniqueEList();
+
+		for (Namespace namespace = profile.getNamespace(); namespace != null; namespace = namespace
+			.getNamespace()) {
+
+			if (namespace instanceof org.eclipse.uml2.uml.Package) {
+				allOwningPackages.add(namespace);
+			}
+		}
+
+		return Collections.unmodifiableList(allOwningPackages);
 	}
 
 } // ProfileOperations

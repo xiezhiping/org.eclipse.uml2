@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: ElementImportOperations.java,v 1.4 2005/12/07 14:18:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -171,7 +171,7 @@ public final class ElementImportOperations
 			PackageableElement importedElement = elementImport
 				.getImportedElement();
 			return importedElement == null
-				? EMPTY_STRING
+				? null
 				: importedElement.getName();
 		}
 

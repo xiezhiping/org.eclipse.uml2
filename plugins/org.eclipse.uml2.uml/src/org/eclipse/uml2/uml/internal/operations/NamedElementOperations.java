@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.5 2005/12/05 18:00:17 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.6 2005/12/07 14:18:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -164,7 +164,7 @@ public final class NamedElementOperations
 		String name = namedElement.getName();
 
 		if (isEmpty(name)) {
-			return EMPTY_STRING;
+			return null;
 		}
 
 		StringBuffer qualifiedName = new StringBuffer(name);
@@ -175,7 +175,7 @@ public final class NamedElementOperations
 			String namespaceName = ((Namespace) allNamespaces.next()).getName();
 
 			if (isEmpty(namespaceName)) {
-				return EMPTY_STRING;
+				return null;
 			} else {
 				qualifiedName.insert(0, separator);
 				qualifiedName.insert(0, namespaceName);
