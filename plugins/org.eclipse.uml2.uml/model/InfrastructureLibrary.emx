@@ -13958,13 +13958,13 @@
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmqesRTaEdqZu-3Jy1-uYg" body="self.subsettedProperty->notEmpty() implies&#xA;  (self.subsettingContext()->notEmpty() and self.subsettingContext()->forAll (sc |&#xA;    self.subsettedProperty->forAll(sp |&#xA;      sp.subsettingContext()->exists(c | sc.conformsTo(c)))))" language="OCL"/>
         </ownedRule>
-        <ownedRule xmi:id="_rmqeuRTaEdqZu-3Jy1-uYg" name="navigable_property_redefinition" constrainedElement="_3ADC7B74022D3DE6D57500AC">
-          <ownedComment xmi:id="_rmqetRTaEdqZu-3Jy1-uYg" body="A navigable property can only be redefined or subsetted by a navigable property." annotatedElement="_rmqeuRTaEdqZu-3Jy1-uYg">
+        <ownedRule xmi:id="_rmqeuRTaEdqZu-3Jy1-uYg" name="redefined_property_inherited" constrainedElement="_3ADC7B74022D3DE6D57500AC">
+          <ownedComment xmi:id="_rmqetRTaEdqZu-3Jy1-uYg" body="A redefined property must be inherited from a more general classifier containing the redefining property." annotatedElement="_rmqeuRTaEdqZu-3Jy1-uYg">
             <eAnnotations xmi:id="_rmqethTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmqetxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmqeuhTaEdqZu-3Jy1-uYg" body="(self.subsettedProperty->exists(sp | sp.isNavigable()) implies self.isNavigable())&#xA;  and (self.redefinedProperty->exists(rp | rp.isNavigable()) implies self.isNavigable())" language="OCL"/>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmqeuhTaEdqZu-3Jy1-uYg" body="if (redefinedProperty->notEmpty()) then&#xA;  (redefinitionContext->notEmpty() and&#xA;      redefinedProperty->forAll(rp|&#xA;        ((redefinitionContext->collect(fc|&#xA;          fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))" language="OCL"/>
         </ownedRule>
         <ownedRule xmi:id="_rmqewhTaEdqZu-3Jy1-uYg" name="subsetting_rules" constrainedElement="_3ADC7B74022D3DE6D57500AC">
           <ownedComment xmi:id="_rmqevhTaEdqZu-3Jy1-uYg" body="A subsetting property may strengthen the type of the subsetted property, and its upper bound may be less." annotatedElement="_rmqewhTaEdqZu-3Jy1-uYg">
