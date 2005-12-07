@@ -9,8 +9,9 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.eclipse.uml2.uml,
  org.eclipse.uml2.uml.internal.impl;x-internal:=true,
- org.eclipse.uml2.uml.internal.operations;x-friends:="org.eclipse.uml2.uml.tests",
- org.eclipse.uml2.uml.internal.util;x-internal:=true,
+ org.eclipse.uml2.uml.internal.operations;x-internal:=true,
+ org.eclipse.uml2.uml.internal.resource;x-internal:=true,
+ org.eclipse.uml2.uml.resource,
  org.eclipse.uml2.uml.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,

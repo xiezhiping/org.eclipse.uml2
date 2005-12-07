@@ -8,20 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceImpl.java,v 1.1 2005/11/14 22:26:08 khussey Exp $
+ * $Id: UMLResourceImpl.java,v 1.1 2005/12/07 14:17:51 khussey Exp $
  */
-package org.eclipse.uml2.uml.internal.util;
+package org.eclipse.uml2.uml.internal.resource;
 
 import org.eclipse.emf.common.util.URI;
 
+import org.eclipse.emf.ecore.xmi.XMLHelper;
+import org.eclipse.emf.ecore.xmi.XMLLoad;
+import org.eclipse.emf.ecore.xmi.XMLSave;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
-import org.eclipse.uml2.uml.util.UMLResource;
+import org.eclipse.uml2.uml.resource.UMLResource;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.eclipse.uml2.uml.internal.util.UMLResourceFactoryImpl
+ * @see org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl
  * @generated
  */
 public class UMLResourceImpl
@@ -37,6 +40,26 @@ public class UMLResourceImpl
 	 */
 	public UMLResourceImpl(URI uri) {
 		super(uri);
+	}
+
+	protected XMLHelper createXMLHelper() {
+		return new UMLHelperImpl(this);
+	}
+
+	protected XMLLoad createXMLLoad() {
+		return new UMLLoadImpl(createXMLHelper());
+	}
+
+	protected XMLSave createXMLSave() {
+	    return new UMLSaveImpl(createXMLHelper());
+	}
+
+	protected boolean useIDAttributes() {
+		return false;
+	}
+
+	protected boolean useUUIDs() {
+		return true;
 	}
 
 } //UMLResourceImpl

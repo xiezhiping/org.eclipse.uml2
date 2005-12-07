@@ -8,14 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResource.java,v 1.1 2005/11/14 22:26:08 khussey Exp $
+ * $Id: UMLResource.java,v 1.1 2005/12/07 14:17:51 khussey Exp $
  */
-package org.eclipse.uml2.uml.util;
+package org.eclipse.uml2.uml.resource;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.xmi.XMIResource;
-import org.eclipse.uml2.uml.internal.util.UMLResourceFactoryImpl;
+import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
 
 /**
  * <!-- begin-user-doc -->
