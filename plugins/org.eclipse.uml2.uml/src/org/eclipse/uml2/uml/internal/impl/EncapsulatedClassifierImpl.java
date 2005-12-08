@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.9 2005/12/08 14:56:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -377,10 +377,6 @@ public abstract class EncapsulatedClassifierImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -487,9 +483,6 @@ public abstract class EncapsulatedClassifierImpl
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

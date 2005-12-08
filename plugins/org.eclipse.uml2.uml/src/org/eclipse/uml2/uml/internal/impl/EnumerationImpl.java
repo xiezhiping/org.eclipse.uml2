@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.8 2005/12/06 23:21:50 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.9 2005/12/08 14:56:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -470,10 +470,6 @@ public class EnumerationImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ENUMERATION__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -580,9 +576,6 @@ public class EnumerationImpl
 				return;
 			case UMLPackage.ENUMERATION__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.ENUMERATION__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

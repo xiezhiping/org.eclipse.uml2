@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.8 2005/12/06 23:21:50 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -563,10 +563,6 @@ public class DataTypeImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.DATA_TYPE__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.DATA_TYPE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -669,9 +665,6 @@ public class DataTypeImpl
 				return;
 			case UMLPackage.DATA_TYPE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.DATA_TYPE__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.DATA_TYPE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

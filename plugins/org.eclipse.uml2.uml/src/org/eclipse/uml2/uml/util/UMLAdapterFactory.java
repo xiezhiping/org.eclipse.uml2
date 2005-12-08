@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLAdapterFactory.java,v 1.1 2005/11/14 22:26:08 khussey Exp $
+ * $Id: UMLAdapterFactory.java,v 1.2 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -205,10 +205,13 @@ import org.eclipse.uml2.uml.ReadSelfAction;
 import org.eclipse.uml2.uml.ReadStructuralFeatureAction;
 import org.eclipse.uml2.uml.ReadVariableAction;
 import org.eclipse.uml2.uml.Realization;
+import org.eclipse.uml2.uml.ReceiveOperationEvent;
+import org.eclipse.uml2.uml.ReceiveSignalEvent;
 import org.eclipse.uml2.uml.Reception;
 import org.eclipse.uml2.uml.ReclassifyObjectAction;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.RedefinableTemplateSignature;
+import org.eclipse.uml2.uml.ReduceAction;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.RemoveStructuralFeatureValueAction;
@@ -902,6 +905,14 @@ public class UMLAdapterFactory
 			return createMessageOccurrenceSpecificationAdapter();
 		}
 
+		public Object caseReceiveOperationEvent(ReceiveOperationEvent object) {
+			return createReceiveOperationEventAdapter();
+		}
+
+		public Object caseReceiveSignalEvent(ReceiveSignalEvent object) {
+			return createReceiveSignalEventAdapter();
+		}
+
 		public Object caseCombinedFragment(CombinedFragment object) {
 			return createCombinedFragmentAdapter();
 		}
@@ -1187,6 +1198,10 @@ public class UMLAdapterFactory
 
 		public Object caseUnmarshallAction(UnmarshallAction object) {
 			return createUnmarshallActionAdapter();
+		}
+
+		public Object caseReduceAction(ReduceAction object) {
+			return createReduceActionAdapter();
 		}
 
 		public Object caseControlNode(ControlNode object) {
@@ -3333,6 +3348,34 @@ public class UMLAdapterFactory
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.ReceiveOperationEvent <em>Receive Operation Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.uml2.uml.ReceiveOperationEvent
+	 * @generated
+	 */
+	public Adapter createReceiveOperationEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.ReceiveSignalEvent <em>Receive Signal Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.uml2.uml.ReceiveSignalEvent
+	 * @generated
+	 */
+	public Adapter createReceiveSignalEventAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.CombinedFragment <em>Combined Fragment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4295,6 +4338,20 @@ public class UMLAdapterFactory
 	 * @generated
 	 */
 	public Adapter createUnmarshallActionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.ReduceAction <em>Reduce Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.uml2.uml.ReduceAction
+	 * @generated
+	 */
+	public Adapter createReduceActionAdapter() {
 		return null;
 	}
 

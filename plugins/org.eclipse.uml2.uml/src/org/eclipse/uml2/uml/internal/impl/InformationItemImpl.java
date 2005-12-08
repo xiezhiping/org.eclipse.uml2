@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.8 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -306,10 +306,6 @@ public class InformationItemImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.INFORMATION_ITEM__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.INFORMATION_ITEM__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -408,9 +404,6 @@ public class InformationItemImpl
 				return;
 			case UMLPackage.INFORMATION_ITEM__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.INFORMATION_ITEM__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.INFORMATION_ITEM__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.9 2005/12/06 23:21:49 khussey Exp $
+ * $Id: VariableImpl.java,v 1.10 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,6 +37,7 @@ import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.MultiplicityElement;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
@@ -1031,7 +1032,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetOwner() {
+	public Namespace basicGetNamespace() {
 		Activity activityScope = getActivityScope();
 		if (activityScope != null) {
 			return activityScope;
@@ -1040,7 +1041,7 @@ public class VariableImpl
 		if (scope != null) {
 			return scope;
 		}
-		return super.basicGetOwner();
+		return super.basicGetNamespace();
 	}
 
 	/**
@@ -1048,8 +1049,8 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetOwner() {
-		return super.isSetOwner()
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
 			|| eIsSet(UMLPackage.VARIABLE__ACTIVITY_SCOPE)
 			|| eIsSet(UMLPackage.VARIABLE__SCOPE);
 	}

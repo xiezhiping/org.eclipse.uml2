@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.6 2005/12/05 18:00:17 khussey Exp $
+ * $Id: Property.java,v 1.7 2005/12/08 14:56:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -274,6 +274,9 @@ public interface Property
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Class that owns the Property.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class </em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Class_()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" ordered="false"
@@ -559,14 +562,21 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A navigable property can only be redefined or subsetted by a navigable property.
-	 * (self.subsettedProperty->exists(sp | sp.isNavigable()) implies self.isNavigable())
-	 *   and (self.redefinedProperty->exists(rp | rp.isNavigable()) implies self.isNavigable())
+	 * A redefined property must be inherited from a more general classifier containing the redefining property.
+	 * if (redefinedProperty->notEmpty()) then
+	 * 
+	 *   (redefinitionContext->notEmpty() and
+	 * 
+	 *       redefinedProperty->forAll(rp|
+	 * 
+	 *         ((redefinitionContext->collect(fc|
+	 * 
+	 *           fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics,
+	boolean validateRedefinedPropertyInherited(DiagnosticChain diagnostics,
 			Map context);
 
 	/**

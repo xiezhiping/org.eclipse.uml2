@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.8 2005/12/06 23:21:51 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -36,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ExecutableNode;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LoopNode;
@@ -57,7 +56,6 @@ import org.eclipse.uml2.uml.internal.operations.LoopNodeOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LoopNodeImpl#getOutputs <em>Output</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.LoopNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LoopNodeImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LoopNodeImpl#isTestedFirst <em>Is Tested First</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LoopNodeImpl#getBodyParts <em>Body Part</em>}</li>
@@ -138,33 +136,6 @@ public class LoopNodeImpl
 					new int[]{UMLPackage.LOOP_NODE__RESULT}));
 		}
 		return output;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.LOOP_NODE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.LOOP_NODE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.LOOP_NODE__OWNED_ELEMENT, new int[]{
-						UMLPackage.LOOP_NODE__OWNED_COMMENT,
-						UMLPackage.LOOP_NODE__NAME_EXPRESSION,
-						UMLPackage.LOOP_NODE__HANDLER,
-						UMLPackage.LOOP_NODE__OUTPUT,
-						UMLPackage.LOOP_NODE__INPUT,
-						UMLPackage.LOOP_NODE__LOCAL_PRECONDITION,
-						UMLPackage.LOOP_NODE__LOCAL_POSTCONDITION,
-						UMLPackage.LOOP_NODE__ELEMENT_IMPORT,
-						UMLPackage.LOOP_NODE__PACKAGE_IMPORT,
-						UMLPackage.LOOP_NODE__OWNED_MEMBER,
-						UMLPackage.LOOP_NODE__SUBGROUP,
-						UMLPackage.LOOP_NODE__LOOP_VARIABLE}));
-		}
-		return ownedElement;
 	}
 
 	/**
@@ -425,21 +396,10 @@ public class LoopNodeImpl
 		List loopVariable = (List) eVirtualGet(UMLPackage.LOOP_NODE__LOOP_VARIABLE);
 		if (loopVariable == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__LOOP_VARIABLE,
-				loopVariable = new EObjectContainmentEList(OutputPin.class,
-					this, UMLPackage.LOOP_NODE__LOOP_VARIABLE));
+				loopVariable = new EObjectResolvingEList(OutputPin.class, this,
+					UMLPackage.LOOP_NODE__LOOP_VARIABLE));
 		}
 		return loopVariable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OutputPin createLoopVariable() {
-		OutputPin newLoopVariable = UMLFactory.eINSTANCE.createOutputPin();
-		getLoopVariables().add(newLoopVariable);
-		return newLoopVariable;
 	}
 
 	/**
@@ -640,9 +600,6 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__RESULT :
 				return ((InternalEList) getResults()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.LOOP_NODE__LOOP_VARIABLE :
-				return ((InternalEList) getLoopVariables()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
 				return ((InternalEList) getLoopVariableInputs()).basicRemove(
 					otherEnd, msgs);
@@ -1199,16 +1156,6 @@ public class LoopNodeImpl
 	 */
 	public boolean isSetOutputs() {
 		return super.isSetOutputs() || eIsSet(UMLPackage.LOOP_NODE__RESULT);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetOwnedElements() {
-		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.LOOP_NODE__LOOP_VARIABLE);
 	}
 
 	/**

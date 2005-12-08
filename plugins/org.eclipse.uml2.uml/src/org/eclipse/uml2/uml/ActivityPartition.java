@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.3 2005/11/22 15:32:38 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.4 2005/12/08 14:56:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -256,18 +256,6 @@ public interface ActivityPartition
 	 */
 	boolean validateDimensionNotContained(DiagnosticChain diagnostics,
 			Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * No node or edge of a partition may be in another partition in the same dimension.
-	 * true
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateNodeOrEdge(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

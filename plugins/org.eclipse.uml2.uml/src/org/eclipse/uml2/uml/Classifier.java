@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: Classifier.java,v 1.3 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -185,7 +185,7 @@ public interface Classifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Inherited Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_InheritedMember()
-	 * @model type="org.eclipse.uml2.uml.NamedElement" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.NamedElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	List getInheritedMembers();

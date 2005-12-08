@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.8 2005/12/06 23:21:48 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.9 2005/12/08 14:56:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -65,6 +65,14 @@ import org.eclipse.uml2.uml.internal.operations.ProtocolStateMachineOperations;
 public class ProtocolStateMachineImpl
 		extends StateMachineImpl
 		implements ProtocolStateMachine {
+
+	/**
+	 * A bit field representing the indices of non-primitive feature values.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected int eVirtualIndexBits2 = 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -289,6 +297,9 @@ public class ProtocolStateMachineImpl
 				return basicSetSpecification((BehavioralFeature) otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				return ((InternalEList) getRegions()).basicAdd(otherEnd, msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
+				return ((InternalEList) getSubmachineStates()).basicAdd(
+					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				return ((InternalEList) getConnectionPoints()).basicAdd(
 					otherEnd, msgs);
@@ -394,6 +405,9 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				return ((InternalEList) getRegions()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
+				return ((InternalEList) getSubmachineStates()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				return ((InternalEList) getConnectionPoints()).basicRemove(
 					otherEnd, msgs);
@@ -553,6 +567,8 @@ public class ProtocolStateMachineImpl
 				return basicGetSpecification();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				return getRegions();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
+				return getSubmachineStates();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				return getConnectionPoints();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE :
@@ -634,10 +650,6 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
@@ -740,6 +752,10 @@ public class ProtocolStateMachineImpl
 				getRegions().clear();
 				getRegions().addAll((Collection) newValue);
 				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
+				getSubmachineStates().clear();
+				getSubmachineStates().addAll((Collection) newValue);
+				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				getConnectionPoints().clear();
 				getConnectionPoints().addAll((Collection) newValue);
@@ -815,9 +831,6 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
@@ -899,6 +912,9 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				getRegions().clear();
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
+				getSubmachineStates().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				getConnectionPoints().clear();
@@ -1076,6 +1092,9 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				List region = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__REGION);
 				return region != null && !region.isEmpty();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
+				List submachineState = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE);
+				return submachineState != null && !submachineState.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				List connectionPoint = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT);
 				return connectionPoint != null && !connectionPoint.isEmpty();
@@ -1086,6 +1105,45 @@ public class ProtocolStateMachineImpl
 				return conformance != null && !conformance.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected int eVirtualIndexBits(int offset) {
+		switch (offset) {
+			case 0 :
+				return eVirtualIndexBits0;
+			case 1 :
+				return eVirtualIndexBits1;
+			case 2 :
+				return eVirtualIndexBits2;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
+		switch (offset) {
+			case 0 :
+				eVirtualIndexBits0 = newIndexBits;
+				break;
+			case 1 :
+				eVirtualIndexBits1 = newIndexBits;
+				break;
+			case 2 :
+				eVirtualIndexBits2 = newIndexBits;
+				break;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
 	}
 
 	/**

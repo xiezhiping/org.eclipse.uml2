@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -646,10 +646,6 @@ public class DeploymentSpecificationImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -772,9 +768,6 @@ public class DeploymentSpecificationImpl
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

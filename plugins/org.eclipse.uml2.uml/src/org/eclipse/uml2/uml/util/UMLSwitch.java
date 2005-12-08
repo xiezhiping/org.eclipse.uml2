@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.1 2005/11/14 22:26:08 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.2 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -203,10 +203,13 @@ import org.eclipse.uml2.uml.ReadSelfAction;
 import org.eclipse.uml2.uml.ReadStructuralFeatureAction;
 import org.eclipse.uml2.uml.ReadVariableAction;
 import org.eclipse.uml2.uml.Realization;
+import org.eclipse.uml2.uml.ReceiveOperationEvent;
+import org.eclipse.uml2.uml.ReceiveSignalEvent;
 import org.eclipse.uml2.uml.Reception;
 import org.eclipse.uml2.uml.ReclassifyObjectAction;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.RedefinableTemplateSignature;
+import org.eclipse.uml2.uml.ReduceAction;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.RemoveStructuralFeatureValueAction;
@@ -3168,6 +3171,48 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
+			case UMLPackage.RECEIVE_OPERATION_EVENT : {
+				ReceiveOperationEvent receiveOperationEvent = (ReceiveOperationEvent) theEObject;
+				Object result = caseReceiveOperationEvent(receiveOperationEvent);
+				if (result == null)
+					result = caseMessageEvent(receiveOperationEvent);
+				if (result == null)
+					result = caseEvent(receiveOperationEvent);
+				if (result == null)
+					result = casePackageableElement(receiveOperationEvent);
+				if (result == null)
+					result = caseNamedElement(receiveOperationEvent);
+				if (result == null)
+					result = caseParameterableElement(receiveOperationEvent);
+				if (result == null)
+					result = caseElement(receiveOperationEvent);
+				if (result == null)
+					result = caseEModelElement(receiveOperationEvent);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.RECEIVE_SIGNAL_EVENT : {
+				ReceiveSignalEvent receiveSignalEvent = (ReceiveSignalEvent) theEObject;
+				Object result = caseReceiveSignalEvent(receiveSignalEvent);
+				if (result == null)
+					result = caseMessageEvent(receiveSignalEvent);
+				if (result == null)
+					result = caseEvent(receiveSignalEvent);
+				if (result == null)
+					result = casePackageableElement(receiveSignalEvent);
+				if (result == null)
+					result = caseNamedElement(receiveSignalEvent);
+				if (result == null)
+					result = caseParameterableElement(receiveSignalEvent);
+				if (result == null)
+					result = caseElement(receiveSignalEvent);
+				if (result == null)
+					result = caseEModelElement(receiveSignalEvent);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
 			case UMLPackage.COMBINED_FRAGMENT : {
 				CombinedFragment combinedFragment = (CombinedFragment) theEObject;
 				Object result = caseCombinedFragment(combinedFragment);
@@ -4649,6 +4694,27 @@ public class UMLSwitch {
 					result = caseElement(unmarshallAction);
 				if (result == null)
 					result = caseEModelElement(unmarshallAction);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.REDUCE_ACTION : {
+				ReduceAction reduceAction = (ReduceAction) theEObject;
+				Object result = caseReduceAction(reduceAction);
+				if (result == null)
+					result = caseAction(reduceAction);
+				if (result == null)
+					result = caseExecutableNode(reduceAction);
+				if (result == null)
+					result = caseActivityNode(reduceAction);
+				if (result == null)
+					result = caseRedefinableElement(reduceAction);
+				if (result == null)
+					result = caseNamedElement(reduceAction);
+				if (result == null)
+					result = caseElement(reduceAction);
+				if (result == null)
+					result = caseEModelElement(reduceAction);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -7530,6 +7596,36 @@ public class UMLSwitch {
 	}
 
 	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Receive Operation Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Receive Operation Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseReceiveOperationEvent(ReceiveOperationEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Receive Signal Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Receive Signal Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseReceiveSignalEvent(ReceiveSignalEvent object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpretting the object as an instance of '<em>Combined Fragment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -8569,6 +8665,21 @@ public class UMLSwitch {
 	 * @generated
 	 */
 	public Object caseUnmarshallAction(UnmarshallAction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Reduce Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Reduce Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseReduceAction(ReduceAction object) {
 		return null;
 	}
 

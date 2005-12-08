@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.10 2005/12/06 23:21:49 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.11 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -777,10 +777,6 @@ public class ComponentImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.COMPONENT__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.COMPONENT__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -932,9 +928,6 @@ public class ComponentImpl
 				return;
 			case UMLPackage.COMPONENT__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.COMPONENT__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.COMPONENT__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

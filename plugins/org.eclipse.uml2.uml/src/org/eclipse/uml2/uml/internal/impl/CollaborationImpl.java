@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.9 2005/12/06 23:21:50 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.10 2005/12/08 14:56:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -634,10 +634,6 @@ public class CollaborationImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.COLLABORATION__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.COLLABORATION__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -759,9 +755,6 @@ public class CollaborationImpl
 				return;
 			case UMLPackage.COLLABORATION__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.COLLABORATION__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.COLLABORATION__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

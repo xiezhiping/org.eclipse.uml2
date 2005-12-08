@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseItemProvider.java,v 1.1 2005/12/07 14:20:24 khussey Exp $
+ * $Id: InteractionUseItemProvider.java,v 1.2 2005/12/08 14:52:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -376,6 +376,10 @@ public class InteractionUseItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT, UMLFactory.eINSTANCE
 				.createUnmarshallAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_USE__ARGUMENT, UMLFactory.eINSTANCE
+				.createReduceAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT, UMLFactory.eINSTANCE

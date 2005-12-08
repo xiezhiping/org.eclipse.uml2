@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: StateMachine.java,v 1.3 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -42,6 +42,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#getRegions <em>Region</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#getSubmachineStates <em>Submachine State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#getConnectionPoints <em>Connection Point</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#getExtendedStateMachine <em>Extended State Machine</em>}</li>
  * </ul>
@@ -91,6 +92,34 @@ public interface StateMachine
 	 * @generated
 	 */
 	Region getRegion(String name);
+
+	/**
+	 * Returns the value of the '<em><b>Submachine State</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.State}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.State#getSubmachine <em>Submachine</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Submachine State</em>' reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_SubmachineState()
+	 * @see org.eclipse.uml2.uml.State#getSubmachine
+	 * @model type="org.eclipse.uml2.uml.State" opposite="submachine" ordered="false"
+	 * @generated
+	 */
+	List getSubmachineStates();
+
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>' from the '<em><b>Submachine State</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.State} to retrieve.
+	 * @return The {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getSubmachineStates()
+	 * @generated
+	 */
+	State getSubmachineState(String name);
 
 	/**
 	 * Returns the value of the '<em><b>Connection Point</b></em>' containment reference list.

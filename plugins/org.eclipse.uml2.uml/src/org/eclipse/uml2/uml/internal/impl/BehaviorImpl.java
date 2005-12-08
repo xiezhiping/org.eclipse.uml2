@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.10 2005/12/06 23:21:50 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.11 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -912,10 +912,6 @@ public class BehaviorImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.BEHAVIOR__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -1077,9 +1073,6 @@ public class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.BEHAVIOR__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

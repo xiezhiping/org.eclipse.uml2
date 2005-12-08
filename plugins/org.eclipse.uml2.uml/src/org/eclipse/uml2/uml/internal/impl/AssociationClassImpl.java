@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.9 2005/12/06 23:21:50 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.10 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -859,10 +859,6 @@ public class AssociationClassImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ASSOCIATION_CLASS__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ASSOCIATION_CLASS__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -1018,9 +1014,6 @@ public class AssociationClassImpl
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.ASSOCIATION_CLASS__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

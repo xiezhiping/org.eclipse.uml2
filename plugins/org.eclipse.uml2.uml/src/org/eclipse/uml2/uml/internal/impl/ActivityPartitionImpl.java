@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.8 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -563,16 +563,6 @@ public class ActivityPartitionImpl
 	public boolean validateDimensionNotContained(DiagnosticChain diagnostics,
 			Map context) {
 		return ActivityPartitionOperations.validateDimensionNotContained(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNodeOrEdge(DiagnosticChain diagnostics, Map context) {
-		return ActivityPartitionOperations.validateNodeOrEdge(this,
 			diagnostics, context);
 	}
 

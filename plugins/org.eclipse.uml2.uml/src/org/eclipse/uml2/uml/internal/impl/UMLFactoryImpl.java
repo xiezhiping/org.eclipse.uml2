@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.1 2005/11/14 22:26:05 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.2 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -186,9 +186,12 @@ import org.eclipse.uml2.uml.ReadSelfAction;
 import org.eclipse.uml2.uml.ReadStructuralFeatureAction;
 import org.eclipse.uml2.uml.ReadVariableAction;
 import org.eclipse.uml2.uml.Realization;
+import org.eclipse.uml2.uml.ReceiveOperationEvent;
+import org.eclipse.uml2.uml.ReceiveSignalEvent;
 import org.eclipse.uml2.uml.Reception;
 import org.eclipse.uml2.uml.ReclassifyObjectAction;
 import org.eclipse.uml2.uml.RedefinableTemplateSignature;
+import org.eclipse.uml2.uml.ReduceAction;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.RemoveStructuralFeatureValueAction;
 import org.eclipse.uml2.uml.RemoveVariableValueAction;
@@ -494,6 +497,10 @@ public class UMLFactoryImpl
 				return createSendSignalEvent();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION :
 				return createMessageOccurrenceSpecification();
+			case UMLPackage.RECEIVE_OPERATION_EVENT :
+				return createReceiveOperationEvent();
+			case UMLPackage.RECEIVE_SIGNAL_EVENT :
+				return createReceiveSignalEvent();
 			case UMLPackage.COMBINED_FRAGMENT :
 				return createCombinedFragment();
 			case UMLPackage.CONTINUATION :
@@ -616,6 +623,8 @@ public class UMLFactoryImpl
 				return createReplyAction();
 			case UMLPackage.UNMARSHALL_ACTION :
 				return createUnmarshallAction();
+			case UMLPackage.REDUCE_ACTION :
+				return createReduceAction();
 			case UMLPackage.CONTROL_FLOW :
 				return createControlFlow();
 			case UMLPackage.INITIAL_NODE :
@@ -1851,6 +1860,26 @@ public class UMLFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ReceiveOperationEvent createReceiveOperationEvent() {
+		ReceiveOperationEventImpl receiveOperationEvent = new ReceiveOperationEventImpl();
+		return receiveOperationEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReceiveSignalEvent createReceiveSignalEvent() {
+		ReceiveSignalEventImpl receiveSignalEvent = new ReceiveSignalEventImpl();
+		return receiveSignalEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CombinedFragment createCombinedFragment() {
 		CombinedFragmentImpl combinedFragment = new CombinedFragmentImpl();
 		return combinedFragment;
@@ -2454,6 +2483,16 @@ public class UMLFactoryImpl
 	public UnmarshallAction createUnmarshallAction() {
 		UnmarshallActionImpl unmarshallAction = new UnmarshallActionImpl();
 		return unmarshallAction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReduceAction createReduceAction() {
+		ReduceActionImpl reduceAction = new ReduceActionImpl();
+		return reduceAction;
 	}
 
 	/**

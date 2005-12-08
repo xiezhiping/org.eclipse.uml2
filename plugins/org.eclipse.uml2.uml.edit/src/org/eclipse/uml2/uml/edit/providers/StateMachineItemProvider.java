@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineItemProvider.java,v 1.1 2005/12/07 14:20:25 khussey Exp $
+ * $Id: StateMachineItemProvider.java,v 1.2 2005/12/08 14:52:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -68,6 +68,7 @@ public class StateMachineItemProvider
 			super.getPropertyDescriptors(object);
 
 			addRegionPropertyDescriptor(object);
+			addSubmachineStatePropertyDescriptor(object);
 			addConnectionPointPropertyDescriptor(object);
 			addExtendedStateMachinePropertyDescriptor(object);
 		}
@@ -92,6 +93,25 @@ public class StateMachineItemProvider
 				UMLPackage.Literals.STATE_MACHINE__REGION, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Submachine State feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSubmachineStatePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_StateMachine_submachineState_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_StateMachine_submachineState_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.STATE_MACHINE__SUBMACHINE_STATE, true,
+				null, null, null));
 	}
 
 	/**

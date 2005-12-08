@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
+ * $Id: StateOperations.java,v 1.3 2005/12/08 14:56:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,7 +33,6 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.State#validateRegions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Regions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#validateSubmachineStates(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Submachine States</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#validateDestinationsOrSourcesOfTransitions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Destinations Or Sources Of Transitions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#validateSubmachineOrRegions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Submachine Or Regions</em>}</li>
@@ -61,40 +60,6 @@ public final class StateOperations {
 	 */
 	private StateOperations() {
 		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * There have to be at least two regions in an orthogonal composite state.
-	 * (self.isOrthogonal) implies
-	 * (self.region->size >= 2)
-	 * 
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateRegions(State state,
-			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STATE__REGIONS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRegions", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(state, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{state}));
-			}
-			return false;
-		}
-		return true;
 	}
 
 	/**
@@ -134,7 +99,11 @@ public final class StateOperations {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The connection point references used as destinations/sources of transitions associated with a submachine state must be defined as entry/exit points in the submachine state machine.
-	 * true
+	 * self.isSubmachineState implies (self.connection->forAll (cp |
+	 * 
+	 * cp.entry->forAll (p | p.statemachine = self.submachine) and
+	 * 
+	 * cp.exit->forAll (p | p.statemachine = self.submachine)))
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

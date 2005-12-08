@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.9 2005/12/08 14:56:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -774,10 +774,6 @@ public class ArtifactImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ARTIFACT__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ARTIFACT__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -891,9 +887,6 @@ public class ArtifactImpl
 				return;
 			case UMLPackage.ARTIFACT__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.ARTIFACT__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.ARTIFACT__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEvent.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
+ * $Id: TimeEvent.java,v 1.3 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -130,6 +130,18 @@ public interface TimeEvent
 	 * @generated
 	 */
 	ValueSpecification createWhen(EClass eClass);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The ValueSpecification when must return a non-negative Integer.
+	 * true
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateWhenNonNegative(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: Connector.java,v 1.2 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -160,6 +160,9 @@ public interface Connector
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The set of Behaviors that specify the valid interaction patterns across the connector.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contract</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_Contract()
 	 * @model type="org.eclipse.uml2.uml.Behavior" ordered="false"

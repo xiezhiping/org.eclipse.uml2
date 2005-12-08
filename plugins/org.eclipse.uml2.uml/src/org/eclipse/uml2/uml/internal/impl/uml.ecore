@@ -1303,7 +1303,8 @@
       <eAnnotations source="union"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inheritedMember" ordered="false"
-        upperBound="-1" eType="#//NamedElement" volatile="true" transient="true" derived="true">
+        upperBound="-1" eType="#//NamedElement" changeable="false" volatile="true"
+        transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies all elements inherited by this classifier from the general classifiers."/>
       </eAnnotations>
@@ -2218,6 +2219,17 @@
         <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
         <eParameters name="redefinee" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>
       </contents>
+      <contents xsi:type="ecore:EOperation" name="isCompatibleWith" ordered="false"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for properties, the type must be conformant with the type of the specified parameterable element.&#xA;&#xA;&#xD;&#xA;result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)"/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+          <details key="constraints" value="spec"/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//ParameterableElement/isCompatibleWith"/>
+        <eParameters name="p" ordered="false" lowerBound="1" eType="#//ParameterableElement"/>
+      </contents>
       <contents xsi:type="ecore:EAttribute" name="isReadOnly" ordered="false" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
           defaultValueLiteral="false">
@@ -2241,9 +2253,9 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="navigable_property_redefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="redefined_property_inherited" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A navigable property can only be redefined or subsetted by a navigable property.&#xD;&#xA;(self.subsettedProperty->exists(sp | sp.isNavigable()) implies self.isNavigable())&#xA;  and (self.redefinedProperty->exists(rp | rp.isNavigable()) implies self.isNavigable())"/>
+        <details key="documentation" value="A redefined property must be inherited from a more general classifier containing the redefining property.&#xD;&#xA;if (redefinedProperty->notEmpty()) then&#xA;&#xA;  (redefinitionContext->notEmpty() and&#xA;&#xA;      redefinedProperty->forAll(rp|&#xA;&#xA;        ((redefinitionContext->collect(fc|&#xA;&#xA;          fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
@@ -2386,6 +2398,9 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class_" ordered="false"
         eType="#//Class" changeable="false" volatile="true" transient="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="References the Class that owns the Property."/>
+      </eAnnotations>
       <eAnnotations source="subsets" references="#//NamedElement/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedProperty" ordered="false"
@@ -2778,7 +2793,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint" resolveProxies="false">
@@ -2919,7 +2934,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" ordered="false"
         eType="#//BehavioredClassifier" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the owner of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior."/>
+        <details key="documentation" value="The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior."/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext"/>
     </eStructuralFeatures>
@@ -2939,7 +2954,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterSet" eSuperTypes="#//NamedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="An parameter set acts as a complete set of inputs and outputs to a behavior, exclusive of other parameter sets on the behavior."/>
+      <details key="documentation" value="An parameter set acts as a complete set of inputs or outputs to a behavior, exclusive of other parameter sets on the behavior."/>
     </eAnnotations>
     <eOperations name="same_parameterized_entity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3246,6 +3261,12 @@
         <details key="documentation" value="The regions owned directly by the state machine."/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="submachineState" ordered="false"
+        upperBound="-1" eType="#//State" eOpposite="#//State/submachine">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectionPoint" ordered="false"
         upperBound="-1" eType="#//Pseudostate" containment="true" resolveProxies="false"
@@ -3723,13 +3744,6 @@
         <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext"/>
       </contents>
     </eAnnotations>
-    <eOperations name="regions" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="There have to be at least two regions in an orthogonal composite state.&#xD;&#xA;(self.isOrthogonal) implies&#xA;(self.region->size >= 2)&#xA;"/>
-      </eAnnotations>
-      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
-      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
-    </eOperations>
     <eOperations name="submachine_states" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Only submachine states can have connection point references.&#xD;&#xA;isSubmachineState implies connection->notEmpty ( )"/>
@@ -3739,7 +3753,7 @@
     </eOperations>
     <eOperations name="destinations_or_sources_of_transitions" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The connection point references used as destinations/sources of transitions associated with a submachine state must be defined as entry/exit points in the submachine state machine.&#xD;&#xA;true"/>
+        <details key="documentation" value="The connection point references used as destinations/sources of transitions associated with a submachine state must be defined as entry/exit points in the submachine state machine.&#xD;&#xA;self.isSubmachineState implies (self.connection->forAll (cp |&#xA;&#xA;cp.entry->forAll (p | p.statemachine = self.submachine) and&#xA;&#xA;cp.exit->forAll (p | p.statemachine = self.submachine)))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
@@ -3845,7 +3859,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="submachine" ordered="false"
-        eType="#//StateMachine">
+        eType="#//StateMachine" eOpposite="#//StateMachine/submachineState">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The state machine that is to be inserted in place of the (submachine) state."/>
       </eAnnotations>
@@ -4037,7 +4051,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" ordered="false"
         eType="#//State" transient="true" resolveProxies="false" eOpposite="#//State/connectionPoint">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The State that owns the pseudostate. If a Pseudostat is owned by a State, then it cannot also be owned by a StateMachine."/>
+        <details key="documentation" value="The State that owns this pseudostate and in which it appears."/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Element/owner"/>
     </eStructuralFeatures>
@@ -4466,7 +4480,11 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contract" ordered="false"
-        upperBound="-1" eType="#//Behavior"/>
+        upperBound="-1" eType="#//Behavior">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of Behaviors that specify the valid interaction patterns across the connector."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ConnectorKind">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5298,21 +5316,36 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MessageSort">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="MessageSort is an enumeration of the following values:&#xA; synchCall - the message was generated by a synchronous call to an operation&#xA; asynchCall - the message was generated by an asynchronous call to an operation; i.e., a CallAction with isSynchronous= false&#xA; asynchSignal -the message was generated by an asynchronous send action&#xA;"/>
+      <details key="documentation" value="MessageSort is an enumeration of the following values:&#xA;&#xA;- synchCall = the message was generated by a synchronous call to an operation&#xA;&#xA;- asynchCall = the message was generated by an asynchronous call to an operation; i.e., a CallAction with isSynchronous= false&#xA;&#xA;- asynchSignal = the message was generated by an asynchronous send action&#xA;&#xA;- createMessage = the message designating the creation of another lifeline object&#xA;&#xA;- deleteMessage = the message designating the termination of anther lifeline&#xA;&#xA;- reply = the message is a reply message to an operation call"/>
     </eAnnotations>
     <eLiterals name="synchCall">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The message was generated by a synchronous call to an operation"/>
+        <details key="documentation" value="The message was generated by a synchronous call to an operation."/>
       </eAnnotations>
     </eLiterals>
     <eLiterals name="asynchCall" value="1">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The message was generated by an asynchronous call to an operation; i.e., a CallAction with isSynchronous&#xA;= false&#xA;"/>
+        <details key="documentation" value="The message was generated by an asynchronous call to an operation; i.e., a CallAction with isSynchronous&#xA;&#xA;= false.&#xA;&#xA;"/>
       </eAnnotations>
     </eLiterals>
     <eLiterals name="asynchSignal" value="2">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The message was generated by an asynchronous send action"/>
+        <details key="documentation" value="The message was generated by an asynchronous send action."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="createMessage" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The message designating the creation of another lifeline object."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="deleteMessage" value="4">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The message designating the termination of another lifeline."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="reply" value="5">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The message is a reply message to an operation call."/>
       </eAnnotations>
     </eLiterals>
   </eClassifiers>
@@ -5454,7 +5487,11 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="coveredBy" ordered="false"
-        upperBound="-1" eType="#//InteractionFragment" eOpposite="#//InteractionFragment/covered"/>
+        upperBound="-1" eType="#//InteractionFragment" eOpposite="#//InteractionFragment/covered">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="References the InteractionFragments in which this Lifeline takes part."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartDecomposition" eSuperTypes="#//InteractionUse">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5874,13 +5911,6 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="node_or_edge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="No node or edge of a partition may be in another partition in the same dimension.&#xD;&#xA;true"/>
-      </eAnnotations>
-      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
-      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
-    </eOperations>
     <eOperations name="represents_part" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If a partition represents a part, then all the non-external partitions in the same dimension and at the same level of nesting in that dimension must represent parts directly contained in the internal structure of the same classifier.&#xD;&#xA;true"/>
@@ -6094,7 +6124,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An activity that owns the variable."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Element/owner"/>
+      <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scope" ordered="false"
         eType="#//StructuredActivityNode" transient="true" resolveProxies="false"
@@ -6102,7 +6132,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A structured activity node that owns the variable."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Element/owner"/>
+      <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InterruptibleActivityRegion" eSuperTypes="#//ActivityGroup">
@@ -6600,6 +6630,28 @@
         <eAnnotations source="redefines" references="#//OccurrenceSpecification/event"/>
       </contents>
     </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReceiveOperationEvent" eSuperTypes="#//MessageEvent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A ReceiveOperationEvent models the reception of an operation call."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" ordered="false"
+        lowerBound="1" eType="#//Operation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The operation associated with this event."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReceiveSignalEvent" eSuperTypes="#//MessageEvent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A ReceiveSignalEvent models the receiving of a signal."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" ordered="false"
+        lowerBound="1" eType="#//Signal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The signal associated with this event."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InteractionOperatorKind">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -7589,7 +7641,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="result" ordered="false"
         lowerBound="1" eType="#//OutputPin" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved."/>
+        <details key="documentation" value="Gives the output pin on which the result is put."/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Action/output"/>
     </eStructuralFeatures>
@@ -8858,6 +8910,59 @@
       <eAnnotations source="subsets" references="#//Action/input"/>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReduceAction" eSuperTypes="#//Action">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This action takes a collection as input and produces an output by applying a behavior with two inputs pairwise to the elements of the collection."/>
+    </eAnnotations>
+    <eOperations name="input_type_is_collection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The type of the input must be a collection.&#xD;&#xA;true"/>
+      </eAnnotations>
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
+    <eOperations name="output_types_are_compatible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The type of the output must be compatible with the type of the output of the reducer behavior.&#xD;&#xA;true"/>
+      </eAnnotations>
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
+    <eOperations name="reducer_inputs_output" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The reducer behavior must have two input parameters and one output parameter, of types compatible with the types of elements of the input collection.&#xD;&#xA;true"/>
+      </eAnnotations>
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reducer" ordered="false"
+        lowerBound="1" eType="#//Behavior">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Behavior that is applied to two elements of the input collection to produce a value that is the same type as elements of the collection."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="result" ordered="false"
+        lowerBound="1" eType="#//OutputPin" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gives the output pin on which the result is put."/>
+      </eAnnotations>
+      <eAnnotations source="subsets" references="#//Action/output"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collection" ordered="false"
+        lowerBound="1" eType="#//InputPin" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The collection to be reduced."/>
+      </eAnnotations>
+      <eAnnotations source="subsets" references="#//Action/input"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ControlNode" abstract="true" eSuperTypes="#//ActivityNode">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A control node is an activity node used to coordinate the flows between other nodes. It covers initial node, final node and its children, fork node, join node, decision node, and merge node."/>
@@ -9262,10 +9367,10 @@
         <details key="documentation" value="An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="bodyOutput" ordered="false"
-        upperBound="-1" eType="#//OutputPin">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bodyOutput" upperBound="-1"
+        eType="#//OutputPin">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node or conditional node after execution of the clause body."/>
+        <details key="documentation" value="A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -9333,14 +9438,13 @@
       <eAnnotations source="subsets" references="#//Action/output"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="loopVariable" upperBound="-1"
-        eType="#//OutputPin" containment="true" resolveProxies="false">
+        eType="#//OutputPin">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A list of output pins owned by the loop that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop."/>
+        <details key="documentation" value="A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="bodyOutput" ordered="false"
-        upperBound="-1" eType="#//OutputPin">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bodyOutput" upperBound="-1"
+        eType="#//OutputPin">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits."/>
       </eAnnotations>
@@ -9426,10 +9530,16 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="abstraction" ordered="false"
         eType="#//Component" transient="true" eOpposite="#//Component/realization">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The Component that owns this ComponentRealization and which is implemented by its realizing classifiers."/>
+      </eAnnotations>
       <eAnnotations source="subsets" references="#//DirectedRelationship/source #//Element/owner #//Dependency/client"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingClassifier" ordered="false"
         lowerBound="1" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A classifier that is involved in the implementation of the Component that owns this ComponentRealization."/>
+      </eAnnotations>
       <eAnnotations source="subsets" references="#//DirectedRelationship/target #//Dependency/supplier"/>
     </eStructuralFeatures>
   </eClassifiers>
@@ -9603,6 +9713,13 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A time event specifies a point in time by an expression. The expression might be absolute or might be relative to some other point in time.&#xD;&#xA;Extends TimeEvent to be defined relative to entering the current state of the executing state machine."/>
     </eAnnotations>
+    <eOperations name="when_non_negative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The ValueSpecification when must return a non-negative Integer.&#xD;&#xA;true"/>
+      </eAnnotations>
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
     <eOperations name="starting_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The starting time for a relative time event may only be omitted for a time event that is the trigger of a state machine.&#xD;&#xA;true"/>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.8 2005/12/06 23:21:50 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -688,10 +688,6 @@ public class UseCaseImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.USE_CASE__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.USE_CASE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -817,9 +813,6 @@ public class UseCaseImpl
 				return;
 			case UMLPackage.USE_CASE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.USE_CASE__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.USE_CASE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

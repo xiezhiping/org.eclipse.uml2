@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.8 2005/12/06 23:21:48 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -344,10 +344,6 @@ public class OpaqueBehaviorImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -517,9 +513,6 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

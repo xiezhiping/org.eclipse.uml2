@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealization.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: ComponentRealization.java,v 1.2 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -45,6 +45,9 @@ public interface ComponentRealization
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Abstraction</em>' container reference.
 	 * @see #setAbstraction(Component)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponentRealization_Abstraction()
@@ -72,6 +75,9 @@ public interface ComponentRealization
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A classifier that is involved in the implementation of the Component that owns this ComponentRealization.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realizing Classifier</em>' reference.
 	 * @see #setRealizingClassifier(Classifier)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponentRealization_RealizingClassifier()

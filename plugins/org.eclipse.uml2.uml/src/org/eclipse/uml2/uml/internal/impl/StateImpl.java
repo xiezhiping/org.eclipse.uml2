@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.11 2005/12/06 23:21:51 khussey Exp $
+ * $Id: StateImpl.java,v 1.12 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -520,16 +520,48 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSubmachine(StateMachine newSubmachine) {
-		StateMachine submachine = newSubmachine;
+	public NotificationChain basicSetSubmachine(StateMachine newSubmachine,
+			NotificationChain msgs) {
 		Object oldSubmachine = eVirtualSet(UMLPackage.STATE__SUBMACHINE,
-			submachine);
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.STATE__SUBMACHINE,
+			newSubmachine);
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+				Notification.SET, UMLPackage.STATE__SUBMACHINE,
 				oldSubmachine == EVIRTUAL_NO_VALUE
 					? null
-					: oldSubmachine, submachine));
+					: oldSubmachine, newSubmachine);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSubmachine(StateMachine newSubmachine) {
+		StateMachine submachine = (StateMachine) eVirtualGet(UMLPackage.STATE__SUBMACHINE);
+		if (newSubmachine != submachine) {
+			NotificationChain msgs = null;
+			if (submachine != null)
+				msgs = ((InternalEObject) submachine).eInverseRemove(this,
+					UMLPackage.STATE_MACHINE__SUBMACHINE_STATE,
+					StateMachine.class, msgs);
+			if (newSubmachine != null)
+				msgs = ((InternalEObject) newSubmachine).eInverseAdd(this,
+					UMLPackage.STATE_MACHINE__SUBMACHINE_STATE,
+					StateMachine.class, msgs);
+			msgs = basicSetSubmachine(newSubmachine, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.STATE__SUBMACHINE, newSubmachine, newSubmachine));
 
 	}
 
@@ -1124,15 +1156,6 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRegions(DiagnosticChain diagnostics, Map context) {
-		return StateOperations.validateRegions(this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateSubmachineStates(DiagnosticChain diagnostics,
 			Map context) {
 		return StateOperations.validateSubmachineStates(this, diagnostics,
@@ -1242,6 +1265,13 @@ public class StateImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd,
 					UMLPackage.STATE__CONTAINER, msgs);
+			case UMLPackage.STATE__SUBMACHINE :
+				StateMachine submachine = (StateMachine) eVirtualGet(UMLPackage.STATE__SUBMACHINE);
+				if (submachine != null)
+					msgs = ((InternalEObject) submachine).eInverseRemove(this,
+						UMLPackage.STATE_MACHINE__SUBMACHINE_STATE,
+						StateMachine.class, msgs);
+				return basicSetSubmachine((StateMachine) otherEnd, msgs);
 			case UMLPackage.STATE__CONNECTION :
 				return ((InternalEList) getConnections()).basicAdd(otherEnd,
 					msgs);
@@ -1291,6 +1321,8 @@ public class StateImpl
 			case UMLPackage.STATE__CONTAINER :
 				return eBasicSetContainer(null, UMLPackage.STATE__CONTAINER,
 					msgs);
+			case UMLPackage.STATE__SUBMACHINE :
+				return basicSetSubmachine(null, msgs);
 			case UMLPackage.STATE__CONNECTION :
 				return ((InternalEList) getConnections()).basicRemove(otherEnd,
 					msgs);

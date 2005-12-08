@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.8 2005/12/06 23:21:51 khussey Exp $
+ * $Id: SignalImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -402,10 +402,6 @@ public class SignalImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.SIGNAL__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.SIGNAL__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -504,9 +500,6 @@ public class SignalImpl
 				return;
 			case UMLPackage.SIGNAL__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.SIGNAL__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.SIGNAL__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

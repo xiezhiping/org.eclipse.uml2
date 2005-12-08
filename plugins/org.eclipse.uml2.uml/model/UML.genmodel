@@ -74,6 +74,9 @@
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//MessageSort/synchCall"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//MessageSort/asynchCall"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//MessageSort/asynchSignal"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//MessageSort/createMessage"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//MessageSort/deleteMessage"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//MessageSort/reply"/>
     </genEnums>
     <genEnums xsi:type="genmodel:GenEnum" ecoreEnum="UML.ecore#//ObjectNodeOrderingKind">
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//ObjectNodeOrderingKind/unordered"/>
@@ -1000,9 +1003,9 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Property/subsetting_context_conforms/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Property/subsetting_context_conforms/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Property/navigable_property_redefinition">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Property/navigable_property_redefinition/diagnostics"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Property/navigable_property_redefinition/context"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Property/redefined_property_inherited">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Property/redefined_property_inherited/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Property/redefined_property_inherited/context"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Property/subsetting_rules">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Property/subsetting_rules/diagnostics"/>
@@ -1338,6 +1341,8 @@
           ecoreFeature="ecore:EReference UML.ecore#//StateMachine/region">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//StateMachine/submachineState"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           ecoreFeature="ecore:EReference UML.ecore#//StateMachine/connectionPoint">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1576,10 +1581,6 @@
           ecoreFeature="ecore:EReference UML.ecore#//State/region">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//State/regions">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//State/regions/diagnostics"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//State/regions/context"/>
-      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//State/submachine_states">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//State/submachine_states/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//State/submachine_states/context"/>
@@ -2343,10 +2344,6 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ActivityPartition/dimension_not_contained/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ActivityPartition/dimension_not_contained/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ActivityPartition/node_or_edge">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ActivityPartition/node_or_edge/diagnostics"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ActivityPartition/node_or_edge/context"/>
-      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ActivityPartition/represents_part">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ActivityPartition/represents_part/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ActivityPartition/represents_part/context"/>
@@ -2626,6 +2623,14 @@
           ecoreFeature="ecore:EReference UML.ecore#//SendSignalEvent/signal"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//MessageOccurrenceSpecification"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ReceiveOperationEvent">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//ReceiveOperationEvent/operation"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ReceiveSignalEvent">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//ReceiveSignalEvent/signal"/>
+    </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//CombinedFragment">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//CombinedFragment/interactionOperator"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
@@ -3605,6 +3610,27 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//UnmarshallAction/unmarshallType_is_classifier/context"/>
       </genOperations>
     </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ReduceAction">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//ReduceAction/reducer"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference UML.ecore#//ReduceAction/result"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference UML.ecore#//ReduceAction/collection"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//ReduceAction/isOrdered"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ReduceAction/input_type_is_collection">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ReduceAction/input_type_is_collection/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ReduceAction/input_type_is_collection/context"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ReduceAction/output_types_are_compatible">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ReduceAction/output_types_are_compatible/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ReduceAction/output_types_are_compatible/context"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ReduceAction/reducer_inputs_output">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ReduceAction/reducer_inputs_output/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ReduceAction/reducer_inputs_output/context"/>
+      </genOperations>
+    </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//ControlNode"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ControlFlow">
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ControlFlow/object_nodes">
@@ -3929,6 +3955,10 @@
           ecoreFeature="ecore:EReference UML.ecore#//TimeEvent/when">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//TimeEvent/when_non_negative">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//TimeEvent/when_non_negative/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//TimeEvent/when_non_negative/context"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//TimeEvent/starting_time">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//TimeEvent/starting_time/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//TimeEvent/starting_time/context"/>

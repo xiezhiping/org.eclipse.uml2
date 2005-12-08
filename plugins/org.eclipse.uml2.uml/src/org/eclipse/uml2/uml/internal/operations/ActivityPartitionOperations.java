@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
+ * $Id: ActivityPartitionOperations.java,v 1.5 2005/12/08 14:56:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -78,39 +78,6 @@ public final class ActivityPartitionOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDimensionNotContained", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityPartition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activityPartition}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * No node or edge of a partition may be in another partition in the same dimension.
-	 * true
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateNodeOrEdge(
-			ActivityPartition activityPartition, DiagnosticChain diagnostics,
-			Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARTITION__NODE_OR_EDGE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNodeOrEdge", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityPartition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{activityPartition}));
 			}
 			return false;

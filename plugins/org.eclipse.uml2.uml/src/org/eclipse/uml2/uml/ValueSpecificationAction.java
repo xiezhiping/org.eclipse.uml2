@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationAction.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: ValueSpecificationAction.java,v 1.2 2005/12/08 14:56:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -83,7 +83,7 @@ public interface ValueSpecificationAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
+	 * Gives the output pin on which the result is put.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)

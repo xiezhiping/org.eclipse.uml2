@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.11 2005/12/06 23:21:48 khussey Exp $
+ * $Id: ClassImpl.java,v 1.12 2005/12/08 14:56:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1246,10 +1246,6 @@ public class ClassImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.CLASS__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.CLASS__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -1390,9 +1386,6 @@ public class ClassImpl
 				return;
 			case UMLPackage.CLASS__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.CLASS__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.CLASS__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

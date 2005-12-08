@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSet.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: ParameterSet.java,v 1.2 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An parameter set acts as a complete set of inputs and outputs to a behavior, exclusive of other parameter sets on the behavior.
+ * An parameter set acts as a complete set of inputs or outputs to a behavior, exclusive of other parameter sets on the behavior.
  * <!-- end-model-doc -->
  *
  * <p>

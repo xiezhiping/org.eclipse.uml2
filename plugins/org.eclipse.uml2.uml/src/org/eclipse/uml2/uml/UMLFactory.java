@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactory.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: UMLFactory.java,v 1.2 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -1007,6 +1007,24 @@ public interface UMLFactory
 	MessageOccurrenceSpecification createMessageOccurrenceSpecification();
 
 	/**
+	 * Returns a new object of class '<em>Receive Operation Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Receive Operation Event</em>'.
+	 * @generated
+	 */
+	ReceiveOperationEvent createReceiveOperationEvent();
+
+	/**
+	 * Returns a new object of class '<em>Receive Signal Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Receive Signal Event</em>'.
+	 * @generated
+	 */
+	ReceiveSignalEvent createReceiveSignalEvent();
+
+	/**
 	 * Returns a new object of class '<em>Combined Fragment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1554,6 +1572,15 @@ public interface UMLFactory
 	 * @generated
 	 */
 	UnmarshallAction createUnmarshallAction();
+
+	/**
+	 * Returns a new object of class '<em>Reduce Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Reduce Action</em>'.
+	 * @generated
+	 */
+	ReduceAction createReduceAction();
 
 	/**
 	 * Returns a new object of class '<em>Control Flow</em>'.

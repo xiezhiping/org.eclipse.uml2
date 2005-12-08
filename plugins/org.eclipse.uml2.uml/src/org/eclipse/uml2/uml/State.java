@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.4 2005/11/29 19:53:45 khussey Exp $
+ * $Id: State.java,v 1.5 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -168,6 +168,7 @@ public interface State
 
 	/**
 	 * Returns the value of the '<em><b>Submachine</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.StateMachine#getSubmachineStates <em>Submachine State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -176,7 +177,8 @@ public interface State
 	 * @return the value of the '<em>Submachine</em>' reference.
 	 * @see #setSubmachine(StateMachine)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_Submachine()
-	 * @model ordered="false"
+	 * @see org.eclipse.uml2.uml.StateMachine#getSubmachineStates
+	 * @model opposite="submachineState" ordered="false"
 	 * @generated
 	 */
 	StateMachine getSubmachine();
@@ -560,20 +562,6 @@ public interface State
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * There have to be at least two regions in an orthogonal composite state.
-	 * (self.isOrthogonal) implies
-	 * (self.region->size >= 2)
-	 * 
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateRegions(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
 	 * Only submachine states can have connection point references.
 	 * isSubmachineState implies connection->notEmpty ( )
 	 * <!-- end-model-doc -->
@@ -587,7 +575,11 @@ public interface State
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The connection point references used as destinations/sources of transitions associated with a submachine state must be defined as entry/exit points in the submachine state machine.
-	 * true
+	 * self.isSubmachineState implies (self.connection->forAll (cp |
+	 * 
+	 * cp.entry->forAll (p | p.statemachine = self.submachine) and
+	 * 
+	 * cp.exit->forAll (p | p.statemachine = self.submachine)))
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

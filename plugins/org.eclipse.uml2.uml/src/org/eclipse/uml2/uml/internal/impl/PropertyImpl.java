@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.14 2005/12/06 23:21:48 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.15 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1283,7 +1283,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isCompatibleWith(ParameterableElement p) {
-		return ParameterableElementOperations.isCompatibleWith(this, p);
+		return PropertyOperations.isCompatibleWith(this, p);
 	}
 
 	/**
@@ -1353,9 +1353,9 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNavigablePropertyRedefinition(
+	public boolean validateRedefinedPropertyInherited(
 			DiagnosticChain diagnostics, Map context) {
-		return PropertyOperations.validateNavigablePropertyRedefinition(this,
+		return PropertyOperations.validateRedefinedPropertyInherited(this,
 			diagnostics, context);
 	}
 

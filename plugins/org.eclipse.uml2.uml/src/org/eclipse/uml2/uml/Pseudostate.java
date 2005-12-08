@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Pseudostate.java,v 1.3 2005/11/28 20:26:01 khussey Exp $
+ * $Id: Pseudostate.java,v 1.4 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -129,7 +129,7 @@ public interface Pseudostate
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The State that owns the pseudostate. If a Pseudostat is owned by a State, then it cannot also be owned by a StateMachine.
+	 * The State that owns this pseudostate and in which it appears.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State</em>' container reference.
 	 * @see #setState(State)

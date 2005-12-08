@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.8 2005/12/08 14:56:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -251,6 +251,17 @@ public class TimeEventImpl
 			.getEFactoryInstance().create(eClass);
 		setWhen(newWhen);
 		return newWhen;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateWhenNonNegative(DiagnosticChain diagnostics,
+			Map context) {
+		return TimeEventOperations.validateWhenNonNegative(this, diagnostics,
+			context);
 	}
 
 	/**

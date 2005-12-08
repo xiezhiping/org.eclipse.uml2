@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNode.java,v 1.3 2005/11/28 20:26:02 khussey Exp $
+ * $Id: LoopNode.java,v 1.4 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -244,32 +244,22 @@ public interface LoopNode
 	OutputPin getResult(String name);
 
 	/**
-	 * Returns the value of the '<em><b>Loop Variable</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Loop Variable</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.OutputPin}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A list of output pins owned by the loop that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
+	 * A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Loop Variable</em>' containment reference list.
+	 * @return the value of the '<em>Loop Variable</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_LoopVariable()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.OutputPin"
 	 * @generated
 	 */
 	List getLoopVariables();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.OutputPin} and appends it to the '<em><b>Loop Variable</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.OutputPin}.
-	 * @see #getLoopVariables()
-	 * @generated
-	 */
-	OutputPin createLoopVariable();
-
-	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable</b></em>' containment reference list.
+	 * Retrieves the {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.OutputPin} to retrieve.
@@ -289,7 +279,7 @@ public interface LoopNode
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_BodyOutput()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.OutputPin"
 	 * @generated
 	 */
 	List getBodyOutputs();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: TimeEventOperations.java,v 1.2 2005/12/08 14:56:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,6 +30,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.TimeEvent#validateWhenNonNegative(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate When Non Negative</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TimeEvent#validateStartingTime(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Starting Time</em>}</li>
  * </ul>
  * </p>
@@ -45,6 +46,38 @@ public final class TimeEventOperations {
 	 */
 	private TimeEventOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The ValueSpecification when must return a non-negative Integer.
+	 * true
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateWhenNonNegative(TimeEvent timeEvent,
+			DiagnosticChain diagnostics, Map context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.TIME_EVENT__WHEN_NON_NEGATIVE,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateWhenNonNegative", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(timeEvent, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{timeEvent}));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**

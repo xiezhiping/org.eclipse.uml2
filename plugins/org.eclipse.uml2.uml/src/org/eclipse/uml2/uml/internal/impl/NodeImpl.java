@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.9 2005/12/06 23:21:50 khussey Exp $
+ * $Id: NodeImpl.java,v 1.10 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -692,10 +692,6 @@ public class NodeImpl
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
 				return;
-			case UMLPackage.NODE__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
-				return;
 			case UMLPackage.NODE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection) newValue);
@@ -844,9 +840,6 @@ public class NodeImpl
 				return;
 			case UMLPackage.NODE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.NODE__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.NODE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Clause.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: Clause.java,v 1.3 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -162,11 +162,11 @@ public interface Clause
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node or conditional node after execution of the clause body.
+	 * A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_BodyOutput()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.OutputPin"
 	 * @generated
 	 */
 	List getBodyOutputs();

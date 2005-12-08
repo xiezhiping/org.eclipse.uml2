@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.10 2005/12/07 14:47:27 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.11 2005/12/08 14:56:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,6 +20,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -165,14 +166,21 @@ public final class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A navigable property can only be redefined or subsetted by a navigable property.
-	 * (self.subsettedProperty->exists(sp | sp.isNavigable()) implies self.isNavigable())
-	 *   and (self.redefinedProperty->exists(rp | rp.isNavigable()) implies self.isNavigable())
+	 * A redefined property must be inherited from a more general classifier containing the redefining property.
+	 * if (redefinedProperty->notEmpty()) then
+	 * 
+	 *   (redefinitionContext->notEmpty() and
+	 * 
+	 *       redefinedProperty->forAll(rp|
+	 * 
+	 *         ((redefinitionContext->collect(fc|
+	 * 
+	 *           fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateNavigablePropertyRedefinition(
-			Property property, DiagnosticChain diagnostics, Map context) {
+	public static boolean validateRedefinedPropertyInherited(Property property,
+			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -183,10 +191,10 @@ public final class PropertyOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION,
+						UMLValidator.PROPERTY__REDEFINED_PROPERTY_INHERITED,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNavigablePropertyRedefinition", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRedefinedPropertyInherited", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{property}));
 			}
 			return false;
@@ -771,6 +779,24 @@ public final class PropertyOperations
 		}
 
 		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for properties, the type must be conformant with the type of the specified parameterable element.
+	 * 
+	 * 
+	 * result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean isCompatibleWith(Property property,
+			ParameterableElement p) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // PropertyOperations

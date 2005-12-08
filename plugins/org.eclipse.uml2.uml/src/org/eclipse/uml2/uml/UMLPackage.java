@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.3 2005/12/06 23:21:51 khussey Exp $
+ * $Id: UMLPackage.java,v 1.4 2005/12/08 14:56:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -13995,13 +13995,22 @@ public interface UMLPackage
 	int STATE_MACHINE__REGION = BEHAVIOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Submachine State</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__SUBMACHINE_STATE = BEHAVIOR_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Connection Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE__CONNECTION_POINT = BEHAVIOR_FEATURE_COUNT + 1;
+	int STATE_MACHINE__CONNECTION_POINT = BEHAVIOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Extended State Machine</b></em>' reference.
@@ -14010,7 +14019,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE__EXTENDED_STATE_MACHINE = BEHAVIOR_FEATURE_COUNT + 2;
+	int STATE_MACHINE__EXTENDED_STATE_MACHINE = BEHAVIOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>State Machine</em>' class.
@@ -14019,7 +14028,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_FEATURE_COUNT = BEHAVIOR_FEATURE_COUNT + 3;
+	int STATE_MACHINE_FEATURE_COUNT = BEHAVIOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ProtocolStateMachineImpl <em>Protocol State Machine</em>}' class.
@@ -14570,6 +14579,15 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int PROTOCOL_STATE_MACHINE__REGION = STATE_MACHINE__REGION;
+
+	/**
+	 * The feature id for the '<em><b>Submachine State</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE = STATE_MACHINE__SUBMACHINE_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Connection Point</b></em>' containment reference list.
@@ -31480,6 +31498,278 @@ public interface UMLPackage
 	int MESSAGE_OCCURRENCE_SPECIFICATION_FEATURE_COUNT = OCCURRENCE_SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReceiveOperationEventImpl <em>Receive Operation Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReceiveOperationEventImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReceiveOperationEvent()
+	 * @generated
+	 */
+	int RECEIVE_OPERATION_EVENT = 143;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__EANNOTATIONS = MESSAGE_EVENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__OWNED_ELEMENT = MESSAGE_EVENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__OWNER = MESSAGE_EVENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__OWNED_COMMENT = MESSAGE_EVENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__NAME = MESSAGE_EVENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__VISIBILITY = MESSAGE_EVENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__QUALIFIED_NAME = MESSAGE_EVENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__CLIENT_DEPENDENCY = MESSAGE_EVENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__NAMESPACE = MESSAGE_EVENT__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__NAME_EXPRESSION = MESSAGE_EVENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER = MESSAGE_EVENT__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Template Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__OWNING_TEMPLATE_PARAMETER = MESSAGE_EVENT__OWNING_TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT__OPERATION = MESSAGE_EVENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Receive Operation Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_OPERATION_EVENT_FEATURE_COUNT = MESSAGE_EVENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReceiveSignalEventImpl <em>Receive Signal Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReceiveSignalEventImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReceiveSignalEvent()
+	 * @generated
+	 */
+	int RECEIVE_SIGNAL_EVENT = 144;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__EANNOTATIONS = MESSAGE_EVENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__OWNED_ELEMENT = MESSAGE_EVENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__OWNER = MESSAGE_EVENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__OWNED_COMMENT = MESSAGE_EVENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__NAME = MESSAGE_EVENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__VISIBILITY = MESSAGE_EVENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__QUALIFIED_NAME = MESSAGE_EVENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__CLIENT_DEPENDENCY = MESSAGE_EVENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__NAMESPACE = MESSAGE_EVENT__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__NAME_EXPRESSION = MESSAGE_EVENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__TEMPLATE_PARAMETER = MESSAGE_EVENT__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Template Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__OWNING_TEMPLATE_PARAMETER = MESSAGE_EVENT__OWNING_TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Signal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT__SIGNAL = MESSAGE_EVENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Receive Signal Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVE_SIGNAL_EVENT_FEATURE_COUNT = MESSAGE_EVENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CombinedFragmentImpl <em>Combined Fragment</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31487,7 +31777,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCombinedFragment()
 	 * @generated
 	 */
-	int COMBINED_FRAGMENT = 143;
+	int COMBINED_FRAGMENT = 145;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -31659,7 +31949,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getContinuation()
 	 * @generated
 	 */
-	int CONTINUATION = 144;
+	int CONTINUATION = 146;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -31813,7 +32103,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getConsiderIgnoreFragment()
 	 * @generated
 	 */
-	int CONSIDER_IGNORE_FRAGMENT = 145;
+	int CONSIDER_IGNORE_FRAGMENT = 147;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -31994,7 +32284,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallEvent()
 	 * @generated
 	 */
-	int CALL_EVENT = 146;
+	int CALL_EVENT = 148;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -32130,7 +32420,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getChangeEvent()
 	 * @generated
 	 */
-	int CHANGE_EVENT = 147;
+	int CHANGE_EVENT = 149;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -32266,7 +32556,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSignalEvent()
 	 * @generated
 	 */
-	int SIGNAL_EVENT = 148;
+	int SIGNAL_EVENT = 150;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -32402,7 +32692,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAnyReceiveEvent()
 	 * @generated
 	 */
-	int ANY_RECEIVE_EVENT = 149;
+	int ANY_RECEIVE_EVENT = 151;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -32529,7 +32819,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCreateObjectAction()
 	 * @generated
 	 */
-	int CREATE_OBJECT_ACTION = 150;
+	int CREATE_OBJECT_ACTION = 152;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -32809,7 +33099,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDestroyObjectAction()
 	 * @generated
 	 */
-	int DESTROY_OBJECT_ACTION = 151;
+	int DESTROY_OBJECT_ACTION = 153;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -33098,7 +33388,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTestIdentityAction()
 	 * @generated
 	 */
-	int TEST_IDENTITY_ACTION = 152;
+	int TEST_IDENTITY_ACTION = 154;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -33387,7 +33677,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadSelfAction()
 	 * @generated
 	 */
-	int READ_SELF_ACTION = 153;
+	int READ_SELF_ACTION = 155;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -33658,7 +33948,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getStructuralFeatureAction()
 	 * @generated
 	 */
-	int STRUCTURAL_FEATURE_ACTION = 154;
+	int STRUCTURAL_FEATURE_ACTION = 156;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -33938,7 +34228,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadStructuralFeatureAction()
 	 * @generated
 	 */
-	int READ_STRUCTURAL_FEATURE_ACTION = 155;
+	int READ_STRUCTURAL_FEATURE_ACTION = 157;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -34227,7 +34517,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getWriteStructuralFeatureAction()
 	 * @generated
 	 */
-	int WRITE_STRUCTURAL_FEATURE_ACTION = 156;
+	int WRITE_STRUCTURAL_FEATURE_ACTION = 158;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -34516,7 +34806,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getClearStructuralFeatureAction()
 	 * @generated
 	 */
-	int CLEAR_STRUCTURAL_FEATURE_ACTION = 157;
+	int CLEAR_STRUCTURAL_FEATURE_ACTION = 159;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -34796,7 +35086,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getRemoveStructuralFeatureValueAction()
 	 * @generated
 	 */
-	int REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION = 158;
+	int REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION = 160;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -35103,7 +35393,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAddStructuralFeatureValueAction()
 	 * @generated
 	 */
-	int ADD_STRUCTURAL_FEATURE_VALUE_ACTION = 159;
+	int ADD_STRUCTURAL_FEATURE_VALUE_ACTION = 161;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -35410,7 +35700,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLinkAction()
 	 * @generated
 	 */
-	int LINK_ACTION = 160;
+	int LINK_ACTION = 162;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -35690,7 +35980,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLinkEndData()
 	 * @generated
 	 */
-	int LINK_END_DATA = 161;
+	int LINK_END_DATA = 163;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -35772,7 +36062,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getQualifierValue()
 	 * @generated
 	 */
-	int QUALIFIER_VALUE = 162;
+	int QUALIFIER_VALUE = 164;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -35845,7 +36135,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadLinkAction()
 	 * @generated
 	 */
-	int READ_LINK_ACTION = 163;
+	int READ_LINK_ACTION = 165;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -36134,7 +36424,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLinkEndCreationData()
 	 * @generated
 	 */
-	int LINK_END_CREATION_DATA = 164;
+	int LINK_END_CREATION_DATA = 166;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -36234,7 +36524,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getWriteLinkAction()
 	 * @generated
 	 */
-	int WRITE_LINK_ACTION = 166;
+	int WRITE_LINK_ACTION = 168;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -36514,7 +36804,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCreateLinkAction()
 	 * @generated
 	 */
-	int CREATE_LINK_ACTION = 165;
+	int CREATE_LINK_ACTION = 167;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -36794,7 +37084,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDestroyLinkAction()
 	 * @generated
 	 */
-	int DESTROY_LINK_ACTION = 167;
+	int DESTROY_LINK_ACTION = 169;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -37074,7 +37364,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLinkEndDestructionData()
 	 * @generated
 	 */
-	int LINK_END_DESTRUCTION_DATA = 168;
+	int LINK_END_DESTRUCTION_DATA = 170;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -37174,7 +37464,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getClearAssociationAction()
 	 * @generated
 	 */
-	int CLEAR_ASSOCIATION_ACTION = 169;
+	int CLEAR_ASSOCIATION_ACTION = 171;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -37454,7 +37744,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInvocationAction()
 	 * @generated
 	 */
-	int INVOCATION_ACTION = 171;
+	int INVOCATION_ACTION = 173;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -37734,7 +38024,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getBroadcastSignalAction()
 	 * @generated
 	 */
-	int BROADCAST_SIGNAL_ACTION = 170;
+	int BROADCAST_SIGNAL_ACTION = 172;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -38023,7 +38313,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSendObjectAction()
 	 * @generated
 	 */
-	int SEND_OBJECT_ACTION = 172;
+	int SEND_OBJECT_ACTION = 174;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -38321,7 +38611,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getValueSpecificationAction()
 	 * @generated
 	 */
-	int VALUE_SPECIFICATION_ACTION = 173;
+	int VALUE_SPECIFICATION_ACTION = 175;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -38601,7 +38891,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeExpression()
 	 * @generated
 	 */
-	int TIME_EXPRESSION = 174;
+	int TIME_EXPRESSION = 176;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -38755,7 +39045,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDuration()
 	 * @generated
 	 */
-	int DURATION = 175;
+	int DURATION = 177;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -38909,7 +39199,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeObservationAction()
 	 * @generated
 	 */
-	int TIME_OBSERVATION_ACTION = 176;
+	int TIME_OBSERVATION_ACTION = 178;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -39207,7 +39497,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getValuePin()
 	 * @generated
 	 */
-	int VALUE_PIN = 177;
+	int VALUE_PIN = 179;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -39487,7 +39777,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInterval()
 	 * @generated
 	 */
-	int INTERVAL = 179;
+	int INTERVAL = 181;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -39641,7 +39931,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationInterval()
 	 * @generated
 	 */
-	int DURATION_INTERVAL = 178;
+	int DURATION_INTERVAL = 180;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -39795,7 +40085,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getIntervalConstraint()
 	 * @generated
 	 */
-	int INTERVAL_CONSTRAINT = 181;
+	int INTERVAL_CONSTRAINT = 183;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -39949,7 +40239,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeConstraint()
 	 * @generated
 	 */
-	int TIME_CONSTRAINT = 180;
+	int TIME_CONSTRAINT = 182;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -40103,7 +40393,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeInterval()
 	 * @generated
 	 */
-	int TIME_INTERVAL = 182;
+	int TIME_INTERVAL = 184;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -40257,7 +40547,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationObservationAction()
 	 * @generated
 	 */
-	int DURATION_OBSERVATION_ACTION = 183;
+	int DURATION_OBSERVATION_ACTION = 185;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -40555,7 +40845,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationConstraint()
 	 * @generated
 	 */
-	int DURATION_CONSTRAINT = 184;
+	int DURATION_CONSTRAINT = 186;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -40709,7 +40999,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getOpaqueAction()
 	 * @generated
 	 */
-	int OPAQUE_ACTION = 185;
+	int OPAQUE_ACTION = 187;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -41007,7 +41297,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallAction()
 	 * @generated
 	 */
-	int CALL_ACTION = 186;
+	int CALL_ACTION = 188;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -41305,7 +41595,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSendSignalAction()
 	 * @generated
 	 */
-	int SEND_SIGNAL_ACTION = 187;
+	int SEND_SIGNAL_ACTION = 189;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -41603,7 +41893,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallOperationAction()
 	 * @generated
 	 */
-	int CALL_OPERATION_ACTION = 188;
+	int CALL_OPERATION_ACTION = 190;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -41919,7 +42209,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallBehaviorAction()
 	 * @generated
 	 */
-	int CALL_BEHAVIOR_ACTION = 189;
+	int CALL_BEHAVIOR_ACTION = 191;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -42226,7 +42516,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInformationItem()
 	 * @generated
 	 */
-	int INFORMATION_ITEM = 190;
+	int INFORMATION_ITEM = 192;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -42596,7 +42886,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInformationFlow()
 	 * @generated
 	 */
-	int INFORMATION_FLOW = 191;
+	int INFORMATION_FLOW = 193;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -42813,7 +43103,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getModel()
 	 * @generated
 	 */
-	int MODEL = 192;
+	int MODEL = 194;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -43075,7 +43365,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getVariableAction()
 	 * @generated
 	 */
-	int VARIABLE_ACTION = 193;
+	int VARIABLE_ACTION = 195;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -43346,7 +43636,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadVariableAction()
 	 * @generated
 	 */
-	int READ_VARIABLE_ACTION = 194;
+	int READ_VARIABLE_ACTION = 196;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -43626,7 +43916,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getWriteVariableAction()
 	 * @generated
 	 */
-	int WRITE_VARIABLE_ACTION = 195;
+	int WRITE_VARIABLE_ACTION = 197;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -43906,7 +44196,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getClearVariableAction()
 	 * @generated
 	 */
-	int CLEAR_VARIABLE_ACTION = 196;
+	int CLEAR_VARIABLE_ACTION = 198;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -44177,7 +44467,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAddVariableValueAction()
 	 * @generated
 	 */
-	int ADD_VARIABLE_VALUE_ACTION = 197;
+	int ADD_VARIABLE_VALUE_ACTION = 199;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -44475,7 +44765,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getRemoveVariableValueAction()
 	 * @generated
 	 */
-	int REMOVE_VARIABLE_VALUE_ACTION = 198;
+	int REMOVE_VARIABLE_VALUE_ACTION = 200;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -44773,7 +45063,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getRaiseExceptionAction()
 	 * @generated
 	 */
-	int RAISE_EXCEPTION_ACTION = 199;
+	int RAISE_EXCEPTION_ACTION = 201;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -45044,7 +45334,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActionInputPin()
 	 * @generated
 	 */
-	int ACTION_INPUT_PIN = 200;
+	int ACTION_INPUT_PIN = 202;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -45324,7 +45614,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadExtentAction()
 	 * @generated
 	 */
-	int READ_EXTENT_ACTION = 201;
+	int READ_EXTENT_ACTION = 203;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -45604,7 +45894,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReclassifyObjectAction()
 	 * @generated
 	 */
-	int RECLASSIFY_OBJECT_ACTION = 202;
+	int RECLASSIFY_OBJECT_ACTION = 204;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -45902,7 +46192,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadIsClassifiedObjectAction()
 	 * @generated
 	 */
-	int READ_IS_CLASSIFIED_OBJECT_ACTION = 203;
+	int READ_IS_CLASSIFIED_OBJECT_ACTION = 205;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -46200,7 +46490,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getStartClassifierBehaviorAction()
 	 * @generated
 	 */
-	int START_CLASSIFIER_BEHAVIOR_ACTION = 204;
+	int START_CLASSIFIER_BEHAVIOR_ACTION = 206;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -46471,7 +46761,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadLinkObjectEndAction()
 	 * @generated
 	 */
-	int READ_LINK_OBJECT_END_ACTION = 205;
+	int READ_LINK_OBJECT_END_ACTION = 207;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -46760,7 +47050,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadLinkObjectEndQualifierAction()
 	 * @generated
 	 */
-	int READ_LINK_OBJECT_END_QUALIFIER_ACTION = 206;
+	int READ_LINK_OBJECT_END_QUALIFIER_ACTION = 208;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -47049,7 +47339,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCreateLinkObjectAction()
 	 * @generated
 	 */
-	int CREATE_LINK_OBJECT_ACTION = 207;
+	int CREATE_LINK_OBJECT_ACTION = 209;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -47338,7 +47628,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAcceptEventAction()
 	 * @generated
 	 */
-	int ACCEPT_EVENT_ACTION = 208;
+	int ACCEPT_EVENT_ACTION = 210;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -47627,7 +47917,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAcceptCallAction()
 	 * @generated
 	 */
-	int ACCEPT_CALL_ACTION = 209;
+	int ACCEPT_CALL_ACTION = 211;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -47925,7 +48215,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReplyAction()
 	 * @generated
 	 */
-	int REPLY_ACTION = 210;
+	int REPLY_ACTION = 212;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -48214,7 +48504,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getUnmarshallAction()
 	 * @generated
 	 */
-	int UNMARSHALL_ACTION = 211;
+	int UNMARSHALL_ACTION = 213;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -48496,6 +48786,304 @@ public interface UMLPackage
 	int UNMARSHALL_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReduceActionImpl <em>Reduce Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReduceActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReduceAction()
+	 * @generated
+	 */
+	int REDUCE_ACTION = 214;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__EANNOTATIONS = ACTION__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__OWNED_ELEMENT = ACTION__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__OWNER = ACTION__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__OWNED_COMMENT = ACTION__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__NAME = ACTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__VISIBILITY = ACTION__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__QUALIFIED_NAME = ACTION__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__CLIENT_DEPENDENCY = ACTION__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__NAMESPACE = ACTION__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__NAME_EXPRESSION = ACTION__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__IS_LEAF = ACTION__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__REDEFINED_ELEMENT = ACTION__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__REDEFINITION_CONTEXT = ACTION__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__OUTGOING = ACTION__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__IN_GROUP = ACTION__IN_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__IN_PARTITION = ACTION__IN_PARTITION;
+
+	/**
+	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__IN_STRUCTURED_NODE = ACTION__IN_STRUCTURED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__ACTIVITY = ACTION__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__INCOMING = ACTION__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__IN_INTERRUPTIBLE_REGION = ACTION__IN_INTERRUPTIBLE_REGION;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Node</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__REDEFINED_NODE = ACTION__REDEFINED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>Handler</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__HANDLER = ACTION__HANDLER;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__OUTPUT = ACTION__OUTPUT;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__INPUT = ACTION__INPUT;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__CONTEXT = ACTION__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Local Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__LOCAL_PRECONDITION = ACTION__LOCAL_PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Local Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__LOCAL_POSTCONDITION = ACTION__LOCAL_POSTCONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Reducer</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__REDUCER = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__RESULT = ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Collection</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__COLLECTION = ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Is Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION__IS_ORDERED = ACTION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Reduce Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDUCE_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 4;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ControlNodeImpl <em>Control Node</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48503,7 +49091,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getControlNode()
 	 * @generated
 	 */
-	int CONTROL_NODE = 212;
+	int CONTROL_NODE = 215;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -48711,7 +49299,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getControlFlow()
 	 * @generated
 	 */
-	int CONTROL_FLOW = 213;
+	int CONTROL_FLOW = 216;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -48937,7 +49525,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInitialNode()
 	 * @generated
 	 */
-	int INITIAL_NODE = 214;
+	int INITIAL_NODE = 217;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -49145,7 +49733,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityParameterNode()
 	 * @generated
 	 */
-	int ACTIVITY_PARAMETER_NODE = 215;
+	int ACTIVITY_PARAMETER_NODE = 218;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -49416,7 +50004,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getForkNode()
 	 * @generated
 	 */
-	int FORK_NODE = 216;
+	int FORK_NODE = 219;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -49624,7 +50212,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFinalNode()
 	 * @generated
 	 */
-	int FINAL_NODE = 218;
+	int FINAL_NODE = 221;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -49832,7 +50420,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFlowFinalNode()
 	 * @generated
 	 */
-	int FLOW_FINAL_NODE = 217;
+	int FLOW_FINAL_NODE = 220;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -50040,7 +50628,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCentralBufferNode()
 	 * @generated
 	 */
-	int CENTRAL_BUFFER_NODE = 219;
+	int CENTRAL_BUFFER_NODE = 222;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -50302,7 +50890,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getMergeNode()
 	 * @generated
 	 */
-	int MERGE_NODE = 220;
+	int MERGE_NODE = 223;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -50510,7 +51098,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDecisionNode()
 	 * @generated
 	 */
-	int DECISION_NODE = 221;
+	int DECISION_NODE = 224;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -50727,7 +51315,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityFinalNode()
 	 * @generated
 	 */
-	int ACTIVITY_FINAL_NODE = 222;
+	int ACTIVITY_FINAL_NODE = 225;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -50935,7 +51523,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getJoinNode()
 	 * @generated
 	 */
-	int JOIN_NODE = 223;
+	int JOIN_NODE = 226;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -51161,7 +51749,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDataStoreNode()
 	 * @generated
 	 */
-	int DATA_STORE_NODE = 224;
+	int DATA_STORE_NODE = 227;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -51423,7 +52011,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObjectFlow()
 	 * @generated
 	 */
-	int OBJECT_FLOW = 225;
+	int OBJECT_FLOW = 228;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -51685,7 +52273,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSequenceNode()
 	 * @generated
 	 */
-	int SEQUENCE_NODE = 226;
+	int SEQUENCE_NODE = 229;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -52091,7 +52679,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getConditionalNode()
 	 * @generated
 	 */
-	int CONDITIONAL_NODE = 227;
+	int CONDITIONAL_NODE = 230;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -52524,7 +53112,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getClause()
 	 * @generated
 	 */
-	int CLAUSE = 228;
+	int CLAUSE = 231;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -52633,7 +53221,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLoopNode()
 	 * @generated
 	 */
-	int LOOP_NODE = 229;
+	int LOOP_NODE = 232;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -53068,7 +53656,7 @@ public interface UMLPackage
 	int LOOP_NODE__RESULT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Loop Variable</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Loop Variable</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -53111,7 +53699,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExpansionNode()
 	 * @generated
 	 */
-	int EXPANSION_NODE = 230;
+	int EXPANSION_NODE = 233;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -53391,7 +53979,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExpansionRegion()
 	 * @generated
 	 */
-	int EXPANSION_REGION = 231;
+	int EXPANSION_REGION = 234;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -53815,7 +54403,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getComponentRealization()
 	 * @generated
 	 */
-	int COMPONENT_REALIZATION = 232;
+	int COMPONENT_REALIZATION = 235;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -54014,7 +54602,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getComponent()
 	 * @generated
 	 */
-	int COMPONENT = 233;
+	int COMPONENT = 236;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -54555,7 +55143,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getNode()
 	 * @generated
 	 */
-	int NODE = 234;
+	int NODE = 237;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -55078,7 +55666,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDevice()
 	 * @generated
 	 */
-	int DEVICE = 235;
+	int DEVICE = 238;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -55601,7 +56189,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExecutionEnvironment()
 	 * @generated
 	 */
-	int EXECUTION_ENVIRONMENT = 236;
+	int EXECUTION_ENVIRONMENT = 239;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -56124,7 +56712,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCommunicationPath()
 	 * @generated
 	 */
-	int COMMUNICATION_PATH = 237;
+	int COMMUNICATION_PATH = 240;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -56539,7 +57127,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFinalState()
 	 * @generated
 	 */
-	int FINAL_STATE = 238;
+	int FINAL_STATE = 241;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -56882,7 +57470,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeEvent()
 	 * @generated
 	 */
-	int TIME_EVENT = 239;
+	int TIME_EVENT = 242;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -57027,7 +57615,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getProtocolTransition()
 	 * @generated
 	 */
-	int PROTOCOL_TRANSITION = 240;
+	int PROTOCOL_TRANSITION = 243;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -57262,7 +57850,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAssociationClass()
 	 * @generated
 	 */
-	int ASSOCIATION_CLASS = 241;
+	int ASSOCIATION_CLASS = 244;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -57812,7 +58400,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getVisibilityKind()
 	 * @generated
 	 */
-	int VISIBILITY_KIND = 242;
+	int VISIBILITY_KIND = 245;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.CallConcurrencyKind <em>Call Concurrency Kind</em>}' enum.
@@ -57822,7 +58410,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallConcurrencyKind()
 	 * @generated
 	 */
-	int CALL_CONCURRENCY_KIND = 243;
+	int CALL_CONCURRENCY_KIND = 246;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.TransitionKind <em>Transition Kind</em>}' enum.
@@ -57832,7 +58420,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTransitionKind()
 	 * @generated
 	 */
-	int TRANSITION_KIND = 244;
+	int TRANSITION_KIND = 247;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.PseudostateKind <em>Pseudostate Kind</em>}' enum.
@@ -57842,7 +58430,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getPseudostateKind()
 	 * @generated
 	 */
-	int PSEUDOSTATE_KIND = 245;
+	int PSEUDOSTATE_KIND = 248;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.AggregationKind <em>Aggregation Kind</em>}' enum.
@@ -57852,7 +58440,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAggregationKind()
 	 * @generated
 	 */
-	int AGGREGATION_KIND = 246;
+	int AGGREGATION_KIND = 249;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.ParameterDirectionKind <em>Parameter Direction Kind</em>}' enum.
@@ -57862,7 +58450,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getParameterDirectionKind()
 	 * @generated
 	 */
-	int PARAMETER_DIRECTION_KIND = 247;
+	int PARAMETER_DIRECTION_KIND = 250;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.ParameterEffectKind <em>Parameter Effect Kind</em>}' enum.
@@ -57872,7 +58460,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getParameterEffectKind()
 	 * @generated
 	 */
-	int PARAMETER_EFFECT_KIND = 248;
+	int PARAMETER_EFFECT_KIND = 251;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.ConnectorKind <em>Connector Kind</em>}' enum.
@@ -57882,7 +58470,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getConnectorKind()
 	 * @generated
 	 */
-	int CONNECTOR_KIND = 249;
+	int CONNECTOR_KIND = 252;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.MessageKind <em>Message Kind</em>}' enum.
@@ -57892,7 +58480,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getMessageKind()
 	 * @generated
 	 */
-	int MESSAGE_KIND = 250;
+	int MESSAGE_KIND = 253;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.MessageSort <em>Message Sort</em>}' enum.
@@ -57902,7 +58490,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getMessageSort()
 	 * @generated
 	 */
-	int MESSAGE_SORT = 251;
+	int MESSAGE_SORT = 254;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.ObjectNodeOrderingKind <em>Object Node Ordering Kind</em>}' enum.
@@ -57912,7 +58500,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObjectNodeOrderingKind()
 	 * @generated
 	 */
-	int OBJECT_NODE_ORDERING_KIND = 252;
+	int OBJECT_NODE_ORDERING_KIND = 255;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.InteractionOperatorKind <em>Interaction Operator Kind</em>}' enum.
@@ -57922,7 +58510,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInteractionOperatorKind()
 	 * @generated
 	 */
-	int INTERACTION_OPERATOR_KIND = 253;
+	int INTERACTION_OPERATOR_KIND = 256;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.ExpansionKind <em>Expansion Kind</em>}' enum.
@@ -57932,7 +58520,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExpansionKind()
 	 * @generated
 	 */
-	int EXPANSION_KIND = 254;
+	int EXPANSION_KIND = 257;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.Comment <em>Comment</em>}'.
@@ -60841,6 +61429,17 @@ public interface UMLPackage
 	 * @generated
 	 */
 	EReference getStateMachine_Region();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.StateMachine#getSubmachineStates <em>Submachine State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Submachine State</em>'.
+	 * @see org.eclipse.uml2.uml.StateMachine#getSubmachineStates()
+	 * @see #getStateMachine()
+	 * @generated
+	 */
+	EReference getStateMachine_SubmachineState();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.StateMachine#getConnectionPoints <em>Connection Point</em>}'.
@@ -63864,6 +64463,48 @@ public interface UMLPackage
 	EClass getMessageOccurrenceSpecification();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.ReceiveOperationEvent <em>Receive Operation Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Receive Operation Event</em>'.
+	 * @see org.eclipse.uml2.uml.ReceiveOperationEvent
+	 * @generated
+	 */
+	EClass getReceiveOperationEvent();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.ReceiveOperationEvent#getOperation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Operation</em>'.
+	 * @see org.eclipse.uml2.uml.ReceiveOperationEvent#getOperation()
+	 * @see #getReceiveOperationEvent()
+	 * @generated
+	 */
+	EReference getReceiveOperationEvent_Operation();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.ReceiveSignalEvent <em>Receive Signal Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Receive Signal Event</em>'.
+	 * @see org.eclipse.uml2.uml.ReceiveSignalEvent
+	 * @generated
+	 */
+	EClass getReceiveSignalEvent();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.ReceiveSignalEvent#getSignal <em>Signal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Signal</em>'.
+	 * @see org.eclipse.uml2.uml.ReceiveSignalEvent#getSignal()
+	 * @see #getReceiveSignalEvent()
+	 * @generated
+	 */
+	EReference getReceiveSignalEvent_Signal();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.CombinedFragment <em>Combined Fragment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65786,6 +66427,60 @@ public interface UMLPackage
 	EReference getUnmarshallAction_Object();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.ReduceAction <em>Reduce Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reduce Action</em>'.
+	 * @see org.eclipse.uml2.uml.ReduceAction
+	 * @generated
+	 */
+	EClass getReduceAction();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.ReduceAction#getReducer <em>Reducer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Reducer</em>'.
+	 * @see org.eclipse.uml2.uml.ReduceAction#getReducer()
+	 * @see #getReduceAction()
+	 * @generated
+	 */
+	EReference getReduceAction_Reducer();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.uml2.uml.ReduceAction#getResult <em>Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Result</em>'.
+	 * @see org.eclipse.uml2.uml.ReduceAction#getResult()
+	 * @see #getReduceAction()
+	 * @generated
+	 */
+	EReference getReduceAction_Result();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.uml2.uml.ReduceAction#getCollection <em>Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Collection</em>'.
+	 * @see org.eclipse.uml2.uml.ReduceAction#getCollection()
+	 * @see #getReduceAction()
+	 * @generated
+	 */
+	EReference getReduceAction_Collection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.uml.ReduceAction#isOrdered <em>Is Ordered</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Ordered</em>'.
+	 * @see org.eclipse.uml2.uml.ReduceAction#isOrdered()
+	 * @see #getReduceAction()
+	 * @generated
+	 */
+	EAttribute getReduceAction_IsOrdered();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.ControlNode <em>Control Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66241,10 +66936,10 @@ public interface UMLPackage
 	EReference getLoopNode_Result();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.LoopNode#getLoopVariables <em>Loop Variable</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.LoopNode#getLoopVariables <em>Loop Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Loop Variable</em>'.
+	 * @return the meta object for the reference list '<em>Loop Variable</em>'.
 	 * @see org.eclipse.uml2.uml.LoopNode#getLoopVariables()
 	 * @see #getLoopNode()
 	 * @generated
@@ -69174,6 +69869,15 @@ public interface UMLPackage
 		EReference STATE_MACHINE__REGION = eINSTANCE.getStateMachine_Region();
 
 		/**
+		 * The meta object literal for the '<em><b>Submachine State</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_MACHINE__SUBMACHINE_STATE = eINSTANCE
+			.getStateMachine_SubmachineState();
+
+		/**
 		 * The meta object literal for the '<em><b>Connection Point</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -71718,6 +72422,44 @@ public interface UMLPackage
 			.getMessageOccurrenceSpecification();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.ReceiveOperationEventImpl <em>Receive Operation Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.uml.internal.impl.ReceiveOperationEventImpl
+		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReceiveOperationEvent()
+		 * @generated
+		 */
+		EClass RECEIVE_OPERATION_EVENT = eINSTANCE.getReceiveOperationEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECEIVE_OPERATION_EVENT__OPERATION = eINSTANCE
+			.getReceiveOperationEvent_Operation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.ReceiveSignalEventImpl <em>Receive Signal Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.uml.internal.impl.ReceiveSignalEventImpl
+		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReceiveSignalEvent()
+		 * @generated
+		 */
+		EClass RECEIVE_SIGNAL_EVENT = eINSTANCE.getReceiveSignalEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Signal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECEIVE_SIGNAL_EVENT__SIGNAL = eINSTANCE
+			.getReceiveSignalEvent_Signal();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.CombinedFragmentImpl <em>Combined Fragment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -73416,6 +74158,50 @@ public interface UMLPackage
 			.getUnmarshallAction_Object();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.ReduceActionImpl <em>Reduce Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.uml.internal.impl.ReduceActionImpl
+		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReduceAction()
+		 * @generated
+		 */
+		EClass REDUCE_ACTION = eINSTANCE.getReduceAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Reducer</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REDUCE_ACTION__REDUCER = eINSTANCE.getReduceAction_Reducer();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REDUCE_ACTION__RESULT = eINSTANCE.getReduceAction_Result();
+
+		/**
+		 * The meta object literal for the '<em><b>Collection</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REDUCE_ACTION__COLLECTION = eINSTANCE
+			.getReduceAction_Collection();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Ordered</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REDUCE_ACTION__IS_ORDERED = eINSTANCE
+			.getReduceAction_IsOrdered();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.ControlNodeImpl <em>Control Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -73810,7 +74596,7 @@ public interface UMLPackage
 		EReference LOOP_NODE__RESULT = eINSTANCE.getLoopNode_Result();
 
 		/**
-		 * The meta object literal for the '<em><b>Loop Variable</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Loop Variable</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

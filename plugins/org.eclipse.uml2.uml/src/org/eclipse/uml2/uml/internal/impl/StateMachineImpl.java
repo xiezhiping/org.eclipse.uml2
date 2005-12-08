@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.9 2005/12/06 23:21:50 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.10 2005/12/08 14:56:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -65,6 +66,7 @@ import org.eclipse.uml2.uml.internal.operations.StateMachineOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getRegions <em>Region</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getSubmachineStates <em>Submachine State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getConnectionPoints <em>Connection Point</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getExtendedStateMachine <em>Extended State Machine</em>}</li>
  * </ul>
@@ -178,6 +180,38 @@ public class StateMachineImpl
 			Region region = (Region) i.next();
 			if (name.equals(region.getName())) {
 				return region;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List getSubmachineStates() {
+		List submachineState = (List) eVirtualGet(UMLPackage.STATE_MACHINE__SUBMACHINE_STATE);
+		if (submachineState == null) {
+			eVirtualSet(UMLPackage.STATE_MACHINE__SUBMACHINE_STATE,
+				submachineState = new EObjectWithInverseResolvingEList(
+					State.class, this,
+					UMLPackage.STATE_MACHINE__SUBMACHINE_STATE,
+					UMLPackage.STATE__SUBMACHINE));
+		}
+		return submachineState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public State getSubmachineState(String name) {
+		for (Iterator i = getSubmachineStates().iterator(); i.hasNext();) {
+			State submachineState = (State) i.next();
+			if (name.equals(submachineState.getName())) {
+				return submachineState;
 			}
 		}
 		return null;
@@ -443,6 +477,9 @@ public class StateMachineImpl
 				return basicSetSpecification((BehavioralFeature) otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__REGION :
 				return ((InternalEList) getRegions()).basicAdd(otherEnd, msgs);
+			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
+				return ((InternalEList) getSubmachineStates()).basicAdd(
+					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
 				return ((InternalEList) getConnectionPoints()).basicAdd(
 					otherEnd, msgs);
@@ -543,6 +580,9 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__REGION :
 				return ((InternalEList) getRegions()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
+				return ((InternalEList) getSubmachineStates()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
 				return ((InternalEList) getConnectionPoints()).basicRemove(
 					otherEnd, msgs);
@@ -699,6 +739,8 @@ public class StateMachineImpl
 				return basicGetSpecification();
 			case UMLPackage.STATE_MACHINE__REGION :
 				return getRegions();
+			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
+				return getSubmachineStates();
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
 				return getConnectionPoints();
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
@@ -778,10 +820,6 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection) newValue);
-				return;
-			case UMLPackage.STATE_MACHINE__INHERITED_MEMBER :
-				getInheritedMembers().clear();
-				getInheritedMembers().addAll((Collection) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
@@ -884,6 +922,10 @@ public class StateMachineImpl
 				getRegions().clear();
 				getRegions().addAll((Collection) newValue);
 				return;
+			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
+				getSubmachineStates().clear();
+				getSubmachineStates().addAll((Collection) newValue);
+				return;
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
 				getConnectionPoints().clear();
 				getConnectionPoints().addAll((Collection) newValue);
@@ -955,9 +997,6 @@ public class StateMachineImpl
 				return;
 			case UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				return;
-			case UMLPackage.STATE_MACHINE__INHERITED_MEMBER :
-				getInheritedMembers().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
@@ -1039,6 +1078,9 @@ public class StateMachineImpl
 				return;
 			case UMLPackage.STATE_MACHINE__REGION :
 				getRegions().clear();
+				return;
+			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
+				getSubmachineStates().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
 				getConnectionPoints().clear();
@@ -1213,6 +1255,9 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__REGION :
 				List region = (List) eVirtualGet(UMLPackage.STATE_MACHINE__REGION);
 				return region != null && !region.isEmpty();
+			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
+				List submachineState = (List) eVirtualGet(UMLPackage.STATE_MACHINE__SUBMACHINE_STATE);
+				return submachineState != null && !submachineState.isEmpty();
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
 				List connectionPoint = (List) eVirtualGet(UMLPackage.STATE_MACHINE__CONNECTION_POINT);
 				return connectionPoint != null && !connectionPoint.isEmpty();

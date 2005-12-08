@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.1 2005/12/07 14:20:29 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.2 2005/12/08 14:52:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -2496,6 +2496,52 @@ public class UMLItemProviderAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReceiveOperationEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReceiveOperationEventItemProvider receiveOperationEventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReceiveOperationEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Adapter createReceiveOperationEventAdapter() {
+		if (receiveOperationEventItemProvider == null) {
+			receiveOperationEventItemProvider = new ReceiveOperationEventItemProvider(
+				this);
+		}
+
+		return receiveOperationEventItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReceiveSignalEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReceiveSignalEventItemProvider receiveSignalEventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReceiveSignalEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Adapter createReceiveSignalEventAdapter() {
+		if (receiveSignalEventItemProvider == null) {
+			receiveSignalEventItemProvider = new ReceiveSignalEventItemProvider(
+				this);
+		}
+
+		return receiveSignalEventItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CombinedFragment} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3878,6 +3924,28 @@ public class UMLItemProviderAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReduceAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReduceActionItemProvider reduceActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReduceAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Adapter createReduceActionAdapter() {
+		if (reduceActionItemProvider == null) {
+			reduceActionItemProvider = new ReduceActionItemProvider(this);
+		}
+
+		return reduceActionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ControlFlow} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4817,6 +4885,10 @@ public class UMLItemProviderAdapterFactory
 			sendSignalEventItemProvider.dispose();
 		if (messageOccurrenceSpecificationItemProvider != null)
 			messageOccurrenceSpecificationItemProvider.dispose();
+		if (receiveOperationEventItemProvider != null)
+			receiveOperationEventItemProvider.dispose();
+		if (receiveSignalEventItemProvider != null)
+			receiveSignalEventItemProvider.dispose();
 		if (combinedFragmentItemProvider != null)
 			combinedFragmentItemProvider.dispose();
 		if (continuationItemProvider != null)
@@ -4939,6 +5011,8 @@ public class UMLItemProviderAdapterFactory
 			replyActionItemProvider.dispose();
 		if (unmarshallActionItemProvider != null)
 			unmarshallActionItemProvider.dispose();
+		if (reduceActionItemProvider != null)
+			reduceActionItemProvider.dispose();
 		if (controlFlowItemProvider != null)
 			controlFlowItemProvider.dispose();
 		if (initialNodeItemProvider != null)
