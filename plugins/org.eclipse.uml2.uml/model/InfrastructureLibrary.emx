@@ -5679,16 +5679,13 @@
             </eAnnotations>
           </ownedComment>
           <generalization xmi:id="_3ADC7B74022D3CB5A32B0118" general="_3ADC7B74022D3CB5A2060370"/>
-          <ownedAttribute xmi:id="_3ADC7B74022D3CB5A3110161" name="value">
+          <ownedAttribute xmi:id="_3ADC7B74022D3CB5A3110161" name="value" type="_3ADC7B74022D3CA010AC0090">
             <ownedComment xmi:id="_rbo6chTaEdqZu-3Jy1-uYg" body="The specified Boolean value." annotatedElement="_3ADC7B74022D3CB5A3110161">
               <eAnnotations xmi:id="_rbo6cxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rbo6dBTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXfBUK86EdieaYgxtVWN8Q"/>
-            <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_YDXU8GgaEdqfYrlcy8iLFA">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXfBUK86EdieaYgxtVWN8Q"/>
-            </defaultValue>
+            <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_YDXU8GgaEdqfYrlcy8iLFA" type="_3ADC7B74022D3CA010AC0090"/>
           </ownedAttribute>
           <ownedOperation xmi:id="_3ADC7B74022D3E1406E501AC" name="isComputable" type="_3ADC7B74022D3CA010AC0090" isQuery="true" redefinedOperation="_3ADC7B74022D3E1402B00031" bodyCondition="_rbo6ZBTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:id="_rbo6YBTaEdqZu-3Jy1-uYg" body="The query isComputable() is redefined to be true." annotatedElement="_3ADC7B74022D3E1406E501AC">
@@ -5800,16 +5797,13 @@
             </eAnnotations>
           </ownedComment>
           <generalization xmi:id="_3ADC7B74022D3CB5A2CC0144" general="_3ADC7B74022D3CB5A2060370"/>
-          <ownedAttribute xmi:id="_3ADC7B74022D3CB5A2640253" name="value">
+          <ownedAttribute xmi:id="_3ADC7B74022D3CB5A2640253" name="value" type="_3ADC7B74022D3CA010A4007B">
             <ownedComment xmi:id="_rb71eBTaEdqZu-3Jy1-uYg" body="The specified Integer value." annotatedElement="_3ADC7B74022D3CB5A2640253">
               <eAnnotations xmi:id="_rcFmUBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rcFmURTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXlH8K86EdieaYgxtVWN8Q"/>
-            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_dugS0GgaEdqfYrlcy8iLFA">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXlH8K86EdieaYgxtVWN8Q"/>
-            </defaultValue>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_dugS0GgaEdqfYrlcy8iLFA" type="_3ADC7B74022D3CA010A4007B"/>
           </ownedAttribute>
           <ownedOperation xmi:id="_3ADC7B74022D3E14074A00F3" name="isComputable" type="_3ADC7B74022D3CA010AC0090" isQuery="true" redefinedOperation="_3ADC7B74022D3E1402B00031" bodyCondition="_rb71ahTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:id="_rb71ZhTaEdqZu-3Jy1-uYg" body="The query isComputable() is redefined to be true." annotatedElement="_3ADC7B74022D3E14074A00F3">
@@ -5841,7 +5835,7 @@
             </eAnnotations>
           </ownedComment>
           <generalization xmi:id="_3ADC7B74022D3DF664D30228" general="_3ADC7B74022D3CB5A2060370"/>
-          <ownedAttribute xmi:id="_3ADC7B74022D3DF664DB022A" name="value">
+          <ownedAttribute xmi:id="_3ADC7B74022D3DF664DB022A" name="value" type="_3ADC7B74022D3DE6A93C0003">
             <eAnnotations xmi:id="_sveKkl04Edq_LIww8XP1gg" source="appliedStereotypes">
               <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_sveKk104Edq_LIww8XP1gg" isUnsettable="true"/>
             </eAnnotations>
@@ -5850,10 +5844,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rcFmbBTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXlH8q86EdieaYgxtVWN8Q"/>
-            <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ntBxcGgaEdqfYrlcy8iLFA">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXlH8q86EdieaYgxtVWN8Q"/>
-            </defaultValue>
+            <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ntBxcGgaEdqfYrlcy8iLFA" type="_3ADC7B74022D3DE6A93C0003"/>
           </ownedAttribute>
           <ownedOperation xmi:id="_3ADC7B74022D3E140869018C" name="isComputable" type="_3ADC7B74022D3CA010AC0090" isQuery="true" redefinedOperation="_3ADC7B74022D3E1402B00031" bodyCondition="_rcFmXBTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:id="_rcFmWBTaEdqZu-3Jy1-uYg" body="The query isComputable() is redefined to be true." annotatedElement="_3ADC7B74022D3E140869018C">
