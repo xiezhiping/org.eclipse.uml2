@@ -13990,6 +13990,14 @@
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_rm0PrRTaEdqZu-3Jy1-uYg" body="isDerivedUnion implies isDerived" language="OCL"/>
         </ownedRule>
+        <ownedRule xmi:id="_ATEKgGgEEdqfYrlcy8iLFA" name="subsetted_property_names" constrainedElement="_3ADC7B74022D3DE6D57500AC">
+          <ownedComment xmi:id="_H7EdsGgEEdqfYrlcy8iLFA" body="A property may not subset a property with the same name." annotatedElement="_ATEKgGgEEdqfYrlcy8iLFA">
+            <eAnnotations xmi:id="_H7EdsWgEEdqfYrlcy8iLFA" source="appliedStereotypes">
+              <contents xmi:type="Default_0:Default__Documentation" xmi:id="_H7EdsmgEEdqfYrlcy8iLFA"/>
+            </eAnnotations>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_ATEKgWgEEdqfYrlcy8iLFA" body="true" language="OCL"/>
+        </ownedRule>
         <generalization xmi:id="_3ADC7B74022D3DE6E646016A" general="_3ADC7B74022D3DE6C7C40188"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E9C30088" name="isReadOnly" type="_3ADC7B74022D3CA010AC0090">
           <ownedComment xmi:id="_rm0PzxTaEdqZu-3Jy1-uYg" body="This redefines the corresponding attribute in Basic::Property and Abstractions::StructuralFeature." annotatedElement="_3ADC7B74022D3DE6E9C30088">
@@ -15771,8 +15779,8 @@
         <children xmi:id="_pW3i_BjPEdqPB8O80Bm3OQ" type="Text">
           <children xmi:id="_pW3i_xjPEdqPB8O80Bm3OQ" type="DiagramName"/>
           <children xmi:id="_pW3jABjPEdqPB8O80Bm3OQ" type="Description"/>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_pW3i_RjPEdqPB8O80Bm3OQ" fontHeight="10" description="{redefines ownedEnd,&#xD;&#xA;subsets ownedEnd}" fillColor="13434879" lineColor="3342489"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_pW3jARjPEdqPB8O80Bm3OQ" x="25770" y="3326"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_pW3i_RjPEdqPB8O80Bm3OQ" fontHeight="10" description="{redefines ownedEnd}" fillColor="13434879" lineColor="3342489"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_pW3jARjPEdqPB8O80Bm3OQ" x="25611" y="3705"/>
         </children>
         <children xmi:id="_pW3jCBjPEdqPB8O80Bm3OQ" type="Text">
           <children xmi:id="_pW3jCxjPEdqPB8O80Bm3OQ" type="DiagramName"/>
@@ -16487,7 +16495,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ruaFfxTaEdqZu-3Jy1-uYg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruaFfhTaEdqZu-3Jy1-uYg" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_3ADC7B74022D3CBDA88400D7" name="ownedEnd" type="_3ADC7B74022D3CBDA5F701B4" redefinedProperty="_3ADC7B74022D3DE6E409010C" subsettedProperty="_3ADC7B74022D3DE6E409010C" association="_3ADC7B74022D3CBDA88302E8" aggregation="composite">
+      <ownedAttribute xmi:id="_3ADC7B74022D3CBDA88400D7" name="ownedEnd" type="_3ADC7B74022D3CBDA5F701B4" redefinedProperty="_3ADC7B74022D3DE6E409010C" association="_3ADC7B74022D3CBDA88302E8" aggregation="composite">
         <eAnnotations xmi:id="_n6DCIjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
           <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n6DCIzwaEdqNYOqRUhe_HQ" isResolveProxies="false"/>
         </eAnnotations>
