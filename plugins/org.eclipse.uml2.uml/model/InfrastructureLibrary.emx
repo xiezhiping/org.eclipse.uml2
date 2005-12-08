@@ -16321,7 +16321,7 @@
         <specification xmi:type="uml:OpaqueExpression" xmi:id="_ichowTakEdqq1tCaRkgBQQ" body="self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->&#xD;&#xA;  union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()" language="OCL"/>
       </ownedRule>
       <generalization xmi:id="_bC_LMEfCEdq0rbStTpEubg" general="_3ADC7B74022D3DE6D5DA0183"/>
-      <ownedAttribute xmi:id="_3ADC7B74022D3CB24B21030C" name="ownedStereotype" type="_3ADC7B74022D3CA186DB0022" subsettedProperty="_3ADC7B74022D3DE6E0F500FF" association="_3ADC7B74022D3CB24B21012C" aggregation="composite">
+      <ownedAttribute xmi:id="_3ADC7B74022D3CB24B21030C" name="ownedStereotype" type="_3ADC7B74022D3CA186DB0022" isDerived="true" subsettedProperty="_3ADC7B74022D3DE6E0F500FF" association="_3ADC7B74022D3CB24B21012C" aggregation="composite">
         <eAnnotations xmi:id="_n55RIDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
           <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n55RITwaEdqNYOqRUhe_HQ"/>
         </eAnnotations>
