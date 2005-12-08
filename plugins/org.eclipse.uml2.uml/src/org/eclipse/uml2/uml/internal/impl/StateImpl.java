@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.12 2005/12/08 14:56:25 khussey Exp $
+ * $Id: StateImpl.java,v 1.13 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1138,8 +1138,13 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
+	public boolean isRedefinitionContextValidGen(RedefinableElement redefined) {
 		return isRedefinitionContextValid(redefined);
+	}
+
+	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
+		return redefined instanceof State
+			&& isRedefinitionContextValid((State) redefined);
 	}
 
 	/**

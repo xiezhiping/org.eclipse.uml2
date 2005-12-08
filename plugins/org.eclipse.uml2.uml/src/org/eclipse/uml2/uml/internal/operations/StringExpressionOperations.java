@@ -8,10 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionOperations.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: StringExpressionOperations.java,v 1.2 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -19,6 +21,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.ValueSpecification;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -36,9 +39,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class StringExpressionOperations {
+public final class StringExpressionOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,6 +119,28 @@ public final class StringExpressionOperations {
 		return true;
 	}
 
+	protected static StringBuffer stringValue(
+			StringExpression stringExpression, StringBuffer stringValue) {
+		List subExpressions = stringExpression.getSubExpressions();
+
+		if (!subExpressions.isEmpty()) {
+
+			for (Iterator se = subExpressions.iterator(); se.hasNext();) {
+				stringValue((StringExpression) se.next(), stringValue);
+			}
+		} else {
+
+			for (Iterator op = stringExpression.getOperands().iterator(); op
+				.hasNext();) {
+
+				stringValue.append(((ValueSpecification) op.next())
+					.stringValue());
+			}
+		}
+
+		return stringValue;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,12 +152,10 @@ public final class StringExpressionOperations {
 	 * then subExpression->iterate(se; stringValue = ?| stringValue.concat(se.stringValue()))
 	 * else operand->iterate()(op; stringValue = ? | stringValue.concat(op.value))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String stringValue(StringExpression stringExpression) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return stringValue(stringExpression, new StringBuffer()).toString();
 	}
 
 } // StringExpressionOperations

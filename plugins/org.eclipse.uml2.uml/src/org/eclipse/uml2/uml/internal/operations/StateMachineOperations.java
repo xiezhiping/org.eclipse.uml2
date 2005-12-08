@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
+ * $Id: StateMachineOperations.java,v 1.3 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,8 +18,10 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 
@@ -44,9 +46,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class StateMachineOperations {
+public final class StateMachineOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -215,12 +217,29 @@ public final class StateMachineOperations {
 	 * false
 	 * else (ancestor (s1, s2.container))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean ancestor(StateMachine stateMachine, State s1, State s2) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (s1 == s2) {
+			return true;
+		} else {
+			Region container1 = s1.getContainer();
+
+			if (container1 == null) {
+				return true;
+			} else {
+				Region container2 = s2.getContainer();
+
+				if (container2 == null) {
+					return false;
+				} else {
+					State container2State = container2.getState();
+					return container2State != null
+						&& stateMachine.ancestor(s1, container2State);
+				}
+			}
+		}
 	}
 
 	/**
@@ -230,13 +249,18 @@ public final class StateMachineOperations {
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isRedefinitionContextValid(StateMachine stateMachine,
 			StateMachine redefined) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		BehavioredClassifier context = stateMachine.getContext();
+
+		if (context != null && redefined != null) {
+			return context.conformsTo(redefined.getContext());
+		}
+
+		return false;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentActionOperations.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: ReadExtentActionOperations.java,v 1.2 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -35,9 +35,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ReadExtentActionOperations {
+public final class ReadExtentActionOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

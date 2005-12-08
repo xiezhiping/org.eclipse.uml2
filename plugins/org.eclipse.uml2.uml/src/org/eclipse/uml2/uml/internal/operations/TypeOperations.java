@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: TypeOperations.java,v 1.2 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -26,9 +26,9 @@ import org.eclipse.uml2.uml.Type;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class TypeOperations {
+public final class TypeOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -46,12 +46,10 @@ public final class TypeOperations {
 	 * The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean conformsTo(Type type, Type other) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return false;
 	}
 
 } // TypeOperations

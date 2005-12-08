@@ -8,16 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: UseCaseOperations.java,v 1.2 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.UseCase;
 
@@ -39,9 +42,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class UseCaseOperations {
+public final class UseCaseOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -187,12 +190,18 @@ public final class UseCaseOperations {
 	 * The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
 	 * result = self.include->union(self.include->collect(in | in.allIncludedUseCases()))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List allIncludedUseCases(UseCase useCase) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List includes = useCase.getIncludes();
+		List allIncludedUseCases = new UniqueEList(includes);
+
+		for (Iterator i = includes.iterator(); i.hasNext();) {
+			allIncludedUseCases.addAll(((UseCase) i.next())
+				.allIncludedUseCases());
+		}
+
+		return Collections.unmodifiableList(allIncludedUseCases);
 	}
 
 } // UseCaseOperations

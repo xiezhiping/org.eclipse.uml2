@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.4 2005/12/07 14:18:34 khussey Exp $
+ * $Id: ElementOperations.java,v 1.5 2005/12/08 19:38:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -134,8 +134,8 @@ public final class ElementOperations
 		List ownedElements = element.getOwnedElements();
 		List allOwnedElements = new UniqueEList(ownedElements);
 
-		for (Iterator i = ownedElements.iterator(); i.hasNext();) {
-			allOwnedElements.addAll(((Element) i.next()).allOwnedElements());
+		for (Iterator oe = ownedElements.iterator(); oe.hasNext();) {
+			allOwnedElements.addAll(((Element) oe.next()).allOwnedElements());
 		}
 
 		return Collections.unmodifiableList(allOwnedElements);

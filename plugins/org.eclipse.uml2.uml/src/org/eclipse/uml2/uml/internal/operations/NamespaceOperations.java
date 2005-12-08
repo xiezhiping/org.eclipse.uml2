@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.5 2005/12/05 18:00:17 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.6 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -268,10 +268,10 @@ public final class NamespaceOperations
 			PackageableElement excludeCollision = (PackageableElement) excludeCollisions
 				.next();
 
-			for (Iterator i = ownedMembers.iterator(); i.hasNext();) {
+			for (Iterator om = ownedMembers.iterator(); om.hasNext();) {
 
 				if (!excludeCollision.isDistinguishableFrom(
-					(PackageableElement) i.next(), namespace)) {
+					(PackageableElement) om.next(), namespace)) {
 
 					continue excludeCollisionsLoop;
 				}

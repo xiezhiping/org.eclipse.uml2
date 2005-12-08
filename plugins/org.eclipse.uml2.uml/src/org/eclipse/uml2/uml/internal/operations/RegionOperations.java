@@ -8,20 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionOperations.java,v 1.3 2005/12/07 14:01:41 khussey Exp $
+ * $Id: RegionOperations.java,v 1.4 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Region;
+import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
+import org.eclipse.uml2.uml.Transition;
+import org.eclipse.uml2.uml.Vertex;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -45,9 +52,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class RegionOperations {
+public final class RegionOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -204,12 +211,19 @@ public final class RegionOperations {
 	 * sm.context
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Classifier redefinitionContext(Region region) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		StateMachine sm = region.containingStateMachine();
+
+		if (sm != null) {
+			BehavioredClassifier context = sm.getContext();
+			return context == null || !sm.getGenerals().isEmpty()
+				? sm
+				: context;
+		}
+
+		return null;
 	}
 
 	/**
@@ -219,13 +233,21 @@ public final class RegionOperations {
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a region are properly related to the redefinition contexts of the specified region to allow this element to redefine the other. The containing statemachine/state of a redefining region must redefine the containing statemachine/state of the redefined region.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isRedefinitionContextValid(Region region,
 			Region redefined) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		StateMachine stateMachine = region.getStateMachine();
+
+		if (stateMachine != null) {
+			return stateMachine.getExtendedStateMachine() == redefined
+				.getStateMachine();
+		} else {
+			State state = redefined.getState();
+
+			return state != null
+				&& state.getRedefinedState() == redefined.getState();
+		}
 	}
 
 	/**
@@ -240,12 +262,19 @@ public final class RegionOperations {
 	 * stateMachine
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static StateMachine containingStateMachine(Region region) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		StateMachine stateMachine = region.getStateMachine();
+
+		if (stateMachine == null) {
+			State state = region.getState();
+			return state == null
+				? null
+				: state.containingStatemachine();
+		} else {
+			return stateMachine;
+		}
 	}
 
 	/**
@@ -259,12 +288,23 @@ public final class RegionOperations {
 	 * state.container.belongsToPSM ()
 	 * else false
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean belongsToPSM(Region region) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		StateMachine stateMachine = region.getStateMachine();
+
+		if (stateMachine != null) {
+			return stateMachine instanceof ProtocolStateMachine;
+		} else {
+			State state = region.getState();
+
+			if (state != null) {
+				Region container = state.getContainer();
+				return container != null && container.belongsToPSM();
+			}
+
+			return false;
+		}
 	}
 
 	/**
@@ -274,13 +314,43 @@ public final class RegionOperations {
 	 * The query isConsistentWith() specifies that a redefining region is consistent with a redefined region provided that the redefining region is an extension of the redefined region, i.e. it adds vertices and transitions and it redefines states and transitions of the redefined region.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(Region region,
 			RedefinableElement redefinee) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (redefinee.isRedefinitionContextValid(region)) {
+			Region redefineeRegion = (Region) redefinee;
+
+			List subvertices = region.getSubvertices();
+
+			for (Iterator redefineeSubvertices = redefineeRegion
+				.getSubvertices().iterator(); redefineeSubvertices.hasNext();) {
+
+				Vertex subvertex = (Vertex) redefineeSubvertices.next();
+
+				if (subvertex instanceof State
+					&& subvertices.contains(((State) subvertex)
+						.getRedefinedState())) {
+
+					return true;
+				}
+			}
+
+			List transitions = region.getTransitions();
+
+			for (Iterator redefineeTransitions = redefineeRegion
+				.getTransitions().iterator(); redefineeTransitions.hasNext();) {
+
+				if (transitions.contains(((Transition) redefineeTransitions
+					.next()).getRedefinedTransition())) {
+
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 } // RegionOperations

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.16 2005/12/08 14:56:25 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.17 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -2340,8 +2340,12 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean conformsTo(Type other) {
+	public boolean conformsToGen(Type other) {
 		return conformsTo(other);
+	}
+
+	public boolean conformsTo(Type other) {
+		return other instanceof Classifier && conformsTo((Classifier) other);
 	}
 
 } //ClassifierImpl

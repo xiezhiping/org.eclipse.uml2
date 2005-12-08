@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationOperations.java,v 1.2 2005/12/07 14:18:34 khussey Exp $
+ * $Id: ValueSpecificationOperations.java,v 1.3 2005/12/08 19:38:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import org.eclipse.uml2.uml.ParameterableElement;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.ValueSpecification;
+import org.eclipse.uml2.uml.internal.impl.ValueSpecificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,9 +35,9 @@ import org.eclipse.uml2.uml.ValueSpecification;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ValueSpecificationOperations {
+public final class ValueSpecificationOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -53,12 +55,10 @@ public final class ValueSpecificationOperations {
 	 * The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isComputable(ValueSpecification valueSpecification) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return false;
 	}
 
 	/**
@@ -68,11 +68,9 @@ public final class ValueSpecificationOperations {
 	 * The query integerValue() gives a single Integer value when one can be computed.
 	 * result = Set{}
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int integerValue(ValueSpecification valueSpecification) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
 
@@ -83,11 +81,9 @@ public final class ValueSpecificationOperations {
 	 * The query booleanValue() gives a single Boolean value when one can be computed.
 	 * result = Set{}
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean booleanValue(ValueSpecification valueSpecification) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
 
@@ -111,11 +107,9 @@ public final class ValueSpecificationOperations {
 	 * The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.
 	 * result = Set{}
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static int unlimitedValue(ValueSpecification valueSpecification) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
 
@@ -126,12 +120,10 @@ public final class ValueSpecificationOperations {
 	 * The query isNull() returns true when it can be computed that the value is null.
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isNull(ValueSpecification valueSpecification) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return false;
 	}
 
 	/**
@@ -143,13 +135,20 @@ public final class ValueSpecificationOperations {
 	 * 
 	 * result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isCompatibleWith(
 			ValueSpecification valueSpecification, ParameterableElement p) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (valueSpecification.eClass().isInstance(p)) {
+			Type type = valueSpecification.getType();
+
+			return type == null
+				? ((ValueSpecificationImpl) p).basicGetType() == null
+				: type.conformsTo(((ValueSpecification) p).getType());
+		}
+
+		return false;
 	}
 
 } // ValueSpecificationOperations

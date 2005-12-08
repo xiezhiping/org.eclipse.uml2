@@ -8,19 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureOperations.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: RedefinableTemplateSignatureOperations.java,v 1.3 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.RedefinableTemplateSignature;
+import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -38,9 +44,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class RedefinableTemplateSignatureOperations {
+public final class RedefinableTemplateSignatureOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,13 +93,24 @@ public final class RedefinableTemplateSignatureOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List getInheritedParameters(
 			RedefinableTemplateSignature redefinableTemplateSignature) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List inheritedParameters = new UniqueEList();
+
+		for (Iterator extendedSignatures = redefinableTemplateSignature
+			.getExtendedSignatures().iterator(); extendedSignatures.hasNext();) {
+
+			inheritedParameters
+				.addAll(((InternalEList) ((RedefinableTemplateSignature) extendedSignatures
+					.next()).getParameters()).basicList());
+		}
+
+		return new UnionEObjectEList(
+			(InternalEObject) redefinableTemplateSignature,
+			UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER,
+			inheritedParameters.size(), inheritedParameters.toArray());
 	}
 
 	/**
@@ -104,14 +121,12 @@ public final class RedefinableTemplateSignatureOperations {
 	 * redefinee.isRedefinitionContextValid(self)
 	 * result = redefinee.oclIsKindOf(RedefineableTemplateSignature)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(
 			RedefinableTemplateSignature redefinableTemplateSignature,
 			RedefinableElement redefinee) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return redefinee instanceof RedefinableTemplateSignature;
 	}
 
 } // RedefinableTemplateSignatureOperations

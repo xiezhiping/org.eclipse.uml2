@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionOperations.java,v 1.1 2005/11/14 22:25:53 khussey Exp $
+ * $Id: ReadLinkActionOperations.java,v 1.2 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -38,9 +38,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ReadLinkActionOperations {
+public final class ReadLinkActionOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.11 2005/12/08 14:56:27 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.12 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -593,7 +593,7 @@ public final class PropertyOperations
 							}
 						}
 
-						throw new IllegalArgumentException(newDefault);
+						return null;
 					}
 
 					return instanceValue;
@@ -635,7 +635,7 @@ public final class PropertyOperations
 				}
 
 				public Object defaultCase(EObject eObject) {
-					throw new IllegalArgumentException(newDefault);
+					throw new UnsupportedOperationException();
 				}
 			}.doSwitch(defaultValue);
 		} else {

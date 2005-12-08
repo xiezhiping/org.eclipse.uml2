@@ -8,12 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementOperations.java,v 1.1 2005/11/14 22:25:54 khussey Exp $
+ * $Id: TemplateableElementOperations.java,v 1.2 2005/12/08 19:38:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.TemplateableElement;
 
 /**
@@ -29,9 +33,9 @@ import org.eclipse.uml2.uml.TemplateableElement;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class TemplateableElementOperations {
+public final class TemplateableElementOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -49,13 +53,23 @@ public final class TemplateableElementOperations {
 	 * The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
 	 * result = allOwnedElements->select(oclIsKindOf(ParameterableElement))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static List parameterableElements(
 			TemplateableElement templateableElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List parameterableElements = new UniqueEList();
+
+		for (Iterator allOwnedElements = templateableElement.allOwnedElements()
+			.iterator(); allOwnedElements.hasNext();) {
+
+			Object ownedElement = allOwnedElements.next();
+
+			if (ownedElement instanceof ParameterableElement) {
+				parameterableElements.add(ownedElement);
+			}
+		}
+
+		return Collections.unmodifiableList(parameterableElements);
 	}
 
 	/**
@@ -65,12 +79,10 @@ public final class TemplateableElementOperations {
 	 * The query isTemplate() returns whether this templateable element is actually a template.
 	 * result = ownedSignature->notEmpty()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isTemplate(TemplateableElement templateableElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return templateableElement.getOwnedTemplateSignature() != null;
 	}
 
 } // TemplateableElementOperations

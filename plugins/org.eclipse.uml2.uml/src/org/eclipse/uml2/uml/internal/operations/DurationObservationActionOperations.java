@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionOperations.java,v 1.5 2005/12/01 18:15:37 khussey Exp $
+ * $Id: DurationObservationActionOperations.java,v 1.6 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationObservationAction;
 import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValuePin;
 import org.eclipse.uml2.uml.ValueSpecification;
 
@@ -120,8 +121,17 @@ public final class DurationObservationActionOperations
 			Duration newDuration) {
 		InputPin value = durationObservationAction.getValue();
 
-		if (value instanceof ValuePin) {
-			((ValuePin) value).setValue(newDuration);
+		if (value != null) {
+
+			if (value instanceof ValuePin) {
+				((ValuePin) value).setValue(newDuration);
+			} else {
+				throw new IllegalStateException();
+			}
+		} else {
+			((ValuePin) durationObservationAction
+				.createValue(UMLPackage.Literals.VALUE_PIN))
+				.setValue(newDuration);
 		}
 	}
 

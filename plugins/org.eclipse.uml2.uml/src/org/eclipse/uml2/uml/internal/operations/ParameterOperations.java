@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.8 2005/12/07 14:18:34 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.9 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -280,7 +280,7 @@ public final class ParameterOperations
 							}
 						}
 
-						throw new IllegalArgumentException(newDefault);
+						return null;
 					}
 
 					return instanceValue;
@@ -322,7 +322,7 @@ public final class ParameterOperations
 				}
 
 				public Object defaultCase(EObject eObject) {
-					throw new IllegalArgumentException(newDefault);
+					throw new UnsupportedOperationException();
 				}
 			}.doSwitch(defaultValue);
 		} else {

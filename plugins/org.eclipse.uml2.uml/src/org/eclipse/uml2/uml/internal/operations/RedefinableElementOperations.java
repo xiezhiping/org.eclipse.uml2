@@ -8,16 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.2 2005/11/17 21:23:32 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.3 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.RedefinableElement;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -37,9 +40,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class RedefinableElementOperations {
+public final class RedefinableElementOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,14 +126,36 @@ public final class RedefinableElementOperations {
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
 	 * result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext)))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isRedefinitionContextValid(
 			RedefinableElement redefinableElement,
 			RedefinableElement redefinable) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		List redefinableRedefinitionContexts = redefinable
+			.getRedefinitionContexts();
+
+		for (Iterator redefinitionContexts = redefinableElement
+			.getRedefinitionContexts().iterator(); redefinitionContexts
+			.hasNext();) {
+
+			List redefinitionContextAllParents = ((Classifier) redefinitionContexts
+				.next()).allParents();
+
+			for (Iterator rrc = redefinableRedefinitionContexts.iterator(); rrc
+				.hasNext();) {
+
+				Classifier redefinableRedefinitionContext = (Classifier) rrc
+					.next();
+
+				if (redefinitionContextAllParents
+					.contains(redefinableRedefinitionContext)) {
+
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -143,13 +168,11 @@ public final class RedefinableElementOperations {
 	 * 
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(
 			RedefinableElement redefinableElement, RedefinableElement redefinee) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return false;
 	}
 
 } // RedefinableElementOperations

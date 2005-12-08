@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: TimeObservationActionOperations.java,v 1.4 2005/12/08 19:38:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,8 +18,12 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.TimeObservationAction;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValuePin;
+import org.eclipse.uml2.uml.ValueSpecification;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -89,25 +93,44 @@ public final class TimeObservationActionOperations {
 	 * <!-- begin-model-doc -->
 	 * self.value.value.oclAsType(TimeExpression)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static TimeExpression getNow(
 			TimeObservationAction timeObservationAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		InputPin value = timeObservationAction.getValue();
+
+		if (value instanceof ValuePin) {
+			ValueSpecification now = ((ValuePin) value).getValue();
+
+			if (now instanceof TimeExpression) {
+				return (TimeExpression) now;
+			}
+		}
+
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setNow(TimeObservationAction timeObservationAction,
 			TimeExpression newNow) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		InputPin value = timeObservationAction.getValue();
+
+		if (value != null) {
+
+			if (value instanceof ValuePin) {
+				((ValuePin) value).setValue(newNow);
+			} else {
+				throw new IllegalStateException();
+			}
+		} else {
+			((ValuePin) timeObservationAction
+				.createValue(UMLPackage.Literals.VALUE_PIN)).setValue(newNow);
+		}
 	}
 
 } // TimeObservationActionOperations

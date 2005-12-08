@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventOperations.java,v 1.2 2005/12/08 14:56:27 khussey Exp $
+ * $Id: TimeEventOperations.java,v 1.3 2005/12/08 19:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -35,9 +35,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class TimeEventOperations {
+public final class TimeEventOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
