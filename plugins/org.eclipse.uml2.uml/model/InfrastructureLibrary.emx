@@ -16613,6 +16613,7 @@
       </ownedComment>
     </ownedMember>
     <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3CA187710277" name="A_profileApplication_package" memberEnd="_3ADC7B74022D3CA1877301CF _3ADC7B74022D3CA1877301D1">
+      <generalization xmi:id="_Dg0jIWgIEdqYUPcXYU0YUA" general="_3ADC7B74022D3DFCA805021A"/>
       <ownedEnd xmi:id="_3ADC7B74022D3CA1877301D1" type="_3ADC7B74022D3CA18745029B" association="_3ADC7B74022D3CA187710277">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ruQ7hhTaEdqZu-3Jy1-uYg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruQ7hRTaEdqZu-3Jy1-uYg" value="1"/>
@@ -16626,6 +16627,7 @@
       </ownedEnd>
     </ownedMember>
     <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3CBDA3A20057" name="A_appliedProfile_profileApplication" memberEnd="_3ADC7B74022D3CBDA3A302D0 _3ADC7B74022D3CBDA3A302DA">
+      <generalization xmi:id="_DhRPEGgIEdqYUPcXYU0YUA" general="_3ADC7B74022D3DFCACAE01F7"/>
       <ownedEnd xmi:id="_3ADC7B74022D3CBDA3A302DA" type="_3ADC7B74022D3CBDA36602FA" association="_3ADC7B74022D3CBDA3A20057">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ruaFcBTaEdqZu-3Jy1-uYg" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruaFbxTaEdqZu-3Jy1-uYg"/>
