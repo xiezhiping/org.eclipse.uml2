@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.11 2005/12/12 16:58:36 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.12 2005/12/12 19:26:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,6 +25,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -34,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
@@ -690,6 +693,41 @@ public abstract class NamedElementImpl
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION);
+	}
+
+	public String eURIFragmentSegment(EStructuralFeature eStructuralFeature,
+			EObject eObject) {
+
+		if (eObject instanceof NamedElement) {
+			String name = ((NamedElement) eObject).getName();
+
+			if (!UML2Util.isEmpty(name)) {
+				int count = 0;
+
+				for (Iterator eContents = eContents().iterator(); eContents
+					.hasNext();) {
+
+					Object otherEObject = eContents.next();
+
+					if (otherEObject == eObject) {
+						break;
+					} else if (otherEObject instanceof NamedElement) {
+
+						if (name
+							.equals(((NamedElement) otherEObject).getName())) {
+
+							count++;
+						}
+					}
+				}
+
+				return count > 0
+					? name + '.' + count
+					: name;
+			}
+		}
+
+		return super.eURIFragmentSegment(eStructuralFeature, eObject);
 	}
 
 } //NamedElementImpl

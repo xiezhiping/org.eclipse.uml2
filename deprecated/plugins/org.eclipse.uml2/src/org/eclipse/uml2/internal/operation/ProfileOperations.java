@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.32 2005/11/23 20:09:17 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.33 2005/12/12 19:26:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -231,7 +231,7 @@ public final class ProfileOperations
 			String[] names = qualifiedName.split(namedElement.separator());
 
 			for (int i = 0, length = names.length; i < length; i++) {
-				appendValidIdentifier(eNamedElementName, names[i]);
+				getValidJavaIdentifier(names[i], eNamedElementName);
 
 				if (i + 1 < length) {
 					eNamedElementName.append("__"); //$NON-NLS-1$
@@ -241,7 +241,7 @@ public final class ProfileOperations
 			return eNamedElementName.toString();
 		}
 
-		return getValidIdentifier(namedElement.getName());
+		return getValidJavaIdentifier(namedElement.getName());
 	}
 
 	/**
@@ -668,7 +668,7 @@ public final class ProfileOperations
 	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EAttribute createEAttribute(EClass eClass, Property property) {
-		String name = getValidIdentifier(property.getName());
+		String name = getValidJavaIdentifier(property.getName());
 		EAttribute eAttribute = (EAttribute) eClass.getEStructuralFeature(name);
 
 		if (null == eAttribute) {
@@ -724,7 +724,7 @@ public final class ProfileOperations
 	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EReference createEReference(EClass eClass, Property property) {
-		String name = getValidIdentifier(property.getName());
+		String name = getValidJavaIdentifier(property.getName());
 		EReference eReference = (EReference) eClass.getEStructuralFeature(name);
 
 		if (null == eReference) {

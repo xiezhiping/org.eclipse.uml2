@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.32 2005/12/06 23:18:03 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.33 2005/12/12 19:26:21 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -42,6 +44,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
@@ -686,7 +689,42 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	public Dependency createDependency(NamedElement supplier) {
 		return NamedElementOperations.createDependency(this, supplier);
 	}
-	
+
+	public String eURIFragmentSegment(EStructuralFeature eStructuralFeature,
+			EObject eObject) {
+
+		if (eObject instanceof NamedElement) {
+			String name = ((NamedElement) eObject).getName();
+
+			if (!UML2Util.isEmpty(name)) {
+				int count = 0;
+
+				for (Iterator eContents = eContents().iterator(); eContents
+					.hasNext();) {
+
+					Object otherEObject = eContents.next();
+
+					if (otherEObject == eObject) {
+						break;
+					} else if (otherEObject instanceof NamedElement) {
+
+						if (name
+							.equals(((NamedElement) otherEObject).getName())) {
+
+							count++;
+						}
+					}
+				}
+
+				return count > 0
+					? name + '.' + count
+					: name;
+			}
+		}
+
+		return super.eURIFragmentSegment(eStructuralFeature, eObject);
+	}
+
 	// <!-- end-custom-operations -->
 
 } //NamedElementImpl

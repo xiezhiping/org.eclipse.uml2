@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.28 2005/11/23 20:09:17 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.29 2005/12/12 19:26:22 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -702,10 +702,10 @@ public final class StereotypeOperations
 
 			if (-1 == token.indexOf('[')) {
 				eStructuralFeature = eClass
-					.getEStructuralFeature(getValidIdentifier(token));
+					.getEStructuralFeature(getValidJavaIdentifier(token));
 			} else {
 				eStructuralFeature = eClass
-					.getEStructuralFeature(getValidIdentifier(token.substring(
+					.getEStructuralFeature(getValidJavaIdentifier(token.substring(
 						0, token.indexOf('['))));
 
 				try {
@@ -1123,10 +1123,10 @@ public final class StereotypeOperations
 
 			if (-1 == token.indexOf('[')) {
 				eStructuralFeature = eClass
-					.getEStructuralFeature(getValidIdentifier(token));
+					.getEStructuralFeature(getValidJavaIdentifier(token));
 			} else {
 				eStructuralFeature = eClass
-					.getEStructuralFeature(getValidIdentifier(token.substring(
+					.getEStructuralFeature(getValidJavaIdentifier(token.substring(
 						0, token.indexOf('['))));
 
 				try {
@@ -1256,11 +1256,11 @@ public final class StereotypeOperations
 		String keyword = EMPTY_STRING;
 
 		if (null != stereotype) {
-			keyword = getString(stereotype, getValidIdentifier(stereotype
+			keyword = getString(stereotype, getValidJavaIdentifier(stereotype
 				.getQualifiedName().replace(':', '_')), EMPTY_STRING, localize);
 
 			if (isEmpty(keyword)) {
-				String identifier = getValidIdentifier(stereotype.getName());
+				String identifier = getValidJavaIdentifier(stereotype.getName());
 
 				keyword = identifier.length() > 0
 					? Character.toLowerCase(identifier.charAt(0))

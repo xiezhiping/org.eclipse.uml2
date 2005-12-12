@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.1 2005/09/20 20:08:54 khussey Exp $
+ * $Id: UML2Util.java,v 1.2 2005/12/12 19:26:25 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
@@ -184,55 +185,139 @@ public class UML2Util {
 	}
 
 	/**
-	 * Obtains a valid (Java) identifier based on the specified name.
+	 * Obtains a valid Java identifier based on the specified name.
 	 * 
 	 * @param name
 	 *            The name from which to obtain a valid identifier.
 	 * @return A valid (Java) identifier.
 	 */
-	protected static String getValidIdentifier(String name) {
-		return appendValidIdentifier(new StringBuffer(), name).toString();
+	protected static String getValidJavaIdentifier(String name) {
+		return getValidJavaIdentifier(name, new StringBuffer()).toString();
 	}
 
 	/**
-	 * Appends a valid (Java) identifier based on the specified name to the
+	 * Appends a valid Java identifier based on the specified name to the
 	 * specified buffer.
 	 * 
-	 * @param validIdentifier
-	 *            The buffer to which to append the valid identifier.
 	 * @param name
 	 *            The name from which to obtain the valid identifier.
-	 * 
+	 * @param validJavaIdentifier
+	 *            The buffer to which to append the valid identifier.
 	 * @return The buffer.
 	 */
-	protected static StringBuffer appendValidIdentifier(
-			StringBuffer validIdentifier, String name) {
+	protected static StringBuffer getValidJavaIdentifier(String name,
+			StringBuffer validJavaIdentifier) {
 
 		if (isEmpty(name)) {
-			validIdentifier.append('_');
+			validJavaIdentifier.append('_');
 		} else {
 			char char_0 = name.charAt(0);
 
 			if (Character.isJavaIdentifierStart(char_0)) {
-				validIdentifier.append(char_0);
+				validJavaIdentifier.append(char_0);
 			} else {
-				validIdentifier.append('_');
+				validJavaIdentifier.append('_');
 
 				if (Character.isJavaIdentifierPart(char_0)) {
-					validIdentifier.append(char_0);
+					validJavaIdentifier.append(char_0);
 				}
 			}
 
-			for (int i = 1; i < name.length(); ++i) {
+			for (int i = 1; i < name.length(); i++) {
 				char char_i = name.charAt(i);
 
 				if (Character.isJavaIdentifierPart(char_i)) {
-					validIdentifier.append(char_i);
+					validJavaIdentifier.append(char_i);
 				}
 			}
 		}
 
-		return validIdentifier;
+		return validJavaIdentifier;
+	}
+
+	protected static boolean isNCNameStart(char c) {
+		return Character.isLetter(c) || c == '_';
+	}
+
+	protected static boolean isNCNamePart(char c) {
+		return Character.isLetterOrDigit(c) || c == '.' || c == '-' || c == '_';
+	}
+
+	protected static String getValidNCName(String name) {
+		return getValidNCName(name, new StringBuffer()).toString();
+	}
+
+	protected static StringBuffer getValidNCName(String name,
+			StringBuffer validNCName) {
+
+		if (isEmpty(name)) {
+			validNCName.insert(0, '_');
+		} else {
+
+			for (int i = name.length(); --i > 0;) {
+				char char_i = name.charAt(i);
+
+				if (isNCNamePart(char_i)) {
+					validNCName.insert(0, char_i);
+				}
+			}
+
+			char char_0 = name.charAt(0);
+
+			if (isNCNameStart(char_0)) {
+				validNCName.insert(0, char_0);
+			} else {
+
+				if (isNCNamePart(char_0)) {
+					validNCName.insert(0, char_0);
+				}
+
+				validNCName.insert(0, '_');
+			}
+		}
+
+		return validNCName;
+	}
+
+	protected static String getXMIIdentifier(InternalEObject internalEObject) {
+		return getXMIIdentifier(internalEObject, new StringBuffer()).toString();
+	}
+
+	protected static StringBuffer getXMIIdentifier(
+			InternalEObject internalEObject, StringBuffer xmiIdentifier) {
+		InternalEObject eInternalContainer = internalEObject
+			.eInternalContainer();
+		Resource.Internal eDirectResource = internalEObject.eDirectResource();
+
+		while (eInternalContainer != null && eDirectResource == null) {
+			getValidNCName(eInternalContainer.eURIFragmentSegment(
+				internalEObject.eContainingFeature(), internalEObject),
+				xmiIdentifier);
+
+			internalEObject = eInternalContainer;
+			eInternalContainer = internalEObject.eInternalContainer();
+			eDirectResource = internalEObject.eDirectResource();
+
+			if (eInternalContainer != null && eDirectResource == null) {
+				xmiIdentifier.insert(0, '-');
+			}
+		}
+
+		if (eDirectResource != null) {
+			List contents = eDirectResource.getContents();
+
+			if (contents.size() > 1) {
+				int index = contents.indexOf(internalEObject);
+
+				if (index > 0) {
+					xmiIdentifier.insert(0, '-');
+					xmiIdentifier.insert(0, contents.indexOf(internalEObject));
+					xmiIdentifier.insert(0, '_');
+				}
+			}
+		}
+
+		return xmiIdentifier;
 	}
 
 	public static int getInstanceCount(ResourceSet resourceSet,

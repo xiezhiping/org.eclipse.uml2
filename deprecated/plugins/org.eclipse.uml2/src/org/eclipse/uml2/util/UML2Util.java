@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.49 2005/11/30 21:37:48 khussey Exp $
+ * $Id: UML2Util.java,v 1.50 2005/12/12 19:26:21 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -1431,7 +1431,7 @@ public class UML2Util
 		protected void setName(ENamedElement eNamedElement, String name,
 				boolean validate) {
 			eNamedElement.setName(validate
-				? getValidIdentifier(name)
+				? getValidJavaIdentifier(name)
 				: name);
 		}
 
@@ -2115,7 +2115,7 @@ public class UML2Util
 						eModelElement
 							.eSet(eStructuralFeature, EcorePackage.eINSTANCE
 								.getENamedElement_Name() == eStructuralFeature
-								? getValidIdentifier((String) value)
+								? getValidJavaIdentifier((String) value)
 								: value);
 					} else {
 
