@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.14 2005/12/12 18:11:59 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.15 2005/12/12 18:37:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -821,13 +821,21 @@ public final class PropertyOperations
 	 * 
 	 * result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isCompatibleWith(Property property,
 			ParameterableElement p) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (property.eClass().isInstance(p)) {
+			Type type = property.getType();
+
+			return type == null
+				? ((Property) p).eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
+					false) == null
+				: type.conformsTo(((Property) p).getType());
+		}
+
+		return false;
 	}
 
 } // PropertyOperations

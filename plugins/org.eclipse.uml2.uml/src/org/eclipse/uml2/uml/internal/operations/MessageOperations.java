@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOperations.java,v 1.5 2005/12/12 18:11:59 khussey Exp $
+ * $Id: MessageOperations.java,v 1.6 2005/12/12 18:37:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -25,7 +25,6 @@ import org.eclipse.uml2.uml.MessageKind;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 
-import org.eclipse.uml2.uml.internal.impl.MessageImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -313,10 +312,11 @@ public final class MessageOperations
 	 * @generated NOT
 	 */
 	public static NamedElement getSignature(Message message) {
-		MessageImpl messageImpl = (MessageImpl) message;
-		MessageEnd sendEvent = messageImpl.basicGetSendEvent();
+		MessageEnd sendEvent = (MessageEnd) message.eGet(
+			UMLPackage.Literals.MESSAGE__SEND_EVENT, false);
 		return sendEvent == null
-			? messageImpl.basicGetReceiveEvent()
+			? (MessageEnd) message.eGet(
+				UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, false)
 			: sendEvent;
 	}
 
