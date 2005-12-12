@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.4 2005/12/12 18:11:59 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.5 2005/12/12 23:05:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -3187,7 +3187,7 @@ public class UMLFactoryImpl
 	 */
 	public String createStringFromString(EDataType eDataType,
 			String initialValue) {
-	    return initialValue;
+		return initialValue;
 	}
 
 	/**

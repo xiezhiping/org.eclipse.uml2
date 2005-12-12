@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.6 2005/12/12 16:58:35 khussey Exp $
+ * $Id: UMLValidator.java,v 1.7 2005/12/12 23:05:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -40,6 +40,7 @@ import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.AddStructuralFeatureValueAction;
 import org.eclipse.uml2.uml.AddVariableValueAction;
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.AnyReceiveEvent;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
@@ -51,6 +52,7 @@ import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.BroadcastSignalAction;
 import org.eclipse.uml2.uml.CallAction;
 import org.eclipse.uml2.uml.CallBehaviorAction;
+import org.eclipse.uml2.uml.CallConcurrencyKind;
 import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.CentralBufferNode;
@@ -74,6 +76,7 @@ import org.eclipse.uml2.uml.ConnectableElementTemplateParameter;
 import org.eclipse.uml2.uml.ConnectionPointReference;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
+import org.eclipse.uml2.uml.ConnectorKind;
 import org.eclipse.uml2.uml.ConsiderIgnoreFragment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.Continuation;
@@ -112,6 +115,7 @@ import org.eclipse.uml2.uml.ExecutionEnvironment;
 import org.eclipse.uml2.uml.ExecutionEvent;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
+import org.eclipse.uml2.uml.ExpansionKind;
 import org.eclipse.uml2.uml.ExpansionNode;
 import org.eclipse.uml2.uml.ExpansionRegion;
 import org.eclipse.uml2.uml.Expression;
@@ -141,6 +145,7 @@ import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionConstraint;
 import org.eclipse.uml2.uml.InteractionFragment;
 import org.eclipse.uml2.uml.InteractionOperand;
+import org.eclipse.uml2.uml.InteractionOperatorKind;
 import org.eclipse.uml2.uml.InteractionUse;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
@@ -166,7 +171,9 @@ import org.eclipse.uml2.uml.MergeNode;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageEnd;
 import org.eclipse.uml2.uml.MessageEvent;
+import org.eclipse.uml2.uml.MessageKind;
 import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
+import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
@@ -174,6 +181,7 @@ import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.ObjectNode;
+import org.eclipse.uml2.uml.ObjectNodeOrderingKind;
 import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.OpaqueBehavior;
@@ -185,6 +193,8 @@ import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterDirectionKind;
+import org.eclipse.uml2.uml.ParameterEffectKind;
 import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.PartDecomposition;
@@ -198,6 +208,7 @@ import org.eclipse.uml2.uml.ProtocolConformance;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.ProtocolTransition;
 import org.eclipse.uml2.uml.Pseudostate;
+import org.eclipse.uml2.uml.PseudostateKind;
 import org.eclipse.uml2.uml.QualifierValue;
 import org.eclipse.uml2.uml.RaiseExceptionAction;
 import org.eclipse.uml2.uml.ReadExtentAction;
@@ -252,6 +263,7 @@ import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.TimeInterval;
 import org.eclipse.uml2.uml.TimeObservationAction;
 import org.eclipse.uml2.uml.Transition;
+import org.eclipse.uml2.uml.TransitionKind;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.TypedElement;
@@ -265,6 +277,7 @@ import org.eclipse.uml2.uml.ValueSpecificationAction;
 import org.eclipse.uml2.uml.Variable;
 import org.eclipse.uml2.uml.VariableAction;
 import org.eclipse.uml2.uml.Vertex;
+import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.WriteLinkAction;
 import org.eclipse.uml2.uml.WriteStructuralFeatureAction;
 import org.eclipse.uml2.uml.WriteVariableAction;
@@ -4252,42 +4265,44 @@ public class UMLValidator
 				return validateAssociationClass((AssociationClass) value,
 					diagnostics, context);
 			case UMLPackage.VISIBILITY_KIND :
-				return validateVisibilityKind((Object) value, diagnostics,
-					context);
+				return validateVisibilityKind((VisibilityKind) value,
+					diagnostics, context);
 			case UMLPackage.CALL_CONCURRENCY_KIND :
-				return validateCallConcurrencyKind((Object) value, diagnostics,
-					context);
+				return validateCallConcurrencyKind((CallConcurrencyKind) value,
+					diagnostics, context);
 			case UMLPackage.TRANSITION_KIND :
-				return validateTransitionKind((Object) value, diagnostics,
-					context);
+				return validateTransitionKind((TransitionKind) value,
+					diagnostics, context);
 			case UMLPackage.PSEUDOSTATE_KIND :
-				return validatePseudostateKind((Object) value, diagnostics,
-					context);
+				return validatePseudostateKind((PseudostateKind) value,
+					diagnostics, context);
 			case UMLPackage.AGGREGATION_KIND :
-				return validateAggregationKind((Object) value, diagnostics,
-					context);
+				return validateAggregationKind((AggregationKind) value,
+					diagnostics, context);
 			case UMLPackage.PARAMETER_DIRECTION_KIND :
-				return validateParameterDirectionKind((Object) value,
-					diagnostics, context);
+				return validateParameterDirectionKind(
+					(ParameterDirectionKind) value, diagnostics, context);
 			case UMLPackage.PARAMETER_EFFECT_KIND :
-				return validateParameterEffectKind((Object) value, diagnostics,
-					context);
+				return validateParameterEffectKind((ParameterEffectKind) value,
+					diagnostics, context);
 			case UMLPackage.CONNECTOR_KIND :
-				return validateConnectorKind((Object) value, diagnostics,
-					context);
+				return validateConnectorKind((ConnectorKind) value,
+					diagnostics, context);
 			case UMLPackage.MESSAGE_KIND :
-				return validateMessageKind((Object) value, diagnostics, context);
-			case UMLPackage.MESSAGE_SORT :
-				return validateMessageSort((Object) value, diagnostics, context);
-			case UMLPackage.OBJECT_NODE_ORDERING_KIND :
-				return validateObjectNodeOrderingKind((Object) value,
-					diagnostics, context);
-			case UMLPackage.INTERACTION_OPERATOR_KIND :
-				return validateInteractionOperatorKind((Object) value,
-					diagnostics, context);
-			case UMLPackage.EXPANSION_KIND :
-				return validateExpansionKind((Object) value, diagnostics,
+				return validateMessageKind((MessageKind) value, diagnostics,
 					context);
+			case UMLPackage.MESSAGE_SORT :
+				return validateMessageSort((MessageSort) value, diagnostics,
+					context);
+			case UMLPackage.OBJECT_NODE_ORDERING_KIND :
+				return validateObjectNodeOrderingKind(
+					(ObjectNodeOrderingKind) value, diagnostics, context);
+			case UMLPackage.INTERACTION_OPERATOR_KIND :
+				return validateInteractionOperatorKind(
+					(InteractionOperatorKind) value, diagnostics, context);
+			case UMLPackage.EXPANSION_KIND :
+				return validateExpansionKind((ExpansionKind) value,
+					diagnostics, context);
 			case UMLPackage.INTEGER :
 				return validateInteger(((Integer) value).intValue(),
 					diagnostics, context);
@@ -21718,7 +21733,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateVisibilityKind(Object visibilityKind,
+	public boolean validateVisibilityKind(VisibilityKind visibilityKind,
 			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
@@ -21728,7 +21743,8 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCallConcurrencyKind(Object callConcurrencyKind,
+	public boolean validateCallConcurrencyKind(
+			CallConcurrencyKind callConcurrencyKind,
 			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
@@ -21738,7 +21754,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTransitionKind(Object transitionKind,
+	public boolean validateTransitionKind(TransitionKind transitionKind,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = validateTransitionKind_state_is_local(transitionKind,
 			diagnostics, context);
@@ -21754,8 +21770,9 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTransitionKind_state_is_local(Object transitionKind,
-			DiagnosticChain diagnostics, Map context) {
+	public boolean validateTransitionKind_state_is_local(
+			TransitionKind transitionKind, DiagnosticChain diagnostics,
+			Map context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -21784,7 +21801,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTransitionKind_state_is_external(
-			Object transitionKind, DiagnosticChain diagnostics, Map context) {
+			TransitionKind transitionKind, DiagnosticChain diagnostics,
+			Map context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -21811,7 +21829,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePseudostateKind(Object pseudostateKind,
+	public boolean validatePseudostateKind(PseudostateKind pseudostateKind,
 			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
@@ -21821,7 +21839,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAggregationKind(Object aggregationKind,
+	public boolean validateAggregationKind(AggregationKind aggregationKind,
 			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
@@ -21832,17 +21850,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameterDirectionKind(
-			Object parameterDirectionKind, DiagnosticChain diagnostics,
-			Map context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateParameterEffectKind(Object parameterEffectKind,
+			ParameterDirectionKind parameterDirectionKind,
 			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
@@ -21852,7 +21860,8 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateConnectorKind(Object connectorKind,
+	public boolean validateParameterEffectKind(
+			ParameterEffectKind parameterEffectKind,
 			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
@@ -21862,7 +21871,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMessageKind(Object messageKind,
+	public boolean validateConnectorKind(ConnectorKind connectorKind,
 			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
@@ -21872,7 +21881,17 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMessageSort(Object messageSort,
+	public boolean validateMessageKind(MessageKind messageKind,
+			DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMessageSort(MessageSort messageSort,
 			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
@@ -21883,8 +21902,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectNodeOrderingKind(
-			Object objectNodeOrderingKind, DiagnosticChain diagnostics,
-			Map context) {
+			ObjectNodeOrderingKind objectNodeOrderingKind,
+			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -21894,8 +21913,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInteractionOperatorKind(
-			Object interactionOperatorKind, DiagnosticChain diagnostics,
-			Map context) {
+			InteractionOperatorKind interactionOperatorKind,
+			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -21904,7 +21923,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateExpansionKind(Object expansionKind,
+	public boolean validateExpansionKind(ExpansionKind expansionKind,
 			DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
