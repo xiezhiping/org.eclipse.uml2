@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.19 2005/11/04 22:23:05 khussey Exp $
+ * $Id: UML2Validator.java,v 1.20 2005/12/12 22:42:28 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -36,6 +36,7 @@ import org.eclipse.uml2.ActivityPartition;
 import org.eclipse.uml2.Actor;
 import org.eclipse.uml2.AddStructuralFeatureValueAction;
 import org.eclipse.uml2.AddVariableValueAction;
+import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.AnyTrigger;
 import org.eclipse.uml2.ApplyFunctionAction;
 import org.eclipse.uml2.Artifact;
@@ -47,6 +48,7 @@ import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.BroadcastSignalAction;
 import org.eclipse.uml2.CallAction;
 import org.eclipse.uml2.CallBehaviorAction;
+import org.eclipse.uml2.CallConcurrencyKind;
 import org.eclipse.uml2.CallOperationAction;
 import org.eclipse.uml2.CallTrigger;
 import org.eclipse.uml2.CentralBufferNode;
@@ -69,6 +71,7 @@ import org.eclipse.uml2.ConnectableElementTemplateParameter;
 import org.eclipse.uml2.ConnectionPointReference;
 import org.eclipse.uml2.Connector;
 import org.eclipse.uml2.ConnectorEnd;
+import org.eclipse.uml2.ConnectorKind;
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.Continuation;
 import org.eclipse.uml2.ControlFlow;
@@ -102,6 +105,7 @@ import org.eclipse.uml2.ExceptionHandler;
 import org.eclipse.uml2.ExecutableNode;
 import org.eclipse.uml2.ExecutionEnvironment;
 import org.eclipse.uml2.ExecutionOccurrence;
+import org.eclipse.uml2.ExpansionKind;
 import org.eclipse.uml2.ExpansionNode;
 import org.eclipse.uml2.ExpansionRegion;
 import org.eclipse.uml2.Expression;
@@ -131,6 +135,7 @@ import org.eclipse.uml2.InteractionConstraint;
 import org.eclipse.uml2.InteractionFragment;
 import org.eclipse.uml2.InteractionOccurrence;
 import org.eclipse.uml2.InteractionOperand;
+import org.eclipse.uml2.InteractionOperator;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.InterruptibleActivityRegion;
 import org.eclipse.uml2.Interval;
@@ -152,6 +157,8 @@ import org.eclipse.uml2.Manifestation;
 import org.eclipse.uml2.MergeNode;
 import org.eclipse.uml2.Message;
 import org.eclipse.uml2.MessageEnd;
+import org.eclipse.uml2.MessageKind;
+import org.eclipse.uml2.MessageSort;
 import org.eclipse.uml2.MessageTrigger;
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.MultiplicityElement;
@@ -160,6 +167,7 @@ import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.Node;
 import org.eclipse.uml2.ObjectFlow;
 import org.eclipse.uml2.ObjectNode;
+import org.eclipse.uml2.ObjectNodeOrderingKind;
 import org.eclipse.uml2.OpaqueExpression;
 import org.eclipse.uml2.Operation;
 import org.eclipse.uml2.OperationTemplateParameter;
@@ -168,6 +176,8 @@ import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageMerge;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.Parameter;
+import org.eclipse.uml2.ParameterDirectionKind;
+import org.eclipse.uml2.ParameterEffectKind;
 import org.eclipse.uml2.ParameterSet;
 import org.eclipse.uml2.ParameterableClassifier;
 import org.eclipse.uml2.ParameterableElement;
@@ -184,6 +194,7 @@ import org.eclipse.uml2.ProtocolConformance;
 import org.eclipse.uml2.ProtocolStateMachine;
 import org.eclipse.uml2.ProtocolTransition;
 import org.eclipse.uml2.Pseudostate;
+import org.eclipse.uml2.PseudostateKind;
 import org.eclipse.uml2.QualifierValue;
 import org.eclipse.uml2.RaiseExceptionAction;
 import org.eclipse.uml2.ReadExtentAction;
@@ -234,6 +245,7 @@ import org.eclipse.uml2.TimeInterval;
 import org.eclipse.uml2.TimeObservationAction;
 import org.eclipse.uml2.TimeTrigger;
 import org.eclipse.uml2.Transition;
+import org.eclipse.uml2.TransitionKind;
 import org.eclipse.uml2.Trigger;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.TypedElement;
@@ -245,6 +257,7 @@ import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.Variable;
 import org.eclipse.uml2.VariableAction;
 import org.eclipse.uml2.Vertex;
+import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.WriteLinkAction;
 import org.eclipse.uml2.WriteStructuralFeatureAction;
 import org.eclipse.uml2.WriteVariableAction;
@@ -1053,31 +1066,31 @@ public class UML2Validator extends EObjectValidator {
 			case UML2Package.DEPLOYMENT_SPECIFICATION:
 				return validateDeploymentSpecification((DeploymentSpecification)value, diagnostics, context);
 			case UML2Package.VISIBILITY_KIND:
-				return validateVisibilityKind((Object)value, diagnostics, context);
+				return validateVisibilityKind((VisibilityKind)value, diagnostics, context);
 			case UML2Package.PARAMETER_DIRECTION_KIND:
-				return validateParameterDirectionKind((Object)value, diagnostics, context);
+				return validateParameterDirectionKind((ParameterDirectionKind)value, diagnostics, context);
 			case UML2Package.AGGREGATION_KIND:
-				return validateAggregationKind((Object)value, diagnostics, context);
+				return validateAggregationKind((AggregationKind)value, diagnostics, context);
 			case UML2Package.CALL_CONCURRENCY_KIND:
-				return validateCallConcurrencyKind((Object)value, diagnostics, context);
+				return validateCallConcurrencyKind((CallConcurrencyKind)value, diagnostics, context);
 			case UML2Package.MESSAGE_KIND:
-				return validateMessageKind((Object)value, diagnostics, context);
+				return validateMessageKind((MessageKind)value, diagnostics, context);
 			case UML2Package.MESSAGE_SORT:
-				return validateMessageSort((Object)value, diagnostics, context);
+				return validateMessageSort((MessageSort)value, diagnostics, context);
 			case UML2Package.EXPANSION_KIND:
-				return validateExpansionKind((Object)value, diagnostics, context);
+				return validateExpansionKind((ExpansionKind)value, diagnostics, context);
 			case UML2Package.INTERACTION_OPERATOR:
-				return validateInteractionOperator((Object)value, diagnostics, context);
+				return validateInteractionOperator((InteractionOperator)value, diagnostics, context);
 			case UML2Package.TRANSITION_KIND:
-				return validateTransitionKind((Object)value, diagnostics, context);
+				return validateTransitionKind((TransitionKind)value, diagnostics, context);
 			case UML2Package.PSEUDOSTATE_KIND:
-				return validatePseudostateKind((Object)value, diagnostics, context);
+				return validatePseudostateKind((PseudostateKind)value, diagnostics, context);
 			case UML2Package.PARAMETER_EFFECT_KIND:
-				return validateParameterEffectKind((Object)value, diagnostics, context);
+				return validateParameterEffectKind((ParameterEffectKind)value, diagnostics, context);
 			case UML2Package.OBJECT_NODE_ORDERING_KIND:
-				return validateObjectNodeOrderingKind((Object)value, diagnostics, context);
+				return validateObjectNodeOrderingKind((ObjectNodeOrderingKind)value, diagnostics, context);
 			case UML2Package.CONNECTOR_KIND:
-				return validateConnectorKind((Object)value, diagnostics, context);
+				return validateConnectorKind((ConnectorKind)value, diagnostics, context);
 			case UML2Package.INTEGER:
 				return validateInteger(((Integer)value).intValue(), diagnostics, context);
 			case UML2Package.BOOLEAN:
@@ -6000,108 +6013,126 @@ public class UML2Validator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateVisibilityKind(Object visibilityKind, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validateVisibilityKind((VisibilityKind) visibilityKind, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateParameterDirectionKind(Object parameterDirectionKind, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validateParameterDirectionKind((ParameterDirectionKind) parameterDirectionKind, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateAggregationKind(Object aggregationKind, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validateAggregationKind((AggregationKind) aggregationKind, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateMessageKind(Object messageKind, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validateMessageKind((MessageKind) messageKind, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateMessageSort(Object messageSort, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validateMessageSort((MessageSort) messageSort, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateCallConcurrencyKind(Object callConcurrencyKind, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validateCallConcurrencyKind((CallConcurrencyKind) callConcurrencyKind, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateExpansionKind(Object expansionKind, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validateExpansionKind((ExpansionKind) expansionKind, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateTransitionKind(Object transitionKind, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validateTransitionKind((TransitionKind) transitionKind, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validatePseudostateKind(Object pseudostateKind, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validatePseudostateKind((PseudostateKind) pseudostateKind, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateInteractionOperator(Object interactionOperator, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validateInteractionOperator((InteractionOperator) interactionOperator, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateParameterEffectKind(Object parameterEffectKind, DiagnosticChain diagnostics, Map context) {
-		return true;
+		return validateParameterEffectKind((ParameterEffectKind) parameterEffectKind, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateObjectNodeOrderingKind(Object objectNodeOrderingKind, DiagnosticChain diagnostics, Map context) {
+		return validateObjectNodeOrderingKind((ObjectNodeOrderingKind) objectNodeOrderingKind, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateConnectorKind(Object connectorKind, DiagnosticChain diagnostics, Map context) {
+		return validateConnectorKind((ConnectorKind) connectorKind, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateVisibilityKind(VisibilityKind visibilityKind, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -6110,7 +6141,106 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateConnectorKind(Object connectorKind, DiagnosticChain diagnostics, Map context) {
+	public boolean validateParameterDirectionKind(ParameterDirectionKind parameterDirectionKind, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAggregationKind(AggregationKind aggregationKind, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCallConcurrencyKind(CallConcurrencyKind callConcurrencyKind, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMessageKind(MessageKind messageKind, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMessageSort(MessageSort messageSort, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExpansionKind(ExpansionKind expansionKind, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateInteractionOperator(InteractionOperator interactionOperator, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTransitionKind(TransitionKind transitionKind, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePseudostateKind(PseudostateKind pseudostateKind, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateParameterEffectKind(ParameterEffectKind parameterEffectKind, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateObjectNodeOrderingKind(ObjectNodeOrderingKind objectNodeOrderingKind, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateConnectorKind(ConnectorKind connectorKind, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
