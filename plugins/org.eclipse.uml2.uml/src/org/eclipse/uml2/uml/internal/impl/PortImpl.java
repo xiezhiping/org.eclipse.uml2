@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.11 2005/12/06 23:21:48 khussey Exp $
+ * $Id: PortImpl.java,v 1.12 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,7 +102,7 @@ public class PortImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_SERVICE_EDEFAULT = true;
+	protected static final boolean IS_SERVICE_EDEFAULT = false;
 
 	/**
 	 * The flag representing the value of the '{@link #isService() <em>Is Service</em>}' attribute.
@@ -121,7 +121,6 @@ public class PortImpl
 	 */
 	protected PortImpl() {
 		super();
-		eFlags |= IS_SERVICE_EFLAG;
 	}
 
 	/**
@@ -693,10 +692,10 @@ public class PortImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PORT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.PORT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.PORT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -828,14 +827,9 @@ public class PortImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PORT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PORT__NAME :
-				String name = (String) eVirtualGet(UMLPackage.PORT__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.PORT__VISIBILITY :
-				return eVirtualGet(UMLPackage.PORT__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PORT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

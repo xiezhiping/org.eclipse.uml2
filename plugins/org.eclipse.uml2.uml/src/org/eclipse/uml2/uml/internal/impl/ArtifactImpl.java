@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.9 2005/12/08 14:56:24 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -841,10 +841,10 @@ public class ArtifactImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.ARTIFACT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.ARTIFACT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.ARTIFACT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -949,11 +949,7 @@ public class ArtifactImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ARTIFACT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ARTIFACT__NAME :
-				String name = (String) eVirtualGet(UMLPackage.ARTIFACT__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.ARTIFACT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.ARTIFACT__QUALIFIED_NAME :

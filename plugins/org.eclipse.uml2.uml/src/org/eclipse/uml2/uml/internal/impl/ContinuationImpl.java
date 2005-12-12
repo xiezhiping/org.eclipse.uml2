@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.6 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,7 +59,7 @@ public class ContinuationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean SETTING_EDEFAULT = true;
+	protected static final boolean SETTING_EDEFAULT = false;
 
 	/**
 	 * The flag representing the value of the '{@link #isSetting() <em>Setting</em>}' attribute.
@@ -78,7 +78,6 @@ public class ContinuationImpl
 	 */
 	protected ContinuationImpl() {
 		super();
-		eFlags |= SETTING_EFLAG;
 	}
 
 	/**
@@ -257,10 +256,10 @@ public class ContinuationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CONTINUATION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CONTINUATION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CONTINUATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -305,14 +304,9 @@ public class ContinuationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONTINUATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONTINUATION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.CONTINUATION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CONTINUATION__VISIBILITY :
-				return eVirtualGet(UMLPackage.CONTINUATION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CONTINUATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

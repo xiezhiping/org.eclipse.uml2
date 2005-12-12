@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.6 2005/12/05 20:18:59 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.7 2005/12/12 16:58:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -101,7 +101,7 @@ public final class OpaqueExpressionOperations
 	 * <!-- begin-model-doc -->
 	 * If there is only one body then the size of the language is exactly 0 (corresponding to the default language).
 	 * The there is only one body then the size of the language is exactly 0 (corresponding to the default language).
-	 * language->isEmpty() implies (body->size() = 1)
+	 * language->isEmpty() implies (body->size() <= 1)
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

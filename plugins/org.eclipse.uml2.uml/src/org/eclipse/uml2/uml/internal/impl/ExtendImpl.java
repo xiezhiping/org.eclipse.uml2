@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -543,10 +543,10 @@ public class ExtendImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.EXTEND__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.EXTEND__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -588,14 +588,9 @@ public class ExtendImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXTEND__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXTEND__NAME :
-				String name = (String) eVirtualGet(UMLPackage.EXTEND__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.EXTEND__VISIBILITY :
-				return eVirtualGet(UMLPackage.EXTEND__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.EXTEND__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

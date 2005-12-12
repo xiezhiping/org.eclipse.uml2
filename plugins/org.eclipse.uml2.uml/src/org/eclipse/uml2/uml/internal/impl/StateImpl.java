@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.13 2005/12/08 19:38:07 khussey Exp $
+ * $Id: StateImpl.java,v 1.14 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1574,10 +1574,10 @@ public class StateImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.STATE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.STATE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.STATE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1658,14 +1658,9 @@ public class StateImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STATE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STATE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.STATE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.STATE__VISIBILITY :
-				return eVirtualGet(UMLPackage.STATE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.STATE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

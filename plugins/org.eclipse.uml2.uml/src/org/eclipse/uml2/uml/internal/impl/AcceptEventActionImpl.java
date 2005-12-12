@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.8 2005/12/06 23:21:50 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.9 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -491,10 +491,10 @@ public class AcceptEventActionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.ACCEPT_EVENT_ACTION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.ACCEPT_EVENT_ACTION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.ACCEPT_EVENT_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -566,14 +566,9 @@ public class AcceptEventActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACCEPT_EVENT_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACCEPT_EVENT_ACTION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.ACCEPT_EVENT_ACTION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.ACCEPT_EVENT_ACTION__VISIBILITY :
-				return eVirtualGet(UMLPackage.ACCEPT_EVENT_ACTION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.ACCEPT_EVENT_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.3 2005/12/01 20:04:39 khussey Exp $
+ * $Id: Element.java,v 1.4 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -149,7 +149,7 @@ public interface Element
 	 * The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

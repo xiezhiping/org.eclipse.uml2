@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Variable.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Variable.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -121,7 +121,7 @@ public interface Variable
 	 * 
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" aRequired="true" aOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" aRequired="true" aOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

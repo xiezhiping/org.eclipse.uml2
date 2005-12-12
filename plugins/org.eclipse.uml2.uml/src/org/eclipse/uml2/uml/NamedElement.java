@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.4 2005/12/01 22:16:35 khussey Exp $
+ * $Id: NamedElement.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,9 +55,11 @@ public interface NamedElement
 	 * The name of the NamedElement.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #isSetName()
+	 * @see #unsetName()
 	 * @see #setName(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamedElement_Name()
-	 * @model id="true" ordered="false"
+	 * @model unsettable="true" id="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 * @generated
 	 */
 	String getName();
@@ -67,10 +69,35 @@ public interface NamedElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #isSetName()
+	 * @see #unsetName()
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.NamedElement#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetName()
+	 * @see #getName()
+	 * @see #setName(String)
+	 * @generated
+	 */
+	void unsetName();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.NamedElement#getName <em>Name</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Name</em>' attribute is set.
+	 * @see #unsetName()
+	 * @see #getName()
+	 * @see #setName(String)
+	 * @generated
+	 */
+	boolean isSetName();
 
 	/**
 	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
@@ -82,9 +109,11 @@ public interface NamedElement
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Visibility</em>' attribute.
 	 * @see org.eclipse.uml2.uml.VisibilityKind
+	 * @see #isSetVisibility()
+	 * @see #unsetVisibility()
 	 * @see #setVisibility(VisibilityKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamedElement_Visibility()
-	 * @model ordered="false"
+	 * @model unsettable="true" ordered="false"
 	 * @generated
 	 */
 	VisibilityKind getVisibility();
@@ -95,10 +124,35 @@ public interface NamedElement
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Visibility</em>' attribute.
 	 * @see org.eclipse.uml2.uml.VisibilityKind
+	 * @see #isSetVisibility()
+	 * @see #unsetVisibility()
 	 * @see #getVisibility()
 	 * @generated
 	 */
 	void setVisibility(VisibilityKind value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.NamedElement#getVisibility <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetVisibility()
+	 * @see #getVisibility()
+	 * @see #setVisibility(VisibilityKind)
+	 * @generated
+	 */
+	void unsetVisibility();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.NamedElement#getVisibility <em>Visibility</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Visibility</em>' attribute is set.
+	 * @see #unsetVisibility()
+	 * @see #getVisibility()
+	 * @see #setVisibility(VisibilityKind)
+	 * @generated
+	 */
+	boolean isSetVisibility();
 
 	/**
 	 * Returns the value of the '<em><b>Qualified Name</b></em>' attribute.
@@ -109,7 +163,7 @@ public interface NamedElement
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualified Name</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamedElement_QualifiedName()
-	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.String" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	String getQualifiedName();
@@ -259,7 +313,7 @@ public interface NamedElement
 	 * else true
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nRequired="true" nOrdered="false" nsRequired="true" nsOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false" nsRequired="true" nsOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -272,7 +326,7 @@ public interface NamedElement
 	 * The query separator() gives the string that is used to separate names when constructing a qualified name.
 	 * result = '::'
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.String" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

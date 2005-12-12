@@ -8,19 +8,24 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionItemProvider.java,v 1.1 2005/12/07 14:20:26 khussey Exp $
+ * $Id: TransitionItemProvider.java,v 1.2 2005/12/12 16:59:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -30,6 +35,10 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
+import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
+import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -44,7 +53,7 @@ import org.eclipse.uml2.uml.edit.UMLEditPlugin;
  * @generated
  */
 public class TransitionItemProvider
-		extends RedefinableElementItemProvider
+		extends NamespaceItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
@@ -68,6 +77,9 @@ public class TransitionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addIsLeafPropertyDescriptor(object);
+			addRedefinedElementPropertyDescriptor(object);
+			addRedefinitionContextPropertyDescriptor(object);
 			addKindPropertyDescriptor(object);
 			addContainerPropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
@@ -78,6 +90,67 @@ public class TransitionItemProvider
 			addSourcePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Leaf feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsLeafPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Redefined Element feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRedefinedElementPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_RedefinableElement_redefinedElement_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinedElement_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Redefinition Context feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRedefinitionContextPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -298,6 +371,7 @@ public class TransitionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Transition.class)) {
+			case UMLPackage.TRANSITION__IS_LEAF :
 			case UMLPackage.TRANSITION__KIND :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
@@ -377,6 +451,28 @@ public class TransitionItemProvider
 	}
 
 	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCreateChildText(Object owner, Object feature,
+			Object child, Collection selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.TRANSITION__GUARD;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+				new Object[]{getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
+	}
+
+	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -384,6 +480,64 @@ public class TransitionItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection collection) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD},
+				collection);
+		}
+		return super.createRemoveCommand(domain, owner, feature, collection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, EObject value, Collection collection) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD},
+				value, collection);
+		}
+		return super.createReplaceCommand(domain, owner, feature, value,
+			collection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Command createSetCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Object value) {
+		if (feature == UMLPackage.Literals.TRANSITION__GUARD) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				value);
+		}
+		return super.createSetCommand(domain, owner, feature, value);
 	}
 
 }

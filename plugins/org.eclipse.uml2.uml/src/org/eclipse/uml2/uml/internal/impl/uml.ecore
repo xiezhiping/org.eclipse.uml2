@@ -3,12 +3,32 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uml"
     nsURI="http://www.eclipse.org/uml2/2.0.0/UML" nsPrefix="uml">
+  <eClassifiers xsi:type="ecore:EDataType" name="Integer" instanceClassName="int">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An instance of Integer is an element in the (infinite) set of integers (...-2, -1, 0, 1, 2...). It is used for integer attributes and integer expressions in the metamodel."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Boolean" instanceClassName="boolean">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Boolean is an instance of PrimitiveType. In the metamodel, Boolean defines an enumeration that denotes a logical condition. Its enumeration literals are:&#xA;&#xA;  - true: The Boolean condition is satisfied.&#xA;&#xA;  - false: The Boolean condition is not satisfied.&#xA;&#xA;&#xA;&#xA;It is used for Boolean attribute and Boolean expressions in the metamodel, such as OCL expression."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An instance of String defines a piece of text. The semantics of the string itself depends on its purpose, it can be a comment, computational language expression, OCL expression, etc. It is used for String attributes and String expressions in the metamodel."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="UnlimitedNatural" instanceClassName="int">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An instance of UnlimitedNatural is an element in the (infinite) set of naturals (0, 1, 2...). The value of infinity is shown using an asterisk ('*')."/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Comment" eSuperTypes="#//Element">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A comment is a textual annotation that can be attached to a set of elements.&#xD;&#xA;A comment gives the ability to attach various remarks to elements. A comment carries no semantic force, but may contain information that is useful to a modeler. A comment can be owned by any element."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" ordered="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" ordered="false" eType="#//String"
+        unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies a string that is the comment."/>
       </eAnnotations>
@@ -49,7 +69,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="mustBeOwned" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="mustBeOwned" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.&#xD;&#xA;result = true"/>
       </eAnnotations>
@@ -155,7 +175,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isCompatibleWith" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.&#xA;&#xA;&#xD;&#xA;result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)"/>
         </eAnnotations>
@@ -166,7 +186,7 @@
         <eParameters name="p" ordered="false" lowerBound="1" eType="#//ParameterableElement"/>
       </contents>
     </eAnnotations>
-    <eOperations name="isComputable" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isComputable" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.&#xD;&#xA;result = false"/>
       </eAnnotations>
@@ -174,7 +194,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="integerValue" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eOperations name="integerValue" ordered="false" lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query integerValue() gives a single Integer value when one can be computed.&#xD;&#xA;result = Set{}"/>
       </eAnnotations>
@@ -182,7 +202,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="booleanValue" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="booleanValue" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query booleanValue() gives a single Boolean value when one can be computed.&#xD;&#xA;result = Set{}"/>
       </eAnnotations>
@@ -190,7 +210,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="stringValue" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="stringValue" ordered="false" lowerBound="1" eType="#//String">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query stringValue() gives a single String value when one can be computed.&#xD;&#xA;result = Set{}"/>
       </eAnnotations>
@@ -198,7 +218,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="unlimitedValue" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eOperations name="unlimitedValue" ordered="false" lowerBound="1" eType="#//UnlimitedNatural">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.&#xD;&#xA;result = Set{}"/>
       </eAnnotations>
@@ -206,7 +226,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isNull" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isNull" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isNull() returns true when it can be computed that the value is null.&#xD;&#xA;result = false"/>
       </eAnnotations>
@@ -250,7 +270,7 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="getQualifiedName" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="getQualifiedName" ordered="false" lowerBound="1" eType="#//String">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.&#xD;&#xA;result = if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()&#xA;then &#xA;    self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))&#xA;else&#xA;    Set{}&#xA;endif"/>
       </eAnnotations>
@@ -266,7 +286,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isDistinguishableFrom" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isDistinguishableFrom" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.&#xD;&#xA;result = if self.oclIsKindOf(n.oclType) or n.oclIsKindOf(self.oclType)&#xA;then ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()&#xA;else true&#xA;endif"/>
       </eAnnotations>
@@ -276,7 +296,7 @@
       <eParameters name="n" ordered="false" lowerBound="1" eType="#//NamedElement"/>
       <eParameters name="ns" ordered="false" lowerBound="1" eType="#//Namespace"/>
     </eOperations>
-    <eOperations name="separator" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="separator" ordered="false" lowerBound="1" eType="#//String">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query separator() gives the string that is used to separate names when constructing a qualified name.&#xD;&#xA;result = '::'"/>
       </eAnnotations>
@@ -284,21 +304,20 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        iD="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" eType="#//String"
+        unsettable="true" iD="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The name of the NamedElement."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" ordered="false"
-        eType="#//VisibilityKind">
+        eType="#//VisibilityKind" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedName" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
-        volatile="true" transient="true" derived="true">
+        eType="#//String" changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."/>
       </eAnnotations>
@@ -351,7 +370,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EAttribute" name="visibility" ordered="false" eType="#//VisibilityKind"
-          unsettable="true">
+          defaultValueLiteral="public">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Indicates that packageable elements must always have a visibility, i.e., visibility is not optional."/>
         </eAnnotations>
@@ -364,7 +383,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A ParameterableElement can be referenced by a TemplateParameter when defining a formal template parameter for a template. A ParameterableElement can be referenced by a TemplateParameterSubstitution when used as an actual parameter in a binding of a template.&#xA;&#xA;ParameterableElement is an abstract metaclass.&#xA;&#xA;"/>
     </eAnnotations>
-    <eOperations name="isCompatibleWith" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isCompatibleWith" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.&#xD;&#xA;result = p->oclIsKindOf(self.oclType)"/>
       </eAnnotations>
@@ -373,7 +392,7 @@
       </eAnnotations>
       <eParameters name="p" ordered="false" lowerBound="1" eType="#//ParameterableElement"/>
     </eOperations>
-    <eOperations name="isTemplateParameter" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isTemplateParameter" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.&#xD;&#xA;result = templateParameter->notEmpty()"/>
       </eAnnotations>
@@ -489,7 +508,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isTemplate" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isTemplate" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isTemplate() returns whether this templateable element is actually a template.&#xD;&#xA;result = ownedSignature->notEmpty()"/>
       </eAnnotations>
@@ -614,7 +633,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="getNamesOfMember" ordered="false" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="getNamesOfMember" ordered="false" upperBound="-1" eType="#//String">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query getNamesOfMember() is overridden to take account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.&#xD;&#xA;The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.&#xD;&#xA;result = if self.ownedMember ->includes(element)&#xA;then Set{}->include(element.name)&#xA;else let elementImports: ElementImport = self.elementImport->select(ei | ei.importedElement = element) in&#xA;  if elementImports->notEmpty()&#xA;  then elementImports->collect(el | el.getName())&#xA;  else self.packageImport->select(pi | pi.importedPackage.visibleMembers()->includes(element))-> collect(pi | pi.importedPackage.getNamesOfMember(element))&#xA;  endif&#xA;endif"/>
       </eAnnotations>
@@ -623,7 +642,7 @@
       </eAnnotations>
       <eParameters name="element" ordered="false" lowerBound="1" eType="#//NamedElement"/>
     </eOperations>
-    <eOperations name="membersAreDistinguishable" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="membersAreDistinguishable" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The Boolean query membersAreDistinguishable() determines whether all of the namespace's members are distinguishable within it.&#xD;&#xA;result = self.member->forAll( memb |&#xA;self.member->excluding(memb)->forAll(other |&#xA;memb.isDistinguishableFrom(other, self)))"/>
       </eAnnotations>
@@ -724,7 +743,7 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="getName" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="getName" ordered="false" lowerBound="1" eType="#//String">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query getName() returns the name under which the imported PackageableElement will be known in the importing namespace.&#xD;&#xA;result = if self.alias->notEmpty() then&#xA;  self.alias&#xA;else&#xA;  self.importedElement.name&#xA;endif"/>
       </eAnnotations>
@@ -733,13 +752,13 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" ordered="false"
-        lowerBound="1" eType="#//VisibilityKind" unsettable="true">
+        lowerBound="1" eType="#//VisibilityKind" defaultValueLiteral="public">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the name that should be added to the namespace of the importing Package in lieu of the name of the imported PackagableElement. The aliased name must not clash with any other member name in the importing Package. By default, no alias is used.&#xD;&#xA;Specifies the name that should be added to the namespace of the importing Pack-age in lieu of the name of the imported PackagableElement. The aliased name must not clash with any other member name in the importing Package. By default, no alias is used."/>
       </eAnnotations>
@@ -772,7 +791,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" ordered="false"
-        lowerBound="1" eType="#//VisibilityKind" unsettable="true">
+        lowerBound="1" eType="#//VisibilityKind" defaultValueLiteral="public">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not."/>
       </eAnnotations>
@@ -799,7 +818,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="mustBeOwned" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query mustBeOwned() indicates whether elements of this type must have an owner.&#xD;&#xA;result = false"/>
         </eAnnotations>
@@ -824,7 +843,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="makesVisible" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="makesVisible" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.&#xD;&#xA;self.member->includes(el)&#xD;&#xA;result = (ownedMember->includes(el)) or&#xA;(elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or&#xA;(packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())"/>
       </eAnnotations>
@@ -871,12 +890,12 @@
       </eAnnotations>
       <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="appliedProfile" ordered="false"
-        upperBound="-1" eType="#//ProfileApplication" resolveProxies="false">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="profileApplication" ordered="false"
+        upperBound="-1" eType="#//ProfileApplication" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the ProfileApplications that indicate which profiles have been applied to the Package."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Namespace/packageImport"/>
+      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PackageMerge" eSuperTypes="#//DirectedRelationship">
@@ -903,7 +922,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A type serves as a constraint on the range of values represented by a typed element. Type is an abstract metaclass."/>
     </eAnnotations>
-    <eOperations name="conformsTo" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="conformsTo" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.&#xD;&#xA;result = false"/>
       </eAnnotations>
@@ -920,20 +939,19 @@
       <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProfileApplication" eSuperTypes="#//PackageImport">
+  <eClassifiers xsi:type="ecore:EClass" name="ProfileApplication" eSuperTypes="#//DirectedRelationship">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="ProfileApplication is a kind of PackageImport that adds the capability to state that a Profile is applied to a Package."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="importedProfile" ordered="false"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appliedProfile" ordered="false"
         lowerBound="1" eType="#//Profile">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the Profiles that are applied to a Package through this ProfileApplication."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//PackageImport/importedPackage"/>
+      <eAnnotations source="subsets" references="#//DirectedRelationship/target"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStrict" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied."/>
       </eAnnotations>
@@ -966,7 +984,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStereotype" ordered="false"
-        upperBound="-1" eType="#//Stereotype">
+        upperBound="-1" eType="#//Stereotype" volatile="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the Stereotypes that are owned by the Profile."/>
       </eAnnotations>
@@ -1037,8 +1055,7 @@
         <eAnnotations source="subsets" references="#//Classifier/attribute #//Namespace/ownedMember"/>
       </contents>
       <contents xsi:type="ecore:EAttribute" name="isAbstract" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-          defaultValueLiteral="false">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="True when a class is abstract.&#xD;&#xA;If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships."/>
         </eAnnotations>
@@ -1075,8 +1092,7 @@
       <eAnnotations source="redefines" references="#//Classifier/general"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isActive" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Determines whether an object specified by this class is active or not. If true, then the owning class is referred to as an active class. If false, then such a class is referred to as a passive class."/>
       </eAnnotations>
@@ -1141,7 +1157,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isTemplate" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isTemplate() returns whether this templateable element is actually a template.&#xD;&#xA;result = oclAsType(TemplatableElement).isTemplate() or general->exists(g | g.isTemplate())"/>
         </eAnnotations>
@@ -1227,7 +1243,7 @@
       </eAnnotations>
       <eParameters name="c" ordered="false" lowerBound="1" eType="#//Classifier"/>
     </eOperations>
-    <eOperations name="hasVisibilityOf" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="hasVisibilityOf" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.&#xD;&#xA;self.allParents()->collect(c | c.member)->includes(n)&#xD;&#xA;result = if (self.inheritedMember->includes(n)) then (n.visibility &lt;> #private) else true"/>
       </eAnnotations>
@@ -1236,7 +1252,7 @@
       </eAnnotations>
       <eParameters name="n" ordered="false" lowerBound="1" eType="#//NamedElement"/>
     </eOperations>
-    <eOperations name="conformsTo" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="conformsTo" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.&#xD;&#xA;result = (self=other) or (self.allParents()->includes(other))"/>
       </eAnnotations>
@@ -1255,7 +1271,7 @@
       </eAnnotations>
       <eParameters name="inhs" ordered="false" upperBound="-1" eType="#//NamedElement"/>
     </eOperations>
-    <eOperations name="maySpecializeType" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="maySpecializeType" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.&#xD;&#xA;result = self.oclIsKindOf(c.oclType)"/>
       </eAnnotations>
@@ -1273,8 +1289,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAbstract" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.&#xA;&#xA;"/>
       </eAnnotations>
@@ -1394,7 +1409,7 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="isConsistentWith" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isConsistentWith" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.&#xD;&#xA;redefinee.isRedefinitionContextValid(self)&#xA;&#xA;&#xD;&#xA;result = false"/>
       </eAnnotations>
@@ -1404,7 +1419,7 @@
       <eParameters name="redefinee" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>
     </eOperations>
     <eOperations name="isRedefinitionContextValid" ordered="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.&#xD;&#xA;result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext)))"/>
       </eAnnotations>
@@ -1414,8 +1429,7 @@
       <eParameters name="redefined" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isLeaf" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates whether it is possible to further specialize a RedefinableElement. If the value is true, then it is not possible to further specialize the RedefinableElement."/>
       </eAnnotations>
@@ -1449,7 +1463,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSubstitutable" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        eType="#//Boolean" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier."/>
       </eAnnotations>
@@ -1495,15 +1509,13 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isCovering" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates (via the associated Generalizations) whether or not the set of specific Classifiers are covering for a particular general classifier. When isCovering is true, every instance of a particular general Classifier is also an instance of at least one of its specific Classifiers for the GeneralizationSet. When isCovering is false, there are one or more instances of the particular general Classifier that are not instances of at least one of its specific Classifiers defined for the GeneralizationSet. For example, Person could have two Generalization relationships each with a different specific Classifier: Male Person and Female Person. This GeneralizationSet would be covering because every instance of Person would be an instance of Male Person or Female Person. In contrast, Person could have a three Generalization relationships involving three specific Classifiers: North American Person, Asian Person, and European Person. This GeneralizationSet would not be covering because there are instances of Person for which these three specific Classifiers do not apply. The first example, then, could be read: any Person would be specialized as either being a Male Person or a Female Personand nothing else; the second could be read: any Person would be specialized as being North American Person, Asian Person, European Person, or something else."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDisjoint" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates whether or not the set of specific Classifiers in a Generalization relationship have instance in common. If isDisjoint is true, the specific Classifiers for a particular GeneralizationSet have no members in common; that is, their intersection is empty. If isDisjoint is false, the specific Classifiers in a particular GeneralizationSet have one or more members in common; that is, their intersection is not empty. For example, Person could have two Generalization relationships, each with the different specific Classifier: Manager or Staff. This would be disjoint because every instance of Person must either be a Manager or Staff. In contrast, Person could have two Generalization relationships involving two specific (and non-covering) Classifiers: Sales Person and Manager. This GeneralizationSet would not be disjoint because there are instances of Person which can be a Sales Person and a Manager."/>
       </eAnnotations>
@@ -1526,8 +1538,7 @@
       <details key="documentation" value="A feature declares a behavioral or structural characteristic of instances of classifiers. Feature is an abstract metaclass."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStatic" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true)."/>
       </eAnnotations>
@@ -1757,11 +1768,11 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contract" ordered="false"
         lowerBound="1" eType="#//Classifier">
-      <eAnnotations source="subsets" references="#//Dependency/supplier #//DirectedRelationship/target"/>
+      <eAnnotations source="subsets" references="#//Dependency/supplier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="substitutingClassifier"
         ordered="false" lowerBound="1" eType="#//Classifier" transient="true" eOpposite="#//Classifier/substitution">
-      <eAnnotations source="subsets" references="#//Dependency/client #//DirectedRelationship/source"/>
+      <eAnnotations source="subsets" references="#//Dependency/client"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Realization" eSuperTypes="#//Abstraction">
@@ -1787,7 +1798,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          eType="#//String">
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
@@ -1800,7 +1811,7 @@
     </eOperations>
     <eOperations name="one_body_default_language" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="If there is only one body then the size of the language is exactly 0 (corresponding to the default language).&#xD;&#xA;The there is only one body then the size of the language is exactly 0 (corresponding to the default language).&#xD;&#xA;language->isEmpty() implies (body->size() = 1)"/>
+        <details key="documentation" value="If there is only one body then the size of the language is exactly 0 (corresponding to the default language).&#xD;&#xA;The there is only one body then the size of the language is exactly 0 (corresponding to the default language).&#xD;&#xA;language->isEmpty() implies (body->size() &lt;= 1)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
@@ -1819,7 +1830,7 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="value" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eOperations name="value" ordered="false" lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query value() gives an integer value for an expression intended to produce one.&#xD;&#xA;self.isIntegral()&#xD;&#xA;true"/>
       </eAnnotations>
@@ -1827,7 +1838,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isIntegral" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isIntegral" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isIntegral() tells whether an expression is intended to produce an integer.&#xD;&#xA;result = false"/>
       </eAnnotations>
@@ -1835,7 +1846,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isPositive" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isPositive" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isPositive() tells whether an integer expression has a positive value.&#xD;&#xA;self.isIntegral()&#xD;&#xA;result = false"/>
       </eAnnotations>
@@ -1843,7 +1854,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isNonNegative" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isNonNegative" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isNonNegative() tells whether an integer expression has a non-negative value.&#xD;&#xA;self.isIntegral()&#xD;&#xA;result = false"/>
       </eAnnotations>
@@ -1852,8 +1863,8 @@
       </eAnnotations>
     </eOperations>
     <eOperations name="getResult" ordered="false" eType="#//Parameter"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" lowerBound="1" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" upperBound="-1" eType="#//String"
+        unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The text of the expression, possibly in multiple languages."/>
       </eAnnotations>
@@ -1862,7 +1873,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the language. If languages are unspecified, it might be implicit from the expression body or the context. Languages are matched to body strings by order.&#xD;&#xA;Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.&#xA;&#xA;"/>
       </eAnnotations>
@@ -1919,11 +1930,11 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="getDefault" ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getDefault" ordered="false" eType="#//String"/>
     <eOperations name="setDefault" ordered="false" lowerBound="1">
-      <eParameters name="newDefault" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="newDefault" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
-    <eOperations name="isSetDefault" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isSetDefault" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eOperations name="unsetDefault" ordered="false" lowerBound="1"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameterSet" ordered="false"
         upperBound="-1" eType="#//ParameterSet" eOpposite="#//ParameterSet/parameter">
@@ -1945,8 +1956,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" volatile="true"
-        unsettable="true" derived="true">
+        eType="#//String" volatile="true" unsettable="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies a String that represents a value to be used when no argument is supplied for the Parameter."/>
       </eAnnotations>
@@ -1959,21 +1969,19 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isException" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether an output parameter may emit a value to the exclusion of the other outputs."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStream" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="effect" ordered="false"
-        eType="#//ParameterEffectKind">
+        eType="#//ParameterEffectKind" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the effect that the owner of the parameter has on values passed in or out of the parameter."/>
       </eAnnotations>
@@ -2019,7 +2027,7 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="getLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eOperations name="getLower" ordered="false" lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The derived lower attribute must equal the lowerBound.&#xD;&#xA;result = lowerBound()"/>
       </eAnnotations>
@@ -2027,7 +2035,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="getUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eOperations name="getUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The derived upper attribute must equal the upperBound.&#xD;&#xA;result = upperBound()"/>
       </eAnnotations>
@@ -2035,7 +2043,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isMultivalued" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isMultivalued" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.&#xD;&#xA;upperBound()->notEmpty()&#xD;&#xA;result = upperBound() > 1"/>
       </eAnnotations>
@@ -2043,16 +2051,16 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="includesCardinality" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="includesCardinality" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.&#xD;&#xA;upperBound()->notEmpty() and lowerBound()->notEmpty()&#xD;&#xA;result = (lowerBound() &lt;= C) and (upperBound() >= C)"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="spec"/>
       </eAnnotations>
-      <eParameters name="C" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="C" ordered="false" lowerBound="1" eType="#//Integer"/>
     </eOperations>
-    <eOperations name="includesMultiplicity" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="includesMultiplicity" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.&#xD;&#xA;self.upperBound()->notEmpty() and self.lowerBound()->notEmpty()&#xA;and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()&#xA;&#xD;&#xA;result = (self.lowerBound() &lt;= M.lowerBound()) and (self.upperBound() >= M.upperBound())"/>
       </eAnnotations>
@@ -2061,7 +2069,7 @@
       </eAnnotations>
       <eParameters name="M" ordered="false" lowerBound="1" eType="#//MultiplicityElement"/>
     </eOperations>
-    <eOperations name="lowerBound" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eOperations name="lowerBound" ordered="false" lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query lowerBound() returns the lower bound of the multiplicity as an integer.&#xD;&#xA;result = if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif"/>
       </eAnnotations>
@@ -2069,7 +2077,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="upperBound" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eOperations name="upperBound" ordered="false" lowerBound="1" eType="#//UnlimitedNatural">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.&#xD;&#xA;result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif"/>
       </eAnnotations>
@@ -2078,39 +2086,35 @@
       </eAnnotations>
     </eOperations>
     <eOperations name="setLower" ordered="false" lowerBound="1">
-      <eParameters name="newLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="newLower" ordered="false" lowerBound="1" eType="#//Integer"/>
     </eOperations>
     <eOperations name="setUpper" ordered="false" lowerBound="1">
-      <eParameters name="newUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="newUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
-    <eOperations name="isSetLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isSetLower" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eOperations name="unsetLower" ordered="false" lowerBound="1"/>
-    <eOperations name="isSetUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isSetUpper" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eOperations name="unsetUpper" ordered="false" lowerBound="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered..&#xD;&#xA;For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isUnique" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
-        defaultValueLiteral="1" unsettable="true" derived="true">
+        eType="#//UnlimitedNatural" volatile="true" unsettable="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the upper bound of the multiplicity interval.&#xD;&#xA;Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
-        defaultValueLiteral="1" unsettable="true" derived="true">
+        eType="#//Integer" volatile="true" unsettable="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the lower bound of the multiplicity interval.&#xD;&#xA;Specifies the lower bound of the multiplicity interval, if it is expressed as an integer."/>
       </eAnnotations>
@@ -2209,7 +2213,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined property is derived.&#xD;&#xA;The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined attribute is property.&#xD;&#xA;redefinee.isRedefinitionContextValid(self)&#xD;&#xA;result = redefinee.oclIsKindOf(Property) and &#xA;  let prop : Property = redefinee.oclAsType(Property) in &#xA;  (prop.type.conformsTo(self.type) and &#xA;  ((prop.lowerBound()->notEmpty() and self.lowerBound()->notEmpty()) implies prop.lowerBound() >= self.lowerBound()) and &#xA;  ((prop.upperBound()->notEmpty() and self.upperBound()->notEmpty()) implies prop.lowerBound() &lt;= self.lowerBound()) and &#xA;  (self.isDerived implies prop.isDerived) and&#xA;  (self.isComposite implies prop.isComposite))"/>
         </eAnnotations>
@@ -2220,7 +2224,7 @@
         <eParameters name="redefinee" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="isCompatibleWith" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for properties, the type must be conformant with the type of the specified parameterable element.&#xA;&#xA;&#xD;&#xA;result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)"/>
         </eAnnotations>
@@ -2231,8 +2235,7 @@
         <eParameters name="p" ordered="false" lowerBound="1" eType="#//ParameterableElement"/>
       </contents>
       <contents xsi:type="ecore:EAttribute" name="isReadOnly" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-          defaultValueLiteral="false">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="This redefines the corresponding attribute in Basic::Property and Abstractions::StructuralFeature.&#xD;&#xA;If true, the attribute may only be read, and not written."/>
         </eAnnotations>
@@ -2288,6 +2291,13 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
+    <eOperations name="subsetted_property_names" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A property may not subset a property with the same name.&#xD;&#xA;true"/>
+      </eAnnotations>
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
     <eOperations name="deployment_target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A Property can be a DeploymentTarget if it is a kind of Node and functions as a part in the internal structure of an encompassing Node.&#xD;&#xA;true"/>
@@ -2302,7 +2312,7 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="isAttribute" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isAttribute" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isAttribute() is true if the Property is defined as an attribute of some classifier.&#xD;&#xA;result = Classifier.allInstances->exists(c | c.attribute->includes(p))"/>
       </eAnnotations>
@@ -2319,7 +2329,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isComposite" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isComposite" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The value of isComposite is true only if aggregation is composite.&#xD;&#xA;result = (self.aggregation = #composite)"/>
       </eAnnotations>
@@ -2335,7 +2345,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isNavigable" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isNavigable" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isNavigable indicates whether it is possible to navigate across the property.&#xD;&#xA;The query isNavigable() indicates whether it is possible to navigate across the property.&#xD;&#xA;result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)"/>
       </eAnnotations>
@@ -2343,17 +2353,17 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="getDefault" ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getDefault" ordered="false" eType="#//String"/>
     <eOperations name="setDefault" ordered="false" lowerBound="1">
-      <eParameters name="newDefault" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="newDefault" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="setIsComposite" ordered="false" lowerBound="1">
-      <eParameters name="newIsComposite" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="newIsComposite" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="setOpposite" ordered="false" lowerBound="1">
       <eParameters name="newOpposite" ordered="false" lowerBound="1" eType="#//Property"/>
     </eOperations>
-    <eOperations name="isSetDefault" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isSetDefault" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eOperations name="unsetDefault" ordered="false" lowerBound="1"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" ordered="false"
         eType="#//DataType" transient="true" resolveProxies="false" eOpposite="#//DataType/ownedAttribute">
@@ -2363,22 +2373,19 @@
       <eAnnotations source="subsets" references="#//NamedElement/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDerived" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If isDerived is true, the value of the attribute is derived from information elsewhere.&#xD;&#xA;Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDerivedUnion" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether the property is derived as the union of all of the properties that are constrained to subset it."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" volatile="true"
-        unsettable="true" derived="true">
+        eType="#//String" volatile="true" unsettable="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies a String that represents a value to be used when no argument is supplied for the Property.&#xD;&#xA;A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated."/>
       </eAnnotations>
@@ -2390,8 +2397,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isComposite" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        volatile="true" transient="true" defaultValueLiteral="false" derived="true">
+        lowerBound="1" eType="#//Boolean" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute.&#xD;&#xA;This is a derived value, indicating whether the aggregation of the Property is composite or not."/>
       </eAnnotations>
@@ -2494,7 +2500,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The Artifacts that are deployed onto a Node. This association specializes the supplier association."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Dependency/supplier #//DirectedRelationship/target"/>
+      <eAnnotations source="subsets" references="#//Dependency/supplier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" ordered="false"
         upperBound="-1" eType="#//DeploymentSpecification" containment="true" resolveProxies="false"
@@ -2509,7 +2515,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DeployedTarget which is the target of a Deployment."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//DirectedRelationship/source #//Dependency/client"/>
+      <eAnnotations source="subsets" references="#//Dependency/client"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DeployedArtifact" abstract="true" eSuperTypes="#//NamedElement">
@@ -2536,15 +2542,13 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deploymentLocation" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        unsettable="true">
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="executionLocation" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        unsettable="true">
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The location where a component Artifact executes. This may be a local or remote location."/>
       </eAnnotations>
@@ -2561,8 +2565,7 @@
       <details key="documentation" value="In the metamodel, an Artifact is a Classifier that represents a physical entity. Artifacts may have Properties that represent features of the Artifact, and Operations that can be performed on its instances. Artifacts can be involved in Associations to other Artifacts, e.g. composition associations. Artifacts can be instantiated to represent detailed copy semantics, where different instances of the same Artifact may be deployed to various Node instances (and each may have separate property values, e.g. for a 'time-stamp' property.&#xD;&#xA;As part of the Nodes package, an Artifact is extended to become the source of a deployment to a Node. This is achieved by specializing the abstract superclass."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileName" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        unsettable="true">
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator."/>
       </eAnnotations>
@@ -2605,7 +2608,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The model element that is utilized in the manifestation in an Artifact."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//DirectedRelationship/target #//Dependency/supplier"/>
+      <eAnnotations source="subsets" references="#//Dependency/supplier"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//BehavioralFeature #//ParameterableElement #//TemplateableElement">
@@ -2614,7 +2617,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent in the sense of maintaining type covariance. Other senses of consistency may be required, for example to determine consistency in the sense of contravariance. Users may define alternative queries under names different from 'isConsistentWith()', as for example, users may define a query named 'isContravariantWith()'.&#xD;&#xA;The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining operation is consistent with a redefined operation if it has the same number of owned parameters, and the type of each owned parameter conforms to the type of the corresponding redefined parameter. &#xD;&#xA;redefinee.isRedefinitionContextValid(self)&#xD;&#xA;result = (redefinee.oclIsKindOf(Operation) and&#xA;let op: Operation = redefinee.oclAsType(Operation) in&#xA;self.ownedParameter.size() = op.ownedParameter.size() and&#xA;forAll(i | op.ownedParameter[i].type.conformsTo(self.ownedParameter[i].type))&#xA;)"/>
         </eAnnotations>
@@ -2660,7 +2663,7 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="isOrdered" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isOrdered" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If this operation has a return parameter, isOrdered equals the value of isOrdered for that parameter. Otherwise isOrdered is false.&#xD;&#xA;result = if returnResult()->notEmpty() then returnResult()->any().isOrdered else false endif"/>
       </eAnnotations>
@@ -2668,7 +2671,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isUnique" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isUnique" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If this operation has a return parameter, isUnique equals the value of isUnique for that parameter. Otherwise isUnique is true.&#xD;&#xA;If this operation has a return parameter, isUnique equals the value of isUnique for that parameter. Otherwise isUnique is true.&#xA;&#xA;&#xD;&#xA;result = if returnResult()->notEmpty() then returnResult()->any().isUnique else true endif"/>
       </eAnnotations>
@@ -2676,7 +2679,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="lowerBound" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eOperations name="lowerBound" ordered="false" lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.&#xD;&#xA;If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.&#xA;&#xA;&#xD;&#xA;result = if returnResult()->notEmpty() then returnResult()->any().lower else Set{} endif"/>
       </eAnnotations>
@@ -2684,7 +2687,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="upperBound" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eOperations name="upperBound" ordered="false" lowerBound="1" eType="#//UnlimitedNatural">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.&#xD;&#xA;If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.&#xA;&#xA;&#xD;&#xA;result = if returnResult()->notEmpty() then returnResult()->any().upper else Set{} endif"/>
       </eAnnotations>
@@ -2708,54 +2711,49 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="getLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eOperations name="getUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="getLower" ordered="false" lowerBound="1" eType="#//Integer"/>
+    <eOperations name="getUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     <eOperations name="setIsOrdered" ordered="false" lowerBound="1">
-      <eParameters name="newIsOrdered" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="newIsOrdered" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="setIsUnique" ordered="false" lowerBound="1">
-      <eParameters name="newIsUnique" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="newIsUnique" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="setLower" ordered="false" lowerBound="1">
-      <eParameters name="newLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="newLower" ordered="false" lowerBound="1" eType="#//Integer"/>
     </eOperations>
     <eOperations name="setUpper" ordered="false" lowerBound="1">
-      <eParameters name="newUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="newUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
     <eOperations name="setType" ordered="false" lowerBound="1">
       <eParameters name="newType" ordered="false" lowerBound="1" eType="#//Type"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isQuery" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false)."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        volatile="true" transient="true" defaultValueLiteral="false" derived="true">
+        lowerBound="1" eType="#//Boolean" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Redefines the corresponding property from Basic to derive this information from the return result for this Operation.&#xD;&#xA;Specifies whether the return parameter is ordered or not, if present."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isUnique" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        volatile="true" transient="true" defaultValueLiteral="true" derived="true">
+        lowerBound="1" eType="#//Boolean" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Redefines the corresponding property from Basic to derive this information from the return result for this Operation.&#xD;&#xA;Specifies whether the return parameter is unique or not, if present."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
-        transient="true" defaultValueLiteral="1" derived="true">
+        eType="#//Integer" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Redefines the corresponding property from Basic to derive this information from the return result for this Operation.&#xD;&#xA;Specifies the lower multiplicity of the return parameter, if present."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
-        transient="true" defaultValueLiteral="1" derived="true">
+        eType="#//UnlimitedNatural" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Redefines the corresponding property from Basic to derive this information from the return result for this Operation.&#xD;&#xA;Specifies the upper multiplicity of the return parameter, if present."/>
       </eAnnotations>
@@ -2793,7 +2791,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint" resolveProxies="false">
@@ -2822,7 +2820,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isDistinguishableFrom" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they have to have different signatures.&#xD;&#xA;result = if n.oclIsKindOf(BehavioralFeature)&#xA;then&#xA;  if ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->notEmpty()&#xA;  then Set{}->including(self)->including(n)->isUnique(bf | bf.ownedParameter->collect(type))&#xA;  else true&#xA;  endif&#xA;else true&#xA;endif"/>
         </eAnnotations>
@@ -2842,8 +2840,7 @@
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAbstract" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element."/>
       </eAnnotations>
@@ -2855,7 +2852,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="concurrency" ordered="false"
-        lowerBound="1" eType="#//CallConcurrencyKind" unsettable="true">
+        lowerBound="1" eType="#//CallConcurrencyKind" defaultValueLiteral="sequential">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a class with isActive being false). Active instances control access to their own behavioral features."/>
       </eAnnotations>
@@ -2907,12 +2904,8 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="getContext" ordered="false" eType="#//BehavioredClassifier"/>
-    <eOperations name="setContext" ordered="false" lowerBound="1">
-      <eParameters name="newContext" ordered="false" lowerBound="1" eType="#//BehavioredClassifier"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReentrant" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether the behavior can be invoked while it is still executing from a previous invocation."/>
       </eAnnotations>
@@ -2932,7 +2925,8 @@
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" ordered="false"
-        eType="#//BehavioredClassifier" volatile="true" transient="true" derived="true">
+        eType="#//BehavioredClassifier" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior."/>
       </eAnnotations>
@@ -3184,7 +3178,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isConsistentWith() specifies that a redefining state machine is consistent with a redefined state machine provided that the redefining state machine is an extension of the redefined state machine: Regions are inherited and regions can be added, inherited regions can be redefined. In case of multiple redefining state machines, extension implies that the redefining state machine gets orthogonal regions for each of the redefined state machines.&#xD;&#xA;result = true"/>
         </eAnnotations>
@@ -3233,7 +3227,7 @@
       <eParameters name="s1" ordered="false" lowerBound="1" eType="#//State"/>
       <eParameters name="s2" ordered="false" lowerBound="1" eType="#//State"/>
     </eOperations>
-    <eOperations name="ancestor" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="ancestor" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query ancestor(s1, s2) checks whether s2 is an ancestor state of state s1. context StateMachine::ancestor (s1 : State, s2 : State) : Boolean&#xA;&#xA;&#xD;&#xA;result = if (s2 = s1) then&#xA;true&#xA;else if (s1.container->isEmpty) then&#xA;true&#xA;else if (s2.container->isEmpty) then&#xA;false&#xA;else (ancestor (s1, s2.container))"/>
       </eAnnotations>
@@ -3244,7 +3238,7 @@
       <eParameters name="s2" ordered="false" lowerBound="1" eType="#//State"/>
     </eOperations>
     <eOperations name="isRedefinitionContextValid" ordered="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.&#xD;&#xA;result = true"/>
       </eAnnotations>
@@ -3277,7 +3271,7 @@
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extendedStateMachine" ordered="false"
-        eType="#//StateMachine">
+        upperBound="-1" eType="#//StateMachine">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The state machines of which this is an extension."/>
       </eAnnotations>
@@ -3290,7 +3284,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isConsistentWith() specifies that a redefining region is consistent with a redefined region provided that the redefining region is an extension of the redefined region, i.e. it adds vertices and transitions and it redefines states and transitions of the redefined region.&#xD;&#xA;result = true"/>
         </eAnnotations>
@@ -3307,7 +3301,6 @@
           <details key="documentation" value="References the classifier in which context this element may be redefined."/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//RedefinableElement/redefinitionContext"/>
-        <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext"/>
       </contents>
     </eAnnotations>
     <eOperations name="initial_vertex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -3347,7 +3340,7 @@
       </eAnnotations>
     </eOperations>
     <eOperations name="isRedefinitionContextValid" ordered="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isRedefinitionContextValid() specifies whether the redefinition contexts of a region are properly related to the redefinition contexts of the specified region to allow this element to redefine the other. The containing statemachine/state of a redefining region must redefine the containing statemachine/state of the redefined region.&#xD;&#xA;result = true"/>
       </eAnnotations>
@@ -3365,7 +3358,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="belongsToPSM" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="belongsToPSM" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The operation belongsToPSM () checks if the region belongs to a protocol state machine&#xD;&#xA;result = if not stateMachine->isEmpty() then&#xA;oclIsTypeOf(ProtocolStateMachine)&#xA;else if not state->isEmpty() then&#xA;state.container.belongsToPSM ()&#xA;else false"/>
       </eAnnotations>
@@ -3443,13 +3436,13 @@
       <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//RedefinableElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//Namespace #//RedefinableElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isConsistentWith() specifies that a redefining transition is consistent with a redefined transition provided that the redefining transition has the following relation to the redefined transition: A redefining transition redefines all properties of the corresponding redefined transition, except the source state and the trigger.&#xD;&#xA;result = (redefinee.oclIsKindOf(Transition) and&#xA;&#xA;  let trans: Transition = redefinee.oclAsType(Transition) in&#xA;&#xA;    (source() = trans.source() and trigger() = tran.trigger())&#xD;&#xA;redefinee.isRedefinitionContextValid(self)"/>
         </eAnnotations>
@@ -3466,7 +3459,6 @@
           <details key="documentation" value="References the classifier in which context this element may be redefined."/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//RedefinableElement/redefinitionContext"/>
-        <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext"/>
       </contents>
     </eAnnotations>
     <eOperations name="fork_segment_guards" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -3535,7 +3527,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
-        eType="#//TransitionKind" unsettable="true">
+        eType="#//TransitionKind" defaultValueLiteral="external">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates  the precise type of the transition."/>
       </eAnnotations>
@@ -3561,11 +3553,11 @@
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" ordered="false"
-        eType="#//Constraint" containment="true" resolveProxies="false">
+        eType="#//Constraint" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
+      <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="effect" ordered="false"
         eType="#//Behavior" containment="true" resolveProxies="false">
@@ -3667,15 +3659,13 @@
     <eOperations name="getProvideds" ordered="false" upperBound="-1" eType="#//Interface"/>
     <eOperations name="getRequireds" ordered="false" upperBound="-1" eType="#//Interface"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBehavior" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier. Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isService" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true indicates that this port is used to provide the published functionality of a classifier; if false, this port is used to implement the classifier but is not part of the essential externally-visible functionality of the classifier and can, therefore, be altered or deleted along with the internal implementation of the classifier and other properties that are considered part of its implementation."/>
       </eAnnotations>
@@ -3714,7 +3704,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isConsistentWith() specifies that a redefining state is consistent with a redefined state provided that the redefining state is an extension of the redefined state: A simple state can be redefined (extended) to become a composite state (by adding a region) and a composite state can be redefined (extended) by adding regions and by adding vertices, states, and transitions to inherited regions. All states may add or replace entry, exit, and 'doActivity' actions.&#xD;&#xA;result = true"/>
         </eAnnotations>
@@ -3741,7 +3731,6 @@
           <details key="documentation" value="References the classifier in which context this element may be redefined."/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//RedefinableElement/redefinitionContext"/>
-        <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext"/>
       </contents>
     </eAnnotations>
     <eOperations name="submachine_states" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -3779,7 +3768,7 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="isSimple" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isSimple" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A simple state is a state without any regions.&#xD;&#xA;result = region.isEmpty()"/>
       </eAnnotations>
@@ -3787,7 +3776,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isComposite" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isComposite" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A composite state is a state with at least one region.&#xD;&#xA;result = region.notEmpty()"/>
       </eAnnotations>
@@ -3795,7 +3784,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isOrthogonal" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isOrthogonal" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An orthogonal state is a composite state with at least 2 regions&#xD;&#xA;result = (region->size () > 1)"/>
       </eAnnotations>
@@ -3803,7 +3792,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isSubmachineState" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isSubmachineState" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Only submachine states can have a reference statemachine.&#xD;&#xA;result = submachine.notEmpty()"/>
       </eAnnotations>
@@ -3820,7 +3809,7 @@
       </eAnnotations>
     </eOperations>
     <eOperations name="isRedefinitionContextValid" ordered="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isRedefinitionContextValid() specifies whether the redefinition contexts of a state are properly related to the redefinition contexts of the specified state to allow this element to redefine the other. The containing region of a redefining state must redefine the containing region of the redefined state.&#xD;&#xA;result = true"/>
       </eAnnotations>
@@ -3831,29 +3820,25 @@
       <eParameters name="redefined" ordered="false" lowerBound="1" eType="#//State"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isComposite" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" volatile="true" transient="true" derived="true">
+        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrthogonal" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" volatile="true" transient="true" derived="true">
+        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSimple" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" volatile="true" transient="true" derived="true">
+        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSubmachineState" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" volatile="true" transient="true" derived="true">
+        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine)."/>
       </eAnnotations>
@@ -4036,7 +4021,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
-        eType="#//PseudostateKind" unsettable="true">
+        eType="#//PseudostateKind" defaultValueLiteral="initial">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice."/>
       </eAnnotations>
@@ -4150,8 +4135,7 @@
       <details key="documentation" value="A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier. Structural feature is an abstract metaclass.&#xD;&#xA;A structural feature is a typed feature of a classifier that specify the structure of instances of the classifier. Structural feature is an abstract metaclass.&#xA;By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.&#xA;"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReadOnly" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="States whether the feature's value may be modified by a client."/>
       </eAnnotations>
@@ -4218,8 +4202,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDerived" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether the association is derived from other model elements such as other associations or constraints."/>
       </eAnnotations>
@@ -4474,7 +4457,8 @@
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" eType="#//ConnectorKind">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" eType="#//ConnectorKind"
+        unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates the kind of connector."/>
       </eAnnotations>
@@ -4507,7 +4491,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, since redefinition only adds new formal parameters.&#xD;&#xA;redefinee.isRedefinitionContextValid(self)&#xD;&#xA;result = redefinee.oclIsKindOf(RedefineableTemplateSignature)"/>
         </eAnnotations>
@@ -4571,8 +4555,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowSubstitutable" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter."/>
       </eAnnotations>
@@ -4599,7 +4582,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the Interface specifying the conformance contract."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//DirectedRelationship/target #//Dependency/supplier"/>
+      <eAnnotations source="subsets" references="#//Dependency/supplier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="implementingClassifier"
         ordered="false" lowerBound="1" eType="#//BehavioredClassifier" transient="true"
@@ -4607,7 +4590,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points)."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Dependency/client #//DirectedRelationship/source"/>
+      <eAnnotations source="subsets" references="#//Dependency/client"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EncapsulatedClassifier" abstract="true"
@@ -4616,7 +4599,7 @@
       <details key="documentation" value="Extends a classifier with the ability to own ports as specific and type checked interaction points."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPort" ordered="false"
-        upperBound="-1" eType="#//Port" resolveProxies="false">
+        upperBound="-1" eType="#//Port" volatile="true" derived="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References a set of ports that an encapsulated classifier owns."/>
       </eAnnotations>
@@ -4629,12 +4612,11 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EReference" name="ownedEnd" upperBound="-1" eType="#//ExtensionEnd"
-          resolveProxies="false">
+          containment="true" resolveProxies="false">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="References the end of the extension that is typed by a Stereotype."/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//Association/ownedEnd"/>
-        <eAnnotations source="subsets" references="#//Association/ownedEnd"/>
       </contents>
     </eAnnotations>
     <eOperations name="non_owned_end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -4667,7 +4649,7 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isRequired" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isRequired" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isRequired() is true if the owned end has a multiplicity with the lower bound of 1.&#xD;&#xA;result = (ownedEnd->lowerBound() = 1)"/>
       </eAnnotations>
@@ -4676,8 +4658,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRequired" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" volatile="true" transient="true" defaultValueLiteral="false"
+        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" transient="true"
         derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the multiplicity of the Property referenced by Extension::ownedEnd; a multiplicity of 1 means that isRequired is true, but otherwise it is false. Since the default multiplicity of an ExtensionEnd is 0..1, the default value of isRequired is false."/>
@@ -4697,7 +4678,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="lowerBound" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+          eType="#//Integer">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default&#xA;&#xA;lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.&#xD;&#xA;result = lowerBound = if lowerValue->isEmpty() then 0 else lowerValue->IntegerValue() endif"/>
         </eAnnotations>
@@ -4707,15 +4688,15 @@
         <eAnnotations source="redefines" references="#//MultiplicityElement/lowerBound"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="getLower" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+          eType="#//Integer">
         <eAnnotations source="redefines" references="#//MultiplicityElement/getLower"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="setLower" ordered="false" lowerBound="1">
         <eAnnotations source="redefines" references="#//MultiplicityElement/setLower"/>
-        <eParameters name="newLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        <eParameters name="newLower" ordered="false" lowerBound="1" eType="#//Integer"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="isSetLower" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          eType="#//Boolean">
         <eAnnotations source="redefines" references="#//MultiplicityElement/isSetLower"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="unsetLower" ordered="false" lowerBound="1">
@@ -4727,8 +4708,8 @@
         </eAnnotations>
         <eAnnotations source="redefines" references="#//TypedElement/type"/>
       </contents>
-      <contents xsi:type="ecore:EAttribute" name="lower" ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-          volatile="true" defaultValueLiteral="0" unsettable="true" derived="true">
+      <contents xsi:type="ecore:EAttribute" name="lower" ordered="false" eType="#//Integer"
+          volatile="true" unsettable="true" derived="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype."/>
         </eAnnotations>
@@ -4761,7 +4742,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          eType="#//String">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query stringValue() returns the string that concatenates, in order, all the component string literals of all the subexpressions that are part of the StringExpression.&#xA;&#xA;&#xD;&#xA;result = if subExpression->notEmpty()&#xA;then subExpression->iterate(se; stringValue = | stringValue.concat(se.stringValue()))&#xA;else operand->iterate()(op; stringValue =  | stringValue.concat(op.value))"/>
         </eAnnotations>
@@ -4806,8 +4787,7 @@
       <details key="documentation" value="An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.&#xD;&#xA;An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbol" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        unsettable="true">
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The symbol associated with the node in the expression tree."/>
       </eAnnotations>
@@ -4826,7 +4806,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isComputable() is redefined to be true.&#xD;&#xA;result = true"/>
         </eAnnotations>
@@ -4836,7 +4816,7 @@
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="integerValue" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+          eType="#//Integer">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query integerValue() gives the value.&#xD;&#xA;result = value"/>
         </eAnnotations>
@@ -4846,13 +4826,12 @@
         <eAnnotations source="redefines" references="#//ValueSpecification/integerValue"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          eType="#//String">
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        unsettable="true">
+        lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The specified Integer value."/>
       </eAnnotations>
@@ -4864,7 +4843,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isComputable() is redefined to be true.&#xD;&#xA;result = true"/>
         </eAnnotations>
@@ -4874,7 +4853,7 @@
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          eType="#//String">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query stringValue() gives the value.&#xD;&#xA;result = value"/>
         </eAnnotations>
@@ -4885,8 +4864,7 @@
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        unsettable="true">
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The specified String value."/>
       </eAnnotations>
@@ -4898,7 +4876,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isComputable() is redefined to be true.&#xD;&#xA;result = true"/>
         </eAnnotations>
@@ -4908,7 +4886,7 @@
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="booleanValue" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query booleanValue() gives the value.&#xD;&#xA;result = value"/>
         </eAnnotations>
@@ -4918,13 +4896,12 @@
         <eAnnotations source="redefines" references="#//ValueSpecification/booleanValue"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          eType="#//String">
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The specified Boolean value."/>
       </eAnnotations>
@@ -4936,7 +4913,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isComputable() is redefined to be true.&#xD;&#xA;result = true"/>
         </eAnnotations>
@@ -4946,7 +4923,7 @@
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="isNull" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isNull() returns true.&#xD;&#xA;result = true"/>
         </eAnnotations>
@@ -5071,7 +5048,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          eType="#//String">
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
@@ -5088,7 +5065,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+          eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query isComputable() is redefined to be true.&#xD;&#xA;result = true"/>
         </eAnnotations>
@@ -5098,7 +5075,7 @@
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="unlimitedValue" ordered="false"
-          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+          lowerBound="1" eType="#//UnlimitedNatural">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The query unlimitedValue() gives the value.&#xD;&#xA;result = value"/>
         </eAnnotations>
@@ -5108,13 +5085,12 @@
         <eAnnotations source="redefines" references="#//ValueSpecification/unlimitedValue"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          eType="#//String">
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        unsettable="true">
+        lowerBound="1" eType="#//UnlimitedNatural">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The specified UnlimitedNatural value."/>
       </eAnnotations>
@@ -5124,14 +5100,17 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An behavior with implementation-specific semantics."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" lowerBound="1" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" upperBound="-1" eType="#//String"
+        unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the behavior in one or more languages."/>
       </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Languages the body strings use in the same order as the body strings."/>
       </eAnnotations>
@@ -5236,14 +5215,14 @@
     <eOperations name="getMessageKind" ordered="false" lowerBound="1" eType="#//MessageKind"/>
     <eOperations name="getSignature" ordered="false" eType="#//NamedElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageKind" ordered="false"
-        lowerBound="1" eType="#//MessageKind" changeable="false" volatile="true" transient="true"
+        lowerBound="1" eType="#//MessageKind" changeable="false" volatile="true" defaultValueLiteral="unknown"
         derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The derived kind of the Message (complete, lost, found or unknown)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageSort" ordered="false"
-        lowerBound="1" eType="#//MessageSort" unsettable="true">
+        lowerBound="1" eType="#//MessageSort" defaultValueLiteral="synchCall">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The sort of communication reflected by the Message"/>
       </eAnnotations>
@@ -5841,8 +5820,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReadOnly" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes)."/>
       </eAnnotations>
@@ -5863,8 +5841,7 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSingleExecution" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true, all invocations of the activity are handled by the same execution."/>
       </eAnnotations>
@@ -5933,15 +5910,13 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDimension" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether the partition groups other partitions along a dimension."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isExternal" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether the partition represents an entity to which the partitioning structure does not apply."/>
       </eAnnotations>
@@ -6085,8 +6060,7 @@
       <eAnnotations source="subsets" references="#//ActivityGroup/containedNode"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mustIsolate" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true, then the actions in the node execute in isolation from actions outside the node."/>
       </eAnnotations>
@@ -6110,7 +6084,7 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="isAccessibleBy" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="isAccessibleBy" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The isAccessibleBy() operation is not defined in standard UML. Implementations should define it to specify which actions can access a variable.&#xA;&#xA;&#xD;&#xA;result = true"/>
       </eAnnotations>
@@ -6258,8 +6232,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isControlType" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether the type of the object node is to be treated as control."/>
       </eAnnotations>
@@ -6310,8 +6283,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isControl" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether the pins provide data to the actions, or just controls when it executes it."/>
       </eAnnotations>
@@ -6751,7 +6723,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="interactionOperator" ordered="false"
-        lowerBound="1" eType="#//InteractionOperatorKind" unsettable="true">
+        lowerBound="1" eType="#//InteractionOperatorKind" defaultValueLiteral="seq">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the operation which defines the semantics of this combination of InteractionFragments."/>
       </eAnnotations>
@@ -6797,8 +6769,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="setting" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning."/>
       </eAnnotations>
@@ -6933,15 +6904,13 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDestroyLinks" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether links in which the object participates are destroyed along with the object."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDestroyOwnedObjects"
-        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether objects owned by the object are destroyed along with the object."/>
       </eAnnotations>
@@ -7172,8 +7141,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRemoveDuplicates" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether to remove duplicates of the value in nonunique structural features."/>
       </eAnnotations>
@@ -7198,8 +7166,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReplaceAll" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether existing values of the structural feature of the object should be removed before adding the new value."/>
       </eAnnotations>
@@ -7421,8 +7388,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReplaceAll" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link."/>
       </eAnnotations>
@@ -7500,8 +7466,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDestroyDuplicates" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether to destroy duplicates of the value in nonunique association ends."/>
       </eAnnotations>
@@ -7651,8 +7616,7 @@
       <details key="documentation" value="A TimeExpression defines a value specification that represents a time value."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="firstTime" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="True if the TimeExpression describes the first point in time of the NamedElement referenced by event, in cases where the NamedElement describes something which extends in time. False if the TimeExpression describes the last point in time for the referenced NamedElement."/>
       </eAnnotations>
@@ -7669,8 +7633,7 @@
       <details key="documentation" value="A duration defines a value specification that specifies the temporal distance between two time expressions that specify time instants."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="firstTime" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If the duration is between times of two NamedElements, there are two Boolean attributes, one for the start of the duration and one for the end of the duration. For each of these it holds that firstTime is true if the time information is associated with the first point in time of the NamedElement referenced by event, and false if it represents the last point in time of the NamedElement. If there is only one NamedElement referenced by event, then this attribute is irrelevant."/>
       </eAnnotations>
@@ -7883,14 +7846,17 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An action with implementation-specific semantics."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" lowerBound="1" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" upperBound="-1" eType="#//String"
+        unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the action in one or more languages."/>
       </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Languages the body strings use, in the same order as the body strings"/>
       </eAnnotations>
@@ -7936,8 +7902,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSynchronous" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true, the call is synchronous and the caller waits for completion of the invoked behavior.&#xA;&#xA;If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.&#xA;&#xA;"/>
       </eAnnotations>
@@ -8173,8 +8138,7 @@
       <details key="documentation" value="The Model construct is defined as a Package. It contains a (hierarchical) set of elements that together describe the physical system being modeled. A Model may also contain a set of elements that represents the environment of the system, typically Actors, together with their interrelationships, such as Associations and Dependencies"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewpoint" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        unsettable="true">
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The name of the viewpoint that is expressed by a model (This name may refer to a profile definition)."/>
       </eAnnotations>
@@ -8268,8 +8232,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReplaceAll" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether existing values of the variable should be removed before adding the new value."/>
       </eAnnotations>
@@ -8294,8 +8257,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRemoveDuplicates" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether to remove duplicates of the value in nonunique variables."/>
       </eAnnotations>
@@ -8411,8 +8373,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReplaceAll" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether existing classifiers should be removed before adding the new classifiers."/>
       </eAnnotations>
@@ -8470,8 +8431,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDirect" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates whether the classifier must directly classify the input object."/>
       </eAnnotations>
@@ -8744,8 +8704,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isUnmarshall" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event."/>
       </eAnnotations>
@@ -8956,8 +8915,7 @@
       <eAnnotations source="subsets" references="#//Action/input"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements."/>
       </eAnnotations>
@@ -9161,8 +9119,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isCombineDuplicate" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether tokens having objects with the same identity are combined into one by the join."/>
       </eAnnotations>
@@ -9241,15 +9198,13 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMulticast" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether the objects in the flow are passed by multicasting."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMultireceive" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tells whether the objects in the flow are gathered from respondents to multicasting."/>
       </eAnnotations>
@@ -9291,15 +9246,13 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDeterminate" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true, the modeler asserts that at most one test will succeed."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAssured" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true, the modeler asserts that at least one test will succeed."/>
       </eAnnotations>
@@ -9400,8 +9353,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTestedFirst" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true, the test is performed before the first execution of the body.&#xA;If false, the body is executed once before the test is performed.&#xA;"/>
       </eAnnotations>
@@ -9486,7 +9438,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" ordered="false" lowerBound="1"
-        eType="#//ExpansionKind" unsettable="true">
+        eType="#//ExpansionKind" defaultValueLiteral="iterative">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The way in which the executions interact:&#xA;&#xA;parallel: all interactions are independent&#xA;&#xA;iterative: the interactions occur in order of the elements&#xA;&#xA;stream: a stream of values flows into a single execution&#xA;&#xA;"/>
       </eAnnotations>
@@ -9533,14 +9485,14 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The Component that owns this ComponentRealization and which is implemented by its realizing classifiers."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//DirectedRelationship/source #//Element/owner #//Dependency/client"/>
+      <eAnnotations source="subsets" references="#//Element/owner #//Dependency/client"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingClassifier" ordered="false"
         lowerBound="1" eType="#//Classifier">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A classifier that is involved in the implementation of the Component that owns this ComponentRealization."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//DirectedRelationship/target #//Dependency/supplier"/>
+      <eAnnotations source="subsets" references="#//Dependency/supplier"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" eSuperTypes="#//Class #//Namespace">
@@ -9582,8 +9534,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isIndirectlyInstantiated"
-        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true">
+        ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at runtime (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute, e.g. «specification, «focus», «subsystem»."/>
       </eAnnotations>
@@ -9728,8 +9679,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRelative" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true">
+        lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies whether it is relative or absolute time."/>
       </eAnnotations>

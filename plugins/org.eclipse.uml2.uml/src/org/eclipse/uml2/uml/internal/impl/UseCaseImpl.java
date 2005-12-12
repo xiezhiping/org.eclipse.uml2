@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.10 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -767,10 +767,10 @@ public class UseCaseImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.USE_CASE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.USE_CASE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.USE_CASE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -884,11 +884,7 @@ public class UseCaseImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.USE_CASE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.USE_CASE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.USE_CASE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.USE_CASE__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.USE_CASE__QUALIFIED_NAME :

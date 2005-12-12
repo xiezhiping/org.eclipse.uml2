@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.10 2005/12/06 23:21:48 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.11 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -115,15 +115,6 @@ public class StructuredActivityNodeImpl
 	 * @ordered
 	 */
 	protected static final int MUST_ISOLATE_EFLAG = 1 << 9;
-
-	/**
-	 * The flag representing whether the Must Isolate attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int MUST_ISOLATE_ESETFLAG = 1 << 10;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -281,18 +272,6 @@ public class StructuredActivityNodeImpl
 					UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
 		}
 		return packageImport;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PackageImport createPackageImport(EClass eClass) {
-		PackageImport newPackageImport = (PackageImport) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
-		getPackageImports().add(newPackageImport);
-		return newPackageImport;
 	}
 
 	/**
@@ -583,41 +562,11 @@ public class StructuredActivityNodeImpl
 			eFlags |= MUST_ISOLATE_EFLAG;
 		else
 			eFlags &= ~MUST_ISOLATE_EFLAG;
-		boolean oldMustIsolateESet = (eFlags & MUST_ISOLATE_ESETFLAG) != 0;
-		eFlags |= MUST_ISOLATE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE,
-				oldMustIsolate, newMustIsolate, !oldMustIsolateESet));
+				oldMustIsolate, newMustIsolate));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetMustIsolate() {
-		boolean oldMustIsolate = (eFlags & MUST_ISOLATE_EFLAG) != 0;
-		boolean oldMustIsolateESet = (eFlags & MUST_ISOLATE_ESETFLAG) != 0;
-		if (MUST_ISOLATE_EDEFAULT)
-			eFlags |= MUST_ISOLATE_EFLAG;
-		else
-			eFlags &= ~MUST_ISOLATE_EFLAG;
-		eFlags &= ~MUST_ISOLATE_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE,
-				oldMustIsolate, MUST_ISOLATE_EDEFAULT, oldMustIsolateESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetMustIsolate() {
-		return (eFlags & MUST_ISOLATE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -1147,10 +1096,10 @@ public class StructuredActivityNodeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1210,7 +1159,7 @@ public class StructuredActivityNodeImpl
 				getNodes().clear();
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE :
-				unsetMustIsolate();
+				setMustIsolate(MUST_ISOLATE_EDEFAULT);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
 				getEdges().clear();
@@ -1237,15 +1186,9 @@ public class StructuredActivityNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VISIBILITY :
-				return eVirtualGet(
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1334,7 +1277,7 @@ public class StructuredActivityNodeImpl
 				List node = (List) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE);
 				return node != null && !node.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE :
-				return isSetMustIsolate();
+				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
 				List edge = (List) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE);
 				return edge != null && !edge.isEmpty();
@@ -1473,10 +1416,7 @@ public class StructuredActivityNodeImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mustIsolate: "); //$NON-NLS-1$
-		if ((eFlags & MUST_ISOLATE_ESETFLAG) != 0)
-			result.append((eFlags & MUST_ISOLATE_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & MUST_ISOLATE_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}

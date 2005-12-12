@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Continuation.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: Continuation.java,v 1.2 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -41,7 +41,6 @@ public interface Continuation
 
 	/**
 	 * Returns the value of the '<em><b>Setting</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -50,7 +49,7 @@ public interface Continuation
 	 * @return the value of the '<em>Setting</em>' attribute.
 	 * @see #setSetting(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getContinuation_Setting()
-	 * @model default="true" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSetting();

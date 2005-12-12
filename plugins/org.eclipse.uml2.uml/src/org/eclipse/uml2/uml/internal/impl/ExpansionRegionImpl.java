@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -70,7 +70,7 @@ public class ExpansionRegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ExpansionKind MODE_EDEFAULT = ExpansionKind.PARALLEL_LITERAL;
+	protected static final ExpansionKind MODE_EDEFAULT = ExpansionKind.ITERATIVE_LITERAL;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -110,37 +110,12 @@ public class ExpansionRegionImpl
 			? MODE_EDEFAULT
 			: newMode;
 		Object oldMode = eVirtualSet(UMLPackage.EXPANSION_REGION__MODE, mode);
-		boolean isSetChange = oldMode == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.EXPANSION_REGION__MODE, isSetChange
+				UMLPackage.EXPANSION_REGION__MODE, oldMode == EVIRTUAL_NO_VALUE
 					? MODE_EDEFAULT
-					: oldMode, mode, isSetChange));
+					: oldMode, mode));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetMode() {
-		Object oldMode = eVirtualUnset(UMLPackage.EXPANSION_REGION__MODE);
-		boolean isSetChange = oldMode != EVIRTUAL_NO_VALUE;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.EXPANSION_REGION__MODE, isSetChange
-					? oldMode
-					: MODE_EDEFAULT, MODE_EDEFAULT, isSetChange));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetMode() {
-		return eVirtualIsSet(UMLPackage.EXPANSION_REGION__MODE);
 	}
 
 	/**
@@ -599,10 +574,10 @@ public class ExpansionRegionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.EXPANSION_REGION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.EXPANSION_REGION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.EXPANSION_REGION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -662,13 +637,13 @@ public class ExpansionRegionImpl
 				getNodes().clear();
 				return;
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
-				unsetMustIsolate();
+				setMustIsolate(MUST_ISOLATE_EDEFAULT);
 				return;
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				getEdges().clear();
 				return;
 			case UMLPackage.EXPANSION_REGION__MODE :
-				unsetMode();
+				setMode(MODE_EDEFAULT);
 				return;
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
 				getInputElements().clear();
@@ -698,14 +673,9 @@ public class ExpansionRegionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXPANSION_REGION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.EXPANSION_REGION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.EXPANSION_REGION__VISIBILITY :
-				return eVirtualGet(UMLPackage.EXPANSION_REGION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.EXPANSION_REGION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -794,12 +764,13 @@ public class ExpansionRegionImpl
 				List node = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__NODE);
 				return node != null && !node.isEmpty();
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
-				return isSetMustIsolate();
+				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				List edge = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__EDGE);
 				return edge != null && !edge.isEmpty();
 			case UMLPackage.EXPANSION_REGION__MODE :
-				return isSetMode();
+				return eVirtualGet(UMLPackage.EXPANSION_REGION__MODE,
+					MODE_EDEFAULT) != MODE_EDEFAULT;
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
 				List inputElement = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__INPUT_ELEMENT);
 				return inputElement != null && !inputElement.isEmpty();
@@ -821,10 +792,8 @@ public class ExpansionRegionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mode: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.EXPANSION_REGION__MODE))
-			result.append(eVirtualGet(UMLPackage.EXPANSION_REGION__MODE));
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append(eVirtualGet(UMLPackage.EXPANSION_REGION__MODE,
+			MODE_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

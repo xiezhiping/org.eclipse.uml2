@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.3 2005/12/08 14:56:26 khussey Exp $
+ * $Id: Classifier.java,v 1.4 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -65,7 +65,6 @@ public interface Classifier
 
 	/**
 	 * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -76,7 +75,7 @@ public interface Classifier
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
 	 * @see #setIsAbstract(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_IsAbstract()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isAbstract();
@@ -538,7 +537,7 @@ public interface Classifier
 	 * The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
 	 * result = self.oclIsKindOf(c.oclType)
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" cRequired="true" cOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" cRequired="true" cOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -592,7 +591,7 @@ public interface Classifier
 	 * self.allParents()->collect(c | c.member)->includes(n)
 	 * result = if (self.inheritedMember->includes(n)) then (n.visibility <> #private) else true
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nRequired="true" nOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -605,7 +604,7 @@ public interface Classifier
 	 * The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.
 	 * result = (self=other) or (self.allParents()->includes(other))
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" otherRequired="true" otherOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

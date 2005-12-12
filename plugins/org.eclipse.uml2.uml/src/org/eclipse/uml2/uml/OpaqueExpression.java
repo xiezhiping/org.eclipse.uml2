@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -61,7 +61,7 @@ public interface OpaqueExpression
 	 * @see #isSetBodies()
 	 * @see #unsetBodies()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueExpression_Body()
-	 * @model type="java.lang.String" unsettable="true" required="true"
+	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
@@ -100,11 +100,34 @@ public interface OpaqueExpression
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' attribute list.
+	 * @see #isSetLanguages()
+	 * @see #unsetLanguages()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueExpression_Language()
-	 * @model type="java.lang.String"
+	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 * @generated
 	 */
 	List getLanguages();
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueExpression#getLanguages <em>Language</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetLanguages()
+	 * @see #getLanguages()
+	 * @generated
+	 */
+	void unsetLanguages();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.OpaqueExpression#getLanguages <em>Language</em>}' attribute list is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Language</em>' attribute list is set.
+	 * @see #unsetLanguages()
+	 * @see #getLanguages()
+	 * @generated
+	 */
+	boolean isSetLanguages();
 
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' reference.
@@ -163,7 +186,7 @@ public interface OpaqueExpression
 	 * <!-- begin-model-doc -->
 	 * If there is only one body then the size of the language is exactly 0 (corresponding to the default language).
 	 * The there is only one body then the size of the language is exactly 0 (corresponding to the default language).
-	 * language->isEmpty() implies (body->size() = 1)
+	 * language->isEmpty() implies (body->size() <= 1)
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -209,7 +232,7 @@ public interface OpaqueExpression
 	 * self.isIntegral()
 	 * true
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -222,7 +245,7 @@ public interface OpaqueExpression
 	 * The query isIntegral() tells whether an expression is intended to produce an integer.
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -236,7 +259,7 @@ public interface OpaqueExpression
 	 * self.isIntegral()
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -250,7 +273,7 @@ public interface OpaqueExpression
 	 * self.isIntegral()
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

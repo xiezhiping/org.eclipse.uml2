@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: Namespace.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -104,17 +104,6 @@ public interface Namespace
 	 * @generated
 	 */
 	List getPackageImports();
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.PackageImport} and appends it to the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.PackageImport} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.PackageImport}.
-	 * @see #getPackageImports()
-	 * @generated
-	 */
-	PackageImport createPackageImport(EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.PackageImport} and appends it to the '<em><b>Package Import</b></em>' containment reference list.
@@ -285,7 +274,7 @@ public interface Namespace
 	 *   endif
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @model type="java.lang.String" ordered="false" elementRequired="true" elementOrdered="false"
+	 * @model type="java.lang.String" dataType="org.eclipse.uml2.uml.String" ordered="false" elementRequired="true" elementOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -300,7 +289,7 @@ public interface Namespace
 	 * self.member->excluding(memb)->forAll(other |
 	 * memb.isDistinguishableFrom(other, self)))
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

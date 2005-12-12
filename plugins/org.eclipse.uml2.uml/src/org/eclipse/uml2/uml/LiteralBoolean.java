@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBoolean.java,v 1.2 2005/11/28 20:26:02 khussey Exp $
+ * $Id: LiteralBoolean.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,11 +43,9 @@ public interface LiteralBoolean
 	 * The specified Boolean value.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #isSetValue()
-	 * @see #unsetValue()
 	 * @see #setValue(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLiteralBoolean_Value()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isValue();
@@ -57,34 +55,9 @@ public interface LiteralBoolean
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #isSetValue()
-	 * @see #unsetValue()
 	 * @see #isValue()
 	 * @generated
 	 */
 	void setValue(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.LiteralBoolean#isValue <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetValue()
-	 * @see #isValue()
-	 * @see #setValue(boolean)
-	 * @generated
-	 */
-	void unsetValue();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.LiteralBoolean#isValue <em>Value</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Value</em>' attribute is set.
-	 * @see #unsetValue()
-	 * @see #isValue()
-	 * @see #setValue(boolean)
-	 * @generated
-	 */
-	boolean isSetValue();
 
 } // LiteralBoolean

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.10 2005/12/08 14:56:25 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.11 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -43,7 +43,6 @@ import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
-import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
@@ -111,7 +110,7 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_READ_ONLY_EFLAG = 1 << 14;
+	protected static final int IS_READ_ONLY_EFLAG = 1 << 12;
 
 	/**
 	 * The default value of the '{@link #isSingleExecution() <em>Is Single Execution</em>}' attribute.
@@ -131,7 +130,7 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_SINGLE_EXECUTION_EFLAG = 1 << 15;
+	protected static final int IS_SINGLE_EXECUTION_EFLAG = 1 << 13;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1049,9 +1048,6 @@ public class ActivityImpl
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ACTIVITY__CONTEXT :
-				setContext((BehavioredClassifier) newValue);
-				return;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
@@ -1102,10 +1098,10 @@ public class ActivityImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.ACTIVITY__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.ACTIVITY__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.ACTIVITY__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1204,22 +1200,19 @@ public class ActivityImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.ACTIVITY__IS_ACTIVE :
-				unsetIsActive();
+				setIsActive(IS_ACTIVE_EDEFAULT);
 				return;
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
-				unsetIsReentrant();
+				setIsReentrant(IS_REENTRANT_EDEFAULT);
 				return;
 			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
 				return;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				return;
-			case UMLPackage.ACTIVITY__CONTEXT :
-				setContext((BehavioredClassifier) null);
 				return;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
@@ -1270,11 +1263,7 @@ public class ActivityImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY__NAME :
-				String name = (String) eVirtualGet(UMLPackage.ACTIVITY__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.ACTIVITY__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.ACTIVITY__QUALIFIED_NAME :
@@ -1366,8 +1355,7 @@ public class ActivityImpl
 				List ownedConnector = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_PORT :
-				List ownedPort = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return !getOwnedPorts().isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
 				List ownedBehavior = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
@@ -1389,14 +1377,14 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.ACTIVITY__IS_ACTIVE :
-				return isSetIsActive();
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.ACTIVITY__EXTENSION :
 				return !getExtensions().isEmpty();
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
-				return isSetIsReentrant();
+				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
 				List redefinedBehavior = (List) eVirtualGet(UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null

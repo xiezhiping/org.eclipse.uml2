@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.5 2005/12/08 14:56:26 khussey Exp $
+ * $Id: State.java,v 1.6 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -119,7 +119,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Composite</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsComposite()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isComposite();
@@ -133,7 +133,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Orthogonal</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsOrthogonal()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isOrthogonal();
@@ -147,7 +147,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Simple</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsSimple()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSimple();
@@ -161,7 +161,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Submachine State</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsSubmachineState()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSubmachineState();
@@ -648,7 +648,7 @@ public interface State
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a state are properly related to the redefinition contexts of the specified state to allow this element to redefine the other. The containing region of a redefining state must redefine the containing region of the redefined state.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

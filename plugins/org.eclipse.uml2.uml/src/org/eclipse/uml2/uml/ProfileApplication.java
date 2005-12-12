@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.2 2005/11/28 20:26:02 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ package org.eclipse.uml2.uml;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ProfileApplication#getImportedProfile <em>Imported Profile</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ProfileApplication#getAppliedProfile <em>Applied Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ProfileApplication#isStrict <em>Is Strict</em>}</li>
  * </ul>
  * </p>
@@ -34,36 +34,35 @@ package org.eclipse.uml2.uml;
  * @generated
  */
 public interface ProfileApplication
-		extends PackageImport {
+		extends DirectedRelationship {
 
 	/**
-	 * Returns the value of the '<em><b>Imported Profile</b></em>' reference.
+	 * Returns the value of the '<em><b>Applied Profile</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Profiles that are applied to a Package through this ProfileApplication.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Imported Profile</em>' reference.
-	 * @see #setImportedProfile(Profile)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getProfileApplication_ImportedProfile()
+	 * @return the value of the '<em>Applied Profile</em>' reference.
+	 * @see #setAppliedProfile(Profile)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getProfileApplication_AppliedProfile()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
-	Profile getImportedProfile();
+	Profile getAppliedProfile();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProfileApplication#getImportedProfile <em>Imported Profile</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProfileApplication#getAppliedProfile <em>Applied Profile</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Imported Profile</em>' reference.
-	 * @see #getImportedProfile()
+	 * @param value the new value of the '<em>Applied Profile</em>' reference.
+	 * @see #getAppliedProfile()
 	 * @generated
 	 */
-	void setImportedProfile(Profile value);
+	void setAppliedProfile(Profile value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Strict</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -72,7 +71,7 @@ public interface ProfileApplication
 	 * @return the value of the '<em>Is Strict</em>' attribute.
 	 * @see #setIsStrict(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfileApplication_IsStrict()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isStrict();

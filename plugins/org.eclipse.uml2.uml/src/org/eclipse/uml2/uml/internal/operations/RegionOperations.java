@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionOperations.java,v 1.4 2005/12/08 19:38:07 khussey Exp $
+ * $Id: RegionOperations.java,v 1.5 2005/12/12 16:58:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -54,7 +54,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class RegionOperations extends UMLOperations {
+public final class RegionOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -240,8 +241,8 @@ public final class RegionOperations extends UMLOperations {
 		StateMachine stateMachine = region.getStateMachine();
 
 		if (stateMachine != null) {
-			return stateMachine.getExtendedStateMachine() == redefined
-				.getStateMachine();
+			return stateMachine.getExtendedStateMachines().contains(
+				redefined.getStateMachine());
 		} else {
 			State state = redefined.getState();
 

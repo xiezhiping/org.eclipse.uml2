@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.11 2005/12/08 19:38:07 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.12 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -17,7 +17,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -27,9 +26,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -37,7 +35,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
-import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -68,7 +65,7 @@ import org.eclipse.uml2.uml.internal.operations.StateMachineOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getRegions <em>Region</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getSubmachineStates <em>Submachine State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getConnectionPoints <em>Connection Point</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getExtendedStateMachine <em>Extended State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getExtendedStateMachines <em>Extended State Machine</em>}</li>
  * </ul>
  * </p>
  *
@@ -266,19 +263,13 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StateMachine getExtendedStateMachine() {
-		StateMachine extendedStateMachine = (StateMachine) eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
-		if (extendedStateMachine != null && extendedStateMachine.eIsProxy()) {
-			InternalEObject oldExtendedStateMachine = (InternalEObject) extendedStateMachine;
-			extendedStateMachine = (StateMachine) eResolveProxy(oldExtendedStateMachine);
-			if (extendedStateMachine != oldExtendedStateMachine) {
-				eVirtualSet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE,
-					extendedStateMachine);
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE,
-						oldExtendedStateMachine, extendedStateMachine));
-			}
+	public List getExtendedStateMachines() {
+		List extendedStateMachine = (List) eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
+		if (extendedStateMachine == null) {
+			eVirtualSet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE,
+				extendedStateMachine = new EObjectResolvingEList(
+					StateMachine.class, this,
+					UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE));
 		}
 		return extendedStateMachine;
 	}
@@ -288,27 +279,14 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StateMachine basicGetExtendedStateMachine() {
-		return (StateMachine) eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExtendedStateMachine(StateMachine newExtendedStateMachine) {
-		StateMachine extendedStateMachine = newExtendedStateMachine;
-		Object oldExtendedStateMachine = eVirtualSet(
-			UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE,
-			extendedStateMachine);
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE,
-				oldExtendedStateMachine == EVIRTUAL_NO_VALUE
-					? null
-					: oldExtendedStateMachine, extendedStateMachine));
-
+	public StateMachine getExtendedStateMachine(String name) {
+		for (Iterator i = getExtendedStateMachines().iterator(); i.hasNext();) {
+			StateMachine extendedStateMachine = (StateMachine) i.next();
+			if (name.equals(extendedStateMachine.getName())) {
+				return extendedStateMachine;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -744,9 +722,7 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
 				return getConnectionPoints();
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
-				if (resolve)
-					return getExtendedStateMachine();
-				return basicGetExtendedStateMachine();
+				return getExtendedStateMachines();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -908,9 +884,6 @@ public class StateMachineImpl
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__CONTEXT :
-				setContext((BehavioredClassifier) newValue);
-				return;
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
@@ -931,7 +904,8 @@ public class StateMachineImpl
 				getConnectionPoints().addAll((Collection) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
-				setExtendedStateMachine((StateMachine) newValue);
+				getExtendedStateMachines().clear();
+				getExtendedStateMachines().addAll((Collection) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -951,10 +925,10 @@ public class StateMachineImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.STATE_MACHINE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.STATE_MACHINE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1053,22 +1027,19 @@ public class StateMachineImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
-				unsetIsActive();
+				setIsActive(IS_ACTIVE_EDEFAULT);
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
-				unsetIsReentrant();
+				setIsReentrant(IS_REENTRANT_EDEFAULT);
 				return;
 			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				return;
-			case UMLPackage.STATE_MACHINE__CONTEXT :
-				setContext((BehavioredClassifier) null);
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
@@ -1086,7 +1057,7 @@ public class StateMachineImpl
 				getConnectionPoints().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
-				setExtendedStateMachine((StateMachine) null);
+				getExtendedStateMachines().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1110,11 +1081,7 @@ public class StateMachineImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STATE_MACHINE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.STATE_MACHINE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.STATE_MACHINE__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.STATE_MACHINE__QUALIFIED_NAME :
@@ -1206,8 +1173,7 @@ public class StateMachineImpl
 				List ownedConnector = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_PORT :
-				List ownedPort = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return !getOwnedPorts().isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
 				List ownedBehavior = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
@@ -1229,14 +1195,14 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
-				return isSetIsActive();
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.STATE_MACHINE__EXTENSION :
 				return !getExtensions().isEmpty();
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
-				return isSetIsReentrant();
+				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
 				List redefinedBehavior = (List) eVirtualGet(UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null
@@ -1262,7 +1228,9 @@ public class StateMachineImpl
 				List connectionPoint = (List) eVirtualGet(UMLPackage.STATE_MACHINE__CONNECTION_POINT);
 				return connectionPoint != null && !connectionPoint.isEmpty();
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
-				return eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE) != null;
+				List extendedStateMachine = (List) eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
+				return extendedStateMachine != null
+					&& !extendedStateMachine.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.2 2005/12/08 19:38:07 khussey Exp $
+ * $Id: TypeOperations.java,v 1.3 2005/12/12 16:58:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -28,7 +28,8 @@ import org.eclipse.uml2.uml.Type;
  *
  * @generated not
  */
-public final class TypeOperations extends UMLOperations {
+public final class TypeOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

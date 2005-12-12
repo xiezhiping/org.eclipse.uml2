@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.4 2005/12/01 16:00:43 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -48,7 +48,6 @@ public interface MultiplicityElement
 
 	/**
 	 * Returns the value of the '<em><b>Is Ordered</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -58,7 +57,7 @@ public interface MultiplicityElement
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
 	 * @see #setIsOrdered(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_IsOrdered()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isOrdered();
@@ -75,7 +74,6 @@ public interface MultiplicityElement
 
 	/**
 	 * Returns the value of the '<em><b>Is Unique</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -84,7 +82,7 @@ public interface MultiplicityElement
 	 * @return the value of the '<em>Is Unique</em>' attribute.
 	 * @see #setIsUnique(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_IsUnique()
-	 * @model default="true" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isUnique();
@@ -101,7 +99,6 @@ public interface MultiplicityElement
 
 	/**
 	 * Returns the value of the '<em><b>Upper</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -113,7 +110,7 @@ public interface MultiplicityElement
 	 * @see #unsetUpper()
 	 * @see #setUpper(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_Upper()
-	 * @model default="1" unsettable="true" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.UnlimitedNatural" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getUpper();
@@ -155,7 +152,6 @@ public interface MultiplicityElement
 
 	/**
 	 * Returns the value of the '<em><b>Lower</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -167,7 +163,7 @@ public interface MultiplicityElement
 	 * @see #unsetLower()
 	 * @see #setLower(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_Lower()
-	 * @model default="1" unsettable="true" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.Integer" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getLower();
@@ -349,7 +345,7 @@ public interface MultiplicityElement
 	 * upperBound()->notEmpty()
 	 * result = upperBound() > 1
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -363,7 +359,7 @@ public interface MultiplicityElement
 	 * upperBound()->notEmpty() and lowerBound()->notEmpty()
 	 * result = (lowerBound() <= C) and (upperBound() >= C)
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" CRequired="true" COrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" CDataType="org.eclipse.uml2.uml.Integer" CRequired="true" COrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -379,7 +375,7 @@ public interface MultiplicityElement
 	 * 
 	 * result = (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" MRequired="true" MOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" MRequired="true" MOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -392,7 +388,7 @@ public interface MultiplicityElement
 	 * The query lowerBound() returns the lower bound of the multiplicity as an integer.
 	 * result = if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -405,12 +401,10 @@ public interface MultiplicityElement
 	 * The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
 	 * result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	int upperBound();
-
-	static final int UNLIMITED_UPPER_BOUND = -1;
 
 } // MultiplicityElement

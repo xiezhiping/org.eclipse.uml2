@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionData.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: LinkEndDestructionData.java,v 1.2 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -46,7 +46,6 @@ public interface LinkEndDestructionData
 
 	/**
 	 * Returns the value of the '<em><b>Is Destroy Duplicates</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -55,7 +54,7 @@ public interface LinkEndDestructionData
 	 * @return the value of the '<em>Is Destroy Duplicates</em>' attribute.
 	 * @see #setIsDestroyDuplicates(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLinkEndDestructionData_IsDestroyDuplicates()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDestroyDuplicates();

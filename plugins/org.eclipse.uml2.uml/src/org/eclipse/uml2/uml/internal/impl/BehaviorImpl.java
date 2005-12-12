@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.11 2005/12/08 14:56:25 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.12 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,16 +97,7 @@ public class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_REENTRANT_EFLAG = 1 << 12;
-
-	/**
-	 * The flag representing whether the Is Reentrant attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_REENTRANT_ESETFLAG = 1 << 13;
+	protected static final int IS_REENTRANT_EFLAG = 1 << 11;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -207,41 +198,11 @@ public class BehaviorImpl
 			eFlags |= IS_REENTRANT_EFLAG;
 		else
 			eFlags &= ~IS_REENTRANT_EFLAG;
-		boolean oldIsReentrantESet = (eFlags & IS_REENTRANT_ESETFLAG) != 0;
-		eFlags |= IS_REENTRANT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIOR__IS_REENTRANT, oldIsReentrant,
-				newIsReentrant, !oldIsReentrantESet));
+				newIsReentrant));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsReentrant() {
-		boolean oldIsReentrant = (eFlags & IS_REENTRANT_EFLAG) != 0;
-		boolean oldIsReentrantESet = (eFlags & IS_REENTRANT_ESETFLAG) != 0;
-		if (IS_REENTRANT_EDEFAULT)
-			eFlags |= IS_REENTRANT_EFLAG;
-		else
-			eFlags &= ~IS_REENTRANT_EFLAG;
-		eFlags &= ~IS_REENTRANT_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.BEHAVIOR__IS_REENTRANT, oldIsReentrant,
-				IS_REENTRANT_EDEFAULT, oldIsReentrantESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsReentrant() {
-		return (eFlags & IS_REENTRANT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -334,15 +295,6 @@ public class BehaviorImpl
 	 */
 	public BehavioredClassifier basicGetContext() {
 		return BehaviorOperations.getContext(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContext(BehavioredClassifier newContext) {
-		BehaviorOperations.setContext(this, newContext);
 	}
 
 	/**
@@ -999,9 +951,6 @@ public class BehaviorImpl
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
 				return;
-			case UMLPackage.BEHAVIOR__CONTEXT :
-				setContext((BehavioredClassifier) newValue);
-				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
@@ -1027,10 +976,10 @@ public class BehaviorImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.BEHAVIOR__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.BEHAVIOR__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.BEHAVIOR__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1129,22 +1078,19 @@ public class BehaviorImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
-				unsetIsActive();
+				setIsActive(IS_ACTIVE_EDEFAULT);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
-				unsetIsReentrant();
+				setIsReentrant(IS_REENTRANT_EDEFAULT);
 				return;
 			case UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				return;
-			case UMLPackage.BEHAVIOR__CONTEXT :
-				setContext((BehavioredClassifier) null);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
@@ -1174,11 +1120,7 @@ public class BehaviorImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.BEHAVIOR__NAME :
-				String name = (String) eVirtualGet(UMLPackage.BEHAVIOR__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.BEHAVIOR__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.BEHAVIOR__QUALIFIED_NAME :
@@ -1270,8 +1212,7 @@ public class BehaviorImpl
 				List ownedConnector = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_PORT :
-				List ownedPort = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return !getOwnedPorts().isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_BEHAVIOR :
 				List ownedBehavior = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
@@ -1293,14 +1234,14 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
-				return isSetIsActive();
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.BEHAVIOR__EXTENSION :
 				return !getExtensions().isEmpty();
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
-				return isSetIsReentrant();
+				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR :
 				List redefinedBehavior = (List) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null
@@ -1331,10 +1272,7 @@ public class BehaviorImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isReentrant: "); //$NON-NLS-1$
-		if ((eFlags & IS_REENTRANT_ESETFLAG) != 0)
-			result.append((eFlags & IS_REENTRANT_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & IS_REENTRANT_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}

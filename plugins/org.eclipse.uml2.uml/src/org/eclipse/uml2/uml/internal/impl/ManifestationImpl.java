@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.6 2005/12/06 23:21:51 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,10 +24,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -44,7 +42,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ManifestationImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ManifestationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ManifestationImpl#getUtilizedElement <em>Utilized Element</em>}</li>
  * </ul>
@@ -72,23 +69,6 @@ public class ManifestationImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.MANIFESTATION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.MANIFESTATION__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.MANIFESTATION__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.MANIFESTATION__TARGET, new int[]{
-						UMLPackage.MANIFESTATION__SUPPLIER,
-						UMLPackage.MANIFESTATION__UTILIZED_ELEMENT}));
-		}
-		return target;
 	}
 
 	/**
@@ -286,10 +266,10 @@ public class ManifestationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.MANIFESTATION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.MANIFESTATION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -337,11 +317,7 @@ public class ManifestationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.MANIFESTATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MANIFESTATION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.MANIFESTATION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.MANIFESTATION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.MANIFESTATION__QUALIFIED_NAME :
@@ -377,16 +353,6 @@ public class ManifestationImpl
 				return eVirtualGet(UMLPackage.MANIFESTATION__UTILIZED_ELEMENT) != null;
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetTargets() {
-		return super.isSetTargets()
-			|| eIsSet(UMLPackage.MANIFESTATION__UTILIZED_ELEMENT);
 	}
 
 } //ManifestationImpl

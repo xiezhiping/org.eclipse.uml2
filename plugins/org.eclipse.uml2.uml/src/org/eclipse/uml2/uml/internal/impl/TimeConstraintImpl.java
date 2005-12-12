@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.6 2005/12/06 23:21:48 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.7 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -211,11 +211,7 @@ public class TimeConstraintImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TIME_CONSTRAINT__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.TIME_CONSTRAINT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.TIME_CONSTRAINT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.TIME_CONSTRAINT__QUALIFIED_NAME :

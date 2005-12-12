@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragment.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
+ * $Id: CombinedFragment.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,6 +44,7 @@ public interface CombinedFragment
 
 	/**
 	 * Returns the value of the '<em><b>Interaction Operator</b></em>' attribute.
+	 * The default value is <code>"seq"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.uml2.uml.InteractionOperatorKind}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,11 +53,9 @@ public interface CombinedFragment
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interaction Operator</em>' attribute.
 	 * @see org.eclipse.uml2.uml.InteractionOperatorKind
-	 * @see #isSetInteractionOperator()
-	 * @see #unsetInteractionOperator()
 	 * @see #setInteractionOperator(InteractionOperatorKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getCombinedFragment_InteractionOperator()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model default="seq" required="true" ordered="false"
 	 * @generated
 	 */
 	InteractionOperatorKind getInteractionOperator();
@@ -67,35 +66,10 @@ public interface CombinedFragment
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Interaction Operator</em>' attribute.
 	 * @see org.eclipse.uml2.uml.InteractionOperatorKind
-	 * @see #isSetInteractionOperator()
-	 * @see #unsetInteractionOperator()
 	 * @see #getInteractionOperator()
 	 * @generated
 	 */
 	void setInteractionOperator(InteractionOperatorKind value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.CombinedFragment#getInteractionOperator <em>Interaction Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetInteractionOperator()
-	 * @see #getInteractionOperator()
-	 * @see #setInteractionOperator(InteractionOperatorKind)
-	 * @generated
-	 */
-	void unsetInteractionOperator();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.CombinedFragment#getInteractionOperator <em>Interaction Operator</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Interaction Operator</em>' attribute is set.
-	 * @see #unsetInteractionOperator()
-	 * @see #getInteractionOperator()
-	 * @see #setInteractionOperator(InteractionOperatorKind)
-	 * @generated
-	 */
-	boolean isSetInteractionOperator();
 
 	/**
 	 * Returns the value of the '<em><b>Operand</b></em>' containment reference list.

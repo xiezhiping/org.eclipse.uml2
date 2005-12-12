@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.3 2005/11/29 19:53:45 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.4 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -45,7 +45,6 @@ public interface RedefinableElement
 
 	/**
 	 * Returns the value of the '<em><b>Is Leaf</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -54,7 +53,7 @@ public interface RedefinableElement
 	 * @return the value of the '<em>Is Leaf</em>' attribute.
 	 * @see #setIsLeaf(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableElement_IsLeaf()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isLeaf();
@@ -154,7 +153,7 @@ public interface RedefinableElement
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
 	 * result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext)))
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -170,7 +169,7 @@ public interface RedefinableElement
 	 * 
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" redefineeRequired="true" redefineeOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" redefineeRequired="true" redefineeOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

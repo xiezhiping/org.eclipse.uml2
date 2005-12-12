@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -293,10 +293,10 @@ public class ReceptionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.RECEPTION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.RECEPTION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.RECEPTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -323,13 +323,13 @@ public class ReceptionImpl
 				getOwnedParameters().clear();
 				return;
 			case UMLPackage.RECEPTION__IS_ABSTRACT :
-				unsetIsAbstract();
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
 				return;
 			case UMLPackage.RECEPTION__METHOD :
 				getMethods().clear();
 				return;
 			case UMLPackage.RECEPTION__CONCURRENCY :
-				unsetConcurrency();
+				setConcurrency(CONCURRENCY_EDEFAULT);
 				return;
 			case UMLPackage.RECEPTION__RAISED_EXCEPTION :
 				getRaisedExceptions().clear();
@@ -362,14 +362,9 @@ public class ReceptionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.RECEPTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.RECEPTION__NAME :
-				String name = (String) eVirtualGet(UMLPackage.RECEPTION__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.RECEPTION__VISIBILITY :
-				return eVirtualGet(UMLPackage.RECEPTION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.RECEPTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -410,12 +405,13 @@ public class ReceptionImpl
 				List ownedParameter = (List) eVirtualGet(UMLPackage.RECEPTION__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.RECEPTION__IS_ABSTRACT :
-				return isSetIsAbstract();
+				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.RECEPTION__METHOD :
 				List method = (List) eVirtualGet(UMLPackage.RECEPTION__METHOD);
 				return method != null && !method.isEmpty();
 			case UMLPackage.RECEPTION__CONCURRENCY :
-				return isSetConcurrency();
+				return eVirtualGet(UMLPackage.RECEPTION__CONCURRENCY,
+					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
 			case UMLPackage.RECEPTION__RAISED_EXCEPTION :
 				List raisedException = (List) eVirtualGet(UMLPackage.RECEPTION__RAISED_EXCEPTION);
 				return raisedException != null && !raisedException.isEmpty();

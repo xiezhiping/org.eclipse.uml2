@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.11 2005/12/08 14:56:25 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.12 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -83,7 +83,7 @@ public class ComponentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_INDIRECTLY_INSTANTIATED_EDEFAULT = true;
+	protected static final boolean IS_INDIRECTLY_INSTANTIATED_EDEFAULT = false;
 
 	/**
 	 * The flag representing the value of the '{@link #isIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}' attribute.
@@ -93,7 +93,7 @@ public class ComponentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = 1 << 12;
+	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = 1 << 11;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,7 +102,6 @@ public class ComponentImpl
 	 */
 	protected ComponentImpl() {
 		super();
-		eFlags |= IS_INDIRECTLY_INSTANTIATED_EFLAG;
 	}
 
 	/**
@@ -882,10 +881,10 @@ public class ComponentImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.COMPONENT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.COMPONENT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -984,7 +983,7 @@ public class ComponentImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.COMPONENT__IS_ACTIVE :
-				unsetIsActive();
+				setIsActive(IS_ACTIVE_EDEFAULT);
 				return;
 			case UMLPackage.COMPONENT__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -1020,11 +1019,7 @@ public class ComponentImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.COMPONENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COMPONENT__NAME :
-				String name = (String) eVirtualGet(UMLPackage.COMPONENT__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.COMPONENT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.COMPONENT__QUALIFIED_NAME :
@@ -1116,8 +1111,7 @@ public class ComponentImpl
 				List ownedConnector = (List) eVirtualGet(UMLPackage.COMPONENT__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_PORT :
-				List ownedPort = (List) eVirtualGet(UMLPackage.COMPONENT__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return !getOwnedPorts().isEmpty();
 			case UMLPackage.COMPONENT__OWNED_BEHAVIOR :
 				List ownedBehavior = (List) eVirtualGet(UMLPackage.COMPONENT__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
@@ -1139,7 +1133,7 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.COMPONENT__IS_ACTIVE :
-				return isSetIsActive();
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.COMPONENT__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.COMPONENT__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();

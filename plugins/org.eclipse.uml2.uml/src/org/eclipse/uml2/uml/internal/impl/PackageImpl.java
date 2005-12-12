@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.10 2005/12/07 14:18:19 khussey Exp $
+ * $Id: PackageImpl.java,v 1.11 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -38,13 +38,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
-
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
-import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.ParameterableElement;
@@ -78,12 +74,11 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getPackagedElements <em>Packaged Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getPackageImports <em>Package Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getPackageMerges <em>Package Merge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedTypes <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getNestedPackages <em>Nested Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getNestingPackage <em>Nesting Package</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getAppliedProfiles <em>Applied Profile</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getProfileApplications <em>Profile Application</em>}</li>
  * </ul>
  * </p>
  *
@@ -278,28 +273,13 @@ public class PackageImpl
 			: newVisibility;
 		Object oldVisibility = eVirtualSet(UMLPackage.PACKAGE__VISIBILITY,
 			visibility);
-		boolean isSetChange = oldVisibility == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PACKAGE__VISIBILITY, isSetChange
+				UMLPackage.PACKAGE__VISIBILITY,
+				oldVisibility == EVIRTUAL_NO_VALUE
 					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility, isSetChange));
+					: oldVisibility, visibility));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetVisibility() {
-		Object oldVisibility = eVirtualUnset(UMLPackage.PACKAGE__VISIBILITY);
-		boolean isSetChange = oldVisibility != EVIRTUAL_NO_VALUE;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.PACKAGE__VISIBILITY, isSetChange
-					? oldVisibility
-					: VISIBILITY_EDEFAULT, VISIBILITY_EDEFAULT, isSetChange));
 	}
 
 	/**
@@ -308,7 +288,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public boolean isSetVisibility() {
-		return eVirtualIsSet(UMLPackage.PACKAGE__VISIBILITY);
+		return eVirtualGet(UMLPackage.PACKAGE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -329,7 +309,8 @@ public class PackageImpl
 						UMLPackage.PACKAGE__OWNED_MEMBER,
 						UMLPackage.PACKAGE__TEMPLATE_BINDING,
 						UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
-						UMLPackage.PACKAGE__PACKAGE_MERGE}));
+						UMLPackage.PACKAGE__PACKAGE_MERGE,
+						UMLPackage.PACKAGE__PROFILE_APPLICATION}));
 		}
 		return ownedElement;
 	}
@@ -516,24 +497,6 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPackageImports() {
-		List packageImport = (List) eVirtualGet(UMLPackage.PACKAGE__PACKAGE_IMPORT);
-		if (packageImport == null) {
-			eVirtualSet(UMLPackage.PACKAGE__PACKAGE_IMPORT,
-				packageImport = new SupersetEObjectContainmentWithInverseEList(
-					PackageImport.class, this,
-					UMLPackage.PACKAGE__PACKAGE_IMPORT,
-					new int[]{UMLPackage.PACKAGE__APPLIED_PROFILE},
-					UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
-		}
-		return packageImport;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public List getPackageMerges() {
 		List packageMerge = (List) eVirtualGet(UMLPackage.PACKAGE__PACKAGE_MERGE);
 		if (packageMerge == null) {
@@ -678,16 +641,27 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getAppliedProfiles() {
-		List appliedProfile = (List) eVirtualGet(UMLPackage.PACKAGE__APPLIED_PROFILE);
-		if (appliedProfile == null) {
-			eVirtualSet(UMLPackage.PACKAGE__APPLIED_PROFILE,
-				appliedProfile = new SubsetEObjectEList(
+	public List getProfileApplications() {
+		List profileApplication = (List) eVirtualGet(UMLPackage.PACKAGE__PROFILE_APPLICATION);
+		if (profileApplication == null) {
+			eVirtualSet(UMLPackage.PACKAGE__PROFILE_APPLICATION,
+				profileApplication = new EObjectContainmentEList(
 					ProfileApplication.class, this,
-					UMLPackage.PACKAGE__APPLIED_PROFILE,
-					new int[]{UMLPackage.PACKAGE__PACKAGE_IMPORT}));
+					UMLPackage.PACKAGE__PROFILE_APPLICATION));
 		}
-		return appliedProfile;
+		return profileApplication;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProfileApplication createProfileApplication() {
+		ProfileApplication newProfileApplication = UMLFactory.eINSTANCE
+			.createProfileApplication();
+		getProfileApplications().add(newProfileApplication);
+		return newProfileApplication;
 	}
 
 	/**
@@ -887,6 +861,9 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__PACKAGED_ELEMENT :
 				return ((InternalEList) getPackagedElements()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
+				return ((InternalEList) getProfileApplications()).basicRemove(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -974,8 +951,8 @@ public class PackageImpl
 				if (resolve)
 					return getNestingPackage();
 				return basicGetNestingPackage();
-			case UMLPackage.PACKAGE__APPLIED_PROFILE :
-				return getAppliedProfiles();
+			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
+				return getProfileApplications();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1052,9 +1029,9 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.PACKAGE__APPLIED_PROFILE :
-				getAppliedProfiles().clear();
-				getAppliedProfiles().addAll((Collection) newValue);
+			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
+				getProfileApplications().clear();
+				getProfileApplications().addAll((Collection) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1074,10 +1051,10 @@ public class PackageImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PACKAGE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.PACKAGE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.PACKAGE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1121,8 +1098,8 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.PACKAGE__APPLIED_PROFILE :
-				getAppliedProfiles().clear();
+			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
+				getProfileApplications().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1146,11 +1123,7 @@ public class PackageImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PACKAGE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PACKAGE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.PACKAGE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.PACKAGE__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.PACKAGE__QUALIFIED_NAME :
@@ -1200,9 +1173,10 @@ public class PackageImpl
 				return !getNestedPackages().isEmpty();
 			case UMLPackage.PACKAGE__NESTING_PACKAGE :
 				return basicGetNestingPackage() != null;
-			case UMLPackage.PACKAGE__APPLIED_PROFILE :
-				List appliedProfile = (List) eVirtualGet(UMLPackage.PACKAGE__APPLIED_PROFILE);
-				return appliedProfile != null && !appliedProfile.isEmpty();
+			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
+				List profileApplication = (List) eVirtualGet(UMLPackage.PACKAGE__PROFILE_APPLICATION);
+				return profileApplication != null
+					&& !profileApplication.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1288,10 +1262,8 @@ public class PackageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.PACKAGE__VISIBILITY))
-			result.append(eVirtualGet(UMLPackage.PACKAGE__VISIBILITY));
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append(eVirtualGet(UMLPackage.PACKAGE__VISIBILITY,
+			VISIBILITY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}
@@ -1328,7 +1300,8 @@ public class PackageImpl
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.PACKAGE__TEMPLATE_BINDING)
 			|| eIsSet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE)
-			|| eIsSet(UMLPackage.PACKAGE__PACKAGE_MERGE);
+			|| eIsSet(UMLPackage.PACKAGE__PACKAGE_MERGE)
+			|| eIsSet(UMLPackage.PACKAGE__PROFILE_APPLICATION);
 	}
 
 	/**

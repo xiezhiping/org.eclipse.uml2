@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.2 2005/12/08 14:56:26 khussey Exp $
+ * $Id: Connector.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -133,9 +133,11 @@ public interface Connector
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ConnectorKind
+	 * @see #isSetKind()
+	 * @see #unsetKind()
 	 * @see #setKind(ConnectorKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_Kind()
-	 * @model ordered="false"
+	 * @model unsettable="true" ordered="false"
 	 * @generated
 	 */
 	ConnectorKind getKind();
@@ -146,10 +148,35 @@ public interface Connector
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ConnectorKind
+	 * @see #isSetKind()
+	 * @see #unsetKind()
 	 * @see #getKind()
 	 * @generated
 	 */
 	void setKind(ConnectorKind value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Connector#getKind <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetKind()
+	 * @see #getKind()
+	 * @see #setKind(ConnectorKind)
+	 * @generated
+	 */
+	void unsetKind();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Connector#getKind <em>Kind</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Kind</em>' attribute is set.
+	 * @see #unsetKind()
+	 * @see #getKind()
+	 * @see #setKind(ConnectorKind)
+	 * @generated
+	 */
+	boolean isSetKind();
 
 	/**
 	 * Returns the value of the '<em><b>Contract</b></em>' reference list.

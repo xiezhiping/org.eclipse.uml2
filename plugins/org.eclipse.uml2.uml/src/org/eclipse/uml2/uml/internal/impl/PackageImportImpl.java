@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -143,37 +143,13 @@ public class PackageImportImpl
 			: newVisibility;
 		Object oldVisibility = eVirtualSet(
 			UMLPackage.PACKAGE_IMPORT__VISIBILITY, visibility);
-		boolean isSetChange = oldVisibility == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PACKAGE_IMPORT__VISIBILITY, isSetChange
+				UMLPackage.PACKAGE_IMPORT__VISIBILITY,
+				oldVisibility == EVIRTUAL_NO_VALUE
 					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility, isSetChange));
+					: oldVisibility, visibility));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetVisibility() {
-		Object oldVisibility = eVirtualUnset(UMLPackage.PACKAGE_IMPORT__VISIBILITY);
-		boolean isSetChange = oldVisibility != EVIRTUAL_NO_VALUE;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.PACKAGE_IMPORT__VISIBILITY, isSetChange
-					? oldVisibility
-					: VISIBILITY_EDEFAULT, VISIBILITY_EDEFAULT, isSetChange));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetVisibility() {
-		return eVirtualIsSet(UMLPackage.PACKAGE_IMPORT__VISIBILITY);
 	}
 
 	/**
@@ -411,7 +387,7 @@ public class PackageImportImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				unsetVisibility();
+				setVisibility(VISIBILITY_EDEFAULT);
 				return;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				setImportedPackage((org.eclipse.uml2.uml.Package) null);
@@ -447,7 +423,8 @@ public class PackageImportImpl
 			case UMLPackage.PACKAGE_IMPORT__TARGET :
 				return isSetTargets();
 			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				return isSetVisibility();
+				return eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				return eVirtualGet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE) != null;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
@@ -467,10 +444,8 @@ public class PackageImportImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.PACKAGE_IMPORT__VISIBILITY))
-			result.append(eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY));
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append(eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY,
+			VISIBILITY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

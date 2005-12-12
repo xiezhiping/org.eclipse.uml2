@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: AddVariableValueActionImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -479,10 +479,10 @@ public class AddVariableValueActionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -557,15 +557,9 @@ public class AddVariableValueActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ADD_VARIABLE_VALUE_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.ADD_VARIABLE_VALUE_ACTION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__VISIBILITY :
-				return eVirtualGet(
-					UMLPackage.ADD_VARIABLE_VALUE_ACTION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

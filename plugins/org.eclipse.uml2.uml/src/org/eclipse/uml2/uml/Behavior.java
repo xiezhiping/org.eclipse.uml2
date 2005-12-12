@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.4 2005/12/08 14:56:27 khussey Exp $
+ * $Id: Behavior.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -70,11 +70,9 @@ public interface Behavior
 	 * Tells whether the behavior can be invoked while it is still executing from a previous invocation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Reentrant</em>' attribute.
-	 * @see #isSetIsReentrant()
-	 * @see #unsetIsReentrant()
 	 * @see #setIsReentrant(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_IsReentrant()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isReentrant();
@@ -84,35 +82,10 @@ public interface Behavior
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Reentrant</em>' attribute.
-	 * @see #isSetIsReentrant()
-	 * @see #unsetIsReentrant()
 	 * @see #isReentrant()
 	 * @generated
 	 */
 	void setIsReentrant(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Behavior#isReentrant <em>Is Reentrant</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetIsReentrant()
-	 * @see #isReentrant()
-	 * @see #setIsReentrant(boolean)
-	 * @generated
-	 */
-	void unsetIsReentrant();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Behavior#isReentrant <em>Is Reentrant</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Is Reentrant</em>' attribute is set.
-	 * @see #unsetIsReentrant()
-	 * @see #isReentrant()
-	 * @see #setIsReentrant(boolean)
-	 * @generated
-	 */
-	boolean isSetIsReentrant();
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Behavior</b></em>' reference list.
@@ -186,22 +159,11 @@ public interface Behavior
 	 * The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Context</em>' reference.
-	 * @see #setContext(BehavioredClassifier)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Context()
-	 * @model transient="true" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	BehavioredClassifier getContext();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Behavior#getContext <em>Context</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Context</em>' reference.
-	 * @see #getContext()
-	 * @generated
-	 */
-	void setContext(BehavioredClassifier value);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Parameter Set</b></em>' containment reference list.

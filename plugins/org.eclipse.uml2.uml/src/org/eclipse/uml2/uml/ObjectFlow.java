@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlow.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: ObjectFlow.java,v 1.2 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,7 +44,6 @@ public interface ObjectFlow
 
 	/**
 	 * Returns the value of the '<em><b>Is Multicast</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -53,7 +52,7 @@ public interface ObjectFlow
 	 * @return the value of the '<em>Is Multicast</em>' attribute.
 	 * @see #setIsMulticast(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getObjectFlow_IsMulticast()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isMulticast();
@@ -70,7 +69,6 @@ public interface ObjectFlow
 
 	/**
 	 * Returns the value of the '<em><b>Is Multireceive</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -79,7 +77,7 @@ public interface ObjectFlow
 	 * @return the value of the '<em>Is Multireceive</em>' attribute.
 	 * @see #setIsMultireceive(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getObjectFlow_IsMultireceive()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isMultireceive();

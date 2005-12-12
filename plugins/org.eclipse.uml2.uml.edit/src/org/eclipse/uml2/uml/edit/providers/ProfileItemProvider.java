@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileItemProvider.java,v 1.1 2005/12/07 14:20:28 khussey Exp $
+ * $Id: ProfileItemProvider.java,v 1.2 2005/12/12 16:59:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -227,14 +227,6 @@ public class ProfileItemProvider
 	 */
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE) {
-			return new SubsetAddCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT},
-				collection, index);
-		}
 		if (feature == UMLPackage.Literals.PROFILE__METACLASS_REFERENCE) {
 			return new SubsetAddCommand(
 				domain,
@@ -263,14 +255,6 @@ public class ProfileItemProvider
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE},
-				collection);
-		}
 		if (feature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
 			return new SupersetRemoveCommand(
 				domain,
@@ -280,10 +264,11 @@ public class ProfileItemProvider
 				collection);
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
-			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{
-					UMLPackage.Literals.PACKAGE__APPLIED_PROFILE,
-					UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE},
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -297,14 +282,6 @@ public class ProfileItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE) {
-			return new SubsetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT},
-				value, collection);
-		}
 		if (feature == UMLPackage.Literals.PROFILE__METACLASS_REFERENCE) {
 			return new SubsetReplaceCommand(
 				domain,
@@ -321,14 +298,6 @@ public class ProfileItemProvider
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT},
 				value, collection);
 		}
-		if (feature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT) {
-			return new SupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE},
-				value, collection);
-		}
 		if (feature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
 			return new SupersetReplaceCommand(
 				domain,
@@ -338,11 +307,12 @@ public class ProfileItemProvider
 				value, collection);
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{
-					UMLPackage.Literals.PACKAGE__APPLIED_PROFILE,
-					UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE}, value,
-				collection);
+			return new SupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE},
+				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);

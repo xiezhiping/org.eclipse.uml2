@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceImpl.java,v 1.1 2005/12/07 14:17:51 khussey Exp $
+ * $Id: UMLResourceImpl.java,v 1.2 2005/12/12 16:58:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import org.eclipse.emf.common.util.URI;
 
-import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
-import org.eclipse.emf.ecore.xmi.XMLSave;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
@@ -42,16 +40,8 @@ public class UMLResourceImpl
 		super(uri);
 	}
 
-	protected XMLHelper createXMLHelper() {
-		return new UMLHelperImpl(this);
-	}
-
 	protected XMLLoad createXMLLoad() {
 		return new UMLLoadImpl(createXMLHelper());
-	}
-
-	protected XMLSave createXMLSave() {
-	    return new UMLSaveImpl(createXMLHelper());
 	}
 
 	protected boolean useIDAttributes() {

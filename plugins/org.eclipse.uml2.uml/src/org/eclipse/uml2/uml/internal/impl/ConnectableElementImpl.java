@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -461,10 +461,10 @@ public abstract class ConnectableElementImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -506,14 +506,9 @@ public abstract class ConnectableElementImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.CONNECTABLE_ELEMENT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
-				return eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CONNECTABLE_ELEMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

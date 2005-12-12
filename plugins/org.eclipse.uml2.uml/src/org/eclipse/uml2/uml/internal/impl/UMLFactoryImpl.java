@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.2 2005/12/08 14:56:25 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.3 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -725,6 +725,14 @@ public class UMLFactoryImpl
 					initialValue);
 			case UMLPackage.EXPANSION_KIND :
 				return createExpansionKindFromString(eDataType, initialValue);
+			case UMLPackage.INTEGER :
+				return createIntegerFromString(eDataType, initialValue);
+			case UMLPackage.BOOLEAN :
+				return createBooleanFromString(eDataType, initialValue);
+			case UMLPackage.STRING :
+				return createStringFromString(eDataType, initialValue);
+			case UMLPackage.UNLIMITED_NATURAL :
+				return createUnlimitedNaturalFromString(eDataType, initialValue);
 			default :
 				throw new IllegalArgumentException(
 					"The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -769,6 +777,14 @@ public class UMLFactoryImpl
 					instanceValue);
 			case UMLPackage.EXPANSION_KIND :
 				return convertExpansionKindToString(eDataType, instanceValue);
+			case UMLPackage.INTEGER :
+				return convertIntegerToString(eDataType, instanceValue);
+			case UMLPackage.BOOLEAN :
+				return convertBooleanToString(eDataType, instanceValue);
+			case UMLPackage.STRING :
+				return convertStringToString(eDataType, instanceValue);
+			case UMLPackage.UNLIMITED_NATURAL :
+				return convertUnlimitedNaturalToString(eDataType, instanceValue);
 			default :
 				throw new IllegalArgumentException(
 					"The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -3114,6 +3130,102 @@ public class UMLFactoryImpl
 		return instanceValue == null
 			? null
 			: instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Integer createIntegerFromString(EDataType eDataType,
+			String initialValue) {
+		return initialValue == null
+			? null
+			: Integer.valueOf(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String convertIntegerToString(EDataType eDataType,
+			Object instanceValue) {
+		return instanceValue == null
+			? null
+			: instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Boolean createBooleanFromString(EDataType eDataType,
+			String initialValue) {
+		return initialValue == null
+			? null
+			: Boolean.valueOf(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String convertBooleanToString(EDataType eDataType,
+			Object instanceValue) {
+		return instanceValue == null
+			? null
+			: instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String createStringFromString(EDataType eDataType,
+			String initialValue) {
+	    return initialValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String convertStringToString(EDataType eDataType,
+			Object instanceValue) {
+		return (String) instanceValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Integer createUnlimitedNaturalFromString(EDataType eDataType,
+			String initialValue) {
+		return initialValue == null
+			? null
+			: (initialValue.equals("*")
+				? new Integer(LiteralUnlimitedNatural.UNLIMITED)
+				: Integer.valueOf(initialValue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String convertUnlimitedNaturalToString(EDataType eDataType,
+			Object instanceValue) {
+		return instanceValue == null
+			? null
+			: (((Integer) instanceValue).intValue() == LiteralUnlimitedNatural.UNLIMITED
+				? "*"
+				: instanceValue.toString());
 	}
 
 	/**

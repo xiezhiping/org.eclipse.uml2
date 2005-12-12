@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureOperations.java,v 1.3 2005/12/08 19:38:07 khussey Exp $
+ * $Id: RedefinableTemplateSignatureOperations.java,v 1.4 2005/12/12 16:58:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -46,7 +46,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public final class RedefinableTemplateSignatureOperations extends UMLOperations {
+public final class RedefinableTemplateSignatureOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

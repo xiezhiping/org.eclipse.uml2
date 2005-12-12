@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.8 2005/12/08 14:56:25 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -358,10 +358,10 @@ public class InformationItemImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.INFORMATION_ITEM__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.INFORMATION_ITEM__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.INFORMATION_ITEM__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -454,11 +454,7 @@ public class InformationItemImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INFORMATION_ITEM__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INFORMATION_ITEM__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.INFORMATION_ITEM__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.INFORMATION_ITEM__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.INFORMATION_ITEM__QUALIFIED_NAME :

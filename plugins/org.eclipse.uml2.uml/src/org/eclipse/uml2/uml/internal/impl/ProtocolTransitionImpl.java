@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.10 2005/12/07 14:01:41 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.11 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -107,7 +107,9 @@ public class ProtocolTransitionImpl
 					this, UMLPackage.PROTOCOL_TRANSITION__OWNED_ELEMENT,
 					new int[]{UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT,
 						UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION,
-						UMLPackage.PROTOCOL_TRANSITION__GUARD,
+						UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT,
+						UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT,
+						UMLPackage.PROTOCOL_TRANSITION__OWNED_MEMBER,
 						UMLPackage.PROTOCOL_TRANSITION__EFFECT,
 						UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION}));
 		}
@@ -128,53 +130,24 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGuard(Constraint newGuard,
-			NotificationChain msgs) {
+	public void setGuard(Constraint newGuard) {
+		if (newGuard != null && !getOwnedRules().contains(newGuard)) {
+			getOwnedRules().add(newGuard);
+		}
+		Constraint guard = newGuard;
 		Object oldGuard = eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__GUARD,
-			newGuard);
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.PROTOCOL_TRANSITION__GUARD,
+			guard);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.PROTOCOL_TRANSITION__GUARD,
 				oldGuard == EVIRTUAL_NO_VALUE
 					? null
-					: oldGuard, newGuard);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
+					: oldGuard, guard));
 
 		if (eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION) != null
 			&& eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION) != newGuard) {
 			setPreCondition(null);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setGuard(Constraint newGuard) {
-		Constraint guard = (Constraint) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__GUARD);
-		if (newGuard != guard) {
-			NotificationChain msgs = null;
-			if (guard != null)
-				msgs = ((InternalEObject) guard).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PROTOCOL_TRANSITION__GUARD, null, msgs);
-			if (newGuard != null)
-				msgs = ((InternalEObject) newGuard).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PROTOCOL_TRANSITION__GUARD, null, msgs);
-			msgs = basicSetGuard(newGuard, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PROTOCOL_TRANSITION__GUARD, newGuard, newGuard));
-
 	}
 
 	/**
@@ -433,13 +406,20 @@ public class ProtocolTransitionImpl
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				return eBasicSetContainer(null,
 					UMLPackage.PROTOCOL_TRANSITION__CONTAINER, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
 				return basicSetTarget(null, msgs);
-			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
-				return basicSetGuard(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
 				return basicSetEffect(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
@@ -484,6 +464,18 @@ public class ProtocolTransitionImpl
 				return basicGetNamespace();
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				return getNameExpression();
+			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
+				return getElementImports();
+			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
+				return getPackageImports();
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
+				return getOwnedRules();
+			case UMLPackage.PROTOCOL_TRANSITION__MEMBER :
+				return getMembers();
+			case UMLPackage.PROTOCOL_TRANSITION__IMPORTED_MEMBER :
+				return getImportedMembers();
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_MEMBER :
+				return getOwnedMembers();
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -552,6 +544,18 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
+			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
+				getElementImports().clear();
+				getElementImports().addAll((Collection) newValue);
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
+				getPackageImports().clear();
+				getPackageImports().addAll((Collection) newValue);
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll((Collection) newValue);
+				return;
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
@@ -604,10 +608,10 @@ public class ProtocolTransitionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -615,11 +619,20 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
+			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
+				getElementImports().clear();
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
+				getPackageImports().clear();
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
-				unsetKind();
+				setKind(KIND_EDEFAULT);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				setContainer((Region) null);
@@ -670,14 +683,9 @@ public class ProtocolTransitionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.PROTOCOL_TRANSITION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.PROTOCOL_TRANSITION__VISIBILITY :
-				return eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PROTOCOL_TRANSITION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -689,6 +697,21 @@ public class ProtocolTransitionImpl
 				return isSetNamespace();
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION) != null;
+			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
+				List elementImport = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT);
+				return elementImport != null && !elementImport.isEmpty();
+			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
+				List packageImport = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT);
+				return packageImport != null && !packageImport.isEmpty();
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
+				List ownedRule = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE);
+				return ownedRule != null && !ownedRule.isEmpty();
+			case UMLPackage.PROTOCOL_TRANSITION__MEMBER :
+				return isSetMembers();
+			case UMLPackage.PROTOCOL_TRANSITION__IMPORTED_MEMBER :
+				return !getImportedMembers().isEmpty();
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_MEMBER :
+				return isSetOwnedMembers();
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_ELEMENT :
@@ -696,7 +719,8 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
-				return isSetKind();
+				return eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__KIND,
+					KIND_EDEFAULT) != KIND_EDEFAULT;
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				return getContainer() != null;
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :

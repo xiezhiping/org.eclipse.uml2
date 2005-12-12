@@ -8,24 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionItemProvider.java,v 1.1 2005/12/07 14:20:25 khussey Exp $
+ * $Id: ExtensionItemProvider.java,v 1.2 2005/12/12 16:59:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.common.command.Command;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -35,9 +28,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
 
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -206,46 +196,6 @@ public class ExtensionItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createAddCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
-			return new SubsetAddCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
-				collection, index);
-		}
-		return super
-			.createAddCommand(domain, owner, feature, collection, index);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
-			return new SubsetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
-				value, collection);
-		}
-		return super.createReplaceCommand(domain, owner, feature, value,
-			collection);
 	}
 
 }

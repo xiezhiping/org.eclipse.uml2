@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: InterfaceRealizationImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,12 +28,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
@@ -50,8 +48,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl#getContract <em>Contract</em>}</li>
@@ -81,44 +77,6 @@ public class InterfaceRealizationImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INTERFACE_REALIZATION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.INTERFACE_REALIZATION__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.INTERFACE_REALIZATION__TARGET, new int[]{
-						UMLPackage.INTERFACE_REALIZATION__SUPPLIER,
-						UMLPackage.INTERFACE_REALIZATION__CONTRACT}));
-		}
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__SOURCE);
-		if (source == null) {
-			eVirtualSet(
-				UMLPackage.INTERFACE_REALIZATION__SOURCE,
-				source = new DerivedUnionEObjectEList(
-					Element.class,
-					this,
-					UMLPackage.INTERFACE_REALIZATION__SOURCE,
-					new int[]{
-						UMLPackage.INTERFACE_REALIZATION__CLIENT,
-						UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER}));
-		}
-		return source;
 	}
 
 	/**
@@ -502,10 +460,10 @@ public class InterfaceRealizationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -556,11 +514,7 @@ public class InterfaceRealizationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.INTERFACE_REALIZATION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.INTERFACE_REALIZATION__QUALIFIED_NAME :
@@ -598,26 +552,6 @@ public class InterfaceRealizationImpl
 				return basicGetImplementingClassifier() != null;
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetTargets() {
-		return super.isSetTargets()
-			|| eIsSet(UMLPackage.INTERFACE_REALIZATION__CONTRACT);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetSources() {
-		return super.isSetSources()
-			|| eIsSet(UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER);
 	}
 
 } //InterfaceRealizationImpl

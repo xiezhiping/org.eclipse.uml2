@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.2 2005/11/16 19:03:05 khussey Exp $
+ * $Id: Association.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,6 @@ public interface Association
 
 	/**
 	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -61,7 +60,7 @@ public interface Association
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_IsDerived()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDerived();

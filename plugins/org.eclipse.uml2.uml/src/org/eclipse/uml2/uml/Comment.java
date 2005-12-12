@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Comment.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
+ * $Id: Comment.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,7 +51,7 @@ public interface Comment
 	 * @see #unsetBody()
 	 * @see #setBody(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComment_Body()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */

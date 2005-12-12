@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.7 2005/12/08 14:56:27 khussey Exp $
+ * $Id: Property.java,v 1.8 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -106,7 +106,6 @@ public interface Property
 
 	/**
 	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -116,7 +115,7 @@ public interface Property
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsDerived()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDerived();
@@ -133,7 +132,6 @@ public interface Property
 
 	/**
 	 * Returns the value of the '<em><b>Is Derived Union</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -142,7 +140,7 @@ public interface Property
 	 * @return the value of the '<em>Is Derived Union</em>' attribute.
 	 * @see #setIsDerivedUnion(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsDerivedUnion()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDerivedUnion();
@@ -170,7 +168,7 @@ public interface Property
 	 * @see #unsetDefault()
 	 * @see #setDefault(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Default()
-	 * @model unsettable="true" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	String getDefault();
@@ -241,7 +239,6 @@ public interface Property
 
 	/**
 	 * Returns the value of the '<em><b>Is Composite</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -251,7 +248,7 @@ public interface Property
 	 * @return the value of the '<em>Is Composite</em>' attribute.
 	 * @see #setIsComposite(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsComposite()
-	 * @model default="false" required="true" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isComposite();
@@ -636,6 +633,19 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * A property may not subset a property with the same name.
+	 * true
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateSubsettedPropertyNames(DiagnosticChain diagnostics,
+			Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * A Property can be a DeploymentTarget if it is a kind of Node and functions as a part in the internal structure of an encompassing Node.
 	 * true
 	 * <!-- end-model-doc -->
@@ -665,7 +675,7 @@ public interface Property
 	 * The query isAttribute() is true if the Property is defined as an attribute of some classifier.
 	 * result = Classifier.allInstances->exists(c | c.attribute->includes(p))
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" pRequired="true" pOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" pRequired="true" pOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -695,7 +705,7 @@ public interface Property
 	 * The query isNavigable() indicates whether it is possible to navigate across the property.
 	 * result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

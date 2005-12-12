@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerImpl.java,v 1.6 2005/12/06 23:21:49 khussey Exp $
+ * $Id: TriggerImpl.java,v 1.7 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -239,10 +239,10 @@ public class TriggerImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.TRIGGER__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.TRIGGER__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.TRIGGER__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -278,14 +278,9 @@ public class TriggerImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TRIGGER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TRIGGER__NAME :
-				String name = (String) eVirtualGet(UMLPackage.TRIGGER__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.TRIGGER__VISIBILITY :
-				return eVirtualGet(UMLPackage.TRIGGER__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.TRIGGER__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Profile.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,7 +60,7 @@ public interface Profile
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Stereotype</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_OwnedStereotype()
-	 * @model type="org.eclipse.uml2.uml.Stereotype" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Stereotype" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	List getOwnedStereotypes();

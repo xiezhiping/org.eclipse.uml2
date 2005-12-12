@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.3 2005/12/08 14:56:26 khussey Exp $
+ * $Id: StateMachine.java,v 1.4 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#getRegions <em>Region</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#getSubmachineStates <em>Submachine State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#getConnectionPoints <em>Connection Point</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#getExtendedStateMachine <em>Extended State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#getExtendedStateMachines <em>Extended State Machine</em>}</li>
  * </ul>
  * </p>
  *
@@ -160,29 +160,30 @@ public interface StateMachine
 	Pseudostate getConnectionPoint(String name);
 
 	/**
-	 * Returns the value of the '<em><b>Extended State Machine</b></em>' reference.
+	 * Returns the value of the '<em><b>Extended State Machine</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.StateMachine}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The state machines of which this is an extension.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Extended State Machine</em>' reference.
-	 * @see #setExtendedStateMachine(StateMachine)
+	 * @return the value of the '<em>Extended State Machine</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_ExtendedStateMachine()
-	 * @model ordered="false"
+	 * @model type="org.eclipse.uml2.uml.StateMachine" ordered="false"
 	 * @generated
 	 */
-	StateMachine getExtendedStateMachine();
+	List getExtendedStateMachines();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.StateMachine#getExtendedStateMachine <em>Extended State Machine</em>}' reference.
+	 * Retrieves the {@link org.eclipse.uml2.uml.StateMachine} with the specified '<em><b>Name</b></em>' from the '<em><b>Extended State Machine</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Extended State Machine</em>' reference.
-	 * @see #getExtendedStateMachine()
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.StateMachine} to retrieve.
+	 * @return The {@link org.eclipse.uml2.uml.StateMachine} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getExtendedStateMachines()
 	 * @generated
 	 */
-	void setExtendedStateMachine(StateMachine value);
+	StateMachine getExtendedStateMachine(String name);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,7 +261,7 @@ public interface StateMachine
 	 * false
 	 * else (ancestor (s1, s2.container))
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" s1Required="true" s1Ordered="false" s2Required="true" s2Ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" s1Required="true" s1Ordered="false" s2Required="true" s2Ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -273,7 +274,7 @@ public interface StateMachine
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

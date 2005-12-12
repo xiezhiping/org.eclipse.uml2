@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -247,10 +247,10 @@ public class ConsiderIgnoreFragmentImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -271,7 +271,7 @@ public class ConsiderIgnoreFragmentImpl
 				setEnclosingOperand((InteractionOperand) null);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR :
-				unsetInteractionOperator();
+				setInteractionOperator(INTERACTION_OPERATOR_EDEFAULT);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND :
 				getOperands().clear();
@@ -304,15 +304,9 @@ public class ConsiderIgnoreFragmentImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__VISIBILITY :
-				return eVirtualGet(
-					UMLPackage.CONSIDER_IGNORE_FRAGMENT__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -335,7 +329,9 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_OPERAND :
 				return getEnclosingOperand() != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR :
-				return isSetInteractionOperator();
+				return eVirtualGet(
+					UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR,
+					INTERACTION_OPERATOR_EDEFAULT) != INTERACTION_OPERATOR_EDEFAULT;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND :
 				List operand = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND);
 				return operand != null && !operand.isEmpty();

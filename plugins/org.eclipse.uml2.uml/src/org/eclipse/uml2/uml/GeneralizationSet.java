@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSet.java,v 1.2 2005/11/28 20:26:02 khussey Exp $
+ * $Id: GeneralizationSet.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,11 +51,9 @@ public interface GeneralizationSet
 	 * Indicates (via the associated Generalizations) whether or not the set of specific Classifiers are covering for a particular general classifier. When isCovering is true, every instance of a particular general Classifier is also an instance of at least one of its specific Classifiers for the GeneralizationSet. When isCovering is false, there are one or more instances of the particular general Classifier that are not instances of at least one of its specific Classifiers defined for the GeneralizationSet. For example, Person could have two Generalization relationships each with a different specific Classifier: Male Person and Female Person. This GeneralizationSet would be covering because every instance of Person would be an instance of Male Person or Female Person. In contrast, Person could have a three Generalization relationships involving three specific Classifiers: North American Person, Asian Person, and European Person. This GeneralizationSet would not be covering because there are instances of Person for which these three specific Classifiers do not apply. The first example, then, could be read: any Person would be specialized as either being a Male Person or a Female Person?and nothing else; the second could be read: any Person would be specialized as being North American Person, Asian Person, European Person, or something else.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Covering</em>' attribute.
-	 * @see #isSetIsCovering()
-	 * @see #unsetIsCovering()
 	 * @see #setIsCovering(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getGeneralizationSet_IsCovering()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isCovering();
@@ -65,35 +63,10 @@ public interface GeneralizationSet
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Covering</em>' attribute.
-	 * @see #isSetIsCovering()
-	 * @see #unsetIsCovering()
 	 * @see #isCovering()
 	 * @generated
 	 */
 	void setIsCovering(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.GeneralizationSet#isCovering <em>Is Covering</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetIsCovering()
-	 * @see #isCovering()
-	 * @see #setIsCovering(boolean)
-	 * @generated
-	 */
-	void unsetIsCovering();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.GeneralizationSet#isCovering <em>Is Covering</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Is Covering</em>' attribute is set.
-	 * @see #unsetIsCovering()
-	 * @see #isCovering()
-	 * @see #setIsCovering(boolean)
-	 * @generated
-	 */
-	boolean isSetIsCovering();
 
 	/**
 	 * Returns the value of the '<em><b>Is Disjoint</b></em>' attribute.
@@ -103,11 +76,9 @@ public interface GeneralizationSet
 	 * Indicates whether or not the set of specific Classifiers in a Generalization relationship have instance in common. If isDisjoint is true, the specific Classifiers for a particular GeneralizationSet have no members in common; that is, their intersection is empty. If isDisjoint is false, the specific Classifiers in a particular GeneralizationSet have one or more members in common; that is, their intersection is not empty. For example, Person could have two Generalization relationships, each with the different specific Classifier: Manager or Staff. This would be disjoint because every instance of Person must either be a Manager or Staff. In contrast, Person could have two Generalization relationships involving two specific (and non-covering) Classifiers: Sales Person and Manager. This GeneralizationSet would not be disjoint because there are instances of Person which can be a Sales Person and a Manager.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Disjoint</em>' attribute.
-	 * @see #isSetIsDisjoint()
-	 * @see #unsetIsDisjoint()
 	 * @see #setIsDisjoint(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getGeneralizationSet_IsDisjoint()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDisjoint();
@@ -117,35 +88,10 @@ public interface GeneralizationSet
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Disjoint</em>' attribute.
-	 * @see #isSetIsDisjoint()
-	 * @see #unsetIsDisjoint()
 	 * @see #isDisjoint()
 	 * @generated
 	 */
 	void setIsDisjoint(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.GeneralizationSet#isDisjoint <em>Is Disjoint</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetIsDisjoint()
-	 * @see #isDisjoint()
-	 * @see #setIsDisjoint(boolean)
-	 * @generated
-	 */
-	void unsetIsDisjoint();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.GeneralizationSet#isDisjoint <em>Is Disjoint</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Is Disjoint</em>' attribute is set.
-	 * @see #unsetIsDisjoint()
-	 * @see #isDisjoint()
-	 * @see #setIsDisjoint(boolean)
-	 * @generated
-	 */
-	boolean isSetIsDisjoint();
 
 	/**
 	 * Returns the value of the '<em><b>Powertype</b></em>' reference.

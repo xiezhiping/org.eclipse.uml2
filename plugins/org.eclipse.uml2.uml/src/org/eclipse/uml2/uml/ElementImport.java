@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImport.java,v 1.3 2005/11/28 20:26:01 khussey Exp $
+ * $Id: ElementImport.java,v 1.4 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,6 +44,7 @@ public interface ElementImport
 
 	/**
 	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
+	 * The default value is <code>"public"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.uml2.uml.VisibilityKind}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,11 +53,9 @@ public interface ElementImport
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Visibility</em>' attribute.
 	 * @see org.eclipse.uml2.uml.VisibilityKind
-	 * @see #isSetVisibility()
-	 * @see #unsetVisibility()
 	 * @see #setVisibility(VisibilityKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElementImport_Visibility()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model default="public" required="true" ordered="false"
 	 * @generated
 	 */
 	VisibilityKind getVisibility();
@@ -67,35 +66,10 @@ public interface ElementImport
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Visibility</em>' attribute.
 	 * @see org.eclipse.uml2.uml.VisibilityKind
-	 * @see #isSetVisibility()
-	 * @see #unsetVisibility()
 	 * @see #getVisibility()
 	 * @generated
 	 */
 	void setVisibility(VisibilityKind value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.ElementImport#getVisibility <em>Visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetVisibility()
-	 * @see #getVisibility()
-	 * @see #setVisibility(VisibilityKind)
-	 * @generated
-	 */
-	void unsetVisibility();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.ElementImport#getVisibility <em>Visibility</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Visibility</em>' attribute is set.
-	 * @see #unsetVisibility()
-	 * @see #getVisibility()
-	 * @see #setVisibility(VisibilityKind)
-	 * @generated
-	 */
-	boolean isSetVisibility();
 
 	/**
 	 * Returns the value of the '<em><b>Alias</b></em>' attribute.
@@ -106,9 +80,11 @@ public interface ElementImport
 	 * Specifies the name that should be added to the namespace of the importing Pack-age in lieu of the name of the imported PackagableElement. The aliased name must not clash with any other member name in the importing Package. By default, no alias is used.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Alias</em>' attribute.
+	 * @see #isSetAlias()
+	 * @see #unsetAlias()
 	 * @see #setAlias(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElementImport_Alias()
-	 * @model ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 * @generated
 	 */
 	String getAlias();
@@ -118,10 +94,35 @@ public interface ElementImport
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Alias</em>' attribute.
+	 * @see #isSetAlias()
+	 * @see #unsetAlias()
 	 * @see #getAlias()
 	 * @generated
 	 */
 	void setAlias(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.ElementImport#getAlias <em>Alias</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetAlias()
+	 * @see #getAlias()
+	 * @see #setAlias(String)
+	 * @generated
+	 */
+	void unsetAlias();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.ElementImport#getAlias <em>Alias</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Alias</em>' attribute is set.
+	 * @see #unsetAlias()
+	 * @see #getAlias()
+	 * @see #setAlias(String)
+	 * @generated
+	 */
+	boolean isSetAlias();
 
 	/**
 	 * Returns the value of the '<em><b>Imported Element</b></em>' reference.
@@ -224,7 +225,7 @@ public interface ElementImport
 	 *   self.importedElement.name
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.String" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

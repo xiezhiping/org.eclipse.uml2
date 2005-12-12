@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.9 2005/12/08 14:56:24 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -530,10 +530,10 @@ public class EnumerationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.ENUMERATION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.ENUMERATION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -632,11 +632,7 @@ public class EnumerationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ENUMERATION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.ENUMERATION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.ENUMERATION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.ENUMERATION__QUALIFIED_NAME :

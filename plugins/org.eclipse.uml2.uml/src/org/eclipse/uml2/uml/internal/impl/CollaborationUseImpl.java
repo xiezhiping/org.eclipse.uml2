@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: CollaborationUseImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -350,10 +350,10 @@ public class CollaborationUseImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.COLLABORATION_USE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.COLLABORATION_USE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.COLLABORATION_USE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -389,14 +389,9 @@ public class CollaborationUseImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.COLLABORATION_USE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COLLABORATION_USE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.COLLABORATION_USE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.COLLABORATION_USE__VISIBILITY :
-				return eVirtualGet(UMLPackage.COLLABORATION_USE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.COLLABORATION_USE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

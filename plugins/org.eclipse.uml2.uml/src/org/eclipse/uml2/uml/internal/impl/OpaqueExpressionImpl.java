@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.9 2005/12/06 23:21:49 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,10 +123,30 @@ public class OpaqueExpressionImpl
 		List language = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
 		if (language == null) {
 			eVirtualSet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE,
-				language = new EDataTypeUniqueEList(String.class, this,
-					UMLPackage.OPAQUE_EXPRESSION__LANGUAGE));
+				language = new EDataTypeUniqueEList.Unsettable(String.class,
+					this, UMLPackage.OPAQUE_EXPRESSION__LANGUAGE));
 		}
 		return language;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetLanguages() {
+		((InternalEList.Unsettable) getLanguages()).unset();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetLanguages() {
+		List language = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
+		return language != null
+			&& ((InternalEList.Unsettable) language).isSet();
 	}
 
 	/**
@@ -412,10 +432,10 @@ public class OpaqueExpressionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -436,7 +456,7 @@ public class OpaqueExpressionImpl
 				unsetBodies();
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__LANGUAGE :
-				getLanguages().clear();
+				unsetLanguages();
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
 				setBehavior((Behavior) null);
@@ -463,11 +483,7 @@ public class OpaqueExpressionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.OPAQUE_EXPRESSION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.OPAQUE_EXPRESSION__QUALIFIED_NAME :
@@ -490,8 +506,7 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :
 				return isSetBodies();
 			case UMLPackage.OPAQUE_EXPRESSION__LANGUAGE :
-				List language = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
-				return language != null && !language.isEmpty();
+				return isSetLanguages();
 			case UMLPackage.OPAQUE_EXPRESSION__RESULT :
 				return basicGetResult() != null;
 			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :

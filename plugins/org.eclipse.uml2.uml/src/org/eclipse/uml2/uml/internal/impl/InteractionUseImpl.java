@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -451,10 +451,10 @@ public class InteractionUseImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.INTERACTION_USE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.INTERACTION_USE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -505,14 +505,9 @@ public class InteractionUseImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERACTION_USE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERACTION_USE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.INTERACTION_USE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.INTERACTION_USE__VISIBILITY :
-				return eVirtualGet(UMLPackage.INTERACTION_USE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.INTERACTION_USE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

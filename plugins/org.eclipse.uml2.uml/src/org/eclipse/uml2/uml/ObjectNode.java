@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: ObjectNode.java,v 1.2 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -82,7 +82,6 @@ public interface ObjectNode
 
 	/**
 	 * Returns the value of the '<em><b>Is Control Type</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -91,7 +90,7 @@ public interface ObjectNode
 	 * @return the value of the '<em>Is Control Type</em>' attribute.
 	 * @see #setIsControlType(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getObjectNode_IsControlType()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isControlType();

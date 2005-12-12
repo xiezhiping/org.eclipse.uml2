@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -87,16 +87,7 @@ public class ConditionalNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DETERMINATE_EFLAG = 1 << 11;
-
-	/**
-	 * The flag representing whether the Is Determinate attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_DETERMINATE_ESETFLAG = 1 << 12;
+	protected static final int IS_DETERMINATE_EFLAG = 1 << 10;
 
 	/**
 	 * The default value of the '{@link #isAssured() <em>Is Assured</em>}' attribute.
@@ -116,16 +107,7 @@ public class ConditionalNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ASSURED_EFLAG = 1 << 13;
-
-	/**
-	 * The flag representing whether the Is Assured attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_ASSURED_ESETFLAG = 1 << 14;
+	protected static final int IS_ASSURED_EFLAG = 1 << 11;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,41 +190,11 @@ public class ConditionalNodeImpl
 			eFlags |= IS_DETERMINATE_EFLAG;
 		else
 			eFlags &= ~IS_DETERMINATE_EFLAG;
-		boolean oldIsDeterminateESet = (eFlags & IS_DETERMINATE_ESETFLAG) != 0;
-		eFlags |= IS_DETERMINATE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE, oldIsDeterminate,
-				newIsDeterminate, !oldIsDeterminateESet));
+				newIsDeterminate));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsDeterminate() {
-		boolean oldIsDeterminate = (eFlags & IS_DETERMINATE_EFLAG) != 0;
-		boolean oldIsDeterminateESet = (eFlags & IS_DETERMINATE_ESETFLAG) != 0;
-		if (IS_DETERMINATE_EDEFAULT)
-			eFlags |= IS_DETERMINATE_EFLAG;
-		else
-			eFlags &= ~IS_DETERMINATE_EFLAG;
-		eFlags &= ~IS_DETERMINATE_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE, oldIsDeterminate,
-				IS_DETERMINATE_EDEFAULT, oldIsDeterminateESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsDeterminate() {
-		return (eFlags & IS_DETERMINATE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -265,41 +217,11 @@ public class ConditionalNodeImpl
 			eFlags |= IS_ASSURED_EFLAG;
 		else
 			eFlags &= ~IS_ASSURED_EFLAG;
-		boolean oldIsAssuredESet = (eFlags & IS_ASSURED_ESETFLAG) != 0;
-		eFlags |= IS_ASSURED_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONDITIONAL_NODE__IS_ASSURED, oldIsAssured,
-				newIsAssured, !oldIsAssuredESet));
+				newIsAssured));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsAssured() {
-		boolean oldIsAssured = (eFlags & IS_ASSURED_EFLAG) != 0;
-		boolean oldIsAssuredESet = (eFlags & IS_ASSURED_ESETFLAG) != 0;
-		if (IS_ASSURED_EDEFAULT)
-			eFlags |= IS_ASSURED_EFLAG;
-		else
-			eFlags &= ~IS_ASSURED_EFLAG;
-		eFlags &= ~IS_ASSURED_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.CONDITIONAL_NODE__IS_ASSURED, oldIsAssured,
-				IS_ASSURED_EDEFAULT, oldIsAssuredESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsAssured() {
-		return (eFlags & IS_ASSURED_ESETFLAG) != 0;
 	}
 
 	/**
@@ -701,10 +623,10 @@ public class ConditionalNodeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -764,16 +686,16 @@ public class ConditionalNodeImpl
 				getNodes().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
-				unsetMustIsolate();
+				setMustIsolate(MUST_ISOLATE_EDEFAULT);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__EDGE :
 				getEdges().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE :
-				unsetIsDeterminate();
+				setIsDeterminate(IS_DETERMINATE_EDEFAULT);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__IS_ASSURED :
-				unsetIsAssured();
+				setIsAssured(IS_ASSURED_EDEFAULT);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				getClauses().clear();
@@ -803,14 +725,9 @@ public class ConditionalNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONDITIONAL_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.CONDITIONAL_NODE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CONDITIONAL_NODE__VISIBILITY :
-				return eVirtualGet(UMLPackage.CONDITIONAL_NODE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CONDITIONAL_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -899,14 +816,14 @@ public class ConditionalNodeImpl
 				List node = (List) eVirtualGet(UMLPackage.CONDITIONAL_NODE__NODE);
 				return node != null && !node.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
-				return isSetMustIsolate();
+				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.CONDITIONAL_NODE__EDGE :
 				List edge = (List) eVirtualGet(UMLPackage.CONDITIONAL_NODE__EDGE);
 				return edge != null && !edge.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE :
-				return isSetIsDeterminate();
+				return ((eFlags & IS_DETERMINATE_EFLAG) != 0) != IS_DETERMINATE_EDEFAULT;
 			case UMLPackage.CONDITIONAL_NODE__IS_ASSURED :
-				return isSetIsAssured();
+				return ((eFlags & IS_ASSURED_EFLAG) != 0) != IS_ASSURED_EDEFAULT;
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				List clause = (List) eVirtualGet(UMLPackage.CONDITIONAL_NODE__CLAUSE);
 				return clause != null && !clause.isEmpty();
@@ -928,15 +845,9 @@ public class ConditionalNodeImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isDeterminate: "); //$NON-NLS-1$
-		if ((eFlags & IS_DETERMINATE_ESETFLAG) != 0)
-			result.append((eFlags & IS_DETERMINATE_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & IS_DETERMINATE_EFLAG) != 0);
 		result.append(", isAssured: "); //$NON-NLS-1$
-		if ((eFlags & IS_ASSURED_ESETFLAG) != 0)
-			result.append((eFlags & IS_ASSURED_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & IS_ASSURED_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}

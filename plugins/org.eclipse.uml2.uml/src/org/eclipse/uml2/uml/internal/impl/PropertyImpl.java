@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.15 2005/12/08 14:56:25 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.16 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1408,6 +1408,17 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateSubsettedPropertyNames(DiagnosticChain diagnostics,
+			Map context) {
+		return PropertyOperations.validateSubsettedPropertyNames(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateDeploymentTarget(DiagnosticChain diagnostics,
 			Map context) {
 		return PropertyOperations.validateDeploymentTarget(this, diagnostics,
@@ -1443,10 +1454,10 @@ public class PropertyImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			List result = (List) cache.get(this, UMLPackage.Literals.PROPERTY
-				.getEOperations().get(12));
+				.getEOperations().get(13));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PROPERTY.getEOperations()
-					.get(12), result = PropertyOperations
+					.get(13), result = PropertyOperations
 					.subsettingContext(this));
 			}
 			return result;
@@ -1906,10 +1917,10 @@ public class PropertyImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PROPERTY__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.PROPERTY__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -2029,14 +2040,9 @@ public class PropertyImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PROPERTY__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PROPERTY__NAME :
-				String name = (String) eVirtualGet(UMLPackage.PROPERTY__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.PROPERTY__VISIBILITY :
-				return eVirtualGet(UMLPackage.PROPERTY__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PROPERTY__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

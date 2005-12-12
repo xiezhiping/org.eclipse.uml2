@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,15 +82,6 @@ public class GeneralizationSetImpl
 	protected static final int IS_COVERING_EFLAG = 1 << 8;
 
 	/**
-	 * The flag representing whether the Is Covering attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_COVERING_ESETFLAG = 1 << 9;
-
-	/**
 	 * The default value of the '{@link #isDisjoint() <em>Is Disjoint</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,16 +99,7 @@ public class GeneralizationSetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DISJOINT_EFLAG = 1 << 10;
-
-	/**
-	 * The flag representing whether the Is Disjoint attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_DISJOINT_ESETFLAG = 1 << 11;
+	protected static final int IS_DISJOINT_EFLAG = 1 << 9;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -157,41 +139,11 @@ public class GeneralizationSetImpl
 			eFlags |= IS_COVERING_EFLAG;
 		else
 			eFlags &= ~IS_COVERING_EFLAG;
-		boolean oldIsCoveringESet = (eFlags & IS_COVERING_ESETFLAG) != 0;
-		eFlags |= IS_COVERING_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION_SET__IS_COVERING, oldIsCovering,
-				newIsCovering, !oldIsCoveringESet));
+				newIsCovering));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsCovering() {
-		boolean oldIsCovering = (eFlags & IS_COVERING_EFLAG) != 0;
-		boolean oldIsCoveringESet = (eFlags & IS_COVERING_ESETFLAG) != 0;
-		if (IS_COVERING_EDEFAULT)
-			eFlags |= IS_COVERING_EFLAG;
-		else
-			eFlags &= ~IS_COVERING_EFLAG;
-		eFlags &= ~IS_COVERING_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.GENERALIZATION_SET__IS_COVERING, oldIsCovering,
-				IS_COVERING_EDEFAULT, oldIsCoveringESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsCovering() {
-		return (eFlags & IS_COVERING_ESETFLAG) != 0;
 	}
 
 	/**
@@ -214,41 +166,11 @@ public class GeneralizationSetImpl
 			eFlags |= IS_DISJOINT_EFLAG;
 		else
 			eFlags &= ~IS_DISJOINT_EFLAG;
-		boolean oldIsDisjointESet = (eFlags & IS_DISJOINT_ESETFLAG) != 0;
-		eFlags |= IS_DISJOINT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION_SET__IS_DISJOINT, oldIsDisjoint,
-				newIsDisjoint, !oldIsDisjointESet));
+				newIsDisjoint));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsDisjoint() {
-		boolean oldIsDisjoint = (eFlags & IS_DISJOINT_EFLAG) != 0;
-		boolean oldIsDisjointESet = (eFlags & IS_DISJOINT_ESETFLAG) != 0;
-		if (IS_DISJOINT_EDEFAULT)
-			eFlags |= IS_DISJOINT_EFLAG;
-		else
-			eFlags &= ~IS_DISJOINT_EFLAG;
-		eFlags &= ~IS_DISJOINT_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.GENERALIZATION_SET__IS_DISJOINT, oldIsDisjoint,
-				IS_DISJOINT_EDEFAULT, oldIsDisjointESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsDisjoint() {
-		return (eFlags & IS_DISJOINT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -571,10 +493,10 @@ public class GeneralizationSetImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.GENERALIZATION_SET__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.GENERALIZATION_SET__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -589,10 +511,10 @@ public class GeneralizationSetImpl
 				setOwningTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
-				unsetIsCovering();
+				setIsCovering(IS_COVERING_EDEFAULT);
 				return;
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :
-				unsetIsDisjoint();
+				setIsDisjoint(IS_DISJOINT_EDEFAULT);
 				return;
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				setPowertype((Classifier) null);
@@ -622,11 +544,7 @@ public class GeneralizationSetImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.GENERALIZATION_SET__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.GENERALIZATION_SET__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.GENERALIZATION_SET__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.GENERALIZATION_SET__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.GENERALIZATION_SET__QUALIFIED_NAME :
@@ -645,9 +563,9 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
-				return isSetIsCovering();
+				return ((eFlags & IS_COVERING_EFLAG) != 0) != IS_COVERING_EDEFAULT;
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :
-				return isSetIsDisjoint();
+				return ((eFlags & IS_DISJOINT_EFLAG) != 0) != IS_DISJOINT_EDEFAULT;
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				return eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE) != null;
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
@@ -668,15 +586,9 @@ public class GeneralizationSetImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isCovering: "); //$NON-NLS-1$
-		if ((eFlags & IS_COVERING_ESETFLAG) != 0)
-			result.append((eFlags & IS_COVERING_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & IS_COVERING_EFLAG) != 0);
 		result.append(", isDisjoint: "); //$NON-NLS-1$
-		if ((eFlags & IS_DISJOINT_ESETFLAG) != 0)
-			result.append((eFlags & IS_DISJOINT_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & IS_DISJOINT_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}

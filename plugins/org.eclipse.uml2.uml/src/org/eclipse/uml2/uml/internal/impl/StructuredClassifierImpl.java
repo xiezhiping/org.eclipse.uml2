@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.10 2005/12/08 14:56:25 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.11 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -673,10 +673,10 @@ public abstract class StructuredClassifierImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -772,11 +772,7 @@ public abstract class StructuredClassifierImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STRUCTURED_CLASSIFIER__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.STRUCTURED_CLASSIFIER__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.STRUCTURED_CLASSIFIER__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.STRUCTURED_CLASSIFIER__QUALIFIED_NAME :

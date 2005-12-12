@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.10 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -93,16 +93,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_TESTED_FIRST_EFLAG = 1 << 11;
-
-	/**
-	 * The flag representing whether the Is Tested First attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_TESTED_FIRST_ESETFLAG = 1 << 12;
+	protected static final int IS_TESTED_FIRST_EFLAG = 1 << 10;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -174,41 +165,11 @@ public class LoopNodeImpl
 			eFlags |= IS_TESTED_FIRST_EFLAG;
 		else
 			eFlags &= ~IS_TESTED_FIRST_EFLAG;
-		boolean oldIsTestedFirstESet = (eFlags & IS_TESTED_FIRST_ESETFLAG) != 0;
-		eFlags |= IS_TESTED_FIRST_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LOOP_NODE__IS_TESTED_FIRST, oldIsTestedFirst,
-				newIsTestedFirst, !oldIsTestedFirstESet));
+				newIsTestedFirst));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsTestedFirst() {
-		boolean oldIsTestedFirst = (eFlags & IS_TESTED_FIRST_EFLAG) != 0;
-		boolean oldIsTestedFirstESet = (eFlags & IS_TESTED_FIRST_ESETFLAG) != 0;
-		if (IS_TESTED_FIRST_EDEFAULT)
-			eFlags |= IS_TESTED_FIRST_EFLAG;
-		else
-			eFlags &= ~IS_TESTED_FIRST_EFLAG;
-		eFlags &= ~IS_TESTED_FIRST_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.LOOP_NODE__IS_TESTED_FIRST, oldIsTestedFirst,
-				IS_TESTED_FIRST_EDEFAULT, oldIsTestedFirstESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsTestedFirst() {
-		return (eFlags & IS_TESTED_FIRST_ESETFLAG) != 0;
 	}
 
 	/**
@@ -883,10 +844,10 @@ public class LoopNodeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.LOOP_NODE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.LOOP_NODE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.LOOP_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -946,13 +907,13 @@ public class LoopNodeImpl
 				getNodes().clear();
 				return;
 			case UMLPackage.LOOP_NODE__MUST_ISOLATE :
-				unsetMustIsolate();
+				setMustIsolate(MUST_ISOLATE_EDEFAULT);
 				return;
 			case UMLPackage.LOOP_NODE__EDGE :
 				getEdges().clear();
 				return;
 			case UMLPackage.LOOP_NODE__IS_TESTED_FIRST :
-				unsetIsTestedFirst();
+				setIsTestedFirst(IS_TESTED_FIRST_EDEFAULT);
 				return;
 			case UMLPackage.LOOP_NODE__BODY_PART :
 				getBodyParts().clear();
@@ -1000,14 +961,9 @@ public class LoopNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.LOOP_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LOOP_NODE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.LOOP_NODE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.LOOP_NODE__VISIBILITY :
-				return eVirtualGet(UMLPackage.LOOP_NODE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.LOOP_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1096,12 +1052,12 @@ public class LoopNodeImpl
 				List node = (List) eVirtualGet(UMLPackage.LOOP_NODE__NODE);
 				return node != null && !node.isEmpty();
 			case UMLPackage.LOOP_NODE__MUST_ISOLATE :
-				return isSetMustIsolate();
+				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.LOOP_NODE__EDGE :
 				List edge = (List) eVirtualGet(UMLPackage.LOOP_NODE__EDGE);
 				return edge != null && !edge.isEmpty();
 			case UMLPackage.LOOP_NODE__IS_TESTED_FIRST :
-				return isSetIsTestedFirst();
+				return ((eFlags & IS_TESTED_FIRST_EFLAG) != 0) != IS_TESTED_FIRST_EDEFAULT;
 			case UMLPackage.LOOP_NODE__BODY_PART :
 				List bodyPart = (List) eVirtualGet(UMLPackage.LOOP_NODE__BODY_PART);
 				return bodyPart != null && !bodyPart.isEmpty();
@@ -1141,10 +1097,7 @@ public class LoopNodeImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isTestedFirst: "); //$NON-NLS-1$
-		if ((eFlags & IS_TESTED_FIRST_ESETFLAG) != 0)
-			result.append((eFlags & IS_TESTED_FIRST_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & IS_TESTED_FIRST_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}

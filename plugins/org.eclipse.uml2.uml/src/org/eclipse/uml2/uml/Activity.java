@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
+ * $Id: Activity.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -67,7 +67,6 @@ public interface Activity
 
 	/**
 	 * Returns the value of the '<em><b>Is Read Only</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -76,7 +75,7 @@ public interface Activity
 	 * @return the value of the '<em>Is Read Only</em>' attribute.
 	 * @see #setIsReadOnly(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_IsReadOnly()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isReadOnly();
@@ -146,7 +145,6 @@ public interface Activity
 
 	/**
 	 * Returns the value of the '<em><b>Is Single Execution</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -155,7 +153,7 @@ public interface Activity
 	 * @return the value of the '<em>Is Single Execution</em>' attribute.
 	 * @see #setIsSingleExecution(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_IsSingleExecution()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSingleExecution();

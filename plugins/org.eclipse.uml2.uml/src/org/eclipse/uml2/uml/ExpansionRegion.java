@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegion.java,v 1.2 2005/11/28 20:26:02 khussey Exp $
+ * $Id: ExpansionRegion.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,6 +56,7 @@ public interface ExpansionRegion
 
 	/**
 	 * Returns the value of the '<em><b>Mode</b></em>' attribute.
+	 * The default value is <code>"iterative"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.uml2.uml.ExpansionKind}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -72,11 +73,9 @@ public interface ExpansionRegion
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Mode</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ExpansionKind
-	 * @see #isSetMode()
-	 * @see #unsetMode()
 	 * @see #setMode(ExpansionKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExpansionRegion_Mode()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model default="iterative" required="true" ordered="false"
 	 * @generated
 	 */
 	ExpansionKind getMode();
@@ -87,35 +86,10 @@ public interface ExpansionRegion
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Mode</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ExpansionKind
-	 * @see #isSetMode()
-	 * @see #unsetMode()
 	 * @see #getMode()
 	 * @generated
 	 */
 	void setMode(ExpansionKind value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.ExpansionRegion#getMode <em>Mode</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetMode()
-	 * @see #getMode()
-	 * @see #setMode(ExpansionKind)
-	 * @generated
-	 */
-	void unsetMode();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.ExpansionRegion#getMode <em>Mode</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Mode</em>' attribute is set.
-	 * @see #unsetMode()
-	 * @see #getMode()
-	 * @see #setMode(ExpansionKind)
-	 * @generated
-	 */
-	boolean isSetMode();
 
 	/**
 	 * Returns the value of the '<em><b>Input Element</b></em>' reference list.

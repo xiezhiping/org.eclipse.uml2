@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,7 +44,6 @@ public interface AcceptEventAction
 
 	/**
 	 * Returns the value of the '<em><b>Is Unmarshall</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -53,7 +52,7 @@ public interface AcceptEventAction
 	 * @return the value of the '<em>Is Unmarshall</em>' attribute.
 	 * @see #setIsUnmarshall(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAcceptEventAction_IsUnmarshall()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isUnmarshall();

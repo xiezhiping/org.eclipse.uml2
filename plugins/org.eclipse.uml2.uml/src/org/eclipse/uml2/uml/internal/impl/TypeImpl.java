@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.10 2005/12/07 14:18:19 khussey Exp $
+ * $Id: TypeImpl.java,v 1.11 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -229,10 +229,10 @@ public abstract class TypeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.TYPE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.TYPE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.TYPE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -271,11 +271,7 @@ public abstract class TypeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TYPE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TYPE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.TYPE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.TYPE__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.TYPE__QUALIFIED_NAME :

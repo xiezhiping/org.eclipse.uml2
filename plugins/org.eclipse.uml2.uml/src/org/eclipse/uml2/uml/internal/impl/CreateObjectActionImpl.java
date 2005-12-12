@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectActionImpl.java,v 1.7 2005/12/06 23:21:48 khussey Exp $
+ * $Id: CreateObjectActionImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -480,10 +480,10 @@ public class CreateObjectActionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -552,14 +552,9 @@ public class CreateObjectActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CREATE_OBJECT_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CREATE_OBJECT_ACTION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.CREATE_OBJECT_ACTION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CREATE_OBJECT_ACTION__VISIBILITY :
-				return eVirtualGet(UMLPackage.CREATE_OBJECT_ACTION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CREATE_OBJECT_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

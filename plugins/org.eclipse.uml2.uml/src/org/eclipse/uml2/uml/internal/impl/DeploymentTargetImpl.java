@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.8 2005/12/06 23:21:48 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.9 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -333,10 +333,10 @@ public abstract class DeploymentTargetImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -369,14 +369,9 @@ public abstract class DeploymentTargetImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.DEPLOYMENT_TARGET__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
-				return eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.DEPLOYMENT_TARGET__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

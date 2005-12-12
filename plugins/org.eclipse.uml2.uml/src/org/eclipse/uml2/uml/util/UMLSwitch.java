@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.2 2005/12/08 14:56:25 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -649,8 +649,6 @@ public class UMLSwitch {
 			case UMLPackage.PROFILE_APPLICATION : {
 				ProfileApplication profileApplication = (ProfileApplication) theEObject;
 				Object result = caseProfileApplication(profileApplication);
-				if (result == null)
-					result = casePackageImport(profileApplication);
 				if (result == null)
 					result = caseDirectedRelationship(profileApplication);
 				if (result == null)
@@ -1587,6 +1585,8 @@ public class UMLSwitch {
 			case UMLPackage.TRANSITION : {
 				Transition transition = (Transition) theEObject;
 				Object result = caseTransition(transition);
+				if (result == null)
+					result = caseNamespace(transition);
 				if (result == null)
 					result = caseRedefinableElement(transition);
 				if (result == null)
@@ -5384,6 +5384,8 @@ public class UMLSwitch {
 				Object result = caseProtocolTransition(protocolTransition);
 				if (result == null)
 					result = caseTransition(protocolTransition);
+				if (result == null)
+					result = caseNamespace(protocolTransition);
 				if (result == null)
 					result = caseRedefinableElement(protocolTransition);
 				if (result == null)

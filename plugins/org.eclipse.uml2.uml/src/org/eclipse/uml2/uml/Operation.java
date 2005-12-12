@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Operation.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -62,7 +62,6 @@ public interface Operation
 
 	/**
 	 * Returns the value of the '<em><b>Is Query</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -71,7 +70,7 @@ public interface Operation
 	 * @return the value of the '<em>Is Query</em>' attribute.
 	 * @see #setIsQuery(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsQuery()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isQuery();
@@ -88,7 +87,6 @@ public interface Operation
 
 	/**
 	 * Returns the value of the '<em><b>Is Ordered</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -98,7 +96,7 @@ public interface Operation
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
 	 * @see #setIsOrdered(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsOrdered()
-	 * @model default="false" required="true" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isOrdered();
@@ -115,7 +113,6 @@ public interface Operation
 
 	/**
 	 * Returns the value of the '<em><b>Is Unique</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -125,7 +122,7 @@ public interface Operation
 	 * @return the value of the '<em>Is Unique</em>' attribute.
 	 * @see #setIsUnique(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsUnique()
-	 * @model default="true" required="true" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isUnique();
@@ -142,7 +139,6 @@ public interface Operation
 
 	/**
 	 * Returns the value of the '<em><b>Lower</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -152,7 +148,7 @@ public interface Operation
 	 * @return the value of the '<em>Lower</em>' attribute.
 	 * @see #setLower(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Lower()
-	 * @model default="1" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Integer" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getLower();
@@ -169,7 +165,6 @@ public interface Operation
 
 	/**
 	 * Returns the value of the '<em><b>Upper</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -179,7 +174,7 @@ public interface Operation
 	 * @return the value of the '<em>Upper</em>' attribute.
 	 * @see #setUpper(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Upper()
-	 * @model default="1" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getUpper();
@@ -440,7 +435,7 @@ public interface Operation
 	 * 
 	 * result = if returnResult()->notEmpty() then returnResult()->any().lower else Set{} endif
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -456,7 +451,7 @@ public interface Operation
 	 * 
 	 * result = if returnResult()->notEmpty() then returnResult()->any().upper else Set{} endif
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,12 +28,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.StringExpression;
@@ -49,8 +47,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.SubstitutionImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.SubstitutionImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SubstitutionImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SubstitutionImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SubstitutionImpl#getContract <em>Contract</em>}</li>
@@ -80,40 +76,6 @@ public class SubstitutionImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.SUBSTITUTION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.SUBSTITUTION__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.SUBSTITUTION__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.SUBSTITUTION__TARGET, new int[]{
-						UMLPackage.SUBSTITUTION__SUPPLIER,
-						UMLPackage.SUBSTITUTION__CONTRACT}));
-		}
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.SUBSTITUTION__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.SUBSTITUTION__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.SUBSTITUTION__SOURCE, new int[]{
-						UMLPackage.SUBSTITUTION__CLIENT,
-						UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER}));
-		}
-		return source;
 	}
 
 	/**
@@ -487,10 +449,10 @@ public class SubstitutionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.SUBSTITUTION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.SUBSTITUTION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -541,11 +503,7 @@ public class SubstitutionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.SUBSTITUTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.SUBSTITUTION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.SUBSTITUTION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.SUBSTITUTION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.SUBSTITUTION__QUALIFIED_NAME :
@@ -583,26 +541,6 @@ public class SubstitutionImpl
 				return basicGetSubstitutingClassifier() != null;
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetTargets() {
-		return super.isSetTargets()
-			|| eIsSet(UMLPackage.SUBSTITUTION__CONTRACT);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetSources() {
-		return super.isSetSources()
-			|| eIsSet(UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER);
 	}
 
 } //SubstitutionImpl

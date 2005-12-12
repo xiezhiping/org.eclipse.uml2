@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.10 2005/12/08 14:56:25 khussey Exp $
+ * $Id: VariableImpl.java,v 1.11 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,7 +102,7 @@ public class VariableImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNIQUE_EDEFAULT = true;
+	protected static final boolean IS_UNIQUE_EDEFAULT = false;
 
 	/**
 	 * The flag representing the value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -122,7 +122,7 @@ public class VariableImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int UPPER_EDEFAULT = 1;
+	protected static final int UPPER_EDEFAULT = 0;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -132,7 +132,7 @@ public class VariableImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOWER_EDEFAULT = 1;
+	protected static final int LOWER_EDEFAULT = 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,7 +141,6 @@ public class VariableImpl
 	 */
 	protected VariableImpl() {
 		super();
-		eFlags |= IS_UNIQUE_EFLAG;
 	}
 
 	/**
@@ -843,10 +842,10 @@ public class VariableImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.VARIABLE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.VARIABLE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -903,14 +902,9 @@ public class VariableImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.VARIABLE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.VARIABLE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.VARIABLE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.VARIABLE__VISIBILITY :
-				return eVirtualGet(UMLPackage.VARIABLE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.VARIABLE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

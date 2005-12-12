@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehavior.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
+ * $Id: OpaqueBehavior.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,7 +50,8 @@ public interface OpaqueBehavior
 	 * @see #isSetBodies()
 	 * @see #unsetBodies()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueBehavior_Body()
-	 * @model type="java.lang.String" unsettable="true" required="true"
+	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
+	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	List getBodies();
@@ -85,10 +86,33 @@ public interface OpaqueBehavior
 	 * Languages the body strings use in the same order as the body strings.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' attribute list.
+	 * @see #isSetLanguages()
+	 * @see #unsetLanguages()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueBehavior_Language()
-	 * @model type="java.lang.String"
+	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 * @generated
 	 */
 	List getLanguages();
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueBehavior#getLanguages <em>Language</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetLanguages()
+	 * @see #getLanguages()
+	 * @generated
+	 */
+	void unsetLanguages();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.OpaqueBehavior#getLanguages <em>Language</em>}' attribute list is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Language</em>' attribute list is set.
+	 * @see #unsetLanguages()
+	 * @see #getLanguages()
+	 * @generated
+	 */
+	boolean isSetLanguages();
 
 } // OpaqueBehavior

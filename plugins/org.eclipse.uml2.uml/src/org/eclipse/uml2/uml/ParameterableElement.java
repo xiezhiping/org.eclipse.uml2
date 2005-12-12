@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElement.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: ParameterableElement.java,v 1.2 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -101,7 +101,7 @@ public interface ParameterableElement
 	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
 	 * result = p->oclIsKindOf(self.oclType)
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" pRequired="true" pOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" pRequired="true" pOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
@@ -114,7 +114,7 @@ public interface ParameterableElement
 	 * The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
 	 * result = templateParameter->notEmpty()
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -70,7 +70,7 @@ public class JoinNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_COMBINE_DUPLICATE_EDEFAULT = true;
+	protected static final boolean IS_COMBINE_DUPLICATE_EDEFAULT = false;
 
 	/**
 	 * The flag representing the value of the '{@link #isCombineDuplicate() <em>Is Combine Duplicate</em>}' attribute.
@@ -89,7 +89,6 @@ public class JoinNodeImpl
 	 */
 	protected JoinNodeImpl() {
 		super();
-		eFlags |= IS_COMBINE_DUPLICATE_EFLAG;
 	}
 
 	/**
@@ -428,10 +427,10 @@ public class JoinNodeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.JOIN_NODE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.JOIN_NODE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.JOIN_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -491,14 +490,9 @@ public class JoinNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.JOIN_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.JOIN_NODE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.JOIN_NODE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.JOIN_NODE__VISIBILITY :
-				return eVirtualGet(UMLPackage.JOIN_NODE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.JOIN_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
+ * $Id: OperationImpl.java,v 1.9 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -132,7 +132,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_QUERY_EFLAG = 1 << 12;
+	protected static final int IS_QUERY_EFLAG = 1 << 11;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -152,7 +152,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNIQUE_EDEFAULT = true;
+	protected static final boolean IS_UNIQUE_EDEFAULT = false;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -162,7 +162,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOWER_EDEFAULT = 1;
+	protected static final int LOWER_EDEFAULT = 0;
 
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
@@ -172,7 +172,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int UPPER_EDEFAULT = 1;
+	protected static final int UPPER_EDEFAULT = 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1560,10 +1560,10 @@ public class OperationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.OPERATION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.OPERATION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1590,13 +1590,13 @@ public class OperationImpl
 				getOwnedParameters().clear();
 				return;
 			case UMLPackage.OPERATION__IS_ABSTRACT :
-				unsetIsAbstract();
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
 				return;
 			case UMLPackage.OPERATION__METHOD :
 				getMethods().clear();
 				return;
 			case UMLPackage.OPERATION__CONCURRENCY :
-				unsetConcurrency();
+				setConcurrency(CONCURRENCY_EDEFAULT);
 				return;
 			case UMLPackage.OPERATION__RAISED_EXCEPTION :
 				getRaisedExceptions().clear();
@@ -1677,14 +1677,9 @@ public class OperationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.OPERATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPERATION__NAME :
-				String name = (String) eVirtualGet(UMLPackage.OPERATION__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.OPERATION__VISIBILITY :
-				return eVirtualGet(UMLPackage.OPERATION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.OPERATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1724,12 +1719,13 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_PARAMETER :
 				return isSetOwnedParameters();
 			case UMLPackage.OPERATION__IS_ABSTRACT :
-				return isSetIsAbstract();
+				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.OPERATION__METHOD :
 				List method = (List) eVirtualGet(UMLPackage.OPERATION__METHOD);
 				return method != null && !method.isEmpty();
 			case UMLPackage.OPERATION__CONCURRENCY :
-				return isSetConcurrency();
+				return eVirtualGet(UMLPackage.OPERATION__CONCURRENCY,
+					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
 			case UMLPackage.OPERATION__RAISED_EXCEPTION :
 				return isSetRaisedExceptions();
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :

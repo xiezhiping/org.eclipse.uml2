@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEvent.java,v 1.3 2005/12/08 14:56:26 khussey Exp $
+ * $Id: TimeEvent.java,v 1.4 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,11 +51,9 @@ public interface TimeEvent
 	 * Specifies whether it is relative or absolute time.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Relative</em>' attribute.
-	 * @see #isSetIsRelative()
-	 * @see #unsetIsRelative()
 	 * @see #setIsRelative(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTimeEvent_IsRelative()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isRelative();
@@ -65,35 +63,10 @@ public interface TimeEvent
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Relative</em>' attribute.
-	 * @see #isSetIsRelative()
-	 * @see #unsetIsRelative()
 	 * @see #isRelative()
 	 * @generated
 	 */
 	void setIsRelative(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.TimeEvent#isRelative <em>Is Relative</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetIsRelative()
-	 * @see #isRelative()
-	 * @see #setIsRelative(boolean)
-	 * @generated
-	 */
-	void unsetIsRelative();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.TimeEvent#isRelative <em>Is Relative</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Is Relative</em>' attribute is set.
-	 * @see #unsetIsRelative()
-	 * @see #isRelative()
-	 * @see #setIsRelative(boolean)
-	 * @generated
-	 */
-	boolean isSetIsRelative();
 
 	/**
 	 * Returns the value of the '<em><b>When</b></em>' containment reference.

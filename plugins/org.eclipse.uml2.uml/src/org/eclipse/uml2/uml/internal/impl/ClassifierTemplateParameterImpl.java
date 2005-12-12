@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -64,7 +64,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean ALLOW_SUBSTITUTABLE_EDEFAULT = true;
+	protected static final boolean ALLOW_SUBSTITUTABLE_EDEFAULT = false;
 
 	/**
 	 * The flag representing the value of the '{@link #isAllowSubstitutable() <em>Allow Substitutable</em>}' attribute.
@@ -83,7 +83,6 @@ public class ClassifierTemplateParameterImpl
 	 */
 	protected ClassifierTemplateParameterImpl() {
 		super();
-		eFlags |= ALLOW_SUBSTITUTABLE_EFLAG;
 	}
 
 	/**

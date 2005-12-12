@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.6 2005/12/06 23:21:51 khussey Exp $
+ * $Id: DurationImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,7 +59,7 @@ public class DurationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean FIRST_TIME_EDEFAULT = true;
+	protected static final boolean FIRST_TIME_EDEFAULT = false;
 
 	/**
 	 * The flag representing the value of the '{@link #isFirstTime() <em>First Time</em>}' attribute.
@@ -78,7 +78,6 @@ public class DurationImpl
 	 */
 	protected DurationImpl() {
 		super();
-		eFlags |= FIRST_TIME_EFLAG;
 	}
 
 	/**
@@ -261,10 +260,10 @@ public class DurationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.DURATION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.DURATION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.DURATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -309,11 +308,7 @@ public class DurationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DURATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DURATION__NAME :
-				String name = (String) eVirtualGet(UMLPackage.DURATION__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.DURATION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.DURATION__QUALIFIED_NAME :

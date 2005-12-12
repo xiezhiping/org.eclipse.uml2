@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -525,10 +525,10 @@ public class ExpansionNodeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.EXPANSION_NODE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.EXPANSION_NODE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -606,14 +606,9 @@ public class ExpansionNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXPANSION_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXPANSION_NODE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.EXPANSION_NODE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.EXPANSION_NODE__VISIBILITY :
-				return eVirtualGet(UMLPackage.EXPANSION_NODE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.EXPANSION_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

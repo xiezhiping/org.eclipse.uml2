@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.11 2005/12/08 19:38:07 khussey Exp $
+ * $Id: RegionImpl.java,v 1.12 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -851,10 +851,10 @@ public class RegionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.REGION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.REGION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.REGION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -911,14 +911,9 @@ public class RegionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.REGION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.REGION__NAME :
-				String name = (String) eVirtualGet(UMLPackage.REGION__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.REGION__VISIBILITY :
-				return eVirtualGet(UMLPackage.REGION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.REGION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

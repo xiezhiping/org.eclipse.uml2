@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Package.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedTypes <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getNestedPackages <em>Nested Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getNestingPackage <em>Nesting Package</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#getAppliedProfiles <em>Applied Profile</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getProfileApplications <em>Profile Application</em>}</li>
  * </ul>
  * </p>
  *
@@ -203,19 +203,29 @@ public interface Package
 	void setNestingPackage(Package value);
 
 	/**
-	 * Returns the value of the '<em><b>Applied Profile</b></em>' reference list.
+	 * Returns the value of the '<em><b>Profile Application</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ProfileApplication}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the ProfileApplications that indicate which profiles have been applied to the Package.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Applied Profile</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_AppliedProfile()
-	 * @model type="org.eclipse.uml2.uml.ProfileApplication" resolveProxies="false" ordered="false"
+	 * @return the value of the '<em>Profile Application</em>' containment reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_ProfileApplication()
+	 * @model type="org.eclipse.uml2.uml.ProfileApplication" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getAppliedProfiles();
+	List getProfileApplications();
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.uml.ProfileApplication} and appends it to the '<em><b>Profile Application</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.uml.ProfileApplication}.
+	 * @see #getProfileApplications()
+	 * @generated
+	 */
+	ProfileApplication createProfileApplication();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -253,7 +263,7 @@ public interface Package
 	 * (elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or
 	 * (packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" elRequired="true" elOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" elRequired="true" elOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

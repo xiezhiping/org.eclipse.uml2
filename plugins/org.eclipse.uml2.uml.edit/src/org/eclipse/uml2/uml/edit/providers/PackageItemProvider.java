@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageItemProvider.java,v 1.2 2005/12/08 14:52:55 khussey Exp $
+ * $Id: PackageItemProvider.java,v 1.3 2005/12/12 16:59:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -35,11 +35,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
-import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
 
 import org.eclipse.uml2.uml.UMLFactory;
@@ -87,7 +83,6 @@ public class PackageItemProvider
 			addOwnedTypePropertyDescriptor(object);
 			addNestedPackagePropertyDescriptor(object);
 			addNestingPackagePropertyDescriptor(object);
-			addAppliedProfilePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -275,25 +270,6 @@ public class PackageItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Applied Profile feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAppliedProfilePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Package_appliedProfile_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Package_appliedProfile_feature", "_UI_Package_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PACKAGE__APPLIED_PROFILE, true, null, null,
-				null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -310,6 +286,8 @@ public class PackageItemProvider
 				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 			childrenFeatures.add(UMLPackage.Literals.PACKAGE__PACKAGE_MERGE);
 			childrenFeatures.add(UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT);
+			childrenFeatures
+				.add(UMLPackage.Literals.PACKAGE__PROFILE_APPLICATION);
 		}
 		return childrenFeatures;
 	}
@@ -364,6 +342,7 @@ public class PackageItemProvider
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
 			case UMLPackage.PACKAGE__PACKAGE_MERGE :
 			case UMLPackage.PACKAGE__PACKAGED_ELEMENT :
+			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -697,6 +676,10 @@ public class PackageItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
 				.createAssociationClass()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PROFILE_APPLICATION,
+			UMLFactory.eINSTANCE.createProfileApplication()));
 	}
 
 	/**
@@ -730,73 +713,6 @@ public class PackageItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createAddCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UMLPackage.Literals.PACKAGE__APPLIED_PROFILE) {
-			return new SubsetAddCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT},
-				collection, index);
-		}
-		return super
-			.createAddCommand(domain, owner, feature, collection, index);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection collection) {
-		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.PACKAGE__APPLIED_PROFILE},
-				collection);
-		}
-		return super.createRemoveCommand(domain, owner, feature, collection);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UMLPackage.Literals.PACKAGE__APPLIED_PROFILE) {
-			return new SubsetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT},
-				value, collection);
-		}
-		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
-			return new SupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.PACKAGE__APPLIED_PROFILE},
-				value, collection);
-		}
-		return super.createReplaceCommand(domain, owner, feature, value,
-			collection);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.2 2005/12/01 21:57:19 khussey Exp $
+ * $Id: Type.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -70,7 +70,7 @@ public interface Type
 	 * The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" otherRequired="true" otherOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */

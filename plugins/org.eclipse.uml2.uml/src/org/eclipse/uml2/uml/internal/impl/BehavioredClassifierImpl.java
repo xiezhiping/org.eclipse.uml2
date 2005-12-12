@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.10 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -753,10 +753,10 @@ public abstract class BehavioredClassifierImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -858,11 +858,7 @@ public abstract class BehavioredClassifierImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.BEHAVIORED_CLASSIFIER__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__QUALIFIED_NAME :

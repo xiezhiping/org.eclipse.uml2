@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: LiteralStringImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -252,10 +252,10 @@ public class LiteralStringImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.LITERAL_STRING__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.LITERAL_STRING__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.LITERAL_STRING__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -297,11 +297,7 @@ public class LiteralStringImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.LITERAL_STRING__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LITERAL_STRING__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.LITERAL_STRING__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.LITERAL_STRING__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.LITERAL_STRING__QUALIFIED_NAME :

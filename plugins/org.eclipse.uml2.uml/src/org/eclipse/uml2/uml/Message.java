@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Message.java,v 1.4 2005/11/29 19:53:45 khussey Exp $
+ * $Id: Message.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,6 +53,7 @@ public interface Message
 
 	/**
 	 * Returns the value of the '<em><b>Message Kind</b></em>' attribute.
+	 * The default value is <code>"unknown"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.uml2.uml.MessageKind}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,13 +63,14 @@ public interface Message
 	 * @return the value of the '<em>Message Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.MessageKind
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMessage_MessageKind()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model default="unknown" required="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	MessageKind getMessageKind();
 
 	/**
 	 * Returns the value of the '<em><b>Message Sort</b></em>' attribute.
+	 * The default value is <code>"synchCall"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.uml2.uml.MessageSort}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -77,11 +79,9 @@ public interface Message
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message Sort</em>' attribute.
 	 * @see org.eclipse.uml2.uml.MessageSort
-	 * @see #isSetMessageSort()
-	 * @see #unsetMessageSort()
 	 * @see #setMessageSort(MessageSort)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMessage_MessageSort()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model default="synchCall" required="true" ordered="false"
 	 * @generated
 	 */
 	MessageSort getMessageSort();
@@ -92,35 +92,10 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Message Sort</em>' attribute.
 	 * @see org.eclipse.uml2.uml.MessageSort
-	 * @see #isSetMessageSort()
-	 * @see #unsetMessageSort()
 	 * @see #getMessageSort()
 	 * @generated
 	 */
 	void setMessageSort(MessageSort value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Message#getMessageSort <em>Message Sort</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetMessageSort()
-	 * @see #getMessageSort()
-	 * @see #setMessageSort(MessageSort)
-	 * @generated
-	 */
-	void unsetMessageSort();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Message#getMessageSort <em>Message Sort</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Message Sort</em>' attribute is set.
-	 * @see #unsetMessageSort()
-	 * @see #getMessageSort()
-	 * @see #setMessageSort(MessageSort)
-	 * @generated
-	 */
-	boolean isSetMessageSort();
 
 	/**
 	 * Returns the value of the '<em><b>Receive Event</b></em>' reference.

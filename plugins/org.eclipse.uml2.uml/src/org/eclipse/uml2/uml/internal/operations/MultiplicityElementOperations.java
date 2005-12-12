@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.7 2005/12/02 04:55:51 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.8 2005/12/12 16:58:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -269,7 +269,7 @@ public final class MultiplicityElementOperations
 	 */
 	public static boolean isMultivalued(MultiplicityElement multiplicityElement) {
 		int upperBound = multiplicityElement.upperBound();
-		return upperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND
+		return upperBound == LiteralUnlimitedNatural.UNLIMITED
 			|| upperBound > 1;
 	}
 
@@ -286,13 +286,13 @@ public final class MultiplicityElementOperations
 	public static boolean includesCardinality(
 			MultiplicityElement multiplicityElement, int C) {
 
-		if (C == MultiplicityElement.UNLIMITED_UPPER_BOUND) {
-			return multiplicityElement.upperBound() == MultiplicityElement.UNLIMITED_UPPER_BOUND;
+		if (C == LiteralUnlimitedNatural.UNLIMITED) {
+			return multiplicityElement.upperBound() == LiteralUnlimitedNatural.UNLIMITED;
 		} else {
 
 			if (multiplicityElement.lowerBound() <= C) {
 				int upperBound = multiplicityElement.upperBound();
-				return upperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND
+				return upperBound == LiteralUnlimitedNatural.UNLIMITED
 					? true
 					: upperBound >= C;
 			} else {
@@ -319,11 +319,11 @@ public final class MultiplicityElementOperations
 		if (multiplicityElement.lowerBound() <= M.lowerBound()) {
 			int upperBound = multiplicityElement.upperBound();
 
-			if (upperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND) {
+			if (upperBound == LiteralUnlimitedNatural.UNLIMITED) {
 				return true;
 			} else {
 				int mUpperBound = M.upperBound();
-				return mUpperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND
+				return mUpperBound == LiteralUnlimitedNatural.UNLIMITED
 					? false
 					: upperBound >= mUpperBound;
 			}

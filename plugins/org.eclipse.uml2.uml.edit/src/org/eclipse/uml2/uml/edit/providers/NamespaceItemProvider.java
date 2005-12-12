@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceItemProvider.java,v 1.1 2005/12/07 14:20:24 khussey Exp $
+ * $Id: NamespaceItemProvider.java,v 1.2 2005/12/12 16:59:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -279,10 +279,6 @@ public class NamespaceItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, UMLFactory.eINSTANCE
 				.createPackageImport()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, UMLFactory.eINSTANCE
-				.createProfileApplication()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE

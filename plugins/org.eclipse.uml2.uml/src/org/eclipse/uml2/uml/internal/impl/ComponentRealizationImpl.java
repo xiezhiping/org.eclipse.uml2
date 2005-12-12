@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
@@ -50,8 +49,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getAbstraction <em>Abstraction</em>}</li>
@@ -81,41 +78,6 @@ public class ComponentRealizationImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.COMPONENT_REALIZATION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.COMPONENT_REALIZATION__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.COMPONENT_REALIZATION__SOURCE, new int[]{
-						UMLPackage.COMPONENT_REALIZATION__CLIENT,
-						UMLPackage.COMPONENT_REALIZATION__ABSTRACTION}));
-		}
-		return source;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__TARGET);
-		if (target == null) {
-			eVirtualSet(
-				UMLPackage.COMPONENT_REALIZATION__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.COMPONENT_REALIZATION__TARGET, new int[]{
-						UMLPackage.COMPONENT_REALIZATION__SUPPLIER,
-						UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER}));
-		}
-		return target;
 	}
 
 	/**
@@ -494,10 +456,10 @@ public class ComponentRealizationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -548,11 +510,7 @@ public class ComponentRealizationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.COMPONENT_REALIZATION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.COMPONENT_REALIZATION__QUALIFIED_NAME :
@@ -597,16 +555,6 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetSources() {
-		return super.isSetSources()
-			|| eIsSet(UMLPackage.COMPONENT_REALIZATION__ABSTRACTION);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Element basicGetOwner() {
 		Component abstraction = basicGetAbstraction();
 		if (abstraction != null) {
@@ -623,16 +571,6 @@ public class ComponentRealizationImpl
 	public boolean isSetOwner() {
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.COMPONENT_REALIZATION__ABSTRACTION);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetTargets() {
-		return super.isSetTargets()
-			|| eIsSet(UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER);
 	}
 
 } //ComponentRealizationImpl

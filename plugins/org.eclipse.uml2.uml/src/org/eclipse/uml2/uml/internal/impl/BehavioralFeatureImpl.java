@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -142,15 +142,6 @@ public class BehavioralFeatureImpl
 	 * @ordered
 	 */
 	protected static final int IS_ABSTRACT_EFLAG = 1 << 10;
-
-	/**
-	 * The flag representing whether the Is Abstract attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_ABSTRACT_ESETFLAG = 1 << 11;
 
 	/**
 	 * The default value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
@@ -408,41 +399,11 @@ public class BehavioralFeatureImpl
 			eFlags |= IS_ABSTRACT_EFLAG;
 		else
 			eFlags &= ~IS_ABSTRACT_EFLAG;
-		boolean oldIsAbstractESet = (eFlags & IS_ABSTRACT_ESETFLAG) != 0;
-		eFlags |= IS_ABSTRACT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT, oldIsAbstract,
-				newIsAbstract, !oldIsAbstractESet));
+				newIsAbstract));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsAbstract() {
-		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
-		boolean oldIsAbstractESet = (eFlags & IS_ABSTRACT_ESETFLAG) != 0;
-		if (IS_ABSTRACT_EDEFAULT)
-			eFlags |= IS_ABSTRACT_EFLAG;
-		else
-			eFlags &= ~IS_ABSTRACT_EFLAG;
-		eFlags &= ~IS_ABSTRACT_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT, oldIsAbstract,
-				IS_ABSTRACT_EDEFAULT, oldIsAbstractESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsAbstract() {
-		return (eFlags & IS_ABSTRACT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -497,37 +458,13 @@ public class BehavioralFeatureImpl
 			: newConcurrency;
 		Object oldConcurrency = eVirtualSet(
 			UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, concurrency);
-		boolean isSetChange = oldConcurrency == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, isSetChange
+				UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY,
+				oldConcurrency == EVIRTUAL_NO_VALUE
 					? CONCURRENCY_EDEFAULT
-					: oldConcurrency, concurrency, isSetChange));
+					: oldConcurrency, concurrency));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetConcurrency() {
-		Object oldConcurrency = eVirtualUnset(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY);
-		boolean isSetChange = oldConcurrency != EVIRTUAL_NO_VALUE;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, isSetChange
-					? oldConcurrency
-					: CONCURRENCY_EDEFAULT, CONCURRENCY_EDEFAULT, isSetChange));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetConcurrency() {
-		return eVirtualIsSet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY);
 	}
 
 	/**
@@ -884,10 +821,10 @@ public class BehavioralFeatureImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -914,13 +851,13 @@ public class BehavioralFeatureImpl
 				getOwnedParameters().clear();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
-				unsetIsAbstract();
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				getMethods().clear();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY :
-				unsetConcurrency();
+				setConcurrency(CONCURRENCY_EDEFAULT);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION :
 				getRaisedExceptions().clear();
@@ -950,14 +887,9 @@ public class BehavioralFeatureImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.BEHAVIORAL_FEATURE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.BEHAVIORAL_FEATURE__VISIBILITY :
-				return eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.BEHAVIORAL_FEATURE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -998,12 +930,13 @@ public class BehavioralFeatureImpl
 				List ownedParameter = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
-				return isSetIsAbstract();
+				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				List method = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__METHOD);
 				return method != null && !method.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY :
-				return isSetConcurrency();
+				return eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY,
+					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
 			case UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION :
 				List raisedException = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
 				return raisedException != null && !raisedException.isEmpty();
@@ -1092,16 +1025,10 @@ public class BehavioralFeatureImpl
 		result.append(", isStatic: "); //$NON-NLS-1$
 		result.append((eFlags & IS_STATIC_EFLAG) != 0);
 		result.append(", isAbstract: "); //$NON-NLS-1$
-		if ((eFlags & IS_ABSTRACT_ESETFLAG) != 0)
-			result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(", concurrency: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY))
-			result
-				.append(eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY));
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append(eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY,
+			CONCURRENCY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

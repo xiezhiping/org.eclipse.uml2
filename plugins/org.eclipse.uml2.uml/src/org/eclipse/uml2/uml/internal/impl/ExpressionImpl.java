@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -342,10 +342,10 @@ public class ExpressionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.EXPRESSION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.EXPRESSION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -390,11 +390,7 @@ public class ExpressionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXPRESSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXPRESSION__NAME :
-				String name = (String) eVirtualGet(UMLPackage.EXPRESSION__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.EXPRESSION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.EXPRESSION__QUALIFIED_NAME :

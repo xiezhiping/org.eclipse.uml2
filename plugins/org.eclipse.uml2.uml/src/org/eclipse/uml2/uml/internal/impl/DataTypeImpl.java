@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.10 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -619,10 +619,10 @@ public class DataTypeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.DATA_TYPE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.DATA_TYPE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.DATA_TYPE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -718,11 +718,7 @@ public class DataTypeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DATA_TYPE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DATA_TYPE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.DATA_TYPE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.DATA_TYPE__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.DATA_TYPE__QUALIFIED_NAME :

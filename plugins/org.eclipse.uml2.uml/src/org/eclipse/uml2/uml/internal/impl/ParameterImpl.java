@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.12 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.13 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -111,7 +111,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNIQUE_EDEFAULT = true;
+	protected static final boolean IS_UNIQUE_EDEFAULT = false;
 
 	/**
 	 * The flag representing the value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -131,7 +131,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int UPPER_EDEFAULT = 1;
+	protected static final int UPPER_EDEFAULT = 0;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -141,7 +141,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOWER_EDEFAULT = 1;
+	protected static final int LOWER_EDEFAULT = 0;
 
 	/**
 	 * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
@@ -220,7 +220,6 @@ public class ParameterImpl
 	 */
 	protected ParameterImpl() {
 		super();
-		eFlags |= IS_UNIQUE_EFLAG;
 	}
 
 	/**
@@ -773,12 +772,37 @@ public class ParameterImpl
 			? EFFECT_EDEFAULT
 			: newEffect;
 		Object oldEffect = eVirtualSet(UMLPackage.PARAMETER__EFFECT, effect);
+		boolean isSetChange = oldEffect == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PARAMETER__EFFECT, oldEffect == EVIRTUAL_NO_VALUE
+				UMLPackage.PARAMETER__EFFECT, isSetChange
 					? EFFECT_EDEFAULT
-					: oldEffect, effect));
+					: oldEffect, effect, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetEffect() {
+		Object oldEffect = eVirtualUnset(UMLPackage.PARAMETER__EFFECT);
+		boolean isSetChange = oldEffect != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.PARAMETER__EFFECT, isSetChange
+					? oldEffect
+					: EFFECT_EDEFAULT, EFFECT_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetEffect() {
+		return eVirtualIsSet(UMLPackage.PARAMETER__EFFECT);
 	}
 
 	/**
@@ -1189,10 +1213,10 @@ public class ParameterImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PARAMETER__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.PARAMETER__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.PARAMETER__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1249,7 +1273,7 @@ public class ParameterImpl
 				setIsStream(IS_STREAM_EDEFAULT);
 				return;
 			case UMLPackage.PARAMETER__EFFECT :
-				setEffect(EFFECT_EDEFAULT);
+				unsetEffect();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1273,14 +1297,9 @@ public class ParameterImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PARAMETER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PARAMETER__NAME :
-				String name = (String) eVirtualGet(UMLPackage.PARAMETER__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.PARAMETER__VISIBILITY :
-				return eVirtualGet(UMLPackage.PARAMETER__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PARAMETER__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -1330,8 +1349,7 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__IS_STREAM :
 				return ((eFlags & IS_STREAM_EFLAG) != 0) != IS_STREAM_EDEFAULT;
 			case UMLPackage.PARAMETER__EFFECT :
-				return eVirtualGet(UMLPackage.PARAMETER__EFFECT,
-					EFFECT_EDEFAULT) != EFFECT_EDEFAULT;
+				return isSetEffect();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1412,8 +1430,10 @@ public class ParameterImpl
 		result.append(", isStream: "); //$NON-NLS-1$
 		result.append((eFlags & IS_STREAM_EFLAG) != 0);
 		result.append(", effect: "); //$NON-NLS-1$
-		result
-			.append(eVirtualGet(UMLPackage.PARAMETER__EFFECT, EFFECT_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.PARAMETER__EFFECT))
+			result.append(eVirtualGet(UMLPackage.PARAMETER__EFFECT));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

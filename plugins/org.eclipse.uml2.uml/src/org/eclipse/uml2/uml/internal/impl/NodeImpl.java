@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.10 2005/12/08 14:56:25 khussey Exp $
+ * $Id: NodeImpl.java,v 1.11 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -794,10 +794,10 @@ public class NodeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.NODE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.NODE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -896,7 +896,7 @@ public class NodeImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.NODE__IS_ACTIVE :
-				unsetIsActive();
+				setIsActive(IS_ACTIVE_EDEFAULT);
 				return;
 			case UMLPackage.NODE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -929,11 +929,7 @@ public class NodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.NODE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.NODE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.NODE__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.NODE__QUALIFIED_NAME :
@@ -1025,8 +1021,7 @@ public class NodeImpl
 				List ownedConnector = (List) eVirtualGet(UMLPackage.NODE__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.NODE__OWNED_PORT :
-				List ownedPort = (List) eVirtualGet(UMLPackage.NODE__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return !getOwnedPorts().isEmpty();
 			case UMLPackage.NODE__OWNED_BEHAVIOR :
 				List ownedBehavior = (List) eVirtualGet(UMLPackage.NODE__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
@@ -1048,7 +1043,7 @@ public class NodeImpl
 			case UMLPackage.NODE__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.NODE__IS_ACTIVE :
-				return isSetIsActive();
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.NODE__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.NODE__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();

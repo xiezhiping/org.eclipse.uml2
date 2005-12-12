@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -155,37 +155,13 @@ public class ElementImportImpl
 			: newVisibility;
 		Object oldVisibility = eVirtualSet(
 			UMLPackage.ELEMENT_IMPORT__VISIBILITY, visibility);
-		boolean isSetChange = oldVisibility == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.ELEMENT_IMPORT__VISIBILITY, isSetChange
+				UMLPackage.ELEMENT_IMPORT__VISIBILITY,
+				oldVisibility == EVIRTUAL_NO_VALUE
 					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility, isSetChange));
+					: oldVisibility, visibility));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetVisibility() {
-		Object oldVisibility = eVirtualUnset(UMLPackage.ELEMENT_IMPORT__VISIBILITY);
-		boolean isSetChange = oldVisibility != EVIRTUAL_NO_VALUE;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.ELEMENT_IMPORT__VISIBILITY, isSetChange
-					? oldVisibility
-					: VISIBILITY_EDEFAULT, VISIBILITY_EDEFAULT, isSetChange));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetVisibility() {
-		return eVirtualIsSet(UMLPackage.ELEMENT_IMPORT__VISIBILITY);
 	}
 
 	/**
@@ -206,12 +182,37 @@ public class ElementImportImpl
 	public void setAlias(String newAlias) {
 		String alias = newAlias;
 		Object oldAlias = eVirtualSet(UMLPackage.ELEMENT_IMPORT__ALIAS, alias);
+		boolean isSetChange = oldAlias == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.ELEMENT_IMPORT__ALIAS, oldAlias == EVIRTUAL_NO_VALUE
+				UMLPackage.ELEMENT_IMPORT__ALIAS, isSetChange
 					? ALIAS_EDEFAULT
-					: oldAlias, alias));
+					: oldAlias, alias, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetAlias() {
+		Object oldAlias = eVirtualUnset(UMLPackage.ELEMENT_IMPORT__ALIAS);
+		boolean isSetChange = oldAlias != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.ELEMENT_IMPORT__ALIAS, isSetChange
+					? oldAlias
+					: ALIAS_EDEFAULT, ALIAS_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetAlias() {
+		return eVirtualIsSet(UMLPackage.ELEMENT_IMPORT__ALIAS);
 	}
 
 	/**
@@ -484,10 +485,10 @@ public class ElementImportImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.ELEMENT_IMPORT__VISIBILITY :
-				unsetVisibility();
+				setVisibility(VISIBILITY_EDEFAULT);
 				return;
 			case UMLPackage.ELEMENT_IMPORT__ALIAS :
-				setAlias(ALIAS_EDEFAULT);
+				unsetAlias();
 				return;
 			case UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT :
 				setImportedElement((PackageableElement) null);
@@ -523,13 +524,10 @@ public class ElementImportImpl
 			case UMLPackage.ELEMENT_IMPORT__TARGET :
 				return isSetTargets();
 			case UMLPackage.ELEMENT_IMPORT__VISIBILITY :
-				return isSetVisibility();
+				return eVirtualGet(UMLPackage.ELEMENT_IMPORT__VISIBILITY,
+					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 			case UMLPackage.ELEMENT_IMPORT__ALIAS :
-				String alias = (String) eVirtualGet(
-					UMLPackage.ELEMENT_IMPORT__ALIAS, ALIAS_EDEFAULT);
-				return ALIAS_EDEFAULT == null
-					? alias != null
-					: !ALIAS_EDEFAULT.equals(alias);
+				return isSetAlias();
 			case UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT :
 				return eVirtualGet(UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT) != null;
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
@@ -549,13 +547,13 @@ public class ElementImportImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.ELEMENT_IMPORT__VISIBILITY))
-			result.append(eVirtualGet(UMLPackage.ELEMENT_IMPORT__VISIBILITY));
+		result.append(eVirtualGet(UMLPackage.ELEMENT_IMPORT__VISIBILITY,
+			VISIBILITY_EDEFAULT));
+		result.append(", alias: "); //$NON-NLS-1$
+		if (eVirtualIsSet(UMLPackage.ELEMENT_IMPORT__ALIAS))
+			result.append(eVirtualGet(UMLPackage.ELEMENT_IMPORT__ALIAS));
 		else
 			result.append("<unset>"); //$NON-NLS-1$
-		result.append(", alias: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.ELEMENT_IMPORT__ALIAS,
-			ALIAS_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

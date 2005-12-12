@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.10 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -722,10 +722,10 @@ public class DeploymentSpecificationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -839,11 +839,7 @@ public class DeploymentSpecificationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.DEPLOYMENT_SPECIFICATION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__QUALIFIED_NAME :

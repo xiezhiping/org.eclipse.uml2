@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.9 2005/12/06 23:21:49 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,7 +90,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNIQUE_EDEFAULT = true;
+	protected static final boolean IS_UNIQUE_EDEFAULT = false;
 
 	/**
 	 * The flag representing the value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -110,7 +110,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int UPPER_EDEFAULT = 1;
+	protected static final int UPPER_EDEFAULT = 0;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -120,7 +120,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOWER_EDEFAULT = 1;
+	protected static final int LOWER_EDEFAULT = 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,7 +129,6 @@ public abstract class MultiplicityElementImpl
 	 */
 	protected MultiplicityElementImpl() {
 		super();
-		eFlags |= IS_UNIQUE_EFLAG;
 	}
 
 	/**

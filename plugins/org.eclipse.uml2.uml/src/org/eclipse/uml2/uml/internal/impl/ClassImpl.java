@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.12 2005/12/08 14:56:24 khussey Exp $
+ * $Id: ClassImpl.java,v 1.13 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -119,15 +119,6 @@ public class ClassImpl
 	 * @ordered
 	 */
 	protected static final int IS_ACTIVE_EFLAG = 1 << 10;
-
-	/**
-	 * The flag representing whether the Is Active attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_ACTIVE_ESETFLAG = 1 << 11;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -639,41 +630,10 @@ public class ClassImpl
 			eFlags |= IS_ACTIVE_EFLAG;
 		else
 			eFlags &= ~IS_ACTIVE_EFLAG;
-		boolean oldIsActiveESet = (eFlags & IS_ACTIVE_ESETFLAG) != 0;
-		eFlags |= IS_ACTIVE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CLASS__IS_ACTIVE, oldIsActive, newIsActive,
-				!oldIsActiveESet));
+				UMLPackage.CLASS__IS_ACTIVE, oldIsActive, newIsActive));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsActive() {
-		boolean oldIsActive = (eFlags & IS_ACTIVE_EFLAG) != 0;
-		boolean oldIsActiveESet = (eFlags & IS_ACTIVE_ESETFLAG) != 0;
-		if (IS_ACTIVE_EDEFAULT)
-			eFlags |= IS_ACTIVE_EFLAG;
-		else
-			eFlags &= ~IS_ACTIVE_EFLAG;
-		eFlags &= ~IS_ACTIVE_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.CLASS__IS_ACTIVE, oldIsActive, IS_ACTIVE_EDEFAULT,
-				oldIsActiveESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsActive() {
-		return (eFlags & IS_ACTIVE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -1340,10 +1300,10 @@ public class ClassImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CLASS__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CLASS__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CLASS__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1442,7 +1402,7 @@ public class ClassImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.CLASS__IS_ACTIVE :
-				unsetIsActive();
+				setIsActive(IS_ACTIVE_EDEFAULT);
 				return;
 			case UMLPackage.CLASS__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -1469,11 +1429,7 @@ public class ClassImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CLASS__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CLASS__NAME :
-				String name = (String) eVirtualGet(UMLPackage.CLASS__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CLASS__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.CLASS__QUALIFIED_NAME :
@@ -1565,8 +1521,7 @@ public class ClassImpl
 				List ownedConnector = (List) eVirtualGet(UMLPackage.CLASS__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.CLASS__OWNED_PORT :
-				List ownedPort = (List) eVirtualGet(UMLPackage.CLASS__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return !getOwnedPorts().isEmpty();
 			case UMLPackage.CLASS__OWNED_BEHAVIOR :
 				List ownedBehavior = (List) eVirtualGet(UMLPackage.CLASS__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
@@ -1588,7 +1543,7 @@ public class ClassImpl
 			case UMLPackage.CLASS__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.CLASS__IS_ACTIVE :
-				return isSetIsActive();
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.CLASS__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.CLASS__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
@@ -1655,10 +1610,7 @@ public class ClassImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isActive: "); //$NON-NLS-1$
-		if ((eFlags & IS_ACTIVE_ESETFLAG) != 0)
-			result.append((eFlags & IS_ACTIVE_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & IS_ACTIVE_EFLAG) != 0);
 		result.append(", isAbstract: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(')');

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.7 2005/12/06 23:21:48 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -404,10 +404,10 @@ public class ConnectionPointReferenceImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -455,15 +455,9 @@ public class ConnectionPointReferenceImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.CONNECTION_POINT_REFERENCE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
-				return eVirtualGet(
-					UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

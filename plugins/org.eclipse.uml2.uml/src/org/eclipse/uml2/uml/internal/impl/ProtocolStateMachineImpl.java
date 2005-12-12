@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.9 2005/12/08 14:56:24 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.10 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,13 +32,11 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
-import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ProtocolConformance;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.RedefinableTemplateSignature;
-import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -572,9 +570,7 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				return getConnectionPoints();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE :
-				if (resolve)
-					return getExtendedStateMachine();
-				return basicGetExtendedStateMachine();
+				return getExtendedStateMachines();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE :
 				return getConformances();
 		}
@@ -738,9 +734,6 @@ public class ProtocolStateMachineImpl
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
 				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__CONTEXT :
-				setContext((BehavioredClassifier) newValue);
-				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
@@ -761,7 +754,8 @@ public class ProtocolStateMachineImpl
 				getConnectionPoints().addAll((Collection) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE :
-				setExtendedStateMachine((StateMachine) newValue);
+				getExtendedStateMachines().clear();
+				getExtendedStateMachines().addAll((Collection) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE :
 				getConformances().clear();
@@ -785,10 +779,10 @@ public class ProtocolStateMachineImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -887,22 +881,19 @@ public class ProtocolStateMachineImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_ACTIVE :
-				unsetIsActive();
+				setIsActive(IS_ACTIVE_EDEFAULT);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
-				unsetIsReentrant();
+				setIsReentrant(IS_REENTRANT_EDEFAULT);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__CONTEXT :
-				setContext((BehavioredClassifier) null);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
@@ -920,7 +911,7 @@ public class ProtocolStateMachineImpl
 				getConnectionPoints().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE :
-				setExtendedStateMachine((StateMachine) null);
+				getExtendedStateMachines().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE :
 				getConformances().clear();
@@ -947,11 +938,7 @@ public class ProtocolStateMachineImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.PROTOCOL_STATE_MACHINE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__QUALIFIED_NAME :
@@ -1043,8 +1030,7 @@ public class ProtocolStateMachineImpl
 				List ownedConnector = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PORT :
-				List ownedPort = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return !getOwnedPorts().isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR :
 				List ownedBehavior = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
@@ -1066,14 +1052,14 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_ACTIVE :
-				return isSetIsActive();
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EXTENSION :
 				return !getExtensions().isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
-				return isSetIsReentrant();
+				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR :
 				List redefinedBehavior = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null
@@ -1099,7 +1085,9 @@ public class ProtocolStateMachineImpl
 				List connectionPoint = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT);
 				return connectionPoint != null && !connectionPoint.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE :
-				return eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE) != null;
+				List extendedStateMachine = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE);
+				return extendedStateMachine != null
+					&& !extendedStateMachine.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE :
 				List conformance = (List) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE);
 				return conformance != null && !conformance.isEmpty();

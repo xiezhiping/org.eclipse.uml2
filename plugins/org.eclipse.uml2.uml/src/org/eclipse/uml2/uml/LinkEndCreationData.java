@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationData.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: LinkEndCreationData.java,v 1.2 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -46,7 +46,6 @@ public interface LinkEndCreationData
 
 	/**
 	 * Returns the value of the '<em><b>Is Replace All</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -55,7 +54,7 @@ public interface LinkEndCreationData
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLinkEndCreationData_IsReplaceAll()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isReplaceAll();

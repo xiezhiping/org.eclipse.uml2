@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.9 2005/12/08 14:56:24 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,11 +23,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.uml2.common.util.SubsetEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentEList;
-
+import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
 import org.eclipse.uml2.uml.Port;
@@ -36,6 +35,7 @@ import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -84,10 +84,8 @@ public abstract class EncapsulatedClassifierImpl
 		List ownedAttribute = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE,
-				ownedAttribute = new SupersetEObjectContainmentEList(
-					Property.class, this,
-					UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE,
-					new int[]{UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT}));
+				ownedAttribute = new EObjectContainmentEList(Property.class,
+					this, UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE));
 		}
 		return ownedAttribute;
 	}
@@ -95,15 +93,15 @@ public abstract class EncapsulatedClassifierImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public List getOwnedPorts() {
 		List ownedPort = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
 		if (ownedPort == null) {
 			eVirtualSet(
 				UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
-				ownedPort = new SubsetEObjectEList(
-					Port.class,
+				ownedPort = new DerivedSubsetEObjectEList(
+					Type.class,
 					this,
 					UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
 					new int[]{UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE}));
@@ -437,10 +435,10 @@ public abstract class EncapsulatedClassifierImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -539,11 +537,7 @@ public abstract class EncapsulatedClassifierImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.ENCAPSULATED_CLASSIFIER__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__QUALIFIED_NAME :
@@ -636,8 +630,7 @@ public abstract class EncapsulatedClassifierImpl
 				List ownedConnector = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT :
-				List ownedPort = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return !getOwnedPorts().isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

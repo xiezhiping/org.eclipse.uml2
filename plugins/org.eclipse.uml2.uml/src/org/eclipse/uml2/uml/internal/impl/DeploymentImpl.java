@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -54,9 +54,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getDeployedArtifacts <em>Deployed Artifact</em>}</li>
@@ -94,23 +92,6 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.DEPLOYMENT__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.DEPLOYMENT__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.DEPLOYMENT__TARGET, new int[]{
-						UMLPackage.DEPLOYMENT__SUPPLIER,
-						UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT}));
-		}
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public List getOwnedElements() {
 		List ownedElement = (List) eVirtualGet(UMLPackage.DEPLOYMENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
@@ -122,23 +103,6 @@ public class DeploymentImpl
 						UMLPackage.DEPLOYMENT__CONFIGURATION}));
 		}
 		return ownedElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.DEPLOYMENT__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.DEPLOYMENT__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.DEPLOYMENT__SOURCE, new int[]{
-						UMLPackage.DEPLOYMENT__CLIENT,
-						UMLPackage.DEPLOYMENT__LOCATION}));
-		}
-		return source;
 	}
 
 	/**
@@ -536,10 +500,10 @@ public class DeploymentImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.DEPLOYMENT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.DEPLOYMENT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -590,11 +554,7 @@ public class DeploymentImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DEPLOYMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPLOYMENT__NAME :
-				String name = (String) eVirtualGet(UMLPackage.DEPLOYMENT__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.DEPLOYMENT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.DEPLOYMENT__QUALIFIED_NAME :
@@ -641,28 +601,9 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetTargets() {
-		return super.isSetTargets()
-			|| eIsSet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.DEPLOYMENT__CONFIGURATION);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetSources() {
-		return super.isSetSources() || eIsSet(UMLPackage.DEPLOYMENT__LOCATION);
 	}
 
 } //DeploymentImpl

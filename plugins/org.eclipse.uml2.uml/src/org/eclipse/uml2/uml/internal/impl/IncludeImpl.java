@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -374,10 +374,10 @@ public class IncludeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.INCLUDE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.INCLUDE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -413,14 +413,9 @@ public class IncludeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INCLUDE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INCLUDE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.INCLUDE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.INCLUDE__VISIBILITY :
-				return eVirtualGet(UMLPackage.INCLUDE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.INCLUDE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionItemProvider.java,v 1.1 2005/12/07 14:20:26 khussey Exp $
+ * $Id: ProtocolTransitionItemProvider.java,v 1.2 2005/12/12 16:59:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -244,7 +244,8 @@ public class ProtocolTransitionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.TRANSITION__GUARD
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.TRANSITION__GUARD
 			|| childFeature == UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION;
 
 		if (qualify) {
@@ -273,6 +274,14 @@ public class ProtocolTransitionItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
+		if (feature == UMLPackage.Literals.TRANSITION__GUARD) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				value);
+		}
 		if (feature == UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION) {
 			return new SubsetSetCommand(
 				domain,

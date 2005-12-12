@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ModelImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -193,8 +193,8 @@ public class ModelImpl
 				if (resolve)
 					return getNestingPackage();
 				return basicGetNestingPackage();
-			case UMLPackage.MODEL__APPLIED_PROFILE :
-				return getAppliedProfiles();
+			case UMLPackage.MODEL__PROFILE_APPLICATION :
+				return getProfileApplications();
 			case UMLPackage.MODEL__VIEWPOINT :
 				return getViewpoint();
 		}
@@ -273,9 +273,9 @@ public class ModelImpl
 			case UMLPackage.MODEL__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.MODEL__APPLIED_PROFILE :
-				getAppliedProfiles().clear();
-				getAppliedProfiles().addAll((Collection) newValue);
+			case UMLPackage.MODEL__PROFILE_APPLICATION :
+				getProfileApplications().clear();
+				getProfileApplications().addAll((Collection) newValue);
 				return;
 			case UMLPackage.MODEL__VIEWPOINT :
 				setViewpoint((String) newValue);
@@ -298,10 +298,10 @@ public class ModelImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.MODEL__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.MODEL__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.MODEL__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -345,8 +345,8 @@ public class ModelImpl
 			case UMLPackage.MODEL__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.MODEL__APPLIED_PROFILE :
-				getAppliedProfiles().clear();
+			case UMLPackage.MODEL__PROFILE_APPLICATION :
+				getProfileApplications().clear();
 				return;
 			case UMLPackage.MODEL__VIEWPOINT :
 				unsetViewpoint();
@@ -373,11 +373,7 @@ public class ModelImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.MODEL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MODEL__NAME :
-				String name = (String) eVirtualGet(UMLPackage.MODEL__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.MODEL__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.MODEL__QUALIFIED_NAME :
@@ -427,9 +423,10 @@ public class ModelImpl
 				return !getNestedPackages().isEmpty();
 			case UMLPackage.MODEL__NESTING_PACKAGE :
 				return basicGetNestingPackage() != null;
-			case UMLPackage.MODEL__APPLIED_PROFILE :
-				List appliedProfile = (List) eVirtualGet(UMLPackage.MODEL__APPLIED_PROFILE);
-				return appliedProfile != null && !appliedProfile.isEmpty();
+			case UMLPackage.MODEL__PROFILE_APPLICATION :
+				List profileApplication = (List) eVirtualGet(UMLPackage.MODEL__PROFILE_APPLICATION);
+				return profileApplication != null
+					&& !profileApplication.isEmpty();
 			case UMLPackage.MODEL__VIEWPOINT :
 				return isSetViewpoint();
 		}

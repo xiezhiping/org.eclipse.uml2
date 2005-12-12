@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationOperations.java,v 1.3 2005/12/08 19:38:06 khussey Exp $
+ * $Id: ValueSpecificationOperations.java,v 1.4 2005/12/12 16:58:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -37,7 +37,8 @@ import org.eclipse.uml2.uml.internal.impl.ValueSpecificationImpl;
  *
  * @generated not
  */
-public final class ValueSpecificationOperations extends UMLOperations {
+public final class ValueSpecificationOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

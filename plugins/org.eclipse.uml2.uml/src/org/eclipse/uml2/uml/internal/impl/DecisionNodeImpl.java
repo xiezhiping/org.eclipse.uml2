@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeImpl.java,v 1.6 2005/12/06 23:21:49 khussey Exp $
+ * $Id: DecisionNodeImpl.java,v 1.7 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -293,10 +293,10 @@ public class DecisionNodeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.DECISION_NODE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.DECISION_NODE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.DECISION_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -353,14 +353,9 @@ public class DecisionNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DECISION_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DECISION_NODE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.DECISION_NODE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.DECISION_NODE__VISIBILITY :
-				return eVirtualGet(UMLPackage.DECISION_NODE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.DECISION_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -827,10 +827,10 @@ public class ActivityPartitionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -884,14 +884,9 @@ public class ActivityPartitionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.ACTIVITY_PARTITION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
-				return eVirtualGet(UMLPackage.ACTIVITY_PARTITION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.ACTIVITY_PARTITION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

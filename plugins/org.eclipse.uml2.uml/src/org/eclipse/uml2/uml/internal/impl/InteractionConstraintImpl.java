@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -466,10 +466,10 @@ public class InteractionConstraintImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -520,11 +520,7 @@ public class InteractionConstraintImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.INTERACTION_CONSTRAINT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.INTERACTION_CONSTRAINT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.INTERACTION_CONSTRAINT__QUALIFIED_NAME :

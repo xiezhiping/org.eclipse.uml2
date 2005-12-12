@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,15 +69,6 @@ public class LiteralBooleanImpl
 	protected static final int VALUE_EFLAG = 1 << 8;
 
 	/**
-	 * The flag representing whether the Value attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int VALUE_ESETFLAG = 1 << 9;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -115,41 +106,10 @@ public class LiteralBooleanImpl
 			eFlags |= VALUE_EFLAG;
 		else
 			eFlags &= ~VALUE_EFLAG;
-		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;
-		eFlags |= VALUE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LITERAL_BOOLEAN__VALUE, oldValue, newValue,
-				!oldValueESet));
+				UMLPackage.LITERAL_BOOLEAN__VALUE, oldValue, newValue));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetValue() {
-		boolean oldValue = (eFlags & VALUE_EFLAG) != 0;
-		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;
-		if (VALUE_EDEFAULT)
-			eFlags |= VALUE_EFLAG;
-		else
-			eFlags &= ~VALUE_EFLAG;
-		eFlags &= ~VALUE_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.LITERAL_BOOLEAN__VALUE, oldValue, VALUE_EDEFAULT,
-				oldValueESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetValue() {
-		return (eFlags & VALUE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -288,10 +248,10 @@ public class LiteralBooleanImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.LITERAL_BOOLEAN__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.LITERAL_BOOLEAN__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -309,7 +269,7 @@ public class LiteralBooleanImpl
 				setType((Type) null);
 				return;
 			case UMLPackage.LITERAL_BOOLEAN__VALUE :
-				unsetValue();
+				setValue(VALUE_EDEFAULT);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -333,11 +293,7 @@ public class LiteralBooleanImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.LITERAL_BOOLEAN__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LITERAL_BOOLEAN__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.LITERAL_BOOLEAN__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.LITERAL_BOOLEAN__QUALIFIED_NAME :
@@ -358,7 +314,7 @@ public class LiteralBooleanImpl
 			case UMLPackage.LITERAL_BOOLEAN__TYPE :
 				return eVirtualGet(UMLPackage.LITERAL_BOOLEAN__TYPE) != null;
 			case UMLPackage.LITERAL_BOOLEAN__VALUE :
-				return isSetValue();
+				return ((eFlags & VALUE_EFLAG) != 0) != VALUE_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -374,10 +330,7 @@ public class LiteralBooleanImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
-		if ((eFlags & VALUE_ESETFLAG) != 0)
-			result.append((eFlags & VALUE_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & VALUE_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}

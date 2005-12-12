@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.6 2005/12/06 23:21:48 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.7 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -508,10 +508,10 @@ public class InformationFlowImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.INFORMATION_FLOW__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -568,11 +568,7 @@ public class InformationFlowImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.INFORMATION_FLOW__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.INFORMATION_FLOW__QUALIFIED_NAME :

@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.4 2005/12/08 14:56:26 khussey Exp $
+ * $Id: UMLPackage.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -2296,13 +2297,13 @@ public interface UMLPackage
 	int PACKAGE__NESTING_PACKAGE = NAMESPACE_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Applied Profile</b></em>' reference list.
+	 * The feature id for the '<em><b>Profile Application</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PACKAGE__APPLIED_PROFILE = NAMESPACE_FEATURE_COUNT + 9;
+	int PACKAGE__PROFILE_APPLICATION = NAMESPACE_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Package</em>' class.
@@ -2566,7 +2567,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE_APPLICATION__EANNOTATIONS = PACKAGE_IMPORT__EANNOTATIONS;
+	int PROFILE_APPLICATION__EANNOTATIONS = DIRECTED_RELATIONSHIP__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2575,7 +2576,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE_APPLICATION__OWNED_ELEMENT = PACKAGE_IMPORT__OWNED_ELEMENT;
+	int PROFILE_APPLICATION__OWNED_ELEMENT = DIRECTED_RELATIONSHIP__OWNED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -2584,7 +2585,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE_APPLICATION__OWNER = PACKAGE_IMPORT__OWNER;
+	int PROFILE_APPLICATION__OWNER = DIRECTED_RELATIONSHIP__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -2593,7 +2594,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE_APPLICATION__OWNED_COMMENT = PACKAGE_IMPORT__OWNED_COMMENT;
+	int PROFILE_APPLICATION__OWNED_COMMENT = DIRECTED_RELATIONSHIP__OWNED_COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
@@ -2602,7 +2603,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE_APPLICATION__RELATED_ELEMENT = PACKAGE_IMPORT__RELATED_ELEMENT;
+	int PROFILE_APPLICATION__RELATED_ELEMENT = DIRECTED_RELATIONSHIP__RELATED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference list.
@@ -2611,7 +2612,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE_APPLICATION__SOURCE = PACKAGE_IMPORT__SOURCE;
+	int PROFILE_APPLICATION__SOURCE = DIRECTED_RELATIONSHIP__SOURCE;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference list.
@@ -2620,43 +2621,16 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE_APPLICATION__TARGET = PACKAGE_IMPORT__TARGET;
+	int PROFILE_APPLICATION__TARGET = DIRECTED_RELATIONSHIP__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * The feature id for the '<em><b>Applied Profile</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE_APPLICATION__VISIBILITY = PACKAGE_IMPORT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Imported Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROFILE_APPLICATION__IMPORTED_PACKAGE = PACKAGE_IMPORT__IMPORTED_PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Importing Namespace</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROFILE_APPLICATION__IMPORTING_NAMESPACE = PACKAGE_IMPORT__IMPORTING_NAMESPACE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Profile</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROFILE_APPLICATION__IMPORTED_PROFILE = PACKAGE_IMPORT_FEATURE_COUNT + 0;
+	int PROFILE_APPLICATION__APPLIED_PROFILE = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Is Strict</b></em>' attribute.
@@ -2665,7 +2639,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE_APPLICATION__IS_STRICT = PACKAGE_IMPORT_FEATURE_COUNT + 1;
+	int PROFILE_APPLICATION__IS_STRICT = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Profile Application</em>' class.
@@ -2674,7 +2648,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE_APPLICATION_FEATURE_COUNT = PACKAGE_IMPORT_FEATURE_COUNT + 2;
+	int PROFILE_APPLICATION_FEATURE_COUNT = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ProfileImpl <em>Profile</em>}' class.
@@ -2912,13 +2886,13 @@ public interface UMLPackage
 	int PROFILE__NESTING_PACKAGE = PACKAGE__NESTING_PACKAGE;
 
 	/**
-	 * The feature id for the '<em><b>Applied Profile</b></em>' reference list.
+	 * The feature id for the '<em><b>Profile Application</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILE__APPLIED_PROFILE = PACKAGE__APPLIED_PROFILE;
+	int PROFILE__PROFILE_APPLICATION = PACKAGE__PROFILE_APPLICATION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Stereotype</b></em>' reference list.
@@ -14013,7 +13987,7 @@ public interface UMLPackage
 	int STATE_MACHINE__CONNECTION_POINT = BEHAVIOR_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Extended State Machine</b></em>' reference.
+	 * The feature id for the '<em><b>Extended State Machine</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -14599,7 +14573,7 @@ public interface UMLPackage
 	int PROTOCOL_STATE_MACHINE__CONNECTION_POINT = STATE_MACHINE__CONNECTION_POINT;
 
 	/**
-	 * The feature id for the '<em><b>Extended State Machine</b></em>' reference.
+	 * The feature id for the '<em><b>Extended State Machine</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -15013,7 +14987,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__EANNOTATIONS = REDEFINABLE_ELEMENT__EANNOTATIONS;
+	int TRANSITION__EANNOTATIONS = NAMESPACE__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -15022,7 +14996,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__OWNED_ELEMENT = REDEFINABLE_ELEMENT__OWNED_ELEMENT;
+	int TRANSITION__OWNED_ELEMENT = NAMESPACE__OWNED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -15031,7 +15005,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__OWNER = REDEFINABLE_ELEMENT__OWNER;
+	int TRANSITION__OWNER = NAMESPACE__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -15040,7 +15014,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__OWNED_COMMENT = REDEFINABLE_ELEMENT__OWNED_COMMENT;
+	int TRANSITION__OWNED_COMMENT = NAMESPACE__OWNED_COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -15049,7 +15023,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__NAME = REDEFINABLE_ELEMENT__NAME;
+	int TRANSITION__NAME = NAMESPACE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -15058,7 +15032,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__VISIBILITY = REDEFINABLE_ELEMENT__VISIBILITY;
+	int TRANSITION__VISIBILITY = NAMESPACE__VISIBILITY;
 
 	/**
 	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
@@ -15067,7 +15041,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__QUALIFIED_NAME = REDEFINABLE_ELEMENT__QUALIFIED_NAME;
+	int TRANSITION__QUALIFIED_NAME = NAMESPACE__QUALIFIED_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
@@ -15076,7 +15050,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__CLIENT_DEPENDENCY = REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY;
+	int TRANSITION__CLIENT_DEPENDENCY = NAMESPACE__CLIENT_DEPENDENCY;
 
 	/**
 	 * The feature id for the '<em><b>Namespace</b></em>' reference.
@@ -15085,7 +15059,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__NAMESPACE = REDEFINABLE_ELEMENT__NAMESPACE;
+	int TRANSITION__NAMESPACE = NAMESPACE__NAMESPACE;
 
 	/**
 	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
@@ -15094,7 +15068,61 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__NAME_EXPRESSION = REDEFINABLE_ELEMENT__NAME_EXPRESSION;
+	int TRANSITION__NAME_EXPRESSION = NAMESPACE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__ELEMENT_IMPORT = NAMESPACE__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__PACKAGE_IMPORT = NAMESPACE__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__OWNED_RULE = NAMESPACE__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__MEMBER = NAMESPACE__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__IMPORTED_MEMBER = NAMESPACE__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__OWNED_MEMBER = NAMESPACE__OWNED_MEMBER;
 
 	/**
 	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
@@ -15103,7 +15131,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__IS_LEAF = REDEFINABLE_ELEMENT__IS_LEAF;
+	int TRANSITION__IS_LEAF = NAMESPACE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
@@ -15112,7 +15140,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__REDEFINED_ELEMENT = REDEFINABLE_ELEMENT__REDEFINED_ELEMENT;
+	int TRANSITION__REDEFINED_ELEMENT = NAMESPACE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
@@ -15121,7 +15149,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__REDEFINITION_CONTEXT = REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT;
+	int TRANSITION__REDEFINITION_CONTEXT = NAMESPACE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -15130,7 +15158,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__KIND = REDEFINABLE_ELEMENT_FEATURE_COUNT + 0;
+	int TRANSITION__KIND = NAMESPACE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Container</b></em>' container reference.
@@ -15139,7 +15167,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__CONTAINER = REDEFINABLE_ELEMENT_FEATURE_COUNT + 1;
+	int TRANSITION__CONTAINER = NAMESPACE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -15148,7 +15176,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__TARGET = REDEFINABLE_ELEMENT_FEATURE_COUNT + 2;
+	int TRANSITION__TARGET = NAMESPACE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Redefined Transition</b></em>' reference.
@@ -15157,16 +15185,16 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__REDEFINED_TRANSITION = REDEFINABLE_ELEMENT_FEATURE_COUNT + 3;
+	int TRANSITION__REDEFINED_TRANSITION = NAMESPACE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Guard</b></em>' containment reference.
+	 * The feature id for the '<em><b>Guard</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__GUARD = REDEFINABLE_ELEMENT_FEATURE_COUNT + 4;
+	int TRANSITION__GUARD = NAMESPACE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Effect</b></em>' containment reference.
@@ -15175,7 +15203,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__EFFECT = REDEFINABLE_ELEMENT_FEATURE_COUNT + 5;
+	int TRANSITION__EFFECT = NAMESPACE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Trigger</b></em>' containment reference list.
@@ -15184,7 +15212,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__TRIGGER = REDEFINABLE_ELEMENT_FEATURE_COUNT + 6;
+	int TRANSITION__TRIGGER = NAMESPACE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -15193,7 +15221,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__SOURCE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 7;
+	int TRANSITION__SOURCE = NAMESPACE_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
@@ -15202,7 +15230,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_FEATURE_COUNT = REDEFINABLE_ELEMENT_FEATURE_COUNT + 8;
+	int TRANSITION_FEATURE_COUNT = NAMESPACE_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TriggerImpl <em>Trigger</em>}' class.
@@ -43331,13 +43359,13 @@ public interface UMLPackage
 	int MODEL__NESTING_PACKAGE = PACKAGE__NESTING_PACKAGE;
 
 	/**
-	 * The feature id for the '<em><b>Applied Profile</b></em>' reference list.
+	 * The feature id for the '<em><b>Profile Application</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL__APPLIED_PROFILE = PACKAGE__APPLIED_PROFILE;
+	int MODEL__PROFILE_APPLICATION = PACKAGE__PROFILE_APPLICATION;
 
 	/**
 	 * The feature id for the '<em><b>Viewpoint</b></em>' attribute.
@@ -57708,6 +57736,60 @@ public interface UMLPackage
 	int PROTOCOL_TRANSITION__NAME_EXPRESSION = TRANSITION__NAME_EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_TRANSITION__ELEMENT_IMPORT = TRANSITION__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_TRANSITION__PACKAGE_IMPORT = TRANSITION__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_TRANSITION__OWNED_RULE = TRANSITION__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_TRANSITION__MEMBER = TRANSITION__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_TRANSITION__IMPORTED_MEMBER = TRANSITION__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_TRANSITION__OWNED_MEMBER = TRANSITION__OWNED_MEMBER;
+
+	/**
 	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57771,7 +57853,7 @@ public interface UMLPackage
 	int PROTOCOL_TRANSITION__REDEFINED_TRANSITION = TRANSITION__REDEFINED_TRANSITION;
 
 	/**
-	 * The feature id for the '<em><b>Guard</b></em>' containment reference.
+	 * The feature id for the '<em><b>Guard</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -58521,6 +58603,43 @@ public interface UMLPackage
 	 * @generated
 	 */
 	int EXPANSION_KIND = 257;
+
+	/**
+	 * The meta object id for the '<em>Integer</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInteger()
+	 * @generated
+	 */
+	int INTEGER = 258;
+
+	/**
+	 * The meta object id for the '<em>Boolean</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getBoolean()
+	 * @generated
+	 */
+	int BOOLEAN = 259;
+
+	/**
+	 * The meta object id for the '<em>String</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.String
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getString()
+	 * @generated
+	 */
+	int STRING = 260;
+
+	/**
+	 * The meta object id for the '<em>Unlimited Natural</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getUnlimitedNatural()
+	 * @generated
+	 */
+	int UNLIMITED_NATURAL = 261;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.Comment <em>Comment</em>}'.
@@ -59317,15 +59436,15 @@ public interface UMLPackage
 	EReference getPackage_NestingPackage();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.Package#getAppliedProfiles <em>Applied Profile</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.Package#getProfileApplications <em>Profile Application</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Applied Profile</em>'.
-	 * @see org.eclipse.uml2.uml.Package#getAppliedProfiles()
+	 * @return the meta object for the containment reference list '<em>Profile Application</em>'.
+	 * @see org.eclipse.uml2.uml.Package#getProfileApplications()
 	 * @see #getPackage()
 	 * @generated
 	 */
-	EReference getPackage_AppliedProfile();
+	EReference getPackage_ProfileApplication();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.PackageMerge <em>Package Merge</em>}'.
@@ -59391,15 +59510,15 @@ public interface UMLPackage
 	EClass getProfileApplication();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.ProfileApplication#getImportedProfile <em>Imported Profile</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.ProfileApplication#getAppliedProfile <em>Applied Profile</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Imported Profile</em>'.
-	 * @see org.eclipse.uml2.uml.ProfileApplication#getImportedProfile()
+	 * @return the meta object for the reference '<em>Applied Profile</em>'.
+	 * @see org.eclipse.uml2.uml.ProfileApplication#getAppliedProfile()
 	 * @see #getProfileApplication()
 	 * @generated
 	 */
-	EReference getProfileApplication_ImportedProfile();
+	EReference getProfileApplication_AppliedProfile();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.uml.ProfileApplication#isStrict <em>Is Strict</em>}'.
@@ -61453,11 +61572,11 @@ public interface UMLPackage
 	EReference getStateMachine_ConnectionPoint();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.StateMachine#getExtendedStateMachine <em>Extended State Machine</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.StateMachine#getExtendedStateMachines <em>Extended State Machine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Extended State Machine</em>'.
-	 * @see org.eclipse.uml2.uml.StateMachine#getExtendedStateMachine()
+	 * @return the meta object for the reference list '<em>Extended State Machine</em>'.
+	 * @see org.eclipse.uml2.uml.StateMachine#getExtendedStateMachines()
 	 * @see #getStateMachine()
 	 * @generated
 	 */
@@ -61626,10 +61745,10 @@ public interface UMLPackage
 	EReference getTransition_RedefinedTransition();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.uml2.uml.Transition#getGuard <em>Guard</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.Transition#getGuard <em>Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Guard</em>'.
+	 * @return the meta object for the reference '<em>Guard</em>'.
 	 * @see org.eclipse.uml2.uml.Transition#getGuard()
 	 * @see #getTransition()
 	 * @generated
@@ -67417,6 +67536,47 @@ public interface UMLPackage
 	EEnum getExpansionKind();
 
 	/**
+	 * Returns the meta object for data type '<em>Integer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Integer</em>'.
+	 * @model instanceClass="int"
+	 * @generated
+	 */
+	EDataType getInteger();
+
+	/**
+	 * Returns the meta object for data type '<em>Boolean</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Boolean</em>'.
+	 * @model instanceClass="boolean"
+	 * @generated
+	 */
+	EDataType getBoolean();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.String <em>String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>String</em>'.
+	 * @see java.lang.String
+	 * @model instanceClass="java.lang.String"
+	 * @generated
+	 */
+	EDataType getString();
+
+	/**
+	 * Returns the meta object for data type '<em>Unlimited Natural</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Unlimited Natural</em>'.
+	 * @model instanceClass="int"
+	 * @generated
+	 */
+	EDataType getUnlimitedNatural();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -68114,13 +68274,13 @@ public interface UMLPackage
 			.getPackage_NestingPackage();
 
 		/**
-		 * The meta object literal for the '<em><b>Applied Profile</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Profile Application</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PACKAGE__APPLIED_PROFILE = eINSTANCE
-			.getPackage_AppliedProfile();
+		EReference PACKAGE__PROFILE_APPLICATION = eINSTANCE
+			.getPackage_ProfileApplication();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl <em>Package Merge</em>}' class.
@@ -68179,13 +68339,13 @@ public interface UMLPackage
 		EClass PROFILE_APPLICATION = eINSTANCE.getProfileApplication();
 
 		/**
-		 * The meta object literal for the '<em><b>Imported Profile</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Applied Profile</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROFILE_APPLICATION__IMPORTED_PROFILE = eINSTANCE
-			.getProfileApplication_ImportedProfile();
+		EReference PROFILE_APPLICATION__APPLIED_PROFILE = eINSTANCE
+			.getProfileApplication_AppliedProfile();
 
 		/**
 		 * The meta object literal for the '<em><b>Is Strict</b></em>' attribute feature.
@@ -69887,7 +70047,7 @@ public interface UMLPackage
 			.getStateMachine_ConnectionPoint();
 
 		/**
-		 * The meta object literal for the '<em><b>Extended State Machine</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Extended State Machine</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -70024,7 +70184,7 @@ public interface UMLPackage
 			.getTransition_RedefinedTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Guard</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Guard</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -75028,6 +75188,43 @@ public interface UMLPackage
 		 * @generated
 		 */
 		EEnum EXPANSION_KIND = eINSTANCE.getExpansionKind();
+
+		/**
+		 * The meta object literal for the '<em>Integer</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInteger()
+		 * @generated
+		 */
+		EDataType INTEGER = eINSTANCE.getInteger();
+
+		/**
+		 * The meta object literal for the '<em>Boolean</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getBoolean()
+		 * @generated
+		 */
+		EDataType BOOLEAN = eINSTANCE.getBoolean();
+
+		/**
+		 * The meta object literal for the '<em>String</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getString()
+		 * @generated
+		 */
+		EDataType STRING = eINSTANCE.getString();
+
+		/**
+		 * The meta object literal for the '<em>Unlimited Natural</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getUnlimitedNatural()
+		 * @generated
+		 */
+		EDataType UNLIMITED_NATURAL = eINSTANCE.getUnlimitedNatural();
 
 	}
 } //UMLPackage

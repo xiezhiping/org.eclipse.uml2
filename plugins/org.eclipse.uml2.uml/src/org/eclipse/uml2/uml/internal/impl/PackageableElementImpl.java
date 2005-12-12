@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -245,28 +245,13 @@ public abstract class PackageableElementImpl
 			: newVisibility;
 		Object oldVisibility = eVirtualSet(
 			UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY, visibility);
-		boolean isSetChange = oldVisibility == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY, isSetChange
+				UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY,
+				oldVisibility == EVIRTUAL_NO_VALUE
 					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility, isSetChange));
+					: oldVisibility, visibility));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetVisibility() {
-		Object oldVisibility = eVirtualUnset(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY);
-		boolean isSetChange = oldVisibility != EVIRTUAL_NO_VALUE;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY, isSetChange
-					? oldVisibility
-					: VISIBILITY_EDEFAULT, VISIBILITY_EDEFAULT, isSetChange));
 	}
 
 	/**
@@ -275,7 +260,8 @@ public abstract class PackageableElementImpl
 	 * @generated
 	 */
 	public boolean isSetVisibility() {
-		return eVirtualIsSet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY);
+		return eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY,
+			VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -469,10 +455,10 @@ public abstract class PackageableElementImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -508,11 +494,7 @@ public abstract class PackageableElementImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.PACKAGEABLE_ELEMENT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.PACKAGEABLE_ELEMENT__QUALIFIED_NAME :
@@ -583,11 +565,8 @@ public abstract class PackageableElementImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY))
-			result
-				.append(eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY));
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append(eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY,
+			VISIBILITY_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

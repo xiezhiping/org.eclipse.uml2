@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -314,10 +314,10 @@ public class AbstractionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.ABSTRACTION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.ABSTRACTION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -362,11 +362,7 @@ public class AbstractionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ABSTRACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ABSTRACTION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.ABSTRACTION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.ABSTRACTION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.ABSTRACTION__QUALIFIED_NAME :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorOperations.java,v 1.7 2005/12/07 14:18:34 khussey Exp $
+ * $Id: BehaviorOperations.java,v 1.8 2005/12/12 16:58:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -192,18 +192,6 @@ public final class BehaviorOperations
 	public static BehavioredClassifier getContext(Behavior behavior) {
 		return (BehavioredClassifier) ElementOperations.getOwningElement(
 			behavior, UMLPackage.Literals.BEHAVIORED_CLASSIFIER, false);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static void setContext(Behavior behavior,
-			BehavioredClassifier newContext) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 } // BehaviorOperations

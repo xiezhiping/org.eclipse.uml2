@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.9 2005/12/06 23:21:50 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,7 +97,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNIQUE_EDEFAULT = true;
+	protected static final boolean IS_UNIQUE_EDEFAULT = false;
 
 	/**
 	 * The flag representing the value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -117,7 +117,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int UPPER_EDEFAULT = 1;
+	protected static final int UPPER_EDEFAULT = 0;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -127,7 +127,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOWER_EDEFAULT = 1;
+	protected static final int LOWER_EDEFAULT = 0;
 
 	/**
 	 * The default value of the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
@@ -156,7 +156,6 @@ public abstract class StructuralFeatureImpl
 	 */
 	protected StructuralFeatureImpl() {
 		super();
-		eFlags |= IS_UNIQUE_EFLAG;
 	}
 
 	/**
@@ -807,10 +806,10 @@ public abstract class StructuralFeatureImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -870,14 +869,9 @@ public abstract class StructuralFeatureImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.STRUCTURAL_FEATURE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
-				return eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.STRUCTURAL_FEATURE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

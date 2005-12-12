@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeItemProvider.java,v 1.2 2005/12/08 14:52:55 khussey Exp $
+ * $Id: StructuredActivityNodeItemProvider.java,v 1.3 2005/12/12 16:59:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -495,10 +495,6 @@ public class StructuredActivityNodeItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, UMLFactory.eINSTANCE
 				.createPackageImport()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, UMLFactory.eINSTANCE
-				.createProfileApplication()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Pseudostate.java,v 1.4 2005/12/08 14:56:26 khussey Exp $
+ * $Id: Pseudostate.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,6 +43,7 @@ public interface Pseudostate
 
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
+	 * The default value is <code>"initial"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.uml2.uml.PseudostateKind}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -51,11 +52,9 @@ public interface Pseudostate
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.PseudostateKind
-	 * @see #isSetKind()
-	 * @see #unsetKind()
 	 * @see #setKind(PseudostateKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPseudostate_Kind()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model default="initial" required="true" ordered="false"
 	 * @generated
 	 */
 	PseudostateKind getKind();
@@ -66,35 +65,10 @@ public interface Pseudostate
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.PseudostateKind
-	 * @see #isSetKind()
-	 * @see #unsetKind()
 	 * @see #getKind()
 	 * @generated
 	 */
 	void setKind(PseudostateKind value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Pseudostate#getKind <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetKind()
-	 * @see #getKind()
-	 * @see #setKind(PseudostateKind)
-	 * @generated
-	 */
-	void unsetKind();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Pseudostate#getKind <em>Kind</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Kind</em>' attribute is set.
-	 * @see #unsetKind()
-	 * @see #getKind()
-	 * @see #setKind(PseudostateKind)
-	 * @generated
-	 */
-	boolean isSetKind();
 
 	/**
 	 * Returns the value of the '<em><b>State Machine</b></em>' container reference.

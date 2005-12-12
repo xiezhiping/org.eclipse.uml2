@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -366,10 +366,10 @@ public class StateInvariantImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.STATE_INVARIANT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.STATE_INVARIANT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -414,14 +414,9 @@ public class StateInvariantImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.STATE_INVARIANT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STATE_INVARIANT__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.STATE_INVARIANT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.STATE_INVARIANT__VISIBILITY :
-				return eVirtualGet(UMLPackage.STATE_INVARIANT__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.STATE_INVARIANT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

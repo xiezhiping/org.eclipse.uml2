@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.10 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -870,10 +870,10 @@ public class InterfaceImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.INTERFACE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.INTERFACE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.INTERFACE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -981,11 +981,7 @@ public class InterfaceImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERFACE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERFACE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.INTERFACE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.INTERFACE__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.INTERFACE__QUALIFIED_NAME :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -480,10 +480,10 @@ public class ConstraintImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CONSTRAINT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CONSTRAINT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -528,11 +528,7 @@ public class ConstraintImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CONSTRAINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONSTRAINT__NAME :
-				String name = (String) eVirtualGet(UMLPackage.CONSTRAINT__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CONSTRAINT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.CONSTRAINT__QUALIFIED_NAME :

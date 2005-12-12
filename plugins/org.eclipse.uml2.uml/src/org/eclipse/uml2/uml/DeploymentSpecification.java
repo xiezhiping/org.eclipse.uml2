@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecification.java,v 1.3 2005/11/28 20:26:02 khussey Exp $
+ * $Id: DeploymentSpecification.java,v 1.4 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface DeploymentSpecification
 	 * @see #unsetDeploymentLocation()
 	 * @see #setDeploymentLocation(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentSpecification_DeploymentLocation()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 * @generated
 	 */
 	String getDeploymentLocation();
@@ -105,7 +105,7 @@ public interface DeploymentSpecification
 	 * @see #unsetExecutionLocation()
 	 * @see #setExecutionLocation(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentSpecification_ExecutionLocation()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 * @generated
 	 */
 	String getExecutionLocation();

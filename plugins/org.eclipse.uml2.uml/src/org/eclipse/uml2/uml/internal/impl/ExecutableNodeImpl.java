@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -346,10 +346,10 @@ public abstract class ExecutableNodeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.EXECUTABLE_NODE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -406,14 +406,9 @@ public abstract class ExecutableNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.EXECUTABLE_NODE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
-				return eVirtualGet(UMLPackage.EXECUTABLE_NODE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.EXECUTABLE_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.9 2005/12/06 23:21:50 khussey Exp $
+ * $Id: MessageImpl.java,v 1.10 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -84,7 +84,7 @@ public class MessageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final MessageKind MESSAGE_KIND_EDEFAULT = MessageKind.COMPLETE_LITERAL;
+	protected static final MessageKind MESSAGE_KIND_EDEFAULT = MessageKind.UNKNOWN_LITERAL;
 
 	/**
 	 * The default value of the '{@link #getMessageSort() <em>Message Sort</em>}' attribute.
@@ -162,37 +162,13 @@ public class MessageImpl
 			: newMessageSort;
 		Object oldMessageSort = eVirtualSet(UMLPackage.MESSAGE__MESSAGE_SORT,
 			messageSort);
-		boolean isSetChange = oldMessageSort == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MESSAGE__MESSAGE_SORT, isSetChange
+				UMLPackage.MESSAGE__MESSAGE_SORT,
+				oldMessageSort == EVIRTUAL_NO_VALUE
 					? MESSAGE_SORT_EDEFAULT
-					: oldMessageSort, messageSort, isSetChange));
+					: oldMessageSort, messageSort));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetMessageSort() {
-		Object oldMessageSort = eVirtualUnset(UMLPackage.MESSAGE__MESSAGE_SORT);
-		boolean isSetChange = oldMessageSort != EVIRTUAL_NO_VALUE;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.MESSAGE__MESSAGE_SORT, isSetChange
-					? oldMessageSort
-					: MESSAGE_SORT_EDEFAULT, MESSAGE_SORT_EDEFAULT, isSetChange));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetMessageSort() {
-		return eVirtualIsSet(UMLPackage.MESSAGE__MESSAGE_SORT);
 	}
 
 	/**
@@ -705,10 +681,10 @@ public class MessageImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.MESSAGE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.MESSAGE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -717,7 +693,7 @@ public class MessageImpl
 				setNameExpression((StringExpression) null);
 				return;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
-				unsetMessageSort();
+				setMessageSort(MESSAGE_SORT_EDEFAULT);
 				return;
 			case UMLPackage.MESSAGE__RECEIVE_EVENT :
 				setReceiveEvent((MessageEnd) null);
@@ -756,14 +732,9 @@ public class MessageImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.MESSAGE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MESSAGE__NAME :
-				String name = (String) eVirtualGet(UMLPackage.MESSAGE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.MESSAGE__VISIBILITY :
-				return eVirtualGet(UMLPackage.MESSAGE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.MESSAGE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -778,7 +749,8 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__MESSAGE_KIND :
 				return getMessageKind() != MESSAGE_KIND_EDEFAULT;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
-				return isSetMessageSort();
+				return eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
+					MESSAGE_SORT_EDEFAULT) != MESSAGE_SORT_EDEFAULT;
 			case UMLPackage.MESSAGE__RECEIVE_EVENT :
 				return eVirtualGet(UMLPackage.MESSAGE__RECEIVE_EVENT) != null;
 			case UMLPackage.MESSAGE__SEND_EVENT :
@@ -807,10 +779,8 @@ public class MessageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (messageSort: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.MESSAGE__MESSAGE_SORT))
-			result.append(eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT));
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append(eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
+			MESSAGE_SORT_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

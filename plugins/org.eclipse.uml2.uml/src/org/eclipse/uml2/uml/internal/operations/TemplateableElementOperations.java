@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementOperations.java,v 1.2 2005/12/08 19:38:06 khussey Exp $
+ * $Id: TemplateableElementOperations.java,v 1.3 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -35,7 +35,8 @@ import org.eclipse.uml2.uml.TemplateableElement;
  *
  * @generated not
  */
-public final class TemplateableElementOperations extends UMLOperations {
+public final class TemplateableElementOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

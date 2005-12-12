@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEventImpl.java,v 1.7 2005/12/06 23:21:48 khussey Exp $
+ * $Id: ChangeEventImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -295,10 +295,10 @@ public class ChangeEventImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CHANGE_EVENT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CHANGE_EVENT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -337,11 +337,7 @@ public class ChangeEventImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CHANGE_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CHANGE_EVENT__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.CHANGE_EVENT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CHANGE_EVENT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.CHANGE_EVENT__QUALIFIED_NAME :

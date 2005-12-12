@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.12 2005/12/08 19:38:07 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.13 2005/12/12 16:58:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -36,7 +36,6 @@ import org.eclipse.uml2.uml.LiteralBoolean;
 import org.eclipse.uml2.uml.LiteralInteger;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
-import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Property;
@@ -326,6 +325,38 @@ public final class PropertyOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDerivedUnionIsReadOnly", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{property}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A property may not subset a property with the same name.
+	 * true
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateSubsettedPropertyNames(Property property,
+			DiagnosticChain diagnostics, Map context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.PROPERTY__SUBSETTED_PROPERTY_NAMES,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSubsettedPropertyNames", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{property}));
 			}
 			return false;
@@ -770,7 +801,7 @@ public final class PropertyOperations
 				? propType == null
 				: propType.conformsTo(type))
 				&& prop.lowerBound() >= property.lowerBound()
-				&& (upperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND || (propUpperBound != MultiplicityElement.UNLIMITED_UPPER_BOUND && propUpperBound <= upperBound))
+				&& (upperBound == LiteralUnlimitedNatural.UNLIMITED || (propUpperBound != LiteralUnlimitedNatural.UNLIMITED && propUpperBound <= upperBound))
 				&& (property.isDerived()
 					? prop.isDerived()
 					: true) && (property.isComposite()

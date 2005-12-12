@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerImpl.java,v 1.8 2005/12/06 23:21:49 khussey Exp $
+ * $Id: LiteralIntegerImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,15 +69,6 @@ public class LiteralIntegerImpl
 	protected int value = VALUE_EDEFAULT;
 
 	/**
-	 * The flag representing whether the Value attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int VALUE_ESETFLAG = 1 << 8;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -112,38 +103,10 @@ public class LiteralIntegerImpl
 	public void setValue(int newValue) {
 		int oldValue = value;
 		value = newValue;
-		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;
-		eFlags |= VALUE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LITERAL_INTEGER__VALUE, oldValue, value,
-				!oldValueESet));
+				UMLPackage.LITERAL_INTEGER__VALUE, oldValue, value));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetValue() {
-		int oldValue = value;
-		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;
-		value = VALUE_EDEFAULT;
-		eFlags &= ~VALUE_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.LITERAL_INTEGER__VALUE, oldValue, VALUE_EDEFAULT,
-				oldValueESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetValue() {
-		return (eFlags & VALUE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -280,10 +243,10 @@ public class LiteralIntegerImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.LITERAL_INTEGER__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.LITERAL_INTEGER__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.LITERAL_INTEGER__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -301,7 +264,7 @@ public class LiteralIntegerImpl
 				setType((Type) null);
 				return;
 			case UMLPackage.LITERAL_INTEGER__VALUE :
-				unsetValue();
+				setValue(VALUE_EDEFAULT);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -325,11 +288,7 @@ public class LiteralIntegerImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.LITERAL_INTEGER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LITERAL_INTEGER__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.LITERAL_INTEGER__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.LITERAL_INTEGER__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.LITERAL_INTEGER__QUALIFIED_NAME :
@@ -350,7 +309,7 @@ public class LiteralIntegerImpl
 			case UMLPackage.LITERAL_INTEGER__TYPE :
 				return eVirtualGet(UMLPackage.LITERAL_INTEGER__TYPE) != null;
 			case UMLPackage.LITERAL_INTEGER__VALUE :
-				return isSetValue();
+				return value != VALUE_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -366,10 +325,7 @@ public class LiteralIntegerImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
-		if ((eFlags & VALUE_ESETFLAG) != 0)
-			result.append(value);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append(value);
 		result.append(')');
 		return result.toString();
 	}

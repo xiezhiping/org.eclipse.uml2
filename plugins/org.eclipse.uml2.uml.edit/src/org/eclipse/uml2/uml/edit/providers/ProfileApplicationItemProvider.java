@@ -8,24 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationItemProvider.java,v 1.1 2005/12/07 14:20:28 khussey Exp $
+ * $Id: ProfileApplicationItemProvider.java,v 1.2 2005/12/12 16:59:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.common.command.Command;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -36,13 +29,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
-import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
-
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.VisibilityKind;
-
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 
 /**
@@ -52,7 +40,7 @@ import org.eclipse.uml2.uml.edit.UMLEditPlugin;
  * @generated
  */
 public class ProfileApplicationItemProvider
-		extends PackageImportItemProvider
+		extends DirectedRelationshipItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
@@ -76,29 +64,29 @@ public class ProfileApplicationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addImportedProfilePropertyDescriptor(object);
+			addAppliedProfilePropertyDescriptor(object);
 			addIsStrictPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Imported Profile feature.
+	 * This adds a property descriptor for the Applied Profile feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addImportedProfilePropertyDescriptor(Object object) {
+	protected void addAppliedProfilePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ProfileApplication_importedProfile_feature"), //$NON-NLS-1$
+				getString("_UI_ProfileApplication_appliedProfile_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ProfileApplication_importedProfile_feature", "_UI_ProfileApplication_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROFILE_APPLICATION__IMPORTED_PROFILE,
-				true, null, null, null));
+					"_UI_PropertyDescriptor_description", "_UI_ProfileApplication_appliedProfile_feature", "_UI_ProfileApplication_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.PROFILE_APPLICATION__APPLIED_PROFILE, true,
+				null, null, null));
 	}
 
 	/**
@@ -137,14 +125,8 @@ public class ProfileApplicationItemProvider
 	 * @generated
 	 */
 	public String getText(Object object) {
-		VisibilityKind labelValue = ((ProfileApplication) object)
-			.getVisibility();
-		String label = labelValue == null
-			? null
-			: labelValue.toString();
-		return label == null || label.length() == 0
-			? getString("_UI_ProfileApplication_type") : //$NON-NLS-1$
-			getString("_UI_ProfileApplication_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		ProfileApplication profileApplication = (ProfileApplication) object;
+		return getString("_UI_ProfileApplication_type") + " " + profileApplication.isStrict(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -186,33 +168,6 @@ public class ProfileApplicationItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createSetCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.Literals.PROFILE_APPLICATION__IMPORTED_PROFILE) {
-			return new SubsetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.PACKAGE_IMPORT__IMPORTED_PACKAGE},
-				value);
-		}
-		if (feature == UMLPackage.Literals.PACKAGE_IMPORT__IMPORTED_PACKAGE) {
-			return new SupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.PROFILE_APPLICATION__IMPORTED_PROFILE},
-				value);
-		}
-		return super.createSetCommand(domain, owner, feature, value);
 	}
 
 }

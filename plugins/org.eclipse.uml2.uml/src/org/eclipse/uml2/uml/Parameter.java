@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.4 2005/12/05 18:00:17 khussey Exp $
+ * $Id: Parameter.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -136,7 +136,7 @@ public interface Parameter
 	 * @see #unsetDefault()
 	 * @see #setDefault(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_Default()
-	 * @model unsettable="true" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	String getDefault();
@@ -214,7 +214,6 @@ public interface Parameter
 
 	/**
 	 * Returns the value of the '<em><b>Is Exception</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -223,7 +222,7 @@ public interface Parameter
 	 * @return the value of the '<em>Is Exception</em>' attribute.
 	 * @see #setIsException(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_IsException()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isException();
@@ -240,7 +239,6 @@ public interface Parameter
 
 	/**
 	 * Returns the value of the '<em><b>Is Stream</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -249,7 +247,7 @@ public interface Parameter
 	 * @return the value of the '<em>Is Stream</em>' attribute.
 	 * @see #setIsStream(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_IsStream()
-	 * @model default="false" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isStream();
@@ -274,9 +272,11 @@ public interface Parameter
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Effect</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ParameterEffectKind
+	 * @see #isSetEffect()
+	 * @see #unsetEffect()
 	 * @see #setEffect(ParameterEffectKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_Effect()
-	 * @model ordered="false"
+	 * @model unsettable="true" ordered="false"
 	 * @generated
 	 */
 	ParameterEffectKind getEffect();
@@ -287,10 +287,35 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Effect</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ParameterEffectKind
+	 * @see #isSetEffect()
+	 * @see #unsetEffect()
 	 * @see #getEffect()
 	 * @generated
 	 */
 	void setEffect(ParameterEffectKind value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Parameter#getEffect <em>Effect</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetEffect()
+	 * @see #getEffect()
+	 * @see #setEffect(ParameterEffectKind)
+	 * @generated
+	 */
+	void unsetEffect();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Parameter#getEffect <em>Effect</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Effect</em>' attribute is set.
+	 * @see #unsetEffect()
+	 * @see #getEffect()
+	 * @see #setEffect(ParameterEffectKind)
+	 * @generated
+	 */
+	boolean isSetEffect();
 
 	/**
 	 * <!-- begin-user-doc -->

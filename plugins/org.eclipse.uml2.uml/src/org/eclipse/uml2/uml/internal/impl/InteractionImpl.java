@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.9 2005/12/08 14:56:25 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,7 +37,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
-import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Gate;
@@ -1122,9 +1121,6 @@ public class InteractionImpl
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
 				return;
-			case UMLPackage.INTERACTION__CONTEXT :
-				setContext((BehavioredClassifier) newValue);
-				return;
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
@@ -1184,10 +1180,10 @@ public class InteractionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.INTERACTION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.INTERACTION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.INTERACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1286,22 +1282,19 @@ public class InteractionImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.INTERACTION__IS_ACTIVE :
-				unsetIsActive();
+				setIsActive(IS_ACTIVE_EDEFAULT);
 				return;
 			case UMLPackage.INTERACTION__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
 			case UMLPackage.INTERACTION__IS_REENTRANT :
-				unsetIsReentrant();
+				setIsReentrant(IS_REENTRANT_EDEFAULT);
 				return;
 			case UMLPackage.INTERACTION__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
 				return;
 			case UMLPackage.INTERACTION__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				return;
-			case UMLPackage.INTERACTION__CONTEXT :
-				setContext((BehavioredClassifier) null);
 				return;
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
@@ -1358,11 +1351,7 @@ public class InteractionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.INTERACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERACTION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.INTERACTION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.INTERACTION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.INTERACTION__QUALIFIED_NAME :
@@ -1454,8 +1443,7 @@ public class InteractionImpl
 				List ownedConnector = (List) eVirtualGet(UMLPackage.INTERACTION__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.INTERACTION__OWNED_PORT :
-				List ownedPort = (List) eVirtualGet(UMLPackage.INTERACTION__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return !getOwnedPorts().isEmpty();
 			case UMLPackage.INTERACTION__OWNED_BEHAVIOR :
 				List ownedBehavior = (List) eVirtualGet(UMLPackage.INTERACTION__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
@@ -1477,14 +1465,14 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.INTERACTION__IS_ACTIVE :
-				return isSetIsActive();
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.INTERACTION__OWNED_RECEPTION :
 				List ownedReception = (List) eVirtualGet(UMLPackage.INTERACTION__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.INTERACTION__EXTENSION :
 				return !getExtensions().isEmpty();
 			case UMLPackage.INTERACTION__IS_REENTRANT :
-				return isSetIsReentrant();
+				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.INTERACTION__REDEFINED_BEHAVIOR :
 				List redefinedBehavior = (List) eVirtualGet(UMLPackage.INTERACTION__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNode.java,v 1.2 2005/11/28 20:26:02 khussey Exp $
+ * $Id: ConditionalNode.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -63,11 +63,9 @@ public interface ConditionalNode
 	 * If true, the modeler asserts that at most one test will succeed.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Determinate</em>' attribute.
-	 * @see #isSetIsDeterminate()
-	 * @see #unsetIsDeterminate()
 	 * @see #setIsDeterminate(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConditionalNode_IsDeterminate()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDeterminate();
@@ -77,35 +75,10 @@ public interface ConditionalNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Determinate</em>' attribute.
-	 * @see #isSetIsDeterminate()
-	 * @see #unsetIsDeterminate()
 	 * @see #isDeterminate()
 	 * @generated
 	 */
 	void setIsDeterminate(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.ConditionalNode#isDeterminate <em>Is Determinate</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetIsDeterminate()
-	 * @see #isDeterminate()
-	 * @see #setIsDeterminate(boolean)
-	 * @generated
-	 */
-	void unsetIsDeterminate();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.ConditionalNode#isDeterminate <em>Is Determinate</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Is Determinate</em>' attribute is set.
-	 * @see #unsetIsDeterminate()
-	 * @see #isDeterminate()
-	 * @see #setIsDeterminate(boolean)
-	 * @generated
-	 */
-	boolean isSetIsDeterminate();
 
 	/**
 	 * Returns the value of the '<em><b>Is Assured</b></em>' attribute.
@@ -115,11 +88,9 @@ public interface ConditionalNode
 	 * If true, the modeler asserts that at least one test will succeed.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Assured</em>' attribute.
-	 * @see #isSetIsAssured()
-	 * @see #unsetIsAssured()
 	 * @see #setIsAssured(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConditionalNode_IsAssured()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isAssured();
@@ -129,35 +100,10 @@ public interface ConditionalNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Assured</em>' attribute.
-	 * @see #isSetIsAssured()
-	 * @see #unsetIsAssured()
 	 * @see #isAssured()
 	 * @generated
 	 */
 	void setIsAssured(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.ConditionalNode#isAssured <em>Is Assured</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetIsAssured()
-	 * @see #isAssured()
-	 * @see #setIsAssured(boolean)
-	 * @generated
-	 */
-	void unsetIsAssured();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.ConditionalNode#isAssured <em>Is Assured</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Is Assured</em>' attribute is set.
-	 * @see #unsetIsAssured()
-	 * @see #isAssured()
-	 * @see #setIsAssured(boolean)
-	 * @generated
-	 */
-	boolean isSetIsAssured();
 
 	/**
 	 * Returns the value of the '<em><b>Clause</b></em>' containment reference list.

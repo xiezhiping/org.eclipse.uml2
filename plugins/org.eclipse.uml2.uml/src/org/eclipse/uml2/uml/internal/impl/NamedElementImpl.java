@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.10 2005/12/06 23:21:50 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.11 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -151,12 +151,37 @@ public abstract class NamedElementImpl
 	public void setName(String newName) {
 		String name = newName;
 		Object oldName = eVirtualSet(UMLPackage.NAMED_ELEMENT__NAME, name);
+		boolean isSetChange = oldName == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.NAMED_ELEMENT__NAME, oldName == EVIRTUAL_NO_VALUE
+				UMLPackage.NAMED_ELEMENT__NAME, isSetChange
 					? NAME_EDEFAULT
-					: oldName, name));
+					: oldName, name, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetName() {
+		Object oldName = eVirtualUnset(UMLPackage.NAMED_ELEMENT__NAME);
+		boolean isSetChange = oldName != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.NAMED_ELEMENT__NAME, isSetChange
+					? oldName
+					: NAME_EDEFAULT, NAME_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetName() {
+		return eVirtualIsSet(UMLPackage.NAMED_ELEMENT__NAME);
 	}
 
 	/**
@@ -180,13 +205,37 @@ public abstract class NamedElementImpl
 			: newVisibility;
 		Object oldVisibility = eVirtualSet(
 			UMLPackage.NAMED_ELEMENT__VISIBILITY, visibility);
+		boolean isSetChange = oldVisibility == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.NAMED_ELEMENT__VISIBILITY,
-				oldVisibility == EVIRTUAL_NO_VALUE
+				UMLPackage.NAMED_ELEMENT__VISIBILITY, isSetChange
 					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility));
+					: oldVisibility, visibility, isSetChange));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetVisibility() {
+		Object oldVisibility = eVirtualUnset(UMLPackage.NAMED_ELEMENT__VISIBILITY);
+		boolean isSetChange = oldVisibility != EVIRTUAL_NO_VALUE;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.NAMED_ELEMENT__VISIBILITY, isSetChange
+					? oldVisibility
+					: VISIBILITY_EDEFAULT, VISIBILITY_EDEFAULT, isSetChange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetVisibility() {
+		return eVirtualIsSet(UMLPackage.NAMED_ELEMENT__VISIBILITY);
 	}
 
 	/**
@@ -496,10 +545,10 @@ public abstract class NamedElementImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.NAMED_ELEMENT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -529,14 +578,9 @@ public abstract class NamedElementImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.NAMED_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.NAMED_ELEMENT__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.NAMED_ELEMENT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
-				return eVirtualGet(UMLPackage.NAMED_ELEMENT__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.NAMED_ELEMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -563,11 +607,15 @@ public abstract class NamedElementImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
-		result
-			.append(eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME, NAME_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.NAMED_ELEMENT__NAME))
+			result.append(eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", visibility: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.NAMED_ELEMENT__VISIBILITY,
-			VISIBILITY_EDEFAULT));
+		if (eVirtualIsSet(UMLPackage.NAMED_ELEMENT__VISIBILITY))
+			result.append(eVirtualGet(UMLPackage.NAMED_ELEMENT__VISIBILITY));
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

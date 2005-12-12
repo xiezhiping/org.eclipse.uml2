@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImport.java,v 1.3 2005/11/28 20:26:02 khussey Exp $
+ * $Id: PackageImport.java,v 1.4 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,6 +43,7 @@ public interface PackageImport
 
 	/**
 	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
+	 * The default value is <code>"public"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.uml2.uml.VisibilityKind}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -51,11 +52,9 @@ public interface PackageImport
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Visibility</em>' attribute.
 	 * @see org.eclipse.uml2.uml.VisibilityKind
-	 * @see #isSetVisibility()
-	 * @see #unsetVisibility()
 	 * @see #setVisibility(VisibilityKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackageImport_Visibility()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model default="public" required="true" ordered="false"
 	 * @generated
 	 */
 	VisibilityKind getVisibility();
@@ -66,35 +65,10 @@ public interface PackageImport
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Visibility</em>' attribute.
 	 * @see org.eclipse.uml2.uml.VisibilityKind
-	 * @see #isSetVisibility()
-	 * @see #unsetVisibility()
 	 * @see #getVisibility()
 	 * @generated
 	 */
 	void setVisibility(VisibilityKind value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.PackageImport#getVisibility <em>Visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetVisibility()
-	 * @see #getVisibility()
-	 * @see #setVisibility(VisibilityKind)
-	 * @generated
-	 */
-	void unsetVisibility();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.PackageImport#getVisibility <em>Visibility</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Visibility</em>' attribute is set.
-	 * @see #unsetVisibility()
-	 * @see #getVisibility()
-	 * @see #setVisibility(VisibilityKind)
-	 * @generated
-	 */
-	boolean isSetVisibility();
 
 	/**
 	 * Returns the value of the '<em><b>Imported Package</b></em>' reference.

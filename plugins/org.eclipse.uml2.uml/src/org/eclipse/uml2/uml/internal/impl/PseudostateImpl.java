@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.7 2005/12/06 23:21:48 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -111,37 +111,12 @@ public class PseudostateImpl
 			? KIND_EDEFAULT
 			: newKind;
 		Object oldKind = eVirtualSet(UMLPackage.PSEUDOSTATE__KIND, kind);
-		boolean isSetChange = oldKind == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PSEUDOSTATE__KIND, isSetChange
+				UMLPackage.PSEUDOSTATE__KIND, oldKind == EVIRTUAL_NO_VALUE
 					? KIND_EDEFAULT
-					: oldKind, kind, isSetChange));
+					: oldKind, kind));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetKind() {
-		Object oldKind = eVirtualUnset(UMLPackage.PSEUDOSTATE__KIND);
-		boolean isSetChange = oldKind != EVIRTUAL_NO_VALUE;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.PSEUDOSTATE__KIND, isSetChange
-					? oldKind
-					: KIND_EDEFAULT, KIND_EDEFAULT, isSetChange));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetKind() {
-		return eVirtualIsSet(UMLPackage.PSEUDOSTATE__KIND);
 	}
 
 	/**
@@ -530,10 +505,10 @@ public class PseudostateImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.PSEUDOSTATE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.PSEUDOSTATE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -551,7 +526,7 @@ public class PseudostateImpl
 				setContainer((Region) null);
 				return;
 			case UMLPackage.PSEUDOSTATE__KIND :
-				unsetKind();
+				setKind(KIND_EDEFAULT);
 				return;
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				setStateMachine((StateMachine) null);
@@ -581,14 +556,9 @@ public class PseudostateImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.PSEUDOSTATE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PSEUDOSTATE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.PSEUDOSTATE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.PSEUDOSTATE__VISIBILITY :
-				return eVirtualGet(UMLPackage.PSEUDOSTATE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.PSEUDOSTATE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -609,7 +579,7 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return getContainer() != null;
 			case UMLPackage.PSEUDOSTATE__KIND :
-				return isSetKind();
+				return eVirtualGet(UMLPackage.PSEUDOSTATE__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				return getStateMachine() != null;
 			case UMLPackage.PSEUDOSTATE__STATE :
@@ -629,10 +599,7 @@ public class PseudostateImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.PSEUDOSTATE__KIND))
-			result.append(eVirtualGet(UMLPackage.PSEUDOSTATE__KIND));
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append(eVirtualGet(UMLPackage.PSEUDOSTATE__KIND, KIND_EDEFAULT));
 		result.append(')');
 		return result.toString();
 	}

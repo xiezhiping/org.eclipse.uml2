@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -420,10 +420,10 @@ public class SequenceNodeImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.SEQUENCE_NODE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.SEQUENCE_NODE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.SEQUENCE_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -483,7 +483,7 @@ public class SequenceNodeImpl
 				getNodes().clear();
 				return;
 			case UMLPackage.SEQUENCE_NODE__MUST_ISOLATE :
-				unsetMustIsolate();
+				setMustIsolate(MUST_ISOLATE_EDEFAULT);
 				return;
 			case UMLPackage.SEQUENCE_NODE__EDGE :
 				getEdges().clear();
@@ -513,14 +513,9 @@ public class SequenceNodeImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.SEQUENCE_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.SEQUENCE_NODE__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.SEQUENCE_NODE__VISIBILITY :
-				return eVirtualGet(UMLPackage.SEQUENCE_NODE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.SEQUENCE_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -608,7 +603,7 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__NODE :
 				return isSetNodes();
 			case UMLPackage.SEQUENCE_NODE__MUST_ISOLATE :
-				return isSetMustIsolate();
+				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.SEQUENCE_NODE__EDGE :
 				List edge = (List) eVirtualGet(UMLPackage.SEQUENCE_NODE__EDGE);
 				return edge != null && !edge.isEmpty();

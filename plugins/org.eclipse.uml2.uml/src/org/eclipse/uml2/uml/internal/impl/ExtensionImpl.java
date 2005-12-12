@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.8 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,11 +23,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.uml2.common.util.SubsetEObjectEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.internal.operations.ExtensionOperations;
@@ -39,9 +40,9 @@ import org.eclipse.uml2.uml.internal.operations.ExtensionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtensionImpl#getOwnedEnds <em>Owned End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtensionImpl#isRequired <em>Is Required</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtensionImpl#getMetaclass <em>Metaclass</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtensionImpl#getOwnedEnds <em>Owned End</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,11 +89,21 @@ public class ExtensionImpl
 		List ownedEnd = (List) eVirtualGet(UMLPackage.EXTENSION__OWNED_END);
 		if (ownedEnd == null) {
 			eVirtualSet(UMLPackage.EXTENSION__OWNED_END,
-				ownedEnd = new SubsetEObjectEList(ExtensionEnd.class, this,
-					UMLPackage.EXTENSION__OWNED_END,
-					new int[]{UMLPackage.EXTENSION__OWNED_END}));
+				ownedEnd = new EObjectContainmentEList(ExtensionEnd.class,
+					this, UMLPackage.EXTENSION__OWNED_END));
 		}
 		return ownedEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property createOwnedEnd() {
+		ExtensionEnd newOwnedEnd = UMLFactory.eINSTANCE.createExtensionEnd();
+		getOwnedEnds().add(newOwnedEnd);
+		return newOwnedEnd;
 	}
 
 	/**
@@ -319,11 +330,7 @@ public class ExtensionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.EXTENSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXTENSION__NAME :
-				String name = (String) eVirtualGet(UMLPackage.EXTENSION__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.EXTENSION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.EXTENSION__QUALIFIED_NAME :

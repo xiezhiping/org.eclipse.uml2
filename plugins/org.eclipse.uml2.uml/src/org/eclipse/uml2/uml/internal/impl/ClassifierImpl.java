@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.17 2005/12/08 19:38:07 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.18 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -461,28 +461,13 @@ public abstract class ClassifierImpl
 			: newVisibility;
 		Object oldVisibility = eVirtualSet(UMLPackage.CLASSIFIER__VISIBILITY,
 			visibility);
-		boolean isSetChange = oldVisibility == EVIRTUAL_NO_VALUE;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CLASSIFIER__VISIBILITY, isSetChange
+				UMLPackage.CLASSIFIER__VISIBILITY,
+				oldVisibility == EVIRTUAL_NO_VALUE
 					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility, isSetChange));
+					: oldVisibility, visibility));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetVisibility() {
-		Object oldVisibility = eVirtualUnset(UMLPackage.CLASSIFIER__VISIBILITY);
-		boolean isSetChange = oldVisibility != EVIRTUAL_NO_VALUE;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.CLASSIFIER__VISIBILITY, isSetChange
-					? oldVisibility
-					: VISIBILITY_EDEFAULT, VISIBILITY_EDEFAULT, isSetChange));
 	}
 
 	/**
@@ -491,7 +476,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public boolean isSetVisibility() {
-		return eVirtualIsSet(UMLPackage.CLASSIFIER__VISIBILITY);
+		return eVirtualGet(UMLPackage.CLASSIFIER__VISIBILITY,
+			VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -1865,10 +1851,10 @@ public abstract class ClassifierImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CLASSIFIER__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CLASSIFIER__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CLASSIFIER__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -1958,11 +1944,7 @@ public abstract class ClassifierImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CLASSIFIER__NAME :
-				String name = (String) eVirtualGet(UMLPackage.CLASSIFIER__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CLASSIFIER__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.CLASSIFIER__QUALIFIED_NAME :
@@ -2205,10 +2187,8 @@ public abstract class ClassifierImpl
 		result.append(" (isLeaf: "); //$NON-NLS-1$
 		result.append((eFlags & IS_LEAF_EFLAG) != 0);
 		result.append(", visibility: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.CLASSIFIER__VISIBILITY))
-			result.append(eVirtualGet(UMLPackage.CLASSIFIER__VISIBILITY));
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append(eVirtualGet(UMLPackage.CLASSIFIER__VISIBILITY,
+			VISIBILITY_EDEFAULT));
 		result.append(", isAbstract: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(')');

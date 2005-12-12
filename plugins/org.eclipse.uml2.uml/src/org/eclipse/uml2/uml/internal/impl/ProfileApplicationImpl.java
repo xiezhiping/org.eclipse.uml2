@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,11 +24,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,8 +38,8 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getImportedPackage <em>Imported Package</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getImportedProfile <em>Imported Profile</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getAppliedProfile <em>Applied Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#isStrict <em>Is Strict</em>}</li>
  * </ul>
  * </p>
@@ -46,7 +47,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * @generated
  */
 public class ProfileApplicationImpl
-		extends PackageImportImpl
+		extends DirectedRelationshipImpl
 		implements ProfileApplication {
 
 	/**
@@ -92,21 +93,37 @@ public class ProfileApplicationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.eclipse.uml2.uml.Package getImportedPackage() {
-		org.eclipse.uml2.uml.Package importedPackage = (org.eclipse.uml2.uml.Package) eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE);
-		if (importedPackage != null && importedPackage.eIsProxy()) {
-			InternalEObject oldImportedPackage = (InternalEObject) importedPackage;
-			importedPackage = (org.eclipse.uml2.uml.Package) eResolveProxy(oldImportedPackage);
-			if (importedPackage != oldImportedPackage) {
-				eVirtualSet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE,
-					importedPackage);
+	public List getTargets() {
+		List target = (List) eVirtualGet(UMLPackage.PROFILE_APPLICATION__TARGET);
+		if (target == null) {
+			eVirtualSet(UMLPackage.PROFILE_APPLICATION__TARGET,
+				target = new DerivedUnionEObjectEList(Element.class, this,
+					UMLPackage.PROFILE_APPLICATION__TARGET,
+					new int[]{UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE}));
+		}
+		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Profile getAppliedProfile() {
+		Profile appliedProfile = (Profile) eVirtualGet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE);
+		if (appliedProfile != null && appliedProfile.eIsProxy()) {
+			InternalEObject oldAppliedProfile = (InternalEObject) appliedProfile;
+			appliedProfile = (Profile) eResolveProxy(oldAppliedProfile);
+			if (appliedProfile != oldAppliedProfile) {
+				eVirtualSet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE,
+					appliedProfile);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE,
-						oldImportedPackage, importedPackage));
+						UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE,
+						oldAppliedProfile, appliedProfile));
 			}
 		}
-		return importedPackage;
+		return appliedProfile;
 	}
 
 	/**
@@ -114,8 +131,8 @@ public class ProfileApplicationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.eclipse.uml2.uml.Package basicGetImportedPackage() {
-		return (org.eclipse.uml2.uml.Package) eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE);
+	public Profile basicGetAppliedProfile() {
+		return (Profile) eVirtualGet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE);
 	}
 
 	/**
@@ -123,75 +140,17 @@ public class ProfileApplicationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImportedPackage(
-			org.eclipse.uml2.uml.Package newImportedPackage) {
-		org.eclipse.uml2.uml.Package importedPackage = newImportedPackage;
-		Object oldImportedPackage = eVirtualSet(
-			UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE, importedPackage);
+	public void setAppliedProfile(Profile newAppliedProfile) {
+		Profile appliedProfile = newAppliedProfile;
+		Object oldAppliedProfile = eVirtualSet(
+			UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE, appliedProfile);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE,
-				oldImportedPackage == EVIRTUAL_NO_VALUE
+				UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE,
+				oldAppliedProfile == EVIRTUAL_NO_VALUE
 					? null
-					: oldImportedPackage, importedPackage));
+					: oldAppliedProfile, appliedProfile));
 
-		if (eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE) != null
-			&& eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE) != newImportedPackage) {
-			setImportedProfile(null);
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Profile getImportedProfile() {
-		Profile importedProfile = (Profile) eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE);
-		if (importedProfile != null && importedProfile.eIsProxy()) {
-			InternalEObject oldImportedProfile = (InternalEObject) importedProfile;
-			importedProfile = (Profile) eResolveProxy(oldImportedProfile);
-			if (importedProfile != oldImportedProfile) {
-				eVirtualSet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE,
-					importedProfile);
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE,
-						oldImportedProfile, importedProfile));
-			}
-		}
-		return importedProfile;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Profile basicGetImportedProfile() {
-		return (Profile) eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setImportedProfile(Profile newImportedProfile) {
-		Profile importedProfile = newImportedProfile;
-		Object oldImportedProfile = eVirtualSet(
-			UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE, importedProfile);
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE,
-				oldImportedProfile == EVIRTUAL_NO_VALUE
-					? null
-					: oldImportedProfile, importedProfile));
-
-		if (newImportedProfile != null
-			|| oldImportedProfile == eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE)) {
-			setImportedPackage(newImportedProfile);
-		}
 	}
 
 	/**
@@ -244,18 +203,10 @@ public class ProfileApplicationImpl
 				return getSources();
 			case UMLPackage.PROFILE_APPLICATION__TARGET :
 				return getTargets();
-			case UMLPackage.PROFILE_APPLICATION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE :
+			case UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE :
 				if (resolve)
-					return getImportedPackage();
-				return basicGetImportedPackage();
-			case UMLPackage.PROFILE_APPLICATION__IMPORTING_NAMESPACE :
-				return getImportingNamespace();
-			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE :
-				if (resolve)
-					return getImportedProfile();
-				return basicGetImportedProfile();
+					return getAppliedProfile();
+				return basicGetAppliedProfile();
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
 				return isStrict()
 					? Boolean.TRUE
@@ -279,17 +230,8 @@ public class ProfileApplicationImpl
 				getOwnedComments().clear();
 				getOwnedComments().addAll((Collection) newValue);
 				return;
-			case UMLPackage.PROFILE_APPLICATION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
-			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE :
-				setImportedPackage((org.eclipse.uml2.uml.Package) newValue);
-				return;
-			case UMLPackage.PROFILE_APPLICATION__IMPORTING_NAMESPACE :
-				setImportingNamespace((Namespace) newValue);
-				return;
-			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE :
-				setImportedProfile((Profile) newValue);
+			case UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE :
+				setAppliedProfile((Profile) newValue);
 				return;
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
 				setIsStrict(((Boolean) newValue).booleanValue());
@@ -311,17 +253,8 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.PROFILE_APPLICATION__VISIBILITY :
-				unsetVisibility();
-				return;
-			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE :
-				setImportedPackage((org.eclipse.uml2.uml.Package) null);
-				return;
-			case UMLPackage.PROFILE_APPLICATION__IMPORTING_NAMESPACE :
-				setImportingNamespace((Namespace) null);
-				return;
-			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE :
-				setImportedProfile((Profile) null);
+			case UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE :
+				setAppliedProfile((Profile) null);
 				return;
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
 				setIsStrict(IS_STRICT_EDEFAULT);
@@ -353,14 +286,8 @@ public class ProfileApplicationImpl
 				return isSetSources();
 			case UMLPackage.PROFILE_APPLICATION__TARGET :
 				return isSetTargets();
-			case UMLPackage.PROFILE_APPLICATION__VISIBILITY :
-				return isSetVisibility();
-			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE :
-				return eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PACKAGE) != null;
-			case UMLPackage.PROFILE_APPLICATION__IMPORTING_NAMESPACE :
-				return getImportingNamespace() != null;
-			case UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE :
-				return eVirtualGet(UMLPackage.PROFILE_APPLICATION__IMPORTED_PROFILE) != null;
+			case UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE :
+				return eVirtualGet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE) != null;
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
 				return ((eFlags & IS_STRICT_EFLAG) != 0) != IS_STRICT_EDEFAULT;
 		}
@@ -381,6 +308,16 @@ public class ProfileApplicationImpl
 		result.append((eFlags & IS_STRICT_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTargets() {
+		return super.isSetTargets()
+			|| eIsSet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE);
 	}
 
 } //ProfileApplicationImpl

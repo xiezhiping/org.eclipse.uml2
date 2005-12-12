@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.10 2005/12/08 14:56:25 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.11 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -806,10 +806,10 @@ public class AssociationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.ASSOCIATION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.ASSOCIATION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.ASSOCIATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -911,11 +911,7 @@ public class AssociationImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ASSOCIATION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.ASSOCIATION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.ASSOCIATION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.ASSOCIATION__QUALIFIED_NAME :

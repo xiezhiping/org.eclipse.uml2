@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalEventImpl.java,v 1.6 2005/12/06 23:21:50 khussey Exp $
+ * $Id: SignalEventImpl.java,v 1.7 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -213,10 +213,10 @@ public class SignalEventImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.SIGNAL_EVENT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.SIGNAL_EVENT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.SIGNAL_EVENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -255,11 +255,7 @@ public class SignalEventImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.SIGNAL_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.SIGNAL_EVENT__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.SIGNAL_EVENT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.SIGNAL_EVENT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.SIGNAL_EVENT__QUALIFIED_NAME :

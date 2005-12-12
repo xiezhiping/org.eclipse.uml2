@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Expression.java,v 1.2 2005/11/28 20:26:01 khussey Exp $
+ * $Id: Expression.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface Expression
 	 * @see #unsetSymbol()
 	 * @see #setSymbol(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExpression_Symbol()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 * @generated
 	 */
 	String getSymbol();

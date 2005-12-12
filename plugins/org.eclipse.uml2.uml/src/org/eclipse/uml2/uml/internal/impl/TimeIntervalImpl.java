@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.6 2005/12/06 23:21:50 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.7 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -244,11 +244,7 @@ public class TimeIntervalImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TIME_INTERVAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TIME_INTERVAL__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.TIME_INTERVAL__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.TIME_INTERVAL__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.TIME_INTERVAL__QUALIFIED_NAME :

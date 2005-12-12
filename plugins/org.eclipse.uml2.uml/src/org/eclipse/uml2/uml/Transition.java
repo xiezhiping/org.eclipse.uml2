@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.3 2005/11/28 20:26:02 khussey Exp $
+ * $Id: Transition.java,v 1.4 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,10 +47,11 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Transition
-		extends RedefinableElement {
+		extends Namespace, RedefinableElement {
 
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
+	 * The default value is <code>"external"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.uml2.uml.TransitionKind}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -59,11 +60,9 @@ public interface Transition
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.TransitionKind
-	 * @see #isSetKind()
-	 * @see #unsetKind()
 	 * @see #setKind(TransitionKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Kind()
-	 * @model unsettable="true" required="true" ordered="false"
+	 * @model default="external" required="true" ordered="false"
 	 * @generated
 	 */
 	TransitionKind getKind();
@@ -74,35 +73,10 @@ public interface Transition
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.TransitionKind
-	 * @see #isSetKind()
-	 * @see #unsetKind()
 	 * @see #getKind()
 	 * @generated
 	 */
 	void setKind(TransitionKind value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Transition#getKind <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetKind()
-	 * @see #getKind()
-	 * @see #setKind(TransitionKind)
-	 * @generated
-	 */
-	void unsetKind();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Transition#getKind <em>Kind</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Kind</em>' attribute is set.
-	 * @see #unsetKind()
-	 * @see #getKind()
-	 * @see #setKind(TransitionKind)
-	 * @generated
-	 */
-	boolean isSetKind();
 
 	/**
 	 * Returns the value of the '<em><b>Container</b></em>' container reference.
@@ -184,50 +158,29 @@ public interface Transition
 	void setRedefinedTransition(Transition value);
 
 	/**
-	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Guard</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Guard</em>' containment reference.
+	 * @return the value of the '<em>Guard</em>' reference.
 	 * @see #setGuard(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Guard()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	Constraint getGuard();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Transition#getGuard <em>Guard</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Transition#getGuard <em>Guard</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Guard</em>' containment reference.
+	 * @param value the new value of the '<em>Guard</em>' reference.
 	 * @see #getGuard()
 	 * @generated
 	 */
 	void setGuard(Constraint value);
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and sets the '<em><b>Guard</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
-	 * @see #getGuard()
-	 * @generated
-	 */
-	Constraint createGuard(EClass eClass);
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and sets the '<em><b>Guard</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
-	 * @see #getGuard()
-	 * @generated
-	 */
-	Constraint createGuard();
 
 	/**
 	 * Returns the value of the '<em><b>Effect</b></em>' containment reference.

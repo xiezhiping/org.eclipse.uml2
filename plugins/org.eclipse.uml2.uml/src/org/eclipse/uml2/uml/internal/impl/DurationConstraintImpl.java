@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.6 2005/12/06 23:21:51 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -214,11 +214,7 @@ public class DurationConstraintImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DURATION_CONSTRAINT__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.DURATION_CONSTRAINT__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.DURATION_CONSTRAINT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.DURATION_CONSTRAINT__QUALIFIED_NAME :

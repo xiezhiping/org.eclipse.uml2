@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -536,10 +536,10 @@ public class CallOperationActionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -620,15 +620,9 @@ public class CallOperationActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.CALL_OPERATION_ACTION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.CALL_OPERATION_ACTION__VISIBILITY :
-				return eVirtualGet(
-					UMLPackage.CALL_OPERATION_ACTION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.CALL_OPERATION_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

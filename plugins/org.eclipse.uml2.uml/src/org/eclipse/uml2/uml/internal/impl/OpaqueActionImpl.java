@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -150,10 +150,30 @@ public class OpaqueActionImpl
 		List language = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__LANGUAGE);
 		if (language == null) {
 			eVirtualSet(UMLPackage.OPAQUE_ACTION__LANGUAGE,
-				language = new EDataTypeUniqueEList(String.class, this,
-					UMLPackage.OPAQUE_ACTION__LANGUAGE));
+				language = new EDataTypeUniqueEList.Unsettable(String.class,
+					this, UMLPackage.OPAQUE_ACTION__LANGUAGE));
 		}
 		return language;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetLanguages() {
+		((InternalEList.Unsettable) getLanguages()).unset();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetLanguages() {
+		List language = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__LANGUAGE);
+		return language != null
+			&& ((InternalEList.Unsettable) language).isSet();
 	}
 
 	/**
@@ -398,10 +418,10 @@ public class OpaqueActionImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.OPAQUE_ACTION__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.OPAQUE_ACTION__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.OPAQUE_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -446,7 +466,7 @@ public class OpaqueActionImpl
 				unsetBodies();
 				return;
 			case UMLPackage.OPAQUE_ACTION__LANGUAGE :
-				getLanguages().clear();
+				unsetLanguages();
 				return;
 			case UMLPackage.OPAQUE_ACTION__INPUT_VALUE :
 				getInputValues().clear();
@@ -476,14 +496,9 @@ public class OpaqueActionImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.OPAQUE_ACTION__NAME, NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.OPAQUE_ACTION__VISIBILITY :
-				return eVirtualGet(UMLPackage.OPAQUE_ACTION__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.OPAQUE_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
@@ -543,8 +558,7 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__BODY :
 				return isSetBodies();
 			case UMLPackage.OPAQUE_ACTION__LANGUAGE :
-				List language = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__LANGUAGE);
-				return language != null && !language.isEmpty();
+				return isSetLanguages();
 			case UMLPackage.OPAQUE_ACTION__INPUT_VALUE :
 				List inputValue = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__INPUT_VALUE);
 				return inputValue != null && !inputValue.isEmpty();

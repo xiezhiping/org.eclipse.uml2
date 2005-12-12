@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.8 2005/12/06 23:21:51 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.9 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -578,10 +578,10 @@ public class RedefinableTemplateSignatureImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -629,16 +629,9 @@ public class RedefinableTemplateSignatureImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME :
-				String name = (String) eVirtualGet(
-					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY :
-				return eVirtualGet(
-					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return isSetVisibility();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null

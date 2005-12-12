@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.8 2005/12/08 14:56:24 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.9 2005/12/12 16:58:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,15 +82,6 @@ public class TimeEventImpl
 	protected static final int IS_RELATIVE_EFLAG = 1 << 8;
 
 	/**
-	 * The flag representing whether the Is Relative attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_RELATIVE_ESETFLAG = 1 << 9;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -146,41 +137,11 @@ public class TimeEventImpl
 			eFlags |= IS_RELATIVE_EFLAG;
 		else
 			eFlags &= ~IS_RELATIVE_EFLAG;
-		boolean oldIsRelativeESet = (eFlags & IS_RELATIVE_ESETFLAG) != 0;
-		eFlags |= IS_RELATIVE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TIME_EVENT__IS_RELATIVE, oldIsRelative,
-				newIsRelative, !oldIsRelativeESet));
+				newIsRelative));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsRelative() {
-		boolean oldIsRelative = (eFlags & IS_RELATIVE_EFLAG) != 0;
-		boolean oldIsRelativeESet = (eFlags & IS_RELATIVE_ESETFLAG) != 0;
-		if (IS_RELATIVE_EDEFAULT)
-			eFlags |= IS_RELATIVE_EFLAG;
-		else
-			eFlags &= ~IS_RELATIVE_EFLAG;
-		eFlags &= ~IS_RELATIVE_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.TIME_EVENT__IS_RELATIVE, oldIsRelative,
-				IS_RELATIVE_EDEFAULT, oldIsRelativeESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsRelative() {
-		return (eFlags & IS_RELATIVE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -411,10 +372,10 @@ public class TimeEventImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.TIME_EVENT__NAME :
-				setName(NAME_EDEFAULT);
+				unsetName();
 				return;
 			case UMLPackage.TIME_EVENT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
+				unsetVisibility();
 				return;
 			case UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
@@ -429,7 +390,7 @@ public class TimeEventImpl
 				setOwningTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
-				unsetIsRelative();
+				setIsRelative(IS_RELATIVE_EDEFAULT);
 				return;
 			case UMLPackage.TIME_EVENT__WHEN :
 				setWhen((ValueSpecification) null);
@@ -456,11 +417,7 @@ public class TimeEventImpl
 				List ownedComment = (List) eVirtualGet(UMLPackage.TIME_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TIME_EVENT__NAME :
-				String name = (String) eVirtualGet(UMLPackage.TIME_EVENT__NAME,
-					NAME_EDEFAULT);
-				return NAME_EDEFAULT == null
-					? name != null
-					: !NAME_EDEFAULT.equals(name);
+				return isSetName();
 			case UMLPackage.TIME_EVENT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.TIME_EVENT__QUALIFIED_NAME :
@@ -479,7 +436,7 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
-				return isSetIsRelative();
+				return ((eFlags & IS_RELATIVE_EFLAG) != 0) != IS_RELATIVE_EDEFAULT;
 			case UMLPackage.TIME_EVENT__WHEN :
 				return eVirtualGet(UMLPackage.TIME_EVENT__WHEN) != null;
 		}
@@ -497,10 +454,7 @@ public class TimeEventImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isRelative: "); //$NON-NLS-1$
-		if ((eFlags & IS_RELATIVE_ESETFLAG) != 0)
-			result.append((eFlags & IS_RELATIVE_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & IS_RELATIVE_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}
