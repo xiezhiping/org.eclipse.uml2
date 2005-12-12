@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.2 2005/12/12 19:26:25 khussey Exp $
+ * $Id: UML2Util.java,v 1.3 2005/12/12 20:53:04 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -304,16 +304,17 @@ public class UML2Util {
 		}
 
 		if (eDirectResource != null) {
-			List contents = eDirectResource.getContents();
+			int index = eDirectResource.getContents().indexOf(internalEObject);
+			int length = xmiIdentifier.length();
 
-			if (contents.size() > 1) {
-				int index = contents.indexOf(internalEObject);
+			if (index > 0 || length == 0) {
 
-				if (index > 0) {
+				if (length > 0) {
 					xmiIdentifier.insert(0, '-');
-					xmiIdentifier.insert(0, contents.indexOf(internalEObject));
-					xmiIdentifier.insert(0, '_');
 				}
+
+				xmiIdentifier.insert(0, index);
+				xmiIdentifier.insert(0, '_');
 			}
 		}
 
