@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.1 2005/12/07 14:20:29 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.2 2005/12/12 18:34:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -322,9 +322,7 @@ public class PropertyItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_default_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PROPERTY__DEFAULT, true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
