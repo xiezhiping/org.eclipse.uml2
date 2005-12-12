@@ -8,14 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationOperations.java,v 1.4 2005/12/12 16:58:38 khussey Exp $
+ * $Id: ValueSpecificationOperations.java,v 1.5 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
-import org.eclipse.uml2.uml.internal.impl.ValueSpecificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -145,7 +145,8 @@ public final class ValueSpecificationOperations
 			Type type = valueSpecification.getType();
 
 			return type == null
-				? ((ValueSpecificationImpl) p).basicGetType() == null
+				? ((ValueSpecification) p).eGet(
+					UMLPackage.Literals.TYPED_ELEMENT__TYPE, false) == null
 				: type.conformsTo(((ValueSpecification) p).getType());
 		}
 

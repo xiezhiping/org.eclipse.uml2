@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: DeploymentTargetOperations.java,v 1.4 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,9 +22,9 @@ import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.DeployedArtifact;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.DeploymentTarget;
+import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.internal.impl.ManifestationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,8 +78,11 @@ public final class DeploymentTargetOperations
 						.getManifestations().iterator(); manifestations
 						.hasNext();) {
 
-						PackageableElement utilizedElement = ((ManifestationImpl) manifestations
-							.next()).basicGetUtilizedElement();
+						PackageableElement utilizedElement = (PackageableElement) ((Manifestation) manifestations
+							.next())
+							.eGet(
+								UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT,
+								false);
 
 						if (utilizedElement != null) {
 							deployedElements.add(utilizedElement);

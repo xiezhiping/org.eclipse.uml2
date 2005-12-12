@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndOperations.java,v 1.7 2005/12/02 04:55:51 khussey Exp $
+ * $Id: ExtensionEndOperations.java,v 1.8 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -17,13 +17,13 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.LiteralInteger;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
-import org.eclipse.uml2.uml.internal.impl.ExtensionEndImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -137,10 +137,10 @@ public final class ExtensionEndOperations
 		if (lowerValue instanceof LiteralInteger) {
 			return lowerValue.integerValue();
 		} else {
-			ExtensionEndImpl extensionEndImpl = (ExtensionEndImpl) extensionEnd;
-			return ((Integer) extensionEndImpl
+			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) extensionEnd;
+			return ((Integer) basicEObjectImpl
 				.eVirtualGet(
-					extensionEndImpl
+					basicEObjectImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
 					new Integer(0))).intValue();
 		}
@@ -171,10 +171,10 @@ public final class ExtensionEndOperations
 				throw new IllegalArgumentException(String.valueOf(newLower));
 			}
 		} else {
-			ExtensionEndImpl extensionEndImpl = (ExtensionEndImpl) extensionEnd;
-			extensionEndImpl
+			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) extensionEnd;
+			basicEObjectImpl
 				.eVirtualSet(
-					extensionEndImpl
+					basicEObjectImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
 					new Integer(newLower));
 		}
@@ -186,9 +186,9 @@ public final class ExtensionEndOperations
 	 * @generated NOT
 	 */
 	public static boolean isSetLower(ExtensionEnd extensionEnd) {
-		ExtensionEndImpl extensionEndImpl = (ExtensionEndImpl) extensionEnd;
-		return extensionEndImpl
-			.eVirtualIsSet(extensionEndImpl
+		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) extensionEnd;
+		return basicEObjectImpl
+			.eVirtualIsSet(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
 	}
 
@@ -198,9 +198,9 @@ public final class ExtensionEndOperations
 	 * @generated NOT
 	 */
 	public static void unsetLower(ExtensionEnd extensionEnd) {
-		ExtensionEndImpl extensionEndImpl = (ExtensionEndImpl) extensionEnd;
-		extensionEndImpl
-			.eVirtualUnset(extensionEndImpl
+		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) extensionEnd;
+		basicEObjectImpl
+			.eVirtualUnset(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
 	}
 

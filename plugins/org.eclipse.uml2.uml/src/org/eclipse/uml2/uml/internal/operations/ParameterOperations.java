@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.9 2005/12/08 19:38:07 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.10 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.InstanceSpecification;
@@ -33,7 +34,6 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
-import org.eclipse.uml2.uml.internal.impl.ParameterImpl;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -240,10 +240,10 @@ public final class ParameterOperations
 		if (defaultValue != null) {
 			return defaultValue.stringValue();
 		} else {
-			ParameterImpl parameterImpl = (ParameterImpl) parameter;
-			return (String) parameterImpl
+			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) parameter;
+			return (String) basicEObjectImpl
 				.eVirtualGet(
-					parameterImpl
+					basicEObjectImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT),
 					null);
 		}
@@ -326,10 +326,10 @@ public final class ParameterOperations
 				}
 			}.doSwitch(defaultValue);
 		} else {
-			ParameterImpl parameterImpl = (ParameterImpl) parameter;
-			parameterImpl
+			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) parameter;
+			basicEObjectImpl
 				.eVirtualSet(
-					parameterImpl
+					basicEObjectImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT),
 					newDefault);
 		}
@@ -341,9 +341,9 @@ public final class ParameterOperations
 	 * @generated NOT
 	 */
 	public static boolean isSetDefault(Parameter parameter) {
-		ParameterImpl parameterImpl = (ParameterImpl) parameter;
-		return parameterImpl
-			.eVirtualIsSet(parameterImpl
+		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) parameter;
+		return basicEObjectImpl
+			.eVirtualIsSet(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT));
 	}
 
@@ -353,9 +353,9 @@ public final class ParameterOperations
 	 * @generated NOT
 	 */
 	public static void unsetDefault(Parameter parameter) {
-		ParameterImpl parameterImpl = (ParameterImpl) parameter;
-		parameterImpl
-			.eVirtualUnset(parameterImpl
+		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) parameter;
+		basicEObjectImpl
+			.eVirtualUnset(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT));
 	}
 

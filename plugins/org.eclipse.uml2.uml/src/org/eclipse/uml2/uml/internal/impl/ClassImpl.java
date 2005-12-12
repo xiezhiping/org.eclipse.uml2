@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.13 2005/12/12 16:58:35 khussey Exp $
+ * $Id: ClassImpl.java,v 1.14 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -716,7 +716,7 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedAttributes() {
+	public List getOwnedAttributesGen() {
 		List ownedAttribute = (List) eVirtualGet(UMLPackage.CLASS__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.CLASS__OWNED_ATTRIBUTE,
@@ -727,9 +727,19 @@ public class ClassImpl
 		return ownedAttribute;
 	}
 
+    public List getOwnedAttributes() {
+		List ownedAttribute = (List) eVirtualGet(UMLPackage.CLASS__OWNED_ATTRIBUTE);
+		if (ownedAttribute == null) {
+			eVirtualSet(UMLPackage.CLASS__OWNED_ATTRIBUTE,
+				ownedAttribute = new EObjectContainmentEList(Property.class,
+					this, UMLPackage.CLASS__OWNED_ATTRIBUTE));
+		}
+		return ownedAttribute;
+	}
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Property createOwnedAttribute(EClass eClass) {

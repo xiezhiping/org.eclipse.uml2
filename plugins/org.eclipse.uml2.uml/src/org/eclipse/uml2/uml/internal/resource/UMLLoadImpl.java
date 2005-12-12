@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLLoadImpl.java,v 1.1 2005/12/07 14:17:51 khussey Exp $
+ * $Id: UMLLoadImpl.java,v 1.2 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import org.eclipse.emf.ecore.xmi.XMLHelper;
-import org.eclipse.emf.ecore.xmi.impl.SAXWrapper;
 import org.eclipse.emf.ecore.xmi.impl.XMILoadImpl;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -26,7 +25,7 @@ public class UMLLoadImpl
 	}
 
 	protected DefaultHandler makeDefaultHandler() {
-		return new SAXWrapper(new UMLHandler(resource, helper, options));
+		return new UMLHandler(resource, helper, options);
 	}
 
 }

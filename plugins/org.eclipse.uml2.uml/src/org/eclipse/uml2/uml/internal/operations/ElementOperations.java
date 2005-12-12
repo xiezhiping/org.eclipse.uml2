@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.5 2005/12/08 19:38:06 khussey Exp $
+ * $Id: ElementOperations.java,v 1.6 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -24,8 +24,8 @@ import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.UMLPackage;
 
-import org.eclipse.uml2.uml.internal.impl.ElementImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -158,9 +158,8 @@ public final class ElementOperations
 			boolean resolve) {
 		Element owningElement = null;
 
-		for (Element owner = element; (owningElement = resolve
-			? owner.getOwner()
-			: ((ElementImpl) owner).basicGetOwner()) != null
+		for (Element owner = element; (owningElement = (Element) owner.eGet(
+			UMLPackage.Literals.ELEMENT__OWNER, resolve)) != null
 			&& !(eClass.isInstance(owningElement));) {
 
 			owner = owner.getOwner();

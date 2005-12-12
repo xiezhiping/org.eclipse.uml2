@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.4 2005/12/02 04:55:51 khussey Exp $
+ * $Id: OperationOperations.java,v 1.5 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,8 +27,8 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPackage;
 
-import org.eclipse.uml2.uml.internal.impl.ParameterImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -220,7 +220,8 @@ public final class OperationOperations {
 	public static Type getType(Operation operation) {
 		List returnResult = operation.returnResult();
 		return returnResult.size() == 1
-			? ((ParameterImpl) returnResult.get(0)).basicGetType()
+			? (Type) ((Parameter) returnResult.get(0)).eGet(
+				UMLPackage.Literals.TYPED_ELEMENT__TYPE, false)
 			: null;
 	}
 

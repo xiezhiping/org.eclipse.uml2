@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.13 2005/12/12 16:58:38 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.14 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -24,6 +24,7 @@ import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.AggregationKind;
@@ -45,7 +46,6 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
-import org.eclipse.uml2.uml.internal.impl.PropertyImpl;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -584,10 +584,10 @@ public final class PropertyOperations
 		if (defaultValue != null) {
 			return defaultValue.stringValue();
 		} else {
-			PropertyImpl propertyImpl = (PropertyImpl) property;
-			return (String) propertyImpl
+			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) property;
+			return (String) basicEObjectImpl
 				.eVirtualGet(
-					propertyImpl
+					basicEObjectImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT),
 					null);
 		}
@@ -670,10 +670,10 @@ public final class PropertyOperations
 				}
 			}.doSwitch(defaultValue);
 		} else {
-			PropertyImpl propertyImpl = (PropertyImpl) property;
-			propertyImpl
+			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) property;
+			basicEObjectImpl
 				.eVirtualSet(
-					propertyImpl
+					basicEObjectImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT),
 					newDefault);
 		}
@@ -743,14 +743,14 @@ public final class PropertyOperations
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isSetDefault(Property property) {
-		PropertyImpl propertyImpl = (PropertyImpl) property;
-		return propertyImpl
-			.eVirtualIsSet(propertyImpl
+		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) property;
+		return basicEObjectImpl
+			.eVirtualIsSet(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT));
 	}
 
@@ -760,9 +760,9 @@ public final class PropertyOperations
 	 * @generated NOT
 	 */
 	public static void unsetDefault(Property property) {
-		PropertyImpl propertyImpl = (PropertyImpl) property;
-		propertyImpl
-			.eVirtualUnset(propertyImpl
+		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) property;
+		basicEObjectImpl
+			.eVirtualUnset(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT));
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.4 2005/12/05 20:47:30 khussey Exp $
+ * $Id: PortOperations.java,v 1.5 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -28,13 +28,12 @@ import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Usage;
 
-import org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl;
-import org.eclipse.uml2.uml.internal.impl.PortImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -204,8 +203,9 @@ public final class PortOperations
 			.getInterfaceRealizations().iterator(); interfaceRealizations
 			.hasNext();) {
 
-			Interface contract = ((InterfaceRealizationImpl) interfaceRealizations
-				.next()).basicGetContract();
+			Interface contract = (Interface) ((InterfaceRealization) interfaceRealizations
+				.next()).eGet(
+				UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT, false);
 
 			if (contract != null) {
 				implementedInterfaces.add(contract);
@@ -222,8 +222,8 @@ public final class PortOperations
 	public static List getProvideds(Port port) {
 		List provideds = new UniqueEList();
 
-		PortImpl portImpl = (PortImpl) port;
-		Type type = portImpl.basicGetType();
+		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
+			false);
 
 		if (type instanceof Interface) {
 			provideds.add(type);
@@ -245,7 +245,7 @@ public final class PortOperations
 			}
 		}
 
-		return new UnionEObjectEList(portImpl,
+		return new UnionEObjectEList((InternalEObject) port,
 			UMLPackage.Literals.PORT__PROVIDED, provideds.size(), provideds
 				.toArray());
 	}

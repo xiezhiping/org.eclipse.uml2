@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOperations.java,v 1.4 2005/12/01 20:04:38 khussey Exp $
+ * $Id: MessageOperations.java,v 1.5 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -23,6 +23,7 @@ import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageEnd;
 import org.eclipse.uml2.uml.MessageKind;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.internal.impl.MessageImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -297,12 +298,11 @@ public final class MessageOperations
 	 * @generated NOT
 	 */
 	public static MessageKind getMessageKind(Message message) {
-		MessageImpl messageImpl = (MessageImpl) message;
-		return messageImpl.basicGetSendEvent() == null
-			? (messageImpl.basicGetReceiveEvent() == null
+		return message.eGet(UMLPackage.Literals.MESSAGE__SEND_EVENT, false) == null
+			? (message.eGet(UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, false) == null
 				? MessageKind.UNKNOWN_LITERAL
 				: MessageKind.FOUND_LITERAL)
-			: (messageImpl.basicGetReceiveEvent() == null
+			: (message.eGet(UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, false) == null
 				? MessageKind.LOST_LITERAL
 				: MessageKind.COMPLETE_LITERAL);
 	}

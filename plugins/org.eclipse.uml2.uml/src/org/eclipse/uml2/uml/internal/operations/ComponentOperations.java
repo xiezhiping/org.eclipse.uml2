@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.5 2005/12/05 20:18:59 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.6 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -25,10 +25,10 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Usage;
-import org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -200,8 +200,9 @@ public final class ComponentOperations
 			.getInterfaceRealizations().iterator(); interfaceRealizations
 			.hasNext();) {
 
-			Interface contract = ((InterfaceRealizationImpl) interfaceRealizations
-				.next()).basicGetContract();
+			Interface contract = (Interface) ((InterfaceRealization) interfaceRealizations
+				.next()).eGet(
+				UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT, false);
 
 			if (contract != null) {
 				provideds.add(contract);

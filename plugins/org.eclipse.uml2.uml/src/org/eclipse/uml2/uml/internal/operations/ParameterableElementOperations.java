@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementOperations.java,v 1.3 2005/12/05 18:00:17 khussey Exp $
+ * $Id: ParameterableElementOperations.java,v 1.4 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import org.eclipse.uml2.uml.ParameterableElement;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.internal.impl.ParameterableElementImpl;
 
 /**
@@ -67,8 +68,9 @@ public final class ParameterableElementOperations
 	 */
 	public static boolean isTemplateParameter(
 			ParameterableElement parameterableElement) {
-		return ((ParameterableElementImpl) parameterableElement)
-			.basicGetTemplateParameter() != null;
+		return ((ParameterableElementImpl) parameterableElement).eGet(
+			UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
+			false) != null;
 	}
 
 } // ParameterableElementOperations

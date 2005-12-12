@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationOperations.java,v 1.5 2005/12/01 18:15:37 khussey Exp $
+ * $Id: AssociationOperations.java,v 1.6 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -24,10 +24,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 
-import org.eclipse.uml2.uml.internal.impl.PropertyImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -203,7 +203,8 @@ public final class AssociationOperations
 		for (Iterator memberEnds = association.getMemberEnds().iterator(); memberEnds
 			.hasNext();) {
 
-			Type endType = ((PropertyImpl) memberEnds.next()).basicGetType();
+			Type endType = (Type) ((Property) memberEnds.next()).eGet(
+				UMLPackage.Literals.TYPED_ELEMENT__TYPE, false);
 
 			if (endType != null) {
 				endTypes.add(endType);

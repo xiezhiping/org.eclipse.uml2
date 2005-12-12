@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.8 2005/12/12 16:58:38 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.9 2005/12/12 18:11:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -17,6 +17,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 
 import org.eclipse.uml2.uml.LiteralInteger;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
@@ -24,7 +25,6 @@ import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
-import org.eclipse.uml2.uml.internal.impl.MultiplicityElementImpl;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -347,10 +347,10 @@ public final class MultiplicityElementOperations
 		if (lowerValue instanceof LiteralInteger) {
 			return lowerValue.integerValue();
 		} else {
-			MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
-			return ((Integer) multiplicityElementImpl
+			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
+			return ((Integer) basicEObjectImpl
 				.eVirtualGet(
-					multiplicityElementImpl
+					basicEObjectImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
 					new Integer(1))).intValue();
 		}
@@ -371,10 +371,10 @@ public final class MultiplicityElementOperations
 		if (upperValue instanceof LiteralUnlimitedNatural) {
 			return upperValue.unlimitedValue();
 		} else {
-			MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
-			return ((Integer) multiplicityElementImpl
+			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
+			return ((Integer) basicEObjectImpl
 				.eVirtualGet(
-					multiplicityElementImpl
+					basicEObjectImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER),
 					new Integer(1))).intValue();
 		}
@@ -397,10 +397,10 @@ public final class MultiplicityElementOperations
 				throw new IllegalArgumentException(String.valueOf(newLower));
 			}
 		} else {
-			MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
-			multiplicityElementImpl
+			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
+			basicEObjectImpl
 				.eVirtualSet(
-					multiplicityElementImpl
+					basicEObjectImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
 					new Integer(newLower));
 		}
@@ -423,10 +423,10 @@ public final class MultiplicityElementOperations
 				throw new IllegalArgumentException(String.valueOf(newUpper));
 			}
 		} else {
-			MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
-			multiplicityElementImpl
+			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
+			basicEObjectImpl
 				.eVirtualSet(
-					multiplicityElementImpl
+					basicEObjectImpl
 						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER),
 					new Integer(newUpper));
 		}
@@ -438,9 +438,9 @@ public final class MultiplicityElementOperations
 	 * @generated NOT
 	 */
 	public static boolean isSetLower(MultiplicityElement multiplicityElement) {
-		MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
-		return multiplicityElementImpl
-			.eVirtualIsSet(multiplicityElementImpl
+		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
+		return basicEObjectImpl
+			.eVirtualIsSet(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
 	}
 
@@ -450,9 +450,9 @@ public final class MultiplicityElementOperations
 	 * @generated NOT
 	 */
 	public static void unsetLower(MultiplicityElement multiplicityElement) {
-		MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
-		multiplicityElementImpl
-			.eVirtualUnset(multiplicityElementImpl
+		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
+		basicEObjectImpl
+			.eVirtualUnset(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
 	}
 
@@ -462,9 +462,9 @@ public final class MultiplicityElementOperations
 	 * @generated NOT
 	 */
 	public static boolean isSetUpper(MultiplicityElement multiplicityElement) {
-		MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
-		return multiplicityElementImpl
-			.eVirtualIsSet(multiplicityElementImpl
+		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
+		return basicEObjectImpl
+			.eVirtualIsSet(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER));
 	}
 
@@ -474,9 +474,9 @@ public final class MultiplicityElementOperations
 	 * @generated NOT
 	 */
 	public static void unsetUpper(MultiplicityElement multiplicityElement) {
-		MultiplicityElementImpl multiplicityElementImpl = (MultiplicityElementImpl) multiplicityElement;
-		multiplicityElementImpl
-			.eVirtualUnset(multiplicityElementImpl
+		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
+		basicEObjectImpl
+			.eVirtualUnset(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER));
 	}
 
