@@ -5718,9 +5718,6 @@
           </ownedComment>
           <generalization xmi:id="_3ADC7B74022D3CB5A2D101E1" general="_3ADC7B74022D3CB5A2060370"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CB5A28802FF" name="value" type="_3ADC7B74022D3CA010B103C3">
-            <eAnnotations xmi:id="_svUZkF04Edq_LIww8XP1gg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_svUZkV04Edq_LIww8XP1gg" isUnsettable="true"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rbyEWhTaEdqZu-3Jy1-uYg" body="The specified String value." annotatedElement="_3ADC7B74022D3CB5A28802FF">
               <eAnnotations xmi:id="_rbyEWxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rbyEXBTaEdqZu-3Jy1-uYg"/>
@@ -5836,9 +5833,6 @@
           </ownedComment>
           <generalization xmi:id="_3ADC7B74022D3DF664D30228" general="_3ADC7B74022D3CB5A2060370"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3DF664DB022A" name="value" type="_3ADC7B74022D3DE6A93C0003">
-            <eAnnotations xmi:id="_sveKkl04Edq_LIww8XP1gg" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_sveKk104Edq_LIww8XP1gg" isUnsettable="true"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rcFmahTaEdqZu-3Jy1-uYg" body="The specified UnlimitedNatural value." annotatedElement="_3ADC7B74022D3DF664DB022A">
               <eAnnotations xmi:id="_rcFmaxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rcFmbBTaEdqZu-3Jy1-uYg"/>
