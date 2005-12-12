@@ -8,13 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.10 2005/11/28 16:58:16 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.11 2005/12/12 21:43:54 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
-
-import java.util.Collection;
-
-import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenResourceKind;
 
@@ -22,9 +18,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.Monitor;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin;

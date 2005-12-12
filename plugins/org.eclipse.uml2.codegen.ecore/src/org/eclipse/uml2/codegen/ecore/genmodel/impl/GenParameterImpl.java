@@ -8,19 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenParameterImpl.java,v 1.4 2005/11/23 17:34:13 khussey Exp $
+ * $Id: GenParameterImpl.java,v 1.5 2005/12/12 21:43:54 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
-import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EParameter;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenParameter;
 

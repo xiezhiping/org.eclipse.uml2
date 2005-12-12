@@ -8,14 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenDataTypeImpl.java,v 1.4 2005/11/23 17:34:13 khussey Exp $
+ * $Id: GenDataTypeImpl.java,v 1.5 2005/12/12 21:43:55 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.uml2.codegen.ecore.genmodel.GenDataType;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 

@@ -8,12 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.10 2005/11/29 20:08:37 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.11 2005/12/12 21:43:55 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
-
-import java.util.Collection;
-import org.eclipse.emf.codegen.ecore.genmodel.GenDelegationKind;
 
 import java.util.List;
 
@@ -28,15 +25,8 @@ import org.eclipse.emf.codegen.jet.JETEmitter;
 import org.eclipse.emf.codegen.jet.JETException;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin;
 

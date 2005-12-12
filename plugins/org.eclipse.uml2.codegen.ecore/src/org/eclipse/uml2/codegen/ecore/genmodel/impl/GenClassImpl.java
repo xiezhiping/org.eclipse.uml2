@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.20 2005/12/01 18:15:13 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.21 2005/12/12 21:43:55 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -539,7 +539,15 @@ public class GenClassImpl
 
 		if (genFeature.isMapType()) {
 			return super.getListConstructor(genFeature);
-		} else if (genFeature.isContains()) {
+		} else if (genFeature.isFeatureMapType()) {
+			return super.getListConstructor(genFeature);
+		} else if (getGenModel().isSuppressNotification()) {
+			sb.append(getGenModel().getImportedName(
+				"org.eclipse.emf.ecore.util.BasicInternalEList"));
+			sb.append("(");
+			sb.append(genFeature.getListItemType());
+			sb.append(".class)");
+		} else if (genFeature.isEffectiveContains()) {
 			if (genFeature.isBidirectional()) {
 				GenFeature reverseFeature = genFeature.getReverse();
 				sb
@@ -624,8 +632,6 @@ public class GenClassImpl
 				sb.append(getSupersetFeatureIDArray(genFeature));
 				sb.append(")"); //$NON-NLS-1$
 			}
-		} else if (genFeature.isFeatureMapType()) {
-			return super.getListConstructor(genFeature);
 		} else { // datatype
 			return super.getListConstructor(genFeature);
 		}
@@ -641,7 +647,15 @@ public class GenClassImpl
 
 		if (genFeature.isMapType()) {
 			return super.getListConstructor(genFeature);
-		} else if (genFeature.isContains()) {
+		} else if (genFeature.isFeatureMapType()) {
+			return super.getListConstructor(genFeature);
+		} else if (getGenModel().isSuppressNotification()) {
+			sb.append(getGenModel().getImportedName(
+				"org.eclipse.emf.ecore.util.BasicInternalEList"));
+			sb.append("(");
+			sb.append(genFeature.getListItemType());
+			sb.append(".class)");
+		} else if (genFeature.isEffectiveContains()) {
 			if (genFeature.isBidirectional()) {
 				GenFeature reverseFeature = genFeature.getReverse();
 				sb
@@ -726,8 +740,6 @@ public class GenClassImpl
 				sb.append(getSubsetFeatureIDArray(genFeature));
 				sb.append(")"); //$NON-NLS-1$
 			}
-		} else if (genFeature.isFeatureMapType()) {
-			return super.getListConstructor(genFeature);
 		} else { // datatype
 			return super.getListConstructor(genFeature);
 		}
@@ -739,6 +751,8 @@ public class GenClassImpl
 
 		if (genFeature.isMapType()) {
 			return super.getListConstructor(genFeature);
+		} else if (genFeature.isFeatureMapType()) {
+			return super.getListConstructor(genFeature);
 		} else if (genFeature.isReferenceType()) {
 			sb.append(getGenModel().getImportedName(
 				"org.eclipse.uml2.common.util.DerivedUnionEObjectEList")); //$NON-NLS-1$
@@ -749,8 +763,6 @@ public class GenClassImpl
 			sb.append(", "); //$NON-NLS-1$
 			sb.append(getSubsetFeatureIDArray(genFeature, true));
 			sb.append(")"); //$NON-NLS-1$
-		} else if (genFeature.isFeatureMapType()) {
-			return super.getListConstructor(genFeature);
 		} else { // datatype
 			return super.getListConstructor(genFeature);
 		}

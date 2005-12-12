@@ -8,27 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.12 2005/11/28 16:58:16 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.13 2005/12/12 21:43:54 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
-import org.eclipse.emf.codegen.ecore.genmodel.GenPropertyKind;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.codegen.ecore.Generator;
@@ -235,6 +228,12 @@ public class GenFeatureImpl
 		String result = isBooleanType()
 			? "is" + getIsName() //$NON-NLS-1$
 			: "get" + getAccessorName(); //$NON-NLS-1$
+
+		if (isListType() && !isFeatureMapType() && !isMapType()
+			&& getGenModel().isArrayAccessors()) {
+
+			result += "List";
+		}
 
 		if (!isMapEntryFeature()) {
 

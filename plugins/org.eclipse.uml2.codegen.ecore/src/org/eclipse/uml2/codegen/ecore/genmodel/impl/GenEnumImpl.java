@@ -8,22 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenEnumImpl.java,v 1.4 2005/11/23 17:34:13 khussey Exp $
+ * $Id: GenEnumImpl.java,v 1.5 2005/12/12 21:43:55 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.uml2.codegen.ecore.genmodel.GenEnum;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.14 2005/12/05 21:03:02 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.15 2005/12/12 21:43:55 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -948,6 +948,42 @@ public interface GenModelPackage
 	int GEN_MODEL__MINIMAL_REFLECTIVE_METHODS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__MINIMAL_REFLECTIVE_METHODS;
 
 	/**
+	 * The feature id for the '<em><b>Suppress Containment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__SUPPRESS_CONTAINMENT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__SUPPRESS_CONTAINMENT;
+
+	/**
+	 * The feature id for the '<em><b>Suppress Notification</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__SUPPRESS_NOTIFICATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__SUPPRESS_NOTIFICATION;
+
+	/**
+	 * The feature id for the '<em><b>Array Accessors</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__ARRAY_ACCESSORS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__ARRAY_ACCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Suppress Unsettable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__SUPPRESS_UNSETTABLE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__SUPPRESS_UNSETTABLE;
+
+	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1236,6 +1272,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_PACKAGE__LITERALS_INTERFACE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__LITERALS_INTERFACE;
+
+	/**
+	 * The feature id for the '<em><b>Data Type Converters</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__DATA_TYPE_CONVERTERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__DATA_TYPE_CONVERTERS;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Package</b></em>' reference.
