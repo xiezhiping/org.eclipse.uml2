@@ -316,13 +316,6 @@
       <general xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53903D4E40050?Ecore/EModelElement"/>
     </generalization>
     <ownedOperation xmi:id="_XebbkGvuEdqG6fBIPwe-mw" name="destroy"/>
-    <ownedOperation xmi:id="_qN-4sGvzEdq7X4sGURiZYA" name="createEAnnotation">
-      <returnResult xmi:id="_tEOGAGvzEdq7X4sGURiZYA" direction="return">
-        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53D98A1C701AB?Ecore/EAnnotation"/>
-      </returnResult>
-      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53D98A1C701AB?Ecore/EAnnotation"/>
-      <ownedParameter xmi:id="_wLAQwGvzEdq7X4sGURiZYA" name="source" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
-    </ownedOperation>
     <ownedOperation xmi:id="_7f8qYGvgEdq4DLWZOhbdEA" name="hasKeyword" type="_UdivYGvsEdqG6fBIPwe-mw">
       <returnResult xmi:id="_9mECUGvgEdq4DLWZOhbdEA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="__FRyUGvgEdq4DLWZOhbdEA" name="keyword" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
@@ -341,34 +334,34 @@
       <returnResult xmi:id="_1_Pa4GvgEdq4DLWZOhbdEA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="_3u_hQGvgEdq4DLWZOhbdEA" name="keyword" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_674ZYGvzEdq7X4sGURiZYA" name="getOwningPackage" type="_-cvRAGvzEdq7X4sGURiZYA">
+    <ownedOperation xmi:id="_674ZYGvzEdq7X4sGURiZYA" name="getNearestPackage" type="_-cvRAGvzEdq7X4sGURiZYA">
       <returnResult xmi:id="_DyktQGv0Edq7X4sGURiZYA" type="_-cvRAGvzEdq7X4sGURiZYA" direction="return">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1aQnEWv3Edq7X4sGURiZYA" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1aQnEGv3Edq7X4sGURiZYA"/>
       </returnResult>
     </ownedOperation>
-    <ownedOperation xmi:id="_Gv0hgGv0Edq7X4sGURiZYA" name="getOwningModel" type="_NVhqMGv0Edq7X4sGURiZYA">
+    <ownedOperation xmi:id="_Gv0hgGv0Edq7X4sGURiZYA" name="getModel" type="_NVhqMGv0Edq7X4sGURiZYA">
       <returnResult xmi:id="_Pj1U0Gv0Edq7X4sGURiZYA" type="_NVhqMGv0Edq7X4sGURiZYA" direction="return">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zCjv4Wv3Edq7X4sGURiZYA" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zCjv4Gv3Edq7X4sGURiZYA"/>
       </returnResult>
     </ownedOperation>
-    <ownedOperation xmi:id="_nd4TIGv0Edq7X4sGURiZYA" name="isRequired" type="_UdivYGvsEdqG6fBIPwe-mw">
+    <ownedOperation xmi:id="_nd4TIGv0Edq7X4sGURiZYA" name="isStereotypeRequired" type="_UdivYGvsEdqG6fBIPwe-mw">
       <returnResult xmi:id="_A-TZYGv1Edq7X4sGURiZYA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="_0weVIGv1Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_hDDkwGv0Edq7X4sGURiZYA" name="isApplied" type="_UdivYGvsEdqG6fBIPwe-mw">
+    <ownedOperation xmi:id="_hDDkwGv0Edq7X4sGURiZYA" name="isStereotypeApplied" type="_UdivYGvsEdqG6fBIPwe-mw">
       <returnResult xmi:id="_izQ-IGv0Edq7X4sGURiZYA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="_jenoQGv0Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_DkmGMGv1Edq7X4sGURiZYA" name="apply">
+    <ownedOperation xmi:id="_DkmGMGv1Edq7X4sGURiZYA" name="applyStereotype">
       <returnResult xmi:id="_GGbJwGv1Edq7X4sGURiZYA" direction="return">
         <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
       </returnResult>
       <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
       <ownedParameter xmi:id="_GmnFsGv1Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_LUETUGv1Edq7X4sGURiZYA" name="unapply">
+    <ownedOperation xmi:id="_LUETUGv1Edq7X4sGURiZYA" name="unapplyStereotype">
       <returnResult xmi:id="_NqRVsGv1Edq7X4sGURiZYA" direction="return">
         <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
       </returnResult>
@@ -735,15 +728,15 @@
       <returnResult xmi:id="_Y8BHAGwGEdq7X4sGURiZYA" type="_V6vuYGwGEdq7X4sGURiZYA" direction="return"/>
       <ownedParameter xmi:id="_ZY7FcGwGEdq7X4sGURiZYA" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_z4Q98Gv5Edq7X4sGURiZYA" name="isApplied" type="_UdivYGvsEdqG6fBIPwe-mw">
+    <ownedOperation xmi:id="_z4Q98Gv5Edq7X4sGURiZYA" name="isProfileApplied" type="_UdivYGvsEdqG6fBIPwe-mw">
       <returnResult xmi:id="_19CSEGv5Edq7X4sGURiZYA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="_2TitkGv5Edq7X4sGURiZYA" name="profile" type="__pew8GvzEdq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_r--GcGv5Edq7X4sGURiZYA" name="apply" type="_uY5yQGv5Edq7X4sGURiZYA">
+    <ownedOperation xmi:id="_r--GcGv5Edq7X4sGURiZYA" name="applyProfile" type="_uY5yQGv5Edq7X4sGURiZYA">
       <returnResult xmi:id="_w2ZvcGv5Edq7X4sGURiZYA" type="_uY5yQGv5Edq7X4sGURiZYA" direction="return"/>
       <ownedParameter xmi:id="_xMwZ8Gv5Edq7X4sGURiZYA" name="profile" type="__pew8GvzEdq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_448CgGv5Edq7X4sGURiZYA" name="unapply" type="_uY5yQGv5Edq7X4sGURiZYA">
+    <ownedOperation xmi:id="_448CgGv5Edq7X4sGURiZYA" name="unapplyProfile" type="_uY5yQGv5Edq7X4sGURiZYA">
       <returnResult xmi:id="_6yryYGv5Edq7X4sGURiZYA" type="_uY5yQGv5Edq7X4sGURiZYA" direction="return"/>
       <ownedParameter xmi:id="_7KhqoGv5Edq7X4sGURiZYA" name="profile" type="__pew8GvzEdq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
@@ -782,6 +775,14 @@
       <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
       <ownedParameter xmi:id="_-se7MGwJEdq7X4sGURiZYA" name="classifier" type="_6UV2QGwJEdq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
+    <ownedOperation xmi:id="_QZ-tIGwJEdq7X4sGURiZYA" name="createMetaclassReference" type="_RPl78GwIEdq7X4sGURiZYA">
+      <returnResult xmi:id="_TdCOcGwJEdq7X4sGURiZYA" type="_RPl78GwIEdq7X4sGURiZYA" direction="return"/>
+      <ownedParameter xmi:id="_WJJPYGwJEdq7X4sGURiZYA" name="metaclass" type="_00owUGvdEdq4DLWZOhbdEA" effect="read"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_enGTIGwJEdq7X4sGURiZYA" name="createMetamodelReference" type="_SnNPIGwIEdq7X4sGURiZYA">
+      <returnResult xmi:id="_hN_c4GwJEdq7X4sGURiZYA" type="_SnNPIGwIEdq7X4sGURiZYA" direction="return"/>
+      <ownedParameter xmi:id="_lRa2EGwJEdq7X4sGURiZYA" name="metamodel" type="_NVhqMGv0Edq7X4sGURiZYA" effect="read"/>
+    </ownedOperation>
     <ownedOperation xmi:id="_senckGwJEdq7X4sGURiZYA" name="createOwnedStereotype" type="_A7vDAGv0Edq7X4sGURiZYA">
       <returnResult xmi:id="_upCswGwJEdq7X4sGURiZYA" type="_A7vDAGv0Edq7X4sGURiZYA" direction="return"/>
       <ownedParameter xmi:id="_xOvjsGwJEdq7X4sGURiZYA" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
@@ -796,26 +797,44 @@
     <ownedOperation xmi:id="_8ACYgGwIEdq7X4sGURiZYA" name="isDefined" type="_UdivYGvsEdqG6fBIPwe-mw">
       <returnResult xmi:id="_E3LYUGwJEdq7X4sGURiZYA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_GdjgQGwJEdq7X4sGURiZYA" name="define"/>
+    <ownedOperation xmi:id="_GdjgQGwJEdq7X4sGURiZYA" name="define">
+      <returnResult xmi:id="_JO2EsGwgEdqHKKVoxc0dlA" direction="return">
+        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bctjUWwgEdqHKKVoxc0dlA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bctjUGwgEdqHKKVoxc0dlA"/>
+      </returnResult>
+      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_LLkQEGwgEdqHKKVoxc0dlA" name="getDefinition">
+      <returnResult xmi:id="_P0QScGwgEdqHKKVoxc0dlA" direction="return">
+        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53905C3F7000A?Ecore/EPackage"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dKYmEWwgEdqHKKVoxc0dlA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dKYmEGwgEdqHKKVoxc0dlA"/>
+      </returnResult>
+      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53905C3F7000A?Ecore/EPackage"/>
+      <ownedParameter xmi:id="_fHQicGwgEdqHKKVoxc0dlA" name="version" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_nFBqQGwgEdqHKKVoxc0dlA" name="getDefinition">
+      <returnResult xmi:id="_nFBqQWwgEdqHKKVoxc0dlA" direction="return">
+        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53905C3F7000A?Ecore/EPackage"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nFBqQmwgEdqHKKVoxc0dlA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nFBqQ2wgEdqHKKVoxc0dlA"/>
+      </returnResult>
+      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53905C3F7000A?Ecore/EPackage"/>
+      <ownedParameter xmi:id="_pPTwgGwgEdqHKKVoxc0dlA" name="element" type="_kl90MGvbEdq4DLWZOhbdEA" effect="read"/>
+      <ownedParameter xmi:id="_nFBqRGwgEdqHKKVoxc0dlA" name="version" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
+    </ownedOperation>
     <ownedOperation xmi:id="_LBK1YGwJEdq7X4sGURiZYA" name="getReferencedMetaclasses" type="_00owUGvdEdq4DLWZOhbdEA">
       <returnResult xmi:id="_Ns-UUGwJEdq7X4sGURiZYA" type="_00owUGvdEdq4DLWZOhbdEA" direction="return">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PU_bAWwJEdq7X4sGURiZYA" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PU_bAGwJEdq7X4sGURiZYA"/>
       </returnResult>
     </ownedOperation>
-    <ownedOperation xmi:id="_QZ-tIGwJEdq7X4sGURiZYA" name="referenceMetaclass" type="_RPl78GwIEdq7X4sGURiZYA">
-      <returnResult xmi:id="_TdCOcGwJEdq7X4sGURiZYA" type="_RPl78GwIEdq7X4sGURiZYA" direction="return"/>
-      <ownedParameter xmi:id="_WJJPYGwJEdq7X4sGURiZYA" name="metaclass" type="_00owUGvdEdq4DLWZOhbdEA" effect="read"/>
-    </ownedOperation>
     <ownedOperation xmi:id="_Y9mUAGwJEdq7X4sGURiZYA" name="getReferencedMetamodels" type="_NVhqMGv0Edq7X4sGURiZYA">
       <returnResult xmi:id="_berJoGwJEdq7X4sGURiZYA" type="_NVhqMGv0Edq7X4sGURiZYA" direction="return">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dSdbcWwJEdq7X4sGURiZYA" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dSdbcGwJEdq7X4sGURiZYA"/>
       </returnResult>
-    </ownedOperation>
-    <ownedOperation xmi:id="_enGTIGwJEdq7X4sGURiZYA" name="referenceMetamodel" type="_SnNPIGwIEdq7X4sGURiZYA">
-      <returnResult xmi:id="_hN_c4GwJEdq7X4sGURiZYA" type="_SnNPIGwIEdq7X4sGURiZYA" direction="return"/>
-      <ownedParameter xmi:id="_lRa2EGwJEdq7X4sGURiZYA" name="metamodel" type="_NVhqMGv0Edq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_A7vDAGv0Edq7X4sGURiZYA" name="Stereotype">
@@ -824,7 +843,7 @@
       <ownedParameter xmi:id="_cQPbYGwHEdq7X4sGURiZYA" name="metaclass" type="_00owUGvdEdq4DLWZOhbdEA" effect="read"/>
       <ownedParameter xmi:id="_Jc0YoGwHEdq7X4sGURiZYA" name="isRequired" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_X7-EcGv0Edq7X4sGURiZYA" name="getOwningProfile" type="__pew8GvzEdq7X4sGURiZYA">
+    <ownedOperation xmi:id="_X7-EcGv0Edq7X4sGURiZYA" name="getProfile" type="__pew8GvzEdq7X4sGURiZYA">
       <returnResult xmi:id="_Z7OmcGv0Edq7X4sGURiZYA" type="__pew8GvzEdq7X4sGURiZYA" direction="return">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D7gsMWwHEdq7X4sGURiZYA" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D7gsMGwHEdq7X4sGURiZYA"/>
@@ -891,27 +910,27 @@
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_rEDGkGwKEdq7X4sGURiZYA" name="Dependency"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_ZiwkoGwLEdq7X4sGURiZYA" name="Namespace" isAbstract="true">
+    <ownedOperation xmi:id="_vI18QGwLEdq7X4sGURiZYA" name="createElementImport" type="_RPl78GwIEdq7X4sGURiZYA">
+      <returnResult xmi:id="_xwes4GwLEdq7X4sGURiZYA" type="_RPl78GwIEdq7X4sGURiZYA" direction="return"/>
+      <ownedParameter xmi:id="_yOllMGwLEdq7X4sGURiZYA" name="element" type="_jKxnwGwLEdq7X4sGURiZYA" effect="read"/>
+      <ownedParameter xmi:id="_9mppoGwLEdq7X4sGURiZYA" name="visibility" type="_AyM_oGwMEdq7X4sGURiZYA" effect="read"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_FRpmcGwMEdq7X4sGURiZYA" name="createPackageImport" type="_SnNPIGwIEdq7X4sGURiZYA">
+      <returnResult xmi:id="_IdWGYGwMEdq7X4sGURiZYA" type="_SnNPIGwIEdq7X4sGURiZYA" direction="return"/>
+      <ownedParameter xmi:id="_RsevcGwMEdq7X4sGURiZYA" name="package_" type="_-cvRAGvzEdq7X4sGURiZYA" effect="read"/>
+      <ownedParameter xmi:id="_OxwqwGwMEdq7X4sGURiZYA" name="visibility" type="_AyM_oGwMEdq7X4sGURiZYA" effect="read"/>
+    </ownedOperation>
     <ownedOperation xmi:id="_aoDYwGwLEdq7X4sGURiZYA" name="getImportedElements" type="_jKxnwGwLEdq7X4sGURiZYA">
       <returnResult xmi:id="_mL5PYGwLEdq7X4sGURiZYA" type="_jKxnwGwLEdq7X4sGURiZYA" direction="return">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n-CicWwLEdq7X4sGURiZYA" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n-CicGwLEdq7X4sGURiZYA"/>
       </returnResult>
     </ownedOperation>
-    <ownedOperation xmi:id="_vI18QGwLEdq7X4sGURiZYA" name="importElement" type="_RPl78GwIEdq7X4sGURiZYA">
-      <returnResult xmi:id="_xwes4GwLEdq7X4sGURiZYA" type="_RPl78GwIEdq7X4sGURiZYA" direction="return"/>
-      <ownedParameter xmi:id="_yOllMGwLEdq7X4sGURiZYA" name="element" type="_jKxnwGwLEdq7X4sGURiZYA" effect="read"/>
-      <ownedParameter xmi:id="_9mppoGwLEdq7X4sGURiZYA" name="visibility" type="_AyM_oGwMEdq7X4sGURiZYA" effect="read"/>
-    </ownedOperation>
     <ownedOperation xmi:id="_2OvA4GwLEdq7X4sGURiZYA" name="getImportedPackages" type="_-cvRAGvzEdq7X4sGURiZYA">
       <returnResult xmi:id="_40lo0GwLEdq7X4sGURiZYA" type="_-cvRAGvzEdq7X4sGURiZYA" direction="return">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6sF9AWwLEdq7X4sGURiZYA" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6sF9AGwLEdq7X4sGURiZYA"/>
       </returnResult>
-    </ownedOperation>
-    <ownedOperation xmi:id="_FRpmcGwMEdq7X4sGURiZYA" name="importPackage" type="_SnNPIGwIEdq7X4sGURiZYA">
-      <returnResult xmi:id="_IdWGYGwMEdq7X4sGURiZYA" type="_SnNPIGwIEdq7X4sGURiZYA" direction="return"/>
-      <ownedParameter xmi:id="_RsevcGwMEdq7X4sGURiZYA" name="package_" type="_-cvRAGvzEdq7X4sGURiZYA" effect="read"/>
-      <ownedParameter xmi:id="_OxwqwGwMEdq7X4sGURiZYA" name="visibility" type="_AyM_oGwMEdq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_jKxnwGwLEdq7X4sGURiZYA" name="PackageableElement" isAbstract="true"/>
@@ -920,6 +939,7 @@
   <ownedMember xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_OQcbgGwOEdq7X4sGURiZYA" name="EnumerationLiteral"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_C7AF4GwREdq14q0ETb1t3g" name="Generalization"/>
+  <ownedMember xmi:type="uml:Class" xmi:id="_FQiVsGwYEdqHKKVoxc0dlA" name="StructuredClassifier" isAbstract="true"/>
   <packageMerge xmi:id="_H2HkkGvbEdq4DLWZOhbdEA">
     <mergedPackage xmi:type="uml:Model" href="L3.emx#_EBtHcBmMEdqvcs97umGEYQ?L3"/>
   </packageMerge>
