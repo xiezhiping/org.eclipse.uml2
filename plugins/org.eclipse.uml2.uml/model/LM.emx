@@ -17,66 +17,66 @@
       </children>
       <children xmi:id="_vAqgXRTaEdqZu-3Jy1-uYg" sourceEdges="_vAqgaxTaEdqZu-3Jy1-uYg">
         <children xmi:id="_vAqgYBTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE692A401F1?InfrastructureLibrary/Core/Basic"/>
+          <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3DE692A401F1?InfrastructureLibrary/Core/Basic"/>
           <layoutConstraint xmi:type="notation:Size" xmi:id="_vAqgYRTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
         </children>
         <children xmi:id="_vAqgYhTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE692A401F1?InfrastructureLibrary/Core/Basic"/>
+          <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3DE692A401F1?InfrastructureLibrary/Core/Basic"/>
         </children>
         <children xmi:id="_vAqgYxTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE692A401F1?InfrastructureLibrary/Core/Basic"/>
+          <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3DE692A401F1?InfrastructureLibrary/Core/Basic"/>
         </children>
         <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_vAqgXhTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="8" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE692A401F1?InfrastructureLibrary/Core/Basic"/>
+        <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3DE692A401F1?InfrastructureLibrary/Core/Basic"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vAqgXxTaEdqZu-3Jy1-uYg" x="7112" y="2133" width="2540" height="1676"/>
       </children>
       <children xmi:id="_vAqgZBTaEdqZu-3Jy1-uYg" targetEdges="_vAqgaxTaEdqZu-3Jy1-uYg _zEjeoGf_EdqfYrlcy8iLFA">
         <children xmi:id="_vAqgZxTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
+          <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
           <layoutConstraint xmi:type="notation:Size" xmi:id="_vAqgaBTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
         </children>
         <children xmi:id="_vAqgaRTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
+          <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
         </children>
         <children xmi:id="_vAqgahTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
+          <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
         </children>
         <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_vAqgZRTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="8" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
+        <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vAqgZhTaEdqZu-3Jy1-uYg" x="1778" y="2133" width="2540" height="1676"/>
       </children>
       <children xmi:id="_vAqgdRTaEdqZu-3Jy1-uYg" targetEdges="_vAqgfBTaEdqZu-3Jy1-uYg">
         <children xmi:id="_vAqgeBTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
+          <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
           <layoutConstraint xmi:type="notation:Size" xmi:id="_vAqgeRTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
         </children>
         <children xmi:id="_vAqgehTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
+          <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
         </children>
         <children xmi:id="_vAqgexTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
+          <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
         </children>
         <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_vAqgdhTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="8" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
+        <element xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vAqgdxTaEdqZu-3Jy1-uYg" x="10812" y="2133" width="2540" height="1676"/>
       </children>
       <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_s2iLFxTaEdqZu-3Jy1-uYg" description="Level M is the Metamodel Constructs compliance level for InfrastructureLibrary. This adds an extra language unit for more advanced class-based structures used for building metamodels (using CMOF) such as UML itself."/>
       <edges xmi:id="_vAqgaxTaEdqZu-3Jy1-uYg" source="_vAqgXRTaEdqZu-3Jy1-uYg" target="_vAqgZBTaEdqZu-3Jy1-uYg">
         <children xmi:id="_vAqgbhTaEdqZu-3Jy1-uYg" type="KindLabel">
           <children xmi:id="_vAqgcBTaEdqZu-3Jy1-uYg" type="Stereotype">
-            <element xmi:type="uml:PackageImport" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE78B4D02BB?InfrastructureLibrary/Core/Basic/%3CPackageImport%3E"/>
+            <element xmi:type="uml:PackageImport" href="Infrastructure.emx#_3ADC7B74022D3DE78B4D02BB?InfrastructureLibrary/Core/Basic/%3CPackageImport%3E"/>
           </children>
           <children xmi:id="_vAqgchTaEdqZu-3Jy1-uYg" type="Kind">
-            <element xmi:type="uml:PackageImport" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE78B4D02BB?InfrastructureLibrary/Core/Basic/%3CPackageImport%3E"/>
+            <element xmi:type="uml:PackageImport" href="Infrastructure.emx#_3ADC7B74022D3DE78B4D02BB?InfrastructureLibrary/Core/Basic/%3CPackageImport%3E"/>
           </children>
           <children xmi:id="_vAqgcRTaEdqZu-3Jy1-uYg" visible="false" type="Name">
-            <element xmi:type="uml:PackageImport" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE78B4D02BB?InfrastructureLibrary/Core/Basic/%3CPackageImport%3E"/>
+            <element xmi:type="uml:PackageImport" href="Infrastructure.emx#_3ADC7B74022D3DE78B4D02BB?InfrastructureLibrary/Core/Basic/%3CPackageImport%3E"/>
           </children>
-          <element xmi:type="uml:PackageImport" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE78B4D02BB?InfrastructureLibrary/Core/Basic/%3CPackageImport%3E"/>
+          <element xmi:type="uml:PackageImport" href="Infrastructure.emx#_3ADC7B74022D3DE78B4D02BB?InfrastructureLibrary/Core/Basic/%3CPackageImport%3E"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_vAqgbxTaEdqZu-3Jy1-uYg" y="-185"/>
         </children>
         <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_vAqgbBTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="8" routing="Rectilinear" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:PackageImport" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE78B4D02BB?InfrastructureLibrary/Core/Basic/%3CPackageImport%3E"/>
+        <element xmi:type="uml:PackageImport" href="Infrastructure.emx#_3ADC7B74022D3DE78B4D02BB?InfrastructureLibrary/Core/Basic/%3CPackageImport%3E"/>
         <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vAqgbRTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
         <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vAqgcxTaEdqZu-3Jy1-uYg" id="anchor50"/>
         <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vAqgdBTaEdqZu-3Jy1-uYg" id="anchor50"/>
@@ -105,6 +105,7 @@
       </edges>
     </contents>
   </eAnnotations>
+  <eAnnotations xmi:id="_Mu5DoGvWEdq4DLWZOhbdEA" source="http://www.eclipse.org/emf/2002/Ecore"/>
   <packageImport xmi:type="uml:ProfileApplication" xmi:id="_FA4shBmMEdqvcs97umGEYQ">
     <eAnnotations xmi:id="_FA4shRmMEdqvcs97umGEYQ" source="attributes">
       <details xmi:id="_FA4shhmMEdqvcs97umGEYQ" key="version" value="0"/>
@@ -154,18 +155,18 @@
     <eAnnotations xmi:id="_s2iLExTaEdqZu-3Jy1-uYg" source="keywords">
       <details xmi:id="_s2iLFBTaEdqZu-3Jy1-uYg" key="merge"/>
     </eAnnotations>
-    <supplier xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
+    <supplier xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
   </ownedMember>
   <ownedMember xmi:type="uml:Dependency" xmi:id="_zEP8oGf_EdqfYrlcy8iLFA" client="_FA4sgBmMEdqvcs97umGEYQ">
     <eAnnotations xmi:id="_0F94UGf_EdqfYrlcy8iLFA" source="keywords">
       <details xmi:id="_0F94UWf_EdqfYrlcy8iLFA" key="merge"/>
     </eAnnotations>
-    <supplier xmi:type="uml:Package" href="InfrastructureLibrary.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
+    <supplier xmi:type="uml:Package" href="Infrastructure.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
   </ownedMember>
   <packageMerge xmi:id="_HW4dbBTbEdqZu-3Jy1-uYg">
-    <mergedPackage href="InfrastructureLibrary.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
+    <mergedPackage href="Infrastructure.emx#_3ADC7B74022D3DE692AD00C7?InfrastructureLibrary/Core/Constructs"/>
   </packageMerge>
   <packageMerge xmi:id="_1pzpoGf_EdqfYrlcy8iLFA">
-    <mergedPackage href="InfrastructureLibrary.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
+    <mergedPackage href="Infrastructure.emx#_3ADC7B74022D3C9FFCC70354?InfrastructureLibrary/Core/PrimitiveTypes"/>
   </packageMerge>
 </uml:Model>
