@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Resource.java,v 1.9 2005/05/18 16:38:32 khussey Exp $
+ * $Id: UML2Resource.java,v 1.10 2005/12/13 20:20:51 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -81,7 +81,7 @@ public interface UML2Resource extends XMIResource {
 	/**
 	 * @deprecated Use UML2Package.eNS_URI instead.
 	 */
-	public static final String UML2_NS_URI = UML2Package.eNS_URI; //$NON-NLS-1$
+	public static final String UML2_NS_URI = UML2Package.eNS_URI;
 
 	public static final String METAMODEL_FILE_EXTENSION = "metamodel." //$NON-NLS-1$
 		+ FILE_EXTENSION;
