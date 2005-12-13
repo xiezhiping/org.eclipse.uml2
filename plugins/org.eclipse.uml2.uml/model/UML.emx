@@ -167,7 +167,7 @@
         <children xmi:id="_qzhio2vbEdq4DLWZOhbdEA" type="NameLabel" element="_qzYYsGvbEdq4DLWZOhbdEA">
           <children xmi:id="_qzhipWvbEdq4DLWZOhbdEA" type="Stereotype" element="_qzYYsGvbEdq4DLWZOhbdEA"/>
           <children xmi:id="_qzhipmvbEdq4DLWZOhbdEA" type="Name" element="_qzYYsGvbEdq4DLWZOhbdEA"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qzhipGvbEdq4DLWZOhbdEA" y="-185"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qzhipGvbEdq4DLWZOhbdEA" x="257" y="272"/>
         </children>
         <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_qzhioWvbEdq4DLWZOhbdEA" lineColor="0" showStereotype="Text"/>
         <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qzhiomvbEdq4DLWZOhbdEA" points="[-1, -450, -1, 4524]$[-1, -4525, -1, 449]"/>
@@ -307,6 +307,9 @@
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_kl90MGvbEdq4DLWZOhbdEA" name="Element" isAbstract="true">
     <generalization xmi:id="_qzYYsGvbEdq4DLWZOhbdEA">
+      <eAnnotations xmi:id="_ZLhloGvlEdqRFtUp8wmbQQ" source="keywords">
+        <details xmi:id="_dZroIGvlEdqRFtUp8wmbQQ" key="extend"/>
+      </eAnnotations>
       <general xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
     </generalization>
     <generalization xmi:id="_rcp_MGvbEdq4DLWZOhbdEA">
