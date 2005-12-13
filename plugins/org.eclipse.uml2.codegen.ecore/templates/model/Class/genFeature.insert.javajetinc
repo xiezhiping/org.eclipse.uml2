@@ -1,4 +1,4 @@
-<%if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isContains()) {%>
+<%if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isEffectiveContains()) {%>
   <%if (genClass.getChildrenClasses(genFeature).size() > 0) {%>
     <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
       <%if (isInterface) {%>
