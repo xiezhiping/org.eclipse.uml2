@@ -850,7 +850,11 @@
       </returnResult>
     </ownedOperation>
   </ownedMember>
-  <ownedMember xmi:type="uml:Class" xmi:id="_NVhqMGv0Edq7X4sGURiZYA" name="Model"/>
+  <ownedMember xmi:type="uml:Class" xmi:id="_NVhqMGv0Edq7X4sGURiZYA" name="Model">
+    <ownedOperation xmi:id="_9nl2EGwREdq14q0ETb1t3g" name="isMetamodel" type="_UdivYGvsEdqG6fBIPwe-mw">
+      <returnResult xmi:id="__8c0oGwREdq14q0ETb1t3g" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
+    </ownedOperation>
+  </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_uY5yQGv5Edq7X4sGURiZYA" name="ProfileApplication"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_I6N3UGwGEdq7X4sGURiZYA" name="Enumeration">
     <ownedOperation xmi:id="_Iw7e0GwOEdq7X4sGURiZYA" name="createOwnedLiteral" type="_OQcbgGwOEdq7X4sGURiZYA">
