@@ -3725,17 +3725,17 @@
     </eAnnotations>
     <eAnnotations xmi:id="_gnB2R2vXEdq4DLWZOhbdEA" source="keywords"/>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B539D6BD4A03B1" name="A_eAllAttributes__eClass" isDerived="true" memberEnd="_439EC3AE03B539D6BD4C0061 _439EC3AE03B539D6BD4C006B">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B539D6BD4A03B1" name="A_eAllAttributes_eClass" isDerived="true" memberEnd="_439EC3AE03B539D6BD4C0061 _439EC3AE03B539D6BD4C006B">
     <ownedEnd xmi:id="_439EC3AE03B539D6BD4C006B" type="_439EC3AE03B53903D5BF000A" isReadOnly="true" association="_439EC3AE03B539D6BD4A03B1">
       <eAnnotations xmi:id="_gnLnQ2vXEdq4DLWZOhbdEA" source="appliedStereotypes">
         <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnLnRGvXEdq4DLWZOhbdEA" isTransient="true" isVolatile="true"/>
       </eAnnotations>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53D0618C2027D" name="A_eAllSuperTypes__eClass" isDerived="true" memberEnd="_439EC3AE03B53D0618C600DE _439EC3AE03B53D0618C600DF">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53D0618C2027D" name="A_eAllSuperTypes_eClass" isDerived="true" memberEnd="_439EC3AE03B53D0618C600DE _439EC3AE03B53D0618C600DF">
     <ownedEnd xmi:id="_439EC3AE03B53D0618C600DF" type="_439EC3AE03B53903D5BF000A" association="_439EC3AE03B53D0618C2027D"/>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B539DE157303C6" name="A_eAttributes__eClass" isDerived="true" memberEnd="_439EC3AE03B539DE157703CC _439EC3AE03B539DE15780002">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B539DE157303C6" name="A_eAttributes_eClass" isDerived="true" memberEnd="_439EC3AE03B539DE157703CC _439EC3AE03B539DE15780002">
     <ownedEnd xmi:id="_439EC3AE03B539DE15780002" type="_439EC3AE03B53903D5BF000A" isReadOnly="true" association="_439EC3AE03B539DE157303C6">
       <eAnnotations xmi:id="_gnUxOWvXEdq4DLWZOhbdEA" source="appliedStereotypes">
         <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnUxOmvXEdq4DLWZOhbdEA" isVolatile="true"/>
@@ -3744,64 +3744,64 @@
   </ownedMember>
   <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53A7DAB6B039E" name="A_eClassifiers_ePackage" memberEnd="_439EC3AE03B53A7DAB6D0225 _439EC3AE03B53A7DAB6D0239"/>
   <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53F72EF6A0063" name="A_eContainingClass_eStructuralFeatures" memberEnd="_439EC3AE03B53F72EF6B0212 _439EC3AE03B53F72EF6B0213"/>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53D05D40A02BD" name="A_eExceptions__eOperation" memberEnd="_439EC3AE03B53D05D410008B _439EC3AE03B53D05D4100095">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53D05D40A02BD" name="A_eExceptions_eOperation" memberEnd="_439EC3AE03B53D05D410008B _439EC3AE03B53D05D4100095">
     <ownedEnd xmi:id="_439EC3AE03B53D05D4100095" type="_439EC3AE03B53904DAA200A0" association="_439EC3AE03B53D05D40A02BD"/>
   </ownedMember>
   <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53A773F5A0067" name="A_eFactoryInstance_ePackage" memberEnd="_439EC3AE03B53A773F5B00CD _439EC3AE03B53A773F5B00D7"/>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53DDF794F03D4" name="A__eClass_eIDAttribute" isDerived="true" memberEnd="_439EC3AE03B53DDF795201A7 _439EC3AE03B53DDF795201B1">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53DDF794F03D4" name="A_eClass_eIDAttribute" isDerived="true" memberEnd="_439EC3AE03B53DDF795201A7 _439EC3AE03B53DDF795201B1">
     <ownedEnd xmi:id="_439EC3AE03B53DDF795201A7" type="_439EC3AE03B53903D5BF000A" association="_439EC3AE03B53DDF794F03D4"/>
   </ownedMember>
   <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53ACCDD3B0265" name="A_eLiterals_eEnum" memberEnd="_439EC3AE03B53ACCDD3C00F4 _439EC3AE03B53ACCDD3C00FE"/>
   <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53D98A3F1034C" name="A_eModelElement_eAnnotations" memberEnd="_439EC3AE03B53D98A3F30241 _439EC3AE03B53D98A3F3024B"/>
   <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53904D80902DA" name="A_eOperations_eContainingClass" memberEnd="_439EC3AE03B53904D81303AC _439EC3AE03B53904D81303AD"/>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53990C9D502FD" name="A_eOpposite__eReference" memberEnd="_439EC3AE03B53990C9D80213 _439EC3AE03B53990C9D80222">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53990C9D502FD" name="A_eOpposite_eReference" memberEnd="_439EC3AE03B53990C9D80213 _439EC3AE03B53990C9D80222">
     <ownedEnd xmi:id="_439EC3AE03B53990C9D80222" type="_439EC3AE03B539238479039D" association="_439EC3AE03B53990C9D502FD"/>
   </ownedMember>
   <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53B4DFCAB02B6" name="A_eParameters_eOperation" memberEnd="_439EC3AE03B53B4DFCAC02AD _439EC3AE03B53B4DFCAC02CB"/>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53D5D2A5B00CB" name="A_eReferenceType__eReference" isDerived="true" memberEnd="_439EC3AE03B53D5D2A6100E7 _439EC3AE03B53D5D2A6100E8">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53D5D2A5B00CB" name="A_eReferenceType_eReference" isDerived="true" memberEnd="_439EC3AE03B53D5D2A6100E7 _439EC3AE03B53D5D2A6100E8">
     <ownedEnd xmi:id="_439EC3AE03B53D5D2A6100E8" type="_439EC3AE03B539238479039D" association="_439EC3AE03B53D5D2A5B00CB"/>
   </ownedMember>
   <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53C06C4EC029A" name="A_eSubpackages_eSuperPackage" memberEnd="_439EC3AE03B53C06C4F20393 _439EC3AE03B53C06C4F203B1"/>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53905C4B201D6" name="A_eSuperTypes__eClass" memberEnd="_439EC3AE03B53905C4BE003C _439EC3AE03B53905C4BE003D">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53905C4B201D6" name="A_eSuperTypes_eClass" memberEnd="_439EC3AE03B53905C4BE003C _439EC3AE03B53905C4BE003D">
     <ownedEnd xmi:id="_439EC3AE03B53905C4BE003D" type="_439EC3AE03B53903D5BF000A" association="_439EC3AE03B53905C4B201D6"/>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53903DA26001E" name="A_eType__eTypedElement" memberEnd="_439EC3AE03B53903DA27023A _439EC3AE03B53903DA27023B">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53903DA26001E" name="A_eType_eTypedElement" memberEnd="_439EC3AE03B53903DA27023A _439EC3AE03B53903DA27023B">
     <ownedEnd xmi:id="_439EC3AE03B53903DA27023B" type="_439EC3AE03B53903D4F60398" association="_439EC3AE03B53903DA26001E"/>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B539D6BD89002C" name="A_eAllReferences__eClass" isDerived="true" memberEnd="_439EC3AE03B539D6BD8A010A _439EC3AE03B539D6BD8A0114">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B539D6BD89002C" name="A_eAllReferences_eClass" isDerived="true" memberEnd="_439EC3AE03B539D6BD8A010A _439EC3AE03B539D6BD8A0114">
     <ownedEnd xmi:id="_439EC3AE03B539D6BD8A0114" type="_439EC3AE03B53903D5BF000A" isReadOnly="true" association="_439EC3AE03B539D6BD89002C">
       <eAnnotations xmi:id="_gnLnTGvXEdq4DLWZOhbdEA" source="appliedStereotypes">
         <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnLnTWvXEdq4DLWZOhbdEA" isTransient="true" isVolatile="true"/>
       </eAnnotations>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53AF87E2B011C" name="A_eAllOperations__eClass" isDerived="true" memberEnd="_439EC3AE03B53AF87E2E006C _439EC3AE03B53AF87E2E0094">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53AF87E2B011C" name="A_eAllOperations_eClass" isDerived="true" memberEnd="_439EC3AE03B53AF87E2E006C _439EC3AE03B53AF87E2E0094">
     <ownedEnd xmi:id="_439EC3AE03B53AF87E2E0094" type="_439EC3AE03B53903D5BF000A" association="_439EC3AE03B53AF87E2B011C"/>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B539D7678B0314" name="A_eReferences__eClass" isDerived="true" memberEnd="_439EC3AE03B539D7678D02EF _439EC3AE03B539D7678D0303">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B539D7678B0314" name="A_eReferences_eClass" isDerived="true" memberEnd="_439EC3AE03B539D7678D02EF _439EC3AE03B539D7678D0303">
     <ownedEnd xmi:id="_439EC3AE03B539D7678D0303" type="_439EC3AE03B53903D5BF000A" isReadOnly="true" association="_439EC3AE03B539D7678B0314">
       <eAnnotations xmi:id="_gnUxMGvXEdq4DLWZOhbdEA" source="appliedStereotypes">
         <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnUxMWvXEdq4DLWZOhbdEA" isVolatile="true"/>
       </eAnnotations>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53AF07CB603D8" name="A_eAllContainments__eClass" isDerived="true" memberEnd="_439EC3AE03B53AF07CB900F8 _439EC3AE03B53AF07CB90120">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53AF07CB603D8" name="A_eAllContainments_eClass" isDerived="true" memberEnd="_439EC3AE03B53AF07CB900F8 _439EC3AE03B53AF07CB90120">
     <ownedEnd xmi:id="_439EC3AE03B53AF07CB90120" type="_439EC3AE03B53903D5BF000A" association="_439EC3AE03B53AF07CB603D8"/>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53CD7CA8B00A7" name="A_eAllStructuralFeatures__eClass" isDerived="true" memberEnd="_439EC3AE03B53CD7CA8D0078 _439EC3AE03B53CD7CA8D0082">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53CD7CA8B00A7" name="A_eAllStructuralFeatures_eClass" isDerived="true" memberEnd="_439EC3AE03B53CD7CA8D0078 _439EC3AE03B53CD7CA8D0082">
     <ownedEnd xmi:id="_439EC3AE03B53CD7CA8D0082" type="_439EC3AE03B53903D5BF000A" association="_439EC3AE03B53CD7CA8B00A7"/>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53D5D260F02E4" name="A_eAttributeType__eAttribute" isDerived="true" memberEnd="_439EC3AE03B53D5D261200E9 _439EC3AE03B53D5D261200F3">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53D5D260F02E4" name="A_eAttributeType_eAttribute" isDerived="true" memberEnd="_439EC3AE03B53D5D261200E9 _439EC3AE03B53D5D261200F3">
     <ownedEnd xmi:id="_439EC3AE03B53D5D261200F3" type="_439EC3AE03B539238472039D" association="_439EC3AE03B53D5D260F02E4"/>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53DA70B0400EC" name="A__eAnnotation_contents" memberEnd="_439EC3AE03B53DA70B04031D _439EC3AE03B53DA70B040327">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53DA70B0400EC" name="A_eAnnotation_contents" memberEnd="_439EC3AE03B53DA70B04031D _439EC3AE03B53DA70B040327">
     <ownedEnd xmi:id="_439EC3AE03B53DA70B04031D" type="_439EC3AE03B53D98A1C701AB" association="_439EC3AE03B53DA70B0400EC">
       <eAnnotations xmi:id="_gn7OLmvXEdq4DLWZOhbdEA" source="appliedStereotypes">
         <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gn7OL2vXEdq4DLWZOhbdEA" isResolveProxies="false"/>
       </eAnnotations>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53DA70CD20386" name="A__eAnnotation_references" memberEnd="_439EC3AE03B53DA70CD4011C _439EC3AE03B53DA70CD40126">
+  <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53DA70CD20386" name="A_eAnnotation_references" memberEnd="_439EC3AE03B53DA70CD4011C _439EC3AE03B53DA70CD40126">
     <ownedEnd xmi:id="_439EC3AE03B53DA70CD4011C" type="_439EC3AE03B53D98A1C701AB" association="_439EC3AE03B53DA70CD20386"/>
   </ownedMember>
 </uml:Model>

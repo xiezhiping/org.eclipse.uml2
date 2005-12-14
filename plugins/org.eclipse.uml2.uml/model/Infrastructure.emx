@@ -14483,7 +14483,7 @@
           </ownedComment>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_GfmP8BTbEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:id="_3ADC7B74022D3E03284C0289" name="isOrdered" type="_3ADC7B74022D3CA010AC0090" isDerived="true">
+        <ownedAttribute xmi:id="_3ADC7B74022D3E03284C0289" name="isOrdered" type="_3ADC7B74022D3CA010AC0090" isDerived="true" redefinedProperty="_3ADC7B74022D41C06EAD027D">
           <eAnnotations xmi:id="_rn2xdxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_rn2xeBTaEdqZu-3Jy1-uYg" isTransient="true"/>
           </eAnnotations>
@@ -14494,7 +14494,7 @@
           </ownedComment>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_SxMa0CkbEdqPP7hCKvQ4ww"/>
         </ownedAttribute>
-        <ownedAttribute xmi:id="_3ADC7B74022D3E032859015B" name="isUnique" type="_3ADC7B74022D3CA010AC0090" isDerived="true">
+        <ownedAttribute xmi:id="_3ADC7B74022D3E032859015B" name="isUnique" type="_3ADC7B74022D3CA010AC0090" isDerived="true" redefinedProperty="_3ADC7B74022D41C06EAD0287">
           <eAnnotations xmi:id="_rn2xfRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_rn2xfhTaEdqZu-3Jy1-uYg" isTransient="true"/>
           </eAnnotations>
@@ -14505,7 +14505,7 @@
           </ownedComment>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_bulzoCkbEdqPP7hCKvQ4ww" value="true"/>
         </ownedAttribute>
-        <ownedAttribute xmi:id="_3ADC7B74022D3E0328B001D9" name="lower" type="_3ADC7B74022D3CA010A4007B" isDerived="true">
+        <ownedAttribute xmi:id="_3ADC7B74022D3E0328B001D9" name="lower" type="_3ADC7B74022D3CA010A4007B" isDerived="true" redefinedProperty="_3ADC7B74022D41C06EAD0288">
           <eAnnotations xmi:id="_roAicBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_roAicRTaEdqZu-3Jy1-uYg" isTransient="true"/>
           </eAnnotations>
@@ -14518,7 +14518,7 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rn2xgxTaEdqZu-3Jy1-uYg"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_IQd8ICkdEdqPP7hCKvQ4ww" value="1"/>
         </ownedAttribute>
-        <ownedAttribute xmi:id="_3ADC7B74022D3E0328710341" name="upper" type="_3ADC7B74022D3DE6A93C0003" isDerived="true">
+        <ownedAttribute xmi:id="_3ADC7B74022D3E0328710341" name="upper" type="_3ADC7B74022D3DE6A93C0003" isDerived="true" redefinedProperty="_3ADC7B74022D41C06EAD0291">
           <eAnnotations xmi:id="_roAieBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_roAieRTaEdqZu-3Jy1-uYg" isTransient="true"/>
           </eAnnotations>
@@ -14573,7 +14573,7 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rq10DRTaEdqZu-3Jy1-uYg" value="-1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rq10DBTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:id="_3ADC7B74022D3DEE7BDA017A" name="type" type="_3ADC7B74022D3E555229003B" isDerived="true" association="_3ADC7B74022D3DEE7BD90219">
+        <ownedAttribute xmi:id="_3ADC7B74022D3DEE7BDA017A" name="type" type="_3ADC7B74022D3E555229003B" isDerived="true" redefinedProperty="_3ADC7B74022D3DE6C94D0011" association="_3ADC7B74022D3DEE7BD90219">
           <eAnnotations xmi:id="_rrla6xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rrla7BTaEdqZu-3Jy1-uYg" isTransient="true"/>
           </eAnnotations>
@@ -15455,7 +15455,8 @@
         <generalization xmi:id="_fSh9gEoiEdq2-6lg1JCB1A" general="_3ADC7B74022D3DE6E0F402CA"/>
       </ownedMember>
       <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3DEE7BD90219" name="A_type_operation" memberEnd="_3ADC7B74022D3DEE7BDA017A _3ADC7B74022D3DEE7BDA01A2">
-        <ownedEnd xmi:id="_3ADC7B74022D3DEE7BDA01A2" type="_3ADC7B74022D3DE6D56F031A" association="_3ADC7B74022D3DEE7BD90219"/>
+        <generalization xmi:id="_DaxhIWzMEdq4d7jt9iWoqg" general="_3ADC7B74022D3DE6C94B00D6"/>
+        <ownedEnd xmi:id="_3ADC7B74022D3DEE7BDA01A2" type="_3ADC7B74022D3DE6D56F031A" redefinedProperty="_3ADC7B74022D3DE6C94D001B" association="_3ADC7B74022D3DEE7BD90219"/>
       </ownedMember>
       <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3DF68066000C" name="A_receivingPackage_packageMerge" memberEnd="_3ADC7B74022D3DF68066000D _3ADC7B74022D3DF68066000E">
         <generalization xmi:id="_GjU5YBTbEdqZu-3Jy1-uYg" general="_3ADC7B74022D3DFCAC780308"/>

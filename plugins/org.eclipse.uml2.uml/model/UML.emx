@@ -667,10 +667,26 @@
       </returnResult>
     </ownedOperation>
   </ownedMember>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UdivYGvsEdqG6fBIPwe-mw" name="Boolean"/>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_XqvEIGvsEdqG6fBIPwe-mw" name="Integer"/>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_aAyVgGvsEdqG6fBIPwe-mw" name="String"/>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_dRZxsGvsEdqG6fBIPwe-mw" name="UnlimitedNatural"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UdivYGvsEdqG6fBIPwe-mw" name="Boolean">
+    <eAnnotations xmi:id="_KWFGYGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWFGYWzMEdq4d7jt9iWoqg" instanceClassName="boolean"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_XqvEIGvsEdqG6fBIPwe-mw" name="Integer">
+    <eAnnotations xmi:id="_KWFGYmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWFGY2zMEdq4d7jt9iWoqg" instanceClassName="int"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_aAyVgGvsEdqG6fBIPwe-mw" name="String">
+    <eAnnotations xmi:id="_KWO3YGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWO3YWzMEdq4d7jt9iWoqg" instanceClassName="java.lang.String"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_dRZxsGvsEdqG6fBIPwe-mw" name="UnlimitedNatural">
+    <eAnnotations xmi:id="_KWO3YmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWO3Y2zMEdq4d7jt9iWoqg" instanceClassName="int"/>
+    </eAnnotations>
+  </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_iY7sMGvsEdqG6fBIPwe-mw" name="BehavioredClassifier" isAbstract="true"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_skHGwGvsEdqG6fBIPwe-mw" name="Extension"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_1qTPMGvsEdqG6fBIPwe-mw" name="Duration"/>
