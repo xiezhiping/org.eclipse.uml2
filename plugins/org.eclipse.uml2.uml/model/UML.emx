@@ -451,6 +451,9 @@
     <ownedOperation xmi:id="_nMWzYGv2Edq7X4sGURiZYA" name="setValue">
       <ownedParameter xmi:id="_resLQGv2Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
       <ownedParameter xmi:id="_o6B2IGv2Edq7X4sGURiZYA" name="propertyName" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
+      <ownedParameter xmi:id="_m5bH4GzIEdqNr-AKm4G4QQ" name="newValue" effect="read">
+        <type xmi:type="uml:PrimitiveType" href="Ecore.emx#_439EC3AE03B53ACDF8200182?Ecore/EJavaObject"/>
+      </ownedParameter>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_0VlHsGvbEdq4DLWZOhbdEA" name="Image" isAbstract="true">
