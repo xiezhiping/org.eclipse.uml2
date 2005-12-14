@@ -8,15 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseImporterWizard.java,v 1.4 2005/11/23 19:42:36 khussey Exp $
+ * $Id: RoseImporterWizard.java,v 1.5 2005/12/14 17:02:50 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.ui;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.emf.importer.rose.ui.RoseDetailPage;
-import org.eclipse.emf.importer.ui.contribution.base.ModelPackagePage;
-import org.eclipse.emf.importer.util.ImporterUtil;
+import org.eclipse.emf.importer.ui.contribution.base.ModelImporterPackagePage;
+import org.eclipse.emf.converter.util.ConverterUtil;
+
 import org.eclipse.uml2.importer.rose.RoseImporter;
 
 public class RoseImporterWizard
@@ -30,14 +31,14 @@ public class RoseImporterWizard
 		RoseDetailPage detailPage = new RoseDetailPage(getModelImporter(),
 			"RoseModel") { //$NON-NLS-1$
 
-			protected ImporterUtil.DecodedAction decodeAction(Diagnostic diagnostic) {
-				return ImporterUtil
-					.decodeAction(ImporterUtil.ACTION_MESSAGE_SET);
+			protected ConverterUtil.DecodedAction decodeAction(Diagnostic diagnostic) {
+				return ConverterUtil
+					.decodeAction(ConverterUtil.ACTION_MESSAGE_SET);
 			}
 		};
 		addPage(detailPage);
 
-		ModelPackagePage packagePage = new ModelPackagePage(getModelImporter(),
+		ModelImporterPackagePage packagePage = new ModelImporterPackagePage(getModelImporter(),
 			"RosePackages"); //$NON-NLS-1$
 		packagePage.setShowReferencedGenModels(true);
 		addPage(packagePage);

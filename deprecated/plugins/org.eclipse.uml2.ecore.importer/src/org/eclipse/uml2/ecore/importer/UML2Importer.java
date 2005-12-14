@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.17 2005/11/23 20:09:24 khussey Exp $
+ * $Id: UML2Importer.java,v 1.18 2005/12/14 17:02:49 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -33,9 +33,9 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.importer.ImporterPlugin;
 import org.eclipse.emf.importer.ModelImporter;
-import org.eclipse.emf.importer.util.ImporterUtil;
+import org.eclipse.emf.converter.ConverterPlugin;
+import org.eclipse.emf.converter.util.ConverterUtil;
 
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Stereotype;
@@ -104,8 +104,8 @@ public class UML2Importer
 		List locationURIs = getModelLocationURIs();
 
 		if (locationURIs.isEmpty()) {
-			diagnostic = new BasicDiagnostic(Diagnostic.ERROR, ImporterPlugin.ID,
-				ImporterUtil.ACTION_DEFAULT, UML2ImporterPlugin.INSTANCE
+			diagnostic = new BasicDiagnostic(Diagnostic.ERROR, ConverterPlugin.ID,
+				ConverterUtil.ACTION_DEFAULT, UML2ImporterPlugin.INSTANCE
 					.getString("_UI_SpecifyAValidUML2Model_message"), null); //$NON-NLS-1$
 		} else {
             monitor.beginTask("", 2); //$NON-NLS-1$
@@ -127,7 +127,7 @@ public class UML2Importer
 			monitor.worked(1);
 
 			BasicDiagnostic diagnostics = new BasicDiagnostic(
-				ImporterPlugin.ID, ImporterUtil.ACTION_DEFAULT,
+				ConverterPlugin.ID, ConverterUtil.ACTION_DEFAULT,
 				UML2ImporterPlugin.INSTANCE
 					.getString("_UI_ProblemsEncounteredProcessing_message"), //$NON-NLS-1$
 				null);
@@ -149,7 +149,7 @@ public class UML2Importer
 						element, UML2Util.STEREOTYPE_NAME__E_PACKAGE);
 
 					if (null != ePackageStereotype) {
-						EPackageInfo ePackageInfo = getEPackageInfo(ePackage);
+						EPackageImportInfo ePackageInfo = getEPackageImportInfo(ePackage);
 
 						if (element.hasValue(ePackageStereotype,
 							UML2Util.PROPERTY_NAME__BASE_PACKAGE)) {
@@ -196,7 +196,7 @@ public class UML2Importer
 
 	public void adjustEPackage(Monitor monitor,
 			EPackage ePackage) {
-		EPackageInfo ePackageInfo = getEPackageInfo(ePackage);
+		EPackageImportInfo ePackageInfo = getEPackageImportInfo(ePackage);
 		String name = ePackage.getName();
 
 		if (ePackageInfo.getPrefix() == null) {

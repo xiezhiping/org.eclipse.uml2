@@ -8,19 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ImporterWizard.java,v 1.3 2005/06/09 21:12:58 khussey Exp $
+ * $Id: UML2ImporterWizard.java,v 1.4 2005/12/14 17:02:49 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer.ui;
 
-import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.emf.importer.ui.contribution.base.ModelImporterWizard;
-import org.eclipse.emf.importer.ui.contribution.base.ModelPackagePage;
+import org.eclipse.emf.importer.ui.contribution.base.ModelImporterPackagePage;
+import org.eclipse.emf.converter.ModelConverter;
+
 import org.eclipse.uml2.ecore.importer.UML2Importer;
 
 public class UML2ImporterWizard
 		extends ModelImporterWizard {
 
-	protected ModelImporter createModelImporter() {
+	protected ModelConverter createModelConverter() {
 		return new UML2Importer();
 	}
 
@@ -29,7 +30,7 @@ public class UML2ImporterWizard
 			"UML2Model"); //$NON-NLS-1$
 		addPage(detailPage);
 
-		ModelPackagePage packagePage = new ModelPackagePage(getModelImporter(),
+		ModelImporterPackagePage packagePage = new ModelImporterPackagePage(getModelImporter(),
 			"UML2Packages"); //$NON-NLS-1$
 		packagePage.setShowReferencedGenModels(true);
 		addPage(packagePage);

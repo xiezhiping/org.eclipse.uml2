@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2DetailPage.java,v 1.7 2005/09/30 13:36:03 khussey Exp $
+ * $Id: UML2DetailPage.java,v 1.8 2005/12/14 17:02:49 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer.ui;
 
@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.importer.ModelImporter;
-import org.eclipse.emf.importer.ui.contribution.base.ModelDetailPage;
+import org.eclipse.emf.importer.ui.contribution.base.ModelImporterDetailPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -37,7 +37,7 @@ import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Util;
 
 public class UML2DetailPage
-		extends ModelDetailPage {
+		extends ModelImporterDetailPage {
 
 	protected final Map choiceLabels = new HashMap();
 
@@ -117,7 +117,7 @@ public class UML2DetailPage
 		});
 	}
 
-	protected void addControl(Composite parent) {
+	protected void addDetailControl(Composite parent) {
 
 		final Group group = new Group(parent, SWT.SHADOW_ETCHED_IN);
 		{
