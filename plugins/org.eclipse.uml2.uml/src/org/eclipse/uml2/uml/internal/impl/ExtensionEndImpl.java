@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.12 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.13 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -256,14 +255,14 @@ public class ExtensionEndImpl
 				return isReadOnly()
 					? Boolean.TRUE
 					: Boolean.FALSE;
-			case UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.EXTENSION_END__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.EXTENSION_END__END :
 				return getEnds();
 			case UMLPackage.EXTENSION_END__DEPLOYMENT :
@@ -300,10 +299,6 @@ public class ExtensionEndImpl
 				if (resolve)
 					return getOwningAssociation();
 				return basicGetOwningAssociation();
-			case UMLPackage.EXTENSION_END__ASSOCIATION :
-				if (resolve)
-					return getAssociation();
-				return basicGetAssociation();
 			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
 				return getDefaultValue();
 			case UMLPackage.EXTENSION_END__OPPOSITE :
@@ -312,6 +307,10 @@ public class ExtensionEndImpl
 				return basicGetOpposite();
 			case UMLPackage.EXTENSION_END__SUBSETTED_PROPERTY :
 				return getSubsettedProperties();
+			case UMLPackage.EXTENSION_END__ASSOCIATION :
+				if (resolve)
+					return getAssociation();
+				return basicGetAssociation();
 			case UMLPackage.EXTENSION_END__QUALIFIER :
 				return getQualifiers();
 			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
@@ -335,7 +334,7 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXTENSION_END__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.EXTENSION_END__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXTENSION_END__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXTENSION_END__NAME :
 				return isSetName();
@@ -346,7 +345,7 @@ public class ExtensionEndImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXTENSION_END__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.EXTENSION_END__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXTENSION_END__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.EXTENSION_END__NAMESPACE :
 				return isSetNamespace();
@@ -378,20 +377,20 @@ public class ExtensionEndImpl
 				return eVirtualGet(UMLPackage.EXTENSION_END__LOWER_VALUE) != null;
 			case UMLPackage.EXTENSION_END__IS_READ_ONLY :
 				return isSetIsReadOnly();
-			case UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.EXTENSION_END__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.EXTENSION_END__END :
-				List end = (List) eVirtualGet(UMLPackage.EXTENSION_END__END);
+				EList end = (EList) eVirtualGet(UMLPackage.EXTENSION_END__END);
 				return end != null && !end.isEmpty();
 			case UMLPackage.EXTENSION_END__DEPLOYMENT :
-				List deployment = (List) eVirtualGet(UMLPackage.EXTENSION_END__DEPLOYMENT);
+				EList deployment = (EList) eVirtualGet(UMLPackage.EXTENSION_END__DEPLOYMENT);
 				return deployment != null && !deployment.isEmpty();
 			case UMLPackage.EXTENSION_END__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
 			case UMLPackage.EXTENSION_END__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.EXTENSION_END__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.EXTENSION_END__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE) != null;
@@ -411,23 +410,23 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__CLASS_ :
 				return getClass_() != null;
 			case UMLPackage.EXTENSION_END__REDEFINED_PROPERTY :
-				List redefinedProperty = (List) eVirtualGet(UMLPackage.EXTENSION_END__REDEFINED_PROPERTY);
+				EList redefinedProperty = (EList) eVirtualGet(UMLPackage.EXTENSION_END__REDEFINED_PROPERTY);
 				return redefinedProperty != null
 					&& !redefinedProperty.isEmpty();
 			case UMLPackage.EXTENSION_END__OWNING_ASSOCIATION :
 				return basicGetOwningAssociation() != null;
-			case UMLPackage.EXTENSION_END__ASSOCIATION :
-				return eVirtualGet(UMLPackage.EXTENSION_END__ASSOCIATION) != null;
 			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
 				return eVirtualGet(UMLPackage.EXTENSION_END__DEFAULT_VALUE) != null;
 			case UMLPackage.EXTENSION_END__OPPOSITE :
 				return basicGetOpposite() != null;
 			case UMLPackage.EXTENSION_END__SUBSETTED_PROPERTY :
-				List subsettedProperty = (List) eVirtualGet(UMLPackage.EXTENSION_END__SUBSETTED_PROPERTY);
+				EList subsettedProperty = (EList) eVirtualGet(UMLPackage.EXTENSION_END__SUBSETTED_PROPERTY);
 				return subsettedProperty != null
 					&& !subsettedProperty.isEmpty();
+			case UMLPackage.EXTENSION_END__ASSOCIATION :
+				return eVirtualGet(UMLPackage.EXTENSION_END__ASSOCIATION) != null;
 			case UMLPackage.EXTENSION_END__QUALIFIER :
-				List qualifier = (List) eVirtualGet(UMLPackage.EXTENSION_END__QUALIFIER);
+				EList qualifier = (EList) eVirtualGet(UMLPackage.EXTENSION_END__QUALIFIER);
 				return qualifier != null && !qualifier.isEmpty();
 			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
 				return getAssociationEnd() != null;

@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -601,7 +600,7 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__OWNER :
 				return isSetOwner();
 			case UMLPackage.OBJECT_FLOW__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.OBJECT_FLOW__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OBJECT_FLOW__NAME :
 				return isSetName();
@@ -612,7 +611,7 @@ public class ObjectFlowImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OBJECT_FLOW__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.OBJECT_FLOW__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.OBJECT_FLOW__NAMESPACE :
 				return isSetNamespace();
@@ -629,14 +628,14 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.OBJECT_FLOW__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.OBJECT_FLOW__TARGET :
 				return eVirtualGet(UMLPackage.OBJECT_FLOW__TARGET) != null;
 			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
-				List redefinedEdge = (List) eVirtualGet(UMLPackage.OBJECT_FLOW__REDEFINED_EDGE);
+				EList redefinedEdge = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__REDEFINED_EDGE);
 				return redefinedEdge != null && !redefinedEdge.isEmpty();
 			case UMLPackage.OBJECT_FLOW__GUARD :
 				return eVirtualGet(UMLPackage.OBJECT_FLOW__GUARD) != null;

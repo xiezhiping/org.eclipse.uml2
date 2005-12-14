@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageEndImpl.java,v 1.7 2005/12/12 16:58:35 khussey Exp $
+ * $Id: MessageEndImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -233,7 +231,7 @@ public abstract class MessageEndImpl
 			case UMLPackage.MESSAGE_END__OWNER :
 				return isSetOwner();
 			case UMLPackage.MESSAGE_END__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.MESSAGE_END__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.MESSAGE_END__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MESSAGE_END__NAME :
 				return isSetName();
@@ -244,7 +242,7 @@ public abstract class MessageEndImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.MESSAGE_END__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.MESSAGE_END__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.MESSAGE_END__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.MESSAGE_END__NAMESPACE :
 				return isSetNamespace();

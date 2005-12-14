@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: Stereotype.java,v 1.2 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,7 +54,7 @@ public interface Stereotype
 	 * @model type="org.eclipse.uml2.uml.Image" ordered="false"
 	 * @generated
 	 */
-	List getIcons();
+	EList getIcons();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,5 +79,54 @@ public interface Stereotype
 	 * @generated
 	 */
 	boolean validateGeneralize(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" metaclassRequired="true" metaclassOrdered="false" isRequiredDataType="org.eclipse.uml2.uml.Boolean" isRequiredRequired="true" isRequiredOrdered="false"
+	 * @generated
+	 */
+	Extension createExtension(org.eclipse.uml2.uml.Class metaclass,
+			boolean isRequired);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" ordered="false"
+	 * @generated
+	 */
+	Profile getProfile();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.String" required="true" ordered="false"
+	 * @generated
+	 */
+	String getKeyword();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.String" required="true" ordered="false" isLocalizedDataType="org.eclipse.uml2.uml.Boolean" isLocalizedRequired="true" isLocalizedOrdered="false"
+	 * @generated
+	 */
+	String getKeyword(boolean isLocalized);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
+	 * @generated
+	 */
+	EList getExtendedMetaclasses();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
+	 * @generated
+	 */
+	EList getAllExtendedMetaclasses();
 
 } // Stereotype

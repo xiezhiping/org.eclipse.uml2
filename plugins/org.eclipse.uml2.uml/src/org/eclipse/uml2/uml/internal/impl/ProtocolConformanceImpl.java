@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -78,8 +76,8 @@ public class ProtocolConformanceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.PROTOCOL_CONFORMANCE__TARGET);
+	public EList getTargets() {
+		EList target = (EList) eVirtualGet(UMLPackage.PROTOCOL_CONFORMANCE__TARGET);
 		if (target == null) {
 			eVirtualSet(
 				UMLPackage.PROTOCOL_CONFORMANCE__TARGET,
@@ -95,8 +93,8 @@ public class ProtocolConformanceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.PROTOCOL_CONFORMANCE__SOURCE);
+	public EList getSources() {
+		EList source = (EList) eVirtualGet(UMLPackage.PROTOCOL_CONFORMANCE__SOURCE);
 		if (source == null) {
 			eVirtualSet(
 				UMLPackage.PROTOCOL_CONFORMANCE__SOURCE,
@@ -351,7 +349,7 @@ public class ProtocolConformanceImpl
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNER :
 				return isSetOwner();
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.PROTOCOL_CONFORMANCE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.PROTOCOL_CONFORMANCE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PROTOCOL_CONFORMANCE__RELATED_ELEMENT :
 				return isSetRelatedElements();

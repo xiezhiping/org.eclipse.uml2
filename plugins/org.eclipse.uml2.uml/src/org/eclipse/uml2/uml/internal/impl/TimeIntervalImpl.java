@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.7 2005/12/12 16:58:36 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
-
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -202,14 +200,14 @@ public class TimeIntervalImpl
 				return basicGetNamespace();
 			case UMLPackage.TIME_INTERVAL__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.TIME_INTERVAL__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.TIME_INTERVAL__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.TIME_INTERVAL__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.TIME_INTERVAL__TYPE :
 				if (resolve)
 					return getType();
@@ -241,7 +239,7 @@ public class TimeIntervalImpl
 			case UMLPackage.TIME_INTERVAL__OWNER :
 				return isSetOwner();
 			case UMLPackage.TIME_INTERVAL__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.TIME_INTERVAL__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.TIME_INTERVAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TIME_INTERVAL__NAME :
 				return isSetName();
@@ -252,16 +250,16 @@ public class TimeIntervalImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TIME_INTERVAL__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.TIME_INTERVAL__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.TIME_INTERVAL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.TIME_INTERVAL__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TIME_INTERVAL__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.TIME_INTERVAL__NAME_EXPRESSION) != null;
-			case UMLPackage.TIME_INTERVAL__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.TIME_INTERVAL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.TIME_INTERVAL__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.TIME_INTERVAL__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.TIME_INTERVAL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.TIME_INTERVAL__TYPE :
 				return eVirtualGet(UMLPackage.TIME_INTERVAL__TYPE) != null;
 			case UMLPackage.TIME_INTERVAL__MIN :

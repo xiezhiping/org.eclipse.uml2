@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: VertexImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -83,8 +81,8 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOutgoings() {
-		List outgoing = (List) eVirtualGet(UMLPackage.VERTEX__OUTGOING);
+	public EList getOutgoings() {
+		EList outgoing = (EList) eVirtualGet(UMLPackage.VERTEX__OUTGOING);
 		if (outgoing == null) {
 			eVirtualSet(UMLPackage.VERTEX__OUTGOING,
 				outgoing = new EObjectWithInverseResolvingEList(
@@ -114,8 +112,8 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getIncomings() {
-		List incoming = (List) eVirtualGet(UMLPackage.VERTEX__INCOMING);
+	public EList getIncomings() {
+		EList incoming = (EList) eVirtualGet(UMLPackage.VERTEX__INCOMING);
 		if (incoming == null) {
 			eVirtualSet(UMLPackage.VERTEX__INCOMING,
 				incoming = new EObjectWithInverseResolvingEList(
@@ -400,7 +398,7 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__OWNER :
 				return isSetOwner();
 			case UMLPackage.VERTEX__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.VERTEX__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.VERTEX__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.VERTEX__NAME :
 				return isSetName();
@@ -411,17 +409,17 @@ public abstract class VertexImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.VERTEX__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.VERTEX__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.VERTEX__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.VERTEX__NAME_EXPRESSION) != null;
 			case UMLPackage.VERTEX__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.VERTEX__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.VERTEX__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.VERTEX__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.VERTEX__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.VERTEX__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.VERTEX__CONTAINER :
 				return getContainer() != null;

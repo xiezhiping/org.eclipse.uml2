@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataType.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: DataType.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -64,7 +64,7 @@ public interface DataType
 	 * @model type="org.eclipse.uml2.uml.Property" opposite="datatype" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOwnedAttributes();
+	EList getOwnedAttributes();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -113,7 +113,7 @@ public interface DataType
 	 * @model type="org.eclipse.uml2.uml.Operation" opposite="datatype" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOwnedOperations();
+	EList getOwnedOperations();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.

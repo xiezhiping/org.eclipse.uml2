@@ -8,18 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.5 2005/12/01 18:15:37 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.6 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -201,6 +202,51 @@ public final class ClassifierOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Generalization createGeneralization(Classifier classifier,
+			Classifier general) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getAllAttributes(Classifier classifier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getOperations(Classifier classifier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getAllOperations(Classifier classifier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
 	 * result = self.oclIsKindOf(c.oclType)
@@ -220,7 +266,7 @@ public final class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List getGenerals(Classifier classifier) {
+	public static EList getGenerals(Classifier classifier) {
 		return classifier.parents();
 	}
 
@@ -233,8 +279,8 @@ public final class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List getInheritedMembers(Classifier classifier) {
-		List inheritedMembers = new UniqueEList();
+	public static EList getInheritedMembers(Classifier classifier) {
+		EList inheritedMembers = new UniqueEList();
 
 		for (Iterator parents = classifier.parents().iterator(); parents
 			.hasNext();) {
@@ -255,8 +301,8 @@ public final class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List allFeatures(Classifier classifier) {
-		List allFeatures = new UniqueEList();
+	public static EList allFeatures(Classifier classifier) {
+		EList allFeatures = new UniqueEList();
 
 		for (Iterator members = classifier.getMembers().iterator(); members
 			.hasNext();) {
@@ -268,7 +314,7 @@ public final class ClassifierOperations
 			}
 		}
 
-		return Collections.unmodifiableList(allFeatures);
+		return ECollections.unmodifiableEList(allFeatures);
 	}
 
 	/**
@@ -280,8 +326,8 @@ public final class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List parents(Classifier classifier) {
-		List parents = new UniqueEList();
+	public static EList parents(Classifier classifier) {
+		EList parents = new UniqueEList();
 
 		for (Iterator generalizations = classifier.getGeneralizations()
 			.iterator(); generalizations.hasNext();) {
@@ -294,7 +340,7 @@ public final class ClassifierOperations
 			}
 		}
 
-		return Collections.unmodifiableList(parents);
+		return ECollections.unmodifiableEList(parents);
 	}
 
 	/**
@@ -307,8 +353,8 @@ public final class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List inheritableMembers(Classifier classifier, Classifier c) {
-		List inheritableMembers = new UniqueEList();
+	public static EList inheritableMembers(Classifier classifier, Classifier c) {
+		EList inheritableMembers = new UniqueEList();
 
 		if (c == classifier || !c.allParents().contains(classifier)
 			|| classifier.allParents().contains(c)) {
@@ -326,7 +372,7 @@ public final class ClassifierOperations
 			}
 		}
 
-		return Collections.unmodifiableList(inheritableMembers);
+		return ECollections.unmodifiableEList(inheritableMembers);
 	}
 
 	/**
@@ -377,11 +423,11 @@ public final class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List inherit(Classifier classifier, List inhs) {
-		return Collections.unmodifiableList(inhs);
+	public static EList inherit(Classifier classifier, EList inhs) {
+		return ECollections.unmodifiableEList(inhs);
 	}
 
-	protected static List allParents(Classifier classifier, List allParents) {
+	protected static EList allParents(Classifier classifier, EList allParents) {
 
 		for (Iterator parents = classifier.parents().iterator(); parents
 			.hasNext();) {
@@ -405,8 +451,8 @@ public final class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List allParents(Classifier classifier) {
-		return Collections.unmodifiableList(allParents(classifier,
+	public static EList allParents(Classifier classifier) {
+		return ECollections.unmodifiableEList(allParents(classifier,
 			new UniqueEList()));
 	}
 

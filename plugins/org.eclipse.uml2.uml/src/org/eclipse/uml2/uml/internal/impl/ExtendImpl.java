@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -96,8 +95,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRelatedElements() {
-		List relatedElement = (List) eVirtualGet(UMLPackage.EXTEND__RELATED_ELEMENT);
+	public EList getRelatedElements() {
+		EList relatedElement = (EList) eVirtualGet(UMLPackage.EXTEND__RELATED_ELEMENT);
 		if (relatedElement == null) {
 			eVirtualSet(UMLPackage.EXTEND__RELATED_ELEMENT,
 				relatedElement = new DerivedUnionEObjectEList(Element.class,
@@ -112,8 +111,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.EXTEND__SOURCE);
+	public EList getSources() {
+		EList source = (EList) eVirtualGet(UMLPackage.EXTEND__SOURCE);
 		if (source == null) {
 			eVirtualSet(UMLPackage.EXTEND__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
@@ -128,8 +127,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.EXTEND__TARGET);
+	public EList getTargets() {
+		EList target = (EList) eVirtualGet(UMLPackage.EXTEND__TARGET);
 		if (target == null) {
 			eVirtualSet(UMLPackage.EXTEND__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
@@ -144,8 +143,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.EXTEND__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.EXTEND__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.EXTEND__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -292,8 +291,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getExtensionLocations() {
-		List extensionLocation = (List) eVirtualGet(UMLPackage.EXTEND__EXTENSION_LOCATION);
+	public EList getExtensionLocations() {
+		EList extensionLocation = (EList) eVirtualGet(UMLPackage.EXTEND__EXTENSION_LOCATION);
 		if (extensionLocation == null) {
 			eVirtualSet(UMLPackage.EXTEND__EXTENSION_LOCATION,
 				extensionLocation = new EObjectResolvingEList(
@@ -585,7 +584,7 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXTEND__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.EXTEND__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXTEND__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXTEND__NAME :
 				return isSetName();
@@ -596,7 +595,7 @@ public class ExtendImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.EXTEND__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXTEND__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.EXTEND__NAMESPACE :
 				return isSetNamespace();
@@ -613,7 +612,7 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__CONDITION :
 				return eVirtualGet(UMLPackage.EXTEND__CONDITION) != null;
 			case UMLPackage.EXTEND__EXTENSION_LOCATION :
-				List extensionLocation = (List) eVirtualGet(UMLPackage.EXTEND__EXTENSION_LOCATION);
+				EList extensionLocation = (EList) eVirtualGet(UMLPackage.EXTEND__EXTENSION_LOCATION);
 				return extensionLocation != null
 					&& !extensionLocation.isEmpty();
 			case UMLPackage.EXTEND__EXTENSION :

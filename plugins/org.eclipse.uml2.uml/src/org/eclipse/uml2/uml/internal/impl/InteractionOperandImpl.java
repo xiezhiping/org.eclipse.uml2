@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -100,8 +99,8 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -122,8 +121,8 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getCovereds() {
-		List covered = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__COVERED);
+	public EList getCovereds() {
+		EList covered = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__COVERED);
 		if (covered == null) {
 			eVirtualSet(UMLPackage.INTERACTION_OPERAND__COVERED,
 				covered = new EObjectWithInverseResolvingEList.ManyInverse(
@@ -154,8 +153,8 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getGeneralOrderings() {
-		List generalOrdering = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING);
+	public EList getGeneralOrderings() {
+		EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING);
 		if (generalOrdering == null) {
 			eVirtualSet(UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING,
 				generalOrdering = new EObjectContainmentEList(
@@ -278,8 +277,8 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -366,8 +365,8 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getFragments() {
-		List fragment = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__FRAGMENT);
+	public EList getFragments() {
+		EList fragment = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__FRAGMENT);
 		if (fragment == null) {
 			eVirtualSet(UMLPackage.INTERACTION_OPERAND__FRAGMENT,
 				fragment = new EObjectContainmentWithInverseEList(
@@ -732,7 +731,7 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__NAME :
 				return isSetName();
@@ -743,20 +742,20 @@ public class InteractionOperandImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION) != null;
 			case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__MEMBER :
 				return isSetMembers();
@@ -765,10 +764,10 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.INTERACTION_OPERAND__COVERED :
-				List covered = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__COVERED);
+				EList covered = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__COVERED);
 				return covered != null && !covered.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
-				List generalOrdering = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING);
+				EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
 				return getEnclosingInteraction() != null;
@@ -777,7 +776,7 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__GUARD :
 				return eVirtualGet(UMLPackage.INTERACTION_OPERAND__GUARD) != null;
 			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
-				List fragment = (List) eVirtualGet(UMLPackage.INTERACTION_OPERAND__FRAGMENT);
+				EList fragment = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__FRAGMENT);
 				return fragment != null && !fragment.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

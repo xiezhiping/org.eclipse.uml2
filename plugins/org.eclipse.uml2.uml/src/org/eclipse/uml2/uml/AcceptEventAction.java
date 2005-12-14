@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,7 +81,7 @@ public interface AcceptEventAction
 	 * @model type="org.eclipse.uml2.uml.OutputPin" ordered="false"
 	 * @generated
 	 */
-	List getResults();
+	EList getResults();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' reference list.
@@ -106,7 +107,7 @@ public interface AcceptEventAction
 	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
-	List getTriggers();
+	EList getTriggers();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Trigger} and appends it to the '<em><b>Trigger</b></em>' containment reference list.

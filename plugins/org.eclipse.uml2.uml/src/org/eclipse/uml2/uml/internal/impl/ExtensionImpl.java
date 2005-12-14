@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.10 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -85,8 +84,8 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedEnds() {
-		List ownedEnd = (List) eVirtualGet(UMLPackage.EXTENSION__OWNED_END);
+	public EList getOwnedEnds() {
+		EList ownedEnd = (EList) eVirtualGet(UMLPackage.EXTENSION__OWNED_END);
 		if (ownedEnd == null) {
 			eVirtualSet(UMLPackage.EXTENSION__OWNED_END,
 				ownedEnd = new EObjectContainmentEList(ExtensionEnd.class,
@@ -127,7 +126,7 @@ public class ExtensionImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedEnds() {
-		List ownedEnd = (List) eVirtualGet(UMLPackage.EXTENSION__OWNED_END);
+		EList ownedEnd = (EList) eVirtualGet(UMLPackage.EXTENSION__OWNED_END);
 		return ownedEnd != null && !ownedEnd.isEmpty();
 	}
 
@@ -240,14 +239,14 @@ public class ExtensionImpl
 				return getRedefinedElements();
 			case UMLPackage.EXTENSION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.EXTENSION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.EXTENSION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.EXTENSION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.EXTENSION__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -288,18 +287,18 @@ public class ExtensionImpl
 				return getOwnedSignature();
 			case UMLPackage.EXTENSION__RELATED_ELEMENT :
 				return getRelatedElements();
+			case UMLPackage.EXTENSION__OWNED_END :
+				return getOwnedEnds();
+			case UMLPackage.EXTENSION__MEMBER_END :
+				return getMemberEnds();
 			case UMLPackage.EXTENSION__IS_DERIVED :
 				return isDerived()
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.EXTENSION__END_TYPE :
 				return getEndTypes();
-			case UMLPackage.EXTENSION__MEMBER_END :
-				return getMemberEnds();
 			case UMLPackage.EXTENSION__NAVIGABLE_OWNED_END :
 				return getNavigableOwnedEnds();
-			case UMLPackage.EXTENSION__OWNED_END :
-				return getOwnedEnds();
 			case UMLPackage.EXTENSION__IS_REQUIRED :
 				return isRequired()
 					? Boolean.TRUE
@@ -327,7 +326,7 @@ public class ExtensionImpl
 			case UMLPackage.EXTENSION__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXTENSION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.EXTENSION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXTENSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXTENSION__NAME :
 				return isSetName();
@@ -338,20 +337,20 @@ public class ExtensionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXTENSION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.EXTENSION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXTENSION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.EXTENSION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.EXTENSION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.EXTENSION__NAME_EXPRESSION) != null;
 			case UMLPackage.EXTENSION__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.EXTENSION__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.EXTENSION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.EXTENSION__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.EXTENSION__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.EXTENSION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.EXTENSION__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.EXTENSION__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.EXTENSION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.EXTENSION__MEMBER :
 				return isSetMembers();
@@ -365,68 +364,68 @@ public class ExtensionImpl
 				return isSetRedefinedElements();
 			case UMLPackage.EXTENSION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.EXTENSION__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.EXTENSION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.EXTENSION__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.EXTENSION__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.EXTENSION__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.EXTENSION__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.EXTENSION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.EXTENSION__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.EXTENSION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.EXTENSION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.EXTENSION__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.EXTENSION__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.EXTENSION__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.EXTENSION__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.EXTENSION__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.EXTENSION__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.EXTENSION__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.EXTENSION__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.EXTENSION__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.EXTENSION__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.EXTENSION__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.EXTENSION__GENERAL :
 				return !getGenerals().isEmpty();
 			case UMLPackage.EXTENSION__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.EXTENSION__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.EXTENSION__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.EXTENSION__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.EXTENSION__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.EXTENSION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.EXTENSION__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.EXTENSION__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.EXTENSION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.EXTENSION__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.EXTENSION__REPRESENTATION :
 				return eVirtualGet(UMLPackage.EXTENSION__REPRESENTATION) != null;
 			case UMLPackage.EXTENSION__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.EXTENSION__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.EXTENSION__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.EXTENSION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.EXTENSION__OWNED_SIGNATURE) != null;
 			case UMLPackage.EXTENSION__RELATED_ELEMENT :
 				return isSetRelatedElements();
+			case UMLPackage.EXTENSION__OWNED_END :
+				return isSetOwnedEnds();
+			case UMLPackage.EXTENSION__MEMBER_END :
+				EList memberEnd = (EList) eVirtualGet(UMLPackage.EXTENSION__MEMBER_END);
+				return memberEnd != null && !memberEnd.isEmpty();
 			case UMLPackage.EXTENSION__IS_DERIVED :
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UMLPackage.EXTENSION__END_TYPE :
 				return !getEndTypes().isEmpty();
-			case UMLPackage.EXTENSION__MEMBER_END :
-				List memberEnd = (List) eVirtualGet(UMLPackage.EXTENSION__MEMBER_END);
-				return memberEnd != null && !memberEnd.isEmpty();
 			case UMLPackage.EXTENSION__NAVIGABLE_OWNED_END :
-				List navigableOwnedEnd = (List) eVirtualGet(UMLPackage.EXTENSION__NAVIGABLE_OWNED_END);
+				EList navigableOwnedEnd = (EList) eVirtualGet(UMLPackage.EXTENSION__NAVIGABLE_OWNED_END);
 				return navigableOwnedEnd != null
 					&& !navigableOwnedEnd.isEmpty();
-			case UMLPackage.EXTENSION__OWNED_END :
-				return isSetOwnedEnds();
 			case UMLPackage.EXTENSION__IS_REQUIRED :
 				return isRequired() != IS_REQUIRED_EDEFAULT;
 			case UMLPackage.EXTENSION__METACLASS :

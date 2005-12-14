@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ModelImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -28,6 +26,8 @@ import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
+
+import org.eclipse.uml2.uml.internal.operations.ModelOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -131,6 +131,15 @@ public class ModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMetamodel() {
+		return ModelOperations.isMetamodel(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.MODEL__EANNOTATIONS :
@@ -169,24 +178,24 @@ public class ModelImpl
 				return getImportedMembers();
 			case UMLPackage.MODEL__OWNED_MEMBER :
 				return getOwnedMembers();
-			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
 				return getOwnedTemplateSignature();
+			case UMLPackage.MODEL__OWNED_TYPE :
+				return getOwnedTypes();
 			case UMLPackage.MODEL__PACKAGE_MERGE :
 				return getPackageMerges();
 			case UMLPackage.MODEL__PACKAGED_ELEMENT :
 				return getPackagedElements();
-			case UMLPackage.MODEL__OWNED_TYPE :
-				return getOwnedTypes();
 			case UMLPackage.MODEL__NESTED_PACKAGE :
 				return getNestedPackages();
 			case UMLPackage.MODEL__NESTING_PACKAGE :
@@ -241,11 +250,11 @@ public class ModelImpl
 				getOwnedRules().clear();
 				getOwnedRules().addAll((Collection) newValue);
 				return;
-			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
@@ -254,6 +263,10 @@ public class ModelImpl
 			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
+			case UMLPackage.MODEL__OWNED_TYPE :
+				getOwnedTypes().clear();
+				getOwnedTypes().addAll((Collection) newValue);
+				return;
 			case UMLPackage.MODEL__PACKAGE_MERGE :
 				getPackageMerges().clear();
 				getPackageMerges().addAll((Collection) newValue);
@@ -261,10 +274,6 @@ public class ModelImpl
 			case UMLPackage.MODEL__PACKAGED_ELEMENT :
 				getPackagedElements().clear();
 				getPackagedElements().addAll((Collection) newValue);
-				return;
-			case UMLPackage.MODEL__OWNED_TYPE :
-				getOwnedTypes().clear();
-				getOwnedTypes().addAll((Collection) newValue);
 				return;
 			case UMLPackage.MODEL__NESTED_PACKAGE :
 				getNestedPackages().clear();
@@ -318,11 +327,11 @@ public class ModelImpl
 			case UMLPackage.MODEL__OWNED_RULE :
 				getOwnedRules().clear();
 				return;
-			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
@@ -330,14 +339,14 @@ public class ModelImpl
 			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
+			case UMLPackage.MODEL__OWNED_TYPE :
+				getOwnedTypes().clear();
+				return;
 			case UMLPackage.MODEL__PACKAGE_MERGE :
 				getPackageMerges().clear();
 				return;
 			case UMLPackage.MODEL__PACKAGED_ELEMENT :
 				getPackagedElements().clear();
-				return;
-			case UMLPackage.MODEL__OWNED_TYPE :
-				getOwnedTypes().clear();
 				return;
 			case UMLPackage.MODEL__NESTED_PACKAGE :
 				getNestedPackages().clear();
@@ -370,7 +379,7 @@ public class ModelImpl
 			case UMLPackage.MODEL__OWNER :
 				return isSetOwner();
 			case UMLPackage.MODEL__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.MODEL__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.MODEL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MODEL__NAME :
 				return isSetName();
@@ -381,20 +390,20 @@ public class ModelImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.MODEL__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.MODEL__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.MODEL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.MODEL__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.MODEL__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.MODEL__NAME_EXPRESSION) != null;
 			case UMLPackage.MODEL__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.MODEL__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.MODEL__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.MODEL__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.MODEL__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.MODEL__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.MODEL__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.MODEL__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.MODEL__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.MODEL__MEMBER :
 				return isSetMembers();
@@ -402,29 +411,29 @@ public class ModelImpl
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.MODEL__OWNED_MEMBER :
 				return isSetOwnedMembers();
-			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.MODEL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.MODEL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.MODEL__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.MODEL__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE) != null;
-			case UMLPackage.MODEL__PACKAGE_MERGE :
-				List packageMerge = (List) eVirtualGet(UMLPackage.MODEL__PACKAGE_MERGE);
-				return packageMerge != null && !packageMerge.isEmpty();
-			case UMLPackage.MODEL__PACKAGED_ELEMENT :
-				List packagedElement = (List) eVirtualGet(UMLPackage.MODEL__PACKAGED_ELEMENT);
-				return packagedElement != null && !packagedElement.isEmpty();
 			case UMLPackage.MODEL__OWNED_TYPE :
 				return !getOwnedTypes().isEmpty();
+			case UMLPackage.MODEL__PACKAGE_MERGE :
+				EList packageMerge = (EList) eVirtualGet(UMLPackage.MODEL__PACKAGE_MERGE);
+				return packageMerge != null && !packageMerge.isEmpty();
+			case UMLPackage.MODEL__PACKAGED_ELEMENT :
+				EList packagedElement = (EList) eVirtualGet(UMLPackage.MODEL__PACKAGED_ELEMENT);
+				return packagedElement != null && !packagedElement.isEmpty();
 			case UMLPackage.MODEL__NESTED_PACKAGE :
 				return !getNestedPackages().isEmpty();
 			case UMLPackage.MODEL__NESTING_PACKAGE :
 				return basicGetNestingPackage() != null;
 			case UMLPackage.MODEL__PROFILE_APPLICATION :
-				List profileApplication = (List) eVirtualGet(UMLPackage.MODEL__PROFILE_APPLICATION);
+				EList profileApplication = (EList) eVirtualGet(UMLPackage.MODEL__PROFILE_APPLICATION);
 				return profileApplication != null
 					&& !profileApplication.isEmpty();
 			case UMLPackage.MODEL__VIEWPOINT :

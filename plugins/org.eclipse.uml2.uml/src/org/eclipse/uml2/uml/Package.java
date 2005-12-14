@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Package.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -38,9 +39,9 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedTypes <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getPackageMerges <em>Package Merge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getPackagedElements <em>Packaged Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedTypes <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getNestedPackages <em>Nested Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getNestingPackage <em>Nesting Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getProfileApplications <em>Profile Application</em>}</li>
@@ -69,7 +70,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.PackageMerge" opposite="receivingPackage" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getPackageMerges();
+	EList getPackageMerges();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.PackageMerge} and appends it to the '<em><b>Package Merge</b></em>' containment reference list.
@@ -94,7 +95,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" ordered="false"
 	 * @generated
 	 */
-	List getPackagedElements();
+	EList getPackagedElements();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.PackageableElement} and appends it to the '<em><b>Packaged Element</b></em>' containment reference list.
@@ -133,7 +134,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.Type" opposite="package" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getOwnedTypes();
+	EList getOwnedTypes();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Type</b></em>' reference list.
@@ -161,7 +162,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.Package" opposite="nestingPackage" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getNestedPackages();
+	EList getNestedPackages();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Package} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Package</b></em>' reference list.
@@ -215,7 +216,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.ProfileApplication" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getProfileApplications();
+	EList getProfileApplications();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ProfileApplication} and appends it to the '<em><b>Profile Application</b></em>' containment reference list.
@@ -243,6 +244,94 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @generated
+	 */
+	Package createNestedPackage(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
+	 * @generated
+	 */
+	org.eclipse.uml2.uml.Class createOwnedClass(String name, boolean isAbstract);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @generated
+	 */
+	Enumeration createOwnedEnumeration(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @generated
+	 */
+	PrimitiveType createOwnedPrimitiveType(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" profileRequired="true" profileOrdered="false"
+	 * @generated
+	 */
+	boolean isProfileApplied(Profile profile);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" profileRequired="true" profileOrdered="false"
+	 * @generated
+	 */
+	ProfileApplication applyProfile(Profile profile);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" profileRequired="true" profileOrdered="false"
+	 * @generated
+	 */
+	ProfileApplication unapplyProfile(Profile profile);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Profile" ordered="false"
+	 * @generated
+	 */
+	EList getAppliedProfiles();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @generated
+	 */
+	Profile getAppliedProfile(String qualifiedName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Profile" ordered="false"
+	 * @generated
+	 */
+	EList getAllAppliedProfiles();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" profileDataType="org.eclipse.uml2.uml.String" profileRequired="true" profileOrdered="false"
+	 * @generated
+	 */
+	String getAppliedVersion(String profile);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query visibleMembers() defines which members of a Package can be accessed outside it.
 	 * result = member->select( m | self.makesVisible(m))
@@ -251,7 +340,7 @@ public interface Package
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List visibleMembers();
+	EList visibleMembers();
 
 	/**
 	 * <!-- begin-user-doc -->

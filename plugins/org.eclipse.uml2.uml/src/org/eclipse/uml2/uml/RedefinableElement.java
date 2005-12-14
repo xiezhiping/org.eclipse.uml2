@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.4 2005/12/12 16:58:34 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.5 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,7 +82,7 @@ public interface RedefinableElement
 	 * @model type="org.eclipse.uml2.uml.RedefinableElement" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getRedefinedElements();
+	EList getRedefinedElements();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
@@ -107,7 +108,7 @@ public interface RedefinableElement
 	 * @model type="org.eclipse.uml2.uml.Classifier" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getRedefinitionContexts();
+	EList getRedefinitionContexts();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefinition Context</b></em>' reference list.

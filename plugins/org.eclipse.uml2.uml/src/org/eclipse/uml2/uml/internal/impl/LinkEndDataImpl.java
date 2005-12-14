@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -172,8 +171,8 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getQualifiers() {
-		List qualifier = (List) eVirtualGet(UMLPackage.LINK_END_DATA__QUALIFIER);
+	public EList getQualifiers() {
+		EList qualifier = (EList) eVirtualGet(UMLPackage.LINK_END_DATA__QUALIFIER);
 		if (qualifier == null) {
 			eVirtualSet(UMLPackage.LINK_END_DATA__QUALIFIER,
 				qualifier = new EObjectContainmentEList(QualifierValue.class,
@@ -368,14 +367,14 @@ public class LinkEndDataImpl
 			case UMLPackage.LINK_END_DATA__OWNER :
 				return isSetOwner();
 			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.LINK_END_DATA__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.LINK_END_DATA__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LINK_END_DATA__VALUE :
 				return eVirtualGet(UMLPackage.LINK_END_DATA__VALUE) != null;
 			case UMLPackage.LINK_END_DATA__END :
 				return eVirtualGet(UMLPackage.LINK_END_DATA__END) != null;
 			case UMLPackage.LINK_END_DATA__QUALIFIER :
-				List qualifier = (List) eVirtualGet(UMLPackage.LINK_END_DATA__QUALIFIER);
+				EList qualifier = (EList) eVirtualGet(UMLPackage.LINK_END_DATA__QUALIFIER);
 				return qualifier != null && !qualifier.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Slot.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Slot.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -28,9 +28,9 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Slot#getOwningInstance <em>Owning Instance</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Slot#getDefiningFeature <em>Defining Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Slot#getValues <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Slot#getOwningInstance <em>Owning Instance</em>}</li>
  * </ul>
  * </p>
  *
@@ -106,7 +106,7 @@ public interface Slot
 	 * @model type="org.eclipse.uml2.uml.ValueSpecification" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getValues();
+	EList getValues();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ValueSpecification} and appends it to the '<em><b>Value</b></em>' containment reference list.

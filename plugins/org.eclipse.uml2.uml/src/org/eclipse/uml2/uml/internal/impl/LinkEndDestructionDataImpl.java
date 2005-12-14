@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionDataImpl.java,v 1.6 2005/12/06 23:21:49 khussey Exp $
+ * $Id: LinkEndDestructionDataImpl.java,v 1.7 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -309,14 +308,14 @@ public class LinkEndDestructionDataImpl
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNER :
 				return isSetOwner();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
 				return eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE) != null;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__END :
 				return eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__END) != null;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__QUALIFIER :
-				List qualifier = (List) eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__QUALIFIER);
+				EList qualifier = (EList) eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__QUALIFIER);
 				return qualifier != null && !qualifier.isEmpty();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
 				return ((eFlags & IS_DESTROY_DUPLICATES_EFLAG) != 0) != IS_DESTROY_DUPLICATES_EDEFAULT;

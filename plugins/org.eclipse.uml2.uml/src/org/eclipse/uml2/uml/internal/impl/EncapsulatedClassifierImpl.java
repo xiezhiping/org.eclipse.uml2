@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.11 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -80,8 +78,8 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedAttributes() {
-		List ownedAttribute = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
+	public EList getOwnedAttributes() {
+		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE,
 				ownedAttribute = new EObjectContainmentEList(Property.class,
@@ -95,8 +93,8 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public List getOwnedPorts() {
-		List ownedPort = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
+	public EList getOwnedPorts() {
+		EList ownedPort = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
 		if (ownedPort == null) {
 			eVirtualSet(
 				UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
@@ -152,13 +150,13 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(
 					null,
 					UMLPackage.ENCAPSULATED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER,
 					msgs);
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
@@ -245,14 +243,14 @@ public abstract class EncapsulatedClassifierImpl
 				return getRedefinedElements();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -348,11 +346,11 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -458,11 +456,11 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -534,7 +532,7 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNER :
 				return isSetOwner();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME :
 				return isSetName();
@@ -545,20 +543,20 @@ public abstract class EncapsulatedClassifierImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION) != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__MEMBER :
 				return isSetMembers();
@@ -572,62 +570,62 @@ public abstract class EncapsulatedClassifierImpl
 				return isSetRedefinedElements();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__GENERAL :
 				return !getGenerals().isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REPRESENTATION :
 				return eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__REPRESENTATION) != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE) != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
+				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ROLE :
 				return isSetRoles();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_CONNECTOR :
-				List ownedConnector = (List) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_CONNECTOR);
+				EList ownedConnector = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();

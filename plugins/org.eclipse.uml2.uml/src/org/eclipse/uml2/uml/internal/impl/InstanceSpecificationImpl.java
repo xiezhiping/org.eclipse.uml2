@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -66,8 +65,8 @@ import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getClassifiers <em>Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getSlots <em>Slot</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getSpecification <em>Specification</em>}</li>
  * </ul>
  * </p>
  *
@@ -290,8 +289,8 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -299,8 +298,8 @@ public class InstanceSpecificationImpl
 					new int[]{UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT,
 						UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION,
 						UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT,
-						UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION,
-						UMLPackage.INSTANCE_SPECIFICATION__SLOT}));
+						UMLPackage.INSTANCE_SPECIFICATION__SLOT,
+						UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION}));
 		}
 		return ownedElement;
 	}
@@ -310,8 +309,8 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getClassifiers() {
-		List classifier = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER);
+	public EList getClassifiers() {
+		EList classifier = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER);
 		if (classifier == null) {
 			eVirtualSet(UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER,
 				classifier = new EObjectResolvingEList(Classifier.class, this,
@@ -415,8 +414,8 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSlots() {
-		List slot = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SLOT);
+	public EList getSlots() {
+		EList slot = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SLOT);
 		if (slot == null) {
 			eVirtualSet(UMLPackage.INSTANCE_SPECIFICATION__SLOT,
 				slot = new EObjectContainmentWithInverseEList(Slot.class, this,
@@ -516,6 +515,13 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
 				return ((InternalEList) getDeployments()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(
+					otherEnd,
+					UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
+					msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -524,13 +530,6 @@ public class InstanceSpecificationImpl
 							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
 					msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
 				return ((InternalEList) getSlots()).basicAdd(otherEnd, msgs);
@@ -560,17 +559,17 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
 				return ((InternalEList) getDeployments()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(
 					null,
 					UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
 					msgs);
-			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
-				return basicSetSpecification(null, msgs);
+			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
 				return ((InternalEList) getSlots()).basicRemove(otherEnd, msgs);
+			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -626,20 +625,20 @@ public class InstanceSpecificationImpl
 				return getDeployments();
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYED_ELEMENT :
 				return getDeployedElements();
-			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER :
 				return getClassifiers();
-			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
-				return getSpecification();
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
 				return getSlots();
+			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
+				return getSpecification();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -676,22 +675,22 @@ public class InstanceSpecificationImpl
 				getDeployments().clear();
 				getDeployments().addAll((Collection) newValue);
 				return;
-			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER :
 				getClassifiers().clear();
 				getClassifiers().addAll((Collection) newValue);
 				return;
-			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
-				setSpecification((ValueSpecification) newValue);
-				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
 				getSlots().clear();
 				getSlots().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
+				setSpecification((ValueSpecification) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -725,20 +724,20 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
 				getDeployments().clear();
 				return;
-			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER :
 				getClassifiers().clear();
 				return;
-			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
-				setSpecification((ValueSpecification) null);
-				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
 				getSlots().clear();
+				return;
+			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
+				setSpecification((ValueSpecification) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -759,7 +758,7 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME :
 				return isSetName();
@@ -770,29 +769,29 @@ public class InstanceSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION) != null;
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
-				List deployment = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT);
+				EList deployment = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT);
 				return deployment != null && !deployment.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
-			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER :
-				List classifier = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER);
+				EList classifier = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER);
 				return classifier != null && !classifier.isEmpty();
+			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
+				EList slot = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SLOT);
+				return slot != null && !slot.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
 				return eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION) != null;
-			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
-				List slot = (List) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SLOT);
-				return slot != null && !slot.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -805,10 +804,10 @@ public class InstanceSpecificationImpl
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (derivedFeatureID) {
-				case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
-					return UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER;
 				case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 					return UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER;
+				case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
+					return UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER;
 				default :
 					return -1;
 			}
@@ -836,10 +835,10 @@ public class InstanceSpecificationImpl
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (baseFeatureID) {
-				case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
-					return UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER;
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 					return UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER;
+				case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
+					return UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER;
 				default :
 					return -1;
 			}
@@ -907,8 +906,8 @@ public class InstanceSpecificationImpl
 	 */
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION)
-			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__SLOT);
+			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__SLOT)
+			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION);
 	}
 
 } //InstanceSpecificationImpl

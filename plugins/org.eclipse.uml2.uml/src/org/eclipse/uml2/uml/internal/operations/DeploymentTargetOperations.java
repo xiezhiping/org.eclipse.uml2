@@ -8,13 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetOperations.java,v 1.4 2005/12/12 18:11:59 khussey Exp $
+ * $Id: DeploymentTargetOperations.java,v 1.5 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
+import java.util.Iterator;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
@@ -60,8 +60,8 @@ public final class DeploymentTargetOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List getDeployedElements(DeploymentTarget deploymentTarget) {
-		List deployedElements = new UniqueEList();
+	public static EList getDeployedElements(DeploymentTarget deploymentTarget) {
+		EList deployedElements = new UniqueEList();
 
 		for (Iterator deployments = deploymentTarget.getDeployments()
 			.iterator(); deployments.hasNext();) {

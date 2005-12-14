@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationAction.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: InvocationAction.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -57,7 +58,7 @@ public interface InvocationAction
 	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getArguments();
+	EList getArguments();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and appends it to the '<em><b>Argument</b></em>' containment reference list.

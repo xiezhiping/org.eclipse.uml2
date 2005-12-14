@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.1 2005/12/07 14:20:24 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -23,7 +23,10 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+
+import org.eclipse.emf.ecore.provider.EObjectItemProvider;
 
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
@@ -34,7 +37,6 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.uml.Element;
@@ -50,7 +52,7 @@ import org.eclipse.uml2.uml.edit.UMLEditPlugin;
  * @generated
  */
 public class ElementItemProvider
-		extends ItemProviderAdapter
+		extends EObjectItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
@@ -211,6 +213,10 @@ public class ElementItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(
+			EcorePackage.Literals.EMODEL_ELEMENT__EANNOTATIONS,
+			EcoreFactory.eINSTANCE.createEAnnotation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ELEMENT__OWNED_COMMENT, UMLFactory.eINSTANCE

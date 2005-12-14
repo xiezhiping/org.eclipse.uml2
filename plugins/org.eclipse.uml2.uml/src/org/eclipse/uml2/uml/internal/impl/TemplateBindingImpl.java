@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.8 2005/12/06 23:21:48 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -89,8 +88,8 @@ public class TemplateBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.TEMPLATE_BINDING__TARGET);
+	public EList getTargets() {
+		EList target = (EList) eVirtualGet(UMLPackage.TEMPLATE_BINDING__TARGET);
 		if (target == null) {
 			eVirtualSet(UMLPackage.TEMPLATE_BINDING__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
@@ -105,8 +104,8 @@ public class TemplateBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.TEMPLATE_BINDING__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.TEMPLATE_BINDING__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.TEMPLATE_BINDING__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -122,8 +121,8 @@ public class TemplateBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.TEMPLATE_BINDING__SOURCE);
+	public EList getSources() {
+		EList source = (EList) eVirtualGet(UMLPackage.TEMPLATE_BINDING__SOURCE);
 		if (source == null) {
 			eVirtualSet(UMLPackage.TEMPLATE_BINDING__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
@@ -186,8 +185,8 @@ public class TemplateBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getParameterSubstitutions() {
-		List parameterSubstitution = (List) eVirtualGet(UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
+	public EList getParameterSubstitutions() {
+		EList parameterSubstitution = (EList) eVirtualGet(UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
 		if (parameterSubstitution == null) {
 			eVirtualSet(
 				UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,
@@ -442,7 +441,7 @@ public class TemplateBindingImpl
 			case UMLPackage.TEMPLATE_BINDING__OWNER :
 				return isSetOwner();
 			case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TEMPLATE_BINDING__RELATED_ELEMENT :
 				return isSetRelatedElements();
@@ -453,7 +452,7 @@ public class TemplateBindingImpl
 			case UMLPackage.TEMPLATE_BINDING__SIGNATURE :
 				return eVirtualGet(UMLPackage.TEMPLATE_BINDING__SIGNATURE) != null;
 			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
-				List parameterSubstitution = (List) eVirtualGet(UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
+				EList parameterSubstitution = (EList) eVirtualGet(UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
 				return parameterSubstitution != null
 					&& !parameterSubstitution.isEmpty();
 			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :

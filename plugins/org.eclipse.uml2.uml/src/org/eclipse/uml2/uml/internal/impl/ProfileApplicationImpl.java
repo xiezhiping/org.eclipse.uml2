@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -93,8 +91,8 @@ public class ProfileApplicationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.PROFILE_APPLICATION__TARGET);
+	public EList getTargets() {
+		EList target = (EList) eVirtualGet(UMLPackage.PROFILE_APPLICATION__TARGET);
 		if (target == null) {
 			eVirtualSet(UMLPackage.PROFILE_APPLICATION__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
@@ -278,7 +276,7 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.PROFILE_APPLICATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.PROFILE_APPLICATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.PROFILE_APPLICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PROFILE_APPLICATION__RELATED_ELEMENT :
 				return isSetRelatedElements();

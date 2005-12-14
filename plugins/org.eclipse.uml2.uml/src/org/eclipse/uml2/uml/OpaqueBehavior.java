@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehavior.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: OpaqueBehavior.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public interface OpaqueBehavior
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
-	List getBodies();
+	EList getBodies();
 
 	/**
 	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueBehavior#getBodies <em>Body</em>}' attribute list.
@@ -92,7 +92,7 @@ public interface OpaqueBehavior
 	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 * @generated
 	 */
-	List getLanguages();
+	EList getLanguages();
 
 	/**
 	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueBehavior#getLanguages <em>Language</em>}' attribute list.

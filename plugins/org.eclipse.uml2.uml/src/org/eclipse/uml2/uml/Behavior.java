@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Behavior.java,v 1.6 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,12 +47,12 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#isReentrant <em>Is Reentrant</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getRedefinedBehaviors <em>Redefined Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getContext <em>Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getOwnedParameterSets <em>Owned Parameter Set</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Behavior#getSpecification <em>Specification</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,7 +101,7 @@ public interface Behavior
 	 * @model type="org.eclipse.uml2.uml.Behavior" ordered="false"
 	 * @generated
 	 */
-	List getRedefinedBehaviors();
+	EList getRedefinedBehaviors();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Behavior</b></em>' reference list.
@@ -128,7 +129,7 @@ public interface Behavior
 	 * @model type="org.eclipse.uml2.uml.Parameter" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOwnedParameters();
+	EList getOwnedParameters();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Parameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
@@ -178,7 +179,7 @@ public interface Behavior
 	 * @model type="org.eclipse.uml2.uml.ParameterSet" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getOwnedParameterSets();
+	EList getOwnedParameterSets();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ParameterSet} and appends it to the '<em><b>Owned Parameter Set</b></em>' containment reference list.

@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.9 2005/12/12 16:58:37 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.10 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -61,8 +60,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateSignatureOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getParameters <em>Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getTemplate <em>Template</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getTemplate <em>Template</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getExtendedSignatures <em>Extended Signature</em>}</li>
@@ -100,8 +99,8 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(
 				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT,
@@ -122,8 +121,8 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getParameters() {
-		List parameter = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER);
+	public EList getParameters() {
+		EList parameter = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER);
 		if (parameter == null) {
 			eVirtualSet(
 				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER,
@@ -181,8 +180,8 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedParameters() {
-		List ownedParameter = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER);
+	public EList getOwnedParameters() {
+		EList ownedParameter = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 		if (ownedParameter == null) {
 			eVirtualSet(
 				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER,
@@ -225,8 +224,8 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(
 				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINED_ELEMENT,
@@ -244,8 +243,8 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinitionContexts() {
-		List redefinitionContext = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT);
+	public EList getRedefinitionContexts() {
+		EList redefinitionContext = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
 			eVirtualSet(
 				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT,
@@ -263,8 +262,8 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getExtendedSignatures() {
-		List extendedSignature = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE);
+	public EList getExtendedSignatures() {
+		EList extendedSignature = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE);
 		if (extendedSignature == null) {
 			eVirtualSet(
 				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE,
@@ -297,7 +296,7 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInheritedParameters() {
+	public EList getInheritedParameters() {
 		return RedefinableTemplateSignatureOperations
 			.getInheritedParameters(this);
 	}
@@ -387,14 +386,14 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				return ((InternalEList) getOwnedParameters()).basicAdd(
+					otherEnd, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd,
 					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				return ((InternalEList) getOwnedParameters()).basicAdd(
-					otherEnd, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -423,12 +422,12 @@ public class RedefinableTemplateSignatureImpl
 					otherEnd, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-				return eBasicSetContainer(null,
-					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
+				return eBasicSetContainer(null,
+					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
 				return eBasicSetContainer(null,
 					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER, msgs);
@@ -497,10 +496,10 @@ public class RedefinableTemplateSignatureImpl
 				return getRedefinitionContexts();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
 				return getParameters();
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-				return getTemplate();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				return getOwnedParameters();
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
+				return getTemplate();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				return getExtendedSignatures();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER :
@@ -546,12 +545,12 @@ public class RedefinableTemplateSignatureImpl
 				getParameters().clear();
 				getParameters().addAll((Collection) newValue);
 				return;
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-				setTemplate((TemplateableElement) newValue);
-				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
+				return;
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
+				setTemplate((TemplateableElement) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				getExtendedSignatures().clear();
@@ -595,11 +594,11 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
 				getParameters().clear();
 				return;
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-				setTemplate((TemplateableElement) null);
-				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
+				return;
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
+				setTemplate((TemplateableElement) null);
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				getExtendedSignatures().clear();
@@ -626,7 +625,7 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME :
 				return isSetName();
@@ -637,7 +636,7 @@ public class RedefinableTemplateSignatureImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAMESPACE :
 				return isSetNamespace();
@@ -650,15 +649,15 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
-				List parameter = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER);
+				EList parameter = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER);
 				return parameter != null && !parameter.isEmpty();
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				EList ownedParameter = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER);
+				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				return getTemplate() != null;
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				List ownedParameter = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER);
-				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
-				List extendedSignature = (List) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE);
+				EList extendedSignature = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE);
 				return extendedSignature != null
 					&& !extendedSignature.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER :
@@ -679,10 +678,10 @@ public class RedefinableTemplateSignatureImpl
 			switch (derivedFeatureID) {
 				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
 					return UMLPackage.TEMPLATE_SIGNATURE__PARAMETER;
-				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-					return UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE;
 				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 					return UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER;
+				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
+					return UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE;
 				default :
 					return -1;
 			}
@@ -700,10 +699,10 @@ public class RedefinableTemplateSignatureImpl
 			switch (baseFeatureID) {
 				case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
 					return UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER;
-				case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-					return UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE;
 				case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 					return UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER;
+				case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
+					return UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE;
 				default :
 					return -1;
 			}

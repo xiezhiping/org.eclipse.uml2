@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.9 2005/12/12 16:58:37 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.10 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -104,8 +103,8 @@ public class TimeEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.TIME_EVENT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.TIME_EVENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.TIME_EVENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -254,11 +253,11 @@ public class TimeEventImpl
 					otherEnd, msgs);
 			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.TIME_EVENT__WHEN :
 				return basicSetWhen(null, msgs);
 		}
@@ -296,14 +295,14 @@ public class TimeEventImpl
 				return basicGetNamespace();
 			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
 				return isRelative()
 					? Boolean.TRUE
@@ -342,11 +341,11 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
 				setIsRelative(((Boolean) newValue).booleanValue());
@@ -383,11 +382,11 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
 				setIsRelative(IS_RELATIVE_EDEFAULT);
@@ -414,7 +413,7 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.TIME_EVENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.TIME_EVENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.TIME_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TIME_EVENT__NAME :
 				return isSetName();
@@ -425,16 +424,16 @@ public class TimeEventImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.TIME_EVENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.TIME_EVENT__NAME_EXPRESSION) != null;
-			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
 				return ((eFlags & IS_RELATIVE_EFLAG) != 0) != IS_RELATIVE_EDEFAULT;
 			case UMLPackage.TIME_EVENT__WHEN :

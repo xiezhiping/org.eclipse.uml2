@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNode.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: ExecutableNode.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,7 +52,7 @@ public interface ExecutableNode
 	 * @model type="org.eclipse.uml2.uml.ExceptionHandler" opposite="protectedNode" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getHandlers();
+	EList getHandlers();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ExceptionHandler} and appends it to the '<em><b>Handler</b></em>' containment reference list.

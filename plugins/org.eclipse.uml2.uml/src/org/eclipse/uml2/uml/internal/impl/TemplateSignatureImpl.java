@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -53,8 +52,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateSignatureOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getParameters <em>Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getTemplate <em>Template</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getTemplate <em>Template</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,8 +86,8 @@ public class TemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -104,8 +103,8 @@ public class TemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getParameters() {
-		List parameter = (List) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__PARAMETER);
+	public EList getParameters() {
+		EList parameter = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__PARAMETER);
 		if (parameter == null) {
 			eVirtualSet(UMLPackage.TEMPLATE_SIGNATURE__PARAMETER,
 				parameter = new SupersetEObjectResolvingEList(
@@ -161,8 +160,8 @@ public class TemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedParameters() {
-		List ownedParameter = (List) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
+	public EList getOwnedParameters() {
+		EList ownedParameter = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 		if (ownedParameter == null) {
 			eVirtualSet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
 				ownedParameter = new SubsetEObjectContainmentWithInverseEList(
@@ -219,14 +218,14 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__EANNOTATIONS :
 				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				return ((InternalEList) getOwnedParameters()).basicAdd(
+					otherEnd, msgs);
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd,
 					UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
-			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				return ((InternalEList) getOwnedParameters()).basicAdd(
-					otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -245,12 +244,12 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT :
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-				return eBasicSetContainer(null,
-					UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
+				return eBasicSetContainer(null,
+					UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -290,10 +289,10 @@ public class TemplateSignatureImpl
 				return getOwnedComments();
 			case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
 				return getParameters();
-			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-				return getTemplate();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				return getOwnedParameters();
+			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
+				return getTemplate();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -317,12 +316,12 @@ public class TemplateSignatureImpl
 				getParameters().clear();
 				getParameters().addAll((Collection) newValue);
 				return;
-			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-				setTemplate((TemplateableElement) newValue);
-				return;
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
+				return;
+			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
+				setTemplate((TemplateableElement) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -344,11 +343,11 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
 				getParameters().clear();
 				return;
-			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-				setTemplate((TemplateableElement) null);
-				return;
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
+				return;
+			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
+				setTemplate((TemplateableElement) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -369,16 +368,16 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
-				List parameter = (List) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__PARAMETER);
+				EList parameter = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__PARAMETER);
 				return parameter != null && !parameter.isEmpty();
+			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				EList ownedParameter = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
+				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
 				return getTemplate() != null;
-			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				List ownedParameter = (List) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
-				return ownedParameter != null && !ownedParameter.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

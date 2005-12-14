@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,7 +66,7 @@ public interface OpaqueExpression
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
-	List getBodies();
+	EList getBodies();
 
 	/**
 	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueExpression#getBodies <em>Body</em>}' attribute list.
@@ -106,7 +107,7 @@ public interface OpaqueExpression
 	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 * @generated
 	 */
-	List getLanguages();
+	EList getLanguages();
 
 	/**
 	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueExpression#getLanguages <em>Language</em>}' attribute list.

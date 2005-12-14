@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.9 2005/12/06 23:21:49 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.10 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -460,7 +459,7 @@ public class ConnectorEndImpl
 			case UMLPackage.CONNECTOR_END__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONNECTOR_END__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CONNECTOR_END__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONNECTOR_END__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONNECTOR_END__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNatural.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: LiteralUnlimitedNatural.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,6 +60,6 @@ public interface LiteralUnlimitedNatural
 	 */
 	void setValue(int value);
 
-	static final int UNLIMITED = -1;
+	int UNLIMITED = -1;
 
 } // LiteralUnlimitedNatural

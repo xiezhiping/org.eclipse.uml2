@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Port.java,v 1.2 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Port.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -115,7 +116,7 @@ public interface Port
 	 * @model type="org.eclipse.uml2.uml.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getRequireds();
+	EList getRequireds();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
@@ -141,7 +142,7 @@ public interface Port
 	 * @model type="org.eclipse.uml2.uml.Port" ordered="false"
 	 * @generated
 	 */
-	List getRedefinedPorts();
+	EList getRedefinedPorts();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Port</b></em>' reference list.
@@ -169,7 +170,7 @@ public interface Port
 	 * @model type="org.eclipse.uml2.uml.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getProvideds();
+	EList getProvideds();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.

@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSet.java,v 1.2 2005/12/08 14:56:26 khussey Exp $
+ * $Id: ParameterSet.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -58,7 +59,7 @@ public interface ParameterSet
 	 * @model type="org.eclipse.uml2.uml.Parameter" opposite="parameterSet" required="true" ordered="false"
 	 * @generated
 	 */
-	List getParameters();
+	EList getParameters();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
@@ -84,7 +85,7 @@ public interface ParameterSet
 	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getConditions();
+	EList getConditions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and appends it to the '<em><b>Condition</b></em>' containment reference list.

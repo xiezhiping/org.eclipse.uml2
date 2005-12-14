@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.12 2005/12/12 16:58:36 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.13 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -64,12 +63,12 @@ import org.eclipse.uml2.uml.internal.operations.BehaviorOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#isReentrant <em>Is Reentrant</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinedBehaviors <em>Redefined Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedParameterSets <em>Owned Parameter Set</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getSpecification <em>Specification</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,8 +121,8 @@ public class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.BEHAVIOR__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -140,8 +139,8 @@ public class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.BEHAVIOR__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -166,8 +165,8 @@ public class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinitionContexts() {
-		List redefinitionContext = (List) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT);
+	public EList getRedefinitionContexts() {
+		EList redefinitionContext = (EList) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
 			eVirtualSet(UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT,
 				redefinitionContext = new DerivedUnionEObjectEList(
@@ -210,8 +209,8 @@ public class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedBehaviors() {
-		List redefinedBehavior = (List) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
+	public EList getRedefinedBehaviors() {
+		EList redefinedBehavior = (EList) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
 		if (redefinedBehavior == null) {
 			eVirtualSet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR,
 				redefinedBehavior = new EObjectResolvingEList(Behavior.class,
@@ -240,8 +239,8 @@ public class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedParameters() {
-		List ownedParameter = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER);
+	public EList getOwnedParameters() {
+		EList ownedParameter = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER);
 		if (ownedParameter == null) {
 			eVirtualSet(UMLPackage.BEHAVIOR__OWNED_PARAMETER,
 				ownedParameter = new EObjectContainmentEList(Parameter.class,
@@ -302,8 +301,8 @@ public class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedParameterSets() {
-		List ownedParameterSet = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
+	public EList getOwnedParameterSets() {
+		EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
 		if (ownedParameterSet == null) {
 			eVirtualSet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET,
 				ownedParameterSet = new EObjectContainmentEList(
@@ -487,6 +486,11 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -496,11 +500,6 @@ public class BehaviorImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
@@ -577,11 +576,11 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
@@ -631,14 +630,14 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				return ((InternalEList) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				return basicSetSpecification(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -694,14 +693,14 @@ public class BehaviorImpl
 				return getRedefinedElements();
 			case UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.BEHAVIOR__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -772,6 +771,10 @@ public class BehaviorImpl
 				return getOwnedReceptions();
 			case UMLPackage.BEHAVIOR__EXTENSION :
 				return getExtensions();
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
 				return isReentrant()
 					? Boolean.TRUE
@@ -786,10 +789,6 @@ public class BehaviorImpl
 				return basicGetContext();
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
-			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -837,11 +836,11 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -940,6 +939,9 @@ public class BehaviorImpl
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll((Collection) newValue);
 				return;
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
+				return;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
 				return;
@@ -954,9 +956,6 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
-				return;
-			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -999,11 +998,11 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.BEHAVIOR__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -1083,6 +1082,9 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
+				return;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
 				return;
@@ -1094,9 +1096,6 @@ public class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				return;
-			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1117,7 +1116,7 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNER :
 				return isSetOwner();
 			case UMLPackage.BEHAVIOR__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.BEHAVIOR__NAME :
 				return isSetName();
@@ -1128,20 +1127,20 @@ public class BehaviorImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.BEHAVIOR__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.BEHAVIOR__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.BEHAVIOR__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.BEHAVIOR__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.BEHAVIOR__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.BEHAVIOR__NAME_EXPRESSION) != null;
 			case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.BEHAVIOR__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.BEHAVIOR__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.BEHAVIOR__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.BEHAVIOR__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.BEHAVIOR__MEMBER :
 				return isSetMembers();
@@ -1155,50 +1154,50 @@ public class BehaviorImpl
 				return isSetRedefinedElements();
 			case UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.BEHAVIOR__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.BEHAVIOR__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.BEHAVIOR__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.BEHAVIOR__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.BEHAVIOR__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.BEHAVIOR__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.BEHAVIOR__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.BEHAVIOR__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.BEHAVIOR__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.BEHAVIOR__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.BEHAVIOR__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.BEHAVIOR__GENERAL :
 				return isSetGenerals();
 			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.BEHAVIOR__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.BEHAVIOR__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.BEHAVIOR__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.BEHAVIOR__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.BEHAVIOR__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.BEHAVIOR__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.BEHAVIOR__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.BEHAVIOR__REPRESENTATION :
 				return eVirtualGet(UMLPackage.BEHAVIOR__REPRESENTATION) != null;
 			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.BEHAVIOR__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.BEHAVIOR__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.BEHAVIOR__OWNED_SIGNATURE) != null;
@@ -1209,54 +1208,54 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__ROLE :
 				return isSetRoles();
 			case UMLPackage.BEHAVIOR__OWNED_CONNECTOR :
-				List ownedConnector = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_CONNECTOR);
+				EList ownedConnector = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_BEHAVIOR :
-				List ownedBehavior = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_BEHAVIOR);
+				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UMLPackage.BEHAVIOR__CLASSIFIER_BEHAVIOR :
 				return eVirtualGet(UMLPackage.BEHAVIOR__CLASSIFIER_BEHAVIOR) != null;
 			case UMLPackage.BEHAVIOR__INTERFACE_REALIZATION :
-				List interfaceRealization = (List) eVirtualGet(UMLPackage.BEHAVIOR__INTERFACE_REALIZATION);
+				EList interfaceRealization = (EList) eVirtualGet(UMLPackage.BEHAVIOR__INTERFACE_REALIZATION);
 				return interfaceRealization != null
 					&& !interfaceRealization.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_TRIGGER :
-				List ownedTrigger = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_TRIGGER);
+				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
-				List ownedOperation = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_OPERATION);
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
-				List nestedClassifier = (List) eVirtualGet(UMLPackage.BEHAVIOR__NESTED_CLASSIFIER);
+				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.BEHAVIOR__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UMLPackage.BEHAVIOR__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
-				List ownedReception = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_RECEPTION);
+				EList ownedReception = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.BEHAVIOR__EXTENSION :
 				return !getExtensions().isEmpty();
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				return eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION) != null;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR :
-				List redefinedBehavior = (List) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
+				EList redefinedBehavior = (EList) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null
 					&& !redefinedBehavior.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
-				List ownedParameter = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER);
+				EList ownedParameter = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.BEHAVIOR__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
-				List ownedParameterSet = (List) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
+				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
-			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				return eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION) != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

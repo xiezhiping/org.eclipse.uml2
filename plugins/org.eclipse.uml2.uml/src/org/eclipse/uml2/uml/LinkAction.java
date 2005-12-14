@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkAction.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: LinkAction.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -56,7 +57,7 @@ public interface LinkAction
 	 * @model type="org.eclipse.uml2.uml.LinkEndData" containment="true" resolveProxies="false" lower="2" ordered="false"
 	 * @generated
 	 */
-	List getEndData();
+	EList getEndData();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.LinkEndData} and appends it to the '<em><b>End Data</b></em>' containment reference list.
@@ -92,7 +93,7 @@ public interface LinkAction
 	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
-	List getInputValues();
+	EList getInputValues();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and appends it to the '<em><b>Input Value</b></em>' containment reference list.

@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -107,8 +106,8 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.ELEMENT_IMPORT__TARGET);
+	public EList getTargets() {
+		EList target = (EList) eVirtualGet(UMLPackage.ELEMENT_IMPORT__TARGET);
 		if (target == null) {
 			eVirtualSet(UMLPackage.ELEMENT_IMPORT__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
@@ -123,8 +122,8 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.ELEMENT_IMPORT__SOURCE);
+	public EList getSources() {
+		EList source = (EList) eVirtualGet(UMLPackage.ELEMENT_IMPORT__SOURCE);
 		if (source == null) {
 			eVirtualSet(UMLPackage.ELEMENT_IMPORT__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
@@ -515,7 +514,7 @@ public class ElementImportImpl
 			case UMLPackage.ELEMENT_IMPORT__OWNER :
 				return isSetOwner();
 			case UMLPackage.ELEMENT_IMPORT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ELEMENT_IMPORT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ELEMENT_IMPORT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ELEMENT_IMPORT__RELATED_ELEMENT :
 				return isSetRelatedElements();

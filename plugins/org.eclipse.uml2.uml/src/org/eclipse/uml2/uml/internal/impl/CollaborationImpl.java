@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.11 2005/12/12 16:58:37 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.12 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -99,8 +98,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRoles() {
-		List role = (List) eVirtualGet(UMLPackage.COLLABORATION__ROLE);
+	public EList getRoles() {
+		EList role = (EList) eVirtualGet(UMLPackage.COLLABORATION__ROLE);
 		if (role == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__ROLE,
 				role = new DerivedUnionEObjectEList(ConnectableElement.class,
@@ -131,8 +130,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -152,8 +151,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getAttributes() {
-		List attribute = (List) eVirtualGet(UMLPackage.COLLABORATION__ATTRIBUTE);
+	public EList getAttributes() {
+		EList attribute = (EList) eVirtualGet(UMLPackage.COLLABORATION__ATTRIBUTE);
 		if (attribute == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__ATTRIBUTE,
 				attribute = new DerivedUnionEObjectEList(Property.class, this,
@@ -168,8 +167,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getMembers() {
-		List member = (List) eVirtualGet(UMLPackage.COLLABORATION__MEMBER);
+	public EList getMembers() {
+		EList member = (EList) eVirtualGet(UMLPackage.COLLABORATION__MEMBER);
 		if (member == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__MEMBER,
 				member = new DerivedUnionEObjectEList(NamedElement.class, this,
@@ -188,8 +187,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getFeatures() {
-		List feature = (List) eVirtualGet(UMLPackage.COLLABORATION__FEATURE);
+	public EList getFeatures() {
+		EList feature = (EList) eVirtualGet(UMLPackage.COLLABORATION__FEATURE);
 		if (feature == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__FEATURE,
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
@@ -205,8 +204,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedAttributes() {
-		List ownedAttribute = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_ATTRIBUTE);
+	public EList getOwnedAttributes() {
+		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__OWNED_ATTRIBUTE,
 				ownedAttribute = new EObjectContainmentEList(Property.class,
@@ -258,8 +257,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public List getParts() {
-		List part = (List) eVirtualGet(UMLPackage.COLLABORATION__PART);
+	public EList getParts() {
+		EList part = (EList) eVirtualGet(UMLPackage.COLLABORATION__PART);
 		if (part == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__PART,
 				part = new StructuredClassifierImpl.PartEList(Property.class,
@@ -289,8 +288,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedConnectors() {
-		List ownedConnector = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_CONNECTOR);
+	public EList getOwnedConnectors() {
+		EList ownedConnector = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_CONNECTOR);
 		if (ownedConnector == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__OWNED_CONNECTOR,
 				ownedConnector = new EObjectContainmentEList(Connector.class,
@@ -330,8 +329,8 @@ public class CollaborationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getCollaborationRoles() {
-		List collaborationRole = (List) eVirtualGet(UMLPackage.COLLABORATION__COLLABORATION_ROLE);
+	public EList getCollaborationRoles() {
+		EList collaborationRole = (EList) eVirtualGet(UMLPackage.COLLABORATION__COLLABORATION_ROLE);
 		if (collaborationRole == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__COLLABORATION_ROLE,
 				collaborationRole = new EObjectResolvingEList(
@@ -396,11 +395,11 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.COLLABORATION__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
@@ -496,14 +495,14 @@ public class CollaborationImpl
 				return getRedefinedElements();
 			case UMLPackage.COLLABORATION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.COLLABORATION__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -607,11 +606,11 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.COLLABORATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -732,11 +731,11 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.COLLABORATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -820,7 +819,7 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.COLLABORATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COLLABORATION__NAME :
 				return isSetName();
@@ -831,20 +830,20 @@ public class CollaborationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.COLLABORATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.COLLABORATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.COLLABORATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.COLLABORATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.COLLABORATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.COLLABORATION__NAME_EXPRESSION) != null;
 			case UMLPackage.COLLABORATION__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.COLLABORATION__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.COLLABORATION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.COLLABORATION__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.COLLABORATION__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.COLLABORATION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.COLLABORATION__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.COLLABORATION__MEMBER :
 				return isSetMembers();
@@ -858,77 +857,77 @@ public class CollaborationImpl
 				return isSetRedefinedElements();
 			case UMLPackage.COLLABORATION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.COLLABORATION__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.COLLABORATION__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.COLLABORATION__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.COLLABORATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.COLLABORATION__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.COLLABORATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.COLLABORATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.COLLABORATION__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.COLLABORATION__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.COLLABORATION__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.COLLABORATION__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.COLLABORATION__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.COLLABORATION__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.COLLABORATION__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.COLLABORATION__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.COLLABORATION__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.COLLABORATION__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.COLLABORATION__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.COLLABORATION__GENERAL :
 				return !getGenerals().isEmpty();
 			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.COLLABORATION__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.COLLABORATION__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.COLLABORATION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.COLLABORATION__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.COLLABORATION__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.COLLABORATION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.COLLABORATION__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.COLLABORATION__REPRESENTATION :
 				return eVirtualGet(UMLPackage.COLLABORATION__REPRESENTATION) != null;
 			case UMLPackage.COLLABORATION__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.COLLABORATION__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.COLLABORATION__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.COLLABORATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.COLLABORATION__OWNED_BEHAVIOR :
-				List ownedBehavior = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_BEHAVIOR);
+				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UMLPackage.COLLABORATION__CLASSIFIER_BEHAVIOR :
 				return eVirtualGet(UMLPackage.COLLABORATION__CLASSIFIER_BEHAVIOR) != null;
 			case UMLPackage.COLLABORATION__INTERFACE_REALIZATION :
-				List interfaceRealization = (List) eVirtualGet(UMLPackage.COLLABORATION__INTERFACE_REALIZATION);
+				EList interfaceRealization = (EList) eVirtualGet(UMLPackage.COLLABORATION__INTERFACE_REALIZATION);
 				return interfaceRealization != null
 					&& !interfaceRealization.isEmpty();
 			case UMLPackage.COLLABORATION__OWNED_TRIGGER :
-				List ownedTrigger = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_TRIGGER);
+				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UMLPackage.COLLABORATION__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_ATTRIBUTE);
+				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UMLPackage.COLLABORATION__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.COLLABORATION__ROLE :
 				return isSetRoles();
 			case UMLPackage.COLLABORATION__OWNED_CONNECTOR :
-				List ownedConnector = (List) eVirtualGet(UMLPackage.COLLABORATION__OWNED_CONNECTOR);
+				EList ownedConnector = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.COLLABORATION__COLLABORATION_ROLE :
-				List collaborationRole = (List) eVirtualGet(UMLPackage.COLLABORATION__COLLABORATION_ROLE);
+				EList collaborationRole = (EList) eVirtualGet(UMLPackage.COLLABORATION__COLLABORATION_ROLE);
 				return collaborationRole != null
 					&& !collaborationRole.isEmpty();
 		}

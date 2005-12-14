@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Dependency.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: Dependency.java,v 1.2 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,7 +51,7 @@ public interface Dependency
 	 * @model type="org.eclipse.uml2.uml.NamedElement" required="true" ordered="false"
 	 * @generated
 	 */
-	List getSuppliers();
+	EList getSuppliers();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Supplier</b></em>' reference list.
@@ -79,7 +79,7 @@ public interface Dependency
 	 * @model type="org.eclipse.uml2.uml.NamedElement" opposite="clientDependency" required="true" ordered="false"
 	 * @generated
 	 */
-	List getClients();
+	EList getClients();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Client</b></em>' reference list.

@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.12 2005/12/12 16:58:36 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.13 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -98,8 +97,8 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.STATE_MACHINE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -126,8 +125,8 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -145,8 +144,8 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRegions() {
-		List region = (List) eVirtualGet(UMLPackage.STATE_MACHINE__REGION);
+	public EList getRegions() {
+		EList region = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__REGION);
 		if (region == null) {
 			eVirtualSet(UMLPackage.STATE_MACHINE__REGION,
 				region = new EObjectContainmentWithInverseEList(Region.class,
@@ -187,8 +186,8 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSubmachineStates() {
-		List submachineState = (List) eVirtualGet(UMLPackage.STATE_MACHINE__SUBMACHINE_STATE);
+	public EList getSubmachineStates() {
+		EList submachineState = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__SUBMACHINE_STATE);
 		if (submachineState == null) {
 			eVirtualSet(UMLPackage.STATE_MACHINE__SUBMACHINE_STATE,
 				submachineState = new EObjectWithInverseResolvingEList(
@@ -219,8 +218,8 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getConnectionPoints() {
-		List connectionPoint = (List) eVirtualGet(UMLPackage.STATE_MACHINE__CONNECTION_POINT);
+	public EList getConnectionPoints() {
+		EList connectionPoint = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__CONNECTION_POINT);
 		if (connectionPoint == null) {
 			eVirtualSet(UMLPackage.STATE_MACHINE__CONNECTION_POINT,
 				connectionPoint = new EObjectContainmentWithInverseEList(
@@ -263,8 +262,8 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getExtendedStateMachines() {
-		List extendedStateMachine = (List) eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
+	public EList getExtendedStateMachines() {
+		EList extendedStateMachine = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
 		if (extendedStateMachine == null) {
 			eVirtualSet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE,
 				extendedStateMachine = new EObjectResolvingEList(
@@ -392,6 +391,11 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -401,11 +405,6 @@ public class StateMachineImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
@@ -493,11 +492,11 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
@@ -547,14 +546,14 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
 				return ((InternalEList) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.STATE_MACHINE__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__SPECIFICATION :
-				return basicSetSpecification(null, msgs);
 			case UMLPackage.STATE_MACHINE__REGION :
 				return ((InternalEList) getRegions()).basicRemove(otherEnd,
 					msgs);
@@ -619,14 +618,14 @@ public class StateMachineImpl
 				return getRedefinedElements();
 			case UMLPackage.STATE_MACHINE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.STATE_MACHINE__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -697,6 +696,10 @@ public class StateMachineImpl
 				return getOwnedReceptions();
 			case UMLPackage.STATE_MACHINE__EXTENSION :
 				return getExtensions();
+			case UMLPackage.STATE_MACHINE__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
 				return isReentrant()
 					? Boolean.TRUE
@@ -711,10 +714,6 @@ public class StateMachineImpl
 				return basicGetContext();
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
-			case UMLPackage.STATE_MACHINE__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.STATE_MACHINE__REGION :
 				return getRegions();
 			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
@@ -770,11 +769,11 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -873,6 +872,9 @@ public class StateMachineImpl
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll((Collection) newValue);
 				return;
+			case UMLPackage.STATE_MACHINE__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
+				return;
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
 				return;
@@ -887,9 +889,6 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
-				return;
-			case UMLPackage.STATE_MACHINE__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__REGION :
 				getRegions().clear();
@@ -948,11 +947,11 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.STATE_MACHINE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -1032,6 +1031,9 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
+			case UMLPackage.STATE_MACHINE__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
+				return;
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
 				return;
@@ -1043,9 +1045,6 @@ public class StateMachineImpl
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				return;
-			case UMLPackage.STATE_MACHINE__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.STATE_MACHINE__REGION :
 				getRegions().clear();
@@ -1078,7 +1077,7 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNER :
 				return isSetOwner();
 			case UMLPackage.STATE_MACHINE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STATE_MACHINE__NAME :
 				return isSetName();
@@ -1089,20 +1088,20 @@ public class StateMachineImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STATE_MACHINE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.STATE_MACHINE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.STATE_MACHINE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.STATE_MACHINE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.STATE_MACHINE__NAME_EXPRESSION) != null;
 			case UMLPackage.STATE_MACHINE__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.STATE_MACHINE__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.STATE_MACHINE__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.STATE_MACHINE__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.STATE_MACHINE__MEMBER :
 				return isSetMembers();
@@ -1116,50 +1115,50 @@ public class StateMachineImpl
 				return isSetRedefinedElements();
 			case UMLPackage.STATE_MACHINE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.STATE_MACHINE__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.STATE_MACHINE__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.STATE_MACHINE__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.STATE_MACHINE__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.STATE_MACHINE__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.STATE_MACHINE__GENERAL :
 				return isSetGenerals();
 			case UMLPackage.STATE_MACHINE__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.STATE_MACHINE__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.STATE_MACHINE__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.STATE_MACHINE__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.STATE_MACHINE__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.STATE_MACHINE__REPRESENTATION :
 				return eVirtualGet(UMLPackage.STATE_MACHINE__REPRESENTATION) != null;
 			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.STATE_MACHINE__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_SIGNATURE) != null;
@@ -1170,65 +1169,65 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__ROLE :
 				return isSetRoles();
 			case UMLPackage.STATE_MACHINE__OWNED_CONNECTOR :
-				List ownedConnector = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_CONNECTOR);
+				EList ownedConnector = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
-				List ownedBehavior = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR);
+				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UMLPackage.STATE_MACHINE__CLASSIFIER_BEHAVIOR :
 				return eVirtualGet(UMLPackage.STATE_MACHINE__CLASSIFIER_BEHAVIOR) != null;
 			case UMLPackage.STATE_MACHINE__INTERFACE_REALIZATION :
-				List interfaceRealization = (List) eVirtualGet(UMLPackage.STATE_MACHINE__INTERFACE_REALIZATION);
+				EList interfaceRealization = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__INTERFACE_REALIZATION);
 				return interfaceRealization != null
 					&& !interfaceRealization.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_TRIGGER :
-				List ownedTrigger = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_TRIGGER);
+				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_OPERATION :
-				List ownedOperation = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_OPERATION);
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER :
-				List nestedClassifier = (List) eVirtualGet(UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER);
+				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UMLPackage.STATE_MACHINE__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
-				List ownedReception = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_RECEPTION);
+				EList ownedReception = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.STATE_MACHINE__EXTENSION :
 				return !getExtensions().isEmpty();
+			case UMLPackage.STATE_MACHINE__SPECIFICATION :
+				return eVirtualGet(UMLPackage.STATE_MACHINE__SPECIFICATION) != null;
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
-				List redefinedBehavior = (List) eVirtualGet(UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR);
+				EList redefinedBehavior = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null
 					&& !redefinedBehavior.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
-				List ownedParameter = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_PARAMETER);
+				EList ownedParameter = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.STATE_MACHINE__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
-				List ownedParameterSet = (List) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET);
+				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
-			case UMLPackage.STATE_MACHINE__SPECIFICATION :
-				return eVirtualGet(UMLPackage.STATE_MACHINE__SPECIFICATION) != null;
 			case UMLPackage.STATE_MACHINE__REGION :
-				List region = (List) eVirtualGet(UMLPackage.STATE_MACHINE__REGION);
+				EList region = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__REGION);
 				return region != null && !region.isEmpty();
 			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
-				List submachineState = (List) eVirtualGet(UMLPackage.STATE_MACHINE__SUBMACHINE_STATE);
+				EList submachineState = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__SUBMACHINE_STATE);
 				return submachineState != null && !submachineState.isEmpty();
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
-				List connectionPoint = (List) eVirtualGet(UMLPackage.STATE_MACHINE__CONNECTION_POINT);
+				EList connectionPoint = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__CONNECTION_POINT);
 				return connectionPoint != null && !connectionPoint.isEmpty();
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
-				List extendedStateMachine = (List) eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
+				EList extendedStateMachine = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
 				return extendedStateMachine != null
 					&& !extendedStateMachine.isEmpty();
 		}

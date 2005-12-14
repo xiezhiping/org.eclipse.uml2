@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.12 2005/12/12 16:58:35 khussey Exp $
+ * $Id: RegionImpl.java,v 1.13 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,8 +122,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.REGION__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.REGION__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.REGION__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -154,7 +154,7 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public List getRedefinitionContexts() {
+	public EList getRedefinitionContexts() {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
@@ -244,8 +244,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.REGION__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.REGION__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.REGION__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -262,8 +262,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSubvertices() {
-		List subvertex = (List) eVirtualGet(UMLPackage.REGION__SUBVERTEX);
+	public EList getSubvertices() {
+		EList subvertex = (EList) eVirtualGet(UMLPackage.REGION__SUBVERTEX);
 		if (subvertex == null) {
 			eVirtualSet(UMLPackage.REGION__SUBVERTEX,
 				subvertex = new EObjectContainmentWithInverseEList(
@@ -305,8 +305,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTransitions() {
-		List transition = (List) eVirtualGet(UMLPackage.REGION__TRANSITION);
+	public EList getTransitions() {
+		EList transition = (EList) eVirtualGet(UMLPackage.REGION__TRANSITION);
 		if (transition == null) {
 			eVirtualSet(UMLPackage.REGION__TRANSITION,
 				transition = new EObjectContainmentWithInverseEList(
@@ -908,7 +908,7 @@ public class RegionImpl
 			case UMLPackage.REGION__OWNER :
 				return isSetOwner();
 			case UMLPackage.REGION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.REGION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.REGION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.REGION__NAME :
 				return isSetName();
@@ -919,20 +919,20 @@ public class RegionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.REGION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.REGION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.REGION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.REGION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.REGION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.REGION__NAME_EXPRESSION) != null;
 			case UMLPackage.REGION__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.REGION__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.REGION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.REGION__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.REGION__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.REGION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.REGION__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.REGION__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.REGION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.REGION__MEMBER :
 				return isSetMembers();
@@ -947,10 +947,10 @@ public class RegionImpl
 			case UMLPackage.REGION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.REGION__SUBVERTEX :
-				List subvertex = (List) eVirtualGet(UMLPackage.REGION__SUBVERTEX);
+				EList subvertex = (EList) eVirtualGet(UMLPackage.REGION__SUBVERTEX);
 				return subvertex != null && !subvertex.isEmpty();
 			case UMLPackage.REGION__TRANSITION :
-				List transition = (List) eVirtualGet(UMLPackage.REGION__TRANSITION);
+				EList transition = (EList) eVirtualGet(UMLPackage.REGION__TRANSITION);
 				return transition != null && !transition.isEmpty();
 			case UMLPackage.REGION__STATE :
 				return getState() != null;

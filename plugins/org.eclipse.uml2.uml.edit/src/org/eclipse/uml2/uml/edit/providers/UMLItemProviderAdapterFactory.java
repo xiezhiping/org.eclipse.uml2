@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.2 2005/12/08 14:52:55 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.3 2005/12/14 22:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -4671,60 +4671,42 @@ public class UMLItemProviderAdapterFactory
 	public void dispose() {
 		if (commentItemProvider != null)
 			commentItemProvider.dispose();
+		if (packageItemProvider != null)
+			packageItemProvider.dispose();
 		if (dependencyItemProvider != null)
 			dependencyItemProvider.dispose();
-		if (templateParameterItemProvider != null)
-			templateParameterItemProvider.dispose();
-		if (templateSignatureItemProvider != null)
-			templateSignatureItemProvider.dispose();
-		if (templateBindingItemProvider != null)
-			templateBindingItemProvider.dispose();
-		if (templateParameterSubstitutionItemProvider != null)
-			templateParameterSubstitutionItemProvider.dispose();
 		if (elementImportItemProvider != null)
 			elementImportItemProvider.dispose();
 		if (packageImportItemProvider != null)
 			packageImportItemProvider.dispose();
-		if (packageItemProvider != null)
-			packageItemProvider.dispose();
-		if (packageMergeItemProvider != null)
-			packageMergeItemProvider.dispose();
-		if (profileApplicationItemProvider != null)
-			profileApplicationItemProvider.dispose();
-		if (profileItemProvider != null)
-			profileItemProvider.dispose();
-		if (stereotypeItemProvider != null)
-			stereotypeItemProvider.dispose();
-		if (classItemProvider != null)
-			classItemProvider.dispose();
+		if (constraintItemProvider != null)
+			constraintItemProvider.dispose();
+		if (associationItemProvider != null)
+			associationItemProvider.dispose();
+		if (templateBindingItemProvider != null)
+			templateBindingItemProvider.dispose();
+		if (templateSignatureItemProvider != null)
+			templateSignatureItemProvider.dispose();
+		if (templateParameterItemProvider != null)
+			templateParameterItemProvider.dispose();
+		if (templateParameterSubstitutionItemProvider != null)
+			templateParameterSubstitutionItemProvider.dispose();
 		if (generalizationItemProvider != null)
 			generalizationItemProvider.dispose();
 		if (generalizationSetItemProvider != null)
 			generalizationSetItemProvider.dispose();
 		if (useCaseItemProvider != null)
 			useCaseItemProvider.dispose();
-		if (includeItemProvider != null)
-			includeItemProvider.dispose();
-		if (extendItemProvider != null)
-			extendItemProvider.dispose();
-		if (constraintItemProvider != null)
-			constraintItemProvider.dispose();
-		if (extensionPointItemProvider != null)
-			extensionPointItemProvider.dispose();
-		if (substitutionItemProvider != null)
-			substitutionItemProvider.dispose();
-		if (realizationItemProvider != null)
-			realizationItemProvider.dispose();
-		if (abstractionItemProvider != null)
-			abstractionItemProvider.dispose();
-		if (opaqueExpressionItemProvider != null)
-			opaqueExpressionItemProvider.dispose();
-		if (parameterItemProvider != null)
-			parameterItemProvider.dispose();
-		if (connectorEndItemProvider != null)
-			connectorEndItemProvider.dispose();
+		if (behaviorItemProvider != null)
+			behaviorItemProvider.dispose();
+		if (classItemProvider != null)
+			classItemProvider.dispose();
 		if (propertyItemProvider != null)
 			propertyItemProvider.dispose();
+		if (connectorEndItemProvider != null)
+			connectorEndItemProvider.dispose();
+		if (connectableElementTemplateParameterItemProvider != null)
+			connectableElementTemplateParameterItemProvider.dispose();
 		if (deploymentItemProvider != null)
 			deploymentItemProvider.dispose();
 		if (deploymentSpecificationItemProvider != null)
@@ -4733,12 +4715,16 @@ public class UMLItemProviderAdapterFactory
 			artifactItemProvider.dispose();
 		if (manifestationItemProvider != null)
 			manifestationItemProvider.dispose();
+		if (abstractionItemProvider != null)
+			abstractionItemProvider.dispose();
+		if (opaqueExpressionItemProvider != null)
+			opaqueExpressionItemProvider.dispose();
+		if (parameterItemProvider != null)
+			parameterItemProvider.dispose();
 		if (operationItemProvider != null)
 			operationItemProvider.dispose();
 		if (behavioralFeatureItemProvider != null)
 			behavioralFeatureItemProvider.dispose();
-		if (behaviorItemProvider != null)
-			behaviorItemProvider.dispose();
 		if (parameterSetItemProvider != null)
 			parameterSetItemProvider.dispose();
 		if (dataTypeItemProvider != null)
@@ -4771,30 +4757,56 @@ public class UMLItemProviderAdapterFactory
 			protocolConformanceItemProvider.dispose();
 		if (operationTemplateParameterItemProvider != null)
 			operationTemplateParameterItemProvider.dispose();
-		if (associationItemProvider != null)
-			associationItemProvider.dispose();
-		if (connectableElementTemplateParameterItemProvider != null)
-			connectableElementTemplateParameterItemProvider.dispose();
-		if (collaborationUseItemProvider != null)
-			collaborationUseItemProvider.dispose();
-		if (collaborationItemProvider != null)
-			collaborationItemProvider.dispose();
 		if (connectorItemProvider != null)
 			connectorItemProvider.dispose();
-		if (redefinableTemplateSignatureItemProvider != null)
-			redefinableTemplateSignatureItemProvider.dispose();
-		if (classifierTemplateParameterItemProvider != null)
-			classifierTemplateParameterItemProvider.dispose();
-		if (interfaceRealizationItemProvider != null)
-			interfaceRealizationItemProvider.dispose();
 		if (extensionItemProvider != null)
 			extensionItemProvider.dispose();
 		if (extensionEndItemProvider != null)
 			extensionEndItemProvider.dispose();
+		if (stereotypeItemProvider != null)
+			stereotypeItemProvider.dispose();
+		if (profileItemProvider != null)
+			profileItemProvider.dispose();
+		if (modelItemProvider != null)
+			modelItemProvider.dispose();
+		if (interfaceRealizationItemProvider != null)
+			interfaceRealizationItemProvider.dispose();
+		if (realizationItemProvider != null)
+			realizationItemProvider.dispose();
+		if (includeItemProvider != null)
+			includeItemProvider.dispose();
+		if (extendItemProvider != null)
+			extendItemProvider.dispose();
+		if (extensionPointItemProvider != null)
+			extensionPointItemProvider.dispose();
+		if (substitutionItemProvider != null)
+			substitutionItemProvider.dispose();
+		if (collaborationUseItemProvider != null)
+			collaborationUseItemProvider.dispose();
+		if (collaborationItemProvider != null)
+			collaborationItemProvider.dispose();
+		if (redefinableTemplateSignatureItemProvider != null)
+			redefinableTemplateSignatureItemProvider.dispose();
+		if (classifierTemplateParameterItemProvider != null)
+			classifierTemplateParameterItemProvider.dispose();
 		if (stringExpressionItemProvider != null)
 			stringExpressionItemProvider.dispose();
 		if (expressionItemProvider != null)
 			expressionItemProvider.dispose();
+		if (packageMergeItemProvider != null)
+			packageMergeItemProvider.dispose();
+		if (profileApplicationItemProvider != null)
+			profileApplicationItemProvider.dispose();
+		if (enumerationItemProvider != null)
+			enumerationItemProvider.dispose();
+		if (enumerationLiteralItemProvider != null)
+			enumerationLiteralItemProvider.dispose();
+		if (instanceSpecificationItemProvider != null)
+			instanceSpecificationItemProvider.dispose();
+		if (slotItemProvider != null)
+			slotItemProvider.dispose();
+		if (primitiveTypeItemProvider != null)
+			primitiveTypeItemProvider.dispose();
 		if (literalIntegerItemProvider != null)
 			literalIntegerItemProvider.dispose();
 		if (literalStringItemProvider != null)
@@ -4803,16 +4815,6 @@ public class UMLItemProviderAdapterFactory
 			literalBooleanItemProvider.dispose();
 		if (literalNullItemProvider != null)
 			literalNullItemProvider.dispose();
-		if (slotItemProvider != null)
-			slotItemProvider.dispose();
-		if (instanceSpecificationItemProvider != null)
-			instanceSpecificationItemProvider.dispose();
-		if (enumerationItemProvider != null)
-			enumerationItemProvider.dispose();
-		if (enumerationLiteralItemProvider != null)
-			enumerationLiteralItemProvider.dispose();
-		if (primitiveTypeItemProvider != null)
-			primitiveTypeItemProvider.dispose();
 		if (instanceValueItemProvider != null)
 			instanceValueItemProvider.dispose();
 		if (literalUnlimitedNaturalItemProvider != null)
@@ -4975,8 +4977,6 @@ public class UMLItemProviderAdapterFactory
 			informationItemItemProvider.dispose();
 		if (informationFlowItemProvider != null)
 			informationFlowItemProvider.dispose();
-		if (modelItemProvider != null)
-			modelItemProvider.dispose();
 		if (readVariableActionItemProvider != null)
 			readVariableActionItemProvider.dispose();
 		if (clearVariableActionItemProvider != null)

@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Operation.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -230,7 +231,7 @@ public interface Operation
 	 * @model type="org.eclipse.uml2.uml.Constraint" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getPreconditions();
+	EList getPreconditions();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
@@ -256,7 +257,7 @@ public interface Operation
 	 * @model type="org.eclipse.uml2.uml.Constraint" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getPostconditions();
+	EList getPostconditions();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
@@ -282,7 +283,7 @@ public interface Operation
 	 * @model type="org.eclipse.uml2.uml.Operation" ordered="false"
 	 * @generated
 	 */
-	List getRedefinedOperations();
+	EList getRedefinedOperations();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Operation</b></em>' reference list.
@@ -468,6 +469,6 @@ public interface Operation
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List returnResult();
+	EList returnResult();
 
 } // Operation

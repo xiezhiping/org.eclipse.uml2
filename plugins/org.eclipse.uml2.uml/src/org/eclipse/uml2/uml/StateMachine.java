@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.4 2005/12/12 16:58:34 khussey Exp $
+ * $Id: StateMachine.java,v 1.5 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -70,7 +71,7 @@ public interface StateMachine
 	 * @model type="org.eclipse.uml2.uml.Region" opposite="stateMachine" containment="true" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
-	List getRegions();
+	EList getRegions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Region} and appends it to the '<em><b>Region</b></em>' containment reference list.
@@ -108,7 +109,7 @@ public interface StateMachine
 	 * @model type="org.eclipse.uml2.uml.State" opposite="submachine" ordered="false"
 	 * @generated
 	 */
-	List getSubmachineStates();
+	EList getSubmachineStates();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>' from the '<em><b>Submachine State</b></em>' reference list.
@@ -136,7 +137,7 @@ public interface StateMachine
 	 * @model type="org.eclipse.uml2.uml.Pseudostate" opposite="stateMachine" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getConnectionPoints();
+	EList getConnectionPoints();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Pseudostate} and appends it to the '<em><b>Connection Point</b></em>' containment reference list.
@@ -172,7 +173,7 @@ public interface StateMachine
 	 * @model type="org.eclipse.uml2.uml.StateMachine" ordered="false"
 	 * @generated
 	 */
-	List getExtendedStateMachines();
+	EList getExtendedStateMachines();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.StateMachine} with the specified '<em><b>Name</b></em>' from the '<em><b>Extended State Machine</b></em>' reference list.

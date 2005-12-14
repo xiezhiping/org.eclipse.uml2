@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -84,8 +82,8 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.STATE_INVARIANT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.STATE_INVARIANT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -186,8 +184,8 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getCovereds() {
-		List covered = (List) eVirtualGet(UMLPackage.STATE_INVARIANT__COVERED);
+	public EList getCovereds() {
+		EList covered = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__COVERED);
 		if (covered == null) {
 			eVirtualSet(UMLPackage.STATE_INVARIANT__COVERED,
 				covered = new EObjectResolvingEList(Lifeline.class, this,
@@ -217,7 +215,7 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public boolean isSetCovereds() {
-		List covered = (List) eVirtualGet(UMLPackage.STATE_INVARIANT__COVERED);
+		EList covered = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__COVERED);
 		return covered != null && !covered.isEmpty();
 	}
 
@@ -411,7 +409,7 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__OWNER :
 				return isSetOwner();
 			case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.STATE_INVARIANT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STATE_INVARIANT__NAME :
 				return isSetName();
@@ -422,7 +420,7 @@ public class StateInvariantImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.STATE_INVARIANT__NAMESPACE :
 				return isSetNamespace();
@@ -431,7 +429,7 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__COVERED :
 				return isSetCovereds();
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
-				List generalOrdering = (List) eVirtualGet(UMLPackage.STATE_INVARIANT__GENERAL_ORDERING);
+				EList generalOrdering = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
 				return getEnclosingInteraction() != null;

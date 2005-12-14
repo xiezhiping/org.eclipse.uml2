@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -553,7 +552,7 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__OWNER :
 				return isSetOwner();
 			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.PSEUDOSTATE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.PSEUDOSTATE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PSEUDOSTATE__NAME :
 				return isSetName();
@@ -564,17 +563,17 @@ public class PseudostateImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.PSEUDOSTATE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.PSEUDOSTATE__NAME_EXPRESSION) != null;
 			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.PSEUDOSTATE__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.PSEUDOSTATE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.PSEUDOSTATE__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.PSEUDOSTATE__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.PSEUDOSTATE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return getContainer() != null;

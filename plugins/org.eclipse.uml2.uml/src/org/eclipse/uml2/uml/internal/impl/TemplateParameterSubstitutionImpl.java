@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -88,8 +87,8 @@ public class TemplateParameterSubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(
 				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT,
@@ -109,8 +108,8 @@ public class TemplateParameterSubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getActuals() {
-		List actual = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
+	public EList getActuals() {
+		EList actual = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
 		if (actual == null) {
 			eVirtualSet(
 				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL,
@@ -177,8 +176,8 @@ public class TemplateParameterSubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedActuals() {
-		List ownedActual = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
+	public EList getOwnedActuals() {
+		EList ownedActual = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
 		if (ownedActual == null) {
 			eVirtualSet(
 				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
@@ -427,15 +426,15 @@ public class TemplateParameterSubstitutionImpl
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL :
 				return eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL) != null;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
-				List actual = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
+				EList actual = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
 				return actual != null && !actual.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
-				List ownedActual = (List) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
+				EList ownedActual = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
 				return ownedActual != null && !ownedActual.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
 				return getTemplateBinding() != null;

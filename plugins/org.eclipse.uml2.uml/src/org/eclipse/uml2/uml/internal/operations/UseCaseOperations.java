@@ -8,18 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseOperations.java,v 1.3 2005/12/12 16:58:38 khussey Exp $
+ * $Id: UseCaseOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.UseCase;
@@ -193,16 +194,16 @@ public final class UseCaseOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List allIncludedUseCases(UseCase useCase) {
-		List includes = useCase.getIncludes();
-		List allIncludedUseCases = new UniqueEList(includes);
+	public static EList allIncludedUseCases(UseCase useCase) {
+		EList includes = useCase.getIncludes();
+		EList allIncludedUseCases = new UniqueEList(includes);
 
 		for (Iterator i = includes.iterator(); i.hasNext();) {
 			allIncludedUseCases.addAll(((UseCase) i.next())
 				.allIncludedUseCases());
 		}
 
-		return Collections.unmodifiableList(allIncludedUseCases);
+		return ECollections.unmodifiableEList(allIncludedUseCases);
 	}
 
 } // UseCaseOperations

@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -296,6 +294,12 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
+			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
+					msgs);
 			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -304,12 +308,6 @@ public abstract class PackageableElementImpl
 							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
@@ -334,12 +332,12 @@ public abstract class PackageableElementImpl
 					otherEnd, msgs);
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 					msgs);
+			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -391,14 +389,14 @@ public abstract class PackageableElementImpl
 				return basicGetNamespace();
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -431,11 +429,11 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -466,11 +464,11 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -491,7 +489,7 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME :
 				return isSetName();
@@ -502,16 +500,16 @@ public abstract class PackageableElementImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__NAME_EXPRESSION) != null;
-			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER) != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -524,10 +522,10 @@ public abstract class PackageableElementImpl
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (derivedFeatureID) {
-				case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
-					return UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER;
 				case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 					return UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER;
+				case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
+					return UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER;
 				default :
 					return -1;
 			}
@@ -543,10 +541,10 @@ public abstract class PackageableElementImpl
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (baseFeatureID) {
-				case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
-					return UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER;
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 					return UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER;
+				case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
+					return UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER;
 				default :
 					return -1;
 			}

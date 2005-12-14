@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
+ * $Id: DurationImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -120,8 +118,8 @@ public class DurationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getEvents() {
-		List event = (List) eVirtualGet(UMLPackage.DURATION__EVENT);
+	public EList getEvents() {
+		EList event = (EList) eVirtualGet(UMLPackage.DURATION__EVENT);
 		if (event == null) {
 			eVirtualSet(UMLPackage.DURATION__EVENT,
 				event = new EObjectResolvingEList(NamedElement.class, this,
@@ -176,14 +174,14 @@ public class DurationImpl
 				return basicGetNamespace();
 			case UMLPackage.DURATION__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.DURATION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.DURATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.DURATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.DURATION__TYPE :
 				if (resolve)
 					return getType();
@@ -226,11 +224,11 @@ public class DurationImpl
 			case UMLPackage.DURATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.DURATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.DURATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.DURATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.DURATION__TYPE :
 				setType((Type) newValue);
@@ -271,11 +269,11 @@ public class DurationImpl
 			case UMLPackage.DURATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.DURATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.DURATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.DURATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.DURATION__TYPE :
 				setType((Type) null);
@@ -305,7 +303,7 @@ public class DurationImpl
 			case UMLPackage.DURATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.DURATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.DURATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.DURATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DURATION__NAME :
 				return isSetName();
@@ -316,22 +314,22 @@ public class DurationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DURATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.DURATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.DURATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.DURATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DURATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.DURATION__NAME_EXPRESSION) != null;
-			case UMLPackage.DURATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.DURATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DURATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.DURATION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.DURATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DURATION__TYPE :
 				return eVirtualGet(UMLPackage.DURATION__TYPE) != null;
 			case UMLPackage.DURATION__FIRST_TIME :
 				return ((eFlags & FIRST_TIME_EFLAG) != 0) != FIRST_TIME_EDEFAULT;
 			case UMLPackage.DURATION__EVENT :
-				List event = (List) eVirtualGet(UMLPackage.DURATION__EVENT);
+				EList event = (EList) eVirtualGet(UMLPackage.DURATION__EVENT);
 				return event != null && !event.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

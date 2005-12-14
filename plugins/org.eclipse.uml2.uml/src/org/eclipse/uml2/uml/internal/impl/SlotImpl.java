@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: SlotImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -47,9 +45,9 @@ import org.eclipse.uml2.uml.ValueSpecification;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SlotImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.SlotImpl#getOwningInstance <em>Owning Instance</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SlotImpl#getDefiningFeature <em>Defining Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SlotImpl#getValues <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.SlotImpl#getOwningInstance <em>Owning Instance</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,8 +80,8 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.SLOT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.SLOT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(
 				UMLPackage.SLOT__OWNED_ELEMENT,
@@ -187,8 +185,8 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getValues() {
-		List value = (List) eVirtualGet(UMLPackage.SLOT__VALUE);
+	public EList getValues() {
+		EList value = (EList) eVirtualGet(UMLPackage.SLOT__VALUE);
 		if (value == null) {
 			eVirtualSet(UMLPackage.SLOT__VALUE,
 				value = new EObjectContainmentEList(ValueSpecification.class,
@@ -258,12 +256,12 @@ public class SlotImpl
 			case UMLPackage.SLOT__OWNED_COMMENT :
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.SLOT__OWNING_INSTANCE :
-				return eBasicSetContainer(null,
-					UMLPackage.SLOT__OWNING_INSTANCE, msgs);
 			case UMLPackage.SLOT__VALUE :
 				return ((InternalEList) getValues())
 					.basicRemove(otherEnd, msgs);
+			case UMLPackage.SLOT__OWNING_INSTANCE :
+				return eBasicSetContainer(null,
+					UMLPackage.SLOT__OWNING_INSTANCE, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -301,14 +299,14 @@ public class SlotImpl
 				return basicGetOwner();
 			case UMLPackage.SLOT__OWNED_COMMENT :
 				return getOwnedComments();
-			case UMLPackage.SLOT__OWNING_INSTANCE :
-				return getOwningInstance();
 			case UMLPackage.SLOT__DEFINING_FEATURE :
 				if (resolve)
 					return getDefiningFeature();
 				return basicGetDefiningFeature();
 			case UMLPackage.SLOT__VALUE :
 				return getValues();
+			case UMLPackage.SLOT__OWNING_INSTANCE :
+				return getOwningInstance();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -328,15 +326,15 @@ public class SlotImpl
 				getOwnedComments().clear();
 				getOwnedComments().addAll((Collection) newValue);
 				return;
-			case UMLPackage.SLOT__OWNING_INSTANCE :
-				setOwningInstance((InstanceSpecification) newValue);
-				return;
 			case UMLPackage.SLOT__DEFINING_FEATURE :
 				setDefiningFeature((StructuralFeature) newValue);
 				return;
 			case UMLPackage.SLOT__VALUE :
 				getValues().clear();
 				getValues().addAll((Collection) newValue);
+				return;
+			case UMLPackage.SLOT__OWNING_INSTANCE :
+				setOwningInstance((InstanceSpecification) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -355,14 +353,14 @@ public class SlotImpl
 			case UMLPackage.SLOT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.SLOT__OWNING_INSTANCE :
-				setOwningInstance((InstanceSpecification) null);
-				return;
 			case UMLPackage.SLOT__DEFINING_FEATURE :
 				setDefiningFeature((StructuralFeature) null);
 				return;
 			case UMLPackage.SLOT__VALUE :
 				getValues().clear();
+				return;
+			case UMLPackage.SLOT__OWNING_INSTANCE :
+				setOwningInstance((InstanceSpecification) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -383,15 +381,15 @@ public class SlotImpl
 			case UMLPackage.SLOT__OWNER :
 				return isSetOwner();
 			case UMLPackage.SLOT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.SLOT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.SLOT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
-			case UMLPackage.SLOT__OWNING_INSTANCE :
-				return getOwningInstance() != null;
 			case UMLPackage.SLOT__DEFINING_FEATURE :
 				return eVirtualGet(UMLPackage.SLOT__DEFINING_FEATURE) != null;
 			case UMLPackage.SLOT__VALUE :
-				List value = (List) eVirtualGet(UMLPackage.SLOT__VALUE);
+				EList value = (EList) eVirtualGet(UMLPackage.SLOT__VALUE);
 				return value != null && !value.isEmpty();
+			case UMLPackage.SLOT__OWNING_INSTANCE :
+				return getOwningInstance() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

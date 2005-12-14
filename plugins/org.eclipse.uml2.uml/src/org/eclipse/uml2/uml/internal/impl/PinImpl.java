@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
+ * $Id: PinImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -381,7 +380,7 @@ public class PinImpl
 			case UMLPackage.PIN__OWNER :
 				return isSetOwner();
 			case UMLPackage.PIN__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.PIN__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.PIN__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PIN__NAME :
 				return isSetName();
@@ -392,7 +391,7 @@ public class PinImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PIN__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.PIN__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.PIN__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.PIN__NAMESPACE :
 				return isSetNamespace();
@@ -405,26 +404,26 @@ public class PinImpl
 			case UMLPackage.PIN__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.PIN__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.PIN__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.PIN__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.PIN__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.PIN__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.PIN__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.PIN__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.PIN__ACTIVITY :
 				return getActivity() != null;
 			case UMLPackage.PIN__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.PIN__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.PIN__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.PIN__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.PIN__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.PIN__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.PIN__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.PIN__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.PIN__TYPE :
 				return eVirtualGet(UMLPackage.PIN__TYPE) != null;
@@ -435,7 +434,7 @@ public class PinImpl
 			case UMLPackage.PIN__UPPER_BOUND :
 				return eVirtualGet(UMLPackage.PIN__UPPER_BOUND) != null;
 			case UMLPackage.PIN__IN_STATE :
-				List inState = (List) eVirtualGet(UMLPackage.PIN__IN_STATE);
+				EList inState = (EList) eVirtualGet(UMLPackage.PIN__IN_STATE);
 				return inState != null && !inState.isEmpty();
 			case UMLPackage.PIN__SELECTION :
 				return eVirtualGet(UMLPackage.PIN__SELECTION) != null;

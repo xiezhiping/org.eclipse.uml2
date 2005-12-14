@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -58,7 +59,7 @@ public interface StructuredClassifier
 	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOwnedAttributes();
+	EList getOwnedAttributes();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -105,7 +106,7 @@ public interface StructuredClassifier
 	 * @model type="org.eclipse.uml2.uml.Property" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getParts();
+	EList getParts();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Part</b></em>' reference list.
@@ -131,7 +132,7 @@ public interface StructuredClassifier
 	 * @model type="org.eclipse.uml2.uml.ConnectableElement" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getRoles();
+	EList getRoles();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Role</b></em>' reference list.
@@ -157,7 +158,7 @@ public interface StructuredClassifier
 	 * @model type="org.eclipse.uml2.uml.Connector" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getOwnedConnectors();
+	EList getOwnedConnectors();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Connector} and appends it to the '<em><b>Owned Connector</b></em>' containment reference list.

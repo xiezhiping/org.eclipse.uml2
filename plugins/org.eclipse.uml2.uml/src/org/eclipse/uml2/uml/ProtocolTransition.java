@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.3 2005/12/07 14:01:41 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -111,7 +112,7 @@ public interface ProtocolTransition
 	 * @model type="org.eclipse.uml2.uml.Operation" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getReferreds();
+	EList getReferreds();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Referred</b></em>' reference list.
@@ -125,29 +126,50 @@ public interface ProtocolTransition
 	Operation getReferred(String name);
 
 	/**
-	 * Returns the value of the '<em><b>Pre Condition</b></em>' reference.
+	 * Returns the value of the '<em><b>Pre Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Pre Condition</em>' reference.
+	 * @return the value of the '<em>Pre Condition</em>' containment reference.
 	 * @see #setPreCondition(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProtocolTransition_PreCondition()
-	 * @model resolveProxies="false" ordered="false"
+	 * @model containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	Constraint getPreCondition();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProtocolTransition#getPreCondition <em>Pre Condition</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProtocolTransition#getPreCondition <em>Pre Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pre Condition</em>' reference.
+	 * @param value the new value of the '<em>Pre Condition</em>' containment reference.
 	 * @see #getPreCondition()
 	 * @generated
 	 */
 	void setPreCondition(Constraint value);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and sets the '<em><b>Pre Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+	 * @see #getPreCondition()
+	 * @generated
+	 */
+	Constraint createPreCondition(EClass eClass);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and sets the '<em><b>Pre Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+	 * @see #getPreCondition()
+	 * @generated
+	 */
+	Constraint createPreCondition();
 
 	/**
 	 * <!-- begin-user-doc -->

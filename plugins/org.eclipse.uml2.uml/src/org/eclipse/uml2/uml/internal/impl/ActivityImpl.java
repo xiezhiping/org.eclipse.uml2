@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.11 2005/12/12 16:58:36 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.12 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -155,8 +154,8 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -184,8 +183,8 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -211,8 +210,8 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getGroups() {
-		List group = (List) eVirtualGet(UMLPackage.ACTIVITY__GROUP);
+	public EList getGroups() {
+		EList group = (EList) eVirtualGet(UMLPackage.ACTIVITY__GROUP);
 		if (group == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__GROUP,
 				group = new SupersetEObjectContainmentWithInverseEList(
@@ -240,8 +239,8 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getNodes() {
-		List node = (List) eVirtualGet(UMLPackage.ACTIVITY__NODE);
+	public EList getNodes() {
+		EList node = (EList) eVirtualGet(UMLPackage.ACTIVITY__NODE);
 		if (node == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__NODE,
 				node = new EObjectContainmentWithInverseEList(
@@ -366,8 +365,8 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public List getStructuredNodes() {
-		List structuredNode = (List) eVirtualGet(UMLPackage.ACTIVITY__STRUCTURED_NODE);
+	public EList getStructuredNodes() {
+		EList structuredNode = (EList) eVirtualGet(UMLPackage.ACTIVITY__STRUCTURED_NODE);
 		if (structuredNode == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__STRUCTURED_NODE,
 				structuredNode = new DerivedEObjectEList(
@@ -399,8 +398,8 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getVariables() {
-		List variable = (List) eVirtualGet(UMLPackage.ACTIVITY__VARIABLE);
+	public EList getVariables() {
+		EList variable = (EList) eVirtualGet(UMLPackage.ACTIVITY__VARIABLE);
 		if (variable == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__VARIABLE,
 				variable = new EObjectContainmentWithInverseEList(
@@ -441,8 +440,8 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getEdges() {
-		List edge = (List) eVirtualGet(UMLPackage.ACTIVITY__EDGE);
+	public EList getEdges() {
+		EList edge = (EList) eVirtualGet(UMLPackage.ACTIVITY__EDGE);
 		if (edge == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__EDGE,
 				edge = new EObjectContainmentWithInverseEList(
@@ -545,6 +544,11 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.ACTIVITY__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -554,11 +558,6 @@ public class ActivityImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
@@ -644,11 +643,11 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
@@ -698,14 +697,14 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				return ((InternalEList) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ACTIVITY__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__SPECIFICATION :
-				return basicSetSpecification(null, msgs);
 			case UMLPackage.ACTIVITY__GROUP :
 				return ((InternalEList) getGroups())
 					.basicRemove(otherEnd, msgs);
@@ -771,14 +770,14 @@ public class ActivityImpl
 				return getRedefinedElements();
 			case UMLPackage.ACTIVITY__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.ACTIVITY__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -849,6 +848,10 @@ public class ActivityImpl
 				return getOwnedReceptions();
 			case UMLPackage.ACTIVITY__EXTENSION :
 				return getExtensions();
+			case UMLPackage.ACTIVITY__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
 				return isReentrant()
 					? Boolean.TRUE
@@ -863,10 +866,6 @@ public class ActivityImpl
 				return basicGetContext();
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
-			case UMLPackage.ACTIVITY__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				return isReadOnly()
 					? Boolean.TRUE
@@ -934,11 +933,11 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.ACTIVITY__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -1037,6 +1036,9 @@ public class ActivityImpl
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll((Collection) newValue);
 				return;
+			case UMLPackage.ACTIVITY__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
+				return;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
 				return;
@@ -1051,9 +1053,6 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ACTIVITY__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				setIsReadOnly(((Boolean) newValue).booleanValue());
@@ -1121,11 +1120,11 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.ACTIVITY__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -1205,6 +1204,9 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
+			case UMLPackage.ACTIVITY__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
+				return;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
 				return;
@@ -1216,9 +1218,6 @@ public class ActivityImpl
 				return;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				return;
-			case UMLPackage.ACTIVITY__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
@@ -1260,7 +1259,7 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY__NAME :
 				return isSetName();
@@ -1271,20 +1270,20 @@ public class ActivityImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACTIVITY__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.ACTIVITY__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.ACTIVITY__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.ACTIVITY__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ACTIVITY__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.ACTIVITY__NAME_EXPRESSION) != null;
 			case UMLPackage.ACTIVITY__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.ACTIVITY__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.ACTIVITY__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.ACTIVITY__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.ACTIVITY__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.ACTIVITY__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.ACTIVITY__MEMBER :
 				return isSetMembers();
@@ -1298,50 +1297,50 @@ public class ActivityImpl
 				return isSetRedefinedElements();
 			case UMLPackage.ACTIVITY__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.ACTIVITY__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.ACTIVITY__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.ACTIVITY__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.ACTIVITY__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.ACTIVITY__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.ACTIVITY__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.ACTIVITY__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.ACTIVITY__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.ACTIVITY__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.ACTIVITY__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.ACTIVITY__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.ACTIVITY__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.ACTIVITY__GENERAL :
 				return isSetGenerals();
 			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.ACTIVITY__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.ACTIVITY__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.ACTIVITY__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ACTIVITY__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.ACTIVITY__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.ACTIVITY__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.ACTIVITY__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.ACTIVITY__REPRESENTATION :
 				return eVirtualGet(UMLPackage.ACTIVITY__REPRESENTATION) != null;
 			case UMLPackage.ACTIVITY__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.ACTIVITY__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.ACTIVITY__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.ACTIVITY__OWNED_SIGNATURE) != null;
@@ -1352,73 +1351,73 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__ROLE :
 				return isSetRoles();
 			case UMLPackage.ACTIVITY__OWNED_CONNECTOR :
-				List ownedConnector = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_CONNECTOR);
+				EList ownedConnector = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
-				List ownedBehavior = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_BEHAVIOR);
+				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UMLPackage.ACTIVITY__CLASSIFIER_BEHAVIOR :
 				return eVirtualGet(UMLPackage.ACTIVITY__CLASSIFIER_BEHAVIOR) != null;
 			case UMLPackage.ACTIVITY__INTERFACE_REALIZATION :
-				List interfaceRealization = (List) eVirtualGet(UMLPackage.ACTIVITY__INTERFACE_REALIZATION);
+				EList interfaceRealization = (EList) eVirtualGet(UMLPackage.ACTIVITY__INTERFACE_REALIZATION);
 				return interfaceRealization != null
 					&& !interfaceRealization.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_TRIGGER :
-				List ownedTrigger = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_TRIGGER);
+				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_OPERATION :
-				List ownedOperation = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_OPERATION);
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
-				List nestedClassifier = (List) eVirtualGet(UMLPackage.ACTIVITY__NESTED_CLASSIFIER);
+				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.ACTIVITY__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UMLPackage.ACTIVITY__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.ACTIVITY__IS_ACTIVE :
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
-				List ownedReception = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_RECEPTION);
+				EList ownedReception = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.ACTIVITY__EXTENSION :
 				return !getExtensions().isEmpty();
+			case UMLPackage.ACTIVITY__SPECIFICATION :
+				return eVirtualGet(UMLPackage.ACTIVITY__SPECIFICATION) != null;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
-				List redefinedBehavior = (List) eVirtualGet(UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR);
+				EList redefinedBehavior = (EList) eVirtualGet(UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null
 					&& !redefinedBehavior.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
-				List ownedParameter = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_PARAMETER);
+				EList ownedParameter = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.ACTIVITY__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
-				List ownedParameterSet = (List) eVirtualGet(UMLPackage.ACTIVITY__OWNED_PARAMETER_SET);
+				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
-			case UMLPackage.ACTIVITY__SPECIFICATION :
-				return eVirtualGet(UMLPackage.ACTIVITY__SPECIFICATION) != null;
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 			case UMLPackage.ACTIVITY__PARTITION :
 				return eVirtualGet(UMLPackage.ACTIVITY__PARTITION) != null;
 			case UMLPackage.ACTIVITY__GROUP :
-				List group = (List) eVirtualGet(UMLPackage.ACTIVITY__GROUP);
+				EList group = (EList) eVirtualGet(UMLPackage.ACTIVITY__GROUP);
 				return group != null && !group.isEmpty();
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 				return ((eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0) != IS_SINGLE_EXECUTION_EDEFAULT;
 			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
 				return !getStructuredNodes().isEmpty();
 			case UMLPackage.ACTIVITY__VARIABLE :
-				List variable = (List) eVirtualGet(UMLPackage.ACTIVITY__VARIABLE);
+				EList variable = (EList) eVirtualGet(UMLPackage.ACTIVITY__VARIABLE);
 				return variable != null && !variable.isEmpty();
 			case UMLPackage.ACTIVITY__NODE :
-				List node = (List) eVirtualGet(UMLPackage.ACTIVITY__NODE);
+				EList node = (EList) eVirtualGet(UMLPackage.ACTIVITY__NODE);
 				return node != null && !node.isEmpty();
 			case UMLPackage.ACTIVITY__EDGE :
-				List edge = (List) eVirtualGet(UMLPackage.ACTIVITY__EDGE);
+				EList edge = (EList) eVirtualGet(UMLPackage.ACTIVITY__EDGE);
 				return edge != null && !edge.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

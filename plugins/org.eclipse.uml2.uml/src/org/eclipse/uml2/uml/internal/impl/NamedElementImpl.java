@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.12 2005/12/12 19:26:24 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.13 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -124,8 +123,8 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -255,8 +254,8 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getClientDependencies() {
-		List clientDependency = (List) eVirtualGet(UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
+	public EList getClientDependencies() {
+		EList clientDependency = (EList) eVirtualGet(UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
 			eVirtualSet(
 				UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY,
@@ -393,14 +392,41 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List allNamespaces() {
+	public Dependency createDependency(NamedElement supplier) {
+		return NamedElementOperations.createDependency(this, supplier);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLabel() {
+		return NamedElementOperations.getLabel(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLabel(boolean isLocalized) {
+		return NamedElementOperations.getLabel(this, isLocalized);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList allNamespaces() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this,
-				UMLPackage.Literals.NAMED_ELEMENT.getEOperations().get(4));
+			EList result = (EList) cache.get(this,
+				UMLPackage.Literals.NAMED_ELEMENT.getEOperations().get(7));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.NAMED_ELEMENT
-					.getEOperations().get(4), result = NamedElementOperations
+					.getEOperations().get(7), result = NamedElementOperations
 					.allNamespaces(this));
 			}
 			return result;
@@ -578,7 +604,7 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.NAMED_ELEMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.NAMED_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.NAMED_ELEMENT__NAME :
 				return isSetName();
@@ -589,7 +615,7 @@ public abstract class NamedElementImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.NAMED_ELEMENT__NAMESPACE :
 				return isSetNamespace();

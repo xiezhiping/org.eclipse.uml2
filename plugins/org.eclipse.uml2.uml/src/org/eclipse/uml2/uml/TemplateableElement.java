@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.2 2005/12/12 16:58:34 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.3 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -55,7 +55,7 @@ public interface TemplateableElement
 	 * @model type="org.eclipse.uml2.uml.TemplateBinding" opposite="boundElement" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getTemplateBindings();
+	EList getTemplateBindings();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.TemplateBinding} and appends it to the '<em><b>Template Binding</b></em>' containment reference list.
@@ -126,7 +126,7 @@ public interface TemplateableElement
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List parameterableElements();
+	EList parameterableElements();
 
 	/**
 	 * <!-- begin-user-doc -->

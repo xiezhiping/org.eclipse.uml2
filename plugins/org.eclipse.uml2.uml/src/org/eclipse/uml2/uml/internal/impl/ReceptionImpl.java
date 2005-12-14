@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -359,7 +358,7 @@ public class ReceptionImpl
 			case UMLPackage.RECEPTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.RECEPTION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.RECEPTION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.RECEPTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.RECEPTION__NAME :
 				return isSetName();
@@ -370,20 +369,20 @@ public class ReceptionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.RECEPTION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.RECEPTION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.RECEPTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.RECEPTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.RECEPTION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.RECEPTION__NAME_EXPRESSION) != null;
 			case UMLPackage.RECEPTION__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.RECEPTION__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.RECEPTION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.RECEPTION__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.RECEPTION__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.RECEPTION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.RECEPTION__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.RECEPTION__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.RECEPTION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.RECEPTION__MEMBER :
 				return isSetMembers();
@@ -402,21 +401,21 @@ public class ReceptionImpl
 			case UMLPackage.RECEPTION__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
 			case UMLPackage.RECEPTION__OWNED_PARAMETER :
-				List ownedParameter = (List) eVirtualGet(UMLPackage.RECEPTION__OWNED_PARAMETER);
+				EList ownedParameter = (EList) eVirtualGet(UMLPackage.RECEPTION__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.RECEPTION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.RECEPTION__METHOD :
-				List method = (List) eVirtualGet(UMLPackage.RECEPTION__METHOD);
+				EList method = (EList) eVirtualGet(UMLPackage.RECEPTION__METHOD);
 				return method != null && !method.isEmpty();
 			case UMLPackage.RECEPTION__CONCURRENCY :
 				return eVirtualGet(UMLPackage.RECEPTION__CONCURRENCY,
 					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
 			case UMLPackage.RECEPTION__RAISED_EXCEPTION :
-				List raisedException = (List) eVirtualGet(UMLPackage.RECEPTION__RAISED_EXCEPTION);
+				EList raisedException = (EList) eVirtualGet(UMLPackage.RECEPTION__RAISED_EXCEPTION);
 				return raisedException != null && !raisedException.isEmpty();
 			case UMLPackage.RECEPTION__OWNED_PARAMETER_SET :
-				List ownedParameterSet = (List) eVirtualGet(UMLPackage.RECEPTION__OWNED_PARAMETER_SET);
+				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.RECEPTION__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
 			case UMLPackage.RECEPTION__SIGNAL :

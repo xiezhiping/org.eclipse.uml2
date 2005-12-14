@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.10 2005/12/12 16:58:37 khussey Exp $
+ * $Id: SignalImpl.java,v 1.11 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -82,8 +80,8 @@ public class SignalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getAttributes() {
-		List attribute = (List) eVirtualGet(UMLPackage.SIGNAL__ATTRIBUTE);
+	public EList getAttributes() {
+		EList attribute = (EList) eVirtualGet(UMLPackage.SIGNAL__ATTRIBUTE);
 		if (attribute == null) {
 			eVirtualSet(UMLPackage.SIGNAL__ATTRIBUTE,
 				attribute = new DerivedUnionEObjectEList(Property.class, this,
@@ -98,8 +96,8 @@ public class SignalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.SIGNAL__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.SIGNAL__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.SIGNAL__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -116,8 +114,8 @@ public class SignalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedAttributes() {
-		List ownedAttribute = (List) eVirtualGet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE);
+	public EList getOwnedAttributes() {
+		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE,
 				ownedAttribute = new EObjectContainmentEList(Property.class,
@@ -192,11 +190,11 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.SIGNAL__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
@@ -280,14 +278,14 @@ public class SignalImpl
 				return getRedefinedElements();
 			case UMLPackage.SIGNAL__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.SIGNAL__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -375,11 +373,11 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.SIGNAL__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -477,11 +475,11 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.SIGNAL__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -547,7 +545,7 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__OWNER :
 				return isSetOwner();
 			case UMLPackage.SIGNAL__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.SIGNAL__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.SIGNAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.SIGNAL__NAME :
 				return isSetName();
@@ -558,20 +556,20 @@ public class SignalImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.SIGNAL__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.SIGNAL__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.SIGNAL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.SIGNAL__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.SIGNAL__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.SIGNAL__NAME_EXPRESSION) != null;
 			case UMLPackage.SIGNAL__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.SIGNAL__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.SIGNAL__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.SIGNAL__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.SIGNAL__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.SIGNAL__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.SIGNAL__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.SIGNAL__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.SIGNAL__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.SIGNAL__MEMBER :
 				return isSetMembers();
@@ -585,55 +583,55 @@ public class SignalImpl
 				return isSetRedefinedElements();
 			case UMLPackage.SIGNAL__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.SIGNAL__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.SIGNAL__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.SIGNAL__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.SIGNAL__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.SIGNAL__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.SIGNAL__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.SIGNAL__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.SIGNAL__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.SIGNAL__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.SIGNAL__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.SIGNAL__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.SIGNAL__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.SIGNAL__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.SIGNAL__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.SIGNAL__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.SIGNAL__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.SIGNAL__GENERAL :
 				return !getGenerals().isEmpty();
 			case UMLPackage.SIGNAL__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.SIGNAL__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.SIGNAL__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.SIGNAL__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.SIGNAL__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.SIGNAL__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.SIGNAL__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.SIGNAL__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.SIGNAL__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.SIGNAL__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.SIGNAL__REPRESENTATION :
 				return eVirtualGet(UMLPackage.SIGNAL__REPRESENTATION) != null;
 			case UMLPackage.SIGNAL__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.SIGNAL__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.SIGNAL__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.SIGNAL__OWNED_SIGNATURE) != null;
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE);
+				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

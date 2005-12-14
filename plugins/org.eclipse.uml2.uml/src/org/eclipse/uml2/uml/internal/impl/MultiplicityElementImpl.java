@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.11 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -145,8 +144,8 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -675,7 +674,7 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;

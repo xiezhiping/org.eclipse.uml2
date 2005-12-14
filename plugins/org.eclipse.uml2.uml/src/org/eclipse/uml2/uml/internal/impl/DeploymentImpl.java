@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -92,8 +90,8 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.DEPLOYMENT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -110,8 +108,8 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSuppliers() {
-		List supplier = (List) eVirtualGet(UMLPackage.DEPLOYMENT__SUPPLIER);
+	public EList getSuppliers() {
+		EList supplier = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__SUPPLIER);
 		if (supplier == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT__SUPPLIER,
 				supplier = new SupersetEObjectResolvingEList(
@@ -126,8 +124,8 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getClients() {
-		List client = (List) eVirtualGet(UMLPackage.DEPLOYMENT__CLIENT);
+	public EList getClients() {
+		EList client = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CLIENT);
 		if (client == null) {
 			eVirtualSet(
 				UMLPackage.DEPLOYMENT__CLIENT,
@@ -144,8 +142,8 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getDeployedArtifacts() {
-		List deployedArtifact = (List) eVirtualGet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT);
+	public EList getDeployedArtifacts() {
+		EList deployedArtifact = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT);
 		if (deployedArtifact == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT,
 				deployedArtifact = new SubsetEObjectResolvingEList(
@@ -176,8 +174,8 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getConfigurations() {
-		List configuration = (List) eVirtualGet(UMLPackage.DEPLOYMENT__CONFIGURATION);
+	public EList getConfigurations() {
+		EList configuration = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CONFIGURATION);
 		if (configuration == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT__CONFIGURATION,
 				configuration = new EObjectContainmentWithInverseEList(
@@ -283,6 +281,11 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -292,11 +295,6 @@ public class DeploymentImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.DEPLOYMENT__CLIENT :
 				return ((InternalEList) getClients()).basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
@@ -330,11 +328,11 @@ public class DeploymentImpl
 					otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT__CLIENT :
 				return ((InternalEList) getClients()).basicRemove(otherEnd,
 					msgs);
@@ -399,14 +397,14 @@ public class DeploymentImpl
 				return basicGetNamespace();
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.DEPLOYMENT__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.DEPLOYMENT__SOURCE :
@@ -457,11 +455,11 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__SUPPLIER :
 				getSuppliers().clear();
@@ -511,11 +509,11 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.DEPLOYMENT__SUPPLIER :
 				getSuppliers().clear();
@@ -551,7 +549,7 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.DEPLOYMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPLOYMENT__NAME :
 				return isSetName();
@@ -562,16 +560,16 @@ public class DeploymentImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.DEPLOYMENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.DEPLOYMENT__NAME_EXPRESSION) != null;
-			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DEPLOYMENT__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.DEPLOYMENT__SOURCE :
@@ -579,16 +577,16 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__TARGET :
 				return isSetTargets();
 			case UMLPackage.DEPLOYMENT__SUPPLIER :
-				List supplier = (List) eVirtualGet(UMLPackage.DEPLOYMENT__SUPPLIER);
+				EList supplier = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 			case UMLPackage.DEPLOYMENT__CLIENT :
-				List client = (List) eVirtualGet(UMLPackage.DEPLOYMENT__CLIENT);
+				EList client = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CLIENT);
 				return client != null && !client.isEmpty();
 			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
-				List deployedArtifact = (List) eVirtualGet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT);
+				EList deployedArtifact = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT);
 				return deployedArtifact != null && !deployedArtifact.isEmpty();
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
-				List configuration = (List) eVirtualGet(UMLPackage.DEPLOYMENT__CONFIGURATION);
+				EList configuration = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CONFIGURATION);
 				return configuration != null && !configuration.isEmpty();
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				return basicGetLocation() != null;

@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.15 2005/12/12 18:37:47 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.16 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +19,9 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
@@ -526,8 +528,8 @@ public final class PropertyOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List subsettingContext(Property property) {
-		List subsettingContext = new UniqueEList();
+	public static EList subsettingContext(Property property) {
+		EList subsettingContext = new UniqueEList();
 
 		Association association = property.getAssociation();
 
@@ -554,7 +556,7 @@ public final class PropertyOperations
 			}
 		}
 
-		return Collections.unmodifiableList(subsettingContext);
+		return ECollections.unmodifiableEList(subsettingContext);
 	}
 
 	/**
@@ -654,7 +656,7 @@ public final class PropertyOperations
 
 				public Object caseOpaqueExpression(
 						OpaqueExpression opaqueExpression) {
-					List bodies = opaqueExpression.getBodies();
+					EList bodies = opaqueExpression.getBodies();
 
 					if (bodies.isEmpty()) {
 						bodies.add(newDefault);
@@ -714,7 +716,7 @@ public final class PropertyOperations
 				}
 			}
 
-			List memberEnds = association.getMemberEnds();
+			EList memberEnds = association.getMemberEnds();
 
 			switch (memberEnds.size()) {
 				case 0 :

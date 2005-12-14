@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -251,6 +249,13 @@ public abstract class ParameterableElementImpl
 			case UMLPackage.PARAMETERABLE_ELEMENT__EANNOTATIONS :
 				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(
+					otherEnd,
+					UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
+					msgs);
 			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -259,13 +264,6 @@ public abstract class ParameterableElementImpl
 							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
@@ -285,13 +283,13 @@ public abstract class ParameterableElementImpl
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT :
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(
 					null,
 					UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 					msgs);
+			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -329,14 +327,14 @@ public abstract class ParameterableElementImpl
 				return basicGetOwner();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
-			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -356,11 +354,11 @@ public abstract class ParameterableElementImpl
 				getOwnedComments().clear();
 				getOwnedComments().addAll((Collection) newValue);
 				return;
-			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -379,11 +377,11 @@ public abstract class ParameterableElementImpl
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -404,12 +402,12 @@ public abstract class ParameterableElementImpl
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
-			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

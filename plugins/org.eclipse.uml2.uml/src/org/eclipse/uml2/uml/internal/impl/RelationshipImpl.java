@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.6 2005/12/06 23:21:50 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.7 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
-
-import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -63,8 +61,8 @@ public abstract class RelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRelatedElements() {
-		List relatedElement = (List) eVirtualGet(UMLPackage.RELATIONSHIP__RELATED_ELEMENT);
+	public EList getRelatedElements() {
+		EList relatedElement = (EList) eVirtualGet(UMLPackage.RELATIONSHIP__RELATED_ELEMENT);
 		if (relatedElement == null) {
 			eVirtualSet(
 				UMLPackage.RELATIONSHIP__RELATED_ELEMENT,
@@ -112,7 +110,7 @@ public abstract class RelationshipImpl
 			case UMLPackage.RELATIONSHIP__OWNER :
 				return isSetOwner();
 			case UMLPackage.RELATIONSHIP__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.RELATIONSHIP__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.RELATIONSHIP__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :
 				return isSetRelatedElements();

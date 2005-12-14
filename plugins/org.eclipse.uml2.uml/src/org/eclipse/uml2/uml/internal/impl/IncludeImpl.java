@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -83,8 +81,8 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRelatedElements() {
-		List relatedElement = (List) eVirtualGet(UMLPackage.INCLUDE__RELATED_ELEMENT);
+	public EList getRelatedElements() {
+		EList relatedElement = (EList) eVirtualGet(UMLPackage.INCLUDE__RELATED_ELEMENT);
 		if (relatedElement == null) {
 			eVirtualSet(
 				UMLPackage.INCLUDE__RELATED_ELEMENT,
@@ -100,8 +98,8 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.INCLUDE__SOURCE);
+	public EList getSources() {
+		EList source = (EList) eVirtualGet(UMLPackage.INCLUDE__SOURCE);
 		if (source == null) {
 			eVirtualSet(UMLPackage.INCLUDE__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
@@ -116,8 +114,8 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.INCLUDE__TARGET);
+	public EList getTargets() {
+		EList target = (EList) eVirtualGet(UMLPackage.INCLUDE__TARGET);
 		if (target == null) {
 			eVirtualSet(UMLPackage.INCLUDE__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
@@ -410,7 +408,7 @@ public class IncludeImpl
 			case UMLPackage.INCLUDE__OWNER :
 				return isSetOwner();
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.INCLUDE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.INCLUDE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INCLUDE__NAME :
 				return isSetName();
@@ -421,7 +419,7 @@ public class IncludeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.INCLUDE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.INCLUDE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.INCLUDE__NAMESPACE :
 				return isSetNamespace();

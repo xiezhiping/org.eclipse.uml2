@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -78,8 +76,8 @@ public abstract class ExecutableNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -96,8 +94,8 @@ public abstract class ExecutableNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getHandlers() {
-		List handler = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__HANDLER);
+	public EList getHandlers() {
+		EList handler = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__HANDLER);
 		if (handler == null) {
 			eVirtualSet(UMLPackage.EXECUTABLE_NODE__HANDLER,
 				handler = new EObjectContainmentWithInverseEList(
@@ -403,7 +401,7 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__NAME :
 				return isSetName();
@@ -414,7 +412,7 @@ public abstract class ExecutableNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__NAMESPACE :
 				return isSetNamespace();
@@ -427,29 +425,29 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
 				return getActivity() != null;
 			case UMLPackage.EXECUTABLE_NODE__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__HANDLER :
-				List handler = (List) eVirtualGet(UMLPackage.EXECUTABLE_NODE__HANDLER);
+				EList handler = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__HANDLER);
 				return handler != null && !handler.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

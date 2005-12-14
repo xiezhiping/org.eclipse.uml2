@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
+ * $Id: InterfaceRealizationImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -84,8 +82,8 @@ public class InterfaceRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSuppliers() {
-		List supplier = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__SUPPLIER);
+	public EList getSuppliers() {
+		EList supplier = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__SUPPLIER);
 		if (supplier == null) {
 			eVirtualSet(UMLPackage.INTERFACE_REALIZATION__SUPPLIER,
 				supplier = new SupersetEObjectResolvingEList(
@@ -101,8 +99,8 @@ public class InterfaceRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getClients() {
-		List client = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CLIENT);
+	public EList getClients() {
+		EList client = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CLIENT);
 		if (client == null) {
 			eVirtualSet(
 				UMLPackage.INTERFACE_REALIZATION__CLIENT,
@@ -241,6 +239,13 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
+			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(
+					otherEnd,
+					UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER,
+					msgs);
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -249,13 +254,6 @@ public class InterfaceRealizationImpl
 							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER,
 					msgs);
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
 				return ((InternalEList) getClients()).basicAdd(otherEnd, msgs);
@@ -288,13 +286,13 @@ public class InterfaceRealizationImpl
 					otherEnd, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(
 					null,
 					UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER,
 					msgs);
+			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
 				return ((InternalEList) getClients()).basicRemove(otherEnd,
 					msgs);
@@ -359,14 +357,14 @@ public class InterfaceRealizationImpl
 				return basicGetNamespace();
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.INTERFACE_REALIZATION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.INTERFACE_REALIZATION__SOURCE :
@@ -419,11 +417,11 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
 				getSuppliers().clear();
@@ -471,11 +469,11 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
 				getSuppliers().clear();
@@ -511,7 +509,7 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
 				return isSetName();
@@ -522,16 +520,16 @@ public class InterfaceRealizationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION) != null;
-			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INTERFACE_REALIZATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.INTERFACE_REALIZATION__SOURCE :
@@ -539,10 +537,10 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__TARGET :
 				return isSetTargets();
 			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
-				List supplier = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__SUPPLIER);
+				EList supplier = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
-				List client = (List) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CLIENT);
+				EList client = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CLIENT);
 				return client != null && !client.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__MAPPING :
 				return eVirtualGet(UMLPackage.INTERFACE_REALIZATION__MAPPING) != null;

@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.8 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Property.java,v 1.9 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -57,10 +58,10 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.Property#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getRedefinedProperties <em>Redefined Property</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getOwningAssociation <em>Owning Association</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getAssociation <em>Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getSubsettedProperties <em>Subsetted Property</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getAssociation <em>Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getQualifiers <em>Qualifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getAssociationEnd <em>Association End</em>}</li>
  * </ul>
@@ -294,7 +295,7 @@ public interface Property
 	 * @model type="org.eclipse.uml2.uml.Property" ordered="false"
 	 * @generated
 	 */
-	List getRedefinedProperties();
+	EList getRedefinedProperties();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Property</b></em>' reference list.
@@ -436,7 +437,7 @@ public interface Property
 	 * @model type="org.eclipse.uml2.uml.Property" ordered="false"
 	 * @generated
 	 */
-	List getSubsettedProperties();
+	EList getSubsettedProperties();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Subsetted Property</b></em>' reference list.
@@ -464,7 +465,7 @@ public interface Property
 	 * @model type="org.eclipse.uml2.uml.Property" opposite="associationEnd" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getQualifiers();
+	EList getQualifiers();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Property} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
@@ -695,7 +696,7 @@ public interface Property
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List subsettingContext();
+	EList subsettingContext();
 
 	/**
 	 * <!-- begin-user-doc -->

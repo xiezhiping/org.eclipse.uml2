@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpression.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: StringExpression.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,7 +57,7 @@ public interface StringExpression
 	 * @model type="org.eclipse.uml2.uml.StringExpression" opposite="owningExpression" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getSubExpressions();
+	EList getSubExpressions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.StringExpression} and appends it to the '<em><b>Sub Expression</b></em>' containment reference list.

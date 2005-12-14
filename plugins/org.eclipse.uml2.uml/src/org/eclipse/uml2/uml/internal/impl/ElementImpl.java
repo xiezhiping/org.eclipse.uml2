@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.11 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ElementImpl.java,v 1.12 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -27,6 +26,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -42,6 +43,8 @@ import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -121,8 +124,20 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.ELEMENT__OWNED_ELEMENT);
+	public EAnnotation createEAnnotations() {
+		EAnnotation newEAnnotations = EcoreFactory.eINSTANCE
+			.createEAnnotation();
+		getEAnnotations().add(newEAnnotations);
+		return newEAnnotations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.ELEMENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.ELEMENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -137,8 +152,8 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedComments() {
-		List ownedComment = (List) eVirtualGet(UMLPackage.ELEMENT__OWNED_COMMENT);
+	public EList getOwnedComments() {
+		EList ownedComment = (EList) eVirtualGet(UMLPackage.ELEMENT__OWNED_COMMENT);
 		if (ownedComment == null) {
 			eVirtualSet(UMLPackage.ELEMENT__OWNED_COMMENT,
 				ownedComment = new EObjectContainmentEList(Comment.class, this,
@@ -201,14 +216,268 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List allOwnedElements() {
+	public EList getStereotypeApplications() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(eResource(), this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(2));
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(15));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+					.get(15), result = ElementOperations
+					.getStereotypeApplications(this));
+			}
+			return result;
+		}
+		return ElementOperations.getStereotypeApplications(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject getStereotypeApplication(Stereotype stereotype) {
+		return ElementOperations.getStereotypeApplication(this, stereotype);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getAppliedStereotypes() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(17));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+					.get(17), result = ElementOperations
+					.getAppliedStereotypes(this));
+			}
+			return result;
+		}
+		return ElementOperations.getAppliedStereotypes(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stereotype getAppliedStereotype(String qualifiedName) {
+		return ElementOperations.getAppliedStereotype(this, qualifiedName);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getAppliedSubstereotypes(Stereotype stereotype) {
+		return ElementOperations.getAppliedSubstereotypes(this, stereotype);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stereotype getAppliedSubstereotype(Stereotype stereotype,
+			String qualifiedName) {
+		return ElementOperations.getAppliedSubstereotype(this, stereotype,
+			qualifiedName);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getAppliedVersion(Stereotype stereotype) {
+		return ElementOperations.getAppliedVersion(this, stereotype);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean hasValue(Stereotype stereotype, String propertyName) {
+		return ElementOperations.hasValue(this, stereotype, propertyName);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object getValue(Stereotype stereotype, String propertyName) {
+		return ElementOperations.getValue(this, stereotype, propertyName);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValue(Stereotype stereotype, String propertyName,
+			Object newValue) {
+		ElementOperations.setValue(this, stereotype, propertyName, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getKeywords() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UMLPackage.Literals.ELEMENT.getEOperations().get(4));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.ELEMENT
-					.getEOperations().get(2), result = ElementOperations
+					.getEOperations().get(4), result = ElementOperations
+					.getKeywords(this));
+			}
+			return result;
+		}
+		return ElementOperations.getKeywords(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean addKeyword(String keyword) {
+		return ElementOperations.addKeyword(this, keyword);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean removeKeyword(String keyword) {
+		return ElementOperations.removeKeyword(this, keyword);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.eclipse.uml2.uml.Package getNearestPackage() {
+		return ElementOperations.getNearestPackage(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Model getModel() {
+		return ElementOperations.getModel(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isStereotypeRequired(Stereotype stereotype) {
+		return ElementOperations.isStereotypeRequired(this, stereotype);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isStereotypeApplied(Stereotype stereotype) {
+		return ElementOperations.isStereotypeApplied(this, stereotype);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject applyStereotype(Stereotype stereotype) {
+		return ElementOperations.applyStereotype(this, stereotype);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject unapplyStereotype(Stereotype stereotype) {
+		return ElementOperations.unapplyStereotype(this, stereotype);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getApplicableStereotypes() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(13));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+					.get(13), result = ElementOperations
+					.getApplicableStereotypes(this));
+			}
+			return result;
+		}
+		return ElementOperations.getApplicableStereotypes(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stereotype getApplicableStereotype(String qualifiedName) {
+		return ElementOperations.getApplicableStereotype(this, qualifiedName);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean hasKeyword(String keyword) {
+		return ElementOperations.hasKeyword(this, keyword);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void destroy() {
+		ElementOperations.destroy(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList allOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UMLPackage.Literals.ELEMENT.getEOperations().get(25));
+			if (result == null) {
+				cache.put(eResource(), this, UMLPackage.Literals.ELEMENT
+					.getEOperations().get(25), result = ElementOperations
 					.allOwnedElements(this));
 			}
 			return result;
@@ -330,7 +599,7 @@ public abstract class ElementImpl
 			case UMLPackage.ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.ELEMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ELEMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

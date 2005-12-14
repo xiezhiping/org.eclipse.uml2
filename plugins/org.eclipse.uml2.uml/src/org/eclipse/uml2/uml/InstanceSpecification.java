@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -51,8 +52,8 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.InstanceSpecification#getClassifiers <em>Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InstanceSpecification#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InstanceSpecification#getSlots <em>Slot</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InstanceSpecification#getSpecification <em>Specification</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,7 +77,7 @@ public interface InstanceSpecification
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
 	 * @generated
 	 */
-	List getClassifiers();
+	EList getClassifiers();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Classifier</b></em>' reference list.
@@ -140,7 +141,7 @@ public interface InstanceSpecification
 	 * @model type="org.eclipse.uml2.uml.Slot" opposite="owningInstance" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getSlots();
+	EList getSlots();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Slot} and appends it to the '<em><b>Slot</b></em>' containment reference list.

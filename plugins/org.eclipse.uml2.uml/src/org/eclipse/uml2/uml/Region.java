@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.5 2005/12/12 16:58:35 khussey Exp $
+ * $Id: Region.java,v 1.6 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -61,7 +62,7 @@ public interface Region
 	 * @model type="org.eclipse.uml2.uml.Vertex" opposite="container" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getSubvertices();
+	EList getSubvertices();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Vertex} and appends it to the '<em><b>Subvertex</b></em>' containment reference list.
@@ -100,7 +101,7 @@ public interface Region
 	 * @model type="org.eclipse.uml2.uml.Transition" opposite="container" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getTransitions();
+	EList getTransitions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Transition} and appends it to the '<em><b>Transition</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.1 2005/12/07 14:20:27 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -79,8 +79,8 @@ public class OperationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTemplateParameterPropertyDescriptor(object);
 			addOwningTemplateParameterPropertyDescriptor(object);
+			addTemplateParameterPropertyDescriptor(object);
 			addTemplateBindingPropertyDescriptor(object);
 			addOwnedTemplateSignaturePropertyDescriptor(object);
 			addIsQueryPropertyDescriptor(object);
@@ -217,9 +217,7 @@ public class OperationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_isOrdered_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OPERATION__IS_ORDERED, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -238,9 +236,7 @@ public class OperationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_isUnique_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OPERATION__IS_UNIQUE, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -259,9 +255,7 @@ public class OperationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_lower_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OPERATION__LOWER, true,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -280,9 +274,7 @@ public class OperationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_upper_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OPERATION__UPPER, true,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -416,9 +408,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_type_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__TYPE, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+				UMLPackage.Literals.OPERATION__TYPE, true, null, null, null));
 	}
 
 	/**

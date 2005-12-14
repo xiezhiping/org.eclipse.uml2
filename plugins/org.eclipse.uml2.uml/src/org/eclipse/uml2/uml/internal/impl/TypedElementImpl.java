@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypedElementImpl.java,v 1.7 2005/12/12 16:58:35 khussey Exp $
+ * $Id: TypedElementImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -231,7 +229,7 @@ public abstract class TypedElementImpl
 			case UMLPackage.TYPED_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.TYPED_ELEMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.TYPED_ELEMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.TYPED_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TYPED_ELEMENT__NAME :
 				return isSetName();
@@ -242,7 +240,7 @@ public abstract class TypedElementImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TYPED_ELEMENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.TYPED_ELEMENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.TYPED_ELEMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.TYPED_ELEMENT__NAMESPACE :
 				return isSetNamespace();

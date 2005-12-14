@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: BehavioralFeatureOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -66,7 +65,7 @@ public final class BehavioralFeatureOperations
 			BehavioralFeature behavioralFeature, NamedElement n, Namespace ns) {
 
 		if (n instanceof BehavioralFeature) {
-			List namesOfMemberN = ns.getNamesOfMember(n);
+			EList namesOfMemberN = ns.getNamesOfMember(n);
 
 			for (Iterator namesOfMemberBF = ns.getNamesOfMember(
 				behavioralFeature).iterator(); namesOfMemberBF.hasNext();) {

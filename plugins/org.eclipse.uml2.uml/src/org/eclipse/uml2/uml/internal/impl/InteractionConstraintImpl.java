@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.10 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -85,8 +84,8 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -325,13 +324,13 @@ public class InteractionConstraintImpl
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(
 					null,
 					UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER,
 					msgs);
+			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__CONTEXT :
@@ -376,14 +375,14 @@ public class InteractionConstraintImpl
 				return basicGetNamespace();
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT :
 				return getConstrainedElements();
 			case UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION :
@@ -426,11 +425,11 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
@@ -477,11 +476,11 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
@@ -517,7 +516,7 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME :
 				return isSetName();
@@ -528,18 +527,18 @@ public class InteractionConstraintImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.INTERACTION_CONSTRAINT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION) != null;
-			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT :
-				List constrainedElement = (List) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT);
+				EList constrainedElement = (EList) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT);
 				return constrainedElement != null
 					&& !constrainedElement.isEmpty();
 			case UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION :

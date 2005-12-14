@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLAdapterFactory.java,v 1.2 2005/12/08 14:56:25 khussey Exp $
+ * $Id: UMLAdapterFactory.java,v 1.3 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -330,24 +330,12 @@ public class UMLAdapterFactory
 			return createElementAdapter();
 		}
 
-		public Object caseDirectedRelationship(DirectedRelationship object) {
-			return createDirectedRelationshipAdapter();
+		public Object casePackage(org.eclipse.uml2.uml.Package object) {
+			return createPackageAdapter();
 		}
 
-		public Object caseRelationship(Relationship object) {
-			return createRelationshipAdapter();
-		}
-
-		public Object caseLiteralSpecification(LiteralSpecification object) {
-			return createLiteralSpecificationAdapter();
-		}
-
-		public Object caseValueSpecification(ValueSpecification object) {
-			return createValueSpecificationAdapter();
-		}
-
-		public Object caseTypedElement(TypedElement object) {
-			return createTypedElementAdapter();
+		public Object casePackageableElement(PackageableElement object) {
+			return createPackageableElementAdapter();
 		}
 
 		public Object caseNamedElement(NamedElement object) {
@@ -358,33 +346,12 @@ public class UMLAdapterFactory
 			return createDependencyAdapter();
 		}
 
-		public Object casePackageableElement(PackageableElement object) {
-			return createPackageableElementAdapter();
+		public Object caseDirectedRelationship(DirectedRelationship object) {
+			return createDirectedRelationshipAdapter();
 		}
 
-		public Object caseParameterableElement(ParameterableElement object) {
-			return createParameterableElementAdapter();
-		}
-
-		public Object caseTemplateParameter(TemplateParameter object) {
-			return createTemplateParameterAdapter();
-		}
-
-		public Object caseTemplateSignature(TemplateSignature object) {
-			return createTemplateSignatureAdapter();
-		}
-
-		public Object caseTemplateableElement(TemplateableElement object) {
-			return createTemplateableElementAdapter();
-		}
-
-		public Object caseTemplateBinding(TemplateBinding object) {
-			return createTemplateBindingAdapter();
-		}
-
-		public Object caseTemplateParameterSubstitution(
-				TemplateParameterSubstitution object) {
-			return createTemplateParameterSubstitutionAdapter();
+		public Object caseRelationship(Relationship object) {
+			return createRelationshipAdapter();
 		}
 
 		public Object caseNamespace(Namespace object) {
@@ -399,36 +366,24 @@ public class UMLAdapterFactory
 			return createPackageImportAdapter();
 		}
 
-		public Object casePackage(org.eclipse.uml2.uml.Package object) {
-			return createPackageAdapter();
+		public Object caseConstraint(Constraint object) {
+			return createConstraintAdapter();
 		}
 
-		public Object casePackageMerge(PackageMerge object) {
-			return createPackageMergeAdapter();
+		public Object caseValueSpecification(ValueSpecification object) {
+			return createValueSpecificationAdapter();
+		}
+
+		public Object caseTypedElement(TypedElement object) {
+			return createTypedElementAdapter();
 		}
 
 		public Object caseType(Type object) {
 			return createTypeAdapter();
 		}
 
-		public Object caseProfileApplication(ProfileApplication object) {
-			return createProfileApplicationAdapter();
-		}
-
-		public Object caseProfile(Profile object) {
-			return createProfileAdapter();
-		}
-
-		public Object caseStereotype(Stereotype object) {
-			return createStereotypeAdapter();
-		}
-
-		public Object caseClass(org.eclipse.uml2.uml.Class object) {
-			return createClassAdapter();
-		}
-
-		public Object caseBehavioredClassifier(BehavioredClassifier object) {
-			return createBehavioredClassifierAdapter();
+		public Object caseAssociation(Association object) {
+			return createAssociationAdapter();
 		}
 
 		public Object caseClassifier(Classifier object) {
@@ -437,6 +392,31 @@ public class UMLAdapterFactory
 
 		public Object caseRedefinableElement(RedefinableElement object) {
 			return createRedefinableElementAdapter();
+		}
+
+		public Object caseTemplateableElement(TemplateableElement object) {
+			return createTemplateableElementAdapter();
+		}
+
+		public Object caseTemplateBinding(TemplateBinding object) {
+			return createTemplateBindingAdapter();
+		}
+
+		public Object caseTemplateSignature(TemplateSignature object) {
+			return createTemplateSignatureAdapter();
+		}
+
+		public Object caseTemplateParameter(TemplateParameter object) {
+			return createTemplateParameterAdapter();
+		}
+
+		public Object caseParameterableElement(ParameterableElement object) {
+			return createParameterableElementAdapter();
+		}
+
+		public Object caseTemplateParameterSubstitution(
+				TemplateParameterSubstitution object) {
+			return createTemplateParameterSubstitutionAdapter();
 		}
 
 		public Object caseGeneralization(Generalization object) {
@@ -455,44 +435,28 @@ public class UMLAdapterFactory
 			return createUseCaseAdapter();
 		}
 
-		public Object caseInclude(Include object) {
-			return createIncludeAdapter();
+		public Object caseBehavioredClassifier(BehavioredClassifier object) {
+			return createBehavioredClassifierAdapter();
 		}
 
-		public Object caseExtend(Extend object) {
-			return createExtendAdapter();
+		public Object caseBehavior(Behavior object) {
+			return createBehaviorAdapter();
 		}
 
-		public Object caseConstraint(Constraint object) {
-			return createConstraintAdapter();
+		public Object caseClass(org.eclipse.uml2.uml.Class object) {
+			return createClassAdapter();
 		}
 
-		public Object caseExtensionPoint(ExtensionPoint object) {
-			return createExtensionPointAdapter();
+		public Object caseEncapsulatedClassifier(EncapsulatedClassifier object) {
+			return createEncapsulatedClassifierAdapter();
 		}
 
-		public Object caseSubstitution(Substitution object) {
-			return createSubstitutionAdapter();
+		public Object caseStructuredClassifier(StructuredClassifier object) {
+			return createStructuredClassifierAdapter();
 		}
 
-		public Object caseRealization(Realization object) {
-			return createRealizationAdapter();
-		}
-
-		public Object caseAbstraction(Abstraction object) {
-			return createAbstractionAdapter();
-		}
-
-		public Object caseOpaqueExpression(OpaqueExpression object) {
-			return createOpaqueExpressionAdapter();
-		}
-
-		public Object caseParameter(Parameter object) {
-			return createParameterAdapter();
-		}
-
-		public Object caseMultiplicityElement(MultiplicityElement object) {
-			return createMultiplicityElementAdapter();
+		public Object caseProperty(Property object) {
+			return createPropertyAdapter();
 		}
 
 		public Object caseConnectableElement(ConnectableElement object) {
@@ -503,8 +467,13 @@ public class UMLAdapterFactory
 			return createConnectorEndAdapter();
 		}
 
-		public Object caseProperty(Property object) {
-			return createPropertyAdapter();
+		public Object caseMultiplicityElement(MultiplicityElement object) {
+			return createMultiplicityElementAdapter();
+		}
+
+		public Object caseConnectableElementTemplateParameter(
+				ConnectableElementTemplateParameter object) {
+			return createConnectableElementTemplateParameterAdapter();
 		}
 
 		public Object caseDeploymentTarget(DeploymentTarget object) {
@@ -531,16 +500,24 @@ public class UMLAdapterFactory
 			return createManifestationAdapter();
 		}
 
+		public Object caseAbstraction(Abstraction object) {
+			return createAbstractionAdapter();
+		}
+
+		public Object caseOpaqueExpression(OpaqueExpression object) {
+			return createOpaqueExpressionAdapter();
+		}
+
+		public Object caseParameter(Parameter object) {
+			return createParameterAdapter();
+		}
+
 		public Object caseOperation(Operation object) {
 			return createOperationAdapter();
 		}
 
 		public Object caseBehavioralFeature(BehavioralFeature object) {
 			return createBehavioralFeatureAdapter();
-		}
-
-		public Object caseBehavior(Behavior object) {
-			return createBehaviorAdapter();
 		}
 
 		public Object caseParameterSet(ParameterSet object) {
@@ -621,13 +598,56 @@ public class UMLAdapterFactory
 			return createStructuralFeatureAdapter();
 		}
 
-		public Object caseAssociation(Association object) {
-			return createAssociationAdapter();
+		public Object caseConnector(Connector object) {
+			return createConnectorAdapter();
 		}
 
-		public Object caseConnectableElementTemplateParameter(
-				ConnectableElementTemplateParameter object) {
-			return createConnectableElementTemplateParameterAdapter();
+		public Object caseExtension(Extension object) {
+			return createExtensionAdapter();
+		}
+
+		public Object caseExtensionEnd(ExtensionEnd object) {
+			return createExtensionEndAdapter();
+		}
+
+		public Object caseStereotype(Stereotype object) {
+			return createStereotypeAdapter();
+		}
+
+		public Object caseImage(Image object) {
+			return createImageAdapter();
+		}
+
+		public Object caseProfile(Profile object) {
+			return createProfileAdapter();
+		}
+
+		public Object caseModel(Model object) {
+			return createModelAdapter();
+		}
+
+		public Object caseInterfaceRealization(InterfaceRealization object) {
+			return createInterfaceRealizationAdapter();
+		}
+
+		public Object caseRealization(Realization object) {
+			return createRealizationAdapter();
+		}
+
+		public Object caseInclude(Include object) {
+			return createIncludeAdapter();
+		}
+
+		public Object caseExtend(Extend object) {
+			return createExtendAdapter();
+		}
+
+		public Object caseExtensionPoint(ExtensionPoint object) {
+			return createExtensionPointAdapter();
+		}
+
+		public Object caseSubstitution(Substitution object) {
+			return createSubstitutionAdapter();
 		}
 
 		public Object caseCollaborationUse(CollaborationUse object) {
@@ -636,14 +656,6 @@ public class UMLAdapterFactory
 
 		public Object caseCollaboration(Collaboration object) {
 			return createCollaborationAdapter();
-		}
-
-		public Object caseStructuredClassifier(StructuredClassifier object) {
-			return createStructuredClassifierAdapter();
-		}
-
-		public Object caseConnector(Connector object) {
-			return createConnectorAdapter();
 		}
 
 		public Object caseRedefinableTemplateSignature(
@@ -656,32 +668,44 @@ public class UMLAdapterFactory
 			return createClassifierTemplateParameterAdapter();
 		}
 
-		public Object caseInterfaceRealization(InterfaceRealization object) {
-			return createInterfaceRealizationAdapter();
-		}
-
-		public Object caseEncapsulatedClassifier(EncapsulatedClassifier object) {
-			return createEncapsulatedClassifierAdapter();
-		}
-
-		public Object caseExtension(Extension object) {
-			return createExtensionAdapter();
-		}
-
-		public Object caseExtensionEnd(ExtensionEnd object) {
-			return createExtensionEndAdapter();
-		}
-
-		public Object caseImage(Image object) {
-			return createImageAdapter();
-		}
-
 		public Object caseStringExpression(StringExpression object) {
 			return createStringExpressionAdapter();
 		}
 
 		public Object caseExpression(Expression object) {
 			return createExpressionAdapter();
+		}
+
+		public Object casePackageMerge(PackageMerge object) {
+			return createPackageMergeAdapter();
+		}
+
+		public Object caseProfileApplication(ProfileApplication object) {
+			return createProfileApplicationAdapter();
+		}
+
+		public Object caseEnumeration(Enumeration object) {
+			return createEnumerationAdapter();
+		}
+
+		public Object caseEnumerationLiteral(EnumerationLiteral object) {
+			return createEnumerationLiteralAdapter();
+		}
+
+		public Object caseInstanceSpecification(InstanceSpecification object) {
+			return createInstanceSpecificationAdapter();
+		}
+
+		public Object caseSlot(Slot object) {
+			return createSlotAdapter();
+		}
+
+		public Object casePrimitiveType(PrimitiveType object) {
+			return createPrimitiveTypeAdapter();
+		}
+
+		public Object caseLiteralSpecification(LiteralSpecification object) {
+			return createLiteralSpecificationAdapter();
 		}
 
 		public Object caseLiteralInteger(LiteralInteger object) {
@@ -698,26 +722,6 @@ public class UMLAdapterFactory
 
 		public Object caseLiteralNull(LiteralNull object) {
 			return createLiteralNullAdapter();
-		}
-
-		public Object caseSlot(Slot object) {
-			return createSlotAdapter();
-		}
-
-		public Object caseInstanceSpecification(InstanceSpecification object) {
-			return createInstanceSpecificationAdapter();
-		}
-
-		public Object caseEnumeration(Enumeration object) {
-			return createEnumerationAdapter();
-		}
-
-		public Object caseEnumerationLiteral(EnumerationLiteral object) {
-			return createEnumerationLiteralAdapter();
-		}
-
-		public Object casePrimitiveType(PrimitiveType object) {
-			return createPrimitiveTypeAdapter();
 		}
 
 		public Object caseInstanceValue(InstanceValue object) {
@@ -1114,10 +1118,6 @@ public class UMLAdapterFactory
 
 		public Object caseInformationFlow(InformationFlow object) {
 			return createInformationFlowAdapter();
-		}
-
-		public Object caseModel(Model object) {
-			return createModelAdapter();
 		}
 
 		public Object caseVariableAction(VariableAction object) {

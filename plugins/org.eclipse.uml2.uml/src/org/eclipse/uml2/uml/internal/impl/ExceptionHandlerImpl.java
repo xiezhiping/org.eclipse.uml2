@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.7 2005/12/06 23:21:50 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -183,8 +182,8 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getExceptionTypes() {
-		List exceptionType = (List) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE);
+	public EList getExceptionTypes() {
+		EList exceptionType = (EList) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE);
 		if (exceptionType == null) {
 			eVirtualSet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE,
 				exceptionType = new EObjectResolvingEList(Classifier.class,
@@ -456,14 +455,14 @@ public class ExceptionHandlerImpl
 			case UMLPackage.EXCEPTION_HANDLER__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
 				return eVirtualGet(UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY) != null;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT :
 				return eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT) != null;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE :
-				List exceptionType = (List) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE);
+				EList exceptionType = (EList) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE);
 				return exceptionType != null && !exceptionType.isEmpty();
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				return getProtectedNode() != null;

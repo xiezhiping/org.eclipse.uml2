@@ -8,10 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.3 2005/12/12 16:58:38 khussey Exp $
+ * $Id: TypeOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import org.eclipse.uml2.uml.AggregationKind;
+import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Type;
 
 /**
@@ -38,6 +40,21 @@ public final class TypeOperations
 	 */
 	private TypeOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Association createAssociation(Type type,
+			boolean end1IsNavigable, AggregationKind end1Aggregation,
+			String end1Name, int end1Lower, int end1Upper, Type end1Type,
+			boolean end2IsNavigable, AggregationKind end2Aggregation,
+			String end2Name, int end2Lower, int end2Upper) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragment.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: CombinedFragment.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,7 +85,7 @@ public interface CombinedFragment
 	 * @model type="org.eclipse.uml2.uml.InteractionOperand" containment="true" resolveProxies="false" required="true"
 	 * @generated
 	 */
-	List getOperands();
+	EList getOperands();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.InteractionOperand} and appends it to the '<em><b>Operand</b></em>' containment reference list.
@@ -120,7 +121,7 @@ public interface CombinedFragment
 	 * @model type="org.eclipse.uml2.uml.Gate" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getCfragmentGates();
+	EList getCfragmentGates();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Gate} and appends it to the '<em><b>Cfragment Gate</b></em>' containment reference list.

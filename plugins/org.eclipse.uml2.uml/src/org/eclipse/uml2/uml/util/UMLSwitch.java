@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.4 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -356,79 +356,38 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.DIRECTED_RELATIONSHIP : {
-				DirectedRelationship directedRelationship = (DirectedRelationship) theEObject;
-				Object result = caseDirectedRelationship(directedRelationship);
+			case UMLPackage.PACKAGE : {
+				org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) theEObject;
+				Object result = casePackage(package_);
 				if (result == null)
-					result = caseRelationship(directedRelationship);
+					result = caseNamespace(package_);
 				if (result == null)
-					result = caseElement(directedRelationship);
+					result = casePackageableElement(package_);
 				if (result == null)
-					result = caseEModelElement(directedRelationship);
+					result = caseTemplateableElement(package_);
 				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.RELATIONSHIP : {
-				Relationship relationship = (Relationship) theEObject;
-				Object result = caseRelationship(relationship);
+					result = caseNamedElement(package_);
 				if (result == null)
-					result = caseElement(relationship);
+					result = caseParameterableElement(package_);
 				if (result == null)
-					result = caseEModelElement(relationship);
+					result = caseElement(package_);
+				if (result == null)
+					result = caseEModelElement(package_);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.LITERAL_SPECIFICATION : {
-				LiteralSpecification literalSpecification = (LiteralSpecification) theEObject;
-				Object result = caseLiteralSpecification(literalSpecification);
+			case UMLPackage.PACKAGEABLE_ELEMENT : {
+				PackageableElement packageableElement = (PackageableElement) theEObject;
+				Object result = casePackageableElement(packageableElement);
 				if (result == null)
-					result = caseValueSpecification(literalSpecification);
+					result = caseNamedElement(packageableElement);
 				if (result == null)
-					result = casePackageableElement(literalSpecification);
+					result = caseParameterableElement(packageableElement);
 				if (result == null)
-					result = caseTypedElement(literalSpecification);
+					result = caseElement(packageableElement);
 				if (result == null)
-					result = caseNamedElement(literalSpecification);
-				if (result == null)
-					result = caseParameterableElement(literalSpecification);
-				if (result == null)
-					result = caseElement(literalSpecification);
-				if (result == null)
-					result = caseEModelElement(literalSpecification);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.VALUE_SPECIFICATION : {
-				ValueSpecification valueSpecification = (ValueSpecification) theEObject;
-				Object result = caseValueSpecification(valueSpecification);
-				if (result == null)
-					result = casePackageableElement(valueSpecification);
-				if (result == null)
-					result = caseTypedElement(valueSpecification);
-				if (result == null)
-					result = caseNamedElement(valueSpecification);
-				if (result == null)
-					result = caseParameterableElement(valueSpecification);
-				if (result == null)
-					result = caseElement(valueSpecification);
-				if (result == null)
-					result = caseEModelElement(valueSpecification);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.TYPED_ELEMENT : {
-				TypedElement typedElement = (TypedElement) theEObject;
-				Object result = caseTypedElement(typedElement);
-				if (result == null)
-					result = caseNamedElement(typedElement);
-				if (result == null)
-					result = caseElement(typedElement);
-				if (result == null)
-					result = caseEModelElement(typedElement);
+					result = caseEModelElement(packageableElement);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -465,87 +424,26 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.PACKAGEABLE_ELEMENT : {
-				PackageableElement packageableElement = (PackageableElement) theEObject;
-				Object result = casePackageableElement(packageableElement);
+			case UMLPackage.DIRECTED_RELATIONSHIP : {
+				DirectedRelationship directedRelationship = (DirectedRelationship) theEObject;
+				Object result = caseDirectedRelationship(directedRelationship);
 				if (result == null)
-					result = caseNamedElement(packageableElement);
+					result = caseRelationship(directedRelationship);
 				if (result == null)
-					result = caseParameterableElement(packageableElement);
+					result = caseElement(directedRelationship);
 				if (result == null)
-					result = caseElement(packageableElement);
-				if (result == null)
-					result = caseEModelElement(packageableElement);
+					result = caseEModelElement(directedRelationship);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.PARAMETERABLE_ELEMENT : {
-				ParameterableElement parameterableElement = (ParameterableElement) theEObject;
-				Object result = caseParameterableElement(parameterableElement);
+			case UMLPackage.RELATIONSHIP : {
+				Relationship relationship = (Relationship) theEObject;
+				Object result = caseRelationship(relationship);
 				if (result == null)
-					result = caseElement(parameterableElement);
+					result = caseElement(relationship);
 				if (result == null)
-					result = caseEModelElement(parameterableElement);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.TEMPLATE_PARAMETER : {
-				TemplateParameter templateParameter = (TemplateParameter) theEObject;
-				Object result = caseTemplateParameter(templateParameter);
-				if (result == null)
-					result = caseElement(templateParameter);
-				if (result == null)
-					result = caseEModelElement(templateParameter);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.TEMPLATE_SIGNATURE : {
-				TemplateSignature templateSignature = (TemplateSignature) theEObject;
-				Object result = caseTemplateSignature(templateSignature);
-				if (result == null)
-					result = caseElement(templateSignature);
-				if (result == null)
-					result = caseEModelElement(templateSignature);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.TEMPLATEABLE_ELEMENT : {
-				TemplateableElement templateableElement = (TemplateableElement) theEObject;
-				Object result = caseTemplateableElement(templateableElement);
-				if (result == null)
-					result = caseElement(templateableElement);
-				if (result == null)
-					result = caseEModelElement(templateableElement);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.TEMPLATE_BINDING : {
-				TemplateBinding templateBinding = (TemplateBinding) theEObject;
-				Object result = caseTemplateBinding(templateBinding);
-				if (result == null)
-					result = caseDirectedRelationship(templateBinding);
-				if (result == null)
-					result = caseRelationship(templateBinding);
-				if (result == null)
-					result = caseElement(templateBinding);
-				if (result == null)
-					result = caseEModelElement(templateBinding);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION : {
-				TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution) theEObject;
-				Object result = caseTemplateParameterSubstitution(templateParameterSubstitution);
-				if (result == null)
-					result = caseElement(templateParameterSubstitution);
-				if (result == null)
-					result = caseEModelElement(templateParameterSubstitution);
+					result = caseEModelElement(relationship);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -593,38 +491,51 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.PACKAGE : {
-				org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) theEObject;
-				Object result = casePackage(package_);
+			case UMLPackage.CONSTRAINT : {
+				Constraint constraint = (Constraint) theEObject;
+				Object result = caseConstraint(constraint);
 				if (result == null)
-					result = caseNamespace(package_);
+					result = casePackageableElement(constraint);
 				if (result == null)
-					result = casePackageableElement(package_);
+					result = caseNamedElement(constraint);
 				if (result == null)
-					result = caseTemplateableElement(package_);
+					result = caseParameterableElement(constraint);
 				if (result == null)
-					result = caseNamedElement(package_);
+					result = caseElement(constraint);
 				if (result == null)
-					result = caseParameterableElement(package_);
-				if (result == null)
-					result = caseElement(package_);
-				if (result == null)
-					result = caseEModelElement(package_);
+					result = caseEModelElement(constraint);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.PACKAGE_MERGE : {
-				PackageMerge packageMerge = (PackageMerge) theEObject;
-				Object result = casePackageMerge(packageMerge);
+			case UMLPackage.VALUE_SPECIFICATION : {
+				ValueSpecification valueSpecification = (ValueSpecification) theEObject;
+				Object result = caseValueSpecification(valueSpecification);
 				if (result == null)
-					result = caseDirectedRelationship(packageMerge);
+					result = casePackageableElement(valueSpecification);
 				if (result == null)
-					result = caseRelationship(packageMerge);
+					result = caseTypedElement(valueSpecification);
 				if (result == null)
-					result = caseElement(packageMerge);
+					result = caseNamedElement(valueSpecification);
 				if (result == null)
-					result = caseEModelElement(packageMerge);
+					result = caseParameterableElement(valueSpecification);
+				if (result == null)
+					result = caseElement(valueSpecification);
+				if (result == null)
+					result = caseEModelElement(valueSpecification);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.TYPED_ELEMENT : {
+				TypedElement typedElement = (TypedElement) theEObject;
+				Object result = caseTypedElement(typedElement);
+				if (result == null)
+					result = caseNamedElement(typedElement);
+				if (result == null)
+					result = caseElement(typedElement);
+				if (result == null)
+					result = caseEModelElement(typedElement);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -646,135 +557,31 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.PROFILE_APPLICATION : {
-				ProfileApplication profileApplication = (ProfileApplication) theEObject;
-				Object result = caseProfileApplication(profileApplication);
+			case UMLPackage.ASSOCIATION : {
+				Association association = (Association) theEObject;
+				Object result = caseAssociation(association);
 				if (result == null)
-					result = caseDirectedRelationship(profileApplication);
+					result = caseClassifier(association);
 				if (result == null)
-					result = caseRelationship(profileApplication);
+					result = caseRelationship(association);
 				if (result == null)
-					result = caseElement(profileApplication);
+					result = caseNamespace(association);
 				if (result == null)
-					result = caseEModelElement(profileApplication);
+					result = caseRedefinableElement(association);
 				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.PROFILE : {
-				Profile profile = (Profile) theEObject;
-				Object result = caseProfile(profile);
+					result = caseType(association);
 				if (result == null)
-					result = casePackage(profile);
+					result = caseTemplateableElement(association);
 				if (result == null)
-					result = caseNamespace(profile);
+					result = caseElement(association);
 				if (result == null)
-					result = casePackageableElement(profile);
+					result = caseNamedElement(association);
 				if (result == null)
-					result = caseTemplateableElement(profile);
+					result = casePackageableElement(association);
 				if (result == null)
-					result = caseNamedElement(profile);
+					result = caseEModelElement(association);
 				if (result == null)
-					result = caseParameterableElement(profile);
-				if (result == null)
-					result = caseElement(profile);
-				if (result == null)
-					result = caseEModelElement(profile);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.STEREOTYPE : {
-				Stereotype stereotype = (Stereotype) theEObject;
-				Object result = caseStereotype(stereotype);
-				if (result == null)
-					result = caseClass(stereotype);
-				if (result == null)
-					result = caseEncapsulatedClassifier(stereotype);
-				if (result == null)
-					result = caseBehavioredClassifier(stereotype);
-				if (result == null)
-					result = caseStructuredClassifier(stereotype);
-				if (result == null)
-					result = caseClassifier(stereotype);
-				if (result == null)
-					result = caseNamespace(stereotype);
-				if (result == null)
-					result = caseRedefinableElement(stereotype);
-				if (result == null)
-					result = caseType(stereotype);
-				if (result == null)
-					result = caseTemplateableElement(stereotype);
-				if (result == null)
-					result = caseNamedElement(stereotype);
-				if (result == null)
-					result = casePackageableElement(stereotype);
-				if (result == null)
-					result = caseElement(stereotype);
-				if (result == null)
-					result = caseParameterableElement(stereotype);
-				if (result == null)
-					result = caseEModelElement(stereotype);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.CLASS : {
-				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) theEObject;
-				Object result = caseClass(class_);
-				if (result == null)
-					result = caseEncapsulatedClassifier(class_);
-				if (result == null)
-					result = caseBehavioredClassifier(class_);
-				if (result == null)
-					result = caseStructuredClassifier(class_);
-				if (result == null)
-					result = caseClassifier(class_);
-				if (result == null)
-					result = caseNamespace(class_);
-				if (result == null)
-					result = caseRedefinableElement(class_);
-				if (result == null)
-					result = caseType(class_);
-				if (result == null)
-					result = caseTemplateableElement(class_);
-				if (result == null)
-					result = caseNamedElement(class_);
-				if (result == null)
-					result = casePackageableElement(class_);
-				if (result == null)
-					result = caseElement(class_);
-				if (result == null)
-					result = caseParameterableElement(class_);
-				if (result == null)
-					result = caseEModelElement(class_);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.BEHAVIORED_CLASSIFIER : {
-				BehavioredClassifier behavioredClassifier = (BehavioredClassifier) theEObject;
-				Object result = caseBehavioredClassifier(behavioredClassifier);
-				if (result == null)
-					result = caseClassifier(behavioredClassifier);
-				if (result == null)
-					result = caseNamespace(behavioredClassifier);
-				if (result == null)
-					result = caseRedefinableElement(behavioredClassifier);
-				if (result == null)
-					result = caseType(behavioredClassifier);
-				if (result == null)
-					result = caseTemplateableElement(behavioredClassifier);
-				if (result == null)
-					result = caseNamedElement(behavioredClassifier);
-				if (result == null)
-					result = casePackageableElement(behavioredClassifier);
-				if (result == null)
-					result = caseElement(behavioredClassifier);
-				if (result == null)
-					result = caseParameterableElement(behavioredClassifier);
-				if (result == null)
-					result = caseEModelElement(behavioredClassifier);
+					result = caseParameterableElement(association);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -813,6 +620,76 @@ public class UMLSwitch {
 					result = caseElement(redefinableElement);
 				if (result == null)
 					result = caseEModelElement(redefinableElement);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.TEMPLATEABLE_ELEMENT : {
+				TemplateableElement templateableElement = (TemplateableElement) theEObject;
+				Object result = caseTemplateableElement(templateableElement);
+				if (result == null)
+					result = caseElement(templateableElement);
+				if (result == null)
+					result = caseEModelElement(templateableElement);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.TEMPLATE_BINDING : {
+				TemplateBinding templateBinding = (TemplateBinding) theEObject;
+				Object result = caseTemplateBinding(templateBinding);
+				if (result == null)
+					result = caseDirectedRelationship(templateBinding);
+				if (result == null)
+					result = caseRelationship(templateBinding);
+				if (result == null)
+					result = caseElement(templateBinding);
+				if (result == null)
+					result = caseEModelElement(templateBinding);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.TEMPLATE_SIGNATURE : {
+				TemplateSignature templateSignature = (TemplateSignature) theEObject;
+				Object result = caseTemplateSignature(templateSignature);
+				if (result == null)
+					result = caseElement(templateSignature);
+				if (result == null)
+					result = caseEModelElement(templateSignature);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.TEMPLATE_PARAMETER : {
+				TemplateParameter templateParameter = (TemplateParameter) theEObject;
+				Object result = caseTemplateParameter(templateParameter);
+				if (result == null)
+					result = caseElement(templateParameter);
+				if (result == null)
+					result = caseEModelElement(templateParameter);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.PARAMETERABLE_ELEMENT : {
+				ParameterableElement parameterableElement = (ParameterableElement) theEObject;
+				Object result = caseParameterableElement(parameterableElement);
+				if (result == null)
+					result = caseElement(parameterableElement);
+				if (result == null)
+					result = caseEModelElement(parameterableElement);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION : {
+				TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution) theEObject;
+				Object result = caseTemplateParameterSubstitution(templateParameterSubstitution);
+				if (result == null)
+					result = caseElement(templateParameterSubstitution);
+				if (result == null)
+					result = caseEModelElement(templateParameterSubstitution);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -893,196 +770,184 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.INCLUDE : {
-				Include include = (Include) theEObject;
-				Object result = caseInclude(include);
+			case UMLPackage.BEHAVIORED_CLASSIFIER : {
+				BehavioredClassifier behavioredClassifier = (BehavioredClassifier) theEObject;
+				Object result = caseBehavioredClassifier(behavioredClassifier);
 				if (result == null)
-					result = caseNamedElement(include);
+					result = caseClassifier(behavioredClassifier);
 				if (result == null)
-					result = caseDirectedRelationship(include);
+					result = caseNamespace(behavioredClassifier);
 				if (result == null)
-					result = caseElement(include);
+					result = caseRedefinableElement(behavioredClassifier);
 				if (result == null)
-					result = caseRelationship(include);
+					result = caseType(behavioredClassifier);
 				if (result == null)
-					result = caseEModelElement(include);
+					result = caseTemplateableElement(behavioredClassifier);
 				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.EXTEND : {
-				Extend extend = (Extend) theEObject;
-				Object result = caseExtend(extend);
+					result = caseNamedElement(behavioredClassifier);
 				if (result == null)
-					result = caseNamedElement(extend);
+					result = casePackageableElement(behavioredClassifier);
 				if (result == null)
-					result = caseDirectedRelationship(extend);
+					result = caseElement(behavioredClassifier);
 				if (result == null)
-					result = caseElement(extend);
+					result = caseParameterableElement(behavioredClassifier);
 				if (result == null)
-					result = caseRelationship(extend);
-				if (result == null)
-					result = caseEModelElement(extend);
+					result = caseEModelElement(behavioredClassifier);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.CONSTRAINT : {
-				Constraint constraint = (Constraint) theEObject;
-				Object result = caseConstraint(constraint);
+			case UMLPackage.BEHAVIOR : {
+				Behavior behavior = (Behavior) theEObject;
+				Object result = caseBehavior(behavior);
 				if (result == null)
-					result = casePackageableElement(constraint);
+					result = caseClass(behavior);
 				if (result == null)
-					result = caseNamedElement(constraint);
+					result = caseEncapsulatedClassifier(behavior);
 				if (result == null)
-					result = caseParameterableElement(constraint);
+					result = caseBehavioredClassifier(behavior);
 				if (result == null)
-					result = caseElement(constraint);
+					result = caseStructuredClassifier(behavior);
 				if (result == null)
-					result = caseEModelElement(constraint);
+					result = caseClassifier(behavior);
 				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.EXTENSION_POINT : {
-				ExtensionPoint extensionPoint = (ExtensionPoint) theEObject;
-				Object result = caseExtensionPoint(extensionPoint);
+					result = caseNamespace(behavior);
 				if (result == null)
-					result = caseRedefinableElement(extensionPoint);
+					result = caseRedefinableElement(behavior);
 				if (result == null)
-					result = caseNamedElement(extensionPoint);
+					result = caseType(behavior);
 				if (result == null)
-					result = caseElement(extensionPoint);
+					result = caseTemplateableElement(behavior);
 				if (result == null)
-					result = caseEModelElement(extensionPoint);
+					result = caseNamedElement(behavior);
 				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.SUBSTITUTION : {
-				Substitution substitution = (Substitution) theEObject;
-				Object result = caseSubstitution(substitution);
+					result = casePackageableElement(behavior);
 				if (result == null)
-					result = caseRealization(substitution);
+					result = caseElement(behavior);
 				if (result == null)
-					result = caseAbstraction(substitution);
+					result = caseParameterableElement(behavior);
 				if (result == null)
-					result = caseDependency(substitution);
-				if (result == null)
-					result = casePackageableElement(substitution);
-				if (result == null)
-					result = caseDirectedRelationship(substitution);
-				if (result == null)
-					result = caseNamedElement(substitution);
-				if (result == null)
-					result = caseParameterableElement(substitution);
-				if (result == null)
-					result = caseRelationship(substitution);
-				if (result == null)
-					result = caseElement(substitution);
-				if (result == null)
-					result = caseEModelElement(substitution);
+					result = caseEModelElement(behavior);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.REALIZATION : {
-				Realization realization = (Realization) theEObject;
-				Object result = caseRealization(realization);
+			case UMLPackage.CLASS : {
+				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) theEObject;
+				Object result = caseClass(class_);
 				if (result == null)
-					result = caseAbstraction(realization);
+					result = caseEncapsulatedClassifier(class_);
 				if (result == null)
-					result = caseDependency(realization);
+					result = caseBehavioredClassifier(class_);
 				if (result == null)
-					result = casePackageableElement(realization);
+					result = caseStructuredClassifier(class_);
 				if (result == null)
-					result = caseDirectedRelationship(realization);
+					result = caseClassifier(class_);
 				if (result == null)
-					result = caseNamedElement(realization);
+					result = caseNamespace(class_);
 				if (result == null)
-					result = caseParameterableElement(realization);
+					result = caseRedefinableElement(class_);
 				if (result == null)
-					result = caseRelationship(realization);
+					result = caseType(class_);
 				if (result == null)
-					result = caseElement(realization);
+					result = caseTemplateableElement(class_);
 				if (result == null)
-					result = caseEModelElement(realization);
+					result = caseNamedElement(class_);
 				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.ABSTRACTION : {
-				Abstraction abstraction = (Abstraction) theEObject;
-				Object result = caseAbstraction(abstraction);
+					result = casePackageableElement(class_);
 				if (result == null)
-					result = caseDependency(abstraction);
+					result = caseElement(class_);
 				if (result == null)
-					result = casePackageableElement(abstraction);
+					result = caseParameterableElement(class_);
 				if (result == null)
-					result = caseDirectedRelationship(abstraction);
-				if (result == null)
-					result = caseNamedElement(abstraction);
-				if (result == null)
-					result = caseParameterableElement(abstraction);
-				if (result == null)
-					result = caseRelationship(abstraction);
-				if (result == null)
-					result = caseElement(abstraction);
-				if (result == null)
-					result = caseEModelElement(abstraction);
+					result = caseEModelElement(class_);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.OPAQUE_EXPRESSION : {
-				OpaqueExpression opaqueExpression = (OpaqueExpression) theEObject;
-				Object result = caseOpaqueExpression(opaqueExpression);
+			case UMLPackage.ENCAPSULATED_CLASSIFIER : {
+				EncapsulatedClassifier encapsulatedClassifier = (EncapsulatedClassifier) theEObject;
+				Object result = caseEncapsulatedClassifier(encapsulatedClassifier);
 				if (result == null)
-					result = caseValueSpecification(opaqueExpression);
+					result = caseStructuredClassifier(encapsulatedClassifier);
 				if (result == null)
-					result = casePackageableElement(opaqueExpression);
+					result = caseClassifier(encapsulatedClassifier);
 				if (result == null)
-					result = caseTypedElement(opaqueExpression);
+					result = caseNamespace(encapsulatedClassifier);
 				if (result == null)
-					result = caseNamedElement(opaqueExpression);
+					result = caseRedefinableElement(encapsulatedClassifier);
 				if (result == null)
-					result = caseParameterableElement(opaqueExpression);
+					result = caseType(encapsulatedClassifier);
 				if (result == null)
-					result = caseElement(opaqueExpression);
+					result = caseTemplateableElement(encapsulatedClassifier);
 				if (result == null)
-					result = caseEModelElement(opaqueExpression);
+					result = caseNamedElement(encapsulatedClassifier);
 				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.PARAMETER : {
-				Parameter parameter = (Parameter) theEObject;
-				Object result = caseParameter(parameter);
+					result = casePackageableElement(encapsulatedClassifier);
 				if (result == null)
-					result = caseConnectableElement(parameter);
+					result = caseElement(encapsulatedClassifier);
 				if (result == null)
-					result = caseMultiplicityElement(parameter);
+					result = caseParameterableElement(encapsulatedClassifier);
 				if (result == null)
-					result = caseTypedElement(parameter);
-				if (result == null)
-					result = caseParameterableElement(parameter);
-				if (result == null)
-					result = caseElement(parameter);
-				if (result == null)
-					result = caseNamedElement(parameter);
-				if (result == null)
-					result = caseEModelElement(parameter);
+					result = caseEModelElement(encapsulatedClassifier);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.MULTIPLICITY_ELEMENT : {
-				MultiplicityElement multiplicityElement = (MultiplicityElement) theEObject;
-				Object result = caseMultiplicityElement(multiplicityElement);
+			case UMLPackage.STRUCTURED_CLASSIFIER : {
+				StructuredClassifier structuredClassifier = (StructuredClassifier) theEObject;
+				Object result = caseStructuredClassifier(structuredClassifier);
 				if (result == null)
-					result = caseElement(multiplicityElement);
+					result = caseClassifier(structuredClassifier);
 				if (result == null)
-					result = caseEModelElement(multiplicityElement);
+					result = caseNamespace(structuredClassifier);
+				if (result == null)
+					result = caseRedefinableElement(structuredClassifier);
+				if (result == null)
+					result = caseType(structuredClassifier);
+				if (result == null)
+					result = caseTemplateableElement(structuredClassifier);
+				if (result == null)
+					result = caseNamedElement(structuredClassifier);
+				if (result == null)
+					result = casePackageableElement(structuredClassifier);
+				if (result == null)
+					result = caseElement(structuredClassifier);
+				if (result == null)
+					result = caseParameterableElement(structuredClassifier);
+				if (result == null)
+					result = caseEModelElement(structuredClassifier);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.PROPERTY : {
+				Property property = (Property) theEObject;
+				Object result = caseProperty(property);
+				if (result == null)
+					result = caseStructuralFeature(property);
+				if (result == null)
+					result = caseConnectableElement(property);
+				if (result == null)
+					result = caseDeploymentTarget(property);
+				if (result == null)
+					result = caseTemplateableElement(property);
+				if (result == null)
+					result = caseFeature(property);
+				if (result == null)
+					result = caseTypedElement(property);
+				if (result == null)
+					result = caseMultiplicityElement(property);
+				if (result == null)
+					result = caseParameterableElement(property);
+				if (result == null)
+					result = caseNamedElement(property);
+				if (result == null)
+					result = caseElement(property);
+				if (result == null)
+					result = caseRedefinableElement(property);
+				if (result == null)
+					result = caseEModelElement(property);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -1117,33 +982,26 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.PROPERTY : {
-				Property property = (Property) theEObject;
-				Object result = caseProperty(property);
+			case UMLPackage.MULTIPLICITY_ELEMENT : {
+				MultiplicityElement multiplicityElement = (MultiplicityElement) theEObject;
+				Object result = caseMultiplicityElement(multiplicityElement);
 				if (result == null)
-					result = caseStructuralFeature(property);
+					result = caseElement(multiplicityElement);
 				if (result == null)
-					result = caseConnectableElement(property);
+					result = caseEModelElement(multiplicityElement);
 				if (result == null)
-					result = caseDeploymentTarget(property);
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER : {
+				ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter) theEObject;
+				Object result = caseConnectableElementTemplateParameter(connectableElementTemplateParameter);
 				if (result == null)
-					result = caseTemplateableElement(property);
+					result = caseTemplateParameter(connectableElementTemplateParameter);
 				if (result == null)
-					result = caseFeature(property);
+					result = caseElement(connectableElementTemplateParameter);
 				if (result == null)
-					result = caseTypedElement(property);
-				if (result == null)
-					result = caseMultiplicityElement(property);
-				if (result == null)
-					result = caseParameterableElement(property);
-				if (result == null)
-					result = caseNamedElement(property);
-				if (result == null)
-					result = caseElement(property);
-				if (result == null)
-					result = caseRedefinableElement(property);
-				if (result == null)
-					result = caseEModelElement(property);
+					result = caseEModelElement(connectableElementTemplateParameter);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -1282,6 +1140,71 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
+			case UMLPackage.ABSTRACTION : {
+				Abstraction abstraction = (Abstraction) theEObject;
+				Object result = caseAbstraction(abstraction);
+				if (result == null)
+					result = caseDependency(abstraction);
+				if (result == null)
+					result = casePackageableElement(abstraction);
+				if (result == null)
+					result = caseDirectedRelationship(abstraction);
+				if (result == null)
+					result = caseNamedElement(abstraction);
+				if (result == null)
+					result = caseParameterableElement(abstraction);
+				if (result == null)
+					result = caseRelationship(abstraction);
+				if (result == null)
+					result = caseElement(abstraction);
+				if (result == null)
+					result = caseEModelElement(abstraction);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.OPAQUE_EXPRESSION : {
+				OpaqueExpression opaqueExpression = (OpaqueExpression) theEObject;
+				Object result = caseOpaqueExpression(opaqueExpression);
+				if (result == null)
+					result = caseValueSpecification(opaqueExpression);
+				if (result == null)
+					result = casePackageableElement(opaqueExpression);
+				if (result == null)
+					result = caseTypedElement(opaqueExpression);
+				if (result == null)
+					result = caseNamedElement(opaqueExpression);
+				if (result == null)
+					result = caseParameterableElement(opaqueExpression);
+				if (result == null)
+					result = caseElement(opaqueExpression);
+				if (result == null)
+					result = caseEModelElement(opaqueExpression);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.PARAMETER : {
+				Parameter parameter = (Parameter) theEObject;
+				Object result = caseParameter(parameter);
+				if (result == null)
+					result = caseConnectableElement(parameter);
+				if (result == null)
+					result = caseMultiplicityElement(parameter);
+				if (result == null)
+					result = caseTypedElement(parameter);
+				if (result == null)
+					result = caseParameterableElement(parameter);
+				if (result == null)
+					result = caseElement(parameter);
+				if (result == null)
+					result = caseNamedElement(parameter);
+				if (result == null)
+					result = caseEModelElement(parameter);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
 			case UMLPackage.OPERATION : {
 				Operation operation = (Operation) theEObject;
 				Object result = caseOperation(operation);
@@ -1322,41 +1245,6 @@ public class UMLSwitch {
 					result = caseElement(behavioralFeature);
 				if (result == null)
 					result = caseEModelElement(behavioralFeature);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.BEHAVIOR : {
-				Behavior behavior = (Behavior) theEObject;
-				Object result = caseBehavior(behavior);
-				if (result == null)
-					result = caseClass(behavior);
-				if (result == null)
-					result = caseEncapsulatedClassifier(behavior);
-				if (result == null)
-					result = caseBehavioredClassifier(behavior);
-				if (result == null)
-					result = caseStructuredClassifier(behavior);
-				if (result == null)
-					result = caseClassifier(behavior);
-				if (result == null)
-					result = caseNamespace(behavior);
-				if (result == null)
-					result = caseRedefinableElement(behavior);
-				if (result == null)
-					result = caseType(behavior);
-				if (result == null)
-					result = caseTemplateableElement(behavior);
-				if (result == null)
-					result = caseNamedElement(behavior);
-				if (result == null)
-					result = casePackageableElement(behavior);
-				if (result == null)
-					result = caseElement(behavior);
-				if (result == null)
-					result = caseParameterableElement(behavior);
-				if (result == null)
-					result = caseEModelElement(behavior);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -1760,119 +1648,6 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.ASSOCIATION : {
-				Association association = (Association) theEObject;
-				Object result = caseAssociation(association);
-				if (result == null)
-					result = caseClassifier(association);
-				if (result == null)
-					result = caseRelationship(association);
-				if (result == null)
-					result = caseNamespace(association);
-				if (result == null)
-					result = caseRedefinableElement(association);
-				if (result == null)
-					result = caseType(association);
-				if (result == null)
-					result = caseTemplateableElement(association);
-				if (result == null)
-					result = caseElement(association);
-				if (result == null)
-					result = caseNamedElement(association);
-				if (result == null)
-					result = casePackageableElement(association);
-				if (result == null)
-					result = caseEModelElement(association);
-				if (result == null)
-					result = caseParameterableElement(association);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER : {
-				ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter) theEObject;
-				Object result = caseConnectableElementTemplateParameter(connectableElementTemplateParameter);
-				if (result == null)
-					result = caseTemplateParameter(connectableElementTemplateParameter);
-				if (result == null)
-					result = caseElement(connectableElementTemplateParameter);
-				if (result == null)
-					result = caseEModelElement(connectableElementTemplateParameter);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.COLLABORATION_USE : {
-				CollaborationUse collaborationUse = (CollaborationUse) theEObject;
-				Object result = caseCollaborationUse(collaborationUse);
-				if (result == null)
-					result = caseNamedElement(collaborationUse);
-				if (result == null)
-					result = caseElement(collaborationUse);
-				if (result == null)
-					result = caseEModelElement(collaborationUse);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.COLLABORATION : {
-				Collaboration collaboration = (Collaboration) theEObject;
-				Object result = caseCollaboration(collaboration);
-				if (result == null)
-					result = caseBehavioredClassifier(collaboration);
-				if (result == null)
-					result = caseStructuredClassifier(collaboration);
-				if (result == null)
-					result = caseClassifier(collaboration);
-				if (result == null)
-					result = caseNamespace(collaboration);
-				if (result == null)
-					result = caseRedefinableElement(collaboration);
-				if (result == null)
-					result = caseType(collaboration);
-				if (result == null)
-					result = caseTemplateableElement(collaboration);
-				if (result == null)
-					result = caseNamedElement(collaboration);
-				if (result == null)
-					result = casePackageableElement(collaboration);
-				if (result == null)
-					result = caseElement(collaboration);
-				if (result == null)
-					result = caseParameterableElement(collaboration);
-				if (result == null)
-					result = caseEModelElement(collaboration);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.STRUCTURED_CLASSIFIER : {
-				StructuredClassifier structuredClassifier = (StructuredClassifier) theEObject;
-				Object result = caseStructuredClassifier(structuredClassifier);
-				if (result == null)
-					result = caseClassifier(structuredClassifier);
-				if (result == null)
-					result = caseNamespace(structuredClassifier);
-				if (result == null)
-					result = caseRedefinableElement(structuredClassifier);
-				if (result == null)
-					result = caseType(structuredClassifier);
-				if (result == null)
-					result = caseTemplateableElement(structuredClassifier);
-				if (result == null)
-					result = caseNamedElement(structuredClassifier);
-				if (result == null)
-					result = casePackageableElement(structuredClassifier);
-				if (result == null)
-					result = caseElement(structuredClassifier);
-				if (result == null)
-					result = caseParameterableElement(structuredClassifier);
-				if (result == null)
-					result = caseEModelElement(structuredClassifier);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
 			case UMLPackage.CONNECTOR : {
 				Connector connector = (Connector) theEObject;
 				Object result = caseConnector(connector);
@@ -1886,92 +1661,6 @@ public class UMLSwitch {
 					result = caseElement(connector);
 				if (result == null)
 					result = caseEModelElement(connector);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE : {
-				RedefinableTemplateSignature redefinableTemplateSignature = (RedefinableTemplateSignature) theEObject;
-				Object result = caseRedefinableTemplateSignature(redefinableTemplateSignature);
-				if (result == null)
-					result = caseRedefinableElement(redefinableTemplateSignature);
-				if (result == null)
-					result = caseTemplateSignature(redefinableTemplateSignature);
-				if (result == null)
-					result = caseNamedElement(redefinableTemplateSignature);
-				if (result == null)
-					result = caseElement(redefinableTemplateSignature);
-				if (result == null)
-					result = caseEModelElement(redefinableTemplateSignature);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER : {
-				ClassifierTemplateParameter classifierTemplateParameter = (ClassifierTemplateParameter) theEObject;
-				Object result = caseClassifierTemplateParameter(classifierTemplateParameter);
-				if (result == null)
-					result = caseTemplateParameter(classifierTemplateParameter);
-				if (result == null)
-					result = caseElement(classifierTemplateParameter);
-				if (result == null)
-					result = caseEModelElement(classifierTemplateParameter);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.INTERFACE_REALIZATION : {
-				InterfaceRealization interfaceRealization = (InterfaceRealization) theEObject;
-				Object result = caseInterfaceRealization(interfaceRealization);
-				if (result == null)
-					result = caseRealization(interfaceRealization);
-				if (result == null)
-					result = caseAbstraction(interfaceRealization);
-				if (result == null)
-					result = caseDependency(interfaceRealization);
-				if (result == null)
-					result = casePackageableElement(interfaceRealization);
-				if (result == null)
-					result = caseDirectedRelationship(interfaceRealization);
-				if (result == null)
-					result = caseNamedElement(interfaceRealization);
-				if (result == null)
-					result = caseParameterableElement(interfaceRealization);
-				if (result == null)
-					result = caseRelationship(interfaceRealization);
-				if (result == null)
-					result = caseElement(interfaceRealization);
-				if (result == null)
-					result = caseEModelElement(interfaceRealization);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.ENCAPSULATED_CLASSIFIER : {
-				EncapsulatedClassifier encapsulatedClassifier = (EncapsulatedClassifier) theEObject;
-				Object result = caseEncapsulatedClassifier(encapsulatedClassifier);
-				if (result == null)
-					result = caseStructuredClassifier(encapsulatedClassifier);
-				if (result == null)
-					result = caseClassifier(encapsulatedClassifier);
-				if (result == null)
-					result = caseNamespace(encapsulatedClassifier);
-				if (result == null)
-					result = caseRedefinableElement(encapsulatedClassifier);
-				if (result == null)
-					result = caseType(encapsulatedClassifier);
-				if (result == null)
-					result = caseTemplateableElement(encapsulatedClassifier);
-				if (result == null)
-					result = caseNamedElement(encapsulatedClassifier);
-				if (result == null)
-					result = casePackageableElement(encapsulatedClassifier);
-				if (result == null)
-					result = caseElement(encapsulatedClassifier);
-				if (result == null)
-					result = caseParameterableElement(encapsulatedClassifier);
-				if (result == null)
-					result = caseEModelElement(encapsulatedClassifier);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -2040,9 +1729,292 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
+			case UMLPackage.STEREOTYPE : {
+				Stereotype stereotype = (Stereotype) theEObject;
+				Object result = caseStereotype(stereotype);
+				if (result == null)
+					result = caseClass(stereotype);
+				if (result == null)
+					result = caseEncapsulatedClassifier(stereotype);
+				if (result == null)
+					result = caseBehavioredClassifier(stereotype);
+				if (result == null)
+					result = caseStructuredClassifier(stereotype);
+				if (result == null)
+					result = caseClassifier(stereotype);
+				if (result == null)
+					result = caseNamespace(stereotype);
+				if (result == null)
+					result = caseRedefinableElement(stereotype);
+				if (result == null)
+					result = caseType(stereotype);
+				if (result == null)
+					result = caseTemplateableElement(stereotype);
+				if (result == null)
+					result = caseNamedElement(stereotype);
+				if (result == null)
+					result = casePackageableElement(stereotype);
+				if (result == null)
+					result = caseElement(stereotype);
+				if (result == null)
+					result = caseParameterableElement(stereotype);
+				if (result == null)
+					result = caseEModelElement(stereotype);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
 			case UMLPackage.IMAGE : {
 				Image image = (Image) theEObject;
 				Object result = caseImage(image);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.PROFILE : {
+				Profile profile = (Profile) theEObject;
+				Object result = caseProfile(profile);
+				if (result == null)
+					result = casePackage(profile);
+				if (result == null)
+					result = caseNamespace(profile);
+				if (result == null)
+					result = casePackageableElement(profile);
+				if (result == null)
+					result = caseTemplateableElement(profile);
+				if (result == null)
+					result = caseNamedElement(profile);
+				if (result == null)
+					result = caseParameterableElement(profile);
+				if (result == null)
+					result = caseElement(profile);
+				if (result == null)
+					result = caseEModelElement(profile);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.MODEL : {
+				Model model = (Model) theEObject;
+				Object result = caseModel(model);
+				if (result == null)
+					result = casePackage(model);
+				if (result == null)
+					result = caseNamespace(model);
+				if (result == null)
+					result = casePackageableElement(model);
+				if (result == null)
+					result = caseTemplateableElement(model);
+				if (result == null)
+					result = caseNamedElement(model);
+				if (result == null)
+					result = caseParameterableElement(model);
+				if (result == null)
+					result = caseElement(model);
+				if (result == null)
+					result = caseEModelElement(model);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.INTERFACE_REALIZATION : {
+				InterfaceRealization interfaceRealization = (InterfaceRealization) theEObject;
+				Object result = caseInterfaceRealization(interfaceRealization);
+				if (result == null)
+					result = caseRealization(interfaceRealization);
+				if (result == null)
+					result = caseAbstraction(interfaceRealization);
+				if (result == null)
+					result = caseDependency(interfaceRealization);
+				if (result == null)
+					result = casePackageableElement(interfaceRealization);
+				if (result == null)
+					result = caseDirectedRelationship(interfaceRealization);
+				if (result == null)
+					result = caseNamedElement(interfaceRealization);
+				if (result == null)
+					result = caseParameterableElement(interfaceRealization);
+				if (result == null)
+					result = caseRelationship(interfaceRealization);
+				if (result == null)
+					result = caseElement(interfaceRealization);
+				if (result == null)
+					result = caseEModelElement(interfaceRealization);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.REALIZATION : {
+				Realization realization = (Realization) theEObject;
+				Object result = caseRealization(realization);
+				if (result == null)
+					result = caseAbstraction(realization);
+				if (result == null)
+					result = caseDependency(realization);
+				if (result == null)
+					result = casePackageableElement(realization);
+				if (result == null)
+					result = caseDirectedRelationship(realization);
+				if (result == null)
+					result = caseNamedElement(realization);
+				if (result == null)
+					result = caseParameterableElement(realization);
+				if (result == null)
+					result = caseRelationship(realization);
+				if (result == null)
+					result = caseElement(realization);
+				if (result == null)
+					result = caseEModelElement(realization);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.INCLUDE : {
+				Include include = (Include) theEObject;
+				Object result = caseInclude(include);
+				if (result == null)
+					result = caseNamedElement(include);
+				if (result == null)
+					result = caseDirectedRelationship(include);
+				if (result == null)
+					result = caseElement(include);
+				if (result == null)
+					result = caseRelationship(include);
+				if (result == null)
+					result = caseEModelElement(include);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.EXTEND : {
+				Extend extend = (Extend) theEObject;
+				Object result = caseExtend(extend);
+				if (result == null)
+					result = caseNamedElement(extend);
+				if (result == null)
+					result = caseDirectedRelationship(extend);
+				if (result == null)
+					result = caseElement(extend);
+				if (result == null)
+					result = caseRelationship(extend);
+				if (result == null)
+					result = caseEModelElement(extend);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.EXTENSION_POINT : {
+				ExtensionPoint extensionPoint = (ExtensionPoint) theEObject;
+				Object result = caseExtensionPoint(extensionPoint);
+				if (result == null)
+					result = caseRedefinableElement(extensionPoint);
+				if (result == null)
+					result = caseNamedElement(extensionPoint);
+				if (result == null)
+					result = caseElement(extensionPoint);
+				if (result == null)
+					result = caseEModelElement(extensionPoint);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.SUBSTITUTION : {
+				Substitution substitution = (Substitution) theEObject;
+				Object result = caseSubstitution(substitution);
+				if (result == null)
+					result = caseRealization(substitution);
+				if (result == null)
+					result = caseAbstraction(substitution);
+				if (result == null)
+					result = caseDependency(substitution);
+				if (result == null)
+					result = casePackageableElement(substitution);
+				if (result == null)
+					result = caseDirectedRelationship(substitution);
+				if (result == null)
+					result = caseNamedElement(substitution);
+				if (result == null)
+					result = caseParameterableElement(substitution);
+				if (result == null)
+					result = caseRelationship(substitution);
+				if (result == null)
+					result = caseElement(substitution);
+				if (result == null)
+					result = caseEModelElement(substitution);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.COLLABORATION_USE : {
+				CollaborationUse collaborationUse = (CollaborationUse) theEObject;
+				Object result = caseCollaborationUse(collaborationUse);
+				if (result == null)
+					result = caseNamedElement(collaborationUse);
+				if (result == null)
+					result = caseElement(collaborationUse);
+				if (result == null)
+					result = caseEModelElement(collaborationUse);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.COLLABORATION : {
+				Collaboration collaboration = (Collaboration) theEObject;
+				Object result = caseCollaboration(collaboration);
+				if (result == null)
+					result = caseBehavioredClassifier(collaboration);
+				if (result == null)
+					result = caseStructuredClassifier(collaboration);
+				if (result == null)
+					result = caseClassifier(collaboration);
+				if (result == null)
+					result = caseNamespace(collaboration);
+				if (result == null)
+					result = caseRedefinableElement(collaboration);
+				if (result == null)
+					result = caseType(collaboration);
+				if (result == null)
+					result = caseTemplateableElement(collaboration);
+				if (result == null)
+					result = caseNamedElement(collaboration);
+				if (result == null)
+					result = casePackageableElement(collaboration);
+				if (result == null)
+					result = caseElement(collaboration);
+				if (result == null)
+					result = caseParameterableElement(collaboration);
+				if (result == null)
+					result = caseEModelElement(collaboration);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE : {
+				RedefinableTemplateSignature redefinableTemplateSignature = (RedefinableTemplateSignature) theEObject;
+				Object result = caseRedefinableTemplateSignature(redefinableTemplateSignature);
+				if (result == null)
+					result = caseRedefinableElement(redefinableTemplateSignature);
+				if (result == null)
+					result = caseTemplateSignature(redefinableTemplateSignature);
+				if (result == null)
+					result = caseNamedElement(redefinableTemplateSignature);
+				if (result == null)
+					result = caseElement(redefinableTemplateSignature);
+				if (result == null)
+					result = caseEModelElement(redefinableTemplateSignature);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER : {
+				ClassifierTemplateParameter classifierTemplateParameter = (ClassifierTemplateParameter) theEObject;
+				Object result = caseClassifierTemplateParameter(classifierTemplateParameter);
+				if (result == null)
+					result = caseTemplateParameter(classifierTemplateParameter);
+				if (result == null)
+					result = caseElement(classifierTemplateParameter);
+				if (result == null)
+					result = caseEModelElement(classifierTemplateParameter);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -2089,6 +2061,170 @@ public class UMLSwitch {
 					result = caseElement(expression);
 				if (result == null)
 					result = caseEModelElement(expression);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.PACKAGE_MERGE : {
+				PackageMerge packageMerge = (PackageMerge) theEObject;
+				Object result = casePackageMerge(packageMerge);
+				if (result == null)
+					result = caseDirectedRelationship(packageMerge);
+				if (result == null)
+					result = caseRelationship(packageMerge);
+				if (result == null)
+					result = caseElement(packageMerge);
+				if (result == null)
+					result = caseEModelElement(packageMerge);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.PROFILE_APPLICATION : {
+				ProfileApplication profileApplication = (ProfileApplication) theEObject;
+				Object result = caseProfileApplication(profileApplication);
+				if (result == null)
+					result = caseDirectedRelationship(profileApplication);
+				if (result == null)
+					result = caseRelationship(profileApplication);
+				if (result == null)
+					result = caseElement(profileApplication);
+				if (result == null)
+					result = caseEModelElement(profileApplication);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.ENUMERATION : {
+				Enumeration enumeration = (Enumeration) theEObject;
+				Object result = caseEnumeration(enumeration);
+				if (result == null)
+					result = caseDataType(enumeration);
+				if (result == null)
+					result = caseClassifier(enumeration);
+				if (result == null)
+					result = caseNamespace(enumeration);
+				if (result == null)
+					result = caseRedefinableElement(enumeration);
+				if (result == null)
+					result = caseType(enumeration);
+				if (result == null)
+					result = caseTemplateableElement(enumeration);
+				if (result == null)
+					result = caseNamedElement(enumeration);
+				if (result == null)
+					result = casePackageableElement(enumeration);
+				if (result == null)
+					result = caseElement(enumeration);
+				if (result == null)
+					result = caseParameterableElement(enumeration);
+				if (result == null)
+					result = caseEModelElement(enumeration);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.ENUMERATION_LITERAL : {
+				EnumerationLiteral enumerationLiteral = (EnumerationLiteral) theEObject;
+				Object result = caseEnumerationLiteral(enumerationLiteral);
+				if (result == null)
+					result = caseInstanceSpecification(enumerationLiteral);
+				if (result == null)
+					result = caseDeploymentTarget(enumerationLiteral);
+				if (result == null)
+					result = casePackageableElement(enumerationLiteral);
+				if (result == null)
+					result = caseDeployedArtifact(enumerationLiteral);
+				if (result == null)
+					result = caseNamedElement(enumerationLiteral);
+				if (result == null)
+					result = caseParameterableElement(enumerationLiteral);
+				if (result == null)
+					result = caseElement(enumerationLiteral);
+				if (result == null)
+					result = caseEModelElement(enumerationLiteral);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.INSTANCE_SPECIFICATION : {
+				InstanceSpecification instanceSpecification = (InstanceSpecification) theEObject;
+				Object result = caseInstanceSpecification(instanceSpecification);
+				if (result == null)
+					result = caseDeploymentTarget(instanceSpecification);
+				if (result == null)
+					result = casePackageableElement(instanceSpecification);
+				if (result == null)
+					result = caseDeployedArtifact(instanceSpecification);
+				if (result == null)
+					result = caseNamedElement(instanceSpecification);
+				if (result == null)
+					result = caseParameterableElement(instanceSpecification);
+				if (result == null)
+					result = caseElement(instanceSpecification);
+				if (result == null)
+					result = caseEModelElement(instanceSpecification);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.SLOT : {
+				Slot slot = (Slot) theEObject;
+				Object result = caseSlot(slot);
+				if (result == null)
+					result = caseElement(slot);
+				if (result == null)
+					result = caseEModelElement(slot);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.PRIMITIVE_TYPE : {
+				PrimitiveType primitiveType = (PrimitiveType) theEObject;
+				Object result = casePrimitiveType(primitiveType);
+				if (result == null)
+					result = caseDataType(primitiveType);
+				if (result == null)
+					result = caseClassifier(primitiveType);
+				if (result == null)
+					result = caseNamespace(primitiveType);
+				if (result == null)
+					result = caseRedefinableElement(primitiveType);
+				if (result == null)
+					result = caseType(primitiveType);
+				if (result == null)
+					result = caseTemplateableElement(primitiveType);
+				if (result == null)
+					result = caseNamedElement(primitiveType);
+				if (result == null)
+					result = casePackageableElement(primitiveType);
+				if (result == null)
+					result = caseElement(primitiveType);
+				if (result == null)
+					result = caseParameterableElement(primitiveType);
+				if (result == null)
+					result = caseEModelElement(primitiveType);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.LITERAL_SPECIFICATION : {
+				LiteralSpecification literalSpecification = (LiteralSpecification) theEObject;
+				Object result = caseLiteralSpecification(literalSpecification);
+				if (result == null)
+					result = caseValueSpecification(literalSpecification);
+				if (result == null)
+					result = casePackageableElement(literalSpecification);
+				if (result == null)
+					result = caseTypedElement(literalSpecification);
+				if (result == null)
+					result = caseNamedElement(literalSpecification);
+				if (result == null)
+					result = caseParameterableElement(literalSpecification);
+				if (result == null)
+					result = caseElement(literalSpecification);
+				if (result == null)
+					result = caseEModelElement(literalSpecification);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -2181,119 +2317,6 @@ public class UMLSwitch {
 					result = caseElement(literalNull);
 				if (result == null)
 					result = caseEModelElement(literalNull);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.SLOT : {
-				Slot slot = (Slot) theEObject;
-				Object result = caseSlot(slot);
-				if (result == null)
-					result = caseElement(slot);
-				if (result == null)
-					result = caseEModelElement(slot);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.INSTANCE_SPECIFICATION : {
-				InstanceSpecification instanceSpecification = (InstanceSpecification) theEObject;
-				Object result = caseInstanceSpecification(instanceSpecification);
-				if (result == null)
-					result = caseDeploymentTarget(instanceSpecification);
-				if (result == null)
-					result = casePackageableElement(instanceSpecification);
-				if (result == null)
-					result = caseDeployedArtifact(instanceSpecification);
-				if (result == null)
-					result = caseNamedElement(instanceSpecification);
-				if (result == null)
-					result = caseParameterableElement(instanceSpecification);
-				if (result == null)
-					result = caseElement(instanceSpecification);
-				if (result == null)
-					result = caseEModelElement(instanceSpecification);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.ENUMERATION : {
-				Enumeration enumeration = (Enumeration) theEObject;
-				Object result = caseEnumeration(enumeration);
-				if (result == null)
-					result = caseDataType(enumeration);
-				if (result == null)
-					result = caseClassifier(enumeration);
-				if (result == null)
-					result = caseNamespace(enumeration);
-				if (result == null)
-					result = caseRedefinableElement(enumeration);
-				if (result == null)
-					result = caseType(enumeration);
-				if (result == null)
-					result = caseTemplateableElement(enumeration);
-				if (result == null)
-					result = caseNamedElement(enumeration);
-				if (result == null)
-					result = casePackageableElement(enumeration);
-				if (result == null)
-					result = caseElement(enumeration);
-				if (result == null)
-					result = caseParameterableElement(enumeration);
-				if (result == null)
-					result = caseEModelElement(enumeration);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.ENUMERATION_LITERAL : {
-				EnumerationLiteral enumerationLiteral = (EnumerationLiteral) theEObject;
-				Object result = caseEnumerationLiteral(enumerationLiteral);
-				if (result == null)
-					result = caseInstanceSpecification(enumerationLiteral);
-				if (result == null)
-					result = caseDeploymentTarget(enumerationLiteral);
-				if (result == null)
-					result = casePackageableElement(enumerationLiteral);
-				if (result == null)
-					result = caseDeployedArtifact(enumerationLiteral);
-				if (result == null)
-					result = caseNamedElement(enumerationLiteral);
-				if (result == null)
-					result = caseParameterableElement(enumerationLiteral);
-				if (result == null)
-					result = caseElement(enumerationLiteral);
-				if (result == null)
-					result = caseEModelElement(enumerationLiteral);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.PRIMITIVE_TYPE : {
-				PrimitiveType primitiveType = (PrimitiveType) theEObject;
-				Object result = casePrimitiveType(primitiveType);
-				if (result == null)
-					result = caseDataType(primitiveType);
-				if (result == null)
-					result = caseClassifier(primitiveType);
-				if (result == null)
-					result = caseNamespace(primitiveType);
-				if (result == null)
-					result = caseRedefinableElement(primitiveType);
-				if (result == null)
-					result = caseType(primitiveType);
-				if (result == null)
-					result = caseTemplateableElement(primitiveType);
-				if (result == null)
-					result = caseNamedElement(primitiveType);
-				if (result == null)
-					result = casePackageableElement(primitiveType);
-				if (result == null)
-					result = caseElement(primitiveType);
-				if (result == null)
-					result = caseParameterableElement(primitiveType);
-				if (result == null)
-					result = caseEModelElement(primitiveType);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -4246,29 +4269,6 @@ public class UMLSwitch {
 					result = caseElement(informationFlow);
 				if (result == null)
 					result = caseEModelElement(informationFlow);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.MODEL : {
-				Model model = (Model) theEObject;
-				Object result = caseModel(model);
-				if (result == null)
-					result = casePackage(model);
-				if (result == null)
-					result = caseNamespace(model);
-				if (result == null)
-					result = casePackageableElement(model);
-				if (result == null)
-					result = caseTemplateableElement(model);
-				if (result == null)
-					result = caseNamedElement(model);
-				if (result == null)
-					result = caseParameterableElement(model);
-				if (result == null)
-					result = caseElement(model);
-				if (result == null)
-					result = caseEModelElement(model);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;

@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.6 2005/12/06 23:21:51 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.7 2005/12/14 22:34:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
-
-import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -65,8 +63,8 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__SOURCE);
+	public EList getSources() {
+		EList source = (EList) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__SOURCE);
 		if (source == null) {
 			eVirtualSet(UMLPackage.DIRECTED_RELATIONSHIP__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
@@ -80,8 +78,8 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRelatedElements() {
-		List relatedElement = (List) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT);
+	public EList getRelatedElements() {
+		EList relatedElement = (EList) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT);
 		if (relatedElement == null) {
 			eVirtualSet(UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT,
 				relatedElement = new DerivedUnionEObjectEList(Element.class,
@@ -97,8 +95,8 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__TARGET);
+	public EList getTargets() {
+		EList target = (EList) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__TARGET);
 		if (target == null) {
 			eVirtualSet(UMLPackage.DIRECTED_RELATIONSHIP__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
@@ -149,7 +147,7 @@ public abstract class DirectedRelationshipImpl
 			case UMLPackage.DIRECTED_RELATIONSHIP__OWNER :
 				return isSetOwner();
 			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT :
 				return isSetRelatedElements();

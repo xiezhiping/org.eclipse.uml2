@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -75,8 +74,8 @@ public class ConsiderIgnoreFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getMessages() {
-		List message = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE);
+	public EList getMessages() {
+		EList message = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE);
 		if (message == null) {
 			eVirtualSet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE,
 				message = new EObjectResolvingEList(NamedElement.class, this,
@@ -301,7 +300,7 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
 				return isSetName();
@@ -312,17 +311,17 @@ public class ConsiderIgnoreFragmentImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME_EXPRESSION) != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__COVERED :
-				List covered = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__COVERED);
+				EList covered = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__COVERED);
 				return covered != null && !covered.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING :
-				List generalOrdering = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING);
+				EList generalOrdering = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
 				return getEnclosingInteraction() != null;
@@ -333,13 +332,13 @@ public class ConsiderIgnoreFragmentImpl
 					UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR,
 					INTERACTION_OPERATOR_EDEFAULT) != INTERACTION_OPERATOR_EDEFAULT;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND :
-				List operand = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND);
+				EList operand = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND);
 				return operand != null && !operand.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CFRAGMENT_GATE :
-				List cfragmentGate = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__CFRAGMENT_GATE);
+				EList cfragmentGate = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__CFRAGMENT_GATE);
 				return cfragmentGate != null && !cfragmentGate.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE :
-				List message = (List) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE);
+				EList message = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE);
 				return message != null && !message.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

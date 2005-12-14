@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.2 2005/12/12 18:34:30 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.3 2005/12/14 22:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -80,8 +80,8 @@ public class PropertyItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTemplateParameterPropertyDescriptor(object);
 			addOwningTemplateParameterPropertyDescriptor(object);
+			addTemplateParameterPropertyDescriptor(object);
 			addEndPropertyDescriptor(object);
 			addDeploymentPropertyDescriptor(object);
 			addDeployedElementPropertyDescriptor(object);
@@ -96,10 +96,10 @@ public class PropertyItemProvider
 			addClass_PropertyDescriptor(object);
 			addRedefinedPropertyPropertyDescriptor(object);
 			addOwningAssociationPropertyDescriptor(object);
-			addAssociationPropertyDescriptor(object);
 			addDefaultValuePropertyDescriptor(object);
 			addOppositePropertyDescriptor(object);
 			addSubsettedPropertyPropertyDescriptor(object);
+			addAssociationPropertyDescriptor(object);
 			addQualifierPropertyDescriptor(object);
 			addAssociationEndPropertyDescriptor(object);
 		}

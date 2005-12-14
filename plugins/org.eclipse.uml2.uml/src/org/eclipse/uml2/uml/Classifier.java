@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.4 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Classifier.java,v 1.5 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -105,7 +106,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Generalization" opposite="specific" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getGeneralizations();
+	EList getGeneralizations();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Generalization} and appends it to the '<em><b>Generalization</b></em>' containment reference list.
@@ -132,7 +133,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.GeneralizationSet" opposite="powertype" ordered="false"
 	 * @generated
 	 */
-	List getPowertypeExtents();
+	EList getPowertypeExtents();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Powertype Extent</b></em>' reference list.
@@ -161,7 +162,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Feature" opposite="featuringClassifier" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getFeatures();
+	EList getFeatures();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Feature} with the specified '<em><b>Name</b></em>' from the '<em><b>Feature</b></em>' reference list.
@@ -187,7 +188,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.NamedElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getInheritedMembers();
+	EList getInheritedMembers();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Inherited Member</b></em>' reference list.
@@ -213,7 +214,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
 	 * @generated
 	 */
-	List getRedefinedClassifiers();
+	EList getRedefinedClassifiers();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Classifier</b></em>' reference list.
@@ -240,7 +241,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Classifier" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getGenerals();
+	EList getGenerals();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>General</b></em>' reference list.
@@ -266,7 +267,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.UseCase" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getOwnedUseCases();
+	EList getOwnedUseCases();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.UseCase} and appends it to the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -304,7 +305,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.UseCase" opposite="subject" ordered="false"
 	 * @generated
 	 */
-	List getUseCases();
+	EList getUseCases();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Use Case</b></em>' reference list.
@@ -332,7 +333,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Substitution" opposite="substitutingClassifier" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getSubstitutions();
+	EList getSubstitutions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Substitution} and appends it to the '<em><b>Substitution</b></em>' containment reference list.
@@ -368,7 +369,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Property" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getAttributes();
+	EList getAttributes();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Attribute</b></em>' reference list.
@@ -419,7 +420,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.CollaborationUse" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getCollaborationUses();
+	EList getCollaborationUses();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.CollaborationUse} and appends it to the '<em><b>Collaboration Use</b></em>' containment reference list.
@@ -533,6 +534,38 @@ public interface Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" generalRequired="true" generalOrdered="false"
+	 * @generated
+	 */
+	Generalization createGeneralization(Classifier general);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Property" ordered="false"
+	 * @generated
+	 */
+	EList getAllAttributes();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Operation" ordered="false"
+	 * @generated
+	 */
+	EList getOperations();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Operation" ordered="false"
+	 * @generated
+	 */
+	EList getAllOperations();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
 	 * result = self.oclIsKindOf(c.oclType)
@@ -554,7 +587,7 @@ public interface Classifier
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List allFeatures();
+	EList allFeatures();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -567,7 +600,7 @@ public interface Classifier
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List parents();
+	EList parents();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -581,7 +614,7 @@ public interface Classifier
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List inheritableMembers(Classifier c);
+	EList inheritableMembers(Classifier c);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -622,7 +655,7 @@ public interface Classifier
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List inherit(List inhs);
+	EList inherit(EList inhs);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -635,6 +668,6 @@ public interface Classifier
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List allParents();
+	EList allParents();
 
 } // Classifier

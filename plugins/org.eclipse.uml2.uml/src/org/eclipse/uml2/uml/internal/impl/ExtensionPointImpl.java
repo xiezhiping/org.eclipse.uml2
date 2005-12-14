@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -319,7 +318,7 @@ public class ExtensionPointImpl
 			case UMLPackage.EXTENSION_POINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXTENSION_POINT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.EXTENSION_POINT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXTENSION_POINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXTENSION_POINT__NAME :
 				return isSetName();
@@ -330,7 +329,7 @@ public class ExtensionPointImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXTENSION_POINT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.EXTENSION_POINT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXTENSION_POINT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.EXTENSION_POINT__NAMESPACE :
 				return isSetNamespace();

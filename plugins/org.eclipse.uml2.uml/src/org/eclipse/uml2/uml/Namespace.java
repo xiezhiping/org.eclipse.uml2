@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
+ * $Id: Namespace.java,v 1.4 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -76,7 +77,7 @@ public interface Namespace
 	 * @model type="org.eclipse.uml2.uml.ElementImport" opposite="importingNamespace" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getElementImports();
+	EList getElementImports();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ElementImport} and appends it to the '<em><b>Element Import</b></em>' containment reference list.
@@ -103,7 +104,7 @@ public interface Namespace
 	 * @model type="org.eclipse.uml2.uml.PackageImport" opposite="importingNamespace" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getPackageImports();
+	EList getPackageImports();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.PackageImport} and appends it to the '<em><b>Package Import</b></em>' containment reference list.
@@ -130,7 +131,7 @@ public interface Namespace
 	 * @model type="org.eclipse.uml2.uml.Constraint" opposite="context" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getOwnedRules();
+	EList getOwnedRules();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and appends it to the '<em><b>Owned Rule</b></em>' containment reference list.
@@ -178,7 +179,7 @@ public interface Namespace
 	 * @model type="org.eclipse.uml2.uml.NamedElement" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getMembers();
+	EList getMembers();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Member</b></em>' reference list.
@@ -204,7 +205,7 @@ public interface Namespace
 	 * @model type="org.eclipse.uml2.uml.PackageableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getImportedMembers();
+	EList getImportedMembers();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Imported Member</b></em>' reference list.
@@ -233,7 +234,7 @@ public interface Namespace
 	 * @model type="org.eclipse.uml2.uml.NamedElement" opposite="namespace" resolveProxies="false" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getOwnedMembers();
+	EList getOwnedMembers();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Member</b></em>' reference list.
@@ -262,6 +263,40 @@ public interface Namespace
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" elementRequired="true" elementOrdered="false" visibilityRequired="true" visibilityOrdered="false"
+	 * @generated
+	 */
+	ElementImport createElementImport(PackageableElement element,
+			VisibilityKind visibility);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" package_Required="true" package_Ordered="false" visibilityRequired="true" visibilityOrdered="false"
+	 * @generated
+	 */
+	PackageImport createPackageImport(org.eclipse.uml2.uml.Package package_,
+			VisibilityKind visibility);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.PackageableElement" ordered="false"
+	 * @generated
+	 */
+	EList getImportedElements();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Package" ordered="false"
+	 * @generated
+	 */
+	EList getImportedPackages();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query getNamesOfMember() is overridden to take account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
 	 * The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
@@ -278,7 +313,7 @@ public interface Namespace
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List getNamesOfMember(NamedElement element);
+	EList getNamesOfMember(NamedElement element);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -307,7 +342,7 @@ public interface Namespace
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List importMembers(List imps);
+	EList importMembers(EList imps);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -320,6 +355,6 @@ public interface Namespace
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List excludeCollisions(List imps);
+	EList excludeCollisions(EList imps);
 
 } // Namespace

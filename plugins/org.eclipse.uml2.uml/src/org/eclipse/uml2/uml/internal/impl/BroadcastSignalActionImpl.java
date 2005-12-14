@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.7 2005/12/12 16:58:36 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -393,7 +392,7 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__NAME :
 				return isSetName();
@@ -404,7 +403,7 @@ public class BroadcastSignalActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__NAMESPACE :
 				return isSetNamespace();
@@ -417,29 +416,29 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ACTIVITY :
 				return getActivity() != null;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__HANDLER :
-				List handler = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__HANDLER);
+				EList handler = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTPUT :
 				return isSetOutputs();
@@ -448,15 +447,15 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__CONTEXT :
 				return getContext() != null;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_PRECONDITION :
-				List localPrecondition = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_PRECONDITION);
+				EList localPrecondition = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null
 					&& !localPrecondition.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_POSTCONDITION :
-				List localPostcondition = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_POSTCONDITION);
+				EList localPostcondition = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ARGUMENT :
-				List argument = (List) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__ARGUMENT);
+				EList argument = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__ARGUMENT);
 				return argument != null && !argument.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ON_PORT :
 				return eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__ON_PORT) != null;

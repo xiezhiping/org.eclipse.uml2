@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Model.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Model.java,v 1.4 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -86,5 +86,13 @@ public interface Model
 	 * @generated
 	 */
 	boolean isSetViewpoint();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isMetamodel();
 
 } // Model

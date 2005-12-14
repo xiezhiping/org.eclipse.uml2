@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extension.java,v 1.4 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Extension.java,v 1.5 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -106,5 +106,15 @@ public interface Extension
 	 * @generated
 	 */
 	Property metaclassEnd();
+
+	/**
+	 * The prefix for metaclass role names.
+	 */
+	String METACLASS_ROLE_PREFIX = "base$"; //$NON-NLS-1$
+
+	/**
+	 * The prefix for stereotype role names.
+	 */
+	String STEREOTYPE_ROLE_PREFIX = "extension$"; //$NON-NLS-1$
 
 } // Extension

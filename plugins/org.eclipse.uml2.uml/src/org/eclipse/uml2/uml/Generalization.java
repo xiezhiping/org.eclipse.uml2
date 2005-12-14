@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Generalization.java,v 1.4 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Generalization.java,v 1.5 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -144,7 +145,7 @@ public interface Generalization
 	 * @model type="org.eclipse.uml2.uml.GeneralizationSet" opposite="generalization" ordered="false"
 	 * @generated
 	 */
-	List getGeneralizationSets();
+	EList getGeneralizationSets();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Generalization Set</b></em>' reference list.

@@ -8,19 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.11 2005/12/12 16:58:36 khussey Exp $
+ * $Id: TypeImpl.java,v 1.12 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.uml2.uml.AggregationKind;
+import org.eclipse.uml2.uml.Association;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -123,6 +123,21 @@ public abstract class TypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Association createAssociation(boolean end1IsNavigable,
+			AggregationKind end1Aggregation, String end1Name, int end1Lower,
+			int end1Upper, Type end1Type, boolean end2IsNavigable,
+			AggregationKind end2Aggregation, String end2Name, int end2Lower,
+			int end2Upper) {
+		return TypeOperations.createAssociation(this, end1IsNavigable,
+			end1Aggregation, end1Name, end1Lower, end1Upper, end1Type,
+			end2IsNavigable, end2Aggregation, end2Name, end2Lower, end2Upper);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean conformsTo(Type other) {
 		return TypeOperations.conformsTo(this, other);
 	}
@@ -158,14 +173,14 @@ public abstract class TypeImpl
 				return basicGetNamespace();
 			case UMLPackage.TYPE__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.TYPE__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.TYPE__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.TYPE__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.TYPE__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -202,11 +217,11 @@ public abstract class TypeImpl
 			case UMLPackage.TYPE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.TYPE__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.TYPE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.TYPE__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.TYPE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -240,11 +255,11 @@ public abstract class TypeImpl
 			case UMLPackage.TYPE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.TYPE__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.TYPE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.TYPE__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.TYPE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -268,7 +283,7 @@ public abstract class TypeImpl
 			case UMLPackage.TYPE__OWNER :
 				return isSetOwner();
 			case UMLPackage.TYPE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.TYPE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.TYPE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TYPE__NAME :
 				return isSetName();
@@ -279,16 +294,16 @@ public abstract class TypeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TYPE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.TYPE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.TYPE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.TYPE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TYPE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.TYPE__NAME_EXPRESSION) != null;
-			case UMLPackage.TYPE__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.TYPE__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.TYPE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.TYPE__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.TYPE__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.TYPE__PACKAGE :
 				return basicGetPackage() != null;
 		}

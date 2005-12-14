@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Comment.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Comment.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -105,6 +105,6 @@ public interface Comment
 	 * @model type="org.eclipse.uml2.uml.Element" ordered="false"
 	 * @generated
 	 */
-	List getAnnotatedElements();
+	EList getAnnotatedElements();
 
 } // Comment

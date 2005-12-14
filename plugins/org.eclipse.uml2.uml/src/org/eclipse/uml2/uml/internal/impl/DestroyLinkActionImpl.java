@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
-
-import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -65,8 +63,8 @@ public class DestroyLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getEndData() {
-		List endData = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__END_DATA);
+	public EList getEndData() {
+		EList endData = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__END_DATA);
 		if (endData == null) {
 			eVirtualSet(UMLPackage.DESTROY_LINK_ACTION__END_DATA,
 				endData = new EObjectContainmentEList(
@@ -94,7 +92,7 @@ public class DestroyLinkActionImpl
 	 * @generated
 	 */
 	public boolean isSetEndData() {
-		List endData = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__END_DATA);
+		EList endData = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__END_DATA);
 		return endData != null && !endData.isEmpty();
 	}
 
@@ -188,7 +186,7 @@ public class DestroyLinkActionImpl
 			case UMLPackage.DESTROY_LINK_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.DESTROY_LINK_ACTION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__NAME :
 				return isSetName();
@@ -199,7 +197,7 @@ public class DestroyLinkActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DESTROY_LINK_ACTION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__NAMESPACE :
 				return isSetNamespace();
@@ -212,29 +210,29 @@ public class DestroyLinkActionImpl
 			case UMLPackage.DESTROY_LINK_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.DESTROY_LINK_ACTION__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.DESTROY_LINK_ACTION__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.DESTROY_LINK_ACTION__ACTIVITY :
 				return getActivity() != null;
 			case UMLPackage.DESTROY_LINK_ACTION__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__HANDLER :
-				List handler = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__HANDLER);
+				EList handler = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__OUTPUT :
 				return isSetOutputs();
@@ -243,17 +241,17 @@ public class DestroyLinkActionImpl
 			case UMLPackage.DESTROY_LINK_ACTION__CONTEXT :
 				return getContext() != null;
 			case UMLPackage.DESTROY_LINK_ACTION__LOCAL_PRECONDITION :
-				List localPrecondition = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__LOCAL_PRECONDITION);
+				EList localPrecondition = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null
 					&& !localPrecondition.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__LOCAL_POSTCONDITION :
-				List localPostcondition = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__LOCAL_POSTCONDITION);
+				EList localPostcondition = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__END_DATA :
 				return isSetEndData();
 			case UMLPackage.DESTROY_LINK_ACTION__INPUT_VALUE :
-				List inputValue = (List) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__INPUT_VALUE);
+				EList inputValue = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__INPUT_VALUE);
 				return inputValue != null && !inputValue.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

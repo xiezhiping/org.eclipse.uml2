@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyAction.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: ReplyAction.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -128,7 +129,7 @@ public interface ReplyAction
 	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getReplyValues();
+	EList getReplyValues();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and appends it to the '<em><b>Reply Value</b></em>' containment reference list.

@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalImpl.java,v 1.7 2005/12/12 16:58:35 khussey Exp $
+ * $Id: IntervalImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -189,14 +187,14 @@ public class IntervalImpl
 				return basicGetNamespace();
 			case UMLPackage.INTERVAL__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.INTERVAL__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.INTERVAL__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.INTERVAL__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.INTERVAL__TYPE :
 				if (resolve)
 					return getType();
@@ -241,11 +239,11 @@ public class IntervalImpl
 			case UMLPackage.INTERVAL__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.INTERVAL__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.INTERVAL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.INTERVAL__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.INTERVAL__TYPE :
 				setType((Type) newValue);
@@ -285,11 +283,11 @@ public class IntervalImpl
 			case UMLPackage.INTERVAL__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.INTERVAL__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.INTERVAL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.INTERVAL__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.INTERVAL__TYPE :
 				setType((Type) null);
@@ -319,7 +317,7 @@ public class IntervalImpl
 			case UMLPackage.INTERVAL__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERVAL__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.INTERVAL__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERVAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERVAL__NAME :
 				return isSetName();
@@ -330,16 +328,16 @@ public class IntervalImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERVAL__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.INTERVAL__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.INTERVAL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.INTERVAL__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INTERVAL__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.INTERVAL__NAME_EXPRESSION) != null;
-			case UMLPackage.INTERVAL__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INTERVAL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INTERVAL__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.INTERVAL__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.INTERVAL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INTERVAL__TYPE :
 				return eVirtualGet(UMLPackage.INTERVAL__TYPE) != null;
 			case UMLPackage.INTERVAL__MIN :

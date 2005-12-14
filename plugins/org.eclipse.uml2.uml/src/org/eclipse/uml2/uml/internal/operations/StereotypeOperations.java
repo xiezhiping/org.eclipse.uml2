@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.3 2005/12/12 16:58:38 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -111,6 +115,73 @@ public final class StereotypeOperations
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Extension createExtension(Stereotype stereotype,
+			org.eclipse.uml2.uml.Class metaclass, boolean isRequired) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Profile getProfile(Stereotype stereotype) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static String getKeyword(Stereotype stereotype) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static String getKeyword(Stereotype stereotype, boolean isLocalized) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getExtendedMetaclasses(Stereotype stereotype) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getAllExtendedMetaclasses(Stereotype stereotype) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // StereotypeOperations

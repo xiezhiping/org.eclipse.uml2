@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.10 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -176,8 +175,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -208,8 +207,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinitionContexts() {
-		List redefinitionContext = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT);
+	public EList getRedefinitionContexts() {
+		EList redefinitionContext = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
 				redefinitionContext = new DerivedUnionEObjectEList(
@@ -266,8 +265,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getFeaturingClassifiers() {
-		List featuringClassifier = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER);
+	public EList getFeaturingClassifiers() {
+		EList featuringClassifier = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER);
 		if (featuringClassifier == null) {
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
 				featuringClassifier = new DerivedUnionEObjectEList(
@@ -325,8 +324,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -343,8 +342,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedParameters() {
-		List ownedParameter = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER);
+	public EList getOwnedParameters() {
+		EList ownedParameter = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER);
 		if (ownedParameter == null) {
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER,
 				ownedParameter = new EObjectContainmentEList(Parameter.class,
@@ -411,8 +410,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getMethods() {
-		List method = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__METHOD);
+	public EList getMethods() {
+		EList method = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__METHOD);
 		if (method == null) {
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__METHOD,
 				method = new EObjectWithInverseResolvingEList(Behavior.class,
@@ -472,8 +471,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRaisedExceptions() {
-		List raisedException = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
+	public EList getRaisedExceptions() {
+		EList raisedException = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
 		if (raisedException == null) {
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION,
 				raisedException = new EObjectResolvingEList(Type.class, this,
@@ -502,8 +501,8 @@ public class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedParameterSets() {
-		List ownedParameterSet = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET);
+	public EList getOwnedParameterSets() {
+		EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET);
 		if (ownedParameterSet == null) {
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET,
 				ownedParameterSet = new EObjectContainmentEList(
@@ -884,7 +883,7 @@ public class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME :
 				return isSetName();
@@ -895,20 +894,20 @@ public class BehavioralFeatureImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__NAME_EXPRESSION) != null;
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__MEMBER :
 				return isSetMembers();
@@ -927,21 +926,21 @@ public class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER :
-				List ownedParameter = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER);
+				EList ownedParameter = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
-				List method = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__METHOD);
+				EList method = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__METHOD);
 				return method != null && !method.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY :
 				return eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY,
 					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
 			case UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION :
-				List raisedException = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
+				EList raisedException = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
 				return raisedException != null && !raisedException.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET :
-				List ownedParameterSet = (List) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET);
+				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
 		}

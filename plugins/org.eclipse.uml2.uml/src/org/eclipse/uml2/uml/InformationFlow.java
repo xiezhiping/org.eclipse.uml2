@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlow.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: InformationFlow.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,7 +60,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.Relationship" ordered="false"
 	 * @generated
 	 */
-	List getRealizations();
+	EList getRealizations();
 
 	/**
 	 * Returns the value of the '<em><b>Conveyed</b></em>' reference list.
@@ -74,7 +75,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.Classifier" required="true" ordered="false"
 	 * @generated
 	 */
-	List getConveyeds();
+	EList getConveyeds();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Conveyed</b></em>' reference list.
@@ -100,7 +101,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.NamedElement" required="true" ordered="false"
 	 * @generated
 	 */
-	List getInformationSources();
+	EList getInformationSources();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Information Source</b></em>' reference list.
@@ -126,7 +127,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.NamedElement" required="true" ordered="false"
 	 * @generated
 	 */
-	List getInformationTargets();
+	EList getInformationTargets();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Information Target</b></em>' reference list.
@@ -152,7 +153,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" ordered="false"
 	 * @generated
 	 */
-	List getRealizingActivityEdges();
+	EList getRealizingActivityEdges();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Activity Edge</b></em>' reference list.
@@ -178,7 +179,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.Connector" ordered="false"
 	 * @generated
 	 */
-	List getRealizingConnectors();
+	EList getRealizingConnectors();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Connector} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Connector</b></em>' reference list.
@@ -204,7 +205,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.Message" ordered="false"
 	 * @generated
 	 */
-	List getRealizingMessages();
+	EList getRealizingMessages();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Message} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Message</b></em>' reference list.

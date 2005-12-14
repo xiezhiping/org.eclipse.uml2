@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -92,8 +90,8 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.EXPRESSION__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.EXPRESSION__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.EXPRESSION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -161,8 +159,8 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOperands() {
-		List operand = (List) eVirtualGet(UMLPackage.EXPRESSION__OPERAND);
+	public EList getOperands() {
+		EList operand = (EList) eVirtualGet(UMLPackage.EXPRESSION__OPERAND);
 		if (operand == null) {
 			eVirtualSet(UMLPackage.EXPRESSION__OPERAND,
 				operand = new EObjectContainmentEList(ValueSpecification.class,
@@ -217,11 +215,11 @@ public class ExpressionImpl
 					otherEnd, msgs);
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.EXPRESSION__OPERAND :
 				return ((InternalEList) getOperands()).basicRemove(otherEnd,
 					msgs);
@@ -260,14 +258,14 @@ public class ExpressionImpl
 				return basicGetNamespace();
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.EXPRESSION__TYPE :
 				if (resolve)
 					return getType();
@@ -308,11 +306,11 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.EXPRESSION__TYPE :
 				setType((Type) newValue);
@@ -353,11 +351,11 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.EXPRESSION__TYPE :
 				setType((Type) null);
@@ -387,7 +385,7 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXPRESSION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.EXPRESSION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXPRESSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXPRESSION__NAME :
 				return isSetName();
@@ -398,22 +396,22 @@ public class ExpressionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.EXPRESSION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXPRESSION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.EXPRESSION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.EXPRESSION__NAME_EXPRESSION) != null;
-			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.EXPRESSION__TYPE :
 				return eVirtualGet(UMLPackage.EXPRESSION__TYPE) != null;
 			case UMLPackage.EXPRESSION__SYMBOL :
 				return isSetSymbol();
 			case UMLPackage.EXPRESSION__OPERAND :
-				List operand = (List) eVirtualGet(UMLPackage.EXPRESSION__OPERAND);
+				EList operand = (EList) eVirtualGet(UMLPackage.EXPRESSION__OPERAND);
 				return operand != null && !operand.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameter.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: TemplateParameter.java,v 1.3 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -31,10 +31,10 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getSignature <em>Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getParameteredElement <em>Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getOwnedParameteredElement <em>Owned Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getOwnedDefault <em>Owned Default</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getParameteredElement <em>Parametered Element</em>}</li>
  * </ul>
  * </p>
  *

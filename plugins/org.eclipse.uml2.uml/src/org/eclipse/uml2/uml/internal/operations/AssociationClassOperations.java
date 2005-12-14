@@ -8,18 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: AssociationClassOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.AssociationClass;
@@ -95,8 +96,8 @@ public final class AssociationClassOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List allConnections(AssociationClass associationClass) {
-		List allConnections = new UniqueEList(associationClass.getMemberEnds());
+	public static EList allConnections(AssociationClass associationClass) {
+		EList allConnections = new UniqueEList(associationClass.getMemberEnds());
 
 		for (Iterator allParents = associationClass.allParents().iterator(); allParents
 			.hasNext();) {
@@ -109,7 +110,7 @@ public final class AssociationClassOperations
 			}
 		}
 
-		return Collections.unmodifiableList(allConnections);
+		return ECollections.unmodifiableEList(allConnections);
 	}
 
 } // AssociationClassOperations

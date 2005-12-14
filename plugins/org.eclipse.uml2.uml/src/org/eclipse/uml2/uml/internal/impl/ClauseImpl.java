@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.8 2005/12/06 23:21:48 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -85,8 +84,8 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTests() {
-		List test = (List) eVirtualGet(UMLPackage.CLAUSE__TEST);
+	public EList getTests() {
+		EList test = (EList) eVirtualGet(UMLPackage.CLAUSE__TEST);
 		if (test == null) {
 			eVirtualSet(UMLPackage.CLAUSE__TEST,
 				test = new EObjectResolvingEList(ExecutableNode.class, this,
@@ -115,8 +114,8 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getBodies() {
-		List body = (List) eVirtualGet(UMLPackage.CLAUSE__BODY);
+	public EList getBodies() {
+		EList body = (EList) eVirtualGet(UMLPackage.CLAUSE__BODY);
 		if (body == null) {
 			eVirtualSet(UMLPackage.CLAUSE__BODY,
 				body = new EObjectResolvingEList(ExecutableNode.class, this,
@@ -145,8 +144,8 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPredecessorClauses() {
-		List predecessorClause = (List) eVirtualGet(UMLPackage.CLAUSE__PREDECESSOR_CLAUSE);
+	public EList getPredecessorClauses() {
+		EList predecessorClause = (EList) eVirtualGet(UMLPackage.CLAUSE__PREDECESSOR_CLAUSE);
 		if (predecessorClause == null) {
 			eVirtualSet(
 				UMLPackage.CLAUSE__PREDECESSOR_CLAUSE,
@@ -162,8 +161,8 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSuccessorClauses() {
-		List successorClause = (List) eVirtualGet(UMLPackage.CLAUSE__SUCCESSOR_CLAUSE);
+	public EList getSuccessorClauses() {
+		EList successorClause = (EList) eVirtualGet(UMLPackage.CLAUSE__SUCCESSOR_CLAUSE);
 		if (successorClause == null) {
 			eVirtualSet(
 				UMLPackage.CLAUSE__SUCCESSOR_CLAUSE,
@@ -224,8 +223,8 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getBodyOutputs() {
-		List bodyOutput = (List) eVirtualGet(UMLPackage.CLAUSE__BODY_OUTPUT);
+	public EList getBodyOutputs() {
+		EList bodyOutput = (EList) eVirtualGet(UMLPackage.CLAUSE__BODY_OUTPUT);
 		if (bodyOutput == null) {
 			eVirtualSet(UMLPackage.CLAUSE__BODY_OUTPUT,
 				bodyOutput = new EObjectResolvingEList(OutputPin.class, this,
@@ -443,25 +442,25 @@ public class ClauseImpl
 			case UMLPackage.CLAUSE__OWNER :
 				return isSetOwner();
 			case UMLPackage.CLAUSE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CLAUSE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CLAUSE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CLAUSE__TEST :
-				List test = (List) eVirtualGet(UMLPackage.CLAUSE__TEST);
+				EList test = (EList) eVirtualGet(UMLPackage.CLAUSE__TEST);
 				return test != null && !test.isEmpty();
 			case UMLPackage.CLAUSE__BODY :
-				List body = (List) eVirtualGet(UMLPackage.CLAUSE__BODY);
+				EList body = (EList) eVirtualGet(UMLPackage.CLAUSE__BODY);
 				return body != null && !body.isEmpty();
 			case UMLPackage.CLAUSE__PREDECESSOR_CLAUSE :
-				List predecessorClause = (List) eVirtualGet(UMLPackage.CLAUSE__PREDECESSOR_CLAUSE);
+				EList predecessorClause = (EList) eVirtualGet(UMLPackage.CLAUSE__PREDECESSOR_CLAUSE);
 				return predecessorClause != null
 					&& !predecessorClause.isEmpty();
 			case UMLPackage.CLAUSE__SUCCESSOR_CLAUSE :
-				List successorClause = (List) eVirtualGet(UMLPackage.CLAUSE__SUCCESSOR_CLAUSE);
+				EList successorClause = (EList) eVirtualGet(UMLPackage.CLAUSE__SUCCESSOR_CLAUSE);
 				return successorClause != null && !successorClause.isEmpty();
 			case UMLPackage.CLAUSE__DECIDER :
 				return eVirtualGet(UMLPackage.CLAUSE__DECIDER) != null;
 			case UMLPackage.CLAUSE__BODY_OUTPUT :
-				List bodyOutput = (List) eVirtualGet(UMLPackage.CLAUSE__BODY_OUTPUT);
+				EList bodyOutput = (EList) eVirtualGet(UMLPackage.CLAUSE__BODY_OUTPUT);
 				return bodyOutput != null && !bodyOutput.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

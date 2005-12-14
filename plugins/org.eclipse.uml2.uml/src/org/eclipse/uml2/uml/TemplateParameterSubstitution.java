@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitution.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: TemplateParameterSubstitution.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -83,7 +84,7 @@ public interface TemplateParameterSubstitution
 	 * @model type="org.eclipse.uml2.uml.ParameterableElement" required="true" ordered="false"
 	 * @generated
 	 */
-	List getActuals();
+	EList getActuals();
 
 	/**
 	 * Returns the value of the '<em><b>Owned Actual</b></em>' containment reference list.
@@ -98,7 +99,7 @@ public interface TemplateParameterSubstitution
 	 * @model type="org.eclipse.uml2.uml.ParameterableElement" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getOwnedActuals();
+	EList getOwnedActuals();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ParameterableElement} and appends it to the '<em><b>Owned Actual</b></em>' containment reference list.

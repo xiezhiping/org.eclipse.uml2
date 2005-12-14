@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionOperations.java,v 1.5 2005/12/12 16:58:38 khussey Exp $
+ * $Id: RegionOperations.java,v 1.6 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
@@ -323,7 +323,7 @@ public final class RegionOperations
 		if (redefinee.isRedefinitionContextValid(region)) {
 			Region redefineeRegion = (Region) redefinee;
 
-			List subvertices = region.getSubvertices();
+			EList subvertices = region.getSubvertices();
 
 			for (Iterator redefineeSubvertices = redefineeRegion
 				.getSubvertices().iterator(); redefineeSubvertices.hasNext();) {
@@ -338,7 +338,7 @@ public final class RegionOperations
 				}
 			}
 
-			List transitions = region.getTransitions();
+			EList transitions = region.getTransitions();
 
 			for (Iterator redefineeTransitions = redefineeRegion
 				.getTransitions().iterator(); redefineeTransitions.hasNext();) {

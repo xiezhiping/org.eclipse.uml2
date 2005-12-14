@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -417,7 +415,7 @@ public class GeneralOrderingImpl
 			case UMLPackage.GENERAL_ORDERING__OWNER :
 				return isSetOwner();
 			case UMLPackage.GENERAL_ORDERING__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.GENERAL_ORDERING__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.GENERAL_ORDERING__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.GENERAL_ORDERING__NAME :
 				return isSetName();
@@ -428,7 +426,7 @@ public class GeneralOrderingImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.GENERAL_ORDERING__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.GENERAL_ORDERING__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.GENERAL_ORDERING__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.GENERAL_ORDERING__NAMESPACE :
 				return isSetNamespace();

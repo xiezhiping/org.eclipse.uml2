@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.10 2005/12/12 16:58:37 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.11 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -92,8 +91,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.NAMESPACE__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.NAMESPACE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -112,8 +111,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.NAMESPACE__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.NAMESPACE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -143,8 +142,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getMembers() {
-		List member = (List) eVirtualGet(UMLPackage.NAMESPACE__MEMBER);
+	public EList getMembers() {
+		EList member = (EList) eVirtualGet(UMLPackage.NAMESPACE__MEMBER);
 		if (member == null) {
 			eVirtualSet(UMLPackage.NAMESPACE__MEMBER,
 				member = new DerivedUnionEObjectEList(NamedElement.class, this,
@@ -175,8 +174,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getElementImports() {
-		List elementImport = (List) eVirtualGet(UMLPackage.NAMESPACE__ELEMENT_IMPORT);
+	public EList getElementImports() {
+		EList elementImport = (EList) eVirtualGet(UMLPackage.NAMESPACE__ELEMENT_IMPORT);
 		if (elementImport == null) {
 			eVirtualSet(UMLPackage.NAMESPACE__ELEMENT_IMPORT,
 				elementImport = new EObjectContainmentWithInverseEList(
@@ -204,8 +203,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPackageImports() {
-		List packageImport = (List) eVirtualGet(UMLPackage.NAMESPACE__PACKAGE_IMPORT);
+	public EList getPackageImports() {
+		EList packageImport = (EList) eVirtualGet(UMLPackage.NAMESPACE__PACKAGE_IMPORT);
 		if (packageImport == null) {
 			eVirtualSet(UMLPackage.NAMESPACE__PACKAGE_IMPORT,
 				packageImport = new EObjectContainmentWithInverseEList(
@@ -233,8 +232,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedRules() {
-		List ownedRule = (List) eVirtualGet(UMLPackage.NAMESPACE__OWNED_RULE);
+	public EList getOwnedRules() {
+		EList ownedRule = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_RULE);
 		if (ownedRule == null) {
 			eVirtualSet(UMLPackage.NAMESPACE__OWNED_RULE,
 				ownedRule = new EObjectContainmentWithInverseEList(
@@ -287,10 +286,10 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getImportedMembers() {
+	public EList getImportedMembers() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER);
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER,
@@ -332,7 +331,69 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getNamesOfMember(NamedElement element) {
+	public ElementImport createElementImport(PackageableElement element,
+			VisibilityKind visibility) {
+		return NamespaceOperations.createElementImport(this, element,
+			visibility);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport createPackageImport(
+			org.eclipse.uml2.uml.Package package_, VisibilityKind visibility) {
+		return NamespaceOperations.createPackageImport(this, package_,
+			visibility);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getImportedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UMLPackage.Literals.NAMESPACE.getEOperations().get(3));
+			if (result == null) {
+				cache.put(eResource(), this, UMLPackage.Literals.NAMESPACE
+					.getEOperations().get(3), result = NamespaceOperations
+					.getImportedElements(this));
+			}
+			return result;
+		}
+		return NamespaceOperations.getImportedElements(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getImportedPackages() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UMLPackage.Literals.NAMESPACE.getEOperations().get(4));
+			if (result == null) {
+				cache.put(eResource(), this, UMLPackage.Literals.NAMESPACE
+					.getEOperations().get(4), result = NamespaceOperations
+					.getImportedPackages(this));
+			}
+			return result;
+		}
+		return NamespaceOperations.getImportedPackages(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getNamesOfMember(NamedElement element) {
 		return NamespaceOperations.getNamesOfMember(this, element);
 	}
 
@@ -350,7 +411,7 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List importMembers(List imps) {
+	public EList importMembers(EList imps) {
 		return NamespaceOperations.importMembers(this, imps);
 	}
 
@@ -359,7 +420,7 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List excludeCollisions(List imps) {
+	public EList excludeCollisions(EList imps) {
 		return NamespaceOperations.excludeCollisions(this, imps);
 	}
 
@@ -566,7 +627,7 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__OWNER :
 				return isSetOwner();
 			case UMLPackage.NAMESPACE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.NAMESPACE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.NAMESPACE__NAME :
 				return isSetName();
@@ -577,20 +638,20 @@ public abstract class NamespaceImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.NAMESPACE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.NAMESPACE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.NAMESPACE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.NAMESPACE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.NAMESPACE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.NAMESPACE__NAME_EXPRESSION) != null;
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.NAMESPACE__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.NAMESPACE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.NAMESPACE__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.NAMESPACE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.NAMESPACE__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.NAMESPACE__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.NAMESPACE__MEMBER :
 				return isSetMembers();

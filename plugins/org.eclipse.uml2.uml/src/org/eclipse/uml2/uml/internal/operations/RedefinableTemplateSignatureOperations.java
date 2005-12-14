@@ -8,17 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureOperations.java,v 1.4 2005/12/12 16:58:38 khussey Exp $
+ * $Id: RedefinableTemplateSignatureOperations.java,v 1.5 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -96,9 +97,9 @@ public final class RedefinableTemplateSignatureOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static List getInheritedParameters(
+	public static EList getInheritedParameters(
 			RedefinableTemplateSignature redefinableTemplateSignature) {
-		List inheritedParameters = new UniqueEList();
+		EList inheritedParameters = new UniqueEList();
 
 		for (Iterator extendedSignatures = redefinableTemplateSignature
 			.getExtendedSignatures().iterator(); extendedSignatures.hasNext();) {

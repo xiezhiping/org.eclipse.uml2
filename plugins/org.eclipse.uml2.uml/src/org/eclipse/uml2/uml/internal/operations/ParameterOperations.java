@@ -8,16 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.10 2005/12/12 18:11:59 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.11 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 
@@ -310,7 +310,7 @@ public final class ParameterOperations
 
 				public Object caseOpaqueExpression(
 						OpaqueExpression opaqueExpression) {
-					List bodies = opaqueExpression.getBodies();
+					EList bodies = opaqueExpression.getBodies();
 
 					if (bodies.isEmpty()) {
 						bodies.add(newDefault);

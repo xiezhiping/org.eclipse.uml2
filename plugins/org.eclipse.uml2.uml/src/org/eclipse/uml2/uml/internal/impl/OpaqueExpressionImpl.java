@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.11 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -85,8 +84,8 @@ public class OpaqueExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getBodies() {
-		List body = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY);
+	public EList getBodies() {
+		EList body = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY);
 		if (body == null) {
 			eVirtualSet(UMLPackage.OPAQUE_EXPRESSION__BODY,
 				body = new EDataTypeUniqueEList.Unsettable(String.class, this,
@@ -110,7 +109,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public boolean isSetBodies() {
-		List body = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY);
+		EList body = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY);
 		return body != null && ((InternalEList.Unsettable) body).isSet();
 	}
 
@@ -119,8 +118,8 @@ public class OpaqueExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getLanguages() {
-		List language = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
+	public EList getLanguages() {
+		EList language = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
 		if (language == null) {
 			eVirtualSet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE,
 				language = new EDataTypeUniqueEList.Unsettable(String.class,
@@ -144,7 +143,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public boolean isSetLanguages() {
-		List language = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
+		EList language = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
 		return language != null
 			&& ((InternalEList.Unsettable) language).isSet();
 	}
@@ -338,14 +337,14 @@ public class OpaqueExpressionImpl
 				return basicGetNamespace();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
 				if (resolve)
 					return getType();
@@ -394,11 +393,11 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
 				setType((Type) newValue);
@@ -443,11 +442,11 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
 				setType((Type) null);
@@ -480,7 +479,7 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
 				return isSetName();
@@ -491,16 +490,16 @@ public class OpaqueExpressionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.OPAQUE_EXPRESSION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION) != null;
-			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
 				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__TYPE) != null;
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :

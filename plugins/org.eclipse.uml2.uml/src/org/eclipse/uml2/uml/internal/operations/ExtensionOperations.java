@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionOperations.java,v 1.7 2005/12/12 18:11:59 khussey Exp $
+ * $Id: ExtensionOperations.java,v 1.8 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
@@ -131,7 +131,7 @@ public final class ExtensionOperations
 	 * @generated NOT
 	 */
 	public static Property metaclassEnd(Extension extension) {
-		List ownedEnds = extension.getOwnedEnds();
+		EList ownedEnds = extension.getOwnedEnds();
 
 		for (Iterator memberEnds = extension.getMemberEnds().iterator(); memberEnds
 			.hasNext();) {
@@ -173,7 +173,7 @@ public final class ExtensionOperations
 	 * @generated NOT
 	 */
 	public static boolean isRequired(Extension extension) {
-		List ownedEnds = extension.getOwnedEnds();
+		EList ownedEnds = extension.getOwnedEnds();
 		return ownedEnds.size() > 0
 			&& ((ExtensionEnd) ownedEnds.get(0)).lowerBound() == 1;
 	}

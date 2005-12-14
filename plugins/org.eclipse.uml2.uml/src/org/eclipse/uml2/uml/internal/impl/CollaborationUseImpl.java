@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
+ * $Id: CollaborationUseImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -87,8 +86,8 @@ public class CollaborationUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.COLLABORATION_USE__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.COLLABORATION_USE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -151,8 +150,8 @@ public class CollaborationUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRoleBindings() {
-		List roleBinding = (List) eVirtualGet(UMLPackage.COLLABORATION_USE__ROLE_BINDING);
+	public EList getRoleBindings() {
+		EList roleBinding = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__ROLE_BINDING);
 		if (roleBinding == null) {
 			eVirtualSet(UMLPackage.COLLABORATION_USE__ROLE_BINDING,
 				roleBinding = new EObjectContainmentEList(Dependency.class,
@@ -386,7 +385,7 @@ public class CollaborationUseImpl
 			case UMLPackage.COLLABORATION_USE__OWNER :
 				return isSetOwner();
 			case UMLPackage.COLLABORATION_USE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.COLLABORATION_USE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COLLABORATION_USE__NAME :
 				return isSetName();
@@ -397,7 +396,7 @@ public class CollaborationUseImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.COLLABORATION_USE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.COLLABORATION_USE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.COLLABORATION_USE__NAMESPACE :
 				return isSetNamespace();
@@ -406,7 +405,7 @@ public class CollaborationUseImpl
 			case UMLPackage.COLLABORATION_USE__TYPE :
 				return eVirtualGet(UMLPackage.COLLABORATION_USE__TYPE) != null;
 			case UMLPackage.COLLABORATION_USE__ROLE_BINDING :
-				List roleBinding = (List) eVirtualGet(UMLPackage.COLLABORATION_USE__ROLE_BINDING);
+				EList roleBinding = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__ROLE_BINDING);
 				return roleBinding != null && !roleBinding.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

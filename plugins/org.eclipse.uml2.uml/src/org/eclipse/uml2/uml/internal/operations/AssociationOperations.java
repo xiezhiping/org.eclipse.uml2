@@ -8,17 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationOperations.java,v 1.6 2005/12/12 18:11:59 khussey Exp $
+ * $Id: AssociationOperations.java,v 1.7 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -197,8 +198,8 @@ public final class AssociationOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List getEndTypes(Association association) {
-		List endTypes = new UniqueEList();
+	public static EList getEndTypes(Association association) {
+		EList endTypes = new UniqueEList();
 
 		for (Iterator memberEnds = association.getMemberEnds().iterator(); memberEnds
 			.hasNext();) {

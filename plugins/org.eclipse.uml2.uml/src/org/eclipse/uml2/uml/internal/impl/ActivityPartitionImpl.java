@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.11 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -141,8 +140,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSubgroups() {
-		List subgroup = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__SUBGROUP);
+	public EList getSubgroups() {
+		EList subgroup = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__SUBGROUP);
 		if (subgroup == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_PARTITION__SUBGROUP,
 				subgroup = new DerivedUnionEObjectEList(ActivityGroup.class,
@@ -157,8 +156,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -175,8 +174,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getContainedNodes() {
-		List containedNode = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE);
+	public EList getContainedNodes() {
+		EList containedNode = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE);
 		if (containedNode == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE,
 				containedNode = new DerivedUnionEObjectEList(
@@ -207,8 +206,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getContainedEdges() {
-		List containedEdge = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE);
+	public EList getContainedEdges() {
+		EList containedEdge = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE);
 		if (containedEdge == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE,
 				containedEdge = new DerivedUnionEObjectEList(
@@ -332,8 +331,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getEdges() {
-		List edge = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__EDGE);
+	public EList getEdges() {
+		EList edge = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__EDGE);
 		if (edge == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_PARTITION__EDGE,
 				edge = new EObjectWithInverseResolvingEList.ManyInverse(
@@ -364,8 +363,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getNodes() {
-		List node = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__NODE);
+	public EList getNodes() {
+		EList node = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__NODE);
 		if (node == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_PARTITION__NODE,
 				node = new EObjectWithInverseResolvingEList.ManyInverse(
@@ -396,8 +395,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSubpartitions() {
-		List subpartition = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION);
+	public EList getSubpartitions() {
+		EList subpartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION);
 		if (subpartition == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION,
 				subpartition = new EObjectContainmentWithInverseEList(
@@ -881,7 +880,7 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__NAME :
 				return isSetName();
@@ -892,7 +891,7 @@ public class ActivityPartitionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__NAMESPACE :
 				return isSetNamespace();
@@ -913,13 +912,13 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__IS_EXTERNAL :
 				return ((eFlags & IS_EXTERNAL_EFLAG) != 0) != IS_EXTERNAL_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARTITION__EDGE :
-				List edge = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__EDGE);
+				EList edge = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__EDGE);
 				return edge != null && !edge.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
-				List node = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__NODE);
+				EList node = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__NODE);
 				return node != null && !node.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
-				List subpartition = (List) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION);
+				EList subpartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION);
 				return subpartition != null && !subpartition.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
 				return getSuperPartition() != null;

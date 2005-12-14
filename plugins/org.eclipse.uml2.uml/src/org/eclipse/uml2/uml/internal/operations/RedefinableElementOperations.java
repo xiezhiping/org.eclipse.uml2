@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.4 2005/12/12 16:58:38 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.5 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.RedefinableElement;
@@ -132,14 +132,14 @@ public final class RedefinableElementOperations
 	public static boolean isRedefinitionContextValid(
 			RedefinableElement redefinableElement,
 			RedefinableElement redefinable) {
-		List redefinableRedefinitionContexts = redefinable
+		EList redefinableRedefinitionContexts = redefinable
 			.getRedefinitionContexts();
 
 		for (Iterator redefinitionContexts = redefinableElement
 			.getRedefinitionContexts().iterator(); redefinitionContexts
 			.hasNext();) {
 
-			List redefinitionContextAllParents = ((Classifier) redefinitionContexts
+			EList redefinitionContextAllParents = ((Classifier) redefinitionContexts
 				.next()).allParents();
 
 			for (Iterator rrc = redefinableRedefinitionContexts.iterator(); rrc

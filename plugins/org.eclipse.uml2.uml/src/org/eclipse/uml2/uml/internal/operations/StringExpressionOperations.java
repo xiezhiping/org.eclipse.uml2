@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionOperations.java,v 1.3 2005/12/12 16:58:38 khussey Exp $
+ * $Id: StringExpressionOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -122,7 +122,7 @@ public final class StringExpressionOperations
 
 	protected static StringBuffer stringValue(
 			StringExpression stringExpression, StringBuffer stringValue) {
-		List subExpressions = stringExpression.getSubExpressions();
+		EList subExpressions = stringExpression.getSubExpressions();
 
 		if (!subExpressions.isEmpty()) {
 

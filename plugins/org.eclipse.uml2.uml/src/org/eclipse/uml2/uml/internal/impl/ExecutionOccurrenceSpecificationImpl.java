@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -362,7 +360,7 @@ public class ExecutionOccurrenceSpecificationImpl
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
 				return isSetName();
@@ -373,7 +371,7 @@ public class ExecutionOccurrenceSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
@@ -382,19 +380,19 @@ public class ExecutionOccurrenceSpecificationImpl
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__COVERED :
 				return isSetCovereds();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-				List generalOrdering = (List) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING);
+				EList generalOrdering = (EList) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				return getEnclosingInteraction() != null;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				return getEnclosingOperand() != null;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				List toBefore = (List) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE);
+				EList toBefore = (EList) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE);
 				return toBefore != null && !toBefore.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT :
 				return isSetEvent();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_AFTER :
-				List toAfter = (List) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_AFTER);
+				EList toAfter = (EList) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_AFTER);
 				return toAfter != null && !toAfter.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION :
 				return eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION) != null;

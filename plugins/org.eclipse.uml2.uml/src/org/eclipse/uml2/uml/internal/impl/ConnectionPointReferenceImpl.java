@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -86,8 +85,8 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getEntries() {
-		List entry = (List) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY);
+	public EList getEntries() {
+		EList entry = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY);
 		if (entry == null) {
 			eVirtualSet(UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY,
 				entry = new EObjectResolvingEList(Pseudostate.class, this,
@@ -116,8 +115,8 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getExits() {
-		List exit = (List) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__EXIT);
+	public EList getExits() {
+		EList exit = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__EXIT);
 		if (exit == null) {
 			eVirtualSet(UMLPackage.CONNECTION_POINT_REFERENCE__EXIT,
 				exit = new EObjectResolvingEList(Pseudostate.class, this,
@@ -452,7 +451,7 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
 				return isSetName();
@@ -463,25 +462,25 @@ public class ConnectionPointReferenceImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION) != null;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				return getContainer() != null;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY :
-				List entry = (List) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY);
+				EList entry = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY);
 				return entry != null && !entry.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EXIT :
-				List exit = (List) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__EXIT);
+				EList exit = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__EXIT);
 				return exit != null && !exit.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
 				return getState() != null;

@@ -8,18 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.6 2005/12/08 19:38:07 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.7 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -29,6 +30,8 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.VisibilityKind;
+
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -99,6 +102,52 @@ public final class NamespaceOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ElementImport createElementImport(Namespace namespace,
+			PackageableElement element, VisibilityKind visibility) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static PackageImport createPackageImport(Namespace namespace,
+			org.eclipse.uml2.uml.Package package_, VisibilityKind visibility) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getImportedElements(Namespace namespace) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getImportedPackages(Namespace namespace) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
 	 * The importedMember property is derived from the ElementImports and the PackageImports.
@@ -107,8 +156,8 @@ public final class NamespaceOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List getImportedMembers(Namespace namespace) {
-		List importedMembers = new UniqueEList();
+	public static EList getImportedMembers(Namespace namespace) {
+		EList importedMembers = new UniqueEList();
 
 		for (Iterator elementImports = namespace.getElementImports().iterator(); elementImports
 			.hasNext();) {
@@ -137,8 +186,8 @@ public final class NamespaceOperations
 				.size(), importedMembers.toArray());
 	}
 
-	protected static List getNamesOfMember(Namespace namespace,
-			NamedElement element, List namespaces, List namesOfMember) {
+	protected static EList getNamesOfMember(Namespace namespace,
+			NamedElement element, EList namespaces, EList namesOfMember) {
 
 		if (!namespaces.contains(namespace)) {
 			namespaces.add(namespace);
@@ -150,7 +199,7 @@ public final class NamespaceOperations
 					namesOfMember.add(name);
 				}
 			} else {
-				List elementImportNames = new UniqueEList();
+				EList elementImportNames = new UniqueEList();
 
 				for (Iterator elementImports = namespace.getElementImports()
 					.iterator(); elementImports.hasNext();) {
@@ -208,9 +257,9 @@ public final class NamespaceOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List getNamesOfMember(Namespace namespace,
+	public static EList getNamesOfMember(Namespace namespace,
 			NamedElement element) {
-		return Collections.unmodifiableList(getNamesOfMember(namespace,
+		return ECollections.unmodifiableEList(getNamesOfMember(namespace,
 			element, new UniqueEList(), new UniqueEList()));
 	}
 
@@ -226,7 +275,7 @@ public final class NamespaceOperations
 	 * @generated NOT
 	 */
 	public static boolean membersAreDistinguishable(Namespace namespace) {
-		List namespaceMembers = namespace.getMembers();
+		EList namespaceMembers = namespace.getMembers();
 
 		for (Iterator members = namespaceMembers.iterator(); members.hasNext();) {
 			NamedElement member = (NamedElement) members.next();
@@ -257,10 +306,10 @@ public final class NamespaceOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List importMembers(Namespace namespace, List imps) {
-		List importMembers = new UniqueEList();
+	public static EList importMembers(Namespace namespace, EList imps) {
+		EList importMembers = new UniqueEList();
 
-		List ownedMembers = namespace.getOwnedMembers();
+		EList ownedMembers = namespace.getOwnedMembers();
 
 		excludeCollisionsLoop : for (Iterator excludeCollisions = namespace
 			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {
@@ -280,7 +329,7 @@ public final class NamespaceOperations
 			importMembers.add(excludeCollision);
 		}
 
-		return Collections.unmodifiableList(importMembers);
+		return ECollections.unmodifiableEList(importMembers);
 	}
 
 	/**
@@ -292,8 +341,8 @@ public final class NamespaceOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List excludeCollisions(Namespace namespace, List imps) {
-		List excludeCollisions = new UniqueEList();
+	public static EList excludeCollisions(Namespace namespace, EList imps) {
+		EList excludeCollisions = new UniqueEList();
 
 		imps1Loop : for (Iterator imps1 = imps.iterator(); imps1.hasNext();) {
 			PackageableElement imp1 = (PackageableElement) imps1.next();
@@ -311,7 +360,7 @@ public final class NamespaceOperations
 			excludeCollisions.add(imp1);
 		}
 
-		return Collections.unmodifiableList(excludeCollisions);
+		return ECollections.unmodifiableEList(excludeCollisions);
 	}
 
 } // NamespaceOperations

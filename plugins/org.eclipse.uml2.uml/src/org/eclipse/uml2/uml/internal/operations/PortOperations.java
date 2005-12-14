@@ -8,17 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.5 2005/12/12 18:11:59 khussey Exp $
+ * $Id: PortOperations.java,v 1.6 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -195,9 +196,9 @@ public final class PortOperations
 		return true;
 	}
 
-	protected static List getImplementedInterfaces(
+	protected static EList getImplementedInterfaces(
 			BehavioredClassifier behavioredClassifier,
-			List implementedInterfaces) {
+			EList implementedInterfaces) {
 
 		for (Iterator interfaceRealizations = behavioredClassifier
 			.getInterfaceRealizations().iterator(); interfaceRealizations
@@ -219,8 +220,8 @@ public final class PortOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static List getProvideds(Port port) {
-		List provideds = new UniqueEList();
+	public static EList getProvideds(Port port) {
+		EList provideds = new UniqueEList();
 
 		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
 			false);
@@ -250,8 +251,8 @@ public final class PortOperations
 				.toArray());
 	}
 
-	protected static List getUsedInterfaces(Classifier classifier,
-			List usedInterfaces) {
+	protected static EList getUsedInterfaces(Classifier classifier,
+			EList usedInterfaces) {
 
 		for (Iterator clientDependencies = classifier.getClientDependencies()
 			.iterator(); clientDependencies.hasNext();) {
@@ -280,8 +281,8 @@ public final class PortOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static List getRequireds(Port port) {
-		List requireds = new UniqueEList();
+	public static EList getRequireds(Port port) {
+		EList requireds = new UniqueEList();
 
 		Type type = port.getType();
 

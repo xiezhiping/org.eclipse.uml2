@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.10 2005/12/12 16:58:37 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.11 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -95,8 +94,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.USE_CASE__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.USE_CASE__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.USE_CASE__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -117,8 +116,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getIncludes() {
-		List include = (List) eVirtualGet(UMLPackage.USE_CASE__INCLUDE);
+	public EList getIncludes() {
+		EList include = (EList) eVirtualGet(UMLPackage.USE_CASE__INCLUDE);
 		if (include == null) {
 			eVirtualSet(UMLPackage.USE_CASE__INCLUDE,
 				include = new EObjectContainmentWithInverseEList(Include.class,
@@ -159,8 +158,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getExtends() {
-		List extend = (List) eVirtualGet(UMLPackage.USE_CASE__EXTEND);
+	public EList getExtends() {
+		EList extend = (EList) eVirtualGet(UMLPackage.USE_CASE__EXTEND);
 		if (extend == null) {
 			eVirtualSet(UMLPackage.USE_CASE__EXTEND,
 				extend = new EObjectContainmentWithInverseEList(Extend.class,
@@ -201,8 +200,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getExtensionPoints() {
-		List extensionPoint = (List) eVirtualGet(UMLPackage.USE_CASE__EXTENSION_POINT);
+	public EList getExtensionPoints() {
+		EList extensionPoint = (EList) eVirtualGet(UMLPackage.USE_CASE__EXTENSION_POINT);
 		if (extensionPoint == null) {
 			eVirtualSet(UMLPackage.USE_CASE__EXTENSION_POINT,
 				extensionPoint = new EObjectContainmentWithInverseEList(
@@ -245,8 +244,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSubjects() {
-		List subject = (List) eVirtualGet(UMLPackage.USE_CASE__SUBJECT);
+	public EList getSubjects() {
+		EList subject = (EList) eVirtualGet(UMLPackage.USE_CASE__SUBJECT);
 		if (subject == null) {
 			eVirtualSet(UMLPackage.USE_CASE__SUBJECT,
 				subject = new EObjectWithInverseResolvingEList.ManyInverse(
@@ -319,10 +318,10 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List allIncludedUseCases() {
+	public EList allIncludedUseCases() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.Literals.USE_CASE
+			EList result = (EList) cache.get(this, UMLPackage.Literals.USE_CASE
 				.getEOperations().get(4));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.USE_CASE.getEOperations()
@@ -357,6 +356,11 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.USE_CASE__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -366,11 +370,6 @@ public class UseCaseImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
@@ -446,11 +445,11 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
@@ -552,14 +551,14 @@ public class UseCaseImpl
 				return getRedefinedElements();
 			case UMLPackage.USE_CASE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.USE_CASE__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -661,11 +660,11 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.USE_CASE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -790,11 +789,11 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.USE_CASE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -881,7 +880,7 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__OWNER :
 				return isSetOwner();
 			case UMLPackage.USE_CASE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.USE_CASE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.USE_CASE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.USE_CASE__NAME :
 				return isSetName();
@@ -892,20 +891,20 @@ public class UseCaseImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.USE_CASE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.USE_CASE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.USE_CASE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.USE_CASE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.USE_CASE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.USE_CASE__NAME_EXPRESSION) != null;
 			case UMLPackage.USE_CASE__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.USE_CASE__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.USE_CASE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.USE_CASE__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.USE_CASE__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.USE_CASE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.USE_CASE__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.USE_CASE__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.USE_CASE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.USE_CASE__MEMBER :
 				return isSetMembers();
@@ -919,76 +918,76 @@ public class UseCaseImpl
 				return isSetRedefinedElements();
 			case UMLPackage.USE_CASE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.USE_CASE__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.USE_CASE__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.USE_CASE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.USE_CASE__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.USE_CASE__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.USE_CASE__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.USE_CASE__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.USE_CASE__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.USE_CASE__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.USE_CASE__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.USE_CASE__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.USE_CASE__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.USE_CASE__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.USE_CASE__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.USE_CASE__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.USE_CASE__GENERAL :
 				return !getGenerals().isEmpty();
 			case UMLPackage.USE_CASE__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.USE_CASE__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.USE_CASE__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.USE_CASE__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.USE_CASE__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.USE_CASE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.USE_CASE__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.USE_CASE__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.USE_CASE__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.USE_CASE__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.USE_CASE__REPRESENTATION :
 				return eVirtualGet(UMLPackage.USE_CASE__REPRESENTATION) != null;
 			case UMLPackage.USE_CASE__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.USE_CASE__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.USE_CASE__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.USE_CASE__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.USE_CASE__OWNED_SIGNATURE) != null;
 			case UMLPackage.USE_CASE__OWNED_BEHAVIOR :
-				List ownedBehavior = (List) eVirtualGet(UMLPackage.USE_CASE__OWNED_BEHAVIOR);
+				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.USE_CASE__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UMLPackage.USE_CASE__CLASSIFIER_BEHAVIOR :
 				return eVirtualGet(UMLPackage.USE_CASE__CLASSIFIER_BEHAVIOR) != null;
 			case UMLPackage.USE_CASE__INTERFACE_REALIZATION :
-				List interfaceRealization = (List) eVirtualGet(UMLPackage.USE_CASE__INTERFACE_REALIZATION);
+				EList interfaceRealization = (EList) eVirtualGet(UMLPackage.USE_CASE__INTERFACE_REALIZATION);
 				return interfaceRealization != null
 					&& !interfaceRealization.isEmpty();
 			case UMLPackage.USE_CASE__OWNED_TRIGGER :
-				List ownedTrigger = (List) eVirtualGet(UMLPackage.USE_CASE__OWNED_TRIGGER);
+				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.USE_CASE__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UMLPackage.USE_CASE__INCLUDE :
-				List include = (List) eVirtualGet(UMLPackage.USE_CASE__INCLUDE);
+				EList include = (EList) eVirtualGet(UMLPackage.USE_CASE__INCLUDE);
 				return include != null && !include.isEmpty();
 			case UMLPackage.USE_CASE__EXTEND :
-				List extend = (List) eVirtualGet(UMLPackage.USE_CASE__EXTEND);
+				EList extend = (EList) eVirtualGet(UMLPackage.USE_CASE__EXTEND);
 				return extend != null && !extend.isEmpty();
 			case UMLPackage.USE_CASE__EXTENSION_POINT :
-				List extensionPoint = (List) eVirtualGet(UMLPackage.USE_CASE__EXTENSION_POINT);
+				EList extensionPoint = (EList) eVirtualGet(UMLPackage.USE_CASE__EXTENSION_POINT);
 				return extensionPoint != null && !extensionPoint.isEmpty();
 			case UMLPackage.USE_CASE__SUBJECT :
-				List subject = (List) eVirtualGet(UMLPackage.USE_CASE__SUBJECT);
+				EList subject = (EList) eVirtualGet(UMLPackage.USE_CASE__SUBJECT);
 				return subject != null && !subject.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

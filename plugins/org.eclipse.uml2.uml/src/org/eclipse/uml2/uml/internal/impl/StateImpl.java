@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.14 2005/12/12 16:58:37 khussey Exp $
+ * $Id: StateImpl.java,v 1.15 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -191,8 +191,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.STATE__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.STATE__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.STATE__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -223,7 +223,7 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public List getRedefinitionContexts() {
+	public EList getRedefinitionContexts() {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
@@ -313,8 +313,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOutgoings() {
-		List outgoing = (List) eVirtualGet(UMLPackage.STATE__OUTGOING);
+	public EList getOutgoings() {
+		EList outgoing = (EList) eVirtualGet(UMLPackage.STATE__OUTGOING);
 		if (outgoing == null) {
 			eVirtualSet(UMLPackage.STATE__OUTGOING,
 				outgoing = new EObjectWithInverseResolvingEList(
@@ -344,8 +344,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getIncomings() {
-		List incoming = (List) eVirtualGet(UMLPackage.STATE__INCOMING);
+	public EList getIncomings() {
+		EList incoming = (EList) eVirtualGet(UMLPackage.STATE__INCOMING);
 		if (incoming == null) {
 			eVirtualSet(UMLPackage.STATE__INCOMING,
 				incoming = new EObjectWithInverseResolvingEList(
@@ -413,8 +413,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.STATE__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.STATE__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(
 				UMLPackage.STATE__OWNED_MEMBER,
@@ -431,8 +431,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.STATE__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.STATE__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.STATE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -570,8 +570,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getConnections() {
-		List connection = (List) eVirtualGet(UMLPackage.STATE__CONNECTION);
+	public EList getConnections() {
+		EList connection = (EList) eVirtualGet(UMLPackage.STATE__CONNECTION);
 		if (connection == null) {
 			eVirtualSet(UMLPackage.STATE__CONNECTION,
 				connection = new EObjectContainmentWithInverseEList(
@@ -615,8 +615,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getConnectionPoints() {
-		List connectionPoint = (List) eVirtualGet(UMLPackage.STATE__CONNECTION_POINT);
+	public EList getConnectionPoints() {
+		EList connectionPoint = (EList) eVirtualGet(UMLPackage.STATE__CONNECTION_POINT);
 		if (connectionPoint == null) {
 			eVirtualSet(UMLPackage.STATE__CONNECTION_POINT,
 				connectionPoint = new EObjectContainmentWithInverseEList(
@@ -1034,8 +1034,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getDeferrableTriggers() {
-		List deferrableTrigger = (List) eVirtualGet(UMLPackage.STATE__DEFERRABLE_TRIGGER);
+	public EList getDeferrableTriggers() {
+		EList deferrableTrigger = (EList) eVirtualGet(UMLPackage.STATE__DEFERRABLE_TRIGGER);
 		if (deferrableTrigger == null) {
 			eVirtualSet(UMLPackage.STATE__DEFERRABLE_TRIGGER,
 				deferrableTrigger = new EObjectContainmentEList(Trigger.class,
@@ -1075,8 +1075,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRegions() {
-		List region = (List) eVirtualGet(UMLPackage.STATE__REGION);
+	public EList getRegions() {
+		EList region = (EList) eVirtualGet(UMLPackage.STATE__REGION);
 		if (region == null) {
 			eVirtualSet(UMLPackage.STATE__REGION,
 				region = new EObjectContainmentWithInverseEList(Region.class,
@@ -1655,7 +1655,7 @@ public class StateImpl
 			case UMLPackage.STATE__OWNER :
 				return isSetOwner();
 			case UMLPackage.STATE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.STATE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.STATE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STATE__NAME :
 				return isSetName();
@@ -1666,20 +1666,20 @@ public class StateImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STATE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.STATE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.STATE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.STATE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.STATE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.STATE__NAME_EXPRESSION) != null;
 			case UMLPackage.STATE__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.STATE__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.STATE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.STATE__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.STATE__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.STATE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.STATE__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.STATE__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.STATE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.STATE__MEMBER :
 				return isSetMembers();
@@ -1694,10 +1694,10 @@ public class StateImpl
 			case UMLPackage.STATE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.STATE__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.STATE__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.STATE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.STATE__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.STATE__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.STATE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.STATE__CONTAINER :
 				return getContainer() != null;
@@ -1712,10 +1712,10 @@ public class StateImpl
 			case UMLPackage.STATE__SUBMACHINE :
 				return eVirtualGet(UMLPackage.STATE__SUBMACHINE) != null;
 			case UMLPackage.STATE__CONNECTION :
-				List connection = (List) eVirtualGet(UMLPackage.STATE__CONNECTION);
+				EList connection = (EList) eVirtualGet(UMLPackage.STATE__CONNECTION);
 				return connection != null && !connection.isEmpty();
 			case UMLPackage.STATE__CONNECTION_POINT :
-				List connectionPoint = (List) eVirtualGet(UMLPackage.STATE__CONNECTION_POINT);
+				EList connectionPoint = (EList) eVirtualGet(UMLPackage.STATE__CONNECTION_POINT);
 				return connectionPoint != null && !connectionPoint.isEmpty();
 			case UMLPackage.STATE__REDEFINED_STATE :
 				return eVirtualGet(UMLPackage.STATE__REDEFINED_STATE) != null;
@@ -1728,11 +1728,11 @@ public class StateImpl
 			case UMLPackage.STATE__DO_ACTIVITY :
 				return eVirtualGet(UMLPackage.STATE__DO_ACTIVITY) != null;
 			case UMLPackage.STATE__DEFERRABLE_TRIGGER :
-				List deferrableTrigger = (List) eVirtualGet(UMLPackage.STATE__DEFERRABLE_TRIGGER);
+				EList deferrableTrigger = (EList) eVirtualGet(UMLPackage.STATE__DEFERRABLE_TRIGGER);
 				return deferrableTrigger != null
 					&& !deferrableTrigger.isEmpty();
 			case UMLPackage.STATE__REGION :
-				List region = (List) eVirtualGet(UMLPackage.STATE__REGION);
+				EList region = (EList) eVirtualGet(UMLPackage.STATE__REGION);
 				return region != null && !region.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

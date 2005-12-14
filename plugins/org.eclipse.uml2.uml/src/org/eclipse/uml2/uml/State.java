@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.6 2005/12/12 16:58:34 khussey Exp $
+ * $Id: State.java,v 1.7 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -208,7 +209,7 @@ public interface State
 	 * @model type="org.eclipse.uml2.uml.ConnectionPointReference" opposite="state" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getConnections();
+	EList getConnections();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ConnectionPointReference} and appends it to the '<em><b>Connection</b></em>' containment reference list.
@@ -246,7 +247,7 @@ public interface State
 	 * @model type="org.eclipse.uml2.uml.Pseudostate" opposite="state" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getConnectionPoints();
+	EList getConnectionPoints();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Pseudostate} and appends it to the '<em><b>Connection Point</b></em>' containment reference list.
@@ -497,7 +498,7 @@ public interface State
 	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getDeferrableTriggers();
+	EList getDeferrableTriggers();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Trigger} and appends it to the '<em><b>Deferrable Trigger</b></em>' containment reference list.
@@ -535,7 +536,7 @@ public interface State
 	 * @model type="org.eclipse.uml2.uml.Region" opposite="state" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getRegions();
+	EList getRegions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Region} and appends it to the '<em><b>Region</b></em>' containment reference list.

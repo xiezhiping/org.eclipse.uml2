@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.7 2005/12/12 23:05:29 khussey Exp $
+ * $Id: UMLValidator.java,v 1.8 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -332,7 +332,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NAMED_ELEMENT__HAS_NO_QUALIFIED_NAME = 3;
+	public static final int NAMED_ELEMENT__HAS_NO_QUALIFIED_NAME = 4;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Has Qualified Name' of 'Named Element'.
@@ -340,7 +340,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NAMED_ELEMENT__HAS_QUALIFIED_NAME = 4;
+	public static final int NAMED_ELEMENT__HAS_QUALIFIED_NAME = 5;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility Needs Ownership' of 'Named Element'.
@@ -348,7 +348,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP = 5;
+	public static final int NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP = 6;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Be Compatible' of 'Template Parameter'.
@@ -356,7 +356,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEMPLATE_PARAMETER__MUST_BE_COMPATIBLE = 6;
+	public static final int TEMPLATE_PARAMETER__MUST_BE_COMPATIBLE = 30;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Own Elements' of 'Template Signature'.
@@ -364,7 +364,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEMPLATE_SIGNATURE__OWN_ELEMENTS = 7;
+	public static final int TEMPLATE_SIGNATURE__OWN_ELEMENTS = 29;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Parameter Substitution Formal' of 'Template Binding'.
@@ -372,7 +372,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEMPLATE_BINDING__PARAMETER_SUBSTITUTION_FORMAL = 8;
+	public static final int TEMPLATE_BINDING__PARAMETER_SUBSTITUTION_FORMAL = 27;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Parameter Substitution' of 'Template Binding'.
@@ -380,7 +380,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEMPLATE_BINDING__ONE_PARAMETER_SUBSTITUTION = 9;
+	public static final int TEMPLATE_BINDING__ONE_PARAMETER_SUBSTITUTION = 28;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Be Compatible' of 'Template Parameter Substitution'.
@@ -388,7 +388,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEMPLATE_PARAMETER_SUBSTITUTION__MUST_BE_COMPATIBLE = 10;
+	public static final int TEMPLATE_PARAMETER_SUBSTITUTION__MUST_BE_COMPATIBLE = 31;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Members Distinguishable' of 'Namespace'.
@@ -396,7 +396,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NAMESPACE__MEMBERS_DISTINGUISHABLE = 11;
+	public static final int NAMESPACE__MEMBERS_DISTINGUISHABLE = 7;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility Public Or Private' of 'Element Import'.
@@ -404,7 +404,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ELEMENT_IMPORT__VISIBILITY_PUBLIC_OR_PRIVATE = 12;
+	public static final int ELEMENT_IMPORT__VISIBILITY_PUBLIC_OR_PRIVATE = 8;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility Or Private' of 'Element Import'.
@@ -412,7 +412,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ELEMENT_IMPORT__VISIBILITY_OR_PRIVATE = 13;
+	public static final int ELEMENT_IMPORT__VISIBILITY_OR_PRIVATE = 9;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Imported Element Is Public' of 'Element Import'.
@@ -420,7 +420,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC = 14;
+	public static final int ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC = 10;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Public Or Private' of 'Package Import'.
@@ -428,7 +428,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PACKAGE_IMPORT__PUBLIC_OR_PRIVATE = 15;
+	public static final int PACKAGE_IMPORT__PUBLIC_OR_PRIVATE = 11;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Elements Public Or Private' of 'Package'.
@@ -436,7 +436,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE = 16;
+	public static final int PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE = 3;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Metaclass Reference Not Specialized' of 'Profile'.
@@ -444,7 +444,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROFILE__METACLASS_REFERENCE_NOT_SPECIALIZED = 17;
+	public static final int PROFILE__METACLASS_REFERENCE_NOT_SPECIALIZED = 137;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate References Same Metamodel' of 'Profile'.
@@ -452,7 +452,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROFILE__REFERENCES_SAME_METAMODEL = 18;
+	public static final int PROFILE__REFERENCES_SAME_METAMODEL = 138;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Name Not Clash' of 'Stereotype'.
@@ -460,7 +460,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STEREOTYPE__NAME_NOT_CLASH = 19;
+	public static final int STEREOTYPE__NAME_NOT_CLASH = 135;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Generalize' of 'Stereotype'.
@@ -468,7 +468,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STEREOTYPE__GENERALIZE = 20;
+	public static final int STEREOTYPE__GENERALIZE = 136;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Passive Class' of 'Class'.
@@ -476,7 +476,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASS__PASSIVE_CLASS = 21;
+	public static final int CLASS__PASSIVE_CLASS = 44;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Class Behavior' of 'Behaviored Classifier'.
@@ -484,7 +484,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIORED_CLASSIFIER__CLASS_BEHAVIOR = 22;
+	public static final int BEHAVIORED_CLASSIFIER__CLASS_BEHAVIOR = 39;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Cycles In Generalization' of 'Classifier'.
@@ -492,7 +492,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__NO_CYCLES_IN_GENERALIZATION = 23;
+	public static final int CLASSIFIER__NO_CYCLES_IN_GENERALIZATION = 21;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Specialize Type' of 'Classifier'.
@@ -500,7 +500,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__SPECIALIZE_TYPE = 25;
+	public static final int CLASSIFIER__SPECIALIZE_TYPE = 23;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Generalization Hierarchies' of 'Classifier'.
@@ -508,7 +508,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__GENERALIZATION_HIERARCHIES = 24;
+	public static final int CLASSIFIER__GENERALIZATION_HIERARCHIES = 22;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maps To Generalization Set' of 'Classifier'.
@@ -516,7 +516,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__MAPS_TO_GENERALIZATION_SET = 26;
+	public static final int CLASSIFIER__MAPS_TO_GENERALIZATION_SET = 24;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Redefinition Context Valid' of 'Redefinable Element'.
@@ -524,7 +524,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID = 27;
+	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID = 25;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Redefinition Consistent' of 'Redefinable Element'.
@@ -532,7 +532,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT = 28;
+	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT = 26;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Generalization Same Classifier' of 'Generalization'.
@@ -540,7 +540,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int GENERALIZATION__GENERALIZATION_SAME_CLASSIFIER = 29;
+	public static final int GENERALIZATION__GENERALIZATION_SAME_CLASSIFIER = 32;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Generalization Same Classifier' of 'Generalization Set'.
@@ -548,7 +548,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int GENERALIZATION_SET__GENERALIZATION_SAME_CLASSIFIER = 30;
+	public static final int GENERALIZATION_SET__GENERALIZATION_SAME_CLASSIFIER = 33;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maps To Generalization Set' of 'Generalization Set'.
@@ -556,7 +556,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int GENERALIZATION_SET__MAPS_TO_GENERALIZATION_SET = 31;
+	public static final int GENERALIZATION_SET__MAPS_TO_GENERALIZATION_SET = 34;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Have Name' of 'Use Case'.
@@ -564,7 +564,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__MUST_HAVE_NAME = 32;
+	public static final int USE_CASE__MUST_HAVE_NAME = 35;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Binary Associations' of 'Use Case'.
@@ -572,7 +572,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__BINARY_ASSOCIATIONS = 33;
+	public static final int USE_CASE__BINARY_ASSOCIATIONS = 36;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Association To Use Case' of 'Use Case'.
@@ -580,7 +580,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__NO_ASSOCIATION_TO_USE_CASE = 34;
+	public static final int USE_CASE__NO_ASSOCIATION_TO_USE_CASE = 37;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Cannot Include Self' of 'Use Case'.
@@ -588,7 +588,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__CANNOT_INCLUDE_SELF = 35;
+	public static final int USE_CASE__CANNOT_INCLUDE_SELF = 38;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Extension Points' of 'Extend'.
@@ -596,7 +596,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTEND__EXTENSION_POINTS = 36;
+	public static final int EXTEND__EXTENSION_POINTS = 139;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Apply To Self' of 'Constraint'.
@@ -604,7 +604,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSTRAINT__NOT_APPLY_TO_SELF = 37;
+	public static final int CONSTRAINT__NOT_APPLY_TO_SELF = 12;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Value Specification Boolean' of 'Constraint'.
@@ -612,7 +612,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSTRAINT__VALUE_SPECIFICATION_BOOLEAN = 38;
+	public static final int CONSTRAINT__VALUE_SPECIFICATION_BOOLEAN = 13;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Boolean Value' of 'Constraint'.
@@ -620,7 +620,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSTRAINT__BOOLEAN_VALUE = 39;
+	public static final int CONSTRAINT__BOOLEAN_VALUE = 14;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Side Effects' of 'Constraint'.
@@ -628,7 +628,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSTRAINT__NO_SIDE_EFFECTS = 40;
+	public static final int CONSTRAINT__NO_SIDE_EFFECTS = 15;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Applied To Self' of 'Constraint'.
@@ -636,7 +636,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSTRAINT__NOT_APPLIED_TO_SELF = 41;
+	public static final int CONSTRAINT__NOT_APPLIED_TO_SELF = 16;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Have Name' of 'Extension Point'.
@@ -644,7 +644,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION_POINT__MUST_HAVE_NAME = 42;
+	public static final int EXTENSION_POINT__MUST_HAVE_NAME = 140;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Language Body Size' of 'Opaque Expression'.
@@ -652,7 +652,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPAQUE_EXPRESSION__LANGUAGE_BODY_SIZE = 43;
+	public static final int OPAQUE_EXPRESSION__LANGUAGE_BODY_SIZE = 67;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Body Default Language' of 'Opaque Expression'.
@@ -660,7 +660,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPAQUE_EXPRESSION__ONE_BODY_DEFAULT_LANGUAGE = 44;
+	public static final int OPAQUE_EXPRESSION__ONE_BODY_DEFAULT_LANGUAGE = 68;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Only Return Result Parameters' of 'Opaque Expression'.
@@ -668,7 +668,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPAQUE_EXPRESSION__ONLY_RETURN_RESULT_PARAMETERS = 45;
+	public static final int OPAQUE_EXPRESSION__ONLY_RETURN_RESULT_PARAMETERS = 69;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Return Result Parameter' of 'Opaque Expression'.
@@ -676,7 +676,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPAQUE_EXPRESSION__ONE_RETURN_RESULT_PARAMETER = 46;
+	public static final int OPAQUE_EXPRESSION__ONE_RETURN_RESULT_PARAMETER = 70;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Connector End' of 'Parameter'.
@@ -684,7 +684,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER__CONNECTOR_END = 47;
+	public static final int PARAMETER__CONNECTOR_END = 71;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Stream And Exception' of 'Parameter'.
@@ -692,7 +692,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER__STREAM_AND_EXCEPTION = 48;
+	public static final int PARAMETER__STREAM_AND_EXCEPTION = 72;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Exception' of 'Parameter'.
@@ -700,7 +700,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER__NOT_EXCEPTION = 49;
+	public static final int PARAMETER__NOT_EXCEPTION = 73;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Reentrant Behaviors' of 'Parameter'.
@@ -708,7 +708,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER__REENTRANT_BEHAVIORS = 50;
+	public static final int PARAMETER__REENTRANT_BEHAVIORS = 74;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate In And Out' of 'Parameter'.
@@ -716,7 +716,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER__IN_AND_OUT = 51;
+	public static final int PARAMETER__IN_AND_OUT = 75;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Upper Gt0' of 'Multiplicity Element'.
@@ -724,7 +724,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__UPPER_GT0 = 52;
+	public static final int MULTIPLICITY_ELEMENT__UPPER_GT0 = 60;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Lower Ge0' of 'Multiplicity Element'.
@@ -732,7 +732,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__LOWER_GE0 = 53;
+	public static final int MULTIPLICITY_ELEMENT__LOWER_GE0 = 61;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Upper Ge Lower' of 'Multiplicity Element'.
@@ -740,7 +740,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__UPPER_GE_LOWER = 54;
+	public static final int MULTIPLICITY_ELEMENT__UPPER_GE_LOWER = 62;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Value Specification No Side Effects' of 'Multiplicity Element'.
@@ -748,7 +748,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_NO_SIDE_EFFECTS = 55;
+	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_NO_SIDE_EFFECTS = 63;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Value Specification Constant' of 'Multiplicity Element'.
@@ -756,7 +756,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_CONSTANT = 56;
+	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_CONSTANT = 64;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Connector End'.
@@ -764,7 +764,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__MULTIPLICITY = 57;
+	public static final int CONNECTOR_END__MULTIPLICITY = 56;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Part With Port Empty' of 'Connector End'.
@@ -772,7 +772,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__PART_WITH_PORT_EMPTY = 58;
+	public static final int CONNECTOR_END__PART_WITH_PORT_EMPTY = 57;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Role And Part With Port' of 'Connector End'.
@@ -780,7 +780,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__ROLE_AND_PART_WITH_PORT = 59;
+	public static final int CONNECTOR_END__ROLE_AND_PART_WITH_PORT = 58;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Self Part With Port' of 'Connector End'.
@@ -788,7 +788,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__SELF_PART_WITH_PORT = 60;
+	public static final int CONNECTOR_END__SELF_PART_WITH_PORT = 59;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Composite' of 'Property'.
@@ -796,7 +796,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__MULTIPLICITY_OF_COMPOSITE = 61;
+	public static final int PROPERTY__MULTIPLICITY_OF_COMPOSITE = 46;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subsetting Context Conforms' of 'Property'.
@@ -804,7 +804,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTING_CONTEXT_CONFORMS = 62;
+	public static final int PROPERTY__SUBSETTING_CONTEXT_CONFORMS = 47;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Redefined Property Inherited' of 'Property'.
@@ -812,7 +812,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__REDEFINED_PROPERTY_INHERITED = 63;
+	public static final int PROPERTY__REDEFINED_PROPERTY_INHERITED = 48;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subsetting Rules' of 'Property'.
@@ -820,7 +820,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTING_RULES = 64;
+	public static final int PROPERTY__SUBSETTING_RULES = 49;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Navigable Readonly' of 'Property'.
@@ -828,7 +828,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__NAVIGABLE_READONLY = 65;
+	public static final int PROPERTY__NAVIGABLE_READONLY = 50;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Derived Union Is Derived' of 'Property'.
@@ -836,7 +836,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__DERIVED_UNION_IS_DERIVED = 66;
+	public static final int PROPERTY__DERIVED_UNION_IS_DERIVED = 51;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Derived Union Is Read Only' of 'Property'.
@@ -844,7 +844,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__DERIVED_UNION_IS_READ_ONLY = 67;
+	public static final int PROPERTY__DERIVED_UNION_IS_READ_ONLY = 52;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subsetted Property Names' of 'Property'.
@@ -852,7 +852,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTED_PROPERTY_NAMES = 68;
+	public static final int PROPERTY__SUBSETTED_PROPERTY_NAMES = 53;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployment Target' of 'Property'.
@@ -860,7 +860,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__DEPLOYMENT_TARGET = 69;
+	public static final int PROPERTY__DEPLOYMENT_TARGET = 54;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Binding To Attribute' of 'Property'.
@@ -868,7 +868,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__BINDING_TO_ATTRIBUTE = 70;
+	public static final int PROPERTY__BINDING_TO_ATTRIBUTE = 55;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployed Elements' of 'Deployment Specification'.
@@ -876,7 +876,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYED_ELEMENTS = 71;
+	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYED_ELEMENTS = 65;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployment Target' of 'Deployment Specification'.
@@ -884,7 +884,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYMENT_TARGET = 72;
+	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYMENT_TARGET = 66;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate At Most One Return' of 'Operation'.
@@ -892,7 +892,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPERATION__AT_MOST_ONE_RETURN = 73;
+	public static final int OPERATION__AT_MOST_ONE_RETURN = 76;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Only Body For Query' of 'Operation'.
@@ -900,7 +900,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 74;
+	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 77;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Parameters Match' of 'Behavior'.
@@ -908,7 +908,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__PARAMETERS_MATCH = 75;
+	public static final int BEHAVIOR__PARAMETERS_MATCH = 40;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Feature Of Context Classifier' of 'Behavior'.
@@ -916,7 +916,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__FEATURE_OF_CONTEXT_CLASSIFIER = 76;
+	public static final int BEHAVIOR__FEATURE_OF_CONTEXT_CLASSIFIER = 41;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Realize' of 'Behavior'.
@@ -924,7 +924,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__MUST_REALIZE = 77;
+	public static final int BEHAVIOR__MUST_REALIZE = 42;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Most One Behaviour' of 'Behavior'.
@@ -932,7 +932,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__MOST_ONE_BEHAVIOUR = 78;
+	public static final int BEHAVIOR__MOST_ONE_BEHAVIOUR = 43;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Parameterized Entity' of 'Parameter Set'.
@@ -940,7 +940,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER_SET__SAME_PARAMETERIZED_ENTITY = 79;
+	public static final int PARAMETER_SET__SAME_PARAMETERIZED_ENTITY = 78;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input' of 'Parameter Set'.
@@ -948,7 +948,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER_SET__INPUT = 80;
+	public static final int PARAMETER_SET__INPUT = 79;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Two Parameter Sets' of 'Parameter Set'.
@@ -956,7 +956,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER_SET__TWO_PARAMETER_SETS = 81;
+	public static final int PARAMETER_SET__TWO_PARAMETER_SETS = 80;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility' of 'Interface'.
@@ -964,7 +964,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERFACE__VISIBILITY = 82;
+	public static final int INTERFACE__VISIBILITY = 81;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Query' of 'Reception'.
@@ -972,7 +972,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int RECEPTION__NOT_QUERY = 83;
+	public static final int RECEPTION__NOT_QUERY = 82;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Protocol Transitions' of 'Protocol State Machine'.
@@ -980,7 +980,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__PROTOCOL_TRANSITIONS = 84;
+	public static final int PROTOCOL_STATE_MACHINE__PROTOCOL_TRANSITIONS = 83;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Entry Exit Do' of 'Protocol State Machine'.
@@ -988,7 +988,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__ENTRY_EXIT_DO = 85;
+	public static final int PROTOCOL_STATE_MACHINE__ENTRY_EXIT_DO = 84;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deep Or Shallow History' of 'Protocol State Machine'.
@@ -996,7 +996,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__DEEP_OR_SHALLOW_HISTORY = 86;
+	public static final int PROTOCOL_STATE_MACHINE__DEEP_OR_SHALLOW_HISTORY = 85;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Ports Connected' of 'Protocol State Machine'.
@@ -1004,7 +1004,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__PORTS_CONNECTED = 87;
+	public static final int PROTOCOL_STATE_MACHINE__PORTS_CONNECTED = 86;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Context' of 'Protocol State Machine'.
@@ -1012,7 +1012,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__CLASSIFIER_CONTEXT = 88;
+	public static final int PROTOCOL_STATE_MACHINE__CLASSIFIER_CONTEXT = 87;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Context' of 'State Machine'.
@@ -1020,7 +1020,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__CLASSIFIER_CONTEXT = 89;
+	public static final int STATE_MACHINE__CLASSIFIER_CONTEXT = 88;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Context Classifier' of 'State Machine'.
@@ -1028,7 +1028,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__CONTEXT_CLASSIFIER = 90;
+	public static final int STATE_MACHINE__CONTEXT_CLASSIFIER = 89;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Connection Points' of 'State Machine'.
@@ -1036,7 +1036,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__CONNECTION_POINTS = 91;
+	public static final int STATE_MACHINE__CONNECTION_POINTS = 90;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Method' of 'State Machine'.
@@ -1044,7 +1044,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__METHOD = 92;
+	public static final int STATE_MACHINE__METHOD = 91;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Initial Vertex' of 'Region'.
@@ -1052,7 +1052,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__INITIAL_VERTEX = 93;
+	public static final int REGION__INITIAL_VERTEX = 92;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deep History Vertex' of 'Region'.
@@ -1060,7 +1060,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__DEEP_HISTORY_VERTEX = 94;
+	public static final int REGION__DEEP_HISTORY_VERTEX = 93;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Shallow History Vertex' of 'Region'.
@@ -1068,7 +1068,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__SHALLOW_HISTORY_VERTEX = 95;
+	public static final int REGION__SHALLOW_HISTORY_VERTEX = 94;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Owned' of 'Region'.
@@ -1076,7 +1076,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__OWNED = 96;
+	public static final int REGION__OWNED = 95;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Fork Segment Guards' of 'Transition'.
@@ -1084,7 +1084,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__FORK_SEGMENT_GUARDS = 97;
+	public static final int TRANSITION__FORK_SEGMENT_GUARDS = 96;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Join Segment Guards' of 'Transition'.
@@ -1092,7 +1092,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__JOIN_SEGMENT_GUARDS = 98;
+	public static final int TRANSITION__JOIN_SEGMENT_GUARDS = 97;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Fork Segment State' of 'Transition'.
@@ -1100,7 +1100,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__FORK_SEGMENT_STATE = 99;
+	public static final int TRANSITION__FORK_SEGMENT_STATE = 98;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Join Segment State' of 'Transition'.
@@ -1108,7 +1108,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__JOIN_SEGMENT_STATE = 100;
+	public static final int TRANSITION__JOIN_SEGMENT_STATE = 99;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Outgoing Pseudostates' of 'Transition'.
@@ -1116,7 +1116,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__OUTGOING_PSEUDOSTATES = 101;
+	public static final int TRANSITION__OUTGOING_PSEUDOSTATES = 100;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Initial Transition' of 'Transition'.
@@ -1124,7 +1124,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__INITIAL_TRANSITION = 102;
+	public static final int TRANSITION__INITIAL_TRANSITION = 101;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Signatures Compatible' of 'Transition'.
@@ -1132,7 +1132,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__SIGNATURES_COMPATIBLE = 103;
+	public static final int TRANSITION__SIGNATURES_COMPATIBLE = 102;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Required Interfaces' of 'Port'.
@@ -1140,7 +1140,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__REQUIRED_INTERFACES = 104;
+	public static final int PORT__REQUIRED_INTERFACES = 103;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Port Aggregation' of 'Port'.
@@ -1148,7 +1148,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__PORT_AGGREGATION = 105;
+	public static final int PORT__PORT_AGGREGATION = 104;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Port Destroyed' of 'Port'.
@@ -1156,7 +1156,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__PORT_DESTROYED = 106;
+	public static final int PORT__PORT_DESTROYED = 105;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Default Value' of 'Port'.
@@ -1164,7 +1164,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__DEFAULT_VALUE = 107;
+	public static final int PORT__DEFAULT_VALUE = 106;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Submachine States' of 'State'.
@@ -1172,7 +1172,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__SUBMACHINE_STATES = 108;
+	public static final int STATE__SUBMACHINE_STATES = 107;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Destinations Or Sources Of Transitions' of 'State'.
@@ -1180,7 +1180,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__DESTINATIONS_OR_SOURCES_OF_TRANSITIONS = 109;
+	public static final int STATE__DESTINATIONS_OR_SOURCES_OF_TRANSITIONS = 108;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Submachine Or Regions' of 'State'.
@@ -1188,7 +1188,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__SUBMACHINE_OR_REGIONS = 110;
+	public static final int STATE__SUBMACHINE_OR_REGIONS = 109;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Composite States' of 'State'.
@@ -1196,7 +1196,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__COMPOSITE_STATES = 111;
+	public static final int STATE__COMPOSITE_STATES = 110;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Entry Or Exit' of 'State'.
@@ -1204,7 +1204,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__ENTRY_OR_EXIT = 112;
+	public static final int STATE__ENTRY_OR_EXIT = 111;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Entry Pseudostates' of 'Connection Point Reference'.
@@ -1212,7 +1212,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTION_POINT_REFERENCE__ENTRY_PSEUDOSTATES = 113;
+	public static final int CONNECTION_POINT_REFERENCE__ENTRY_PSEUDOSTATES = 112;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Exit Pseudostates' of 'Connection Point Reference'.
@@ -1220,7 +1220,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTION_POINT_REFERENCE__EXIT_PSEUDOSTATES = 114;
+	public static final int CONNECTION_POINT_REFERENCE__EXIT_PSEUDOSTATES = 113;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Initial Vertex' of 'Pseudostate'.
@@ -1228,7 +1228,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__INITIAL_VERTEX = 115;
+	public static final int PSEUDOSTATE__INITIAL_VERTEX = 114;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate History Vertices' of 'Pseudostate'.
@@ -1236,7 +1236,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__HISTORY_VERTICES = 116;
+	public static final int PSEUDOSTATE__HISTORY_VERTICES = 115;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Join Vertex' of 'Pseudostate'.
@@ -1244,7 +1244,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__JOIN_VERTEX = 117;
+	public static final int PSEUDOSTATE__JOIN_VERTEX = 116;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Transitions Incoming' of 'Pseudostate'.
@@ -1252,7 +1252,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__TRANSITIONS_INCOMING = 118;
+	public static final int PSEUDOSTATE__TRANSITIONS_INCOMING = 117;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Fork Vertex' of 'Pseudostate'.
@@ -1260,7 +1260,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__FORK_VERTEX = 119;
+	public static final int PSEUDOSTATE__FORK_VERTEX = 118;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Transitions Outgoing' of 'Pseudostate'.
@@ -1268,7 +1268,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__TRANSITIONS_OUTGOING = 120;
+	public static final int PSEUDOSTATE__TRANSITIONS_OUTGOING = 119;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Junction Vertex' of 'Pseudostate'.
@@ -1276,7 +1276,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__JUNCTION_VERTEX = 121;
+	public static final int PSEUDOSTATE__JUNCTION_VERTEX = 120;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Choice Vertex' of 'Pseudostate'.
@@ -1284,7 +1284,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__CHOICE_VERTEX = 122;
+	public static final int PSEUDOSTATE__CHOICE_VERTEX = 121;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Outgoing From Initial' of 'Pseudostate'.
@@ -1292,7 +1292,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__OUTGOING_FROM_INITIAL = 123;
+	public static final int PSEUDOSTATE__OUTGOING_FROM_INITIAL = 122;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Specialized End Number' of 'Association'.
@@ -1300,7 +1300,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ASSOCIATION__SPECIALIZED_END_NUMBER = 124;
+	public static final int ASSOCIATION__SPECIALIZED_END_NUMBER = 17;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Specialized End Types' of 'Association'.
@@ -1308,7 +1308,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ASSOCIATION__SPECIALIZED_END_TYPES = 125;
+	public static final int ASSOCIATION__SPECIALIZED_END_TYPES = 18;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Binary Associations' of 'Association'.
@@ -1316,7 +1316,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ASSOCIATION__BINARY_ASSOCIATIONS = 126;
+	public static final int ASSOCIATION__BINARY_ASSOCIATIONS = 19;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Association Ends' of 'Association'.
@@ -1324,7 +1324,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ASSOCIATION__ASSOCIATION_ENDS = 127;
+	public static final int ASSOCIATION__ASSOCIATION_ENDS = 20;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Client Elements' of 'Collaboration Use'.
@@ -1332,7 +1332,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COLLABORATION_USE__CLIENT_ELEMENTS = 128;
+	public static final int COLLABORATION_USE__CLIENT_ELEMENTS = 141;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Every Role' of 'Collaboration Use'.
@@ -1340,7 +1340,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COLLABORATION_USE__EVERY_ROLE = 129;
+	public static final int COLLABORATION_USE__EVERY_ROLE = 142;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Connectors' of 'Collaboration Use'.
@@ -1348,7 +1348,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COLLABORATION_USE__CONNECTORS = 130;
+	public static final int COLLABORATION_USE__CONNECTORS = 143;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicities' of 'Structured Classifier'.
@@ -1356,7 +1356,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURED_CLASSIFIER__MULTIPLICITIES = 131;
+	public static final int STRUCTURED_CLASSIFIER__MULTIPLICITIES = 45;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Types' of 'Connector'.
@@ -1364,7 +1364,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__TYPES = 132;
+	public static final int CONNECTOR__TYPES = 123;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Compatible' of 'Connector'.
@@ -1372,7 +1372,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__COMPATIBLE = 133;
+	public static final int CONNECTOR__COMPATIBLE = 124;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Roles' of 'Connector'.
@@ -1380,7 +1380,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__ROLES = 134;
+	public static final int CONNECTOR__ROLES = 125;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Between Interfaces Ports' of 'Connector'.
@@ -1388,7 +1388,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__BETWEEN_INTERFACES_PORTS = 135;
+	public static final int CONNECTOR__BETWEEN_INTERFACES_PORTS = 126;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Between Interface Port Implements' of 'Connector'.
@@ -1396,7 +1396,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__BETWEEN_INTERFACE_PORT_IMPLEMENTS = 136;
+	public static final int CONNECTOR__BETWEEN_INTERFACE_PORT_IMPLEMENTS = 127;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Between Interface Port Signature' of 'Connector'.
@@ -1404,7 +1404,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__BETWEEN_INTERFACE_PORT_SIGNATURE = 137;
+	public static final int CONNECTOR__BETWEEN_INTERFACE_PORT_SIGNATURE = 128;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Union Signature Compatible' of 'Connector'.
@@ -1412,7 +1412,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__UNION_SIGNATURE_COMPATIBLE = 138;
+	public static final int CONNECTOR__UNION_SIGNATURE_COMPATIBLE = 129;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Assembly Connector' of 'Connector'.
@@ -1420,7 +1420,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__ASSEMBLY_CONNECTOR = 139;
+	public static final int CONNECTOR__ASSEMBLY_CONNECTOR = 130;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Inherited Parameters' of 'Redefinable Template Signature'.
@@ -1428,7 +1428,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETERS = 140;
+	public static final int REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETERS = 144;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Has Constraining Classifier' of 'Classifier Template Parameter'.
@@ -1436,7 +1436,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER_TEMPLATE_PARAMETER__HAS_CONSTRAINING_CLASSIFIER = 141;
+	public static final int CLASSIFIER_TEMPLATE_PARAMETER__HAS_CONSTRAINING_CLASSIFIER = 145;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Non Owned End' of 'Extension'.
@@ -1444,7 +1444,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION__NON_OWNED_END = 142;
+	public static final int EXTENSION__NON_OWNED_END = 131;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Is Binary' of 'Extension'.
@@ -1452,7 +1452,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION__IS_BINARY = 143;
+	public static final int EXTENSION__IS_BINARY = 132;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Extension End'.
@@ -1460,7 +1460,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION_END__MULTIPLICITY = 144;
+	public static final int EXTENSION_END__MULTIPLICITY = 133;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Aggregation' of 'Extension End'.
@@ -1468,7 +1468,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION_END__AGGREGATION = 145;
+	public static final int EXTENSION_END__AGGREGATION = 134;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Operands' of 'String Expression'.
@@ -3567,48 +3567,24 @@ public class UMLValidator
 				return validateComment((Comment) value, diagnostics, context);
 			case UMLPackage.ELEMENT :
 				return validateElement((Element) value, diagnostics, context);
-			case UMLPackage.DIRECTED_RELATIONSHIP :
-				return validateDirectedRelationship(
-					(DirectedRelationship) value, diagnostics, context);
-			case UMLPackage.RELATIONSHIP :
-				return validateRelationship((Relationship) value, diagnostics,
-					context);
-			case UMLPackage.LITERAL_SPECIFICATION :
-				return validateLiteralSpecification(
-					(LiteralSpecification) value, diagnostics, context);
-			case UMLPackage.VALUE_SPECIFICATION :
-				return validateValueSpecification((ValueSpecification) value,
+			case UMLPackage.PACKAGE :
+				return validatePackage((org.eclipse.uml2.uml.Package) value,
 					diagnostics, context);
-			case UMLPackage.TYPED_ELEMENT :
-				return validateTypedElement((TypedElement) value, diagnostics,
-					context);
+			case UMLPackage.PACKAGEABLE_ELEMENT :
+				return validatePackageableElement((PackageableElement) value,
+					diagnostics, context);
 			case UMLPackage.NAMED_ELEMENT :
 				return validateNamedElement((NamedElement) value, diagnostics,
 					context);
 			case UMLPackage.DEPENDENCY :
 				return validateDependency((Dependency) value, diagnostics,
 					context);
-			case UMLPackage.PACKAGEABLE_ELEMENT :
-				return validatePackageableElement((PackageableElement) value,
-					diagnostics, context);
-			case UMLPackage.PARAMETERABLE_ELEMENT :
-				return validateParameterableElement(
-					(ParameterableElement) value, diagnostics, context);
-			case UMLPackage.TEMPLATE_PARAMETER :
-				return validateTemplateParameter((TemplateParameter) value,
-					diagnostics, context);
-			case UMLPackage.TEMPLATE_SIGNATURE :
-				return validateTemplateSignature((TemplateSignature) value,
-					diagnostics, context);
-			case UMLPackage.TEMPLATEABLE_ELEMENT :
-				return validateTemplateableElement((TemplateableElement) value,
-					diagnostics, context);
-			case UMLPackage.TEMPLATE_BINDING :
-				return validateTemplateBinding((TemplateBinding) value,
-					diagnostics, context);
-			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION :
-				return validateTemplateParameterSubstitution(
-					(TemplateParameterSubstitution) value, diagnostics, context);
+			case UMLPackage.DIRECTED_RELATIONSHIP :
+				return validateDirectedRelationship(
+					(DirectedRelationship) value, diagnostics, context);
+			case UMLPackage.RELATIONSHIP :
+				return validateRelationship((Relationship) value, diagnostics,
+					context);
 			case UMLPackage.NAMESPACE :
 				return validateNamespace((Namespace) value, diagnostics,
 					context);
@@ -3618,34 +3594,44 @@ public class UMLValidator
 			case UMLPackage.PACKAGE_IMPORT :
 				return validatePackageImport((PackageImport) value,
 					diagnostics, context);
-			case UMLPackage.PACKAGE :
-				return validatePackage((org.eclipse.uml2.uml.Package) value,
+			case UMLPackage.CONSTRAINT :
+				return validateConstraint((Constraint) value, diagnostics,
+					context);
+			case UMLPackage.VALUE_SPECIFICATION :
+				return validateValueSpecification((ValueSpecification) value,
 					diagnostics, context);
-			case UMLPackage.PACKAGE_MERGE :
-				return validatePackageMerge((PackageMerge) value, diagnostics,
+			case UMLPackage.TYPED_ELEMENT :
+				return validateTypedElement((TypedElement) value, diagnostics,
 					context);
 			case UMLPackage.TYPE :
 				return validateType((Type) value, diagnostics, context);
-			case UMLPackage.PROFILE_APPLICATION :
-				return validateProfileApplication((ProfileApplication) value,
-					diagnostics, context);
-			case UMLPackage.PROFILE :
-				return validateProfile((Profile) value, diagnostics, context);
-			case UMLPackage.STEREOTYPE :
-				return validateStereotype((Stereotype) value, diagnostics,
+			case UMLPackage.ASSOCIATION :
+				return validateAssociation((Association) value, diagnostics,
 					context);
-			case UMLPackage.CLASS :
-				return validateClass((org.eclipse.uml2.uml.Class) value,
-					diagnostics, context);
-			case UMLPackage.BEHAVIORED_CLASSIFIER :
-				return validateBehavioredClassifier(
-					(BehavioredClassifier) value, diagnostics, context);
 			case UMLPackage.CLASSIFIER :
 				return validateClassifier((Classifier) value, diagnostics,
 					context);
 			case UMLPackage.REDEFINABLE_ELEMENT :
 				return validateRedefinableElement((RedefinableElement) value,
 					diagnostics, context);
+			case UMLPackage.TEMPLATEABLE_ELEMENT :
+				return validateTemplateableElement((TemplateableElement) value,
+					diagnostics, context);
+			case UMLPackage.TEMPLATE_BINDING :
+				return validateTemplateBinding((TemplateBinding) value,
+					diagnostics, context);
+			case UMLPackage.TEMPLATE_SIGNATURE :
+				return validateTemplateSignature((TemplateSignature) value,
+					diagnostics, context);
+			case UMLPackage.TEMPLATE_PARAMETER :
+				return validateTemplateParameter((TemplateParameter) value,
+					diagnostics, context);
+			case UMLPackage.PARAMETERABLE_ELEMENT :
+				return validateParameterableElement(
+					(ParameterableElement) value, diagnostics, context);
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION :
+				return validateTemplateParameterSubstitution(
+					(TemplateParameterSubstitution) value, diagnostics, context);
 			case UMLPackage.GENERALIZATION :
 				return validateGeneralization((Generalization) value,
 					diagnostics, context);
@@ -3656,42 +3642,35 @@ public class UMLValidator
 				return validateFeature((Feature) value, diagnostics, context);
 			case UMLPackage.USE_CASE :
 				return validateUseCase((UseCase) value, diagnostics, context);
-			case UMLPackage.INCLUDE :
-				return validateInclude((Include) value, diagnostics, context);
-			case UMLPackage.EXTEND :
-				return validateExtend((Extend) value, diagnostics, context);
-			case UMLPackage.CONSTRAINT :
-				return validateConstraint((Constraint) value, diagnostics,
-					context);
-			case UMLPackage.EXTENSION_POINT :
-				return validateExtensionPoint((ExtensionPoint) value,
+			case UMLPackage.BEHAVIORED_CLASSIFIER :
+				return validateBehavioredClassifier(
+					(BehavioredClassifier) value, diagnostics, context);
+			case UMLPackage.BEHAVIOR :
+				return validateBehavior((Behavior) value, diagnostics, context);
+			case UMLPackage.CLASS :
+				return validateClass((org.eclipse.uml2.uml.Class) value,
 					diagnostics, context);
-			case UMLPackage.SUBSTITUTION :
-				return validateSubstitution((Substitution) value, diagnostics,
-					context);
-			case UMLPackage.REALIZATION :
-				return validateRealization((Realization) value, diagnostics,
-					context);
-			case UMLPackage.ABSTRACTION :
-				return validateAbstraction((Abstraction) value, diagnostics,
-					context);
-			case UMLPackage.OPAQUE_EXPRESSION :
-				return validateOpaqueExpression((OpaqueExpression) value,
-					diagnostics, context);
-			case UMLPackage.PARAMETER :
-				return validateParameter((Parameter) value, diagnostics,
-					context);
-			case UMLPackage.MULTIPLICITY_ELEMENT :
-				return validateMultiplicityElement((MultiplicityElement) value,
-					diagnostics, context);
+			case UMLPackage.ENCAPSULATED_CLASSIFIER :
+				return validateEncapsulatedClassifier(
+					(EncapsulatedClassifier) value, diagnostics, context);
+			case UMLPackage.STRUCTURED_CLASSIFIER :
+				return validateStructuredClassifier(
+					(StructuredClassifier) value, diagnostics, context);
+			case UMLPackage.PROPERTY :
+				return validateProperty((Property) value, diagnostics, context);
 			case UMLPackage.CONNECTABLE_ELEMENT :
 				return validateConnectableElement((ConnectableElement) value,
 					diagnostics, context);
 			case UMLPackage.CONNECTOR_END :
 				return validateConnectorEnd((ConnectorEnd) value, diagnostics,
 					context);
-			case UMLPackage.PROPERTY :
-				return validateProperty((Property) value, diagnostics, context);
+			case UMLPackage.MULTIPLICITY_ELEMENT :
+				return validateMultiplicityElement((MultiplicityElement) value,
+					diagnostics, context);
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
+				return validateConnectableElementTemplateParameter(
+					(ConnectableElementTemplateParameter) value, diagnostics,
+					context);
 			case UMLPackage.DEPLOYMENT_TARGET :
 				return validateDeploymentTarget((DeploymentTarget) value,
 					diagnostics, context);
@@ -3709,14 +3688,21 @@ public class UMLValidator
 			case UMLPackage.MANIFESTATION :
 				return validateManifestation((Manifestation) value,
 					diagnostics, context);
+			case UMLPackage.ABSTRACTION :
+				return validateAbstraction((Abstraction) value, diagnostics,
+					context);
+			case UMLPackage.OPAQUE_EXPRESSION :
+				return validateOpaqueExpression((OpaqueExpression) value,
+					diagnostics, context);
+			case UMLPackage.PARAMETER :
+				return validateParameter((Parameter) value, diagnostics,
+					context);
 			case UMLPackage.OPERATION :
 				return validateOperation((Operation) value, diagnostics,
 					context);
 			case UMLPackage.BEHAVIORAL_FEATURE :
 				return validateBehavioralFeature((BehavioralFeature) value,
 					diagnostics, context);
-			case UMLPackage.BEHAVIOR :
-				return validateBehavior((Behavior) value, diagnostics, context);
 			case UMLPackage.PARAMETER_SET :
 				return validateParameterSet((ParameterSet) value, diagnostics,
 					context);
@@ -3766,12 +3752,39 @@ public class UMLValidator
 			case UMLPackage.STRUCTURAL_FEATURE :
 				return validateStructuralFeature((StructuralFeature) value,
 					diagnostics, context);
-			case UMLPackage.ASSOCIATION :
-				return validateAssociation((Association) value, diagnostics,
+			case UMLPackage.CONNECTOR :
+				return validateConnector((Connector) value, diagnostics,
 					context);
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
-				return validateConnectableElementTemplateParameter(
-					(ConnectableElementTemplateParameter) value, diagnostics,
+			case UMLPackage.EXTENSION :
+				return validateExtension((Extension) value, diagnostics,
+					context);
+			case UMLPackage.EXTENSION_END :
+				return validateExtensionEnd((ExtensionEnd) value, diagnostics,
+					context);
+			case UMLPackage.STEREOTYPE :
+				return validateStereotype((Stereotype) value, diagnostics,
+					context);
+			case UMLPackage.IMAGE :
+				return validateImage((Image) value, diagnostics, context);
+			case UMLPackage.PROFILE :
+				return validateProfile((Profile) value, diagnostics, context);
+			case UMLPackage.MODEL :
+				return validateModel((Model) value, diagnostics, context);
+			case UMLPackage.INTERFACE_REALIZATION :
+				return validateInterfaceRealization(
+					(InterfaceRealization) value, diagnostics, context);
+			case UMLPackage.REALIZATION :
+				return validateRealization((Realization) value, diagnostics,
+					context);
+			case UMLPackage.INCLUDE :
+				return validateInclude((Include) value, diagnostics, context);
+			case UMLPackage.EXTEND :
+				return validateExtend((Extend) value, diagnostics, context);
+			case UMLPackage.EXTENSION_POINT :
+				return validateExtensionPoint((ExtensionPoint) value,
+					diagnostics, context);
+			case UMLPackage.SUBSTITUTION :
+				return validateSubstitution((Substitution) value, diagnostics,
 					context);
 			case UMLPackage.COLLABORATION_USE :
 				return validateCollaborationUse((CollaborationUse) value,
@@ -3779,38 +3792,41 @@ public class UMLValidator
 			case UMLPackage.COLLABORATION :
 				return validateCollaboration((Collaboration) value,
 					diagnostics, context);
-			case UMLPackage.STRUCTURED_CLASSIFIER :
-				return validateStructuredClassifier(
-					(StructuredClassifier) value, diagnostics, context);
-			case UMLPackage.CONNECTOR :
-				return validateConnector((Connector) value, diagnostics,
-					context);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE :
 				return validateRedefinableTemplateSignature(
 					(RedefinableTemplateSignature) value, diagnostics, context);
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER :
 				return validateClassifierTemplateParameter(
 					(ClassifierTemplateParameter) value, diagnostics, context);
-			case UMLPackage.INTERFACE_REALIZATION :
-				return validateInterfaceRealization(
-					(InterfaceRealization) value, diagnostics, context);
-			case UMLPackage.ENCAPSULATED_CLASSIFIER :
-				return validateEncapsulatedClassifier(
-					(EncapsulatedClassifier) value, diagnostics, context);
-			case UMLPackage.EXTENSION :
-				return validateExtension((Extension) value, diagnostics,
-					context);
-			case UMLPackage.EXTENSION_END :
-				return validateExtensionEnd((ExtensionEnd) value, diagnostics,
-					context);
-			case UMLPackage.IMAGE :
-				return validateImage((Image) value, diagnostics, context);
 			case UMLPackage.STRING_EXPRESSION :
 				return validateStringExpression((StringExpression) value,
 					diagnostics, context);
 			case UMLPackage.EXPRESSION :
 				return validateExpression((Expression) value, diagnostics,
 					context);
+			case UMLPackage.PACKAGE_MERGE :
+				return validatePackageMerge((PackageMerge) value, diagnostics,
+					context);
+			case UMLPackage.PROFILE_APPLICATION :
+				return validateProfileApplication((ProfileApplication) value,
+					diagnostics, context);
+			case UMLPackage.ENUMERATION :
+				return validateEnumeration((Enumeration) value, diagnostics,
+					context);
+			case UMLPackage.ENUMERATION_LITERAL :
+				return validateEnumerationLiteral((EnumerationLiteral) value,
+					diagnostics, context);
+			case UMLPackage.INSTANCE_SPECIFICATION :
+				return validateInstanceSpecification(
+					(InstanceSpecification) value, diagnostics, context);
+			case UMLPackage.SLOT :
+				return validateSlot((Slot) value, diagnostics, context);
+			case UMLPackage.PRIMITIVE_TYPE :
+				return validatePrimitiveType((PrimitiveType) value,
+					diagnostics, context);
+			case UMLPackage.LITERAL_SPECIFICATION :
+				return validateLiteralSpecification(
+					(LiteralSpecification) value, diagnostics, context);
 			case UMLPackage.LITERAL_INTEGER :
 				return validateLiteralInteger((LiteralInteger) value,
 					diagnostics, context);
@@ -3823,20 +3839,6 @@ public class UMLValidator
 			case UMLPackage.LITERAL_NULL :
 				return validateLiteralNull((LiteralNull) value, diagnostics,
 					context);
-			case UMLPackage.SLOT :
-				return validateSlot((Slot) value, diagnostics, context);
-			case UMLPackage.INSTANCE_SPECIFICATION :
-				return validateInstanceSpecification(
-					(InstanceSpecification) value, diagnostics, context);
-			case UMLPackage.ENUMERATION :
-				return validateEnumeration((Enumeration) value, diagnostics,
-					context);
-			case UMLPackage.ENUMERATION_LITERAL :
-				return validateEnumerationLiteral((EnumerationLiteral) value,
-					diagnostics, context);
-			case UMLPackage.PRIMITIVE_TYPE :
-				return validatePrimitiveType((PrimitiveType) value,
-					diagnostics, context);
 			case UMLPackage.INSTANCE_VALUE :
 				return validateInstanceValue((InstanceValue) value,
 					diagnostics, context);
@@ -4117,8 +4119,6 @@ public class UMLValidator
 			case UMLPackage.INFORMATION_FLOW :
 				return validateInformationFlow((InformationFlow) value,
 					diagnostics, context);
-			case UMLPackage.MODEL :
-				return validateModel((Model) value, diagnostics, context);
 			case UMLPackage.VARIABLE_ACTION :
 				return validateVariableAction((VariableAction) value,
 					diagnostics, context);
@@ -4267,6 +4267,9 @@ public class UMLValidator
 			case UMLPackage.VISIBILITY_KIND :
 				return validateVisibilityKind((VisibilityKind) value,
 					diagnostics, context);
+			case UMLPackage.PARAMETER_DIRECTION_KIND :
+				return validateParameterDirectionKind(
+					(ParameterDirectionKind) value, diagnostics, context);
 			case UMLPackage.CALL_CONCURRENCY_KIND :
 				return validateCallConcurrencyKind((CallConcurrencyKind) value,
 					diagnostics, context);
@@ -4276,14 +4279,11 @@ public class UMLValidator
 			case UMLPackage.PSEUDOSTATE_KIND :
 				return validatePseudostateKind((PseudostateKind) value,
 					diagnostics, context);
-			case UMLPackage.AGGREGATION_KIND :
-				return validateAggregationKind((AggregationKind) value,
-					diagnostics, context);
-			case UMLPackage.PARAMETER_DIRECTION_KIND :
-				return validateParameterDirectionKind(
-					(ParameterDirectionKind) value, diagnostics, context);
 			case UMLPackage.PARAMETER_EFFECT_KIND :
 				return validateParameterEffectKind((ParameterEffectKind) value,
+					diagnostics, context);
+			case UMLPackage.AGGREGATION_KIND :
+				return validateAggregationKind((AggregationKind) value,
 					diagnostics, context);
 			case UMLPackage.CONNECTOR_KIND :
 				return validateConnectorKind((ConnectorKind) value,

@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: ActivityNode.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,7 +65,7 @@ public interface ActivityNode
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="source" ordered="false"
 	 * @generated
 	 */
-	List getOutgoings();
+	EList getOutgoings();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
@@ -92,7 +93,7 @@ public interface ActivityNode
 	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="containedNode" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getInGroups();
+	EList getInGroups();
 
 	/**
 	 * Returns the value of the '<em><b>In Partition</b></em>' reference list.
@@ -109,7 +110,7 @@ public interface ActivityNode
 	 * @model type="org.eclipse.uml2.uml.ActivityPartition" opposite="node" ordered="false"
 	 * @generated
 	 */
-	List getInPartitions();
+	EList getInPartitions();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityPartition} with the specified '<em><b>Name</b></em>' from the '<em><b>In Partition</b></em>' reference list.
@@ -191,7 +192,7 @@ public interface ActivityNode
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="target" ordered="false"
 	 * @generated
 	 */
-	List getIncomings();
+	EList getIncomings();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
@@ -219,7 +220,7 @@ public interface ActivityNode
 	 * @model type="org.eclipse.uml2.uml.InterruptibleActivityRegion" opposite="node" ordered="false"
 	 * @generated
 	 */
-	List getInInterruptibleRegions();
+	EList getInInterruptibleRegions();
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Node</b></em>' reference list.
@@ -234,7 +235,7 @@ public interface ActivityNode
 	 * @model type="org.eclipse.uml2.uml.ActivityNode" ordered="false"
 	 * @generated
 	 */
-	List getRedefinedNodes();
+	EList getRedefinedNodes();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Node</b></em>' reference list.

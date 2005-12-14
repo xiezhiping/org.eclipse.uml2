@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -103,8 +102,8 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInGroups() {
-		List inGroup = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__IN_GROUP);
+	public EList getInGroups() {
+		EList inGroup = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__IN_GROUP);
 		if (inGroup == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_EDGE__IN_GROUP,
 				inGroup = new DerivedUnionEObjectEList(ActivityGroup.class,
@@ -120,8 +119,8 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -137,8 +136,8 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -194,8 +193,8 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInPartitions() {
-		List inPartition = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__IN_PARTITION);
+	public EList getInPartitions() {
+		EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__IN_PARTITION);
 		if (inPartition == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_EDGE__IN_PARTITION,
 				inPartition = new EObjectWithInverseResolvingEList.ManyInverse(
@@ -345,8 +344,8 @@ public class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedEdges() {
-		List redefinedEdge = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE);
+	public EList getRedefinedEdges() {
+		EList redefinedEdge = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE);
 		if (redefinedEdge == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE,
 				redefinedEdge = new EObjectResolvingEList(ActivityEdge.class,
@@ -1029,7 +1028,7 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__NAME :
 				return isSetName();
@@ -1040,7 +1039,7 @@ public class ActivityEdgeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__NAMESPACE :
 				return isSetNamespace();
@@ -1057,14 +1056,14 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__TARGET) != null;
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
-				List redefinedEdge = (List) eVirtualGet(UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE);
+				EList redefinedEdge = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE);
 				return redefinedEdge != null && !redefinedEdge.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__GUARD) != null;

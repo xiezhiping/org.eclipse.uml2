@@ -8,14 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.6 2005/12/12 18:11:59 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.7 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
 
+import java.util.Iterator;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -70,10 +70,10 @@ public final class ComponentOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List realizedInterfaces(Component component,
+	public static EList realizedInterfaces(Component component,
 			Classifier classifier) {
 
-		List realizedInterfaces = new UniqueEList();
+		EList realizedInterfaces = new UniqueEList();
 
 		for (Iterator clientDependencies = classifier.getClientDependencies()
 			.iterator(); clientDependencies.hasNext();) {
@@ -94,7 +94,7 @@ public final class ComponentOperations
 			}
 		}
 
-		return Collections.unmodifiableList(realizedInterfaces);
+		return ECollections.unmodifiableEList(realizedInterfaces);
 	}
 
 	/**
@@ -108,8 +108,9 @@ public final class ComponentOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List usedInterfaces(Component component, Classifier classifier) {
-		List usedInterfaces = new UniqueEList();
+	public static EList usedInterfaces(Component component,
+			Classifier classifier) {
+		EList usedInterfaces = new UniqueEList();
 
 		for (Iterator clientDependencies = classifier.getClientDependencies()
 			.iterator(); clientDependencies.hasNext();) {
@@ -130,7 +131,7 @@ public final class ComponentOperations
 			}
 		}
 
-		return Collections.unmodifiableList(usedInterfaces);
+		return ECollections.unmodifiableEList(usedInterfaces);
 	}
 
 	/**
@@ -149,8 +150,8 @@ public final class ComponentOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List getRequireds(Component component) {
-		List requireds = new UniqueEList(component.usedInterfaces(component));
+	public static EList getRequireds(Component component) {
+		EList requireds = new UniqueEList(component.usedInterfaces(component));
 
 		for (Iterator realizations = component.getRealizations().iterator(); realizations
 			.hasNext();) {
@@ -193,8 +194,8 @@ public final class ComponentOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List getProvideds(Component component) {
-		List provideds = new UniqueEList();
+	public static EList getProvideds(Component component) {
+		EList provideds = new UniqueEList();
 
 		for (Iterator interfaceRealizations = component
 			.getInterfaceRealizations().iterator(); interfaceRealizations

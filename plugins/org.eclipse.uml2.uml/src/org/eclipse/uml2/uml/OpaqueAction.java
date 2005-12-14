@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueAction.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: OpaqueAction.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,7 +56,7 @@ public interface OpaqueAction
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
-	List getBodies();
+	EList getBodies();
 
 	/**
 	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueAction#getBodies <em>Body</em>}' attribute list.
@@ -94,7 +94,7 @@ public interface OpaqueAction
 	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 * @generated
 	 */
-	List getLanguages();
+	EList getLanguages();
 
 	/**
 	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueAction#getLanguages <em>Language</em>}' attribute list.
@@ -130,7 +130,7 @@ public interface OpaqueAction
 	 * @model type="org.eclipse.uml2.uml.InputPin" ordered="false"
 	 * @generated
 	 */
-	List getInputValues();
+	EList getInputValues();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Input Value</b></em>' reference list.
@@ -156,7 +156,7 @@ public interface OpaqueAction
 	 * @model type="org.eclipse.uml2.uml.OutputPin" ordered="false"
 	 * @generated
 	 */
-	List getOutputValues();
+	EList getOutputValues();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Output Value</b></em>' reference list.

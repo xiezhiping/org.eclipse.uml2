@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
+ * $Id: Association.java,v 1.4 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -35,11 +36,11 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Association#getOwnedEnds <em>Owned End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Association#getMemberEnds <em>Member End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#isDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#getEndTypes <em>End Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Association#getMemberEnds <em>Member End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#getNavigableOwnedEnds <em>Navigable Owned End</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Association#getOwnedEnds <em>Owned End</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,7 +89,7 @@ public interface Association
 	 * @model type="org.eclipse.uml2.uml.Type" required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	List getEndTypes();
+	EList getEndTypes();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>End Type</b></em>' reference list.
@@ -117,7 +118,7 @@ public interface Association
 	 * @model type="org.eclipse.uml2.uml.Property" opposite="association" lower="2"
 	 * @generated
 	 */
-	List getMemberEnds();
+	EList getMemberEnds();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Member End</b></em>' reference list.
@@ -143,7 +144,7 @@ public interface Association
 	 * @model type="org.eclipse.uml2.uml.Property" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getNavigableOwnedEnds();
+	EList getNavigableOwnedEnds();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Navigable Owned End</b></em>' reference list.
@@ -172,7 +173,7 @@ public interface Association
 	 * @model type="org.eclipse.uml2.uml.Property" opposite="owningAssociation" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOwnedEnds();
+	EList getOwnedEnds();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Property} and appends it to the '<em><b>Owned End</b></em>' containment reference list.

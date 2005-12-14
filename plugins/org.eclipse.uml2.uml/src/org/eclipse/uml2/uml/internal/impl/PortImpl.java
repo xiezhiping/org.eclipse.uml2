@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.12 2005/12/12 16:58:35 khussey Exp $
+ * $Id: PortImpl.java,v 1.13 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -137,8 +136,8 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.PORT__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.PORT__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.PORT__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -207,10 +206,10 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRequireds() {
+	public EList getRequireds() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.PORT__REQUIRED);
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PORT__REQUIRED,
@@ -241,8 +240,8 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedPorts() {
-		List redefinedPort = (List) eVirtualGet(UMLPackage.PORT__REDEFINED_PORT);
+	public EList getRedefinedPorts() {
+		EList redefinedPort = (EList) eVirtualGet(UMLPackage.PORT__REDEFINED_PORT);
 		if (redefinedPort == null) {
 			eVirtualSet(UMLPackage.PORT__REDEFINED_PORT,
 				redefinedPort = new EObjectResolvingEList(Port.class, this,
@@ -271,10 +270,10 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getProvideds() {
+	public EList getProvideds() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.PORT__PROVIDED);
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PORT__PROVIDED,
@@ -455,14 +454,14 @@ public class PortImpl
 				return isReadOnly()
 					? Boolean.TRUE
 					: Boolean.FALSE;
-			case UMLPackage.PORT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.PORT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.PORT__END :
 				return getEnds();
 			case UMLPackage.PORT__DEPLOYMENT :
@@ -499,10 +498,6 @@ public class PortImpl
 				if (resolve)
 					return getOwningAssociation();
 				return basicGetOwningAssociation();
-			case UMLPackage.PORT__ASSOCIATION :
-				if (resolve)
-					return getAssociation();
-				return basicGetAssociation();
 			case UMLPackage.PORT__DEFAULT_VALUE :
 				return getDefaultValue();
 			case UMLPackage.PORT__OPPOSITE :
@@ -511,6 +506,10 @@ public class PortImpl
 				return basicGetOpposite();
 			case UMLPackage.PORT__SUBSETTED_PROPERTY :
 				return getSubsettedProperties();
+			case UMLPackage.PORT__ASSOCIATION :
+				if (resolve)
+					return getAssociation();
+				return basicGetAssociation();
 			case UMLPackage.PORT__QUALIFIER :
 				return getQualifiers();
 			case UMLPackage.PORT__ASSOCIATION_END :
@@ -595,11 +594,11 @@ public class PortImpl
 			case UMLPackage.PORT__IS_READ_ONLY :
 				setIsReadOnly(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.PORT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.PORT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.PORT__END :
 				getEnds().clear();
@@ -641,9 +640,6 @@ public class PortImpl
 			case UMLPackage.PORT__OWNING_ASSOCIATION :
 				setOwningAssociation((Association) newValue);
 				return;
-			case UMLPackage.PORT__ASSOCIATION :
-				setAssociation((Association) newValue);
-				return;
 			case UMLPackage.PORT__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) newValue);
 				return;
@@ -653,6 +649,9 @@ public class PortImpl
 			case UMLPackage.PORT__SUBSETTED_PROPERTY :
 				getSubsettedProperties().clear();
 				getSubsettedProperties().addAll((Collection) newValue);
+				return;
+			case UMLPackage.PORT__ASSOCIATION :
+				setAssociation((Association) newValue);
 				return;
 			case UMLPackage.PORT__QUALIFIER :
 				getQualifiers().clear();
@@ -733,11 +732,11 @@ public class PortImpl
 			case UMLPackage.PORT__IS_READ_ONLY :
 				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
 				return;
-			case UMLPackage.PORT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.PORT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.PORT__END :
 				getEnds().clear();
@@ -775,9 +774,6 @@ public class PortImpl
 			case UMLPackage.PORT__OWNING_ASSOCIATION :
 				setOwningAssociation((Association) null);
 				return;
-			case UMLPackage.PORT__ASSOCIATION :
-				setAssociation((Association) null);
-				return;
 			case UMLPackage.PORT__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) null);
 				return;
@@ -786,6 +782,9 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__SUBSETTED_PROPERTY :
 				getSubsettedProperties().clear();
+				return;
+			case UMLPackage.PORT__ASSOCIATION :
+				setAssociation((Association) null);
 				return;
 			case UMLPackage.PORT__QUALIFIER :
 				getQualifiers().clear();
@@ -824,7 +823,7 @@ public class PortImpl
 			case UMLPackage.PORT__OWNER :
 				return isSetOwner();
 			case UMLPackage.PORT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.PORT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.PORT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PORT__NAME :
 				return isSetName();
@@ -835,7 +834,7 @@ public class PortImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PORT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.PORT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.PORT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.PORT__NAMESPACE :
 				return isSetNamespace();
@@ -867,20 +866,20 @@ public class PortImpl
 				return eVirtualGet(UMLPackage.PORT__LOWER_VALUE) != null;
 			case UMLPackage.PORT__IS_READ_ONLY :
 				return isSetIsReadOnly();
-			case UMLPackage.PORT__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.PORT__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.PORT__END :
-				List end = (List) eVirtualGet(UMLPackage.PORT__END);
+				EList end = (EList) eVirtualGet(UMLPackage.PORT__END);
 				return end != null && !end.isEmpty();
 			case UMLPackage.PORT__DEPLOYMENT :
-				List deployment = (List) eVirtualGet(UMLPackage.PORT__DEPLOYMENT);
+				EList deployment = (EList) eVirtualGet(UMLPackage.PORT__DEPLOYMENT);
 				return deployment != null && !deployment.isEmpty();
 			case UMLPackage.PORT__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
 			case UMLPackage.PORT__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.PORT__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.PORT__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE) != null;
@@ -900,23 +899,23 @@ public class PortImpl
 			case UMLPackage.PORT__CLASS_ :
 				return getClass_() != null;
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
-				List redefinedProperty = (List) eVirtualGet(UMLPackage.PORT__REDEFINED_PROPERTY);
+				EList redefinedProperty = (EList) eVirtualGet(UMLPackage.PORT__REDEFINED_PROPERTY);
 				return redefinedProperty != null
 					&& !redefinedProperty.isEmpty();
 			case UMLPackage.PORT__OWNING_ASSOCIATION :
 				return basicGetOwningAssociation() != null;
-			case UMLPackage.PORT__ASSOCIATION :
-				return eVirtualGet(UMLPackage.PORT__ASSOCIATION) != null;
 			case UMLPackage.PORT__DEFAULT_VALUE :
 				return eVirtualGet(UMLPackage.PORT__DEFAULT_VALUE) != null;
 			case UMLPackage.PORT__OPPOSITE :
 				return basicGetOpposite() != null;
 			case UMLPackage.PORT__SUBSETTED_PROPERTY :
-				List subsettedProperty = (List) eVirtualGet(UMLPackage.PORT__SUBSETTED_PROPERTY);
+				EList subsettedProperty = (EList) eVirtualGet(UMLPackage.PORT__SUBSETTED_PROPERTY);
 				return subsettedProperty != null
 					&& !subsettedProperty.isEmpty();
+			case UMLPackage.PORT__ASSOCIATION :
+				return eVirtualGet(UMLPackage.PORT__ASSOCIATION) != null;
 			case UMLPackage.PORT__QUALIFIER :
-				List qualifier = (List) eVirtualGet(UMLPackage.PORT__QUALIFIER);
+				EList qualifier = (EList) eVirtualGet(UMLPackage.PORT__QUALIFIER);
 				return qualifier != null && !qualifier.isEmpty();
 			case UMLPackage.PORT__ASSOCIATION_END :
 				return getAssociationEnd() != null;
@@ -927,7 +926,7 @@ public class PortImpl
 			case UMLPackage.PORT__REQUIRED :
 				return !getRequireds().isEmpty();
 			case UMLPackage.PORT__REDEFINED_PORT :
-				List redefinedPort = (List) eVirtualGet(UMLPackage.PORT__REDEFINED_PORT);
+				EList redefinedPort = (EList) eVirtualGet(UMLPackage.PORT__REDEFINED_PORT);
 				return redefinedPort != null && !redefinedPort.isEmpty();
 			case UMLPackage.PORT__PROVIDED :
 				return !getProvideds().isEmpty();

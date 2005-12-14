@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.9 2005/12/12 16:58:35 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.10 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -85,8 +83,8 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -103,8 +101,8 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getClientDependencies() {
-		List clientDependency = (List) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY);
+	public EList getClientDependencies() {
+		EList clientDependency = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
 			eVirtualSet(
 				UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY,
@@ -122,8 +120,8 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getDeployments() {
-		List deployment = (List) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT);
+	public EList getDeployments() {
+		EList deployment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT);
 		if (deployment == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
 				deployment = new SubsetEObjectContainmentWithInverseEList(
@@ -166,10 +164,10 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getDeployedElements() {
+	public EList getDeployedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 			if (result == null) {
 				cache.put(this,
@@ -366,7 +364,7 @@ public abstract class DeploymentTargetImpl
 			case UMLPackage.DEPLOYMENT_TARGET__OWNER :
 				return isSetOwner();
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
 				return isSetName();
@@ -377,14 +375,14 @@ public abstract class DeploymentTargetImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION) != null;
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
-				List deployment = (List) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT);
+				EList deployment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT);
 				return deployment != null && !deployment.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();

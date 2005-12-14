@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
+ * $Id: Type.java,v 1.4 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -62,6 +62,18 @@ public interface Type
 	 * @generated
 	 */
 	void setPackage(org.eclipse.uml2.uml.Package value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" end1IsNavigableDataType="org.eclipse.uml2.uml.Boolean" end1IsNavigableRequired="true" end1IsNavigableOrdered="false" end1AggregationRequired="true" end1AggregationOrdered="false" end1NameDataType="org.eclipse.uml2.uml.String" end1NameRequired="true" end1NameOrdered="false" end1LowerDataType="org.eclipse.uml2.uml.Integer" end1LowerRequired="true" end1LowerOrdered="false" end1UpperDataType="org.eclipse.uml2.uml.UnlimitedNatural" end1UpperRequired="true" end1UpperOrdered="false" end1TypeRequired="true" end1TypeOrdered="false" end2IsNavigableDataType="org.eclipse.uml2.uml.Boolean" end2IsNavigableRequired="true" end2IsNavigableOrdered="false" end2AggregationRequired="true" end2AggregationOrdered="false" end2NameDataType="org.eclipse.uml2.uml.String" end2NameRequired="true" end2NameOrdered="false" end2LowerDataType="org.eclipse.uml2.uml.Integer" end2LowerRequired="true" end2LowerOrdered="false" end2UpperDataType="org.eclipse.uml2.uml.UnlimitedNatural" end2UpperRequired="true" end2UpperOrdered="false"
+	 * @generated
+	 */
+	Association createAssociation(boolean end1IsNavigable,
+			AggregationKind end1Aggregation, String end1Name, int end1Lower,
+			int end1Upper, Type end1Type, boolean end2IsNavigable,
+			AggregationKind end2Aggregation, String end2Name, int end2Lower,
+			int end2Upper);
 
 	/**
 	 * <!-- begin-user-doc -->

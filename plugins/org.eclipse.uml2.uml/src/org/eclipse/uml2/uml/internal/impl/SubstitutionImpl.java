@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -83,8 +81,8 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSuppliers() {
-		List supplier = (List) eVirtualGet(UMLPackage.SUBSTITUTION__SUPPLIER);
+	public EList getSuppliers() {
+		EList supplier = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__SUPPLIER);
 		if (supplier == null) {
 			eVirtualSet(UMLPackage.SUBSTITUTION__SUPPLIER,
 				supplier = new SupersetEObjectResolvingEList(
@@ -100,8 +98,8 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getClients() {
-		List client = (List) eVirtualGet(UMLPackage.SUBSTITUTION__CLIENT);
+	public EList getClients() {
+		EList client = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__CLIENT);
 		if (client == null) {
 			eVirtualSet(
 				UMLPackage.SUBSTITUTION__CLIENT,
@@ -236,6 +234,11 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
+			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -245,11 +248,6 @@ public class SubstitutionImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.SUBSTITUTION__CLIENT :
 				return ((InternalEList) getClients()).basicAdd(otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
@@ -280,11 +278,11 @@ public class SubstitutionImpl
 					otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.SUBSTITUTION__CLIENT :
 				return ((InternalEList) getClients()).basicRemove(otherEnd,
 					msgs);
@@ -348,14 +346,14 @@ public class SubstitutionImpl
 				return basicGetNamespace();
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.SUBSTITUTION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.SUBSTITUTION__SOURCE :
@@ -408,11 +406,11 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__SUPPLIER :
 				getSuppliers().clear();
@@ -460,11 +458,11 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.SUBSTITUTION__SUPPLIER :
 				getSuppliers().clear();
@@ -500,7 +498,7 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.SUBSTITUTION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.SUBSTITUTION__NAME :
 				return isSetName();
@@ -511,16 +509,16 @@ public class SubstitutionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.SUBSTITUTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.SUBSTITUTION__NAME_EXPRESSION) != null;
-			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.SUBSTITUTION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.SUBSTITUTION__SOURCE :
@@ -528,10 +526,10 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__TARGET :
 				return isSetTargets();
 			case UMLPackage.SUBSTITUTION__SUPPLIER :
-				List supplier = (List) eVirtualGet(UMLPackage.SUBSTITUTION__SUPPLIER);
+				EList supplier = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 			case UMLPackage.SUBSTITUTION__CLIENT :
-				List client = (List) eVirtualGet(UMLPackage.SUBSTITUTION__CLIENT);
+				EList client = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__CLIENT);
 				return client != null && !client.isEmpty();
 			case UMLPackage.SUBSTITUTION__MAPPING :
 				return eVirtualGet(UMLPackage.SUBSTITUTION__MAPPING) != null;

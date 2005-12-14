@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.10 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -99,8 +98,8 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -131,8 +130,8 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinitionContextsGen() {
-		List redefinitionContext = (List) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+	public EList getRedefinitionContextsGen() {
+		EList redefinitionContext = (EList) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
 			eVirtualSet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 				redefinitionContext = new DerivedUnionEObjectEList(
@@ -143,8 +142,8 @@ public abstract class RedefinableElementImpl
 		return redefinitionContext;
 	}
 
-	public List getRedefinitionContexts() {
-		List redefinitionContext = (List) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+	public EList getRedefinitionContexts() {
+		EList redefinitionContext = (EList) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 		if (redefinitionContext == null) {
 			eVirtualSet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 				redefinitionContext = new DerivedEObjectEList(Classifier.class,
@@ -352,7 +351,7 @@ public abstract class RedefinableElementImpl
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME :
 				return isSetName();
@@ -363,7 +362,7 @@ public abstract class RedefinableElementImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.REDEFINABLE_ELEMENT__NAMESPACE :
 				return isSetNamespace();

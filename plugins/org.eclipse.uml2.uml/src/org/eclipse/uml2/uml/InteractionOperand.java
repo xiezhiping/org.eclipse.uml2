@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperand.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: InteractionOperand.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -107,7 +108,7 @@ public interface InteractionOperand
 	 * @model type="org.eclipse.uml2.uml.InteractionFragment" opposite="enclosingOperand" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getFragments();
+	EList getFragments();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.InteractionFragment} and appends it to the '<em><b>Fragment</b></em>' containment reference list.

@@ -8,14 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: DataTypeOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
 
+import java.util.Iterator;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.RedefinableElement;
@@ -55,10 +55,10 @@ public final class DataTypeOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List inherit(DataType dataType, List inhs) {
-		List inherit = new UniqueEList();
+	public static EList inherit(DataType dataType, EList inhs) {
+		EList inherit = new UniqueEList();
 
-		List redefinedElements = new UniqueEList();
+		EList redefinedElements = new UniqueEList();
 
 		for (Iterator ownedMembers = dataType.getOwnedMembers().iterator(); ownedMembers
 			.hasNext();) {
@@ -79,7 +79,7 @@ public final class DataTypeOperations
 			}
 		}
 
-		return Collections.unmodifiableList(inherit);
+		return ECollections.unmodifiableEList(inherit);
 	}
 
 } // DataTypeOperations

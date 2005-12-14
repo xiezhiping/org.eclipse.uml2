@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -355,6 +354,10 @@ public class ClassifierTemplateParameterImpl
 				return getOwnedComments();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				return getSignature();
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				if (resolve)
+					return getParameteredElement();
+				return basicGetParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return getOwnedParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
@@ -363,10 +366,6 @@ public class ClassifierTemplateParameterImpl
 				return basicGetDefault();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return getOwnedDefault();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				if (resolve)
-					return getParameteredElement();
-				return basicGetParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				return isAllowSubstitutable()
 					? Boolean.TRUE
@@ -401,6 +400,9 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) newValue);
 				return;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				setParameteredElement((ParameterableElement) newValue);
+				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				setOwnedParameteredElement((ParameterableElement) newValue);
 				return;
@@ -409,9 +411,6 @@ public class ClassifierTemplateParameterImpl
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) newValue);
-				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				setParameteredElement((ParameterableElement) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				setAllowSubstitutable(((Boolean) newValue).booleanValue());
@@ -442,6 +441,9 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) null);
 				return;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				setParameteredElement((ParameterableElement) null);
+				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				setOwnedParameteredElement((ParameterableElement) null);
 				return;
@@ -450,9 +452,6 @@ public class ClassifierTemplateParameterImpl
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) null);
-				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				setParameteredElement((ParameterableElement) null);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				setAllowSubstitutable(ALLOW_SUBSTITUTABLE_EDEFAULT);
@@ -482,18 +481,18 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNER :
 				return isSetOwner();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				return getSignature() != null;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				return isSetParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
 				return eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT) != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT) != null;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				return isSetParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				return ((eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0) != ALLOW_SUBSTITUTABLE_EDEFAULT;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER :

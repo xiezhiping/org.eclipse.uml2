@@ -8,22 +8,28 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.3 2005/12/05 18:00:17 khussey Exp $
+ * $Id: PackageOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.PrimitiveType;
+import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.ProfileApplication;
+
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -92,8 +98,140 @@ public final class PackageOperations
 		return true;
 	}
 
-	protected static List allImportedPackages(
-			org.eclipse.uml2.uml.Package package_, List allImportedPackages) {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static org.eclipse.uml2.uml.Package createNestedPackage(
+			org.eclipse.uml2.uml.Package package_, String name) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static org.eclipse.uml2.uml.Class createOwnedClass(
+			org.eclipse.uml2.uml.Package package_, String name,
+			boolean isAbstract) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Enumeration createOwnedEnumeration(
+			org.eclipse.uml2.uml.Package package_, String name) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static PrimitiveType createOwnedPrimitiveType(
+			org.eclipse.uml2.uml.Package package_, String name) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static boolean isProfileApplied(
+			org.eclipse.uml2.uml.Package package_, Profile profile) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ProfileApplication applyProfile(
+			org.eclipse.uml2.uml.Package package_, Profile profile) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ProfileApplication unapplyProfile(
+			org.eclipse.uml2.uml.Package package_, Profile profile) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getAppliedProfiles(org.eclipse.uml2.uml.Package package_) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Profile getAppliedProfile(
+			org.eclipse.uml2.uml.Package package_, String qualifiedName) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getAllAppliedProfiles(
+			org.eclipse.uml2.uml.Package package_) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static String getAppliedVersion(
+			org.eclipse.uml2.uml.Package package_, String profile) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	protected static EList allImportedPackages(
+			org.eclipse.uml2.uml.Package package_, EList allImportedPackages) {
 
 		for (Iterator packageImports = package_.getPackageImports().iterator(); packageImports
 			.hasNext();) {
@@ -115,8 +253,8 @@ public final class PackageOperations
 		return allImportedPackages;
 	}
 
-	protected static List visibleMembers(org.eclipse.uml2.uml.Package package_,
-			List visibleMembers) {
+	protected static EList visibleMembers(
+			org.eclipse.uml2.uml.Package package_, EList visibleMembers) {
 
 		for (Iterator ownedMembers = package_.getOwnedMembers().iterator(); ownedMembers
 			.hasNext();) {
@@ -157,8 +295,8 @@ public final class PackageOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List visibleMembers(org.eclipse.uml2.uml.Package package_) {
-		List visibleMembers = visibleMembers(package_, new UniqueEList());
+	public static EList visibleMembers(org.eclipse.uml2.uml.Package package_) {
+		EList visibleMembers = visibleMembers(package_, new UniqueEList());
 
 		for (Iterator allImportedPackages = allImportedPackages(package_,
 			new UniqueEList()).iterator(); allImportedPackages.hasNext();) {
@@ -167,7 +305,7 @@ public final class PackageOperations
 				.next(), visibleMembers);
 		}
 
-		return Collections.unmodifiableList(visibleMembers);
+		return ECollections.unmodifiableEList(visibleMembers);
 	}
 
 	/**

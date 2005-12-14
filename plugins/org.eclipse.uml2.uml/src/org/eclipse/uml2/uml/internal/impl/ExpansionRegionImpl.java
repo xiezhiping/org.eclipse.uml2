@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -123,8 +122,8 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInputElements() {
-		List inputElement = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__INPUT_ELEMENT);
+	public EList getInputElements() {
+		EList inputElement = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__INPUT_ELEMENT);
 		if (inputElement == null) {
 			eVirtualSet(UMLPackage.EXPANSION_REGION__INPUT_ELEMENT,
 				inputElement = new EObjectWithInverseResolvingEList(
@@ -155,8 +154,8 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOutputElements() {
-		List outputElement = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT);
+	public EList getOutputElements() {
+		EList outputElement = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT);
 		if (outputElement == null) {
 			eVirtualSet(UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT,
 				outputElement = new EObjectWithInverseResolvingEList(
@@ -670,7 +669,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXPANSION_REGION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.EXPANSION_REGION__NAME :
 				return isSetName();
@@ -681,7 +680,7 @@ public class ExpansionRegionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXPANSION_REGION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.EXPANSION_REGION__NAMESPACE :
 				return isSetNamespace();
@@ -694,29 +693,29 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.EXPANSION_REGION__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.EXPANSION_REGION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
 				return isSetActivity();
 			case UMLPackage.EXPANSION_REGION__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.EXPANSION_REGION__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.EXPANSION_REGION__HANDLER :
-				List handler = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__HANDLER);
+				EList handler = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UMLPackage.EXPANSION_REGION__OUTPUT :
 				return isSetOutputs();
@@ -725,21 +724,21 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__CONTEXT :
 				return getContext() != null;
 			case UMLPackage.EXPANSION_REGION__LOCAL_PRECONDITION :
-				List localPrecondition = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__LOCAL_PRECONDITION);
+				EList localPrecondition = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__LOCAL_PRECONDITION);
 				return localPrecondition != null
 					&& !localPrecondition.isEmpty();
 			case UMLPackage.EXPANSION_REGION__LOCAL_POSTCONDITION :
-				List localPostcondition = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__LOCAL_POSTCONDITION);
+				EList localPostcondition = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__LOCAL_POSTCONDITION);
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.EXPANSION_REGION__MEMBER :
 				return isSetMembers();
@@ -758,24 +757,24 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__CONTAINED_EDGE :
 				return isSetContainedEdges();
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
-				List variable = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__VARIABLE);
+				EList variable = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__VARIABLE);
 				return variable != null && !variable.isEmpty();
 			case UMLPackage.EXPANSION_REGION__NODE :
-				List node = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__NODE);
+				EList node = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__NODE);
 				return node != null && !node.isEmpty();
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.EXPANSION_REGION__EDGE :
-				List edge = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__EDGE);
+				EList edge = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__EDGE);
 				return edge != null && !edge.isEmpty();
 			case UMLPackage.EXPANSION_REGION__MODE :
 				return eVirtualGet(UMLPackage.EXPANSION_REGION__MODE,
 					MODE_EDEFAULT) != MODE_EDEFAULT;
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
-				List inputElement = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__INPUT_ELEMENT);
+				EList inputElement = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__INPUT_ELEMENT);
 				return inputElement != null && !inputElement.isEmpty();
 			case UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT :
-				List outputElement = (List) eVirtualGet(UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT);
+				EList outputElement = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT);
 				return outputElement != null && !outputElement.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

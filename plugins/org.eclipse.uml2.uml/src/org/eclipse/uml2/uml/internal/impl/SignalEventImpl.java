@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalEventImpl.java,v 1.7 2005/12/12 16:58:36 khussey Exp $
+ * $Id: SignalEventImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -142,14 +140,14 @@ public class SignalEventImpl
 				return basicGetNamespace();
 			case UMLPackage.SIGNAL_EVENT__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.SIGNAL_EVENT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.SIGNAL_EVENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.SIGNAL_EVENT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.SIGNAL_EVENT__SIGNAL :
 				if (resolve)
 					return getSignal();
@@ -186,11 +184,11 @@ public class SignalEventImpl
 			case UMLPackage.SIGNAL_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.SIGNAL_EVENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.SIGNAL_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.SIGNAL_EVENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.SIGNAL_EVENT__SIGNAL :
 				setSignal((Signal) newValue);
@@ -224,11 +222,11 @@ public class SignalEventImpl
 			case UMLPackage.SIGNAL_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.SIGNAL_EVENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.SIGNAL_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.SIGNAL_EVENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.SIGNAL_EVENT__SIGNAL :
 				setSignal((Signal) null);
@@ -252,7 +250,7 @@ public class SignalEventImpl
 			case UMLPackage.SIGNAL_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.SIGNAL_EVENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.SIGNAL_EVENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.SIGNAL_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.SIGNAL_EVENT__NAME :
 				return isSetName();
@@ -263,16 +261,16 @@ public class SignalEventImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.SIGNAL_EVENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.SIGNAL_EVENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.SIGNAL_EVENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.SIGNAL_EVENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.SIGNAL_EVENT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.SIGNAL_EVENT__NAME_EXPRESSION) != null;
-			case UMLPackage.SIGNAL_EVENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.SIGNAL_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.SIGNAL_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.SIGNAL_EVENT__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.SIGNAL_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.SIGNAL_EVENT__SIGNAL :
 				return eVirtualGet(UMLPackage.SIGNAL_EVENT__SIGNAL) != null;
 		}

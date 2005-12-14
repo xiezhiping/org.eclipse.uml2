@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Parameter.java,v 1.6 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -34,11 +35,11 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Parameter#getParameterSets <em>Parameter Set</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Parameter#getOperation <em>Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#getOperation <em>Operation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#getParameterSets <em>Parameter Set</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#isException <em>Is Exception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#isStream <em>Is Stream</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getEffect <em>Effect</em>}</li>
@@ -67,7 +68,7 @@ public interface Parameter
 	 * @model type="org.eclipse.uml2.uml.ParameterSet" opposite="parameter" ordered="false"
 	 * @generated
 	 */
-	List getParameterSets();
+	EList getParameterSets();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ParameterSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter Set</b></em>' reference list.

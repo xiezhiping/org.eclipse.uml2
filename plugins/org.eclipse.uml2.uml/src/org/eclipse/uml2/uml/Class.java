@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Class.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -65,7 +66,7 @@ public interface Class
 	 * @model type="org.eclipse.uml2.uml.Operation" opposite="class_" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOwnedOperations();
+	EList getOwnedOperations();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -101,7 +102,7 @@ public interface Class
 	 * @model type="org.eclipse.uml2.uml.Classifier" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getNestedClassifiers();
+	EList getNestedClassifiers();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Classifier} and appends it to the '<em><b>Nested Classifier</b></em>' containment reference list.
@@ -138,7 +139,7 @@ public interface Class
 	 * @model type="org.eclipse.uml2.uml.Class" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getSuperClasses();
+	EList getSuperClasses();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Class} with the specified '<em><b>Name</b></em>' from the '<em><b>Super Class</b></em>' reference list.
@@ -189,7 +190,7 @@ public interface Class
 	 * @model type="org.eclipse.uml2.uml.Reception" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getOwnedReceptions();
+	EList getOwnedReceptions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Reception} and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.
@@ -227,7 +228,7 @@ public interface Class
 	 * @model type="org.eclipse.uml2.uml.Extension" opposite="metaclass" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getExtensions();
+	EList getExtensions();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Extension} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension</b></em>' reference list.
@@ -251,5 +252,30 @@ public interface Class
 	 * @generated
 	 */
 	boolean validatePassiveClass(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" typeRequired="true" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
+	 * @generated
+	 */
+	Property createOwnedAttribute(String name, Type type, int lower, int upper);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" returnTypeRequired="true" returnTypeOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false"
+	 * @generated
+	 */
+	Operation createOwnedOperation(String name, Type returnType,
+			EList parameterNames, EList parameterTypes);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isMetaclass();
 
 } // Class

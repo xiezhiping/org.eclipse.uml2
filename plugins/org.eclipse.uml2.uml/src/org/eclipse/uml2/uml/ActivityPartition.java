@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.6 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -111,7 +112,7 @@ public interface ActivityPartition
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="inPartition" ordered="false"
 	 * @generated
 	 */
-	List getEdges();
+	EList getEdges();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Edge</b></em>' reference list.
@@ -139,7 +140,7 @@ public interface ActivityPartition
 	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="inPartition" ordered="false"
 	 * @generated
 	 */
-	List getNodes();
+	EList getNodes();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' reference list.
@@ -167,7 +168,7 @@ public interface ActivityPartition
 	 * @model type="org.eclipse.uml2.uml.ActivityPartition" opposite="superPartition" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getSubpartitions();
+	EList getSubpartitions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ActivityPartition} and appends it to the '<em><b>Subpartition</b></em>' containment reference list.

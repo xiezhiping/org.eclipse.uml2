@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.6 2005/12/06 23:21:49 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.7 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -289,7 +288,7 @@ public class QualifierValueImpl
 			case UMLPackage.QUALIFIER_VALUE__OWNER :
 				return isSetOwner();
 			case UMLPackage.QUALIFIER_VALUE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.QUALIFIER_VALUE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.QUALIFIER_VALUE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.QUALIFIER_VALUE__QUALIFIER :
 				return eVirtualGet(UMLPackage.QUALIFIER_VALUE__QUALIFIER) != null;

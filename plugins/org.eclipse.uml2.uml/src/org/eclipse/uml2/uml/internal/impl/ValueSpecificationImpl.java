@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationImpl.java,v 1.7 2005/12/12 16:58:35 khussey Exp $
+ * $Id: ValueSpecificationImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -210,14 +208,14 @@ public abstract class ValueSpecificationImpl
 				return basicGetNamespace();
 			case UMLPackage.VALUE_SPECIFICATION__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.VALUE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.VALUE_SPECIFICATION__TYPE :
 				if (resolve)
 					return getType();
@@ -254,11 +252,11 @@ public abstract class ValueSpecificationImpl
 			case UMLPackage.VALUE_SPECIFICATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.VALUE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.VALUE_SPECIFICATION__TYPE :
 				setType((Type) newValue);
@@ -292,11 +290,11 @@ public abstract class ValueSpecificationImpl
 			case UMLPackage.VALUE_SPECIFICATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.VALUE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.VALUE_SPECIFICATION__TYPE :
 				setType((Type) null);
@@ -320,7 +318,7 @@ public abstract class ValueSpecificationImpl
 			case UMLPackage.VALUE_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.VALUE_SPECIFICATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.VALUE_SPECIFICATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.VALUE_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.VALUE_SPECIFICATION__NAME :
 				return isSetName();
@@ -331,16 +329,16 @@ public abstract class ValueSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.VALUE_SPECIFICATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.VALUE_SPECIFICATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.VALUE_SPECIFICATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.VALUE_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.VALUE_SPECIFICATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.VALUE_SPECIFICATION__NAME_EXPRESSION) != null;
-			case UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.VALUE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.VALUE_SPECIFICATION__TYPE :
 				return eVirtualGet(UMLPackage.VALUE_SPECIFICATION__TYPE) != null;
 		}

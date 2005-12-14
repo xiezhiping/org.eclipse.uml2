@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationItemProvider.java,v 1.1 2005/12/07 14:20:29 khussey Exp $
+ * $Id: InstanceSpecificationItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -75,11 +75,11 @@ public class InstanceSpecificationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTemplateParameterPropertyDescriptor(object);
 			addOwningTemplateParameterPropertyDescriptor(object);
+			addTemplateParameterPropertyDescriptor(object);
 			addClassifierPropertyDescriptor(object);
-			addSpecificationPropertyDescriptor(object);
 			addSlotPropertyDescriptor(object);
+			addSpecificationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -196,9 +196,9 @@ public class InstanceSpecificationItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION);
-			childrenFeatures
 				.add(UMLPackage.Literals.INSTANCE_SPECIFICATION__SLOT);
+			childrenFeatures
+				.add(UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION);
 		}
 		return childrenFeatures;
 	}
@@ -250,8 +250,8 @@ public class InstanceSpecificationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(InstanceSpecification.class)) {
-			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
+			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -269,6 +269,10 @@ public class InstanceSpecificationItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SLOT,
+			UMLFactory.eINSTANCE.createSlot()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
@@ -325,10 +329,6 @@ public class InstanceSpecificationItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 			UMLFactory.eINSTANCE.createTimeInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INSTANCE_SPECIFICATION__SLOT,
-			UMLFactory.eINSTANCE.createSlot()));
 	}
 
 	/**

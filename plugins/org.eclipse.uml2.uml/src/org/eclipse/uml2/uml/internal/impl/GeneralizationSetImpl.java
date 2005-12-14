@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -259,8 +258,8 @@ public class GeneralizationSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getGeneralizations() {
-		List generalization = (List) eVirtualGet(UMLPackage.GENERALIZATION_SET__GENERALIZATION);
+	public EList getGeneralizations() {
+		EList generalization = (EList) eVirtualGet(UMLPackage.GENERALIZATION_SET__GENERALIZATION);
 		if (generalization == null) {
 			eVirtualSet(
 				UMLPackage.GENERALIZATION_SET__GENERALIZATION,
@@ -308,6 +307,12 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
+			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER,
+					msgs);
 			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -316,12 +321,6 @@ public class GeneralizationSetImpl
 							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER,
 					msgs);
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				Classifier powertype = (Classifier) eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE);
@@ -356,12 +355,12 @@ public class GeneralizationSetImpl
 					otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER,
 					msgs);
+			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				return basicSetPowertype(null, msgs);
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
@@ -402,14 +401,14 @@ public class GeneralizationSetImpl
 				return basicGetNamespace();
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
 				return isCovering()
 					? Boolean.TRUE
@@ -456,11 +455,11 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
 				setIsCovering(((Boolean) newValue).booleanValue());
@@ -504,11 +503,11 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
 				setIsCovering(IS_COVERING_EDEFAULT);
@@ -541,7 +540,7 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__OWNER :
 				return isSetOwner();
 			case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.GENERALIZATION_SET__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.GENERALIZATION_SET__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.GENERALIZATION_SET__NAME :
 				return isSetName();
@@ -552,16 +551,16 @@ public class GeneralizationSetImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.GENERALIZATION_SET__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION) != null;
-			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
 				return ((eFlags & IS_COVERING_EFLAG) != 0) != IS_COVERING_EDEFAULT;
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :
@@ -569,7 +568,7 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				return eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE) != null;
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.GENERALIZATION_SET__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.GENERALIZATION_SET__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

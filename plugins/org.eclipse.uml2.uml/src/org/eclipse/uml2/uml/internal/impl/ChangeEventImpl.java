@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEventImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: ChangeEventImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -78,8 +76,8 @@ public class ChangeEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.CHANGE_EVENT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.CHANGE_EVENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.CHANGE_EVENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -184,11 +182,11 @@ public class ChangeEventImpl
 					otherEnd, msgs);
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION :
 				return basicSetChangeExpression(null, msgs);
 		}
@@ -226,14 +224,14 @@ public class ChangeEventImpl
 				return basicGetNamespace();
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION :
 				return getChangeExpression();
 		}
@@ -268,11 +266,11 @@ public class ChangeEventImpl
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION :
 				setChangeExpression((ValueSpecification) newValue);
@@ -306,11 +304,11 @@ public class ChangeEventImpl
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION :
 				setChangeExpression((ValueSpecification) null);
@@ -334,7 +332,7 @@ public class ChangeEventImpl
 			case UMLPackage.CHANGE_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CHANGE_EVENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CHANGE_EVENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CHANGE_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CHANGE_EVENT__NAME :
 				return isSetName();
@@ -345,16 +343,16 @@ public class ChangeEventImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.CHANGE_EVENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.CHANGE_EVENT__NAME_EXPRESSION) != null;
-			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION :
 				return eVirtualGet(UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION) != null;
 		}

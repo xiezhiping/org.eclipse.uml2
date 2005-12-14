@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceiveOperationEventImpl.java,v 1.2 2005/12/12 16:58:35 khussey Exp $
+ * $Id: ReceiveOperationEventImpl.java,v 1.3 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -146,14 +144,14 @@ public class ReceiveOperationEventImpl
 				return basicGetNamespace();
 			case UMLPackage.RECEIVE_OPERATION_EVENT__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.RECEIVE_OPERATION_EVENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.RECEIVE_OPERATION_EVENT__OPERATION :
 				if (resolve)
 					return getOperation();
@@ -190,11 +188,11 @@ public class ReceiveOperationEventImpl
 			case UMLPackage.RECEIVE_OPERATION_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.RECEIVE_OPERATION_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.RECEIVE_OPERATION_EVENT__OPERATION :
 				setOperation((Operation) newValue);
@@ -228,11 +226,11 @@ public class ReceiveOperationEventImpl
 			case UMLPackage.RECEIVE_OPERATION_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.RECEIVE_OPERATION_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.RECEIVE_OPERATION_EVENT__OPERATION :
 				setOperation((Operation) null);
@@ -256,7 +254,7 @@ public class ReceiveOperationEventImpl
 			case UMLPackage.RECEIVE_OPERATION_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.RECEIVE_OPERATION_EVENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.RECEIVE_OPERATION_EVENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.RECEIVE_OPERATION_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.RECEIVE_OPERATION_EVENT__NAME :
 				return isSetName();
@@ -267,16 +265,16 @@ public class ReceiveOperationEventImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.RECEIVE_OPERATION_EVENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.RECEIVE_OPERATION_EVENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.RECEIVE_OPERATION_EVENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.RECEIVE_OPERATION_EVENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.RECEIVE_OPERATION_EVENT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.RECEIVE_OPERATION_EVENT__NAME_EXPRESSION) != null;
-			case UMLPackage.RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.RECEIVE_OPERATION_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.RECEIVE_OPERATION_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.RECEIVE_OPERATION_EVENT__OPERATION :
 				return eVirtualGet(UMLPackage.RECEIVE_OPERATION_EVENT__OPERATION) != null;
 		}

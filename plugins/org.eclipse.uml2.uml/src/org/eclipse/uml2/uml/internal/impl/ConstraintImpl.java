@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -88,8 +87,8 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.CONSTRAINT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.CONSTRAINT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.CONSTRAINT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -106,8 +105,8 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getConstrainedElements() {
-		List constrainedElement = (List) eVirtualGet(UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
+	public EList getConstrainedElements() {
+		EList constrainedElement = (EList) eVirtualGet(UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
 		if (constrainedElement == null) {
 			eVirtualSet(UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT,
 				constrainedElement = new EObjectResolvingEList(Element.class,
@@ -294,6 +293,11 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
+			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -303,11 +307,6 @@ public class ConstraintImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.CONSTRAINT__CONTEXT :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -336,11 +335,11 @@ public class ConstraintImpl
 					otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.CONSTRAINT__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
 			case UMLPackage.CONSTRAINT__CONTEXT :
@@ -400,14 +399,14 @@ public class ConstraintImpl
 				return basicGetNamespace();
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				return getConstrainedElements();
 			case UMLPackage.CONSTRAINT__SPECIFICATION :
@@ -446,11 +445,11 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
@@ -491,11 +490,11 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
@@ -525,7 +524,7 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CONSTRAINT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONSTRAINT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONSTRAINT__NAME :
 				return isSetName();
@@ -536,18 +535,18 @@ public class ConstraintImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.CONSTRAINT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.CONSTRAINT__NAME_EXPRESSION) != null;
-			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
-				List constrainedElement = (List) eVirtualGet(UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
+				EList constrainedElement = (EList) eVirtualGet(UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
 				return constrainedElement != null
 					&& !constrainedElement.isEmpty();
 			case UMLPackage.CONSTRAINT__SPECIFICATION :

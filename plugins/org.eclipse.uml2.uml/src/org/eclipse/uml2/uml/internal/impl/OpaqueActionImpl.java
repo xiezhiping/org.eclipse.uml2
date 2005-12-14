@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -80,8 +78,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInputs() {
-		List input = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__INPUT);
+	public EList getInputs() {
+		EList input = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__INPUT);
 		if (input == null) {
 			eVirtualSet(UMLPackage.OPAQUE_ACTION__INPUT,
 				input = new DerivedUnionEObjectEList(InputPin.class, this,
@@ -96,8 +94,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOutputs() {
-		List output = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__OUTPUT);
+	public EList getOutputs() {
+		EList output = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__OUTPUT);
 		if (output == null) {
 			eVirtualSet(UMLPackage.OPAQUE_ACTION__OUTPUT,
 				output = new DerivedUnionEObjectEList(OutputPin.class, this,
@@ -112,8 +110,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getBodies() {
-		List body = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__BODY);
+	public EList getBodies() {
+		EList body = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__BODY);
 		if (body == null) {
 			eVirtualSet(UMLPackage.OPAQUE_ACTION__BODY,
 				body = new EDataTypeUniqueEList.Unsettable(String.class, this,
@@ -137,7 +135,7 @@ public class OpaqueActionImpl
 	 * @generated
 	 */
 	public boolean isSetBodies() {
-		List body = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__BODY);
+		EList body = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__BODY);
 		return body != null && ((InternalEList.Unsettable) body).isSet();
 	}
 
@@ -146,8 +144,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getLanguages() {
-		List language = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__LANGUAGE);
+	public EList getLanguages() {
+		EList language = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__LANGUAGE);
 		if (language == null) {
 			eVirtualSet(UMLPackage.OPAQUE_ACTION__LANGUAGE,
 				language = new EDataTypeUniqueEList.Unsettable(String.class,
@@ -171,7 +169,7 @@ public class OpaqueActionImpl
 	 * @generated
 	 */
 	public boolean isSetLanguages() {
-		List language = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__LANGUAGE);
+		EList language = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__LANGUAGE);
 		return language != null
 			&& ((InternalEList.Unsettable) language).isSet();
 	}
@@ -181,8 +179,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInputValues() {
-		List inputValue = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__INPUT_VALUE);
+	public EList getInputValues() {
+		EList inputValue = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__INPUT_VALUE);
 		if (inputValue == null) {
 			eVirtualSet(UMLPackage.OPAQUE_ACTION__INPUT_VALUE,
 				inputValue = new EObjectResolvingEList(InputPin.class, this,
@@ -211,8 +209,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOutputValues() {
-		List outputValue = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE);
+	public EList getOutputValues() {
+		EList outputValue = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE);
 		if (outputValue == null) {
 			eVirtualSet(UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE,
 				outputValue = new EObjectResolvingEList(OutputPin.class, this,
@@ -493,7 +491,7 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPAQUE_ACTION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__NAME :
 				return isSetName();
@@ -504,7 +502,7 @@ public class OpaqueActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OPAQUE_ACTION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__NAMESPACE :
 				return isSetNamespace();
@@ -517,29 +515,29 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.OPAQUE_ACTION__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.OPAQUE_ACTION__ACTIVITY :
 				return getActivity() != null;
 			case UMLPackage.OPAQUE_ACTION__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__HANDLER :
-				List handler = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__HANDLER);
+				EList handler = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__OUTPUT :
 				return isSetOutputs();
@@ -548,11 +546,11 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__CONTEXT :
 				return getContext() != null;
 			case UMLPackage.OPAQUE_ACTION__LOCAL_PRECONDITION :
-				List localPrecondition = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__LOCAL_PRECONDITION);
+				EList localPrecondition = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null
 					&& !localPrecondition.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__LOCAL_POSTCONDITION :
-				List localPostcondition = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__LOCAL_POSTCONDITION);
+				EList localPostcondition = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__BODY :
@@ -560,10 +558,10 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__LANGUAGE :
 				return isSetLanguages();
 			case UMLPackage.OPAQUE_ACTION__INPUT_VALUE :
-				List inputValue = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__INPUT_VALUE);
+				EList inputValue = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__INPUT_VALUE);
 				return inputValue != null && !inputValue.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE :
-				List outputValue = (List) eVirtualGet(UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE);
+				EList outputValue = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE);
 				return outputValue != null && !outputValue.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

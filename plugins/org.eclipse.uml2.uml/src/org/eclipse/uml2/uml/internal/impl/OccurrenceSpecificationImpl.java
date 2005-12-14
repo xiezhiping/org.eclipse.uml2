@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -83,8 +81,8 @@ public abstract class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getToBefores() {
-		List toBefore = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE);
+	public EList getToBefores() {
+		EList toBefore = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE);
 		if (toBefore == null) {
 			eVirtualSet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE,
 				toBefore = new EObjectWithInverseResolvingEList(
@@ -163,8 +161,8 @@ public abstract class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getToAfters() {
-		List toAfter = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER);
+	public EList getToAfters() {
+		EList toAfter = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER);
 		if (toAfter == null) {
 			eVirtualSet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER,
 				toAfter = new EObjectWithInverseResolvingEList(
@@ -195,8 +193,8 @@ public abstract class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getCovereds() {
-		List covered = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED);
+	public EList getCovereds() {
+		EList covered = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED);
 		if (covered == null) {
 			eVirtualSet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED,
 				covered = new EObjectResolvingEList(Lifeline.class, this,
@@ -226,7 +224,7 @@ public abstract class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public boolean isSetCovereds() {
-		List covered = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED);
+		EList covered = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED);
 		return covered != null && !covered.isEmpty();
 	}
 
@@ -483,7 +481,7 @@ public abstract class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME :
 				return isSetName();
@@ -494,7 +492,7 @@ public abstract class OccurrenceSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
@@ -503,19 +501,19 @@ public abstract class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
 				return isSetCovereds();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-				List generalOrdering = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING);
+				EList generalOrdering = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				return getEnclosingInteraction() != null;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				return getEnclosingOperand() != null;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				List toBefore = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE);
+				EList toBefore = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE);
 				return toBefore != null && !toBefore.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EVENT :
 				return eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__EVENT) != null;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
-				List toAfter = (List) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER);
+				EList toAfter = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER);
 				return toAfter != null && !toAfter.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

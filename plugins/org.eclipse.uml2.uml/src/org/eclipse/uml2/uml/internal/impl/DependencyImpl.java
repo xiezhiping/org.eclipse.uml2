@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -83,8 +81,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRelatedElements() {
-		List relatedElement = (List) eVirtualGet(UMLPackage.DEPENDENCY__RELATED_ELEMENT);
+	public EList getRelatedElements() {
+		EList relatedElement = (EList) eVirtualGet(UMLPackage.DEPENDENCY__RELATED_ELEMENT);
 		if (relatedElement == null) {
 			eVirtualSet(UMLPackage.DEPENDENCY__RELATED_ELEMENT,
 				relatedElement = new DerivedUnionEObjectEList(Element.class,
@@ -100,8 +98,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.DEPENDENCY__SOURCE);
+	public EList getSources() {
+		EList source = (EList) eVirtualGet(UMLPackage.DEPENDENCY__SOURCE);
 		if (source == null) {
 			eVirtualSet(UMLPackage.DEPENDENCY__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
@@ -116,8 +114,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.DEPENDENCY__TARGET);
+	public EList getTargets() {
+		EList target = (EList) eVirtualGet(UMLPackage.DEPENDENCY__TARGET);
 		if (target == null) {
 			eVirtualSet(UMLPackage.DEPENDENCY__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
@@ -132,8 +130,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSuppliers() {
-		List supplier = (List) eVirtualGet(UMLPackage.DEPENDENCY__SUPPLIER);
+	public EList getSuppliers() {
+		EList supplier = (EList) eVirtualGet(UMLPackage.DEPENDENCY__SUPPLIER);
 		if (supplier == null) {
 			eVirtualSet(UMLPackage.DEPENDENCY__SUPPLIER,
 				supplier = new EObjectResolvingEList(NamedElement.class, this,
@@ -162,8 +160,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getClients() {
-		List client = (List) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT);
+	public EList getClients() {
+		EList client = (EList) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT);
 		if (client == null) {
 			eVirtualSet(UMLPackage.DEPENDENCY__CLIENT,
 				client = new EObjectWithInverseResolvingEList.ManyInverse(
@@ -202,6 +200,11 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
+			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -211,11 +214,6 @@ public class DependencyImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.DEPENDENCY__CLIENT :
 				return ((InternalEList) getClients()).basicAdd(otherEnd, msgs);
 		}
@@ -241,11 +239,11 @@ public class DependencyImpl
 					otherEnd, msgs);
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPENDENCY__CLIENT :
 				return ((InternalEList) getClients()).basicRemove(otherEnd,
 					msgs);
@@ -284,14 +282,14 @@ public class DependencyImpl
 				return basicGetNamespace();
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.DEPENDENCY__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.DEPENDENCY__SOURCE :
@@ -334,11 +332,11 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.DEPENDENCY__SUPPLIER :
 				getSuppliers().clear();
@@ -377,11 +375,11 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.DEPENDENCY__SUPPLIER :
 				getSuppliers().clear();
@@ -408,7 +406,7 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__OWNER :
 				return isSetOwner();
 			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.DEPENDENCY__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.DEPENDENCY__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPENDENCY__NAME :
 				return isSetName();
@@ -419,16 +417,16 @@ public class DependencyImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.DEPENDENCY__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.DEPENDENCY__NAME_EXPRESSION) != null;
-			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DEPENDENCY__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.DEPENDENCY__SOURCE :
@@ -436,10 +434,10 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__TARGET :
 				return isSetTargets();
 			case UMLPackage.DEPENDENCY__SUPPLIER :
-				List supplier = (List) eVirtualGet(UMLPackage.DEPENDENCY__SUPPLIER);
+				EList supplier = (EList) eVirtualGet(UMLPackage.DEPENDENCY__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 			case UMLPackage.DEPENDENCY__CLIENT :
-				List client = (List) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT);
+				EList client = (EList) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT);
 				return client != null && !client.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

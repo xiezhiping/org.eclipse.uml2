@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.11 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -39,6 +37,8 @@ import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
+
+import org.eclipse.uml2.uml.internal.operations.EnumerationOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,8 +81,8 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.ENUMERATION__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.ENUMERATION__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -101,8 +101,8 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedLiterals() {
-		List ownedLiteral = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_LITERAL);
+	public EList getOwnedLiterals() {
+		EList ownedLiteral = (EList) eVirtualGet(UMLPackage.ENUMERATION__OWNED_LITERAL);
 		if (ownedLiteral == null) {
 			eVirtualSet(UMLPackage.ENUMERATION__OWNED_LITERAL,
 				ownedLiteral = new EObjectContainmentWithInverseEList(
@@ -145,6 +145,15 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EnumerationLiteral createOwnedLiteral(String name) {
+		return EnumerationOperations.createOwnedLiteral(this, name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -163,6 +172,11 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.ENUMERATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -172,11 +186,6 @@ public class EnumerationImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
@@ -250,11 +259,11 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
@@ -344,14 +353,14 @@ public class EnumerationImpl
 				return getRedefinedElements();
 			case UMLPackage.ENUMERATION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.ENUMERATION__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -443,11 +452,11 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.ENUMERATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -553,11 +562,11 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.ENUMERATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -629,7 +638,7 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ENUMERATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ENUMERATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ENUMERATION__NAME :
 				return isSetName();
@@ -640,20 +649,20 @@ public class EnumerationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.ENUMERATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.ENUMERATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.ENUMERATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ENUMERATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.ENUMERATION__NAME_EXPRESSION) != null;
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.ENUMERATION__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.ENUMERATION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.ENUMERATION__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.ENUMERATION__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.ENUMERATION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.ENUMERATION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.ENUMERATION__MEMBER :
 				return isSetMembers();
@@ -667,61 +676,61 @@ public class EnumerationImpl
 				return isSetRedefinedElements();
 			case UMLPackage.ENUMERATION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.ENUMERATION__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.ENUMERATION__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.ENUMERATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.ENUMERATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.ENUMERATION__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.ENUMERATION__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.ENUMERATION__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.ENUMERATION__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.ENUMERATION__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.ENUMERATION__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.ENUMERATION__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.ENUMERATION__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.ENUMERATION__GENERAL :
 				return !getGenerals().isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ENUMERATION__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.ENUMERATION__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.ENUMERATION__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.ENUMERATION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ENUMERATION__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.ENUMERATION__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.ENUMERATION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.ENUMERATION__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.ENUMERATION__REPRESENTATION :
 				return eVirtualGet(UMLPackage.ENUMERATION__REPRESENTATION) != null;
 			case UMLPackage.ENUMERATION__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.ENUMERATION__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.ENUMERATION__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.ENUMERATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_ATTRIBUTE);
+				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.ENUMERATION__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_OPERATION :
-				List ownedOperation = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_OPERATION);
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.ENUMERATION__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_LITERAL :
-				List ownedLiteral = (List) eVirtualGet(UMLPackage.ENUMERATION__OWNED_LITERAL);
+				EList ownedLiteral = (EList) eVirtualGet(UMLPackage.ENUMERATION__OWNED_LITERAL);
 				return ownedLiteral != null && !ownedLiteral.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

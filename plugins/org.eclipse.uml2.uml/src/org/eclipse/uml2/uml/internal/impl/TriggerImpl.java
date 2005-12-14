@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerImpl.java,v 1.7 2005/12/12 16:58:36 khussey Exp $
+ * $Id: TriggerImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -120,8 +118,8 @@ public class TriggerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPorts() {
-		List port = (List) eVirtualGet(UMLPackage.TRIGGER__PORT);
+	public EList getPorts() {
+		EList port = (EList) eVirtualGet(UMLPackage.TRIGGER__PORT);
 		if (port == null) {
 			eVirtualSet(UMLPackage.TRIGGER__PORT,
 				port = new EObjectResolvingEList(Port.class, this,
@@ -275,7 +273,7 @@ public class TriggerImpl
 			case UMLPackage.TRIGGER__OWNER :
 				return isSetOwner();
 			case UMLPackage.TRIGGER__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.TRIGGER__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.TRIGGER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TRIGGER__NAME :
 				return isSetName();
@@ -286,7 +284,7 @@ public class TriggerImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TRIGGER__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.TRIGGER__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.TRIGGER__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.TRIGGER__NAMESPACE :
 				return isSetNamespace();
@@ -295,7 +293,7 @@ public class TriggerImpl
 			case UMLPackage.TRIGGER__EVENT :
 				return eVirtualGet(UMLPackage.TRIGGER__EVENT) != null;
 			case UMLPackage.TRIGGER__PORT :
-				List port = (List) eVirtualGet(UMLPackage.TRIGGER__PORT);
+				EList port = (EList) eVirtualGet(UMLPackage.TRIGGER__PORT);
 				return port != null && !port.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

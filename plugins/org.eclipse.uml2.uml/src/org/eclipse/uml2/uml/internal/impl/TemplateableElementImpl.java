@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -82,8 +80,8 @@ public abstract class TemplateableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(
 				UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT,
@@ -104,8 +102,8 @@ public abstract class TemplateableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTemplateBindings() {
-		List templateBinding = (List) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+	public EList getTemplateBindings() {
+		EList templateBinding = (EList) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
 		if (templateBinding == null) {
 			eVirtualSet(UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 				templateBinding = new EObjectContainmentWithInverseEList(
@@ -222,10 +220,10 @@ public abstract class TemplateableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List parameterableElements() {
+	public EList parameterableElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(eResource(), this,
+			EList result = (EList) cache.get(eResource(), this,
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
@@ -389,10 +387,10 @@ public abstract class TemplateableElementImpl
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;

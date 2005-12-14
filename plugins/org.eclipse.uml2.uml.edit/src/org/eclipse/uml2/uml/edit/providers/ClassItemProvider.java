@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.1 2005/12/07 14:20:25 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -433,15 +433,19 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createClass()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createStereotype()));
+				.createAssociation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createUseCase()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createClass()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
@@ -450,10 +454,6 @@ public class ClassItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createDeploymentSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
@@ -477,15 +477,15 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createAssociation()));
+				.createExtension()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createStereotype()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createCollaboration()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createExtension()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE

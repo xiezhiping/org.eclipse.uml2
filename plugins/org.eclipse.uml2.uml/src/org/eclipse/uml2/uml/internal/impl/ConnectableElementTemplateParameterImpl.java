@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterImpl.java,v 1.6 2005/12/06 23:21:49 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterImpl.java,v 1.7 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
-
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -182,6 +180,10 @@ public class ConnectableElementTemplateParameterImpl
 				return getOwnedComments();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE :
 				return getSignature();
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				if (resolve)
+					return getParameteredElement();
+				return basicGetParameteredElement();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return getOwnedParameteredElement();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__DEFAULT :
@@ -190,10 +192,6 @@ public class ConnectableElementTemplateParameterImpl
 				return basicGetDefault();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return getOwnedDefault();
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				if (resolve)
-					return getParameteredElement();
-				return basicGetParameteredElement();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -213,18 +211,18 @@ public class ConnectableElementTemplateParameterImpl
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE :
 				return getSignature() != null;
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				return isSetParameteredElement();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__DEFAULT :
 				return eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__DEFAULT) != null;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT) != null;
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				return isSetParameteredElement();
 		}
 		return eDynamicIsSet(featureID);
 	}

@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTemplateParameterImpl.java,v 1.6 2005/12/06 23:21:49 khussey Exp $
+ * $Id: OperationTemplateParameterImpl.java,v 1.7 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
-
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -179,6 +177,10 @@ public class OperationTemplateParameterImpl
 				return getOwnedComments();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__SIGNATURE :
 				return getSignature();
+			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				if (resolve)
+					return getParameteredElement();
+				return basicGetParameteredElement();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return getOwnedParameteredElement();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__DEFAULT :
@@ -187,10 +189,6 @@ public class OperationTemplateParameterImpl
 				return basicGetDefault();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return getOwnedDefault();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				if (resolve)
-					return getParameteredElement();
-				return basicGetParameteredElement();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -210,18 +208,18 @@ public class OperationTemplateParameterImpl
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__SIGNATURE :
 				return getSignature() != null;
+			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				return isSetParameteredElement();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null;
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__DEFAULT :
 				return eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__DEFAULT) != null;
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT) != null;
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				return isSetParameteredElement();
 		}
 		return eDynamicIsSet(featureID);
 	}

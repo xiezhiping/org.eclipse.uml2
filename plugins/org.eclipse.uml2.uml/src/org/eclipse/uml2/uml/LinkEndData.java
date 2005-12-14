@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndData.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: LinkEndData.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,7 +109,7 @@ public interface LinkEndData
 	 * @model type="org.eclipse.uml2.uml.QualifierValue" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getQualifiers();
+	EList getQualifiers();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.QualifierValue} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.

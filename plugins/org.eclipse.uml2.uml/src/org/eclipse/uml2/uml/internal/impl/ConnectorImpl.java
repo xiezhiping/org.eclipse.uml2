@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -105,8 +104,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.CONNECTOR__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.CONNECTOR__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.CONNECTOR__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -122,8 +121,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.CONNECTOR__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.CONNECTOR__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.CONNECTOR__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -185,8 +184,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedConnectors() {
-		List redefinedConnector = (List) eVirtualGet(UMLPackage.CONNECTOR__REDEFINED_CONNECTOR);
+	public EList getRedefinedConnectors() {
+		EList redefinedConnector = (EList) eVirtualGet(UMLPackage.CONNECTOR__REDEFINED_CONNECTOR);
 		if (redefinedConnector == null) {
 			eVirtualSet(UMLPackage.CONNECTOR__REDEFINED_CONNECTOR,
 				redefinedConnector = new EObjectResolvingEList(Connector.class,
@@ -215,8 +214,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getEnds() {
-		List end = (List) eVirtualGet(UMLPackage.CONNECTOR__END);
+	public EList getEnds() {
+		EList end = (EList) eVirtualGet(UMLPackage.CONNECTOR__END);
 		if (end == null) {
 			eVirtualSet(UMLPackage.CONNECTOR__END,
 				end = new EObjectContainmentEList(ConnectorEnd.class, this,
@@ -294,8 +293,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getContracts() {
-		List contract = (List) eVirtualGet(UMLPackage.CONNECTOR__CONTRACT);
+	public EList getContracts() {
+		EList contract = (EList) eVirtualGet(UMLPackage.CONNECTOR__CONTRACT);
 		if (contract == null) {
 			eVirtualSet(UMLPackage.CONNECTOR__CONTRACT,
 				contract = new EObjectResolvingEList(Behavior.class, this,
@@ -609,7 +608,7 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONNECTOR__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CONNECTOR__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONNECTOR__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONNECTOR__NAME :
 				return isSetName();
@@ -620,7 +619,7 @@ public class ConnectorImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CONNECTOR__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.CONNECTOR__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.CONNECTOR__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.CONNECTOR__NAMESPACE :
 				return isSetNamespace();
@@ -639,16 +638,16 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR__TYPE :
 				return eVirtualGet(UMLPackage.CONNECTOR__TYPE) != null;
 			case UMLPackage.CONNECTOR__REDEFINED_CONNECTOR :
-				List redefinedConnector = (List) eVirtualGet(UMLPackage.CONNECTOR__REDEFINED_CONNECTOR);
+				EList redefinedConnector = (EList) eVirtualGet(UMLPackage.CONNECTOR__REDEFINED_CONNECTOR);
 				return redefinedConnector != null
 					&& !redefinedConnector.isEmpty();
 			case UMLPackage.CONNECTOR__END :
-				List end = (List) eVirtualGet(UMLPackage.CONNECTOR__END);
+				EList end = (EList) eVirtualGet(UMLPackage.CONNECTOR__END);
 				return end != null && !end.isEmpty();
 			case UMLPackage.CONNECTOR__KIND :
 				return isSetKind();
 			case UMLPackage.CONNECTOR__CONTRACT :
-				List contract = (List) eVirtualGet(UMLPackage.CONNECTOR__CONTRACT);
+				EList contract = (EList) eVirtualGet(UMLPackage.CONNECTOR__CONTRACT);
 				return contract != null && !contract.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

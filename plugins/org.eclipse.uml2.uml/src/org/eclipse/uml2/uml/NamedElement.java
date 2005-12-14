@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
+ * $Id: NamedElement.java,v 1.6 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -183,7 +184,7 @@ public interface NamedElement
 	 * @model type="org.eclipse.uml2.uml.Dependency" opposite="client" ordered="false"
 	 * @generated
 	 */
-	List getClientDependencies();
+	EList getClientDependencies();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Dependency} with the specified '<em><b>Name</b></em>' from the '<em><b>Client Dependency</b></em>' reference list.
@@ -290,6 +291,30 @@ public interface NamedElement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" supplierRequired="true" supplierOrdered="false"
+	 * @generated
+	 */
+	Dependency createDependency(NamedElement supplier);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @generated
+	 */
+	String getLabel();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" isLocalizedDataType="org.eclipse.uml2.uml.Boolean" isLocalizedRequired="true" isLocalizedOrdered="false"
+	 * @generated
+	 */
+	String getLabel(boolean isLocalized);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
 	 * result = if self.namespace->isEmpty()
@@ -301,7 +326,7 @@ public interface NamedElement
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List allNamespaces();
+	EList allNamespaces();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -332,6 +357,6 @@ public interface NamedElement
 	 */
 	String separator();
 
-	static final String SEPARATOR = "::"; //$NON-NLS-1$
+	String SEPARATOR = "::"; //$NON-NLS-1$
 
 } // NamedElement

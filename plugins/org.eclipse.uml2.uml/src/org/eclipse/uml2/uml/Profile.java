@@ -8,14 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Profile.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,7 +68,7 @@ public interface Profile
 	 * @model type="org.eclipse.uml2.uml.Stereotype" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getOwnedStereotypes();
+	EList getOwnedStereotypes();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
@@ -89,7 +94,7 @@ public interface Profile
 	 * @model type="org.eclipse.uml2.uml.ElementImport" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getMetaclassReferences();
+	EList getMetaclassReferences();
 
 	/**
 	 * Returns the value of the '<em><b>Metamodel Reference</b></em>' reference list.
@@ -104,7 +109,7 @@ public interface Profile
 	 * @model type="org.eclipse.uml2.uml.PackageImport" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getMetamodelReferences();
+	EList getMetamodelReferences();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,6 +148,94 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" classifierRequired="true" classifierOrdered="false"
+	 * @generated
+	 */
+	EObject create(Classifier classifier);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" metaclassRequired="true" metaclassOrdered="false"
+	 * @generated
+	 */
+	ElementImport createMetaclassReference(org.eclipse.uml2.uml.Class metaclass);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" metamodelRequired="true" metamodelOrdered="false"
+	 * @generated
+	 */
+	PackageImport createMetamodelReference(Model metamodel);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
+	 * @generated
+	 */
+	Stereotype createOwnedStereotype(String name, boolean isAbstract);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @generated
+	 */
+	String getVersion();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isDefined();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false"
+	 * @generated
+	 */
+	EPackage define();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" versionDataType="org.eclipse.uml2.uml.String" versionRequired="true" versionOrdered="false"
+	 * @generated
+	 */
+	EPackage getDefinition(String version);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" elementRequired="true" elementOrdered="false" versionDataType="org.eclipse.uml2.uml.String" versionRequired="true" versionOrdered="false"
+	 * @generated
+	 */
+	ENamedElement getDefinition(NamedElement element, String version);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
+	 * @generated
+	 */
+	EList getReferencedMetaclasses();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Model" ordered="false"
+	 * @generated
+	 */
+	EList getReferencedMetamodels();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query allOwningPackages() returns all the directly or indirectly owning packages.
 	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
@@ -151,6 +244,6 @@ public interface Profile
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List allOwningPackages();
+	EList allOwningPackages();
 
 } // Profile

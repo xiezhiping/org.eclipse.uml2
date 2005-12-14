@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.16 2005/12/12 16:58:35 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.17 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -372,8 +371,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getEnds() {
-		List end = (List) eVirtualGet(UMLPackage.PROPERTY__END);
+	public EList getEnds() {
+		EList end = (EList) eVirtualGet(UMLPackage.PROPERTY__END);
 		if (end == null) {
 			eVirtualSet(UMLPackage.PROPERTY__END,
 				end = new EObjectWithInverseResolvingEList(ConnectorEnd.class,
@@ -388,8 +387,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.PROPERTY__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.PROPERTY__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.PROPERTY__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -412,8 +411,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getClientDependencies() {
-		List clientDependency = (List) eVirtualGet(UMLPackage.PROPERTY__CLIENT_DEPENDENCY);
+	public EList getClientDependencies() {
+		EList clientDependency = (EList) eVirtualGet(UMLPackage.PROPERTY__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
 			eVirtualSet(
 				UMLPackage.PROPERTY__CLIENT_DEPENDENCY,
@@ -431,8 +430,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getDeployments() {
-		List deployment = (List) eVirtualGet(UMLPackage.PROPERTY__DEPLOYMENT);
+	public EList getDeployments() {
+		EList deployment = (EList) eVirtualGet(UMLPackage.PROPERTY__DEPLOYMENT);
 		if (deployment == null) {
 			eVirtualSet(UMLPackage.PROPERTY__DEPLOYMENT,
 				deployment = new SubsetEObjectContainmentWithInverseEList(
@@ -474,10 +473,10 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getDeployedElements() {
+	public EList getDeployedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 			if (result == null) {
 				cache.put(this,
@@ -510,8 +509,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTemplateBindings() {
-		List templateBinding = (List) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_BINDING);
+	public EList getTemplateBindings() {
+		EList templateBinding = (EList) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_BINDING);
 		if (templateBinding == null) {
 			eVirtualSet(UMLPackage.PROPERTY__TEMPLATE_BINDING,
 				templateBinding = new EObjectContainmentWithInverseEList(
@@ -628,8 +627,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getFeaturingClassifiers() {
-		List featuringClassifier = (List) eVirtualGet(UMLPackage.PROPERTY__FEATURING_CLASSIFIER);
+	public EList getFeaturingClassifiers() {
+		EList featuringClassifier = (EList) eVirtualGet(UMLPackage.PROPERTY__FEATURING_CLASSIFIER);
 		if (featuringClassifier == null) {
 			eVirtualSet(UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
 				featuringClassifier = new DerivedUnionEObjectEList(
@@ -647,8 +646,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.PROPERTY__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.PROPERTY__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.PROPERTY__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -936,8 +935,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedProperties() {
-		List redefinedProperty = (List) eVirtualGet(UMLPackage.PROPERTY__REDEFINED_PROPERTY);
+	public EList getRedefinedProperties() {
+		EList redefinedProperty = (EList) eVirtualGet(UMLPackage.PROPERTY__REDEFINED_PROPERTY);
 		if (redefinedProperty == null) {
 			eVirtualSet(UMLPackage.PROPERTY__REDEFINED_PROPERTY,
 				redefinedProperty = new EObjectResolvingEList(Property.class,
@@ -1124,8 +1123,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSubsettedProperties() {
-		List subsettedProperty = (List) eVirtualGet(UMLPackage.PROPERTY__SUBSETTED_PROPERTY);
+	public EList getSubsettedProperties() {
+		EList subsettedProperty = (EList) eVirtualGet(UMLPackage.PROPERTY__SUBSETTED_PROPERTY);
 		if (subsettedProperty == null) {
 			eVirtualSet(UMLPackage.PROPERTY__SUBSETTED_PROPERTY,
 				subsettedProperty = new EObjectResolvingEList(Property.class,
@@ -1154,8 +1153,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getQualifiers() {
-		List qualifier = (List) eVirtualGet(UMLPackage.PROPERTY__QUALIFIER);
+	public EList getQualifiers() {
+		EList qualifier = (EList) eVirtualGet(UMLPackage.PROPERTY__QUALIFIER);
 		if (qualifier == null) {
 			eVirtualSet(UMLPackage.PROPERTY__QUALIFIER,
 				qualifier = new EObjectContainmentWithInverseEList(
@@ -1300,10 +1299,10 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List parameterableElements() {
+	public EList parameterableElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(eResource(), this,
+			EList result = (EList) cache.get(eResource(), this,
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
@@ -1450,14 +1449,14 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List subsettingContext() {
+	public EList subsettingContext() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this, UMLPackage.Literals.PROPERTY
-				.getEOperations().get(13));
+			EList result = (EList) cache.get(this, UMLPackage.Literals.PROPERTY
+				.getEOperations().get(19));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PROPERTY.getEOperations()
-					.get(13), result = PropertyOperations
+					.get(19), result = PropertyOperations
 					.subsettingContext(this));
 			}
 			return result;
@@ -1497,6 +1496,11 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
+			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -1506,11 +1510,6 @@ public class PropertyImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.PROPERTY__END :
 				return ((InternalEList) getEnds()).basicAdd(otherEnd, msgs);
 			case UMLPackage.PROPERTY__DEPLOYMENT :
@@ -1580,11 +1579,11 @@ public class PropertyImpl
 				return basicSetUpperValue(null, msgs);
 			case UMLPackage.PROPERTY__LOWER_VALUE :
 				return basicSetLowerValue(null, msgs);
-			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PROPERTY__END :
 				return ((InternalEList) getEnds()).basicRemove(otherEnd, msgs);
 			case UMLPackage.PROPERTY__DEPLOYMENT :
@@ -1601,10 +1600,10 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
 				return eBasicSetContainer(null,
 					UMLPackage.PROPERTY__OWNING_ASSOCIATION, msgs);
-			case UMLPackage.PROPERTY__ASSOCIATION :
-				return basicSetAssociation(null, msgs);
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 				return basicSetDefaultValue(null, msgs);
+			case UMLPackage.PROPERTY__ASSOCIATION :
+				return basicSetAssociation(null, msgs);
 			case UMLPackage.PROPERTY__QUALIFIER :
 				return ((InternalEList) getQualifiers()).basicRemove(otherEnd,
 					msgs);
@@ -1711,14 +1710,14 @@ public class PropertyImpl
 				return isReadOnly()
 					? Boolean.TRUE
 					: Boolean.FALSE;
-			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.PROPERTY__END :
 				return getEnds();
 			case UMLPackage.PROPERTY__DEPLOYMENT :
@@ -1755,10 +1754,6 @@ public class PropertyImpl
 				if (resolve)
 					return getOwningAssociation();
 				return basicGetOwningAssociation();
-			case UMLPackage.PROPERTY__ASSOCIATION :
-				if (resolve)
-					return getAssociation();
-				return basicGetAssociation();
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 				return getDefaultValue();
 			case UMLPackage.PROPERTY__OPPOSITE :
@@ -1767,6 +1762,10 @@ public class PropertyImpl
 				return basicGetOpposite();
 			case UMLPackage.PROPERTY__SUBSETTED_PROPERTY :
 				return getSubsettedProperties();
+			case UMLPackage.PROPERTY__ASSOCIATION :
+				if (resolve)
+					return getAssociation();
+				return basicGetAssociation();
 			case UMLPackage.PROPERTY__QUALIFIER :
 				return getQualifiers();
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
@@ -1833,11 +1832,11 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__IS_READ_ONLY :
 				setIsReadOnly(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.PROPERTY__END :
 				getEnds().clear();
@@ -1879,9 +1878,6 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
 				setOwningAssociation((Association) newValue);
 				return;
-			case UMLPackage.PROPERTY__ASSOCIATION :
-				setAssociation((Association) newValue);
-				return;
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) newValue);
 				return;
@@ -1891,6 +1887,9 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__SUBSETTED_PROPERTY :
 				getSubsettedProperties().clear();
 				getSubsettedProperties().addAll((Collection) newValue);
+				return;
+			case UMLPackage.PROPERTY__ASSOCIATION :
+				setAssociation((Association) newValue);
 				return;
 			case UMLPackage.PROPERTY__QUALIFIER :
 				getQualifiers().clear();
@@ -1958,11 +1957,11 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__IS_READ_ONLY :
 				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
 				return;
-			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.PROPERTY__END :
 				getEnds().clear();
@@ -2000,9 +1999,6 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
 				setOwningAssociation((Association) null);
 				return;
-			case UMLPackage.PROPERTY__ASSOCIATION :
-				setAssociation((Association) null);
-				return;
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) null);
 				return;
@@ -2011,6 +2007,9 @@ public class PropertyImpl
 				return;
 			case UMLPackage.PROPERTY__SUBSETTED_PROPERTY :
 				getSubsettedProperties().clear();
+				return;
+			case UMLPackage.PROPERTY__ASSOCIATION :
+				setAssociation((Association) null);
 				return;
 			case UMLPackage.PROPERTY__QUALIFIER :
 				getQualifiers().clear();
@@ -2037,7 +2036,7 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__OWNER :
 				return isSetOwner();
 			case UMLPackage.PROPERTY__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.PROPERTY__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.PROPERTY__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PROPERTY__NAME :
 				return isSetName();
@@ -2048,7 +2047,7 @@ public class PropertyImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.PROPERTY__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.PROPERTY__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.PROPERTY__NAMESPACE :
 				return isSetNamespace();
@@ -2080,20 +2079,20 @@ public class PropertyImpl
 				return eVirtualGet(UMLPackage.PROPERTY__LOWER_VALUE) != null;
 			case UMLPackage.PROPERTY__IS_READ_ONLY :
 				return isSetIsReadOnly();
-			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.PROPERTY__END :
-				List end = (List) eVirtualGet(UMLPackage.PROPERTY__END);
+				EList end = (EList) eVirtualGet(UMLPackage.PROPERTY__END);
 				return end != null && !end.isEmpty();
 			case UMLPackage.PROPERTY__DEPLOYMENT :
-				List deployment = (List) eVirtualGet(UMLPackage.PROPERTY__DEPLOYMENT);
+				EList deployment = (EList) eVirtualGet(UMLPackage.PROPERTY__DEPLOYMENT);
 				return deployment != null && !deployment.isEmpty();
 			case UMLPackage.PROPERTY__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
 			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE) != null;
@@ -2113,23 +2112,23 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__CLASS_ :
 				return getClass_() != null;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
-				List redefinedProperty = (List) eVirtualGet(UMLPackage.PROPERTY__REDEFINED_PROPERTY);
+				EList redefinedProperty = (EList) eVirtualGet(UMLPackage.PROPERTY__REDEFINED_PROPERTY);
 				return redefinedProperty != null
 					&& !redefinedProperty.isEmpty();
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
 				return basicGetOwningAssociation() != null;
-			case UMLPackage.PROPERTY__ASSOCIATION :
-				return eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION) != null;
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 				return eVirtualGet(UMLPackage.PROPERTY__DEFAULT_VALUE) != null;
 			case UMLPackage.PROPERTY__OPPOSITE :
 				return basicGetOpposite() != null;
 			case UMLPackage.PROPERTY__SUBSETTED_PROPERTY :
-				List subsettedProperty = (List) eVirtualGet(UMLPackage.PROPERTY__SUBSETTED_PROPERTY);
+				EList subsettedProperty = (EList) eVirtualGet(UMLPackage.PROPERTY__SUBSETTED_PROPERTY);
 				return subsettedProperty != null
 					&& !subsettedProperty.isEmpty();
+			case UMLPackage.PROPERTY__ASSOCIATION :
+				return eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION) != null;
 			case UMLPackage.PROPERTY__QUALIFIER :
-				List qualifier = (List) eVirtualGet(UMLPackage.PROPERTY__QUALIFIER);
+				EList qualifier = (EList) eVirtualGet(UMLPackage.PROPERTY__QUALIFIER);
 				return qualifier != null && !qualifier.isEmpty();
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				return getAssociationEnd() != null;
@@ -2145,10 +2144,10 @@ public class PropertyImpl
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (derivedFeatureID) {
-				case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
-					return UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER;
 				case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 					return UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER;
+				case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
+					return UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER;
 				default :
 					return -1;
 			}
@@ -2192,10 +2191,10 @@ public class PropertyImpl
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (baseFeatureID) {
-				case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
-					return UMLPackage.PROPERTY__TEMPLATE_PARAMETER;
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 					return UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER;
+				case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
+					return UMLPackage.PROPERTY__TEMPLATE_PARAMETER;
 				default :
 					return -1;
 			}

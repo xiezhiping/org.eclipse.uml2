@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -76,8 +74,8 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSuppliers() {
-		List supplier = (List) eVirtualGet(UMLPackage.MANIFESTATION__SUPPLIER);
+	public EList getSuppliers() {
+		EList supplier = (EList) eVirtualGet(UMLPackage.MANIFESTATION__SUPPLIER);
 		if (supplier == null) {
 			eVirtualSet(UMLPackage.MANIFESTATION__SUPPLIER,
 				supplier = new SupersetEObjectResolvingEList(
@@ -172,14 +170,14 @@ public class ManifestationImpl
 				return basicGetNamespace();
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.MANIFESTATION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.MANIFESTATION__SOURCE :
@@ -228,11 +226,11 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__SUPPLIER :
 				getSuppliers().clear();
@@ -277,11 +275,11 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.MANIFESTATION__SUPPLIER :
 				getSuppliers().clear();
@@ -314,7 +312,7 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.MANIFESTATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.MANIFESTATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.MANIFESTATION__NAME :
 				return isSetName();
@@ -325,16 +323,16 @@ public class ManifestationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.MANIFESTATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.MANIFESTATION__NAME_EXPRESSION) != null;
-			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.MANIFESTATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.MANIFESTATION__SOURCE :
@@ -342,10 +340,10 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__TARGET :
 				return isSetTargets();
 			case UMLPackage.MANIFESTATION__SUPPLIER :
-				List supplier = (List) eVirtualGet(UMLPackage.MANIFESTATION__SUPPLIER);
+				EList supplier = (EList) eVirtualGet(UMLPackage.MANIFESTATION__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 			case UMLPackage.MANIFESTATION__CLIENT :
-				List client = (List) eVirtualGet(UMLPackage.MANIFESTATION__CLIENT);
+				EList client = (EList) eVirtualGet(UMLPackage.MANIFESTATION__CLIENT);
 				return client != null && !client.isEmpty();
 			case UMLPackage.MANIFESTATION__MAPPING :
 				return eVirtualGet(UMLPackage.MANIFESTATION__MAPPING) != null;

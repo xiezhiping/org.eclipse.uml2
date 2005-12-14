@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.11 2005/12/12 16:58:36 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.12 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -63,11 +62,11 @@ import org.eclipse.uml2.uml.internal.operations.AssociationOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getRelatedElements <em>Related Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getMembers <em>Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getMemberEnds <em>Member End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getMembers <em>Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getOwnedEnds <em>Owned End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getMemberEnds <em>Member End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#isDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getEndTypes <em>End Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getNavigableOwnedEnds <em>Navigable Owned End</em>}</li>
@@ -123,8 +122,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRelatedElements() {
-		List relatedElement = (List) eVirtualGet(UMLPackage.ASSOCIATION__RELATED_ELEMENT);
+	public EList getRelatedElements() {
+		EList relatedElement = (EList) eVirtualGet(UMLPackage.ASSOCIATION__RELATED_ELEMENT);
 		if (relatedElement == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION__RELATED_ELEMENT,
 				relatedElement = new DerivedUnionEObjectEList(Element.class,
@@ -139,8 +138,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getMembers() {
-		List member = (List) eVirtualGet(UMLPackage.ASSOCIATION__MEMBER);
+	public EList getMembers() {
+		EList member = (EList) eVirtualGet(UMLPackage.ASSOCIATION__MEMBER);
 		if (member == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION__MEMBER,
 				member = new DerivedUnionEObjectEList(NamedElement.class, this,
@@ -159,8 +158,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getFeatures() {
-		List feature = (List) eVirtualGet(UMLPackage.ASSOCIATION__FEATURE);
+	public EList getFeatures() {
+		EList feature = (EList) eVirtualGet(UMLPackage.ASSOCIATION__FEATURE);
 		if (feature == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION__FEATURE,
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
@@ -176,8 +175,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedMembers() {
-		List ownedMember = (List) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_MEMBER);
+	public EList getOwnedMembers() {
+		EList ownedMember = (EList) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_MEMBER);
 		if (ownedMember == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION__OWNED_MEMBER,
 				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
@@ -194,8 +193,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getMemberEnds() {
-		List memberEnd = (List) eVirtualGet(UMLPackage.ASSOCIATION__MEMBER_END);
+	public EList getMemberEnds() {
+		EList memberEnd = (EList) eVirtualGet(UMLPackage.ASSOCIATION__MEMBER_END);
 		if (memberEnd == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION__MEMBER_END,
 				memberEnd = new SupersetEObjectWithInverseResolvingEList(
@@ -226,8 +225,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedEnds() {
-		List ownedEnd = (List) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_END);
+	public EList getOwnedEnds() {
+		EList ownedEnd = (EList) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_END);
 		if (ownedEnd == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION__OWNED_END,
 				ownedEnd = new SupersetEObjectContainmentWithInverseEList(
@@ -307,10 +306,10 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getEndTypes() {
+	public EList getEndTypes() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.ASSOCIATION__END_TYPE);
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.ASSOCIATION__END_TYPE,
@@ -341,8 +340,8 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getNavigableOwnedEnds() {
-		List navigableOwnedEnd = (List) eVirtualGet(UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END);
+	public EList getNavigableOwnedEnds() {
+		EList navigableOwnedEnd = (EList) eVirtualGet(UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END);
 		if (navigableOwnedEnd == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END,
 				navigableOwnedEnd = new SubsetEObjectEList(Property.class,
@@ -434,6 +433,11 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -443,11 +447,6 @@ public class AssociationImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER, msgs);
 			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
@@ -480,12 +479,12 @@ public class AssociationImpl
 						msgs);
 				return basicSetOwnedSignature(
 					(RedefinableTemplateSignature) otherEnd, msgs);
-			case UMLPackage.ASSOCIATION__MEMBER_END :
-				return ((InternalEList) getMemberEnds()).basicAdd(otherEnd,
-					msgs);
 			case UMLPackage.ASSOCIATION__OWNED_END :
 				return ((InternalEList) getOwnedEnds())
 					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ASSOCIATION__MEMBER_END :
+				return ((InternalEList) getMemberEnds()).basicAdd(otherEnd,
+					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -518,11 +517,11 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
@@ -548,11 +547,11 @@ public class AssociationImpl
 					otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
-			case UMLPackage.ASSOCIATION__MEMBER_END :
-				return ((InternalEList) getMemberEnds()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.ASSOCIATION__OWNED_END :
 				return ((InternalEList) getOwnedEnds()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.ASSOCIATION__MEMBER_END :
+				return ((InternalEList) getMemberEnds()).basicRemove(otherEnd,
 					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -609,14 +608,14 @@ public class AssociationImpl
 				return getRedefinedElements();
 			case UMLPackage.ASSOCIATION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.ASSOCIATION__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -657,18 +656,18 @@ public class AssociationImpl
 				return getOwnedSignature();
 			case UMLPackage.ASSOCIATION__RELATED_ELEMENT :
 				return getRelatedElements();
+			case UMLPackage.ASSOCIATION__OWNED_END :
+				return getOwnedEnds();
+			case UMLPackage.ASSOCIATION__MEMBER_END :
+				return getMemberEnds();
 			case UMLPackage.ASSOCIATION__IS_DERIVED :
 				return isDerived()
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.ASSOCIATION__END_TYPE :
 				return getEndTypes();
-			case UMLPackage.ASSOCIATION__MEMBER_END :
-				return getMemberEnds();
 			case UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END :
 				return getNavigableOwnedEnds();
-			case UMLPackage.ASSOCIATION__OWNED_END :
-				return getOwnedEnds();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -716,11 +715,11 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -773,20 +772,20 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
 				return;
-			case UMLPackage.ASSOCIATION__IS_DERIVED :
-				setIsDerived(((Boolean) newValue).booleanValue());
+			case UMLPackage.ASSOCIATION__OWNED_END :
+				getOwnedEnds().clear();
+				getOwnedEnds().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__MEMBER_END :
 				getMemberEnds().clear();
 				getMemberEnds().addAll((Collection) newValue);
 				return;
+			case UMLPackage.ASSOCIATION__IS_DERIVED :
+				setIsDerived(((Boolean) newValue).booleanValue());
+				return;
 			case UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END :
 				getNavigableOwnedEnds().clear();
 				getNavigableOwnedEnds().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ASSOCIATION__OWNED_END :
-				getOwnedEnds().clear();
-				getOwnedEnds().addAll((Collection) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -829,11 +828,11 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.ASSOCIATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -877,17 +876,17 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
 				return;
-			case UMLPackage.ASSOCIATION__IS_DERIVED :
-				setIsDerived(IS_DERIVED_EDEFAULT);
+			case UMLPackage.ASSOCIATION__OWNED_END :
+				getOwnedEnds().clear();
 				return;
 			case UMLPackage.ASSOCIATION__MEMBER_END :
 				getMemberEnds().clear();
 				return;
+			case UMLPackage.ASSOCIATION__IS_DERIVED :
+				setIsDerived(IS_DERIVED_EDEFAULT);
+				return;
 			case UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END :
 				getNavigableOwnedEnds().clear();
-				return;
-			case UMLPackage.ASSOCIATION__OWNED_END :
-				getOwnedEnds().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -908,7 +907,7 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ASSOCIATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ASSOCIATION__NAME :
 				return isSetName();
@@ -919,20 +918,20 @@ public class AssociationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ASSOCIATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.ASSOCIATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.ASSOCIATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.ASSOCIATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ASSOCIATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.ASSOCIATION__NAME_EXPRESSION) != null;
 			case UMLPackage.ASSOCIATION__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.ASSOCIATION__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.ASSOCIATION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.ASSOCIATION__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.ASSOCIATION__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.ASSOCIATION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.ASSOCIATION__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.ASSOCIATION__MEMBER :
 				return isSetMembers();
@@ -946,69 +945,69 @@ public class AssociationImpl
 				return isSetRedefinedElements();
 			case UMLPackage.ASSOCIATION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.ASSOCIATION__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.ASSOCIATION__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.ASSOCIATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.ASSOCIATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.ASSOCIATION__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.ASSOCIATION__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.ASSOCIATION__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.ASSOCIATION__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.ASSOCIATION__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.ASSOCIATION__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.ASSOCIATION__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.ASSOCIATION__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.ASSOCIATION__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.ASSOCIATION__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.ASSOCIATION__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.ASSOCIATION__GENERAL :
 				return !getGenerals().isEmpty();
 			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.ASSOCIATION__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.ASSOCIATION__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ASSOCIATION__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.ASSOCIATION__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.ASSOCIATION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.ASSOCIATION__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.ASSOCIATION__REPRESENTATION :
 				return eVirtualGet(UMLPackage.ASSOCIATION__REPRESENTATION) != null;
 			case UMLPackage.ASSOCIATION__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.ASSOCIATION__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.ASSOCIATION__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.ASSOCIATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.ASSOCIATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
+			case UMLPackage.ASSOCIATION__OWNED_END :
+				EList ownedEnd = (EList) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_END);
+				return ownedEnd != null && !ownedEnd.isEmpty();
+			case UMLPackage.ASSOCIATION__MEMBER_END :
+				EList memberEnd = (EList) eVirtualGet(UMLPackage.ASSOCIATION__MEMBER_END);
+				return memberEnd != null && !memberEnd.isEmpty();
 			case UMLPackage.ASSOCIATION__IS_DERIVED :
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UMLPackage.ASSOCIATION__END_TYPE :
 				return !getEndTypes().isEmpty();
-			case UMLPackage.ASSOCIATION__MEMBER_END :
-				List memberEnd = (List) eVirtualGet(UMLPackage.ASSOCIATION__MEMBER_END);
-				return memberEnd != null && !memberEnd.isEmpty();
 			case UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END :
-				List navigableOwnedEnd = (List) eVirtualGet(UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END);
+				EList navigableOwnedEnd = (EList) eVirtualGet(UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END);
 				return navigableOwnedEnd != null
 					&& !navigableOwnedEnd.isEmpty();
-			case UMLPackage.ASSOCIATION__OWNED_END :
-				List ownedEnd = (List) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_END);
-				return ownedEnd != null && !ownedEnd.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

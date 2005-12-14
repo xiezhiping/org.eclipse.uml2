@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Artifact.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -113,7 +113,7 @@ public interface Artifact
 	 * @model type="org.eclipse.uml2.uml.Artifact" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getNestedArtifacts();
+	EList getNestedArtifacts();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Artifact} and appends it to the '<em><b>Nested Artifact</b></em>' containment reference list.
@@ -160,7 +160,7 @@ public interface Artifact
 	 * @model type="org.eclipse.uml2.uml.Manifestation" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getManifestations();
+	EList getManifestations();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Manifestation} and appends it to the '<em><b>Manifestation</b></em>' containment reference list.
@@ -196,7 +196,7 @@ public interface Artifact
 	 * @model type="org.eclipse.uml2.uml.Operation" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOwnedOperations();
+	EList getOwnedOperations();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -236,7 +236,7 @@ public interface Artifact
 	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOwnedAttributes();
+	EList getOwnedAttributes();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.

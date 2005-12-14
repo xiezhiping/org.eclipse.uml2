@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Clause.java,v 1.3 2005/12/08 14:56:26 khussey Exp $
+ * $Id: Clause.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -58,7 +59,7 @@ public interface Clause
 	 * @model type="org.eclipse.uml2.uml.ExecutableNode" ordered="false"
 	 * @generated
 	 */
-	List getTests();
+	EList getTests();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ExecutableNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
@@ -84,7 +85,7 @@ public interface Clause
 	 * @model type="org.eclipse.uml2.uml.ExecutableNode" ordered="false"
 	 * @generated
 	 */
-	List getBodies();
+	EList getBodies();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ExecutableNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body</b></em>' reference list.
@@ -112,7 +113,7 @@ public interface Clause
 	 * @model type="org.eclipse.uml2.uml.Clause" opposite="successorClause" ordered="false"
 	 * @generated
 	 */
-	List getPredecessorClauses();
+	EList getPredecessorClauses();
 
 	/**
 	 * Returns the value of the '<em><b>Successor Clause</b></em>' reference list.
@@ -129,7 +130,7 @@ public interface Clause
 	 * @model type="org.eclipse.uml2.uml.Clause" opposite="predecessorClause" ordered="false"
 	 * @generated
 	 */
-	List getSuccessorClauses();
+	EList getSuccessorClauses();
 
 	/**
 	 * Returns the value of the '<em><b>Decider</b></em>' reference.
@@ -169,7 +170,7 @@ public interface Clause
 	 * @model type="org.eclipse.uml2.uml.OutputPin"
 	 * @generated
 	 */
-	List getBodyOutputs();
+	EList getBodyOutputs();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Output</b></em>' reference list.

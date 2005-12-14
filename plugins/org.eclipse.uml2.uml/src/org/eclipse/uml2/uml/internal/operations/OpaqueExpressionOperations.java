@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.7 2005/12/12 16:58:38 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.8 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -329,7 +329,7 @@ public final class OpaqueExpressionOperations
 	 * @generated NOT
 	 */
 	public static String stringValue(OpaqueExpression opaqueExpression) {
-		List bodies = opaqueExpression.getBodies();
+		EList bodies = opaqueExpression.getBodies();
 
 		return bodies.size() > 0
 			? (String) bodies.get(0)

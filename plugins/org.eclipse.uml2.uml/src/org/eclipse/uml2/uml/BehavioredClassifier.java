@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -59,7 +60,7 @@ public interface BehavioredClassifier
 	 * @model type="org.eclipse.uml2.uml.Behavior" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getOwnedBehaviors();
+	EList getOwnedBehaviors();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Behavior} and appends it to the '<em><b>Owned Behavior</b></em>' containment reference list.
@@ -134,7 +135,7 @@ public interface BehavioredClassifier
 	 * @model type="org.eclipse.uml2.uml.InterfaceRealization" opposite="implementingClassifier" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getInterfaceRealizations();
+	EList getInterfaceRealizations();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.InterfaceRealization} and appends it to the '<em><b>Interface Realization</b></em>' containment reference list.
@@ -170,7 +171,7 @@ public interface BehavioredClassifier
 	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getOwnedTriggers();
+	EList getOwnedTriggers();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Trigger} and appends it to the '<em><b>Owned Trigger</b></em>' containment reference list.

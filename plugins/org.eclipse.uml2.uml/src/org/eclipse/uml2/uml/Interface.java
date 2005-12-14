@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: Interface.java,v 1.2 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -66,7 +67,7 @@ public interface Interface
 	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOwnedAttributes();
+	EList getOwnedAttributes();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -113,7 +114,7 @@ public interface Interface
 	 * @model type="org.eclipse.uml2.uml.Classifier" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getNestedClassifiers();
+	EList getNestedClassifiers();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Classifier} and appends it to the '<em><b>Nested Classifier</b></em>' containment reference list.
@@ -150,7 +151,7 @@ public interface Interface
 	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false"
 	 * @generated
 	 */
-	List getRedefinedInterfaces();
+	EList getRedefinedInterfaces();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Interface</b></em>' reference list.
@@ -176,7 +177,7 @@ public interface Interface
 	 * @model type="org.eclipse.uml2.uml.Reception" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getOwnedReceptions();
+	EList getOwnedReceptions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Reception} and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.
@@ -249,7 +250,7 @@ public interface Interface
 	 * @model type="org.eclipse.uml2.uml.Operation" opposite="interface" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOwnedOperations();
+	EList getOwnedOperations();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.

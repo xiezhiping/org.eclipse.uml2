@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCase.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: UseCase.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,7 +75,7 @@ public interface UseCase
 	 * @model type="org.eclipse.uml2.uml.Include" opposite="includingCase" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getIncludes();
+	EList getIncludes();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Include} and appends it to the '<em><b>Include</b></em>' containment reference list.
@@ -112,7 +113,7 @@ public interface UseCase
 	 * @model type="org.eclipse.uml2.uml.Extend" opposite="extension" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getExtends();
+	EList getExtends();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Extend} and appends it to the '<em><b>Extend</b></em>' containment reference list.
@@ -150,7 +151,7 @@ public interface UseCase
 	 * @model type="org.eclipse.uml2.uml.ExtensionPoint" opposite="useCase" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getExtensionPoints();
+	EList getExtensionPoints();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ExtensionPoint} and appends it to the '<em><b>Extension Point</b></em>' containment reference list.
@@ -188,7 +189,7 @@ public interface UseCase
 	 * @model type="org.eclipse.uml2.uml.Classifier" opposite="useCase" ordered="false"
 	 * @generated
 	 */
-	List getSubjects();
+	EList getSubjects();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Subject</b></em>' reference list.
@@ -261,6 +262,6 @@ public interface UseCase
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List allIncludedUseCases();
+	EList allIncludedUseCases();
 
 } // UseCase

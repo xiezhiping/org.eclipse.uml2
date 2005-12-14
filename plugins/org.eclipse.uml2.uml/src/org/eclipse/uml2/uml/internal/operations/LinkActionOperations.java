@@ -8,16 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionOperations.java,v 1.3 2005/12/01 20:04:38 khussey Exp $
+ * $Id: LinkActionOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.LinkAction;
@@ -166,7 +166,7 @@ public final class LinkActionOperations
 	 * @generated NOT
 	 */
 	public static Association association(LinkAction linkAction) {
-		List endData = linkAction.getEndData();
+		EList endData = linkAction.getEndData();
 
 		if (endData.size() > 0) {
 			Property end = ((LinkEndData) endData.get(0)).getEnd();

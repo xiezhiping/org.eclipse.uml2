@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -90,8 +89,8 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.INTERACTION_USE__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.INTERACTION_USE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -157,8 +156,8 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getActualGates() {
-		List actualGate = (List) eVirtualGet(UMLPackage.INTERACTION_USE__ACTUAL_GATE);
+	public EList getActualGates() {
+		EList actualGate = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__ACTUAL_GATE);
 		if (actualGate == null) {
 			eVirtualSet(UMLPackage.INTERACTION_USE__ACTUAL_GATE,
 				actualGate = new EObjectContainmentEList(Gate.class, this,
@@ -198,8 +197,8 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getArguments() {
-		List argument = (List) eVirtualGet(UMLPackage.INTERACTION_USE__ARGUMENT);
+	public EList getArguments() {
+		EList argument = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__ARGUMENT);
 		if (argument == null) {
 			eVirtualSet(UMLPackage.INTERACTION_USE__ARGUMENT,
 				argument = new EObjectContainmentEList(Action.class, this,
@@ -502,7 +501,7 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERACTION_USE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.INTERACTION_USE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INTERACTION_USE__NAME :
 				return isSetName();
@@ -513,17 +512,17 @@ public class InteractionUseImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.INTERACTION_USE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INTERACTION_USE__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.INTERACTION_USE__NAME_EXPRESSION) != null;
 			case UMLPackage.INTERACTION_USE__COVERED :
-				List covered = (List) eVirtualGet(UMLPackage.INTERACTION_USE__COVERED);
+				EList covered = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__COVERED);
 				return covered != null && !covered.isEmpty();
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
-				List generalOrdering = (List) eVirtualGet(UMLPackage.INTERACTION_USE__GENERAL_ORDERING);
+				EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
 				return getEnclosingInteraction() != null;
@@ -532,10 +531,10 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE__REFERS_TO :
 				return eVirtualGet(UMLPackage.INTERACTION_USE__REFERS_TO) != null;
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :
-				List actualGate = (List) eVirtualGet(UMLPackage.INTERACTION_USE__ACTUAL_GATE);
+				EList actualGate = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__ACTUAL_GATE);
 				return actualGate != null && !actualGate.isEmpty();
 			case UMLPackage.INTERACTION_USE__ARGUMENT :
-				List argument = (List) eVirtualGet(UMLPackage.INTERACTION_USE__ARGUMENT);
+				EList argument = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__ARGUMENT);
 				return argument != null && !argument.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

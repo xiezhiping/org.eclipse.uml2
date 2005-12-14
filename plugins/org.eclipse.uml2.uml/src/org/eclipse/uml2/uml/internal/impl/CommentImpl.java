@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.7 2005/12/06 23:21:51 khussey Exp $
+ * $Id: CommentImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -129,8 +127,8 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getAnnotatedElements() {
-		List annotatedElement = (List) eVirtualGet(UMLPackage.COMMENT__ANNOTATED_ELEMENT);
+	public EList getAnnotatedElements() {
+		EList annotatedElement = (EList) eVirtualGet(UMLPackage.COMMENT__ANNOTATED_ELEMENT);
 		if (annotatedElement == null) {
 			eVirtualSet(UMLPackage.COMMENT__ANNOTATED_ELEMENT,
 				annotatedElement = new EObjectResolvingEList(Element.class,
@@ -228,12 +226,12 @@ public class CommentImpl
 			case UMLPackage.COMMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.COMMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.COMMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.COMMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COMMENT__BODY :
 				return isSetBody();
 			case UMLPackage.COMMENT__ANNOTATED_ELEMENT :
-				List annotatedElement = (List) eVirtualGet(UMLPackage.COMMENT__ANNOTATED_ELEMENT);
+				EList annotatedElement = (EList) eVirtualGet(UMLPackage.COMMENT__ANNOTATED_ELEMENT);
 				return annotatedElement != null && !annotatedElement.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

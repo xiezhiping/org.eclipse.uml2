@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditPlugin.java,v 1.1 2005/11/14 22:11:37 khussey Exp $
+ * $Id: UMLEditPlugin.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit;
 
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 
 /**
  * This is the central singleton for the UML edit plugin.
@@ -48,7 +50,7 @@ public final class UMLEditPlugin
 	 * @generated
 	 */
 	public UMLEditPlugin() {
-		super(new ResourceLocator[]{});
+		super(new ResourceLocator[]{EcoreEditPlugin.INSTANCE,});
 	}
 
 	/**

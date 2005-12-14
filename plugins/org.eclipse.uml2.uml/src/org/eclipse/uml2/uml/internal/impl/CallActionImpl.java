@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -108,8 +107,8 @@ public abstract class CallActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOutputs() {
-		List output = (List) eVirtualGet(UMLPackage.CALL_ACTION__OUTPUT);
+	public EList getOutputs() {
+		EList output = (EList) eVirtualGet(UMLPackage.CALL_ACTION__OUTPUT);
 		if (output == null) {
 			eVirtualSet(UMLPackage.CALL_ACTION__OUTPUT,
 				output = new DerivedUnionEObjectEList(OutputPin.class, this,
@@ -151,8 +150,8 @@ public abstract class CallActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getResults() {
-		List result = (List) eVirtualGet(UMLPackage.CALL_ACTION__RESULT);
+	public EList getResults() {
+		EList result = (EList) eVirtualGet(UMLPackage.CALL_ACTION__RESULT);
 		if (result == null) {
 			eVirtualSet(UMLPackage.CALL_ACTION__RESULT,
 				result = new EObjectContainmentEList(OutputPin.class, this,
@@ -535,7 +534,7 @@ public abstract class CallActionImpl
 			case UMLPackage.CALL_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.CALL_ACTION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CALL_ACTION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CALL_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CALL_ACTION__NAME :
 				return isSetName();
@@ -546,7 +545,7 @@ public abstract class CallActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CALL_ACTION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.CALL_ACTION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.CALL_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.CALL_ACTION__NAMESPACE :
 				return isSetNamespace();
@@ -559,29 +558,29 @@ public abstract class CallActionImpl
 			case UMLPackage.CALL_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.CALL_ACTION__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.CALL_ACTION__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.CALL_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.CALL_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.CALL_ACTION__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.CALL_ACTION__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.CALL_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.CALL_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.CALL_ACTION__ACTIVITY :
 				return getActivity() != null;
 			case UMLPackage.CALL_ACTION__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.CALL_ACTION__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.CALL_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.CALL_ACTION__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.CALL_ACTION__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.CALL_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.CALL_ACTION__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.CALL_ACTION__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.CALL_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.CALL_ACTION__HANDLER :
-				List handler = (List) eVirtualGet(UMLPackage.CALL_ACTION__HANDLER);
+				EList handler = (EList) eVirtualGet(UMLPackage.CALL_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UMLPackage.CALL_ACTION__OUTPUT :
 				return isSetOutputs();
@@ -590,22 +589,22 @@ public abstract class CallActionImpl
 			case UMLPackage.CALL_ACTION__CONTEXT :
 				return getContext() != null;
 			case UMLPackage.CALL_ACTION__LOCAL_PRECONDITION :
-				List localPrecondition = (List) eVirtualGet(UMLPackage.CALL_ACTION__LOCAL_PRECONDITION);
+				EList localPrecondition = (EList) eVirtualGet(UMLPackage.CALL_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null
 					&& !localPrecondition.isEmpty();
 			case UMLPackage.CALL_ACTION__LOCAL_POSTCONDITION :
-				List localPostcondition = (List) eVirtualGet(UMLPackage.CALL_ACTION__LOCAL_POSTCONDITION);
+				EList localPostcondition = (EList) eVirtualGet(UMLPackage.CALL_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.CALL_ACTION__ARGUMENT :
-				List argument = (List) eVirtualGet(UMLPackage.CALL_ACTION__ARGUMENT);
+				EList argument = (EList) eVirtualGet(UMLPackage.CALL_ACTION__ARGUMENT);
 				return argument != null && !argument.isEmpty();
 			case UMLPackage.CALL_ACTION__ON_PORT :
 				return eVirtualGet(UMLPackage.CALL_ACTION__ON_PORT) != null;
 			case UMLPackage.CALL_ACTION__IS_SYNCHRONOUS :
 				return ((eFlags & IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
 			case UMLPackage.CALL_ACTION__RESULT :
-				List result = (List) eVirtualGet(UMLPackage.CALL_ACTION__RESULT);
+				EList result = (EList) eVirtualGet(UMLPackage.CALL_ACTION__RESULT);
 				return result != null && !result.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

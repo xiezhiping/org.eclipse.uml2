@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.10 2005/12/12 16:58:35 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.11 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -299,6 +298,13 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(
+					otherEnd,
+					UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
+					msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -307,13 +313,6 @@ public class DeploymentSpecificationImpl
 							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
 					msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicAdd(
@@ -388,13 +387,13 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE :
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(
 					null,
 					UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
 					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
@@ -510,14 +509,14 @@ public class DeploymentSpecificationImpl
 				return getRedefinedElements();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -619,11 +618,11 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -745,11 +744,11 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -836,7 +835,7 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME :
 				return isSetName();
@@ -847,20 +846,20 @@ public class DeploymentSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__NAME_EXPRESSION) != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__MEMBER :
 				return isSetMembers();
@@ -874,66 +873,66 @@ public class DeploymentSpecificationImpl
 				return isSetRedefinedElements();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERAL :
 				return !getGenerals().isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REPRESENTATION :
 				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__REPRESENTATION) != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
 				return isSetFileName();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
-				List nestedArtifact = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT);
+				EList nestedArtifact = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT);
 				return nestedArtifact != null && !nestedArtifact.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__MANIFESTATION :
-				List manifestation = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__MANIFESTATION);
+				EList manifestation = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__MANIFESTATION);
 				return manifestation != null && !manifestation.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_OPERATION :
-				List ownedOperation = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_OPERATION);
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE :
-				List ownedAttribute = (List) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE);
+				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION :
 				return isSetDeploymentLocation();

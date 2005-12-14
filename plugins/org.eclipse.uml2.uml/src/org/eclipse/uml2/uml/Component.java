@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.5 2005/12/12 16:58:35 khussey Exp $
+ * $Id: Component.java,v 1.6 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -87,7 +87,7 @@ public interface Component
 	 * @model type="org.eclipse.uml2.uml.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getRequireds();
+	EList getRequireds();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
@@ -113,7 +113,7 @@ public interface Component
 	 * @model type="org.eclipse.uml2.uml.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getProvideds();
+	EList getProvideds();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
@@ -139,7 +139,7 @@ public interface Component
 	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" ordered="false"
 	 * @generated
 	 */
-	List getPackagedElements();
+	EList getPackagedElements();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.PackageableElement} and appends it to the '<em><b>Packaged Element</b></em>' containment reference list.
@@ -178,7 +178,7 @@ public interface Component
 	 * @model type="org.eclipse.uml2.uml.ComponentRealization" opposite="abstraction" containment="true" resolveProxies="false" transient="true" ordered="false"
 	 * @generated
 	 */
-	List getRealizations();
+	EList getRealizations();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ComponentRealization} and appends it to the '<em><b>Realization</b></em>' containment reference list.
@@ -214,7 +214,7 @@ public interface Component
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List realizedInterfaces(Classifier classifier);
+	EList realizedInterfaces(Classifier classifier);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -229,6 +229,6 @@ public interface Component
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List usedInterfaces(Classifier classifier);
+	EList usedInterfaces(Classifier classifier);
 
 } // Component

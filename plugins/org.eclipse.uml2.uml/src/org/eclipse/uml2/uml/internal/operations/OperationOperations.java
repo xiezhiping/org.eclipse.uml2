@@ -8,18 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.5 2005/12/12 18:11:59 khussey Exp $
+ * $Id: OperationOperations.java,v 1.6 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Operation;
@@ -41,19 +42,19 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Operation#validateAtMostOneReturn(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate At Most One Return</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#validateOnlyBodyForQuery(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Only Body For Query</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getLower() <em>Get Lower</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getUpper() <em>Get Upper</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#setIsOrdered(boolean) <em>Set Is Ordered</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#setIsUnique(boolean) <em>Set Is Unique</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#setLower(int) <em>Set Lower</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#setType(org.eclipse.uml2.uml.Type) <em>Set Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#setUpper(int) <em>Set Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isOrdered() <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isUnique() <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#lowerBound() <em>Lower Bound</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#upperBound() <em>Upper Bound</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getType() <em>Get Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#returnResult() <em>Return Result</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getLower() <em>Get Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getUpper() <em>Get Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#setIsOrdered(boolean) <em>Set Is Ordered</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#setIsUnique(boolean) <em>Set Is Unique</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#setLower(int) <em>Set Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#setUpper(int) <em>Set Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#setType(org.eclipse.uml2.uml.Type) <em>Set Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
  * </ul>
  * </p>
@@ -145,7 +146,7 @@ public final class OperationOperations {
 	 * @generated NOT
 	 */
 	public static boolean isOrdered(Operation operation) {
-		List returnResult = operation.returnResult();
+		EList returnResult = operation.returnResult();
 		return returnResult.size() == 1
 			? ((Parameter) returnResult.get(0)).isOrdered()
 			: false;
@@ -164,7 +165,7 @@ public final class OperationOperations {
 	 * @generated NOT
 	 */
 	public static boolean isUnique(Operation operation) {
-		List returnResult = operation.returnResult();
+		EList returnResult = operation.returnResult();
 		return returnResult.size() == 1
 			? ((Parameter) returnResult.get(0)).isUnique()
 			: true;
@@ -183,7 +184,7 @@ public final class OperationOperations {
 	 * @generated NOT
 	 */
 	public static int lowerBound(Operation operation) {
-		List returnResult = operation.returnResult();
+		EList returnResult = operation.returnResult();
 		return returnResult.size() == 1
 			? ((Parameter) returnResult.get(0)).lowerBound()
 			: 1;
@@ -202,7 +203,7 @@ public final class OperationOperations {
 	 * @generated NOT
 	 */
 	public static int upperBound(Operation operation) {
-		List returnResult = operation.returnResult();
+		EList returnResult = operation.returnResult();
 		return returnResult.size() == 1
 			? ((Parameter) returnResult.get(0)).upperBound()
 			: 1;
@@ -218,7 +219,7 @@ public final class OperationOperations {
 	 * @generated NOT
 	 */
 	public static Type getType(Operation operation) {
-		List returnResult = operation.returnResult();
+		EList returnResult = operation.returnResult();
 		return returnResult.size() == 1
 			? (Type) ((Parameter) returnResult.get(0)).eGet(
 				UMLPackage.Literals.TYPED_ELEMENT__TYPE, false)
@@ -234,8 +235,8 @@ public final class OperationOperations {
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List returnResult(Operation operation) {
-		List returnResult = new UniqueEList();
+	public static EList returnResult(Operation operation) {
+		EList returnResult = new UniqueEList();
 
 		for (Iterator ownedParameters = operation.getOwnedParameters()
 			.iterator(); ownedParameters.hasNext();) {
@@ -247,7 +248,7 @@ public final class OperationOperations {
 			}
 		}
 
-		return Collections.unmodifiableList(returnResult);
+		return ECollections.unmodifiableEList(returnResult);
 	}
 
 	/**
@@ -274,7 +275,7 @@ public final class OperationOperations {
 	 * @generated NOT
 	 */
 	public static void setIsOrdered(Operation operation, boolean newIsOrdered) {
-		List returnResult = operation.returnResult();
+		EList returnResult = operation.returnResult();
 
 		if (returnResult.size() == 1) {
 			((Parameter) returnResult.get(0)).setIsOrdered(newIsOrdered);
@@ -287,7 +288,7 @@ public final class OperationOperations {
 	 * @generated NOT
 	 */
 	public static void setIsUnique(Operation operation, boolean newIsUnique) {
-		List returnResult = operation.returnResult();
+		EList returnResult = operation.returnResult();
 
 		if (returnResult.size() == 1) {
 			((Parameter) returnResult.get(0)).setIsUnique(newIsUnique);
@@ -300,7 +301,7 @@ public final class OperationOperations {
 	 * @generated NOT
 	 */
 	public static void setLower(Operation operation, int newLower) {
-		List returnResult = operation.returnResult();
+		EList returnResult = operation.returnResult();
 
 		if (returnResult.size() == 1) {
 			((Parameter) returnResult.get(0)).setLower(newLower);
@@ -313,7 +314,7 @@ public final class OperationOperations {
 	 * @generated NOT
 	 */
 	public static void setUpper(Operation operation, int newUpper) {
-		List returnResult = operation.returnResult();
+		EList returnResult = operation.returnResult();
 
 		if (returnResult.size() == 1) {
 			((Parameter) returnResult.get(0)).setUpper(newUpper);
@@ -326,7 +327,7 @@ public final class OperationOperations {
 	 * @generated NOT
 	 */
 	public static void setType(Operation operation, Type newType) {
-		List returnResult = operation.returnResult();
+		EList returnResult = operation.returnResult();
 
 		if (returnResult.size() == 1) {
 			((Parameter) returnResult.get(0)).setType(newType);
@@ -356,13 +357,13 @@ public final class OperationOperations {
 
 			Operation op = (Operation) redefinee;
 
-			List ownedParameters = operation.getOwnedParameters();
+			EList ownedParameters = operation.getOwnedParameters();
 			int ownedParametersSize = ownedParameters.size();
-			List opOwnedParameters = op.getOwnedParameters();
+			EList opOwnedParameters = op.getOwnedParameters();
 
-			List returnResult = operation.returnResult();
+			EList returnResult = operation.returnResult();
 			int returnResultSize = returnResult.size();
-			List opReturnResult = op.returnResult();
+			EList opReturnResult = op.returnResult();
 
 			if (ownedParametersSize == opOwnedParameters.size()
 				&& returnResultSize == opReturnResult.size()) {

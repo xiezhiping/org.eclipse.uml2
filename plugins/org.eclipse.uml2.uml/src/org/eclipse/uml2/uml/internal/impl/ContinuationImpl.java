@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.7 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -301,7 +300,7 @@ public class ContinuationImpl
 			case UMLPackage.CONTINUATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONTINUATION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CONTINUATION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONTINUATION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONTINUATION__NAME :
 				return isSetName();
@@ -312,17 +311,17 @@ public class ContinuationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CONTINUATION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.CONTINUATION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.CONTINUATION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.CONTINUATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CONTINUATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.CONTINUATION__NAME_EXPRESSION) != null;
 			case UMLPackage.CONTINUATION__COVERED :
-				List covered = (List) eVirtualGet(UMLPackage.CONTINUATION__COVERED);
+				EList covered = (EList) eVirtualGet(UMLPackage.CONTINUATION__COVERED);
 				return covered != null && !covered.isEmpty();
 			case UMLPackage.CONTINUATION__GENERAL_ORDERING :
-				List generalOrdering = (List) eVirtualGet(UMLPackage.CONTINUATION__GENERAL_ORDERING);
+				EList generalOrdering = (EList) eVirtualGet(UMLPackage.CONTINUATION__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
 				return getEnclosingInteraction() != null;

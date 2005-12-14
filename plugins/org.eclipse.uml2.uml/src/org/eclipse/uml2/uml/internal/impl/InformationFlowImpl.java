@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.7 2005/12/12 16:58:35 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -91,8 +90,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRelatedElements() {
-		List relatedElement = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT);
+	public EList getRelatedElements() {
+		EList relatedElement = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT);
 		if (relatedElement == null) {
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT,
 				relatedElement = new DerivedUnionEObjectEList(Element.class,
@@ -108,8 +107,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSources() {
-		List source = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__SOURCE);
+	public EList getSources() {
+		EList source = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__SOURCE);
 		if (source == null) {
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
@@ -124,8 +123,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTargets() {
-		List target = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__TARGET);
+	public EList getTargets() {
+		EList target = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__TARGET);
 		if (target == null) {
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
@@ -140,8 +139,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRealizations() {
-		List realization = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZATION);
+	public EList getRealizations() {
+		EList realization = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZATION);
 		if (realization == null) {
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__REALIZATION,
 				realization = new EObjectResolvingEList(Relationship.class,
@@ -155,8 +154,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getConveyeds() {
-		List conveyed = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__CONVEYED);
+	public EList getConveyeds() {
+		EList conveyed = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__CONVEYED);
 		if (conveyed == null) {
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__CONVEYED,
 				conveyed = new EObjectResolvingEList(Classifier.class, this,
@@ -185,8 +184,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInformationSources() {
-		List informationSource = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
+	public EList getInformationSources() {
+		EList informationSource = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
 		if (informationSource == null) {
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE,
 				informationSource = new EObjectResolvingEList(
@@ -216,8 +215,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInformationTargets() {
-		List informationTarget = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET);
+	public EList getInformationTargets() {
+		EList informationTarget = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET);
 		if (informationTarget == null) {
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET,
 				informationTarget = new EObjectResolvingEList(
@@ -247,8 +246,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRealizingActivityEdges() {
-		List realizingActivityEdge = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE);
+	public EList getRealizingActivityEdges() {
+		EList realizingActivityEdge = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE);
 		if (realizingActivityEdge == null) {
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE,
 				realizingActivityEdge = new EObjectResolvingEList(
@@ -278,8 +277,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRealizingConnectors() {
-		List realizingConnector = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR);
+	public EList getRealizingConnectors() {
+		EList realizingConnector = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR);
 		if (realizingConnector == null) {
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR,
 				realizingConnector = new EObjectResolvingEList(Connector.class,
@@ -308,8 +307,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRealizingMessages() {
-		List realizingMessage = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE);
+	public EList getRealizingMessages() {
+		EList realizingMessage = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE);
 		if (realizingMessage == null) {
 			eVirtualSet(UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE,
 				realizingMessage = new EObjectResolvingEList(Message.class,
@@ -396,14 +395,14 @@ public class InformationFlowImpl
 				return basicGetNamespace();
 			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.INFORMATION_FLOW__SOURCE :
@@ -456,11 +455,11 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZATION :
 				getRealizations().clear();
@@ -519,11 +518,11 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZATION :
 				getRealizations().clear();
@@ -565,7 +564,7 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__OWNER :
 				return isSetOwner();
 			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__NAME :
 				return isSetName();
@@ -576,16 +575,16 @@ public class InformationFlowImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION) != null;
-			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.INFORMATION_FLOW__SOURCE :
@@ -593,29 +592,29 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__TARGET :
 				return isSetTargets();
 			case UMLPackage.INFORMATION_FLOW__REALIZATION :
-				List realization = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZATION);
+				EList realization = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZATION);
 				return realization != null && !realization.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__CONVEYED :
-				List conveyed = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__CONVEYED);
+				EList conveyed = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__CONVEYED);
 				return conveyed != null && !conveyed.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE :
-				List informationSource = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
+				EList informationSource = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
 				return informationSource != null
 					&& !informationSource.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET :
-				List informationTarget = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET);
+				EList informationTarget = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET);
 				return informationTarget != null
 					&& !informationTarget.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE :
-				List realizingActivityEdge = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE);
+				EList realizingActivityEdge = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE);
 				return realizingActivityEdge != null
 					&& !realizingActivityEdge.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR :
-				List realizingConnector = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR);
+				EList realizingConnector = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR);
 				return realizingConnector != null
 					&& !realizingConnector.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE :
-				List realizingMessage = (List) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE);
+				EList realizingMessage = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE);
 				return realizingMessage != null && !realizingMessage.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

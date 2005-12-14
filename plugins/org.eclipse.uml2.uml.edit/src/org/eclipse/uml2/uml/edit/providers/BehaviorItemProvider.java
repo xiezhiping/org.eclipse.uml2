@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorItemProvider.java,v 1.1 2005/12/07 14:20:28 khussey Exp $
+ * $Id: BehaviorItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -68,12 +68,12 @@ public class BehaviorItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addSpecificationPropertyDescriptor(object);
 			addIsReentrantPropertyDescriptor(object);
 			addRedefinedBehaviorPropertyDescriptor(object);
 			addOwnedParameterPropertyDescriptor(object);
 			addContextPropertyDescriptor(object);
 			addOwnedParameterSetPropertyDescriptor(object);
-			addSpecificationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

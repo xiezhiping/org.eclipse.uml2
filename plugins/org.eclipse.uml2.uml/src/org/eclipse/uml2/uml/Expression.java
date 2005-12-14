@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Expression.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Expression.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -106,7 +106,7 @@ public interface Expression
 	 * @model type="org.eclipse.uml2.uml.ValueSpecification" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getOperands();
+	EList getOperands();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.ValueSpecification} and appends it to the '<em><b>Operand</b></em>' containment reference list.

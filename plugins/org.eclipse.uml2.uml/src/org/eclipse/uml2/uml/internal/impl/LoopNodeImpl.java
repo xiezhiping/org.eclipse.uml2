@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.10 2005/12/12 16:58:37 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.11 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -118,8 +117,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOutputs() {
-		List output = (List) eVirtualGet(UMLPackage.LOOP_NODE__OUTPUT);
+	public EList getOutputs() {
+		EList output = (EList) eVirtualGet(UMLPackage.LOOP_NODE__OUTPUT);
 		if (output == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__OUTPUT,
 				output = new DerivedUnionEObjectEList(OutputPin.class, this,
@@ -134,8 +133,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInputs() {
-		List input = (List) eVirtualGet(UMLPackage.LOOP_NODE__INPUT);
+	public EList getInputs() {
+		EList input = (EList) eVirtualGet(UMLPackage.LOOP_NODE__INPUT);
 		if (input == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__INPUT,
 				input = new DerivedUnionEObjectEList(InputPin.class, this,
@@ -177,8 +176,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getBodyParts() {
-		List bodyPart = (List) eVirtualGet(UMLPackage.LOOP_NODE__BODY_PART);
+	public EList getBodyParts() {
+		EList bodyPart = (EList) eVirtualGet(UMLPackage.LOOP_NODE__BODY_PART);
 		if (bodyPart == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__BODY_PART,
 				bodyPart = new EObjectResolvingEList(ExecutableNode.class,
@@ -207,8 +206,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSetupParts() {
-		List setupPart = (List) eVirtualGet(UMLPackage.LOOP_NODE__SETUP_PART);
+	public EList getSetupParts() {
+		EList setupPart = (EList) eVirtualGet(UMLPackage.LOOP_NODE__SETUP_PART);
 		if (setupPart == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__SETUP_PART,
 				setupPart = new EObjectResolvingEList(ExecutableNode.class,
@@ -282,8 +281,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTests() {
-		List test = (List) eVirtualGet(UMLPackage.LOOP_NODE__TEST);
+	public EList getTests() {
+		EList test = (EList) eVirtualGet(UMLPackage.LOOP_NODE__TEST);
 		if (test == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__TEST,
 				test = new EObjectResolvingEList(ExecutableNode.class, this,
@@ -312,8 +311,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getResults() {
-		List result = (List) eVirtualGet(UMLPackage.LOOP_NODE__RESULT);
+	public EList getResults() {
+		EList result = (EList) eVirtualGet(UMLPackage.LOOP_NODE__RESULT);
 		if (result == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__RESULT,
 				result = new EObjectContainmentEList(OutputPin.class, this,
@@ -353,8 +352,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getLoopVariables() {
-		List loopVariable = (List) eVirtualGet(UMLPackage.LOOP_NODE__LOOP_VARIABLE);
+	public EList getLoopVariables() {
+		EList loopVariable = (EList) eVirtualGet(UMLPackage.LOOP_NODE__LOOP_VARIABLE);
 		if (loopVariable == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__LOOP_VARIABLE,
 				loopVariable = new EObjectResolvingEList(OutputPin.class, this,
@@ -383,8 +382,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getBodyOutputs() {
-		List bodyOutput = (List) eVirtualGet(UMLPackage.LOOP_NODE__BODY_OUTPUT);
+	public EList getBodyOutputs() {
+		EList bodyOutput = (EList) eVirtualGet(UMLPackage.LOOP_NODE__BODY_OUTPUT);
 		if (bodyOutput == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__BODY_OUTPUT,
 				bodyOutput = new EObjectResolvingEList(OutputPin.class, this,
@@ -413,8 +412,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getLoopVariableInputs() {
-		List loopVariableInput = (List) eVirtualGet(UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT);
+	public EList getLoopVariableInputs() {
+		EList loopVariableInput = (EList) eVirtualGet(UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT);
 		if (loopVariableInput == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT,
 				loopVariableInput = new EObjectContainmentEList(InputPin.class,
@@ -958,7 +957,7 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.LOOP_NODE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.LOOP_NODE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.LOOP_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LOOP_NODE__NAME :
 				return isSetName();
@@ -969,7 +968,7 @@ public class LoopNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.LOOP_NODE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.LOOP_NODE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.LOOP_NODE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.LOOP_NODE__NAMESPACE :
 				return isSetNamespace();
@@ -982,29 +981,29 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.LOOP_NODE__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.LOOP_NODE__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.LOOP_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.LOOP_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.LOOP_NODE__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.LOOP_NODE__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.LOOP_NODE__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.LOOP_NODE__ACTIVITY :
 				return isSetActivity();
 			case UMLPackage.LOOP_NODE__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.LOOP_NODE__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.LOOP_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.LOOP_NODE__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.LOOP_NODE__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.LOOP_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.LOOP_NODE__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.LOOP_NODE__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.LOOP_NODE__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.LOOP_NODE__HANDLER :
-				List handler = (List) eVirtualGet(UMLPackage.LOOP_NODE__HANDLER);
+				EList handler = (EList) eVirtualGet(UMLPackage.LOOP_NODE__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UMLPackage.LOOP_NODE__OUTPUT :
 				return isSetOutputs();
@@ -1013,21 +1012,21 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__CONTEXT :
 				return getContext() != null;
 			case UMLPackage.LOOP_NODE__LOCAL_PRECONDITION :
-				List localPrecondition = (List) eVirtualGet(UMLPackage.LOOP_NODE__LOCAL_PRECONDITION);
+				EList localPrecondition = (EList) eVirtualGet(UMLPackage.LOOP_NODE__LOCAL_PRECONDITION);
 				return localPrecondition != null
 					&& !localPrecondition.isEmpty();
 			case UMLPackage.LOOP_NODE__LOCAL_POSTCONDITION :
-				List localPostcondition = (List) eVirtualGet(UMLPackage.LOOP_NODE__LOCAL_POSTCONDITION);
+				EList localPostcondition = (EList) eVirtualGet(UMLPackage.LOOP_NODE__LOCAL_POSTCONDITION);
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.LOOP_NODE__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.LOOP_NODE__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.LOOP_NODE__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.LOOP_NODE__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.LOOP_NODE__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.LOOP_NODE__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.LOOP_NODE__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.LOOP_NODE__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.LOOP_NODE__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.LOOP_NODE__MEMBER :
 				return isSetMembers();
@@ -1046,40 +1045,40 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__CONTAINED_EDGE :
 				return isSetContainedEdges();
 			case UMLPackage.LOOP_NODE__VARIABLE :
-				List variable = (List) eVirtualGet(UMLPackage.LOOP_NODE__VARIABLE);
+				EList variable = (EList) eVirtualGet(UMLPackage.LOOP_NODE__VARIABLE);
 				return variable != null && !variable.isEmpty();
 			case UMLPackage.LOOP_NODE__NODE :
-				List node = (List) eVirtualGet(UMLPackage.LOOP_NODE__NODE);
+				EList node = (EList) eVirtualGet(UMLPackage.LOOP_NODE__NODE);
 				return node != null && !node.isEmpty();
 			case UMLPackage.LOOP_NODE__MUST_ISOLATE :
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.LOOP_NODE__EDGE :
-				List edge = (List) eVirtualGet(UMLPackage.LOOP_NODE__EDGE);
+				EList edge = (EList) eVirtualGet(UMLPackage.LOOP_NODE__EDGE);
 				return edge != null && !edge.isEmpty();
 			case UMLPackage.LOOP_NODE__IS_TESTED_FIRST :
 				return ((eFlags & IS_TESTED_FIRST_EFLAG) != 0) != IS_TESTED_FIRST_EDEFAULT;
 			case UMLPackage.LOOP_NODE__BODY_PART :
-				List bodyPart = (List) eVirtualGet(UMLPackage.LOOP_NODE__BODY_PART);
+				EList bodyPart = (EList) eVirtualGet(UMLPackage.LOOP_NODE__BODY_PART);
 				return bodyPart != null && !bodyPart.isEmpty();
 			case UMLPackage.LOOP_NODE__SETUP_PART :
-				List setupPart = (List) eVirtualGet(UMLPackage.LOOP_NODE__SETUP_PART);
+				EList setupPart = (EList) eVirtualGet(UMLPackage.LOOP_NODE__SETUP_PART);
 				return setupPart != null && !setupPart.isEmpty();
 			case UMLPackage.LOOP_NODE__DECIDER :
 				return eVirtualGet(UMLPackage.LOOP_NODE__DECIDER) != null;
 			case UMLPackage.LOOP_NODE__TEST :
-				List test = (List) eVirtualGet(UMLPackage.LOOP_NODE__TEST);
+				EList test = (EList) eVirtualGet(UMLPackage.LOOP_NODE__TEST);
 				return test != null && !test.isEmpty();
 			case UMLPackage.LOOP_NODE__RESULT :
-				List result = (List) eVirtualGet(UMLPackage.LOOP_NODE__RESULT);
+				EList result = (EList) eVirtualGet(UMLPackage.LOOP_NODE__RESULT);
 				return result != null && !result.isEmpty();
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE :
-				List loopVariable = (List) eVirtualGet(UMLPackage.LOOP_NODE__LOOP_VARIABLE);
+				EList loopVariable = (EList) eVirtualGet(UMLPackage.LOOP_NODE__LOOP_VARIABLE);
 				return loopVariable != null && !loopVariable.isEmpty();
 			case UMLPackage.LOOP_NODE__BODY_OUTPUT :
-				List bodyOutput = (List) eVirtualGet(UMLPackage.LOOP_NODE__BODY_OUTPUT);
+				EList bodyOutput = (EList) eVirtualGet(UMLPackage.LOOP_NODE__BODY_OUTPUT);
 				return bodyOutput != null && !bodyOutput.isEmpty();
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
-				List loopVariableInput = (List) eVirtualGet(UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT);
+				EList loopVariableInput = (EList) eVirtualGet(UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT);
 				return loopVariableInput != null
 					&& !loopVariableInput.isEmpty();
 		}

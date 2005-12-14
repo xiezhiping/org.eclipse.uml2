@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallEventImpl.java,v 1.7 2005/12/12 16:58:36 khussey Exp $
+ * $Id: CallEventImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -145,14 +143,14 @@ public class CallEventImpl
 				return basicGetNamespace();
 			case UMLPackage.CALL_EVENT__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.CALL_EVENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.CALL_EVENT__OPERATION :
 				if (resolve)
 					return getOperation();
@@ -189,11 +187,11 @@ public class CallEventImpl
 			case UMLPackage.CALL_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.CALL_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.CALL_EVENT__OPERATION :
 				setOperation((Operation) newValue);
@@ -227,11 +225,11 @@ public class CallEventImpl
 			case UMLPackage.CALL_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.CALL_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.CALL_EVENT__OPERATION :
 				setOperation((Operation) null);
@@ -255,7 +253,7 @@ public class CallEventImpl
 			case UMLPackage.CALL_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CALL_EVENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.CALL_EVENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.CALL_EVENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CALL_EVENT__NAME :
 				return isSetName();
@@ -266,16 +264,16 @@ public class CallEventImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CALL_EVENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.CALL_EVENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.CALL_EVENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.CALL_EVENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CALL_EVENT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.CALL_EVENT__NAME_EXPRESSION) != null;
-			case UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.CALL_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.CALL_EVENT__OPERATION :
 				return eVirtualGet(UMLPackage.CALL_EVENT__OPERATION) != null;
 		}

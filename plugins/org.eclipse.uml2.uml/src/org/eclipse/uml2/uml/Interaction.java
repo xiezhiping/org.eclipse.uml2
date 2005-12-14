@@ -8,11 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interaction.java,v 1.1 2005/11/14 22:25:57 khussey Exp $
+ * $Id: Interaction.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -58,7 +58,7 @@ public interface Interaction
 	 * @model type="org.eclipse.uml2.uml.Lifeline" opposite="interaction" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getLifelines();
+	EList getLifelines();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Lifeline} and appends it to the '<em><b>Lifeline</b></em>' containment reference list.
@@ -96,7 +96,7 @@ public interface Interaction
 	 * @model type="org.eclipse.uml2.uml.InteractionFragment" opposite="enclosingInteraction" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getFragments();
+	EList getFragments();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.InteractionFragment} and appends it to the '<em><b>Fragment</b></em>' containment reference list.
@@ -133,7 +133,7 @@ public interface Interaction
 	 * @model type="org.eclipse.uml2.uml.Action" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getActions();
+	EList getActions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Action} and appends it to the '<em><b>Action</b></em>' containment reference list.
@@ -182,7 +182,7 @@ public interface Interaction
 	 * @model type="org.eclipse.uml2.uml.Gate" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getFormalGates();
+	EList getFormalGates();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Gate} and appends it to the '<em><b>Formal Gate</b></em>' containment reference list.
@@ -220,7 +220,7 @@ public interface Interaction
 	 * @model type="org.eclipse.uml2.uml.Message" opposite="interaction" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getMessages();
+	EList getMessages();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Message} and appends it to the '<em><b>Message</b></em>' containment reference list.

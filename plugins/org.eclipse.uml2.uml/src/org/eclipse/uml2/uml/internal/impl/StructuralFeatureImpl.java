@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.10 2005/12/12 16:58:36 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.11 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -218,8 +217,8 @@ public abstract class StructuralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -866,7 +865,7 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
 				return isSetName();
@@ -877,7 +876,7 @@ public abstract class StructuralFeatureImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE__NAMESPACE :
 				return isSetNamespace();

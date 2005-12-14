@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLOperations.java,v 1.1 2005/11/30 21:21:17 khussey Exp $
+ * $Id: UMLOperations.java,v 1.2 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 class UMLOperations
-		extends UML2Util {
+		extends UMLUtil {
 
 	protected static class UMLCrossReferenceAdapter
 			extends ECrossReferenceAdapter {

@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: Constraint.java,v 1.3 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -62,7 +63,7 @@ public interface Constraint
 	 * @model type="org.eclipse.uml2.uml.Element"
 	 * @generated
 	 */
-	List getConstrainedElements();
+	EList getConstrainedElements();
 
 	/**
 	 * Returns the value of the '<em><b>Specification</b></em>' containment reference.

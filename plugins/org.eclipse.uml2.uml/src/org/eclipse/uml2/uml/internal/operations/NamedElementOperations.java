@@ -8,19 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.6 2005/12/07 14:18:34 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.7 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.NamedElement;
@@ -159,6 +161,40 @@ public final class NamedElementOperations
 		return true;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Dependency createDependency(NamedElement namedElement,
+			NamedElement supplier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static String getLabel(NamedElement namedElement) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static String getLabel(NamedElement namedElement, boolean isLocalized) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
 	protected static String getQualifiedName(NamedElement namedElement,
 			String separator) {
 		String name = namedElement.getName();
@@ -215,8 +251,8 @@ public final class NamedElementOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List allNamespaces(NamedElement namedElement) {
-		List allNamespaces = new ArrayList();
+	public static EList allNamespaces(NamedElement namedElement) {
+		EList allNamespaces = new UniqueEList();
 
 		Namespace namespace = namedElement.getNamespace();
 
@@ -225,7 +261,7 @@ public final class NamedElementOperations
 			allNamespaces.addAll(namespace.allNamespaces());
 		}
 
-		return Collections.unmodifiableList(allNamespaces);
+		return ECollections.unmodifiableEList(allNamespaces);
 	}
 
 	/**
@@ -246,7 +282,7 @@ public final class NamedElementOperations
 		EClass nEClass = n.eClass();
 
 		if (nEClass.isSuperTypeOf(eClass) || eClass.isSuperTypeOf(nEClass)) {
-			List namesOfN = ns.getNamesOfMember(n);
+			EList namesOfN = ns.getNamesOfMember(n);
 
 			for (Iterator namesOfMember = ns.getNamesOfMember(namedElement)
 				.iterator(); namesOfMember.hasNext();) {

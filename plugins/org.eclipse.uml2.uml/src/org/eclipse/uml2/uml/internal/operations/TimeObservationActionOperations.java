@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionOperations.java,v 1.4 2005/12/08 19:38:06 khussey Exp $
+ * $Id: TimeObservationActionOperations.java,v 1.5 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -36,8 +36,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.TimeObservationAction#validateInputValueTimeExpression(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Value Time Expression</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.TimeObservationAction#getNow() <em>Get Now</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TimeObservationAction#setNow(org.eclipse.uml2.uml.TimeExpression) <em>Set Now</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.TimeObservationAction#getNow() <em>Get Now</em>}</li>
  * </ul>
  * </p>
  *

@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBinding.java,v 1.3 2005/11/22 15:32:38 khussey Exp $
+ * $Id: TemplateBinding.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,7 +83,7 @@ public interface TemplateBinding
 	 * @model type="org.eclipse.uml2.uml.TemplateParameterSubstitution" opposite="templateBinding" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getParameterSubstitutions();
+	EList getParameterSubstitutions();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.TemplateParameterSubstitution} and appends it to the '<em><b>Parameter Substitution</b></em>' containment reference list.

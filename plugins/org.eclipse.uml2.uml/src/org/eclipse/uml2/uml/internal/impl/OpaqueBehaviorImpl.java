@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.10 2005/12/12 16:58:35 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.11 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -74,8 +72,8 @@ public class OpaqueBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getBodies() {
-		List body = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__BODY);
+	public EList getBodies() {
+		EList body = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__BODY);
 		if (body == null) {
 			eVirtualSet(UMLPackage.OPAQUE_BEHAVIOR__BODY,
 				body = new EDataTypeUniqueEList.Unsettable(String.class, this,
@@ -99,7 +97,7 @@ public class OpaqueBehaviorImpl
 	 * @generated
 	 */
 	public boolean isSetBodies() {
-		List body = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__BODY);
+		EList body = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__BODY);
 		return body != null && ((InternalEList.Unsettable) body).isSet();
 	}
 
@@ -108,8 +106,8 @@ public class OpaqueBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getLanguages() {
-		List language = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE);
+	public EList getLanguages() {
+		EList language = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE);
 		if (language == null) {
 			eVirtualSet(UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE,
 				language = new EDataTypeUniqueEList.Unsettable(String.class,
@@ -133,7 +131,7 @@ public class OpaqueBehaviorImpl
 	 * @generated
 	 */
 	public boolean isSetLanguages() {
-		List language = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE);
+		EList language = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE);
 		return language != null
 			&& ((InternalEList.Unsettable) language).isSet();
 	}
@@ -189,14 +187,14 @@ public class OpaqueBehaviorImpl
 				return getRedefinedElements();
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
 				if (resolve)
 					return getPackage();
@@ -267,6 +265,10 @@ public class OpaqueBehaviorImpl
 				return getOwnedReceptions();
 			case UMLPackage.OPAQUE_BEHAVIOR__EXTENSION :
 				return getExtensions();
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				return isReentrant()
 					? Boolean.TRUE
@@ -281,10 +283,6 @@ public class OpaqueBehaviorImpl
 				return basicGetContext();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				return getBodies();
 			case UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE :
@@ -336,11 +334,11 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -439,6 +437,9 @@ public class OpaqueBehaviorImpl
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll((Collection) newValue);
 				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
+				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
 				return;
@@ -453,9 +454,6 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				getBodies().clear();
@@ -506,11 +504,11 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
@@ -590,6 +588,9 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
+				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
 				return;
@@ -601,9 +602,6 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				unsetBodies();
@@ -630,7 +628,7 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME :
 				return isSetName();
@@ -641,20 +639,20 @@ public class OpaqueBehaviorImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OPAQUE_BEHAVIOR__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__NAME_EXPRESSION) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__MEMBER :
 				return isSetMembers();
@@ -668,50 +666,50 @@ public class OpaqueBehaviorImpl
 				return isSetRedefinedElements();
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_PARAMETER :
-				return isSetTemplateParameter();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERALIZATION :
-				List generalization = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__GENERALIZATION);
+				EList generalization = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__GENERALIZATION);
 				return generalization != null && !generalization.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__POWERTYPE_EXTENT :
-				List powertypeExtent = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__POWERTYPE_EXTENT);
+				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__POWERTYPE_EXTENT);
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.OPAQUE_BEHAVIOR__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_CLASSIFIER :
-				List redefinedClassifier = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_CLASSIFIER);
+				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_CLASSIFIER);
 				return redefinedClassifier != null
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERAL :
 				return isSetGenerals();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
-				List ownedUseCase = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE);
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE);
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
-				List useCase = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__USE_CASE);
+				EList useCase = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__SUBSTITUTION :
-				List substitution = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__SUBSTITUTION);
+				EList substitution = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.OPAQUE_BEHAVIOR__REPRESENTATION :
 				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__REPRESENTATION) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE :
-				List collaborationUse = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE);
+				EList collaborationUse = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE) != null;
@@ -722,54 +720,54 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__ROLE :
 				return isSetRoles();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_CONNECTOR :
-				List ownedConnector = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_CONNECTOR);
+				EList ownedConnector = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_CONNECTOR);
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_BEHAVIOR :
-				List ownedBehavior = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_BEHAVIOR);
+				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__CLASSIFIER_BEHAVIOR :
 				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__CLASSIFIER_BEHAVIOR) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__INTERFACE_REALIZATION :
-				List interfaceRealization = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__INTERFACE_REALIZATION);
+				EList interfaceRealization = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__INTERFACE_REALIZATION);
 				return interfaceRealization != null
 					&& !interfaceRealization.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TRIGGER :
-				List ownedTrigger = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_TRIGGER);
+				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
-				List ownedOperation = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION);
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION);
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__NESTED_CLASSIFIER :
-				List nestedClassifier = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__NESTED_CLASSIFIER);
+				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ACTIVE :
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION :
-				List ownedReception = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION);
+				EList ownedReception = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION);
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__EXTENSION :
 				return !getExtensions().isEmpty();
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
-				List redefinedBehavior = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR);
+				EList redefinedBehavior = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR);
 				return redefinedBehavior != null
 					&& !redefinedBehavior.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER :
-				List ownedParameter = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER);
+				EList ownedParameter = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
-				List ownedParameterSet = (List) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET);
+				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				return isSetBodies();
 			case UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE :

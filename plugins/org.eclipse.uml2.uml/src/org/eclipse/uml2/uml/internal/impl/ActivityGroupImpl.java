@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.7 2005/12/06 23:21:49 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -87,8 +86,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSubgroups() {
-		List subgroup = (List) eVirtualGet(UMLPackage.ACTIVITY_GROUP__SUBGROUP);
+	public EList getSubgroups() {
+		EList subgroup = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__SUBGROUP);
 		if (subgroup == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__SUBGROUP,
 				subgroup = new DerivedUnionEObjectEList(ActivityGroup.class,
@@ -102,8 +101,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -119,8 +118,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getContainedNodes() {
-		List containedNode = (List) eVirtualGet(UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE);
+	public EList getContainedNodes() {
+		EList containedNode = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE);
 		if (containedNode == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE,
 				containedNode = new DerivedUnionEObjectEList(
@@ -150,8 +149,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getContainedEdges() {
-		List containedEdge = (List) eVirtualGet(UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE);
+	public EList getContainedEdges() {
+		EList containedEdge = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE);
 		if (containedEdge == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE,
 				containedEdge = new DerivedUnionEObjectEList(
@@ -390,7 +389,7 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTIVITY_GROUP__SUBGROUP :
 				return isSetSubgroups();

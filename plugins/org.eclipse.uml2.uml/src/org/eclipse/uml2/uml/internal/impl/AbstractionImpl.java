@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.8 2005/12/12 16:58:36 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -79,8 +77,8 @@ public class AbstractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.ABSTRACTION__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.ABSTRACTION__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.ABSTRACTION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -182,11 +180,11 @@ public class AbstractionImpl
 					otherEnd, msgs);
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ABSTRACTION__CLIENT :
 				return ((InternalEList) getClients()).basicRemove(otherEnd,
 					msgs);
@@ -227,14 +225,14 @@ public class AbstractionImpl
 				return basicGetNamespace();
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.ABSTRACTION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.ABSTRACTION__SOURCE :
@@ -279,11 +277,11 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.ABSTRACTION__SUPPLIER :
 				getSuppliers().clear();
@@ -325,11 +323,11 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.ABSTRACTION__SUPPLIER :
 				getSuppliers().clear();
@@ -359,7 +357,7 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ABSTRACTION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ABSTRACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ABSTRACTION__NAME :
 				return isSetName();
@@ -370,16 +368,16 @@ public class AbstractionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.ABSTRACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.ABSTRACTION__NAME_EXPRESSION) != null;
-			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.ABSTRACTION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.ABSTRACTION__SOURCE :
@@ -387,10 +385,10 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__TARGET :
 				return isSetTargets();
 			case UMLPackage.ABSTRACTION__SUPPLIER :
-				List supplier = (List) eVirtualGet(UMLPackage.ABSTRACTION__SUPPLIER);
+				EList supplier = (EList) eVirtualGet(UMLPackage.ABSTRACTION__SUPPLIER);
 				return supplier != null && !supplier.isEmpty();
 			case UMLPackage.ABSTRACTION__CLIENT :
-				List client = (List) eVirtualGet(UMLPackage.ABSTRACTION__CLIENT);
+				EList client = (EList) eVirtualGet(UMLPackage.ABSTRACTION__CLIENT);
 				return client != null && !client.isEmpty();
 			case UMLPackage.ABSTRACTION__MAPPING :
 				return eVirtualGet(UMLPackage.ABSTRACTION__MAPPING) != null;

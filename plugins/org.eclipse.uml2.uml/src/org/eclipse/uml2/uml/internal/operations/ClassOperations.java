@@ -8,18 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.4 2005/11/30 21:43:11 khussey Exp $
+ * $Id: ClassOperations.java,v 1.5 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -29,6 +31,8 @@ import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
+
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -99,8 +103,8 @@ public final class ClassOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static List getExtensions(org.eclipse.uml2.uml.Class class_) {
-		List extensions = new UniqueEList();
+	public static EList getExtensions(org.eclipse.uml2.uml.Class class_) {
+		EList extensions = new UniqueEList();
 
 		for (Iterator nonNavigableInverseReferences = CROSS_REFERENCE_ADAPTER
 			.getNonNavigableInverseReferences(class_).iterator(); nonNavigableInverseReferences
@@ -131,16 +135,53 @@ public final class ClassOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Property createOwnedAttribute(
+			org.eclipse.uml2.uml.Class class_, String name, Type type,
+			int lower, int upper) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Operation createOwnedOperation(
+			org.eclipse.uml2.uml.Class class_, String name, Type returnType,
+			EList parameterNames, EList parameterTypes) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static boolean isMetaclass(org.eclipse.uml2.uml.Class class_) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The inherit operation is overridden to exclude redefined properties.
 	 * result = inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List inherit(org.eclipse.uml2.uml.Class class_, List inhs) {
-		List inherit = new UniqueEList();
+	public static EList inherit(org.eclipse.uml2.uml.Class class_, EList inhs) {
+		EList inherit = new UniqueEList();
 
-		List redefinedElements = new UniqueEList();
+		EList redefinedElements = new UniqueEList();
 
 		for (Iterator ownedMembers = class_.getOwnedMembers().iterator(); ownedMembers
 			.hasNext();) {
@@ -161,7 +202,7 @@ public final class ClassOperations
 			}
 		}
 
-		return Collections.unmodifiableList(inherit);
+		return ECollections.unmodifiableEList(inherit);
 	}
 
 } // ClassOperations

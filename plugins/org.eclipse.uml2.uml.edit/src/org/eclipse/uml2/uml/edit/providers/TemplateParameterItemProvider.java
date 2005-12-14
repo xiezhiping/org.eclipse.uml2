@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.2 2005/12/08 14:52:55 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.3 2005/12/14 22:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -76,10 +76,10 @@ public class TemplateParameterItemProvider
 			super.getPropertyDescriptors(object);
 
 			addSignaturePropertyDescriptor(object);
+			addParameteredElementPropertyDescriptor(object);
 			addOwnedParameteredElementPropertyDescriptor(object);
 			addDefaultPropertyDescriptor(object);
 			addOwnedDefaultPropertyDescriptor(object);
-			addParameteredElementPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -268,23 +268,19 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createDependency()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createPackage()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createProfile()));
+			UMLFactory.eINSTANCE.createDependency()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createClass()));
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createStereotype()));
+			UMLFactory.eINSTANCE.createAssociation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -296,27 +292,11 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createConstraint()));
+			UMLFactory.eINSTANCE.createClass()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createAbstraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createSubstitution()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createParameter()));
+			UMLFactory.eINSTANCE.createBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -336,15 +316,23 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createAbstraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createManifestation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createOperation()));
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createBehavior()));
+			UMLFactory.eINSTANCE.createParameter()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createOperation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -372,18 +360,6 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createAssociation()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createCollaboration()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createInterfaceRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createExtension()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -392,11 +368,55 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createStereotype()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createProfile()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createModel()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createRealization()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createInterfaceRealization()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createSubstitution()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createCollaboration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createStringExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createEnumeration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createInstanceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createEnumerationLiteral()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createPrimitiveType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -413,22 +433,6 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createInstanceSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createEnumeration()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createEnumerationLiteral()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createPrimitiveType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -549,10 +553,6 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createInformationFlow()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createModel()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -588,23 +588,19 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createDependency()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createPackage()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createProfile()));
+			UMLFactory.eINSTANCE.createDependency()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createClass()));
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createStereotype()));
+			UMLFactory.eINSTANCE.createAssociation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
@@ -616,27 +612,11 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createConstraint()));
+			UMLFactory.eINSTANCE.createClass()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createAbstraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createSubstitution()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createParameter()));
+			UMLFactory.eINSTANCE.createBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
@@ -656,15 +636,23 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createAbstraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createManifestation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createOperation()));
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createBehavior()));
+			UMLFactory.eINSTANCE.createParameter()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createOperation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
@@ -692,18 +680,6 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createAssociation()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createCollaboration()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createInterfaceRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createExtension()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -712,11 +688,55 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createStereotype()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createProfile()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createModel()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createRealization()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createInterfaceRealization()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createSubstitution()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createCollaboration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createStringExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createEnumeration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createInstanceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createEnumerationLiteral()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createPrimitiveType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
@@ -733,22 +753,6 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createInstanceSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createEnumeration()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createEnumerationLiteral()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createPrimitiveType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
@@ -869,10 +873,6 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createInformationFlow()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createModel()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,

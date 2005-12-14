@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeImpl.java,v 1.7 2005/12/12 16:58:36 khussey Exp $
+ * $Id: DecisionNodeImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -350,7 +349,7 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.DECISION_NODE__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.DECISION_NODE__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.DECISION_NODE__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.DECISION_NODE__NAME :
 				return isSetName();
@@ -361,7 +360,7 @@ public class DecisionNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DECISION_NODE__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.DECISION_NODE__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.DECISION_NODE__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.DECISION_NODE__NAMESPACE :
 				return isSetNamespace();
@@ -374,26 +373,26 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.DECISION_NODE__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.DECISION_NODE__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.DECISION_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.DECISION_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.DECISION_NODE__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.DECISION_NODE__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.DECISION_NODE__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.DECISION_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.DECISION_NODE__ACTIVITY :
 				return getActivity() != null;
 			case UMLPackage.DECISION_NODE__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.DECISION_NODE__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.DECISION_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.DECISION_NODE__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.DECISION_NODE__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.DECISION_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.DECISION_NODE__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.DECISION_NODE__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.DECISION_NODE__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.DECISION_NODE__DECISION_INPUT :
 				return eVirtualGet(UMLPackage.DECISION_NODE__DECISION_INPUT) != null;

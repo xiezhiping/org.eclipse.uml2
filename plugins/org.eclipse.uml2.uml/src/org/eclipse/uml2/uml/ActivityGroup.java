@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,7 +64,7 @@ public interface ActivityGroup
 	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="superGroup" resolveProxies="false" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getSubgroups();
+	EList getSubgroups();
 
 	/**
 	 * Returns the value of the '<em><b>Super Group</b></em>' reference.
@@ -96,7 +97,7 @@ public interface ActivityGroup
 	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="inGroup" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getContainedNodes();
+	EList getContainedNodes();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' reference list.
@@ -151,7 +152,7 @@ public interface ActivityGroup
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="inGroup" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getContainedEdges();
+	EList getContainedEdges();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' reference list.

@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalImpl.java,v 1.10 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -167,14 +165,14 @@ public class LiteralUnlimitedNaturalImpl
 				return basicGetNamespace();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TYPE :
 				if (resolve)
 					return getType();
@@ -213,11 +211,11 @@ public class LiteralUnlimitedNaturalImpl
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TYPE :
 				setType((Type) newValue);
@@ -254,11 +252,11 @@ public class LiteralUnlimitedNaturalImpl
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TYPE :
 				setType((Type) null);
@@ -285,7 +283,7 @@ public class LiteralUnlimitedNaturalImpl
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNER :
 				return isSetOwner();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME :
 				return isSetName();
@@ -296,16 +294,16 @@ public class LiteralUnlimitedNaturalImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME_EXPRESSION) != null;
-			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__TYPE :
 				return eVirtualGet(UMLPackage.LITERAL_UNLIMITED_NATURAL__TYPE) != null;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__VALUE :

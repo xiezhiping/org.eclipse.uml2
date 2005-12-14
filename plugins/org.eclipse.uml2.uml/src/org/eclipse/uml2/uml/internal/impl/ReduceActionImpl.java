@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionImpl.java,v 1.2 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ReduceActionImpl.java,v 1.3 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -109,8 +108,8 @@ public class ReduceActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOutputs() {
-		List output = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__OUTPUT);
+	public EList getOutputs() {
+		EList output = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__OUTPUT);
 		if (output == null) {
 			eVirtualSet(UMLPackage.REDUCE_ACTION__OUTPUT,
 				output = new DerivedUnionEObjectEList(OutputPin.class, this,
@@ -125,8 +124,8 @@ public class ReduceActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInputs() {
-		List input = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__INPUT);
+	public EList getInputs() {
+		EList input = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__INPUT);
 		if (input == null) {
 			eVirtualSet(UMLPackage.REDUCE_ACTION__INPUT,
 				input = new DerivedUnionEObjectEList(InputPin.class, this,
@@ -771,7 +770,7 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.REDUCE_ACTION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.REDUCE_ACTION__NAME :
 				return isSetName();
@@ -782,7 +781,7 @@ public class ReduceActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.REDUCE_ACTION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.REDUCE_ACTION__NAMESPACE :
 				return isSetNamespace();
@@ -795,29 +794,29 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.REDUCE_ACTION__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.REDUCE_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.REDUCE_ACTION__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.REDUCE_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.REDUCE_ACTION__ACTIVITY :
 				return getActivity() != null;
 			case UMLPackage.REDUCE_ACTION__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.REDUCE_ACTION__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.REDUCE_ACTION__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.REDUCE_ACTION__HANDLER :
-				List handler = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__HANDLER);
+				EList handler = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UMLPackage.REDUCE_ACTION__OUTPUT :
 				return isSetOutputs();
@@ -826,11 +825,11 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION__CONTEXT :
 				return getContext() != null;
 			case UMLPackage.REDUCE_ACTION__LOCAL_PRECONDITION :
-				List localPrecondition = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__LOCAL_PRECONDITION);
+				EList localPrecondition = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null
 					&& !localPrecondition.isEmpty();
 			case UMLPackage.REDUCE_ACTION__LOCAL_POSTCONDITION :
-				List localPostcondition = (List) eVirtualGet(UMLPackage.REDUCE_ACTION__LOCAL_POSTCONDITION);
+				EList localPostcondition = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 			case UMLPackage.REDUCE_ACTION__REDUCER :

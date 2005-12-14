@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.8 2005/12/12 16:58:35 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -94,8 +93,8 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -115,8 +114,8 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTemplateBindings() {
-		List templateBinding = (List) eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING);
+	public EList getTemplateBindings() {
+		EList templateBinding = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING);
 		if (templateBinding == null) {
 			eVirtualSet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING,
 				templateBinding = new EObjectContainmentWithInverseEList(
@@ -233,8 +232,8 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSubExpressions() {
-		List subExpression = (List) eVirtualGet(UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION);
+	public EList getSubExpressions() {
+		EList subExpression = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION);
 		if (subExpression == null) {
 			eVirtualSet(UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION,
 				subExpression = new EObjectContainmentWithInverseEList(
@@ -317,10 +316,10 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List parameterableElements() {
+	public EList parameterableElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			List result = (List) cache.get(eResource(), this,
+			EList result = (EList) cache.get(eResource(), this,
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
@@ -387,6 +386,12 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
+			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER,
+					msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -395,12 +400,6 @@ public class StringExpressionImpl
 							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER,
 					msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
 				return ((InternalEList) getTemplateBindings()).basicAdd(
@@ -447,12 +446,12 @@ public class StringExpressionImpl
 					otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return eBasicSetContainer(null,
 					UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER,
 					msgs);
+			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
 				return ((InternalEList) getOperands()).basicRemove(otherEnd,
 					msgs);
@@ -522,14 +521,14 @@ public class StringExpressionImpl
 				return basicGetNamespace();
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				return getNameExpression();
-			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
 				return basicGetOwningTemplateParameter();
+			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.STRING_EXPRESSION__TYPE :
 				if (resolve)
 					return getType();
@@ -578,11 +577,11 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__TYPE :
 				setType((Type) newValue);
@@ -637,11 +636,11 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.STRING_EXPRESSION__TYPE :
 				setType((Type) null);
@@ -683,7 +682,7 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OWNER :
 				return isSetOwner();
 			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__NAME :
 				return isSetName();
@@ -694,30 +693,30 @@ public class StringExpressionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION) != null;
-			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.STRING_EXPRESSION__TYPE :
 				return eVirtualGet(UMLPackage.STRING_EXPRESSION__TYPE) != null;
 			case UMLPackage.STRING_EXPRESSION__SYMBOL :
 				return isSetSymbol();
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
-				List operand = (List) eVirtualGet(UMLPackage.STRING_EXPRESSION__OPERAND);
+				EList operand = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__OPERAND);
 				return operand != null && !operand.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
-				List templateBinding = (List) eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING);
+				EList templateBinding = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
-				List subExpression = (List) eVirtualGet(UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION);
+				EList subExpression = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION);
 				return subExpression != null && !subExpression.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				return getOwningExpression() != null;

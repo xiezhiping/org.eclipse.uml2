@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElement.java,v 1.2 2005/12/12 16:58:35 khussey Exp $
+ * $Id: ParameterableElement.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,8 +28,8 @@ package org.eclipse.uml2.uml;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ParameterableElement#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ParameterableElement#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ParameterableElement#getTemplateParameter <em>Template Parameter</em>}</li>
  * </ul>
  * </p>
  *

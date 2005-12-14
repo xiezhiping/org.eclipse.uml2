@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.8 2005/12/12 16:58:37 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -100,8 +99,8 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -153,8 +152,8 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOperands() {
-		List operand = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OPERAND);
+	public EList getOperands() {
+		EList operand = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OPERAND);
 		if (operand == null) {
 			eVirtualSet(UMLPackage.COMBINED_FRAGMENT__OPERAND,
 				operand = new EObjectContainmentEList(InteractionOperand.class,
@@ -195,8 +194,8 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getCfragmentGates() {
-		List cfragmentGate = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE);
+	public EList getCfragmentGates() {
+		EList cfragmentGate = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE);
 		if (cfragmentGate == null) {
 			eVirtualSet(UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE,
 				cfragmentGate = new EObjectContainmentEList(Gate.class, this,
@@ -486,7 +485,7 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__NAME :
 				return isSetName();
@@ -497,17 +496,17 @@ public class CombinedFragmentImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION) != null;
 			case UMLPackage.COMBINED_FRAGMENT__COVERED :
-				List covered = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__COVERED);
+				EList covered = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__COVERED);
 				return covered != null && !covered.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
-				List generalOrdering = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING);
+				EList generalOrdering = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
 				return getEnclosingInteraction() != null;
@@ -518,10 +517,10 @@ public class CombinedFragmentImpl
 					UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
 					INTERACTION_OPERATOR_EDEFAULT) != INTERACTION_OPERATOR_EDEFAULT;
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
-				List operand = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OPERAND);
+				EList operand = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OPERAND);
 				return operand != null && !operand.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
-				List cfragmentGate = (List) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE);
+				EList cfragmentGate = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE);
 				return cfragmentGate != null && !cfragmentGate.isEmpty();
 		}
 		return eDynamicIsSet(featureID);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.9 2005/12/12 16:58:35 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.10 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -141,8 +141,8 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getRedefinedElements() {
-		List redefinedElement = (List) eVirtualGet(UMLPackage.TRANSITION__REDEFINED_ELEMENT);
+	public EList getRedefinedElements() {
+		EList redefinedElement = (EList) eVirtualGet(UMLPackage.TRANSITION__REDEFINED_ELEMENT);
 		if (redefinedElement == null) {
 			eVirtualSet(UMLPackage.TRANSITION__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
@@ -173,8 +173,8 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.TRANSITION__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.TRANSITION__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.TRANSITION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -194,8 +194,8 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedRules() {
-		List ownedRule = (List) eVirtualGet(UMLPackage.TRANSITION__OWNED_RULE);
+	public EList getOwnedRules() {
+		EList ownedRule = (EList) eVirtualGet(UMLPackage.TRANSITION__OWNED_RULE);
 		if (ownedRule == null) {
 			eVirtualSet(UMLPackage.TRANSITION__OWNED_RULE,
 				ownedRule = new SupersetEObjectContainmentWithInverseEList(
@@ -211,7 +211,7 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public List getRedefinitionContexts() {
+	public EList getRedefinitionContexts() {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
@@ -601,8 +601,8 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getTriggers() {
-		List trigger = (List) eVirtualGet(UMLPackage.TRANSITION__TRIGGER);
+	public EList getTriggers() {
+		EList trigger = (EList) eVirtualGet(UMLPackage.TRANSITION__TRIGGER);
 		if (trigger == null) {
 			eVirtualSet(UMLPackage.TRANSITION__TRIGGER,
 				trigger = new EObjectContainmentEList(Trigger.class, this,
@@ -1181,7 +1181,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__OWNER :
 				return isSetOwner();
 			case UMLPackage.TRANSITION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.TRANSITION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.TRANSITION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TRANSITION__NAME :
 				return isSetName();
@@ -1192,20 +1192,20 @@ public class TransitionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.TRANSITION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.TRANSITION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.TRANSITION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.TRANSITION__NAME_EXPRESSION) != null;
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.TRANSITION__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.TRANSITION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.TRANSITION__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.TRANSITION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.TRANSITION__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.TRANSITION__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.TRANSITION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.TRANSITION__MEMBER :
 				return isSetMembers();
@@ -1232,7 +1232,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__EFFECT :
 				return eVirtualGet(UMLPackage.TRANSITION__EFFECT) != null;
 			case UMLPackage.TRANSITION__TRIGGER :
-				List trigger = (List) eVirtualGet(UMLPackage.TRANSITION__TRIGGER);
+				EList trigger = (EList) eVirtualGet(UMLPackage.TRANSITION__TRIGGER);
 				return trigger != null && !trigger.isEmpty();
 			case UMLPackage.TRANSITION__SOURCE :
 				return eVirtualGet(UMLPackage.TRANSITION__SOURCE) != null;

@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItem.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: InformationItem.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,7 +56,7 @@ public interface InformationItem
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
 	 * @generated
 	 */
-	List getRepresenteds();
+	EList getRepresenteds();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Represented</b></em>' reference list.

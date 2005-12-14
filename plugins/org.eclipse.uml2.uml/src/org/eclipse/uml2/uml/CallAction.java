@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallAction.java,v 1.2 2005/12/12 16:58:34 khussey Exp $
+ * $Id: CallAction.java,v 1.3 2005/12/14 22:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -83,7 +84,7 @@ public interface CallAction
 	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="false"
 	 * @generated
 	 */
-	List getResults();
+	EList getResults();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.OutputPin} and appends it to the '<em><b>Result</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.11 2005/12/12 16:58:37 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.12 2005/12/14 22:34:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -99,8 +99,8 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -298,8 +298,8 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public List getReferreds() {
-		List referred = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__REFERRED);
+	public EList getReferreds() {
+		EList referred = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__REFERRED);
 		if (referred == null) {
 			eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__REFERRED,
 				referred = new PartEList(Operation.class, this,
@@ -338,21 +338,80 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPreCondition(Constraint newPreCondition) {
-		Constraint preCondition = newPreCondition;
+	public NotificationChain basicSetPreCondition(Constraint newPreCondition,
+			NotificationChain msgs) {
 		Object oldPreCondition = eVirtualSet(
-			UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, preCondition);
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
+			UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, newPreCondition);
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+				Notification.SET,
 				UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION,
 				oldPreCondition == EVIRTUAL_NO_VALUE
 					? null
-					: oldPreCondition, preCondition));
+					: oldPreCondition, newPreCondition);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
 
 		if (newPreCondition != null
 			|| oldPreCondition == eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__GUARD)) {
 			setGuard(newPreCondition);
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPreCondition(Constraint newPreCondition) {
+		Constraint preCondition = (Constraint) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION);
+		if (newPreCondition != preCondition) {
+			NotificationChain msgs = null;
+			if (preCondition != null)
+				msgs = ((InternalEObject) preCondition).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, null,
+					msgs);
+			if (newPreCondition != null)
+				msgs = ((InternalEObject) newPreCondition).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, null,
+					msgs);
+			msgs = basicSetPreCondition(newPreCondition, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, newPreCondition,
+				newPreCondition));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPreCondition(EClass eClass) {
+		Constraint newPreCondition = (Constraint) eClass.getEPackage()
+			.getEFactoryInstance().create(eClass);
+		setPreCondition(newPreCondition);
+		return newPreCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPreCondition() {
+		Constraint newPreCondition = UMLFactory.eINSTANCE.createConstraint();
+		setPreCondition(newPreCondition);
+		return newPreCondition;
 	}
 
 	/**
@@ -429,6 +488,8 @@ public class ProtocolTransitionImpl
 				return basicSetSource(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				return basicSetPostCondition(null, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION :
+				return basicSetPreCondition(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -680,7 +741,7 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__OWNER :
 				return isSetOwner();
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__NAME :
 				return isSetName();
@@ -691,20 +752,20 @@ public class ProtocolTransitionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION) != null;
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
-				List elementImport = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT);
+				EList elementImport = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT);
 				return elementImport != null && !elementImport.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
-				List packageImport = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT);
+				EList packageImport = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT);
 				return packageImport != null && !packageImport.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
-				List ownedRule = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE);
+				EList ownedRule = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE);
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__MEMBER :
 				return isSetMembers();
@@ -732,7 +793,7 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
 				return eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__EFFECT) != null;
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
-				List trigger = (List) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__TRIGGER);
+				EList trigger = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__TRIGGER);
 				return trigger != null && !trigger.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				return eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__SOURCE) != null;

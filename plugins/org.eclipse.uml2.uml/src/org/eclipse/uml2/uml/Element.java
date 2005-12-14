@@ -8,14 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.4 2005/12/12 16:58:35 khussey Exp $
+ * $Id: Element.java,v 1.5 2005/12/14 22:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
@@ -62,7 +63,7 @@ public interface Element
 	 * @model type="org.eclipse.uml2.uml.Element" opposite="owner" resolveProxies="false" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
-	List getOwnedElements();
+	EList getOwnedElements();
 
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' reference.
@@ -93,7 +94,7 @@ public interface Element
 	 * @model type="org.eclipse.uml2.uml.Comment" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
-	List getOwnedComments();
+	EList getOwnedComments();
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.uml.Comment} and appends it to the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -132,6 +133,191 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.emf.ecore.EObject" ordered="false"
+	 * @generated
+	 */
+	EList getStereotypeApplications();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @generated
+	 */
+	EObject getStereotypeApplication(Stereotype stereotype);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
+	 * @generated
+	 */
+	EList getAppliedStereotypes();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @generated
+	 */
+	Stereotype getAppliedStereotype(String qualifiedName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.eclipse.uml2.uml.Stereotype" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @generated
+	 */
+	EList getAppliedSubstereotypes(Stereotype stereotype);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @generated
+	 */
+	Stereotype getAppliedSubstereotype(Stereotype stereotype,
+			String qualifiedName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @generated
+	 */
+	String getAppliedVersion(Stereotype stereotype);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false"
+	 * @generated
+	 */
+	boolean hasValue(Stereotype stereotype, String propertyName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false"
+	 * @generated
+	 */
+	Object getValue(Stereotype stereotype, String propertyName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false" newValueRequired="true" newValueOrdered="false"
+	 * @generated
+	 */
+	void setValue(Stereotype stereotype, String propertyName, Object newValue);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="java.lang.String" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @generated
+	 */
+	EList getKeywords();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.uml.String" keywordRequired="true" keywordOrdered="false"
+	 * @generated
+	 */
+	boolean addKeyword(String keyword);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.uml.String" keywordRequired="true" keywordOrdered="false"
+	 * @generated
+	 */
+	boolean removeKeyword(String keyword);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" ordered="false"
+	 * @generated
+	 */
+	org.eclipse.uml2.uml.Package getNearestPackage();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" ordered="false"
+	 * @generated
+	 */
+	Model getModel();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @generated
+	 */
+	boolean isStereotypeRequired(Stereotype stereotype);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @generated
+	 */
+	boolean isStereotypeApplied(Stereotype stereotype);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @generated
+	 */
+	EObject applyStereotype(Stereotype stereotype);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @generated
+	 */
+	EObject unapplyStereotype(Stereotype stereotype);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
+	 * @generated
+	 */
+	EList getApplicableStereotypes();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @generated
+	 */
+	Stereotype getApplicableStereotype(String qualifiedName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.uml.String" keywordRequired="true" keywordOrdered="false"
+	 * @generated
+	 */
+	boolean hasKeyword(String keyword);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void destroy();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
 	 * result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))
@@ -140,7 +326,7 @@ public interface Element
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	List allOwnedElements();
+	EList allOwnedElements();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.9 2005/12/12 16:58:36 khussey Exp $
+ * $Id: ActionImpl.java,v 1.10 2005/12/14 22:34:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -87,8 +85,8 @@ public class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOutputs() {
-		List output = (List) eVirtualGet(UMLPackage.ACTION__OUTPUT);
+	public EList getOutputs() {
+		EList output = (EList) eVirtualGet(UMLPackage.ACTION__OUTPUT);
 		if (output == null) {
 			eVirtualSet(UMLPackage.ACTION__OUTPUT,
 				output = new DerivedUnionEObjectEList(OutputPin.class, this,
@@ -117,8 +115,8 @@ public class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getOwnedElements() {
-		List ownedElement = (List) eVirtualGet(UMLPackage.ACTION__OWNED_ELEMENT);
+	public EList getOwnedElements() {
+		EList ownedElement = (EList) eVirtualGet(UMLPackage.ACTION__OWNED_ELEMENT);
 		if (ownedElement == null) {
 			eVirtualSet(UMLPackage.ACTION__OWNED_ELEMENT,
 				ownedElement = new DerivedUnionEObjectEList(Element.class,
@@ -138,8 +136,8 @@ public class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getInputs() {
-		List input = (List) eVirtualGet(UMLPackage.ACTION__INPUT);
+	public EList getInputs() {
+		EList input = (EList) eVirtualGet(UMLPackage.ACTION__INPUT);
 		if (input == null) {
 			eVirtualSet(UMLPackage.ACTION__INPUT,
 				input = new DerivedUnionEObjectEList(InputPin.class, this,
@@ -179,8 +177,8 @@ public class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getLocalPreconditions() {
-		List localPrecondition = (List) eVirtualGet(UMLPackage.ACTION__LOCAL_PRECONDITION);
+	public EList getLocalPreconditions() {
+		EList localPrecondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_PRECONDITION);
 		if (localPrecondition == null) {
 			eVirtualSet(UMLPackage.ACTION__LOCAL_PRECONDITION,
 				localPrecondition = new EObjectContainmentEList(
@@ -234,8 +232,8 @@ public class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getLocalPostconditions() {
-		List localPostcondition = (List) eVirtualGet(UMLPackage.ACTION__LOCAL_POSTCONDITION);
+	public EList getLocalPostconditions() {
+		EList localPostcondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_POSTCONDITION);
 		if (localPostcondition == null) {
 			eVirtualSet(UMLPackage.ACTION__LOCAL_POSTCONDITION,
 				localPostcondition = new EObjectContainmentEList(
@@ -555,7 +553,7 @@ public class ActionImpl
 			case UMLPackage.ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTION__OWNED_COMMENT :
-				List ownedComment = (List) eVirtualGet(UMLPackage.ACTION__OWNED_COMMENT);
+				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTION__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.ACTION__NAME :
 				return isSetName();
@@ -566,7 +564,7 @@ public class ActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACTION__CLIENT_DEPENDENCY :
-				List clientDependency = (List) eVirtualGet(UMLPackage.ACTION__CLIENT_DEPENDENCY);
+				EList clientDependency = (EList) eVirtualGet(UMLPackage.ACTION__CLIENT_DEPENDENCY);
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UMLPackage.ACTION__NAMESPACE :
 				return isSetNamespace();
@@ -579,29 +577,29 @@ public class ActionImpl
 			case UMLPackage.ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTION__OUTGOING :
-				List outgoing = (List) eVirtualGet(UMLPackage.ACTION__OUTGOING);
+				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.ACTION__IN_PARTITION :
-				List inPartition = (List) eVirtualGet(UMLPackage.ACTION__IN_PARTITION);
+				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTION__IN_PARTITION);
 				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.ACTION__ACTIVITY :
 				return getActivity() != null;
 			case UMLPackage.ACTION__INCOMING :
-				List incoming = (List) eVirtualGet(UMLPackage.ACTION__INCOMING);
+				EList incoming = (EList) eVirtualGet(UMLPackage.ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
-				List inInterruptibleRegion = (List) eVirtualGet(UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION);
+				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
 			case UMLPackage.ACTION__REDEFINED_NODE :
-				List redefinedNode = (List) eVirtualGet(UMLPackage.ACTION__REDEFINED_NODE);
+				EList redefinedNode = (EList) eVirtualGet(UMLPackage.ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
 			case UMLPackage.ACTION__HANDLER :
-				List handler = (List) eVirtualGet(UMLPackage.ACTION__HANDLER);
+				EList handler = (EList) eVirtualGet(UMLPackage.ACTION__HANDLER);
 				return handler != null && !handler.isEmpty();
 			case UMLPackage.ACTION__OUTPUT :
 				return isSetOutputs();
@@ -610,11 +608,11 @@ public class ActionImpl
 			case UMLPackage.ACTION__CONTEXT :
 				return getContext() != null;
 			case UMLPackage.ACTION__LOCAL_PRECONDITION :
-				List localPrecondition = (List) eVirtualGet(UMLPackage.ACTION__LOCAL_PRECONDITION);
+				EList localPrecondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null
 					&& !localPrecondition.isEmpty();
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
-				List localPostcondition = (List) eVirtualGet(UMLPackage.ACTION__LOCAL_POSTCONDITION);
+				EList localPostcondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_POSTCONDITION);
 				return localPostcondition != null
 					&& !localPostcondition.isEmpty();
 		}

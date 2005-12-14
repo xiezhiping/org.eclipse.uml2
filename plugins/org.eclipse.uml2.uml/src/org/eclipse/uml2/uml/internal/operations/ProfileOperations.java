@@ -8,21 +8,33 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.2 2005/12/07 14:18:34 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.3 2005/12/14 22:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+
+import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Profile;
+
+import org.eclipse.uml2.uml.Stereotype;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -36,6 +48,17 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Profile#validateMetaclassReferenceNotSpecialized(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Metaclass Reference Not Specialized</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#validateReferencesSameMetamodel(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate References Same Metamodel</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#create(org.eclipse.uml2.uml.Classifier) <em>Create</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#createMetaclassReference(org.eclipse.uml2.uml.Class) <em>Create Metaclass Reference</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#createMetamodelReference(org.eclipse.uml2.uml.Model) <em>Create Metamodel Reference</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#createOwnedStereotype(java.lang.String, boolean) <em>Create Owned Stereotype</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#getVersion() <em>Get Version</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#isDefined() <em>Is Defined</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#define() <em>Define</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition(java.lang.String) <em>Get Definition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition(org.eclipse.uml2.uml.NamedElement, java.lang.String) <em>Get Definition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetaclasses() <em>Get Referenced Metaclasses</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetamodels() <em>Get Referenced Metamodels</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#allOwningPackages() <em>All Owning Packages</em>}</li>
  * </ul>
  * </p>
@@ -128,14 +151,139 @@ public final class ProfileOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EObject create(Profile profile, Classifier classifier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ElementImport createMetaclassReference(Profile profile,
+			org.eclipse.uml2.uml.Class metaclass) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static PackageImport createMetamodelReference(Profile profile,
+			Model metamodel) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Stereotype createOwnedStereotype(Profile profile,
+			String name, boolean isAbstract) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static String getVersion(Profile profile) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static boolean isDefined(Profile profile) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EPackage define(Profile profile) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EPackage getDefinition(Profile profile, String version) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ENamedElement getDefinition(Profile profile,
+			NamedElement element, String version) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getReferencedMetaclasses(Profile profile) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getReferencedMetamodels(Profile profile) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query allOwningPackages() returns all the directly or indirectly owning packages.
 	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static List allOwningPackages(Profile profile) {
-		List allOwningPackages = new UniqueEList();
+	public static EList allOwningPackages(Profile profile) {
+		EList allOwningPackages = new UniqueEList();
 
 		for (Namespace namespace = profile.getNamespace(); namespace != null; namespace = namespace
 			.getNamespace()) {
@@ -145,7 +293,7 @@ public final class ProfileOperations {
 			}
 		}
 
-		return Collections.unmodifiableList(allOwningPackages);
+		return ECollections.unmodifiableEList(allOwningPackages);
 	}
 
 } // ProfileOperations
