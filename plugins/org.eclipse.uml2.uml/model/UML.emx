@@ -816,12 +816,12 @@
     </ownedOperation>
     <ownedOperation xmi:id="_nFBqQGwgEdqHKKVoxc0dlA" name="getDefinition">
       <returnResult xmi:id="_nFBqQWwgEdqHKKVoxc0dlA" direction="return">
-        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
+        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53B65CCC600FE?Ecore/ENamedElement"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nFBqQmwgEdqHKKVoxc0dlA" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nFBqQ2wgEdqHKKVoxc0dlA"/>
       </returnResult>
-      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-      <ownedParameter xmi:id="_pPTwgGwgEdqHKKVoxc0dlA" name="element" type="_kl90MGvbEdq4DLWZOhbdEA" effect="read"/>
+      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53B65CCC600FE?Ecore/ENamedElement"/>
+      <ownedParameter xmi:id="_pPTwgGwgEdqHKKVoxc0dlA" name="element" type="_csVgUGvtEdqG6fBIPwe-mw" effect="read"/>
       <ownedParameter xmi:id="_nFBqRGwgEdqHKKVoxc0dlA" name="version" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_LBK1YGwJEdq7X4sGURiZYA" name="getReferencedMetaclasses" type="_00owUGvdEdq4DLWZOhbdEA">
