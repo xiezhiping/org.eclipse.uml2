@@ -794,12 +794,14 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_O3geYW11EdqniMBnIUw7ig" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_O3geYG11EdqniMBnIUw7ig"/>
       </returnResult>
+      <ownedParameter xmi:id="_n7zSMG2JEdq0sOo3CGeQEg" name="profile" type="__pew8GvzEdq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_QaTt4G11EdqniMBnIUw7ig" name="getProfileApplication" type="_uY5yQGv5Edq7X4sGURiZYA">
       <returnResult xmi:id="_QaTt4W11EdqniMBnIUw7ig" type="_uY5yQGv5Edq7X4sGURiZYA" direction="return">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QaTt4m11EdqniMBnIUw7ig" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QaTt4211EdqniMBnIUw7ig"/>
       </returnResult>
+      <ownedParameter xmi:id="_rYVqgG2JEdq0sOo3CGeQEg" name="profile" type="__pew8GvzEdq7X4sGURiZYA" effect="read"/>
       <ownedParameter xmi:id="_RiuHcG11EdqniMBnIUw7ig" name="isRecursive" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
   </ownedMember>
