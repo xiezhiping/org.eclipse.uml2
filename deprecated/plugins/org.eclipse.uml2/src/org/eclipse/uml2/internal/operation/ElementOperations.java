@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.15 2005/12/15 20:01:25 khussey Exp $
+ * $Id: ElementOperations.java,v 1.16 2005/12/15 23:01:51 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -231,6 +231,11 @@ public final class ElementOperations extends UML2Operations {
 	 *            The element to be destroyed.
 	 */
 	public static void destroy(Element element) {
+		
+		if (null == element) {
+			throw new IllegalArgumentException(String.valueOf(element));
+		}
+
 		destroy((EObject) element);
 	}
 
