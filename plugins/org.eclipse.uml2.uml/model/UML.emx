@@ -426,13 +426,6 @@
       <ownedParameter xmi:id="_NcK9YGv3Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
       <ownedParameter xmi:id="_Kpgogmv3Edq7X4sGURiZYA" name="qualifiedName" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_2UMVMGv2Edq7X4sGURiZYA" name="getAppliedVersion" type="_aAyVgGvsEdqG6fBIPwe-mw">
-      <returnResult xmi:id="_47YZ4Gv2Edq7X4sGURiZYA" type="_aAyVgGvsEdqG6fBIPwe-mw" direction="return">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uH2JYWv3Edq7X4sGURiZYA" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uH2JYGv3Edq7X4sGURiZYA"/>
-      </returnResult>
-      <ownedParameter xmi:id="_5nCmAGv2Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
-    </ownedOperation>
     <ownedOperation xmi:id="_JbZFAGv2Edq7X4sGURiZYA" name="hasValue" type="_UdivYGvsEdqG6fBIPwe-mw">
       <returnResult xmi:id="_L6F8EGv2Edq7X4sGURiZYA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="_MqEngGv2Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
@@ -449,6 +442,10 @@
       <ownedParameter xmi:id="_eZGOAGv2Edq7X4sGURiZYA" name="propertyName" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_nMWzYGv2Edq7X4sGURiZYA" name="setValue">
+      <returnResult xmi:id="_RE_zMG2BEdqniMBnIUw7ig" name="ReturnResultParameter1" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="Ecore.emx#_439EC3AE03B53ACDF8200182?Ecore/EJavaObject"/>
+      </returnResult>
+      <type xmi:type="uml:PrimitiveType" href="Ecore.emx#_439EC3AE03B53ACDF8200182?Ecore/EJavaObject"/>
       <ownedParameter xmi:id="_resLQGv2Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
       <ownedParameter xmi:id="_o6B2IGv2Edq7X4sGURiZYA" name="propertyName" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
       <ownedParameter xmi:id="_m5bH4GzIEdqNr-AKm4G4QQ" name="newValue" effect="read">
@@ -765,25 +762,45 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eExccGv5Edq7X4sGURiZYA"/>
       </returnResult>
     </ownedOperation>
-    <ownedOperation xmi:id="_f3EggGv5Edq7X4sGURiZYA" name="getAppliedProfile" type="__pew8GvzEdq7X4sGURiZYA">
-      <returnResult xmi:id="_ifAMEGv5Edq7X4sGURiZYA" type="__pew8GvzEdq7X4sGURiZYA" direction="return">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qYAIoWv5Edq7X4sGURiZYA" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qYAIoGv5Edq7X4sGURiZYA"/>
-      </returnResult>
-      <ownedParameter xmi:id="_kPD0cGv5Edq7X4sGURiZYA" name="qualifiedName" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
-    </ownedOperation>
     <ownedOperation xmi:id="_kCeTgGwFEdq7X4sGURiZYA" name="getAllAppliedProfiles" type="__pew8GvzEdq7X4sGURiZYA">
       <returnResult xmi:id="_kCeTgWwFEdq7X4sGURiZYA" type="__pew8GvzEdq7X4sGURiZYA" direction="return">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kCeTgmwFEdq7X4sGURiZYA" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kCeTg2wFEdq7X4sGURiZYA"/>
       </returnResult>
     </ownedOperation>
-    <ownedOperation xmi:id="_IjFmMGwFEdq7X4sGURiZYA" name="getAppliedVersion" type="_aAyVgGvsEdqG6fBIPwe-mw">
-      <returnResult xmi:id="_K9nH4GwFEdq7X4sGURiZYA" type="_aAyVgGvsEdqG6fBIPwe-mw" direction="return">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PD3yoWwFEdq7X4sGURiZYA" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PD3yoGwFEdq7X4sGURiZYA"/>
+    <ownedOperation xmi:id="_tasT4G11EdqniMBnIUw7ig" name="getAppliedProfile" type="__pew8GvzEdq7X4sGURiZYA">
+      <returnResult xmi:id="_wSH0AG11EdqniMBnIUw7ig" type="__pew8GvzEdq7X4sGURiZYA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yo7TUW11EdqniMBnIUw7ig" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yo7TUG11EdqniMBnIUw7ig"/>
       </returnResult>
-      <ownedParameter xmi:id="_LXF-4GwFEdq7X4sGURiZYA" name="profile" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
+      <ownedParameter xmi:id="_2bXqMG11EdqniMBnIUw7ig" name="qualifiedName" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_7MPYMG11EdqniMBnIUw7ig" name="getAppliedProfile" type="__pew8GvzEdq7X4sGURiZYA">
+      <returnResult xmi:id="_7MPYMW11EdqniMBnIUw7ig" type="__pew8GvzEdq7X4sGURiZYA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7MPYMm11EdqniMBnIUw7ig" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7MPYM211EdqniMBnIUw7ig"/>
+      </returnResult>
+      <ownedParameter xmi:id="_7MPYNG11EdqniMBnIUw7ig" name="qualifiedName" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
+      <ownedParameter xmi:id="_8HGd8G11EdqniMBnIUw7ig" name="isRecursive" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_kxh7IG10EdqniMBnIUw7ig" name="getAllProfileApplications" type="_uY5yQGv5Edq7X4sGURiZYA">
+      <returnResult xmi:id="_pW8AAG10EdqniMBnIUw7ig" type="_uY5yQGv5Edq7X4sGURiZYA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rvqx8W10EdqniMBnIUw7ig" value="-1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rvqx8G10EdqniMBnIUw7ig"/>
+      </returnResult>
+    </ownedOperation>
+    <ownedOperation xmi:id="_I-D-wG11EdqniMBnIUw7ig" name="getProfileApplication" type="_uY5yQGv5Edq7X4sGURiZYA">
+      <returnResult xmi:id="_M2nksG11EdqniMBnIUw7ig" type="_uY5yQGv5Edq7X4sGURiZYA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_O3geYW11EdqniMBnIUw7ig" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_O3geYG11EdqniMBnIUw7ig"/>
+      </returnResult>
+    </ownedOperation>
+    <ownedOperation xmi:id="_QaTt4G11EdqniMBnIUw7ig" name="getProfileApplication" type="_uY5yQGv5Edq7X4sGURiZYA">
+      <returnResult xmi:id="_QaTt4W11EdqniMBnIUw7ig" type="_uY5yQGv5Edq7X4sGURiZYA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QaTt4m11EdqniMBnIUw7ig" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QaTt4211EdqniMBnIUw7ig"/>
+      </returnResult>
+      <ownedParameter xmi:id="_RiuHcG11EdqniMBnIUw7ig" name="isRecursive" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="__pew8GvzEdq7X4sGURiZYA" name="Profile">
@@ -831,7 +848,6 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dKYmEGwgEdqHKKVoxc0dlA"/>
       </returnResult>
       <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53905C3F7000A?Ecore/EPackage"/>
-      <ownedParameter xmi:id="_fHQicGwgEdqHKKVoxc0dlA" name="version" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_nFBqQGwgEdqHKKVoxc0dlA" name="getDefinition">
       <returnResult xmi:id="_nFBqQWwgEdqHKKVoxc0dlA" direction="return">
@@ -840,8 +856,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nFBqQ2wgEdqHKKVoxc0dlA"/>
       </returnResult>
       <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53B65CCC600FE?Ecore/ENamedElement"/>
-      <ownedParameter xmi:id="_pPTwgGwgEdqHKKVoxc0dlA" name="element" type="_csVgUGvtEdqG6fBIPwe-mw" effect="read"/>
-      <ownedParameter xmi:id="_nFBqRGwgEdqHKKVoxc0dlA" name="version" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
+      <ownedParameter xmi:id="_pPTwgGwgEdqHKKVoxc0dlA" name="namedElement" type="_csVgUGvtEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_LBK1YGwJEdq7X4sGURiZYA" name="getReferencedMetaclasses" type="_00owUGvdEdq4DLWZOhbdEA">
       <returnResult xmi:id="_Ns-UUGwJEdq7X4sGURiZYA" type="_00owUGvdEdq4DLWZOhbdEA" direction="return">
@@ -893,7 +908,16 @@
       <returnResult xmi:id="__8c0oGwREdq14q0ETb1t3g" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
     </ownedOperation>
   </ownedMember>
-  <ownedMember xmi:type="uml:Class" xmi:id="_uY5yQGv5Edq7X4sGURiZYA" name="ProfileApplication"/>
+  <ownedMember xmi:type="uml:Class" xmi:id="_uY5yQGv5Edq7X4sGURiZYA" name="ProfileApplication">
+    <ownedOperation xmi:id="_GXI1QW10EdqniMBnIUw7ig" name="getProfileDefinition">
+      <returnResult xmi:id="_LJ9EAG10EdqniMBnIUw7ig" direction="return">
+        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53905C3F7000A?Ecore/EPackage"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OTQ-UW10EdqniMBnIUw7ig" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OTQ-UG10EdqniMBnIUw7ig"/>
+      </returnResult>
+      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53905C3F7000A?Ecore/EPackage"/>
+    </ownedOperation>
+  </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_I6N3UGwGEdq7X4sGURiZYA" name="Enumeration">
     <ownedOperation xmi:id="_Iw7e0GwOEdq7X4sGURiZYA" name="createOwnedLiteral" type="_OQcbgGwOEdq7X4sGURiZYA">
       <returnResult xmi:id="_QktkMGwOEdq7X4sGURiZYA" type="_OQcbgGwOEdq7X4sGURiZYA" direction="return"/>
