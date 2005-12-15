@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.9 2005/11/23 20:09:17 khussey Exp $
+ * $Id: ClassOperations.java,v 1.10 2005/12/15 20:01:25 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -117,8 +117,9 @@ public final class ClassOperations extends UML2Operations {
 
 		if (null != class_ && class_.isMetaclass()) {
 
-			for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
-				class_).iterator(); nonNavigableInverseReferences.hasNext();) {
+			for (Iterator nonNavigableInverseReferences = CROSS_REFERENCE_ADAPTER
+				.getNonNavigableInverseReferences(class_).iterator(); nonNavigableInverseReferences
+				.hasNext();) {
 
 				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
 					.next();

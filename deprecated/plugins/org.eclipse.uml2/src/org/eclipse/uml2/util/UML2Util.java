@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.51 2005/12/13 20:20:48 khussey Exp $
+ * $Id: UML2Util.java,v 1.52 2005/12/15 20:01:25 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -134,13 +134,6 @@ public class UML2Util
 		public String getClassText(EObject eObject) {
 			return eObject.eClass().getName();
 		}
-
-	}
-
-	public static interface Converter {
-
-		Collection convert(Collection eObjects, Map options,
-				DiagnosticChain diagnostics, Map context);
 
 	}
 

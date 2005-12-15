@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.23 2005/11/22 22:04:53 khussey Exp $
+ * $Id: UML2Operations.java,v 1.24 2005/12/15 20:01:25 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -37,46 +36,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Util;
 import org.osgi.framework.Bundle;
 
 class UML2Operations
 		extends UML2Util {
-
-	protected static class UML2CrossReferenceAdapter
-			extends ECrossReferenceAdapter {
-
-		protected void adapt(EObject eObject) {
-			Resource resource = eObject.eResource();
-
-			if (resource == null) {
-				addAdapter(EcoreUtil.getRootContainer(eObject));
-			} else {
-				ResourceSet resourceSet = resource.getResourceSet();
-
-				if (resourceSet == null) {
-					addAdapter(resource);
-				} else {
-					addAdapter(resourceSet);
-				}
-			}
-		}
-
-		public Collection getNonNavigableInverseReferences(EObject eObject) {
-			adapt(eObject);
-			return super.getNonNavigableInverseReferences(eObject);
-		}
-
-		public Collection getInverseReferences(EObject eObject) {
-			adapt(eObject);
-			return super.getInverseReferences(eObject);
-		}
-	}
-
-	private static final UML2CrossReferenceAdapter CROSS_REFERENCE_ADAPTER = new UML2CrossReferenceAdapter();
 
 	/**
 	 * The default URI converter for resource bundle look-ups.
@@ -332,15 +297,6 @@ class UML2Operations
 		}
 
 		return string;
-	}
-
-	protected static Collection getInverseReferences(EObject eObject) {
-		return CROSS_REFERENCE_ADAPTER.getInverseReferences(eObject);
-	}
-
-	protected static Collection getNonNavigableInverseReferences(EObject eObject) {
-		return CROSS_REFERENCE_ADAPTER
-			.getNonNavigableInverseReferences(eObject);
 	}
 
 }

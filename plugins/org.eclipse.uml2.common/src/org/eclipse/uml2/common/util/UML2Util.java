@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.3 2005/12/12 20:53:04 khussey Exp $
+ * $Id: UML2Util.java,v 1.4 2005/12/15 20:01:27 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -16,21 +16,27 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -67,6 +73,45 @@ public class UML2Util {
 				: eObject.eClass() == otherEObject.eClass();
 		}
 	}
+
+	public static interface Converter {
+
+		Collection convert(Collection eObjects, Map options,
+				DiagnosticChain diagnostics, Map context);
+
+	}
+
+	protected static class UMLCrossReferenceAdapter
+			extends ECrossReferenceAdapter {
+
+		protected void adapt(EObject eObject) {
+			Resource resource = eObject.eResource();
+
+			if (resource == null) {
+				addAdapter(EcoreUtil.getRootContainer(eObject));
+			} else {
+				ResourceSet resourceSet = resource.getResourceSet();
+
+				if (resourceSet == null) {
+					addAdapter(resource);
+				} else {
+					addAdapter(resourceSet);
+				}
+			}
+		}
+
+		public Collection getNonNavigableInverseReferences(EObject eObject) {
+			adapt(eObject);
+			return super.getNonNavigableInverseReferences(eObject);
+		}
+
+		public Collection getInverseReferences(EObject eObject) {
+			adapt(eObject);
+			return super.getInverseReferences(eObject);
+		}
+	}
+
+	protected static final UMLCrossReferenceAdapter CROSS_REFERENCE_ADAPTER = new UMLCrossReferenceAdapter();
 
 	/**
 	 * The empty string.
@@ -396,4 +441,49 @@ public class UML2Util {
 		};
 	}
 
+	protected static EAnnotation createEAnnotation(EModelElement eModelElement,
+			String source) {
+
+		EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
+
+		eAnnotation.setSource(source);
+		eAnnotation.setEModelElement(eModelElement);
+
+		return eAnnotation;
+	}
+
+	protected static EAnnotation getEAnnotation(EModelElement eModelElement,
+			String source, boolean createOnDemand) {
+
+		EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
+
+		return eAnnotation == null && createOnDemand
+			? createEAnnotation(eModelElement, source)
+			: eAnnotation;
+	}
+
+	protected static void destroy(EObject eObject) {
+
+		for (Iterator allContents = getAllContents(eObject, true, true); allContents
+			.hasNext();) {
+
+			EObject containedEObject = (EObject) allContents.next();
+
+			for (Iterator inverseReferences = CROSS_REFERENCE_ADAPTER
+				.getInverseReferences(containedEObject).iterator(); inverseReferences
+				.hasNext();) {
+
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
+					.next();
+
+				if (setting.getEStructuralFeature().isChangeable()) {
+					EcoreUtil.remove(setting, containedEObject);
+				}
+			}
+
+			containedEObject.eAdapters().clear();
+		}
+
+		EcoreUtil.remove(eObject);
+	}
 }

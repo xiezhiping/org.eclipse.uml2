@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.14 2005/11/22 22:04:53 khussey Exp $
+ * $Id: ElementOperations.java,v 1.15 2005/12/15 20:01:25 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -24,9 +24,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Model;
@@ -234,31 +231,7 @@ public final class ElementOperations extends UML2Operations {
 	 *            The element to be destroyed.
 	 */
 	public static void destroy(Element element) {
-
-		if (null == element) {
-			throw new IllegalArgumentException(String.valueOf(element));
-		}
-
-		for (Iterator allContents = getAllContents(element, true, true); allContents
-			.hasNext();) {
-
-			EObject eObject = (EObject) allContents.next();
-
-			for (Iterator inverseReferences = getInverseReferences(eObject)
-				.iterator(); inverseReferences.hasNext();) {
-
-				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
-					.next();
-
-				if (setting.getEStructuralFeature().isChangeable()) {
-					EcoreUtil.remove(setting, eObject);
-				}
-			}
-
-			eObject.eAdapters().clear();
-		}
-
-		EcoreUtil.remove(element);
+		destroy((EObject) element);
 	}
 
 	/**
