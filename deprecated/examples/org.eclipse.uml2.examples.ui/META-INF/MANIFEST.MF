@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.examples.ui; singleton:=true
-Bundle-Version: 2.0.0
+Bundle-Version: 1.2.0
 Bundle-ClassPath: uml2.examples.ui.jar
 Bundle-Activator: org.eclipse.uml2.examples.ui.ExamplesUIPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -13,10 +13,10 @@ Export-Package: org.eclipse.uml2.examples.ui,
  org.eclipse.uml2.examples.ui.wizards,
  org.eclipse.uml2.examples.ui.wizards.ecore2uml2,
  org.eclipse.uml2.examples.ui.wizards.uml22ecore
-Require-Bundle: org.eclipse.uml2.examples;visibility:=reexport,
- org.eclipse.uml2.editor;visibility:=reexport,
- org.eclipse.ui.ide,
- org.eclipse.emf.ecore.editor,
- org.eclipse.core.runtime,
- org.eclipse.core.resources
+Require-Bundle: org.eclipse.uml2.examples;bundle-version="[1.2.0,2.0.0)";visibility:=reexport,
+ org.eclipse.uml2.editor;bundle-version="[1.2.0,2.0.0)";visibility:=reexport,
+ org.eclipse.ui.ide;bundle-version="[3.1.0,4.0.0)",
+ org.eclipse.emf.ecore.editor;bundle-version="[2.2.0,3.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.1.0,4.0.0)",
+ org.eclipse.core.resources;bundle-version="[3.1.0,4.0.0)"
 Eclipse-LazyStart: true

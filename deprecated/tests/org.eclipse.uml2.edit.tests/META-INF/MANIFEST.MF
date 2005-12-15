@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.edit.tests
-Bundle-Version: 2.0.0
+Bundle-Version: 1.2.0
 Bundle-ClassPath: uml2.edit.tests.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: org.junit,
- org.eclipse.uml2.edit
+Require-Bundle: org.junit;bundle-version="[3.8.1,4.0.0)",
+ org.eclipse.uml2.edit;bundle-version="[1.2.0,2.0.0)"

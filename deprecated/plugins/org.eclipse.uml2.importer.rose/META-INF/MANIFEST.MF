@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.importer.rose; singleton:=true
-Bundle-Version: 2.0.0
+Bundle-Version: 1.2
 Bundle-ClassPath: uml2.importer.rose.jar
 Bundle-Activator: org.eclipse.uml2.importer.rose.RoseImporterPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -10,12 +10,12 @@ Bundle-Localization: plugin
 Export-Package: org.eclipse.uml2.importer.rose,
  org.eclipse.uml2.importer.rose.builder,
  org.eclipse.uml2.importer.rose.ui
-Require-Bundle: org.apache.ant;resolution:=optional,
- org.eclipse.core.runtime,
- org.eclipse.core.resources,
- org.eclipse.emf.ant;resolution:=optional,
- org.eclipse.emf.codegen.ecore.ui;resolution:=optional,
- org.eclipse.emf.importer,
- org.eclipse.emf.importer.rose,
- org.eclipse.uml2.codegen.ecore;visibility:=reexport
+Require-Bundle: org.apache.ant;bundle-version="[1.6.5,2.0.0)";resolution:=optional,
+ org.eclipse.core.runtime;bundle-version="[3.1.0,4.0.0)",
+ org.eclipse.core.resources;bundle-version="[3.1.0,4.0.0)",
+ org.eclipse.emf.ant;bundle-version="[2.1.0,2.3.0)";resolution:=optional,
+ org.eclipse.emf.codegen.ecore.ui;bundle-version="[2.2.0,2.3.0)";resolution:=optional,
+ org.eclipse.emf.importer;bundle-version="[2.2.0,2.3.0)",
+ org.eclipse.emf.importer.rose;bundle-version="[2.2.0,2.3.0)",
+ org.eclipse.uml2.codegen.ecore;bundle-version="[1.2.0,2.0.0)";visibility:=reexport
 Eclipse-LazyStart: true

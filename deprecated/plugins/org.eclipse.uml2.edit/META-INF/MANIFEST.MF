@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.edit
-Bundle-Version: 2.0.0
+Bundle-Version: 1.2.0
 Bundle-ClassPath: uml2.edit.jar
 Bundle-Activator: org.eclipse.uml2.provider.UML2EditPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -11,8 +11,8 @@ Export-Package: org.eclipse.uml2.edit.internal.command;x-internal:=true,
  org.eclipse.uml2.edit.internal.provider;x-friends:="org.eclipse.uml2.editor",
  org.eclipse.uml2.edit.util,
  org.eclipse.uml2.provider
-Require-Bundle: org.eclipse.uml2.common.edit;visibility:=reexport,
- org.eclipse.uml2;visibility:=reexport,
- org.eclipse.emf.ecore.change.edit;visibility:=reexport,
- org.eclipse.core.runtime
+Require-Bundle: org.eclipse.uml2.common.edit;bundle-version="[1.2.0,2.0.0)";visibility:=reexport,
+ org.eclipse.uml2;bundle-version="[1.2.0,2.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore.change.edit;bundle-version="[2.1.0,3.0.0)";visibility:=reexport,
+ org.eclipse.core.runtime;bundle-version="[3.1.0,4.0.0)"
 Eclipse-LazyStart: true

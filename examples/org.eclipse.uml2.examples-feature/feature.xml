@@ -1,19 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
-
-<!--
- Copyright (c) 2003, 2005 IBM Corporation and others.
- All rights reserved.   This program and the accompanying materials
- are made available under the terms of the Eclipse Public License v1.0
- which accompanies this distribution, and is available at
- http://www.eclipse.org/legal/epl-v10.html
-
- Contributors: 
-   IBM - initial API and implementation
-
- $Id: feature.xml,v 1.18 2005/10/19 19:43:14 khussey Exp $
--->
-
 <feature
       id="org.eclipse.uml2.examples"
       label="%feature.label"
@@ -34,33 +19,39 @@
       <discovery label="%update.label" url="http://download.eclipse.org/tools/uml2/updates/"/>
    </url>
 
+   <includes
+         id="org.eclipse.uml2.examples.source"
+         version="1.2.0"/>
+
    <requires>
-      <import feature="org.eclipse.uml2" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.uml2" version="1.2.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.1.0" match="compatible"/>
+      <import plugin="org.eclipse.core.resources" version="3.1.0" match="compatible"/>
+      <import plugin="org.eclipse.uml2.editor" version="1.2.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.ide" version="3.1.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore.editor" version="2.2.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.mapping.ecore2xml" version="2.2.0" match="compatible"/>
    </requires>
 
    <plugin
-      id="org.eclipse.uml2.examples"
-      download-size="0"
-      install-size="0"
-      unpack="false"
-      version="2.0.0"/>
+         id="org.eclipse.uml2.examples"
+         download-size="0"
+         install-size="0"
+         version="1.2.0"
+         unpack="false"/>
 
    <plugin
-      id="org.eclipse.uml2.examples.ui"
-      download-size="0"
-      install-size="0"
-      unpack="false"
-      version="2.0.0"/>
+         id="org.eclipse.uml2.examples.ui"
+         download-size="0"
+         install-size="0"
+         version="1.2.0"
+         unpack="false"/>
 
    <plugin
-      id="org.eclipse.uml2.examples.emof2ecore"
-      download-size="0"
-      install-size="0"
-      unpack="false"
-      version="2.0.0"/>
-
-   <includes
-      id="org.eclipse.uml2.examples.source"
-      version="2.0.0"/>
+         id="org.eclipse.uml2.examples.emof2ecore"
+         download-size="0"
+         install-size="0"
+         version="1.2.0"
+         unpack="false"/>
 
 </feature>
