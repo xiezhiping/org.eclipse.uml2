@@ -8,10 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineOperations.java,v 1.4 2005/12/12 16:58:38 khussey Exp $
+ * $Id: StateMachineOperations.java,v 1.5 2005/12/15 20:08:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -271,13 +273,28 @@ public final class StateMachineOperations
 	 * The query isConsistentWith() specifies that a redefining state machine is consistent with a redefined state machine provided that the redefining state machine is an extension of the redefined state machine: Regions are inherited and regions can be added, inherited regions can be redefined. In case of multiple redefining state machines, extension implies that the redefining state machine gets orthogonal regions for each of the redefined state machines.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(StateMachine stateMachine,
 			RedefinableElement redefinee) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (redefinee.isRedefinitionContextValid(stateMachine)) {
+			StateMachine redefineeStateMachine = (StateMachine) redefinee;
+
+			List regions = stateMachine.getRegions();
+
+			for (Iterator redefineeRegions = redefineeStateMachine.getRegions()
+				.iterator(); redefineeRegions.hasNext();) {
+
+				if (regions.contains(((Region) redefineeRegions.next())
+					.getExtendedRegion())) {
+
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 } // StateMachineOperations
