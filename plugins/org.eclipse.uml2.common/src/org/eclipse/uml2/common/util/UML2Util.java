@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.4 2005/12/15 20:01:27 khussey Exp $
+ * $Id: UML2Util.java,v 1.5 2005/12/15 22:47:49 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -464,26 +464,29 @@ public class UML2Util {
 
 	protected static void destroy(EObject eObject) {
 
-		for (Iterator allContents = getAllContents(eObject, true, true); allContents
-			.hasNext();) {
+		if (eObject != null) {
 
-			EObject containedEObject = (EObject) allContents.next();
-
-			for (Iterator inverseReferences = CROSS_REFERENCE_ADAPTER
-				.getInverseReferences(containedEObject).iterator(); inverseReferences
+			for (Iterator allContents = getAllContents(eObject, true, true); allContents
 				.hasNext();) {
 
-				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
-					.next();
+				EObject containedEObject = (EObject) allContents.next();
 
-				if (setting.getEStructuralFeature().isChangeable()) {
-					EcoreUtil.remove(setting, containedEObject);
+				for (Iterator inverseReferences = CROSS_REFERENCE_ADAPTER
+					.getInverseReferences(containedEObject).iterator(); inverseReferences
+					.hasNext();) {
+
+					EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
+						.next();
+
+					if (setting.getEStructuralFeature().isChangeable()) {
+						EcoreUtil.remove(setting, containedEObject);
+					}
 				}
+
+				containedEObject.eAdapters().clear();
 			}
 
-			containedEObject.eAdapters().clear();
+			EcoreUtil.remove(eObject);
 		}
-
-		EcoreUtil.remove(eObject);
 	}
 }
