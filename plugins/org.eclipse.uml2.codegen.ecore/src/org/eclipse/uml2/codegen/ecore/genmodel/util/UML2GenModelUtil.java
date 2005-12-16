@@ -8,20 +8,26 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.9 2005/12/06 19:06:43 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.10 2005/12/16 03:55:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenAnnotation;
+import org.eclipse.emf.codegen.ecore.genmodel.GenBase;
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope;
 
 /**
@@ -31,6 +37,28 @@ public class UML2GenModelUtil {
 
 	protected UML2GenModelUtil() {
 		super();
+	}
+
+	// GenBase utilities
+
+	public static GenAnnotation createGenAnnotation(GenBase genBase,
+			String source) {
+		GenAnnotation genAnnotation = GenModelFactory.eINSTANCE
+			.createGenAnnotation();
+
+		genAnnotation.setSource(source);
+		genAnnotation.setGenBase(genBase);
+
+		return genAnnotation;
+	}
+
+	public static GenAnnotation getGenAnnotation(GenBase genBase,
+			String source, boolean createOnDemand) {
+		GenAnnotation genAnnotation = genBase.getGenAnnotation(source);
+
+		return genAnnotation == null && createOnDemand
+			? createGenAnnotation(genBase, source)
+			: genAnnotation;
 	}
 
 	// GenModel utilities

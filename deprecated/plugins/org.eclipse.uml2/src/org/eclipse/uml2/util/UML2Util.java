@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.52 2005/12/15 20:01:25 khussey Exp $
+ * $Id: UML2Util.java,v 1.53 2005/12/16 03:55:08 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.common.util.WrappedException;
@@ -149,6 +150,8 @@ public class UML2Util
 
 		public static final String OPTION__UNION_ANNOTATIONS = "UNION_ANNOTATIONS"; //$NON-NLS-1$
 
+		public static final String OPTION__ANNOTATION_DETAILS = "ANNOTATION_DETAILS"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 3000;
 
 		public static final int ECORE_TAGGED_VALUE = DIAGNOSTIC_CODE_OFFSET + 1;
@@ -158,6 +161,8 @@ public class UML2Util
 		public static final int SUBSETS_ANNOTATION = DIAGNOSTIC_CODE_OFFSET + 3;
 
 		public static final int UNION_ANNOTATION = DIAGNOSTIC_CODE_OFFSET + 4;
+
+		public static final int ANNOTATION_DETAILS = DIAGNOSTIC_CODE_OFFSET + 4;
 
 		protected final Map eModelElementToElementMap = new HashMap();
 
@@ -268,8 +273,13 @@ public class UML2Util
 					((BehavioredClassifier) classifier)
 						.createImplementation((Interface) doSwitch(eSuperType));
 				} else {
-					classifier
-						.createGeneralization((Classifier) doSwitch(eSuperType));
+					Classifier generalClassifier = (Classifier) doSwitch(eSuperType);
+
+					if (null != generalClassifier
+						&& !classifier.allParents().contains(generalClassifier)) {
+
+						classifier.createGeneralization(generalClassifier);
+					}
 				}
 			}
 
@@ -1246,6 +1256,72 @@ public class UML2Util
 			}
 		}
 
+		protected void processAnnotationDetails(final Map options,
+				final DiagnosticChain diagnostics, final Map context) {
+
+			for (Iterator entries = eModelElementToElementMap.entrySet()
+				.iterator(); entries.hasNext();) {
+
+				final Map.Entry entry = (Map.Entry) entries.next();
+				Element element = (Element) entry.getValue();
+
+				if (null != element) {
+					EModelElement eModelElement = (EModelElement) entry
+						.getKey();
+
+					for (Iterator eAnnotations = eModelElement
+						.getEAnnotations().iterator(); eAnnotations.hasNext();) {
+
+						EAnnotation eAnnotation = (EAnnotation) eAnnotations
+							.next();
+						EMap details = eAnnotation.getDetails();
+
+						if (!details.isEmpty()) {
+
+							if (OPTION__PROCESS.equals(options
+								.get(OPTION__ANNOTATION_DETAILS))) {
+
+								if (null != diagnostics) {
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.INFO,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											ANNOTATION_DETAILS,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_Ecore2UML2Converter_ProcessAnnotationDetails_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context, element,
+														eAnnotation.getSource())),
+											new Object[]{element}));
+								}
+
+								getEAnnotation(element,
+									eAnnotation.getSource(), true).getDetails()
+									.putAll(details.map());
+							} else if (OPTION__REPORT.equals(options
+								.get(OPTION__ANNOTATION_DETAILS))
+								&& null != diagnostics) {
+
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.WARNING,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										ANNOTATION_DETAILS,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_Ecore2UML2Converter_ReportAnnotationDetails_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, element,
+													eAnnotation.getSource())),
+										new Object[]{element}));
+							}
+						}
+					}
+				}
+			}
+		}
+
 		protected void processOptions(EPackage ePackage, final Map options,
 				final DiagnosticChain diagnostics, final Map context) {
 
@@ -1268,8 +1344,11 @@ public class UML2Util
 			}
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__UNION_ANNOTATIONS))) {
-
 				processUnionAnnotations(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options.get(OPTION__ANNOTATION_DETAILS))) {
+				processAnnotationDetails(options, diagnostics, context);
 			}
 		}
 
@@ -1393,6 +1472,8 @@ public class UML2Util
 
 		public static final String OPTION__SUPER_CLASS_ORDER = "SUPER_CLASS_ORDER"; //$NON-NLS-1$
 
+		public static final String OPTION__ANNOTATION_DETAILS = "ANNOTATION_DETAILS"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		public static final int ECORE_TAGGED_VALUE = DIAGNOSTIC_CODE_OFFSET + 1;
@@ -1416,6 +1497,8 @@ public class UML2Util
 		public static final int DUPLICATE_FEATURE_INHERITANCE = DIAGNOSTIC_CODE_OFFSET + 10;
 
 		public static final int SUPER_CLASS_ORDER = DIAGNOSTIC_CODE_OFFSET + 11;
+
+		public static final int ANNOTATION_DETAILS = DIAGNOSTIC_CODE_OFFSET + 12;
 
 		protected final Map elementToEModelElementMap = new HashMap();
 
@@ -1465,8 +1548,9 @@ public class UML2Util
 						eType = EcorePackage.eINSTANCE.getELong();
 					} else if ("Java::short".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEShort();
-					} else if (qualifiedName.startsWith("Ecore::")){ //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEClassifier(type.getName());
+					} else if (qualifiedName.startsWith("Ecore::")) { //$NON-NLS-1$
+						eType = EcorePackage.eINSTANCE.getEClassifier(type
+							.getName());
 					}
 				}
 
@@ -3841,13 +3925,12 @@ public class UML2Util
 
 							for (ListIterator li = superClasses.listIterator(); li
 								.hasNext();) {
+
 								Object superClass = li.next();
 								eSuperTypes
 									.move(li.previousIndex(), superClass);
 							}
-
-						}
-						if (OPTION__REPORT.equals(options
+						} else if (OPTION__REPORT.equals(options
 							.get(OPTION__SUPER_CLASS_ORDER))
 							&& null != diagnostics) {
 
@@ -3861,6 +3944,71 @@ public class UML2Util
 											"_UI_UML22EcoreConverter_ReportSuperClassOrder_diagnostic", //$NON-NLS-1$
 											getMessageSubstitutions(context,
 												eClass)), new Object[]{eClass}));
+						}
+					}
+				}
+			}
+		}
+
+		protected void processAnnotationDetails(final Map options,
+				final DiagnosticChain diagnostics, final Map context) {
+
+			for (Iterator entries = elementToEModelElementMap.entrySet()
+				.iterator(); entries.hasNext();) {
+
+				final Map.Entry entry = (Map.Entry) entries.next();
+				EModelElement eModelElement = (EModelElement) entry.getValue();
+
+				if (null != eModelElement) {
+					Element element = (Element) entry.getKey();
+
+					for (Iterator eAnnotations = element.getEAnnotations()
+						.iterator(); eAnnotations.hasNext();) {
+
+						EAnnotation eAnnotation = (EAnnotation) eAnnotations
+							.next();
+						EMap details = eAnnotation.getDetails();
+
+						if (!details.isEmpty()) {
+
+							if (OPTION__PROCESS.equals(options
+								.get(OPTION__ANNOTATION_DETAILS))) {
+
+								if (null != diagnostics) {
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.INFO,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											ANNOTATION_DETAILS,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_UML22EcoreConverter_ProcessAnnotationDetails_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context, eModelElement,
+														eAnnotation.getSource())),
+											new Object[]{eModelElement}));
+								}
+
+								getEAnnotation(eModelElement,
+									eAnnotation.getSource(), true).getDetails()
+									.putAll(details.map());
+							} else if (OPTION__REPORT.equals(options
+								.get(OPTION__ANNOTATION_DETAILS))
+								&& null != diagnostics) {
+
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.WARNING,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										ANNOTATION_DETAILS,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_UML22EcoreConverter_ReportAnnotationDetails_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, eModelElement,
+													eAnnotation.getSource())),
+										new Object[]{eModelElement}));
+							}
 						}
 					}
 				}
@@ -3928,6 +4076,10 @@ public class UML2Util
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__SUPER_CLASS_ORDER))) {
 				processSuperClassOrder(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options.get(OPTION__ANNOTATION_DETAILS))) {
+				processAnnotationDetails(options, diagnostics, context);
 			}
 		}
 
@@ -6395,6 +6547,13 @@ public class UML2Util
 				OPTION__IGNORE);
 		}
 
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__ANNOTATION_DETAILS)) {
+
+			options.put(UML22EcoreConverter.OPTION__ANNOTATION_DETAILS,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(package_, options, null, null);
 	}
 
@@ -6470,6 +6629,13 @@ public class UML2Util
 
 		if (!options.containsKey(UML22EcoreConverter.OPTION__SUPER_CLASS_ORDER)) {
 			options.put(UML22EcoreConverter.OPTION__SUPER_CLASS_ORDER,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__ANNOTATION_DETAILS)) {
+
+			options.put(UML22EcoreConverter.OPTION__ANNOTATION_DETAILS,
 				OPTION__REPORT);
 		}
 

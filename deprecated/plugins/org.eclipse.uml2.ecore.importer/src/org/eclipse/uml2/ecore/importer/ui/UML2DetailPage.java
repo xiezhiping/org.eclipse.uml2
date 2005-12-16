@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2DetailPage.java,v 1.8 2005/12/14 17:02:49 khussey Exp $
+ * $Id: UML2DetailPage.java,v 1.9 2005/12/16 03:55:15 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer.ui;
 
@@ -68,7 +68,7 @@ public class UML2DetailPage
 	}
 
 	protected void addOptionControl(Composite parent, String text,
-			final String option, String[] choices, String initialChoice) {
+			final String option, String[] choices, String defaultChoice) {
 
 		Label label = new Label(parent, SWT.LEFT);
 		{
@@ -96,7 +96,14 @@ public class UML2DetailPage
 				}
 			});
 
-			combo.setText(initialChoice);
+			Map options = getUML2Importer().getOptions();
+			String choice = (String) options.get(option);
+
+			if (null == choice) {
+				options.put(option, choice = defaultChoice);
+			}
+
+			combo.setText(choice);
 		}
 	}
 
@@ -195,6 +202,12 @@ public class UML2DetailPage
 		addOptionControl(group,
 			UML2ImporterPlugin.INSTANCE.getString("_UI_SuperClassOrder_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__SUPER_CLASS_ORDER,
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel}, processChoiceLabel);
+		addOptionControl(group,
+			UML2ImporterPlugin.INSTANCE
+				.getString("_UI_AnnotationDetails_label"), //$NON-NLS-1$
+			UML2Util.UML22EcoreConverter.OPTION__ANNOTATION_DETAILS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
 

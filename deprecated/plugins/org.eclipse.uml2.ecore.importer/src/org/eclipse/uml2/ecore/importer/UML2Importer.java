@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.18 2005/12/14 17:02:49 khussey Exp $
+ * $Id: UML2Importer.java,v 1.19 2005/12/16 03:55:15 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -28,18 +28,20 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.DiagnosticException;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.converter.ConverterPlugin;
+import org.eclipse.emf.converter.util.ConverterUtil;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.importer.ModelImporter;
-import org.eclipse.emf.converter.ConverterPlugin;
-import org.eclipse.emf.converter.util.ConverterUtil;
-
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.UML2Package;
+import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
+import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Util;
 
@@ -95,6 +97,7 @@ public class UML2Importer
 
 			genModel.setImporterID(getID());
 		}
+
 		return genModel;
 	}
 
@@ -104,11 +107,12 @@ public class UML2Importer
 		List locationURIs = getModelLocationURIs();
 
 		if (locationURIs.isEmpty()) {
-			diagnostic = new BasicDiagnostic(Diagnostic.ERROR, ConverterPlugin.ID,
-				ConverterUtil.ACTION_DEFAULT, UML2ImporterPlugin.INSTANCE
+			diagnostic = new BasicDiagnostic(Diagnostic.ERROR,
+				ConverterPlugin.ID, ConverterUtil.ACTION_DEFAULT,
+				UML2ImporterPlugin.INSTANCE
 					.getString("_UI_SpecifyAValidUML2Model_message"), null); //$NON-NLS-1$
 		} else {
-            monitor.beginTask("", 2); //$NON-NLS-1$
+			monitor.beginTask("", 2); //$NON-NLS-1$
 			monitor.subTask(UML2ImporterPlugin.INSTANCE.getString(
 				"_UI_Loading_message", new Object[]{locationURIs})); //$NON-NLS-1$
 
@@ -194,8 +198,7 @@ public class UML2Importer
 		return diagnostic;
 	}
 
-	public void adjustEPackage(Monitor monitor,
-			EPackage ePackage) {
+	public void adjustEPackage(Monitor monitor, EPackage ePackage) {
 		EPackageImportInfo ePackageInfo = getEPackageImportInfo(ePackage);
 		String name = ePackage.getName();
 
@@ -224,10 +227,12 @@ public class UML2Importer
 		super.adjustGenModel(monitor);
 
 		URI genModelURI = createFileURI(getGenModelPath().toString());
+		GenModel genModel = getGenModel();
+		EList foreignModel = genModel.getForeignModel();
 
 		for (Iterator i = getModelLocationURIs().iterator(); i.hasNext();) {
-			getGenModel().getForeignModel().add(
-				makeRelative((URI) i.next(), genModelURI).toString());
+			foreignModel.add(makeRelative((URI) i.next(), genModelURI)
+				.toString());
 		}
 	}
 
@@ -236,8 +241,9 @@ public class UML2Importer
 		super.loadOriginalGenModel(genModelURI);
 
 		StringBuffer text = new StringBuffer();
+		GenModel originalGenModel = getOriginalGenModel();
 
-		for (Iterator i = getOriginalGenModel().getForeignModel().iterator(); i
+		for (Iterator i = originalGenModel.getForeignModel().iterator(); i
 			.hasNext();) {
 
 			String value = (String) i.next();
@@ -250,6 +256,17 @@ public class UML2Importer
 		}
 
 		setModelLocation(text.toString().trim());
+
+		getOptions().putAll(
+			UML2GenModelUtil.getGenAnnotation(originalGenModel,
+				GenModelPackage.eNS_URI, true).getDetails().map());
+	}
+
+	public void prepareGenModelAndEPackages(Monitor monitor) {
+		super.prepareGenModelAndEPackages(monitor);
+
+		UML2GenModelUtil.getGenAnnotation(genModel, GenModelPackage.eNS_URI,
+			true).getDetails().putAll(getOptions());
 	}
 
 }

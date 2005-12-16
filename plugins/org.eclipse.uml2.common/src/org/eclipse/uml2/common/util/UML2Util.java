@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.5 2005/12/15 22:47:49 khussey Exp $
+ * $Id: UML2Util.java,v 1.6 2005/12/16 03:54:53 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -443,7 +443,6 @@ public class UML2Util {
 
 	protected static EAnnotation createEAnnotation(EModelElement eModelElement,
 			String source) {
-
 		EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 
 		eAnnotation.setSource(source);
@@ -454,7 +453,6 @@ public class UML2Util {
 
 	protected static EAnnotation getEAnnotation(EModelElement eModelElement,
 			String source, boolean createOnDemand) {
-
 		EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
 
 		return eAnnotation == null && createOnDemand

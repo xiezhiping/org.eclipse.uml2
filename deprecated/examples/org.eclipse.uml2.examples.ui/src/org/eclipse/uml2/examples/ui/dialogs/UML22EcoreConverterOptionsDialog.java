@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22EcoreConverterOptionsDialog.java,v 1.5 2005/09/29 18:06:16 khussey Exp $
+ * $Id: UML22EcoreConverterOptionsDialog.java,v 1.6 2005/12/16 03:54:51 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.dialogs;
 
@@ -42,49 +42,64 @@ public class UML22EcoreConverterOptionsDialog
 			UML2Util.UML22EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
+
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__DERIVED_FEATURES,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
+
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__DISCARD, UML2Util.OPTION__PROCESS},
 			UML2Util.OPTION__PROCESS);
+
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_FEATURES,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__DISCARD, UML2Util.OPTION__PROCESS},
 			UML2Util.OPTION__PROCESS);
+
 		createOptionArea(
 			parent,
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__DISCARD, UML2Util.OPTION__PROCESS},
 			UML2Util.OPTION__PROCESS);
+
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__DISCARD, UML2Util.OPTION__PROCESS},
 			UML2Util.OPTION__PROCESS);
+
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__REDEFINING_OPERATIONS,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
+
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
+
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
+
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__UNION_PROPERTIES,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
+
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__SUPER_CLASS_ORDER,
+			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
+				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
+
+		createOptionArea(parent,
+			UML2Util.UML22EcoreConverter.OPTION__ANNOTATION_DETAILS,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
 	}
