@@ -826,12 +826,6 @@
       <ownedParameter xmi:id="_xOvjsGwJEdq7X4sGURiZYA" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
       <ownedParameter xmi:id="_vJOosGwJEdq7X4sGURiZYA" name="isAbstract" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_26c-wGwIEdq7X4sGURiZYA" name="getVersion" type="_aAyVgGvsEdqG6fBIPwe-mw">
-      <returnResult xmi:id="_494PEGwIEdq7X4sGURiZYA" type="_aAyVgGvsEdqG6fBIPwe-mw" direction="return">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6vbFMWwIEdq7X4sGURiZYA" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6vbFMGwIEdq7X4sGURiZYA"/>
-      </returnResult>
-    </ownedOperation>
     <ownedOperation xmi:id="_8ACYgGwIEdq7X4sGURiZYA" name="isDefined" type="_UdivYGvsEdqG6fBIPwe-mw">
       <returnResult xmi:id="_E3LYUGwJEdq7X4sGURiZYA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
     </ownedOperation>
