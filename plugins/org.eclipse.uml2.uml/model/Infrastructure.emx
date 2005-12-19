@@ -16380,20 +16380,6 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rutnZhTaEdqZu-3Jy1-uYg" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rutnZRTaEdqZu-3Jy1-uYg"/>
       </ownedAttribute>
-      <ownedOperation xmi:id="_qifDQDakEdqq1tCaRkgBQQ" name="allOwningPackages" type="_3ADC7B74022D3CA18745029B" isQuery="true" bodyCondition="_3LBREDakEdqq1tCaRkgBQQ">
-        <ownedComment xmi:id="_5-hO8Dp_Edq16aujGBCOZg" body="The query allOwningPackages() returns all the directly or indirectly owning packages." annotatedElement="_qifDQDakEdqq1tCaRkgBQQ">
-          <eAnnotations xmi:id="_5-hO8Tp_Edq16aujGBCOZg" source="appliedStereotypes">
-            <contents xmi:type="Default_0:Default__Documentation" xmi:id="_5-hO8jp_Edq16aujGBCOZg"/>
-          </eAnnotations>
-        </ownedComment>
-        <ownedRule xmi:id="_3LBREDakEdqq1tCaRkgBQQ" name="spec" constrainedElement="_qifDQDakEdqq1tCaRkgBQQ">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="_3LBRETakEdqq1tCaRkgBQQ" body="result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())" language="OCL"/>
-        </ownedRule>
-        <returnResult xmi:id="_yH9m4DakEdqq1tCaRkgBQQ" type="_3ADC7B74022D3CA18745029B" direction="return">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0rlaMTakEdqq1tCaRkgBQQ" value="-1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0rlaMDakEdqq1tCaRkgBQQ"/>
-        </returnResult>
-      </ownedOperation>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA18745029B" name="Package">
       <ownedComment xmi:id="_ruHKcBTaEdqZu-3Jy1-uYg" body="A Package can have one or more ProfileApplications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles." annotatedElement="_3ADC7B74022D3CA18745029B">
@@ -16677,6 +16663,22 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rutncxTaEdqZu-3Jy1-uYg" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rutnchTaEdqZu-3Jy1-uYg"/>
       </ownedEnd>
+    </ownedMember>
+    <ownedMember xmi:type="uml:Class" xmi:id="_6OXXoXDLEdqziYxiZo0YtA" name="NamedElement" isAbstract="true">
+      <ownedOperation xmi:id="_qifDQDakEdqq1tCaRkgBQQ" name="allOwningPackages" type="_3ADC7B74022D3CA18745029B" isQuery="true" bodyCondition="_3LBREDakEdqq1tCaRkgBQQ">
+        <ownedComment xmi:id="_5-hO8Dp_Edq16aujGBCOZg" body="The query allOwningPackages() returns all the directly or indirectly owning packages." annotatedElement="_qifDQDakEdqq1tCaRkgBQQ">
+          <eAnnotations xmi:id="_5-hO8Tp_Edq16aujGBCOZg" source="appliedStereotypes">
+            <contents xmi:type="Default_0:Default__Documentation" xmi:id="_5-hO8jp_Edq16aujGBCOZg"/>
+          </eAnnotations>
+        </ownedComment>
+        <ownedRule xmi:id="_3LBREDakEdqq1tCaRkgBQQ" name="spec" constrainedElement="_qifDQDakEdqq1tCaRkgBQQ">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_3LBRETakEdqq1tCaRkgBQQ" body="result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())" language="OCL"/>
+        </ownedRule>
+        <returnResult xmi:id="_yH9m4DakEdqq1tCaRkgBQQ" type="_3ADC7B74022D3CA18745029B" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0rlaMTakEdqq1tCaRkgBQQ" value="-1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0rlaMDakEdqq1tCaRkgBQQ"/>
+        </returnResult>
+      </ownedOperation>
     </ownedMember>
   </ownedMember>
 </uml:Model>
