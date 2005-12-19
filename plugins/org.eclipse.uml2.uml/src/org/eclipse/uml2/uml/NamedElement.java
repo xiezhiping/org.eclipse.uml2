@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.6 2005/12/14 22:34:16 khussey Exp $
+ * $Id: NamedElement.java,v 1.7 2005/12/19 21:34:46 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -356,6 +356,19 @@ public interface NamedElement
 	 * @generated
 	 */
 	String separator();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query allOwningPackages() returns all the directly or indirectly owning packages.
+	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
+	 * <!-- end-model-doc -->
+	 * @model type="org.eclipse.uml2.uml.Package" ordered="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
+	 * @generated
+	 */
+	EList allOwningPackages();
 
 	String SEPARATOR = "::"; //$NON-NLS-1$
 

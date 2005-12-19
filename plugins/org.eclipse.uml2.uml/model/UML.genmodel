@@ -332,6 +332,7 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//NamedElement/isDistinguishableFrom/ns"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//NamedElement/separator"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//NamedElement/allOwningPackages"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Dependency">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -1954,8 +1955,6 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/getReferencedMetaclasses"
           cacheAdapterScope="Resource"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/getReferencedMetamodels"
-          cacheAdapterScope="Resource"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/allOwningPackages"
           cacheAdapterScope="Resource"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Model">

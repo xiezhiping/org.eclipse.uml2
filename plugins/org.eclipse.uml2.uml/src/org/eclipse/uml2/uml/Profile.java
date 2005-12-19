@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.5 2005/12/19 18:51:31 khussey Exp $
+ * $Id: Profile.java,v 1.6 2005/12/19 21:34:46 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -224,18 +224,5 @@ public interface Profile
 	 * @generated
 	 */
 	EList getReferencedMetamodels();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query allOwningPackages() returns all the directly or indirectly owning packages.
-	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
-	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Package" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
-	 * @generated
-	 */
-	EList allOwningPackages();
 
 } // Profile

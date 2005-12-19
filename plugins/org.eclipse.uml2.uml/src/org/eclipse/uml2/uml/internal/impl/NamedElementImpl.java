@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.13 2005/12/14 22:34:18 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.14 2005/12/19 21:34:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -450,6 +450,15 @@ public abstract class NamedElementImpl
 	 */
 	public String separator() {
 		return NamedElementOperations.separator(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList allOwningPackages() {
+		return NamedElementOperations.allOwningPackages(this);
 	}
 
 	/**

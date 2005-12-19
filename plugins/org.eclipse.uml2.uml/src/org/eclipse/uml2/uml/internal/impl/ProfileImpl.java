@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.10 2005/12/19 18:51:32 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.11 2005/12/19 21:34:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -343,26 +343,6 @@ public class ProfileImpl
 			return result;
 		}
 		return ProfileOperations.getReferencedMetamodels(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList allOwningPackages() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.PROFILE.getEOperations().get(12));
-			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.PROFILE
-					.getEOperations().get(12), result = ProfileOperations
-					.allOwningPackages(this));
-			}
-			return result;
-		}
-		return ProfileOperations.allOwningPackages(this);
 	}
 
 	/**

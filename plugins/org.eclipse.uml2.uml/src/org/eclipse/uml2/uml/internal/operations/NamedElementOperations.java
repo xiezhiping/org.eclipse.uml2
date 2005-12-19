@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.7 2005/12/14 22:34:27 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.8 2005/12/19 21:34:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -164,35 +165,50 @@ public final class NamedElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Dependency createDependency(NamedElement namedElement,
 			NamedElement supplier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		org.eclipse.uml2.uml.Package package_ = namedElement
+			.getNearestPackage();
+
+		if (package_ == null) {
+			throw new IllegalStateException();
+		}
+
+		if (supplier == null) {
+			throw new IllegalArgumentException(String.valueOf(supplier));
+		}
+
+		Dependency dependency = (Dependency) package_
+			.createPackagedElement(UMLPackage.Literals.DEPENDENCY);
+
+		dependency.getClients().add(namedElement);
+		dependency.getSuppliers().add(supplier);
+
+		return dependency;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String getLabel(NamedElement namedElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return namedElement.getLabel(true);
 	}
+
+	protected static final String LABEL_KEY_PREFIX = "_label_"; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String getLabel(NamedElement namedElement, boolean isLocalized) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getString(namedElement, LABEL_KEY_PREFIX
+			+ getValidJavaIdentifier(namedElement.getQualifiedName().replace(
+				':', '_')), namedElement.getName(), isLocalized);
 	}
 
 	protected static String getQualifiedName(NamedElement namedElement,
@@ -307,6 +323,29 @@ public final class NamedElementOperations
 	 */
 	public static String separator(NamedElement namedElement) {
 		return NamedElement.SEPARATOR;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query allOwningPackages() returns all the directly or indirectly owning packages.
+	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList allOwningPackages(NamedElement namedElement) {
+		EList allOwningPackages = new UniqueEList();
+
+		for (Namespace namespace = namedElement.getNamespace(); namespace != null; namespace = namespace
+			.getNamespace()) {
+
+			if (namespace instanceof org.eclipse.uml2.uml.Package) {
+				allOwningPackages.add(namespace);
+			}
+		}
+
+		return ECollections.unmodifiableEList(allOwningPackages);
 	}
 
 } // NamedElementOperations

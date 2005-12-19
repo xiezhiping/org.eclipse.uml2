@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.15 2005/12/12 19:26:21 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.16 2005/12/19 21:34:49 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -356,7 +356,7 @@ public final class NamedElementOperations extends UML2Operations {
 		String label = EMPTY_STRING;
 
 		if (null != namedElement) {
-			label = UML2Operations.getString(namedElement, LABEL_KEY_PREFIX
+			label = getString(namedElement, LABEL_KEY_PREFIX
 				+ getValidJavaIdentifier(namedElement.getQualifiedName().replace(
 					':', '_')), namedElement.getName(), localize);
 		}

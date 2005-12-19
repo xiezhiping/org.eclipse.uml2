@@ -365,6 +365,14 @@
         <details key="constraints" value="spec"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="allOwningPackages" ordered="false" upperBound="-1" eType="#//Package">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The query allOwningPackages() returns all the directly or indirectly owning packages.&#xD;&#xA;result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="spec"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" eType="#//String"
         unsettable="true" iD="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -4586,14 +4594,6 @@
     </eOperations>
     <eOperations name="getReferencedMetaclasses" ordered="false" upperBound="-1" eType="#//Class"/>
     <eOperations name="getReferencedMetamodels" ordered="false" upperBound="-1" eType="#//Model"/>
-    <eOperations name="allOwningPackages" ordered="false" upperBound="-1" eType="#//Package">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query allOwningPackages() returns all the directly or indirectly owning packages.&#xD;&#xA;result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-        <details key="constraints" value="spec"/>
-      </eAnnotations>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStereotype" ordered="false"
         upperBound="-1" eType="#//Stereotype" volatile="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
