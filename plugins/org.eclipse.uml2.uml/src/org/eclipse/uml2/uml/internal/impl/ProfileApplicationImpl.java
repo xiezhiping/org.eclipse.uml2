@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.10 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -28,6 +29,8 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.UMLPackage;
+
+import org.eclipse.uml2.uml.internal.operations.ProfileApplicationOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -176,6 +179,15 @@ public class ProfileApplicationImpl
 				UMLPackage.PROFILE_APPLICATION__IS_STRICT, oldIsStrict,
 				newIsStrict));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EPackage getProfileDefinition() {
+		return ProfileApplicationOperations.getProfileDefinition(this);
 	}
 
 	/**

@@ -8,21 +8,29 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.5 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -120,68 +128,154 @@ public final class StereotypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Extension createExtension(Stereotype stereotype,
 			org.eclipse.uml2.uml.Class metaclass, boolean isRequired) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		String name = stereotype.getName();
+
+		if (isEmpty(name)) {
+			throw new IllegalStateException();
+		}
+
+		Profile profile = stereotype.getProfile();
+
+		if (profile == null) {
+			throw new IllegalStateException();
+		}
+
+		if (metaclass == null || !metaclass.isMetaclass()
+			|| stereotype.getAllExtendedMetaclasses().contains(metaclass)) {
+
+			throw new IllegalArgumentException(String.valueOf(metaclass));
+		}
+
+		if (!profile.getReferencedMetaclasses().contains(metaclass)
+			&& !profile.getReferencedMetamodels()
+				.contains(metaclass.getModel())) {
+
+			throw new IllegalArgumentException(String.valueOf(metaclass));
+		}
+
+		String metaclassName = metaclass.getName();
+		Extension extension = (Extension) profile
+			.createPackagedElement(UMLPackage.Literals.EXTENSION);
+
+		extension.setName(metaclassName + '_' + name);
+
+		ExtensionEnd extensionEnd = (ExtensionEnd) extension
+			.createOwnedEnd(UMLPackage.Literals.EXTENSION_END);
+
+		extensionEnd.setName(Extension.STEREOTYPE_ROLE_PREFIX + name);
+		extensionEnd.setAggregation(AggregationKind.COMPOSITE_LITERAL);
+		extensionEnd.setType(stereotype);
+
+		if (!isRequired) {
+			extensionEnd.setLower(0);
+		}
+
+		Property property = stereotype
+			.createOwnedAttribute(UMLPackage.Literals.PROPERTY);
+
+		property.setName(Extension.METACLASS_ROLE_PREFIX + metaclassName);
+		property.setType(metaclass);
+		property.setAssociation(extension);
+
+		return extension;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Profile getProfile(Stereotype stereotype) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return (Profile) ElementOperations.getOwningElement(stereotype,
+			UMLPackage.Literals.PROFILE, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String getKeyword(Stereotype stereotype) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return stereotype.getKeyword(true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String getKeyword(Stereotype stereotype, boolean isLocalized) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		String keyword = getString(stereotype,
+			getValidJavaIdentifier(stereotype.getQualifiedName().replace(':',
+				'_')), EMPTY_STRING, isLocalized);
+
+		if (isEmpty(keyword)) {
+			String identifier = getValidJavaIdentifier(stereotype.getName());
+
+			keyword = identifier.length() > 0
+				? Character.toLowerCase(identifier.charAt(0))
+					+ identifier.substring(1)
+				: identifier;
+		}
+
+		return keyword;
+	}
+
+	protected static EList getExtendedMetaclasses(Stereotype stereotype,
+			EList extendedMetaclasses) {
+
+		for (Iterator ownedAttributes = stereotype.getOwnedAttributes()
+			.iterator(); ownedAttributes.hasNext();) {
+
+			Property property = (Property) ownedAttributes.next();
+
+			if (property.getAssociation() instanceof Extension) {
+				Type type = property.getType();
+
+				if (type instanceof org.eclipse.uml2.uml.Class) {
+					extendedMetaclasses.add(type);
+				}
+			}
+		}
+
+		return extendedMetaclasses;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getExtendedMetaclasses(Stereotype stereotype) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ECollections.unmodifiableEList(getExtendedMetaclasses(
+			stereotype, new UniqueEList()));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getAllExtendedMetaclasses(Stereotype stereotype) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList allExtendedMetaclasses = getExtendedMetaclasses(stereotype,
+			new UniqueEList());
+
+		for (Iterator allParents = stereotype.allParents().iterator(); allParents
+			.hasNext();) {
+
+			Object parent = allParents.next();
+
+			if (parent instanceof Stereotype) {
+				getExtendedMetaclasses((Stereotype) parent,
+					allExtendedMetaclasses);
+			}
+		}
+
+		return ECollections.unmodifiableEList(allExtendedMetaclasses);
 	}
 
 } // StereotypeOperations

@@ -8,30 +8,35 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.7 2005/12/14 22:34:27 khussey Exp $
+ * $Id: ElementOperations.java,v 1.8 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Stereotype;
 
 import org.eclipse.uml2.uml.UMLPackage;
@@ -220,7 +225,7 @@ public final class ElementOperations
 	public static Stereotype getAppliedStereotype(Element element,
 			String qualifiedName) {
 
-		for (Iterator appliedStereotypes = element.getApplicableStereotypes()
+		for (Iterator appliedStereotypes = element.getAppliedStereotypes()
 			.iterator(); appliedStereotypes.hasNext();) {
 
 			Stereotype appliedStereotype = (Stereotype) appliedStereotypes
@@ -237,49 +242,133 @@ public final class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getAppliedSubstereotypes(Element element,
 			Stereotype stereotype) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList appliedSubstereotypes = new UniqueEList();
+
+		for (Iterator appliedStereotypes = element.getAppliedStereotypes()
+			.iterator(); appliedStereotypes.hasNext();) {
+
+			Stereotype appliedStereotype = (Stereotype) appliedStereotypes
+				.next();
+
+			if (appliedStereotype.allParents().contains(stereotype)) {
+				appliedSubstereotypes.add(appliedStereotype);
+			}
+		}
+
+		return ECollections.unmodifiableEList(appliedSubstereotypes);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Stereotype getAppliedSubstereotype(Element element,
 			Stereotype stereotype, String qualifiedName) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		for (Iterator appliedSubstereotypes = element.getAppliedSubstereotypes(
+			stereotype).iterator(); appliedSubstereotypes.hasNext();) {
+
+			Stereotype appliedSubstereotype = (Stereotype) appliedSubstereotypes
+				.next();
+
+			if (safeEquals(appliedSubstereotype.getQualifiedName(),
+				qualifiedName)) {
+
+				return appliedSubstereotype;
+			}
+		}
+
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static String getAppliedVersion(Element element,
-			Stereotype stereotype) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean hasValue(Element element, Stereotype stereotype,
 			String propertyName) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EObject eObject = element.getStereotypeApplication(stereotype);
+
+		if (eObject != null && !isEmpty(propertyName)) {
+			EClass eClass = eObject.eClass();
+			String[] segments = propertyName.split(NamedElement.SEPARATOR);
+
+			for (int i = 0, length = segments.length; i < length; i++) {
+				String segment = segments[i];
+				EStructuralFeature eStructuralFeature = null;
+				int index = -1;
+
+				if (segment.indexOf('[') == -1) {
+					eStructuralFeature = eClass
+						.getEStructuralFeature(getValidJavaIdentifier(segment));
+				} else {
+					eStructuralFeature = eClass
+						.getEStructuralFeature(getValidJavaIdentifier(segment
+							.substring(0, segment.indexOf('['))));
+
+					try {
+						index = Integer.parseInt(segment.substring(segment
+							.indexOf('[') + 1, segment.indexOf(']')));
+					} catch (Exception e) {
+						return false;
+					}
+				}
+
+				if (eStructuralFeature != null) {
+
+					if (length > i + 1) {
+
+						if (eObject != null) {
+							EClassifier eType = eStructuralFeature.getEType();
+
+							if (eType instanceof EClass) {
+								eClass = (EClass) eType;
+
+								eObject = (EObject) (eStructuralFeature
+									.isMany()
+									? ((List) eObject.eGet(eStructuralFeature))
+										.get(index)
+									: eObject.eGet(eStructuralFeature));
+							}
+						} else {
+							return false;
+						}
+					} else {
+
+						if (eObject != null
+							|| getStereotype(eObject) == stereotype) {
+
+							if (eStructuralFeature.isMany()) {
+								List list = eObject == null
+									? Collections.EMPTY_LIST
+									: (List) eObject.eGet(eStructuralFeature);
+
+								return index == -1
+									? !list.isEmpty()
+									: !safeEquals(eStructuralFeature
+										.getDefaultValue(), list.get(index));
+							} else {
+								return eObject == null
+									? false
+									: !safeEquals(eStructuralFeature
+										.getDefaultValue(), eObject
+										.eGet(eStructuralFeature));
+							}
+						} else {
+							return false;
+						}
+					}
+				}
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -299,7 +388,7 @@ public final class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static void setValue(Element element, Stereotype stereotype,
+	public static Object setValue(Element element, Stereotype stereotype,
 			String propertyName, Object newValue) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -309,34 +398,63 @@ public final class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getKeywords(Element element) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EAnnotation eAnnotation = element.getEAnnotation(UMLPackage.eNS_URI);
+
+		if (eAnnotation != null) {
+			EMap details = eAnnotation.getDetails();
+
+			if (!details.isEmpty()) {
+				EList keywords = new UniqueEList();
+
+				for (Iterator d = details.iterator(); d.hasNext();) {
+					keywords.add(((Map.Entry) d).getKey());
+				}
+
+				return ECollections.unmodifiableEList(keywords);
+			}
+		}
+
+		return ECollections.EMPTY_ELIST;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean addKeyword(Element element, String keyword) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EMap details = getEAnnotation(element, UMLPackage.eNS_URI, true)
+			.getDetails();
+
+		if (!details.containsKey(keyword)) {
+			details.put(keyword, null);
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean removeKeyword(Element element, String keyword) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EAnnotation eAnnotation = element.getEAnnotation(UMLPackage.eNS_URI);
+
+		if (eAnnotation != null) {
+			EMap details = eAnnotation.getDetails();
+
+			if (details.containsKey(keyword)) {
+				details.removeKey(keyword);
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -420,24 +538,38 @@ public final class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Stereotype getApplicableStereotype(Element element,
 			String qualifiedName) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		for (Iterator applicableStereotypes = element
+			.getApplicableStereotypes().iterator(); applicableStereotypes
+			.hasNext();) {
+
+			Stereotype applicableStereotype = (Stereotype) applicableStereotypes
+				.next();
+
+			if (safeEquals(applicableStereotype.getQualifiedName(),
+				qualifiedName)) {
+
+				return applicableStereotype;
+			}
+		}
+
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean hasKeyword(Element element, String keyword) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EAnnotation eAnnotation = element.getEAnnotation(UMLPackage.eNS_URI);
+
+		return eAnnotation != null
+			&& eAnnotation.getDetails().containsKey(keyword);
 	}
 
 	/**
@@ -446,28 +578,7 @@ public final class ElementOperations
 	 * @generated NOT
 	 */
 	public static void destroy(Element element) {
-
-		for (Iterator allContents = getAllContents(element, true, true); allContents
-			.hasNext();) {
-
-			EObject eObject = (EObject) allContents.next();
-
-			for (Iterator inverseReferences = CROSS_REFERENCE_ADAPTER
-				.getInverseReferences(eObject).iterator(); inverseReferences
-				.hasNext();) {
-
-				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
-					.next();
-
-				if (setting.getEStructuralFeature().isChangeable()) {
-					EcoreUtil.remove(setting, eObject);
-				}
-			}
-
-			eObject.eAdapters().clear();
-		}
-
-		EcoreUtil.remove(element);
+		destroy((EObject) element);
 	}
 
 	/**

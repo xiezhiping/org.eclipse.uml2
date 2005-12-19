@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.12 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ElementImpl.java,v 1.13 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -294,15 +294,6 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getAppliedVersion(Stereotype stereotype) {
-		return ElementOperations.getAppliedVersion(this, stereotype);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean hasValue(Stereotype stereotype, String propertyName) {
 		return ElementOperations.hasValue(this, stereotype, propertyName);
 	}
@@ -321,9 +312,10 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(Stereotype stereotype, String propertyName,
+	public Object setValue(Stereotype stereotype, String propertyName,
 			Object newValue) {
-		ElementOperations.setValue(this, stereotype, propertyName, newValue);
+		return ElementOperations.setValue(this, stereotype, propertyName,
+			newValue);
 	}
 
 	/**
@@ -474,10 +466,10 @@ public abstract class ElementImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(25));
+				UMLPackage.Literals.ELEMENT.getEOperations().get(24));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.ELEMENT
-					.getEOperations().get(25), result = ElementOperations
+					.getEOperations().get(24), result = ElementOperations
 					.allOwnedElements(this));
 			}
 			return result;

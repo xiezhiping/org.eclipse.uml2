@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.12 2005/12/14 22:34:19 khussey Exp $
+ * $Id: PackageImpl.java,v 1.13 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -824,14 +824,53 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Profile getAppliedProfile(String qualifiedName, boolean isRecursive) {
+		return PackageOperations.getAppliedProfile(this, qualifiedName,
+			isRecursive);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getAllProfileApplications() {
+		return PackageOperations.getAllProfileApplications(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProfileApplication getProfileApplication(Profile profile) {
+		return PackageOperations.getProfileApplication(this, profile);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProfileApplication getProfileApplication(Profile profile,
+			boolean isRecursive) {
+		return PackageOperations.getProfileApplication(this, profile,
+			isRecursive);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getAllAppliedProfiles() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this, UMLPackage.Literals.PACKAGE
-				.getEOperations().get(10));
+				.getEOperations().get(9));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
-					.get(10), result = PackageOperations
+					.get(9), result = PackageOperations
 					.getAllAppliedProfiles(this));
 			}
 			return result;
@@ -844,23 +883,14 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getAppliedVersion(String profile) {
-		return PackageOperations.getAppliedVersion(this, profile);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList visibleMembers() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this, UMLPackage.Literals.PACKAGE
-				.getEOperations().get(12));
+				.getEOperations().get(15));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
-					.get(12), result = PackageOperations.visibleMembers(this));
+					.get(15), result = PackageOperations.visibleMembers(this));
 			}
 			return result;
 		}

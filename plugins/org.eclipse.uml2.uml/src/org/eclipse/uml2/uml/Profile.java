@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Profile.java,v 1.5 2005/12/19 18:51:31 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -180,14 +180,6 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.String" ordered="false"
-	 * @generated
-	 */
-	String getVersion();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
@@ -204,18 +196,18 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model ordered="false" versionDataType="org.eclipse.uml2.uml.String" versionRequired="true" versionOrdered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	EPackage getDefinition(String version);
+	EPackage getDefinition();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model ordered="false" elementRequired="true" elementOrdered="false" versionDataType="org.eclipse.uml2.uml.String" versionRequired="true" versionOrdered="false"
+	 * @model ordered="false" namedElementRequired="true" namedElementOrdered="false"
 	 * @generated
 	 */
-	ENamedElement getDefinition(NamedElement element, String version);
+	ENamedElement getDefinition(NamedElement namedElement);
 
 	/**
 	 * <!-- begin-user-doc -->

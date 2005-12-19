@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.6 2005/12/14 22:34:16 khussey Exp $
+ * $Id: UMLPackage.java,v 1.7 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57907,7 +57907,7 @@ public interface UMLPackage
 	int PROTOCOL_TRANSITION__REFERRED = TRANSITION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Pre Condition</b></em>' containment reference.
+	 * The feature id for the '<em><b>Pre Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -67385,10 +67385,10 @@ public interface UMLPackage
 	EReference getProtocolTransition_Referred();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.uml2.uml.ProtocolTransition#getPreCondition <em>Pre Condition</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.ProtocolTransition#getPreCondition <em>Pre Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Pre Condition</em>'.
+	 * @return the meta object for the reference '<em>Pre Condition</em>'.
 	 * @see org.eclipse.uml2.uml.ProtocolTransition#getPreCondition()
 	 * @see #getProtocolTransition()
 	 * @generated
@@ -75040,7 +75040,7 @@ public interface UMLPackage
 			.getProtocolTransition_Referred();
 
 		/**
-		 * The meta object literal for the '<em><b>Pre Condition</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Pre Condition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

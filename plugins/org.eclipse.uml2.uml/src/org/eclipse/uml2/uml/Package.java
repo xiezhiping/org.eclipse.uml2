@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Package.java,v 1.5 2005/12/19 18:51:31 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -316,18 +316,43 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Profile" ordered="false"
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false" isRecursiveDataType="org.eclipse.uml2.uml.Boolean" isRecursiveRequired="true" isRecursiveOrdered="false"
 	 * @generated
 	 */
-	EList getAllAppliedProfiles();
+	Profile getAppliedProfile(String qualifiedName, boolean isRecursive);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" profileDataType="org.eclipse.uml2.uml.String" profileRequired="true" profileOrdered="false"
+	 * @model kind="operation" type="org.eclipse.uml2.uml.ProfileApplication" ordered="false"
 	 * @generated
 	 */
-	String getAppliedVersion(String profile);
+	EList getAllProfileApplications();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" profileRequired="true" profileOrdered="false"
+	 * @generated
+	 */
+	ProfileApplication getProfileApplication(Profile profile);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" profileRequired="true" profileOrdered="false" isRecursiveDataType="org.eclipse.uml2.uml.Boolean" isRecursiveRequired="true" isRecursiveOrdered="false"
+	 * @generated
+	 */
+	ProfileApplication getProfileApplication(Profile profile,
+			boolean isRecursive);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Profile" ordered="false"
+	 * @generated
+	 */
+	EList getAllAppliedProfiles();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,19 +8,29 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.6 2005/12/16 03:54:53 khussey Exp $
+ * $Id: UML2Util.java,v 1.7 2005/12/19 18:51:48 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.MissingResourceException;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
@@ -34,14 +44,18 @@ import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.osgi.framework.Bundle;
 
 /**
- * @since 2.0
+ * @since 1.2
  */
 public class UML2Util {
 
@@ -68,8 +82,8 @@ public class UML2Util {
 
 		public boolean matches(EObject otherEObject) {
 
-			return null == eObject || null == otherEObject
-				? null == eObject && null == otherEObject
+			return eObject == null || otherEObject == null
+				? eObject == null && otherEObject == null
 				: eObject.eClass() == otherEObject.eClass();
 		}
 	}
@@ -114,21 +128,279 @@ public class UML2Util {
 	protected static final UMLCrossReferenceAdapter CROSS_REFERENCE_ADAPTER = new UMLCrossReferenceAdapter();
 
 	/**
+	 * The default URI converter for resource bundle look-ups.
+	 */
+	protected static final URIConverter DEFAULT_URI_CONVERTER = new URIConverterImpl();
+
+	/**
+	 * A cache of resource bundles.
+	 */
+	protected static final Map RESOURCE_BUNDLES = Collections
+		.synchronizedMap(new HashMap());
+
+	/**
 	 * The empty string.
 	 */
 	public static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
+	/**
+	 * The platform line separator.
+	 */
 	protected static final String LINE_SEPARATOR = System.getProperties()
 		.getProperty("line.separator"); //$NON-NLS-1$
 
-	public static boolean safeEquals(Object thisObject, Object thatObject) {
-		return null == thisObject
-			? null == thatObject
-			: thisObject.equals(thatObject);
+	/**
+	 * The scheme for platform URIs.
+	 */
+	protected static final String URI_SCHEME_PLATFORM = "platform"; //$NON-NLS-1$
+
+	/**
+	 * The first segment for platform plugin URIs.
+	 */
+	protected static final String URI_SEGMENT_PLUGIN = "plugin"; //$NON-NLS-1$
+
+	/**
+	 * The standard extension for properties files.
+	 */
+	protected static final String PROPERTIES_FILE_EXTENSION = "properties"; //$NON-NLS-1$
+
+	/**
+	 * Retrieves the candidate resource bundle URIs based on the specified base
+	 * URI and base segment in the specified locale.
+	 * 
+	 * @param baseURI
+	 *            The base URI (i.e. without the last segment) for the candidate
+	 *            resource bundle URIs.
+	 * @param locale
+	 *            The locale within which to base the candidate resource bundle
+	 *            URIs.
+	 * @param baseSegment
+	 *            The base segment (i.e. the last segment without the extension)
+	 *            for the candidate resource bundle URIs.
+	 * @return The candidate resource bundle URIs with the base URI and base
+	 *         segment in the locale.
+	 */
+	protected static List getResourceBundleURIs(URI baseURI, Locale locale,
+			String baseSegment) {
+		List resourceBundleURIs = new ArrayList();
+		String language = locale.getLanguage();
+
+		if (language.length() > 0) {
+			baseSegment += ('_' + language);
+			resourceBundleURIs.add(0, baseURI.appendSegment(baseSegment)
+				.appendFileExtension(PROPERTIES_FILE_EXTENSION));
+
+			String country = locale.getCountry();
+
+			if (country.length() > 0) {
+				baseSegment += ('_' + country);
+				resourceBundleURIs.add(0, baseURI.appendSegment(baseSegment)
+					.appendFileExtension(PROPERTIES_FILE_EXTENSION));
+
+				String variant = locale.getVariant();
+
+				if (variant.length() > 0) {
+					baseSegment += ('_' + variant);
+					resourceBundleURIs.add(0, baseURI
+						.appendSegment(baseSegment).appendFileExtension(
+							PROPERTIES_FILE_EXTENSION));
+				}
+			}
+		}
+
+		return resourceBundleURIs;
+	}
+
+	/**
+	 * Retrieves the candidate resource bundle URIs for the specified URI in the
+	 * specified locale (if specified).
+	 * 
+	 * @param uri
+	 *            The URI upon which to base the candidate resource bundle URIs.
+	 * @param locale
+	 *            The locale within which to base the candidate resource bundle
+	 *            URIs, or <code>null</code>.
+	 * @return The candidate resource bundle URIs for the URI in the locale (if
+	 *         specified).
+	 */
+	protected static List getResourceBundleURIs(URI uri, Locale locale) {
+		List resourceBundleURIs = new ArrayList();
+		URI baseURI = uri.trimSegments(1);
+		String baseSegment = uri.trimFileExtension().lastSegment();
+
+		resourceBundleURIs.add(baseURI.appendSegment(baseSegment)
+			.appendFileExtension(PROPERTIES_FILE_EXTENSION));
+
+		if (locale != null) {
+			Locale defaultLocale = Locale.getDefault();
+
+			resourceBundleURIs.addAll(0, getResourceBundleURIs(baseURI,
+				defaultLocale, baseSegment));
+
+			if (!locale.equals(defaultLocale)) {
+				resourceBundleURIs.addAll(0, getResourceBundleURIs(baseURI,
+					locale, baseSegment));
+			}
+		}
+
+		return resourceBundleURIs;
+	}
+
+	/**
+	 * Retrieves the (cached) resource bundle for the specified object in the
+	 * specified locale (if specified).
+	 * 
+	 * @param eObject
+	 *            The object for which to retrieve the resource bundle.
+	 * @param locale
+	 *            The locale in which to retrieve the resource bundle, or
+	 *            <code>null</code>.
+	 * @return The resource bundle for the object in the locale (if specified).
+	 */
+	protected static ResourceBundle getResourceBundle(EObject eObject,
+			Locale locale) {
+		Resource resource = eObject.eResource();
+
+		if (resource != null) {
+			Map resourceBundles = (Map) RESOURCE_BUNDLES.get(resource);
+
+			if (resourceBundles == null) {
+				RESOURCE_BUNDLES.put(resource, resourceBundles = Collections
+					.synchronizedMap(new HashMap()));
+			}
+
+			if (!resourceBundles.containsKey(locale)) {
+				ResourceSet resourceSet = resource.getResourceSet();
+				URIConverter uriConverter = resourceSet == null
+					? DEFAULT_URI_CONVERTER
+					: resourceSet.getURIConverter();
+
+				URI uri = resource.getURI();
+				List resourceBundleURIs = getResourceBundleURIs(uri, locale);
+
+				if (EcorePlugin.IS_ECLIPSE_RUNNING) {
+					URI normalizedURI = uriConverter.normalize(uri);
+					int segmentCount = normalizedURI.segmentCount();
+
+					if (URI_SCHEME_PLATFORM.equals(normalizedURI.scheme())
+						&& segmentCount > 2
+						&& URI_SEGMENT_PLUGIN.equals(normalizedURI.segment(0))) {
+
+						Bundle bundle = Platform.getBundle(normalizedURI
+							.segment(1));
+
+						if (bundle != null) {
+							Bundle[] fragments = Platform.getFragments(bundle);
+
+							if (fragments != null) {
+								String[] trailingSegments = (String[]) normalizedURI
+									.segmentsList().subList(2, segmentCount)
+									.toArray(new String[]{});
+
+								for (int f = 0; f < fragments.length; f++) {
+									resourceBundleURIs.addAll(0,
+										getResourceBundleURIs(normalizedURI
+											.trimSegments(segmentCount - 1)
+											.appendSegment(
+												fragments[f].getSymbolicName())
+											.appendSegments(trailingSegments),
+											locale));
+								}
+							}
+						}
+					}
+				}
+
+				ResourceBundle resourceBundle = null;
+
+				for (Iterator rbu = resourceBundleURIs.iterator(); rbu
+					.hasNext();) {
+
+					try {
+						InputStream inputStream = uriConverter
+							.createInputStream((URI) rbu.next());
+						try {
+							resourceBundle = new PropertyResourceBundle(
+								inputStream);
+						} finally {
+							inputStream.close();
+						}
+						break;
+					} catch (IOException ioe) {
+						// ignore
+					}
+				}
+
+				resourceBundles.put(locale, resourceBundle);
+			}
+
+			return (ResourceBundle) resourceBundles.get(locale);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Retrieves the (cached) resource bundle for the specified object,
+	 * localized in the default locale if indicated.
+	 * 
+	 * @param eObject
+	 *            The object for which to retrieve the resource bundle.
+	 * @param localize
+	 *            Whether to retrieve the resource bundle based on (the default)
+	 *            locale.
+	 * @return The resource bundle for the object (in the default locale).
+	 */
+	protected static ResourceBundle getResourceBundle(EObject eObject,
+			boolean localize) {
+		return getResourceBundle(eObject, localize
+			? Locale.getDefault()
+			: null);
+	}
+
+	/**
+	 * Retrieves a string for the specified object, localized if indicated.
+	 * 
+	 * @param object
+	 *            The object for which to retrieve a (localized) string.
+	 * @param key
+	 *            The key in the resource bundle.
+	 * @param defaultString
+	 *            The string to return if no string for the given key can be
+	 *            found.
+	 * @param localize
+	 *            Whether the string should be localized.
+	 * @return The (localized) string.
+	 */
+	protected static String getString(EObject eObject, String key,
+			String defaultString, boolean localize) {
+		String string = defaultString;
+
+		if (eObject != null) {
+
+			try {
+				ResourceBundle resourceBundle = getResourceBundle(eObject,
+					localize);
+
+				if (resourceBundle != null) {
+					string = resourceBundle.getString(key);
+				}
+			} catch (MissingResourceException mre) {
+				// ignore
+			}
+		}
+
+		return string;
+	}
+
+	public static boolean safeEquals(Object object, Object otherObject) {
+		return object == null
+			? otherObject == null
+			: object.equals(otherObject);
 	}
 
 	public static boolean isEmpty(String string) {
-		return null == string || 0 == string.length();
+		return string == null || string.length() == 0;
 	}
 
 	public static EObject findEObject(Collection eObjects, EObjectMatcher filter) {
@@ -151,7 +423,7 @@ public class UML2Util {
 	protected static EClassifier getCommonEType(EClassifier eType,
 			final EClassifier otherEType) {
 
-		if (null == eType || eType.equals(otherEType)) {
+		if (eType == null || eType.equals(otherEType)) {
 			return eType;
 		} else {
 			return (EClassifier) new EcoreSwitch() {
@@ -223,8 +495,8 @@ public class UML2Util {
 	protected static int getGreaterUpperBound(int upperBound,
 			int otherUpperBound) {
 
-		return ETypedElement.UNBOUNDED_MULTIPLICITY == upperBound
-			|| ETypedElement.UNBOUNDED_MULTIPLICITY == otherUpperBound
+		return upperBound == ETypedElement.UNBOUNDED_MULTIPLICITY
+			|| otherUpperBound == ETypedElement.UNBOUNDED_MULTIPLICITY
 			? ETypedElement.UNBOUNDED_MULTIPLICITY
 			: Math.max(upperBound, otherUpperBound);
 	}
@@ -413,7 +685,7 @@ public class UML2Util {
 		if (!isEmpty(text)) {
 			String documentation = EcoreUtil.getDocumentation(eModelElement);
 
-			EcoreUtil.setDocumentation(eModelElement, null == documentation
+			EcoreUtil.setDocumentation(eModelElement, documentation == null
 				? text
 				: documentation + LINE_SEPARATOR + text);
 		}
@@ -462,29 +734,26 @@ public class UML2Util {
 
 	protected static void destroy(EObject eObject) {
 
-		if (eObject != null) {
+		for (Iterator allContents = getAllContents(eObject, true, true); allContents
+			.hasNext();) {
 
-			for (Iterator allContents = getAllContents(eObject, true, true); allContents
+			EObject containedEObject = (EObject) allContents.next();
+
+			for (Iterator inverseReferences = CROSS_REFERENCE_ADAPTER
+				.getInverseReferences(containedEObject).iterator(); inverseReferences
 				.hasNext();) {
 
-				EObject containedEObject = (EObject) allContents.next();
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
+					.next();
 
-				for (Iterator inverseReferences = CROSS_REFERENCE_ADAPTER
-					.getInverseReferences(containedEObject).iterator(); inverseReferences
-					.hasNext();) {
-
-					EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
-						.next();
-
-					if (setting.getEStructuralFeature().isChangeable()) {
-						EcoreUtil.remove(setting, containedEObject);
-					}
+				if (setting.getEStructuralFeature().isChangeable()) {
+					EcoreUtil.remove(setting, containedEObject);
 				}
-
-				containedEObject.eAdapters().clear();
 			}
 
-			EcoreUtil.remove(eObject);
+			containedEObject.eAdapters().clear();
 		}
+
+		EcoreUtil.remove(eObject);
 	}
 }

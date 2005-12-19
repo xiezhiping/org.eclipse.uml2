@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.10 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -274,15 +274,6 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getVersion() {
-		return ProfileOperations.getVersion(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isDefined() {
 		return ProfileOperations.isDefined(this);
 	}
@@ -301,8 +292,8 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EPackage getDefinition(String version) {
-		return ProfileOperations.getDefinition(this, version);
+	public EPackage getDefinition() {
+		return ProfileOperations.getDefinition(this);
 	}
 
 	/**
@@ -310,8 +301,8 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ENamedElement getDefinition(NamedElement element, String version) {
-		return ProfileOperations.getDefinition(this, element, version);
+	public ENamedElement getDefinition(NamedElement namedElement) {
+		return ProfileOperations.getDefinition(this, namedElement);
 	}
 
 	/**
@@ -323,10 +314,10 @@ public class ProfileImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.PROFILE.getEOperations().get(11));
+				UMLPackage.Literals.PROFILE.getEOperations().get(10));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.PROFILE
-					.getEOperations().get(11), result = ProfileOperations
+					.getEOperations().get(10), result = ProfileOperations
 					.getReferencedMetaclasses(this));
 			}
 			return result;
@@ -343,10 +334,10 @@ public class ProfileImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.PROFILE.getEOperations().get(12));
+				UMLPackage.Literals.PROFILE.getEOperations().get(11));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.PROFILE
-					.getEOperations().get(12), result = ProfileOperations
+					.getEOperations().get(11), result = ProfileOperations
 					.getReferencedMetamodels(this));
 			}
 			return result;
@@ -363,10 +354,10 @@ public class ProfileImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.PROFILE.getEOperations().get(13));
+				UMLPackage.Literals.PROFILE.getEOperations().get(12));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.PROFILE
-					.getEOperations().get(13), result = ProfileOperations
+					.getEOperations().get(12), result = ProfileOperations
 					.allOwningPackages(this));
 			}
 			return result;

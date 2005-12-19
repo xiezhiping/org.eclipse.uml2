@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.3 2005/12/12 16:58:34 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.4 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml;
+
+import org.eclipse.emf.ecore.EPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -85,5 +87,13 @@ public interface ProfileApplication
 	 * @generated
 	 */
 	void setIsStrict(boolean value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" ordered="false"
+	 * @generated
+	 */
+	EPackage getProfileDefinition();
 
 } // ProfileApplication

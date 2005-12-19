@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResource.java,v 1.1 2005/12/07 14:17:51 khussey Exp $
+ * $Id: UMLResource.java,v 1.2 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -59,5 +59,8 @@ public interface UMLResource
 	 * @generated
 	 */
 	public static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
+
+	public static final String PROFILE_FILE_EXTENSION = "profile." //$NON-NLS-1$
+		+ FILE_EXTENSION;
 
 } //UMLResource

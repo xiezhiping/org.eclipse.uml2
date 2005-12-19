@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.4 2005/12/14 22:34:27 khussey Exp $
+ * $Id: PackageOperations.java,v 1.5 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -211,7 +211,20 @@ public final class PackageOperations
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static EList getAllAppliedProfiles(
+	public static Profile getAppliedProfile(
+			org.eclipse.uml2.uml.Package package_, String qualifiedName,
+			boolean isRecursive) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getAllProfileApplications(
 			org.eclipse.uml2.uml.Package package_) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -223,8 +236,33 @@ public final class PackageOperations
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static String getAppliedVersion(
-			org.eclipse.uml2.uml.Package package_, String profile) {
+	public static ProfileApplication getProfileApplication(
+			org.eclipse.uml2.uml.Package package_, Profile profile) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ProfileApplication getProfileApplication(
+			org.eclipse.uml2.uml.Package package_, Profile profile,
+			boolean isRecursive) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getAllAppliedProfiles(
+			org.eclipse.uml2.uml.Package package_) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

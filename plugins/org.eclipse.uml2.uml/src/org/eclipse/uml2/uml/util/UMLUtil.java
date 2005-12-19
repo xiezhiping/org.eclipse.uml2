@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.1 2005/12/14 22:34:17 khussey Exp $
+ * $Id: UMLUtil.java,v 1.2 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -59,6 +59,7 @@ import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
+import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
@@ -2874,7 +2875,7 @@ public class UMLUtil
 			getMessageSubstitution(context, object2)};
 	}
 
-	protected static Stereotype getStereotype(EObject stereotypeApplication) {
+	public static Stereotype getStereotype(EObject stereotypeApplication) {
 		EAnnotation eAnnotation = stereotypeApplication.eClass()
 			.getEAnnotation(UMLPackage.eNS_URI);
 
@@ -2886,6 +2887,34 @@ public class UMLUtil
 
 				if (reference instanceof Stereotype) {
 					return (Stereotype) reference;
+				}
+			}
+		}
+
+		return null;
+	}
+
+	public static Element getBaseElement(EObject stereotypeApplication) {
+
+		if (getStereotype(stereotypeApplication) != null) {
+			EClass eClass = stereotypeApplication.eClass();
+
+			for (Iterator eAllStructuralFeatures = eClass
+				.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
+				.hasNext();) {
+
+				EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
+					.next();
+
+				if (eStructuralFeature.getName().startsWith(
+					Extension.METACLASS_ROLE_PREFIX)) {
+
+					Object value = stereotypeApplication
+						.eGet(eStructuralFeature);
+
+					if (value instanceof Element) {
+						return (Element) value;
+					}
 				}
 			}
 		}

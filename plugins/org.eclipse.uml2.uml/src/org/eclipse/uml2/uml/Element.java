@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.5 2005/12/14 22:34:16 khussey Exp $
+ * $Id: Element.java,v 1.6 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -182,14 +182,6 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
-	 * @generated
-	 */
-	String getAppliedVersion(Stereotype stereotype);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false"
 	 * @generated
 	 */
@@ -206,10 +198,10 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false" newValueRequired="true" newValueOrdered="false"
+	 * @model required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false" newValueRequired="true" newValueOrdered="false"
 	 * @generated
 	 */
-	void setValue(Stereotype stereotype, String propertyName, Object newValue);
+	Object setValue(Stereotype stereotype, String propertyName, Object newValue);
 
 	/**
 	 * <!-- begin-user-doc -->

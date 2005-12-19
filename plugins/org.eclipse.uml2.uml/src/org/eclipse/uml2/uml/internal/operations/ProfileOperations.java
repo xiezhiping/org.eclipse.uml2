@@ -8,10 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.3 2005/12/14 22:34:27 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.4 2005/12/19 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -20,15 +22,23 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Namespace;
@@ -36,6 +46,8 @@ import org.eclipse.uml2.uml.Profile;
 
 import org.eclipse.uml2.uml.Stereotype;
 
+import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -52,20 +64,105 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Profile#createMetaclassReference(org.eclipse.uml2.uml.Class) <em>Create Metaclass Reference</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#createMetamodelReference(org.eclipse.uml2.uml.Model) <em>Create Metamodel Reference</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#createOwnedStereotype(java.lang.String, boolean) <em>Create Owned Stereotype</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#getVersion() <em>Get Version</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#isDefined() <em>Is Defined</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#define() <em>Define</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition(java.lang.String) <em>Get Definition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition(org.eclipse.uml2.uml.NamedElement, java.lang.String) <em>Get Definition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition() <em>Get Definition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition(org.eclipse.uml2.uml.NamedElement) <em>Get Definition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetaclasses() <em>Get Referenced Metaclasses</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetamodels() <em>Get Referenced Metamodels</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#allOwningPackages() <em>All Owning Packages</em>}</li>
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ProfileOperations {
+public final class ProfileOperations
+		extends UMLOperations {
+
+	public static final class Profile2EPackageConverter
+			extends UML2EcoreConverter {
+
+		public Object caseProfile(Profile profile) {
+			EPackage ePackage = packages.contains(profile)
+				? EcoreFactory.eINSTANCE.createEPackage()
+				: (EPackage) doSwitch((Profile) packages.iterator().next());
+			elementToEModelElementMap.put(profile, ePackage);
+
+			if (packages.contains(profile)) {
+				setName(ePackage, profile);
+
+				String name = ePackage.getName();
+				ePackage.setNsPrefix(name);
+				ePackage.setNsURI("http:///" + name + EcoreUtil.generateUUID() //$NON-NLS-1$
+					+ "." + UMLResource.PROFILE_FILE_EXTENSION); //$NON-NLS-1$				
+			}
+
+			defaultCase(profile);
+
+			return ePackage;
+		}
+
+		protected EClassifier getEType(Type type) {
+
+			if (type instanceof org.eclipse.uml2.uml.Class) {
+				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) type;
+
+				if (class_.isMetaclass()) {
+					return UMLPackage.eINSTANCE
+						.getEClassifier(class_.getName());
+				}
+			}
+
+			return super.getEType(type);
+		}
+
+		protected void setName(final ENamedElement eNamedElement,
+				NamedElement namedElement) {
+
+			new UMLSwitch() {
+
+				public Object caseClassifier(Classifier classifier) {
+					setName(eNamedElement, classifier.getQualifiedName(), true);
+					return classifier;
+				}
+
+				public Object caseEnumerationLiteral(
+						EnumerationLiteral enumerationLiteral) {
+					setName(eNamedElement, enumerationLiteral.getName(), false);
+					return enumerationLiteral;
+				}
+
+				public Object caseProfile(Profile profile) {
+					setName(eNamedElement, profile.getQualifiedName(), true);
+					return profile;
+				}
+
+			}.doSwitch(namedElement);
+		}
+
+		public Object doSwitch(EObject eObject) {
+			Object eModelElement = super.doSwitch(eObject);
+
+			if (eModelElement instanceof EClassifier) {
+				EList references = getEAnnotation((EClassifier) eModelElement,
+					UMLPackage.eNS_URI, true).getReferences();
+
+				if (references.isEmpty()) {
+					references.add(eObject);
+				}
+			}
+
+			return eModelElement;
+		}
+
+		public static EPackage convert(Profile profile) {
+			Collection ePackages = new Profile2EPackageConverter().convert(
+				Collections.singleton(profile), null, null, null);
+			return ePackages.size() == 1
+				? (EPackage) ePackages.iterator().next()
+				: null;
+		}
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -151,12 +248,17 @@ public final class ProfileOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EObject create(Profile profile, Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ENamedElement definition = profile.getDefinition(classifier);
+
+		if (definition instanceof EClass) {
+			EClass eClass = (EClass) definition;
+			return eClass.getEPackage().getEFactoryInstance().create(eClass);
+		} else {
+			throw new IllegalArgumentException(String.valueOf(classifier));
+		}
 	}
 
 	/**
@@ -186,57 +288,61 @@ public final class ProfileOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Stereotype createOwnedStereotype(Profile profile,
 			String name, boolean isAbstract) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (!isEmpty(name)) {
+			Stereotype ownedStereotype = (Stereotype) profile
+				.createPackagedElement(UMLPackage.Literals.STEREOTYPE);
+			ownedStereotype.setName(name);
+			ownedStereotype.setIsAbstract(isAbstract);
+			return ownedStereotype;
+		} else {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static String getVersion(Profile profile) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isDefined(Profile profile) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EAnnotation eAnnotation = profile.getEAnnotation(UMLPackage.eNS_URI);
+		return eAnnotation != null && eAnnotation.getContents().size() > 0;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EPackage define(Profile profile) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EPackage definition = Profile2EPackageConverter.convert(profile);
+		getEAnnotation(profile, UMLPackage.eNS_URI, true).getContents().add(0,
+			definition);
+		return definition;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public static EPackage getDefinition(Profile profile, String version) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public static EPackage getDefinition(Profile profile) {
+		EAnnotation eAnnotation = profile.getEAnnotation(UMLPackage.eNS_URI);
+
+		if (eAnnotation != null) {
+			EList contents = eAnnotation.getContents();
+
+			if (contents.size() > 0) {
+				return (EPackage) contents.get(0);
+			}
+		}
+
+		return null;
 	}
 
 	/**
@@ -245,7 +351,7 @@ public final class ProfileOperations {
 	 * @generated
 	 */
 	public static ENamedElement getDefinition(Profile profile,
-			NamedElement element, String version) {
+			NamedElement namedElement) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
