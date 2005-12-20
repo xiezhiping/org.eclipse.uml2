@@ -8,13 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationOperations.java,v 1.1 2005/12/19 18:51:32 khussey Exp $
+ * $Id: ProfileApplicationOperations.java,v 1.2 2005/12/20 16:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.uml2.uml.ProfileApplication;
+import org.eclipse.uml2.uml.UMLPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,9 +31,9 @@ import org.eclipse.uml2.uml.ProfileApplication;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ProfileApplicationOperations {
+public final class ProfileApplicationOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,13 +47,22 @@ public final class ProfileApplicationOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EPackage getProfileDefinition(
 			ProfileApplication profileApplication) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EAnnotation eAnnotation = profileApplication
+			.getEAnnotation(UMLPackage.eNS_URI);
+
+		if (eAnnotation != null) {
+			EList references = eAnnotation.getReferences();
+
+			if (references.size() > 0) {
+				return (EPackage) references.get(0);
+			}
+		}
+
+		return null;
 	}
 
 } // ProfileApplicationOperations

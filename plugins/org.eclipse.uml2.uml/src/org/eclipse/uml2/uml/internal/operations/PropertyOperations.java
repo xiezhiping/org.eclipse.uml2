@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.16 2005/12/14 22:34:27 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.17 2005/12/20 16:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -699,48 +699,48 @@ public final class PropertyOperations
 	 */
 	public static void setOpposite(Property property, Property newOpposite) {
 
-		if (property.getOwningAssociation() == null
-			&& newOpposite.getOwningAssociation() == null) {
-
-			Association association = property.getAssociation();
-
-			if (association == null) {
-				association = UMLFactory.eINSTANCE.createAssociation();
-
-				org.eclipse.uml2.uml.Package owningPackage = (org.eclipse.uml2.uml.Package) ElementOperations
-					.getOwningElement(property, UMLPackage.Literals.PACKAGE,
-						true);
-
-				if (owningPackage != null) {
-					owningPackage.getPackagedElements().add(association);
-				}
-			}
-
-			EList memberEnds = association.getMemberEnds();
-
-			switch (memberEnds.size()) {
-				case 0 :
-					memberEnds.add(property);
-				case 1 :
-					if (newOpposite != null) {
-						memberEnds.add(newOpposite);
-					}
-					break;
-				case 2 :
-					if (newOpposite == null) {
-						memberEnds.remove(Math
-							.abs(memberEnds.indexOf(property) - 1));
-					} else {
-						memberEnds
-							.set(Math.abs(memberEnds.indexOf(property) - 1),
-								newOpposite);
-					}
-					break;
-				default :
-					throw new IllegalStateException();
-			}
-		} else {
+		if (property.getOwningAssociation() != null) {
 			throw new IllegalStateException();
+		}
+
+		if (newOpposite.getOwningAssociation() != null) {
+			throw new IllegalArgumentException(String.valueOf(newOpposite));
+		}
+
+		Association association = property.getAssociation();
+
+		if (association == null) {
+			association = UMLFactory.eINSTANCE.createAssociation();
+
+			org.eclipse.uml2.uml.Package owningPackage = (org.eclipse.uml2.uml.Package) ElementOperations
+				.getOwningElement(property, UMLPackage.Literals.PACKAGE, true);
+
+			if (owningPackage != null) {
+				owningPackage.getPackagedElements().add(association);
+			}
+		}
+
+		EList memberEnds = association.getMemberEnds();
+
+		switch (memberEnds.size()) {
+			case 0 :
+				memberEnds.add(property);
+			case 1 :
+				if (newOpposite != null) {
+					memberEnds.add(newOpposite);
+				}
+				break;
+			case 2 :
+				if (newOpposite == null) {
+					memberEnds.remove(Math
+						.abs(memberEnds.indexOf(property) - 1));
+				} else {
+					memberEnds.set(Math.abs(memberEnds.indexOf(property) - 1),
+						newOpposite);
+				}
+				break;
+			default :
+				throw new IllegalStateException();
 		}
 	}
 

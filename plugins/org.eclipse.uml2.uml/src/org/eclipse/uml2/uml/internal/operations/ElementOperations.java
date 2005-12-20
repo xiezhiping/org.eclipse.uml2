@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.8 2005/12/19 18:51:32 khussey Exp $
+ * $Id: ElementOperations.java,v 1.9 2005/12/20 16:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Extension;
@@ -504,24 +505,49 @@ public final class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EObject applyStereotype(Element element, Stereotype stereotype) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (stereotype == null || element.isStereotypeApplied(stereotype)
+			|| !element.getApplicableStereotypes().contains(stereotype)) {
+
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		EObject stereotypeApplication = stereotype.getProfile().create(
+			stereotype);
+		Resource eResource = element.eResource();
+
+		if (eResource != null) {
+			eResource.getContents().add(stereotypeApplication);
+		}
+
+		return stereotypeApplication;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EObject unapplyStereotype(Element element,
 			Stereotype stereotype) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (stereotype == null || element.isStereotypeRequired(stereotype)) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		EObject stereotypeApplication = element
+			.getStereotypeApplication(stereotype);
+
+		if (stereotypeApplication == null) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		destroy(stereotypeApplication);
+
+		return stereotypeApplication;
 	}
 
 	/**

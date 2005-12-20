@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.4 2005/12/19 18:51:32 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.5 2005/12/20 16:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -25,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -37,11 +39,13 @@ import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.emf.common.util.UniqueEList;
 
-import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Profile;
 
 import org.eclipse.uml2.uml.Stereotype;
@@ -256,33 +260,53 @@ public final class ProfileOperations
 		if (definition instanceof EClass) {
 			EClass eClass = (EClass) definition;
 			return eClass.getEPackage().getEFactoryInstance().create(eClass);
-		} else {
-			throw new IllegalArgumentException(String.valueOf(classifier));
 		}
+
+		throw new IllegalArgumentException(String.valueOf(classifier));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static ElementImport createMetaclassReference(Profile profile,
 			org.eclipse.uml2.uml.Class metaclass) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (metaclass == null
+			|| profile.getReferencedMetaclasses().contains(metaclass)) {
+
+			throw new IllegalArgumentException(String.valueOf(metaclass));
+		}
+
+		ElementImport metaclassReference = profile.createElementImport(
+			metaclass, VisibilityKind.PUBLIC_LITERAL);
+
+		profile.getMetaclassReferences().add(metaclassReference);
+
+		return metaclassReference;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static PackageImport createMetamodelReference(Profile profile,
 			Model metamodel) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (metamodel == null
+			|| profile.getReferencedMetamodels().contains(metamodel)) {
+
+			throw new IllegalArgumentException(String.valueOf(metamodel));
+		}
+
+		PackageImport metamodelReference = profile.createPackageImport(
+			metamodel, VisibilityKind.PUBLIC_LITERAL);
+
+		profile.getMetamodelReferences().add(metamodelReference);
+
+		return metamodelReference;
 	}
 
 	/**
@@ -293,16 +317,16 @@ public final class ProfileOperations
 	public static Stereotype createOwnedStereotype(Profile profile,
 			String name, boolean isAbstract) {
 
-		if (!isEmpty(name)) {
-			Stereotype ownedStereotype = (Stereotype) profile
-				.createPackagedElement(UMLPackage.Literals.STEREOTYPE);
-			ownedStereotype.setName(name);
-			ownedStereotype.setIsAbstract(isAbstract);
-			return ownedStereotype;
-		} else {
+		if (isEmpty(name)) {
 			throw new IllegalArgumentException(String.valueOf(name));
 		}
-	}
+
+		Stereotype ownedStereotype = (Stereotype) profile
+			.createPackagedElement(UMLPackage.Literals.STEREOTYPE);
+		ownedStereotype.setName(name);
+		ownedStereotype.setIsAbstract(isAbstract);
+		return ownedStereotype;
+}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -348,58 +372,97 @@ public final class ProfileOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static ENamedElement getDefinition(Profile profile,
-			NamedElement namedElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static EList getReferencedMetaclasses(Profile profile) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static EList getReferencedMetamodels(Profile profile) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query allOwningPackages() returns all the directly or indirectly owning packages.
-	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
-	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList allOwningPackages(Profile profile) {
-		EList allOwningPackages = new UniqueEList();
+	public static ENamedElement getDefinition(final Profile profile,
+			NamedElement namedElement) {
 
-		for (Namespace namespace = profile.getNamespace(); namespace != null; namespace = namespace
-			.getNamespace()) {
+		return (ENamedElement) new UMLSwitch() {
 
-			if (namespace instanceof org.eclipse.uml2.uml.Package) {
-				allOwningPackages.add(namespace);
+			public Object caseClassifier(Classifier classifier) {
+				EPackage profileDefinition = profile.getDefinition();
+				return profileDefinition == null
+					? null
+					: profileDefinition
+						.getEClassifier(getValidJavaIdentifier(classifier
+							.getQualifiedName()));
+			}
+
+			public Object caseEnumerationLiteral(
+					EnumerationLiteral enumerationLiteral) {
+				Object enumerationDefinition = doSwitch(enumerationLiteral
+					.getEnumeration());
+				return enumerationDefinition instanceof EEnum
+					? ((EEnum) enumerationDefinition)
+						.getEEnumLiteral(enumerationLiteral.getName())
+					: null;
+			}
+
+			public Object caseProperty(Property property) {
+				Object namespaceDefinition = doSwitch(property.getNamespace());
+				return namespaceDefinition instanceof EClass
+					? ((EClass) namespaceDefinition)
+						.getEStructuralFeature(getValidJavaIdentifier(property
+							.getName()))
+					: null;
+			}
+
+			public Object casePackage(org.eclipse.uml2.uml.Package package_) {
+				return package_ == profile
+					? profile.getDefinition()
+					: null;
+			}
+
+			public Object doSwitch(EObject eObject) {
+				return eObject == null
+					? null
+					: super.doSwitch(eObject);
+			}
+		}.doSwitch(namedElement);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static EList getReferencedMetaclasses(Profile profile) {
+		EList referencedMetaclasses = new UniqueEList();
+
+		for (Iterator metaclassReferences = profile.getMetaclassReferences()
+			.iterator(); metaclassReferences.hasNext();) {
+
+			PackageableElement importedElement = ((ElementImport) metaclassReferences
+				.next()).getImportedElement();
+
+			if (importedElement != null) {
+				referencedMetaclasses.add(importedElement);
 			}
 		}
 
-		return ECollections.unmodifiableEList(allOwningPackages);
+		return ECollections.unmodifiableEList(referencedMetaclasses);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static EList getReferencedMetamodels(Profile profile) {
+		EList referencedMetamodels = new UniqueEList();
+
+		for (Iterator metamodelReferences = profile.getMetamodelReferences()
+			.iterator(); metamodelReferences.hasNext();) {
+
+			org.eclipse.uml2.uml.Package importedPackage = ((PackageImport) metamodelReferences
+				.next()).getImportedPackage();
+
+			if (importedPackage != null) {
+				referencedMetamodels.add(importedPackage);
+			}
+		}
+
+		return ECollections.unmodifiableEList(referencedMetamodels);
 	}
 
 } // ProfileOperations

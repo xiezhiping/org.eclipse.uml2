@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.7 2005/12/14 22:34:27 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.8 2005/12/20 16:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -102,47 +102,97 @@ public final class NamespaceOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static ElementImport createElementImport(Namespace namespace,
 			PackageableElement element, VisibilityKind visibility) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (element == null
+			|| namespace.getImportedElements().contains(element)) {
+
+			throw new IllegalArgumentException(String.valueOf(element));
+		}
+
+		if (visibility == null) {
+			throw new IllegalArgumentException(String.valueOf(visibility));
+		}
+
+		ElementImport elementImport = namespace.createElementImport();
+
+		elementImport.setImportedElement(element);
+		elementImport.setVisibility(visibility);
+
+		return elementImport;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static PackageImport createPackageImport(Namespace namespace,
 			org.eclipse.uml2.uml.Package package_, VisibilityKind visibility) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (package_ == null
+			|| namespace.getImportedPackages().contains(package_)) {
+
+			throw new IllegalArgumentException(String.valueOf(package_));
+		}
+
+		if (visibility == null) {
+			throw new IllegalArgumentException(String.valueOf(visibility));
+		}
+
+		PackageImport packageImport = namespace.createPackageImport();
+
+		packageImport.setImportedPackage(package_);
+		packageImport.setVisibility(visibility);
+
+		return packageImport;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getImportedElements(Namespace namespace) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList importedElements = new UniqueEList();
+
+		for (Iterator elementImports = namespace.getElementImports().iterator(); elementImports
+			.hasNext();) {
+
+			PackageableElement importedElement = ((ElementImport) elementImports
+				.next()).getImportedElement();
+
+			if (importedElement != null) {
+				importedElements.add(importedElement);
+			}
+		}
+
+		return ECollections.unmodifiableEList(importedElements);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getImportedPackages(Namespace namespace) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList importedPackages = new UniqueEList();
+
+		for (Iterator packageImports = namespace.getPackageImports().iterator(); packageImports
+			.hasNext();) {
+
+			org.eclipse.uml2.uml.Package importedPackage = ((PackageImport) packageImports
+				.next()).getImportedPackage();
+
+			if (importedPackage != null) {
+				importedPackages.add(importedPackage);
+			}
+		}
+
+		return ECollections.unmodifiableEList(importedPackages);
 	}
 
 	/**

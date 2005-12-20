@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.5 2005/12/19 18:51:32 khussey Exp $
+ * $Id: PackageOperations.java,v 1.6 2005/12/20 16:34:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -29,6 +29,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
+import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
@@ -101,62 +102,85 @@ public final class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static org.eclipse.uml2.uml.Package createNestedPackage(
 			org.eclipse.uml2.uml.Package package_, String name) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		org.eclipse.uml2.uml.Package nestedPackage = (org.eclipse.uml2.uml.Package) package_
+			.createPackagedElement(UMLPackage.Literals.PACKAGE);
+		nestedPackage.setName(name);
+		return nestedPackage;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static org.eclipse.uml2.uml.Class createOwnedClass(
 			org.eclipse.uml2.uml.Package package_, String name,
 			boolean isAbstract) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		org.eclipse.uml2.uml.Class ownedClass = (org.eclipse.uml2.uml.Class) package_
+			.createPackagedElement(UMLPackage.Literals.CLASS);
+		ownedClass.setName(name);
+		ownedClass.setIsAbstract(isAbstract);
+		return ownedClass;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Enumeration createOwnedEnumeration(
 			org.eclipse.uml2.uml.Package package_, String name) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		Enumeration enumeration = (Enumeration) package_
+			.createPackagedElement(UMLPackage.Literals.ENUMERATION);
+		enumeration.setName(name);
+		return enumeration;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static PrimitiveType createOwnedPrimitiveType(
 			org.eclipse.uml2.uml.Package package_, String name) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		PrimitiveType primitiveType = (PrimitiveType) package_
+			.createPackagedElement(UMLPackage.Literals.PRIMITIVE_TYPE);
+		primitiveType.setName(name);
+		return primitiveType;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isProfileApplied(
 			org.eclipse.uml2.uml.Package package_, Profile profile) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getProfileApplication(package_, profile) != null;
 	}
 
 	/**
@@ -183,89 +207,161 @@ public final class PackageOperations
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static EList getAppliedProfiles(org.eclipse.uml2.uml.Package package_) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	protected static EList getAppliedProfiles(
+			org.eclipse.uml2.uml.Package package_, EList appliedProfiles) {
+
+		for (Iterator profileApplications = package_.getProfileApplications()
+			.iterator(); profileApplications.hasNext();) {
+
+			Profile appliedProfile = ((ProfileApplication) profileApplications
+				.next()).getAppliedProfile();
+
+			if (appliedProfile != null) {
+				appliedProfiles.add(appliedProfile);
+			}
+		}
+
+		return appliedProfiles;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 */
+	public static EList getAppliedProfiles(org.eclipse.uml2.uml.Package package_) {
+		return getAppliedProfiles(package_, new UniqueEList());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
 	 */
 	public static Profile getAppliedProfile(
 			org.eclipse.uml2.uml.Package package_, String qualifiedName) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		for (Iterator profileApplications = package_.getProfileApplications()
+			.iterator(); profileApplications.hasNext();) {
+
+			Profile appliedProfile = ((ProfileApplication) profileApplications
+				.next()).getAppliedProfile();
+
+			if (appliedProfile != null
+				&& appliedProfile.getQualifiedName().equals(qualifiedName)) {
+
+				return appliedProfile;
+			}
+		}
+
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Profile getAppliedProfile(
 			org.eclipse.uml2.uml.Package package_, String qualifiedName,
 			boolean isRecursive) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Profile appliedProfile = package_.getAppliedProfile(qualifiedName);
+
+		if (appliedProfile == null && isRecursive) {
+
+			for (package_ = package_.getNestingPackage(); package_ != null
+				&& appliedProfile == null; package_ = package_
+				.getNestingPackage()) {
+
+				appliedProfile = package_.getAppliedProfile(qualifiedName);
+			}
+		}
+
+		return appliedProfile;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getAllProfileApplications(
 			org.eclipse.uml2.uml.Package package_) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList allProfileApplications = new UniqueEList(package_
+			.getProfileApplications());
+
+		for (Iterator allOwningPackages = package_.allOwningPackages()
+			.iterator(); allOwningPackages.hasNext();) {
+
+			allProfileApplications
+				.addAll(((org.eclipse.uml2.uml.Package) allOwningPackages
+					.next()).getProfileApplications());
+		}
+
+		return ECollections.unmodifiableEList(allProfileApplications);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static ProfileApplication getProfileApplication(
 			org.eclipse.uml2.uml.Package package_, Profile profile) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		
+		for (Iterator profileApplications = package_.getProfileApplications().iterator(); profileApplications.hasNext();) {
+			ProfileApplication profileApplication = (ProfileApplication) profileApplications.next();
+			
+			if (profileApplication.getAppliedProfile() == profile) {
+				return profileApplication;
+			}
+		}
+
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static ProfileApplication getProfileApplication(
 			org.eclipse.uml2.uml.Package package_, Profile profile,
 			boolean isRecursive) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ProfileApplication profileApplication = package_
+			.getProfileApplication(profile);
+
+		if (profileApplication == null && isRecursive) {
+
+			for (package_ = package_.getNestingPackage(); package_ != null
+				&& profileApplication == null; package_ = package_
+				.getNestingPackage()) {
+
+				profileApplication = package_.getProfileApplication(profile);
+			}
+		}
+
+		return profileApplication;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getAllAppliedProfiles(
 			org.eclipse.uml2.uml.Package package_) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList allAppliedProfiles = getAppliedProfiles(package_,
+			new UniqueEList());
+
+		for (Iterator allOwningPackages = package_.allOwningPackages()
+			.iterator(); allOwningPackages.hasNext();) {
+
+			getAppliedProfiles((org.eclipse.uml2.uml.Package) allOwningPackages
+				.next(), allAppliedProfiles);
+		}
+
+		return ECollections.unmodifiableEList(allAppliedProfiles);
 	}
 
 	protected static EList allImportedPackages(
