@@ -765,12 +765,22 @@
       <returnResult xmi:id="_19CSEGv5Edq7X4sGURiZYA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="_2TitkGv5Edq7X4sGURiZYA" name="profile" type="__pew8GvzEdq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_r--GcGv5Edq7X4sGURiZYA" name="applyProfile" type="_uY5yQGv5Edq7X4sGURiZYA">
-      <returnResult xmi:id="_w2ZvcGv5Edq7X4sGURiZYA" type="_uY5yQGv5Edq7X4sGURiZYA" direction="return"/>
+    <ownedOperation xmi:id="_r--GcGv5Edq7X4sGURiZYA" name="applyProfile">
+      <returnResult xmi:id="_w2ZvcGv5Edq7X4sGURiZYA" direction="return">
+        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ObBOMXF8EdqziYxiZo0YtA" value="-1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ObBOMHF8EdqziYxiZo0YtA"/>
+      </returnResult>
+      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
       <ownedParameter xmi:id="_xMwZ8Gv5Edq7X4sGURiZYA" name="profile" type="__pew8GvzEdq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_448CgGv5Edq7X4sGURiZYA" name="unapplyProfile" type="_uY5yQGv5Edq7X4sGURiZYA">
-      <returnResult xmi:id="_6yryYGv5Edq7X4sGURiZYA" type="_uY5yQGv5Edq7X4sGURiZYA" direction="return"/>
+    <ownedOperation xmi:id="_448CgGv5Edq7X4sGURiZYA" name="unapplyProfile">
+      <returnResult xmi:id="_6yryYGv5Edq7X4sGURiZYA" direction="return">
+        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZvqLMXF8EdqziYxiZo0YtA" value="-1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZvqLMHF8EdqziYxiZo0YtA"/>
+      </returnResult>
+      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
       <ownedParameter xmi:id="_7KhqoGv5Edq7X4sGURiZYA" name="profile" type="__pew8GvzEdq7X4sGURiZYA" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_ZCKeMGv5Edq7X4sGURiZYA" name="getAppliedProfiles" type="__pew8GvzEdq7X4sGURiZYA">
