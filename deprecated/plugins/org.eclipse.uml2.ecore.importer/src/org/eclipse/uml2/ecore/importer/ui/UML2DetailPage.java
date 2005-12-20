@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2DetailPage.java,v 1.9 2005/12/16 03:55:15 khussey Exp $
+ * $Id: UML2DetailPage.java,v 1.10 2005/12/20 16:34:42 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer.ui;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.importer.ModelImporter;
@@ -68,7 +69,7 @@ public class UML2DetailPage
 	}
 
 	protected void addOptionControl(Composite parent, String text,
-			final String option, String[] choices, String defaultChoice) {
+			final String option, String[] choices, String initialChoice) {
 
 		Label label = new Label(parent, SWT.LEFT);
 		{
@@ -96,14 +97,20 @@ public class UML2DetailPage
 				}
 			});
 
-			Map options = getUML2Importer().getOptions();
-			String choice = (String) options.get(option);
+			String choice = (String) getUML2Importer().getOptions().get(option);
 
-			if (null == choice) {
-				options.put(option, choice = defaultChoice);
+			for (Iterator entries = choiceLabels.entrySet().iterator(); entries
+				.hasNext();) {
+
+				Map.Entry entry = (Map.Entry) entries.next();
+
+				if (entry.getValue().equals(choice)) {
+					initialChoice = (String) entry.getKey();
+					break;
+				}
 			}
 
-			combo.setText(choice);
+			combo.setText(initialChoice);
 		}
 	}
 

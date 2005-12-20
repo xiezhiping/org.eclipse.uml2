@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.19 2005/12/16 03:55:15 khussey Exp $
+ * $Id: UML2Importer.java,v 1.20 2005/12/20 16:34:42 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -40,7 +40,6 @@ import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Util;
@@ -259,14 +258,15 @@ public class UML2Importer
 
 		getOptions().putAll(
 			UML2GenModelUtil.getGenAnnotation(originalGenModel,
-				GenModelPackage.eNS_URI, true).getDetails().map());
+				getConverterGenAnnotationSource(), true).getDetails().map());
 	}
 
 	public void prepareGenModelAndEPackages(Monitor monitor) {
 		super.prepareGenModelAndEPackages(monitor);
 
-		UML2GenModelUtil.getGenAnnotation(genModel, GenModelPackage.eNS_URI,
-			true).getDetails().putAll(getOptions());
+		UML2GenModelUtil.getGenAnnotation(genModel,
+			getConverterGenAnnotationSource(), true).getDetails().putAll(
+			getOptions());
 	}
 
 }
