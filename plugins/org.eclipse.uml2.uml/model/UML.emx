@@ -897,6 +897,12 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dSdbcGwJEdq7X4sGURiZYA"/>
       </returnResult>
     </ownedOperation>
+    <ownedOperation xmi:id="_bwOPkHGOEdqziYxiZo0YtA" name="getRequiredStereotypes" type="_A7vDAGv0Edq7X4sGURiZYA">
+      <returnResult xmi:id="_YmMuIHGPEdqziYxiZo0YtA" type="_A7vDAGv0Edq7X4sGURiZYA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b4JnEXGPEdqziYxiZo0YtA" value="-1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b4JnEHGPEdqziYxiZo0YtA"/>
+      </returnResult>
+    </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_A7vDAGv0Edq7X4sGURiZYA" name="Stereotype">
     <ownedOperation xmi:id="_FJce8GwHEdq7X4sGURiZYA" name="createExtension" type="_skHGwGvsEdqG6fBIPwe-mw">
