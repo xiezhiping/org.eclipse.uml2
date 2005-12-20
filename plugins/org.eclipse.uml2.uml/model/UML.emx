@@ -346,6 +346,10 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zCjv4Gv3Edq7X4sGURiZYA"/>
       </returnResult>
     </ownedOperation>
+    <ownedOperation xmi:id="_aAC2wHFfEdqziYxiZo0YtA" name="isStereotypeApplicable" type="_UdivYGvsEdqG6fBIPwe-mw">
+      <returnResult xmi:id="_dR_vsHFfEdqziYxiZo0YtA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
+      <ownedParameter xmi:id="_d5o-gHFfEdqziYxiZo0YtA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
+    </ownedOperation>
     <ownedOperation xmi:id="_nd4TIGv0Edq7X4sGURiZYA" name="isStereotypeRequired" type="_UdivYGvsEdqG6fBIPwe-mw">
       <returnResult xmi:id="_A-TZYGv1Edq7X4sGURiZYA" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="_0weVIGv1Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
@@ -397,6 +401,19 @@
       </returnResult>
       <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
       <ownedParameter xmi:id="_VtGjsGv1Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_ko32oHFfEdqziYxiZo0YtA" name="getRequiredStereotypes" type="_A7vDAGv0Edq7X4sGURiZYA">
+      <returnResult xmi:id="_qX5O8HFfEdqziYxiZo0YtA" type="_A7vDAGv0Edq7X4sGURiZYA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KSF6sXFgEdqziYxiZo0YtA" value="-1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KSF6sHFgEdqziYxiZo0YtA"/>
+      </returnResult>
+    </ownedOperation>
+    <ownedOperation xmi:id="_yk3QYHFfEdqziYxiZo0YtA" name="getRequiredStereotype" type="_A7vDAGv0Edq7X4sGURiZYA">
+      <returnResult xmi:id="_8ovJEHFfEdqziYxiZo0YtA" type="_A7vDAGv0Edq7X4sGURiZYA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Cpo7kXFgEdqziYxiZo0YtA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Cpo7kHFgEdqziYxiZo0YtA"/>
+      </returnResult>
+      <ownedParameter xmi:id="_9NGaYHFfEdqziYxiZo0YtA" name="qualifiedName" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_ZR1OsGv1Edq7X4sGURiZYA" name="getAppliedStereotypes" type="_A7vDAGv0Edq7X4sGURiZYA">
       <returnResult xmi:id="_cNu_IGv1Edq7X4sGURiZYA" type="_A7vDAGv0Edq7X4sGURiZYA" direction="return">
@@ -804,6 +821,10 @@
       <ownedParameter xmi:id="_rYVqgG2JEdq0sOo3CGeQEg" name="profile" type="__pew8GvzEdq7X4sGURiZYA" effect="read"/>
       <ownedParameter xmi:id="_RiuHcG11EdqniMBnIUw7ig" name="isRecursive" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
+    <ownedOperation xmi:id="_SwrbIHFhEdqziYxiZo0YtA" name="createOwnedInterface" type="_8Ugn8GvtEdqG6fBIPwe-mw">
+      <returnResult xmi:id="_SwrbIXFhEdqziYxiZo0YtA" type="_8Ugn8GvtEdqG6fBIPwe-mw" direction="return"/>
+      <ownedParameter xmi:id="_SwrbInFhEdqziYxiZo0YtA" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
+    </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="__pew8GvzEdq7X4sGURiZYA" name="Profile">
     <ownedOperation xmi:id="_2QKPIGwJEdq7X4sGURiZYA" name="create">
@@ -945,6 +966,13 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_d5JuYmwREdq14q0ETb1t3g" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_d5JuY2wREdq14q0ETb1t3g"/>
       </returnResult>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hw6gIHFhEdqziYxiZo0YtA" name="getOperation" type="_M4X2IGveEdq4DLWZOhbdEA">
+      <returnResult xmi:id="_ls4mcHFhEdqziYxiZo0YtA" type="_M4X2IGveEdq4DLWZOhbdEA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_skn6UXFhEdqziYxiZo0YtA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_skn6UHFhEdqziYxiZo0YtA"/>
+      </returnResult>
+      <ownedParameter xmi:id="_usha8HFhEdqziYxiZo0YtA" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_rEDGkGwKEdq7X4sGURiZYA" name="Dependency"/>
