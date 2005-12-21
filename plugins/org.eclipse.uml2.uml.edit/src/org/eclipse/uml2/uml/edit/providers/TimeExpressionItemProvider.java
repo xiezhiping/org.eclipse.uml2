@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionItemProvider.java,v 1.1 2005/12/07 14:20:26 khussey Exp $
+ * $Id: TimeExpressionItemProvider.java,v 1.2 2005/12/21 20:13:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -26,9 +26,6 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -65,48 +62,48 @@ public class TimeExpressionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFirstTimePropertyDescriptor(object);
-			addEventPropertyDescriptor(object);
+			addExprPropertyDescriptor(object);
+			addObservationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the First Time feature.
+	 * This adds a property descriptor for the Expr feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFirstTimePropertyDescriptor(Object object) {
+	protected void addExprPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_TimeExpression_firstTime_feature"), //$NON-NLS-1$
+				getString("_UI_TimeExpression_expr_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TimeExpression_firstTime_feature", "_UI_TimeExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TIME_EXPRESSION__FIRST_TIME, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+					"_UI_PropertyDescriptor_description", "_UI_TimeExpression_expr_feature", "_UI_TimeExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.TIME_EXPRESSION__EXPR, true, null, null,
+				null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Event feature.
+	 * This adds a property descriptor for the Observation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addEventPropertyDescriptor(Object object) {
+	protected void addObservationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_TimeExpression_event_feature"), //$NON-NLS-1$
+				getString("_UI_TimeExpression_observation_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TimeExpression_event_feature", "_UI_TimeExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TIME_EXPRESSION__EVENT, true, null, null,
-				null));
+					"_UI_PropertyDescriptor_description", "_UI_TimeExpression_observation_feature", "_UI_TimeExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.TIME_EXPRESSION__OBSERVATION, true, null,
+				null, null));
 	}
 
 	/**
@@ -141,13 +138,6 @@ public class TimeExpressionItemProvider
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(TimeExpression.class)) {
-			case UMLPackage.TIME_EXPRESSION__FIRST_TIME :
-				fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

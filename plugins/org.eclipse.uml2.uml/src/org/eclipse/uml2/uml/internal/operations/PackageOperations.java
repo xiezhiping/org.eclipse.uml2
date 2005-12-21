@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.6 2005/12/20 16:34:56 khussey Exp $
+ * $Id: PackageOperations.java,v 1.7 2005/12/21 20:13:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,8 +22,9 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.emf.common.util.UniqueEList;
-
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PrimitiveType;
@@ -186,25 +187,62 @@ public final class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public static ProfileApplication applyProfile(
-			org.eclipse.uml2.uml.Package package_, Profile profile) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public static EList applyProfile(org.eclipse.uml2.uml.Package package_,
+			Profile profile) {
+
+		if (profile == null) {
+			throw new IllegalArgumentException(String.valueOf(profile));
+		}
+
+		EPackage profileDefinition = profile.getDefinition();
+
+		if (profileDefinition == null) {
+			throw new IllegalArgumentException(String.valueOf(profile));
+		}
+
+		ProfileApplication profileApplication = package_
+			.getProfileApplication(profile);
+
+		if (profileApplication == null) {
+			profileApplication = package_.createProfileApplication();
+			profileApplication.setAppliedProfile(profile);
+
+			getEAnnotation(profileApplication, UMLPackage.eNS_URI, true)
+				.getReferences().add(profileDefinition);
+
+		} else {
+			getEAnnotation(profileApplication, UMLPackage.eNS_URI, true)
+				.getReferences().set(0, profileDefinition);
+
+		}
+
+		return ElementOperations.applyAllRequiredStereotypes(package_);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public static ProfileApplication unapplyProfile(
-			org.eclipse.uml2.uml.Package package_, Profile profile) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public static EList unapplyProfile(org.eclipse.uml2.uml.Package package_,
+			Profile profile) {
+
+		if (profile == null) {
+			throw new IllegalArgumentException(String.valueOf(profile));
+		}
+
+		ProfileApplication profileApplication = package_
+			.getProfileApplication(profile);
+
+		if (profileApplication == null) {
+			throw new IllegalArgumentException(String.valueOf(profile));
+		}
+
+		profileApplication.destroy();
+
+		return ElementOperations.unapplyAllNonApplicableStereotypes(package_);
 	}
 
 	protected static EList getAppliedProfiles(
@@ -308,10 +346,12 @@ public final class PackageOperations
 	 */
 	public static ProfileApplication getProfileApplication(
 			org.eclipse.uml2.uml.Package package_, Profile profile) {
-		
-		for (Iterator profileApplications = package_.getProfileApplications().iterator(); profileApplications.hasNext();) {
-			ProfileApplication profileApplication = (ProfileApplication) profileApplications.next();
-			
+
+		for (Iterator profileApplications = package_.getProfileApplications()
+			.iterator(); profileApplications.hasNext();) {
+			ProfileApplication profileApplication = (ProfileApplication) profileApplications
+				.next();
+
 			if (profileApplication.getAppliedProfile() == profile) {
 				return profileApplication;
 			}
@@ -349,6 +389,24 @@ public final class PackageOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public static Interface createOwnedInterface(
+			org.eclipse.uml2.uml.Package package_, String name) {
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		Interface interface_ = (Interface) package_
+			.createPackagedElement(UMLPackage.Literals.INTERFACE);
+		interface_.setName(name);
+		return interface_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public static EList getAllAppliedProfiles(
 			org.eclipse.uml2.uml.Package package_) {
 		EList allAppliedProfiles = getAppliedProfiles(package_,
@@ -364,7 +422,7 @@ public final class PackageOperations
 		return ECollections.unmodifiableEList(allAppliedProfiles);
 	}
 
-	protected static EList allImportedPackages(
+	protected static EList getAllImportedPackages(
 			org.eclipse.uml2.uml.Package package_, EList allImportedPackages) {
 
 		for (Iterator packageImports = package_.getPackageImports().iterator(); packageImports
@@ -379,7 +437,7 @@ public final class PackageOperations
 				if (importedPackage != null
 					&& allImportedPackages.add(importedPackage)) {
 
-					allImportedPackages(importedPackage, allImportedPackages);
+					getAllImportedPackages(importedPackage, allImportedPackages);
 				}
 			}
 		}
@@ -432,7 +490,7 @@ public final class PackageOperations
 	public static EList visibleMembers(org.eclipse.uml2.uml.Package package_) {
 		EList visibleMembers = visibleMembers(package_, new UniqueEList());
 
-		for (Iterator allImportedPackages = allImportedPackages(package_,
+		for (Iterator allImportedPackages = getAllImportedPackages(package_,
 			new UniqueEList()).iterator(); allImportedPackages.hasNext();) {
 
 			visibleMembers((org.eclipse.uml2.uml.Package) allImportedPackages

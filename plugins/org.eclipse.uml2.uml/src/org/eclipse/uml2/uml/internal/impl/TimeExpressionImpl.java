@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
+ * $Id: TimeExpressionImpl.java,v 1.9 2005/12/21 20:13:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
+import java.util.Iterator;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -22,12 +24,15 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import org.eclipse.uml2.uml.Observation;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
@@ -37,8 +42,8 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TimeExpressionImpl#isFirstTime <em>First Time</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TimeExpressionImpl#getEvent <em>Event</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TimeExpressionImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TimeExpressionImpl#getObservations <em>Observation</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,26 +52,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public class TimeExpressionImpl
 		extends ValueSpecificationImpl
 		implements TimeExpression {
-
-	/**
-	 * The default value of the '{@link #isFirstTime() <em>First Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isFirstTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean FIRST_TIME_EDEFAULT = false;
-
-	/**
-	 * The flag representing the value of the '{@link #isFirstTime() <em>First Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isFirstTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int FIRST_TIME_EFLAG = 1 << 8;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,46 +76,19 @@ public class TimeExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isFirstTime() {
-		return (eFlags & FIRST_TIME_EFLAG) != 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFirstTime(boolean newFirstTime) {
-		boolean oldFirstTime = (eFlags & FIRST_TIME_EFLAG) != 0;
-		if (newFirstTime)
-			eFlags |= FIRST_TIME_EFLAG;
-		else
-			eFlags &= ~FIRST_TIME_EFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TIME_EXPRESSION__FIRST_TIME, oldFirstTime,
-				newFirstTime));
-
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NamedElement getEvent() {
-		NamedElement event = (NamedElement) eVirtualGet(UMLPackage.TIME_EXPRESSION__EVENT);
-		if (event != null && event.eIsProxy()) {
-			InternalEObject oldEvent = (InternalEObject) event;
-			event = (NamedElement) eResolveProxy(oldEvent);
-			if (event != oldEvent) {
-				eVirtualSet(UMLPackage.TIME_EXPRESSION__EVENT, event);
+	public ValueSpecification getExpr() {
+		ValueSpecification expr = (ValueSpecification) eVirtualGet(UMLPackage.TIME_EXPRESSION__EXPR);
+		if (expr != null && expr.eIsProxy()) {
+			InternalEObject oldExpr = (InternalEObject) expr;
+			expr = (ValueSpecification) eResolveProxy(oldExpr);
+			if (expr != oldExpr) {
+				eVirtualSet(UMLPackage.TIME_EXPRESSION__EXPR, expr);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.TIME_EXPRESSION__EVENT, oldEvent, event));
+						UMLPackage.TIME_EXPRESSION__EXPR, oldExpr, expr));
 			}
 		}
-		return event;
+		return expr;
 	}
 
 	/**
@@ -138,8 +96,8 @@ public class TimeExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NamedElement basicGetEvent() {
-		return (NamedElement) eVirtualGet(UMLPackage.TIME_EXPRESSION__EVENT);
+	public ValueSpecification basicGetExpr() {
+		return (ValueSpecification) eVirtualGet(UMLPackage.TIME_EXPRESSION__EXPR);
 	}
 
 	/**
@@ -147,16 +105,45 @@ public class TimeExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEvent(NamedElement newEvent) {
-		NamedElement event = newEvent;
-		Object oldEvent = eVirtualSet(UMLPackage.TIME_EXPRESSION__EVENT, event);
+	public void setExpr(ValueSpecification newExpr) {
+		ValueSpecification expr = newExpr;
+		Object oldExpr = eVirtualSet(UMLPackage.TIME_EXPRESSION__EXPR, expr);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TIME_EXPRESSION__EVENT,
-				oldEvent == EVIRTUAL_NO_VALUE
+				UMLPackage.TIME_EXPRESSION__EXPR, oldExpr == EVIRTUAL_NO_VALUE
 					? null
-					: oldEvent, event));
+					: oldExpr, expr));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getObservations() {
+		EList observation = (EList) eVirtualGet(UMLPackage.TIME_EXPRESSION__OBSERVATION);
+		if (observation == null) {
+			eVirtualSet(UMLPackage.TIME_EXPRESSION__OBSERVATION,
+				observation = new EObjectResolvingEList(Observation.class,
+					this, UMLPackage.TIME_EXPRESSION__OBSERVATION));
+		}
+		return observation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Observation getObservation(String name) {
+		for (Iterator i = getObservations().iterator(); i.hasNext();) {
+			Observation observation = (Observation) i.next();
+			if (name.equals(observation.getName())) {
+				return observation;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -202,14 +189,12 @@ public class TimeExpressionImpl
 				if (resolve)
 					return getType();
 				return basicGetType();
-			case UMLPackage.TIME_EXPRESSION__FIRST_TIME :
-				return isFirstTime()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case UMLPackage.TIME_EXPRESSION__EVENT :
+			case UMLPackage.TIME_EXPRESSION__EXPR :
 				if (resolve)
-					return getEvent();
-				return basicGetEvent();
+					return getExpr();
+				return basicGetExpr();
+			case UMLPackage.TIME_EXPRESSION__OBSERVATION :
+				return getObservations();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -251,11 +236,12 @@ public class TimeExpressionImpl
 			case UMLPackage.TIME_EXPRESSION__TYPE :
 				setType((Type) newValue);
 				return;
-			case UMLPackage.TIME_EXPRESSION__FIRST_TIME :
-				setFirstTime(((Boolean) newValue).booleanValue());
+			case UMLPackage.TIME_EXPRESSION__EXPR :
+				setExpr((ValueSpecification) newValue);
 				return;
-			case UMLPackage.TIME_EXPRESSION__EVENT :
-				setEvent((NamedElement) newValue);
+			case UMLPackage.TIME_EXPRESSION__OBSERVATION :
+				getObservations().clear();
+				getObservations().addAll((Collection) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -295,11 +281,11 @@ public class TimeExpressionImpl
 			case UMLPackage.TIME_EXPRESSION__TYPE :
 				setType((Type) null);
 				return;
-			case UMLPackage.TIME_EXPRESSION__FIRST_TIME :
-				setFirstTime(FIRST_TIME_EDEFAULT);
+			case UMLPackage.TIME_EXPRESSION__EXPR :
+				setExpr((ValueSpecification) null);
 				return;
-			case UMLPackage.TIME_EXPRESSION__EVENT :
-				setEvent((NamedElement) null);
+			case UMLPackage.TIME_EXPRESSION__OBSERVATION :
+				getObservations().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -343,28 +329,13 @@ public class TimeExpressionImpl
 				return eVirtualGet(UMLPackage.TIME_EXPRESSION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.TIME_EXPRESSION__TYPE :
 				return eVirtualGet(UMLPackage.TIME_EXPRESSION__TYPE) != null;
-			case UMLPackage.TIME_EXPRESSION__FIRST_TIME :
-				return ((eFlags & FIRST_TIME_EFLAG) != 0) != FIRST_TIME_EDEFAULT;
-			case UMLPackage.TIME_EXPRESSION__EVENT :
-				return eVirtualGet(UMLPackage.TIME_EXPRESSION__EVENT) != null;
+			case UMLPackage.TIME_EXPRESSION__EXPR :
+				return eVirtualGet(UMLPackage.TIME_EXPRESSION__EXPR) != null;
+			case UMLPackage.TIME_EXPRESSION__OBSERVATION :
+				EList observation = (EList) eVirtualGet(UMLPackage.TIME_EXPRESSION__OBSERVATION);
+				return observation != null && !observation.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (firstTime: "); //$NON-NLS-1$
-		result.append((eFlags & FIRST_TIME_EFLAG) != 0);
-		result.append(')');
-		return result.toString();
 	}
 
 } //TimeExpressionImpl

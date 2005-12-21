@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraint.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: TimeConstraint.java,v 1.2 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -21,6 +21,12 @@ package org.eclipse.uml2.uml;
  * A TimeConstraint defines a Constraint that refers to a TimeInterval.
  * <!-- end-model-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.TimeConstraint#isFirstEvent <em>First Event</em>}</li>
+ * </ul>
+ * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getTimeConstraint()
  * @model
@@ -28,4 +34,30 @@ package org.eclipse.uml2.uml;
  */
 public interface TimeConstraint
 		extends IntervalConstraint {
+
+	/**
+	 * Returns the value of the '<em><b>First Event</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>First Event</em>' attribute.
+	 * @see #setFirstEvent(boolean)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getTimeConstraint_FirstEvent()
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" ordered="false"
+	 * @generated
+	 */
+	boolean isFirstEvent();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.TimeConstraint#isFirstEvent <em>First Event</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>First Event</em>' attribute.
+	 * @see #isFirstEvent()
+	 * @generated
+	 */
+	void setFirstEvent(boolean value);
+
 } // TimeConstraint

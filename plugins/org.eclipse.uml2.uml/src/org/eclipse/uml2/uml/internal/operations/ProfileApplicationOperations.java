@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationOperations.java,v 1.2 2005/12/20 16:34:56 khussey Exp $
+ * $Id: ProfileApplicationOperations.java,v 1.3 2005/12/21 20:13:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,7 +33,8 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * @generated not
  */
-public final class ProfileApplicationOperations extends UMLOperations {
+public final class ProfileApplicationOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

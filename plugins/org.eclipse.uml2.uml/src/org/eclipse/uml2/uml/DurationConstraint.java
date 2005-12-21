@@ -8,9 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraint.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: DurationConstraint.java,v 1.2 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
+
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +26,12 @@ package org.eclipse.uml2.uml;
  * A DurationConstraint defines a Constraint that refers to a DurationInterval.
  * <!-- end-model-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.DurationConstraint#getFirstEvents <em>First Event</em>}</li>
+ * </ul>
+ * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getDurationConstraint()
  * @model
@@ -28,4 +39,33 @@ package org.eclipse.uml2.uml;
  */
 public interface DurationConstraint
 		extends IntervalConstraint {
+
+	/**
+	 * Returns the value of the '<em><b>First Event</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.Boolean}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>First Event</em>' attribute list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getDurationConstraint_FirstEvent()
+	 * @model type="boolean" dataType="org.eclipse.uml2.uml.Boolean" upper="2" ordered="false"
+	 * @generated
+	 */
+	EList getFirstEvents();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The multiplicity of firstEvent must be 2 if the multiplicity of constrainedElement is 2. Otherwise the multiplicity of firstEvent is 0.
+	 * true
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics,
+			Map context);
+
 } // DurationConstraint

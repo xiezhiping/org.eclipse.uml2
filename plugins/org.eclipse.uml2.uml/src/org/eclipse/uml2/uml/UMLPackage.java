@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.7 2005/12/19 18:51:32 khussey Exp $
+ * $Id: UMLPackage.java,v 1.8 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -17088,13 +17088,76 @@ public interface UMLPackage
 	int IMAGE = 72;
 
 	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__EANNOTATIONS = ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__OWNER = ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__CONTENT = ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__LOCATION = ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__FORMAT = ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Image</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IMAGE_FEATURE_COUNT = EcorePackage.EOBJECT_FEATURE_COUNT + 0;
+	int IMAGE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -18274,17 +18337,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDuration()
 	 * @generated
 	 */
-	int DURATION = 178;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TimeObservationActionImpl <em>Time Observation Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.TimeObservationActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeObservationAction()
-	 * @generated
-	 */
-	int TIME_OBSERVATION_ACTION = 179;
+	int DURATION = 179;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ValuePinImpl <em>Value Pin</em>}' class.
@@ -18294,7 +18347,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getValuePin()
 	 * @generated
 	 */
-	int VALUE_PIN = 180;
+	int VALUE_PIN = 189;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.IntervalImpl <em>Interval</em>}' class.
@@ -18304,7 +18357,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInterval()
 	 * @generated
 	 */
-	int INTERVAL = 182;
+	int INTERVAL = 181;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DurationIntervalImpl <em>Duration Interval</em>}' class.
@@ -18314,7 +18367,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationInterval()
 	 * @generated
 	 */
-	int DURATION_INTERVAL = 181;
+	int DURATION_INTERVAL = 180;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.IntervalConstraintImpl <em>Interval Constraint</em>}' class.
@@ -18324,7 +18377,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getIntervalConstraint()
 	 * @generated
 	 */
-	int INTERVAL_CONSTRAINT = 184;
+	int INTERVAL_CONSTRAINT = 183;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TimeConstraintImpl <em>Time Constraint</em>}' class.
@@ -18334,7 +18387,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeConstraint()
 	 * @generated
 	 */
-	int TIME_CONSTRAINT = 183;
+	int TIME_CONSTRAINT = 182;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TimeIntervalImpl <em>Time Interval</em>}' class.
@@ -18344,17 +18397,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeInterval()
 	 * @generated
 	 */
-	int TIME_INTERVAL = 185;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DurationObservationActionImpl <em>Duration Observation Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.DurationObservationActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationObservationAction()
-	 * @generated
-	 */
-	int DURATION_OBSERVATION_ACTION = 186;
+	int TIME_INTERVAL = 184;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DurationConstraintImpl <em>Duration Constraint</em>}' class.
@@ -18364,7 +18407,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationConstraint()
 	 * @generated
 	 */
-	int DURATION_CONSTRAINT = 187;
+	int DURATION_CONSTRAINT = 185;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl <em>Opaque Action</em>}' class.
@@ -18384,7 +18427,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallAction()
 	 * @generated
 	 */
-	int CALL_ACTION = 189;
+	int CALL_ACTION = 190;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.SendSignalActionImpl <em>Send Signal Action</em>}' class.
@@ -18394,7 +18437,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSendSignalAction()
 	 * @generated
 	 */
-	int SEND_SIGNAL_ACTION = 190;
+	int SEND_SIGNAL_ACTION = 191;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CallOperationActionImpl <em>Call Operation Action</em>}' class.
@@ -18404,7 +18447,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallOperationAction()
 	 * @generated
 	 */
-	int CALL_OPERATION_ACTION = 191;
+	int CALL_OPERATION_ACTION = 192;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CallBehaviorActionImpl <em>Call Behavior Action</em>}' class.
@@ -18414,7 +18457,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallBehaviorAction()
 	 * @generated
 	 */
-	int CALL_BEHAVIOR_ACTION = 192;
+	int CALL_BEHAVIOR_ACTION = 193;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InformationItemImpl <em>Information Item</em>}' class.
@@ -18424,7 +18467,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInformationItem()
 	 * @generated
 	 */
-	int INFORMATION_ITEM = 193;
+	int INFORMATION_ITEM = 194;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl <em>Information Flow</em>}' class.
@@ -18434,7 +18477,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInformationFlow()
 	 * @generated
 	 */
-	int INFORMATION_FLOW = 194;
+	int INFORMATION_FLOW = 195;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ModelImpl <em>Model</em>}' class.
@@ -39471,22 +39514,22 @@ public interface UMLPackage
 	int TIME_EXPRESSION__TYPE = VALUE_SPECIFICATION__TYPE;
 
 	/**
-	 * The feature id for the '<em><b>First Time</b></em>' attribute.
+	 * The feature id for the '<em><b>Expr</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_EXPRESSION__FIRST_TIME = VALUE_SPECIFICATION_FEATURE_COUNT + 0;
+	int TIME_EXPRESSION__EXPR = VALUE_SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Event</b></em>' reference.
+	 * The feature id for the '<em><b>Observation</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_EXPRESSION__EVENT = VALUE_SPECIFICATION_FEATURE_COUNT + 1;
+	int TIME_EXPRESSION__OBSERVATION = VALUE_SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Time Expression</em>' class.
@@ -39496,6 +39539,115 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int TIME_EXPRESSION_FEATURE_COUNT = VALUE_SPECIFICATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ObservationImpl <em>Observation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ObservationImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObservation()
+	 * @generated
+	 */
+	int OBSERVATION = 178;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__OWNER = NAMED_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__NAMESPACE = NAMED_ELEMENT__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The number of structural features of the '<em>Observation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -39615,22 +39767,22 @@ public interface UMLPackage
 	int DURATION__TYPE = VALUE_SPECIFICATION__TYPE;
 
 	/**
-	 * The feature id for the '<em><b>First Time</b></em>' attribute.
+	 * The feature id for the '<em><b>Expr</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION__FIRST_TIME = VALUE_SPECIFICATION_FEATURE_COUNT + 0;
+	int DURATION__EXPR = VALUE_SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Event</b></em>' reference list.
+	 * The feature id for the '<em><b>Observation</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION__EVENT = VALUE_SPECIFICATION_FEATURE_COUNT + 1;
+	int DURATION__OBSERVATION = VALUE_SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Duration</em>' class.
@@ -39640,564 +39792,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int DURATION_FEATURE_COUNT = VALUE_SPECIFICATION_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__EANNOTATIONS = WRITE_STRUCTURAL_FEATURE_ACTION__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__OWNED_ELEMENT = WRITE_STRUCTURAL_FEATURE_ACTION__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__OWNER = WRITE_STRUCTURAL_FEATURE_ACTION__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__OWNED_COMMENT = WRITE_STRUCTURAL_FEATURE_ACTION__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__NAME = WRITE_STRUCTURAL_FEATURE_ACTION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__VISIBILITY = WRITE_STRUCTURAL_FEATURE_ACTION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__QUALIFIED_NAME = WRITE_STRUCTURAL_FEATURE_ACTION__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__CLIENT_DEPENDENCY = WRITE_STRUCTURAL_FEATURE_ACTION__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Namespace</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__NAMESPACE = WRITE_STRUCTURAL_FEATURE_ACTION__NAMESPACE;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__NAME_EXPRESSION = WRITE_STRUCTURAL_FEATURE_ACTION__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__IS_LEAF = WRITE_STRUCTURAL_FEATURE_ACTION__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__REDEFINED_ELEMENT = WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__REDEFINITION_CONTEXT = WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__OUTGOING = WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING;
-
-	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__IN_GROUP = WRITE_STRUCTURAL_FEATURE_ACTION__IN_GROUP;
-
-	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__IN_PARTITION = WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION;
-
-	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__IN_STRUCTURED_NODE = WRITE_STRUCTURAL_FEATURE_ACTION__IN_STRUCTURED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__ACTIVITY = WRITE_STRUCTURAL_FEATURE_ACTION__ACTIVITY;
-
-	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__INCOMING = WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING;
-
-	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__IN_INTERRUPTIBLE_REGION = WRITE_STRUCTURAL_FEATURE_ACTION__IN_INTERRUPTIBLE_REGION;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Node</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__REDEFINED_NODE = WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>Handler</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__HANDLER = WRITE_STRUCTURAL_FEATURE_ACTION__HANDLER;
-
-	/**
-	 * The feature id for the '<em><b>Output</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__OUTPUT = WRITE_STRUCTURAL_FEATURE_ACTION__OUTPUT;
-
-	/**
-	 * The feature id for the '<em><b>Input</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__INPUT = WRITE_STRUCTURAL_FEATURE_ACTION__INPUT;
-
-	/**
-	 * The feature id for the '<em><b>Context</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__CONTEXT = WRITE_STRUCTURAL_FEATURE_ACTION__CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Local Precondition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__LOCAL_PRECONDITION = WRITE_STRUCTURAL_FEATURE_ACTION__LOCAL_PRECONDITION;
-
-	/**
-	 * The feature id for the '<em><b>Local Postcondition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__LOCAL_POSTCONDITION = WRITE_STRUCTURAL_FEATURE_ACTION__LOCAL_POSTCONDITION;
-
-	/**
-	 * The feature id for the '<em><b>Structural Feature</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__STRUCTURAL_FEATURE = WRITE_STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Object</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__OBJECT = WRITE_STRUCTURAL_FEATURE_ACTION__OBJECT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__VALUE = WRITE_STRUCTURAL_FEATURE_ACTION__VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Now</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION__NOW = WRITE_STRUCTURAL_FEATURE_ACTION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Time Observation Action</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBSERVATION_ACTION_FEATURE_COUNT = WRITE_STRUCTURAL_FEATURE_ACTION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__EANNOTATIONS = INPUT_PIN__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__OWNED_ELEMENT = INPUT_PIN__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__OWNER = INPUT_PIN__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__OWNED_COMMENT = INPUT_PIN__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__NAME = INPUT_PIN__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__VISIBILITY = INPUT_PIN__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__QUALIFIED_NAME = INPUT_PIN__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__CLIENT_DEPENDENCY = INPUT_PIN__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Namespace</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__NAMESPACE = INPUT_PIN__NAMESPACE;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__NAME_EXPRESSION = INPUT_PIN__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IS_LEAF = INPUT_PIN__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__REDEFINED_ELEMENT = INPUT_PIN__REDEFINED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__REDEFINITION_CONTEXT = INPUT_PIN__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__OUTGOING = INPUT_PIN__OUTGOING;
-
-	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IN_GROUP = INPUT_PIN__IN_GROUP;
-
-	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IN_PARTITION = INPUT_PIN__IN_PARTITION;
-
-	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IN_STRUCTURED_NODE = INPUT_PIN__IN_STRUCTURED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__ACTIVITY = INPUT_PIN__ACTIVITY;
-
-	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__INCOMING = INPUT_PIN__INCOMING;
-
-	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IN_INTERRUPTIBLE_REGION = INPUT_PIN__IN_INTERRUPTIBLE_REGION;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Node</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__REDEFINED_NODE = INPUT_PIN__REDEFINED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__TYPE = INPUT_PIN__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Ordering</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__ORDERING = INPUT_PIN__ORDERING;
-
-	/**
-	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IS_CONTROL_TYPE = INPUT_PIN__IS_CONTROL_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__UPPER_BOUND = INPUT_PIN__UPPER_BOUND;
-
-	/**
-	 * The feature id for the '<em><b>In State</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IN_STATE = INPUT_PIN__IN_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Selection</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__SELECTION = INPUT_PIN__SELECTION;
-
-	/**
-	 * The feature id for the '<em><b>Is Control</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IS_CONTROL = INPUT_PIN__IS_CONTROL;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__VALUE = INPUT_PIN_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Value Pin</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN_FEATURE_COUNT = INPUT_PIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -40767,13 +40361,22 @@ public interface UMLPackage
 	int TIME_CONSTRAINT__CONTEXT = INTERVAL_CONSTRAINT__CONTEXT;
 
 	/**
+	 * The feature id for the '<em><b>First Event</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONSTRAINT__FIRST_EVENT = INTERVAL_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Time Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_CONSTRAINT_FEATURE_COUNT = INTERVAL_CONSTRAINT_FEATURE_COUNT + 0;
+	int TIME_CONSTRAINT_FEATURE_COUNT = INTERVAL_CONSTRAINT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -40926,294 +40529,6 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION_OBSERVATION_ACTION__EANNOTATIONS = WRITE_STRUCTURAL_FEATURE_ACTION__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__OWNED_ELEMENT = WRITE_STRUCTURAL_FEATURE_ACTION__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__OWNER = WRITE_STRUCTURAL_FEATURE_ACTION__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__OWNED_COMMENT = WRITE_STRUCTURAL_FEATURE_ACTION__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__NAME = WRITE_STRUCTURAL_FEATURE_ACTION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__VISIBILITY = WRITE_STRUCTURAL_FEATURE_ACTION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__QUALIFIED_NAME = WRITE_STRUCTURAL_FEATURE_ACTION__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__CLIENT_DEPENDENCY = WRITE_STRUCTURAL_FEATURE_ACTION__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Namespace</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__NAMESPACE = WRITE_STRUCTURAL_FEATURE_ACTION__NAMESPACE;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__NAME_EXPRESSION = WRITE_STRUCTURAL_FEATURE_ACTION__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__IS_LEAF = WRITE_STRUCTURAL_FEATURE_ACTION__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__REDEFINED_ELEMENT = WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__REDEFINITION_CONTEXT = WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__OUTGOING = WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING;
-
-	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__IN_GROUP = WRITE_STRUCTURAL_FEATURE_ACTION__IN_GROUP;
-
-	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__IN_PARTITION = WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION;
-
-	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__IN_STRUCTURED_NODE = WRITE_STRUCTURAL_FEATURE_ACTION__IN_STRUCTURED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__ACTIVITY = WRITE_STRUCTURAL_FEATURE_ACTION__ACTIVITY;
-
-	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__INCOMING = WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING;
-
-	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__IN_INTERRUPTIBLE_REGION = WRITE_STRUCTURAL_FEATURE_ACTION__IN_INTERRUPTIBLE_REGION;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Node</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__REDEFINED_NODE = WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>Handler</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__HANDLER = WRITE_STRUCTURAL_FEATURE_ACTION__HANDLER;
-
-	/**
-	 * The feature id for the '<em><b>Output</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__OUTPUT = WRITE_STRUCTURAL_FEATURE_ACTION__OUTPUT;
-
-	/**
-	 * The feature id for the '<em><b>Input</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__INPUT = WRITE_STRUCTURAL_FEATURE_ACTION__INPUT;
-
-	/**
-	 * The feature id for the '<em><b>Context</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__CONTEXT = WRITE_STRUCTURAL_FEATURE_ACTION__CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Local Precondition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__LOCAL_PRECONDITION = WRITE_STRUCTURAL_FEATURE_ACTION__LOCAL_PRECONDITION;
-
-	/**
-	 * The feature id for the '<em><b>Local Postcondition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__LOCAL_POSTCONDITION = WRITE_STRUCTURAL_FEATURE_ACTION__LOCAL_POSTCONDITION;
-
-	/**
-	 * The feature id for the '<em><b>Structural Feature</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__STRUCTURAL_FEATURE = WRITE_STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Object</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__OBJECT = WRITE_STRUCTURAL_FEATURE_ACTION__OBJECT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__VALUE = WRITE_STRUCTURAL_FEATURE_ACTION__VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Duration</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION__DURATION = WRITE_STRUCTURAL_FEATURE_ACTION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Duration Observation Action</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION_OBSERVATION_ACTION_FEATURE_COUNT = WRITE_STRUCTURAL_FEATURE_ACTION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
 	int DURATION_CONSTRAINT__EANNOTATIONS = INTERVAL_CONSTRAINT__EANNOTATIONS;
 
 	/**
@@ -41343,13 +40658,276 @@ public interface UMLPackage
 	int DURATION_CONSTRAINT__CONTEXT = INTERVAL_CONSTRAINT__CONTEXT;
 
 	/**
+	 * The feature id for the '<em><b>First Event</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_CONSTRAINT__FIRST_EVENT = INTERVAL_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Duration Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION_CONSTRAINT_FEATURE_COUNT = INTERVAL_CONSTRAINT_FEATURE_COUNT + 0;
+	int DURATION_CONSTRAINT_FEATURE_COUNT = INTERVAL_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TimeObservationImpl <em>Time Observation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.TimeObservationImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeObservation()
+	 * @generated
+	 */
+	int TIME_OBSERVATION = 186;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__EANNOTATIONS = OBSERVATION__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__OWNED_ELEMENT = OBSERVATION__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__OWNER = OBSERVATION__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__OWNED_COMMENT = OBSERVATION__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__NAME = OBSERVATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__VISIBILITY = OBSERVATION__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__QUALIFIED_NAME = OBSERVATION__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__CLIENT_DEPENDENCY = OBSERVATION__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__NAMESPACE = OBSERVATION__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__NAME_EXPRESSION = OBSERVATION__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Event</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__EVENT = OBSERVATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>First Event</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__FIRST_EVENT = OBSERVATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Time Observation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION_FEATURE_COUNT = OBSERVATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DurationObservationImpl <em>Duration Observation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.DurationObservationImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationObservation()
+	 * @generated
+	 */
+	int DURATION_OBSERVATION = 187;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__EANNOTATIONS = OBSERVATION__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__OWNED_ELEMENT = OBSERVATION__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__OWNER = OBSERVATION__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__OWNED_COMMENT = OBSERVATION__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__NAME = OBSERVATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__VISIBILITY = OBSERVATION__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__QUALIFIED_NAME = OBSERVATION__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__CLIENT_DEPENDENCY = OBSERVATION__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__NAMESPACE = OBSERVATION__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__NAME_EXPRESSION = OBSERVATION__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Event</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__EVENT = OBSERVATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>First Event</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__FIRST_EVENT = OBSERVATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Duration Observation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION_FEATURE_COUNT = OBSERVATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -41638,6 +41216,276 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int OPAQUE_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__EANNOTATIONS = INPUT_PIN__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__OWNED_ELEMENT = INPUT_PIN__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__OWNER = INPUT_PIN__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__OWNED_COMMENT = INPUT_PIN__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__NAME = INPUT_PIN__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__VISIBILITY = INPUT_PIN__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__QUALIFIED_NAME = INPUT_PIN__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__CLIENT_DEPENDENCY = INPUT_PIN__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__NAMESPACE = INPUT_PIN__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__NAME_EXPRESSION = INPUT_PIN__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IS_LEAF = INPUT_PIN__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__REDEFINED_ELEMENT = INPUT_PIN__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__REDEFINITION_CONTEXT = INPUT_PIN__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__OUTGOING = INPUT_PIN__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IN_GROUP = INPUT_PIN__IN_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IN_PARTITION = INPUT_PIN__IN_PARTITION;
+
+	/**
+	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IN_STRUCTURED_NODE = INPUT_PIN__IN_STRUCTURED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__ACTIVITY = INPUT_PIN__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__INCOMING = INPUT_PIN__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IN_INTERRUPTIBLE_REGION = INPUT_PIN__IN_INTERRUPTIBLE_REGION;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Node</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__REDEFINED_NODE = INPUT_PIN__REDEFINED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__TYPE = INPUT_PIN__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Ordering</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__ORDERING = INPUT_PIN__ORDERING;
+
+	/**
+	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IS_CONTROL_TYPE = INPUT_PIN__IS_CONTROL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__UPPER_BOUND = INPUT_PIN__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>In State</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IN_STATE = INPUT_PIN__IN_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Selection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__SELECTION = INPUT_PIN__SELECTION;
+
+	/**
+	 * The feature id for the '<em><b>Is Control</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IS_CONTROL = INPUT_PIN__IS_CONTROL;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__VALUE = INPUT_PIN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Value Pin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN_FEATURE_COUNT = INPUT_PIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -43393,7 +43241,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getVariableAction()
 	 * @generated
 	 */
-	int VARIABLE_ACTION = 195;
+	int VARIABLE_ACTION = 196;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -43664,7 +43512,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadVariableAction()
 	 * @generated
 	 */
-	int READ_VARIABLE_ACTION = 196;
+	int READ_VARIABLE_ACTION = 197;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -43944,7 +43792,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getWriteVariableAction()
 	 * @generated
 	 */
-	int WRITE_VARIABLE_ACTION = 197;
+	int WRITE_VARIABLE_ACTION = 198;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -44224,7 +44072,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getClearVariableAction()
 	 * @generated
 	 */
-	int CLEAR_VARIABLE_ACTION = 198;
+	int CLEAR_VARIABLE_ACTION = 199;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -44495,7 +44343,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAddVariableValueAction()
 	 * @generated
 	 */
-	int ADD_VARIABLE_VALUE_ACTION = 199;
+	int ADD_VARIABLE_VALUE_ACTION = 200;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -44793,7 +44641,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getRemoveVariableValueAction()
 	 * @generated
 	 */
-	int REMOVE_VARIABLE_VALUE_ACTION = 200;
+	int REMOVE_VARIABLE_VALUE_ACTION = 201;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -45091,7 +44939,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getRaiseExceptionAction()
 	 * @generated
 	 */
-	int RAISE_EXCEPTION_ACTION = 201;
+	int RAISE_EXCEPTION_ACTION = 202;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -45362,7 +45210,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActionInputPin()
 	 * @generated
 	 */
-	int ACTION_INPUT_PIN = 202;
+	int ACTION_INPUT_PIN = 203;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -45642,7 +45490,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadExtentAction()
 	 * @generated
 	 */
-	int READ_EXTENT_ACTION = 203;
+	int READ_EXTENT_ACTION = 204;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -45922,7 +45770,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReclassifyObjectAction()
 	 * @generated
 	 */
-	int RECLASSIFY_OBJECT_ACTION = 204;
+	int RECLASSIFY_OBJECT_ACTION = 205;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -46220,7 +46068,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadIsClassifiedObjectAction()
 	 * @generated
 	 */
-	int READ_IS_CLASSIFIED_OBJECT_ACTION = 205;
+	int READ_IS_CLASSIFIED_OBJECT_ACTION = 206;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -46518,7 +46366,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getStartClassifierBehaviorAction()
 	 * @generated
 	 */
-	int START_CLASSIFIER_BEHAVIOR_ACTION = 206;
+	int START_CLASSIFIER_BEHAVIOR_ACTION = 207;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -46789,7 +46637,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadLinkObjectEndAction()
 	 * @generated
 	 */
-	int READ_LINK_OBJECT_END_ACTION = 207;
+	int READ_LINK_OBJECT_END_ACTION = 208;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -47078,7 +46926,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadLinkObjectEndQualifierAction()
 	 * @generated
 	 */
-	int READ_LINK_OBJECT_END_QUALIFIER_ACTION = 208;
+	int READ_LINK_OBJECT_END_QUALIFIER_ACTION = 209;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -47367,7 +47215,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCreateLinkObjectAction()
 	 * @generated
 	 */
-	int CREATE_LINK_OBJECT_ACTION = 209;
+	int CREATE_LINK_OBJECT_ACTION = 210;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -47656,7 +47504,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAcceptEventAction()
 	 * @generated
 	 */
-	int ACCEPT_EVENT_ACTION = 210;
+	int ACCEPT_EVENT_ACTION = 211;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -47945,7 +47793,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAcceptCallAction()
 	 * @generated
 	 */
-	int ACCEPT_CALL_ACTION = 211;
+	int ACCEPT_CALL_ACTION = 212;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -48243,7 +48091,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReplyAction()
 	 * @generated
 	 */
-	int REPLY_ACTION = 212;
+	int REPLY_ACTION = 213;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -48532,7 +48380,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getUnmarshallAction()
 	 * @generated
 	 */
-	int UNMARSHALL_ACTION = 213;
+	int UNMARSHALL_ACTION = 214;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -48821,7 +48669,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReduceAction()
 	 * @generated
 	 */
-	int REDUCE_ACTION = 214;
+	int REDUCE_ACTION = 215;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -49119,7 +48967,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getControlNode()
 	 * @generated
 	 */
-	int CONTROL_NODE = 215;
+	int CONTROL_NODE = 216;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -49327,7 +49175,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getControlFlow()
 	 * @generated
 	 */
-	int CONTROL_FLOW = 216;
+	int CONTROL_FLOW = 217;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -49553,7 +49401,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInitialNode()
 	 * @generated
 	 */
-	int INITIAL_NODE = 217;
+	int INITIAL_NODE = 218;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -49761,7 +49609,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityParameterNode()
 	 * @generated
 	 */
-	int ACTIVITY_PARAMETER_NODE = 218;
+	int ACTIVITY_PARAMETER_NODE = 219;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -50032,7 +49880,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getForkNode()
 	 * @generated
 	 */
-	int FORK_NODE = 219;
+	int FORK_NODE = 220;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -50240,7 +50088,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFinalNode()
 	 * @generated
 	 */
-	int FINAL_NODE = 221;
+	int FINAL_NODE = 222;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -50448,7 +50296,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFlowFinalNode()
 	 * @generated
 	 */
-	int FLOW_FINAL_NODE = 220;
+	int FLOW_FINAL_NODE = 221;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -50656,7 +50504,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCentralBufferNode()
 	 * @generated
 	 */
-	int CENTRAL_BUFFER_NODE = 222;
+	int CENTRAL_BUFFER_NODE = 223;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -50918,7 +50766,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getMergeNode()
 	 * @generated
 	 */
-	int MERGE_NODE = 223;
+	int MERGE_NODE = 224;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -51126,7 +50974,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDecisionNode()
 	 * @generated
 	 */
-	int DECISION_NODE = 224;
+	int DECISION_NODE = 225;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -51343,7 +51191,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityFinalNode()
 	 * @generated
 	 */
-	int ACTIVITY_FINAL_NODE = 225;
+	int ACTIVITY_FINAL_NODE = 226;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -51551,7 +51399,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getJoinNode()
 	 * @generated
 	 */
-	int JOIN_NODE = 226;
+	int JOIN_NODE = 227;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -51777,7 +51625,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDataStoreNode()
 	 * @generated
 	 */
-	int DATA_STORE_NODE = 227;
+	int DATA_STORE_NODE = 228;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -52039,7 +51887,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObjectFlow()
 	 * @generated
 	 */
-	int OBJECT_FLOW = 228;
+	int OBJECT_FLOW = 229;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -52301,7 +52149,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSequenceNode()
 	 * @generated
 	 */
-	int SEQUENCE_NODE = 229;
+	int SEQUENCE_NODE = 230;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -52707,7 +52555,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getConditionalNode()
 	 * @generated
 	 */
-	int CONDITIONAL_NODE = 230;
+	int CONDITIONAL_NODE = 231;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -53140,7 +52988,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getClause()
 	 * @generated
 	 */
-	int CLAUSE = 231;
+	int CLAUSE = 232;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -53249,7 +53097,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLoopNode()
 	 * @generated
 	 */
-	int LOOP_NODE = 232;
+	int LOOP_NODE = 233;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -53727,7 +53575,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExpansionNode()
 	 * @generated
 	 */
-	int EXPANSION_NODE = 233;
+	int EXPANSION_NODE = 234;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -54007,7 +53855,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExpansionRegion()
 	 * @generated
 	 */
-	int EXPANSION_REGION = 234;
+	int EXPANSION_REGION = 235;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -54431,7 +54279,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getComponentRealization()
 	 * @generated
 	 */
-	int COMPONENT_REALIZATION = 235;
+	int COMPONENT_REALIZATION = 236;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -54630,7 +54478,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getComponent()
 	 * @generated
 	 */
-	int COMPONENT = 236;
+	int COMPONENT = 237;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -55171,7 +55019,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getNode()
 	 * @generated
 	 */
-	int NODE = 237;
+	int NODE = 238;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -55694,7 +55542,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDevice()
 	 * @generated
 	 */
-	int DEVICE = 238;
+	int DEVICE = 239;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -56217,7 +56065,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExecutionEnvironment()
 	 * @generated
 	 */
-	int EXECUTION_ENVIRONMENT = 239;
+	int EXECUTION_ENVIRONMENT = 240;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -56740,7 +56588,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCommunicationPath()
 	 * @generated
 	 */
-	int COMMUNICATION_PATH = 240;
+	int COMMUNICATION_PATH = 241;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -57155,7 +57003,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFinalState()
 	 * @generated
 	 */
-	int FINAL_STATE = 241;
+	int FINAL_STATE = 242;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -57498,7 +57346,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeEvent()
 	 * @generated
 	 */
-	int TIME_EVENT = 242;
+	int TIME_EVENT = 243;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -57643,7 +57491,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getProtocolTransition()
 	 * @generated
 	 */
-	int PROTOCOL_TRANSITION = 243;
+	int PROTOCOL_TRANSITION = 244;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -57907,7 +57755,7 @@ public interface UMLPackage
 	int PROTOCOL_TRANSITION__REFERRED = TRANSITION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Pre Condition</b></em>' reference.
+	 * The feature id for the '<em><b>Pre Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -57932,7 +57780,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAssociationClass()
 	 * @generated
 	 */
-	int ASSOCIATION_CLASS = 244;
+	int ASSOCIATION_CLASS = 245;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -58482,7 +58330,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getVisibilityKind()
 	 * @generated
 	 */
-	int VISIBILITY_KIND = 245;
+	int VISIBILITY_KIND = 246;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.CallConcurrencyKind <em>Call Concurrency Kind</em>}' enum.
@@ -58492,7 +58340,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallConcurrencyKind()
 	 * @generated
 	 */
-	int CALL_CONCURRENCY_KIND = 247;
+	int CALL_CONCURRENCY_KIND = 248;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.TransitionKind <em>Transition Kind</em>}' enum.
@@ -58502,7 +58350,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTransitionKind()
 	 * @generated
 	 */
-	int TRANSITION_KIND = 248;
+	int TRANSITION_KIND = 249;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.PseudostateKind <em>Pseudostate Kind</em>}' enum.
@@ -58512,7 +58360,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getPseudostateKind()
 	 * @generated
 	 */
-	int PSEUDOSTATE_KIND = 249;
+	int PSEUDOSTATE_KIND = 250;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.AggregationKind <em>Aggregation Kind</em>}' enum.
@@ -58522,7 +58370,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAggregationKind()
 	 * @generated
 	 */
-	int AGGREGATION_KIND = 251;
+	int AGGREGATION_KIND = 252;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.ParameterDirectionKind <em>Parameter Direction Kind</em>}' enum.
@@ -58532,7 +58380,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getParameterDirectionKind()
 	 * @generated
 	 */
-	int PARAMETER_DIRECTION_KIND = 246;
+	int PARAMETER_DIRECTION_KIND = 247;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.ParameterEffectKind <em>Parameter Effect Kind</em>}' enum.
@@ -58542,7 +58390,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getParameterEffectKind()
 	 * @generated
 	 */
-	int PARAMETER_EFFECT_KIND = 250;
+	int PARAMETER_EFFECT_KIND = 251;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.ConnectorKind <em>Connector Kind</em>}' enum.
@@ -58552,7 +58400,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getConnectorKind()
 	 * @generated
 	 */
-	int CONNECTOR_KIND = 252;
+	int CONNECTOR_KIND = 253;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.MessageKind <em>Message Kind</em>}' enum.
@@ -58562,7 +58410,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getMessageKind()
 	 * @generated
 	 */
-	int MESSAGE_KIND = 253;
+	int MESSAGE_KIND = 254;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.MessageSort <em>Message Sort</em>}' enum.
@@ -58572,7 +58420,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getMessageSort()
 	 * @generated
 	 */
-	int MESSAGE_SORT = 254;
+	int MESSAGE_SORT = 255;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.ObjectNodeOrderingKind <em>Object Node Ordering Kind</em>}' enum.
@@ -58582,7 +58430,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObjectNodeOrderingKind()
 	 * @generated
 	 */
-	int OBJECT_NODE_ORDERING_KIND = 255;
+	int OBJECT_NODE_ORDERING_KIND = 256;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.InteractionOperatorKind <em>Interaction Operator Kind</em>}' enum.
@@ -58592,7 +58440,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInteractionOperatorKind()
 	 * @generated
 	 */
-	int INTERACTION_OPERATOR_KIND = 256;
+	int INTERACTION_OPERATOR_KIND = 257;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.ExpansionKind <em>Expansion Kind</em>}' enum.
@@ -58602,7 +58450,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExpansionKind()
 	 * @generated
 	 */
-	int EXPANSION_KIND = 257;
+	int EXPANSION_KIND = 258;
 
 	/**
 	 * The meta object id for the '<em>Integer</em>' data type.
@@ -58611,7 +58459,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInteger()
 	 * @generated
 	 */
-	int INTEGER = 258;
+	int INTEGER = 259;
 
 	/**
 	 * The meta object id for the '<em>Boolean</em>' data type.
@@ -58620,7 +58468,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getBoolean()
 	 * @generated
 	 */
-	int BOOLEAN = 259;
+	int BOOLEAN = 260;
 
 	/**
 	 * The meta object id for the '<em>String</em>' data type.
@@ -58630,7 +58478,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getString()
 	 * @generated
 	 */
-	int STRING = 260;
+	int STRING = 261;
 
 	/**
 	 * The meta object id for the '<em>Unlimited Natural</em>' data type.
@@ -58639,7 +58487,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getUnlimitedNatural()
 	 * @generated
 	 */
-	int UNLIMITED_NATURAL = 261;
+	int UNLIMITED_NATURAL = 262;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.Comment <em>Comment</em>}'.
@@ -62658,6 +62506,39 @@ public interface UMLPackage
 	EClass getImage();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.uml.Image#getContent <em>Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content</em>'.
+	 * @see org.eclipse.uml2.uml.Image#getContent()
+	 * @see #getImage()
+	 * @generated
+	 */
+	EAttribute getImage_Content();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.uml.Image#getLocation <em>Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Location</em>'.
+	 * @see org.eclipse.uml2.uml.Image#getLocation()
+	 * @see #getImage()
+	 * @generated
+	 */
+	EAttribute getImage_Location();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.uml.Image#getFormat <em>Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Format</em>'.
+	 * @see org.eclipse.uml2.uml.Image#getFormat()
+	 * @see #getImage()
+	 * @generated
+	 */
+	EAttribute getImage_Format();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.StringExpression <em>String Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65450,26 +65331,36 @@ public interface UMLPackage
 	EClass getTimeExpression();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.uml.TimeExpression#isFirstTime <em>First Time</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.TimeExpression#getExpr <em>Expr</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>First Time</em>'.
-	 * @see org.eclipse.uml2.uml.TimeExpression#isFirstTime()
+	 * @return the meta object for the reference '<em>Expr</em>'.
+	 * @see org.eclipse.uml2.uml.TimeExpression#getExpr()
 	 * @see #getTimeExpression()
 	 * @generated
 	 */
-	EAttribute getTimeExpression_FirstTime();
+	EReference getTimeExpression_Expr();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.TimeExpression#getEvent <em>Event</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.TimeExpression#getObservations <em>Observation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Event</em>'.
-	 * @see org.eclipse.uml2.uml.TimeExpression#getEvent()
+	 * @return the meta object for the reference list '<em>Observation</em>'.
+	 * @see org.eclipse.uml2.uml.TimeExpression#getObservations()
 	 * @see #getTimeExpression()
 	 * @generated
 	 */
-	EReference getTimeExpression_Event();
+	EReference getTimeExpression_Observation();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.Observation <em>Observation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Observation</em>'.
+	 * @see org.eclipse.uml2.uml.Observation
+	 * @generated
+	 */
+	EClass getObservation();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.Duration <em>Duration</em>}'.
@@ -65482,47 +65373,26 @@ public interface UMLPackage
 	EClass getDuration();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.uml.Duration#isFirstTime <em>First Time</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.Duration#getExpr <em>Expr</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>First Time</em>'.
-	 * @see org.eclipse.uml2.uml.Duration#isFirstTime()
+	 * @return the meta object for the reference '<em>Expr</em>'.
+	 * @see org.eclipse.uml2.uml.Duration#getExpr()
 	 * @see #getDuration()
 	 * @generated
 	 */
-	EAttribute getDuration_FirstTime();
+	EReference getDuration_Expr();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.Duration#getEvents <em>Event</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.Duration#getObservations <em>Observation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Event</em>'.
-	 * @see org.eclipse.uml2.uml.Duration#getEvents()
+	 * @return the meta object for the reference list '<em>Observation</em>'.
+	 * @see org.eclipse.uml2.uml.Duration#getObservations()
 	 * @see #getDuration()
 	 * @generated
 	 */
-	EReference getDuration_Event();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.TimeObservationAction <em>Time Observation Action</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Time Observation Action</em>'.
-	 * @see org.eclipse.uml2.uml.TimeObservationAction
-	 * @generated
-	 */
-	EClass getTimeObservationAction();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.TimeObservationAction#getNow <em>Now</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Now</em>'.
-	 * @see org.eclipse.uml2.uml.TimeObservationAction#getNow()
-	 * @see #getTimeObservationAction()
-	 * @generated
-	 */
-	EReference getTimeObservationAction_Now();
+	EReference getDuration_Observation();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.ValuePin <em>Value Pin</em>}'.
@@ -65598,6 +65468,17 @@ public interface UMLPackage
 	EClass getTimeConstraint();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.uml.TimeConstraint#isFirstEvent <em>First Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>First Event</em>'.
+	 * @see org.eclipse.uml2.uml.TimeConstraint#isFirstEvent()
+	 * @see #getTimeConstraint()
+	 * @generated
+	 */
+	EAttribute getTimeConstraint_FirstEvent();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.IntervalConstraint <em>Interval Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65618,27 +65499,6 @@ public interface UMLPackage
 	EClass getTimeInterval();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.DurationObservationAction <em>Duration Observation Action</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Duration Observation Action</em>'.
-	 * @see org.eclipse.uml2.uml.DurationObservationAction
-	 * @generated
-	 */
-	EClass getDurationObservationAction();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.DurationObservationAction#getDuration <em>Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Duration</em>'.
-	 * @see org.eclipse.uml2.uml.DurationObservationAction#getDuration()
-	 * @see #getDurationObservationAction()
-	 * @generated
-	 */
-	EReference getDurationObservationAction_Duration();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.DurationConstraint <em>Duration Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65647,6 +65507,81 @@ public interface UMLPackage
 	 * @generated
 	 */
 	EClass getDurationConstraint();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.uml2.uml.DurationConstraint#getFirstEvents <em>First Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>First Event</em>'.
+	 * @see org.eclipse.uml2.uml.DurationConstraint#getFirstEvents()
+	 * @see #getDurationConstraint()
+	 * @generated
+	 */
+	EAttribute getDurationConstraint_FirstEvent();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.TimeObservation <em>Time Observation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Observation</em>'.
+	 * @see org.eclipse.uml2.uml.TimeObservation
+	 * @generated
+	 */
+	EClass getTimeObservation();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.TimeObservation#getEvent <em>Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Event</em>'.
+	 * @see org.eclipse.uml2.uml.TimeObservation#getEvent()
+	 * @see #getTimeObservation()
+	 * @generated
+	 */
+	EReference getTimeObservation_Event();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.uml.TimeObservation#isFirstEvent <em>First Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>First Event</em>'.
+	 * @see org.eclipse.uml2.uml.TimeObservation#isFirstEvent()
+	 * @see #getTimeObservation()
+	 * @generated
+	 */
+	EAttribute getTimeObservation_FirstEvent();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.DurationObservation <em>Duration Observation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Duration Observation</em>'.
+	 * @see org.eclipse.uml2.uml.DurationObservation
+	 * @generated
+	 */
+	EClass getDurationObservation();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.DurationObservation#getEvents <em>Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Event</em>'.
+	 * @see org.eclipse.uml2.uml.DurationObservation#getEvents()
+	 * @see #getDurationObservation()
+	 * @generated
+	 */
+	EReference getDurationObservation_Event();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.uml2.uml.DurationObservation#getFirstEvents <em>First Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>First Event</em>'.
+	 * @see org.eclipse.uml2.uml.DurationObservation#getFirstEvents()
+	 * @see #getDurationObservation()
+	 * @generated
+	 */
+	EAttribute getDurationObservation_FirstEvent();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.OpaqueAction <em>Opaque Action</em>}'.
@@ -67385,10 +67320,10 @@ public interface UMLPackage
 	EReference getProtocolTransition_Referred();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.ProtocolTransition#getPreCondition <em>Pre Condition</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.uml2.uml.ProtocolTransition#getPreCondition <em>Pre Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Pre Condition</em>'.
+	 * @return the meta object for the containment reference '<em>Pre Condition</em>'.
 	 * @see org.eclipse.uml2.uml.ProtocolTransition#getPreCondition()
 	 * @see #getProtocolTransition()
 	 * @generated
@@ -70943,6 +70878,30 @@ public interface UMLPackage
 		EClass IMAGE = eINSTANCE.getImage();
 
 		/**
+		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMAGE__CONTENT = eINSTANCE.getImage_Content();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMAGE__LOCATION = eINSTANCE.getImage_Location();
+
+		/**
+		 * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMAGE__FORMAT = eINSTANCE.getImage_Format();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl <em>String Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -73355,21 +73314,31 @@ public interface UMLPackage
 		EClass TIME_EXPRESSION = eINSTANCE.getTimeExpression();
 
 		/**
-		 * The meta object literal for the '<em><b>First Time</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Expr</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TIME_EXPRESSION__FIRST_TIME = eINSTANCE
-			.getTimeExpression_FirstTime();
+		EReference TIME_EXPRESSION__EXPR = eINSTANCE.getTimeExpression_Expr();
 
 		/**
-		 * The meta object literal for the '<em><b>Event</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Observation</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIME_EXPRESSION__EVENT = eINSTANCE.getTimeExpression_Event();
+		EReference TIME_EXPRESSION__OBSERVATION = eINSTANCE
+			.getTimeExpression_Observation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.ObservationImpl <em>Observation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.uml.internal.impl.ObservationImpl
+		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObservation()
+		 * @generated
+		 */
+		EClass OBSERVATION = eINSTANCE.getObservation();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.DurationImpl <em>Duration</em>}' class.
@@ -73382,39 +73351,20 @@ public interface UMLPackage
 		EClass DURATION = eINSTANCE.getDuration();
 
 		/**
-		 * The meta object literal for the '<em><b>First Time</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Expr</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DURATION__FIRST_TIME = eINSTANCE.getDuration_FirstTime();
+		EReference DURATION__EXPR = eINSTANCE.getDuration_Expr();
 
 		/**
-		 * The meta object literal for the '<em><b>Event</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Observation</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DURATION__EVENT = eINSTANCE.getDuration_Event();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.TimeObservationActionImpl <em>Time Observation Action</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.uml2.uml.internal.impl.TimeObservationActionImpl
-		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeObservationAction()
-		 * @generated
-		 */
-		EClass TIME_OBSERVATION_ACTION = eINSTANCE.getTimeObservationAction();
-
-		/**
-		 * The meta object literal for the '<em><b>Now</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TIME_OBSERVATION_ACTION__NOW = eINSTANCE
-			.getTimeObservationAction_Now();
+		EReference DURATION__OBSERVATION = eINSTANCE.getDuration_Observation();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.ValuePinImpl <em>Value Pin</em>}' class.
@@ -73481,6 +73431,15 @@ public interface UMLPackage
 		EClass TIME_CONSTRAINT = eINSTANCE.getTimeConstraint();
 
 		/**
+		 * The meta object literal for the '<em><b>First Event</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME_CONSTRAINT__FIRST_EVENT = eINSTANCE
+			.getTimeConstraint_FirstEvent();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.IntervalConstraintImpl <em>Interval Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -73501,26 +73460,6 @@ public interface UMLPackage
 		EClass TIME_INTERVAL = eINSTANCE.getTimeInterval();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.DurationObservationActionImpl <em>Duration Observation Action</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.uml2.uml.internal.impl.DurationObservationActionImpl
-		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationObservationAction()
-		 * @generated
-		 */
-		EClass DURATION_OBSERVATION_ACTION = eINSTANCE
-			.getDurationObservationAction();
-
-		/**
-		 * The meta object literal for the '<em><b>Duration</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DURATION_OBSERVATION_ACTION__DURATION = eINSTANCE
-			.getDurationObservationAction_Duration();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.DurationConstraintImpl <em>Duration Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -73529,6 +73468,71 @@ public interface UMLPackage
 		 * @generated
 		 */
 		EClass DURATION_CONSTRAINT = eINSTANCE.getDurationConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>First Event</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DURATION_CONSTRAINT__FIRST_EVENT = eINSTANCE
+			.getDurationConstraint_FirstEvent();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.TimeObservationImpl <em>Time Observation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.uml.internal.impl.TimeObservationImpl
+		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeObservation()
+		 * @generated
+		 */
+		EClass TIME_OBSERVATION = eINSTANCE.getTimeObservation();
+
+		/**
+		 * The meta object literal for the '<em><b>Event</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TIME_OBSERVATION__EVENT = eINSTANCE
+			.getTimeObservation_Event();
+
+		/**
+		 * The meta object literal for the '<em><b>First Event</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME_OBSERVATION__FIRST_EVENT = eINSTANCE
+			.getTimeObservation_FirstEvent();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.DurationObservationImpl <em>Duration Observation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.uml2.uml.internal.impl.DurationObservationImpl
+		 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationObservation()
+		 * @generated
+		 */
+		EClass DURATION_OBSERVATION = eINSTANCE.getDurationObservation();
+
+		/**
+		 * The meta object literal for the '<em><b>Event</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DURATION_OBSERVATION__EVENT = eINSTANCE
+			.getDurationObservation_Event();
+
+		/**
+		 * The meta object literal for the '<em><b>First Event</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DURATION_OBSERVATION__FIRST_EVENT = eINSTANCE
+			.getDurationObservation_FirstEvent();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl <em>Opaque Action</em>}' class.
@@ -75040,7 +75044,7 @@ public interface UMLPackage
 			.getProtocolTransition_Referred();
 
 		/**
-		 * The meta object literal for the '<em><b>Pre Condition</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Pre Condition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

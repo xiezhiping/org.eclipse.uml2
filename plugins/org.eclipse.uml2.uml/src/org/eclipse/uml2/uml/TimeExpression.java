@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpression.java,v 1.2 2005/12/12 16:58:34 khussey Exp $
+ * $Id: TimeExpression.java,v 1.3 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,8 +26,8 @@ package org.eclipse.uml2.uml;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.TimeExpression#isFirstTime <em>First Time</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.TimeExpression#getEvent <em>Event</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.TimeExpression#getExpr <em>Expr</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.TimeExpression#getObservations <em>Observation</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,53 +39,54 @@ public interface TimeExpression
 		extends ValueSpecification {
 
 	/**
-	 * Returns the value of the '<em><b>First Time</b></em>' attribute.
+	 * Returns the value of the '<em><b>Expr</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * True if the TimeExpression describes the first point in time of the NamedElement referenced by event, in cases where the NamedElement describes something which extends in time. False if the TimeExpression describes the last point in time for the referenced NamedElement.
+	 * The value of the time expression.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>First Time</em>' attribute.
-	 * @see #setFirstTime(boolean)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getTimeExpression_FirstTime()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
-	 * @generated
-	 */
-	boolean isFirstTime();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.TimeExpression#isFirstTime <em>First Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>First Time</em>' attribute.
-	 * @see #isFirstTime()
-	 * @generated
-	 */
-	void setFirstTime(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Event</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Refers to the specification of the event occurrence that the TimeExpression describes
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Event</em>' reference.
-	 * @see #setEvent(NamedElement)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getTimeExpression_Event()
+	 * @return the value of the '<em>Expr</em>' reference.
+	 * @see #setExpr(ValueSpecification)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getTimeExpression_Expr()
 	 * @model ordered="false"
 	 * @generated
 	 */
-	NamedElement getEvent();
+	ValueSpecification getExpr();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.TimeExpression#getEvent <em>Event</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.TimeExpression#getExpr <em>Expr</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Event</em>' reference.
-	 * @see #getEvent()
+	 * @param value the new value of the '<em>Expr</em>' reference.
+	 * @see #getExpr()
 	 * @generated
 	 */
-	void setEvent(NamedElement value);
+	void setExpr(ValueSpecification value);
+
+	/**
+	 * Returns the value of the '<em><b>Observation</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.Observation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Refers to the time and duration observations that are involved in expr.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Observation</em>' reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getTimeExpression_Observation()
+	 * @model type="org.eclipse.uml2.uml.Observation" ordered="false"
+	 * @generated
+	 */
+	EList getObservations();
+
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>' from the '<em><b>Observation</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Observation} to retrieve.
+	 * @return The {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getObservations()
+	 * @generated
+	 */
+	Observation getObservation(String name);
 
 } // TimeExpression

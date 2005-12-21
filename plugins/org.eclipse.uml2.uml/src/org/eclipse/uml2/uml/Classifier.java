@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.5 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Classifier.java,v 1.6 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -562,6 +562,14 @@ public interface Classifier
 	 * @generated
 	 */
 	EList getAllOperations();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @generated
+	 */
+	Operation getOperation(String name);
 
 	/**
 	 * <!-- begin-user-doc -->

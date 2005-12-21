@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.6 2005/12/14 22:34:17 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.7 2005/12/21 20:13:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -89,7 +89,7 @@ import org.eclipse.uml2.uml.Device;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationConstraint;
 import org.eclipse.uml2.uml.DurationInterval;
-import org.eclipse.uml2.uml.DurationObservationAction;
+import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -113,6 +113,7 @@ import org.eclipse.uml2.uml.Gate;
 import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.GeneralizationSet;
+import org.eclipse.uml2.uml.Image;
 import org.eclipse.uml2.uml.Include;
 import org.eclipse.uml2.uml.InformationFlow;
 import org.eclipse.uml2.uml.InformationItem;
@@ -221,7 +222,7 @@ import org.eclipse.uml2.uml.TimeConstraint;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.TimeInterval;
-import org.eclipse.uml2.uml.TimeObservationAction;
+import org.eclipse.uml2.uml.TimeObservation;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
 import org.eclipse.uml2.uml.Trigger;
@@ -377,6 +378,8 @@ public class UMLFactoryImpl
 				return createExtensionEnd();
 			case UMLPackage.STEREOTYPE :
 				return createStereotype();
+			case UMLPackage.IMAGE :
+				return createImage();
 			case UMLPackage.PROFILE :
 				return createProfile();
 			case UMLPackage.MODEL :
@@ -559,10 +562,6 @@ public class UMLFactoryImpl
 				return createTimeExpression();
 			case UMLPackage.DURATION :
 				return createDuration();
-			case UMLPackage.TIME_OBSERVATION_ACTION :
-				return createTimeObservationAction();
-			case UMLPackage.VALUE_PIN :
-				return createValuePin();
 			case UMLPackage.DURATION_INTERVAL :
 				return createDurationInterval();
 			case UMLPackage.INTERVAL :
@@ -573,12 +572,16 @@ public class UMLFactoryImpl
 				return createIntervalConstraint();
 			case UMLPackage.TIME_INTERVAL :
 				return createTimeInterval();
-			case UMLPackage.DURATION_OBSERVATION_ACTION :
-				return createDurationObservationAction();
 			case UMLPackage.DURATION_CONSTRAINT :
 				return createDurationConstraint();
+			case UMLPackage.TIME_OBSERVATION :
+				return createTimeObservation();
+			case UMLPackage.DURATION_OBSERVATION :
+				return createDurationObservation();
 			case UMLPackage.OPAQUE_ACTION :
 				return createOpaqueAction();
+			case UMLPackage.VALUE_PIN :
+				return createValuePin();
 			case UMLPackage.SEND_SIGNAL_ACTION :
 				return createSendSignalAction();
 			case UMLPackage.CALL_OPERATION_ACTION :
@@ -919,6 +922,16 @@ public class UMLFactoryImpl
 	public Stereotype createStereotype() {
 		StereotypeImpl stereotype = new StereotypeImpl();
 		return stereotype;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Image createImage() {
+		ImageImpl image = new ImageImpl();
+		return image;
 	}
 
 	/**
@@ -2176,16 +2189,6 @@ public class UMLFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeObservationAction createTimeObservationAction() {
-		TimeObservationActionImpl timeObservationAction = new TimeObservationActionImpl();
-		return timeObservationAction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ValuePin createValuePin() {
 		ValuePinImpl valuePin = new ValuePinImpl();
 		return valuePin;
@@ -2246,9 +2249,9 @@ public class UMLFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DurationObservationAction createDurationObservationAction() {
-		DurationObservationActionImpl durationObservationAction = new DurationObservationActionImpl();
-		return durationObservationAction;
+	public DurationConstraint createDurationConstraint() {
+		DurationConstraintImpl durationConstraint = new DurationConstraintImpl();
+		return durationConstraint;
 	}
 
 	/**
@@ -2256,9 +2259,19 @@ public class UMLFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DurationConstraint createDurationConstraint() {
-		DurationConstraintImpl durationConstraint = new DurationConstraintImpl();
-		return durationConstraint;
+	public TimeObservation createTimeObservation() {
+		TimeObservationImpl timeObservation = new TimeObservationImpl();
+		return timeObservation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DurationObservation createDurationObservation() {
+		DurationObservationImpl durationObservation = new DurationObservationImpl();
+		return durationObservation;
 	}
 
 	/**

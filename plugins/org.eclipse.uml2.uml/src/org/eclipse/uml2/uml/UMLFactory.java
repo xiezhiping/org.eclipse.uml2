@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactory.java,v 1.2 2005/12/08 14:56:26 khussey Exp $
+ * $Id: UMLFactory.java,v 1.3 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -150,6 +150,15 @@ public interface UMLFactory
 	 * @generated
 	 */
 	Stereotype createStereotype();
+
+	/**
+	 * Returns a new object of class '<em>Image</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Image</em>'.
+	 * @generated
+	 */
+	Image createImage();
 
 	/**
 	 * Returns a new object of class '<em>Class</em>'.
@@ -1277,15 +1286,6 @@ public interface UMLFactory
 	Duration createDuration();
 
 	/**
-	 * Returns a new object of class '<em>Time Observation Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Time Observation Action</em>'.
-	 * @generated
-	 */
-	TimeObservationAction createTimeObservationAction();
-
-	/**
 	 * Returns a new object of class '<em>Value Pin</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1340,15 +1340,6 @@ public interface UMLFactory
 	TimeInterval createTimeInterval();
 
 	/**
-	 * Returns a new object of class '<em>Duration Observation Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Duration Observation Action</em>'.
-	 * @generated
-	 */
-	DurationObservationAction createDurationObservationAction();
-
-	/**
 	 * Returns a new object of class '<em>Duration Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1356,6 +1347,24 @@ public interface UMLFactory
 	 * @generated
 	 */
 	DurationConstraint createDurationConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Time Observation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Observation</em>'.
+	 * @generated
+	 */
+	TimeObservation createTimeObservation();
+
+	/**
+	 * Returns a new object of class '<em>Duration Observation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Duration Observation</em>'.
+	 * @generated
+	 */
+	DurationObservation createDurationObservation();
 
 	/**
 	 * Returns a new object of class '<em>Opaque Action</em>'.

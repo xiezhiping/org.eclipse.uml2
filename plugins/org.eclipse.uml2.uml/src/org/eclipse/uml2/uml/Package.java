@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.5 2005/12/19 18:51:31 khussey Exp $
+ * $Id: Package.java,v 1.6 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -284,18 +284,18 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" profileRequired="true" profileOrdered="false"
+	 * @model type="org.eclipse.emf.ecore.EObject" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
-	ProfileApplication applyProfile(Profile profile);
+	EList applyProfile(Profile profile);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" profileRequired="true" profileOrdered="false"
+	 * @model type="org.eclipse.emf.ecore.EObject" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
-	ProfileApplication unapplyProfile(Profile profile);
+	EList unapplyProfile(Profile profile);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -345,6 +345,14 @@ public interface Package
 	 */
 	ProfileApplication getProfileApplication(Profile profile,
 			boolean isRecursive);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @generated
+	 */
+	Interface createOwnedInterface(String name);
 
 	/**
 	 * <!-- begin-user-doc -->

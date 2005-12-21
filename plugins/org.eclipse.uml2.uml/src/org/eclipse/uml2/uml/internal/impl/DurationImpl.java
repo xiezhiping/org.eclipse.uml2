@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: DurationImpl.java,v 1.9 2005/12/21 20:13:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,16 +19,19 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Duration;
-import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Observation;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
@@ -38,8 +41,8 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DurationImpl#isFirstTime <em>First Time</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DurationImpl#getEvents <em>Event</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DurationImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DurationImpl#getObservations <em>Observation</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,26 +51,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public class DurationImpl
 		extends ValueSpecificationImpl
 		implements Duration {
-
-	/**
-	 * The default value of the '{@link #isFirstTime() <em>First Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isFirstTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean FIRST_TIME_EDEFAULT = false;
-
-	/**
-	 * The flag representing the value of the '{@link #isFirstTime() <em>First Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isFirstTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int FIRST_TIME_EFLAG = 1 << 8;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,8 +75,19 @@ public class DurationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isFirstTime() {
-		return (eFlags & FIRST_TIME_EFLAG) != 0;
+	public ValueSpecification getExpr() {
+		ValueSpecification expr = (ValueSpecification) eVirtualGet(UMLPackage.DURATION__EXPR);
+		if (expr != null && expr.eIsProxy()) {
+			InternalEObject oldExpr = (InternalEObject) expr;
+			expr = (ValueSpecification) eResolveProxy(oldExpr);
+			if (expr != oldExpr) {
+				eVirtualSet(UMLPackage.DURATION__EXPR, expr);
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.DURATION__EXPR, oldExpr, expr));
+			}
+		}
+		return expr;
 	}
 
 	/**
@@ -101,15 +95,23 @@ public class DurationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFirstTime(boolean newFirstTime) {
-		boolean oldFirstTime = (eFlags & FIRST_TIME_EFLAG) != 0;
-		if (newFirstTime)
-			eFlags |= FIRST_TIME_EFLAG;
-		else
-			eFlags &= ~FIRST_TIME_EFLAG;
+	public ValueSpecification basicGetExpr() {
+		return (ValueSpecification) eVirtualGet(UMLPackage.DURATION__EXPR);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExpr(ValueSpecification newExpr) {
+		ValueSpecification expr = newExpr;
+		Object oldExpr = eVirtualSet(UMLPackage.DURATION__EXPR, expr);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.DURATION__FIRST_TIME, oldFirstTime, newFirstTime));
+				UMLPackage.DURATION__EXPR, oldExpr == EVIRTUAL_NO_VALUE
+					? null
+					: oldExpr, expr));
 
 	}
 
@@ -118,14 +120,14 @@ public class DurationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEvents() {
-		EList event = (EList) eVirtualGet(UMLPackage.DURATION__EVENT);
-		if (event == null) {
-			eVirtualSet(UMLPackage.DURATION__EVENT,
-				event = new EObjectResolvingEList(NamedElement.class, this,
-					UMLPackage.DURATION__EVENT));
+	public EList getObservations() {
+		EList observation = (EList) eVirtualGet(UMLPackage.DURATION__OBSERVATION);
+		if (observation == null) {
+			eVirtualSet(UMLPackage.DURATION__OBSERVATION,
+				observation = new EObjectResolvingEList(Observation.class,
+					this, UMLPackage.DURATION__OBSERVATION));
 		}
-		return event;
+		return observation;
 	}
 
 	/**
@@ -133,11 +135,11 @@ public class DurationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NamedElement getEvent(String name) {
-		for (Iterator i = getEvents().iterator(); i.hasNext();) {
-			NamedElement event = (NamedElement) i.next();
-			if (name.equals(event.getName())) {
-				return event;
+	public Observation getObservation(String name) {
+		for (Iterator i = getObservations().iterator(); i.hasNext();) {
+			Observation observation = (Observation) i.next();
+			if (name.equals(observation.getName())) {
+				return observation;
 			}
 		}
 		return null;
@@ -186,12 +188,12 @@ public class DurationImpl
 				if (resolve)
 					return getType();
 				return basicGetType();
-			case UMLPackage.DURATION__FIRST_TIME :
-				return isFirstTime()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case UMLPackage.DURATION__EVENT :
-				return getEvents();
+			case UMLPackage.DURATION__EXPR :
+				if (resolve)
+					return getExpr();
+				return basicGetExpr();
+			case UMLPackage.DURATION__OBSERVATION :
+				return getObservations();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -233,12 +235,12 @@ public class DurationImpl
 			case UMLPackage.DURATION__TYPE :
 				setType((Type) newValue);
 				return;
-			case UMLPackage.DURATION__FIRST_TIME :
-				setFirstTime(((Boolean) newValue).booleanValue());
+			case UMLPackage.DURATION__EXPR :
+				setExpr((ValueSpecification) newValue);
 				return;
-			case UMLPackage.DURATION__EVENT :
-				getEvents().clear();
-				getEvents().addAll((Collection) newValue);
+			case UMLPackage.DURATION__OBSERVATION :
+				getObservations().clear();
+				getObservations().addAll((Collection) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -278,11 +280,11 @@ public class DurationImpl
 			case UMLPackage.DURATION__TYPE :
 				setType((Type) null);
 				return;
-			case UMLPackage.DURATION__FIRST_TIME :
-				setFirstTime(FIRST_TIME_EDEFAULT);
+			case UMLPackage.DURATION__EXPR :
+				setExpr((ValueSpecification) null);
 				return;
-			case UMLPackage.DURATION__EVENT :
-				getEvents().clear();
+			case UMLPackage.DURATION__OBSERVATION :
+				getObservations().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -326,29 +328,13 @@ public class DurationImpl
 				return eVirtualGet(UMLPackage.DURATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DURATION__TYPE :
 				return eVirtualGet(UMLPackage.DURATION__TYPE) != null;
-			case UMLPackage.DURATION__FIRST_TIME :
-				return ((eFlags & FIRST_TIME_EFLAG) != 0) != FIRST_TIME_EDEFAULT;
-			case UMLPackage.DURATION__EVENT :
-				EList event = (EList) eVirtualGet(UMLPackage.DURATION__EVENT);
-				return event != null && !event.isEmpty();
+			case UMLPackage.DURATION__EXPR :
+				return eVirtualGet(UMLPackage.DURATION__EXPR) != null;
+			case UMLPackage.DURATION__OBSERVATION :
+				EList observation = (EList) eVirtualGet(UMLPackage.DURATION__OBSERVATION);
+				return observation != null && !observation.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (firstTime: "); //$NON-NLS-1$
-		result.append((eFlags & FIRST_TIME_EFLAG) != 0);
-		result.append(')');
-		return result.toString();
 	}
 
 } //DurationImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLAdapterFactory.java,v 1.3 2005/12/14 22:34:17 khussey Exp $
+ * $Id: UMLAdapterFactory.java,v 1.4 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -95,7 +95,7 @@ import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationConstraint;
 import org.eclipse.uml2.uml.DurationInterval;
-import org.eclipse.uml2.uml.DurationObservationAction;
+import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
@@ -170,6 +170,7 @@ import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.ObjectNode;
+import org.eclipse.uml2.uml.Observation;
 import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.OpaqueBehavior;
@@ -246,7 +247,7 @@ import org.eclipse.uml2.uml.TimeConstraint;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.TimeInterval;
-import org.eclipse.uml2.uml.TimeObservationAction;
+import org.eclipse.uml2.uml.TimeObservation;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
@@ -1051,16 +1052,12 @@ public class UMLAdapterFactory
 			return createTimeExpressionAdapter();
 		}
 
+		public Object caseObservation(Observation object) {
+			return createObservationAdapter();
+		}
+
 		public Object caseDuration(Duration object) {
 			return createDurationAdapter();
-		}
-
-		public Object caseTimeObservationAction(TimeObservationAction object) {
-			return createTimeObservationActionAdapter();
-		}
-
-		public Object caseValuePin(ValuePin object) {
-			return createValuePinAdapter();
 		}
 
 		public Object caseDurationInterval(DurationInterval object) {
@@ -1083,17 +1080,24 @@ public class UMLAdapterFactory
 			return createTimeIntervalAdapter();
 		}
 
-		public Object caseDurationObservationAction(
-				DurationObservationAction object) {
-			return createDurationObservationActionAdapter();
-		}
-
 		public Object caseDurationConstraint(DurationConstraint object) {
 			return createDurationConstraintAdapter();
 		}
 
+		public Object caseTimeObservation(TimeObservation object) {
+			return createTimeObservationAdapter();
+		}
+
+		public Object caseDurationObservation(DurationObservation object) {
+			return createDurationObservationAdapter();
+		}
+
 		public Object caseOpaqueAction(OpaqueAction object) {
 			return createOpaqueActionAdapter();
+		}
+
+		public Object caseValuePin(ValuePin object) {
+			return createValuePinAdapter();
 		}
 
 		public Object caseCallAction(CallAction object) {
@@ -3824,6 +3828,20 @@ public class UMLAdapterFactory
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.Observation <em>Observation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.uml2.uml.Observation
+	 * @generated
+	 */
+	public Adapter createObservationAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.Duration <em>Duration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -3834,20 +3852,6 @@ public class UMLAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDurationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.TimeObservationAction <em>Time Observation Action</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.uml2.uml.TimeObservationAction
-	 * @generated
-	 */
-	public Adapter createTimeObservationActionAdapter() {
 		return null;
 	}
 
@@ -3936,20 +3940,6 @@ public class UMLAdapterFactory
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.DurationObservationAction <em>Duration Observation Action</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.uml2.uml.DurationObservationAction
-	 * @generated
-	 */
-	public Adapter createDurationObservationActionAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.DurationConstraint <em>Duration Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -3960,6 +3950,34 @@ public class UMLAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDurationConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.TimeObservation <em>Time Observation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.uml2.uml.TimeObservation
+	 * @generated
+	 */
+	public Adapter createTimeObservationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.DurationObservation <em>Duration Observation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.uml2.uml.DurationObservation
+	 * @generated
+	 */
+	public Adapter createDurationObservationAdapter() {
 		return null;
 	}
 

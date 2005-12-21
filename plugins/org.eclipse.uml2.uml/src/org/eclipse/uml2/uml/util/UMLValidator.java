@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.8 2005/12/14 22:34:16 khussey Exp $
+ * $Id: UMLValidator.java,v 1.9 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -102,7 +102,7 @@ import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationConstraint;
 import org.eclipse.uml2.uml.DurationInterval;
-import org.eclipse.uml2.uml.DurationObservationAction;
+import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
@@ -182,6 +182,7 @@ import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.ObjectNode;
 import org.eclipse.uml2.uml.ObjectNodeOrderingKind;
+import org.eclipse.uml2.uml.Observation;
 import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.OpaqueBehavior;
@@ -261,7 +262,7 @@ import org.eclipse.uml2.uml.TimeConstraint;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.TimeInterval;
-import org.eclipse.uml2.uml.TimeObservationAction;
+import org.eclipse.uml2.uml.TimeObservation;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
 import org.eclipse.uml2.uml.Trigger;
@@ -2511,12 +2512,20 @@ public class UMLValidator
 	public static final int VALUE_SPECIFICATION_ACTION__MULTIPLICITY = 275;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Value Time Expression' of 'Time Observation Action'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate First Event Multiplicity' of 'Duration Constraint'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TIME_OBSERVATION_ACTION__INPUT_VALUE_TIME_EXPRESSION = 276;
+	public static final int DURATION_CONSTRAINT__FIRST_EVENT_MULTIPLICITY = 276;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate First Event Multiplicity' of 'Duration Observation'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int DURATION_OBSERVATION__FIRST_EVENT_MULTIPLICITY = 277;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Compatible Type' of 'Value Pin'.
@@ -2524,15 +2533,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int VALUE_PIN__COMPATIBLE_TYPE = 277;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Value Duration' of 'Duration Observation Action'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int DURATION_OBSERVATION_ACTION__INPUT_VALUE_DURATION = 278;
+	public static final int VALUE_PIN__COMPATIBLE_TYPE = 278;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Synchronous Call' of 'Call Action'.
@@ -4071,13 +4072,11 @@ public class UMLValidator
 			case UMLPackage.TIME_EXPRESSION :
 				return validateTimeExpression((TimeExpression) value,
 					diagnostics, context);
+			case UMLPackage.OBSERVATION :
+				return validateObservation((Observation) value, diagnostics,
+					context);
 			case UMLPackage.DURATION :
 				return validateDuration((Duration) value, diagnostics, context);
-			case UMLPackage.TIME_OBSERVATION_ACTION :
-				return validateTimeObservationAction(
-					(TimeObservationAction) value, diagnostics, context);
-			case UMLPackage.VALUE_PIN :
-				return validateValuePin((ValuePin) value, diagnostics, context);
 			case UMLPackage.DURATION_INTERVAL :
 				return validateDurationInterval((DurationInterval) value,
 					diagnostics, context);
@@ -4092,15 +4091,20 @@ public class UMLValidator
 			case UMLPackage.TIME_INTERVAL :
 				return validateTimeInterval((TimeInterval) value, diagnostics,
 					context);
-			case UMLPackage.DURATION_OBSERVATION_ACTION :
-				return validateDurationObservationAction(
-					(DurationObservationAction) value, diagnostics, context);
 			case UMLPackage.DURATION_CONSTRAINT :
 				return validateDurationConstraint((DurationConstraint) value,
+					diagnostics, context);
+			case UMLPackage.TIME_OBSERVATION :
+				return validateTimeObservation((TimeObservation) value,
+					diagnostics, context);
+			case UMLPackage.DURATION_OBSERVATION :
+				return validateDurationObservation((DurationObservation) value,
 					diagnostics, context);
 			case UMLPackage.OPAQUE_ACTION :
 				return validateOpaqueAction((OpaqueAction) value, diagnostics,
 					context);
+			case UMLPackage.VALUE_PIN :
+				return validateValuePin((ValuePin) value, diagnostics, context);
 			case UMLPackage.CALL_ACTION :
 				return validateCallAction((CallAction) value, diagnostics,
 					context);
@@ -10095,7 +10099,23 @@ public class UMLValidator
 	 */
 	public boolean validateImage(Image image, DiagnosticChain diagnostics,
 			Map context) {
-		return validate_EveryDefaultConstraint(image, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms(image, diagnostics,
+			context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(image, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(image, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(image, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateElement_validateNotOwnSelf(image, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validateElement_validateHasOwner(image, diagnostics,
+				context);
+		return result;
 	}
 
 	/**
@@ -16163,6 +16183,42 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateObservation(Observation observation,
+			DiagnosticChain diagnostics, Map context) {
+		boolean result = validate_EveryMultiplicityConforms(observation,
+			diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(observation, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(observation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(observation, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validateElement_validateNotOwnSelf(observation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateElement_validateHasOwner(observation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateHasNoQualifiedName(
+				observation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateHasQualifiedName(
+				observation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				observation, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateDuration(Duration duration,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = validate_EveryMultiplicityConforms(duration,
@@ -16192,89 +16248,6 @@ public class UMLValidator
 			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				duration, diagnostics, context);
 		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTimeObservationAction(
-			TimeObservationAction timeObservationAction,
-			DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(
-			timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryDataValueConforms(timeObservationAction,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryReferenceIsContained(timeObservationAction,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryProxyResolves(timeObservationAction,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateElement_validateNotOwnSelf(timeObservationAction,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateElement_validateHasOwner(timeObservationAction,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateNamedElement_validateHasNoQualifiedName(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateNamedElement_validateHasQualifiedName(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateRedefinableElement_validateRedefinitionContextValid(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateRedefinableElement_validateRedefinitionConsistent(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateActivityNode_validateOwned(timeObservationAction,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateActivityNode_validateOwnedStructuredNode(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateNotStatic(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateSameType(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateWriteStructuralFeatureAction_validateMultiplicity(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateVisibility(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateOneFeaturingClassifier(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateWriteStructuralFeatureAction_validateInputPin(
-				timeObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateTimeObservationAction_validateInputValueTimeExpression(
-				timeObservationAction, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * Validates the validateInputValueTimeExpression constraint of '<em>Time Observation Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTimeObservationAction_validateInputValueTimeExpression(
-			TimeObservationAction timeObservationAction,
-			DiagnosticChain diagnostics, Map context) {
-		return timeObservationAction.validateInputValueTimeExpression(
-			diagnostics, context);
 	}
 
 	/**
@@ -16570,89 +16543,6 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDurationObservationAction(
-			DurationObservationAction durationObservationAction,
-			DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(
-			durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryDataValueConforms(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryReferenceIsContained(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryProxyResolves(durationObservationAction,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateElement_validateNotOwnSelf(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateElement_validateHasOwner(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateNamedElement_validateHasNoQualifiedName(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateNamedElement_validateHasQualifiedName(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateRedefinableElement_validateRedefinitionContextValid(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateRedefinableElement_validateRedefinitionConsistent(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateActivityNode_validateOwned(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateActivityNode_validateOwnedStructuredNode(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateNotStatic(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateSameType(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateWriteStructuralFeatureAction_validateMultiplicity(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateVisibility(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateOneFeaturingClassifier(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateWriteStructuralFeatureAction_validateInputPin(
-				durationObservationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateDurationObservationAction_validateInputValueDuration(
-				durationObservationAction, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * Validates the validateInputValueDuration constraint of '<em>Duration Observation Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDurationObservationAction_validateInputValueDuration(
-			DurationObservationAction durationObservationAction,
-			DiagnosticChain diagnostics, Map context) {
-		return durationObservationAction.validateInputValueDuration(
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateDurationConstraint(
 			DurationConstraint durationConstraint, DiagnosticChain diagnostics,
 			Map context) {
@@ -16697,7 +16587,112 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validateConstraint_validateNotAppliedToSelf(
 				durationConstraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDurationConstraint_validateFirstEventMultiplicity(
+				durationConstraint, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * Validates the validateFirstEventMultiplicity constraint of '<em>Duration Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDurationConstraint_validateFirstEventMultiplicity(
+			DurationConstraint durationConstraint, DiagnosticChain diagnostics,
+			Map context) {
+		return durationConstraint.validateFirstEventMultiplicity(diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeObservation(TimeObservation timeObservation,
+			DiagnosticChain diagnostics, Map context) {
+		boolean result = validate_EveryMultiplicityConforms(timeObservation,
+			diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(timeObservation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(timeObservation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(timeObservation, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validateElement_validateNotOwnSelf(timeObservation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateElement_validateHasOwner(timeObservation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateHasNoQualifiedName(
+				timeObservation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateHasQualifiedName(
+				timeObservation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				timeObservation, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDurationObservation(
+			DurationObservation durationObservation,
+			DiagnosticChain diagnostics, Map context) {
+		boolean result = validate_EveryMultiplicityConforms(
+			durationObservation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(durationObservation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(durationObservation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(durationObservation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateElement_validateNotOwnSelf(durationObservation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateElement_validateHasOwner(durationObservation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateHasNoQualifiedName(
+				durationObservation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateHasQualifiedName(
+				durationObservation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				durationObservation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDurationObservation_validateFirstEventMultiplicity(
+				durationObservation, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the validateFirstEventMultiplicity constraint of '<em>Duration Observation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDurationObservation_validateFirstEventMultiplicity(
+			DurationObservation durationObservation,
+			DiagnosticChain diagnostics, Map context) {
+		return durationObservation.validateFirstEventMultiplicity(diagnostics,
+			context);
 	}
 
 	/**

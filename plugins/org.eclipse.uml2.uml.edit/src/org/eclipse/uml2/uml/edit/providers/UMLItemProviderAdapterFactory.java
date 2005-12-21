@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.3 2005/12/14 22:34:56 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.4 2005/12/21 20:13:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -372,6 +372,28 @@ public class UMLItemProviderAdapterFactory
 		}
 
 		return stereotypeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Image} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ImageItemProvider imageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Image}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Adapter createImageAdapter() {
+		if (imageItemProvider == null) {
+			imageItemProvider = new ImageItemProvider(this);
+		}
+
+		return imageItemProvider;
 	}
 
 	/**
@@ -3175,29 +3197,6 @@ public class UMLItemProviderAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TimeObservationAction} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TimeObservationActionItemProvider timeObservationActionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TimeObservationAction}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Adapter createTimeObservationActionAdapter() {
-		if (timeObservationActionItemProvider == null) {
-			timeObservationActionItemProvider = new TimeObservationActionItemProvider(
-				this);
-		}
-
-		return timeObservationActionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ValuePin} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3332,29 +3331,6 @@ public class UMLItemProviderAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DurationObservationAction} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DurationObservationActionItemProvider durationObservationActionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DurationObservationAction}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Adapter createDurationObservationActionAdapter() {
-		if (durationObservationActionItemProvider == null) {
-			durationObservationActionItemProvider = new DurationObservationActionItemProvider(
-				this);
-		}
-
-		return durationObservationActionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DurationConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3375,6 +3351,51 @@ public class UMLItemProviderAdapterFactory
 		}
 
 		return durationConstraintItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TimeObservation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeObservationItemProvider timeObservationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TimeObservation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Adapter createTimeObservationAdapter() {
+		if (timeObservationItemProvider == null) {
+			timeObservationItemProvider = new TimeObservationItemProvider(this);
+		}
+
+		return timeObservationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DurationObservation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DurationObservationItemProvider durationObservationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DurationObservation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Adapter createDurationObservationAdapter() {
+		if (durationObservationItemProvider == null) {
+			durationObservationItemProvider = new DurationObservationItemProvider(
+				this);
+		}
+
+		return durationObservationItemProvider;
 	}
 
 	/**
@@ -4765,6 +4786,8 @@ public class UMLItemProviderAdapterFactory
 			extensionEndItemProvider.dispose();
 		if (stereotypeItemProvider != null)
 			stereotypeItemProvider.dispose();
+		if (imageItemProvider != null)
+			imageItemProvider.dispose();
 		if (profileItemProvider != null)
 			profileItemProvider.dispose();
 		if (modelItemProvider != null)
@@ -4947,10 +4970,6 @@ public class UMLItemProviderAdapterFactory
 			timeExpressionItemProvider.dispose();
 		if (durationItemProvider != null)
 			durationItemProvider.dispose();
-		if (timeObservationActionItemProvider != null)
-			timeObservationActionItemProvider.dispose();
-		if (valuePinItemProvider != null)
-			valuePinItemProvider.dispose();
 		if (durationIntervalItemProvider != null)
 			durationIntervalItemProvider.dispose();
 		if (intervalItemProvider != null)
@@ -4961,12 +4980,16 @@ public class UMLItemProviderAdapterFactory
 			intervalConstraintItemProvider.dispose();
 		if (timeIntervalItemProvider != null)
 			timeIntervalItemProvider.dispose();
-		if (durationObservationActionItemProvider != null)
-			durationObservationActionItemProvider.dispose();
 		if (durationConstraintItemProvider != null)
 			durationConstraintItemProvider.dispose();
+		if (timeObservationItemProvider != null)
+			timeObservationItemProvider.dispose();
+		if (durationObservationItemProvider != null)
+			durationObservationItemProvider.dispose();
 		if (opaqueActionItemProvider != null)
 			opaqueActionItemProvider.dispose();
+		if (valuePinItemProvider != null)
+			valuePinItemProvider.dispose();
 		if (sendSignalActionItemProvider != null)
 			sendSignalActionItemProvider.dispose();
 		if (callOperationActionItemProvider != null)

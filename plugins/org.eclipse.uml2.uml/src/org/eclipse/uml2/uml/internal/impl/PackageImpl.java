@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.13 2005/12/19 18:51:32 khussey Exp $
+ * $Id: PackageImpl.java,v 1.14 2005/12/21 20:13:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -39,6 +39,7 @@ import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PackageMerge;
@@ -777,7 +778,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProfileApplication applyProfile(Profile profile) {
+	public EList applyProfile(Profile profile) {
 		return PackageOperations.applyProfile(this, profile);
 	}
 
@@ -786,7 +787,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProfileApplication unapplyProfile(Profile profile) {
+	public EList unapplyProfile(Profile profile) {
 		return PackageOperations.unapplyProfile(this, profile);
 	}
 
@@ -835,6 +836,17 @@ public class PackageImpl
 	 * @generated
 	 */
 	public EList getAllProfileApplications() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.PACKAGE
+				.getEOperations().get(12));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
+					.get(12), result = PackageOperations
+					.getAllProfileApplications(this));
+			}
+			return result;
+		}
 		return PackageOperations.getAllProfileApplications(this);
 	}
 
@@ -856,6 +868,15 @@ public class PackageImpl
 			boolean isRecursive) {
 		return PackageOperations.getProfileApplication(this, profile,
 			isRecursive);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface createOwnedInterface(String name) {
+		return PackageOperations.createOwnedInterface(this, name);
 	}
 
 	/**
@@ -887,10 +908,10 @@ public class PackageImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this, UMLPackage.Literals.PACKAGE
-				.getEOperations().get(15));
+				.getEOperations().get(16));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
-					.get(15), result = PackageOperations.visibleMembers(this));
+					.get(16), result = PackageOperations.visibleMembers(this));
 			}
 			return result;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionItemProvider.java,v 1.1 2005/12/07 14:20:29 khussey Exp $
+ * $Id: DurationObservationItemProvider.java,v 1.1 2005/12/21 20:13:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -26,20 +26,22 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.uml2.uml.TimeObservationAction;
+import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.uml2.uml.TimeObservationAction} object.
+ * This is the item provider adapter for a {@link org.eclipse.uml2.uml.DurationObservation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TimeObservationActionItemProvider
-		extends WriteStructuralFeatureActionItemProvider
+public class DurationObservationItemProvider
+		extends ObservationItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
@@ -49,7 +51,7 @@ public class TimeObservationActionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeObservationActionItemProvider(AdapterFactory adapterFactory) {
+	public DurationObservationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,40 +65,58 @@ public class TimeObservationActionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNowPropertyDescriptor(object);
+			addEventPropertyDescriptor(object);
+			addFirstEventPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Now feature.
+	 * This adds a property descriptor for the Event feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNowPropertyDescriptor(Object object) {
+	protected void addEventPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_TimeObservationAction_now_feature"), //$NON-NLS-1$
+				getString("_UI_DurationObservation_event_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TimeObservationAction_now_feature", "_UI_TimeObservationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TIME_OBSERVATION_ACTION__NOW, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+					"_UI_PropertyDescriptor_description", "_UI_DurationObservation_event_feature", "_UI_DurationObservation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.DURATION_OBSERVATION__EVENT, true, null,
+				null, null));
 	}
 
 	/**
-	 * This returns TimeObservationAction.gif.
+	 * This adds a property descriptor for the First Event feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFirstEventPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_DurationObservation_firstEvent_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_DurationObservation_firstEvent_feature", "_UI_DurationObservation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.DURATION_OBSERVATION__FIRST_EVENT, true,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This returns DurationObservation.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator()
-			.getImage("full/obj16/TimeObservationAction"); //$NON-NLS-1$
+		return getResourceLocator().getImage("full/obj16/DurationObservation"); //$NON-NLS-1$
 	}
 
 	/**
@@ -106,10 +126,10 @@ public class TimeObservationActionItemProvider
 	 * @generated
 	 */
 	public String getText(Object object) {
-		String label = ((TimeObservationAction) object).getName();
+		String label = ((DurationObservation) object).getName();
 		return label == null || label.length() == 0
-			? getString("_UI_TimeObservationAction_type") : //$NON-NLS-1$
-			getString("_UI_TimeObservationAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			? getString("_UI_DurationObservation_type") : //$NON-NLS-1$
+			getString("_UI_DurationObservation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -121,6 +141,13 @@ public class TimeObservationActionItemProvider
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(DurationObservation.class)) {
+			case UMLPackage.DURATION_OBSERVATION__FIRST_EVENT :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -134,30 +161,6 @@ public class TimeObservationActionItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
-			|| childFeature == UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT
-			|| childFeature == UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
-				new Object[]{getTypeText(childObject),
-					getFeatureText(childFeature), getTypeText(owner)});
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

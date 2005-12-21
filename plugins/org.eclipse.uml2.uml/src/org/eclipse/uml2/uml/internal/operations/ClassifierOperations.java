@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.6 2005/12/14 22:34:27 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.7 2005/12/21 20:13:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,6 +27,8 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Operation;
+
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -239,6 +241,17 @@ public final class ClassifierOperations
 	 * @generated
 	 */
 	public static EList getAllOperations(Classifier classifier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Operation getOperation(Classifier classifier, String name) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

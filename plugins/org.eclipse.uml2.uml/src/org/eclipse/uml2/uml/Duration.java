@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Duration.java,v 1.3 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Duration.java,v 1.4 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,14 +20,14 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A duration defines a value specification that specifies the temporal distance between two time expressions that specify time instants.
+ * A duration defines a value specification that specifies the temporal distance between two time instants.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Duration#isFirstTime <em>First Time</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Duration#getEvents <em>Event</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Duration#getExpr <em>Expr</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Duration#getObservations <em>Observation</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,54 +39,54 @@ public interface Duration
 		extends ValueSpecification {
 
 	/**
-	 * Returns the value of the '<em><b>First Time</b></em>' attribute.
+	 * Returns the value of the '<em><b>Expr</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the duration is between times of two NamedElements, there are two Boolean attributes, one for the start of the duration and one for the end of the duration. For each of these it holds that firstTime is true if the time information is associated with the first point in time of the NamedElement referenced by event, and false if it represents the last point in time of the NamedElement. If there is only one NamedElement referenced by event, then this attribute is irrelevant.
+	 * The value of the Duration.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>First Time</em>' attribute.
-	 * @see #setFirstTime(boolean)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getDuration_FirstTime()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @return the value of the '<em>Expr</em>' reference.
+	 * @see #setExpr(ValueSpecification)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getDuration_Expr()
+	 * @model ordered="false"
 	 * @generated
 	 */
-	boolean isFirstTime();
+	ValueSpecification getExpr();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Duration#isFirstTime <em>First Time</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Duration#getExpr <em>Expr</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>First Time</em>' attribute.
-	 * @see #isFirstTime()
+	 * @param value the new value of the '<em>Expr</em>' reference.
+	 * @see #getExpr()
 	 * @generated
 	 */
-	void setFirstTime(boolean value);
+	void setExpr(ValueSpecification value);
 
 	/**
-	 * Returns the value of the '<em><b>Event</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.NamedElement}.
+	 * Returns the value of the '<em><b>Observation</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.Observation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Refers to the specification(s) that describes the starting TimeExpression and the ending TimeExpression of the Duration. If only one NamedElement is referenced, the duration is from the first point in time of that NamedElement until the last point in time of that NamedElement.
+	 * Refers to the time and duration observations that are involved in expr.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Event</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getDuration_Event()
-	 * @model type="org.eclipse.uml2.uml.NamedElement" upper="2" ordered="false"
+	 * @return the value of the '<em>Observation</em>' reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getDuration_Observation()
+	 * @model type="org.eclipse.uml2.uml.Observation" ordered="false"
 	 * @generated
 	 */
-	EList getEvents();
+	EList getObservations();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Event</b></em>' reference list.
+	 * Retrieves the {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>' from the '<em><b>Observation</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getEvents()
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Observation} to retrieve.
+	 * @return The {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getObservations()
 	 * @generated
 	 */
-	NamedElement getEvent(String name);
+	Observation getObservation(String name);
 
 } // Duration

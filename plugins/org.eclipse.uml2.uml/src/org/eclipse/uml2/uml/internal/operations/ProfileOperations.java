@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.5 2005/12/20 16:34:56 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.6 2005/12/21 20:13:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -326,7 +326,7 @@ public final class ProfileOperations
 		ownedStereotype.setName(name);
 		ownedStereotype.setIsAbstract(isAbstract);
 		return ownedStereotype;
-}
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

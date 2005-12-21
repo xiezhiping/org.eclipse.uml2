@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.4 2005/12/14 22:34:17 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.5 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -93,7 +93,7 @@ import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationConstraint;
 import org.eclipse.uml2.uml.DurationInterval;
-import org.eclipse.uml2.uml.DurationObservationAction;
+import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
@@ -168,6 +168,7 @@ import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.ObjectNode;
+import org.eclipse.uml2.uml.Observation;
 import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.OpaqueBehavior;
@@ -244,7 +245,7 @@ import org.eclipse.uml2.uml.TimeConstraint;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.TimeInterval;
-import org.eclipse.uml2.uml.TimeObservationAction;
+import org.eclipse.uml2.uml.TimeObservation;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
@@ -1767,6 +1768,10 @@ public class UMLSwitch {
 			case UMLPackage.IMAGE : {
 				Image image = (Image) theEObject;
 				Object result = caseImage(image);
+				if (result == null)
+					result = caseElement(image);
+				if (result == null)
+					result = caseEModelElement(image);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3884,6 +3889,19 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
+			case UMLPackage.OBSERVATION : {
+				Observation observation = (Observation) theEObject;
+				Object result = caseObservation(observation);
+				if (result == null)
+					result = caseNamedElement(observation);
+				if (result == null)
+					result = caseElement(observation);
+				if (result == null)
+					result = caseEModelElement(observation);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
 			case UMLPackage.DURATION : {
 				Duration duration = (Duration) theEObject;
 				Object result = caseDuration(duration);
@@ -3901,56 +3919,6 @@ public class UMLSwitch {
 					result = caseElement(duration);
 				if (result == null)
 					result = caseEModelElement(duration);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.TIME_OBSERVATION_ACTION : {
-				TimeObservationAction timeObservationAction = (TimeObservationAction) theEObject;
-				Object result = caseTimeObservationAction(timeObservationAction);
-				if (result == null)
-					result = caseWriteStructuralFeatureAction(timeObservationAction);
-				if (result == null)
-					result = caseStructuralFeatureAction(timeObservationAction);
-				if (result == null)
-					result = caseAction(timeObservationAction);
-				if (result == null)
-					result = caseExecutableNode(timeObservationAction);
-				if (result == null)
-					result = caseActivityNode(timeObservationAction);
-				if (result == null)
-					result = caseRedefinableElement(timeObservationAction);
-				if (result == null)
-					result = caseNamedElement(timeObservationAction);
-				if (result == null)
-					result = caseElement(timeObservationAction);
-				if (result == null)
-					result = caseEModelElement(timeObservationAction);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.VALUE_PIN : {
-				ValuePin valuePin = (ValuePin) theEObject;
-				Object result = caseValuePin(valuePin);
-				if (result == null)
-					result = caseInputPin(valuePin);
-				if (result == null)
-					result = casePin(valuePin);
-				if (result == null)
-					result = caseObjectNode(valuePin);
-				if (result == null)
-					result = caseActivityNode(valuePin);
-				if (result == null)
-					result = caseTypedElement(valuePin);
-				if (result == null)
-					result = caseRedefinableElement(valuePin);
-				if (result == null)
-					result = caseNamedElement(valuePin);
-				if (result == null)
-					result = caseElement(valuePin);
-				if (result == null)
-					result = caseEModelElement(valuePin);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -4062,31 +4030,6 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.DURATION_OBSERVATION_ACTION : {
-				DurationObservationAction durationObservationAction = (DurationObservationAction) theEObject;
-				Object result = caseDurationObservationAction(durationObservationAction);
-				if (result == null)
-					result = caseWriteStructuralFeatureAction(durationObservationAction);
-				if (result == null)
-					result = caseStructuralFeatureAction(durationObservationAction);
-				if (result == null)
-					result = caseAction(durationObservationAction);
-				if (result == null)
-					result = caseExecutableNode(durationObservationAction);
-				if (result == null)
-					result = caseActivityNode(durationObservationAction);
-				if (result == null)
-					result = caseRedefinableElement(durationObservationAction);
-				if (result == null)
-					result = caseNamedElement(durationObservationAction);
-				if (result == null)
-					result = caseElement(durationObservationAction);
-				if (result == null)
-					result = caseEModelElement(durationObservationAction);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
 			case UMLPackage.DURATION_CONSTRAINT : {
 				DurationConstraint durationConstraint = (DurationConstraint) theEObject;
 				Object result = caseDurationConstraint(durationConstraint);
@@ -4108,6 +4051,36 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
+			case UMLPackage.TIME_OBSERVATION : {
+				TimeObservation timeObservation = (TimeObservation) theEObject;
+				Object result = caseTimeObservation(timeObservation);
+				if (result == null)
+					result = caseObservation(timeObservation);
+				if (result == null)
+					result = caseNamedElement(timeObservation);
+				if (result == null)
+					result = caseElement(timeObservation);
+				if (result == null)
+					result = caseEModelElement(timeObservation);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.DURATION_OBSERVATION : {
+				DurationObservation durationObservation = (DurationObservation) theEObject;
+				Object result = caseDurationObservation(durationObservation);
+				if (result == null)
+					result = caseObservation(durationObservation);
+				if (result == null)
+					result = caseNamedElement(durationObservation);
+				if (result == null)
+					result = caseElement(durationObservation);
+				if (result == null)
+					result = caseEModelElement(durationObservation);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
 			case UMLPackage.OPAQUE_ACTION : {
 				OpaqueAction opaqueAction = (OpaqueAction) theEObject;
 				Object result = caseOpaqueAction(opaqueAction);
@@ -4125,6 +4098,31 @@ public class UMLSwitch {
 					result = caseElement(opaqueAction);
 				if (result == null)
 					result = caseEModelElement(opaqueAction);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.VALUE_PIN : {
+				ValuePin valuePin = (ValuePin) theEObject;
+				Object result = caseValuePin(valuePin);
+				if (result == null)
+					result = caseInputPin(valuePin);
+				if (result == null)
+					result = casePin(valuePin);
+				if (result == null)
+					result = caseObjectNode(valuePin);
+				if (result == null)
+					result = caseActivityNode(valuePin);
+				if (result == null)
+					result = caseTypedElement(valuePin);
+				if (result == null)
+					result = caseRedefinableElement(valuePin);
+				if (result == null)
+					result = caseNamedElement(valuePin);
+				if (result == null)
+					result = caseElement(valuePin);
+				if (result == null)
+					result = caseEModelElement(valuePin);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -8113,6 +8111,21 @@ public class UMLSwitch {
 	}
 
 	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Observation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Observation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseObservation(Observation object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpretting the object as an instance of '<em>Duration</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -8124,21 +8137,6 @@ public class UMLSwitch {
 	 * @generated
 	 */
 	public Object caseDuration(Duration object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Time Observation Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Time Observation Action</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseTimeObservationAction(TimeObservationAction object) {
 		return null;
 	}
 
@@ -8233,21 +8231,6 @@ public class UMLSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Duration Observation Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Duration Observation Action</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseDurationObservationAction(DurationObservationAction object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpretting the object as an instance of '<em>Duration Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -8259,6 +8242,36 @@ public class UMLSwitch {
 	 * @generated
 	 */
 	public Object caseDurationConstraint(DurationConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Time Observation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Time Observation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseTimeObservation(TimeObservation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Duration Observation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Duration Observation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseDurationObservation(DurationObservation object) {
 		return null;
 	}
 

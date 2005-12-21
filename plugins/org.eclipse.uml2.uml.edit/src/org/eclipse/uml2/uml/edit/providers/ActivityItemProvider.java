@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityItemProvider.java,v 1.2 2005/12/08 14:52:55 khussey Exp $
+ * $Id: ActivityItemProvider.java,v 1.3 2005/12/21 20:13:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -451,19 +451,11 @@ public class ActivityItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createTimeObservationAction()));
+				.createOpaqueAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
 				.createValuePin()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createDurationObservationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createOpaqueAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE

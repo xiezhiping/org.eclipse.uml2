@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.13 2005/12/19 18:51:32 khussey Exp $
+ * $Id: ElementImpl.java,v 1.14 2005/12/21 20:13:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -220,10 +221,10 @@ public abstract class ElementImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(15));
+				.getEOperations().get(16));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(15), result = ElementOperations
+					.get(16), result = ElementOperations
 					.getStereotypeApplications(this));
 			}
 			return result;
@@ -245,14 +246,43 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getRequiredStereotypes() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(18));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+					.get(18), result = ElementOperations
+					.getRequiredStereotypes(this));
+			}
+			return result;
+		}
+		return ElementOperations.getRequiredStereotypes(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stereotype getRequiredStereotype(String qualifiedName) {
+		return ElementOperations.getRequiredStereotype(this, qualifiedName);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getAppliedStereotypes() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(17));
+				.getEOperations().get(20));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(17), result = ElementOperations
+					.get(20), result = ElementOperations
 					.getAppliedStereotypes(this));
 			}
 			return result;
@@ -379,6 +409,15 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isStereotypeApplicable(Stereotype stereotype) {
+		return ElementOperations.isStereotypeApplicable(this, stereotype);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isStereotypeRequired(Stereotype stereotype) {
 		return ElementOperations.isStereotypeRequired(this, stereotype);
 	}
@@ -419,10 +458,10 @@ public abstract class ElementImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(13));
+				.getEOperations().get(14));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(13), result = ElementOperations
+					.get(14), result = ElementOperations
 					.getApplicableStereotypes(this));
 			}
 			return result;
@@ -466,10 +505,10 @@ public abstract class ElementImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(24));
+				UMLPackage.Literals.ELEMENT.getEOperations().get(27));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.ELEMENT
-					.getEOperations().get(24), result = ElementOperations
+					.getEOperations().get(27), result = ElementOperations
 					.allOwnedElements(this));
 			}
 			return result;
@@ -743,6 +782,18 @@ public abstract class ElementImpl
 
 	public boolean isSetOwner() {
 		return basicGetOwner() != null;
+	}
+
+	protected void eBasicSetContainer(InternalEObject newContainer,
+			int newContainerFeatureID) {
+		super.eBasicSetContainer(newContainer, newContainerFeatureID);
+
+		Resource.Internal eInternalResource = eInternalResource();
+
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			ElementOperations.unapplyAllNonApplicableStereotypes(this);
+			ElementOperations.applyAllRequiredStereotypes(this);
+		}
 	}
 
 } //ElementImpl

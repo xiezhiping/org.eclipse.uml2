@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.6 2005/12/19 18:51:32 khussey Exp $
+ * $Id: Element.java,v 1.7 2005/12/21 20:13:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -152,6 +152,22 @@ public interface Element
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
 	 * @generated
 	 */
+	EList getRequiredStereotypes();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @generated
+	 */
+	Stereotype getRequiredStereotype(String qualifiedName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
+	 * @generated
+	 */
 	EList getAppliedStereotypes();
 
 	/**
@@ -242,6 +258,14 @@ public interface Element
 	 * @generated
 	 */
 	Model getModel();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @generated
+	 */
+	boolean isStereotypeApplicable(Stereotype stereotype);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -9,7 +9,7 @@
     booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.ecore.importer" featureDelegation="Virtual"
     containmentProxies="true" minimalReflectiveMethods="false" usedGenPackages="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     factoryMethods="true" pluralizedGetters="true" cacheAdapterSupport="true" invariantPrefix="validate">
-  <genAnnotations source="http://www.eclipse.org/uml2/1.1.0/GenModel">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.ecore.importer">
     <details key="DUPLICATE_FEATURES" value="PROCESS"/>
     <details key="DUPLICATE_FEATURE_INHERITANCE" value="PROCESS"/>
     <details key="REDEFINING_PROPERTIES" value="PROCESS"/>
@@ -161,6 +161,9 @@
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getNearestPackage"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getModel"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/isStereotypeApplicable">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/isStereotypeApplicable/stereotype"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/isStereotypeRequired">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/isStereotypeRequired/stereotype"/>
       </genOperations>
@@ -182,6 +185,11 @@
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getStereotypeApplication">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/getStereotypeApplication/stereotype"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getRequiredStereotypes"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getRequiredStereotype">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/getRequiredStereotype/qualifiedName"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getAppliedStereotypes"
           cacheAdapterScope="Global"/>
@@ -272,13 +280,17 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getAppliedProfile.1/qualifiedName"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getAppliedProfile.1/isRecursive"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/getAllProfileApplications"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/getAllProfileApplications"
+          cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/getProfileApplication">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getProfileApplication/profile"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/getProfileApplication.1">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getProfileApplication.1/profile"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getProfileApplication.1/isRecursive"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/createOwnedInterface">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/createOwnedInterface/name"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/visibleMembers"
           cacheAdapterScope="Global"/>
@@ -616,6 +628,9 @@
           cacheAdapterScope="Resource"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/getAllOperations"
           cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/getOperation">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/getOperation/name"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/getGenerals"
           cacheAdapterScope="Resource"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/getInheritedMembers"
@@ -1917,7 +1932,11 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/getAllExtendedMetaclasses"
           cacheAdapterScope="Global"/>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Image"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Image">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Image/content"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Image/location"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Image/format"/>
+    </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Profile">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//Profile/ownedStereotype"/>
@@ -3264,28 +3283,58 @@
       </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//TimeExpression">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//TimeExpression/firstTime"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//TimeExpression/event"/>
+          ecoreFeature="ecore:EReference UML.ecore#//TimeExpression/expr"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//TimeExpression/observation"/>
     </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Observation"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Duration">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Duration/firstTime"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//Duration/event"/>
+          ecoreFeature="ecore:EReference UML.ecore#//Duration/expr"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//Duration/observation"/>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//TimeObservationAction">
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//DurationInterval"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Interval">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//TimeObservationAction/now">
-        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
-      </genFeatures>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//TimeObservationAction/input_value_time_expression">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//TimeObservationAction/input_value_time_expression/diagnostics"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//TimeObservationAction/input_value_time_expression/context"/>
+          ecoreFeature="ecore:EReference UML.ecore#//Interval/min"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//Interval/max"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//TimeConstraint">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//TimeConstraint/firstEvent"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//IntervalConstraint"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//TimeInterval"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//DurationConstraint">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//DurationConstraint/firstEvent"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//DurationConstraint/first_event_multiplicity">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DurationConstraint/first_event_multiplicity/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DurationConstraint/first_event_multiplicity/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//TimeObservationAction/setNow">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//TimeObservationAction/setNow/newNow"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//TimeObservation">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//TimeObservation/event"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//TimeObservation/firstEvent"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//DurationObservation">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//DurationObservation/event"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//DurationObservation/firstEvent"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//DurationObservation/first_event_multiplicity">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DurationObservation/first_event_multiplicity/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DurationObservation/first_event_multiplicity/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//TimeObservationAction/getNow"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//OpaqueAction">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//OpaqueAction/body"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//OpaqueAction/language"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//OpaqueAction/inputValue"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//OpaqueAction/outputValue"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ValuePin">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
@@ -3296,39 +3345,6 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ValuePin/compatible_type/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ValuePin/compatible_type/context"/>
       </genOperations>
-    </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//DurationInterval"/>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Interval">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//Interval/min"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//Interval/max"/>
-    </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//TimeConstraint"/>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//IntervalConstraint"/>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//TimeInterval"/>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//DurationObservationAction">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//DurationObservationAction/duration">
-        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
-      </genFeatures>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//DurationObservationAction/input_value_duration">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DurationObservationAction/input_value_duration/diagnostics"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DurationObservationAction/input_value_duration/context"/>
-      </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//DurationObservationAction/setDuration">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DurationObservationAction/setDuration/newDuration"/>
-      </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//DurationObservationAction/getDuration"/>
-    </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//DurationConstraint"/>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//OpaqueAction">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//OpaqueAction/body"/>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//OpaqueAction/language"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//OpaqueAction/inputValue"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//OpaqueAction/outputValue"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//CallAction">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//CallAction/isSynchronous"/>
