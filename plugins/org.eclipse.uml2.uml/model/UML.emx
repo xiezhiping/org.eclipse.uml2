@@ -572,16 +572,6 @@
       </returnResult>
     </ownedOperation>
   </ownedMember>
-  <ownedMember xmi:type="uml:Class" xmi:id="_VMC8gGveEdq4DLWZOhbdEA" name="TimeObservationAction">
-    <ownedOperation xmi:id="_M6leAFYkEdqB6vblk3tuMA" name="setNow" visibility="protected">
-      <ownedParameter xmi:id="_PBSr0FYkEdqB6vblk3tuMA" name="newNow" visibility="protected" type="_QqkiIGvuEdqG6fBIPwe-mw" effect="read"/>
-    </ownedOperation>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Class" xmi:id="_Wrt_gGveEdq4DLWZOhbdEA" name="DurationObservationAction">
-    <ownedOperation xmi:id="_EOLHgFYkEdqB6vblk3tuMA" name="setDuration" visibility="protected">
-      <ownedParameter xmi:id="_G7VRUFYkEdqB6vblk3tuMA" name="newDuration" type="_1qTPMGvsEdqG6fBIPwe-mw" effect="read"/>
-    </ownedOperation>
-  </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_ZAuvEGveEdq4DLWZOhbdEA" name="Port">
     <ownedOperation xmi:id="_gtr8cFYhEdqB6vblk3tuMA" name="getProvideds" visibility="protected" type="_8Ugn8GvtEdqG6fBIPwe-mw">
       <returnResult xmi:id="_jIqKEFYhEdqB6vblk3tuMA" type="_8Ugn8GvtEdqG6fBIPwe-mw" direction="return">
@@ -634,7 +624,6 @@
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_iY7sMGvsEdqG6fBIPwe-mw" name="BehavioredClassifier" isAbstract="true"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_skHGwGvsEdqG6fBIPwe-mw" name="Extension"/>
-  <ownedMember xmi:type="uml:Class" xmi:id="_1qTPMGvsEdqG6fBIPwe-mw" name="Duration"/>
   <ownedMember xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_csVgUGvtEdqG6fBIPwe-mw" name="NamedElement" isAbstract="true">
     <ownedOperation xmi:id="_o2CW4GwKEdq7X4sGURiZYA" name="createDependency" type="_rEDGkGwKEdq7X4sGURiZYA">
@@ -673,7 +662,6 @@
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_8Ugn8GvtEdqG6fBIPwe-mw" name="Interface"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_KxRzgGvuEdqG6fBIPwe-mw" name="TemplateParameter"/>
-  <ownedMember xmi:type="uml:Class" xmi:id="_QqkiIGvuEdqG6fBIPwe-mw" name="TimeExpression"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_-cvRAGvzEdq7X4sGURiZYA" name="Package">
     <ownedOperation xmi:id="_sUplEGwFEdq7X4sGURiZYA" name="createNestedPackage" type="_-cvRAGvzEdq7X4sGURiZYA">
       <returnResult xmi:id="_vRvoUGwFEdq7X4sGURiZYA" type="_-cvRAGvzEdq7X4sGURiZYA" direction="return"/>
