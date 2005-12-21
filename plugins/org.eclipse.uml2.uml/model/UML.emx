@@ -182,70 +182,6 @@
         <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rczwMmvbEdq4DLWZOhbdEA" points="[-1, -450, 1811, 2037]$[-1826, -2038, -14, 449]"/>
       </edges>
     </contents>
-    <contents xmi:type="notation:Diagram" xmi:id="_3KVHQGvbEdq4DLWZOhbdEA" type="Class" element="_o8I_sGvaEdq4DLWZOhbdEA" name="Image Hierarchy">
-      <children xmi:id="_4cSeYGvbEdq4DLWZOhbdEA" sourceEdges="_6QN6IWvbEdq4DLWZOhbdEA" element="_0VlHsGvbEdq4DLWZOhbdEA">
-        <children xmi:id="_4cSeY2vbEdq4DLWZOhbdEA" type="ImageCompartment" element="_0VlHsGvbEdq4DLWZOhbdEA">
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_4cSeZGvbEdq4DLWZOhbdEA" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_4cSeZWvbEdq4DLWZOhbdEA" type="Stereotype" element="_0VlHsGvbEdq4DLWZOhbdEA"/>
-        <children xmi:id="_4cSeZmvbEdq4DLWZOhbdEA" type="Name" element="_0VlHsGvbEdq4DLWZOhbdEA"/>
-        <children xmi:id="_4cSeZ2vbEdq4DLWZOhbdEA" type="AttributeCompartment" element="_0VlHsGvbEdq4DLWZOhbdEA">
-          <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_4cSeaGvbEdq4DLWZOhbdEA"/>
-        </children>
-        <children xmi:id="_4cSeaWvbEdq4DLWZOhbdEA" visible="false" type="OperationCompartment" element="_0VlHsGvbEdq4DLWZOhbdEA">
-          <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_4cSeamvbEdq4DLWZOhbdEA"/>
-        </children>
-        <children xmi:id="_4cSea2vbEdq4DLWZOhbdEA" visible="false" type="SignalCompartment" element="_0VlHsGvbEdq4DLWZOhbdEA">
-          <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_4cSebGvbEdq4DLWZOhbdEA"/>
-        </children>
-        <children xmi:id="_4cSebWvbEdq4DLWZOhbdEA" visible="false" type="StructureCompartment" element="_0VlHsGvbEdq4DLWZOhbdEA">
-          <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_4cSebmvbEdq4DLWZOhbdEA"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_4cSeYWvbEdq4DLWZOhbdEA" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4cSeYmvbEdq4DLWZOhbdEA" x="792" y="3968"/>
-      </children>
-      <children xmi:id="_5hRwgGvbEdq4DLWZOhbdEA" targetEdges="_6QN6IWvbEdq4DLWZOhbdEA">
-        <children xmi:id="_5hRwg2vbEdq4DLWZOhbdEA" type="ImageCompartment">
-          <element xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_5hRwhGvbEdq4DLWZOhbdEA" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_5hRwhWvbEdq4DLWZOhbdEA" type="Stereotype">
-          <element xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-        </children>
-        <children xmi:id="_5hRwhmvbEdq4DLWZOhbdEA" type="Name">
-          <element xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-        </children>
-        <children xmi:id="_5hRwh2vbEdq4DLWZOhbdEA" type="AttributeCompartment">
-          <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_5hRwiGvbEdq4DLWZOhbdEA"/>
-          <element xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-        </children>
-        <children xmi:id="_5hRwiWvbEdq4DLWZOhbdEA" visible="false" type="OperationCompartment">
-          <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_5hRwimvbEdq4DLWZOhbdEA"/>
-          <element xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-        </children>
-        <children xmi:id="_5hRwi2vbEdq4DLWZOhbdEA" visible="false" type="SignalCompartment">
-          <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_5hRwjGvbEdq4DLWZOhbdEA"/>
-          <element xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-        </children>
-        <children xmi:id="_5hRwjWvbEdq4DLWZOhbdEA" visible="false" type="StructureCompartment">
-          <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_5hRwjmvbEdq4DLWZOhbdEA"/>
-          <element xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_5hRwgWvbEdq4DLWZOhbdEA" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5hRwgmvbEdq4DLWZOhbdEA" x="660" y="1481"/>
-      </children>
-      <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_3KVHQWvbEdq4DLWZOhbdEA"/>
-      <edges xmi:id="_6QN6IWvbEdq4DLWZOhbdEA" element="_6QN6IGvbEdq4DLWZOhbdEA" source="_4cSeYGvbEdq4DLWZOhbdEA" target="_5hRwgGvbEdq4DLWZOhbdEA">
-        <children xmi:id="_6QN6JGvbEdq4DLWZOhbdEA" type="NameLabel" element="_6QN6IGvbEdq4DLWZOhbdEA">
-          <children xmi:id="_6QN6JmvbEdq4DLWZOhbdEA" type="Stereotype" element="_6QN6IGvbEdq4DLWZOhbdEA"/>
-          <children xmi:id="_6QN6J2vbEdq4DLWZOhbdEA" type="Name" element="_6QN6IGvbEdq4DLWZOhbdEA"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6QN6JWvbEdq4DLWZOhbdEA" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_6QN6ImvbEdq4DLWZOhbdEA" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6QN6I2vbEdq4DLWZOhbdEA" points="[0, -450, 0, 2037]$[0, -2038, 0, 449]"/>
-      </edges>
-    </contents>
   </eAnnotations>
   <eAnnotations xmi:id="_1gWuMGvaEdq4DLWZOhbdEA" source="appliedStereotypes">
     <contents xmi:type="Ecore_0:Ecore__EPackage" xmi:id="_1gWuMWvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
@@ -469,11 +405,6 @@
         <type xmi:type="uml:PrimitiveType" href="Ecore.emx#_439EC3AE03B53ACDF8200182?Ecore/EJavaObject"/>
       </ownedParameter>
     </ownedOperation>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Class" xmi:id="_0VlHsGvbEdq4DLWZOhbdEA" name="Image" isAbstract="true">
-    <generalization xmi:id="_6QN6IGvbEdq4DLWZOhbdEA">
-      <general xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-    </generalization>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_00owUGvdEdq4DLWZOhbdEA" name="Class">
     <ownedOperation xmi:id="_4xcu4FYKEdqrn7iZ0eqieg" name="getExtensions" visibility="protected" type="_skHGwGvsEdqG6fBIPwe-mw">
