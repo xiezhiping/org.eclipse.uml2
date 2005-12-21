@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetEObjectEList.java,v 1.1 2005/05/17 22:02:04 khussey Exp $
+ * $Id: SubsetEObjectEList.java,v 1.2 2005/12/21 20:10:26 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectEList;
 
 /**
@@ -96,6 +97,14 @@ public class SubsetEObjectEList
 	}
 
 	protected void supersetAdd(Object object) {
+
+		if (object instanceof InternalEObject) {
+			Resource.Internal eInternalResource = ((InternalEObject)object).eInternalResource();
+			
+			if (eInternalResource != null && eInternalResource.isLoading()) {
+				return;
+			}
+		}
 
 		for (int i = 0; i < supersetFeatureIDs.length; i++) {
 			EStructuralFeature supersetEStructuralFeature = owner.eClass()
