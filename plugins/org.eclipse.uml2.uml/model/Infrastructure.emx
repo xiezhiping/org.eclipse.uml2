@@ -16646,6 +16646,9 @@
       </ownedComment>
       <generalization xmi:id="_CT0zEHGhEdqziYxiZo0YtA" general="_3ADC7B74022D41925B100079"/>
       <ownedAttribute xmi:id="_GgC74HGhEdqziYxiZo0YtA" name="content" type="_3ADC7B74022D3CA010B103C3">
+        <eAnnotations xmi:id="_opyaYXI7EdqRq4x1utyEkQ" source="appliedStereotypes">
+          <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_opyaYnI7EdqRq4x1utyEkQ" isUnsettable="true"/>
+        </eAnnotations>
         <ownedComment xmi:id="_it2uEHGkEdqziYxiZo0YtA" body="This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based)." annotatedElement="_GgC74HGhEdqziYxiZo0YtA">
           <eAnnotations xmi:id="_it2uEXGkEdqziYxiZo0YtA" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_it2uEnGkEdqziYxiZo0YtA"/>
@@ -16655,6 +16658,9 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_J0FfgHGhEdqziYxiZo0YtA"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_LCBSQHGhEdqziYxiZo0YtA" name="location" type="_3ADC7B74022D3CA010B103C3">
+        <eAnnotations xmi:id="_oqOfQHI7EdqRq4x1utyEkQ" source="appliedStereotypes">
+          <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_oqOfQXI7EdqRq4x1utyEkQ" isUnsettable="true"/>
+        </eAnnotations>
         <ownedComment xmi:id="_LLrnwHGlEdqziYxiZo0YtA" body="This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype." annotatedElement="_LCBSQHGhEdqziYxiZo0YtA">
           <eAnnotations xmi:id="_LLrnwXGlEdqziYxiZo0YtA" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_LLrnwnGlEdqziYxiZo0YtA"/>
@@ -16663,13 +16669,15 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_O6uCIXGhEdqziYxiZo0YtA" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_O6uCIHGhEdqziYxiZo0YtA"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_P1lH4HGhEdqziYxiZo0YtA" name="format">
+      <ownedAttribute xmi:id="_P1lH4HGhEdqziYxiZo0YtA" name="format" type="_3ADC7B74022D3CA010B103C3">
+        <eAnnotations xmi:id="_oqYQQHI7EdqRq4x1utyEkQ" source="appliedStereotypes">
+          <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_oqYQQXI7EdqRq4x1utyEkQ" isUnsettable="true"/>
+        </eAnnotations>
         <ownedComment xmi:id="_EbshsHGlEdqziYxiZo0YtA" body="This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP.&#xD;&#xA;&#xD;&#xA;In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example &quot;SVG&quot; could instead be expressed as &quot;MIME: image/svg+xml&quot;." annotatedElement="_P1lH4HGhEdqziYxiZo0YtA">
           <eAnnotations xmi:id="_EbshsXGlEdqziYxiZo0YtA" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_EbshsnGlEdqziYxiZo0YtA"/>
           </eAnnotations>
         </ownedComment>
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_IXlH8a86EdieaYgxtVWN8Q"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ssj8EXGhEdqziYxiZo0YtA" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ssj8EHGhEdqziYxiZo0YtA"/>
       </ownedAttribute>
