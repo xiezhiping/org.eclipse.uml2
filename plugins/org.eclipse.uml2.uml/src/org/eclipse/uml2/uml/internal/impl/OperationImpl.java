@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.11 2005/12/22 20:21:23 khussey Exp $
+ * $Id: OperationImpl.java,v 1.12 2005/12/22 22:44:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -944,8 +944,8 @@ public class OperationImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Parameter createOwnedParameter() {

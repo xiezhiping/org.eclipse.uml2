@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.7 2005/12/21 20:13:06 khussey Exp $
+ * $Id: Element.java,v 1.8 2005/12/22 22:44:54 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -214,10 +214,10 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false" newValueRequired="true" newValueOrdered="false"
+	 * @model stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false" newValueRequired="true" newValueOrdered="false"
 	 * @generated
 	 */
-	Object setValue(Stereotype stereotype, String propertyName, Object newValue);
+	void setValue(Stereotype stereotype, String propertyName, Object newValue);
 
 	/**
 	 * <!-- begin-user-doc -->

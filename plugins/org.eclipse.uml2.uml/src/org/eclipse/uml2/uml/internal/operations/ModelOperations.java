@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelOperations.java,v 1.2 2005/12/22 20:21:23 khussey Exp $
+ * $Id: ModelOperations.java,v 1.3 2005/12/22 22:44:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -29,7 +29,8 @@ import org.eclipse.uml2.uml.NamedElement;
  *
  * @generated not
  */
-public final class ModelOperations extends UMLOperations {
+public final class ModelOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

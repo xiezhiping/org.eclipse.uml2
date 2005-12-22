@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationOperations.java,v 1.2 2005/12/22 20:21:23 khussey Exp $
+ * $Id: EnumerationOperations.java,v 1.3 2005/12/22 22:44:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -29,7 +29,8 @@ import org.eclipse.uml2.uml.EnumerationLiteral;
  *
  * @generated not
  */
-public final class EnumerationOperations extends UMLOperations {
+public final class EnumerationOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

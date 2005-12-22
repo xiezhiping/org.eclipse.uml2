@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.15 2005/12/22 20:21:23 khussey Exp $
+ * $Id: ElementImpl.java,v 1.16 2005/12/22 22:44:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -93,7 +93,7 @@ public abstract class ElementImpl
 	 */
 	protected ElementImpl() {
 		super();
-		
+
 		CACHE_ADAPTER.adapt(this);
 	}
 
@@ -344,10 +344,9 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object setValue(Stereotype stereotype, String propertyName,
+	public void setValue(Stereotype stereotype, String propertyName,
 			Object newValue) {
-		return ElementOperations.setValue(this, stereotype, propertyName,
-			newValue);
+		ElementOperations.setValue(this, stereotype, propertyName, newValue);
 	}
 
 	/**

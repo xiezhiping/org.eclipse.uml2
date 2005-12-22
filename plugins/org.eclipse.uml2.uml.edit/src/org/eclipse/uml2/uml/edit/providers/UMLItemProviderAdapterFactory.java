@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.5 2005/12/22 20:22:04 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.6 2005/12/22 22:45:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -146,10 +146,9 @@ public class UMLItemProviderAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all
-	 * {@link org.eclipse.uml2.uml.Comment} instances. <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Comment} instances.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected CommentItemProvider commentItemProvider;

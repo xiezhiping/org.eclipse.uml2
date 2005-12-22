@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactOperations.java,v 1.2 2005/12/22 20:21:23 khussey Exp $
+ * $Id: ArtifactOperations.java,v 1.3 2005/12/22 22:44:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -34,7 +34,8 @@ import org.eclipse.uml2.uml.Type;
  *
  * @generated not
  */
-public final class ArtifactOperations extends UMLOperations {
+public final class ArtifactOperations
+		extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

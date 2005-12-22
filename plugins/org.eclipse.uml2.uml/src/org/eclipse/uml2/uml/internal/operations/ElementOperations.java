@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.11 2005/12/22 20:21:23 khussey Exp $
+ * $Id: ElementOperations.java,v 1.12 2005/12/22 22:44:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -450,7 +450,7 @@ public final class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Object setValue(Element element, Stereotype stereotype,
+	public static void setValue(Element element, Stereotype stereotype,
 			String propertyName, Object newValue) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
