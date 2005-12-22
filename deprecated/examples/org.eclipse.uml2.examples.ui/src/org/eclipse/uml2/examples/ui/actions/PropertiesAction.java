@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertiesAction.java,v 1.1 2005/04/14 17:32:07 khussey Exp $
+ * $Id: PropertiesAction.java,v 1.2 2005/12/22 20:19:56 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -21,21 +21,19 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.uml2.util.UML2Resource;
+import org.eclipse.emf.edit.ui.action.CommandAction;
+import org.eclipse.uml2.common.util.UML2Util;
 
 /**
  * 
  */
 public abstract class PropertiesAction
-		extends UML2CommandAction {
+		extends CommandAction {
 
 	protected static final String PROPERTIES_SEPARATOR = " = "; //$NON-NLS-1$
-
-	protected static boolean isEmpty(String string) {
-		return null == string || 0 == string.length();
-	}
 
 	protected static String format(String name, String separator,
 			String prefix, boolean includePrefix) {
@@ -131,50 +129,17 @@ public abstract class PropertiesAction
 			: (name.substring(0, 1).toUpperCase() + name.substring(1));
 	}
 
-	protected static StringBuffer appendValidIdentifier(
-			StringBuffer validIdentifier, String name) {
-
-		if (!isEmpty(name)) {
-			char char_0 = name.charAt(0);
-
-			if (Character.isJavaIdentifierStart(char_0)) {
-				validIdentifier.append(char_0);
-			} else {
-				validIdentifier.append('_');
-
-				if (Character.isJavaIdentifierPart(char_0)) {
-					validIdentifier.append(char_0);
-				}
-			}
-
-			for (int i = 1; i < name.length(); ++i) {
-				char char_i = name.charAt(i);
-
-				if (Character.isJavaIdentifierPart(char_i)) {
-					validIdentifier.append(char_i);
-				}
-			}
-		}
-
-		return validIdentifier;
-	}
-
-	protected static String getValidIdentifier(String name) {
-		return appendValidIdentifier(new StringBuffer(), name).toString();
-	}
-
 	protected static String getPropertiesKey(String prefix, String string) {
-		return prefix + getValidIdentifier(string.replace(':', '_'));
+		return prefix
+			+ UML2Util.getValidJavaIdentifier(string.replace(':', '_'));
 	}
 
-	protected static PrintWriter getPropertiesWriter(
-			org.eclipse.uml2.Package package_) {
+	protected static PrintWriter getPropertiesWriter(EObject eObject) {
+		Resource eResource = eObject.eResource();
+		ResourceSet resourceSet = eResource.getResourceSet();
 
-		Resource resource = package_.eResource();
-		ResourceSet resourceSet = resource.getResourceSet();
-
-		URI uri = resource.getURI().trimFileExtension().appendFileExtension(
-			UML2Resource.PROPERTIES_FILE_EXTENSION);
+		URI uri = eResource.getURI().trimFileExtension().appendFileExtension(
+			UML2Util.PROPERTIES_FILE_EXTENSION);
 
 		List properties = new ArrayList();
 

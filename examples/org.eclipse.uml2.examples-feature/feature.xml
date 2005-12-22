@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uml2.examples"
       label="%feature.label"
-      version="1.2.0"
+      version="2.0.0"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg">
 
@@ -21,7 +21,7 @@
 
    <includes
          id="org.eclipse.uml2.examples.source"
-         version="1.2.0"/>
+         version="2.0.0"/>
 
    <requires>
       <import plugin="org.eclipse.uml2" version="1.2.0" match="compatible"/>
@@ -44,7 +44,7 @@
          id="org.eclipse.uml2.examples.ui"
          download-size="0"
          install-size="0"
-         version="1.2.0"
+         version="2.0.0"
          unpack="false"/>
 
    <plugin

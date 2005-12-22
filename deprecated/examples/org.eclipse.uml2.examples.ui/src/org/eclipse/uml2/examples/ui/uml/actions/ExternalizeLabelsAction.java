@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeLabelsAction.java,v 1.3 2005/12/22 20:19:56 khussey Exp $
+ * $Id: ExternalizeLabelsAction.java,v 1.1 2005/12/22 20:19:56 khussey Exp $
  */
-package org.eclipse.uml2.examples.ui.actions;
+package org.eclipse.uml2.examples.ui.uml.actions;
 
 import java.io.PrintWriter;
 import java.util.Collection;
@@ -22,44 +22,32 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.common.util.UML2Util;
-import org.eclipse.uml2.util.UML2Switch;
+import org.eclipse.uml2.examples.ui.actions.PropertiesAction;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.util.UMLSwitch;
 
-/**
- * 
- */
 public class ExternalizeLabelsAction
 		extends PropertiesAction {
 
-	/*
-	 * @see org.eclipse.emf.edit.ui.action.CommandAction#createActionCommand(org.eclipse.emf.edit.domain.EditingDomain,
-	 *      java.util.Collection)
-	 */
 	protected Command createActionCommand(EditingDomain editingDomain,
 			Collection collection) {
 
-		return 1 == collection.size()
-			&& org.eclipse.uml2.Package.class
-				.isInstance(collection.toArray()[0])
+		return collection.size() == 1
+			&& collection.toArray()[0] instanceof org.eclipse.uml2.uml.Package
 			? (Command) IdentityCommand.INSTANCE
 			: (Command) UnexecutableCommand.INSTANCE;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
-	 */
 	public void run(IAction action) {
 
-		if (UnexecutableCommand.INSTANCE != command) {
-			final org.eclipse.uml2.Package package_ = (org.eclipse.uml2.Package) collection
+		if (command != UnexecutableCommand.INSTANCE) {
+			final org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) collection
 				.toArray()[0];
 
 			final PrintWriter propertiesWriter = getPropertiesWriter(package_);
 
-			new UML2Switch() {
+			new UMLSwitch() {
 
 				public Object caseNamedElement(NamedElement namedElement) {
 					String qualifiedName = namedElement.getQualifiedName();
