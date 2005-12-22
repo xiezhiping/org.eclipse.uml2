@@ -31,6 +31,7 @@
       <import plugin="org.eclipse.ui.ide" version="3.1.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore.editor" version="2.2.0" match="compatible"/>
       <import plugin="org.eclipse.emf.mapping.ecore2xml" version="2.2.0" match="compatible"/>
+      <import plugin="org.eclipse.uml2.uml.editor" version="2.0.0" match="compatible"/>
    </requires>
 
    <plugin
