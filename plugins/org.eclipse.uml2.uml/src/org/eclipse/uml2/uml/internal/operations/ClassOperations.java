@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.5 2005/12/14 22:34:27 khussey Exp $
+ * $Id: ClassOperations.java,v 1.6 2005/12/22 15:20:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -130,19 +130,6 @@ public final class ClassOperations
 		return new UnionEObjectEList((InternalEObject) class_,
 			UMLPackage.Literals.CLASS__EXTENSION, extensions.size(), extensions
 				.toArray());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static Property createOwnedAttribute(
-			org.eclipse.uml2.uml.Class class_, String name, Type type,
-			int lower, int upper) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**

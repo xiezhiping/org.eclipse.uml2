@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.12 2005/12/14 22:34:20 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.13 2005/12/22 15:20:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,6 +45,7 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -366,6 +367,17 @@ public abstract class StructuredClassifierImpl
 			Map context) {
 		return StructuredClassifierOperations.validateMultiplicities(this,
 			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property createOwnedAttribute(String name, Type type, int lower,
+			int upper) {
+		return StructuredClassifierOperations.createOwnedAttribute(this, name,
+			type, lower, upper);
 	}
 
 	/**

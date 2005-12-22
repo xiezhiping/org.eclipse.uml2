@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.16 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ClassImpl.java,v 1.17 2005/12/22 15:20:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -49,6 +49,7 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Feature;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
@@ -837,8 +838,9 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePassiveClass(DiagnosticChain diagnostics, Map context) {
-		return ClassOperations.validatePassiveClass(this, diagnostics, context);
+	public InterfaceRealization createInterfaceRealization(Interface contract) {
+		return BehavioredClassifierOperations.createInterfaceRealization(this,
+			contract);
 	}
 
 	/**
@@ -846,10 +848,8 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute(String name, Type type, int lower,
-			int upper) {
-		return ClassOperations.createOwnedAttribute(this, name, type, lower,
-			upper);
+	public boolean validatePassiveClass(DiagnosticChain diagnostics, Map context) {
+		return ClassOperations.validatePassiveClass(this, diagnostics, context);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.11 2005/12/14 22:34:17 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.12 2005/12/22 15:20:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -41,6 +41,7 @@ import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.RedefinableTemplateSignature;
@@ -353,6 +354,16 @@ public abstract class BehavioredClassifierImpl
 			Map context) {
 		return BehavioredClassifierOperations.validateClassBehavior(this,
 			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InterfaceRealization createInterfaceRealization(Interface contract) {
+		return BehavioredClassifierOperations.createInterfaceRealization(this,
+			contract);
 	}
 
 	/**

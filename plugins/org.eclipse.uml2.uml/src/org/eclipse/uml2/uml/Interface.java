@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.2 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Interface.java,v 1.3 2005/12/22 15:20:22 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -284,5 +284,22 @@ public interface Interface
 	 * @generated
 	 */
 	boolean validateVisibility(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" returnTypeRequired="true" returnTypeOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false"
+	 * @generated
+	 */
+	Operation createOwnedOperation(String name, Type returnType,
+			EList parameterNames, EList parameterTypes);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" typeRequired="true" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
+	 * @generated
+	 */
+	Property createOwnedAttribute(String name, Type type, int lower, int upper);
 
 } // Interface

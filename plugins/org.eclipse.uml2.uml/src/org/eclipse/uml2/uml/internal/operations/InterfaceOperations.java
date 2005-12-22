@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: InterfaceOperations.java,v 1.4 2005/12/22 15:20:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,7 +18,13 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.uml2.uml.Interface;
+
+import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -78,6 +84,31 @@ public final class InterfaceOperations
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Operation createOwnedOperation(Interface interface_,
+			String name, Type returnType, EList parameterNames,
+			EList parameterTypes) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Property createOwnedAttribute(Interface interface_,
+			String name, Type type, int lower, int upper) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // InterfaceOperations

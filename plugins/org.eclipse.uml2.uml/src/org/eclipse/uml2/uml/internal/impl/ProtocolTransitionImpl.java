@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.14 2005/12/21 20:13:08 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.15 2005/12/22 15:20:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -338,80 +338,21 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPreCondition(Constraint newPreCondition,
-			NotificationChain msgs) {
+	public void setPreCondition(Constraint newPreCondition) {
+		Constraint preCondition = newPreCondition;
 		Object oldPreCondition = eVirtualSet(
-			UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, newPreCondition);
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET,
+			UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, preCondition);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION,
 				oldPreCondition == EVIRTUAL_NO_VALUE
 					? null
-					: oldPreCondition, newPreCondition);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
+					: oldPreCondition, preCondition));
 
 		if (newPreCondition != null
 			|| oldPreCondition == eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__GUARD)) {
 			setGuard(newPreCondition);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPreCondition(Constraint newPreCondition) {
-		Constraint preCondition = (Constraint) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION);
-		if (newPreCondition != preCondition) {
-			NotificationChain msgs = null;
-			if (preCondition != null)
-				msgs = ((InternalEObject) preCondition).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, null,
-					msgs);
-			if (newPreCondition != null)
-				msgs = ((InternalEObject) newPreCondition).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, null,
-					msgs);
-			msgs = basicSetPreCondition(newPreCondition, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, newPreCondition,
-				newPreCondition));
-
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint createPreCondition(EClass eClass) {
-		Constraint newPreCondition = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
-		setPreCondition(newPreCondition);
-		return newPreCondition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint createPreCondition() {
-		Constraint newPreCondition = UMLFactory.eINSTANCE.createConstraint();
-		setPreCondition(newPreCondition);
-		return newPreCondition;
 	}
 
 	/**
@@ -488,8 +429,6 @@ public class ProtocolTransitionImpl
 				return basicSetSource(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				return basicSetPostCondition(null, msgs);
-			case UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION :
-				return basicSetPreCondition(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

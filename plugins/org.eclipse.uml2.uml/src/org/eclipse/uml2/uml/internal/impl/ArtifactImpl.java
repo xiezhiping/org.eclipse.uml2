@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.11 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.12 2005/12/22 15:20:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -44,9 +44,12 @@ import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
+
+import org.eclipse.uml2.uml.internal.operations.ArtifactOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -443,6 +446,28 @@ public class ArtifactImpl
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation createOwnedOperation(String name, Type returnType,
+			EList parameterNames, EList parameterTypes) {
+		return ArtifactOperations.createOwnedOperation(this, name, returnType,
+			parameterNames, parameterTypes);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property createOwnedAttribute(String name, Type type, int lower,
+			int upper) {
+		return ArtifactOperations.createOwnedAttribute(this, name, type, lower,
+			upper);
 	}
 
 	/**

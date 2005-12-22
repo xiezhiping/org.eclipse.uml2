@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.3 2005/12/22 15:20:22 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -192,5 +192,13 @@ public interface StructuredClassifier
 	 * @generated
 	 */
 	boolean validateMultiplicities(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" typeRequired="true" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
+	 * @generated
+	 */
+	Property createOwnedAttribute(String name, Type type, int lower, int upper);
 
 } // StructuredClassifier

@@ -1688,6 +1688,10 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
+    <eOperations name="createInterfaceRealization" ordered="false" lowerBound="1"
+        eType="#//InterfaceRealization">
+      <eParameters name="contract" ordered="false" lowerBound="1" eType="#//Interface"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedBehavior" ordered="false"
         upperBound="-1" eType="#//Behavior" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1830,12 +1834,6 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="getExtensions" ordered="false" upperBound="-1" eType="#//Extension"/>
-    <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
-      <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
-      <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
-    </eOperations>
     <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
       <eParameters name="returnType" ordered="false" lowerBound="1" eType="#//Type"/>
@@ -1891,7 +1889,8 @@
       <details key="documentation" value="Extends a classifier with the ability to own ports as specific and type checked interaction points."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPort" ordered="false"
-        upperBound="-1" eType="#//Port" volatile="true" derived="true" resolveProxies="false">
+        upperBound="-1" eType="#//Port" volatile="true" transient="true" derived="true"
+        resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References a set of ports that an encapsulated classifier owns."/>
       </eAnnotations>
@@ -1909,6 +1908,12 @@
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
+    <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
+      <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
         eType="#//Property" containment="true" resolveProxies="false">
@@ -2531,6 +2536,18 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="In the metamodel, an Artifact is a Classifier that represents a physical entity. Artifacts may have Properties that represent features of the Artifact, and Operations that can be performed on its instances. Artifacts can be involved in Associations to other Artifacts, e.g. composition associations. Artifacts can be instantiated to represent detailed copy semantics, where different instances of the same Artifact may be deployed to various Node instances (and each may have separate property values, e.g. for a 'time-stamp' property.&#xD;&#xA;As part of the Nodes package, an Artifact is extended to become the source of a deployment to a Node. This is achieved by specializing the abstract superclass."/>
     </eAnnotations>
+    <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="returnType" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
+      <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+    </eOperations>
+    <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
+      <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileName" ordered="false"
         eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2990,7 +3007,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint" resolveProxies="false">
@@ -3146,6 +3163,18 @@
         <eParameters name="inhs" ordered="false" upperBound="-1" eType="#//NamedElement"/>
       </contents>
     </eAnnotations>
+    <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="returnType" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
+      <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+    </eOperations>
+    <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
+      <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
         eType="#//Property" containment="true" resolveProxies="false" eOpposite="#//Property/datatype">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3171,6 +3200,18 @@
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
+    <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="returnType" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
+      <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+    </eOperations>
+    <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
+      <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
         eType="#//Property" containment="true" resolveProxies="false">
@@ -3237,6 +3278,12 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence."/>
     </eAnnotations>
+    <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
+      <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
         eType="#//Property" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -4626,7 +4673,7 @@
     <eOperations name="getReferencedMetaclasses" ordered="false" upperBound="-1" eType="#//Class"/>
     <eOperations name="getReferencedMetamodels" ordered="false" upperBound="-1" eType="#//Model"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStereotype" ordered="false"
-        upperBound="-1" eType="#//Stereotype" volatile="true" derived="true">
+        upperBound="-1" eType="#//Stereotype" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the Stereotypes that are owned by the Profile."/>
       </eAnnotations>
@@ -9933,7 +9980,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="preCondition" ordered="false"
-        eType="#//Constraint" containment="true" resolveProxies="false">
+        eType="#//Constraint" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any."/>
       </eAnnotations>

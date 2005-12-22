@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: BehavioredClassifierOperations.java,v 1.4 2005/12/22 15:20:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,9 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
+
+import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.InterfaceRealization;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -79,6 +82,18 @@ public final class BehavioredClassifierOperations
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static InterfaceRealization createInterfaceRealization(
+			BehavioredClassifier behavioredClassifier, Interface contract) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // BehavioredClassifierOperations

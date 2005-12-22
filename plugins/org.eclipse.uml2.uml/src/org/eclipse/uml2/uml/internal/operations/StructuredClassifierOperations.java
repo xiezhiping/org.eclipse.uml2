@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierOperations.java,v 1.3 2005/12/12 16:58:37 khussey Exp $
+ * $Id: StructuredClassifierOperations.java,v 1.4 2005/12/22 15:20:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,7 +18,10 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
+
+import org.eclipse.uml2.uml.Type;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -79,6 +82,19 @@ public final class StructuredClassifierOperations
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Property createOwnedAttribute(
+			StructuredClassifier structuredClassifier, String name, Type type,
+			int lower, int upper) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // StructuredClassifierOperations

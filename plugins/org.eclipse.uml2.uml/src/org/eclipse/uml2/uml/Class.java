@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Class.java,v 1.5 2005/12/22 15:20:22 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -252,14 +252,6 @@ public interface Class
 	 * @generated
 	 */
 	boolean validatePassiveClass(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" typeRequired="true" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
-	 * @generated
-	 */
-	Property createOwnedAttribute(String name, Type type, int lower, int upper);
 
 	/**
 	 * <!-- begin-user-doc -->
