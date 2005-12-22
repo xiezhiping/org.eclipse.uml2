@@ -16390,7 +16390,7 @@
       <generalization xmi:id="_bC_LMEfCEdq0rbStTpEubg" general="_3ADC7B74022D3DE6D5DA0183"/>
       <ownedAttribute xmi:id="_3ADC7B74022D3CB24B21030C" name="ownedStereotype" type="_3ADC7B74022D3CA186DB0022" isDerived="true" subsettedProperty="_3ADC7B74022D3DE6E0F500FF" association="_3ADC7B74022D3CB24B21012C" aggregation="composite">
         <eAnnotations xmi:id="_n55RIDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n55RITwaEdqNYOqRUhe_HQ"/>
+          <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n55RITwaEdqNYOqRUhe_HQ" isTransient="true"/>
         </eAnnotations>
         <ownedComment xmi:id="_ruQ7iRTaEdqZu-3Jy1-uYg" body="References the Stereotypes that are owned by the Profile." annotatedElement="_3ADC7B74022D3CB24B21030C">
           <eAnnotations xmi:id="_ruaFYBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
