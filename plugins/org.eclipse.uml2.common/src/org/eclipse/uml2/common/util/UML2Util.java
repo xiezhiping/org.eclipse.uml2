@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.7 2005/12/19 18:51:48 khussey Exp $
+ * $Id: UML2Util.java,v 1.8 2005/12/22 20:18:34 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -38,9 +38,11 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -95,7 +97,28 @@ public class UML2Util {
 
 	}
 
-	protected static class UMLCrossReferenceAdapter
+	public static abstract class QualifiedTextProvider {
+
+		public String getText(EObject eObject) {
+
+			return eObject instanceof ENamedElement
+				? ((ENamedElement) eObject).getName()
+				: EMPTY_STRING;
+		}
+
+		public abstract String getSeparator();
+
+		public String getFeatureText(EStructuralFeature eStructuralFeature) {
+			return eStructuralFeature.getName();
+		}
+
+		public String getClassText(EObject eObject) {
+			return eObject.eClass().getName();
+		}
+
+	}
+
+	protected static class CrossReferenceAdapter
 			extends ECrossReferenceAdapter {
 
 		protected void adapt(EObject eObject) {
@@ -125,7 +148,7 @@ public class UML2Util {
 		}
 	}
 
-	protected static final UMLCrossReferenceAdapter CROSS_REFERENCE_ADAPTER = new UMLCrossReferenceAdapter();
+	protected static final CrossReferenceAdapter CROSS_REFERENCE_ADAPTER = new CrossReferenceAdapter();
 
 	/**
 	 * The default URI converter for resource bundle look-ups.
@@ -152,17 +175,22 @@ public class UML2Util {
 	/**
 	 * The scheme for platform URIs.
 	 */
-	protected static final String URI_SCHEME_PLATFORM = "platform"; //$NON-NLS-1$
+	public static final String URI_SCHEME_PLATFORM = "platform"; //$NON-NLS-1$
 
 	/**
 	 * The first segment for platform plugin URIs.
 	 */
-	protected static final String URI_SEGMENT_PLUGIN = "plugin"; //$NON-NLS-1$
+	public static final String URI_SEGMENT_PLUGIN = "plugin"; //$NON-NLS-1$
+
+	/**
+	 * The first segment for platform resource URIs.
+	 */
+	public static final String URI_SEGMENT_RESOURCE = "resource"; //$NON-NLS-1$
 
 	/**
 	 * The standard extension for properties files.
 	 */
-	protected static final String PROPERTIES_FILE_EXTENSION = "properties"; //$NON-NLS-1$
+	public static final String PROPERTIES_FILE_EXTENSION = "properties"; //$NON-NLS-1$
 
 	/**
 	 * Retrieves the candidate resource bundle URIs based on the specified base
@@ -393,6 +421,125 @@ public class UML2Util {
 		return string;
 	}
 
+	public static String getQualifiedText(EObject eObject,
+			QualifiedTextProvider qualifiedTextProvider) {
+
+		return getQualifiedText(eObject, qualifiedTextProvider,
+			new StringBuffer()).toString();
+	}
+
+	protected static StringBuffer getQualifiedText(EObject eObject,
+			QualifiedTextProvider qualifiedTextProvider,
+			StringBuffer qualifiedText) {
+
+		EObject eContainer = eObject == null
+			? null
+			: eObject.eContainer();
+
+		if (eContainer != null) {
+			getQualifiedText(eContainer, qualifiedTextProvider, qualifiedText);
+
+			if (qualifiedText.length() > 0) {
+				qualifiedText.append(qualifiedTextProvider.getSeparator());
+			}
+		}
+
+		return getQualifiedTextSegment(eObject, qualifiedTextProvider,
+			qualifiedText);
+	}
+
+	protected static StringBuffer getQualifiedTextSegment(EObject eObject,
+			QualifiedTextProvider qualifiedTextProvider,
+			StringBuffer qualifiedText) {
+
+		String text = qualifiedTextProvider.getText(eObject);
+
+		if (!isEmpty(text)) {
+			return qualifiedText.append(text);
+		} else if (eObject == null) {
+			return qualifiedText.append(String.valueOf(eObject));
+		}
+
+		qualifiedText.append('{');
+
+		EStructuralFeature eContainingFeature = eObject.eContainingFeature();
+
+		if (eContainingFeature != null) {
+			qualifiedText.append(qualifiedTextProvider
+				.getFeatureText(eContainingFeature));
+
+			if (eContainingFeature.isMany()) {
+				qualifiedText.append(' ');
+
+				List list = (List) eObject.eContainer().eGet(
+					eContainingFeature, false);
+
+				qualifiedText.append('[');
+				qualifiedText.append(list.indexOf(eObject));
+				qualifiedText.append(']');
+			}
+
+			qualifiedText.append(' ');
+		}
+
+		qualifiedText.append(qualifiedTextProvider.getClassText(eObject));
+		qualifiedText.append('}');
+
+		return qualifiedText;
+	}
+
+	protected static String getMessageSubstitution(Map context, Object object) {
+
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+
+			if (context != null) {
+				EValidator.SubstitutionLabelProvider substitutionLabelProvider = (EValidator.SubstitutionLabelProvider) context
+					.get(EValidator.SubstitutionLabelProvider.class);
+
+				if (substitutionLabelProvider != null) {
+					return substitutionLabelProvider.getObjectLabel(eObject);
+				}
+
+				QualifiedTextProvider qualifiedTestProvider = (QualifiedTextProvider) context
+					.get(QualifiedTextProvider.class);
+
+				if (qualifiedTestProvider != null) {
+					return getQualifiedText(eObject, qualifiedTestProvider);
+				}
+			}
+
+			Resource resource = eObject.eResource();
+
+			if (resource != null) {
+				return resource.getURI().lastSegment() + '#'
+					+ resource.getURIFragment(eObject);
+			}
+
+			return EcoreUtil.getIdentification((EObject) object);
+		} else {
+			return String.valueOf(object);
+		}
+	}
+
+	protected static Object[] getMessageSubstitutions(Map context,
+			Object object0) {
+		return new Object[]{getMessageSubstitution(context, object0)};
+	}
+
+	protected static Object[] getMessageSubstitutions(Map context,
+			Object object0, Object object1) {
+		return new Object[]{getMessageSubstitution(context, object0),
+			getMessageSubstitution(context, object1)};
+	}
+
+	protected static Object[] getMessageSubstitutions(Map context,
+			Object object0, Object object1, Object object2) {
+		return new Object[]{getMessageSubstitution(context, object0),
+			getMessageSubstitution(context, object1),
+			getMessageSubstitution(context, object2)};
+	}
+
 	public static boolean safeEquals(Object object, Object otherObject) {
 		return object == null
 			? otherObject == null
@@ -508,7 +655,7 @@ public class UML2Util {
 	 *            The name from which to obtain a valid identifier.
 	 * @return A valid (Java) identifier.
 	 */
-	protected static String getValidJavaIdentifier(String name) {
+	public static String getValidJavaIdentifier(String name) {
 		return getValidJavaIdentifier(name, new StringBuffer()).toString();
 	}
 
@@ -596,7 +743,7 @@ public class UML2Util {
 		return validNCName;
 	}
 
-	protected static String getXMIIdentifier(InternalEObject internalEObject) {
+	public static String getXMIIdentifier(InternalEObject internalEObject) {
 		return getXMIIdentifier(internalEObject, new StringBuffer()).toString();
 	}
 
@@ -756,4 +903,15 @@ public class UML2Util {
 
 		EcoreUtil.remove(eObject);
 	}
+
+	public static Object load(ResourceSet resourceSet, URI uri, EClass eClass) {
+
+		try {
+			return EcoreUtil.getObjectByType(resourceSet.getResource(uri, true)
+				.getContents(), eClass);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }

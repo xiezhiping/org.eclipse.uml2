@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.53 2005/12/16 03:55:08 khussey Exp $
+ * $Id: UML2Util.java,v 1.54 2005/12/22 20:18:31 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -32,7 +32,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.UniqueEList;
-import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -49,7 +48,6 @@ import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
-import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -111,29 +109,19 @@ public class UML2Util
 		super();
 	}
 
-	public static class QualifiedTextProvider {
+	public static class QualifiedTextProvider
+			extends org.eclipse.uml2.common.util.UML2Util.QualifiedTextProvider {
 
 		public static final QualifiedTextProvider DEFAULT = new QualifiedTextProvider();
 
 		public String getText(EObject eObject) {
-
 			return eObject instanceof NamedElement
 				? ((NamedElement) eObject).getName()
-				: (eObject instanceof ENamedElement
-					? ((ENamedElement) eObject).getName()
-					: EMPTY_STRING);
+				: super.getText(eObject);
 		}
 
 		public String getSeparator() {
 			return NamedElement.SEPARATOR;
-		}
-
-		public String getFeatureText(EStructuralFeature eStructuralFeature) {
-			return eStructuralFeature.getName();
-		}
-
-		public String getClassText(EObject eObject) {
-			return eObject.eClass().getName();
 		}
 
 	}
@@ -4339,8 +4327,8 @@ public class UML2Util
 				}
 			}
 
-			return appendQualifiedTextSegment(resultingQName, eObject,
-				qualifiedTextProvider);
+			return getQualifiedTextSegment(eObject, qualifiedTextProvider,
+				resultingQName);
 		}
 
 		protected void mergeAssociation_IsDerived(
@@ -5929,7 +5917,6 @@ public class UML2Util
 
 	protected static Object getTaggedValue(Element element,
 			String qualifiedStereotypeName, String propertyName) {
-
 		Stereotype stereotype = element
 			.getAppliedStereotype(qualifiedStereotypeName);
 
@@ -5956,7 +5943,6 @@ public class UML2Util
 
 	protected static void setTaggedValue(Element element,
 			Stereotype stereotype, String propertyName, Object value) {
-
 		safeApplyStereotype(element, stereotype);
 
 		element.setValue(stereotype, propertyName, value);
@@ -5964,74 +5950,6 @@ public class UML2Util
 
 	public static String getQualifiedText(EObject eObject) {
 		return getQualifiedText(eObject, QualifiedTextProvider.DEFAULT);
-	}
-
-	public static String getQualifiedText(EObject eObject,
-			QualifiedTextProvider qualifiedTextProvider) {
-
-		return appendQualifiedText(new StringBuffer(), eObject,
-			qualifiedTextProvider).toString();
-	}
-
-	protected static StringBuffer appendQualifiedText(
-			StringBuffer qualifiedText, EObject eObject,
-			QualifiedTextProvider qualifiedTextProvider) {
-
-		EObject eContainer = null == eObject
-			? null
-			: eObject.eContainer();
-
-		if (null != eContainer) {
-			appendQualifiedText(qualifiedText, eContainer,
-				qualifiedTextProvider);
-
-			if (0 < qualifiedText.length()) {
-				qualifiedText.append(qualifiedTextProvider.getSeparator());
-			}
-		}
-
-		return appendQualifiedTextSegment(qualifiedText, eObject,
-			qualifiedTextProvider);
-	}
-
-	protected static StringBuffer appendQualifiedTextSegment(
-			StringBuffer qualifiedText, EObject eObject,
-			QualifiedTextProvider qualifiedTextProvider) {
-
-		String text = qualifiedTextProvider.getText(eObject);
-
-		if (!isEmpty(text)) {
-			return qualifiedText.append(text);
-		} else if (null == eObject) {
-			return qualifiedText.append(String.valueOf(eObject));
-		}
-
-		qualifiedText.append('{');
-
-		EStructuralFeature eContainingFeature = eObject.eContainingFeature();
-
-		if (null != eContainingFeature) {
-			qualifiedText.append(qualifiedTextProvider
-				.getFeatureText(eContainingFeature));
-
-			if (eContainingFeature.isMany()) {
-				qualifiedText.append(' ');
-
-				List list = (List) eObject.eContainer().eGet(
-					eContainingFeature, false);
-
-				qualifiedText.append('[');
-				qualifiedText.append(list.indexOf(eObject));
-				qualifiedText.append(']');
-			}
-
-			qualifiedText.append(' ');
-		}
-
-		qualifiedText.append(qualifiedTextProvider.getClassText(eObject));
-		qualifiedText.append('}');
-
-		return qualifiedText;
 	}
 
 	public static Collection findNamedElements(ResourceSet resourceSet,
@@ -6138,105 +6056,14 @@ public class UML2Util
 		return namedElements;
 	}
 
-	protected static EAnnotation createEAnnotation(EModelElement eModelElement,
-			String source) {
-
-		if (Element.class.isInstance(eModelElement)) {
-			return ((Element) eModelElement).createEAnnotation(source);
-		} else {
-			EAnnotation eAnnotation = EcoreFactory.eINSTANCE
-				.createEAnnotation();
-
-			eAnnotation.setSource(source);
-			eAnnotation.setEModelElement(eModelElement);
-
-			return eAnnotation;
-		}
-	}
-
-	protected static EAnnotation getEAnnotation(EModelElement eModelElement,
-			String source, boolean createOnDemand) {
-
-		EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
-
-		return null == eAnnotation && createOnDemand
-			? createEAnnotation(eModelElement, source)
-			: eAnnotation;
-	}
-
-	protected static String getMessageSubstitution(Map context, Object object) {
-
-		if (EObject.class.isInstance(object)) {
-			EObject eObject = (EObject) object;
-
-			if (NamedElement.class.isInstance(object)) {
-				String qualifiedName = ((NamedElement) object)
-					.getQualifiedName();
-
-				if (!isEmpty(qualifiedName)) {
-					return qualifiedName;
-				}
-			}
-
-			if (null != context) {
-				EValidator.SubstitutionLabelProvider substitutionLabelProvider = (EValidator.SubstitutionLabelProvider) context
-					.get(EValidator.SubstitutionLabelProvider.class);
-
-				if (null != substitutionLabelProvider) {
-					return substitutionLabelProvider.getObjectLabel(eObject);
-				}
-
-				QualifiedTextProvider qualifiedTestProvider = (QualifiedTextProvider) context
-					.get(QualifiedTextProvider.class);
-
-				if (null != qualifiedTestProvider) {
-					return getQualifiedText(eObject, qualifiedTestProvider);
-				}
-			}
-
-			Resource resource = eObject.eResource();
-
-			if (null != resource) {
-				return resource.getURI().lastSegment() + '#'
-					+ resource.getURIFragment(eObject);
-			}
-
-			return EcoreUtil.getIdentification((EObject) object);
-		} else {
-			return String.valueOf(object);
-		}
-	}
-
-	protected static Object[] getMessageSubstitutions(Map context,
-			Object object0) {
-		return new Object[]{getMessageSubstitution(context, object0)};
-	}
-
-	protected static Object[] getMessageSubstitutions(Map context,
-			Object object0, Object object1) {
-		return new Object[]{getMessageSubstitution(context, object0),
-			getMessageSubstitution(context, object1)};
-	}
-
-	protected static Object[] getMessageSubstitutions(Map context,
-			Object object0, Object object1, Object object2) {
-		return new Object[]{getMessageSubstitution(context, object0),
-			getMessageSubstitution(context, object1),
-			getMessageSubstitution(context, object2)};
-	}
-
 	public static org.eclipse.uml2.Package load(ResourceSet resourceSet, URI uri) {
-		org.eclipse.uml2.Package package_ = null;
 
 		try {
-			package_ = (org.eclipse.uml2.Package) EcoreUtil.getObjectByType(
-				resourceSet.getResource(uri, true).getContents(),
+			return (org.eclipse.uml2.Package) load(resourceSet, uri,
 				UML2Package.Literals.PACKAGE);
-		} catch (WrappedException we) {
-			// do nothing
+		} catch (Exception e) {
+			return null;
 		}
-
-		return package_;
 	}
 
 	protected static List getOwnedAttributes(Type type) {
