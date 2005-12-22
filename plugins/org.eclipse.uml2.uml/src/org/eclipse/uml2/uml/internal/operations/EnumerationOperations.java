@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationOperations.java,v 1.1 2005/12/14 22:34:27 khussey Exp $
+ * $Id: EnumerationOperations.java,v 1.2 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,9 +27,9 @@ import org.eclipse.uml2.uml.EnumerationLiteral;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class EnumerationOperations {
+public final class EnumerationOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -43,13 +43,18 @@ public final class EnumerationOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EnumerationLiteral createOwnedLiteral(
 			Enumeration enumeration, String name) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		EnumerationLiteral ownedLiteral = enumeration.createOwnedLiteral();
+		ownedLiteral.setName(name);
+		return ownedLiteral;
 	}
 
 } // EnumerationOperations

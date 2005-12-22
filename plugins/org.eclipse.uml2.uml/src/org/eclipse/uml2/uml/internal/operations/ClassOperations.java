@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.6 2005/12/22 15:20:21 khussey Exp $
+ * $Id: ClassOperations.java,v 1.7 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 
@@ -135,25 +136,23 @@ public final class ClassOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(
 			org.eclipse.uml2.uml.Class class_, String name, Type returnType,
 			EList parameterNames, EList parameterTypes) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return TypeOperations.createOwnedOperation(class_, name, returnType,
+			parameterNames, parameterTypes);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isMetaclass(org.eclipse.uml2.uml.Class class_) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return class_.getAppliedStereotype("UML" //$NON-NLS-1$
+			+ NamedElement.SEPARATOR + "Metaclass") != null; //$NON-NLS-1$
 	}
 
 	/**

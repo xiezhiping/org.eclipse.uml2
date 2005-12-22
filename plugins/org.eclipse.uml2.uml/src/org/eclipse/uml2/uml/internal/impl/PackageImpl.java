@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.14 2005/12/21 20:13:08 khussey Exp $
+ * $Id: PackageImpl.java,v 1.15 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -535,7 +535,7 @@ public class PackageImpl
 			eVirtualSet(UMLPackage.PACKAGE__OWNED_TYPE,
 				ownedType = new DerivedSubsetEObjectEList(Type.class, this,
 					UMLPackage.PACKAGE__OWNED_TYPE,
-					new int[]{UMLPackage.PACKAGE__OWNED_MEMBER}));
+					new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT}));
 		}
 		return ownedType;
 	}
@@ -567,7 +567,7 @@ public class PackageImpl
 				nestedPackage = new DerivedSubsetEObjectEList(
 					org.eclipse.uml2.uml.Package.class, this,
 					UMLPackage.PACKAGE__NESTED_PACKAGE,
-					new int[]{UMLPackage.PACKAGE__OWNED_MEMBER}));
+					new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT}));
 		}
 		return nestedPackage;
 	}

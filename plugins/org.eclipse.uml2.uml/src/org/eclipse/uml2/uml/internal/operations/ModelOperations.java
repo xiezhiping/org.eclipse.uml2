@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelOperations.java,v 1.1 2005/12/14 22:34:27 khussey Exp $
+ * $Id: ModelOperations.java,v 1.2 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.NamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,9 +27,9 @@ import org.eclipse.uml2.uml.Model;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ModelOperations {
+public final class ModelOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -42,12 +43,11 @@ public final class ModelOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isMetamodel(Model model) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return null != model.getAppliedStereotype("UML" //$NON-NLS-1$
+			+ NamedElement.SEPARATOR + "ModelLibrary"); //$NON-NLS-1$
 	}
 
 } // ModelOperations

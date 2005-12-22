@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.11 2005/12/19 21:34:46 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.12 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,7 +156,7 @@ public class ProfileImpl
 				ownedStereotype = new DerivedSubsetEObjectEList(
 					Stereotype.class, this,
 					UMLPackage.PROFILE__OWNED_STEREOTYPE,
-					new int[]{UMLPackage.PROFILE__OWNED_MEMBER}));
+					new int[]{UMLPackage.PROFILE__PACKAGED_ELEMENT}));
 		}
 		return ownedStereotype;
 	}

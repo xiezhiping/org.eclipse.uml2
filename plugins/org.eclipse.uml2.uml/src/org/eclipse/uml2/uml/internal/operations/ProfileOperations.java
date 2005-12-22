@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.6 2005/12/21 20:13:08 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.7 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -50,7 +50,6 @@ import org.eclipse.uml2.uml.Profile;
 
 import org.eclipse.uml2.uml.Stereotype;
 
-import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -97,8 +96,20 @@ public final class ProfileOperations
 
 				String name = ePackage.getName();
 				ePackage.setNsPrefix(name);
-				ePackage.setNsURI("http:///" + name + EcoreUtil.generateUUID() //$NON-NLS-1$
-					+ "." + UMLResource.PROFILE_FILE_EXTENSION); //$NON-NLS-1$				
+
+				String version = String.valueOf(0);
+
+				try {
+					String nsURI = profile.getDefinition().getNsURI();
+					version = String.valueOf(Integer.parseInt(nsURI
+						.substring(nsURI.lastIndexOf('/') + 1)) + 1);
+				} catch (Exception e) {
+					// ignore
+				}
+
+				ePackage.setNsURI("http://" //$NON-NLS-1$
+					+ NamedElementOperations.getQualifiedName(profile, ".") //$NON-NLS-1$
+					+ "/schemas/" + EcoreUtil.generateUUID() + '/' + version); //$NON-NLS-1$
 			}
 
 			defaultCase(profile);
@@ -134,6 +145,11 @@ public final class ProfileOperations
 						EnumerationLiteral enumerationLiteral) {
 					setName(eNamedElement, enumerationLiteral.getName(), false);
 					return enumerationLiteral;
+				}
+
+				public Object caseNamedElement(NamedElement namedElement) {
+					setName(eNamedElement, namedElement.getName(), true);
+					return namedElement;
 				}
 
 				public Object caseProfile(Profile profile) {
@@ -345,8 +361,12 @@ public final class ProfileOperations
 	 */
 	public static EPackage define(Profile profile) {
 		EPackage definition = Profile2EPackageConverter.convert(profile);
-		getEAnnotation(profile, UMLPackage.eNS_URI, true).getContents().add(0,
-			definition);
+
+		if (definition != null) {
+			getEAnnotation(profile, UMLPackage.eNS_URI, true).getContents()
+				.add(0, definition);
+		}
+
 		return definition;
 	}
 

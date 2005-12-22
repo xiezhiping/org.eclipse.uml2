@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.10 2005/12/14 22:34:17 khussey Exp $
+ * $Id: OperationImpl.java,v 1.11 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -930,23 +931,21 @@ public class OperationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getOwnedParameters() {
 		EList ownedParameter = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_PARAMETER);
 		if (ownedParameter == null) {
 			eVirtualSet(UMLPackage.OPERATION__OWNED_PARAMETER,
-				ownedParameter = new EObjectContainmentWithInverseEList(
-					Parameter.class, this,
-					UMLPackage.OPERATION__OWNED_PARAMETER,
-					UMLPackage.PARAMETER__OPERATION));
+				ownedParameter = new EObjectContainmentEList(Parameter.class,
+					this, UMLPackage.OPERATION__OWNED_PARAMETER));
 		}
 		return ownedParameter;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Parameter createOwnedParameter() {

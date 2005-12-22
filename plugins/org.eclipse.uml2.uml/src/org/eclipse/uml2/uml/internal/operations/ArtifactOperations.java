@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactOperations.java,v 1.1 2005/12/22 15:20:21 khussey Exp $
+ * $Id: ArtifactOperations.java,v 1.2 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -32,9 +32,9 @@ import org.eclipse.uml2.uml.Type;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class ArtifactOperations {
+public final class ArtifactOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -48,26 +48,24 @@ public final class ArtifactOperations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(Artifact artifact,
 			String name, Type returnType, EList parameterNames,
 			EList parameterTypes) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return TypeOperations.createOwnedOperation(artifact, name, returnType,
+			parameterNames, parameterTypes);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Property createOwnedAttribute(Artifact artifact, String name,
 			Type type, int lower, int upper) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return TypeOperations.createOwnedAttribute(artifact, name, type, lower,
+			upper);
 	}
 
 } // ArtifactOperations

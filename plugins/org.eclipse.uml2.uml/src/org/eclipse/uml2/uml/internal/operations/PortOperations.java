@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.6 2005/12/14 22:34:27 khussey Exp $
+ * $Id: PortOperations.java,v 1.7 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -22,18 +21,14 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Interface;
-import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.Usage;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -196,25 +191,6 @@ public final class PortOperations
 		return true;
 	}
 
-	protected static EList getImplementedInterfaces(
-			BehavioredClassifier behavioredClassifier,
-			EList implementedInterfaces) {
-
-		for (Iterator interfaceRealizations = behavioredClassifier
-			.getInterfaceRealizations().iterator(); interfaceRealizations
-			.hasNext();) {
-
-			Interface contract = (Interface) ((InterfaceRealization) interfaceRealizations
-				.next()).eGet(
-				UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT, false);
-
-			if (contract != null) {
-				implementedInterfaces.add(contract);
-			}
-		}
-		return implementedInterfaces;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -229,51 +205,13 @@ public final class PortOperations
 		if (type instanceof Interface) {
 			provideds.add(type);
 		} else if (type instanceof BehavioredClassifier) {
-			BehavioredClassifier behavioredClassifier = (BehavioredClassifier) port
-				.getType();
-
-			getImplementedInterfaces(behavioredClassifier, provideds);
-
-			for (Iterator allParents = behavioredClassifier.allParents()
-				.iterator(); allParents.hasNext();) {
-
-				Classifier parent = (Classifier) allParents.next();
-
-				if (parent instanceof BehavioredClassifier) {
-					getImplementedInterfaces((BehavioredClassifier) parent,
-						provideds);
-				}
-			}
+			BehavioredClassifierOperations.getAllRealizedInterfaces((BehavioredClassifier) port
+				.getType(), provideds);
 		}
 
 		return new UnionEObjectEList((InternalEObject) port,
 			UMLPackage.Literals.PORT__PROVIDED, provideds.size(), provideds
 				.toArray());
-	}
-
-	protected static EList getUsedInterfaces(Classifier classifier,
-			EList usedInterfaces) {
-
-		for (Iterator clientDependencies = classifier.getClientDependencies()
-			.iterator(); clientDependencies.hasNext();) {
-
-			Dependency dependency = (Dependency) clientDependencies.next();
-
-			if (dependency instanceof Usage) {
-
-				for (Iterator suppliers = ((InternalEList) dependency
-					.getSuppliers()).basicIterator(); suppliers.hasNext();) {
-
-					Object supplier = suppliers.next();
-
-					if (supplier instanceof Interface) {
-						usedInterfaces.add(supplier);
-					}
-				}
-			}
-		}
-
-		return usedInterfaces;
 	}
 
 	/**
@@ -284,18 +222,12 @@ public final class PortOperations
 	public static EList getRequireds(Port port) {
 		EList requireds = new UniqueEList();
 
-		Type type = port.getType();
+		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
+			false);
 
 		if (type instanceof Classifier && !(type instanceof Interface)) {
-			Classifier classifier = (Classifier) type;
-
-			getUsedInterfaces(classifier, requireds);
-
-			for (Iterator allParents = classifier.allParents().iterator(); allParents
-				.hasNext();) {
-
-				getUsedInterfaces((Classifier) allParents.next(), requireds);
-			}
+			ClassifierOperations.getAllUsedInterfaces((Classifier) port
+				.getType(), requireds);
 		}
 
 		return new UnionEObjectEList((InternalEObject) port,

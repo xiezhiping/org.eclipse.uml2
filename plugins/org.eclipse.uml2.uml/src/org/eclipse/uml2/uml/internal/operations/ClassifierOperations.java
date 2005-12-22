@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.7 2005/12/21 20:13:08 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.8 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,12 +22,17 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Usage;
 
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -204,57 +209,105 @@ public final class ClassifierOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Generalization createGeneralization(Classifier classifier,
 			Classifier general) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (general == null || general == classifier
+			|| classifier.allParents().contains(general)
+			|| general.allParents().contains(classifier)) {
+
+			throw new IllegalArgumentException(String.valueOf(general));
+		}
+
+		Generalization generalization = classifier.createGeneralization();
+		generalization.setGeneral(general);
+
+		return generalization;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getAllAttributes(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList allAttributes = new UniqueEList();
+
+		for (Iterator allFeatures = classifier.allFeatures().iterator(); allFeatures
+			.hasNext();) {
+
+			Object feature = allFeatures.next();
+
+			if (feature instanceof Property) {
+				allAttributes.add(feature);
+			}
+		}
+
+		return ECollections.unmodifiableEList(allAttributes);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getOperations(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList operations = new UniqueEList();
+
+		for (Iterator features = classifier.getFeatures().iterator(); features
+			.hasNext();) {
+
+			Object feature = features.next();
+
+			if (feature instanceof Operation) {
+				operations.add(feature);
+			}
+		}
+
+		return ECollections.unmodifiableEList(operations);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getAllOperations(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList allOperations = new UniqueEList();
+
+		for (Iterator allFeatures = classifier.allFeatures().iterator(); allFeatures
+			.hasNext();) {
+
+			Object feature = allFeatures.next();
+
+			if (feature instanceof Operation) {
+				allOperations.add(feature);
+			}
+		}
+
+		return ECollections.unmodifiableEList(allOperations);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Operation getOperation(Classifier classifier, String name) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		for (Iterator operations = classifier.getOperations().iterator(); operations
+			.hasNext();) {
+
+			Operation operation = (Operation) operations.next();
+
+			if (safeEquals(operation.getName(), name)) {
+				return operation;
+			}
+		}
+
+		return null;
 	}
 
 	/**
@@ -320,7 +373,7 @@ public final class ClassifierOperations
 		for (Iterator members = classifier.getMembers().iterator(); members
 			.hasNext();) {
 
-			NamedElement member = (NamedElement) members.next();
+			Object member = members.next();
 
 			if (member instanceof Feature) {
 				allFeatures.add(member);
@@ -494,6 +547,44 @@ public final class ClassifierOperations
 		}
 
 		return true;
+	}
+
+	protected static EList getUsedInterfaces(Classifier classifier,
+			EList usedInterfaces) {
+
+		for (Iterator clientDependencies = classifier.getClientDependencies()
+			.iterator(); clientDependencies.hasNext();) {
+
+			Dependency dependency = (Dependency) clientDependencies.next();
+
+			if (dependency instanceof Usage) {
+
+				for (Iterator suppliers = ((InternalEList) dependency
+					.getSuppliers()).basicIterator(); suppliers.hasNext();) {
+
+					Object supplier = suppliers.next();
+
+					if (supplier instanceof Interface) {
+						usedInterfaces.add(supplier);
+					}
+				}
+			}
+		}
+
+		return usedInterfaces;
+	}
+
+	protected static EList getAllUsedInterfaces(Classifier classifier,
+			EList allUsedInterfaces) {
+		getUsedInterfaces(classifier, allUsedInterfaces);
+
+		for (Iterator allParents = classifier.allParents().iterator(); allParents
+			.hasNext();) {
+
+			getUsedInterfaces((Classifier) allParents.next(), allUsedInterfaces);
+		}
+
+		return allUsedInterfaces;
 	}
 
 } // ClassifierOperations

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.10 2005/12/21 20:13:08 khussey Exp $
+ * $Id: ElementOperations.java,v 1.11 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -653,6 +653,21 @@ public final class ElementOperations
 			Stereotype stereotype, Resource resource) {
 		EObject stereotypeApplication = stereotype.getProfile().create(
 			stereotype);
+
+		for (Iterator eAllStructuralFeatures = stereotypeApplication.eClass()
+			.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
+			.hasNext();) {
+
+			EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
+				.next();
+
+			if (eStructuralFeature.getName().startsWith(
+				Extension.METACLASS_ROLE_PREFIX)
+				&& eStructuralFeature.getEType().isInstance(element)) {
+
+				stereotypeApplication.eSet(eStructuralFeature, element);
+			}
+		}
 
 		if (resource != null) {
 			resource.getContents().add(stereotypeApplication);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.14 2005/12/21 20:13:08 khussey Exp $
+ * $Id: ElementImpl.java,v 1.15 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,7 +16,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.emf.common.notify.Adapter;
+//import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -89,10 +89,12 @@ public abstract class ElementImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ElementImpl() {
 		super();
+		
+		CACHE_ADAPTER.adapt(this);
 	}
 
 	/**
@@ -717,21 +719,17 @@ public abstract class ElementImpl
 		}
 	}
 
+	protected static final CacheAdapter CACHE_ADAPTER = new CacheAdapter();
+
 	/**
 	 * Retrieves the cache adapter for this '<em><b>Element</b></em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The cache adapter for this '<em><b>Element</b></em>'.
-	 * @generated
+	 * @generated NOT
 	 */
 	protected CacheAdapter getCacheAdapter() {
-		for (Iterator i = eAdapters().iterator(); i.hasNext();) {
-			Adapter adapter = (Adapter) i.next();
-			if (adapter instanceof CacheAdapter) {
-				return (CacheAdapter) adapter;
-			}
-		}
-		return null;
+		return CACHE_ADAPTER;
 	}
 
 	/**

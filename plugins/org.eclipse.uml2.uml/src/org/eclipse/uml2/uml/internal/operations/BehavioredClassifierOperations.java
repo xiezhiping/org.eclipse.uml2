@@ -8,20 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierOperations.java,v 1.4 2005/12/22 15:20:21 khussey Exp $
+ * $Id: BehavioredClassifierOperations.java,v 1.5 2005/12/22 20:21:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
 
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
+import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -84,16 +89,63 @@ public final class BehavioredClassifierOperations
 		return true;
 	}
 
+	protected static EList getRealizedInterfaces(
+			BehavioredClassifier behavioredClassifier, EList realizedInterfaces) {
+
+		for (Iterator interfaceRealizations = behavioredClassifier
+			.getInterfaceRealizations().iterator(); interfaceRealizations
+			.hasNext();) {
+
+			Interface contract = (Interface) ((InterfaceRealization) interfaceRealizations
+				.next()).eGet(
+				UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT, false);
+
+			if (contract != null) {
+				realizedInterfaces.add(contract);
+			}
+		}
+		return realizedInterfaces;
+	}
+
+	protected static EList getAllRealizedInterfaces(
+			BehavioredClassifier behavioredClassifier,
+			EList allRealizedInterfaces) {
+		getRealizedInterfaces(behavioredClassifier, allRealizedInterfaces);
+
+		for (Iterator allParents = behavioredClassifier.allParents().iterator(); allParents
+			.hasNext();) {
+
+			Classifier parent = (Classifier) allParents.next();
+
+			if (parent instanceof BehavioredClassifier) {
+				getRealizedInterfaces((BehavioredClassifier) parent,
+					allRealizedInterfaces);
+			}
+		}
+
+		return allRealizedInterfaces;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static InterfaceRealization createInterfaceRealization(
 			BehavioredClassifier behavioredClassifier, Interface contract) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (contract == null
+			|| getAllRealizedInterfaces(behavioredClassifier, new UniqueEList())
+				.contains(contract)) {
+
+			throw new IllegalArgumentException(String.valueOf(contract));
+		}
+
+		InterfaceRealization interfaceRealization = behavioredClassifier
+			.createInterfaceRealization();
+		interfaceRealization.setContract(contract);
+
+		return interfaceRealization;
 	}
 
 } // BehavioredClassifierOperations
