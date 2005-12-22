@@ -8,13 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLActionBarContributor.java,v 1.1 2005/11/14 22:15:02 khussey Exp $
+ * $Id: UMLActionBarContributor.java,v 1.2 2005/12/22 20:21:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 
@@ -311,7 +314,7 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection generateCreateChildActions(Collection descriptors,
+	protected Collection generateCreateChildActionsGen(Collection descriptors,
 			ISelection selection) {
 		Collection actions = new ArrayList();
 		if (descriptors != null) {
@@ -323,6 +326,22 @@ public class UMLActionBarContributor
 		return actions;
 	}
 
+	protected Collection generateCreateChildActions(Collection descriptors,
+			ISelection selection) {
+		List createChildActions = (List) generateCreateChildActionsGen(
+			descriptors, selection);
+
+		Collections.sort(createChildActions, new Comparator() {
+
+			public int compare(Object o1, Object o2) {
+				return ((IAction) o1).getText().compareTo(
+					((IAction) o2).getText());
+			}
+		});
+
+		return createChildActions;
+	}
+
 	/**
 	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
 	 * and returns the collection of these actions.
@@ -330,7 +349,7 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection generateCreateSiblingActions(Collection descriptors,
+	protected Collection generateCreateSiblingActionsGen(Collection descriptors,
 			ISelection selection) {
 		Collection actions = new ArrayList();
 		if (descriptors != null) {
@@ -340,6 +359,22 @@ public class UMLActionBarContributor
 			}
 		}
 		return actions;
+	}
+
+	protected Collection generateCreateSiblingActions(Collection descriptors,
+			ISelection selection) {
+		List createSiblingActions = (List) generateCreateSiblingActionsGen(
+			descriptors, selection);
+
+		Collections.sort(createSiblingActions, new Comparator() {
+
+			public int compare(Object o1, Object o2) {
+				return ((IAction) o1).getText().compareTo(
+					((IAction) o2).getText());
+			}
+		});
+
+		return createSiblingActions;
 	}
 
 	/**

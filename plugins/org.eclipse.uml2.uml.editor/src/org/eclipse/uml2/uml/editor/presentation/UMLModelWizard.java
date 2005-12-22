@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLModelWizard.java,v 1.2 2005/12/07 16:17:52 khussey Exp $
+ * $Id: UMLModelWizard.java,v 1.3 2005/12/22 20:21:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -179,7 +179,7 @@ public class UMLModelWizard
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection getInitialObjectNames() {
+	protected Collection getInitialObjectNamesGen() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList();
 			for (Iterator classifiers = umlPackage.getEClassifiers().iterator(); classifiers
@@ -195,6 +195,17 @@ public class UMLModelWizard
 			Collections.sort(initialObjectNames, java.text.Collator
 				.getInstance());
 		}
+		return initialObjectNames;
+	}
+
+	protected Collection getInitialObjectNames() {
+
+		if (initialObjectNames == null) {
+			initialObjectNames = new ArrayList();
+			initialObjectNames.add(umlPackage.getModel().getName());
+			initialObjectNames.add(umlPackage.getProfile().getName());
+		}
+
 		return initialObjectNames;
 	}
 

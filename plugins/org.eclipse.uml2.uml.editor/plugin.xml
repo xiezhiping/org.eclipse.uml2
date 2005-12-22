@@ -11,37 +11,191 @@
  Contributors:
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.1 2005/11/14 22:15:02 khussey Exp $
+ $Id: plugin.xml,v 1.2 2005/12/22 20:21:07 khussey Exp $
 -->
 
 <plugin>
 
 
   <extension
-    point = "org.eclipse.ui.newWizards">
+     point = "org.eclipse.ui.newWizards">
     <category
-      id = "org.eclipse.emf.ecore.Wizard.category.ID"
-      name="%_UI_Wizard_category">
+       id = "org.eclipse.emf.ecore.Wizard.category.ID"
+       name="%_UI_Wizard_category">
     </category>
     <wizard
-      id = "org.eclipse.uml2.uml.editor.presentation.UMLModelWizardID"
-      name = "%_UI_UMLModelWizard_label"
-      class = "org.eclipse.uml2.uml.editor.presentation.UMLModelWizard"
-      category = "org.eclipse.emf.ecore.Wizard.category.ID"
-      icon = "icons/full/obj16/UMLModelFile.gif">
+       id = "org.eclipse.uml2.uml.editor.presentation.UMLModelWizardID"
+       name = "%_UI_UMLModelWizard_label"
+       class = "org.eclipse.uml2.uml.editor.presentation.UMLModelWizard"
+       category = "org.eclipse.emf.ecore.Wizard.category.ID"
+       icon = "icons/full/obj16/UMLModelFile.gif">
       <description>%_UI_UMLModelWizard_description</description>
-      <selection class = "org.eclipse.core.resources.IResource" />
+      <selection class = "org.eclipse.core.resources.IResource"/>
     </wizard>
   </extension>
 
-  <extension point = "org.eclipse.ui.editors">
+  <extension
+     point = "org.eclipse.ui.editors">
     <editor
-        id = "org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
-        name = "%_UI_UMLEditor_label"
-        icon = "icons/full/obj16/UMLModelFile.gif"
-        extensions = "uml"
-        class = "org.eclipse.uml2.uml.editor.presentation.UMLEditor" 
-        contributorClass="org.eclipse.uml2.uml.editor.presentation.UMLActionBarContributor" >
+       id = "org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+       name = "%_UI_UMLEditor_label"
+       icon = "icons/full/obj16/UMLModelFile.gif"
+       extensions = "uml"
+       class = "org.eclipse.uml2.uml.editor.presentation.UMLEditor" 
+       contributorClass="org.eclipse.uml2.uml.editor.presentation.UMLActionBarContributor" >
     </editor>
   </extension>    
+
+  <extension
+     point="org.eclipse.ui.editorActions">
+    <editorContribution
+       targetID="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+       id="org.eclipse.uml2.uml.editor.UMLEditorContributionID">
+      <menu
+         label="%_UI_StereotypeMenu_label"
+         path="org.eclipse.uml2.umlMenuID/additions"
+         id="org.eclipse.uml2.uml.editor.StereotypeMenuID">
+        <separator name="additions"/>
+      </menu>
+      <action
+         label="%_UI_CreateExtensionAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.CreateExtensionAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.StereotypeMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.CreateExtensionActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Stereotype">
+          </objectClass>
+        </enablement>
+      </action>
+      <menu
+         label="%_UI_ProfileMenu_label"
+         path="org.eclipse.uml2.umlMenuID/additions"
+         id="org.eclipse.uml2.uml.editor.ProfileMenuID">
+        <separator name="additions"/>
+      </menu>
+      <action
+         label="%_UI_ReferenceMetamodelAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.ReferenceMetamodelAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.ProfileMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.ReferenceMetamodelActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Profile">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_ReferenceMetaclassAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.ReferenceMetaclassAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.ProfileMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.ReferenceMetaclassActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Profile">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_DefineProfileAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.DefineProfileAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.ProfileMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.DefineProfileActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Profile">
+          </objectClass>
+        </enablement>
+      </action>
+      <menu
+         label="%_UI_PackageMenu_label"
+         path="org.eclipse.uml2.umlMenuID/additions"
+         id="org.eclipse.uml2.uml.editor.PackageMenuID">
+        <separator name="additions"/>
+      </menu>
+      <action
+         label="%_UI_UnapplyProfileAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.UnapplyProfileAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.PackageMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.UnapplyProfileActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Package">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_ImportPrimitiveTypeAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.ImportPrimitiveTypeAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.PackageMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.ImportPrimitiveTypeActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Package">
+         </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_ApplyProfileAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.ApplyProfileAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.PackageMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.ApplyProfileActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Package">
+           </objectClass>
+        </enablement>
+      </action>
+      <menu
+         label="%_UI_ElementMenu_label"
+         path="org.eclipse.uml2.umlMenuID/additions"
+         id="org.eclipse.uml2.uml.editor.ElementMenuID">
+        <separator name="additions"/>
+      </menu>
+      <action
+         label="%_UI_UnapplyStereotypeAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.UnapplyStereotypeAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.ElementMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.UnapplyStereotypeActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Element">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_DestroyElementAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.DestroyElementAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.ElementMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.DestroyElementActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Element">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_ApplyStereotypeAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.ApplyStereotypeAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.ElementMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.ApplyStereotypeActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Element">
+          </objectClass>
+        </enablement>
+      </action>
+    </editorContribution>
+  </extension>
+
 </plugin>

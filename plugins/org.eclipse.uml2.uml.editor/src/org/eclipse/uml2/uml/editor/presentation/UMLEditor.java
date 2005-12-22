@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.2 2005/12/07 14:21:24 khussey Exp $
+ * $Id: UMLEditor.java,v 1.3 2005/12/22 20:21:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -31,6 +31,8 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
@@ -45,12 +47,15 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
+import org.eclipse.emf.edit.ui.provider.PropertySource;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
 
+import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
@@ -87,10 +92,12 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 
 import org.eclipse.jface.viewers.ColumnWeightData;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -110,6 +117,7 @@ import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 
@@ -139,10 +147,13 @@ import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
+import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
+import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
 
 import java.util.HashMap;
@@ -509,7 +520,7 @@ public class UMLEditor
 	 * This creates a model editor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public UMLEditor() {
 		super();
@@ -519,6 +530,7 @@ public class UMLEditor
 		List factories = new ArrayList();
 		factories.add(new ResourceItemProviderAdapterFactory());
 		factories.add(new UMLItemProviderAdapterFactory());
+		factories.add(new EcoreItemProviderAdapterFactory());
 		factories.add(new ReflectiveItemProviderAdapterFactory());
 
 		adapterFactory = new ComposedAdapterFactory(factories);
@@ -1543,6 +1555,61 @@ public class UMLEditor
 		}
 
 		super.dispose();
+	}
+
+	protected static class UMLAdapterFactoryContentProvider
+			extends AdapterFactoryContentProvider {
+
+		protected UMLAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
+			super(adapterFactory);
+		}
+
+		protected IPropertySource createPropertySource(Object object,
+				IItemPropertySource itemPropertySource) {
+			return new UMLPropertySource(object, itemPropertySource);
+		}
+	}
+
+	protected static class UMLPropertySource
+			extends PropertySource {
+
+		protected UMLPropertySource(Object object,
+				IItemPropertySource itemPropertySource) {
+			super(object, itemPropertySource);
+		}
+
+		protected IPropertyDescriptor createPropertyDescriptor(
+				IItemPropertyDescriptor itemPropertyDescriptor) {
+			return new UMLPropertyDescriptor(object, itemPropertyDescriptor);
+		}
+	}
+
+	protected static class UMLPropertyDescriptor
+			extends PropertyDescriptor {
+
+		protected UMLPropertyDescriptor(Object object,
+				IItemPropertyDescriptor itemPropertyDescriptor) {
+			super(object, itemPropertyDescriptor);
+		}
+
+		protected ILabelProvider getEditLabelProvider() {
+			final ILabelProvider editLabelProvider = super
+				.getEditLabelProvider();
+
+			return new LabelProvider() {
+
+				public String getText(Object object) {
+					return itemPropertyDescriptor instanceof IItemQualifiedTextProvider
+						? ((IItemQualifiedTextProvider) itemPropertyDescriptor)
+							.getQualifiedText(object)
+						: editLabelProvider.getText(object);
+				}
+
+				public Image getImage(Object object) {
+					return editLabelProvider.getImage(object);
+				}
+			};
+		}
 	}
 
 }
