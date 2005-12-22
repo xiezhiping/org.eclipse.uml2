@@ -8,17 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.4 2005/12/21 20:13:23 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.5 2005/12/22 20:22:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -30,8 +36,12 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 
+import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.util.UMLAdapterFactory;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -70,11 +80,13 @@ public class UMLItemProviderAdapterFactory
 	 */
 	protected Collection supportedTypes = new ArrayList();
 
+	protected final ReflectiveItemProvider stereotypeApplicationItemProvider;
+
 	/**
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public UMLItemProviderAdapterFactory() {
 		supportedTypes.add(IEditingDomainItemProvider.class);
@@ -82,12 +94,62 @@ public class UMLItemProviderAdapterFactory
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
+
+		stereotypeApplicationItemProvider = new ReflectiveItemProvider(this) {
+
+			public List getPropertyDescriptors(Object object) {
+				itemPropertyDescriptors = new ArrayList();
+
+				for (Iterator eAllStructuralFeatures = ((EObject) object)
+					.eClass().getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
+					.hasNext();) {
+
+					EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
+						.next();
+
+					if (!eStructuralFeature.getName().startsWith(
+						Extension.METACLASS_ROLE_PREFIX)
+						&& (!(eStructuralFeature instanceof EReference) || !((EReference) eStructuralFeature)
+							.isContainment())) {
+
+						itemPropertyDescriptors.add(new ItemPropertyDescriptor(
+							((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+							getFeatureText(eStructuralFeature),
+							getResourceLocator().getString(
+								"_UI_Property_description", //$NON-NLS-1$
+								new Object[]{
+									getFeatureText(eStructuralFeature),
+									eStructuralFeature.getEType().getName()}),
+							eStructuralFeature, eStructuralFeature
+								.isChangeable(),
+							ItemPropertyDescriptor.GENERIC_VALUE_IMAGE));
+					}
+				}
+
+				return itemPropertyDescriptors;
+			}
+
+			public String getText(Object object) {
+
+				if (object instanceof EObject
+					&& UMLUtil.getStereotype((EObject) object) != null) {
+					return super.getText(object)
+						+ " -> " //$NON-NLS-1$
+						+ UMLUtil.getQualifiedText(UMLUtil
+							.getBaseElement((EObject) object));
+				}
+
+				return super.getText(object);
+			}
+		};
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Comment} instances.
-	 * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all
+	 * {@link org.eclipse.uml2.uml.Comment} instances. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CommentItemProvider commentItemProvider;
@@ -4618,8 +4680,15 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isFactoryForType(Object type) {
+	public boolean isFactoryForTypeGen(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
+	}
+
+	public boolean isFactoryForType(Object type) {
+		return isFactoryForTypeGen(type)
+			|| (type instanceof EPackage && UMLUtil.getProfile((EPackage) type) != null)
+			|| (type instanceof EObject && UMLUtil
+				.getStereotype((EObject) type) != null);
 	}
 
 	/**
@@ -5092,6 +5161,13 @@ public class UMLItemProviderAdapterFactory
 			protocolTransitionItemProvider.dispose();
 		if (associationClassItemProvider != null)
 			associationClassItemProvider.dispose();
+	}
+
+	public Adapter createAdapter(Notifier target) {
+		Adapter adapter = super.createAdapter(target);
+		return adapter == null
+			? stereotypeApplicationItemProvider
+			: adapter;
 	}
 
 }
