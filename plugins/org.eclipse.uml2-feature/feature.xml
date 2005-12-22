@@ -102,24 +102,28 @@
          id="org.eclipse.uml2.uml"
          download-size="0"
          install-size="0"
-         version="2.0.0"/>
+         version="2.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.eclipse.uml2.uml.edit"
          download-size="0"
          install-size="0"
-         version="2.0.0"/>
+         version="2.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.eclipse.uml2.uml.editor"
          download-size="0"
          install-size="0"
-         version="2.0.0"/>
+         version="2.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.eclipse.uml2.uml.resources"
          download-size="0"
          install-size="0"
-         version="2.0.0"/>
+         version="2.0.0"
+         unpack="false"/>
 
 </feature>
