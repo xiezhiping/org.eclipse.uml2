@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.12 2005/12/22 22:44:54 khussey Exp $
+ * $Id: ElementOperations.java,v 1.13 2005/12/22 22:52:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -27,6 +29,10 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -36,6 +42,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
@@ -403,9 +411,6 @@ public final class ElementOperations
 						}
 					} else {
 
-						if (eObject != null
-							|| getStereotype(eObject) == stereotype) {
-
 							if (eStructuralFeature.isMany()) {
 								List list = eObject == null
 									? Collections.EMPTY_LIST
@@ -422,9 +427,6 @@ public final class ElementOperations
 										.getDefaultValue(), eObject
 										.eGet(eStructuralFeature));
 							}
-						} else {
-							return false;
-						}
 					}
 				}
 			}
@@ -436,25 +438,312 @@ public final class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Object getValue(Element element, Stereotype stereotype,
 			String propertyName) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (stereotype == null || !element.isStereotypeApplied(stereotype)) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		if (isEmpty(propertyName)) {
+			throw new IllegalArgumentException(String.valueOf(propertyName));
+		}
+
+		EObject eObject = element.getStereotypeApplication(stereotype);
+
+		if (eObject == null) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		EClass eClass = eObject.eClass();
+		String[] segments = propertyName.split(NamedElement.SEPARATOR);
+
+		for (int i = 0, length = segments.length; i < length; i++) {
+			String segment = segments[i];
+			EStructuralFeature eStructuralFeature = null;
+			int index = -1;
+
+			if (segment.indexOf('[') == -1) {
+				eStructuralFeature = eClass
+					.getEStructuralFeature(getValidJavaIdentifier(segment));
+			} else {
+				eStructuralFeature = eClass
+					.getEStructuralFeature(getValidJavaIdentifier(segment
+						.substring(0, segment.indexOf('['))));
+
+				try {
+					index = Integer.parseInt(segment.substring(segment
+						.indexOf('[') + 1, segment.indexOf(']')));
+				} catch (Exception e) {
+					throw new IllegalArgumentException(String
+						.valueOf(propertyName));
+				}
+			}
+
+			if (eStructuralFeature == null) {
+				throw new IllegalArgumentException(String.valueOf(propertyName));
+			}
+
+			EClassifier eType = eStructuralFeature.getEType();
+
+			if (i + 1 < length) {
+
+				if (eObject == null || !(eType instanceof EClass)) {
+
+					throw new IllegalArgumentException(String
+						.valueOf(propertyName));
+				}
+
+				eClass = (EClass) eType;
+
+				eObject = (EObject) (eStructuralFeature.isMany()
+					? ((List) eObject.eGet(eStructuralFeature)).get(index)
+					: eObject.eGet(eStructuralFeature));
+			} else {
+				Object value = null;
+
+				if (eStructuralFeature.isMany()) {
+					List list = eObject == null
+						? Collections.EMPTY_LIST
+						: (List) eObject.eGet(eStructuralFeature);
+
+					value = index == -1
+						? list
+						: list.get(index);
+				} else {
+					value = eObject == null
+						? eStructuralFeature.getDefaultValue()
+						: eObject.eGet(eStructuralFeature);
+				}
+
+				if (eType instanceof EEnum) {
+					EAnnotation eAnnotation = eType
+						.getEAnnotation(UMLPackage.eNS_URI);
+
+					if (eAnnotation != null) {
+						EList references = eAnnotation.getReferences();
+
+						if (references.size() > 0) {
+							Object reference = references.get(0);
+
+							if (reference instanceof Enumeration) {
+								value = ((Enumeration) reference)
+									.getOwnedLiteral(((EEnumLiteral) value)
+										.getName());
+							}
+						}
+					}
+				}
+
+				return value;
+			}
+		}
+
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static void setValue(Element element, Stereotype stereotype,
 			String propertyName, Object newValue) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (stereotype == null) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		if (isEmpty(propertyName)) {
+			throw new IllegalArgumentException(String.valueOf(propertyName));
+		}
+
+		EObject eObject = element.getStereotypeApplication(stereotype);
+
+		if (eObject == null) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		EClass eClass = eObject.eClass();
+		String[] segments = propertyName.split(NamedElement.SEPARATOR);
+
+		for (int i = 0, length = segments.length; i < length; i++) {
+			String segment = segments[i];
+			EStructuralFeature eStructuralFeature = null;
+			int index = -1;
+
+			if (segment.indexOf('[') == -1) {
+				eStructuralFeature = eClass
+					.getEStructuralFeature(getValidJavaIdentifier(segment));
+			} else {
+				eStructuralFeature = eClass
+					.getEStructuralFeature(getValidJavaIdentifier(segment
+						.substring(0, segment.indexOf('['))));
+
+				try {
+					index = Integer.parseInt(segment.substring(segment
+						.indexOf('[') + 1, segment.indexOf(']')));
+				} catch (Exception e) {
+					throw new IllegalArgumentException(String
+						.valueOf(propertyName));
+				}
+			}
+
+			if (eStructuralFeature == null) {
+				throw new IllegalArgumentException(String.valueOf(propertyName));
+			}
+
+			EClassifier eType = eStructuralFeature.getEType();
+
+			if (i + 1 < length) {
+
+				if (!(eType instanceof EClass)) {
+					throw new IllegalArgumentException(String
+						.valueOf(propertyName));
+				}
+
+				eClass = (EClass) eType;
+
+				if (eStructuralFeature.isMany()) {
+					List list = (List) eObject.eGet(eStructuralFeature);
+
+					for (int j = list.size(); j <= index; j++) {
+						list.add(j, eClass.getEPackage().getEFactoryInstance()
+							.create(eClass));
+					}
+
+					eObject = (EObject) list.get(index);
+				} else {
+
+					if (eObject.eGet(eStructuralFeature) == null) {
+						eObject.eSet(eStructuralFeature, eClass.getEPackage()
+							.getEFactoryInstance().create(eClass));
+					}
+
+					eObject = (EObject) eObject.eGet(eStructuralFeature);
+				}
+			} else {
+
+				if (newValue != null) {
+
+					if (eType instanceof EClass) {
+						EClass eClassType = (EClass) eType;
+
+						if (newValue instanceof List) {
+
+							for (Iterator j = ((List) newValue).iterator(); j
+								.hasNext();) {
+
+								if (!eClassType.isInstance(j.next())) {
+									throw new IllegalArgumentException(String
+										.valueOf(newValue));
+								}
+							}
+						} else if (!eClassType.isInstance(newValue)) {
+							throw new IllegalArgumentException(String
+								.valueOf(newValue));
+						}
+					} else if (eType instanceof EDataType) {
+						EDataType eDataType = (EDataType) eType;
+						EFactory eFactoryInstance = eDataType.getEPackage()
+							.getEFactoryInstance();
+
+						if (newValue instanceof List) {
+							newValue = new ArrayList((List) newValue);
+
+							if (eDataType instanceof EEnum) {
+								EEnum eEnum = (EEnum) eDataType;
+
+								for (ListIterator li = ((List) newValue)
+									.listIterator(); li.hasNext();) {
+
+									Object item = li.next();
+
+									if (item instanceof EnumerationLiteral) {
+										li.set(eEnum.getEEnumLiteral(
+											((EnumerationLiteral) item)
+												.getName()).getInstance());
+									}
+								}
+							}
+
+							for (ListIterator li = ((List) newValue)
+								.listIterator(); li.hasNext();) {
+
+								Object item = li.next();
+
+								if (item instanceof String) {
+
+									try {
+										li.set(eFactoryInstance
+											.createFromString(eDataType,
+												(String) item));
+									} catch (Exception e) {
+										// ignore
+									}
+								}
+							}
+						} else {
+
+							if (eDataType instanceof EEnum) {
+								EEnum eEnum = (EEnum) eDataType;
+
+								if (newValue instanceof EnumerationLiteral) {
+									newValue = eEnum.getEEnumLiteral(
+										((EnumerationLiteral) newValue)
+											.getName()).getInstance();
+								}
+							}
+
+							if (newValue instanceof String) {
+
+								try {
+									newValue = eFactoryInstance
+										.createFromString(eDataType,
+											(String) newValue);
+								} catch (Exception e) {
+									// ignore
+								}
+							}
+						}
+					}
+				}
+
+				if (newValue == null) {
+					newValue = eStructuralFeature.getDefaultValue();
+				}
+
+				if (eStructuralFeature.isMany()) {
+
+					if (index == -1) {
+
+						if (newValue instanceof List) {
+							eObject.eSet(eStructuralFeature, newValue);
+						} else {
+							throw new IllegalArgumentException(String
+								.valueOf(newValue));
+						}
+					} else {
+						List list = (List) eObject.eGet(eStructuralFeature);
+
+						for (int j = list.size(); j < index; j++) {
+							list.add(j, eStructuralFeature.getDefaultValue());
+						}
+
+						if (index == list.size()) {
+							list.add(index, newValue);
+						} else {
+							list.set(index, newValue);
+						}
+					}
+
+				} else {
+					eObject.eSet(eStructuralFeature, newValue);
+				}
+			}
+		}
 	}
 
 	/**
