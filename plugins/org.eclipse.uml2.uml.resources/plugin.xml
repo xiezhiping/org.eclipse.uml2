@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2005 IBM Corporation and others.
+ All rights reserved.   This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+ Contributors: 
+   IBM - initial API and implementation
+
+ $Id: plugin.xml,v 1.1 2005/12/22 20:12:41 khussey Exp $
+-->
+
+<plugin>
+
+  <extension
+     point="org.eclipse.emf.ecore.uri_mapping">
+    <mapping
+       source="pathmap://UML_LIBRARIES/"
+       target="platform:/plugin/org.eclipse.uml2.uml.resources/libraries/">
+    </mapping>
+  </extension>
+
+  <extension
+     point="org.eclipse.emf.ecore.uri_mapping">
+    <mapping
+       source="pathmap://UML_METAMODELS/"
+       target="platform:/plugin/org.eclipse.uml2.uml.resources/metamodels/">
+    </mapping>
+  </extension>
+
+  <extension
+     point="org.eclipse.emf.ecore.uri_mapping">
+    <mapping
+       source="pathmap://UML_PROFILES/"
+       target="platform:/plugin/org.eclipse.uml2.uml.resources/profiles/">
+    </mapping>
+  </extension>
+
+</plugin>
