@@ -8,16 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.3 2005/12/23 06:45:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EObject;
@@ -37,24 +42,32 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.uml.Element} object.
  * <!-- begin-user-doc -->
+ * @extends IItemQualifiedTextProvider
  * <!-- end-user-doc -->
  * @generated
  */
 public class ElementItemProvider
 		extends EObjectItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		IItemQualifiedTextProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -259,6 +272,197 @@ public class ElementItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
+	}
+
+	protected boolean shouldTranslate() {
+		return UMLEditPlugin.INSTANCE.shouldTranslate();
+	}
+
+	public String getQualifiedText(Object object) {
+		return UML2Util.getQualifiedText((EObject) object,
+			new UMLUtil.QualifiedTextProvider() {
+
+				public String getFeatureText(
+						EStructuralFeature eStructuralFeature) {
+					return ElementItemProvider.this
+						.getFeatureText(eStructuralFeature);
+				}
+
+				public String getClassText(EObject eObject) {
+					return getTypeText(eObject);
+				}
+
+			});
+	}
+
+	protected StringBuffer appendKeywords(StringBuffer text, Object object) {
+
+		if (object instanceof Element) {
+			Element element = (Element) object;
+
+			Iterator appliedStereotypes = element.getAppliedStereotypes()
+				.iterator();
+			Iterator keywords = element.getKeywords().iterator();
+
+			if (appliedStereotypes.hasNext() || keywords.hasNext()) {
+
+				if (text.length() > 0) {
+					text.append(' ');
+				}
+
+				text.append("<<"); //$NON-NLS-1$
+
+				while (appliedStereotypes.hasNext()) {
+					text.append(((Stereotype) appliedStereotypes.next())
+						.getKeyword(shouldTranslate()));
+
+					if (appliedStereotypes.hasNext() || keywords.hasNext()) {
+						text.append(", "); //$NON-NLS-1$
+					}
+				}
+
+				while (keywords.hasNext()) {
+					text.append((String) keywords.next());
+
+					if (keywords.hasNext()) {
+						text.append(", "); //$NON-NLS-1$
+					}
+				}
+
+				text.append(">>"); //$NON-NLS-1$
+			}
+		}
+
+		return text;
+	}
+
+	protected StringBuffer appendType(StringBuffer text, Object object) {
+
+		if (text.length() > 0) {
+			text.append(' ');
+		}
+
+		return text.append('<').append(getTypeText(object)).append('>');
+	}
+
+	protected StringBuffer appendType(StringBuffer text, String key) {
+
+		if (text.length() > 0) {
+			text.append(' ');
+		}
+
+		return text.append('<').append(getString(key)).append('>');
+	}
+
+	protected StringBuffer appendLabel(StringBuffer text, Object object) {
+		return object instanceof NamedElement
+			? appendString(text, ((NamedElement) object)
+				.getLabel(shouldTranslate()))
+			: text;
+	}
+
+	protected StringBuffer appendString(StringBuffer text, String string) {
+
+		if (string.length() > 0) {
+
+			if (text.length() > 0) {
+				text.append(' ');
+			}
+
+			text.append(string);
+		}
+
+		return text;
+	}
+
+	protected ItemPropertyDescriptor createItemPropertyDescriptor(
+			AdapterFactory adapterFactory, ResourceLocator resourceLocator,
+			String displayName, String description, EStructuralFeature feature,
+			boolean isSettable, Object staticImage, String category,
+			String[] filterFlags) {
+		return new UMLItemPropertyDescriptor(adapterFactory, resourceLocator,
+			displayName, description, feature, isSettable, staticImage,
+			category, filterFlags);
+	}
+
+	protected static class UMLItemPropertyDescriptor
+			extends ItemPropertyDescriptor
+			implements IItemQualifiedTextProvider {
+
+		protected class UMLItemDelegator
+				extends ItemDelegator
+				implements IItemQualifiedTextProvider {
+
+			protected UMLItemDelegator(AdapterFactory adapterFactory,
+					ResourceLocator resourceLocator) {
+				super(adapterFactory, resourceLocator);
+			}
+
+			public String getQualifiedText(Object object) {
+
+				if (object instanceof EList) {
+					StringBuffer text = new StringBuffer();
+
+					for (Iterator i = ((List) object).iterator(); i.hasNext();) {
+						Object child = i.next();
+
+						if (text.length() > 0) {
+							text.append(", "); //$NON-NLS-1$
+						}
+
+						text.append(getQualifiedText(child));
+					}
+
+					return text.toString();
+				} else {
+					IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
+						.adapt(object, IItemQualifiedTextProvider.class);
+
+					return itemQualifiedTextProvider != null
+						? itemQualifiedTextProvider.getQualifiedText(object)
+						: getText(object);
+				}
+			}
+		}
+
+		protected UMLItemPropertyDescriptor(AdapterFactory adapterFactory,
+				ResourceLocator resourceLocator, String displayName,
+				String description, EStructuralFeature feature,
+				boolean isSettable, Object staticImage, String category,
+				String[] filterFlags) {
+			super(adapterFactory, resourceLocator, displayName, description,
+				feature, isSettable, staticImage, category, filterFlags);
+
+			this.itemDelegator = new UMLItemDelegator(adapterFactory,
+				resourceLocator);
+		}
+
+		public Collection getChoiceOfValues(Object object) {
+			Collection comboBoxObjects = getComboBoxObjects(object);
+
+			if (comboBoxObjects != null) {
+				List choiceOfValues = new ArrayList(comboBoxObjects);
+
+				if (choiceOfValues != null) {
+					Collections.sort(choiceOfValues, new Comparator() {
+
+						public int compare(Object o1, Object o2) {
+							return getQualifiedText(o1).compareTo(
+								getQualifiedText(o2));
+						}
+					});
+				}
+
+				return choiceOfValues;
+			}
+
+			return null;
+		}
+
+		public String getQualifiedText(Object object) {
+			return ((IItemQualifiedTextProvider) itemDelegator)
+				.getQualifiedText(object);
+		}
 	}
 
 }
