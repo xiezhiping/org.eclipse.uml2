@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.13 2005/12/22 22:52:09 khussey Exp $
+ * $Id: ElementOperations.java,v 1.14 2005/12/23 00:50:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -411,22 +411,22 @@ public final class ElementOperations
 						}
 					} else {
 
-							if (eStructuralFeature.isMany()) {
-								List list = eObject == null
-									? Collections.EMPTY_LIST
-									: (List) eObject.eGet(eStructuralFeature);
+						if (eStructuralFeature.isMany()) {
+							List list = eObject == null
+								? Collections.EMPTY_LIST
+								: (List) eObject.eGet(eStructuralFeature);
 
-								return index == -1
-									? !list.isEmpty()
-									: !safeEquals(eStructuralFeature
-										.getDefaultValue(), list.get(index));
-							} else {
-								return eObject == null
-									? false
-									: !safeEquals(eStructuralFeature
-										.getDefaultValue(), eObject
-										.eGet(eStructuralFeature));
-							}
+							return index == -1
+								? !list.isEmpty()
+								: !safeEquals(eStructuralFeature
+									.getDefaultValue(), list.get(index));
+						} else {
+							return eObject == null
+								? false
+								: !safeEquals(eStructuralFeature
+									.getDefaultValue(), eObject
+									.eGet(eStructuralFeature));
+						}
 					}
 				}
 			}
