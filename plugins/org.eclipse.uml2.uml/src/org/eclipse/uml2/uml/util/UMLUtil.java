@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.3 2005/12/22 20:18:37 khussey Exp $
+ * $Id: UMLUtil.java,v 1.4 2005/12/23 15:39:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5671,6 +5671,29 @@ public class UMLUtil
 		}
 
 		return null;
+	}
+
+	protected static void setBaseElement(EObject stereotypeApplication,
+			Element element) {
+
+		if (getStereotype(stereotypeApplication) != null) {
+
+			for (Iterator eAllStructuralFeatures = stereotypeApplication
+				.eClass().getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
+				.hasNext();) {
+
+				EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
+					.next();
+
+				if (eStructuralFeature.getName().startsWith(
+					Extension.METACLASS_ROLE_PREFIX)
+					&& (element == null || eStructuralFeature.getEType()
+						.isInstance(element))) {
+
+					stereotypeApplication.eSet(eStructuralFeature, element);
+				}
+			}
+		}
 	}
 
 	protected static void safeApplyStereotype(Element element,

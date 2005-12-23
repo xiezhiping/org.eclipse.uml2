@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.17 2005/12/23 06:48:22 khussey Exp $
+ * $Id: ElementImpl.java,v 1.18 2005/12/23 15:39:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -783,11 +783,13 @@ public abstract class ElementImpl
 			int newContainerFeatureID) {
 		super.eBasicSetContainer(newContainer, newContainerFeatureID);
 
-		Resource.Internal eInternalResource = eInternalResource();
+		if (newContainer != null) {
+			Resource.Internal eInternalResource = eInternalResource();
 
-		if (eInternalResource == null || !eInternalResource.isLoading()) {
-			ElementOperations.unapplyAllNonApplicableStereotypes(this);
-			ElementOperations.applyAllRequiredStereotypes(this);
+			if (eInternalResource == null || !eInternalResource.isLoading()) {
+				ElementOperations.unapplyAllNonApplicableStereotypes(this);
+				ElementOperations.applyAllRequiredStereotypes(this);
+			}
 		}
 	}
 

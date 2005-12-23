@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.15 2005/12/23 06:48:22 khussey Exp $
+ * $Id: ElementOperations.java,v 1.16 2005/12/23 15:39:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -939,26 +939,6 @@ public final class ElementOperations
 		return element.getStereotypeApplication(stereotype) != null;
 	}
 
-	protected static void setBaseElement(Element element,
-			EObject stereotypeApplication) {
-
-		for (Iterator eAllStructuralFeatures = stereotypeApplication.eClass()
-			.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
-			.hasNext();) {
-
-			EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
-				.next();
-
-			if (eStructuralFeature.getName().startsWith(
-				Extension.METACLASS_ROLE_PREFIX)
-				&& (element == null || eStructuralFeature.getEType()
-					.isInstance(element))) {
-
-				stereotypeApplication.eSet(eStructuralFeature, element);
-			}
-		}
-	}
-
 	protected static EObject applyStereotype(Element element,
 			Stereotype stereotype, Resource resource) {
 		EObject stereotypeApplication = stereotype.getProfile().create(
@@ -966,7 +946,7 @@ public final class ElementOperations
 
 		CacheAdapter.INSTANCE.adapt(stereotypeApplication);
 
-		setBaseElement(element, stereotypeApplication);
+		setBaseElement(stereotypeApplication, element);
 
 		if (resource != null) {
 			resource.getContents().add(stereotypeApplication);
@@ -1025,17 +1005,8 @@ public final class ElementOperations
 		return applyStereotype(element, stereotype, element.eResource());
 	}
 
-	protected static EObject unapplyStereotype(Element element,
-			EObject stereotypeApplication) {
-		setBaseElement(null, stereotypeApplication);
-
-		destroy(stereotypeApplication);
-
-		return stereotypeApplication;
-	}
-
 	public static EList unapplyAllNonApplicableStereotypes(Element element) {
-		EList stereotypeApplications = new UniqueEList();
+		EList allNonApplicableStereotypes = new UniqueEList();
 
 		for (Iterator allContents = getAllContents(element, true, false); allContents
 			.hasNext();) {
@@ -1053,14 +1024,15 @@ public final class ElementOperations
 					if (!containedElement
 						.isStereotypeApplicable(getStereotype(stereotypeApplication))) {
 
-						stereotypeApplications.add(unapplyStereotype(element,
-							stereotypeApplication));
+						allNonApplicableStereotypes.add(stereotypeApplication);
+
+						destroy(stereotypeApplication);
 					}
 				}
 			}
 		}
 
-		return stereotypeApplications;
+		return allNonApplicableStereotypes;
 	}
 
 	/**
@@ -1082,7 +1054,9 @@ public final class ElementOperations
 			throw new IllegalArgumentException(String.valueOf(stereotype));
 		}
 
-		return unapplyStereotype(element, stereotypeApplication);
+		destroy(stereotypeApplication);
+
+		return stereotypeApplication;
 	}
 
 	/**
