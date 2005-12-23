@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.14 2005/12/23 00:50:38 khussey Exp $
+ * $Id: ElementOperations.java,v 1.15 2005/12/23 06:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -40,6 +40,7 @@ import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
@@ -157,7 +158,7 @@ public final class ElementOperations
 	public static EList getStereotypeApplications(Element element) {
 		EList stereotypeApplications = new UniqueEList();
 
-		for (Iterator nonNavigableInverseReferences = CROSS_REFERENCE_ADAPTER
+		for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
 			.getNonNavigableInverseReferences(element).iterator(); nonNavigableInverseReferences
 			.hasNext();) {
 
@@ -266,7 +267,7 @@ public final class ElementOperations
 	public static EList getAppliedStereotypes(Element element) {
 		EList appliedStereotypes = new UniqueEList();
 
-		for (Iterator nonNavigableInverseReferences = CROSS_REFERENCE_ADAPTER
+		for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
 			.getNonNavigableInverseReferences(element).iterator(); nonNavigableInverseReferences
 			.hasNext();) {
 
@@ -938,10 +939,8 @@ public final class ElementOperations
 		return element.getStereotypeApplication(stereotype) != null;
 	}
 
-	protected static EObject applyStereotype(Element element,
-			Stereotype stereotype, Resource resource) {
-		EObject stereotypeApplication = stereotype.getProfile().create(
-			stereotype);
+	protected static void setBaseElement(Element element,
+			EObject stereotypeApplication) {
 
 		for (Iterator eAllStructuralFeatures = stereotypeApplication.eClass()
 			.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
@@ -952,11 +951,22 @@ public final class ElementOperations
 
 			if (eStructuralFeature.getName().startsWith(
 				Extension.METACLASS_ROLE_PREFIX)
-				&& eStructuralFeature.getEType().isInstance(element)) {
+				&& (element == null || eStructuralFeature.getEType()
+					.isInstance(element))) {
 
 				stereotypeApplication.eSet(eStructuralFeature, element);
 			}
 		}
+	}
+
+	protected static EObject applyStereotype(Element element,
+			Stereotype stereotype, Resource resource) {
+		EObject stereotypeApplication = stereotype.getProfile().create(
+			stereotype);
+
+		CacheAdapter.INSTANCE.adapt(stereotypeApplication);
+
+		setBaseElement(element, stereotypeApplication);
 
 		if (resource != null) {
 			resource.getContents().add(stereotypeApplication);
@@ -1015,6 +1025,15 @@ public final class ElementOperations
 		return applyStereotype(element, stereotype, element.eResource());
 	}
 
+	protected static EObject unapplyStereotype(Element element,
+			EObject stereotypeApplication) {
+		setBaseElement(null, stereotypeApplication);
+
+		destroy(stereotypeApplication);
+
+		return stereotypeApplication;
+	}
+
 	public static EList unapplyAllNonApplicableStereotypes(Element element) {
 		EList stereotypeApplications = new UniqueEList();
 
@@ -1034,9 +1053,8 @@ public final class ElementOperations
 					if (!containedElement
 						.isStereotypeApplicable(getStereotype(stereotypeApplication))) {
 
-						destroy(stereotypeApplication);
-
-						stereotypeApplications.add(stereotypeApplication);
+						stereotypeApplications.add(unapplyStereotype(element,
+							stereotypeApplication));
 					}
 				}
 			}
@@ -1064,9 +1082,7 @@ public final class ElementOperations
 			throw new IllegalArgumentException(String.valueOf(stereotype));
 		}
 
-		destroy(stereotypeApplication);
-
-		return stereotypeApplication;
+		return unapplyStereotype(element, stereotypeApplication);
 	}
 
 	/**

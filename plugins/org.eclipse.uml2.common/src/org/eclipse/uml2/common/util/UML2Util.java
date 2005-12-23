@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.8 2005/12/22 20:18:34 khussey Exp $
+ * $Id: UML2Util.java,v 1.9 2005/12/23 06:48:15 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -51,7 +51,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.framework.Bundle;
@@ -117,38 +116,6 @@ public class UML2Util {
 		}
 
 	}
-
-	protected static class CrossReferenceAdapter
-			extends ECrossReferenceAdapter {
-
-		protected void adapt(EObject eObject) {
-			Resource resource = eObject.eResource();
-
-			if (resource == null) {
-				addAdapter(EcoreUtil.getRootContainer(eObject));
-			} else {
-				ResourceSet resourceSet = resource.getResourceSet();
-
-				if (resourceSet == null) {
-					addAdapter(resource);
-				} else {
-					addAdapter(resourceSet);
-				}
-			}
-		}
-
-		public Collection getNonNavigableInverseReferences(EObject eObject) {
-			adapt(eObject);
-			return super.getNonNavigableInverseReferences(eObject);
-		}
-
-		public Collection getInverseReferences(EObject eObject) {
-			adapt(eObject);
-			return super.getInverseReferences(eObject);
-		}
-	}
-
-	protected static final CrossReferenceAdapter CROSS_REFERENCE_ADAPTER = new CrossReferenceAdapter();
 
 	/**
 	 * The default URI converter for resource bundle look-ups.
@@ -886,7 +853,7 @@ public class UML2Util {
 
 			EObject containedEObject = (EObject) allContents.next();
 
-			for (Iterator inverseReferences = CROSS_REFERENCE_ADAPTER
+			for (Iterator inverseReferences = CacheAdapter.INSTANCE
 				.getInverseReferences(containedEObject).iterator(); inverseReferences
 				.hasNext();) {
 

@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.3 2005/06/16 00:48:20 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.4 2005/12/23 06:48:15 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,13 +22,12 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
-/**
- * 
- */
 public class CacheAdapter
-		extends EContentAdapter {
+		extends ECrossReferenceAdapter {
 
 	public static final CacheAdapter INSTANCE = new CacheAdapter();
 
@@ -44,7 +44,7 @@ public class CacheAdapter
 	public boolean adapt(Notifier notifier) {
 		boolean result = false;
 
-		if (null != notifier) {
+		if (notifier != null) {
 			adapting = true;
 			result = addAdapter(notifier.eAdapters());
 			adapting = false;
@@ -53,20 +53,36 @@ public class CacheAdapter
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.util.EContentAdapter#addAdapter(org.eclipse.emf.common.notify.Notifier)
-	 */
 	protected void addAdapter(Notifier notifier) {
 		addAdapter(notifier.eAdapters());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.util.EContentAdapter#setTarget(org.eclipse.emf.common.notify.Notifier)
-	 */
+	protected void addAdapter(EObject eObject) {
+		Resource eResource = eObject.eResource();
+
+		if (eResource == null) {
+			addAdapter(EcoreUtil.getRootContainer(eObject).eAdapters());
+		} else {
+			ResourceSet resourceSet = eResource.getResourceSet();
+
+			if (resourceSet == null) {
+				addAdapter(eResource.eAdapters());
+			} else {
+				addAdapter(resourceSet.eAdapters());
+			}
+		}
+	}
+
+	public Collection getNonNavigableInverseReferences(EObject eObject) {
+		addAdapter(eObject);
+		return super.getNonNavigableInverseReferences(eObject);
+	}
+
+	public Collection getInverseReferences(EObject eObject) {
+		addAdapter(eObject);
+		return super.getInverseReferences(eObject);
+	}
+
 	public void setTarget(Notifier target) {
 
 		if (adapting) {
@@ -76,21 +92,16 @@ public class CacheAdapter
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.notify.Adapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
-	 */
 	public void notifyChanged(Notification msg) {
 		super.notifyChanged(msg);
 
 		Object notifier = msg.getNotifier();
 
-		if (EObject.class.isInstance(notifier)) {
+		if (notifier instanceof EObject) {
 			clear(((EObject) notifier).eResource());
-		} else if (Resource.class.isInstance(notifier)) {
+		} else if (notifier instanceof Resource) {
 
-			if (Resource.RESOURCE__CONTENTS == msg.getFeatureID(Resource.class)) {
+			if (msg.getFeatureID(Resource.class) == Resource.RESOURCE__CONTENTS) {
 				clear();
 			}
 		}
@@ -103,7 +114,7 @@ public class CacheAdapter
 	public void clear(Resource resource) {
 		values.remove(resource);
 
-		if (null != resource) {
+		if (resource != null) {
 			values.remove(null);
 		}
 	}
@@ -115,10 +126,10 @@ public class CacheAdapter
 	public boolean containsKey(Resource resource, EObject eObject, Object key) {
 		Map resourceMap = (Map) values.get(resource);
 
-		if (null != resourceMap) {
+		if (resourceMap != null) {
 			Map eObjectMap = (Map) resourceMap.get(eObject);
 
-			if (null != eObjectMap) {
+			if (eObjectMap != null) {
 				return eObjectMap.containsKey(key);
 			}
 		}
@@ -133,10 +144,10 @@ public class CacheAdapter
 	public Object get(Resource resource, EObject eObject, Object key) {
 		Map resourceMap = (Map) values.get(resource);
 
-		if (null != resourceMap) {
+		if (resourceMap != null) {
 			Map eObjectMap = (Map) resourceMap.get(eObject);
 
-			if (null != eObjectMap) {
+			if (eObjectMap != null) {
 				return eObjectMap.get(key);
 			}
 		}
@@ -151,13 +162,13 @@ public class CacheAdapter
 	public Object put(Resource resource, EObject eObject, Object key,
 			Object value) {
 
-		if (null == key) {
+		if (key == null) {
 			throw new IllegalArgumentException(String.valueOf(key));
 		}
 
 		Map resourceMap = (Map) values.get(resource);
 
-		if (null == resourceMap) {
+		if (resourceMap == null) {
 			resourceMap = new HashMap();
 
 			values.put(resource, resourceMap);
@@ -165,7 +176,7 @@ public class CacheAdapter
 
 		Map eObjectMap = (Map) resourceMap.get(eObject);
 
-		if (null == eObjectMap) {
+		if (eObjectMap == null) {
 			eObjectMap = new HashMap();
 
 			resourceMap.put(eObject, eObjectMap);

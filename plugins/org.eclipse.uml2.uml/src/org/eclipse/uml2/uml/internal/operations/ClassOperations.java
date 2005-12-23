@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.7 2005/12/22 20:21:23 khussey Exp $
+ * $Id: ClassOperations.java,v 1.8 2005/12/23 06:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Extension;
@@ -107,7 +108,7 @@ public final class ClassOperations
 	public static EList getExtensions(org.eclipse.uml2.uml.Class class_) {
 		EList extensions = new UniqueEList();
 
-		for (Iterator nonNavigableInverseReferences = CROSS_REFERENCE_ADAPTER
+		for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
 			.getNonNavigableInverseReferences(class_).iterator(); nonNavigableInverseReferences
 			.hasNext();) {
 

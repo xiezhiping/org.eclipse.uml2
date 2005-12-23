@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.16 2005/12/22 22:44:54 khussey Exp $
+ * $Id: ElementImpl.java,v 1.17 2005/12/23 06:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -94,7 +94,7 @@ public abstract class ElementImpl
 	protected ElementImpl() {
 		super();
 
-		CACHE_ADAPTER.adapt(this);
+		CacheAdapter.INSTANCE.adapt(this);
 	}
 
 	/**
@@ -718,8 +718,6 @@ public abstract class ElementImpl
 		}
 	}
 
-	protected static final CacheAdapter CACHE_ADAPTER = new CacheAdapter();
-
 	/**
 	 * Retrieves the cache adapter for this '<em><b>Element</b></em>'.
 	 * <!-- begin-user-doc -->
@@ -728,7 +726,7 @@ public abstract class ElementImpl
 	 * @generated NOT
 	 */
 	protected CacheAdapter getCacheAdapter() {
-		return CACHE_ADAPTER;
+		return CacheAdapter.INSTANCE;
 	}
 
 	/**

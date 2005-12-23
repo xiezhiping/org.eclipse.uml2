@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperationsTest.java,v 1.6 2005/11/23 21:52:58 khussey Exp $
+ * $Id: ElementOperationsTest.java,v 1.7 2005/12/23 06:49:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -233,7 +233,7 @@ public class ElementOperationsTest
 
 					ElementOperations.destroy(getElement());
 
-					assertTrue(comment1.getAnnotatedElements().contains(
+					assertFalse(comment1.getAnnotatedElements().contains(
 						getElement()));
 					assertFalse(comment2.getAnnotatedElements().contains(
 						getElement()));
