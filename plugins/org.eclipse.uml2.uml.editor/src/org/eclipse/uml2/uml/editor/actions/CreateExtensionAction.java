@@ -8,19 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateExtensionAction.java,v 1.1 2005/12/22 20:21:06 khussey Exp $
+ * $Id: CreateExtensionAction.java,v 1.2 2005/12/23 06:44:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
@@ -56,7 +57,7 @@ public class CreateExtensionAction
 			EList allExtendedMetaclasses = stereotype
 				.getAllExtendedMetaclasses();
 
-			EList choiceOfValues = new UniqueEList();
+			List choiceOfValues = new ArrayList();
 
 			for (Iterator referencedMetamodels = stereotype.getProfile()
 				.getReferencedMetamodels().iterator(); referencedMetamodels
@@ -84,7 +85,9 @@ public class CreateExtensionAction
 				org.eclipse.uml2.uml.Class metaclass = (org.eclipse.uml2.uml.Class) referencedMetaclasses
 					.next();
 
-				if (!allExtendedMetaclasses.contains(metaclass)) {
+				if (!allExtendedMetaclasses.contains(metaclass)
+					&& !choiceOfValues.contains(metaclass)) {
+
 					choiceOfValues.add(metaclass);
 				}
 			}

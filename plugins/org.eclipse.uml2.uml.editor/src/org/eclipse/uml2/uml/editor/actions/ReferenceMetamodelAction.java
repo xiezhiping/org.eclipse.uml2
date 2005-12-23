@@ -8,20 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReferenceMetamodelAction.java,v 1.1 2005/12/22 20:21:06 khussey Exp $
+ * $Id: ReferenceMetamodelAction.java,v 1.2 2005/12/23 06:44:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
@@ -58,7 +59,7 @@ public class ReferenceMetamodelAction
 			final Profile profile = (Profile) collection.toArray()[0];
 			EList referencedMetamodels = profile.getReferencedMetamodels();
 
-			EList choiceOfValues = new UniqueEList();
+			List choiceOfValues = new ArrayList();
 
 			try {
 				Resource resource = profile.eResource().getResourceSet()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.3 2005/12/22 20:21:07 khussey Exp $
+ * $Id: UMLEditor.java,v 1.4 2005/12/23 06:44:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -1158,7 +1158,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IPropertySheetPage getPropertySheetPage() {
+	public IPropertySheetPage getPropertySheetPageGen() {
 		if (propertySheetPage == null) {
 			propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
 
@@ -1175,6 +1175,29 @@ public class UMLEditor
 			};
 			propertySheetPage
 				.setPropertySourceProvider(new AdapterFactoryContentProvider(
+					adapterFactory));
+		}
+
+		return propertySheetPage;
+	}
+
+	public IPropertySheetPage getPropertySheetPage() {
+		if (propertySheetPage == null) {
+			propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
+
+				public void setSelectionToViewer(List selection) {
+					UMLEditor.this.setSelectionToViewer(selection);
+					UMLEditor.this.setFocus();
+				}
+
+				public void setActionBars(IActionBars actionBars) {
+					super.setActionBars(actionBars);
+					getActionBarContributor().shareGlobalActions(this,
+						actionBars);
+				}
+			};
+			propertySheetPage
+				.setPropertySourceProvider(new UMLAdapterFactoryContentProvider(
 					adapterFactory));
 		}
 
@@ -1534,7 +1557,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void dispose() {
+	public void disposeGen() {
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(
 			resourceChangeListener);
 
@@ -1555,6 +1578,16 @@ public class UMLEditor
 		}
 
 		super.dispose();
+	}
+
+	public void dispose() {
+		disposeGen();
+
+		for (Iterator resources = editingDomain.getResourceSet().getResources()
+			.iterator(); resources.hasNext();) {
+
+			((Resource) resources.next()).unload();
+		}
 	}
 
 	protected static class UMLAdapterFactoryContentProvider

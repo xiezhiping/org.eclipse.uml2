@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.6 2005/12/22 22:45:02 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.7 2005/12/23 06:44:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -39,6 +39,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 
+import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.util.UMLAdapterFactory;
 import org.eclipse.uml2.uml.util.UMLUtil;
@@ -94,6 +95,8 @@ public class UMLItemProviderAdapterFactory
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
+
+		supportedTypes.add(IItemQualifiedTextProvider.class);
 
 		stereotypeApplicationItemProvider = new ReflectiveItemProvider(this) {
 
