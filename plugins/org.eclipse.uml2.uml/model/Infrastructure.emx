@@ -16704,6 +16704,7 @@
     </ownedMember>
     <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3CA187710277" name="A_profileApplication_applyingPackage" memberEnd="_3ADC7B74022D3CA1877301CF _3ADC7B74022D3CA1877301D1">
       <generalization xmi:id="_Dg0jIWgIEdqYUPcXYU0YUA" general="_3ADC7B74022D3DFCA805021A"/>
+      <generalization xmi:id="_29OdoXxpEdqXXZNagOgnYw" general="_3ADC7B74022D3DFCAC780308"/>
     </ownedMember>
     <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3CB24B21012C" name="A_ownedStereotype_profile" memberEnd="_3ADC7B74022D3CB24B21030C _3ADC7B74022D3CB24B210316">
       <generalization xmi:id="_fXAN0EoiEdq2-6lg1JCB1A" general="_3ADC7B74022D3DE6E0F402CA"/>
